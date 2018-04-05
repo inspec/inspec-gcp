@@ -9,3 +9,4 @@ inspec.lock
 local
 .vscode
 .terraform
+*.idea*
