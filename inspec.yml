@@ -1,0 +1,7 @@
+name: gcp
+title: Google Cloud Platform Resource Pack
+maintainer: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
+summary: This resource pack provides compliance resources for Google Cloud Platform
+copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
+copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
+version: 0.2.0

@@ -1,0 +1,4 @@
+name: chef-inspec-gcp-integration-tests
+depends:
+  - name: gcp
+    path: ../../../
