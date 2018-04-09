@@ -14,14 +14,22 @@ control 'gcp-generic-vm-linux-external-1.0' do
   describe gcp_instance(project: gcp_project_id, zone: gcp_zone, name: gcp_ext_vm_name) do
     it { should exist }
     its('name') { should eq gcp_ext_vm_name }
-    its('zone') { should eq gcp_zone }
+    its('zone') { should match gcp_zone }
 
-    its('machine_type') { should eq  gcp_ext_vm_size}
+    # the machine should not be tainted
+    its('tainted?') { should be false }
+
+    # the machine should not be untrusted
+    its('untrusted?') { should be false }
+
+    its('machine_type') { should match  gcp_ext_vm_size}
     # can't easily get the os family from running instance...
     #its('source_image') { should eq  gcp_int_vm_image}
 
-    its('cpu_platform') { should eq "Intel Skylake" }
-    its('status') { should eq 'running' }
+    # we get Skylake and Broadwell for example
+    its('cpu_platform') { should match "Intel" }
+
+    its('status') { should eq 'RUNNING' }
 
     its('kind') { should eq "compute#instance" }
 
@@ -37,7 +45,7 @@ control 'gcp-generic-vm-linux-external-1.0' do
     its('first_disks_first_license') { should match "ubuntu"}
 
     # confirm there is only one network interface attached
-    its('network_interface_count'){should eq 1}
+    its('network_interfaces_count'){should eq 1}
 
     # uniquely for the external VM, ensure we have a public IP address
     its('first_network_interface_nat_ip_exists'){ should be true }

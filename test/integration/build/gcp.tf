@@ -4,14 +4,8 @@ terraform {
 
 # Configure variables
 
-variable "gcp_project_name" {
-  default = "SPaterson Project"
-}
-
-variable "gcp_project_id" {
-  default="spaterson-project"
-}
-
+variable "gcp_project_name" {}
+variable "gcp_project_id" {}
 variable "gcp_storage_account_name" {}
 variable "gcp_admin_password" {}
 # Set a unique string which will be appended to public facing items
@@ -26,10 +20,7 @@ variable "gcp_zone" {
   default = "europe-west2-a"
 }
 
-
-variable "gcp_int_vm_name" {
-  default ="gcp-inspec"
-}
+variable "gcp_int_vm_name" {}
 
 variable "gcp_int_vm_size" {
   default = "f1-micro"
@@ -40,18 +31,23 @@ variable "gcp_int_vm_image" {
 }
 
 variable "gcp_ext_vm_name" {}
-
 variable "gcp_ext_vm_size" {}
-
 variable "gcp_ext_vm_image" {}
-
 variable "gcp_ext_compute_address_name" {}
-
 variable "gcp_windows_int_vm_name" {}
-
 variable "gcp_windows_int_vm_size" {}
-
 variable "gcp_windows_int_vm_image" {}
+variable "gcp_service_account_display_name" {}
+variable "gcp_project_iam_custom_role_id" {}
+
+variable "gcp_compute_disk_name" {}
+variable "gcp_compute_disk_type" {}
+variable "gcp_compute_disk_image" {}
+
+variable "gcp_ext_vm_data_disk_address_name" {}
+variable "gcp_ext_vm_data_disk_name" {}
+variable "gcp_ext_vm_data_disk_size" {}
+variable "gcp_ext_vm_data_disk_image" {}
 
 variable "gcp_storage_bucket_name" {
   default ="gcp-inspec"
@@ -131,5 +127,63 @@ resource "google_compute_instance" "generic_windows_internal_vm_instance" {
 
   network_interface {
     network = "default"
+  }
+}
+
+resource "google_service_account" "generic_service_account_object_viewer" {
+  project = "${var.gcp_project_id}"
+  account_id   = "object-viewer"
+  display_name = "${var.gcp_service_account_display_name}"
+}
+
+resource "google_project_iam_custom_role" "generic_project_iam_custom_role" {
+  project = "${var.gcp_project_id}"
+  role_id     = "${var.gcp_project_iam_custom_role_id}"
+  title       = "GCP Inspec Generic Project IAM Custom Role"
+  description = "Custom role allowing to list IAM roles only"
+  permissions = ["iam.roles.list"]
+}
+
+resource "google_compute_disk" "generic_compute_disk" {
+  project = "${var.gcp_project_id}"
+  name  = "${var.gcp_compute_disk_name}"
+  type  = "${var.gcp_compute_disk_type}"
+  zone  = "${var.gcp_zone}"
+  image = "${var.gcp_compute_disk_image}"
+  labels {
+    environment = "generic_compute_disk_label"
+  }
+}
+
+resource "google_compute_address" "generic_external_vm_address_data_disk" {
+  project = "${var.gcp_project_id}"
+  name = "${var.gcp_ext_vm_data_disk_address_name}"
+  region = "${var.gcp_location}"
+}
+
+resource "google_compute_instance" "generic_external_vm_instance_data_disk" {
+  project = "${var.gcp_project_id}"
+  name         = "${var.gcp_ext_vm_data_disk_name}"
+  machine_type = "${var.gcp_ext_vm_data_disk_size}"
+  zone         = "${var.gcp_zone}"
+
+  boot_disk {
+    initialize_params {
+      image = "${var.gcp_ext_vm_data_disk_image}"
+    }
+  }
+
+  attached_disk {
+    source = "${var.gcp_compute_disk_name}"
+    mode = "READ_WRITE"
+    device_name = "${var.gcp_compute_disk_name}"
+  }
+
+  network_interface {
+    network = "default"
+    access_config {
+      // Ephemeral IP
+      nat_ip = "${google_compute_address.generic_external_vm_address_data_disk.address}"
+    }
   }
 }

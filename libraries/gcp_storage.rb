@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'json'
+require 'gcp_backend'
 
-class GcpStorage < Inspec.resource(1)
+class GcpStorage < GcpResourceBase
   name 'gcp_storage'
   desc 'Verifies settings for a bucket'
 
@@ -14,78 +14,13 @@ class GcpStorage < Inspec.resource(1)
       its('lifecycle') { should eq 'enabled' }
     end
   "
-
-  def initialize(opts, conn = GCPConnection.new)
-    @opts = opts
-    @display_name = @opts[:name]
-    @storage_client = conn.storage_client
-    begin
-      @bucket = @storage_client.get_bucket(@opts[:name])
-    rescue => e
-      @error = JSON.parse(e.body)
-    end
-  end
-
-  # def has_bucket_label?(label_name)
-  #   if @bucket
-  #     labels = @bucket.labels.items
-  #     labels.each do |label|
-  #       if label == label_name
-  #         break
-  #       end
-  #     end
-  #   else
-  #     @error['error']['message']
-  #     false
-  #   end
-  #   return false
-  # end
-
-  def name
-    if @bucket
-      @bucket.name.to_s.downcase
-    else
-      @error['error']['message']
-    end
-  end
-
-  def kind
-    if @bucket
-      @bucket.kind
-    else
-      @error['error']['message']
-    end
-  end
-
-  def project_number
-    if @bucket
-      @bucket.project_number.to_s
-    else
-      @error['error']['message']
-    end
-  end
-
-  def location
-    if @bucket
-      @bucket.location.to_s.downcase
-    else
-      @error['error']['message']
-    end
-  end
-
-  def lifecycle
-    if @bucket.lifecycle.nil?
-      'disabled'
-    else
-      'enabled'
-    end
-  end
-
-  def storage_class
-    if @bucket
-      @bucket.storage_class.to_s.downcase
-    else
-      @error['error']['message']
+  def initialize(opts = {})
+    # Call the parent class constructor
+    super(opts)
+    @display_name = opts[:name]
+    catch_gcp_errors do
+      @bucket = @gcp.storage_client.get_bucket(opts[:name])
+      create_resource_methods(@bucket)
     end
   end
 

@@ -12,19 +12,24 @@ control 'gcp-generic-public-ip-address-1.0' do
 
   describe gcp_address(project: gcp_project_id, location: gcp_location, name: gcp_ext_compute_address_name) do
 
-    it { should exist }
     its('name') { should eq gcp_ext_compute_address_name }
 
     # the actual ip address should exist
     its('address_ip_exists')  { should be true }
 
-    its('region') { should eq gcp_location}
+    # the address should not be tainted
+    its('tainted?') { should be false }
+
+    # the address should not be untrusted
+    its('untrusted?') { should be false }
+
+    its('region') { should match gcp_location}
     its('kind') { should eq "compute#address" }
 
     # we attached this to the external generic vm so the status should be "in_use"
-    its('status') { should eq "in_use" }
+    its('status') { should eq "IN_USE" }
 
-    # the generic external VM should be listed as the only user
+    #in this case the generic external VM should be listed as the only user
     its('user_count') { should eq 1 }
     its('user_resource_name') { should eq gcp_ext_vm_name}
   end

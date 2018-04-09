@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'json'
+require 'gcp_backend'
 
-class GcpIamRole < Inspec.resource(1)
+class GcpIamRole < GcpResourceBase
   name 'gcp_iam_role'
-  desc 'Verifies settings for a project'
+  desc 'Verifies settings for a project IAM role'
 
   example "
     describe gcp_iam_role('admin') do
@@ -13,32 +13,19 @@ class GcpIamRole < Inspec.resource(1)
     end
   "
 
-  def initialize(opts, conn = GCPConnection.new)
-    @opts = opts
-    @opts.is_a?(Hash) ? @display_name = @opts[:name] : @display_name = opts
-    @iam_client = conn.iam_client
-    begin
-      roles = @iam_client.list_roles
-      roles.roles.each do |role|
-        if @display_name == role.title
-          @iam_role = @iam_client.get_role(role.name)
-        end
-      end
-    rescue => e
-      @error = JSON.parse(e.body)
+  def initialize(opts = {})
+    # Call the parent class constructor
+    super(opts)
+    @display_name = opts[:name]
+    catch_gcp_errors do
+      p "projects/#{opts[:project]}/roles/#{opts[:name]}"
+      @iam_role = @gcp.iam_client.get_role("projects/#{opts[:project]}/roles/#{opts[:name]}")
+      create_resource_methods(@iam_role)
     end
   end
 
   def exists?
     !@iam_role.nil?
-  end
-
-  def stage
-    if @iam_role
-      @iam_role.stage
-    else
-      @error['error']['message']
-    end
   end
 
   def to_s

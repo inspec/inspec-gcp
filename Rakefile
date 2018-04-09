@@ -2,7 +2,7 @@
 
 require 'rake/testtask'
 require 'rubocop/rake_task'
-require 'inifile'
+#require 'inifile'
 require_relative 'test/integration/configuration/gcp_inspec_config'
 
 # Rubocop

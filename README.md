@@ -2,6 +2,10 @@
 
 Initial prototyping based on inspec-gcp and inspec-azure archived repository.
 
+This builds on work in the following two repos:
+* https://github.com/chef/inspec-azure 
+* https://github.com/martezr/inspec-gcp
+
 ### Prerequisites
 
 1. Install and configure the Google cloud SDK from here:
