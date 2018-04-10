@@ -18,7 +18,6 @@ class GcpIamRole < GcpResourceBase
     super(opts)
     @display_name = opts[:name]
     catch_gcp_errors do
-      p "projects/#{opts[:project]}/roles/#{opts[:name]}"
       @iam_role = @gcp.iam_client.get_role("projects/#{opts[:project]}/roles/#{opts[:name]}")
       create_resource_methods(@iam_role)
     end

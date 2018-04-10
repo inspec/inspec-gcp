@@ -2,9 +2,9 @@
 
 require 'gcp_backend'
 
-class GcpIamRole < GcpResourceBase
+class GcpIamServiceAccount < GcpResourceBase
   name 'gcp_iam_service_account'
-  desc 'Verifies settings for a project IAM role'
+  desc 'Verifies settings for a project IAM Service Account'
 
   example "
     describe gcp_iam_service_account('my-project-id') do
@@ -18,13 +18,15 @@ class GcpIamRole < GcpResourceBase
     super(opts)
     @display_name = opts[:name]
     catch_gcp_errors do
-      roles = @gcp.iam_client.list_roles
-      roles.roles.each do |role|
-        if @display_name == role .title
-          @iam_role = @gcp.iam_client.get_role(role.name)
+      # here we have to retrieve the list of service accounnts for the project in order to obtain either
+      # the unique_id or email of the created service account, this allows us to retrieve it directly
+      service_accounts = @gcp.iam_client.list_project_service_accounts("projects/#{opts[:project]}")
+      service_accounts.accounts.each do |account|
+        if @display_name == account.display_name
+          @service_account = @gcp.iam_client.get_project_service_account("projects/#{opts[:project]}/serviceAccounts/#{account.unique_id}")
         end
       end
-      create_resource_methods(@iam_role)
+      create_resource_methods(@service_account)
     end
   end
 

@@ -1,4 +1,4 @@
-title 'Instance Properties'
+title 'External Virtual Machine Properties'
 
 gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
 gcp_zone = attribute(:gcp_zone, default: '', description: 'The GCP zone being used.')
