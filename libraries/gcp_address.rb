@@ -25,17 +25,17 @@ class GcpAddress < GcpResourceBase
   end
 
   def address_ip_exists
-    !@address.address.nil?
+    !address.nil?
   end
 
   # How many users are there for the address
   def user_count
-    @address.users.count
+    users.count
   end
 
   # Return the first user resource base name
   def user_resource_name
-    @address.users.first.split('/').last
+    users.first.split('/').last
   end
 
   def to_s

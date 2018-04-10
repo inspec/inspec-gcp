@@ -28,37 +28,37 @@ class GcpInstance < GcpResourceBase
   end
 
   def disk_count
-    @instance.disks.count
+    disks.count
   end
 
   def tag_count
-    @instance.tags.to_h.length
+    tags.count
   end
 
   def network_interfaces_count
-    @instance.network_interfaces.count
+    network_interfaces.count
   end
 
   # TBD: Below few methods are present to make the tests simpler e.g. avoid looping over arrays etc.
   #     but passing index arguments would be better
   def first_network_interface_nat_ip_exists
-    !@instance.network_interfaces[0].access_configs[0].nat_ip.nil?
+    !network_interfaces[0].access_configs[0].nat_ip.nil?
   end
 
   def first_network_interface_name
-    @instance.network_interfaces[0].access_configs[0].name
+    network_interfaces[0].access_configs[0].name
   end
 
   def first_network_interface_type
-    @instance.network_interfaces[0].access_configs[0].type.downcase
+    network_interfaces[0].access_configs[0].type.downcase
   end
 
   def first_disks_source_name
-    @instance.disks[0].source.split('/').last
+    disks[0].source.split('/').last
   end
 
   def first_disks_first_license
-    @instance.disks[0].licenses[0].downcase
+    disks[0].licenses[0].downcase
   end
 
   def exists?

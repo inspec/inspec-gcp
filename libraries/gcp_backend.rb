@@ -122,6 +122,14 @@ class GcpResourceDynamicMethods
       object.define_singleton_method name do
         return_value
       end
+    # there are nested Google API classes throughout
+    when /Google::Apis::.*/
+      object.define_singleton_method name do
+        if value.respond_to? :to_h
+          value = value.to_h
+        end
+        GcpResourceProbe.new(value)
+      end
     when 'Array'
       # Some things are just string or integer arrays
       # Check this by seeing if the first element is a string / integer / boolean or
@@ -184,7 +192,7 @@ class GcpResourceProbe
     @item = item
 
     # Set how many items have been set
-    @count = item.length
+    @count = item.length if item.respond_to? :length
   end
 
   # Allows resources to respond to the include test
