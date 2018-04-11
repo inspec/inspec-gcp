@@ -2,6 +2,14 @@ terraform {
   required_version = "~> 0.11.5"
 }
 
+# GCP Terraform Templates For Inspec Testing
+#
+# Starts off with 'generic' resource descriptions, mostly taken from here:
+# https://www.terraform.io/docs/providers/google/
+# Then moves onto a more 'realistic' example adapted from
+# https://github.com/GoogleCloudPlatform/terraform-google-lb-internal/tree/master/examples/simple
+
+
 # Configure variables
 
 variable "gcp_project_name" {}
@@ -53,7 +61,9 @@ variable "gcp_storage_bucket_name" {
   default ="gcp-inspec"
 }
 
-provider "google" {}
+provider "google" {
+  region = "${var.gcp_location}"
+}
 
 # TBD: initial GCP account can't create these easily, make as part of the account paving?
 #resource "google_project" "Chef_Inspec_GCP" {
@@ -187,3 +197,160 @@ resource "google_compute_instance" "generic_external_vm_instance_data_disk" {
     }
   }
 }
+
+##############################################################
+# The adapted google lb example starts from this point onwards
+##############################################################
+
+#Internal Load Balancer Example
+#
+#This example creates 3 instance groups. The first group uses the internal load balancer to proxy access to
+#services running in instance groups 2 and 3 which exist in separate zones. A regional TCP load balancer is also
+#used to forward external traffic to the instances in group 1.
+
+# adapted from https://github.com/GoogleCloudPlatform/terraform-google-lb-internal/blob/master/examples/simple/main.tf
+
+variable gcp_lb_region {
+  default = "europe-west2"
+}
+
+variable gcp_lb_network {
+  default = "default"
+}
+
+variable gcp_lb_zone {
+  default = "europe-west2-a"
+}
+
+variable gcp_lb_zone_mig2 {
+  default = "europe-west2-b"
+}
+
+variable gcp_lb_zone_mig3 {
+  default = "europe-west2-c"
+}
+
+variable gcp_lb_fr_name {
+  default = "group1-lb"
+}
+
+variable gcp_lb_ilb_name {
+  default = "group1-ilb"
+}
+
+module "gce_lb_fr" {
+  project = "${var.gcp_project_id}"
+  source       = "github.com/GoogleCloudPlatform/terraform-google-lb"
+  region       = "${var.gcp_lb_region}"
+  network      = "${var.gcp_lb_network}"
+  name         = "${var.gcp_lb_fr_name}"
+  service_port = "${module.mig1.service_port}"
+  target_tags  = ["${module.mig1.target_tags}"]
+}
+
+module "gce_ilb" {
+  project = "${var.gcp_project_id}"
+  source      = "github.com/GoogleCloudPlatform/terraform-google-lb-internal"
+  region      = "${var.gcp_lb_region}"
+  name        = "${var.gcp_lb_ilb_name}"
+  ports       = ["${module.mig2.service_port}"]
+  health_port = "${module.mig2.service_port}"
+  source_tags = ["${module.mig1.target_tags}"]
+  target_tags = ["${module.mig2.target_tags}", "${module.mig3.target_tags}"]
+
+  backends = [
+    {
+      group = "${module.mig2.instance_group}"
+    },
+    {
+      group = "${module.mig3.instance_group}"
+    },
+  ]
+}
+
+# adapted from https://github.com/GoogleCloudPlatform/terraform-google-lb-internal/blob/master/examples/simple/mig.tf
+
+variable gcp_lb_mig1_name {
+  default = "group1"
+}
+
+variable gcp_lb_mig2_name {
+  default = "group2"
+}
+
+variable gcp_lb_mig3_name {
+  default = "group3"
+}
+
+
+data "template_file" "group1-startup-script" {
+  template = "${file("${format("%s/templates/nginx_upstream.sh.tpl", path.module)}")}"
+
+  vars {
+    UPSTREAM = "${module.gce_ilb.ip_address}"
+  }
+}
+
+data "template_file" "group2-startup-script" {
+  template = "${file("${format("%s/templates/gceme.sh.tpl", path.module)}")}"
+
+  vars {
+    PROXY_PATH = ""
+  }
+}
+
+data "template_file" "group3-startup-script" {
+  template = "${file("${format("%s/templates/gceme.sh.tpl", path.module)}")}"
+
+  vars {
+    PROXY_PATH = ""
+  }
+}
+
+module "mig1" {
+  project = "${var.gcp_project_id}"
+  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group"
+  region            = "${var.gcp_lb_region}"
+  zone              = "${var.gcp_lb_zone}"
+  name              = "${var.gcp_lb_mig1_name}"
+  size              = 2
+  target_tags       = ["allow-${var.gcp_lb_mig1_name}"]
+  target_pools      = ["${module.gce_lb_fr.target_pool}"]
+  service_port      = 80
+  service_port_name = "http"
+  startup_script    = "${data.template_file.group1-startup-script.rendered}"
+}
+
+module "mig2" {
+  project = "${var.gcp_project_id}"
+  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group"
+  region            = "${var.gcp_lb_region}"
+  zone              = "${var.gcp_lb_zone_mig2}"
+  name              = "${var.gcp_lb_mig2_name}"
+  size              = 2
+  target_tags       = ["allow-${var.gcp_lb_mig2_name}"]
+  service_port      = 80
+  service_port_name = "http"
+  startup_script    = "${data.template_file.group2-startup-script.rendered}"
+}
+
+module "mig3" {
+  project = "${var.gcp_project_id}"
+  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group"
+  region            = "${var.gcp_lb_region}"
+  zone              = "${var.gcp_lb_zone_mig3}"
+  name              = "${var.gcp_lb_mig3_name}"
+  size              = 2
+  target_tags       = ["allow-${var.gcp_lb_mig3_name}"]
+  service_port      = 80
+  service_port_name = "http"
+  startup_script    = "${data.template_file.group3-startup-script.rendered}"
+}
+
+# after a successful apply, open URL of load balancer in browser:
+# > EXTERNAL_IP=$(terraform output -module gce-lb-fr | grep external_ip | cut -d = -f2 | xargs echo -n)
+# > open http://${EXTERNAL_IP}
+
+##############################################################
+# End of the google lb example adapted template.
+##############################################################

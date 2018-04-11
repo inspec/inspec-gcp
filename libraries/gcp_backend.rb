@@ -13,7 +13,7 @@ require 'google/apis/iam_v1'
 require 'googleauth'
 require 'JSON'
 
-# Class to manage the GCP connection, instantiates all required clients for inspec resources
+# Class to manage the GCP connection, instantiates all required clients for Inspec resources
 #
 class GcpConnection
   def initialize
@@ -74,14 +74,14 @@ class GcpResourceBase < Inspec.resource(1)
 end
 # end
 
-# Class to create methods on the calling object at run time.  Heavily based on the Azure inspec resources.
+# Class to create methods on the calling object at run time.  Heavily based on the Azure Inspec resources.
 #
 class GcpResourceDynamicMethods
   # Given the calling object and its data, create the methods on the object according
   # to the data that has been retrieved. Various types of data can be returned so the method
   # checks the type to ensure that the necessary methods are configured correctly
   #
-  # @param AzureResourceProbe|AzureResource object The object on which the methods should be craeted
+  # @param GcpResourceProbe|GcpResource object The object on which the methods should be craeted
   # @param variant data The data from which the methods should be created
   def create_methods(object, data)
     # Check the type of data as this affects the setup of the methods
@@ -106,7 +106,7 @@ class GcpResourceDynamicMethods
 
   # Method that is responsible for creating the method on the calling object. This is
   # because some nesting maybe required. For example of the value is a Hash then it will
-  # need to have an AzureResourceProbe create for each key, whereas if it is a simple
+  # need to have an GcpResourceProbe create for each key, whereas if it is a simple
   # string then the value just needs to be returned
   #
   def create_method(object, name, value)
@@ -161,25 +161,20 @@ end
 # This is what is interogated by Inspec. If they are nested hashes, then this results
 # in nested GcpResourceProbe objects.
 #
-# For example, if the following was seen in an Azure Resource
-#    properties -> storageProfile -> imageReference
-# Would result in the following nestec classes
-#    AzureResource -> AzureResourceProbe -> AzureResourceProbe
-#
 # The methods for each of the classes are dynamically defined at run time and will
-# match the items that are retrieved from Azure. See the 'test/integration/verify/controls' for
+# match the items that are retrieved from GCP. See the 'test/integration/verify/controls' for
 # examples
 #
 class GcpResourceProbe
   attr_reader :name, :type, :location, :item, :count
 
-  # Initialize method for the class. Accepts an item, be it a scalar value, hash or Azure object
+  # Initialize method for the class. Accepts an item, be it a scalar value, hash or GCP object
   # It will then create the necessary dynamic methods so that they can be called in the tests
-  # This is accomplished by call the AzureResourceDynamicMethods
+  # This is accomplished by call the GcpResourceDynamicMethods
   #
   # @param varaint The item from which the class will be initialized
   #
-  # @return AzureResourceProbe
+  # @return GcpResourceProbe
   def initialize(item)
     dm = GcpResourceDynamicMethods.new
     dm.create_methods(self, item)
