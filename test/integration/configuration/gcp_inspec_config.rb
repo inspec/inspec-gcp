@@ -30,7 +30,7 @@ module GCPInspecConfig
       :gcp_windows_int_vm_image => "windows-cloud/windows-server-2016-dc-core-v20180313",
       :gcp_windows_int_vm_name => "gcp-inspec-int-windows-vm",
       # Recommended to upgrade to a minimum of g1-small
-      :gcp_windows_int_vm_size => "f1-micro",
+      :gcp_windows_int_vm_size => "g1-small",
       :gcp_service_account_display_name => "gcp-inspec-service-account",
       # We need to randomize the name of this role to avoid e.g.
       #    Error 400: You can't create a role with role_id (gcp_inspec_project_custom_role_id) where there is an existing role with that role_id in a deleted state.

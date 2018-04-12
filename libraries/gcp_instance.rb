@@ -40,7 +40,8 @@ class GcpInstance < GcpResourceBase
   end
 
   # TBD: Below few methods are present to make the tests simpler e.g. avoid looping over arrays etc.
-  #     but passing index arguments would be better
+  #     but passing index arguments from the inspec test would be better
+
   def first_network_interface_nat_ip_exists
     !network_interfaces[0].access_configs[0].nat_ip.nil?
   end
@@ -54,11 +55,53 @@ class GcpInstance < GcpResourceBase
   end
 
   def first_disks_source_name
-    disks[0].source.split('/').last
+    disks_source_name(0)
   end
 
   def first_disks_first_license
-    disks[0].licenses[0].downcase
+    disks_license(0,0)
+  end
+
+  def second_disks_device_name
+    if defined?(disks[1].device_name)
+      disks[1].device_name
+    else
+      nil
+    end
+  end
+
+  def second_disks_kind
+    if defined?(disks[1].kind)
+      disks[1].kind
+    else
+      nil
+    end
+  end
+
+  def second_disks_source_name
+    disks_source_name(1)
+  end
+
+  def second_disks_first_license
+    disks_license(1,0)
+  end
+
+  # helper method for retrieving a disk source basename
+  def disks_source_name(index=0)
+    if defined?(disks[index].source)
+      disks[index].source.split('/').last
+    else
+      nil
+    end
+  end
+
+  # helper method for retrieving a disk license string
+  def disks_license(disk_index=0,license_index=0)
+    if defined?(disks[disk_index].licenses[license_index])
+      disks[disk_index].licenses[license_index].downcase
+    else
+      nil
+    end
   end
 
   def exists?
