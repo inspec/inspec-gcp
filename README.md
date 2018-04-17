@@ -1,4 +1,4 @@
-# chef-inspec-gcp
+# inspec-gcp
 
 Initial prototyping based on inspec-gcp and inspec-azure archived repository.
 
