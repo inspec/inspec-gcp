@@ -59,23 +59,17 @@ class GcpInstance < GcpResourceBase
   end
 
   def first_disks_first_license
-    disks_license(0,0)
+    disks_license(0, 0)
   end
 
   def second_disks_device_name
-    if defined?(disks[1].device_name)
-      disks[1].device_name
-    else
-      nil
-    end
+    return false if !defined?(disks[1].device_name)
+    disks[1].device_name
   end
 
   def second_disks_kind
-    if defined?(disks[1].kind)
-      disks[1].kind
-    else
-      nil
-    end
+    return false if !defined?(disks[1].kind)
+    disks[1].kind
   end
 
   def second_disks_source_name
@@ -83,25 +77,19 @@ class GcpInstance < GcpResourceBase
   end
 
   def second_disks_first_license
-    disks_license(1,0)
+    disks_license(1, 0)
   end
 
   # helper method for retrieving a disk source basename
-  def disks_source_name(index=0)
-    if defined?(disks[index].source)
-      disks[index].source.split('/').last
-    else
-      nil
-    end
+  def disks_source_name(index = 0)
+    return false if !defined?(disks[index].source)
+    disks[index].source.split('/').last
   end
 
   # helper method for retrieving a disk license string
-  def disks_license(disk_index=0,license_index=0)
-    if defined?(disks[disk_index].licenses[license_index])
-      disks[disk_index].licenses[license_index].downcase
-    else
-      nil
-    end
+  def disks_license(disk_index = 0, license_index = 0)
+    return false if !defined?(disks[disk_index].licenses[license_index])
+    disks[disk_index].licenses[license_index].downcase
   end
 
   def exists?

@@ -10,6 +10,7 @@ require 'google/apis/cloudresourcemanager_v1'
 require 'google/apis/compute_v1'
 require 'google/apis/storage_v1'
 require 'google/apis/iam_v1'
+require 'google/apis/container_v1'
 require 'googleauth'
 require 'JSON'
 
@@ -37,6 +38,10 @@ class GcpConnection
 
   def storage_client
     @storage_client ||= Google::Apis::StorageV1::StorageService.new
+  end
+
+  def container_client
+    @container_client ||= Google::Apis::ContainerV1::ContainerService.new
   end
 end
 

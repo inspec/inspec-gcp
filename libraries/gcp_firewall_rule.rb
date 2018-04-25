@@ -26,15 +26,15 @@ class GcpFirewallRule < GcpResourceBase
 
   # Check whether the firewall rule allows HTTP access (tcp ingress on port 80)
   def allowed_http?
-    ports_protocol_allowed(["80"])
+    ports_protocol_allowed(['80'])
   end
 
   # Check whether the firewall rule allows SSH access (tcp ingress on port 22)
   def allowed_ssh?
-    ports_protocol_allowed(["22"])
+    ports_protocol_allowed(['22'])
   end
 
-  def ports_protocol_allowed(port_list,protocol='tcp',index=0)
+  def ports_protocol_allowed(port_list, protocol = 'tcp', index = 0)
     if defined?(allowed[index].item[:ip_protocol])
       # so here we know at least there's some protocol/port to check
       return false if allowed[index].item[:ip_protocol]!=protocol

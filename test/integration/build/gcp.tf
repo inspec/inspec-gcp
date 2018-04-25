@@ -14,6 +14,7 @@ terraform {
 
 variable "gcp_project_name" {}
 variable "gcp_project_id" {}
+# BELOW TO BE REMOVED as not used
 variable "gcp_storage_account_name" {}
 variable "gcp_admin_password" {}
 # Set a unique string which will be appended to public facing items
@@ -56,6 +57,14 @@ variable "gcp_ext_vm_data_disk_address_name" {}
 variable "gcp_ext_vm_data_disk_name" {}
 variable "gcp_ext_vm_data_disk_size" {}
 variable "gcp_ext_vm_data_disk_image" {}
+
+variable "gcp_kube_cluster_name" {}
+variable "gcp_kube_cluster_zone" {}
+variable "gcp_kube_cluster_zone_extra1" {}
+variable "gcp_kube_cluster_zone_extra2" {}
+variable "gcp_kube_cluster_master_user" {}
+variable "gcp_kube_cluster_master_pass" {}
+
 
 variable "gcp_storage_bucket_name" {
   default ="gcp-inspec"
@@ -353,4 +362,56 @@ module "mig3" {
 
 ##############################################################
 # End of the google lb example adapted template.
+##############################################################
+
+##############################################################
+# Start of the GKE cluster example
+##############################################################
+
+resource "google_container_cluster" "primary" {
+  project = "${var.gcp_project_id}"
+  name               = "${var.gcp_kube_cluster_name}"
+  zone               = "${var.gcp_kube_cluster_zone}"
+  initial_node_count = 3
+
+  additional_zones = [
+    "${var.gcp_kube_cluster_zone_extra1}",
+    "${var.gcp_kube_cluster_zone_extra2}",
+  ]
+
+  master_auth {
+    username = "${var.gcp_kube_cluster_master_user}"
+    password = "${var.gcp_kube_cluster_master_pass}"
+  }
+
+  node_config {
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
+    ]
+  }
+}
+
+# The following outputs allow authentication and connectivity to the GKE Cluster.
+output "client_certificate" {
+  value = "${google_container_cluster.primary.master_auth.0.client_certificate}"
+}
+
+output "client_key" {
+  value = "${google_container_cluster.primary.master_auth.0.client_key}"
+}
+
+output "cluster_ca_certificate" {
+  value = "${google_container_cluster.primary.master_auth.0.cluster_ca_certificate}"
+}
+
+# Future work - as a more realistic example, could stand up another cluster and
+# extend with the GKE NAT Gateway template:
+# https://github.com/GoogleCloudPlatform/terraform-google-nat-gateway/tree/master/examples/gke-nat-gateway
+# requires the master node IP and tag name which could be tough to get hold of
+
+##############################################################
+# End of the GKE cluster example
 ##############################################################

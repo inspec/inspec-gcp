@@ -16,8 +16,9 @@ module GCPInspecConfig
       :gcp_project_id => "spaterson-project",
       :gcp_project_number => "1041358276233",
       # Determine the storage account name and the admin password
-      :gcp_storage_account_name => (0...15).map { (65 + rand(26)).chr }.join.downcase,
-      :gcp_admin_password => Passgen::generate(length: 12, uppercase: true, lowercase: true, symbols: true, digits: true),
+      # BELOW TO BE REMOVED
+#      :gcp_storage_account_name => (0...15).map { (65 + rand(26)).chr }.join.downcase,
+#      :gcp_admin_password => Passgen::generate(length: 12, uppercase: true, lowercase: true, symbols: true, digits: true),
       :gcp_location => "europe-west2",
       :gcp_zone => "europe-west2-a",
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
@@ -52,7 +53,15 @@ module GCPInspecConfig
       :gcp_lb_ilb_name => "gcp-inspec-app-lb-internal",
       :gcp_lb_mig1_name => "gcp-inspec-app-mig1",
       :gcp_lb_mig2_name => "gcp-inspec-app-mig2",
-      :gcp_lb_mig3_name => "gcp-inspec-app-mig3"
+      :gcp_lb_mig3_name => "gcp-inspec-app-mig3",
+      # GKE example parameters
+      :gcp_kube_cluster_name => "gcp-inspec-kube-cluster",
+      :gcp_kube_cluster_zone => "europe-west2-a",
+      :gcp_kube_cluster_zone_extra1 => "europe-west2-b",
+      :gcp_kube_cluster_zone_extra2 => "europe-west2-c",
+      :gcp_kube_cluster_master_user => "gcp-inspec-kube-admin",
+      :gcp_kube_cluster_master_pass => Passgen::generate(length: 20, uppercase: true, lowercase: true, symbols: true, digits: true),
+      :gcp_kube_nodepool_name => "default-pool"
   }
 
   def self.config

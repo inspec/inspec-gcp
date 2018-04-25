@@ -25,19 +25,16 @@ class GcpInstanceGroup < GcpResourceBase
   end
 
   def port_name
-    get_named_ports(0,:name)
+    get_named_ports(0, :name)
   end
 
   def port_value
-    get_named_ports(0,:port)
+    get_named_ports(0, :port)
   end
 
-  def get_named_ports(index=0,key=:name)
-    if defined?(named_ports[index].item[key])
-      named_ports[index].item[key]
-    else
-      nil
-    end
+  def get_named_ports(index = 0, key = :name)
+    return false if !defined?(named_ports[index].item[key])
+    named_ports[index].item[key]
   end
 
   def to_s

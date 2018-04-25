@@ -18,7 +18,7 @@ class GcpIamServiceAccount < GcpResourceBase
     super(opts)
     @display_name = opts[:name]
     catch_gcp_errors do
-      # here we have to retrieve the list of service accounnts for the project in order to obtain either
+      # here we have to retrieve the list of service accounts for the project in order to obtain either
       # the unique_id or email of the created service account, this allows us to retrieve it directly
       service_accounts = @gcp.iam_client.list_project_service_accounts("projects/#{opts[:project]}")
       service_accounts.accounts.each do |account|
