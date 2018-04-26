@@ -10,7 +10,7 @@ control 'gcp-generic-public-ip-address-1.0' do
   impact 1.0
   title 'Ensure that the Public IP Address has been configured correctly'
 
-  describe gcp_address(project: gcp_project_id, location: gcp_location, name: gcp_ext_compute_address_name) do
+  describe google_compute_address(project: gcp_project_id, location: gcp_location, name: gcp_ext_compute_address_name) do
 
     its('name') { should eq gcp_ext_compute_address_name }
 

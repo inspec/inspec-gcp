@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpFirewallRule < GcpResourceBase
-  name 'gcp_firewall_rule'
+class GoogleComputeFirewall < GcpResourceBase
+  name 'google_compute_firewall'
   desc 'Verifies settings for a compute firewall rule'
 
   example "
-    describe gcp_firewall_rule(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
+    describe google_compute_firewall(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
       it { should exist }
       its('name') { should eq 'inspec-test' }
       its('status') { should eq 'in_use' }
@@ -32,6 +32,10 @@ class GcpFirewallRule < GcpResourceBase
   # Check whether the firewall rule allows SSH access (tcp ingress on port 22)
   def allowed_ssh?
     ports_protocol_allowed(['22'])
+  end
+
+  def allowed_https?
+    ports_protocol_allowed(['443'])
   end
 
   def ports_protocol_allowed(port_list, protocol = 'tcp', index = 0)

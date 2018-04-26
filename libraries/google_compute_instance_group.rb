@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpInstanceGroup < GcpResourceBase
-  name 'gcp_instance_group'
+class GoogleComputeInstanceGroup < GcpResourceBase
+  name 'google_compute_instance_group'
   desc 'Verifies settings for a compute instance group'
 
   example "
-    describe gcp_instance_group(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
+    describe google_compute_instance_group(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
       it { should exist }
       its('name') { should eq 'inspec-test' }
       its('status') { should eq 'in_use' }

@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpIamServiceAccount < GcpResourceBase
-  name 'gcp_iam_service_account'
+class GoogleServiceAccount < GcpResourceBase
+  name 'google_service_account'
   desc 'Verifies settings for a project IAM Service Account'
 
   example "
-    describe gcp_iam_service_account('my-project-id') do
+    describe google_service_account('my-project-id') do
       it { should exist }
       its('stage') { should eq 'GA' }
     end

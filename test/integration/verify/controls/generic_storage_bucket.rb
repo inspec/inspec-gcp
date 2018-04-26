@@ -9,7 +9,7 @@ control 'gcp-generic-storage-bucket-1.0' do
   impact 1.0
   title 'Ensure that the Storage Bucket has been created correctly'
 
-  describe gcp_storage(name: gcp_storage_bucket_name) do
+  describe google_storage_bucket(name: gcp_storage_bucket_name) do
     it { should exist }
     its('name') { should eq gcp_storage_bucket_name }
     #TBD: are name & id always consistent?

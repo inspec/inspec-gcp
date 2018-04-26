@@ -9,7 +9,7 @@ control 'google-lb-internal-instance-group-mig1-1.0' do
   impact 1.0
   title 'Ensure that the Instance Group has been configured correctly'
 
-  describe gcp_instance_group(project: gcp_project_id, zone: gcp_lb_zone, name: gcp_lb_mig1_name) do
+  describe google_compute_instance_group(project: gcp_project_id, zone: gcp_lb_zone, name: gcp_lb_mig1_name) do
     its('name') { should eq gcp_lb_mig1_name }
     its('kind') { should eq "compute#instanceGroup" }
     # zone should match that of the template

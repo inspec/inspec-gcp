@@ -14,7 +14,7 @@ control 'gcp-gke-container-cluster-1.0' do
   impact 1.0
   title 'Ensure GKE Container Cluster was built correctly'
 
-  describe gcp_container_cluster(project: gcp_project_id, zone: gcp_kube_cluster_zone, name: gcp_kube_cluster_name) do
+  describe google_container_cluster(project: gcp_project_id, zone: gcp_kube_cluster_zone, name: gcp_kube_cluster_name) do
     it { should exist }
     its('name') { should eq gcp_kube_cluster_name }
     its('zone') { should match gcp_kube_cluster_zone }

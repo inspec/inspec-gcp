@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpAddress < GcpResourceBase
-  name 'gcp_address'
+class GoogleComputeAddress < GcpResourceBase
+  name 'google_compute_address'
   desc 'Verifies settings for a compute address'
 
   example "
-    describe gcp_address(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
+    describe google_compute_address(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
       it { should exist }
       its('name') { should eq 'inspec-test' }
       its('status') { should eq 'in_use' }

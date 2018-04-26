@@ -11,7 +11,7 @@ control 'gcp-generic-vm-linux-external-1.0' do
   impact 1.0
   title 'Ensure External VM was built and has the correct properties'
 
-  describe gcp_instance(project: gcp_project_id, zone: gcp_zone, name: gcp_ext_vm_name) do
+  describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: gcp_ext_vm_name) do
     it { should exist }
     its('name') { should eq gcp_ext_vm_name }
     its('zone') { should match gcp_zone }

@@ -7,7 +7,7 @@ control 'gcp-generic-image-family-1.0' do
   impact 1.0
   title 'Ensure that the image is correct'
 
-  describe gcp_image_family(project: gcp_int_vm_image.split('/').first, name: gcp_int_vm_image.split('/').last ) do
+  describe google_compute_image(project: gcp_int_vm_image.split('/').first, name: gcp_int_vm_image.split('/').last ) do
 
     its('name') { should match "ubuntu" }
     its('family') { should match "ubuntu" }

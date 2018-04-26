@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpIamRole < GcpResourceBase
-  name 'gcp_iam_role'
+class GoogleProjectIamCustomRole < GcpResourceBase
+  name 'google_project_iam_custom_role'
   desc 'Verifies settings for a project IAM role'
 
   example "
-    describe gcp_iam_role('admin') do
+    describe google_project_iam_custom_role('admin') do
       it { should exist }
       its('stage') { should eq 'GA' }
     end
@@ -28,6 +28,6 @@ class GcpIamRole < GcpResourceBase
   end
 
   def to_s
-    "IAM Role #{@display_name}"
+    "Project IAM Custom Role #{@display_name}"
   end
 end

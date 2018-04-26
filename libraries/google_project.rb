@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpProject < GcpResourceBase
-  name 'gcp_project'
+class GoogleProject < GcpResourceBase
+  name 'google_project'
   desc 'Verifies settings for a project'
 
   example "
-    describe gcp_project('silicon-vertex-398188') do
+    describe google_project('silicon-vertex-398188') do
       it { should exist }
       its('name') { should eq 'My First Project' }
       its('project_number') { should eq '3934801284823' }

@@ -9,7 +9,7 @@ control 'gcp-project' do
   impact 1.0
   title 'Ensure that the project was created and has the correct settings'
 
-  describe gcp_project(project: gcp_project_id) do
+  describe google_project(project: gcp_project_id) do
     it { should exist }
     its('name') { should eq gcp_project_name }
     its('project_number') { should eq gcp_project_number.to_i }

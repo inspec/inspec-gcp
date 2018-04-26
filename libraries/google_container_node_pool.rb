@@ -2,8 +2,8 @@
 
 require 'gcp_backend'
 
-class GcpContainerNodepool < GcpResourceBase
-  name 'gcp_container_nodepool'
+class GoogleContainerNodePool < GcpResourceBase
+  name 'google_container_node_pool'
   desc 'Verifies settings for a container nodepool'
 
   example "

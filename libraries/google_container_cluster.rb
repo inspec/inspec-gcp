@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpContainerCluster < GcpResourceBase
-  name 'gcp_container_cluster'
-  desc 'Verifies settings for a container cluster'
+class GoogleContainerCluster < GcpResourceBase
+  name 'google_container_cluster'
+  desc 'Verifies settings for a google container cluster'
 
   example "
-    describe gcp_container_cluster(project: 'chef-inspec-gcp', zone: 'gcp-inspec-test', name: 'cluster-name') do
+    describe google_container_cluster(project: 'chef-inspec-gcp', zone: 'gcp-inspec-test', name: 'cluster-name') do
       it { should exist }
       its('name') { should eq 'inspec-test' }
       its('status') { should eq 'in_use' }

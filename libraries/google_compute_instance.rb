@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpInstance < GcpResourceBase
-  name 'gcp_instance'
+class GoogleComputeInstance < GcpResourceBase
+  name 'google_compute_instance'
   desc 'Verifies settings for an instance'
 
   example "
-    describe gcp_instance(project: 'project-id-888', zone: 'us-east1-b', name: 'inspec-test') do
+    describe google_compute_instance(project: 'project-id-888', zone: 'us-east1-b', name: 'inspec-test') do
       it { should exist }
       its('name') { should eq 'inspec-test' }
       its('machine_type') { should eq 'f1-micro' }

@@ -10,7 +10,7 @@ control 'gcp-gke-container-node-pool-1.0' do
   impact 1.0
   title 'Ensure GKE Container Node Pool was built correctly'
 
-  describe gcp_container_nodepool(project: gcp_project_id, zone: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name, nodepool_name: gcp_kube_nodepool_name) do
+  describe google_container_node_pool(project: gcp_project_id, zone: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name, nodepool_name: gcp_kube_nodepool_name) do
     it { should exist }
     its('name') { should eq gcp_kube_nodepool_name }
 

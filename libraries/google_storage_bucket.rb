@@ -2,12 +2,12 @@
 
 require 'gcp_backend'
 
-class GcpStorage < GcpResourceBase
-  name 'gcp_storage'
+class GoogleStorageBucket < GcpResourceBase
+  name 'google_storage_bucket'
   desc 'Verifies settings for a bucket'
 
   example "
-    describe gcp_storage(name: 'inspec-test-bucket') do
+    describe google_storage_bucket(name: 'inspec-test-bucket') do
       it { should exist }
       its('storage_class') { should eq 'REGIONAL' }
       its('location') { should eq 'US-CENTRAL1' }

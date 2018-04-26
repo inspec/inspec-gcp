@@ -8,7 +8,7 @@ control 'gcp-generic-iam-service-account' do
   impact 1.0
   title 'Ensure that the Service Account is correctly set up'
 
-  describe gcp_iam_service_account(project: gcp_project_id, name: gcp_service_account_display_name ) do
+  describe google_service_account(project: gcp_project_id, name: gcp_service_account_display_name ) do
     its('display_name') { should eq gcp_service_account_display_name }
     its('project_id') { should eq gcp_project_id }
   end
