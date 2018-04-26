@@ -28,13 +28,16 @@ $ cat ~/.config/gcloud/application_default_credentials.json
   "type": "authorized_user"
 }c
 ```
-3. Create GCP project and ensure this is currently set following: https://cloud.google.com/shell/docs/examples
+
+### Getting started with inspec-gcp
+
+1. Create GCP project and ensure this is currently set following: https://cloud.google.com/shell/docs/examples
 ```bash
 $ gcloud config set project <project-name>
 $ gcloud config list project
 ```
 
-4. Environment variables can be used to specify project details e.g.
+2. Environment variables can be used to specify project details e.g.
 ```bash
 export GCP_PROJECT_NAME=<project-name>
 export GCP_PROJECT_NUMBER=<project-number>
@@ -43,7 +46,7 @@ export GCP_LOCATION=<region, defaults to europe-west2>
 export GCP_ZONE=<zone, defaults to europe-west2-a>
 ```
 
-5. Run the integration tests via:
+3. Run the integration tests via:
 
 ```bash
 $ bundle install
@@ -71,3 +74,24 @@ $ bundle exec rake test:run_integration_tests
 ``` bash
 $ bundle exec rake test:cleanup_integration_tests 
 ```
+
+### Additional notes
+
+#### Quota increase
+
+The terraform templates generate sufficient resources to require an increase to default in_use IP addresses.  Normally new projects have 10, increasing this to 20 or higher should be sufficient.
+
+To find this setting, log in to the GCP web interface and go to **IAM and admin->Quotas** and look for "Compute Engine API In-use IP addresses".  From here you can "Edit quotas" to request more.
+```
+Changed Quota:
++----------------------+------------------+
+| Region: europe-west2 | IN_USE_ADDRESSES |
++----------------------+------------------+
+|       Changes        |     8 -> 64      |
++----------------------+------------------+
+```
+
+#### Errors on terraform destroy
+
+Sometimes there can be occasional errors when performing the cleanup rake task.  This happens when resources are already deleted and can be ignored.
+
