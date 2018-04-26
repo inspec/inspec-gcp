@@ -16,9 +16,9 @@ module GCPInspecConfig
       :gcp_project_id => "spaterson-project",
       :gcp_project_number => "1041358276233",
       # Determine the storage account name and the admin password
-      # BELOW TO BE REMOVED
-#      :gcp_storage_account_name => (0...15).map { (65 + rand(26)).chr }.join.downcase,
-#      :gcp_admin_password => Passgen::generate(length: 12, uppercase: true, lowercase: true, symbols: true, digits: true),
+      # BELOW two variables to be removed
+      :gcp_storage_account_name => (0...15).map { (65 + rand(26)).chr }.join.downcase,
+      :gcp_admin_password => Passgen::generate(length: 12, uppercase: true, lowercase: true, symbols: true, digits: true),
       :gcp_location => "europe-west2",
       :gcp_zone => "europe-west2-a",
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
