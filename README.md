@@ -46,5 +46,28 @@ export GCP_ZONE=<zone, defaults to europe-west2-a>
 5. Run the integration tests via:
 
 ```bash
+$ bundle install
 $ bundle exec rake test:integration
+```
+
+Alternatively, finer grained rake tasks are also available.  Executing these in order is the same as the above command:
+  * Initialize local workspace (terraform init)
+``` bash
+$ bundle exec rake test:init_workspace 
+```
+  * Plan integration tests - ensures variables are set for Inspec and Terraform, runs "terraform plan"
+``` bash
+$ bundle exec rake test:plan_integration_tests 
+```
+  * Set up integration tests - actually creates the resources in GCP (terraform apply)
+``` bash
+$ bundle exec rake test:setup_integration_tests 
+```
+  * Run integration tests - runs the tests (inspec exec)
+``` bash
+$ bundle exec rake test:run_integration_tests 
+```   
+  * Clean up integration tests - removes GCP resources (terraform destroy)
+``` bash
+$ bundle exec rake test:cleanup_integration_tests 
 ```
