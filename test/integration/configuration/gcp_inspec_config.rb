@@ -43,7 +43,7 @@ module GCPInspecConfig
       :gcp_ext_vm_data_disk_name => "gcp-inspec-generic-ext-linux-vm-data-disk",
       :gcp_ext_vm_data_disk_size => "f1-micro",
       :gcp_ext_vm_data_disk_image => "ubuntu-os-cloud/ubuntu-1604-lts",
-      :gcp_storage_bucket_name => "gcp-inspec-storage-bucket",
+      :gcp_storage_bucket_name => "gcp-inspec-storage-bucket-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
       # Google Load Balanced App example parameters
       :gcp_lb_region => "europe-west2",
       :gcp_lb_zone => "europe-west2-a",
