@@ -2,32 +2,34 @@
 
 require 'gcp_backend'
 
-class GoogleProjectIamCustomRole < GcpResourceBase
-  name 'google_project_iam_custom_role'
-  desc 'Verifies settings for a project IAM role'
+module Inspec::Resources
+  class GoogleProjectIamCustomRole < GcpResourceBase
+    name 'google_project_iam_custom_role'
+    desc 'Verifies settings for a project IAM role'
 
-  example "
-    describe google_project_iam_custom_role('admin') do
-      it { should exist }
-      its('stage') { should eq 'GA' }
+    example "
+      describe google_project_iam_custom_role('admin') do
+        it { should exist }
+        its('stage') { should eq 'GA' }
+      end
+    "
+
+    def initialize(opts = {})
+      # Call the parent class constructor
+      super(opts)
+      @display_name = opts[:name]
+      catch_gcp_errors do
+        @iam_role = @gcp.gcp_iam_client.get_role("projects/#{opts[:project]}/roles/#{opts[:name]}")
+        create_resource_methods(@iam_role)
+      end
     end
-  "
 
-  def initialize(opts = {})
-    # Call the parent class constructor
-    super(opts)
-    @display_name = opts[:name]
-    catch_gcp_errors do
-      @iam_role = @gcp.iam_client.get_role("projects/#{opts[:project]}/roles/#{opts[:name]}")
-      create_resource_methods(@iam_role)
+    def exists?
+      !@iam_role.nil?
     end
-  end
 
-  def exists?
-    !@iam_role.nil?
-  end
-
-  def to_s
-    "Project IAM Custom Role #{@display_name}"
+    def to_s
+      "Project IAM Custom Role #{@display_name}"
+    end
   end
 end

@@ -5,47 +5,9 @@
 # Based on the Azure Inspec classes by Russell Seymour
 #
 
-require 'google/apis'
-require 'google/apis/cloudresourcemanager_v1'
-require 'google/apis/compute_v1'
-require 'google/apis/storage_v1'
-require 'google/apis/iam_v1'
-require 'google/apis/container_v1'
-require 'googleauth'
 require 'JSON'
 
-# Class to manage the GCP connection, instantiates all required clients for Inspec resources
-#
-class GcpConnection
-  def initialize
-    scopes = ['https://www.googleapis.com/auth/cloud-platform',
-              'https://www.googleapis.com/auth/compute']
-    authorization = Google::Auth.get_application_default(scopes)
-    Google::Apis::RequestOptions.default.authorization = authorization
-  end
-
-  def compute_client
-    @compute_client ||= Google::Apis::ComputeV1::ComputeService.new
-  end
-
-  def iam_client
-    @iam_client ||= Google::Apis::IamV1::IamService.new
-  end
-
-  def project_client
-    @project_client ||= Google::Apis::CloudresourcemanagerV1::CloudResourceManagerService.new
-  end
-
-  def storage_client
-    @storage_client ||= Google::Apis::StorageV1::StorageService.new
-  end
-
-  def container_client
-    @container_client ||= Google::Apis::ContainerV1::ContainerService.new
-  end
-end
-
-# Base class for GCP resources
+# Base class for GCP resources - depends on train GCP transport for connection
 #
 # module Inspec::Resources
 class GcpResourceBase < Inspec.resource(1)
@@ -54,7 +16,7 @@ class GcpResourceBase < Inspec.resource(1)
   def initialize(opts)
     @opts = opts
     # ensure we have a GCP connection, resources can choose which of the clients to instantiate
-    @gcp = GcpConnection.new
+    @gcp = inspec.backend
   end
 
   def failed_resource?
@@ -64,7 +26,7 @@ class GcpResourceBase < Inspec.resource(1)
   # Intercept GCP exceptions
   def catch_gcp_errors
     yield
-    # TODO: create custom messages as needed
+    # create custom messages as needed
   rescue Google::Apis::ClientError => e
     error = JSON.parse(e.body)
     fail_resource error['error']['message']
