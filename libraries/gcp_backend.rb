@@ -5,7 +5,7 @@
 # Based on the Azure Inspec classes by Russell Seymour
 #
 
-require 'JSON'
+require 'json'
 
 # Base class for GCP resources - depends on train GCP transport for connection
 #
