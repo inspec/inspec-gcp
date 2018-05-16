@@ -1,12 +1,8 @@
-# inspec-gcp
+# InSpec GCP (Google Cloud Platform) Resource Pack
 
-Initial prototyping based on inspec-gcp and inspec-azure archived repository.
+This InSpec resource pack uses the native Google Cloud Platform (GCP) support in InSpec and provides the required resources to write tests for GCP
 
-This builds on work in the following two repos:
-* https://github.com/chef/inspec-azure 
-* https://github.com/martezr/inspec-gcp
-
-### Prerequisites
+## Prerequisites
 
 1. Install and configure the Google cloud SDK from here:
 https://cloud.google.com/sdk/docs/
@@ -29,7 +25,7 @@ $ cat ~/.config/gcloud/application_default_credentials.json
 }c
 ```
 
-### Getting started with inspec-gcp
+## Test inspec-gcp resources
 
 1. Create GCP project and ensure this is currently set following: https://cloud.google.com/shell/docs/examples
 ```bash
@@ -75,11 +71,11 @@ $ bundle exec rake test:run_integration_tests
 $ bundle exec rake test:cleanup_integration_tests 
 ```
 
-### Additional notes
+## FAQ 
 
-#### Quota increase
+### Quota increase
 
-The terraform templates generate sufficient resources to require an increase to default in_use IP addresses.  Normally new projects have 10, increasing this to 20 or higher should be sufficient.
+The terraform templates generate sufficient resources to require an increase to default in_use IP addresses. Normally new projects have 10, increasing this to 20 or higher should be sufficient.
 
 To find this setting, log in to the GCP web interface and go to **IAM and admin->Quotas** and look for "Compute Engine API In-use IP addresses".  From here you can "Edit quotas" to request more.
 ```
@@ -91,7 +87,14 @@ Changed Quota:
 +----------------------+------------------+
 ```
 
-#### Errors on terraform destroy
+### Errors on terraform destroy
 
-Sometimes there can be occasional errors when performing the cleanup rake task.  This happens when resources are already deleted and can be ignored.
+Sometimes there can be occasional errors when performing the cleanup rake task. This happens when resources are already deleted and can be ignored.
 
+## Support
+
+The InSpec GCP resources are community supported. For bugs and features, please open a github issue and label it appropriately.
+
+## Kudos
+
+This implementation is inspired by [inspec-azure](https://github.com/chef/inspec-azure) and [inspec-gcp](https://github.com/martezr/inspec-gcp)
