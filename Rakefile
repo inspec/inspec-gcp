@@ -87,7 +87,7 @@ namespace :test do
   task :cleanup_integration_tests do
     puts "----> Cleanup"
     #cmd = format("cd %s/build/ && terraform destroy -force -var 'project_id=%s' -var 'storage_account_name=%s' -var 'admin_password=%s' -var 'suffix=%s'", integration_dir, project_id, sa_name, admin_password, suffix)
-    cmd = format("cd %s/build/ && terraform destroy -force -var-file=%s", integration_dir, variable_file_name)
+    cmd = format("cd %s/build/ && terraform destroy -force -var-file=%s || true", integration_dir, variable_file_name)
     #   -var 'subscription_id=%s' -var 'client_id=%s' -var 'client_secret=%s' -var 'tenant_id=%s' -var 'admin_password=dummy' -var 'storage_account_name=dummy' -var 'suffix=dummy'", integration_dir, creds[:subscription_id], creds[:client_id], creds[:client_secret], creds[:tenant_id])
     sh(cmd)
 
