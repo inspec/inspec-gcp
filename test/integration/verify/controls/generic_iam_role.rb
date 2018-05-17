@@ -10,8 +10,8 @@ control 'gcp-generic-iam-role' do
   title 'Ensure that the IAM role is correctly set up'
 
   describe google_project_iam_custom_role(project: gcp_project_id, name: gcp_project_iam_custom_role_id ) do
-      # stage of a role in the launch lifecycle, should be GA (can be ALPHA, BETA, or GA)
-      its('stage') { should eq "GA" }
-      its('name') { should match gcp_project_iam_custom_role_id }
-    end
+    # stage of a role in the launch lifecycle, should be GA (can be ALPHA, BETA, or GA)
+    its('stage') { should eq "GA" }
+    its('name') { should match gcp_project_iam_custom_role_id }
+  end
 end
