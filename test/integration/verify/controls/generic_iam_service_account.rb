@@ -6,7 +6,7 @@ gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources,def
 
 control 'gcp-generic-iam-service-account' do
 
-  only_if { gcp_enable_privileged_resources == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 }
   impact 1.0
   title 'Ensure that the Service Account is correctly set up'
 
