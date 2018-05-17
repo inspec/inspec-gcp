@@ -2,9 +2,10 @@ title 'IAM Role Properties'
 
 gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
 gcp_project_iam_custom_role_id = attribute(:gcp_project_iam_custom_role_id, default: '', description: 'The GCP IAM custom role identifier.')
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources,default:0,description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'gcp-generic-iam-role' do
-
+  only_if { gcp_enable_privileged_resources == 1 }
   impact 1.0
   title 'Ensure that the IAM role is correctly set up'
 

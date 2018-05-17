@@ -14,13 +14,6 @@ terraform {
 
 variable "gcp_project_name" {}
 variable "gcp_project_id" {}
-# BELOW TO BE REMOVED as not used
-variable "gcp_storage_account_name" {}
-variable "gcp_admin_password" {}
-# Set a unique string which will be appended to public facing items
-# to ensure there are no clashes
-#variable "suffix" {}
-
 variable "gcp_location" {
   default = "europe-west2"
 }
@@ -69,6 +62,8 @@ variable "gcp_kube_cluster_master_pass" {}
 variable "gcp_storage_bucket_name" {
   default ="gcp-inspec"
 }
+
+variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
   region = "${var.gcp_location}"
@@ -150,12 +145,14 @@ resource "google_compute_instance" "generic_windows_internal_vm_instance" {
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
+  count = "${var.gcp_enable_privileged_resources}"
   project = "${var.gcp_project_id}"
   account_id   = "object-viewer"
   display_name = "${var.gcp_service_account_display_name}"
 }
 
 resource "google_project_iam_custom_role" "generic_project_iam_custom_role" {
+  count = "${var.gcp_enable_privileged_resources}"
   project = "${var.gcp_project_id}"
   role_id     = "${var.gcp_project_iam_custom_role_id}"
   title       = "GCP Inspec Generic Project IAM Custom Role"

@@ -42,6 +42,12 @@ export GCP_LOCATION=<region, defaults to europe-west2>
 export GCP_ZONE=<zone, defaults to europe-west2-a>
 ```
 
+Some resources require elevated privileges to create in GCP.  These are disabled by default but can be activated via:
+```bash
+export GCP_ENABLE_PRIVILEGED_RESOURCES=1
+```
+This takes effect during the "plan" task as described in the next section.  Affected terraform resources are included/excluded and associated inspec tests enabled/disabled accordingly.
+
 3. Run the integration tests via:
 
 ```bash
