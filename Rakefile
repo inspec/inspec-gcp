@@ -79,7 +79,8 @@ namespace :test do
 
   task :run_integration_tests do
     puts "----> Run"
-    cmd = format("bundle exec inspec exec %s/verify --attrs %s/build/%s -t gcp://", integration_dir, integration_dir, profile_attributes)
+    # Since the default behaviour is to skip tests, the below absorbs an inspec "101 run okay + skipped only" exit code as successful
+    cmd = format("bundle exec inspec exec %s/verify --attrs %s/build/%s -t gcp://; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi", integration_dir, integration_dir, profile_attributes)
     sh(cmd)
   end
 
