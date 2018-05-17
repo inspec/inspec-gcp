@@ -11,14 +11,11 @@ module GCPInspecConfig
 
   # Config for terraform / inspec in the below hash
   @config = {
-      # Generic GCP resrource parameters
+      # Generic GCP resource parameters
       :gcp_project_name => "SPaterson Project",
       :gcp_project_id => "spaterson-project",
       :gcp_project_number => "1041358276233",
       # Determine the storage account name and the admin password
-      # BELOW two variables to be removed
-      :gcp_storage_account_name => (0...15).map { (65 + rand(26)).chr }.join.downcase,
-      :gcp_admin_password => Passgen::generate(length: 12, uppercase: true, lowercase: true, symbols: true, digits: true),
       :gcp_location => "europe-west2",
       :gcp_zone => "europe-west2-a",
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
@@ -61,7 +58,13 @@ module GCPInspecConfig
       :gcp_kube_cluster_zone_extra2 => "europe-west2-c",
       :gcp_kube_cluster_master_user => "gcp-inspec-kube-admin",
       :gcp_kube_cluster_master_pass => Passgen::generate(length: 20, uppercase: true, lowercase: true, symbols: true, digits: true),
-      :gcp_kube_nodepool_name => "default-pool"
+      :gcp_kube_nodepool_name => "default-pool",
+      # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
+      # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
+      # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
+      #
+      # Note, would prefer to use boolean true or false here but will revisit for a future version of tf, see here for more detail: https://www.terraform.io/docs/configuration/variables.html
+      :gcp_enable_privileged_resources => 0
   }
 
   def self.config
