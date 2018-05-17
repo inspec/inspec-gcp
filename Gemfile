@@ -17,5 +17,5 @@ end
 group :inspec do
   # Below are required until the next inspec release containing the train changes
   gem 'train', :git => 'https://github.com/chef/train.git'
-  gem 'inspec', :git => 'https://github.com/chef/inspec.git', :branch => 'jq/add_train_gcp'
+  gem 'inspec', :git => 'https://github.com/chef/inspec.git'
 end

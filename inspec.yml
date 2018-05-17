@@ -5,5 +5,6 @@ summary: This resource pack provides compliance resources_old_ignore for Google 
 copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 version: 0.2.0
+license: Apache-2.0
 supports:
   - platform: gcp

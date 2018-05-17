@@ -16,10 +16,9 @@ desc 'Run robocop linter'
 task lint: [:rubocop]
 
 # run tests
-task default: [:lint]
+task default: [:lint, 'test:check']
 
 namespace :test do
-
   # Specify the directory for the integration tests
   integration_dir = "test/integration"
 
@@ -33,10 +32,13 @@ namespace :test do
   profile_attributes = "gcp-inspec-attributes.yaml"
 
   # run inspec check to verify that the profile is properly configured
-  #task :check do
-  #  dir = File.join(File.dirname(__FILE__))
-  #  sh("bundle exec inspec check #{dir}")
-  #end
+  task :check do
+    dir = File.join(File.dirname(__FILE__))
+    sh("bundle exec inspec check #{dir}")
+    # run inspec check on the sample profile to ensure all resources are loaded okay
+    sh("bundle exec inspec check #{integration_dir}/verify")
+  end
+  
 
   task :init_workspace do
     # Initialize terraform workspace
