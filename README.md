@@ -4,8 +4,9 @@ This InSpec resource pack uses the native Google Cloud Platform (GCP) support in
 
 ## Prerequisites
 
-1. Install and configure the Google cloud SDK from here:
-https://cloud.google.com/sdk/docs/
+1. *Install and configure the Google cloud SDK*
+
+Download the [SDK](https://cloud.google.com/sdk/docs/) and run the installation:
 ```
 ./google-cloud-sdk/install.sh
 ```
@@ -22,18 +23,25 @@ $ cat ~/.config/gcloud/application_default_credentials.json
   "client_secret": "d-fasdfasdfasdfaweroi23jknrmfs;f8sh",
   "refresh_token": "1/asdfjlklwna;ldkna'dfmk-lCkju3-yQmjr20xVZonrfkE48L",
   "type": "authorized_user"
-}c
+}
 ```
+3. Enable the appropriate APIs that you want to use:
+
+- [Enable Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/)
+- [Enable Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com)
+
 
 ## Test inspec-gcp resources
 
-1. Create GCP project and ensure this is currently set following: https://cloud.google.com/shell/docs/examples
+1. Create a new GCP project
+2. Ensure this is currently set following: https://cloud.google.com/shell/docs/examples
 ```bash
 $ gcloud config set project <project-name>
 $ gcloud config list project
 ```
+3. Ensure the `In-use IP addresses` [quota](https://console.cloud.google.com/iam-admin/quotas) is set to 20 or above
 
-2. Environment variables can be used to specify project details e.g.
+4. Environment variables can be used to specify project details e.g.
 ```bash
 export GCP_PROJECT_NAME=<project-name>
 export GCP_PROJECT_NUMBER=<project-number>
@@ -48,7 +56,7 @@ export GCP_ENABLE_PRIVILEGED_RESOURCES=1
 ```
 This takes effect during the "plan" task as described in the next section.  Affected terraform resources are included/excluded and associated inspec tests enabled/disabled accordingly.
 
-3. Run the integration tests via:
+4. Run the integration tests via:
 
 ```bash
 $ bundle install
@@ -78,6 +86,14 @@ $ bundle exec rake test:cleanup_integration_tests
 ```
 
 ## FAQ 
+
+### `access not configured` error
+
+InSpec relies on the GCP API's to verify the settings. Therefore, it requires access to the API. If you try to access an API via an InSpec resource that is not enabled in your account, then you see an error like:
+
+```
+googleapi: Error 403: Access Not Configured. Compute Engine API has not been used in project 41111111111 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview then retry.
+```
 
 ### Quota increase
 
