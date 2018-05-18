@@ -1,6 +1,8 @@
 # InSpec GCP (Google Cloud Platform) Resource Pack
 
-This InSpec resource pack uses the native Google Cloud Platform (GCP) support in InSpec and provides the required resources to write tests for GCP
+This InSpec resource pack uses the native Google Cloud Platform (GCP) support in InSpec and provides the required resources to write tests for GCP.
+
+This implementation was inspired on the ideas by [Martez Reed](https://github.com/martezr/inspec-gcp).
 
 ## Prerequisites
 
