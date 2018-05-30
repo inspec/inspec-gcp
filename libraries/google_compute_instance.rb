@@ -94,9 +94,8 @@ module Inspec::Resources
     end
 
     def machine_size
-      if defined?(machine_type)
-        machine_type.split('/').last
-      end
+      return false if !defined?(machine_type)
+      machine_type.split('/').last
     end
 
     def exists?
