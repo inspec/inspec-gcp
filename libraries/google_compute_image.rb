@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for an image'
 
     example "
-      describe google_compute_image(project: 'silicon-vertex-398188',name: 'image-1') do
+      describe google_compute_image(project: 'chef-inspec-gcp',name: 'image-1') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
         its('source_type') { should eq 'RAW' }

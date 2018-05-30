@@ -8,10 +8,10 @@ module Inspec::Resources
     desc 'Verifies settings for a project'
 
     example "
-      describe google_project('silicon-vertex-398188') do
+      describe google_project(project: 'chef-inspec-gcp') do
         it { should exist }
-        its('name') { should eq 'My First Project' }
-        its('project_number') { should eq '3934801284823' }
+        its('name') { should eq 'chef-inspec-gcp' }
+        its('project_number') { should eq 1041234567833 }
         its('lifecycle_state') { should eq 'ACTIVE' }
         its('labels') { should include(key: 'contact', value: 'operations') }
       end

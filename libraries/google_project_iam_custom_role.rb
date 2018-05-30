@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for a project IAM role'
 
     example "
-      describe google_project_iam_custom_role('admin') do
+      describe google_project_iam_custom_role(project: 'chef-inspec-gcp', name: 'admin12345') do
         it { should exist }
         its('stage') { should eq 'GA' }
       end
