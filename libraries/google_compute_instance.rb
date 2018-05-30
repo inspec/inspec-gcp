@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for an instance'
 
     example "
-      describe google_compute_instance(project: 'project-id-888', zone: 'us-east1-b', name: 'inspec-test') do
+      describe google_compute_instance(project: 'chef-inspec-gcp', zone: 'us-east1-b', name: 'inspec-test') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
         its('machine_type') { should eq 'f1-micro' }

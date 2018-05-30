@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for a project IAM Service Account'
 
     example "
-      describe google_service_account('my-project-id') do
+      describe google_service_account(project: 'chef-inspec-gcp', name: 'gcp-inspec-service-account') do
         it { should exist }
         its('stage') { should eq 'GA' }
       end
