@@ -22,7 +22,7 @@ control 'gcp-generic-vm-windows-internal-1.0' do
     # the machine should not be untrusted
     its('untrusted?') { should be false }
 
-    its('machine_type') { should match  gcp_windows_int_vm_size}
+    its('machine_size') { should eq gcp_windows_int_vm_size}
     # can't easily get the os family from running instance...
     #its('source_image') { should eq  gcp_int_vm_image}
 

@@ -11,7 +11,7 @@ module Inspec::Resources
       describe google_compute_instance(project: 'project-id-888', zone: 'us-east1-b', name: 'inspec-test') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
-        its('machine_type') { should eq 'f1-micro' }
+        its('machine_size') { should eq 'f1-micro' }
         its('cpu_platform') { should match 'Intel' }
         its('status') { should eq 'RUNNING' }
         ...
@@ -91,6 +91,12 @@ module Inspec::Resources
     def disks_license(disk_index = 0, license_index = 0)
       return false if !defined?(disks[disk_index].licenses[license_index])
       disks[disk_index].licenses[license_index].downcase
+    end
+
+    def machine_size
+      if defined?(machine_type)
+        machine_type.split('/').last
+      end
     end
 
     def exists?
