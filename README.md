@@ -89,6 +89,18 @@ $ bundle exec rake test:cleanup_integration_tests
 
 ## FAQ 
 
+### Failure running "inspec exec" on my GCP profile
+
+If an error such as the below occurs when running "inspec exec" on a newly created GCP profile:
+```
+libraries/google_compute_instance.rb:26:in `block in initialize': undefined method `gcp_compute_client' for #<Train::Transports::Local::Connection:0x00007fcasdf1a532d0> (NoMethodError)
+```
+Check that the GCP transport is being specified as below:
+```
+$ inspec exec . -t gcp://
+```
+This tells the underlying transport layer (train) to use GCP.
+
 ### `access not configured` error
 
 InSpec relies on the GCP API's to verify the settings. Therefore, it requires access to the API. If you try to access an API via an InSpec resource that is not enabled in your account, then you see an error like:
