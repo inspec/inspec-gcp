@@ -39,8 +39,8 @@ module Inspec::Resources
         @instances = @gcp.gcp_compute_client.list_instances(@project, @zone)
       end
       @instances.items.map do |instance|
-        instance_rows+=[{instance_id: instance.id,
-                        instance_name: instance.name,}]
+        instance_rows+=[{ instance_id: instance.id,
+                        instance_name: instance.name }]
       end
       @table = instance_rows
     end
