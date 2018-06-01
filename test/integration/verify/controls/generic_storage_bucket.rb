@@ -12,9 +12,8 @@ control 'gcp-generic-storage-bucket-1.0' do
   describe google_storage_bucket(name: gcp_storage_bucket_name) do
     it { should exist }
     its('name') { should eq gcp_storage_bucket_name }
-    #TBD: are name & id always consistent?
     its('id') { should eq gcp_storage_bucket_name }
-    its('location') { should match gcp_location.upcase }
+    its('location') { should eq gcp_location.upcase }
     its('kind') { should eq "storage#bucket" }
     its('project_number') {should eq gcp_project_number.to_i }
     its('storage_class') { should eq 'STANDARD' }

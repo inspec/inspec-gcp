@@ -13,5 +13,6 @@ control 'gcp-generic-iam-role' do
     # stage of a role in the launch lifecycle, should be GA (can be ALPHA, BETA, or GA)
     its('stage') { should eq "GA" }
     its('name') { should match gcp_project_iam_custom_role_id }
+    its('included_permissions') { should eq ["iam.roles.list"] }
   end
 end

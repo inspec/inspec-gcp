@@ -8,9 +8,9 @@ module Inspec::Resources
     desc 'Verifies settings for an image'
 
     example "
-      describe google_compute_image(project: 'chef-inspec-gcp',name: 'image-1') do
+      describe google_compute_image(project: 'chef-inspec-gcp', name: 'image-1') do
         it { should exist }
-        its('name') { should eq 'inspec-test' }
+        its('name') { should eq 'image-1' }
         its('source_type') { should eq 'RAW' }
         its('family') { should eq 'inspec-test-family' }
         its('status') { should eq 'ready' }
