@@ -22,7 +22,7 @@ control 'gcp-generic-vm-linux-external-data-disk-1.0' do
     # the machine should not be untrusted
     its('untrusted?') { should be false }
 
-    its('machine_type') { should match  gcp_ext_vm_data_disk_size}
+    its('machine_size') { should eq gcp_ext_vm_data_disk_size}
     # can't easily get the os family from running instance...
     #its('source_image') { should eq  gcp_int_vm_image}
 
