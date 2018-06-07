@@ -38,6 +38,7 @@ module Inspec::Resources
       catch_gcp_errors do
         @zones = @gcp.gcp_compute_client.list_zones(@project)
       end
+      return [] if !@zones.items
       @zones.items.map do |zone|
         zone_rows+=[{ zone_id: zone.id,
                           zone_name: zone.name,

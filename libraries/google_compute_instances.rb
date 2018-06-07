@@ -38,6 +38,7 @@ module Inspec::Resources
       catch_gcp_errors do
         @instances = @gcp.gcp_compute_client.list_instances(@project, @zone)
       end
+      return [] if !@instances.items
       @instances.items.map do |instance|
         instance_rows+=[{ instance_id: instance.id,
                         instance_name: instance.name }]

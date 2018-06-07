@@ -38,6 +38,7 @@ module Inspec::Resources
       catch_gcp_errors do
         @firewalls = @gcp.gcp_compute_client.list_firewalls(@project)
       end
+      return [] if !@firewalls.items
       @firewalls.items.map do |firewall|
         firewall_rows+=[{ firewall_id: firewall.id,
                       firewall_name: firewall.name,
