@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for a compute firewall rule'
 
     example "
-      describe google_compute_firewall(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
+      describe google_compute_firewall(project: 'chef-inspec-gcp', name: 'gcp-inspec-test') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
         its('status') { should eq 'in_use' }
@@ -49,6 +49,10 @@ module Inspec::Resources
       else
         false
       end
+    end
+
+    def exists?
+      !@firewall.nil?
     end
 
     def to_s
