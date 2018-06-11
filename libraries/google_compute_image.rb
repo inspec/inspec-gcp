@@ -36,6 +36,10 @@ module Inspec::Resources
       end
     end
 
+    def exists?
+      !@image.nil?
+    end
+
     def to_s
       "Image #{@display_name}"
     end

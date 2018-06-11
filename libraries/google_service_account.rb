@@ -32,7 +32,7 @@ module Inspec::Resources
     end
 
     def exists?
-      !@iam_role.nil?
+      !@service_account.nil?
     end
 
     def to_s
