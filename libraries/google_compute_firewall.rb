@@ -51,6 +51,10 @@ module Inspec::Resources
       end
     end
 
+    def exists?
+      !@firewall.nil?
+    end
+
     def to_s
       "Firewall Rule #{@display_name}"
     end

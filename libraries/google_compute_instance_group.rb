@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for a compute instance group'
 
     example "
-      describe google_compute_instance_group(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
+      describe google_compute_instance_group(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: 'gcp-inspec-test') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
         its('status') { should eq 'in_use' }
@@ -36,6 +36,10 @@ module Inspec::Resources
     def get_named_ports(index = 0, key = :name)
       return false if !defined?(named_ports[index].item[key])
       named_ports[index].item[key]
+    end
+
+    def exists?
+      !@instance_group.nil?
     end
 
     def to_s

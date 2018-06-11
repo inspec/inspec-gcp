@@ -9,7 +9,7 @@ module Inspec::Resources
     desc 'Verifies settings for a container nodepool'
 
     example "
-      describe gcp_container_nodepool(project: 'chef-inspec-gcp', zone: 'gcp-inspec-test', name: 'cluster-name') do
+      describe google_container_node_pool(project: 'chef-inspec-gcp', zone: 'gcp-inspec-test', cluster_name: 'cluster-name', nodepool_name: 'nodepool_name') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
         its('status') { should eq 'in_use' }
