@@ -61,14 +61,13 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource currently does not support any filter criteria; it will always fetch all available zones.
+This resource supports the following filter criteria:  `zone_id`; `zone_name` and `zone_status`. Anyy of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
-*  `zone_id`, `zone_name`, `zone_statuses`
-*  `firewall_ids` - an array of google_compute_firewall identifier integers
-*  `firewall_name` - an array of google_compute_firewall name strings
-*  `firewall_directions`- an array of google_compute_firewall directions containing strings e.g. "INGRESS" or "EGRESS"
+*  `zone_ids` - an array of google_compute_zone identifier integers
+*  `zone_names` - an array of google_compute_zone name strings
+*  `zone_statuses`- an array of google_compute_zone statuses
 
 <br>
 
