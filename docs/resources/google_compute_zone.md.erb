@@ -14,7 +14,6 @@ Use the `google_compute_zone` InSpec audit resource to test properties of a sing
 A `google_compute_zone` resource block declares the tests for a single GCP zone by project and name.
 
     describe google_compute_zone(project: 'chef-inspec-gcp',  zone: 'us-east1-b') do
-      it { should exist }
       its('name') { should match 'us-east1-b' }
     end
 
@@ -24,10 +23,10 @@ A `google_compute_zone` resource block declares the tests for a single GCP zone 
 
 The following examples show how to use this InSpec audit resource.
 
-### Test that a GCP compute zone does not exist
+### Test that a GCP compute zone exists
 
     describe google_compute_zone(project: 'chef-inspec-gcp',  zone: 'us-east1-b') do
-      it { should_not exist }
+      it { should exist }
     end
 
 ### Test that a GCP compute zone is in the expected state

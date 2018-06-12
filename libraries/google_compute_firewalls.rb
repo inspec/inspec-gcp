@@ -30,14 +30,19 @@ module Inspec::Resources
 
     def fetch_data
       firewall_rows = []
-      catch_gcp_errors do
-        @firewalls = @gcp.gcp_compute_client.list_firewalls(@project)
-      end
-      return [] if !@firewalls.items
-      @firewalls.items.map do |firewall|
-        firewall_rows+=[{ firewall_id: firewall.id,
-                      firewall_name: firewall.name,
-                      firewall_direction: firewall.direction }]
+      next_page = nil
+      loop do
+        catch_gcp_errors do
+          @firewalls = @gcp.gcp_compute_client.list_firewalls(@project, page_token: next_page)
+        end
+        return [] if !@firewalls.items
+        @firewalls.items.map do |firewall|
+          firewall_rows+=[{ firewall_id: firewall.id,
+                        firewall_name: firewall.name,
+                        firewall_direction: firewall.direction }]
+        end
+        next_page = @firewalls.next_page_token
+        break unless next_page
       end
       @table = firewall_rows
     end

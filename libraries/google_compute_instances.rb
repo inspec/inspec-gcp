@@ -30,13 +30,18 @@ module Inspec::Resources
 
     def fetch_data
       instance_rows = []
-      catch_gcp_errors do
-        @instances = @gcp.gcp_compute_client.list_instances(@project, @zone)
-      end
-      return [] if !@instances.items
-      @instances.items.map do |instance|
-        instance_rows+=[{ instance_id: instance.id,
-                        instance_name: instance.name }]
+      next_page = nil
+      loop do
+        catch_gcp_errors do
+          @instances = @gcp.gcp_compute_client.list_instances(@project, @zone, page_token: next_page)
+        end
+        return [] if !@instances.items
+        @instances.items.map do |instance|
+          instance_rows+=[{ instance_id: instance.id,
+                          instance_name: instance.name }]
+        end
+        next_page = @instances.next_page_token
+        break unless next_page
       end
       @table = instance_rows
     end
