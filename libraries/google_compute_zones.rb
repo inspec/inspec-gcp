@@ -23,14 +23,9 @@ module Inspec::Resources
 
     # FilterTable setup
     filter_table_config = FilterTable.create
-    filter_table_config.add_accessor(:where)
-    filter_table_config.add_accessor(:entries)
-    filter_table_config.add(:exist?) { |filter_table| !filter_table.entries.empty? }
-    filter_table_config.add(:count) { |filter_table| filter_table.entries.count }
     filter_table_config.add(:zone_ids, field: :zone_id)
     filter_table_config.add(:zone_names, field: :zone_name)
     filter_table_config.add(:zone_statuses, field: :zone_status)
-    filter_table_config.add(:colors, field: :color, type: :simple)
     filter_table_config.connect(self, :fetch_data)
 
     def fetch_data

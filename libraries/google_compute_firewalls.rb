@@ -23,14 +23,9 @@ module Inspec::Resources
 
     # FilterTable setup
     filter_table_config = FilterTable.create
-    filter_table_config.add_accessor(:where)
-    filter_table_config.add_accessor(:entries)
-    filter_table_config.add(:exist?) { |filter_table| !filter_table.entries.empty? }
-    filter_table_config.add(:count) { |filter_table| filter_table.entries.count }
     filter_table_config.add(:firewall_ids, field: :firewall_id)
     filter_table_config.add(:firewall_names, field: :firewall_name)
     filter_table_config.add(:firewall_directions, field: :firewall_direction)
-    filter_table_config.add(:colors, field: :color, type: :simple)
     filter_table_config.connect(self, :fetch_data)
 
     def fetch_data
