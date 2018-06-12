@@ -11,7 +11,7 @@ control 'gcp-vms-1.0' do
 
   describe google_compute_instances(project: gcp_project_id, zone: gcp_zone) do
     it { should exist }
-    its('entries.count') { should be <= 100}
+    its('count') { should be <= 100}
     its('instance_ids.count') { should cmp 9 }
     its('instance_names') { should include gcp_ext_vm_data_disk_name }
   end

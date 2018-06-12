@@ -9,7 +9,7 @@ control 'gcp-firewalls-1.0' do
 
   describe google_compute_firewalls(project: gcp_project_id) do
     it { should exist }
-    its('entries.count') { should be <= 100}
+    its('count') { should be <= 100}
     # assume this is a development setup for a moment
     its('firewall_names') { should include "default-allow-ssh" }
     its('firewall_names') { should include "default-allow-rdp" }

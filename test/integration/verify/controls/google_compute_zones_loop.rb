@@ -12,6 +12,8 @@ control 'gcp-zones-loop-1.0' do
       it { should exist }
       its('kind') { should eq "compute#zone" }
       its('status') { should eq 'UP' }
+      # or equivalently
+      it { should be_up }
     end
   end
 end

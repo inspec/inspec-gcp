@@ -34,6 +34,8 @@ The following examples show how to use this InSpec audit resource.
 
     describe google_compute_zone(project: 'chef-inspec-gcp',  zone: 'us-east1-b') do
       its('status') { should eq 'UP' }
+      # or equivalently
+      it { should be_up }
     end
 
 ### Test that a GCP compute zone has an expected CPU platform

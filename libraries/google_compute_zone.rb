@@ -34,6 +34,11 @@ module Inspec::Resources
       !@zone.nil?
     end
 
+    def up?
+      return false if !defined?(status)
+      status == 'UP'
+    end
+
     def to_s
       "Zone #{@display_name}"
     end

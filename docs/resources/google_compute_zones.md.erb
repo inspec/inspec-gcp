@@ -5,7 +5,7 @@ platform: gcp
 
 # google\_compute\_zones
 
-Use the `google_compute_zones` InSpec audit resource to test properties of all GCP compute zones for a project in a particular zone.
+Use the `google_compute_zones` InSpec audit resource to test properties of all, or a filtered group of, GCP compute zones for a project in a particular zone.
 
 <br>
 
@@ -36,7 +36,7 @@ The following examples show how to use this InSpec audit resource.
 ### Test that there are no more than a specified number of zones available for the project
 
     describe google_compute_zones(project: 'chef-inspec-gcp') do
-      its('entries.count') { should be <= 100}
+      its('count') { should be <= 100}
     end
 
 ### Test the exact number of zones in the project
@@ -66,6 +66,9 @@ This resource currently does not support any filter criteria; it will always fet
 ## Properties
 
 *  `zone_id`, `zone_name`, `zone_statuses`
+*  `firewall_ids` - an array of google_compute_firewall identifier integers
+*  `firewall_name` - an array of google_compute_firewall name strings
+*  `firewall_directions`- an array of google_compute_firewall directions containing strings e.g. "INGRESS" or "EGRESS"
 
 <br>
 

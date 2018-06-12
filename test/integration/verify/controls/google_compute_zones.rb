@@ -10,7 +10,7 @@ control 'gcp-zones-1.0' do
 
   describe google_compute_zones(project: gcp_project_id) do
     it { should exist }
-    its('entries.count') { should be <= 100} # 46 at the time of writing
+    its('count') { should be <= 100} # 46 at the time of writing
     its('zone_names') { should include gcp_zone }
     its('zone_statuses') { should_not include "DOWN" }
   end

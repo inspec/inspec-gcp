@@ -5,7 +5,7 @@ platform: gcp
 
 # google\_compute\_instances
 
-Use the `google_compute_instances` InSpec audit resource to test properties of all GCP compute instances for a project in a particular zone.
+Use the `google_compute_instances` InSpec audit resource to test properties of all, or a filtered group of, GCP compute instances for a project in a particular zone.
 
 <br>
 
@@ -38,7 +38,7 @@ The following examples show how to use this InSpec audit resource.
 ### Test that there are no more than a specified number of instances in the project and zone
 
     describe google_compute_instances(project: 'chef-inspec-gcp',  zone: 'europe-west2-a') do
-      its('entries.count') { should be <= 100}
+      its('count') { should be <= 100}
     end
 
 ### Test the exact number of instances in the project and zone
@@ -57,11 +57,12 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource currently does not support any filter criteria; it will always fetch all instances in the zone.
+This resource supports the following filter criteria:  `instance_id` and `instance_name`. Either of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
-*  `instance_id`, `instance_name`
+*  `instance_ids` - an array of google_compute_instance identifier integers
+*  `instance_names` - an array of google_compute_instance name strings
 
 <br>
 
