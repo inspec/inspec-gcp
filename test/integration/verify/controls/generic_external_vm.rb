@@ -52,6 +52,6 @@ control 'gcp-generic-vm-linux-external-1.0' do
     its('first_network_interface_name'){ should eq "external-nat" }
     its('first_network_interface_type'){ should eq "one_to_one_nat" }
 
+    its('labels_keys') { should_not include 'label_does_not_exist' }
   end
-
 end

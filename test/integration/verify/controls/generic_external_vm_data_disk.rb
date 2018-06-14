@@ -53,6 +53,7 @@ control 'gcp-generic-vm-linux-external-data-disk-1.0' do
     its('first_network_interface_nat_ip_exists'){ should be true }
     its('first_network_interface_name'){ should eq "external-nat" }
     its('first_network_interface_type'){ should eq "one_to_one_nat" }
+    its('labels_keys') { should_not include 'non_existing_label' }
 
   end
 

@@ -98,6 +98,18 @@ module Inspec::Resources
       machine_type.split('/').last
     end
 
+    # helper for returning label keys to perform checks
+    def labels_keys
+      return [] if !defined?(labels)
+      labels.item.keys
+    end
+
+    # helper for returning label values to perform checks
+    def labels_values
+      return [] if !defined?(labels)
+      labels.item.values
+    end
+
     def exists?
       !@instance.nil?
     end

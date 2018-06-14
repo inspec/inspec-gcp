@@ -75,11 +75,17 @@ The following examples show how to use this InSpec audit resource.
       its('first_network_interface_type'){ should eq "one_to_one_nat" }
     end
 
+### Test that a particular compute instance label key is present
+
+    describe google_compute_instance(project: 'chef-inspec-gcp',  zone: 'us-east1-b', name: 'inspec-test-vm') do
+      its('labels_keys') { should include 'my_favourite_label' }
+    end
+
 <br>
 
 ## Properties
 
-*  `cpu_platform`, `creation_timestamp`, `deletion_protection`, `disks`, `id`, `kind`, `label_fingerprint`, `machine_type`, `metadata`, `name`, `network_interfaces`, `scheduling`, `start_restricted`, `status`, `tags`, `zone`
+*  `cpu_platform`, `creation_timestamp`, `deletion_protection`, `disks`, `id`, `kind`, `label_fingerprint`, `machine_type`, `metadata`, `name`, `network_interfaces`, `scheduling`, `start_restricted`, `status`, `tags`, `zone`, `labels_keys`, `labels_values`
 
 <br>
 

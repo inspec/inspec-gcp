@@ -18,6 +18,7 @@ module GCPInspecConfig
       # Determine the storage account name and the admin password
       :gcp_location => "europe-west2",
       :gcp_zone => "europe-west2-a",
+      :gcp_zone_id => "2290",
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
       :gcp_int_vm_size => "f1-micro",
       :gcp_int_vm_image => "ubuntu-os-cloud/ubuntu-1604-lts",
@@ -64,7 +65,11 @@ module GCPInspecConfig
       # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
       #
       # Note, would prefer to use boolean true or false here but will revisit for a future version of tf, see here for more detail: https://www.terraform.io/docs/configuration/variables.html
-      :gcp_enable_privileged_resources => 0
+      :gcp_enable_privileged_resources => 0,
+      # Some controls make use of the gcloud command and grep to discover live data to then test against.
+      # Only test execution is affected by this flag, resource creation via terraform is unaffected.
+      # Default behaviour is for this to be disabled, enable by changing the below flag.
+      :gcp_enable_gcloud_calls => 0
   }
 
   def self.config
