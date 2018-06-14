@@ -32,6 +32,47 @@ $ cat ~/.config/gcloud/application_default_credentials.json
 - [Enable Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/)
 - [Enable Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com)
 
+## Use the resources
+
+Since this is an InSpec resource pack, it only defines InSpec resources. It includes example tests only. To easily use the GCP resources in your tests do the following:
+
+### Create a new profile
+
+```bash
+$ inspec init profile my-profile
+```
+
+```yaml
+name: my-profile
+title: My own Oneview profile
+version: 0.1.0
+inspec_version: '>= 2.2.10'
+depends:
+  - name: inspec-gcp
+    url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz
+supports:
+  - platform: gcp
+```
+
+## Resource documentation
+
+The following resources are available in the InSpec GCP Profile
+
+- [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md)
+- [google_compute_instance](docs/resources/google_compute_instance.md)
+- [google_service_account](docs/resources/google_service_account.md)
+- [google_container_cluster](docs/resources/google_container_cluster.md)
+- [google_compute_firewalls](docs/resources/google_compute_firewalls.md)
+- [google_project](docs/resources/google_project.md)
+- [google_compute_address](docs/resources/google_compute_address.md)
+- [google_compute_firewall](docs/resources/google_compute_firewall.md)
+- [google_compute_image](docs/resources/google_compute_image.md)
+- [google_compute_instance_group](docs/resources/google_compute_instance_group.md)
+- [google_compute_zones](docs/resources/google_compute_zones.md)
+- [google_compute_zone](docs/resources/google_compute_zone.md)
+- [google_compute_instances](docs/resources/google_compute_instances.md)
+- [google_storage_bucket](docs/resources/google_storage_bucket.md)
+- [google_container_node_pool](docs/resources/google_container_node_pool.md)
 
 ## Test inspec-gcp resources
 
