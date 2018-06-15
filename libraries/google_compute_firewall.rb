@@ -129,6 +129,7 @@ module Inspec::Resources
         next if !defined?(rule.item[:ip_protocol])
         protocol_match_indexes<<index if rule.item[:ip_protocol]==protocol
       end
+      p protocol_match_indexes
       # Now we know the list of matching protocol entries to check against.
       # Note the syntax for protocol port definitions versus what we see here is:
       # "tcp:80" -> "tcp" ["80"]
@@ -138,6 +139,7 @@ module Inspec::Resources
       protocol_match_indexes.each do |protocol_index|
         # there can be multiple protocol rules for different ports etc. ["22"] or ["123-126"]
         ports_in_rule = allowed[protocol_index].item[:ports]
+        next if ports_in_rule.nil?
         ports_in_rule.each do |rule_port|
           return true if single_port_matches(rule_port, single_port)
         end
@@ -153,8 +155,8 @@ module Inspec::Resources
         # if not, no match
       else
         # the rule_port here is a range such as "4000-5000", protect against any non-integer input by checking for nil values
-        upper_limit = rule_port.split('-')[1]
-        lower_limit = rule_port.split('-')[0]
+        upper_limit = rule_port.split('-')[1].to_i
+        lower_limit = rule_port.split('-')[0].to_i
         raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall unexpected port range specified: '#{rule_port}'" if upper_limit.nil? || lower_limit.nil?
         return true if single_port.to_i.between?(lower_limit, upper_limit)
         # if not, no match
