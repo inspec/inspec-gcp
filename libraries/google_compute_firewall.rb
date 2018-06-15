@@ -129,7 +129,6 @@ module Inspec::Resources
         next if !defined?(rule.item[:ip_protocol])
         protocol_match_indexes<<index if rule.item[:ip_protocol]==protocol
       end
-      p protocol_match_indexes
       # Now we know the list of matching protocol entries to check against.
       # Note the syntax for protocol port definitions versus what we see here is:
       # "tcp:80" -> "tcp" ["80"]
