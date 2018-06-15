@@ -52,6 +52,28 @@ The following examples show how to use this InSpec audit resource.
 
     describe google_compute_firewall(project: 'chef-inspec-gcp', name: 'firewall-rule') do
       its('source_ranges') { should_not eq ["0.0.0.0/0"] }
+      # or using helpers
+      its('direction') { should eq "INGRESS" }
+      it { should_not allow_ip_ranges ["0.0.0.0/0"] }
+    end
+
+### Test whether or not a port/protocol is defined for a given firewall rule
+
+    describe google_compute_firewall(project: 'chef-inspec-gcp', name: 'firewall-rule') do
+      # similar to the http  / ssh helpers above
+      it { should_not allow_port_protocol("22", "tcp") }
+      it { should allow_port_protocol("80", "tcp") }
+    end
+
+### Test whether firewall rule allows ingress/egrees for specified tags 
+
+    describe google_compute_firewall(project: 'chef-inspec-gcp', name: 'firewall-rule') do
+      its('direction') { should eq "INGRESS" }
+      it { should allow_source_tags ["allow-gcp-tag"] }
+      it { should allow_target_tags ["allow-gcp-other-tag"] }
+      # stricter
+      it { should allow_source_tags_only ["allow-gcp-tag"] }
+      it { should allow_target_tags_only ["allow-gcp-other-tag"] }
     end
 
 <br>
@@ -59,6 +81,10 @@ The following examples show how to use this InSpec audit resource.
 ## Properties
 
 *  `allowed`, `creation_timestamp`, `description`, `direction`, `id`, `kind`, `name`, `network`, `priority`, `source_ranges`, `target_tags`
+
+In addition, the following helpers are available:
+
+* `allowed_http?`, `allowed_ssh?`, `allow_port_protocol`, `allow_source_tags`, `allow_source_tags_only`, `allow_target_tags`, `allow_target_tags_only`, `allow_ip_ranges`, `allow_ip_ranges_only`
 
 <br>
 
