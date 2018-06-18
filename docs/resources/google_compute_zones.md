@@ -57,6 +57,16 @@ The following examples show how to use this InSpec audit resource.
       its('zone_statuses') { should_not include "DOWN" }
     end
 
+### Test that a subset of all zones matching "us*" are "UP"
+
+    describe google_compute_zones(project: gcp_project_id).where(zone_name: /^us/).zone_names.each do |zone_name|
+      describe google_compute_zone(project: 'chef-inspec-gcp',  zone: zone_name) do
+        it { should exist }
+        its('kind') { should eq "compute#zone" }
+        its('status') { should eq 'UP' }
+      end
+    end
+    
 <br>
 
 ## Filter Criteria
