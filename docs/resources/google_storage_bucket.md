@@ -48,7 +48,7 @@ The following examples show how to use this InSpec audit resource.
 
 *  `etag`, `id`, `kind`, `location`, `metageneration`, `name`, `project_number`, `storage_class`, `time_created`, `updated`
 
-s<br>
+<br>
 
 
 ## GCP Permissions

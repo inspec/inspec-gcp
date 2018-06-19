@@ -41,19 +41,19 @@ The following examples show how to use this InSpec audit resource.
 ### Test that an expected named project is available
 
     describe google_projects do
-      its('project_names'){ should include gcp_project_id }
+      its('project_names'){ should include "gcp_project_id" }
     end
 
 ### Test that an expected project number is available
 
     describe google_projects do
-      its('project_ids'){ should include gcp_project_name }
+      its('project_ids'){ should include "gcp_project_name" }
     end
     
 ### Test that an expected project id is available
 
     describe google_projects do
-      its('project_numbers'){ should include gcp_project_number }
+      its('project_numbers'){ should include 1122334455 }
     end    
 
 ### Test that a particular subset of projects with id 'prod*' are in ACTIVE lifecycle state

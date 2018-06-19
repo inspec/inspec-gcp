@@ -71,7 +71,7 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource supports the following filter criteria:  `zone_id`; `zone_name` and `zone_status`. Anyy of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria:  `zone_id`; `zone_name` and `zone_status`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
 

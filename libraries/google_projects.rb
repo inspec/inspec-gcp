@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for GCP compute projects in bulk'
 
     example "
-      describe google_compute_projects do
+      describe google_projects do
         it { should exist }
         ...
       end
@@ -17,7 +17,6 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @display_name = opts[:name]
     end
 
     # FilterTable setup
