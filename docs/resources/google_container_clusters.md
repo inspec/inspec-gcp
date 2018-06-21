@@ -51,7 +51,7 @@ The following examples show how to use this InSpec audit resource.
 
 ### Test that a subset of all clusters matching "kube*" are "RUNNING"
 
-    describe google_container_clusters(project: gcp_project_id).where(cluster_name: /^kube/).cluster_names.each do |cluster_name|
+    google_container_clusters(project: gcp_project_id).where(cluster_name: /^kube/).cluster_names.each do |cluster_name|
       describe google_container_cluster(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: cluster_name) do
         it { should exist }
         its('status') { should eq 'RUNNING' }

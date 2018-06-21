@@ -64,6 +64,7 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_image](docs/resources/google_compute_image.md)
 - [google_compute_instance](docs/resources/google_compute_instance.md)
 - [google_compute_instance_group](docs/resources/google_compute_instance_group.md)
+- [google_compute_instance_groups](docs/resources/google_compute_instance_groups.md)
 - [google_compute_instances](docs/resources/google_compute_instances.md)
 - [google_compute_zone](docs/resources/google_compute_zone.md)
 - [google_compute_zones](docs/resources/google_compute_zones.md)
@@ -77,6 +78,53 @@ The following resources are available in the InSpec GCP Profile
 - [google_service_account](docs/resources/google_service_account.md)
 - [google_storage_bucket](docs/resources/google_storage_bucket.md)
 - [google_storage_buckets](docs/resources/google_storage_buckets.md)
+
+## Examples
+
+### Check SSH is Disabled for INGRESS across all GCP Projects
+
+We use several plural resources for this example that loops across all projects and firewall rules.  Making use of a plural resource property, we filter firewall rules for direction 'INGRESS' :
+
+```
+title 'Loop over all GCP projects and look at firewalls in INGRESS direction'
+
+control 'gcp-projects-firewalls-loop-1.0' do
+
+  impact 1.0
+  title 'Ensure INGRESS firewalls in all projects have the correct properties using google_compute_firewall for detail.'
+
+  google_projects.project_names.each do |project_name|
+    google_compute_firewalls(project: project_name).where(firewall_direction: 'INGRESS').firewall_names.each do |firewall_name|
+      describe google_compute_firewall(project: project_name, name: firewall_name) do
+        its('allowed_ssh?')  { should be false }
+      end
+    end
+  end
+end
+```
+
+### Check that a particular label exists on all VMs across all projects and zones
+
+This check ensures that VMs have label `must_be_there` for each project: 
+```
+title 'Loop over all GCP projects and ensure all VMs have a particular label'
+
+control 'gcp-projects-zones-vm-label-loop-1.0' do
+
+  impact 1.0
+  title 'Ensure all VMs have must_be_there label key set'
+
+  google_projects.project_names.each do |project_name|
+    google_compute_zones(project: project_name).zone_names.each do |zone_name|
+      google_compute_instances(project: project_name, zone: zone_name).instance_names.each do |instance_name|
+        describe google_compute_instance(project: project_name, zone: zone_name, name: instance_name) do
+          its('labels_keys') { should include 'must_be_there' }
+        end
+      end
+    end
+  end
+end
+```
 
 ## Test inspec-gcp resources
 

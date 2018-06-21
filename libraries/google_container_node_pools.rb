@@ -34,7 +34,7 @@ module Inspec::Resources
         # no pagination
         @node_pools = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).list_project_zone_cluster_node_pools(@project, @zone, @cluster_name)
       end
-      return [] if !@node_pools.node_pools
+      return [] if !@node_pools || !@node_pools.node_pools
       @node_pools.node_pools.map do |node_pool|
         node_pool_rows+=[{ node_pool_name: node_pool.name,
                            node_pool_status: node_pool.status }]

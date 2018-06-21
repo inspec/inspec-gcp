@@ -58,7 +58,7 @@ The following examples show how to use this InSpec audit resource.
 
 ### Test that a particular subset of projects with id 'prod*' are in ACTIVE lifecycle state
 
-    describe google_projects.where(project_id: /^prod/).project_ids.each do |gcp_project_id|
+    google_projects.where(project_id: /^prod/).project_ids.each do |gcp_project_id|
       describe google_project(project: gcp_project_id) do
         it { should exist }
         its('lifecycle_state') { should eq "ACTIVE" }

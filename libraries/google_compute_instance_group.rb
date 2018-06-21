@@ -26,16 +26,23 @@ module Inspec::Resources
     end
 
     def port_name
-      get_named_ports(0, :name)
+      find_named_ports(:name)
     end
+    RSpec::Matchers.alias_matcher :has_port_name, :be_allow_port_name
 
     def port_value
-      get_named_ports(0, :port)
+      find_named_ports(:port)
     end
+    RSpec::Matchers.alias_matcher :has_port_value, :be_allow_port_value
 
-    def get_named_ports(index = 0, key = :name)
-      return false if !defined?(named_ports[index].item[key])
-      named_ports[index].item[key]
+    def find_named_ports(key = :name)
+      # check all name/port values for a match
+      return false if !defined?(named_ports)
+      named_ports.each do |named_port|
+        next if !defined?(named_port.item[key])
+        return named_port.item[key]
+      end
+      false
     end
 
     def exists?

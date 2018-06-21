@@ -44,9 +44,9 @@ The following examples show how to use this InSpec audit resource.
       its('node_pool_names') { should include "us-east1-b" }
     end
 
-### Test that a subset of all node pools matching "mypooll*" are "UP"
+### Test that a subset of all node pools matching "mypool*" are "UP"
 
-    describe google_container_node_pools(project: 'chef-inspec-gcp', zone: 'europe-west2-a', cluster_name: 'inspec-gcp-cluster').where(node_pool_name: /^mypool/).node_pool_names.each do |node_pool_name|
+    google_container_node_pools(project: 'chef-inspec-gcp', zone: 'europe-west2-a', cluster_name: 'inspec-gcp-cluster').where(node_pool_name: /^mypool/).node_pool_names.each do |node_pool_name|
       describe google_container_node_pool(project: 'chef-inspec-gcp', zone: 'europe-west2-a', cluster_name: 'inspec-gcp-cluster', nodepool_name: node_pool_name) do
         it { should exist }
         its('status') { should eq 'RUNNING' }

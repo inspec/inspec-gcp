@@ -35,7 +35,7 @@ module Inspec::Resources
         catch_gcp_errors do
           @buckets = @gcp.gcp_storage_client.list_buckets(@project, page_token: next_page)
         end
-        return [] if !@buckets.items
+        return [] if !@buckets || !@buckets.items
         @buckets.items.map do |bucket|
           bucket_rows+=[{ bucket_id: bucket.id,
                           bucket_name: bucket.name,

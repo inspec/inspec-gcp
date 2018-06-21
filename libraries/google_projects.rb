@@ -33,7 +33,7 @@ module Inspec::Resources
         catch_gcp_errors do
           @projects = @gcp.gcp_project_client.list_projects(page_token: next_page)
         end
-        return [] if !@projects.projects
+        return [] if !@projects || !@projects.projects
         @projects.projects.map do |project|
           project_rows+=[{ project_id: project.project_id,
                       project_name: project.name,

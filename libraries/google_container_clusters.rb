@@ -33,7 +33,7 @@ module Inspec::Resources
         # below seemingly doesn't provide pagination
         @clusters = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).list_zone_clusters(@project, @zone)
       end
-      return [] if !@clusters.clusters
+      return [] if !@clusters || !@clusters.clusters
       @clusters.clusters.map do |cluster|
         cluster_rows+=[{ cluster_name: cluster.name,
                          cluster_status: cluster.status }]
