@@ -30,7 +30,7 @@ module Inspec::Resources
     def fetch_data
       instance_group_rows = []
       catch_gcp_errors do
-        @instance_groups = @gcp.gcp_compute_client.list_instance_groups(@project,@zone)
+        @instance_groups = @gcp.gcp_compute_client.list_instance_groups(@project, @zone)
       end
       return [] if !@instance_groups || !@instance_groups.items
       @instance_groups.items.map do |instance_group|
