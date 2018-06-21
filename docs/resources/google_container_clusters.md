@@ -43,10 +43,10 @@ The following examples show how to use this InSpec audit resource.
       its('cluster_names') { should include "my-cluster" }
     end
 
-### Test whether any clusters are in status "STOPPED"
+### Test whether any clusters are in status "STOPPING"
 
     describe google_container_clusters(project: 'chef-inspec-gcp', zone: 'europe-west2-a') do
-      its('cluster_statuses') { should_not include "STOPPED" }
+      its('cluster_statuses') { should_not include "STOPPING" }
     end
 
 ### Test that a subset of all clusters matching "kube*" are "RUNNING"
@@ -67,7 +67,7 @@ This resource supports the following filter criteria: `cluster_name` and `cluste
 ## Properties
 
 *  `cluster_names` - an array of google_container_cluster name strings
-*  `cluster_statuses`- an array of google_container_cluster status stringss
+*  `cluster_statuses`- an array of google_container_cluster status strings
 
 <br>
 

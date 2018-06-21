@@ -103,6 +103,8 @@ control 'gcp-projects-firewalls-loop-1.0' do
 end
 ```
 
+This example assumes there are sufficient privileges to list all GCP projects.
+
 ### Check that a particular label exists on all VMs across all projects and zones
 
 This check ensures that VMs have label `must_be_there` for each project: 
@@ -125,6 +127,9 @@ control 'gcp-projects-zones-vm-label-loop-1.0' do
   end
 end
 ```
+
+This example assumes there are sufficient privileges to list all GCP projects.
+
 
 ## Test inspec-gcp resources
 
