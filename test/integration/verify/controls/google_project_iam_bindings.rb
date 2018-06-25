@@ -11,7 +11,7 @@ control 'gcp-project-iam-bindings-1.0' do
 
   describe google_project_iam_bindings(project: gcp_project_id) do
     it { should exist }
-    its('count') { should be <= 100} # 46 at the time of writing
+    its('count') { should be <= 100}
     its('iam_binding_roles') { should include "roles/owner" }
   end
 
