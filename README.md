@@ -73,6 +73,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_container_node_pool](docs/resources/google_container_node_pool.md)
 - [google_container_node_pools](docs/resources/google_container_node_pools.md)
 - [google_project](docs/resources/google_project.md)
+- [google_project_iam_binding](docs/resources/google_project_iam_binding.md)
+- [google_project_iam_bindings](docs/resources/google_project_iam_bindings.md)
 - [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md)
 - [google_projects](docs/resources/google_projects.md)
 - [google_service_account](docs/resources/google_service_account.md)
