@@ -65,7 +65,7 @@ The following examples show how to use this InSpec audit resource.
       it { should allow_port_protocol("80", "tcp") }
     end
 
-### Test whether firewall rule allows ingress/egrees for specified tags 
+### Test whether firewall rule allows ingress/egress for specified tags 
 
     describe google_compute_firewall(project: 'chef-inspec-gcp', name: 'firewall-rule') do
       its('direction') { should eq "INGRESS" }

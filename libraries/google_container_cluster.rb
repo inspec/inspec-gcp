@@ -9,7 +9,7 @@ module Inspec::Resources
     desc 'Verifies settings for a google container cluster'
 
     example "
-      describe google_container_cluster(project: 'chef-inspec-gcp', zone: 'gcp-inspec-test', name: 'cluster-name') do
+      describe google_container_cluster(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: 'cluster-name') do
         it { should exist }
         its('name') { should eq 'inspec-test' }
         its('status') { should eq 'in_use' }

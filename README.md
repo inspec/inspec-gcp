@@ -58,21 +58,78 @@ supports:
 
 The following resources are available in the InSpec GCP Profile
 
-- [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md)
-- [google_compute_instance](docs/resources/google_compute_instance.md)
-- [google_service_account](docs/resources/google_service_account.md)
-- [google_container_cluster](docs/resources/google_container_cluster.md)
-- [google_compute_firewalls](docs/resources/google_compute_firewalls.md)
-- [google_project](docs/resources/google_project.md)
 - [google_compute_address](docs/resources/google_compute_address.md)
 - [google_compute_firewall](docs/resources/google_compute_firewall.md)
+- [google_compute_firewalls](docs/resources/google_compute_firewalls.md)
 - [google_compute_image](docs/resources/google_compute_image.md)
+- [google_compute_instance](docs/resources/google_compute_instance.md)
 - [google_compute_instance_group](docs/resources/google_compute_instance_group.md)
-- [google_compute_zones](docs/resources/google_compute_zones.md)
-- [google_compute_zone](docs/resources/google_compute_zone.md)
+- [google_compute_instance_groups](docs/resources/google_compute_instance_groups.md)
 - [google_compute_instances](docs/resources/google_compute_instances.md)
-- [google_storage_bucket](docs/resources/google_storage_bucket.md)
+- [google_compute_zone](docs/resources/google_compute_zone.md)
+- [google_compute_zones](docs/resources/google_compute_zones.md)
+- [google_container_cluster](docs/resources/google_container_cluster.md)
+- [google_container_clusters](docs/resources/google_container_clusters.md)
 - [google_container_node_pool](docs/resources/google_container_node_pool.md)
+- [google_container_node_pools](docs/resources/google_container_node_pools.md)
+- [google_project](docs/resources/google_project.md)
+- [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md)
+- [google_projects](docs/resources/google_projects.md)
+- [google_service_account](docs/resources/google_service_account.md)
+- [google_storage_bucket](docs/resources/google_storage_bucket.md)
+- [google_storage_buckets](docs/resources/google_storage_buckets.md)
+
+## Examples
+
+### Check SSH is Disabled for INGRESS across all GCP Projects
+
+We use several plural resources for this example that loops across all projects and firewall rules.  Making use of a plural resource property, we filter firewall rules for direction 'INGRESS' :
+
+```
+title 'Loop over all GCP projects and look at firewalls in INGRESS direction'
+
+control 'gcp-projects-firewalls-loop-1.0' do
+
+  impact 1.0
+  title 'Ensure INGRESS firewalls in all projects have the correct properties using google_compute_firewall for detail.'
+
+  google_projects.project_names.each do |project_name|
+    google_compute_firewalls(project: project_name).where(firewall_direction: 'INGRESS').firewall_names.each do |firewall_name|
+      describe google_compute_firewall(project: project_name, name: firewall_name) do
+        its('allowed_ssh?')  { should be false }
+      end
+    end
+  end
+end
+```
+
+This example assumes there are sufficient privileges to list all GCP projects.
+
+### Check that a particular label exists on all VMs across all projects and zones
+
+This check ensures that VMs have label `must_be_there` for each project: 
+```
+title 'Loop over all GCP projects and ensure all VMs have a particular label'
+
+control 'gcp-projects-zones-vm-label-loop-1.0' do
+
+  impact 1.0
+  title 'Ensure all VMs have must_be_there label key set'
+
+  google_projects.project_names.each do |project_name|
+    google_compute_zones(project: project_name).zone_names.each do |zone_name|
+      google_compute_instances(project: project_name, zone: zone_name).instance_names.each do |instance_name|
+        describe google_compute_instance(project: project_name, zone: zone_name, name: instance_name) do
+          its('labels_keys') { should include 'must_be_there' }
+        end
+      end
+    end
+  end
+end
+```
+
+This example assumes there are sufficient privileges to list all GCP projects.
+
 
 ## Test inspec-gcp resources
 
@@ -127,6 +184,11 @@ $ bundle exec rake test:run_integration_tests
 ``` bash
 $ bundle exec rake test:cleanup_integration_tests 
 ```
+
+## Further Reading
+
+* [Introduction to InSpec GCP](https://lollyrock.com/articles/inspec-cloud-gcp-setup/)
+* [InSpec GCP Deep Dive](https://blog.chef.io/2018/06/19/inspec-gcp-deep-dive/)
 
 ## FAQ 
 

@@ -15,8 +15,7 @@ A `google_compute_instance_group` resource block declares the tests for a single
 
     describe google_compute_instance_group(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: 'gcp-inspec-test') do
       it { should exist }
-      its('name') { should eq 'gcp-inspec-test' }
-      its('zone') { should match 'europe-west2-a' }
+      its('size') { should eq 2 }
     end
 
 <br>
