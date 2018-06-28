@@ -459,7 +459,6 @@ resource "google_kms_key_ring_iam_policy" "key_ring_policy" {
 }
 
 # Use the second key ring to attach an IAM binding plus IAM member affecting different roles
-#member      = "${var.gcp_inspec_user_email}"
 
 resource "google_kms_key_ring_iam_binding" "key_ring_binding" {
   count = "${var.gcp_enable_privileged_resources}"

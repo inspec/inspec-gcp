@@ -35,6 +35,12 @@ module Inspec::Resources
       Time.parse(create_time)
     end
 
+    # this is added for completeness as key ring IAM bindings use the key_ring_url as an identifier
+    def key_ring_url
+      return false if !defined?(name)
+      name
+    end
+
     def exists?
       !@kms_key_ring.nil?
     end

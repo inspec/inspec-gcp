@@ -38,7 +38,7 @@ The following examples show how to use this InSpec audit resource.
       its('count') { should be <= 100}
     end
 
-### Test that an expected iam_binding is available for the project
+### Test that an expected role is available for the project
 
     describe google_project_iam_bindings(project: 'chef-inspec-gcp') do
       its('iam_binding_roles') { should include "roles/storage.admin" }

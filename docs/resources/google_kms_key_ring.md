@@ -41,7 +41,7 @@ For any existing key ring, below should definitely be true!
 
 ## Properties
 
-*  `create_time`, `create_time_date`, `name`,  `key_ring_name`
+*  `create_time`, `create_time_date`, `name`,  `key_ring_name`, `key_ring_url`
 
 <br>
 
