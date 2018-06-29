@@ -63,6 +63,8 @@ module GCPInspecConfig
       :gcp_inspec_user_email => "user:chef@example.com",
       :gcp_kms_key_ring_policy_name => "gcp-inspec-kms-key-ring-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
       :gcp_kms_key_ring_binding_member_name => "gcp-inspec-kms-key-ring-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
+      :gcp_kms_crypto_key_name_policy => "gcp-inspec-kms-crypto-key-policy-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
+      :gcp_kms_crypto_key_name_binding => "gcp-inspec-kms-crypto-key-binding-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
       # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
       # be disabled meaning a user needs no special GCP privileges to run the integration test pack.

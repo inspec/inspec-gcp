@@ -60,6 +60,8 @@ variable "gcp_kube_cluster_master_pass" {}
 
 variable "gcp_kms_key_ring_policy_name" {}
 variable "gcp_kms_key_ring_binding_member_name" {}
+variable "gcp_kms_crypto_key_name_policy" {}
+variable "gcp_kms_crypto_key_name_binding" {}
 
 variable "gcp_storage_bucket_name" {
   default ="gcp-inspec"
@@ -476,5 +478,33 @@ resource "google_kms_key_ring_iam_member" "key_ring_iam_member" {
   role        = "roles/owner"
   member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
 }
+
+resource "google_kms_crypto_key" "crypto_key_policy" {
+  name            = "${var.gcp_kms_crypto_key_name_policy}"
+  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_policy.id}"
+  rotation_period = "100000s"
+}
+
+resource "google_kms_crypto_key" "crypto_key_binding" {
+  name            = "${var.gcp_kms_crypto_key_name_binding}"
+  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  rotation_period = "100000s"
+}
+
+resource "google_kms_crypto_key_iam_member" "crypto_key_iam_member" {
+  crypto_key_id = "${google_kms_crypto_key.crypto_key_policy.id}"
+  role          = "roles/editor"
+  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+}
+
+resource "google_kms_crypto_key_iam_binding" "crypto_key_iam_binding" {
+  crypto_key_id = "${google_kms_crypto_key.crypto_key_binding.id}"
+  role          = "roles/editor"
+
+  members = [
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+  ]
+}
+
 
 # End GCP KMS resources
