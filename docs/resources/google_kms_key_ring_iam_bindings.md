@@ -20,7 +20,7 @@ A `google_kms_key_ring_iam_bindings` resource block collects GCP KMS key ring IA
 Use this InSpec resource to enumerate roles then test in-depth using `google_kms_key_ring_iam_binding`.
 
     google_kms_key_ring_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring').iam_binding_roles.each do |iam_binding_role|
-      describe google_kms_key_ring_iam_binding(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring',  role: iam_binding_role) do
+      describe google_kms_key_ring_iam_binding(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring',  role: "roles/owner") do
         it { should exist }
         its('members') {should include 'user:someuser@domain.com' }
       end
@@ -38,7 +38,7 @@ The following examples show how to use this InSpec audit resource.
       its('count') { should be <= 100}
     end
 
-### Test that an expected iam_binding is available for the key ring
+### Test that an expected IAM binding is available for the key ring
 
     describe google_kms_key_ring_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring') do
       its('iam_binding_roles') { should include "roles/storage.admin" }
@@ -46,7 +46,7 @@ The following examples show how to use this InSpec audit resource.
     
 ### Test that a particular role does not exist using filtering of the plural resource
 
-    describe google_project_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring').where(iam_binding_role: "roles/iam.securityReviewer") do
+    describe google_kms_key_ring_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring').where(iam_binding_role: "roles/iam.securityReviewer") do
       it { should_not exist }
     end
 
@@ -58,7 +58,7 @@ This resource supports the following filter criteria:  `iam_binding_role`.  This
 
 ## Properties
 
-*  `iam_binding_roles` - an array of google_project_iam_binding role strings e.g. `["roles/compute.admin", "roles/owner"]`
+*  `iam_binding_roles` - an array of google_kms_key_ring_iam_binding role strings e.g. `["roles/compute.admin", "roles/owner"]`
 
 <br>
 

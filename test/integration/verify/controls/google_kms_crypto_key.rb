@@ -10,7 +10,7 @@ control 'gcp-kms-crypto-key-1.0' do
 
   only_if { gcp_enable_privileged_resources.to_i == 1 }
   impact 1.0
-  title 'Ensure single GCP GCP KMS Crypto Key has the correct properties.'
+  title 'Ensure single GCP KMS Crypto Key has the correct properties.'
 
   describe google_kms_crypto_key(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_policy_name, name: gcp_kms_crypto_key_name_policy) do
     it { should exist }
