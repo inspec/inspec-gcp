@@ -58,10 +58,16 @@ variable "gcp_kube_cluster_zone_extra2" {}
 variable "gcp_kube_cluster_master_user" {}
 variable "gcp_kube_cluster_master_pass" {}
 
+variable "gcp_kms_key_ring_policy_name" {}
+variable "gcp_kms_key_ring_binding_member_name" {}
+variable "gcp_kms_crypto_key_name_policy" {}
+variable "gcp_kms_crypto_key_name_binding" {}
 
 variable "gcp_storage_bucket_name" {
   default ="gcp-inspec"
 }
+
+#variable "gcp_inspec_user_email" {}
 
 variable "gcp_enable_privileged_resources" {}
 
@@ -412,3 +418,97 @@ output "cluster_ca_certificate" {
 ##############################################################
 # End of the GKE cluster example
 ##############################################################
+
+# Start GCP KMS resources
+# This reuses service account email address that was created earlier to test IAM policies/binding/memberships
+
+#Note: google_kms_key_ring_iam_policy cannot be used in conjunction with google_kms_key_ring_iam_binding and google_kms_key_ring_iam_member or they will fight over what your policy should be.
+
+resource "google_kms_key_ring" "gcp_kms_key_ring_policy" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_kms_key_ring_policy_name}"
+  location = "${var.gcp_location}"
+}
+
+
+#Note: google_kms_key_ring_iam_binding resources can be used in conjunction with google_kms_key_ring_iam_member resources only if they do not grant privilege to the same role.
+
+resource "google_kms_key_ring" "gcp_kms_key_ring_binding_member" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_kms_key_ring_binding_member_name}"
+  location = "${var.gcp_location}"
+}
+
+# Use the first key ring to attach an IAM policy
+
+data "google_iam_policy" "gcp_inspec_admin_key_ring" {
+  count = "${var.gcp_enable_privileged_resources}"
+  binding {
+    role = "roles/editor"
+
+    members = [
+      "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+    ]
+  }
+}
+
+resource "google_kms_key_ring_iam_policy" "key_ring_policy" {
+  count = "${var.gcp_enable_privileged_resources}"
+  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_policy.id}"
+  policy_data = "${data.google_iam_policy.gcp_inspec_admin_key_ring.policy_data}"
+}
+
+# Use the second key ring to attach an IAM binding plus IAM member affecting different roles
+
+resource "google_kms_key_ring_iam_binding" "key_ring_binding" {
+  count = "${var.gcp_enable_privileged_resources}"
+  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  role        = "roles/editor"
+
+  members = [
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+  ]
+}
+
+resource "google_kms_key_ring_iam_member" "key_ring_iam_member" {
+  count = "${var.gcp_enable_privileged_resources}"
+  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  role        = "roles/owner"
+  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+}
+
+resource "google_kms_crypto_key" "crypto_key_policy" {
+  count = "${var.gcp_enable_privileged_resources}"
+  name            = "${var.gcp_kms_crypto_key_name_policy}"
+  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_policy.id}"
+  rotation_period = "100000s"
+}
+
+resource "google_kms_crypto_key" "crypto_key_binding" {
+  count = "${var.gcp_enable_privileged_resources}"
+  name            = "${var.gcp_kms_crypto_key_name_binding}"
+  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  rotation_period = "100000s"
+}
+
+resource "google_kms_crypto_key_iam_member" "crypto_key_iam_member" {
+  count = "${var.gcp_enable_privileged_resources}"
+  crypto_key_id = "${google_kms_crypto_key.crypto_key_policy.id}"
+  role          = "roles/editor"
+  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+}
+
+resource "google_kms_crypto_key_iam_binding" "crypto_key_iam_binding" {
+  count = "${var.gcp_enable_privileged_resources}"
+  crypto_key_id = "${google_kms_crypto_key.crypto_key_binding.id}"
+  role          = "roles/editor"
+
+  members = [
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+  ]
+}
+
+
+# End GCP KMS resources
