@@ -9,6 +9,22 @@ Use the `google_storage_buckets` InSpec audit resource to test properties of a G
 
 <br>
 
+## Availability
+
+### Installation
+
+This resource is available in the `inspec-gcp` [resource pack](https://www.inspec.io/docs/reference/glossary/#resource-pack).  To use it, add the following to your `inspec.yml` in your top-level profile:
+
+    depends:
+      inspec-gcp:
+        git: https://github.com/inspec/inspec-gcp.git
+
+You'll also need to setup your GCP credentials; see the resource pack [README](https://github.com/inspec/inspec-gcp#prerequisites).
+
+### Version
+
+This resource first became available in v0.4.0 of the inspec-gcp resource pack.
+
 ## Syntax
 
 A `google_storage_buckets` resource block collects GCP buckets by project then tests that group.

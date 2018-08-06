@@ -9,6 +9,18 @@ Use the `google_project_iam_binding` InSpec audit resource to test properties of
 
 <br>
 
+## Availability
+
+### Installation
+
+This resource is available in the `inspec-gcp` [resource pack](https://www.inspec.io/docs/reference/glossary/#resource-pack).  To use it, add the following to your `inspec.yml` in your top-level profile:
+
+    depends:
+      inspec-gcp:
+        git: https://github.com/inspec/inspec-gcp.git
+
+You'll also need to setup your GCP credentials; see the resource pack [README](https://github.com/inspec/inspec-gcp#prerequisites).
+
 ## Syntax
 
 A `google_project_iam_binding` resource block declares the tests for a single GCP project IAM binding by role.
