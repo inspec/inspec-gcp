@@ -1,4 +1,4 @@
-title 'Test single GCP storage bucket IAM binding'
+title 'Test single GCP storage bucket ACL'
 
 gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
 gcp_storage_bucket_acl = attribute(:gcp_storage_bucket_acl, default: '', description: 'The GCP bucket with ACL set.')
