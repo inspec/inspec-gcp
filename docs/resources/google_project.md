@@ -5,17 +5,26 @@ platform: gcp
 
 # google\_project
 
-Use the `google_project` InSpec audit resource to test properties of a GCP project.
+Use the `google_project` InSpec audit resource to test properties of a GCP project.  
 
 <br>
 
 ## Syntax
 
-A `google_project` resource block declares the tests for a single GCP project by name.
+Google projects have a name, ID and number as described [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
+
+A `google_project` resource block declares the tests for a single GCP project identified by `project_id` or `project_number`:
 
     describe google_project(project: 'chef-inspec-gcp') do
       it { should exist }
       its('name') { should eq 'chef-inspec-gcp'  }
+      its('project_number') { should eq 12345678 }
+    end
+
+    describe google_project(project: 12345678) do
+      it { should exist }
+      its('name') { should eq 'chef-inspec-gcp'  }
+      its('project_number') { should eq 12345678 }
     end
 
 <br>

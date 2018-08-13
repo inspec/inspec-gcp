@@ -16,4 +16,10 @@ control 'gcp-project' do
     its('lifecycle_state') { should eq "ACTIVE" }
   end
 
+  describe google_project(project: gcp_project_number.to_i) do
+    it { should exist }
+    its('name') { should eq gcp_project_name }
+    its('project_number') { should eq gcp_project_number.to_i }
+    its('lifecycle_state') { should eq "ACTIVE" }
+  end
 end
