@@ -14,6 +14,8 @@ terraform {
 
 variable "gcp_project_name" {}
 variable "gcp_project_id" {}
+variable "gcp_project_number" {}
+
 variable "gcp_location" {
   default = "europe-west2"
 }
@@ -63,23 +65,22 @@ variable "gcp_kms_key_ring_binding_member_name" {}
 variable "gcp_kms_crypto_key_name_policy" {}
 variable "gcp_kms_crypto_key_name_binding" {}
 
-variable "gcp_storage_bucket_name" {
-  default ="gcp-inspec"
-}
+variable "gcp_storage_bucket_name" {}
+variable "gcp_storage_bucket_acl" {}
+variable "gcp_storage_bucket_binding" {}
+variable "gcp_storage_bucket_member" {}
+variable "gcp_storage_bucket_policy" {}
+variable "gcp_storage_bucket_object" {}
+variable "gcp_storage_bucket_object_name" {}
 
 #variable "gcp_inspec_user_email" {}
 
 variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
-  region = "${var.gcp_location}"
+  region = "${var.gcp_location}",
+  version = "~> 1.16"
 }
-
-# TBD: initial GCP account can't create these easily, make as part of the account paving?
-#resource "google_project" "Chef_Inspec_GCP" {
-#  name = "Inspec GCP ${var.project_name}"
-#  project_id = "${var.project_id}"
-#}
 
 resource "google_compute_instance" "generic_internal_vm_instance" {
   project = "${var.gcp_project_id}"
@@ -98,19 +99,11 @@ resource "google_compute_instance" "generic_internal_vm_instance" {
   }
 }
 
-resource "google_storage_bucket" "generic-storage-bucket" {
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_name}"
-  location = "${var.gcp_location}"
-}
-
-
 resource "google_compute_address" "generic_external_vm_address" {
   project = "${var.gcp_project_id}"
   name = "${var.gcp_ext_compute_address_name}"
   region = "${var.gcp_location}"
 }
-
 
 resource "google_compute_instance" "generic_external_vm_instance" {
   project = "${var.gcp_project_id}"
@@ -512,3 +505,137 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key_iam_binding" {
 
 
 # End GCP KMS resources
+
+# Start storage bucket resources
+
+resource "google_storage_bucket" "generic-storage-bucket" {
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_storage_bucket_name}"
+  location = "${var.gcp_location}"
+}
+
+# let's add a default ACL on the previous bucket
+resource "google_storage_default_object_acl" "bucket-default-acl" {
+  count = "${var.gcp_enable_privileged_resources}"
+  bucket = "${google_storage_bucket.generic-storage-bucket.name}"
+  role_entity = [
+    "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
+    "OWNER:project-owners-${var.gcp_project_number}",
+  ]
+}
+
+# now test adding an ACL to a bucket
+
+resource "google_storage_bucket" "bucket-with-acl" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_storage_bucket_acl}"
+  location = "${var.gcp_location}"
+}
+
+# make use of project convenience values as described here -  https://cloud.google.com/storage/docs/access-control/lists
+resource "google_storage_bucket_acl" "bucket-acl" {
+  count = "${var.gcp_enable_privileged_resources}"
+  bucket = "${google_storage_bucket.bucket-with-acl.name}"
+
+  role_entity = [
+    "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
+    "OWNER:project-owners-${var.gcp_project_number}",
+  ]
+}
+
+# Note: google_storage_bucket_iam_binding resources can be used in conjunction with google_storage_bucket_iam_member resources only if they do not grant privilege to the same role.
+# for simplicity here, create a bucket for iam binding and member cases
+
+resource "google_storage_bucket" "bucket-with-iam-binding" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_storage_bucket_binding}"
+  location = "${var.gcp_location}"
+}
+
+resource "google_storage_bucket_iam_binding" "bucket-iam-binding" {
+  count = "${var.gcp_enable_privileged_resources}"
+  bucket = "${google_storage_bucket.bucket-with-iam-binding.name}"
+  role = "roles/storage.objectViewer"
+
+  members = [
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+  ]
+}
+
+resource "google_storage_bucket" "bucket-with-iam-member" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_storage_bucket_member}"
+  location = "${var.gcp_location}"
+}
+
+resource "google_storage_bucket_iam_member" "bucket-iam-member" {
+  count = "${var.gcp_enable_privileged_resources}"
+  bucket = "${google_storage_bucket.bucket-with-iam-member.name}"
+  role = "roles/storage.objectViewer"
+  member = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+}
+
+# now for the IAM policy case
+
+resource "google_storage_bucket" "bucket-with-iam-policy" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_storage_bucket_policy}"
+  location = "${var.gcp_location}"
+}
+
+data "google_iam_policy" "bucket-iam-policy" {
+  count = "${var.gcp_enable_privileged_resources}"
+  binding {
+    role = "roles/storage.admin"
+
+    members = [ "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}" ]
+  }
+}
+
+resource "google_storage_bucket_iam_policy" "bucket-iam-policy-add" {
+  count = "${var.gcp_enable_privileged_resources}"
+  bucket = "${google_storage_bucket.bucket-with-iam-policy.name}"
+  policy_data = "${data.google_iam_policy.bucket-iam-policy.policy_data}"
+}
+
+# finally let's create a bucket with object plus an object ACL
+
+resource "google_storage_bucket" "bucket-with-object" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_storage_bucket_object}"
+  location = "${var.gcp_location}"
+}
+
+resource "google_storage_bucket_object" "bucket-object" {
+  count = "${var.gcp_enable_privileged_resources}"
+  name   = "${var.gcp_storage_bucket_object_name}"
+  bucket = "${google_storage_bucket.bucket-with-object.name}"
+  content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with ACL."
+}
+
+resource "google_storage_bucket_object" "bucket-object-no-acl" {
+  count = "${var.gcp_enable_privileged_resources}"
+  name   = "${var.gcp_storage_bucket_object_name}-no-acl"
+  bucket = "${google_storage_bucket.bucket-with-object.name}"
+  content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with no ACL added."
+}
+
+#finally, add object ACL
+
+resource "google_storage_object_acl" "bucket-object-acl" {
+  count = "${var.gcp_enable_privileged_resources}"
+  bucket = "${google_storage_bucket.bucket-with-object.name}"
+  object = "${google_storage_bucket_object.bucket-object.name}"
+
+  role_entity = [
+    "OWNER:project-owners-${var.gcp_project_number}",
+    "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
+  ]
+}
+
+# END storage bucket resources
