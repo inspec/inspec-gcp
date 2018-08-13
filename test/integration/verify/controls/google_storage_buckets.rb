@@ -12,7 +12,7 @@ control 'gcp-storage-buckets-1.0' do
 
   describe google_storage_buckets(project: gcp_project_id) do
     it { should exist }
-    its('count') { should be <= 10}
+    its('count') { should be <= 100}
     its('bucket_names') { should include gcp_storage_bucket_name }
     its('bucket_ids') { should include gcp_storage_bucket_name }
     its('bucket_locations') { should include gcp_location.upcase }
