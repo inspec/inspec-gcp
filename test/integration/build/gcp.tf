@@ -82,6 +82,13 @@ provider "google" {
   version = "~> 1.16"
 }
 
+resource "google_service_account" "generic_service_account_object_viewer" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  account_id   = "object-viewer"
+  display_name = "${var.gcp_service_account_display_name}"
+}
+
 resource "google_compute_instance" "generic_internal_vm_instance" {
   project = "${var.gcp_project_id}"
   name         = "${var.gcp_int_vm_name}"
@@ -141,13 +148,6 @@ resource "google_compute_instance" "generic_windows_internal_vm_instance" {
   network_interface {
     network = "default"
   }
-}
-
-resource "google_service_account" "generic_service_account_object_viewer" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  account_id   = "object-viewer"
-  display_name = "${var.gcp_service_account_display_name}"
 }
 
 resource "google_project_iam_custom_role" "generic_project_iam_custom_role" {
@@ -618,13 +618,6 @@ resource "google_storage_bucket_object" "bucket-object" {
   content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with ACL."
 }
 
-resource "google_storage_bucket_object" "bucket-object-no-acl" {
-  count = "${var.gcp_enable_privileged_resources}"
-  name   = "${var.gcp_storage_bucket_object_name}-no-acl"
-  bucket = "${google_storage_bucket.bucket-with-object.name}"
-  content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with no ACL added."
-}
-
 #finally, add object ACL
 
 resource "google_storage_object_acl" "bucket-object-acl" {
@@ -637,5 +630,37 @@ resource "google_storage_object_acl" "bucket-object-acl" {
     "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
   ]
 }
+
+# try the last scenario of adding an IAM policy to an object
+
+# note at the time of writing, terraform isn't supporting the IAM policy applied to storage object case
+# https://www.terraform.io/docs/providers/google/r/storage_bucket_object.html
+
+# will revisit based on outcome of https://github.com/terraform-providers/terraform-provider-google/issues/1871
+
+//resource "google_storage_bucket_object" "bucket-object-attach-policy" {
+//  count = "${var.gcp_enable_privileged_resources}"
+//  name   = "${var.gcp_storage_bucket_object_name}-iam"
+//  bucket = "${google_storage_bucket.bucket-with-object.name}"
+//  content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with IAM policy."
+//}
+//
+//data "google_iam_policy" "object-iam-policy" {
+//  count = "${var.gcp_enable_privileged_resources}"
+//  binding {
+//    role = "roles/storage.admin"
+//
+//    members = [ "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}" ]
+//  }
+//}
+//
+//# would expect this to be something like below:
+//resource "google_storage_object_iam_policy" "object-iam-policy-add" {
+//  count = "${var.gcp_enable_privileged_resources}"
+//  bucket = "${google_storage_bucket.bucket-with-object.name}"
+//  object = "${google_storage_bucket_object.bucket-object-attach-policy.name}"
+//  policy_data = "${data.google_iam_policy.object-iam-policy.policy_data}"
+//}
+
 
 # END storage bucket resources
