@@ -9,6 +9,11 @@ require 'passgen'
 
 module GCPInspecConfig
 
+  # helper method for adding random strings
+  def self.add_random_string(length=25)
+    "#{(0...length).map { (65 + rand(26)).chr }.join.downcase}"
+  end
+
   # Config for terraform / inspec in the below hash
   @config = {
       # Generic GCP resource parameters
@@ -33,7 +38,7 @@ module GCPInspecConfig
       :gcp_service_account_display_name => "gcp-inspec-service-account",
       # We need to randomize the name of this role to avoid e.g.
       #    Error 400: You can't create a role with role_id (gcp_inspec_project_custom_role_id) where there is an existing role with that role_id in a deleted state.
-      :gcp_project_iam_custom_role_id => "gcp_inspec_custom_role_id_#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
+      :gcp_project_iam_custom_role_id => "gcp_inspec_custom_role_id_#{add_random_string}",
       :gcp_compute_disk_name => "gcp-inspec-compute-disk-name",
       :gcp_compute_disk_type => "pd-standard",
       :gcp_compute_disk_image => "ubuntu-os-cloud/ubuntu-1604-lts",
@@ -41,13 +46,13 @@ module GCPInspecConfig
       :gcp_ext_vm_data_disk_name => "gcp-inspec-generic-ext-linux-vm-data-disk",
       :gcp_ext_vm_data_disk_size => "f1-micro",
       :gcp_ext_vm_data_disk_image => "ubuntu-os-cloud/ubuntu-1604-lts",
-      :gcp_storage_bucket_name => "gcp-inspec-storage-bucket-#{(0...25).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_storage_bucket_acl => "gcp-inspec-storage-bucket-acl-#{(0...25).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_storage_bucket_binding => "gcp-inspec-storage-bucket-iam-binding-#{(0...25).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_storage_bucket_member => "gcp-inspec-storage-bucket-iam-member-#{(0...25).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_storage_bucket_policy => "gcp-inspec-storage-bucket-iam-policy-#{(0...25).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_storage_bucket_object => "gcp-inspec-storage-bucket-object-#{(0...25).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_storage_bucket_object_name => "bucket-object-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
+      :gcp_storage_bucket_name => "gcp-inspec-storage-bucket-#{add_random_string}",
+      :gcp_storage_bucket_acl => "gcp-inspec-storage-bucket-acl-#{add_random_string}",
+      :gcp_storage_bucket_binding => "gcp-inspec-storage-bucket-iam-binding-#{add_random_string}",
+      :gcp_storage_bucket_member => "gcp-inspec-storage-bucket-iam-member-#{add_random_string}",
+      :gcp_storage_bucket_policy => "gcp-inspec-storage-bucket-iam-policy-#{add_random_string}",
+      :gcp_storage_bucket_object => "gcp-inspec-storage-bucket-object-#{add_random_string}",
+      :gcp_storage_bucket_object_name => "bucket-object-#{add_random_string}",
       # Google Load Balanced App example parameters
       :gcp_lb_region => "europe-west2",
       :gcp_lb_zone => "europe-west2-a",
@@ -67,10 +72,14 @@ module GCPInspecConfig
       :gcp_kube_cluster_master_pass => Passgen::generate(length: 20, uppercase: true, lowercase: true, symbols: true, digits: true),
       :gcp_kube_nodepool_name => "default-pool",
       :gcp_inspec_user_email => "user:chef@example.com",
-      :gcp_kms_key_ring_policy_name => "gcp-inspec-kms-key-ring-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_kms_key_ring_binding_member_name => "gcp-inspec-kms-key-ring-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_kms_crypto_key_name_policy => "gcp-inspec-kms-crypto-key-policy-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
-      :gcp_kms_crypto_key_name_binding => "gcp-inspec-kms-crypto-key-binding-#{(0...15).map { (65 + rand(26)).chr }.join.downcase}",
+      :gcp_kms_key_ring_policy_name => "gcp-inspec-kms-key-ring-#{add_random_string}",
+      :gcp_kms_key_ring_binding_member_name => "gcp-inspec-kms-key-ring-#{add_random_string}",
+      :gcp_kms_crypto_key_name_policy => "gcp-inspec-kms-crypto-key-policy-#{add_random_string}",
+      :gcp_kms_crypto_key_name_binding => "gcp-inspec-kms-crypto-key-binding-#{add_random_string}",
+      :gcp_logging_vm_name => "gcp-inspec-logging-vm",
+      :gcp_logging_bucket_name => "gcp-inspec-logging-#{add_random_string}",
+      :gcp_logging_project_sink_name => "gcp-inspec-logging-project-#{add_random_string}",
+      :gcp_logging_project_exclusion_name => "gcp-inspec-project-exclusion-#{add_random_string}",
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
       # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
       # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
