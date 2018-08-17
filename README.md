@@ -40,11 +40,20 @@ Since this is an InSpec resource pack, it only defines InSpec resources. It incl
 
 ```bash
 $ inspec init profile my-profile
+Create new profile at /Users/skpaterson/my-profile
+ * Create directory libraries
+ * Create file README.md
+ * Create directory controls
+ * Create file controls/example.rb
+ * Create file inspec.yml
+ * Create file libraries/.gitkeep
 ```
+
+Now update the default `inspec.yml` file to point to the InSpec GCP resource pack:
 
 ```yaml
 name: my-profile
-title: My own Oneview profile
+title: My GCP InSpec Profile
 version: 0.1.0
 inspec_version: '>= 2.2.10'
 depends:
@@ -87,7 +96,14 @@ The following resources are available in the InSpec GCP Profile
 - [google_projects](docs/resources/google_projects.md)
 - [google_service_account](docs/resources/google_service_account.md)
 - [google_storage_bucket](docs/resources/google_storage_bucket.md)
+- [google_storage_bucket_acl](docs/resources/google_storage_bucket_acl.md)
+- [google_storage_bucket_iam_binding](docs/resources/google_storage_bucket_iam_binding.md)
+- [google_storage_bucket_iam_bindings](docs/resources/google_storage_bucket_iam_bindings.md)
+- [google_storage_bucket_object](docs/resources/google_storage_bucket_object.md)
 - [google_storage_buckets](docs/resources/google_storage_buckets.md)
+- [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md)
+- [google_storage_object_acl](docs/resources/google_storage_object_acl.md)
+
 
 ## Examples
 

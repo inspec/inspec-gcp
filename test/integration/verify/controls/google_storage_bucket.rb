@@ -4,7 +4,7 @@ gcp_project_number = attribute(:gcp_project_number, default: '', description: 'T
 gcp_location = attribute(:gcp_location, default: '', description: 'The GCP region being used.')
 gcp_storage_bucket_name = attribute(:gcp_storage_bucket_name, default:'', description: 'The Storage Bucket name.')
 
-control 'gcp-generic-storage-bucket-1.0' do
+control 'gcp-storage-bucket-1.0' do
 
   impact 1.0
   title 'Ensure that the Storage Bucket has been created correctly'
@@ -17,6 +17,5 @@ control 'gcp-generic-storage-bucket-1.0' do
     its('kind') { should eq "storage#bucket" }
     its('project_number') {should eq gcp_project_number.to_i }
     its('storage_class') { should eq 'STANDARD' }
-    # revisit acl / owner / retention policy etc.
   end
 end
