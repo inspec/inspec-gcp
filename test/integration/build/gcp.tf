@@ -248,7 +248,7 @@ variable gcp_lb_ilb_name {
 
 module "gce_lb_fr" {
   project = "${var.gcp_project_id}"
-  source       = "github.com/GoogleCloudPlatform/terraform-google-lb"
+  source       = "github.com/GoogleCloudPlatform/terraform-google-lb?ref=1.0.2"
   region       = "${var.gcp_lb_region}"
   network      = "${var.gcp_lb_network}"
   name         = "${var.gcp_lb_fr_name}"
@@ -258,7 +258,7 @@ module "gce_lb_fr" {
 
 module "gce_ilb" {
   project = "${var.gcp_project_id}"
-  source      = "github.com/GoogleCloudPlatform/terraform-google-lb-internal"
+  source      = "github.com/GoogleCloudPlatform/terraform-google-lb-internal?ref=1.0.4"
   region      = "${var.gcp_lb_region}"
   name        = "${var.gcp_lb_ilb_name}"
   ports       = ["${module.mig2.service_port}"]
@@ -317,7 +317,7 @@ data "template_file" "group3-startup-script" {
 
 module "mig1" {
   project = "${var.gcp_project_id}"
-  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group"
+  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group?ref=1.1.13"
   region            = "${var.gcp_lb_region}"
   zone              = "${var.gcp_lb_zone}"
   name              = "${var.gcp_lb_mig1_name}"
@@ -331,7 +331,7 @@ module "mig1" {
 
 module "mig2" {
   project = "${var.gcp_project_id}"
-  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group"
+  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group?ref=1.1.13"
   region            = "${var.gcp_lb_region}"
   zone              = "${var.gcp_lb_zone_mig2}"
   name              = "${var.gcp_lb_mig2_name}"
@@ -344,7 +344,7 @@ module "mig2" {
 
 module "mig3" {
   project = "${var.gcp_project_id}"
-  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group"
+  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group?ref=1.1.13"
   region            = "${var.gcp_lb_region}"
   zone              = "${var.gcp_lb_zone_mig3}"
   name              = "${var.gcp_lb_mig3_name}"
