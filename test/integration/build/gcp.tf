@@ -73,7 +73,10 @@ variable "gcp_storage_bucket_policy" {}
 variable "gcp_storage_bucket_object" {}
 variable "gcp_storage_bucket_object_name" {}
 
-#variable "gcp_inspec_user_email" {}
+variable "gcp_logging_vm_name" {}
+variable "gcp_logging_bucket_name" {}
+variable "gcp_logging_project_sink_name" {}
+variable "gcp_logging_project_exclusion_name" {}
 
 variable "gcp_enable_privileged_resources" {}
 
@@ -664,3 +667,67 @@ resource "google_storage_object_acl" "bucket-object-acl" {
 
 
 # END storage bucket resources
+
+
+# Start logging resources - initially for projects
+
+
+resource "google_compute_instance" "vm-with-project-logging" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name         = "${var.gcp_logging_vm_name}"
+  machine_type = "${var.gcp_int_vm_size}"
+  zone         = "${var.gcp_zone}"
+
+  boot_disk {
+    initialize_params {
+      image = "${var.gcp_int_vm_image}"
+    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {}
+  }
+}
+
+resource "google_storage_bucket" "project-logging-bucket" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_logging_bucket_name}"
+  location = "${var.gcp_location}"
+}
+
+resource "google_logging_project_sink" "project-logging-instance-sink" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name = "${var.gcp_logging_project_sink_name}"
+  destination = "storage.googleapis.com/${google_storage_bucket.project-logging-bucket.name}"
+  filter = "resource.type = gce_instance AND resource.labels.instance_id = \"${google_compute_instance.vm-with-project-logging.instance_id}\""
+
+  unique_writer_identity = true
+}
+
+resource "google_project_iam_binding" "project-log-writer-iam-binding" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  role = "roles/storage.objectCreator"
+
+  members = [
+    "${google_logging_project_sink.project-logging-instance-sink.writer_identity}",
+  ]
+}
+
+resource "google_logging_project_exclusion" "project-logging-exclusion" {
+  count = "${var.gcp_enable_privileged_resources}"
+  project = "${var.gcp_project_id}"
+  name = "${var.gcp_logging_project_exclusion_name}"
+
+  description = "Exclude GCE instance debug logs"
+
+  # Exclude all DEBUG or lower severity messages relating to instances
+  filter = "resource.type = gce_instance AND severity <= DEBUG"
+}
+
+
+# End logging resources

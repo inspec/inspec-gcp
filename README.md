@@ -89,6 +89,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_kms_key_ring_iam_binding](docs/resources/google_kms_key_ring_iam_binding.md)
 - [google_kms_key_ring_iam_bindings](docs/resources/google_kms_key_ring_iam_bindings.md)
 - [google_kms_key_rings](docs/resources/google_kms_key_rings.md)
+- [google_logging_project_exclusion](docs/resources/google_logging_project_exclusion.md)
+- [google_logging_project_sink](docs/resources/google_logging_project_sink.md)
 - [google_project](docs/resources/google_project.md)
 - [google_project_iam_binding](docs/resources/google_project_iam_binding.md)
 - [google_project_iam_bindings](docs/resources/google_project_iam_bindings.md)
