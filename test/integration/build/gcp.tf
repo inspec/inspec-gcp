@@ -78,6 +78,9 @@ variable "gcp_logging_bucket_name" {}
 variable "gcp_logging_project_sink_name" {}
 variable "gcp_logging_project_exclusion_name" {}
 
+variable "gcp_network_name" {}
+variable "gcp_subnetwork_name" {}
+
 variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
@@ -731,3 +734,21 @@ resource "google_logging_project_exclusion" "project-logging-exclusion" {
 
 
 # End logging resources
+
+# Start network resources
+
+resource "google_compute_network" "inspec-gcp-network" {
+  project = "${var.gcp_project_id}"
+  name                    =  "${var.gcp_network_name}"
+  auto_create_subnetworks = "false"
+}
+
+resource "google_compute_subnetwork" "inspec-gcp-subnetwork" {
+  project = "${var.gcp_project_id}"
+  ip_cidr_range = "10.2.0.0/29" # i.e. 8 total & 6 usable IPs
+  name =  "${var.gcp_subnetwork_name}"
+  region = "${var.gcp_location}"
+  network = "${google_compute_network.inspec-gcp-network.self_link}"
+}
+
+# End network resources
