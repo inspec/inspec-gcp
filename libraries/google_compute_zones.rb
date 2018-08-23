@@ -10,14 +10,12 @@ module Inspec::Resources
     example "
       describe google_compute_zones(project: 'chef-inspec-gcp') do
         it { should exist }
-        ...
       end
     "
 
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @display_name = opts[:name]
       @project = opts[:project]
     end
 
