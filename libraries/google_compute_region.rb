@@ -27,7 +27,7 @@ module Inspec::Resources
     #   https://www.googleapis.com/compute/v1/projects/spaterson-project/zones/asia-east1-a
     def zone_names
       return false if !defined?(@region.zones)
-      @region.zones.map {|zone| zone.split('/').last }
+      @region.zones.map { |zone| zone.split('/').last }
     end
 
     def exists?
