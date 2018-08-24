@@ -79,6 +79,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_networks](docs/resources/google_compute_networks.md)
 - [google_compute_subnetwork](docs/resources/google_compute_subnetwork.md)
 - [google_compute_subnetworks](docs/resources/google_compute_subnetworks.md)
+- [google_compute_region](docs/resources/google_compute_region.md)
+- [google_compute_regions](docs/resources/google_compute_regions.md)
 - [google_compute_zone](docs/resources/google_compute_zone.md)
 - [google_compute_zones](docs/resources/google_compute_zones.md)
 - [google_container_cluster](docs/resources/google_container_cluster.md)
