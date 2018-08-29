@@ -74,6 +74,7 @@ This resource supports the following filter criteria: `service_account_id`; `ser
 *  `service_account_ids` - an array of google_service_account identifier integers
 *  `service_account_names` - an array of google_service_account name strings
 *  `service_account_display_names` - an array of google_service_account display name strings
+*  `service_account_emails` - an array of google_service_account email strings
 
 <br>
 

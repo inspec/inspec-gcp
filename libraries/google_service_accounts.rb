@@ -24,6 +24,7 @@ module Inspec::Resources
     filter_table_config.add(:service_account_ids, field: :service_account_id)
     filter_table_config.add(:service_account_names, field: :service_account_name)
     filter_table_config.add(:service_account_display_names, field: :service_account_display_name)
+    filter_table_config.add(:service_account_emails, field: :service_account_email)
     filter_table_config.connect(self, :fetch_data)
 
     def fetch_data
@@ -37,7 +38,9 @@ module Inspec::Resources
         @service_accounts.accounts.map do |service_account|
           service_account_rows+=[{ service_account_id: service_account.unique_id,
                                    service_account_name: service_account.name,
-                                   service_account_display_name: service_account.display_name }]
+                                   service_account_display_name: service_account.display_name,
+                                   service_account_email: service_account.email
+                                 }]
         end
         next_page = @service_accounts.next_page_token
         break unless next_page
