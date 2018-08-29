@@ -24,6 +24,7 @@ module GCPInspecConfig
       :gcp_location => "europe-west2",
       :gcp_zone => "europe-west2-a",
       :gcp_zone_id => "2290",
+      :gcp_region_id => "1290",
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
       :gcp_int_vm_size => "f1-micro",
       :gcp_int_vm_image => "ubuntu-os-cloud/ubuntu-1604-lts",
