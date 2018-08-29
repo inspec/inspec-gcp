@@ -51,6 +51,17 @@ module Inspec::Resources
       Time.parse(primary.create_time)
     end
 
+    def rotation_period_seconds
+      return false if !defined?(rotation_period)
+      result = nil
+      conversion = { 's'=>1, 'm'=>60, 'h'=>60*60, 'd'=>24*60*60 }
+      conversion.each do |time_unit, multiplier|
+        next if /#{time_unit}/.match(rotation_period).nil?
+        result=rotation_period.gsub(time_unit, '').to_i*multiplier
+      end
+      result
+    end
+
     def primary_name
       return false if !defined?(primary.name)
       primary.name

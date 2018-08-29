@@ -19,7 +19,7 @@ A `google_kms_key_rings` resource block collects GCP kms_key_rings by project th
 
 Use this InSpec resource to enumerate IDs then test in-depth using `google_kms_key_ring`.
 
-    google_kms_key_rings(project: 'chef-inspec-gcp', location: 'us-east1').kms_key_ring_names.each do |kms_key_ring_name|
+    google_kms_key_rings(project: 'chef-inspec-gcp', location: 'us-east1').key_ring_names.each do |kms_key_ring_name|
       describe google_kms_key_ring(project: 'chef-inspec-gcp',  kms_key_ring: kms_key_ring_name) do
         it { should exist }
         its('kind') { should eq "compute#kms_key_ring" }
