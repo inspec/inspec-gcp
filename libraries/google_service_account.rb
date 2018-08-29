@@ -20,7 +20,7 @@ module Inspec::Resources
       catch_gcp_errors do
         @service_account = @gcp.gcp_iam_client.get_project_service_account(opts[:name])
         create_resource_methods(@service_account)
-        @display_name = @service_account.unique_id
+        @display_name = @service_account.display_name
       end
     end
 
@@ -35,7 +35,7 @@ module Inspec::Resources
       @gcp.gcp_iam_client.list_project_service_account_keys(@service_account.name, key_types: ['USER_MANAGED'])
     end
 
-    def have_user_managed_keys?
+    def has_user_managed_keys?
       return false if !user_managed_keys.keys
       true
     end
