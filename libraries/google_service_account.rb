@@ -21,7 +21,7 @@ module Inspec::Resources
         @service_account = @gcp.gcp_iam_client.get_project_service_account(opts[:name])
         create_resource_methods(@service_account)
         @display_name = @service_account.unique_id
-        @display_name = @service_account.display_name if  @service_account.display_name
+        @display_name = @service_account.display_name if @service_account.display_name
       end
     end
 

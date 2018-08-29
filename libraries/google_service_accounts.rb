@@ -39,8 +39,7 @@ module Inspec::Resources
           service_account_rows+=[{ service_account_id: service_account.unique_id,
                                    service_account_name: service_account.name,
                                    service_account_display_name: service_account.display_name,
-                                   service_account_email: service_account.email
-                                 }]
+                                   service_account_email: service_account.email }]
         end
         next_page = @service_accounts.next_page_token
         break unless next_page
