@@ -23,16 +23,6 @@ module Inspec::Resources
       end
     end
 
-    def valid_after_time_date
-      return false if !defined?(@sa_key.valid_after_time)
-      Time.parse(@sa_key.valid_after_time)
-    end
-
-    def valid_before_time_date
-      return false if !defined?(@sa_key.valid_before_time)
-      Time.parse(@sa_key.valid_before_time)
-    end
-
     def exists?
       !@sa_key.nil?
     end
