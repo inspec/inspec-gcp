@@ -80,6 +80,8 @@ module GCPInspecConfig
       :gcp_logging_bucket_name => "gcp-inspec-logging-#{add_random_string}",
       :gcp_logging_project_sink_name => "gcp-inspec-logging-project-#{add_random_string}",
       :gcp_logging_project_exclusion_name => "gcp-inspec-project-exclusion-#{add_random_string}",
+      :gcp_network_name => "gcp-inspec-network",
+      :gcp_subnetwork_name => "gcp-inspec-subnetwork",
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
       # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
       # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
