@@ -29,6 +29,11 @@ module Inspec::Resources
       !@bucket.nil?
     end
 
+    def has_versioning_enabled?
+      return false if !defined?(@bucket.versioning)
+      @bucket.versioning.enabled
+    end
+
     def to_s
       "Bucket #{@display_name}"
     end
