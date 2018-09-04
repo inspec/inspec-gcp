@@ -27,6 +27,13 @@ module Inspec::Resources
       !@network.nil?
     end
 
+    def legacy?
+      return false if @network.auto_create_subnetworks
+      return false if !defined?(@network.gateway_i_pv4)
+      return false if !defined?(@network.i_pv4_range)
+      true
+    end
+
     def creation_timestamp_date
       return false if !defined?(creation_timestamp)
       Time.parse(creation_timestamp.to_s)
