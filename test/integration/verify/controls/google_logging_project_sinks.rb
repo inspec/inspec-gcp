@@ -14,6 +14,6 @@ control 'gcp-project-logging-sinks-1.0' do
   describe google_logging_project_sinks(project: gcp_project_id) do
     it { should exist }
     its('sink_names') { should include gcp_logging_project_sink_name }
-    its('sink_destinations') { should eq "storage.googleapis.com/#{gcp_logging_bucket_name}" }
+    its('sink_destinations') { should include "storage.googleapis.com/#{gcp_logging_bucket_name}" }
   end
 end

@@ -51,7 +51,7 @@ The following examples show how to use this InSpec audit resource.
 
 ### Test that a subset of all sinks matching "project*" have a particular writer identity 
 
-    google_logging_project_sinks(project: 'chef-inspec-gcp').sink_names.each do |sink_name|
+    google_logging_project_sinks(project: 'chef-inspec-gcp').where(sink_name: /project/).sink_names.each do |sink_name|
       describe google_logging_project_sink(project: 'chef-inspec-gcp',  sink: sink_name) do
         its('writer_identity') { should eq "serviceAccount:my-logging-service-account.iam.gserviceaccount.com" }
       end
