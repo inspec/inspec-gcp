@@ -110,6 +110,20 @@ module Inspec::Resources
       labels.item.values
     end
 
+    def service_account_scopes
+      # note instances can have only one service account defined
+      return [] if !defined?(@instance.service_accounts[0].scopes)
+      @instance.service_accounts[0].scopes
+    end
+
+    def block_project_ssh_keys
+      return false if !defined?(@instance.metadata.items)
+      @instance.metadata.items.each do |element|
+        return true if element.key=='block-project-ssh-keys' and element.value='true'
+      end
+      false
+    end
+
     def exists?
       !@instance.nil?
     end
