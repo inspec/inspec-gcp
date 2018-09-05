@@ -124,6 +124,15 @@ module Inspec::Resources
       false
     end
 
+    def has_serial_port_disabled?
+      return false if !defined?(@instance.metadata.items)
+      @instance.metadata.items.each do |element|
+        return true if element.key=='serial-port-enable' and element.value.casecmp('false').zero?
+        return true if element.key=='serial-port-enable' and element.value=='0'
+      end
+      false
+    end
+
     def exists?
       !@instance.nil?
     end
