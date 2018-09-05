@@ -13,8 +13,8 @@ Use the `google_compute_region` InSpec audit resource to test properties of a si
 
 A `google_compute_region` resource block declares the tests for a single GCP region by project and name.
 
-    describe google_compute_region(project: 'chef-inspec-gcp',  region: 'us-east1-b') do
-      its('name') { should match 'us-east1-b' }
+    describe google_compute_region(project: 'chef-inspec-gcp',  region: 'us-east1') do
+      its('name') { should match 'us-east1' }
     end
 
 <br>
