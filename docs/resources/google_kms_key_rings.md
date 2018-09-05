@@ -9,6 +9,18 @@ Use the `google_kms_key_rings` InSpec audit resource to test properties of all, 
 
 <br>
 
+## Availability
+
+### Installation
+
+This resource is available in the `inspec-gcp` [resource pack](https://www.inspec.io/docs/reference/glossary/#resource-pack).  To use it, add the following to your `inspec.yml` in your top-level profile:
+
+    depends:
+      inspec-gcp:
+        git: https://github.com/inspec/inspec-gcp.git
+
+You'll also need to setup your GCP credentials; see the resource pack [README](https://github.com/inspec/inspec-gcp#prerequisites).
+
 ## Syntax
 
 A `google_kms_key_rings` resource block collects GCP kms_key_rings by project then tests that group.

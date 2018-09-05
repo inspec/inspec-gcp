@@ -9,6 +9,18 @@ Use the `google_kms_crypto_key` InSpec audit resource to test properties of a si
 
 <br>
 
+## Availability
+
+### Installation
+
+This resource is available in the `inspec-gcp` [resource pack](https://www.inspec.io/docs/reference/glossary/#resource-pack).  To use it, add the following to your `inspec.yml` in your top-level profile:
+
+    depends:
+      inspec-gcp:
+        git: https://github.com/inspec/inspec-gcp.git
+
+You'll also need to setup your GCP credentials; see the resource pack [README](https://github.com/inspec/inspec-gcp#prerequisites).
+
 ## Syntax
 
 A `google_kms_crypto_key` resource block declares the tests for a single GCP KMS crypto key by project, location, key ring name and key name. 
