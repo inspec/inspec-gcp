@@ -64,13 +64,14 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource supports the following filter criteria:  `subnetwork_id`; `subnetwork_name` and `subnetwork_network`. Any of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria:  `subnetwork_id`; `subnetwork_name`; `enable_flow_logs`  and `subnetwork_network`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
 *  `subnetwork_ids` - an array of google_compute_subnetwork identifier integers
 *  `subnetwork_names` - an array of google_compute_subnetwork name strings
 *  `subnetwork_networks` - an array of google_compute_network name strings
+*  `enable_flow_logs` - an array of enable_flow_log booleans
 
 <br>
 
