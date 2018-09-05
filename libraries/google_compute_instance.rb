@@ -133,6 +133,17 @@ module Inspec::Resources
       false
     end
 
+    def has_disks_encrypted_with_csek?
+      return false if !defined?(@instance.disks)
+      @instance.disks.each do |disk|
+        return false if !defined?(disk.disk_encryption_key)
+        return false if disk.disk_encryption_key.nil?
+        return false if !defined?(disk.disk_encryption_key.sha256)
+        return false if disk.disk_encryption_key.sha256.nil?
+      end
+      true
+    end
+
     def exists?
       !@instance.nil?
     end
