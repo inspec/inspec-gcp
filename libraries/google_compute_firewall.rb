@@ -39,6 +39,10 @@ module Inspec::Resources
       port_protocol_allowed('443')
     end
 
+    def allowed_rdp?
+      port_protocol_allowed('3389')
+    end
+
     def allow_port_protocol?(port, protocol)
       port_protocol_allowed(port, protocol)
     end

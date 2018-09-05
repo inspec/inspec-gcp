@@ -45,7 +45,7 @@ The following examples show how to use this InSpec audit resource.
 
 ### Test that a subset of all zones matching "myzone*" exist
 
-    describe google_dns_managed_zones(project: 'chef-inspec-gcp').where(zone_name: /^myzone/).zone_names.each do |zone_name|
+    google_dns_managed_zones(project: 'chef-inspec-gcp').where(zone_name: /^myzone/).zone_names.each do |zone_name|
       describe google_dns_managed_zone(project: 'chef-inspec-gcp',  zone: zone_name) do
         it { should exist }
       end
