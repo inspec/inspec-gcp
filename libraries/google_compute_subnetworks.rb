@@ -25,6 +25,7 @@ module Inspec::Resources
     filter_table_config.add(:subnetwork_ids, field: :subnetwork_id)
     filter_table_config.add(:subnetwork_names, field: :subnetwork_name)
     filter_table_config.add(:subnetwork_networks, field: :subnetwork_network)
+    filter_table_config.add(:enable_flow_logs, field: :enable_flow_log)
     filter_table_config.connect(self, :fetch_data)
 
     def fetch_data
@@ -36,9 +37,13 @@ module Inspec::Resources
         end
         return [] if !@subnetworks || !@subnetworks.items
         @subnetworks.items.map do |subnetwork|
+          catch_gcp_errors do
+            @flow_logs_enabled = !@gcp.gcp_compute_client.list_subnetworks(@project, @region, filter: "enableFlowLogs=true name=\"#{subnetwork.name}\"").items.nil?
+          end
           subnetwork_rows+=[{ subnetwork_id: subnetwork.id,
                               subnetwork_name: subnetwork.name,
-                              subnetwork_network: subnetwork.network.split('/').last }]
+                              subnetwork_network: subnetwork.network.split('/').last,
+                              enable_flow_log: @flow_logs_enabled }]
         end
         next_page = @subnetworks.next_page_token
         break unless next_page
