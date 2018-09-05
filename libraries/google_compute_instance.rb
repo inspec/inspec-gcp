@@ -119,7 +119,7 @@ module Inspec::Resources
     def block_project_ssh_keys
       return false if !defined?(@instance.metadata.items)
       @instance.metadata.items.each do |element|
-        return true if element.key=='block-project-ssh-keys' and element.value='true'
+        return true if element.key=='block-project-ssh-keys' and element.value.casecmp('true').zero?
       end
       false
     end
