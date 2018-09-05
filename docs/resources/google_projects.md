@@ -19,8 +19,8 @@ A `google_projects` resource block collects GCP projects then tests that group.
 
 Use this InSpec resource to enumerate IDs then test in-depth using `google_compute_project`.
 
-    google_projects.project_names.each do |project_name|
-      describe google_project(project: project_name) do
+    google_projects.project_ids.each do |project_id|
+      describe google_project(project: project_id) do
         it { should exist }
         its('lifecycle_state') { should eq "ACTIVE" }
       end
@@ -41,16 +41,16 @@ The following examples show how to use this InSpec audit resource.
 ### Test that an expected named project is available
 
     describe google_projects do
-      its('project_names'){ should include "gcp_project_id" }
+      its('project_names'){ should include "GCP Project Name" }
     end
 
-### Test that an expected project number is available
+### Test that an expected project identifier is available
 
     describe google_projects do
-      its('project_ids'){ should include "gcp_project_name" }
+      its('project_ids'){ should include "gcp_project_id" }
     end
     
-### Test that an expected project id is available
+### Test that an expected project number is available
 
     describe google_projects do
       its('project_numbers'){ should include 1122334455 }

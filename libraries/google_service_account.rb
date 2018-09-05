@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for a project IAM Service Account'
 
     example "
-      describe google_service_account(project: 'chef-inspec-gcp', name: 'gcp-inspec-service-account') do
+      describe google_service_account(name: 'projects/spaterson-project/serviceAccounts/sample-account@spaterson-project.iam.gserviceaccount.com') do
         it { should exist }
         its('stage') { should eq 'GA' }
       end
@@ -17,17 +17,11 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @display_name = opts[:name]
       catch_gcp_errors do
-        # here we have to retrieve the list of service accounts for the project in order to obtain either
-        # the unique_id or email of the created service account, this allows us to retrieve it directly
-        service_accounts = @gcp.gcp_iam_client.list_project_service_accounts("projects/#{opts[:project]}")
-        service_accounts.accounts.each do |account|
-          if @display_name == account.display_name
-            @service_account = @gcp.gcp_iam_client.get_project_service_account("projects/#{opts[:project]}/serviceAccounts/#{account.unique_id}")
-          end
-        end
+        @service_account = @gcp.gcp_iam_client.get_project_service_account(opts[:name])
         create_resource_methods(@service_account)
+        @display_name = @service_account.unique_id
+        @display_name = @service_account.display_name if @service_account.display_name
       end
     end
 
@@ -35,8 +29,20 @@ module Inspec::Resources
       !@service_account.nil?
     end
 
+    # Note this is done at the service account level not the individual key level because this metadata is not
+    # returned by default when listing keys.
+    def user_managed_keys
+      raise Inspec::Exceptions::ResourceFailed, "Service Account #{@display_name} does not exist!" if not exists?
+      @gcp.gcp_iam_client.list_project_service_account_keys(@service_account.name, key_types: ['USER_MANAGED'])
+    end
+
+    def has_user_managed_keys?
+      return false if !user_managed_keys.keys
+      true
+    end
+
     def to_s
-      "IAM Service Account #{@display_name}"
+      "Service Account \"#{@display_name}\""
     end
   end
 end

@@ -91,7 +91,7 @@ provider "google" {
 resource "google_service_account" "generic_service_account_object_viewer" {
   count = "${var.gcp_enable_privileged_resources}"
   project = "${var.gcp_project_id}"
-  account_id   = "object-viewer"
+  account_id   = "${var.gcp_service_account_display_name}"
   display_name = "${var.gcp_service_account_display_name}"
 }
 

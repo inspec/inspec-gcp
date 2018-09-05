@@ -19,7 +19,7 @@ A `google_kms_crypto_keys` resource block collects GCP KMS crypto keys then test
 
 Use this InSpec resource to enumerate IDs then test in-depth using `google_kms_crypto_key`.
 
-    describe google_kms_crypto_keys(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring').crypto_key_names.each do |key_name|
+    google_kms_crypto_keys(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring').crypto_key_names.each do |key_name|
       describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: key_name) do
         it { should exist }
         its('create_time_date') { should be > Time.now - 365*60*60*24*10 }
