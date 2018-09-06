@@ -784,6 +784,7 @@ resource "google_sql_database" "cloud-sql-db-name" {
 }
 
 resource "google_sql_user" "cloud-sql-db-user" {
+  project = "${var.gcp_project_id}"
   name     = "${var.gcp_db_user_name}"
   instance = "${google_sql_database_instance.cloud-sql-db-instance.name}"
   password = "${var.gcp_db_user_password}"
