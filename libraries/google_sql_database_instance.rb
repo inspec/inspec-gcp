@@ -28,6 +28,23 @@ module Inspec::Resources
       !@database.nil?
     end
 
+    def has_ip_configuration_require_ssl?
+      return false if !defined?(@database.settings.ip_configuration.require_ssl)
+      return false if @database.settings.ip_configuration.require_ssl.nil?
+      return true if @database.settings.ip_configuration.require_ssl.to_s.casecmp('true').zero?
+      false
+    end
+
+    def authorized_networks
+      return [] if !defined?(@database.settings.ip_configuration.authorized_networks)
+      @database.settings.ip_configuration.authorized_networks
+    end
+
+    def primary_ip_address
+      return false if !defined?(@database.ip_addresses[0].ip_address)
+      @database.ip_addresses[0].ip_address
+    end
+
     def to_s
       "Database #{@display_name}"
     end

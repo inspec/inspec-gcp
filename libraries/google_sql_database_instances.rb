@@ -22,6 +22,7 @@ module Inspec::Resources
     # FilterTable setup
     filter_table_config = FilterTable.create
     filter_table_config.add(:instance_names, field: :instance_name)
+    filter_table_config.add(:instance_versions, field: :instance_version)
     filter_table_config.add(:instance_regions, field: :instance_region)
     filter_table_config.add(:instance_zones, field: :instance_zone)
     filter_table_config.add(:instance_states, field: :instance_state)
@@ -35,6 +36,7 @@ module Inspec::Resources
       return [] if !@databases || !@databases.items
       @databases.items.map do |instance|
         instance_rows+=[{ instance_name: instance.name,
+                          instance_version: instance.database_version,
                           instance_region: instance.region,
                           instance_zone: instance.gce_zone,
                           instance_state: instance.state }]

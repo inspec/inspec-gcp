@@ -71,11 +71,12 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource supports the following filter criteria:  `instance_name`; `instance_region`; `instance_zone` and `instance_state`. Any of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria:  `instance_name`; `instance_version`; `instance_region`; `instance_zone` and `instance_state`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
 *  `instance_names` - an array of google_sql_database_instance name strings
+*  `instance_versions` - an array of google_sql_database_instance version strings
 *  `instance_regions`- an array of google_compute_region name strings
 *  `instance_zones`- an array of google_sql_database_instance name strings
 *  `instance_states`- an array of google_sql_database_instance state strings
