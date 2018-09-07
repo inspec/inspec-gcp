@@ -18,11 +18,28 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @display_name = opts[:name]
+      @display_name = opts[:nodepool_name]
       catch_gcp_errors do
         @nodepool = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).get_project_zone_cluster_node_pool(opts[:project], opts[:zone], opts[:cluster_name], opts[:nodepool_name])
         create_resource_methods(@nodepool)
       end
+    end
+
+    def has_automatic_node_repair?
+      return false if !defined?(@nodepool.management.auto_repair)
+      return false if @nodepool.management.auto_repair.nil?
+      @nodepool.management.auto_repair
+    end
+
+    def has_automatic_node_upgrade?
+      return false if !defined?(@nodepool.management.auto_upgrade)
+      return false if @nodepool.management.auto_upgrade.nil?
+      @nodepool.management.auto_upgrade
+    end
+
+    def config_image_type
+      return false if !defined?(@nodepool.config.image_type)
+      @nodepool.config.image_type
     end
 
     def exists?

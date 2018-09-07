@@ -26,6 +26,57 @@ module Inspec::Resources
       end
     end
 
+    def has_logging_enabled?
+      return false if !defined?(@cluster.logging_service)
+      return false if @cluster.logging_service.nil?
+      return true if @cluster.logging_service == 'logging.googleapis.com'
+      false
+    end
+
+    def has_monitoring_enabled?
+      return false if !defined?(@cluster.monitoring_service)
+      return false if @cluster.monitoring_service.nil?
+      return true if @cluster.monitoring_service == 'monitoring.googleapis.com'
+      false
+    end
+
+    def has_legacy_abac_disabled?
+      return nil if !defined?(@cluster.legacy_abac)
+      return true if @cluster.legacy_abac.to_h.empty?
+      false
+    end
+
+    def has_master_authorized_networks_enabled?
+      return false if !defined?(@cluster.master_authorized_networks_config)
+      return false if @cluster.master_authorized_networks_config.to_h.empty?
+      return true if  @cluster.master_authorized_networks_config.to_h=={ 'enabled': true }
+      false
+    end
+
+    def has_resource_labels?
+      return false if !defined?(@cluster.resource_labels)
+      return false if @cluster.resource_labels.to_h.empty?
+      true
+    end
+
+    def has_kubernetes_dashboard_disabled?
+      return false if !defined?(@cluster.addons_config.kubernetes_dashboard)
+      return false if @cluster.addons_config.kubernetes_dashboard.to_h.empty?
+      return true if  @cluster.addons_config.kubernetes_dashboard.to_h=={ 'disabled': true }
+      false
+    end
+
+    def has_basic_authorization?
+      return false if @cluster.master_auth.username.nil? and @cluster.master_auth.password.nil?
+      true
+    end
+
+    def has_network_policy_enabled?
+      return false if !defined?(@cluster.network_policy.enabled)
+      return true if  @cluster.network_policy.enabled==true
+      false
+    end
+
     def exists?
       !@cluster.nil?
     end
