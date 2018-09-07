@@ -16,7 +16,6 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @project = opts[:project]
     end
 
     # FilterTable setup

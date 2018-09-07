@@ -86,4 +86,4 @@ This resource supports the following filter criteria:  `instance_name`; `instanc
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Cloud SQL API](https://console.cloud.google.com/projectselector/apis/api/sqladmin.googleapis.com/overview) is enabled for the project.
