@@ -42,6 +42,16 @@ module Inspec::Resources
       @nodepool.config.image_type
     end
 
+    def config_service_account
+      return false if !defined?(@nodepool.config.service_account)
+      @nodepool.config.service_account
+    end
+
+    def config_oauth_scopes
+      return false if !defined?(@nodepool.config.oauth_scopes)
+      @nodepool.config.oauth_scopes
+    end
+
     def exists?
       !@nodepool.nil?
     end

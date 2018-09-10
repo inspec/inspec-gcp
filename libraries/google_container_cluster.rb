@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
-require 'google/apis/container_v1'
+require 'google/apis/container_v1beta1'
 
 module Inspec::Resources
   class GoogleContainerCluster < GcpResourceBase
@@ -21,7 +21,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:name]
       catch_gcp_errors do
-        @cluster = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).get_zone_cluster(opts[:project], opts[:zone], opts[:name])
+        @cluster = @gcp.gcp_client(Google::Apis::ContainerV1beta1::ContainerService).get_zone_cluster(opts[:project], opts[:zone], opts[:name])
         create_resource_methods(@cluster)
       end
     end
@@ -74,6 +74,25 @@ module Inspec::Resources
     def has_network_policy_enabled?
       return false if !defined?(@cluster.network_policy.enabled)
       return true if  @cluster.network_policy.enabled==true
+      false
+    end
+
+    def has_master_auth_client_key?
+      return false if !defined?(@cluster.master_auth.client_key)
+      return false if @cluster.master_auth.client_key.nil?
+      return false if @cluster.master_auth.client_key==''
+      true
+    end
+
+    def has_ip_alias_enabled?
+      return false if !defined?(@cluster.ip_allocation_policy.use_ip_aliases)
+      return true if @cluster.ip_allocation_policy.use_ip_aliases==true
+      false
+    end
+
+    def has_pod_security_policy_config?
+      return false if !defined?(@cluster.pod_security_policy_config.enabled)
+      return true if @cluster.pod_security_policy_config.enabled==true
       false
     end
 

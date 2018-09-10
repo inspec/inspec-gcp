@@ -25,6 +25,7 @@ module Inspec::Resources
     filter_table_config = FilterTable.create
     filter_table_config.add(:cluster_names, field: :cluster_name)
     filter_table_config.add(:cluster_statuses, field: :cluster_status)
+    filter_table_config.add(:cluster_subnetworks, field: :cluster_subnetwork)
     filter_table_config.connect(self, :fetch_data)
 
     def fetch_data
@@ -36,7 +37,8 @@ module Inspec::Resources
       return [] if !@clusters || !@clusters.clusters
       @clusters.clusters.map do |cluster|
         cluster_rows+=[{ cluster_name: cluster.name,
-                         cluster_status: cluster.status }]
+                         cluster_status: cluster.status,
+                         cluster_subnetwork: cluster.subnetwork }]
       end
       @table = cluster_rows
     end

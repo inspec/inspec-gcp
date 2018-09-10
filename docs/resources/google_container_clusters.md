@@ -62,11 +62,12 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource supports the following filter criteria: `cluster_name` and `cluster_status`. Any of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria: `cluster_name`, `cluster_subnetwork`, and `cluster_status`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
 *  `cluster_names` - an array of google_container_cluster name strings
+*  `cluster_subnetworks` - an array of google_compute_subnetwork name strings
 *  `cluster_statuses`- an array of google_container_cluster status strings
 
 <br>
