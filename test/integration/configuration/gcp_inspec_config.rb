@@ -83,7 +83,7 @@ module GCPInspecConfig
       :gcp_logging_project_exclusion_name => "gcp-inspec-project-exclusion-#{add_random_string}",
       :gcp_network_name => "gcp-inspec-network",
       :gcp_subnetwork_name => "gcp-inspec-subnetwork",
-      :gcp_db_instance_name => "gcp-inspec-db-instance",
+      :gcp_db_instance_name => "gcp-inspec-db-#{add_random_string}",
       :gcp_db_name => "inspecgcp",
       :gcp_db_type => "MYSQL_5_7",
       :gcp_db_size => "db-f1-micro",
