@@ -44,6 +44,8 @@ Style/PercentLiteralDelimiters:
     '%x': ()
 Layout/AlignHash:
   Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
 Naming/PredicateName:
   Enabled: false
 Style/ClassAndModuleChildren:
