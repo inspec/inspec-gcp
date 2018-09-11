@@ -34,7 +34,7 @@ The following examples show how to use this InSpec audit resource.
 ### Test that there are no more than a specified number of storage buckets for the project
 
     describe google_storage_bucket_objects(bucket: 'bucket-name') do
-      its('count') { should be <= 100}
+      its('count') { should be <= 100 }
     end
 
 
