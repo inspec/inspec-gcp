@@ -81,6 +81,13 @@ variable "gcp_logging_project_exclusion_name" {}
 variable "gcp_network_name" {}
 variable "gcp_subnetwork_name" {}
 
+variable "gcp_db_instance_name" {}
+variable "gcp_db_name" {}
+variable "gcp_db_type" {}
+variable "gcp_db_size" {}
+variable "gcp_db_user_name" {}
+variable "gcp_db_user_password" {}
+
 variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
@@ -752,3 +759,35 @@ resource "google_compute_subnetwork" "inspec-gcp-subnetwork" {
 }
 
 # End network resources
+
+# Start Google SQL resources
+
+resource "google_sql_database_instance" "cloud-sql-db-instance" {
+  project = "${var.gcp_project_id}"
+  name = "${var.gcp_db_instance_name}"
+  database_version = "${var.gcp_db_type}"
+  region = "${var.gcp_location}"
+
+  settings {
+    # Second-generation instance tiers are based on the machine
+    # type. See argument reference below.
+    tier = "${var.gcp_db_size}"
+  }
+}
+
+resource "google_sql_database" "cloud-sql-db-name" {
+  project = "${var.gcp_project_id}"
+  name      = "${var.gcp_db_name}"
+  instance  = "${google_sql_database_instance.cloud-sql-db-instance.name}"
+  charset   = "utf8"
+  collation = "utf8_general_ci"
+}
+
+resource "google_sql_user" "cloud-sql-db-user" {
+  project = "${var.gcp_project_id}"
+  name     = "${var.gcp_db_user_name}"
+  instance = "${google_sql_database_instance.cloud-sql-db-instance.name}"
+  password = "${var.gcp_db_user_password}"
+}
+
+# End Google SQL resources

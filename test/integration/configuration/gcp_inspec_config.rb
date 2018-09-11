@@ -83,6 +83,12 @@ module GCPInspecConfig
       :gcp_logging_project_exclusion_name => "gcp-inspec-project-exclusion-#{add_random_string}",
       :gcp_network_name => "gcp-inspec-network",
       :gcp_subnetwork_name => "gcp-inspec-subnetwork",
+      :gcp_db_instance_name => "gcp-inspec-db-instance",
+      :gcp_db_name => "inspecgcp",
+      :gcp_db_type => "MYSQL_5_7",
+      :gcp_db_size => "db-f1-micro",
+      :gcp_db_user_name => "inspecgcpuser",
+      :gcp_db_user_password => Passgen::generate(length: 20, uppercase: true, lowercase: true, symbols: true, digits: true),
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
       # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
       # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
