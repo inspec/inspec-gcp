@@ -110,6 +110,40 @@ module Inspec::Resources
       labels.item.values
     end
 
+    def service_account_scopes
+      # note instances can have only one service account defined
+      return [] if !defined?(@instance.service_accounts[0].scopes)
+      @instance.service_accounts[0].scopes
+    end
+
+    def block_project_ssh_keys
+      return false if !defined?(@instance.metadata.items)
+      @instance.metadata.items.each do |element|
+        return true if element.key=='block-project-ssh-keys' and element.value.casecmp('true').zero?
+      end
+      false
+    end
+
+    def has_serial_port_disabled?
+      return false if !defined?(@instance.metadata.items)
+      @instance.metadata.items.each do |element|
+        return true if element.key=='serial-port-enable' and element.value.casecmp('false').zero?
+        return true if element.key=='serial-port-enable' and element.value=='0'
+      end
+      false
+    end
+
+    def has_disks_encrypted_with_csek?
+      return false if !defined?(@instance.disks)
+      @instance.disks.each do |disk|
+        return false if !defined?(disk.disk_encryption_key)
+        return false if disk.disk_encryption_key.nil?
+        return false if !defined?(disk.disk_encryption_key.sha256)
+        return false if disk.disk_encryption_key.sha256.nil?
+      end
+      true
+    end
+
     def exists?
       !@instance.nil?
     end
