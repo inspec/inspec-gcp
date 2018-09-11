@@ -34,6 +34,12 @@ module Inspec::Resources
       @bucket.versioning.enabled
     end
 
+    def has_logging_enabled?
+      return false if !defined?(@bucket.logging)
+      return false if @bucket.logging.nil?
+      true
+    end
+
     def to_s
       "Bucket #{@display_name}"
     end

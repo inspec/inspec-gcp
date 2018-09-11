@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
+require 'json'
 
 module Inspec::Resources
   class GoogleStorageObjectAcl < GcpResourceBase
@@ -19,9 +20,13 @@ module Inspec::Resources
       @bucket = opts[:bucket]
       @object = opts[:object]
       @entity = opts[:entity]
-      catch_gcp_errors do
+      begin
         @acl = @gcp.gcp_storage_client.get_object_access_control(@bucket, @object, @entity)
         create_resource_methods(@acl)
+        # all non-existing entities raise a "Not Found" client error
+      rescue Google::Apis::ClientError => e
+        @acl=nil
+        @error=JSON.parse(e.body)
       end
     end
 
@@ -29,8 +34,10 @@ module Inspec::Resources
       !@acl.nil?
     end
 
+    attr_reader :error
+
     def to_s
-      "Storage Object ACL #{@object}"
+      "Storage Object ACL #{@object} #{@entity}"
     end
   end
 end

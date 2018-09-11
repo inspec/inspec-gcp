@@ -18,9 +18,13 @@ module Inspec::Resources
       super(opts)
       @bucket = opts[:bucket]
       @entity = opts[:entity]
-      catch_gcp_errors do
+      begin
         @acl = @gcp.gcp_storage_client.get_default_object_access_control(@bucket, @entity)
         create_resource_methods(@acl)
+      # all non-existing entities raise a "Not Found" client error
+      rescue Google::Apis::ClientError => e
+        @acl=nil
+        @error=JSON.parse(e.body)
       end
     end
 
@@ -28,8 +32,10 @@ module Inspec::Resources
       !@acl.nil?
     end
 
+    attr_reader :error
+
     def to_s
-      "Storage Default Object ACL #{@bucket}"
+      "Storage Default Object ACL #{@bucket} #{@entity}"
     end
   end
 end
