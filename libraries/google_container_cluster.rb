@@ -96,6 +96,12 @@ module Inspec::Resources
       false
     end
 
+    def private_cluster?
+      return false if !defined?(@cluster.private_cluster)
+      return true if @cluster.private_cluster==true
+      false
+    end
+
     def exists?
       !@cluster.nil?
     end

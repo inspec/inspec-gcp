@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
+require 'google/apis/logging_v2'
 
 module Inspec::Resources
   class GoogleProjectMetrics < GcpResourceBase
@@ -22,6 +23,7 @@ module Inspec::Resources
     # FilterTable setup
     filter_table_config = FilterTable.create
     filter_table_config.add(:metric_names, field: :metric_name)
+    filter_table_config.add(:metric_types, field: :metric_type)
     filter_table_config.add(:metric_destinations, field: :metric_destination)
     filter_table_config.connect(self, :fetch_data)
 
@@ -35,7 +37,8 @@ module Inspec::Resources
         return [] if !@metrics || !@metrics.metrics
         @metrics.metrics.map do |metric|
           metric_rows+=[{ metric_name: metric.name,
-                          metric_filter: metric.filter }]
+                          metric_filter: metric.filter,
+                          metric_type: metric.metric_descriptor.type }]
         end
         next_page = @metrics.next_page_token
         break unless next_page
