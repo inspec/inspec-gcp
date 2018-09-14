@@ -30,14 +30,19 @@ module Inspec::Resources
 
     def fetch_data
       user_rows = []
-      catch_gcp_errors do
-        @users = @gcp.gcp_admin_client.list_users(customer: @customer, domain: @domain)
-      end
-      return [] if !@users || !@users.users
-      @users.users.map do |user|
-        user_rows+=[{ user_id: user.id,
-                      user_name: user.name.full_name,
-                      user_email: user.primary_email }]
+      next_page = nil
+      loop do
+        catch_gcp_errors do
+          @users = @gcp.gcp_admin_client.list_users(customer: @customer, domain: @domain, page_token: next_page)
+        end
+        return [] if !@users || !@users.users
+        @users.users.map do |user|
+          user_rows+=[{ user_id: user.id,
+                        user_name: user.name.full_name,
+                        user_email: user.primary_email }]
+        end
+        next_page = @users.next_page_token
+        break unless next_page
       end
       @table = user_rows
     end
