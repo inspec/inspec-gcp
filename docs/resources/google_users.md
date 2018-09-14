@@ -38,28 +38,16 @@ Use this InSpec resource to enumerate IDs then test in-depth using `google_user`
 
 The following examples show how to use this InSpec audit resource.
 
-### Test that there are no more than a specified number of zones available for the project
+### Test that there are no more than a specified number of users available for the project
 
     describe google_users(customer: 'my_customer') do
       its('count') { should be <= 100}
     end
 
-### Test the exact number of zones in the project
+### Test that an expected user is available for the project
 
     describe google_users(customer: 'my_customer') do
-      its('zone_ids.count') { should cmp 9 }
-    end
-
-### Test that an expected zone is available for the project
-
-    describe google_users(customer: 'my_customer') do
-      its('zone_names') { should include "us-east1-b" }
-    end
-
-### Test whether any zones are in status "DOWN"
-
-    describe google_users(customer: 'my_customer') do
-      its('zone_statuses') { should_not include "DOWN" }
+      its('user_names') { should include "Monsieur Happy" }
     end
 
 ### Test that a subset of all users with name matching "Batman" exists
