@@ -31,7 +31,7 @@ module Inspec::Resources
     def fetch_data
       user_rows = []
       catch_gcp_errors do
-        @users = @gcp.gcp_admin_client.list_users(customer: @customer,domain: @domain)
+        @users = @gcp.gcp_admin_client.list_users(customer: @customer, domain: @domain)
       end
       return [] if !@users || !@users.users
       @users.users.map do |user|
