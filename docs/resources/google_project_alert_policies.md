@@ -3,7 +3,7 @@ title: About the google_project_alert_policies Resource
 platform: gcp
 ---
 
-# google\_compute\_zones
+# google\_compute\_alert\_policies
 
 Use the `google_project_alert_policies` InSpec audit resource to test properties of all, or a filtered group of, GCP project alert policies.
 
@@ -11,7 +11,7 @@ Use the `google_project_alert_policies` InSpec audit resource to test properties
 
 ## Syntax
 
-A `google_project_alert_policies` resource block collects GCP zones by project then tests that group.
+A `google_project_alert_policies` resource block collects GCP project alert policies by project then tests that group.
 
     describe google_project_alert_policies(project: 'chef-inspec-gcp') do
       it { should exist }
@@ -32,7 +32,7 @@ Use this InSpec resource to enumerate IDs then test in-depth using `google_proje
 
 The following examples show how to use this InSpec audit resource.
 
-### Test that there are no more than a specified number of zones available for the project
+### Test that there are no more than a specified number of project alert policies available for the project
 
     describe google_project_alert_policies(project: 'chef-inspec-gcp') do
       its('count') { should be <= 100}
@@ -44,7 +44,7 @@ The following examples show how to use this InSpec audit resource.
       its('policy_names') { should include 'projects/spaterson-project/alertPolicies/9271751234503117449' }
     end
 
-### Test whether any zones are in status "DOWN"
+### Test whether any expected policy display name is available for the project
 
     describe google_project_alert_policies(project: 'chef-inspec-gcp') do
       its('policy_display_names') { should_not include 'banned policy' }
