@@ -112,7 +112,7 @@ module Inspec::Resources
 
     def label_value_by_key(label_key)
       return [] if !defined?(labels)
-      return labels.item[label_key]
+      labels.item[label_key]
     end
 
     def metadata_keys
@@ -133,7 +133,7 @@ module Inspec::Resources
           return item[:value]
         end
       end
-      return []
+      []
     end
 
     def service_account_scopes
