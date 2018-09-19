@@ -26,6 +26,11 @@ module Inspec::Resources
       end
     end
 
+    def label_value_by_key( k )
+      return [] if !defined?(labels)
+      return labels.item[ k ]
+    end
+
     def exists?
       !@project.nil?
     end
