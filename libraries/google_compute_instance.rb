@@ -110,6 +110,32 @@ module Inspec::Resources
       labels.item.values
     end
 
+    def label_value_by_key( k )
+       return [] if !defined?(labels)
+       return labels.item[ k ]
+    end
+
+    def metadata_keys
+      return [] if !defined?(metadata)
+      metadata.item[:items].map {|m|m[:key]}
+    end
+
+    def metadata_values
+       return [] if !defined?(metadata)
+       metadata.item[:items].map {|m|m[:value]}
+
+    end
+
+    def metadata_value_by_key( k )
+       return [] if !defined?(metadata)
+       metadata.item[:items].each do |item|
+         if item[:key] == k
+           return item[:value]
+         end
+       end
+       return []
+    end
+
     def service_account_scopes
       # note instances can have only one service account defined
       return [] if !defined?(@instance.service_accounts[0].scopes)
