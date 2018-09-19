@@ -123,7 +123,6 @@ module Inspec::Resources
     def metadata_values
       return [] if !defined?(metadata)
       metadata.item[:items].map { |m| m[:value] }
-    
     end
 
     def metadata_value_by_key(metadata_key)
