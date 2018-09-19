@@ -110,30 +110,30 @@ module Inspec::Resources
       labels.item.values
     end
 
-    def label_value_by_key( k )
-       return [] if !defined?(labels)
-       return labels.item[ k ]
+    def label_value_by_key(label_key)
+      return [] if !defined?(labels)
+      return labels.item[label_key]
     end
 
     def metadata_keys
       return [] if !defined?(metadata)
-      metadata.item[:items].map {|m|m[:key]}
+      metadata.item[:items].map { |m| m[:key] }
     end
 
     def metadata_values
        return [] if !defined?(metadata)
-       metadata.item[:items].map {|m|m[:value]}
-
+       metadata.item[:items].map { |m| m[:value] }
+    
     end
 
-    def metadata_value_by_key( k )
-       return [] if !defined?(metadata)
-       metadata.item[:items].each do |item|
-         if item[:key] == k
-           return item[:value]
-         end
-       end
-       return []
+    def metadata_value_by_key(metadata_key)
+      return [] if !defined?(metadata)
+      metadata.item[:items].each do |item|
+        if item[:key] == metadata_key
+          return item[:value]
+        end
+      end
+      return []
     end
 
     def service_account_scopes
