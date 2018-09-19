@@ -121,8 +121,8 @@ module Inspec::Resources
     end
 
     def metadata_values
-       return [] if !defined?(metadata)
-       metadata.item[:items].map { |m| m[:value] }
+      return [] if !defined?(metadata)
+      metadata.item[:items].map { |m| m[:value] }
     
     end
 
