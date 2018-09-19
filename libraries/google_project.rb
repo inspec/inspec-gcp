@@ -26,9 +26,9 @@ module Inspec::Resources
       end
     end
 
-    def label_value_by_key( k )
+    def label_value_by_key(label_key)
       return [] if !defined?(labels)
-      return labels.item[ k ]
+      return labels.item[label_key]
     end
 
     def exists?
