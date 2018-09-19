@@ -45,11 +45,17 @@ The following examples show how to use this InSpec audit resource.
       its('lifecycle_state') { should eq "ACTIVE" }
     end
 
+### Validate that a GCP project has some arbitrary label with expected content (for example defined by regexp )
+
+    describe google_project(project: 'chef-inspec-gcp').label_value_by_key('season') do
+      it {should match '^(winter|spring|summer|autumn)$' }
+    end
+
 <br>
 
 ## Properties
 
-*  `create_time`, `lifecycle_state`, `name`, `parent`, `project_id`, `project_number`
+*  `create_time`, `lifecycle_state`, `name`, `parent`, `project_id`, `project_number`, `label_value_by_key`
 
 <br>
 
