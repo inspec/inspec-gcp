@@ -31,6 +31,8 @@ module Inspec::Resources
       return false if @network.auto_create_subnetworks
       return false if !defined?(@network.gateway_i_pv4)
       return false if !defined?(@network.i_pv4_range)
+      return false if @network.i_pv4_range.nil?
+      return false if @network.gateway_i_pv4.nil?
       true
     end
 
