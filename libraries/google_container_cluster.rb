@@ -49,7 +49,8 @@ module Inspec::Resources
     def has_master_authorized_networks_enabled?
       return false if !defined?(@cluster.master_authorized_networks_config)
       return false if @cluster.master_authorized_networks_config.to_h.empty?
-      return true if  @cluster.master_authorized_networks_config.to_h=={ 'enabled': true }
+      return false if !defined?(@cluster.master_authorized_networks_config.enabled)
+      return true if @cluster.master_authorized_networks_config.enabled == true
       false
     end
 
@@ -93,6 +94,12 @@ module Inspec::Resources
     def has_pod_security_policy_config?
       return false if !defined?(@cluster.pod_security_policy_config.enabled)
       return true if @cluster.pod_security_policy_config.enabled==true
+      false
+    end
+
+    def private_cluster?
+      return false if !defined?(@cluster.private_cluster)
+      return true if @cluster.private_cluster==true
       false
     end
 

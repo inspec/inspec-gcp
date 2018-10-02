@@ -55,12 +55,13 @@ The following examples show how to use this InSpec audit resource.
 
 ## Filter Criteria
 
-This resource supports the following filter criteria: `metric_name` and `metric_filter`. Either of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria: `metric_name`; `metric_type` and `metric_filter`. Either of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
 *  `metric_names` - an array of google_project_metric name strings
-*  `metric_filters`- an array of google_project_metric filters
+*  `metric_filters`- an array of google_project_metric filter strings
+*  `metric_types` - an array of google_project_metric type strings
 
 <br>
 

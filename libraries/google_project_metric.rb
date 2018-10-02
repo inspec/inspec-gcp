@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
+require 'google/apis/logging_v2'
 
 module Inspec::Resources
   class GoogleProjectMetric < GcpResourceBase
