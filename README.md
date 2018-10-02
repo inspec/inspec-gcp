@@ -6,20 +6,20 @@ This implementation was inspired on the ideas by [Martez Reed](https://github.co
 
 ## Prerequisites
 
-1. *Install and configure the Google cloud SDK*
+### Install and configure the Google cloud SDK*
 
 Download the [SDK](https://cloud.google.com/sdk/docs/) and run the installation:
 ```
 ./google-cloud-sdk/install.sh
 ```
 
-2. Create credentials file via:
+### Create credentials file via:
 ```bash
 $ gcloud auth application-default login
 ```
 If successful, this should be similar to:
 ```bash
-$ cat ~/.config/gcloud/application_default_credentials.json 
+$ cat ~/.config/gcloud/application_default_credentials.json
 {
   "client_id": "764086051850-6qr4p6gpi6hn50asdr.apps.googleusercontent.com",
   "client_secret": "d-fasdfasdfasdfaweroi23jknrmfs;f8sh",
@@ -27,7 +27,32 @@ $ cat ~/.config/gcloud/application_default_credentials.json
   "type": "authorized_user"
 }
 ```
-3. Enable the appropriate APIs that you want to use:
+
+While InSpec can use user accounts for authentication, [Google Cloud documentation](https://cloud.google.com/docs/authentication/) recommends using service accounts.
+
+The json credential file for a service account looks like this:
+```bash
+$ cat /Users/john/.config/gcloud/myproject-1-feb7993e8660.json
+{
+  "type": "service_account",
+  "project_id": "myproject-1",
+  "private_key_id": "eb45b2fc0c33ea9b6fa212aaa08b1ed814bf8660",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADAN3662...fke9n6LAf268E/4EWhIzg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "auto-testing@myproject-1.iam.gserviceaccount.com",
+  "client_id": "112144174133171863632",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/auto-testing%40myproject-1.iam.gserviceaccount.com"
+}
+```
+
+And InSpec can be instructed to use it by setting this ENV variable prior to running `inspec exec`:
+```bash
+$ export GOOGLE_APPLICATION_CREDENTIALS='/Users/john/.config/gcloud/myproject-1-feb7993e8660.json'
+```
+
+### Enable the appropriate APIs that you want to use:
 
 - [Enable Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/)
 - [Enable Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com)
@@ -155,7 +180,7 @@ This example assumes there are sufficient privileges to list all GCP projects.
 
 ### Check that a particular label exists on all VMs across all projects and zones
 
-This check ensures that VMs have label `must_be_there` for each project: 
+This check ensures that VMs have label `must_be_there` for each project:
 ```
 title 'Loop over all GCP projects and ensure all VMs have a particular label'
 
@@ -214,23 +239,23 @@ $ bundle exec rake test:integration
 Alternatively, finer grained rake tasks are also available.  Executing these in order is the same as the above command:
   * Initialize local workspace (terraform init)
 ``` bash
-$ bundle exec rake test:init_workspace 
+$ bundle exec rake test:init_workspace
 ```
   * Plan integration tests - ensures variables are set for Inspec and Terraform, runs "terraform plan"
 ``` bash
-$ bundle exec rake test:plan_integration_tests 
+$ bundle exec rake test:plan_integration_tests
 ```
   * Set up integration tests - actually creates the resources in GCP (terraform apply)
 ``` bash
-$ bundle exec rake test:setup_integration_tests 
+$ bundle exec rake test:setup_integration_tests
 ```
   * Run integration tests - runs the tests (inspec exec)
 ``` bash
-$ bundle exec rake test:run_integration_tests 
+$ bundle exec rake test:run_integration_tests
 ```   
   * Clean up integration tests - removes GCP resources (terraform destroy)
 ``` bash
-$ bundle exec rake test:cleanup_integration_tests 
+$ bundle exec rake test:cleanup_integration_tests
 ```
 
 ## Further Reading
@@ -238,7 +263,7 @@ $ bundle exec rake test:cleanup_integration_tests
 * [Introduction to InSpec GCP](https://lollyrock.com/articles/inspec-cloud-gcp-setup/)
 * [InSpec GCP Deep Dive](https://blog.chef.io/2018/06/19/inspec-gcp-deep-dive/)
 
-## FAQ 
+## FAQ
 
 ### Failure running "inspec exec" on my GCP profile
 
