@@ -19,7 +19,7 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @display_name = opts[:name]
+      @display_name = opts[:name] || opts[:project]
       catch_gcp_errors do
         @project = @gcp.gcp_project_client.get_project(opts[:project])
         create_resource_methods(@project)
