@@ -1,5 +1,40 @@
 # Change Log
 
+## [v0.6.0](https://github.com/inspec/inspec-gcp/tree/v0.6.0) (2018-10-18)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.5.0...v0.6.0)
+
+**Closed issues:**
+
+- google\_project resource works with project ID/number instead of name as seen in the docs [\#39](https://github.com/inspec/inspec-gcp/issues/39)
+- Improved firewall rule handling [\#27](https://github.com/inspec/inspec-gcp/issues/27)
+- Enhancement: Support Fuzzy Match with Instance Group Name [\#23](https://github.com/inspec/inspec-gcp/issues/23)
+- google\_compute\_instance\_group doesn't respond to exists? or exist?  [\#22](https://github.com/inspec/inspec-gcp/issues/22)
+- google\_compute\_instance\_group: location symbol doesn't exist [\#21](https://github.com/inspec/inspec-gcp/issues/21)
+- Node Pool fails requiring cluster\_id [\#20](https://github.com/inspec/inspec-gcp/issues/20)
+- google\_container\_node\_pool.rb example bug [\#19](https://github.com/inspec/inspec-gcp/issues/19)
+- found the documentation [\#17](https://github.com/inspec/inspec-gcp/issues/17)
+
+**Merged pull requests:**
+
+- Improve google\_project\#to\_s output [\#62](https://github.com/inspec/inspec-gcp/pull/62) ([adrienthebo](https://github.com/adrienthebo))
+- Add service account auth instructions and example [\#60](https://github.com/inspec/inspec-gcp/pull/60) ([alexpop](https://github.com/alexpop))
+- Adding google\_user\(s\) and project alert policy resources [\#59](https://github.com/inspec/inspec-gcp/pull/59) ([skpaterson](https://github.com/skpaterson))
+- Added support for metadata and label content based compliance [\#58](https://github.com/inspec/inspec-gcp/pull/58) ([pleonovitch](https://github.com/pleonovitch))
+- Updated Dockerfile with more layers and terraform [\#57](https://github.com/inspec/inspec-gcp/pull/57) ([jjasghar](https://github.com/jjasghar))
+- Updates to controls affected by service account name change. [\#56](https://github.com/inspec/inspec-gcp/pull/56) ([skpaterson](https://github.com/skpaterson))
+- Added resource doc links from recent PRs. [\#55](https://github.com/inspec/inspec-gcp/pull/55) ([skpaterson](https://github.com/skpaterson))
+- Kubernetes resource updates [\#54](https://github.com/inspec/inspec-gcp/pull/54) ([skpaterson](https://github.com/skpaterson))
+- Cloud SQL resources [\#53](https://github.com/inspec/inspec-gcp/pull/53) ([skpaterson](https://github.com/skpaterson))
+- Storage updates [\#52](https://github.com/inspec/inspec-gcp/pull/52) ([skpaterson](https://github.com/skpaterson))
+- VM Updates [\#51](https://github.com/inspec/inspec-gcp/pull/51) ([skpaterson](https://github.com/skpaterson))
+- Networking related updates [\#50](https://github.com/inspec/inspec-gcp/pull/50) ([skpaterson](https://github.com/skpaterson))
+- Project audit logging [\#49](https://github.com/inspec/inspec-gcp/pull/49) ([skpaterson](https://github.com/skpaterson))
+- Minor fix for region instead of zone in first google\_compute\_region e… [\#48](https://github.com/inspec/inspec-gcp/pull/48) ([skpaterson](https://github.com/skpaterson))
+-  Updates for service account and related resources [\#47](https://github.com/inspec/inspec-gcp/pull/47) ([skpaterson](https://github.com/skpaterson))
+- Add google\_compute\_region\(s\) resources, tests etc. and updated README. [\#46](https://github.com/inspec/inspec-gcp/pull/46) ([skpaterson](https://github.com/skpaterson))
+- Added google\_compute\_network\(s\) and google\_compute\_subnetwork\(s\) resources. [\#45](https://github.com/inspec/inspec-gcp/pull/45) ([skpaterson](https://github.com/skpaterson))
+- Bump version to v0.5.0 [\#44](https://github.com/inspec/inspec-gcp/pull/44) ([skpaterson](https://github.com/skpaterson))
+
 ## [v0.5.0](https://github.com/inspec/inspec-gcp/tree/v0.5.0) (2018-08-21)
 [Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.4.0...v0.5.0)
 
