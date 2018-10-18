@@ -81,19 +81,19 @@ The following examples show how to use this InSpec audit resource.
       its('labels_keys') { should include 'my_favourite_label' }
     end
 
-### Test that a partucular compute instance label value is matching regexp 
+### Test that a particular compute instance label value is matching regexp 
     describe google_compute_instance(project: 'chef-inspec-gcp', zone:'us-east1-b', name:'inspec-test-vm').label_value_by_key('business-area') do
-      it {should match '^(marketing|research)$' }
+      it { should match '^(marketing|research)$' }
     end
 
-### Test that a partucular compute instance matadata key is present 
+### Test that a particular compute instance metadata key is present 
     describe google_compute_instance(project: 'chef-inspec-gcp', zone:'us-east1-b', name:'inspec-test-vm') do
-      its('metadata_keys') {should include 'patching-type'}
+      its('metadata_keys') { should include 'patching-type' }
     end
 
-### Test that a partucular compute instance matadata value is matching regexp 
-    describe google_compute_instance(project: 'chef-inspec-gcp', zone:'us-east1-b', name:'inspec-test-vm')metadata_value_by_key('patching-window') do
-      it {should match '^\d{1}-\d{2}$'}
+### Test that a particular compute instance metadata value is matching regexp 
+    describe google_compute_instance(project: 'chef-inspec-gcp', zone:'us-east1-b', name:'inspec-test-vm').metadata_value_by_key('patching-window') do
+      it { should match '^\d{1}-\d{2}$' }
     end
 
 <br>
