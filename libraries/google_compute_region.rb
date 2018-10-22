@@ -26,7 +26,7 @@ module Inspec::Resources
     # helper for returning a list of zone short names rather than fully qualified URLs e.g.
     #   https://www.googleapis.com/compute/v1/projects/spaterson-project/zones/asia-east1-a
     def zone_names
-      return false if !defined?(@region.zones)
+      return [] if @region.zones.nil?
       @region.zones.map { |zone| zone.split('/').last }
     end
 
