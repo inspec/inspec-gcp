@@ -127,6 +127,9 @@ The following resources are available in the InSpec GCP Profile
 - [google_logging_project_sink](docs/resources/google_logging_project_sink.md)
 - [google_logging_project_sinks](docs/resources/google_logging_project_sinks.md)
 - [google_project](docs/resources/google_project.md)
+- [google_project_alert_policies](docs/resources/google_project_alert_policies.md)
+- [google_project_alert_policy](docs/resources/google_project_alert_policy.md)
+- [google_project_alert_policy_condition](docs/resources/google_project_alert_policy_condition.md)
 - [google_project_iam_binding](docs/resources/google_project_iam_binding.md)
 - [google_project_iam_bindings](docs/resources/google_project_iam_bindings.md)
 - [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md)
@@ -150,7 +153,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_storage_buckets](docs/resources/google_storage_buckets.md)
 - [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md)
 - [google_storage_object_acl](docs/resources/google_storage_object_acl.md)
-
+- [google_user](docs/resources/google_user.md)
+- [google_users](docs/resources/google_users.md)
 
 ## Examples
 
