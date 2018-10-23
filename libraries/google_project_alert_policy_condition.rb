@@ -30,31 +30,31 @@ module Inspec::Resources
     end
 
     def condition_for_filter(filter)
-      return nil if !defined?(@policy_result.conditions)
+      return nil if !defined?(@policy_result.conditions) || @policy_result.conditions.nil?
       @policy_result.conditions.each do |condition|
-        next if !defined?(condition.condition_threshold.filter)
+        next if !defined?(condition.condition_threshold.filter) || condition.condition_threshold.filter.nil?
         return condition if condition.condition_threshold.filter == filter
       end
       nil
     end
 
     def condition_threshold_value
-      return false if !defined?(@condition.condition_threshold.threshold_value)
+      return false if !defined?(@condition.condition_threshold.threshold_value) || @condition.condition_threshold.threshold_value.nil?
       @condition.condition_threshold.threshold_value
     end
 
     def aggregation_alignment_period
-      return false if !defined?(@condition.condition_threshold.aggregations[0].alignment_period)
+      return false if !defined?(@condition.condition_threshold.aggregations[0].alignment_period) || @condition.condition_threshold.aggregations[0].alignment_period.nil?
       @condition.condition_threshold.aggregations[0].alignment_period
     end
 
     def aggregation_per_series_aligner
-      return false if !defined?(@condition.condition_threshold.aggregations[0].per_series_aligner)
+      return false if !defined?(@condition.condition_threshold.aggregations[0].per_series_aligner) || @condition.condition_threshold.aggregations[0].per_series_aligner.nil?
       @condition.condition_threshold.aggregations[0].per_series_aligner
     end
 
     def aggregation_cross_series_reducer
-      return false if !defined?(@condition.condition_threshold.aggregations[0].cross_series_reducer)
+      return false if !defined?(@condition.condition_threshold.aggregations[0].cross_series_reducer) || @condition.condition_threshold.aggregations[0].cross_series_reducer.nil?
       @condition.condition_threshold.aggregations[0].cross_series_reducer
     end
 

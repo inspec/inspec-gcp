@@ -24,7 +24,7 @@ module Inspec::Resources
     end
 
     def has_enabled_oslogin?
-      return false if !defined?(@project_info.common_instance_metadata.items)
+      return false if !defined?(@project_info.common_instance_metadata.items) || @project_info.common_instance_metadata.items.nil?
       @project_info.common_instance_metadata.items.each do |element|
         return true if element.key=='enable-oslogin' and element.value.casecmp('true').zero?
       end
@@ -32,7 +32,7 @@ module Inspec::Resources
     end
 
     def creation_timestamp_date
-      return false if !defined?(creation_timestamp)
+      return false if !defined?(creation_timestamp) || creation_timestamp.nil?
       Time.parse(creation_timestamp.to_s)
     end
 

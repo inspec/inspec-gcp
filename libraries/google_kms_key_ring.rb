@@ -26,18 +26,18 @@ module Inspec::Resources
     end
 
     def key_ring_name
-      return false if !defined?(name)
+      return '' if !defined?(name) || name.nil?
       name.split('/').last
     end
 
     def create_time_date
-      return false if !defined?(create_time)
+      return false if !defined?(create_time) || create_time.nil?
       Time.parse(create_time)
     end
 
     # this is added for completeness as key ring IAM bindings use the key_ring_url as an identifier
     def key_ring_url
-      return false if !defined?(name)
+      return '' if !defined?(name) || name.nil?
       name
     end
 

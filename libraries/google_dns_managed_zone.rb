@@ -21,7 +21,7 @@ module Inspec::Resources
         @managed_zone = @gcp.gcp_client(Google::Apis::DnsV2beta1::DnsService).get_managed_zone(opts[:project], opts[:zone])
         create_resource_methods(@managed_zone)
         @key_specs={}
-        if defined?(@managed_zone.dnssec_config.default_key_specs)
+        if defined?(@managed_zone.dnssec_config.default_key_specs) && !@managed_zone.dnssec_config.default_key_specs.nil?
           @managed_zone.dnssec_config.default_key_specs.each do |spec|
             @key_specs[spec.key_type]=spec.algorithm
           end
@@ -34,7 +34,7 @@ module Inspec::Resources
     end
 
     def creation_time_date
-      return false if !defined?(@managed_zone.creation_time)
+      return false if !defined?(@managed_zone.creation_time) || @managed_zone.creation_time.nil?
       Time.parse(@managed_zone.creation_time)
     end
 

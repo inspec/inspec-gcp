@@ -64,12 +64,12 @@ module Inspec::Resources
     end
 
     def second_disks_device_name
-      return false if !defined?(disks[1].device_name)
+      return '' if disks[1].nil? || !defined?(disks[1].device_name) || disks[1].device_name.nil?
       disks[1].device_name
     end
 
     def second_disks_kind
-      return false if !defined?(disks[1].kind)
+      return '' if disks[1].nil? || !defined?(disks[1].kind) || disks[1].kind.nil?
       disks[1].kind
     end
 
@@ -83,50 +83,50 @@ module Inspec::Resources
 
     # helper method for retrieving a disk source basename
     def disks_source_name(index = 0)
-      return false if !defined?(disks[index].source)
+      return '' if disks[index].nil? || !defined?(disks[index].source) || disks[index].source.nil?
       disks[index].source.split('/').last
     end
 
     # helper method for retrieving a disk license string
     def disks_license(disk_index = 0, license_index = 0)
-      return false if !defined?(disks[disk_index].licenses[license_index])
+      return '' if disks[disk_index].nil? || !defined?(disks[disk_index].licenses[license_index]) || disks[disk_index].licenses[license_index].nil?
       disks[disk_index].licenses[license_index].downcase
     end
 
     def machine_size
-      return false if !defined?(machine_type)
+      return '' if !defined?(machine_type) || machine_type.nil?
       machine_type.split('/').last
     end
 
     # helper for returning label keys to perform checks
     def labels_keys
-      return [] if !defined?(labels)
+      return [] if !defined?(labels) || labels.nil?
       labels.item.keys
     end
 
     # helper for returning label values to perform checks
     def labels_values
-      return [] if !defined?(labels)
+      return [] if !defined?(labels) || labels.nil?
       labels.item.values
     end
 
     def label_value_by_key(label_key)
-      return [] if !defined?(labels)
+      return [] if !defined?(labels) || labels.nil?
       labels.item[label_key]
     end
 
     def metadata_keys
-      return [] if !defined?(metadata)
+      return [] if !defined?(metadata) || metadata.nil?
       metadata.item[:items].map { |m| m[:key] }
     end
 
     def metadata_values
-      return [] if !defined?(metadata)
+      return [] if !defined?(metadata) || metadata.nil?
       metadata.item[:items].map { |m| m[:value] }
     end
 
     def metadata_value_by_key(metadata_key)
-      return [] if !defined?(metadata)
+      return [] if !defined?(metadata) || metadata.nil?
       metadata.item[:items].each do |item|
         if item[:key] == metadata_key
           return item[:value]
@@ -137,12 +137,12 @@ module Inspec::Resources
 
     def service_account_scopes
       # note instances can have only one service account defined
-      return [] if !defined?(@instance.service_accounts[0].scopes)
+      return [] if @instance.service_accounts[0].nil? || !defined?(@instance.service_accounts[0].scopes) || @instance.service_accounts[0].scopes.nil?
       @instance.service_accounts[0].scopes
     end
 
     def block_project_ssh_keys
-      return false if !defined?(@instance.metadata.items)
+      return false if !defined?(@instance.metadata.items) || @instance.metadata.items.nil?
       @instance.metadata.items.each do |element|
         return true if element.key=='block-project-ssh-keys' and element.value.casecmp('true').zero?
         return true if element.key=='block-project-ssh-keys' and element.value=='1'
@@ -151,7 +151,7 @@ module Inspec::Resources
     end
 
     def has_serial_port_disabled?
-      return false if !defined?(@instance.metadata.items)
+      return false if !defined?(@instance.metadata.items) || @instance.metadata.items.nil?
       @instance.metadata.items.each do |element|
         return true if element.key=='serial-port-enable' and element.value.casecmp('false').zero?
         return true if element.key=='serial-port-enable' and element.value=='0'
@@ -160,7 +160,7 @@ module Inspec::Resources
     end
 
     def has_disks_encrypted_with_csek?
-      return false if !defined?(@instance.disks)
+      return false if !defined?(@instance.disks) || @instance.disks.nil?
       @instance.disks.each do |disk|
         return false if !defined?(disk.disk_encryption_key)
         return false if disk.disk_encryption_key.nil?

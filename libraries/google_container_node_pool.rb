@@ -38,17 +38,20 @@ module Inspec::Resources
     end
 
     def config_image_type
-      return false if !defined?(@nodepool.config.image_type)
+      return '' if !defined?(@nodepool.config.image_type)
+      return '' if @nodepool.config.image_type.nil?
       @nodepool.config.image_type
     end
 
     def config_service_account
-      return false if !defined?(@nodepool.config.service_account)
+      return '' if !defined?(@nodepool.config.service_account)
+      return '' if @nodepool.config.service_account.nil?
       @nodepool.config.service_account
     end
 
     def config_oauth_scopes
       return false if !defined?(@nodepool.config.oauth_scopes)
+      return false if @nodepool.config.oauth_scopes.nil?
       @nodepool.config.oauth_scopes
     end
 

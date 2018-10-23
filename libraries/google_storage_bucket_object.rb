@@ -28,17 +28,17 @@ module Inspec::Resources
     end
 
     def updated_date
-      return false if !defined?(@time_updated)
+      return false if !defined?(@time_updated) || @time_updated.nil?
       Time.parse(@time_updated.to_s)
     end
 
     def time_storage_class_updated_date
-      return false if !defined?(@time_class_updated)
+      return false if !defined?(@time_class_updated) || @time_class_updated.nil?
       Time.parse(@time_class_updated.to_s)
     end
 
     def time_created_date
-      return false if !defined?(@time_created)
+      return false if !defined?(@time_created) || @time_created.nil?
       Time.parse(@time_created.to_s)
     end
 

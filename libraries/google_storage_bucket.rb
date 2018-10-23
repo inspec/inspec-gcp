@@ -31,6 +31,7 @@ module Inspec::Resources
 
     def has_versioning_enabled?
       return false if !defined?(@bucket.versioning)
+      return false if @bucket.versioning.nil?
       @bucket.versioning.enabled
     end
 

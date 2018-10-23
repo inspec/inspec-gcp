@@ -25,7 +25,7 @@ module Inspec::Resources
     end
 
     def enabled?
-      return false if !defined?(@policy.enabled)
+      return false if !defined?(@policy.enabled) || @policy.enabled.nil?
       @policy.enabled
     end
 
