@@ -39,7 +39,7 @@ module Inspec::Resources
       # check all name/port values for a match
       return false if !defined?(named_ports) || named_ports.nil?
       named_ports.each do |named_port|
-        next if !defined?(named_port.item[key])
+        next if !defined?(named_port.item[key]) || named_port.item[key].nil?
         return named_port.item[key]
       end
       false

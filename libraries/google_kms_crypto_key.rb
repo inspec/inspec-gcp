@@ -26,33 +26,33 @@ module Inspec::Resources
     end
 
     def crypto_key_name
-      return false if !defined?(name)
+      return '' if !defined?(name) || name.nil?
       name.split('/').last
     end
 
     def create_time_date
-      return false if !defined?(create_time)
+      return false if !defined?(create_time) || create_time.nil?
       Time.parse(create_time)
     end
 
     # this is added for completeness as crypto key IAM bindings use the crypto_key_url as an identifier
     def crypto_key_url
-      return false if !defined?(name)
+      return '' if !defined?(name) || name.nil?
       name
     end
 
     def next_rotation_time_date
-      return false if !defined?(next_rotation_time)
+      return false if !defined?(next_rotation_time) || next_rotation_time.nil?
       Time.parse(next_rotation_time)
     end
 
     def primary_create_time_date
-      return false if !defined?(primary.create_time)
+      return false if !defined?(primary.create_time) || primary.create_time.nil?
       Time.parse(primary.create_time)
     end
 
     def rotation_period_seconds
-      return false if !defined?(rotation_period)
+      return 0 if !defined?(rotation_period) || rotation_period.nil?
       result = nil
       conversion = { 's'=>1, 'm'=>60, 'h'=>60*60, 'd'=>24*60*60 }
       conversion.each do |time_unit, multiplier|
@@ -63,12 +63,12 @@ module Inspec::Resources
     end
 
     def primary_name
-      return false if !defined?(primary.name)
+      return '' if !defined?(primary.name) || primary.name.nil?
       primary.name
     end
 
     def primary_state
-      return false if !defined?(primary.state)
+      return false if !defined?(primary.state) || primary.state.nil?
       primary.state
     end
 

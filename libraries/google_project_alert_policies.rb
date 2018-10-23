@@ -37,7 +37,7 @@ module Inspec::Resources
       @policies.alert_policies.map do |policy|
         policy_filters = []
         policy.conditions.each do |condition|
-          next if !defined?(condition.condition_threshold.filter)
+          next if !defined?(condition.condition_threshold.filter) || condition.condition_threshold.filter.nil?
           policy_filters+=[condition.condition_threshold.filter]
         end
 

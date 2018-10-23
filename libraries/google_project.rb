@@ -27,7 +27,7 @@ module Inspec::Resources
     end
 
     def label_value_by_key(label_key)
-      return [] if !defined?(labels)
+      return [] if !defined?(labels) || labels.nil?
       labels.item[label_key]
     end
 

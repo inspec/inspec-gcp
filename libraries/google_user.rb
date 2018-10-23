@@ -29,12 +29,12 @@ module Inspec::Resources
     end
 
     def suspended?
-      return false if !defined?(@user.suspended)
+      return false if !defined?(@user.suspended) || @user.suspended.nil?
       @user.suspended
     end
 
     def has_mfa_enabled?
-      return false if !defined?(@user.is_enrolled_in2_sv)
+      return false if !defined?(@user.is_enrolled_in2_sv) || @user.is_enrolled_in2_sv.nil?
       @user.is_enrolled_in2_sv
     end
 

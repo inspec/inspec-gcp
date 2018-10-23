@@ -52,40 +52,37 @@ module Inspec::Resources
     # filter plural firewalls based on direction to pin down the desired rules and choose the appropriate method
     # see similar below example for ip_range_list
     def allow_source_tags?(tag_list)
-      return false if !defined?(source_tags)
+      return false if !defined?(source_tags) || source_tags.nil?
       match_list_helper(source_tags, tag_list)
     end
     RSpec::Matchers.alias_matcher :allow_source_tags, :be_allow_source_tags
 
     def allow_target_tags?(tag_list)
-      return false if !defined?(target_tags)
+      return false if !defined?(target_tags) || target_tags.nil?
       match_list_helper(target_tags, tag_list)
     end
     RSpec::Matchers.alias_matcher :allow_target_tags, :be_allow_target_tags
 
     def allow_source_tags_only?(tag_list)
-      return false if !defined?(source_tags)
+      return false if !defined?(source_tags) || source_tags.nil?
       match_list_helper(source_tags, tag_list, true)
     end
     RSpec::Matchers.alias_matcher :allow_source_tags_only, :be_allow_source_tags_only
 
     def allow_target_tags_only?(tag_list)
-      return false if !defined?(target_tags)
+      return false if !defined?(target_tags) || target_tags.nil?
       match_list_helper(target_tags, tag_list, true)
     end
     RSpec::Matchers.alias_matcher :allow_target_tags_only, :be_allow_target_tags_only
 
     def match_list_helper(source_list, target_list, only = false)
       # helps streamline matching exact equality versus inclusion of target and source lists
-      if only # i.e. exact equality
-        return true if source_list.sort == target_list.sort
-        false
-      else # check the source list includes at least all specified target list elements
-        target_list.each do |must_be_present|
-          return false if !source_list.include? must_be_present
-        end
-        true
+      return source_list.sort == target_list.sort if only # i.e. exact equality
+      # check the source list includes at least all specified target list elements
+      target_list.each do |must_be_present|
+        return false if !source_list.include? must_be_present
       end
+      true
     end
 
     # initial implementation is direction agnostic and treats IP ranges separately
@@ -102,7 +99,7 @@ module Inspec::Resources
     RSpec::Matchers.alias_matcher :allow_ip_ranges, :be_allow_ip_ranges
 
     def allow_ip_range_list(ip_range_list, only = false)
-      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction)
+      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction) || direction.nil?
       # the intention here is for firewall rules plural to be filtered based on direction, then tested for particular IP ranges
       # e.g.        describe google_compute_firewalls(project: 'chef-inspec-gcp').where(firewall_direction: 'INGRESS').firewall_names.each do |firewall_name| do
       #               describe google_compute_firewall(project: 'chef-inspec-gcp',  name: firewall_name) do
@@ -112,25 +109,25 @@ module Inspec::Resources
       # direction affects what the property is e.g. INGRESS->source_ranges, EGRESS->destination_ranges
       ranges = nil
       if direction == 'INGRESS'
-        return false if !defined?(source_ranges)
+        return false if !defined?(source_ranges) || source_ranges.nil?
         ranges = source_ranges
       else
-        return false if !defined?(destination_ranges)
+        return false if !defined?(destination_ranges) || destination_ranges.nil?
         ranges = destination_ranges
       end
-      return false if ranges.nil?
+      return false if !defined?(ranges) || ranges.nil?
       # so now we have a list of IP addresses to compare
       match_list_helper(ranges, ip_range_list, only)
     end
 
     # note that port_list only accepts individual ports to match, not ranges
     def port_protocol_allowed(single_port, protocol = 'tcp')
-      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed'" if !defined?(allowed)
+      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed'" if !defined?(allowed) || allowed.nil?
       # "allowed" can have several port/protocol pairing entries e.g. tcp:80 or udp:4000-5000
       # first, let's find the matching protocol indexes to compare against
       protocol_match_indexes = []
       allowed.each_with_index do |rule, index|
-        next if !defined?(rule.item[:ip_protocol])
+        next if rule.item[:ip_protocol].nil?
         protocol_match_indexes<<index if rule.item[:ip_protocol]==protocol
       end
       # Now we know the list of matching protocol entries to check against.

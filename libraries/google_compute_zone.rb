@@ -26,7 +26,7 @@ module Inspec::Resources
 
     # helper method for retrieving a region name
     def region_name
-      return false if !defined?(region)
+      return '' if !defined?(region) || region.nil?
       region.split('/').last
     end
 
@@ -35,7 +35,7 @@ module Inspec::Resources
     end
 
     def up?
-      return false if !defined?(status)
+      return false if !defined?(status) || status.nil?
       status == 'UP'
     end
 

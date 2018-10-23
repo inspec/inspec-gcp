@@ -21,7 +21,7 @@ module Inspec::Resources
         @audit_logging_configs = @gcp.gcp_project_client.get_project_iam_policy(@project)
         @default_types = []
         @default_exempted_members = {}
-        if defined?(@audit_logging_configs.audit_configs) && !@audit_logging_configs.audit_configs.nil?
+        if defined?(@audit_logging_configs.audit_configs) && @audit_logging_configs.audit_configs.class.to_s == 'Array'
           @audit_logging_configs.audit_configs.each do |service_config|
             next if service_config.service != 'allServices'
             service_config.audit_log_configs.each do |config|

@@ -37,7 +37,7 @@ module Inspec::Resources
     end
 
     def creation_timestamp_date
-      return false if !defined?(creation_timestamp)
+      return false if !defined?(creation_timestamp) || creation_timestamp.nil?
       Time.parse(creation_timestamp.to_s)
     end
 

@@ -36,12 +36,12 @@ module Inspec::Resources
     end
 
     def authorized_networks
-      return [] if !defined?(@database.settings.ip_configuration.authorized_networks)
-      @database.settings.ip_configuration.authorized_networks
+      return [] if !defined?(@database.settings.ip_configuration.authorized_networks) || @database.settings.ip_configuration.authorized_networks.nil?
+      @database.settings.ip_configuration.authorized_networks.map(&:value)
     end
 
     def primary_ip_address
-      return false if !defined?(@database.ip_addresses[0].ip_address)
+      return '' if !defined?(@database.ip_addresses[0].ip_address) || @database.ip_addresses[0].ip_address.nil?
       @database.ip_addresses[0].ip_address
     end
 
