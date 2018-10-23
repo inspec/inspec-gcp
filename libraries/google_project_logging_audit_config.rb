@@ -21,12 +21,12 @@ module Inspec::Resources
         @audit_logging_configs = @gcp.gcp_project_client.get_project_iam_policy(@project)
         @default_types = []
         @default_exempted_members = {}
-        if defined?(@audit_logging_configs.audit_configs)
+        if defined?(@audit_logging_configs.audit_configs) && !@audit_logging_configs.audit_configs.nil?
           @audit_logging_configs.audit_configs.each do |service_config|
             next if service_config.service != 'allServices'
             service_config.audit_log_configs.each do |config|
               @default_types+=[config.log_type]
-              @default_exempted_members[config.log_type]=config.exempted_members if defined?(config.exempted_members)
+              @default_exempted_members[config.log_type]=config.exempted_members if defined?(config.exempted_members) && !config.exempted_members.nil?
             end
           end
         end
@@ -34,8 +34,7 @@ module Inspec::Resources
     end
 
     def exists?
-      return false if !defined? @audit_logging_configs.audit_configs
-      !@audit_logging_configs.audit_configs.nil?
+      defined?(@audit_logging_configs.audit_configs) && !@audit_logging_configs.audit_configs.nil?
     end
 
     attr_reader :default_types
