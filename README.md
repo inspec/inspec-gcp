@@ -61,20 +61,70 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='/Users/john/.config/gcloud/myproject-1-
 
 Since this is an InSpec resource pack, it only defines InSpec resources. It includes example tests only. To easily use the GCP resources in your tests do the following:
 
-### Create a new profile
+###  Create a new profile for GCP
 
 ```bash
-$ inspec init profile my-profile
-Create new profile at /Users/skpaterson/my-profile
+$ inspec init profile --platform gcp my-profile
+Create new profile at /Users/spaterson/my-profile
  * Create directory libraries
  * Create file README.md
  * Create directory controls
  * Create file controls/example.rb
  * Create file inspec.yml
- * Create file libraries/.gitkeep
+ * Create file attributes.yml
+ * Create file libraries/.gitkeep 
+ 
 ```
 
-Now update the default `inspec.yml` file to point to the InSpec GCP resource pack:
+### Update `attributes.yml` to point to your project
+
+```
+gcp_project_id: 'my-gcp-project'
+```
+
+## Run the tests
+
+```
+$ cd my-profile/
+$ inspec exec . -t gcp:// --attrs attributes.yml
+
+Profile: GCP InSpec Profile (my-profile)
+Version: 0.1.0
+Target:  gcp://local-service-account@my-gcp-project.iam.gserviceaccount.com
+
+  ✔  gcp-single-region-1.0: Ensure single region has the correct properties.
+     ✔  Region europe-west2 zone_names should include "europe-west2-a"
+  ✔  gcp-regions-loop-1.0: Ensure regions have the correct properties in bulk.
+     ✔  Region asia-east1 should be up
+     ✔  Region asia-northeast1 should be up
+     ✔  Region asia-south1 should be up
+     ✔  Region asia-southeast1 should be up
+     ✔  Region australia-southeast1 should be up
+     ✔  Region europe-north1 should be up
+     ✔  Region europe-west1 should be up
+     ✔  Region europe-west2 should be up
+     ✔  Region europe-west3 should be up
+     ✔  Region europe-west4 should be up
+     ✔  Region northamerica-northeast1 should be up
+     ✔  Region southamerica-east1 should be up
+     ✔  Region us-central1 should be up
+     ✔  Region us-east1 should be up
+     ✔  Region us-east4 should be up
+     ✔  Region us-west1 should be up
+     ✔  Region us-west2 should be up
+
+
+Profile: Google Cloud Platform Resource Pack (inspec-gcp)
+Version: 0.5.0
+Target:  gcp://local-service-account@my-gcp-project.iam.gserviceaccount.com
+
+     No tests executed.
+
+Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 18 successful, 0 failures, 0 skipped
+```
+
+The generated `inspec.yml` file automatically points to the InSpec GCP resource pack:
 
 ```yaml
 name: my-profile
@@ -87,6 +137,7 @@ depends:
 supports:
   - platform: gcp
 ```
+
 
 ## Resource documentation
 
