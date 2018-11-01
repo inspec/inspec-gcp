@@ -1,5 +1,19 @@
 # Change Log
 
+## [v0.7.0](https://github.com/inspec/inspec-gcp/tree/v0.7.0) (2018-11-01)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.6.0...v0.7.0)
+
+**Closed issues:**
+
+- verifying via kitchen-terraform verifier [\#71](https://github.com/inspec/inspec-gcp/issues/71)
+
+**Merged pull requests:**
+
+- Extra nil checks, some error values changed [\#69](https://github.com/inspec/inspec-gcp/pull/69) ([alexpop](https://github.com/alexpop))
+- Fix nil checks in google\_project\_logging\_audit\_config resource [\#68](https://github.com/inspec/inspec-gcp/pull/68) ([alexpop](https://github.com/alexpop))
+- Fix nil exception when no zones are returned for a region [\#67](https://github.com/inspec/inspec-gcp/pull/67) ([alexpop](https://github.com/alexpop))
+- Bump version to v0.6.0 [\#64](https://github.com/inspec/inspec-gcp/pull/64) ([skpaterson](https://github.com/skpaterson))
+
 ## [v0.6.0](https://github.com/inspec/inspec-gcp/tree/v0.6.0) (2018-10-18)
 [Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.5.0...v0.6.0)
 
