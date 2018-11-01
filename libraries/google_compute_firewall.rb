@@ -133,9 +133,6 @@ module Inspec::Resources
       # however in the case of 'denied' the logic of allowed is inverted
       # first consider the special case of 'all' where no ports/protocols are listed explicitly
       # and applies to all protocols
-      # p 'prop stuff'
-      # p property.count
-      # p property[0].item[:ip_protocol]
       if property.count == 1 and property[0].item[:ip_protocol] == 'all'
         return true if allowed_flag # an allowed rule that will match all ports/protocols
         return false # i.e. this is a deny all rule and will block all ports/protocols
