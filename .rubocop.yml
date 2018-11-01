@@ -31,6 +31,10 @@ Metrics/PerceivedComplexity:
   Max: 11
 Metrics/AbcSize:
   Max: 33
+Metrics/CyclomaticComplexity:
+  Max: 15
+Metrics/PerceivedComplexity:
+  Max: 15
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  '{}'
