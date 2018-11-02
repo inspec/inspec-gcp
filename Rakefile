@@ -36,7 +36,7 @@ namespace :test do
     dir = File.join(File.dirname(__FILE__))
     sh("bundle exec inspec check #{dir}")
     # run inspec check on the sample profile to ensure all resources are loaded okay
-    sh("bundle exec inspec check #{integration_dir}/verify")
+    sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
   
 
