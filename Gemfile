@@ -15,5 +15,5 @@ group :development do
 end
 
 group :inspec do
-  gem 'inspec', '~> 2.2', '>= 2.2.10'
+  gem 'inspec', '~> 3.0', '>= 3.0.25'
 end
