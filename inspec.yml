@@ -6,6 +6,6 @@ copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 version: 0.7.0
 license: Apache-2.0
-inspec_version: '>= 2.2.10'
+inspec_version: '>= 3.0.25'
 supports:
   - platform: gcp
