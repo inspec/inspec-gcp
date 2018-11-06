@@ -133,7 +133,7 @@ module Inspec::Resources
       # however in the case of 'denied' the logic of allowed is inverted
       # first consider the special case of 'all' where no ports/protocols are listed explicitly
       # and applies to all protocols
-      if property.count == 1 and property[0].item[:ip_protocol] == 'all'
+      if property.count == 1 and property[0].ip_protocol == 'all'
         return true if allowed_flag # an allowed rule that will match all ports/protocols
         return false # i.e. this is a deny all rule and will block all ports/protocols
       end
@@ -142,8 +142,8 @@ module Inspec::Resources
       # first, let's find the matching protocol indexes to compare against
       protocol_match_indexes = []
       property.each_with_index do |rule, index|
-        next if !defined?(rule.item[:ip_protocol])
-        protocol_match_indexes << index if rule.item[:ip_protocol] == protocol
+        next if !defined?(rule.ip_protocol)
+        protocol_match_indexes << index if rule.ip_protocol == protocol
       end
       # Now we know the list of matching protocol entries to check against.
       # Note the syntax for protocol port definitions versus what we see here is:
@@ -153,7 +153,7 @@ module Inspec::Resources
       # We now check for a match based on each of the above cases
       protocol_match_indexes.each do |protocol_index|
         # there can be multiple protocol rules for different ports etc. ["22"] or ["123-126"]
-        ports_in_rule = property[protocol_index].item[:ports]
+        ports_in_rule = property[protocol_index].ports
         next if ports_in_rule.nil?
         ports_in_rule.each do |rule_port|
           matched_result = single_port_matches(rule_port, single_port)
@@ -170,8 +170,8 @@ module Inspec::Resources
       raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed' or 'denied'" if !defined?(@firewall.allowed) || !defined?(@firewall.denied)
       raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'allowed' and 'denied' cannot both be nil" if @firewall.allowed.nil? && @firewall.denied.nil?
       allowed_flag = @firewall.denied.nil?
-      return match_rule_protocol(allowed, single_port, protocol, allowed_flag) if allowed_flag
-      match_rule_protocol(denied, single_port, protocol, allowed_flag)
+      return match_rule_protocol(@firewall.allowed, single_port, protocol, allowed_flag) if allowed_flag
+      match_rule_protocol(@firewall.denied, single_port, protocol, allowed_flag)
     end
 
     def single_port_matches(rule_port, single_port)
