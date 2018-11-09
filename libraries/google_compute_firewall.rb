@@ -15,6 +15,7 @@ module Inspec::Resources
         ...
       end
     "
+
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
@@ -46,6 +47,7 @@ module Inspec::Resources
     def allow_port_protocol?(port, protocol)
       port_protocol_allowed(port, protocol)
     end
+
     RSpec::Matchers.alias_matcher :allow_port_protocol, :be_allow_port_protocol
 
     # initial implementation allows to search for target source and destination tags - can
@@ -55,24 +57,28 @@ module Inspec::Resources
       return false if !defined?(source_tags) || source_tags.nil?
       match_list_helper(source_tags, tag_list)
     end
+
     RSpec::Matchers.alias_matcher :allow_source_tags, :be_allow_source_tags
 
     def allow_target_tags?(tag_list)
       return false if !defined?(target_tags) || target_tags.nil?
       match_list_helper(target_tags, tag_list)
     end
+
     RSpec::Matchers.alias_matcher :allow_target_tags, :be_allow_target_tags
 
     def allow_source_tags_only?(tag_list)
       return false if !defined?(source_tags) || source_tags.nil?
       match_list_helper(source_tags, tag_list, true)
     end
+
     RSpec::Matchers.alias_matcher :allow_source_tags_only, :be_allow_source_tags_only
 
     def allow_target_tags_only?(tag_list)
       return false if !defined?(target_tags) || target_tags.nil?
       match_list_helper(target_tags, tag_list, true)
     end
+
     RSpec::Matchers.alias_matcher :allow_target_tags_only, :be_allow_target_tags_only
 
     def match_list_helper(source_list, target_list, only = false)
@@ -91,11 +97,13 @@ module Inspec::Resources
     def allow_ip_ranges_only?(ip_range_list)
       allow_ip_range_list(ip_range_list, true)
     end
+
     RSpec::Matchers.alias_matcher :allow_ip_ranges_only, :be_allow_ip_ranges_only
 
     def allow_ip_ranges?(ip_range_list)
       allow_ip_range_list(ip_range_list)
     end
+
     RSpec::Matchers.alias_matcher :allow_ip_ranges, :be_allow_ip_ranges
 
     def allow_ip_range_list(ip_range_list, only = false)
@@ -120,15 +128,22 @@ module Inspec::Resources
       match_list_helper(ranges, ip_range_list, only)
     end
 
-    # note that port_list only accepts individual ports to match, not ranges
-    def port_protocol_allowed(single_port, protocol = 'tcp')
-      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed'" if !defined?(allowed) || allowed.nil?
-      # "allowed" can have several port/protocol pairing entries e.g. tcp:80 or udp:4000-5000
+    def match_rule_protocol(property, single_port, protocol, allowed_flag)
+      # this covers both property 'allowed' and 'denied' as they have the same structure
+      # however in the case of 'denied' the logic of allowed is inverted
+      # first consider the special case of 'all' where no ports/protocols are listed explicitly
+      # and applies to all protocols
+      if property.count == 1 and property[0].ip_protocol == 'all'
+        return true if allowed_flag # an allowed rule that will match all ports/protocols
+        return false # i.e. this is a deny all rule and will block all ports/protocols
+      end
+
+      # "allowed"/"denied" can have several port/protocol pairing entries e.g. tcp:80 or udp:4000-5000
       # first, let's find the matching protocol indexes to compare against
       protocol_match_indexes = []
-      allowed.each_with_index do |rule, index|
-        next if rule.item[:ip_protocol].nil?
-        protocol_match_indexes<<index if rule.item[:ip_protocol]==protocol
+      property.each_with_index do |rule, index|
+        next if !defined?(rule.ip_protocol)
+        protocol_match_indexes << index if rule.ip_protocol == protocol
       end
       # Now we know the list of matching protocol entries to check against.
       # Note the syntax for protocol port definitions versus what we see here is:
@@ -138,20 +153,32 @@ module Inspec::Resources
       # We now check for a match based on each of the above cases
       protocol_match_indexes.each do |protocol_index|
         # there can be multiple protocol rules for different ports etc. ["22"] or ["123-126"]
-        ports_in_rule = allowed[protocol_index].item[:ports]
+        ports_in_rule = property[protocol_index].ports
         next if ports_in_rule.nil?
         ports_in_rule.each do |rule_port|
-          return true if single_port_matches(rule_port, single_port)
+          matched_result = single_port_matches(rule_port, single_port)
+          return true if matched_result and allowed_flag
+          return false if matched_result and !allowed_flag
         end
       end
+      return true if !allowed_flag # i.e. here we matched no port/protocol rules for a deny rule and therefore result in allowing
       false
+    end
+
+    # note that port_list only accepts individual ports to match, not ranges
+    def port_protocol_allowed(single_port, protocol = 'tcp')
+      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed' or 'denied'" if !defined?(@firewall.allowed) || !defined?(@firewall.denied)
+      raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'allowed' and 'denied' cannot both be nil" if @firewall.allowed.nil? && @firewall.denied.nil?
+      allowed_flag = @firewall.denied.nil?
+      return match_rule_protocol(@firewall.allowed, single_port, protocol, allowed_flag) if allowed_flag
+      match_rule_protocol(@firewall.denied, single_port, protocol, allowed_flag)
     end
 
     def single_port_matches(rule_port, single_port)
       # if '-' in there it means we should check each provided port for existence in a range
       if !rule_port.include? '-'
         # simplest case, only one port string specified
-        return true if rule_port==single_port
+        return true if rule_port == single_port
         # if not, no match
       else
         # the rule_port here is a range such as "4000-5000", protect against any non-integer input by checking for nil values
