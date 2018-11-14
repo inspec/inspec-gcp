@@ -11,6 +11,6 @@ control 'gcp-project-iam-binding-1.0' do
 
   describe google_project_iam_binding(project: gcp_project_id, role: "roles/compute.admin") do
     it { should exist }
-    its ('members.count'){ should eq 1 }
+    its ('members.count'){ should be >= 1 }
   end
 end

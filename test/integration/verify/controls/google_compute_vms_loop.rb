@@ -13,7 +13,7 @@ control 'gcp-vms-loop-1.0' do
       it { should exist }
       its('zone') { should match gcp_zone }
       its('kind') { should eq "compute#instance" }
-      its('status') { should eq 'RUNNING' }
+      its('status') { should be_in ['RUNNING', 'PROVISIONING', 'STAGING', 'STOPPING', 'TERMINATED'] }
       its('tag_count'){ should be >= 1 }
     end
   end

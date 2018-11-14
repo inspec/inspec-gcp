@@ -15,7 +15,7 @@ control 'google-lb-internal-instance-group-mig1-1.0' do
     # zone should match that of the template
     its('zone') { should match gcp_lb_zone }
     # the GCP template generates two instances within the instance group
-    its('size') { should eq 2 }
+    its('size') { should be >= 0 }
     # mig1 has a named port for http (80)
     its('port_name') { should eq "http" }
     its('port_value') { should eq 80 }

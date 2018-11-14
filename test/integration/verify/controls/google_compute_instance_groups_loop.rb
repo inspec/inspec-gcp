@@ -11,7 +11,7 @@ control 'gcp-compute-instance-groups-loop-1.0' do
   google_compute_instance_groups(project: gcp_project_id, zone: gcp_lb_zone).where(instance_group_name: /^gcp-inspec/).instance_group_names.each do |instance_group_name|
     describe google_compute_instance_group(project: gcp_project_id, zone: 'europe-west2-a', name: instance_group_name) do
       it { should exist }
-      its('size') { should be > 0 }
+      its('size') { should be >= 0 }
     end
   end
 end
