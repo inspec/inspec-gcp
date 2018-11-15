@@ -193,7 +193,7 @@ Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"' if @service
 
   def fetch_auth
     Network::Authorization.new.for!(
-      ['https://www.googleapis.com/auth/cloud-platform']
+      ['https://www.googleapis.com/auth/compute.readonly']
     ).from_service_account_json!(
       @service_account_file
     )
