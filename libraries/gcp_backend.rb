@@ -283,8 +283,8 @@ Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"' if @service
   end
 end
 
+# A handler for authenticated network request
 module Network
-    # A handler for authenticated network request
   class Base
     def initialize(link, cred)
       @link = link
@@ -324,8 +324,9 @@ module Network
       "inspec-google/1.0.0"
     end
   end
-  class Authorization
+
   # A class to aquire credentials and authorize Google API calls.
+  class Authorization
     def initialize
       @authorization = nil
       @scopes = []
@@ -377,7 +378,7 @@ module Network
       req
     end
   end
-      # Extension methods to enable retrieving the authentication token.
+  # Extension methods to enable retrieving the authentication token.
   module TokenProperty
     attr_reader :token
     attr_writer :token
