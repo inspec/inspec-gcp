@@ -1,7 +1,7 @@
 require 'gcp_backend'
 
 module Inspec::Resources
-  class GoogleComputeNetwork < GcpResourceBase
+  class GoogleComputeVpnTunnel < GcpResourceBase
     name 'google_compute_vpn_tunnel'
     desc 'Verifies settings for a compute vpn_tunnel'
 
