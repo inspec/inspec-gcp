@@ -19,7 +19,10 @@ class GcpResourceBase < Inspec.resource(1)
     @opts = opts
     # ensure we have a GCP connection, resources can choose which of the clients to instantiate
     @gcp = inspec.backend
-    if opts[:flag]
+
+    # Magic Modules generated resources use an alternate transport method
+    # In the future this will be moved into the train-gcp plugin itself
+    if opts[:use_http_transport]
       @connection = GcpApiConnection.new(opts)
     end
   end
