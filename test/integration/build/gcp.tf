@@ -80,6 +80,12 @@ variable "gcp_logging_project_exclusion_name" {}
 
 variable "gcp_network_name" {}
 variable "gcp_subnetwork_name" {}
+variable "gcp_vpn_gateway_name" {}
+variable "gcp_vpn_tunnel_name" {}
+variable "gcp_fr_esp_name" {}
+variable "gcp_fr_udp_name" {}
+variable "gcp_address_name" {}
+variable "gcp_vpn_address_name" {}
 
 variable "gcp_db_instance_name" {}
 variable "gcp_db_name" {}
@@ -756,6 +762,74 @@ resource "google_compute_subnetwork" "inspec-gcp-subnetwork" {
   name =  "${var.gcp_subnetwork_name}"
   region = "${var.gcp_location}"
   network = "${google_compute_network.inspec-gcp-network.self_link}"
+}
+
+resource "google_compute_vpn_gateway" "inspec-gcp-vpn-gateway" {
+  name = "${var.gcp_vpn_gateway_name}"
+  project = "${var.gcp_project_id}"
+  region = "${var.gcp_location}"
+  network = "${google_compute_network.inspec-gcp-network.self_link}"
+}
+
+resource "google_compute_address" "inspec-gcp-address" {
+  name = "${var.gcp_address_name}"
+  project = "${var.gcp_project_id}"
+  region = "${var.gcp_location}"
+}
+
+resource "google_compute_address" "inspec-gcp-vpn-address" {
+  name = "${var.gcp_vpn_address_name}"
+  project = "${var.gcp_project_id}"
+  region = "${var.gcp_location}"
+}
+
+resource "google_compute_forwarding_rule" "inspec-gcp-fr-esp" {
+  name  = "${var.gcp_fr_esp_name}"
+  project = "${var.gcp_project_id}"
+  region = "${var.gcp_location}"
+
+  ip_protocol = "ESP"
+  ip_address = "${google_compute_address.inspec-gcp-vpn-address.address}"
+  target = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+}
+
+resource "google_compute_forwarding_rule" "inspec-gcp-fr-udp500" {
+  name    = "${var.gcp_fr_udp_name}-500"
+  project = "${var.gcp_project_id}"
+  region  = "${var.gcp_location}"
+
+  ip_protocol = "UDP"
+  port_range  = "500-500"
+  ip_address  = "${google_compute_address.inspec-gcp-vpn-address.address}"
+  target      = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+}
+
+resource "google_compute_forwarding_rule" "inspec-gcp-fr-udp4500" {
+  name  = "${var.gcp_fr_udp_name}-4500"
+  project = "${var.gcp_project_id}"
+  region = "${var.gcp_location}"
+
+  ip_protocol = "UDP"
+  port_range = "4500-4500"
+  ip_address = "${google_compute_address.inspec-gcp-vpn-address.address}"
+  target = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+}
+
+resource "google_compute_vpn_tunnel" "inspec-gcp-vpn-tunnel" {
+  name = "${var.gcp_vpn_tunnel_name}"
+  project = "${var.gcp_project_id}"
+  region = "${var.gcp_location}"
+  peer_ip = "${google_compute_address.inspec-gcp-address.address}"
+  shared_secret = "generic_secret"
+  target_vpn_gateway = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+  remote_traffic_selector = ["0.0.0.0/0"]
+  local_traffic_selector  = ["0.0.0.0/0"]
+
+  depends_on = [
+    "google_compute_forwarding_rule.inspec-gcp-fr-esp",
+    "google_compute_forwarding_rule.inspec-gcp-fr-udp500",
+    "google_compute_forwarding_rule.inspec-gcp-fr-udp4500",
+  ]
 }
 
 # End network resources
