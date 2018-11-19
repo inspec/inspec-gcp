@@ -35,8 +35,7 @@ module Inspec::Resources
         end
         return [] if !@vpn_tunnels || !@vpn_tunnels.items
         @vpn_tunnels.items.map do |tunnel|
-          tunnel_rows+=[{ vpn_tunnel_name: tunnel.name,
-			  vpn_tunnel_target_vpn_gateway: tunnel.target_vpn_gateway }]
+          tunnel_rows+=[{ vpn_tunnel_name: tunnel.name, vpn_tunnel_target_vpn_gateway: tunnel.target_vpn_gateway }]
         end
         next_page = @vpn_tunnels.next_page_token
         break unless next_page
