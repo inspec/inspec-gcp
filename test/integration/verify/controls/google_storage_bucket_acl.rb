@@ -18,4 +18,7 @@ control 'gcp-storage-bucket-acl-1.0' do
     its('bucket') { should eq gcp_storage_bucket_acl }
   end
 
+  describe google_storage_bucket_acl(bucket: gcp_storage_bucket_acl, entity: 'allUsers') do
+    it { should_not exist }
+  end
 end

@@ -18,9 +18,15 @@ module Inspec::Resources
       super(opts)
       @bucket = opts[:bucket]
       @entity = opts[:entity]
-      catch_gcp_errors do
+      begin
         @acl = @gcp.gcp_storage_client.get_bucket_access_control(@bucket, @entity)
         create_resource_methods(@acl)
+        # all non-existing entities raise a "Not Found" client error
+      rescue Google::Apis::ClientError => e
+        # re-raise the exception if the error is not "Not Found"
+        raise e unless e.status_code == 404
+        @acl = nil
+        @error = JSON.parse(e.body)
       end
     end
 
