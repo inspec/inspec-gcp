@@ -20,10 +20,10 @@ module Inspec::Resources
       catch_gcp_errors do
         @managed_zone = @gcp.gcp_client(Google::Apis::DnsV2beta1::DnsService).get_managed_zone(opts[:project], opts[:zone])
         create_resource_methods(@managed_zone)
-        @key_specs={}
+        @key_specs = {}
         if defined?(@managed_zone.dnssec_config.default_key_specs) && !@managed_zone.dnssec_config.default_key_specs.nil?
           @managed_zone.dnssec_config.default_key_specs.each do |spec|
-            @key_specs[spec.key_type]=spec.algorithm
+            @key_specs[spec.key_type] = spec.algorithm
           end
         end
       end
@@ -39,13 +39,13 @@ module Inspec::Resources
     end
 
     def key_signing_key_algorithm
-      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs'" if !@key_specs.key?('keySigning')
-      @key_specs['keySigning']
+      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs KEY_SIGNING'" if !@key_specs.key?('KEY_SIGNING')
+      @key_specs['KEY_SIGNING']
     end
 
     def zone_signing_key_algorithm
-      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs'" if !@key_specs.key?('zoneSigning')
-      @key_specs['zoneSigning']
+      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs ZONE_SIGNING'" if !@key_specs.key?('ZONE_SIGNING')
+      @key_specs['ZONE_SIGNING']
     end
 
     def to_s
