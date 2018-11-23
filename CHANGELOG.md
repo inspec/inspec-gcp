@@ -1,11 +1,28 @@
 # Change Log
 
-## [v0.7.0](https://github.com/inspec/inspec-gcp/tree/v0.7.0) (2018-11-01)
-[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.6.0...v0.7.0)
+## [v0.8.0](https://github.com/inspec/inspec-gcp/tree/v0.8.0) (2018-11-23)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.7.0...v0.8.0)
 
 **Closed issues:**
 
+- google\_storage\_bucket\_acl fails with "Not Found" when the ACL doesn't exist [\#80](https://github.com/inspec/inspec-gcp/issues/80)
+- How to Install? [\#77](https://github.com/inspec/inspec-gcp/issues/77)
+- Magic Modules [\#74](https://github.com/inspec/inspec-gcp/issues/74)
 - verifying via kitchen-terraform verifier [\#71](https://github.com/inspec/inspec-gcp/issues/71)
+- Using InSpec with the GCP transport crashes when used with `file\(\)` resources [\#61](https://github.com/inspec/inspec-gcp/issues/61)
+
+**Merged pull requests:**
+
+- Update the DNS key and zone signing methods to the new key names. [\#82](https://github.com/inspec/inspec-gcp/pull/82) ([skpaterson](https://github.com/skpaterson))
+- Fix an error when the bucket ACL doesn't exist [\#81](https://github.com/inspec/inspec-gcp/pull/81) ([iangelov](https://github.com/iangelov))
+- Add support for google\_compute\_vpn\_tunnels and google\_compute\_vpn\_tunnel [\#79](https://github.com/inspec/inspec-gcp/pull/79) ([jnahelou](https://github.com/jnahelou))
+- Improve some of the infrastructure tests that were failing under 'nor… [\#78](https://github.com/inspec/inspec-gcp/pull/78) ([skpaterson](https://github.com/skpaterson))
+- Improve fw resources to handle 'all' cases. [\#76](https://github.com/inspec/inspec-gcp/pull/76) ([skpaterson](https://github.com/skpaterson))
+- Version bump v0.7.0. [\#75](https://github.com/inspec/inspec-gcp/pull/75) ([skpaterson](https://github.com/skpaterson))
+- Updated README for new GCP profile initialization, pending https://gi… [\#70](https://github.com/inspec/inspec-gcp/pull/70) ([skpaterson](https://github.com/skpaterson))
+
+## [v0.7.0](https://github.com/inspec/inspec-gcp/tree/v0.7.0) (2018-10-25)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.6.0...v0.7.0)
 
 **Merged pull requests:**
 
