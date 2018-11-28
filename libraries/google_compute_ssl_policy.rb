@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # Copyright 2018 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,14 +26,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-
 require 'gcp_backend'
 require 'google/compute/property/sslpolicy_warnings'
 
-
 # A provider to manage Google Compute Engine resources.
 class SslPolicy < GcpResourceBase
-
   name 'google_compute_ssl_policy'
   desc 'SslPolicy'
   supports platform: 'gcp'
@@ -55,13 +54,13 @@ class SslPolicy < GcpResourceBase
   end
 
   def initialize(params)
-    super(params.merge({:use_http_transport => true}))
+    super(params.merge({ use_http_transport: true }))
     @fetched = @connection.fetch(base, url, params)
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = DateTime.parse(@fetched['creationTimestamp'])
+    @creation_timestamp = Time.parse(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @id = @fetched['id']
     @name = @fetched['name']

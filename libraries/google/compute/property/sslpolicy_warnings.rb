@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # Copyright 2018 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,17 +26,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-
 module Google
   module Compute
     module Property
       class SslPolicyWarnings
         attr_reader :code
+
         attr_reader :message
 
-
         def initialize(args = nil)
-          return nil if args.nil?
+          return if args.nil?
           @code = args['code']
           @message = args['message']
         end
