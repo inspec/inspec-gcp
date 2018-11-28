@@ -22,9 +22,7 @@ class GcpResourceBase < Inspec.resource(1)
 
     # Magic Modules generated resources use an alternate transport method
     # In the future this will be moved into the train-gcp plugin itself
-    if opts[:use_http_transport]
-      @connection = GcpApiConnection.new(opts)
-    end
+    @connection = GcpApiConnection.new(opts) if opts[:use_http_transport]
   end
 
   def failed_resource?
@@ -188,29 +186,35 @@ class GcpResourceProbe
 end
 
 class GcpApiConnection
-  def initialize(options)
+  def initialize(_options)
     @service_account_file = ENV['GOOGLE_APPLICATION_CREDENTIALS']
-    raise 'Unable to find service account credentials.
-Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"' if @service_account_file.nil?
+    # rubocop:disable Style/GuardClause
+    if @service_account_file.nil?
+      raise [
+        'Unable to find service account credentials.',
+        'Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"',
+      ].join(' ')
+    end
+    # rubocop:enable Style/GuardClause
   end
 
   def fetch_auth
     Network::Authorization.new.for!(
-      ['https://www.googleapis.com/auth/compute.readonly']
+      ['https://www.googleapis.com/auth/compute.readonly'],
     ).from_service_account_json!(
-      @service_account_file
+      @service_account_file,
     )
   end
 
-  def fetch(base_url, template, var_data) 
+  def fetch(base_url, template, var_data)
     get_request = Network::Base.new(
       build_uri(base_url, template, var_data),
-      fetch_auth
+      fetch_auth,
     )
     return_if_object get_request.send
   end
 
-  def fetch_all(base_url, template, var_data) 
+  def fetch_all(base_url, template, var_data)
     next_page(build_uri(base_url, template, var_data))
   end
 
@@ -221,13 +225,13 @@ Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"' if @service
     uri.query = URI.encode_www_form(current_params)
     get_request = Network::Base.new(
       uri,
-      fetch_auth
+      fetch_auth,
     )
     result = JSON.parse(get_request.send.body)
     next_page_token = result['nextPageToken']
     return [result] if next_page_token.nil?
 
-    return [result] + next_page(uri, next_page_token)
+    [result] + next_page(uri, next_page_token)
   end
 
   def return_if_object(response)
@@ -238,7 +242,7 @@ Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"' if @service
     return if response.is_a?(Net::HTTPNotFound)
     return if response.is_a?(Net::HTTPNoContent)
     result = JSON.parse(response.body)
-    raise_if_errors result, %w[error errors], 'message'
+    raise_if_errors result, %w{error errors}, 'message'
     raise "Bad response: #{response}" unless response.is_a?(Net::HTTPOK)
     result
   end
@@ -256,7 +260,7 @@ Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"' if @service
   def build_uri(base_url, template, var_data)
     URI.join(
       base_url,
-      expand_variables(template, var_data)
+      expand_variables(template, var_data),
     )
   end
 
@@ -324,7 +328,7 @@ module Network
     private
 
     def generate_user_agent
-      "inspec-google/1.0.0"
+      'inspec-google/1.0.0'
     end
   end
 
@@ -358,7 +362,7 @@ module Network
       raise 'Missing argument for scopes' if @scopes.empty?
       @authorization = ::Google::Auth::ServiceAccountCredentials.make_creds(
         json_key_io: File.open(service_account_file),
-        scope: @scopes
+        scope: @scopes,
       )
       self
     end
