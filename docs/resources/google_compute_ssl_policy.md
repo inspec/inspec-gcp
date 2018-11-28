@@ -2,13 +2,23 @@
 
 ---
 title: About the SslPolicy resource
-platform: gcp2
+platform: gcp
 ---
+
 
 ## Syntax
 A `google_compute_ssl_policy` is used to test a Google SslPolicy resource
 
-TODO: Examples
+## Examples
+```
+describe google_compute_ssl_policy({project: 'graphite-test-sam-chef', name: 'inspec-gcp-ssl-policy'}) do
+  it { should exist }
+  its('min_tls_version') { should cmp 'TLS_1_2' }
+  its('profile') { should cmp 'CUSTOM' }
+  its('custom_features') { should include 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384' }
+  its('custom_features') { should include 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384' }
+end
+```
 
 ## Properties
 Properties that can be accessed from the `google_compute_ssl_policy` resource:
