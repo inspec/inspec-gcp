@@ -371,6 +371,36 @@ module "mig3" {
   startup_script    = "${data.template_file.group3-startup-script.rendered}"
 }
 
+
+resource "google_compute_instance_template" "default" {
+  project      = "${var.gcp_project_id}"
+  name         = "${var.gcp_lb_mig1_name}-itpl"
+  machine_type = "f1-micro"
+  network_interface {
+    network = "default"
+  }
+  disk {
+    source_image = "debian-cloud/debian-9"
+    auto_delete  = true
+    boot         = true
+  }
+}
+
+resource "google_compute_region_instance_group_manager" "appserver" {
+  project           = "${var.gcp_project_id}"
+  name              = "${var.gcp_lb_mig1_name}-rigm"
+  instance_template = "${google_compute_instance_template.default.self_link}"
+  base_instance_name        = "app"
+  region                    = "${var.gcp_lb_region}"
+  distribution_policy_zones = ["${var.gcp_lb_zone}", "${var.gcp_lb_zone_mig2}"]
+  target_pools = []
+  target_size  = 0
+  named_port {
+    name = "custom"
+    port = 80
+  }
+}
+
 # after a successful apply, open URL of load balancer in browser:
 # > EXTERNAL_IP=$(terraform output -module gce-lb-fr | grep external_ip | cut -d = -f2 | xargs echo -n)
 # > open http://${EXTERNAL_IP}
