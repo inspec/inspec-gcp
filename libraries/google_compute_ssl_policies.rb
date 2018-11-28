@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # Copyright 2018 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,13 +26,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-
 require 'gcp_backend'
 class SslPolicys < GcpResourceBase
-
   name 'google_compute_ssl_policies'
   desc 'SslPolicy plural resource'
   supports platform: 'gcp'
+
+  attr_reader :table
 
   filter_table_config = FilterTable.create
 
@@ -56,16 +58,12 @@ class SslPolicys < GcpResourceBase
   end
 
   def initialize(params = {})
-    super(params.merge({:use_http_transport => true}))
+    super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('compute#sslPoliciesList', 'items')
+    @table = fetch_wrapped_resource('items')
   end
 
-  def table
-    @table
-  end
-
-  def fetch_wrapped_resource(wrap_kind, wrap_path)
+  def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
     result = @connection.fetch_all(base, url, @params)
     return if result.nil?
@@ -73,7 +71,7 @@ class SslPolicys < GcpResourceBase
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
-      return if response.nil? || !response.key?(wrap_path)
+      next if response.nil? || !response.key?(wrap_path)
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_pair { |k, v| hash_with_symbols[k.to_sym] = v }
@@ -83,5 +81,4 @@ class SslPolicys < GcpResourceBase
 
     converted
   end
-
 end
