@@ -20,7 +20,7 @@ A `google_project_alert_policies` resource block collects GCP project alert poli
 Use this InSpec resource to enumerate IDs then test in-depth using `google_project_alert_policy`.
 
     google_project_alert_policies(project: 'chef-inspec-gcp').policy_names.each do |policy_name|
-      describe google_project_alert_policy(name: policy_name) do
+      describe google_project_alert_policy(policy: policy_name) do
         it { should exist }
         it { should be_enabled }
       end
