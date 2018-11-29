@@ -155,6 +155,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_networks](docs/resources/google_compute_networks.md)
 - [google_compute_project_info](docs/resources/google_compute_project_info.md)
 - [google_compute_region](docs/resources/google_compute_region.md)
+- [google_compute_region_instance_group_manager](docs/resources/google_compute_region_instance_group_manager.md)
+- [google_compute_region_instance_group_managers](docs/resources/google_compute_region_instance_group_managers.md)
 - [google_compute_regions](docs/resources/google_compute_regions.md)
 - [google_compute_subnetwork](docs/resources/google_compute_subnetwork.md)
 - [google_compute_subnetworks](docs/resources/google_compute_subnetworks.md)
