@@ -1,5 +1,3 @@
-
-
 ---
 title: About the SslPolicy resource
 platform: gcp
