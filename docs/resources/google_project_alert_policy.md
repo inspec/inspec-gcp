@@ -13,7 +13,7 @@ Use the `google_project_alert_policy` InSpec audit resource to test properties o
 
 A `google_project_alert_policy` resource block declares the tests for a single GCP project alert policy by name.
 
-    describe google_project_alert_policy(name: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
+    describe google_project_alert_policy(policy: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
       it { should exist }
     end
 
@@ -25,13 +25,13 @@ The following examples show how to use this InSpec audit resource.
 
 ### Test that a GCP alert policy is enabled 
 
-    describe google_project_alert_policy(name: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
+    describe google_project_alert_policy(policy: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
       it { should be_enabled }
     end
 
 ### Test that a GCP compute alert policy display name is correct
 
-    describe google_project_alert_policy(name: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
+    describe google_project_alert_policy(policy: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
       its('display_name') { should eq 'policy name' }
     end
 
