@@ -109,6 +109,38 @@ namespace :test do
   end
 end
 
+
+namespace :test_mm do
+  # Specify the directory for the integration tests
+  integration_dir = "test/integration"
+
+  task :plan_mm_integration_tests do
+    sh("cd #{integration_dir}/attributes/ && ruby compile_vars.rb > terraform.tfvars && mv terraform.tfvars ../terraform")
+    sh("cd #{integration_dir}/terraform/ && terraform init")
+    sh("cd #{integration_dir}/terraform/ && terraform plan")
+  end
+
+  task :setup_mm_integration_tests do
+    sh("cd #{integration_dir}/terraform/ && terraform apply -auto-approve")
+  end
+
+  task :verify_mm_integration_tests do
+    sh("inspec exec #{integration_dir}/verify-mm --attrs=#{integration_dir}/attributes/attributes.yaml -t gcp://")
+  end
+
+  task :cleanup_mm_integration_tests do
+    sh("cd #{integration_dir}/terraform/ && terraform destroy -auto-approve")
+  end
+
+  desc "Integration tests for Magic Modules generated resources"
+  task :integration => [
+    :plan_mm_integration_tests,
+    :setup_mm_integration_tests,
+    :verify_mm_integration_tests,
+    :cleanup_mm_integration_tests
+  ]
+end
+
 # Automatically generate a changelog for this project. Only loaded if
 # the necessary gem is installed.
 # use `rake changelog to=1.2.0`
