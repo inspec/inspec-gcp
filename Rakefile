@@ -115,30 +115,30 @@ namespace :test_mm do
   integration_dir = "test/integration"
 
   task :plan_mm_integration_tests do
-    sh(format("cd %s/attributes/ && ruby compile_vars.rb > terraform.tfvars && mv terraform.tfvars ../terraform", integration_dir))
-    sh(format("cd %s/terraform/ && terraform init", integration_dir))
-    sh(format("cd %s/terraform/ && terraform plan", integration_dir))
+    sh("cd #{integration_dir}/attributes/ && ruby compile_vars.rb > terraform.tfvars && mv terraform.tfvars ../terraform")
+    sh("cd #{integration_dir}/terraform/ && terraform init")
+    sh("cd #{integration_dir}/terraform/ && terraform plan")
   end
 
   task :setup_mm_integration_tests do
-    sh(format("cd %s/terraform/ && terraform apply -auto-approve", integration_dir))
+    sh("cd #{integration_dir}/terraform/ && terraform apply -auto-approve")
   end
 
   task :verify_mm_integration_tests do
-    sh(format("inspec exec %s/verify-mm --attrs=%s/attributes/attributes.yaml -t gcp://", integration_dir, integration_dir))
+    sh("inspec exec #{integration_dir}/verify-mm --attrs=#{integration_dir}/attributes/attributes.yaml -t gcp://")
   end
 
   task :cleanup_mm_integration_tests do
-    sh(format("cd %s/terraform/ && terraform destroy -auto-approve", integration_dir))
+    sh("cd #{integration_dir}/terraform/ && terraform destroy -auto-approve")
   end
 
   desc "Integration tests for Magic Modules generated resources"
-  task :integration do
-    Rake::Task["test_mm:plan_mm_integration_tests"].execute
-    Rake::Task["test_mm:setup_mm_integration_tests"].execute
-    Rake::Task["test_mm:verify_mm_integration_tests"].execute
-    Rake::Task["test_mm:cleanup_mm_integration_tests"].execute
-  end
+  task :integration => [
+    :plan_mm_integration_tests,
+    :setup_mm_integration_tests,
+    :verify_mm_integration_tests,
+    :cleanup_mm_integration_tests
+  ]
 end
 
 # Automatically generate a changelog for this project. Only loaded if
