@@ -12,7 +12,7 @@
 #
 # ----------------------------------------------------------------------------
 
-require 'vcr_config'
+require_relative '../vcr_config'
 
 title 'Test GCP google_compute_ssl_policies resource.'
 
