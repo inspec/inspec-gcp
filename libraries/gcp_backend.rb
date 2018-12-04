@@ -22,7 +22,7 @@ class GcpResourceBase < Inspec.resource(1)
 
     # Magic Modules generated resources use an alternate transport method
     # In the future this will be moved into the train-gcp plugin itself
-    @connection = GcpApiConnection.new(opts) if opts[:use_http_transport]
+    @connection = GcpApiConnection.new if opts[:use_http_transport]
   end
 
   def failed_resource?
@@ -186,24 +186,19 @@ class GcpResourceProbe
 end
 
 class GcpApiConnection
-  def initialize(_options)
+  def initialize
     @service_account_file = ENV['GOOGLE_APPLICATION_CREDENTIALS']
-    # rubocop:disable Style/GuardClause
-    if @service_account_file.nil?
-      raise [
-        'Unable to find service account credentials.',
-        'Please define environment variable "GOOGLE_APPLICATION_CREDENTIALS"',
-      ].join(' ')
-    end
-    # rubocop:enable Style/GuardClause
   end
 
   def fetch_auth
-    Network::Authorization.new.for!(
-      ['https://www.googleapis.com/auth/compute.readonly'],
-    ).from_service_account_json!(
-      @service_account_file,
-    )
+    unless @service_account_file.nil?
+      return Network::Authorization.new.for!(
+        ['https://www.googleapis.com/auth/compute.readonly'],
+      ).from_service_account_json!(
+        @service_account_file,
+      )
+    end
+    Network::Authorization.new.from_application_default!
   end
 
   def fetch(base_url, template, var_data)
@@ -364,6 +359,11 @@ module Network
         json_key_io: File.open(service_account_file),
         scope: @scopes,
       )
+      self
+    end
+
+    def from_application_default!
+      @authorization = ::Google::Auth.get_application_default
       self
     end
 
