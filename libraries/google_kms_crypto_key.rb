@@ -20,7 +20,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:name]
       catch_gcp_errors do
-        @kms_crypto_key = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_crypto_key("projects/#{opts[:project]}/locations/#{opts[:location]}/keyRings/#{opts[:key_ring_name]}/cryptoKeys/#{opts[:name]}")
+        @kms_crypto_key = @gcp.gcp_client(::Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_crypto_key("projects/#{opts[:project]}/locations/#{opts[:location]}/keyRings/#{opts[:key_ring_name]}/cryptoKeys/#{opts[:name]}")
         create_resource_methods(@kms_crypto_key)
       end
     end

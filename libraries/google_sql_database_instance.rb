@@ -19,7 +19,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:database]
       catch_gcp_errors do
-        @database = @gcp.gcp_client(Google::Apis::SqladminV1beta4::SQLAdminService).get_instance(opts[:project], opts[:database])
+        @database = @gcp.gcp_client(::Google::Apis::SqladminV1beta4::SQLAdminService).get_instance(opts[:project], opts[:database])
         create_resource_methods(@database)
       end
     end

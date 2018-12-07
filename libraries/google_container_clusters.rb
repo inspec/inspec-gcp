@@ -32,7 +32,7 @@ module Inspec::Resources
       cluster_rows = []
       catch_gcp_errors do
         # below seemingly doesn't provide pagination
-        @clusters = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).list_zone_clusters(@project, @zone)
+        @clusters = @gcp.gcp_client(::Google::Apis::ContainerV1::ContainerService).list_zone_clusters(@project, @zone)
       end
       return [] if !@clusters || !@clusters.clusters
       @clusters.clusters.map do |cluster|

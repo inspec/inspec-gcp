@@ -30,7 +30,7 @@ module Inspec::Resources
     def fetch_data
       crypto_key_rows = []
       catch_gcp_errors do
-        @crypto_keys = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_ring_crypto_keys("projects/#{@project}/locations/#{@location}/keyRings/#{@key_ring_name}")
+        @crypto_keys = @gcp.gcp_client(::Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_ring_crypto_keys("projects/#{@project}/locations/#{@location}/keyRings/#{@key_ring_name}")
       end
       return [] if !@crypto_keys || !@crypto_keys.crypto_keys
       @crypto_keys.crypto_keys.map do |crypto_key|

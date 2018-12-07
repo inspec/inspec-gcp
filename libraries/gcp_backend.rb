@@ -33,7 +33,7 @@ class GcpResourceBase < Inspec.resource(1)
   def catch_gcp_errors
     yield
     # create custom messages as needed
-  rescue Google::Apis::ClientError => e
+  rescue ::Google::Apis::ClientError => e
     error = JSON.parse(e.body)
     fail_resource error['error']['message']
     @failed_resource = true
@@ -61,7 +61,7 @@ class GcpResourceDynamicMethods
     # If it is an Gcp Generic Resource then setup methods for each of
     # the instance variables
     case data.class.to_s
-    when /Google::Apis::.*/
+    when /::Google::Apis::.*/
       # iterate around the instance variables
       data.instance_variables.each do |var|
         create_method(object, var.to_s.delete('@'), data.instance_variable_get(var))
@@ -96,7 +96,7 @@ class GcpResourceDynamicMethods
         return_value
       end
     # there are nested Google API classes throughout
-    when /Google::Apis::.*/
+    when /::Google::Apis::.*/
       object.define_singleton_method name do
         if value.respond_to? :to_h
           value = value.to_h

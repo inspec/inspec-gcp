@@ -6,6 +6,7 @@
 require 'json'
 require 'yaml'
 require 'passgen'
+require 'erb'
 
 module GCPInspecConfig
 
@@ -110,8 +111,14 @@ module GCPInspecConfig
     @config.each { |k,v| @config[k] = ENV[k.to_s.upcase] || v }
   end
 
+  def self.load_mm_vars
+    loaded = YAML.load_file(File.join(File.dirname(__FILE__), 'attributes.yaml'))
+    @config = loaded.merge(@config)
+  end
+
   # Create JSON for terraform
   def self.store_json(file_name="gcp-inspec.tfvars")
+    load_mm_vars
     update_from_environment
     File.open(File.join(File.dirname(__FILE__),'..','build',file_name),"w") do |f|
       f.write(@config.to_json)
@@ -120,6 +127,7 @@ module GCPInspecConfig
 
   # Create YAML for inspec
   def self.store_yaml(file_name="gcp-inspec-attributes.yaml")
+    load_mm_vars
     update_from_environment
     File.open(File.join(File.dirname(__FILE__),'..','build',file_name),"w") do |f|
       f.write(@config.to_yaml)

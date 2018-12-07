@@ -25,7 +25,7 @@ module Inspec::Resources
       begin
         @image = @gcp.gcp_compute_client.get_image(opts[:project], opts[:name])
         create_resource_methods(@image)
-      rescue Google::Apis::ClientError
+      rescue ::Google::Apis::ClientError
         # if the above is not successful try to get the image from an image family before giving up
         # Note: this will swallow the previous exception but allows to preserve parity with the single
         # google_compute_image tf resource

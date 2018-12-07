@@ -85,6 +85,8 @@ namespace :test do
     # Since the default behaviour is to skip tests, the below absorbs an inspec "101 run okay + skipped only" exit code as successful
     cmd = format("bundle exec inspec exec %s/verify --attrs %s/build/%s -t gcp://; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi", integration_dir, integration_dir, profile_attributes)
     sh(cmd)
+    cmd = format("bundle exec inspec exec %s/verify-mm --attrs %s/build/%s -t gcp://; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi", integration_dir, integration_dir, profile_attributes)
+    sh(cmd)
   end
 
   task :cleanup_integration_tests do
@@ -107,38 +109,6 @@ namespace :test do
     Rake::Task["test:run_integration_tests"].execute
     Rake::Task["test:cleanup_integration_tests"].execute
   end
-end
-
-
-namespace :test_mm do
-  # Specify the directory for the integration tests
-  integration_dir = "test/integration"
-
-  task :plan_mm_integration_tests do
-    sh("cd #{integration_dir}/attributes/ && ruby compile_vars.rb > terraform.tfvars && mv terraform.tfvars ../terraform")
-    sh("cd #{integration_dir}/terraform/ && terraform init")
-    sh("cd #{integration_dir}/terraform/ && terraform plan")
-  end
-
-  task :setup_mm_integration_tests do
-    sh("cd #{integration_dir}/terraform/ && terraform apply -auto-approve")
-  end
-
-  task :verify_mm_integration_tests do
-    sh("inspec exec #{integration_dir}/verify-mm --attrs=#{integration_dir}/attributes/attributes.yaml -t gcp://")
-  end
-
-  task :cleanup_mm_integration_tests do
-    sh("cd #{integration_dir}/terraform/ && terraform destroy -auto-approve")
-  end
-
-  desc "Integration tests for Magic Modules generated resources"
-  task :integration => [
-    :plan_mm_integration_tests,
-    :setup_mm_integration_tests,
-    :verify_mm_integration_tests,
-    :cleanup_mm_integration_tests
-  ]
 end
 
 # Automatically generate a changelog for this project. Only loaded if

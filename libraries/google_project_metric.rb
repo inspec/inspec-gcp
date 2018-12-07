@@ -19,7 +19,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:metric]
       catch_gcp_errors do
-        @metric = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).get_project_metric("projects/#{opts[:project]}/metrics/#{opts[:metric]}")
+        @metric = @gcp.gcp_client(::Google::Apis::LoggingV2::LoggingService).get_project_metric("projects/#{opts[:project]}/metrics/#{opts[:metric]}")
         create_resource_methods(@metric)
       end
     end

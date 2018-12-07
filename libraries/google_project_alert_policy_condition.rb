@@ -20,7 +20,7 @@ module Inspec::Resources
       @filter = opts[:filter]
       @policy = opts[:policy]
       catch_gcp_errors do
-        @policy_result = @gcp.gcp_client(Google::Apis::MonitoringV3::MonitoringService).get_project_alert_policy(@policy)
+        @policy_result = @gcp.gcp_client(::Google::Apis::MonitoringV3::MonitoringService).get_project_alert_policy(@policy)
         @condition = condition_for_filter(@filter)
       end
     end

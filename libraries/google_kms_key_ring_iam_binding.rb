@@ -23,7 +23,7 @@ module Inspec::Resources
       @members_list=[]
       catch_gcp_errors do
         # note this is the same call as for the plural iam_bindings resource because there isn't an easy way to pull out a singular binding
-        @iam_bindings = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_iam_policy(@key_ring_url)
+        @iam_bindings = @gcp.gcp_client(::Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_iam_policy(@key_ring_url)
         raise Inspec::Exceptions::ResourceFailed, "google_kms_key_ring_iam_binding is missing expected IAM policy 'bindings' property" if !@iam_bindings || !@iam_bindings.bindings
         @iam_bindings.bindings.each do |binding|
           next if binding.role != @role

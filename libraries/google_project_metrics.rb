@@ -32,7 +32,7 @@ module Inspec::Resources
       next_page = nil
       loop do
         catch_gcp_errors do
-          @metrics = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).list_project_metrics("projects/#{@project}", page_token: next_page)
+          @metrics = @gcp.gcp_client(::Google::Apis::LoggingV2::LoggingService).list_project_metrics("projects/#{@project}", page_token: next_page)
         end
         return [] if !@metrics || !@metrics.metrics
         @metrics.metrics.map do |metric|

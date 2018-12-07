@@ -33,7 +33,7 @@ module Inspec::Resources
       next_page = nil
       loop do
         catch_gcp_errors do
-          @managed_zones = @gcp.gcp_client(Google::Apis::DnsV2beta1::DnsService).list_managed_zones(@project, page_token: next_page)
+          @managed_zones = @gcp.gcp_client(::Google::Apis::DnsV2beta1::DnsService).list_managed_zones(@project, page_token: next_page)
         end
         return [] if !@managed_zones || !@managed_zones.managed_zones
         @managed_zones.managed_zones.map do |zone|

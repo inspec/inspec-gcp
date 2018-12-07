@@ -18,7 +18,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:name]
       catch_gcp_errors do
-        @managed_zone = @gcp.gcp_client(Google::Apis::DnsV2beta1::DnsService).get_managed_zone(opts[:project], opts[:zone])
+        @managed_zone = @gcp.gcp_client(::Google::Apis::DnsV2beta1::DnsService).get_managed_zone(opts[:project], opts[:zone])
         create_resource_methods(@managed_zone)
         @key_specs={}
         if defined?(@managed_zone.dnssec_config.default_key_specs) && !@managed_zone.dnssec_config.default_key_specs.nil?

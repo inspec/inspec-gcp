@@ -20,7 +20,7 @@ module Inspec::Resources
       @project = opts[:project]
       @exclusion = opts[:exclusion]
       catch_gcp_errors do
-        @logging_exclusion = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).get_project_exclusion("projects/#{opts[:project]}/exclusions/#{opts[:exclusion]}")
+        @logging_exclusion = @gcp.gcp_client(::Google::Apis::LoggingV2::LoggingService).get_project_exclusion("projects/#{opts[:project]}/exclusions/#{opts[:exclusion]}")
         create_resource_methods(@logging_exclusion)
       end
     end

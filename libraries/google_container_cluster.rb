@@ -21,7 +21,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:name]
       catch_gcp_errors do
-        @cluster = @gcp.gcp_client(Google::Apis::ContainerV1beta1::ContainerService).get_zone_cluster(opts[:project], opts[:zone], opts[:name])
+        @cluster = @gcp.gcp_client(::Google::Apis::ContainerV1beta1::ContainerService).get_zone_cluster(opts[:project], opts[:zone], opts[:name])
         create_resource_methods(@cluster)
       end
     end
