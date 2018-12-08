@@ -47,6 +47,13 @@ namespace :test do
     sh(cmd)
   end
 
+  task :generate_integration_test_variables do
+    puts "----> Generating terraform and inspec variable files"
+    #p GCPInspecConfig.config[:gcp_project_id]
+    GCPInspecConfig.store_json(variable_file_name)
+    GCPInspecConfig.store_yaml(profile_attributes)
+  end
+
   task :plan_integration_tests do
 
     # Determine the storage account name and the admin password
@@ -56,10 +63,7 @@ namespace :test do
     # Use the first 4 characters of the storage account to create a suffix
   #  suffix = sa_name[0..3]
 
-    puts "----> Generating terraform and inspec variable files"
-    #p GCPInspecConfig.config[:gcp_project_id]
-    GCPInspecConfig.store_json(variable_file_name)
-    GCPInspecConfig.store_yaml(profile_attributes)
+    Rake::Task["test:generate_integration_test_variables"].execute
 
     puts "----> Setup"
     # Create the plan that can be applied to GCP
