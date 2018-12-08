@@ -355,7 +355,7 @@ module Network
 
     def from_service_account_json!(service_account_file)
       raise 'Missing argument for scopes' if @scopes.empty?
-      @authorization = ::Google::Auth::ServiceAccountCredentials.make_creds(
+      @authorization = Google::Auth::ServiceAccountCredentials.make_creds(
         json_key_io: File.open(service_account_file),
         scope: @scopes,
       )
@@ -363,7 +363,7 @@ module Network
     end
 
     def from_application_default!
-      @authorization = ::Google::Auth.get_application_default
+      @authorization = Google::Auth.get_application_default
       self
     end
 
