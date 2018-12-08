@@ -22,7 +22,7 @@ module Inspec::Resources
         @acl = @gcp.gcp_storage_client.get_default_object_access_control(@bucket, @entity)
         create_resource_methods(@acl)
       # all non-existing entities raise a "Not Found" client error
-      rescue ::Google::Apis::ClientError => e
+      rescue Google::Apis::ClientError => e
         @acl=nil
         @error=JSON.parse(e.body)
       end

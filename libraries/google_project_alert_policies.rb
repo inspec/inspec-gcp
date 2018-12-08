@@ -31,7 +31,7 @@ module Inspec::Resources
     def fetch_data
       policy_rows = []
       catch_gcp_errors do
-        @policies = @gcp.gcp_client(::Google::Apis::MonitoringV3::MonitoringService).list_project_alert_policies("projects/#{@project}")
+        @policies = @gcp.gcp_client(Google::Apis::MonitoringV3::MonitoringService).list_project_alert_policies("projects/#{@project}")
       end
       return [] if !@policies || !@policies.alert_policies
       @policies.alert_policies.map do |policy|

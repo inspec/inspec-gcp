@@ -20,7 +20,7 @@ module Inspec::Resources
       @project = opts[:project]
       @sink = opts[:sink]
       catch_gcp_errors do
-        @logging_sink = @gcp.gcp_client(::Google::Apis::LoggingV2::LoggingService).get_project_sink("projects/#{opts[:project]}/sinks/#{opts[:sink]}")
+        @logging_sink = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).get_project_sink("projects/#{opts[:project]}/sinks/#{opts[:sink]}")
         create_resource_methods(@logging_sink)
       end
     end

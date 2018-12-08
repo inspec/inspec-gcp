@@ -27,7 +27,7 @@ module Inspec::Resources
     def fetch_data
       iam_binding_rows = []
       catch_gcp_errors do
-        @iam_bindings = @gcp.gcp_client(::Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_iam_policy(@key_ring_url)
+        @iam_bindings = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_iam_policy(@key_ring_url)
       end
       return [] if !@iam_bindings || !@iam_bindings.bindings
       @iam_bindings.bindings.map do |iam_binding|

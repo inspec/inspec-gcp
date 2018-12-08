@@ -20,7 +20,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:name]
       catch_gcp_errors do
-        @kms_key_ring = @gcp.gcp_client(::Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring("projects/#{opts[:project]}/locations/#{opts[:location]}/keyRings/#{opts[:name]}")
+        @kms_key_ring = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring("projects/#{opts[:project]}/locations/#{opts[:location]}/keyRings/#{opts[:name]}")
         create_resource_methods(@kms_key_ring)
       end
     end

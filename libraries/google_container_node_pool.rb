@@ -20,7 +20,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:nodepool_name]
       catch_gcp_errors do
-        @nodepool = @gcp.gcp_client(::Google::Apis::ContainerV1::ContainerService).get_project_zone_cluster_node_pool(opts[:project], opts[:zone], opts[:cluster_name], opts[:nodepool_name])
+        @nodepool = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).get_project_zone_cluster_node_pool(opts[:project], opts[:zone], opts[:cluster_name], opts[:nodepool_name])
         create_resource_methods(@nodepool)
       end
     end

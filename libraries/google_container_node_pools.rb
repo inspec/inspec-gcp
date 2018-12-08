@@ -32,7 +32,7 @@ module Inspec::Resources
       node_pool_rows = []
       catch_gcp_errors do
         # no pagination
-        @node_pools = @gcp.gcp_client(::Google::Apis::ContainerV1::ContainerService).list_project_zone_cluster_node_pools(@project, @zone, @cluster_name)
+        @node_pools = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).list_project_zone_cluster_node_pools(@project, @zone, @cluster_name)
       end
       return [] if !@node_pools || !@node_pools.node_pools
       @node_pools.node_pools.map do |node_pool|

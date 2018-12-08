@@ -28,7 +28,7 @@ module Inspec::Resources
     def fetch_data
       user_rows = []
       catch_gcp_errors do
-        @users = @gcp.gcp_client(::Google::Apis::SqladminV1beta4::SQLAdminService).list_users(opts[:project], opts[:database])
+        @users = @gcp.gcp_client(Google::Apis::SqladminV1beta4::SQLAdminService).list_users(opts[:project], opts[:database])
       end
       return [] if !@users || !@users.items
       @users.items.map do |user|

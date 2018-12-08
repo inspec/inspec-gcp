@@ -30,7 +30,7 @@ module Inspec::Resources
     def fetch_data
       instance_rows = []
       catch_gcp_errors do
-        @databases = @gcp.gcp_client(::Google::Apis::SqladminV1beta4::SQLAdminService).list_instances(opts[:project])
+        @databases = @gcp.gcp_client(Google::Apis::SqladminV1beta4::SQLAdminService).list_instances(opts[:project])
       end
       return [] if !@databases || !@databases.items
       @databases.items.map do |instance|

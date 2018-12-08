@@ -19,7 +19,7 @@ module Inspec::Resources
       super(opts)
       @display_name = opts[:policy]
       catch_gcp_errors do
-        @policy = @gcp.gcp_client(::Google::Apis::MonitoringV3::MonitoringService).get_project_alert_policy(opts[:policy])
+        @policy = @gcp.gcp_client(Google::Apis::MonitoringV3::MonitoringService).get_project_alert_policy(opts[:policy])
         create_resource_methods(@policy)
       end
     end
