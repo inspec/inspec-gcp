@@ -56,7 +56,7 @@ class SslPolicy < GcpResourceBase
     @enabled_features = @fetched['enabledFeatures']
     @custom_features = @fetched['customFeatures']
     @fingerprint = @fetched['fingerprint']
-    @warnings = Compute::Property::SslPolicyWarningsArray.parse(@fetched['warnings'])
+    @warnings = Google::Compute::Property::SslPolicyWarningsArray.parse(@fetched['warnings'])
   end
 
   def exists?
