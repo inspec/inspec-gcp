@@ -112,7 +112,7 @@ module GCPInspecConfig
   end
 
   def self.load_mm_vars
-    loaded = YAML.load_file(File.join(File.dirname(__FILE__), 'mm-attributes.yaml'))
+    loaded = YAML.load_file(File.join(File.dirname(__FILE__), 'mm-attributes.yml'))
     @config = loaded.merge(@config)
   end
 
