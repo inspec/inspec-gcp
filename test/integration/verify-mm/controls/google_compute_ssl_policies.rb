@@ -12,8 +12,6 @@
 #
 # ----------------------------------------------------------------------------
 
-require_relative '../vcr_config'
-
 title 'Test GCP google_compute_ssl_policies resource.'
 
 project_name = attribute('project_name', default: 'graphite-test-sam-chef')
@@ -22,19 +20,17 @@ control 'google_compute_ssl_policies-1.0' do
   impact 1.0
   title 'google_compute_ssl_policies resource test'
 
-  VCR.use_cassette('google_compute_ssl_policies') do
-    resource = google_compute_ssl_policies({project: project_name})
-    describe resource do
-      it { should exist }
-      its('names') { should include ssl_policy['name'] }
-      its('profiles') { should include ssl_policy['profile'] }
-      its('count') { should eq 1 }
-    end
+  resource = google_compute_ssl_policies({project: project_name})
+  describe resource do
+    it { should exist }
+    its('names') { should include ssl_policy['name'] }
+    its('profiles') { should include ssl_policy['profile'] }
+    its('count') { should eq 1 }
+  end
 
-    resource.names.each do |policy_name|
-      describe google_compute_ssl_policy({project: project_name, name: policy_name}) do
-        its('min_tls_version') { should cmp ssl_policy['min_tls_version'] }
-      end
+  resource.names.each do |policy_name|
+    describe google_compute_ssl_policy({project: project_name, name: policy_name}) do
+      its('min_tls_version') { should cmp ssl_policy['min_tls_version'] }
     end
   end
 end
