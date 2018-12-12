@@ -9,7 +9,7 @@ A `google_compute_ssl_policy` is used to test a Google SslPolicy resource
 
 ## Examples
 ```
-describe google_compute_ssl_policy({project: 'graphite-test-sam-chef', name: 'inspec-gcp-ssl-policy'}) do
+describe google_compute_ssl_policy({project: '', name: 'inspec-gcp-ssl-policy'}) do
   it { should exist }
   its('min_tls_version') { should cmp 'TLS_1_2' }
   its('profile') { should cmp 'CUSTOM' }
