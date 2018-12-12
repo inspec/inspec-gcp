@@ -9,16 +9,15 @@ A `google_compute_ssl_policies` is used to test a Google SslPolicy resource
 
 ## Examples
 ```
-resource = google_compute_ssl_policies({project: 'graphite-test-sam-chef'})
-describe resource do
+describe google_compute_ssl_policies({project: ''}) do
   it { should exist }
   its('names') { should include 'inspec-gcp-ssl-policy' }
   its('profiles') { should include 'CUSTOM' }
   its('count') { should eq 1 }
 end
 
-resource.names.each do |policy_name|
-  describe google_compute_ssl_policy({project: 'graphite-test-sam-chef', name: policy_name}) do
+google_compute_ssl_policies({project: ''}).names.each do |policy_name|
+  describe google_compute_ssl_policy({project: '', name: policy_name}) do
     its('min_tls_version') { should cmp 'TLS_1_2' }
   end
 end

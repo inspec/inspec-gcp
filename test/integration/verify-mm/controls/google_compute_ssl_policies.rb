@@ -14,21 +14,20 @@
 
 title 'Test GCP google_compute_ssl_policies resource.'
 
-project_name = attribute('project_name', default: 'graphite-test-sam-chef')
+project_name = attribute(:gcp_project_name, default: '')
 ssl_policy = attribute('ssl_policy', default: {"name"=>"inspec-gcp-ssl-policy", "min_tls_version"=>"TLS_1_2", "profile"=>"CUSTOM", "custom_feature"=>"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "custom_feature2"=>"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"})
 control 'google_compute_ssl_policies-1.0' do
   impact 1.0
   title 'google_compute_ssl_policies resource test'
 
-  resource = google_compute_ssl_policies({project: project_name})
-  describe resource do
+  describe google_compute_ssl_policies({project: project_name}) do
     it { should exist }
     its('names') { should include ssl_policy['name'] }
     its('profiles') { should include ssl_policy['profile'] }
     its('count') { should eq 1 }
   end
 
-  resource.names.each do |policy_name|
+  google_compute_ssl_policies({project: project_name}).names.each do |policy_name|
     describe google_compute_ssl_policy({project: project_name, name: policy_name}) do
       its('min_tls_version') { should cmp ssl_policy['min_tls_version'] }
     end

@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-module Google
+module GoogleInSpec
   module Compute
     module Property
       class SslPolicyWarnings
