@@ -6,6 +6,8 @@
 #
 
 require 'json'
+require 'net/http'
+require 'googleauth'
 
 # Base class for GCP resources - depends on train GCP transport for connection
 #
@@ -17,6 +19,10 @@ class GcpResourceBase < Inspec.resource(1)
     @opts = opts
     # ensure we have a GCP connection, resources can choose which of the clients to instantiate
     @gcp = inspec.backend
+
+    # Magic Modules generated resources use an alternate transport method
+    # In the future this will be moved into the train-gcp plugin itself
+    @connection = GcpApiConnection.new if opts[:use_http_transport]
   end
 
   def failed_resource?
@@ -176,5 +182,212 @@ class GcpResourceProbe
 
     # Ensure that gb (as in gigabytes) is uppercased
     camel_case_data.gsub(/[gb]/, &:upcase)
+  end
+end
+
+class GcpApiConnection
+  def initialize
+    @service_account_file = ENV['GOOGLE_APPLICATION_CREDENTIALS']
+  end
+
+  def fetch_auth
+    unless @service_account_file.nil?
+      return Network::Authorization.new.for!(
+        ['https://www.googleapis.com/auth/compute.readonly'],
+      ).from_service_account_json!(
+        @service_account_file,
+      )
+    end
+    Network::Authorization.new.from_application_default!
+  end
+
+  def fetch(base_url, template, var_data)
+    get_request = Network::Base.new(
+      build_uri(base_url, template, var_data),
+      fetch_auth,
+    )
+    return_if_object get_request.send
+  end
+
+  def fetch_all(base_url, template, var_data)
+    next_page(build_uri(base_url, template, var_data))
+  end
+
+  def next_page(uri, token = nil)
+    next_hash = {}
+    next_hash['pageToken'] = token unless token.nil?
+    current_params = Hash[URI.decode_www_form(uri.query || '')].merge(next_hash)
+    uri.query = URI.encode_www_form(current_params)
+    get_request = Network::Base.new(
+      uri,
+      fetch_auth,
+    )
+    result = JSON.parse(get_request.send.body)
+    next_page_token = result['nextPageToken']
+    return [result] if next_page_token.nil?
+
+    [result] + next_page(uri, next_page_token)
+  end
+
+  def return_if_object(response)
+    raise "Bad response: #{response.body}" \
+      if response.is_a?(Net::HTTPBadRequest)
+    raise "Bad response: #{response}" \
+      unless response.is_a?(Net::HTTPResponse)
+    return if response.is_a?(Net::HTTPNotFound)
+    return if response.is_a?(Net::HTTPNoContent)
+    result = JSON.parse(response.body)
+    raise_if_errors result, %w{error errors}, 'message'
+    raise "Bad response: #{response}" unless response.is_a?(Net::HTTPOK)
+    result
+  end
+
+  def raise_if_errors(response, err_path, msg_field)
+    errors = self.class.navigate(response, err_path)
+    raise_error(errors, msg_field) unless errors.nil?
+  end
+
+  def raise_error(errors, msg_field)
+    raise IOError, ['Operation failed:',
+                    errors.map { |e| e[msg_field] }.join(', ')].join(' ')
+  end
+
+  def build_uri(base_url, template, var_data)
+    URI.join(
+      base_url,
+      expand_variables(template, var_data),
+    )
+  end
+
+  # Allows fetching objects within a tree path.
+  def self.navigate(source, path, default = nil)
+    key = path.take(1)[0]
+    path = path.drop(1)
+    return default unless source.key?(key)
+    result = source.fetch(key)
+    return navigate(result, path, default) unless path.empty?
+    return result if path.empty?
+  end
+
+  def extract_variables(template)
+    template.scan(/{{[^}]*}}/).map { |v| v.gsub(/{{([^}]*)}}/, '\1') }
+            .map(&:to_sym)
+  end
+
+  def expand_variables(template, var_data)
+    extract_variables(template).each do |v|
+      unless var_data.key?(v)
+        raise "Missing variable :#{v} in #{var_data} on #{caller.join("\n")}}"
+      end
+      template.gsub!(/{{#{v}}}/, CGI.escape(var_data[v].to_s))
+    end
+    template
+  end
+end
+
+# A handler for authenticated network request
+module Network
+  class Base
+    def initialize(link, cred)
+      @link = link
+      @cred = cred
+    end
+
+    def builder
+      Net::HTTP.const_get('Get')
+    end
+
+    def send
+      request = @cred.authorize(builder.new(@link))
+      request['User-Agent'] = generate_user_agent
+      response = transport(request).request(request)
+      unless ENV['GOOGLE_HTTP_VERBOSE'].nil?
+        puts ["network(#{request}: [#{response.code}]",
+              response.body.split("\n").map(&:strip).join(' ')].join(' ')
+      end
+      response
+    end
+
+    def transport(request)
+      uri = request.uri
+      puts "network(#{request}: #{uri})" \
+        unless ENV['GOOGLE_HTTP_VERBOSE'].nil?
+      transport = Net::HTTP.new(uri.host, uri.port)
+      transport.use_ssl = uri.is_a?(URI::HTTPS)
+      transport.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      transport.set_debug_output $stderr \
+        unless ENV['GOOGLE_HTTP_DEBUG'].nil?
+      transport
+    end
+
+    private
+
+    def generate_user_agent
+      'inspec-google/1.0.0'
+    end
+  end
+
+  # A class to aquire credentials and authorize Google API calls.
+  class Authorization
+    def initialize
+      @authorization = nil
+      @scopes = []
+    end
+
+    def authorize(obj)
+      raise ArgumentError, 'A from_* method needs to be called before' \
+        unless @authorization
+
+      if obj.class <= URI::HTTPS || obj.class <= URI::HTTP
+        authorize_uri obj
+      elsif obj.class < Net::HTTPRequest
+        authorize_http obj
+      else
+        obj.authorization = @authorization
+        obj
+      end
+    end
+
+    def for!(*scopes)
+      @scopes = scopes
+      self
+    end
+
+    def from_service_account_json!(service_account_file)
+      raise 'Missing argument for scopes' if @scopes.empty?
+      @authorization = ::Google::Auth::ServiceAccountCredentials.make_creds(
+        json_key_io: File.open(service_account_file),
+        scope: @scopes,
+      )
+      self
+    end
+
+    def from_application_default!
+      @authorization = ::Google::Auth.get_application_default
+      self
+    end
+
+    private
+
+    def authorize_uri(obj)
+      http = Net::HTTP.new(obj.host, obj.port)
+      http.use_ssl = obj.instance_of?(URI::HTTPS)
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      [http, authorize_http(Net::HTTP::Get.new(obj.request_uri))]
+    end
+
+    def authorize_http(req)
+      req.extend TokenProperty
+      auth = {}
+      @authorization.apply!(auth)
+      req['Authorization'] = auth[:authorization]
+      req.token = auth[:authorization].split(' ')[1]
+      req
+    end
+  end
+  # Extension methods to enable retrieving the authentication token.
+  module TokenProperty
+    attr_reader :token
+    attr_writer :token
   end
 end
