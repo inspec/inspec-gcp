@@ -13,3 +13,6 @@ local
 *.env
 *inspec-gcp.tfvars
 *gcp-inspec-attributes.yaml
+inspec-cassettes
+*terraform.tfvars
+*inspec.json
