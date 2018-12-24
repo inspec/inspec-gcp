@@ -56,6 +56,7 @@ module GCPInspecConfig
       :gcp_storage_bucket_object => "gcp-inspec-storage-bucket-object-#{add_random_string}",
       :gcp_storage_bucket_object_name => "bucket-object-#{add_random_string}",
       # Google Load Balanced App example parameters
+      :gcp_lb_network => "default",
       :gcp_lb_region => "europe-west2",
       :gcp_lb_zone => "europe-west2-a",
       :gcp_lb_zone_mig2 => "europe-west2-b",
