@@ -158,6 +158,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_region_instance_group_manager](docs/resources/google_compute_region_instance_group_manager.md)
 - [google_compute_region_instance_group_managers](docs/resources/google_compute_region_instance_group_managers.md)
 - [google_compute_regions](docs/resources/google_compute_regions.md)
+- [google_compute_ssl_policies](docs/resources/google_compute_ssl_policies.md)
+- [google_compute_ssl_policy](docs/resources/google_compute_ssl_policy.md)
 - [google_compute_subnetwork](docs/resources/google_compute_subnetwork.md)
 - [google_compute_subnetworks](docs/resources/google_compute_subnetworks.md)
 - [google_compute_vpn_tunnel](docs/resources/google_compute_vpn_tunnel.md)
@@ -210,6 +212,7 @@ The following resources are available in the InSpec GCP Profile
 - [google_storage_object_acl](docs/resources/google_storage_object_acl.md)
 - [google_user](docs/resources/google_user.md)
 - [google_users](docs/resources/google_users.md)
+
 
 ## Examples
 
