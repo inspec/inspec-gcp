@@ -146,6 +146,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_address](docs/resources/google_compute_address.md)
 - [google_compute_firewall](docs/resources/google_compute_firewall.md)
 - [google_compute_firewalls](docs/resources/google_compute_firewalls.md)
+- [google_compute_forwarding_rule](docs/resources/google_compute_forwarding_rule.md)
+- [google_compute_forwarding_rules](docs/resources/google_compute_forwarding_rules.md)
 - [google_compute_image](docs/resources/google_compute_image.md)
 - [google_compute_instance](docs/resources/google_compute_instance.md)
 - [google_compute_instance_group](docs/resources/google_compute_instance_group.md)
