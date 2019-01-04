@@ -146,6 +146,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_address](docs/resources/google_compute_address.md)
 - [google_compute_firewall](docs/resources/google_compute_firewall.md)
 - [google_compute_firewalls](docs/resources/google_compute_firewalls.md)
+- [google_compute_forwarding_rule](docs/resources/google_compute_forwarding_rule.md)
+- [google_compute_forwarding_rules](docs/resources/google_compute_forwarding_rules.md)
 - [google_compute_image](docs/resources/google_compute_image.md)
 - [google_compute_instance](docs/resources/google_compute_instance.md)
 - [google_compute_instance_group](docs/resources/google_compute_instance_group.md)
@@ -158,6 +160,8 @@ The following resources are available in the InSpec GCP Profile
 - [google_compute_region_instance_group_manager](docs/resources/google_compute_region_instance_group_manager.md)
 - [google_compute_region_instance_group_managers](docs/resources/google_compute_region_instance_group_managers.md)
 - [google_compute_regions](docs/resources/google_compute_regions.md)
+- [google_compute_ssl_policies](docs/resources/google_compute_ssl_policies.md)
+- [google_compute_ssl_policy](docs/resources/google_compute_ssl_policy.md)
 - [google_compute_subnetwork](docs/resources/google_compute_subnetwork.md)
 - [google_compute_subnetworks](docs/resources/google_compute_subnetworks.md)
 - [google_compute_vpn_tunnel](docs/resources/google_compute_vpn_tunnel.md)
@@ -210,6 +214,7 @@ The following resources are available in the InSpec GCP Profile
 - [google_storage_object_acl](docs/resources/google_storage_object_acl.md)
 - [google_user](docs/resources/google_user.md)
 - [google_users](docs/resources/google_users.md)
+
 
 ## Examples
 

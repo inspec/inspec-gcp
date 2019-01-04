@@ -6,6 +6,7 @@
 require 'json'
 require 'yaml'
 require 'passgen'
+require 'erb'
 
 module GCPInspecConfig
 
@@ -55,6 +56,7 @@ module GCPInspecConfig
       :gcp_storage_bucket_object => "gcp-inspec-storage-bucket-object-#{add_random_string}",
       :gcp_storage_bucket_object_name => "bucket-object-#{add_random_string}",
       # Google Load Balanced App example parameters
+      :gcp_lb_network => "default",
       :gcp_lb_region => "europe-west2",
       :gcp_lb_zone => "europe-west2-a",
       :gcp_lb_zone_mig2 => "europe-west2-b",
@@ -116,8 +118,14 @@ module GCPInspecConfig
     @config.each { |k,v| @config[k] = ENV[k.to_s.upcase] || v }
   end
 
+  def self.load_mm_vars
+    loaded = YAML.load_file(File.join(File.dirname(__FILE__), 'mm-attributes.yml'))
+    @config = loaded.merge(@config)
+  end
+
   # Create JSON for terraform
   def self.store_json(file_name="gcp-inspec.tfvars")
+    load_mm_vars
     update_from_environment
     File.open(File.join(File.dirname(__FILE__),'..','build',file_name),"w") do |f|
       f.write(@config.to_json)
@@ -126,6 +134,7 @@ module GCPInspecConfig
 
   # Create YAML for inspec
   def self.store_yaml(file_name="gcp-inspec-attributes.yaml")
+    load_mm_vars
     update_from_environment
     File.open(File.join(File.dirname(__FILE__),'..','build',file_name),"w") do |f|
       f.write(@config.to_yaml)
