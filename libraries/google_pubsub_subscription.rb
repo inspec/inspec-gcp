@@ -41,10 +41,15 @@ class Subscription < GcpResourceBase
   end
 
   def parse
-    @name = @fetched['name']
+    @name = name_from_self_link(@fetched['name'])
     @topic = @fetched['topic']
     @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushconfig.new(@fetched['pushConfig'])
     @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 
   def exists?

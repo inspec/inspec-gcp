@@ -53,6 +53,7 @@ class Topics < GcpResourceBase
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_pair { |k, v| hash_with_symbols[k.to_sym] = v }
+        hash_with_symbols[:name] = name_from_self_link(hash_with_symbols[:name])
         converted.push(hash_with_symbols)
       end
     end

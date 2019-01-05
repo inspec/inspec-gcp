@@ -24,7 +24,6 @@ module GoogleInSpec
           @push_endpoint = args['pushEndpoint']
         end
       end
-
     end
   end
 end

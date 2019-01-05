@@ -44,6 +44,10 @@ class GcpResourceBase < Inspec.resource(1)
     dm = GcpResourceDynamicMethods.new
     dm.create_methods(self, object)
   end
+
+  def name_from_self_link(property)
+    property.split('/').last if !property.nil?
+  end
 end
 # end
 
