@@ -47,7 +47,7 @@ class SslPolicy < GcpResourceBase
   end
 
   def parse
-    @creation_timestamp = Time.parse(@fetched['creationTimestamp'])
+    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @id = @fetched['id']
     @name = @fetched['name']
@@ -57,6 +57,11 @@ class SslPolicy < GcpResourceBase
     @custom_features = @fetched['customFeatures']
     @fingerprint = @fetched['fingerprint']
     @warnings = GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(@fetched['warnings'])
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 
   def exists?

@@ -9,16 +9,16 @@ A `google_compute_ssl_policies` is used to test a Google SslPolicy resource
 
 ## Examples
 ```
-describe google_compute_ssl_policies({project: ''}) do
+describe google_compute_ssl_policies(project: 'chef-gcp-inspec') do
   it { should exist }
   its('names') { should include 'inspec-gcp-ssl-policy' }
   its('profiles') { should include 'CUSTOM' }
   its('count') { should eq 1 }
 end
 
-google_compute_ssl_policies({project: ''}).names.each do |policy_name|
-  describe google_compute_ssl_policy({project: '', name: policy_name}) do
-    its('min_tls_version') { should cmp 'TLS_1_2' }
+google_compute_ssl_policies(project: 'chef-gcp-inspec').names.each do |policy_name|
+  describe google_compute_ssl_policy({project: 'chef-gcp-inspec', name: policy_name}) do
+    its('min_tls_version') { should eq 'TLS_1_2' }
   end
 end
 ```
