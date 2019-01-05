@@ -34,7 +34,7 @@ control 'google_compute_ssl_policies-1.0' do
   end
 
   google_compute_ssl_policies(project: gcp_project_id).names.each do |policy_name|
-    describe google_compute_ssl_policy({project: gcp_project_id, name: policy_name}) do
+    describe google_compute_ssl_policy(project: gcp_project_id, name: policy_name) do
       its('min_tls_version') { should eq ssl_policy['min_tls_version'] }
     end
   end

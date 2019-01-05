@@ -17,7 +17,7 @@ describe google_compute_ssl_policies(project: 'chef-gcp-inspec') do
 end
 
 google_compute_ssl_policies(project: 'chef-gcp-inspec').names.each do |policy_name|
-  describe google_compute_ssl_policy({project: 'chef-gcp-inspec', name: policy_name}) do
+  describe google_compute_ssl_policy(project: 'chef-gcp-inspec', name: policy_name) do
     its('min_tls_version') { should eq 'TLS_1_2' }
   end
 end
