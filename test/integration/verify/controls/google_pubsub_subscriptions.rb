@@ -14,8 +14,8 @@
 
 title 'Test GCP google_pubsub_subscriptions resource.'
 
-gcp_project_id = attribute(:gcp_gcp_project_id, default: '', description: 'The GCP project identifier.')
-subscription = attribute('subscription', default: {"name"=>"inspec-gcp-subscription"})
+gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
+subscription = attribute('subscription', default: {"name"=>"inspec-gcp-subscription", "ack_deadline_seconds"=>20})
 
 control 'google_pubsub_subscriptions-1.0' do
   impact 1.0
@@ -23,13 +23,12 @@ control 'google_pubsub_subscriptions-1.0' do
 
   describe google_pubsub_subscriptions(project: gcp_project_id) do
     it { should exist }
-    its('names') { should include topic['name'] }
     its('count') { should eq 1 }
   end
 
   google_pubsub_subscriptions(project: gcp_project_id).names.each do |subscription_name|
-    describe google_pubsub_topic(project: gcp_project_id, name: subscription_name) do
-      its('name') { should eq topic['name'] }
+    describe google_pubsub_subscription(project: gcp_project_id, name: subscription_name) do
+      its('name') { should match /#{subscription['name']}/ }
     end
   end
 end

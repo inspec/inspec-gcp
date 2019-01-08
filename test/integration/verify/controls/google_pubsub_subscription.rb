@@ -14,8 +14,8 @@
 
 title 'Test GCP google_pubsub_subscription resource.'
 
-gcp_project_id = attribute(:gcp_gcp_project_id, default: '', description: 'The GCP project identifier.')
-subscription = attribute('subscription', default: {"name"=>"inspec-gcp-subscription"})
+gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
+subscription = attribute('subscription', default: {"name"=>"inspec-gcp-subscription", "ack_deadline_seconds"=>20})
 
 control 'google_pubsub_subscription-1.0' do
   impact 1.0

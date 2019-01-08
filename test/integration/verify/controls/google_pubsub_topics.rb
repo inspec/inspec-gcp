@@ -14,7 +14,7 @@
 
 title 'Test GCP google_pubsub_topics resource.'
 
-gcp_project_id = attribute(:gcp_gcp_project_id, default: '', description: 'The GCP project identifier.')
+gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
 topic = attribute('topic', default: {"name"=>"inspec-gcp-topic"})
 
 control 'google_pubsub_topics-1.0' do
