@@ -46,7 +46,7 @@ class GcpResourceBase < Inspec.resource(1)
   end
 
   def name_from_self_link(property)
-    property.split('/').last if !property.nil?
+    property&.split('/')&.last
   end
 end
 # end
