@@ -9,14 +9,14 @@ A `google_pubsub_topics` is used to test a Google Topic resource
 
 ## Examples
 ```
-describe google_pubsub_topics({project: 'inspec-gcp-project'}) do
+describe google_pubsub_topics(project: '') do
   it { should exist }
   its('names') { should include 'inspec-gcp-topic' }
   its('count') { should eq 1 }
 end
 
-google_pubsub_topics({project: 'inspec-gcp-project'}).names.each do |policy_name|
-  describe google_pubsub_topic({project: 'inspec-gcp-project', name: policy_name}) do
+google_pubsub_topics(project: '').names.each do |topic_name|
+  describe google_pubsub_topic(project: '', name: topic_name) do
     its('name') { should eq 'inspec-gcp-topic' }
   end
 end
