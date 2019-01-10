@@ -9,4 +9,3 @@ topic:
 subscription:
   name: 'inspec-gcp-subscription'
   ack_deadline_seconds: 20
-

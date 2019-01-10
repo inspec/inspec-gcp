@@ -9,7 +9,7 @@ A `google_pubsub_subscription` is used to test a Google Subscription resource
 
 ## Examples
 ```
-describe google_pubsub_subscription({project: 'inspec-gcp-project', name: 'inspec-gcp-subscription'}) do
+describe google_pubsub_subscription(project: '', name: 'inspec-gcp-subscription') do
   it { should exist }
 end
 
