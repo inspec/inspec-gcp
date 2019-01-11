@@ -24,4 +24,8 @@ control 'google_pubsub_subscription-1.0' do
   describe google_pubsub_subscription(project: gcp_project_id, name: subscription['name']) do
     it { should exist }
   end
+
+  describe google_pubsub_subscription(project: gcp_project_id, name: 'nonexistent') do
+    it { should_not exist }
+  end
 end

@@ -13,6 +13,10 @@ describe google_pubsub_subscription(project: '', name: 'inspec-gcp-subscription'
   it { should exist }
 end
 
+describe google_pubsub_subscription(project: '', name: 'nonexistent') do
+  it { should_not exist }
+end
+
 ```
 
 ## Properties
