@@ -29,13 +29,18 @@ module Inspec::Resources
 
     def fetch_data
       key_ring_rows = []
-      catch_gcp_errors do
-        @key_rings = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_rings("projects/#{@project}/locations/#{@location}")
-      end
-      return [] if !@key_rings || !@key_rings.key_rings
-      @key_rings.key_rings.map do |key_ring|
-        key_ring_rows+=[{ key_ring_name: key_ring.name.split('/').last,
-                          key_ring_url: key_ring.name }]
+      next_page = nil
+      loop do
+        catch_gcp_errors do
+          @key_rings = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_rings("projects/#{@project}/locations/#{@location}", page_token: next_page)
+        end
+        return [] if !@key_rings || !@key_rings.key_rings
+        @key_rings.key_rings.map do |key_ring|
+          key_ring_rows += [{ key_ring_name: key_ring.name.split('/').last,
+                              key_ring_url: key_ring.name }]
+        end
+        next_page = @key_rings.next_page_token
+        break unless next_page
       end
       @table = key_ring_rows
     end
