@@ -16,6 +16,10 @@ describe google_compute_ssl_policy(project: 'chef-gcp-inspec', name: 'inspec-gcp
   its('custom_features') { should include 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384' }
   its('custom_features') { should include 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384' }
 end
+
+describe google_compute_ssl_policy(project: 'chef-gcp-inspec', name: 'nonexistent') do
+  it { should_not exist }
+end
 ```
 
 ## Properties

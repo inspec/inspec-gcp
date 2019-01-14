@@ -13,6 +13,9 @@ describe google_pubsub_topic(project: '', name: 'inspec-gcp-topic') do
   it { should exist }
 end
 
+describe google_pubsub_topic(project: '', name: 'nonexistent') do
+  it { should_not exist }
+end
 ```
 
 ## Properties

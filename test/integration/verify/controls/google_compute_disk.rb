@@ -40,4 +40,8 @@ control 'google_compute_disk-1.0' do
       end
     end
   end
+
+  describe google_compute_disk(project: gcp_project_id, name: 'nonexistent', zone: gcp_zone) do
+    it { should_not exist }
+  end
 end

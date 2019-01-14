@@ -26,6 +26,10 @@ describe.one do
     end
   end
 end
+
+describe google_compute_disk(project: 'chef-gcp-inspec', name: 'nonexistent', zone: 'zone') do
+  it { should_not exist }
+end
 ```
 
 ## Properties

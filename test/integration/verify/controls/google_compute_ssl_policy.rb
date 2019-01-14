@@ -33,4 +33,8 @@ control 'google_compute_ssl_policy-1.0' do
     its('custom_features') { should include ssl_policy['custom_feature'] }
     its('custom_features') { should include ssl_policy['custom_feature2'] }
   end
+
+  describe google_compute_ssl_policy(project: gcp_project_id, name: 'nonexistent') do
+    it { should_not exist }
+  end
 end
