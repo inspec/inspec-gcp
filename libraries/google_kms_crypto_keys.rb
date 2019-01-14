@@ -29,13 +29,18 @@ module Inspec::Resources
 
     def fetch_data
       crypto_key_rows = []
-      catch_gcp_errors do
-        @crypto_keys = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_ring_crypto_keys("projects/#{@project}/locations/#{@location}/keyRings/#{@key_ring_name}")
-      end
-      return [] if !@crypto_keys || !@crypto_keys.crypto_keys
-      @crypto_keys.crypto_keys.map do |crypto_key|
-        crypto_key_rows+=[{ crypto_key_name: crypto_key.name.split('/').last,
-                            crypto_key_url: crypto_key.name }]
+      next_page = nil
+      loop do
+        catch_gcp_errors do
+          @crypto_keys = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_ring_crypto_keys("projects/#{@project}/locations/#{@location}/keyRings/#{@key_ring_name}", page_token: next_page)
+        end
+        return [] if !@crypto_keys || !@crypto_keys.crypto_keys
+        @crypto_keys.crypto_keys.map do |crypto_key|
+          crypto_key_rows += [{ crypto_key_name: crypto_key.name.split('/').last,
+                                crypto_key_url: crypto_key.name }]
+        end
+        next_page = @crypto_keys.next_page_token
+        break unless next_page
       end
       @table = crypto_key_rows
     end
