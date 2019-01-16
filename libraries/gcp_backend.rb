@@ -44,6 +44,10 @@ class GcpResourceBase < Inspec.resource(1)
     dm = GcpResourceDynamicMethods.new
     dm.create_methods(self, object)
   end
+
+  def name_from_self_link(property)
+    property&.split('/')&.last
+  end
 end
 # end
 
@@ -193,7 +197,11 @@ class GcpApiConnection
   def fetch_auth
     unless @service_account_file.nil?
       return Network::Authorization.new.for!(
-        ['https://www.googleapis.com/auth/compute.readonly'],
+        [
+          'https://www.googleapis.com/auth/compute.readonly',
+          'https://www.googleapis.com/auth/pubsub',
+          'https://www.googleapis.com/auth/ndev.clouddns.readonly',
+        ],
       ).from_service_account_json!(
         @service_account_file,
       )
