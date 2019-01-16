@@ -19,11 +19,14 @@ module GoogleInSpec
       class DiskSourcesnapshotencryptionkey
         attr_reader :raw_key
 
+        attr_reader :kms_key_name
+
         attr_reader :sha256
 
         def initialize(args = nil)
           return if args.nil?
           @raw_key = args['rawKey']
+          @kms_key_name = args['kmsKeyName']
           @sha256 = args['sha256']
         end
       end
