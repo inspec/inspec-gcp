@@ -28,7 +28,7 @@ control 'google_pubsub_subscriptions-1.0' do
 
   google_pubsub_subscriptions(project: gcp_project_id).names.each do |subscription_name|
     describe google_pubsub_subscription(project: gcp_project_id, name: subscription_name) do
-      its('name') { should match /#{subscription['name']}/ }
+      it { should exist }
     end
   end
 end
