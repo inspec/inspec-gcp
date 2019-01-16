@@ -16,7 +16,6 @@ end
 describe google_pubsub_subscription(project: 'chef-gcp-inspec', name: 'nonexistent') do
   it { should_not exist }
 end
-
 ```
 
 ## Properties
