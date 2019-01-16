@@ -9,14 +9,14 @@ A `google_pubsub_subscriptions` is used to test a Google Subscription resource
 
 ## Examples
 ```
-describe google_pubsub_subscriptions(project: '') do
+describe google_pubsub_subscriptions(project: 'chef-gcp-inspec') do
   it { should exist }
   its('count') { should eq 1 }
 end
 
-google_pubsub_subscriptions(project: '').names.each do |subscription_name|
-  describe google_pubsub_subscription(project: '', name: subscription_name) do
-    its('name') { should match /#{'inspec-gcp-subscription'}/ }
+google_pubsub_subscriptions(project: 'chef-gcp-inspec').names.each do |subscription_name|
+  describe google_pubsub_subscription(project: 'chef-gcp-inspec', name: subscription_name) do
+    it { should exist }
   end
 end
 
