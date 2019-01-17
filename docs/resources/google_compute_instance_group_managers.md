@@ -12,7 +12,6 @@ A `google_compute_instance_group_managers` is used to test a Google InstanceGrou
 describe google_compute_instance_group_managers(project: 'chef-gcp-inspec', zone: 'zone') do
   its('base_instance_names') { should include 'igm' }
 end
-
 ```
 
 ## Properties

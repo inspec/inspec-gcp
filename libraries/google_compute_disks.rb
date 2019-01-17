@@ -23,26 +23,26 @@ class Disks < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:label_fingerprints, field: :labelFingerprint)
-  filter_table_config.add(:creation_timestamps, field: :creationTimestamp)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:ids, field: :id)
-  filter_table_config.add(:last_attach_timestamps, field: :lastAttachTimestamp)
-  filter_table_config.add(:last_detach_timestamps, field: :lastDetachTimestamp)
+  filter_table_config.add(:last_attach_timestamps, field: :last_attach_timestamp)
+  filter_table_config.add(:last_detach_timestamps, field: :last_detach_timestamp)
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:licenses, field: :licenses)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:size_gbs, field: :sizeGb)
+  filter_table_config.add(:size_gbs, field: :size_gb)
   filter_table_config.add(:users, field: :users)
   filter_table_config.add(:types, field: :type)
-  filter_table_config.add(:source_images, field: :sourceImage)
+  filter_table_config.add(:source_images, field: :source_image)
   filter_table_config.add(:zones, field: :zone)
-  filter_table_config.add(:source_image_encryption_keys, field: :sourceImageEncryptionKey)
-  filter_table_config.add(:source_image_ids, field: :sourceImageId)
-  filter_table_config.add(:disk_encryption_keys, field: :diskEncryptionKey)
-  filter_table_config.add(:source_snapshots, field: :sourceSnapshot)
-  filter_table_config.add(:source_snapshot_encryption_keys, field: :sourceSnapshotEncryptionKey)
-  filter_table_config.add(:source_snapshot_ids, field: :sourceSnapshotId)
+  filter_table_config.add(:source_image_encryption_keys, field: :source_image_encryption_key)
+  filter_table_config.add(:source_image_ids, field: :source_image_id)
+  filter_table_config.add(:disk_encryption_keys, field: :disk_encryption_key)
+  filter_table_config.add(:source_snapshots, field: :source_snapshot)
+  filter_table_config.add(:source_snapshot_encryption_keys, field: :source_snapshot_encryption_key)
+  filter_table_config.add(:source_snapshot_ids, field: :source_snapshot_id)
 
   filter_table_config.connect(self, :table)
 
@@ -71,11 +71,50 @@ class Disks < GcpResourceBase
       next if response.nil? || !response.key?(wrap_path)
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
-        hash.each_pair { |k, v| hash_with_symbols[k.to_sym] = v }
+        hash.each_key do |key|
+          name, value = transform(key, hash)
+          hash_with_symbols[name] = value
+        end
         converted.push(hash_with_symbols)
       end
     end
 
     converted
+  end
+
+  def transform(key, value)
+    return transformers[key].call(value) if transformers.key?(key)
+
+    [key.to_sym, value]
+  end
+
+  def transformers
+    {
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
+      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'id' => ->(obj) { return :id, obj['id'] },
+      'lastAttachTimestamp' => ->(obj) { return :last_attach_timestamp, parse_time_string(obj['lastAttachTimestamp']) },
+      'lastDetachTimestamp' => ->(obj) { return :last_detach_timestamp, parse_time_string(obj['lastDetachTimestamp']) },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'licenses' => ->(obj) { return :licenses, obj['licenses'] },
+      'name' => ->(obj) { return :name, obj['name'] },
+      'sizeGb' => ->(obj) { return :size_gb, obj['sizeGb'] },
+      'users' => ->(obj) { return :users, obj['users'] },
+      'type' => ->(obj) { return :type, obj['type'] },
+      'sourceImage' => ->(obj) { return :source_image, obj['sourceImage'] },
+      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'sourceImageEncryptionKey' => ->(obj) { return :source_image_encryption_key, GoogleInSpec::Compute::Property::DiskSourceimageencryptionkey.new(obj['sourceImageEncryptionKey']) },
+      'sourceImageId' => ->(obj) { return :source_image_id, obj['sourceImageId'] },
+      'diskEncryptionKey' => ->(obj) { return :disk_encryption_key, GoogleInSpec::Compute::Property::DiskDiskencryptionkey.new(obj['diskEncryptionKey']) },
+      'sourceSnapshot' => ->(obj) { return :source_snapshot, obj['sourceSnapshot'] },
+      'sourceSnapshotEncryptionKey' => ->(obj) { return :source_snapshot_encryption_key, GoogleInSpec::Compute::Property::DiskSourcesnapshotencryptionkey.new(obj['sourceSnapshotEncryptionKey']) },
+      'sourceSnapshotId' => ->(obj) { return :source_snapshot_id, obj['sourceSnapshotId'] },
+    }
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 end

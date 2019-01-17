@@ -23,14 +23,14 @@ class SslPolicys < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:creation_timestamps, field: :creationTimestamp)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:profiles, field: :profile)
-  filter_table_config.add(:min_tls_versions, field: :minTlsVersion)
-  filter_table_config.add(:enabled_features, field: :enabledFeatures)
-  filter_table_config.add(:custom_features, field: :customFeatures)
+  filter_table_config.add(:min_tls_versions, field: :min_tls_version)
+  filter_table_config.add(:enabled_features, field: :enabled_features)
+  filter_table_config.add(:custom_features, field: :custom_features)
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:warnings, field: :warnings)
 
@@ -61,11 +61,40 @@ class SslPolicys < GcpResourceBase
       next if response.nil? || !response.key?(wrap_path)
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
-        hash.each_pair { |k, v| hash_with_symbols[k.to_sym] = v }
+        hash.each_key do |key|
+          name, value = transform(key, hash)
+          hash_with_symbols[name] = value
+        end
         converted.push(hash_with_symbols)
       end
     end
 
     converted
+  end
+
+  def transform(key, value)
+    return transformers[key].call(value) if transformers.key?(key)
+
+    [key.to_sym, value]
+  end
+
+  def transformers
+    {
+      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'id' => ->(obj) { return :id, obj['id'] },
+      'name' => ->(obj) { return :name, obj['name'] },
+      'profile' => ->(obj) { return :profile, obj['profile'] },
+      'minTlsVersion' => ->(obj) { return :min_tls_version, obj['minTlsVersion'] },
+      'enabledFeatures' => ->(obj) { return :enabled_features, obj['enabledFeatures'] },
+      'customFeatures' => ->(obj) { return :custom_features, obj['customFeatures'] },
+      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
+      'warnings' => ->(obj) { return :warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj['warnings']) },
+    }
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 end

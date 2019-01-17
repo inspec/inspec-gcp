@@ -23,18 +23,18 @@ class InstanceGroupManagers < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:base_instance_names, field: :baseInstanceName)
-  filter_table_config.add(:creation_timestamps, field: :creationTimestamp)
-  filter_table_config.add(:current_actions, field: :currentActions)
+  filter_table_config.add(:base_instance_names, field: :base_instance_name)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:current_actions, field: :current_actions)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:ids, field: :id)
-  filter_table_config.add(:instance_groups, field: :instanceGroup)
-  filter_table_config.add(:instance_templates, field: :instanceTemplate)
+  filter_table_config.add(:instance_groups, field: :instance_group)
+  filter_table_config.add(:instance_templates, field: :instance_template)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:named_ports, field: :namedPorts)
+  filter_table_config.add(:named_ports, field: :named_ports)
   filter_table_config.add(:regions, field: :region)
-  filter_table_config.add(:target_pools, field: :targetPools)
-  filter_table_config.add(:target_sizes, field: :targetSize)
+  filter_table_config.add(:target_pools, field: :target_pools)
+  filter_table_config.add(:target_sizes, field: :target_size)
   filter_table_config.add(:zones, field: :zone)
 
   filter_table_config.connect(self, :table)
@@ -64,11 +64,43 @@ class InstanceGroupManagers < GcpResourceBase
       next if response.nil? || !response.key?(wrap_path)
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
-        hash.each_pair { |k, v| hash_with_symbols[k.to_sym] = v }
+        hash.each_key do |key|
+          name, value = transform(key, hash)
+          hash_with_symbols[name] = value
+        end
         converted.push(hash_with_symbols)
       end
     end
 
     converted
+  end
+
+  def transform(key, value)
+    return transformers[key].call(value) if transformers.key?(key)
+
+    [key.to_sym, value]
+  end
+
+  def transformers
+    {
+      'baseInstanceName' => ->(obj) { return :base_instance_name, obj['baseInstanceName'] },
+      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'currentActions' => ->(obj) { return :current_actions, GoogleInSpec::Compute::Property::InstanceGroupManagerCurrentactions.new(obj['currentActions']) },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'id' => ->(obj) { return :id, obj['id'] },
+      'instanceGroup' => ->(obj) { return :instance_group, obj['instanceGroup'] },
+      'instanceTemplate' => ->(obj) { return :instance_template, obj['instanceTemplate'] },
+      'name' => ->(obj) { return :name, obj['name'] },
+      'namedPorts' => ->(obj) { return :named_ports, GoogleInSpec::Compute::Property::InstanceGroupManagerNamedportsArray.parse(obj['namedPorts']) },
+      'region' => ->(obj) { return :region, obj['region'] },
+      'targetPools' => ->(obj) { return :target_pools, obj['targetPools'] },
+      'targetSize' => ->(obj) { return :target_size, obj['targetSize'] },
+      'zone' => ->(obj) { return :zone, obj['zone'] },
+    }
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 end

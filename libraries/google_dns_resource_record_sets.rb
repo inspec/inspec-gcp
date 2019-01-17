@@ -39,12 +39,6 @@ class ResourceRecordSets < GcpResourceBase
     'projects/{{project}}/managedZones/{{managed_zone}}/rrsets'
   end
 
-  def api_names
-    {
-      'rrdatas' => 'target',
-    }
-  end
-
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
@@ -62,11 +56,35 @@ class ResourceRecordSets < GcpResourceBase
       next if response.nil? || !response.key?(wrap_path)
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
-        hash.each_pair { |k, v| api_names.key?(k) ? hash_with_symbols[api_names[k].to_sym] = v : hash_with_symbols[k.to_sym] = v }
+        hash.each_key do |key|
+          name, value = transform(key, hash)
+          hash_with_symbols[name] = value
+        end
         converted.push(hash_with_symbols)
       end
     end
 
     converted
+  end
+
+  def transform(key, value)
+    return transformers[key].call(value) if transformers.key?(key)
+
+    [key.to_sym, value]
+  end
+
+  def transformers
+    {
+      'name' => ->(obj) { return :name, obj['name'] },
+      'type' => ->(obj) { return :type, obj['type'] },
+      'ttl' => ->(obj) { return :ttl, obj['ttl'] },
+      'rrdatas' => ->(obj) { return :target, obj['rrdatas'] },
+      'managed_zone' => ->(obj) { return :managed_zone, obj['managed_zone'] },
+    }
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 end

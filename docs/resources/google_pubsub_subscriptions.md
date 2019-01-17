@@ -19,7 +19,6 @@ google_pubsub_subscriptions(project: 'chef-gcp-inspec').names.each do |subscript
     it { should exist }
   end
 end
-
 ```
 
 ## Properties

@@ -14,34 +14,37 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Subscriptions < GcpResourceBase
-  name 'google_pubsub_subscriptions'
-  desc 'Subscription plural resource'
+class Autoscalers < GcpResourceBase
+  name 'google_compute_autoscalers'
+  desc 'Autoscaler plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:topics, field: :topic)
-  filter_table_config.add(:push_configs, field: :push_config)
-  filter_table_config.add(:ack_deadline_seconds, field: :ack_deadline_seconds)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:autoscaling_policies, field: :autoscaling_policy)
+  filter_table_config.add(:targets, field: :target)
+  filter_table_config.add(:zones, field: :zone)
 
   filter_table_config.connect(self, :table)
 
   def base
-    'https://pubsub.googleapis.com/v1/'
+    'https://www.googleapis.com/compute/v1/'
   end
 
   def url
-    'projects/{{project}}/subscriptions'
+    'projects/{{project}}/zones/{{zone}}/autoscalers'
   end
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('subscriptions')
+    @table = fetch_wrapped_resource('items')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -74,10 +77,13 @@ class Subscriptions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
-      'topic' => ->(obj) { return :topic, obj['topic'] },
-      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushconfig.new(obj['pushConfig']) },
-      'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
+      'id' => ->(obj) { return :id, obj['id'] },
+      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'name' => ->(obj) { return :name, obj['name'] },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'autoscalingPolicy' => ->(obj) { return :autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingpolicy.new(obj['autoscalingPolicy']) },
+      'target' => ->(obj) { return :target, obj['target'] },
+      'zone' => ->(obj) { return :zone, obj['zone'] },
     }
   end
 
