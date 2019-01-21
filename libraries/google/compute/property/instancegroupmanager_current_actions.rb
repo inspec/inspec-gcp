@@ -16,18 +16,33 @@
 module GoogleInSpec
   module Compute
     module Property
-      class DiskSourcesnapshotencryptionkey
-        attr_reader :raw_key
+      class InstanceGroupManagerCurrentactions
+        attr_reader :abandoning
 
-        attr_reader :kms_key_name
+        attr_reader :creating
 
-        attr_reader :sha256
+        attr_reader :creating_without_retries
+
+        attr_reader :deleting
+
+        attr_reader :none
+
+        attr_reader :recreating
+
+        attr_reader :refreshing
+
+        attr_reader :restarting
 
         def initialize(args = nil)
           return if args.nil?
-          @raw_key = args['rawKey']
-          @kms_key_name = args['kmsKeyName']
-          @sha256 = args['sha256']
+          @abandoning = args['abandoning']
+          @creating = args['creating']
+          @creating_without_retries = args['creatingWithoutRetries']
+          @deleting = args['deleting']
+          @none = args['none']
+          @recreating = args['recreating']
+          @refreshing = args['refreshing']
+          @restarting = args['restarting']
         end
       end
     end

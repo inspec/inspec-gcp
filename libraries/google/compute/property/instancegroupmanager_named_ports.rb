@@ -16,18 +16,23 @@
 module GoogleInSpec
   module Compute
     module Property
-      class DiskSourcesnapshotencryptionkey
-        attr_reader :raw_key
+      class InstanceGroupManagerNamedports
+        attr_reader :name
 
-        attr_reader :kms_key_name
-
-        attr_reader :sha256
+        attr_reader :port
 
         def initialize(args = nil)
           return if args.nil?
-          @raw_key = args['rawKey']
-          @kms_key_name = args['kmsKeyName']
-          @sha256 = args['sha256']
+          @name = args['name']
+          @port = args['port']
+        end
+      end
+
+      class InstanceGroupManagerNamedportsArray
+        def self.parse(value)
+          return if value.nil?
+          return InstanceGroupManagerNamedports.new(value) unless value.is_a?(::Array)
+          value.map { |v| InstanceGroupManagerNamedports.new(v) }
         end
       end
     end

@@ -14,7 +14,7 @@
 
 title 'Test GCP google_pubsub_topic resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
+gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 topic = attribute('topic', default: {"name"=>"inspec-gcp-topic"})
 
 control 'google_pubsub_topic-1.0' do
@@ -23,5 +23,9 @@ control 'google_pubsub_topic-1.0' do
 
   describe google_pubsub_topic(project: gcp_project_id, name: topic['name']) do
     it { should exist }
+  end
+
+  describe google_pubsub_topic(project: gcp_project_id, name: 'nonexistent') do
+    it { should_not exist }
   end
 end
