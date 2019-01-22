@@ -24,12 +24,14 @@ control 'google_pubsub_topics-1.0' do
   describe google_pubsub_topics(project: gcp_project_id) do
     it { should exist }
     its('names') { should include topic['name'] }
-    its('count') { should eq 1 }
+    its('count') { should eq 2 }
   end
 
-  google_pubsub_topics(project: gcp_project_id).names.each do |topic_name|
-    describe google_pubsub_topic(project: gcp_project_id, name: topic_name) do
-      its('name') { should eq topic['name'] }
+  describe.one do
+    google_pubsub_topics(project: gcp_project_id).names.each do |topic_name|
+      describe google_pubsub_topic(project: gcp_project_id, name: topic_name) do
+        its('name') { should eq topic['name'] }
+      end
     end
   end
 end
