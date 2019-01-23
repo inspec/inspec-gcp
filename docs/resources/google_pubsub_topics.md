@@ -12,13 +12,13 @@ A `google_pubsub_topics` is used to test a Google Topic resource
 describe google_pubsub_topics(project: 'chef-gcp-inspec') do
   it { should exist }
   its('names') { should include 'inspec-gcp-topic' }
-  its('count') { should eq 2 }
+  its('count') { should be >=1 }
 end
 
 describe.one do
   google_pubsub_topics(project: 'chef-gcp-inspec').names.each do |topic_name|
     describe google_pubsub_topic(project: 'chef-gcp-inspec', name: topic_name) do
-      its('name') { should eq 'inspec-gcp-topic' }
+      it { should exist }
     end
   end
 end
