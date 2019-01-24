@@ -31,7 +31,7 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Max: 11
 Metrics/AbcSize:
-  Max: 33
+  Max: 50
 Metrics/CyclomaticComplexity:
   Max: 15
 Metrics/PerceivedComplexity:

@@ -52,12 +52,31 @@ class Topics < GcpResourceBase
       next if response.nil? || !response.key?(wrap_path)
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
-        hash.each_pair { |k, v| hash_with_symbols[k.to_sym] = v }
-        hash_with_symbols[:name] = name_from_self_link(hash_with_symbols[:name])
+        hash.each_key do |key|
+          name, value = transform(key, hash)
+          hash_with_symbols[name] = value
+        end
         converted.push(hash_with_symbols)
       end
     end
 
     converted
+  end
+
+  def transform(key, value)
+    return transformers[key].call(value) if transformers.key?(key)
+
+    [key.to_sym, value]
+  end
+
+  def transformers
+    {
+      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
+    }
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 end

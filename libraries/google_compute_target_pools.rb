@@ -14,34 +14,40 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Subscriptions < GcpResourceBase
-  name 'google_pubsub_subscriptions'
-  desc 'Subscription plural resource'
+class TargetPools < GcpResourceBase
+  name 'google_compute_target_pools'
+  desc 'TargetPool plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:backup_pools, field: :backup_pool)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:failover_ratios, field: :failover_ratio)
+  filter_table_config.add(:health_checks, field: :health_check)
+  filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:instances, field: :instances)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:topics, field: :topic)
-  filter_table_config.add(:push_configs, field: :push_config)
-  filter_table_config.add(:ack_deadline_seconds, field: :ack_deadline_seconds)
+  filter_table_config.add(:session_affinities, field: :session_affinity)
+  filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
 
   def base
-    'https://pubsub.googleapis.com/v1/'
+    'https://www.googleapis.com/compute/v1/'
   end
 
   def url
-    'projects/{{project}}/subscriptions'
+    'projects/{{project}}/regions/{{region}}/targetPools'
   end
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('subscriptions')
+    @table = fetch_wrapped_resource('items')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -74,10 +80,16 @@ class Subscriptions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
-      'topic' => ->(obj) { return :topic, obj['topic'] },
-      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushconfig.new(obj['pushConfig']) },
-      'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
+      'backupPool' => ->(obj) { return :backup_pool, obj['backupPool'] },
+      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'failoverRatio' => ->(obj) { return :failover_ratio, obj['failoverRatio'] },
+      'healthCheck' => ->(obj) { return :health_check, obj['healthCheck'] },
+      'id' => ->(obj) { return :id, obj['id'] },
+      'instances' => ->(obj) { return :instances, obj['instances'] },
+      'name' => ->(obj) { return :name, obj['name'] },
+      'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
+      'region' => ->(obj) { return :region, obj['region'] },
     }
   end
 

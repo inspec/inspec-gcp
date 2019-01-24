@@ -20,7 +20,6 @@ google_pubsub_topics(project: 'chef-gcp-inspec').names.each do |topic_name|
     its('name') { should eq 'inspec-gcp-topic' }
   end
 end
-
 ```
 
 ## Properties
