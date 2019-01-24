@@ -1,5 +1,5 @@
 name: inspec-gcp-integration-tests
-version: 0.8.0
+version: 0.9.0
 inspec_version: '>= 3.0.25'
 depends:
   - name: inspec-gcp

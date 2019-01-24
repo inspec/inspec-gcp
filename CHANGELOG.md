@@ -1,5 +1,23 @@
 # Change Log
 
+## [v0.9.0](https://github.com/inspec/inspec-gcp/tree/v0.9.0) (2019-01-21)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.8.0...v0.9.0)
+
+**Merged pull requests:**
+
+- Add instance group manager and resource record set resources [\#100](https://github.com/inspec/inspec-gcp/pull/100) ([slevenick](https://github.com/slevenick))
+- Pubsub subscription + topic [\#99](https://github.com/inspec/inspec-gcp/pull/99) ([slevenick](https://github.com/slevenick))
+- Adding pagination for key rings and crypto keys resources. [\#97](https://github.com/inspec/inspec-gcp/pull/97) ([skpaterson](https://github.com/skpaterson))
+- Add compute disk resource [\#96](https://github.com/inspec/inspec-gcp/pull/96) ([slevenick](https://github.com/slevenick))
+- Feat/pubsub magicmodule [\#95](https://github.com/inspec/inspec-gcp/pull/95) ([jnahelou](https://github.com/jnahelou))
+- Fix for forwarding rules with nil network and update README. [\#93](https://github.com/inspec/inspec-gcp/pull/93) ([skpaterson](https://github.com/skpaterson))
+- Tweaks to MM SSL policies resources and update README. [\#92](https://github.com/inspec/inspec-gcp/pull/92) ([skpaterson](https://github.com/skpaterson))
+- Add support for google\_compute\_forwarding\_rules and google\_compute\_forwarding\_rule [\#91](https://github.com/inspec/inspec-gcp/pull/91) ([jnahelou](https://github.com/jnahelou))
+- Add Magic Modules generated resource for SSL Policy [\#90](https://github.com/inspec/inspec-gcp/pull/90) ([slevenick](https://github.com/slevenick))
+- Update README for new resources [\#85](https://github.com/inspec/inspec-gcp/pull/85) ([skpaterson](https://github.com/skpaterson))
+- Added support for google\_compute\_region\_instance\_group\_manager [\#84](https://github.com/inspec/inspec-gcp/pull/84) ([jnahelou](https://github.com/jnahelou))
+- Updating README with new resources and adding CHANGELOG for v0.8.0. [\#83](https://github.com/inspec/inspec-gcp/pull/83) ([skpaterson](https://github.com/skpaterson))
+
 ## [v0.8.0](https://github.com/inspec/inspec-gcp/tree/v0.8.0) (2018-11-23)
 [Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.7.0...v0.8.0)
 
