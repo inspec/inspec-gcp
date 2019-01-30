@@ -12,26 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_pubsub_topics resource.'
+title 'Test GCP google_compute_health_checks resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-topic = attribute('topic', default: {"name"=>"inspec-gcp-topic"})
-
-control 'google_pubsub_topics-1.0' do
+health_check = attribute('health_check', default: {
+  "name": "inspec-gcp-health-check",
+  "timeout_sec": 10,
+  "check_interval_sec": 10,
+  "tcp_health_check_port": 80
+}, description: 'Health check definition')
+control 'google_compute_health_checks-1.0' do
   impact 1.0
-  title 'google_pubsub_topics resource test'
+  title 'google_compute_health_checks resource test'
 
-  describe google_pubsub_topics(project: gcp_project_id) do
-    it { should exist }
-    its('names') { should include topic['name'] }
-    its('count') { should be >=1 }
-  end
-
-  describe.one do
-    google_pubsub_topics(project: gcp_project_id).names.each do |topic_name|
-      describe google_pubsub_topic(project: gcp_project_id, name: topic_name) do
-        it { should exist }
-      end
-    end
+  describe google_compute_health_checks(project: gcp_project_id) do
+    its('names') { should include health_check['name'] }
+    its('timeout_secs') { should include health_check['timeout_sec'] }
   end
 end

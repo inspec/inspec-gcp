@@ -30,6 +30,14 @@ variable "target_pool" {
   type = "map"
 }
 
+variable "trigger" {
+  type = "map"
+}
+
+variable "health_check" {
+  type = "map"
+}
+
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = "${var.ssl_policy["name"]}"
   min_tls_version = "${var.ssl_policy["min_tls_version"]}"
@@ -110,4 +118,26 @@ resource "google_compute_target_pool" "gcp-inspec-target-pool" {
   instances = [
     "${var.gcp_zone}/${var.gcp_ext_vm_name}",
   ]
+}
+
+resource "google_cloudbuild_trigger" "gcp-inspec-cloudbuild-trigger" {
+  project = "${var.gcp_project_id}"
+  trigger_template {
+    branch_name = "${var.trigger["trigger_template_branch"]}"
+    project     = "${var.trigger["trigger_template_project"]}"
+    repo_name   = "${var.trigger["trigger_template_repo"]}"
+  }
+  filename = "${var.trigger["filename"]}"
+}
+
+resource "google_compute_health_check" "gcp-inspec-health-check" {
+ project = "${var.gcp_project_id}"
+ name = "${var.health_check["name"]}"
+
+ timeout_sec = "${var.health_check["timeout_sec"]}"
+ check_interval_sec = "${var.health_check["check_interval_sec"]}"
+
+ tcp_health_check {
+   port = "${var.health_check["tcp_health_check_port"]}"
+ }
 }
