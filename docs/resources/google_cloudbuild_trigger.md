@@ -1,8 +1,7 @@
 ---
-title: About the Trigger resource
+title: About the google_cloudbuild_trigger resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_cloudbuild_trigger` is used to test a Google Trigger resource

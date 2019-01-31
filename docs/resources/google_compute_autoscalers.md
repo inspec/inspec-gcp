@@ -1,8 +1,7 @@
 ---
-title: About the Autoscaler resource
+title: About the google_compute_autoscalers resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_autoscalers` is used to test a Google Autoscaler resource

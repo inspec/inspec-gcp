@@ -1,8 +1,7 @@
 ---
-title: About the SslPolicy resource
+title: About the google_compute_ssl_policy resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_ssl_policy` is used to test a Google SslPolicy resource

@@ -1,8 +1,7 @@
 ---
-title: About the TargetHttpProxy resource
+title: About the google_compute_target_http_proxies resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_target_http_proxies` is used to test a Google TargetHttpProxy resource

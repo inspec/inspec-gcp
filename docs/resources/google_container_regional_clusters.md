@@ -1,8 +1,7 @@
 ---
-title: About the RegionalCluster resource
+title: About the google_container_regional_clusters resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_container_regional_clusters` is used to test a Google RegionalCluster resource
