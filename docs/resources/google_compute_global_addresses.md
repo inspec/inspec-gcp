@@ -1,8 +1,7 @@
 ---
-title: About the GlobalAddress resource
+title: About the google_compute_global_addresses resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_global_addresses` is used to test a Google GlobalAddress resource

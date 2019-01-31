@@ -1,8 +1,7 @@
 ---
-title: About the InstanceTemplate resource
+title: About the google_compute_instance_template resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_instance_template` is used to test a Google InstanceTemplate resource

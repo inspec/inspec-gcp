@@ -1,8 +1,7 @@
 ---
-title: About the ResourceRecordSet resource
+title: About the google_dns_resource_record_sets resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_dns_resource_record_sets` is used to test a Google ResourceRecordSet resource

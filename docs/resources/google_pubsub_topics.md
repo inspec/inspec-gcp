@@ -1,8 +1,7 @@
 ---
-title: About the Topic resource
+title: About the google_pubsub_topics resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_pubsub_topics` is used to test a Google Topic resource

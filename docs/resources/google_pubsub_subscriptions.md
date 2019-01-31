@@ -1,8 +1,7 @@
 ---
-title: About the Subscription resource
+title: About the google_pubsub_subscriptions resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_pubsub_subscriptions` is used to test a Google Subscription resource

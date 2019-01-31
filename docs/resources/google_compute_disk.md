@@ -1,8 +1,7 @@
 ---
-title: About the Disk resource
+title: About the google_compute_disk resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_disk` is used to test a Google Disk resource

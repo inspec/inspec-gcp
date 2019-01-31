@@ -1,8 +1,7 @@
 ---
-title: About the GlobalForwardingRule resource
+title: About the google_compute_global_forwarding_rule resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_global_forwarding_rule` is used to test a Google GlobalForwardingRule resource
