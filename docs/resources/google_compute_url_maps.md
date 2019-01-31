@@ -1,8 +1,7 @@
 ---
-title: About the UrlMap resource
+title: About the google_compute_url_maps resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_url_maps` is used to test a Google UrlMap resource
