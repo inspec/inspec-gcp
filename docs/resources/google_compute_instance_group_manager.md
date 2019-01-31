@@ -1,8 +1,7 @@
 ---
-title: About the InstanceGroupManager resource
+title: About the google_compute_instance_group_manager resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_instance_group_manager` is used to test a Google InstanceGroupManager resource

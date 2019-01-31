@@ -1,8 +1,7 @@
 ---
-title: About the HttpHealthCheck resource
+title: About the google_compute_http_health_check resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_http_health_check` is used to test a Google HttpHealthCheck resource

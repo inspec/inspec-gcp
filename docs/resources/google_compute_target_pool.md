@@ -1,8 +1,7 @@
 ---
-title: About the TargetPool resource
+title: About the google_compute_target_pool resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_target_pool` is used to test a Google TargetPool resource

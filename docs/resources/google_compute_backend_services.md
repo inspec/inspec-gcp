@@ -1,8 +1,7 @@
 ---
-title: About the BackendService resource
+title: About the google_compute_backend_services resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_backend_services` is used to test a Google BackendService resource

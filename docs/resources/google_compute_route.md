@@ -1,8 +1,7 @@
 ---
-title: About the Route resource
+title: About the google_compute_route resource
 platform: gcp
 ---
-
 
 ## Syntax
 A `google_compute_route` is used to test a Google Route resource
