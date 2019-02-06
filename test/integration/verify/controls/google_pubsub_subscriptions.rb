@@ -22,8 +22,7 @@ control 'google_pubsub_subscriptions-1.0' do
   title 'google_pubsub_subscriptions resource test'
 
   describe google_pubsub_subscriptions(project: gcp_project_id) do
-    it { should exist }
-    its('count') { should eq 1 }
+    its('count') { should be >= 1 }
   end
 
   google_pubsub_subscriptions(project: gcp_project_id).names.each do |subscription_name|
