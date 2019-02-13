@@ -76,7 +76,7 @@ class Subscriptions < GcpResourceBase
     {
       'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
       'topic' => ->(obj) { return :topic, obj['topic'] },
-      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushconfig.new(obj['pushConfig']) },
+      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig']) },
       'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
     }
   end

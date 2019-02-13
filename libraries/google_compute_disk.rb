@@ -73,11 +73,11 @@ class Disk < GcpResourceBase
     @type = @fetched['type']
     @source_image = @fetched['sourceImage']
     @zone = @fetched['zone']
-    @source_image_encryption_key = GoogleInSpec::Compute::Property::DiskSourceimageencryptionkey.new(@fetched['sourceImageEncryptionKey'])
+    @source_image_encryption_key = GoogleInSpec::Compute::Property::DiskSourceImageEncryptionKey.new(@fetched['sourceImageEncryptionKey'])
     @source_image_id = @fetched['sourceImageId']
-    @disk_encryption_key = GoogleInSpec::Compute::Property::DiskDiskencryptionkey.new(@fetched['diskEncryptionKey'])
+    @disk_encryption_key = GoogleInSpec::Compute::Property::DiskDiskEncryptionKey.new(@fetched['diskEncryptionKey'])
     @source_snapshot = @fetched['sourceSnapshot']
-    @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::DiskSourcesnapshotencryptionkey.new(@fetched['sourceSnapshotEncryptionKey'])
+    @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::DiskSourceSnapshotEncryptionKey.new(@fetched['sourceSnapshotEncryptionKey'])
     @source_snapshot_id = @fetched['sourceSnapshotId']
   end
 

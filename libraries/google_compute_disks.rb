@@ -104,11 +104,11 @@ class Disks < GcpResourceBase
       'type' => ->(obj) { return :type, obj['type'] },
       'sourceImage' => ->(obj) { return :source_image, obj['sourceImage'] },
       'zone' => ->(obj) { return :zone, obj['zone'] },
-      'sourceImageEncryptionKey' => ->(obj) { return :source_image_encryption_key, GoogleInSpec::Compute::Property::DiskSourceimageencryptionkey.new(obj['sourceImageEncryptionKey']) },
+      'sourceImageEncryptionKey' => ->(obj) { return :source_image_encryption_key, GoogleInSpec::Compute::Property::DiskSourceImageEncryptionKey.new(obj['sourceImageEncryptionKey']) },
       'sourceImageId' => ->(obj) { return :source_image_id, obj['sourceImageId'] },
-      'diskEncryptionKey' => ->(obj) { return :disk_encryption_key, GoogleInSpec::Compute::Property::DiskDiskencryptionkey.new(obj['diskEncryptionKey']) },
+      'diskEncryptionKey' => ->(obj) { return :disk_encryption_key, GoogleInSpec::Compute::Property::DiskDiskEncryptionKey.new(obj['diskEncryptionKey']) },
       'sourceSnapshot' => ->(obj) { return :source_snapshot, obj['sourceSnapshot'] },
-      'sourceSnapshotEncryptionKey' => ->(obj) { return :source_snapshot_encryption_key, GoogleInSpec::Compute::Property::DiskSourcesnapshotencryptionkey.new(obj['sourceSnapshotEncryptionKey']) },
+      'sourceSnapshotEncryptionKey' => ->(obj) { return :source_snapshot_encryption_key, GoogleInSpec::Compute::Property::DiskSourceSnapshotEncryptionKey.new(obj['sourceSnapshotEncryptionKey']) },
       'sourceSnapshotId' => ->(obj) { return :source_snapshot_id, obj['sourceSnapshotId'] },
     }
   end

@@ -89,8 +89,8 @@ class BackendServices < GcpResourceBase
     {
       'affinityCookieTtlSec' => ->(obj) { return :affinity_cookie_ttl_sec, obj['affinityCookieTtlSec'] },
       'backends' => ->(obj) { return :backends, GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(obj['backends']) },
-      'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::BackendServiceCdnpolicy.new(obj['cdnPolicy']) },
-      'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::BackendServiceConnectiondraining.new(obj['connectionDraining']) },
+      'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(obj['cdnPolicy']) },
+      'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(obj['connectionDraining']) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'description' => ->(obj) { return :description, obj['description'] },
       'enableCDN' => ->(obj) { return :enable_cdn, obj['enableCDN'] },

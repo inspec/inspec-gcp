@@ -15,9 +15,9 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/compute/property/autoscaler_autoscaling_policy'
-require 'google/compute/property/autoscaler_cpu_utilization'
-require 'google/compute/property/autoscaler_custom_metric_utilizations'
-require 'google/compute/property/autoscaler_load_balancing_utilization'
+require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
+require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
+require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
 
 # A provider to manage Google Compute Engine resources.
 class Autoscaler < GcpResourceBase
@@ -51,7 +51,7 @@ class Autoscaler < GcpResourceBase
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @name = @fetched['name']
     @description = @fetched['description']
-    @autoscaling_policy = GoogleInSpec::Compute::Property::AutoscalerAutoscalingpolicy.new(@fetched['autoscalingPolicy'])
+    @autoscaling_policy = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(@fetched['autoscalingPolicy'])
     @target = @fetched['target']
     @zone = @fetched['zone']
   end

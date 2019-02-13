@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class DiskSourceimageencryptionkey
+      class DiskSourceImageEncryptionKey
         attr_reader :raw_key
 
         attr_reader :sha256
