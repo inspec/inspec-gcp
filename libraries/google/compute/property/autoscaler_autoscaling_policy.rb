@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/autoscaler_cpu_utilization'
-require 'google/compute/property/autoscaler_custom_metric_utilizations'
-require 'google/compute/property/autoscaler_load_balancing_utilization'
+require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
+require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
+require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
 module GoogleInSpec
   module Compute
     module Property
-      class AutoscalerAutoscalingpolicy
+      class AutoscalerAutoscalingPolicy
         attr_reader :min_num_replicas
 
         attr_reader :max_num_replicas
@@ -37,9 +37,9 @@ module GoogleInSpec
           @min_num_replicas = args['minNumReplicas']
           @max_num_replicas = args['maxNumReplicas']
           @cool_down_period_sec = args['coolDownPeriodSec']
-          @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerCpuutilization.new(args['cpuUtilization'])
-          @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerCustommetricutilizationsArray.parse(args['customMetricUtilizations'])
-          @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerLoadbalancingutilization.new(args['loadBalancingUtilization'])
+          @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCpuUtilization.new(args['cpuUtilization'])
+          @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray.parse(args['customMetricUtilizations'])
+          @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyLoadBalancingUtilization.new(args['loadBalancingUtilization'])
         end
       end
     end

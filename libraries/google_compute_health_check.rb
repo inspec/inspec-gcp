@@ -62,10 +62,10 @@ class HealthCheck < GcpResourceBase
     @timeout_sec = @fetched['timeoutSec']
     @unhealthy_threshold = @fetched['unhealthyThreshold']
     @type = @fetched['type']
-    @http_health_check = GoogleInSpec::Compute::Property::HealthCheckHttphealthcheck.new(@fetched['httpHealthCheck'])
-    @https_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpshealthcheck.new(@fetched['httpsHealthCheck'])
-    @tcp_health_check = GoogleInSpec::Compute::Property::HealthCheckTcphealthcheck.new(@fetched['tcpHealthCheck'])
-    @ssl_health_check = GoogleInSpec::Compute::Property::HealthCheckSslhealthcheck.new(@fetched['sslHealthCheck'])
+    @http_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(@fetched['httpHealthCheck'])
+    @https_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(@fetched['httpsHealthCheck'])
+    @tcp_health_check = GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(@fetched['tcpHealthCheck'])
+    @ssl_health_check = GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(@fetched['sslHealthCheck'])
   end
 
   # Handles parsing RFC3339 time string

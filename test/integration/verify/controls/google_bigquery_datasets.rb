@@ -21,8 +21,6 @@ dataset = attribute('dataset', default: {
   "description": "Test BigQuery dataset description",
   "location": "EU",
   "default_table_expiration_ms": 3600000,
-  "access_reader_role": "READER",
-  "access_reader_domain": "example.com",
   "access_writer_role": "WRITER",
   "access_writer_special_group": "projectWriters"
 }, description: 'BigQuery dataset definition')

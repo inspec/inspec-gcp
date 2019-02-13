@@ -16,7 +16,7 @@
 module GoogleInSpec
   module CloudBuild
     module Property
-      class TriggerTriggertemplate
+      class TriggerTriggerTemplate
         attr_reader :project_id
 
         attr_reader :repo_name

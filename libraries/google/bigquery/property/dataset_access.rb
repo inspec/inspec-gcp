@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/dataset_view'
+require 'google/bigquery/property/dataset_access_view'
 module GoogleInSpec
   module BigQuery
     module Property
@@ -37,7 +37,7 @@ module GoogleInSpec
           @role = args['role']
           @special_group = args['specialGroup']
           @user_by_email = args['userByEmail']
-          @view = GoogleInSpec::BigQuery::Property::DatasetView.new(args['view'])
+          @view = GoogleInSpec::BigQuery::Property::DatasetAccessView.new(args['view'])
         end
       end
 

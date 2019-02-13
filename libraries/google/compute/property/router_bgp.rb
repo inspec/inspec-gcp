@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/router_advertised_ip_ranges'
+require 'google/compute/property/router_bgp_advertised_ip_ranges'
 module GoogleInSpec
   module Compute
     module Property
@@ -31,7 +31,7 @@ module GoogleInSpec
           @asn = args['asn']
           @advertise_mode = args['advertiseMode']
           @advertised_groups = args['advertisedGroups']
-          @advertised_ip_ranges = GoogleInSpec::Compute::Property::RouterAdvertisediprangesArray.parse(args['advertisedIpRanges'])
+          @advertised_ip_ranges = GoogleInSpec::Compute::Property::RouterBgpAdvertisedIpRangesArray.parse(args['advertisedIpRanges'])
         end
       end
     end

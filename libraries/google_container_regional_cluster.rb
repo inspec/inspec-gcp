@@ -15,8 +15,8 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/container/property/regionalcluster_addons_config'
-require 'google/container/property/regionalcluster_horizontal_pod_autoscaling'
-require 'google/container/property/regionalcluster_http_load_balancing'
+require 'google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling'
+require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
 require 'google/container/property/regionalcluster_master_auth'
 require 'google/container/property/regionalcluster_node_config'
 
@@ -65,13 +65,13 @@ class RegionalCluster < GcpResourceBase
     @name = @fetched['name']
     @description = @fetched['description']
     @initial_node_count = @fetched['initialNodeCount']
-    @node_config = GoogleInSpec::Container::Property::RegionalClusterNodeconfig.new(@fetched['nodeConfig'])
-    @master_auth = GoogleInSpec::Container::Property::RegionalClusterMasterauth.new(@fetched['masterAuth'])
+    @node_config = GoogleInSpec::Container::Property::RegionalClusterNodeConfig.new(@fetched['nodeConfig'])
+    @master_auth = GoogleInSpec::Container::Property::RegionalClusterMasterAuth.new(@fetched['masterAuth'])
     @logging_service = @fetched['loggingService']
     @monitoring_service = @fetched['monitoringService']
     @network = @fetched['network']
     @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
-    @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsconfig.new(@fetched['addonsConfig'])
+    @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'])
     @subnetwork = @fetched['subnetwork']
     @endpoint = @fetched['endpoint']
     @initial_cluster_version = @fetched['initialClusterVersion']

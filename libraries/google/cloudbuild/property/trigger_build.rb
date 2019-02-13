@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_steps'
+require 'google/cloudbuild/property/trigger_build_steps'
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -28,7 +28,7 @@ module GoogleInSpec
           return if args.nil?
           @tags = args['tags']
           @images = args['images']
-          @steps = GoogleInSpec::CloudBuild::Property::TriggerStepsArray.parse(args['steps'])
+          @steps = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsArray.parse(args['steps'])
         end
       end
     end

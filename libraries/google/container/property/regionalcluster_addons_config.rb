@@ -13,20 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/regionalcluster_horizontal_pod_autoscaling'
-require 'google/container/property/regionalcluster_http_load_balancing'
+require 'google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling'
+require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
 module GoogleInSpec
   module Container
     module Property
-      class RegionalClusterAddonsconfig
+      class RegionalClusterAddonsConfig
         attr_reader :http_load_balancing
 
         attr_reader :horizontal_pod_autoscaling
 
         def initialize(args = nil)
           return if args.nil?
-          @http_load_balancing = GoogleInSpec::Container::Property::RegionalClusterHttploadbalancing.new(args['httpLoadBalancing'])
-          @horizontal_pod_autoscaling = GoogleInSpec::Container::Property::RegionalClusterHorizontalpodautoscaling.new(args['horizontalPodAutoscaling'])
+          @http_load_balancing = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.new(args['httpLoadBalancing'])
+          @horizontal_pod_autoscaling = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.new(args['horizontalPodAutoscaling'])
         end
       end
     end

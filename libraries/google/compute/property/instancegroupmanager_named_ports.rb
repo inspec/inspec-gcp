@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceGroupManagerNamedports
+      class InstanceGroupManagerNamedPorts
         attr_reader :name
 
         attr_reader :port
@@ -28,11 +28,11 @@ module GoogleInSpec
         end
       end
 
-      class InstanceGroupManagerNamedportsArray
+      class InstanceGroupManagerNamedPortsArray
         def self.parse(value)
           return if value.nil?
-          return InstanceGroupManagerNamedports.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceGroupManagerNamedports.new(v) }
+          return InstanceGroupManagerNamedPorts.new(value) unless value.is_a?(::Array)
+          value.map { |v| InstanceGroupManagerNamedPorts.new(v) }
         end
       end
     end

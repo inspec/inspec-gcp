@@ -62,8 +62,8 @@ class Snapshot < GcpResourceBase
     @label_fingerprint = @fetched['labelFingerprint']
     @source_disk = @fetched['sourceDisk']
     @zone = @fetched['zone']
-    @snapshot_encryption_key = GoogleInSpec::Compute::Property::SnapshotSnapshotencryptionkey.new(@fetched['snapshotEncryptionKey'])
-    @source_disk_encryption_key = GoogleInSpec::Compute::Property::SnapshotSourcediskencryptionkey.new(@fetched['sourceDiskEncryptionKey'])
+    @snapshot_encryption_key = GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(@fetched['snapshotEncryptionKey'])
+    @source_disk_encryption_key = GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(@fetched['sourceDiskEncryptionKey'])
   end
 
   # Handles parsing RFC3339 time string

@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/backendservice_cache_key_policy'
+require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
 module GoogleInSpec
   module Compute
     module Property
-      class BackendServiceCdnpolicy
+      class BackendServiceCdnPolicy
         attr_reader :cache_key_policy
 
         def initialize(args = nil)
           return if args.nil?
-          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCachekeypolicy.new(args['cacheKeyPolicy'])
+          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'])
         end
       end
     end

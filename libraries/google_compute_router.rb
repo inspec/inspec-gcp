@@ -14,8 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/compute/property/router_advertised_ip_ranges'
 require 'google/compute/property/router_bgp'
+require 'google/compute/property/router_bgp_advertised_ip_ranges'
 
 # A provider to manage Google Compute Engine resources.
 class Router < GcpResourceBase

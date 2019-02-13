@@ -21,8 +21,6 @@ dataset = attribute('dataset', default: {
   "description": "Test BigQuery dataset description",
   "location": "EU",
   "default_table_expiration_ms": 3600000,
-  "access_reader_role": "READER",
-  "access_reader_domain": "example.com",
   "access_writer_role": "WRITER",
   "access_writer_special_group": "projectWriters"
 }, description: 'BigQuery dataset definition')
@@ -37,15 +35,6 @@ control 'google_bigquery_dataset-1.0' do
     its('location') { should eq dataset['location'] }
     its('description') { should eq dataset['description'] }
     its('default_table_expiration_ms') { should cmp dataset['default_table_expiration_ms'] }
-  end
-
-  describe.one do
-    google_bigquery_dataset(project: gcp_project_id, name: dataset['dataset_id']).access.each do |dataset_access|
-      describe dataset_access do
-        its('role') { should eq dataset['access_reader_role'] }
-        its('domain') { should eq dataset['access_reader_domain'] }
-      end
-    end
   end
 
   describe.one do

@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Container
     module Property
-      class RegionalClusterMasterauth
+      class RegionalClusterMasterAuth
         attr_reader :username
 
         attr_reader :password
