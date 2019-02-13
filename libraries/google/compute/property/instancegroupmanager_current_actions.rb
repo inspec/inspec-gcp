@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceGroupManagerCurrentactions
+      class InstanceGroupManagerCurrentActions
         attr_reader :abandoning
 
         attr_reader :creating

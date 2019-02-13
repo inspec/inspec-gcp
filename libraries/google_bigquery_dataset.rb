@@ -52,7 +52,7 @@ class Dataset < GcpResourceBase
     @name = @fetched['name']
     @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched['access'])
     @creation_time = @fetched['creationTime']
-    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetreference.new(@fetched['datasetReference'])
+    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'])
     @default_table_expiration_ms = @fetched['defaultTableExpirationMs']
     @description = @fetched['description']
     @friendly_name = @fetched['friendlyName']

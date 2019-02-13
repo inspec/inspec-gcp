@@ -20,15 +20,6 @@ end
 describe.one do
   google_bigquery_dataset(project: 'chef-gcp-inspec', name: 'inspec_gcp_dataset').access.each do |dataset_access|
     describe dataset_access do
-      its('role') { should eq 'READER' }
-      its('domain') { should eq 'example.com' }
-    end
-  end
-end
-
-describe.one do
-  google_bigquery_dataset(project: 'chef-gcp-inspec', name: 'inspec_gcp_dataset').access.each do |dataset_access|
-    describe dataset_access do
       its('role') { should eq 'WRITER' }
       its('special_group') { should eq 'projectWriters' }
     end

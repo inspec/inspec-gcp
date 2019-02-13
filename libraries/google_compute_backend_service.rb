@@ -15,8 +15,8 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/compute/property/backendservice_backends'
-require 'google/compute/property/backendservice_cache_key_policy'
 require 'google/compute/property/backendservice_cdn_policy'
+require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
 require 'google/compute/property/backendservice_connection_draining'
 require 'google/compute/property/backendservice_iap'
 
@@ -60,8 +60,8 @@ class BackendService < GcpResourceBase
   def parse
     @affinity_cookie_ttl_sec = @fetched['affinityCookieTtlSec']
     @backends = GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(@fetched['backends'])
-    @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnpolicy.new(@fetched['cdnPolicy'])
-    @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectiondraining.new(@fetched['connectionDraining'])
+    @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(@fetched['cdnPolicy'])
+    @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'])
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @enable_cdn = @fetched['enableCDN']

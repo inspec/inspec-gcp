@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/instancetemplate_disks'
-require 'google/compute/property/instancetemplate_guest_accelerators'
-require 'google/compute/property/instancetemplate_network_interfaces'
-require 'google/compute/property/instancetemplate_scheduling'
-require 'google/compute/property/instancetemplate_service_accounts'
-require 'google/compute/property/instancetemplate_tags'
+require 'google/compute/property/instancetemplate_properties_disks'
+require 'google/compute/property/instancetemplate_properties_guest_accelerators'
+require 'google/compute/property/instancetemplate_properties_network_interfaces'
+require 'google/compute/property/instancetemplate_properties_scheduling'
+require 'google/compute/property/instancetemplate_properties_service_accounts'
+require 'google/compute/property/instancetemplate_properties_tags'
 module GoogleInSpec
   module Compute
     module Property
@@ -49,15 +49,15 @@ module GoogleInSpec
           return if args.nil?
           @can_ip_forward = args['canIpForward']
           @description = args['description']
-          @disks = GoogleInSpec::Compute::Property::InstanceTemplateDisksArray.parse(args['disks'])
+          @disks = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksArray.parse(args['disks'])
           @machine_type = args['machineType']
           @min_cpu_platform = args['minCpuPlatform']
           @metadata = args['metadata']
-          @guest_accelerators = GoogleInSpec::Compute::Property::InstanceTemplateGuestacceleratorsArray.parse(args['guestAccelerators'])
-          @network_interfaces = GoogleInSpec::Compute::Property::InstanceTemplateNetworkinterfacesArray.parse(args['networkInterfaces'])
-          @scheduling = GoogleInSpec::Compute::Property::InstanceTemplateScheduling.new(args['scheduling'])
-          @service_accounts = GoogleInSpec::Compute::Property::InstanceTemplateServiceaccountsArray.parse(args['serviceAccounts'])
-          @tags = GoogleInSpec::Compute::Property::InstanceTemplateTags.new(args['tags'])
+          @guest_accelerators = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesGuestAcceleratorsArray.parse(args['guestAccelerators'])
+          @network_interfaces = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesArray.parse(args['networkInterfaces'])
+          @scheduling = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesScheduling.new(args['scheduling'])
+          @service_accounts = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesServiceAccountsArray.parse(args['serviceAccounts'])
+          @tags = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesTags.new(args['tags'])
         end
       end
     end

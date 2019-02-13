@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class UrlMapHostrules
+      class UrlMapHostRules
         attr_reader :description
 
         attr_reader :hosts
@@ -31,11 +31,11 @@ module GoogleInSpec
         end
       end
 
-      class UrlMapHostrulesArray
+      class UrlMapHostRulesArray
         def self.parse(value)
           return if value.nil?
-          return UrlMapHostrules.new(value) unless value.is_a?(::Array)
-          value.map { |v| UrlMapHostrules.new(v) }
+          return UrlMapHostRules.new(value) unless value.is_a?(::Array)
+          value.map { |v| UrlMapHostRules.new(v) }
         end
       end
     end

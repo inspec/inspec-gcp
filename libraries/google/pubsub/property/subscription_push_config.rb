@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Pubsub
     module Property
-      class SubscriptionPushconfig
+      class SubscriptionPushConfig
         attr_reader :push_endpoint
 
         def initialize(args = nil)

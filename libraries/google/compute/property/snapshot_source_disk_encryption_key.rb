@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class SnapshotSourcediskencryptionkey
+      class SnapshotSourceDiskEncryptionKey
         attr_reader :raw_key
 
         attr_reader :kms_key_name

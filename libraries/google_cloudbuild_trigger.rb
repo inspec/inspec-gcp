@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/cloudbuild/property/trigger_build'
-require 'google/cloudbuild/property/trigger_steps'
+require 'google/cloudbuild/property/trigger_build_steps'
 require 'google/cloudbuild/property/trigger_trigger_template'
 
 # A provider to manage Cloud build resources.
@@ -57,7 +57,7 @@ class Trigger < GcpResourceBase
     @filename = @fetched['filename']
     @ignored_files = @fetched['ignoredFiles']
     @included_files = @fetched['includedFiles']
-    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggertemplate.new(@fetched['triggerTemplate'])
+    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched['triggerTemplate'])
     @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched['build'])
   end
 

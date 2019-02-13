@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class HealthCheckTcphealthcheck
+      class HealthCheckTcpHealthCheck
         attr_reader :request
 
         attr_reader :response

@@ -51,11 +51,11 @@ class UrlMap < GcpResourceBase
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @default_service = @fetched['defaultService']
     @description = @fetched['description']
-    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostrulesArray.parse(@fetched['hostRules'])
+    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'])
     @id = @fetched['id']
     @fingerprint = @fetched['fingerprint']
     @name = @fetched['name']
-    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathmatchersArray.parse(@fetched['pathMatchers'])
+    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'])
     @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'])
   end
 
