@@ -53,13 +53,13 @@ class InstanceGroupManager < GcpResourceBase
   def parse
     @base_instance_name = @fetched['baseInstanceName']
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @current_actions = GoogleInSpec::Compute::Property::InstanceGroupManagerCurrentactions.new(@fetched['currentActions'])
+    @current_actions = GoogleInSpec::Compute::Property::InstanceGroupManagerCurrentActions.new(@fetched['currentActions'])
     @description = @fetched['description']
     @id = @fetched['id']
     @instance_group = @fetched['instanceGroup']
     @instance_template = @fetched['instanceTemplate']
     @name = @fetched['name']
-    @named_ports = GoogleInSpec::Compute::Property::InstanceGroupManagerNamedportsArray.parse(@fetched['namedPorts'])
+    @named_ports = GoogleInSpec::Compute::Property::InstanceGroupManagerNamedPortsArray.parse(@fetched['namedPorts'])
     @region = @fetched['region']
     @target_pools = @fetched['targetPools']
     @target_size = @fetched['targetSize']

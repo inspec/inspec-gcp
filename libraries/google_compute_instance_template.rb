@@ -14,13 +14,13 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/compute/property/instancetemplate_disks'
-require 'google/compute/property/instancetemplate_guest_accelerators'
-require 'google/compute/property/instancetemplate_network_interfaces'
 require 'google/compute/property/instancetemplate_properties'
-require 'google/compute/property/instancetemplate_scheduling'
-require 'google/compute/property/instancetemplate_service_accounts'
-require 'google/compute/property/instancetemplate_tags'
+require 'google/compute/property/instancetemplate_properties_disks'
+require 'google/compute/property/instancetemplate_properties_guest_accelerators'
+require 'google/compute/property/instancetemplate_properties_network_interfaces'
+require 'google/compute/property/instancetemplate_properties_scheduling'
+require 'google/compute/property/instancetemplate_properties_service_accounts'
+require 'google/compute/property/instancetemplate_properties_tags'
 
 # A provider to manage Google Compute Engine resources.
 class InstanceTemplate < GcpResourceBase

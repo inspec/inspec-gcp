@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class BackendServiceConnectiondraining
+      class BackendServiceConnectionDraining
         attr_reader :draining_timeout_sec
 
         def initialize(args = nil)

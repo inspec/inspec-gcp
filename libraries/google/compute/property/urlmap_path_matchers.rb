@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_path_rules'
+require 'google/compute/property/urlmap_path_matchers_path_rules'
 module GoogleInSpec
   module Compute
     module Property
-      class UrlMapPathmatchers
+      class UrlMapPathMatchers
         attr_reader :default_service
 
         attr_reader :description
@@ -31,15 +31,15 @@ module GoogleInSpec
           @default_service = args['defaultService']
           @description = args['description']
           @name = args['name']
-          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathrulesArray.parse(args['pathRules'])
+          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesArray.parse(args['pathRules'])
         end
       end
 
-      class UrlMapPathmatchersArray
+      class UrlMapPathMatchersArray
         def self.parse(value)
           return if value.nil?
-          return UrlMapPathmatchers.new(value) unless value.is_a?(::Array)
-          value.map { |v| UrlMapPathmatchers.new(v) }
+          return UrlMapPathMatchers.new(value) unless value.is_a?(::Array)
+          value.map { |v| UrlMapPathMatchers.new(v) }
         end
       end
     end

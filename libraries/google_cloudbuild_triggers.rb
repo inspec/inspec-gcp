@@ -88,7 +88,7 @@ class Triggers < GcpResourceBase
       'filename' => ->(obj) { return :filename, obj['filename'] },
       'ignoredFiles' => ->(obj) { return :ignored_files, obj['ignoredFiles'] },
       'includedFiles' => ->(obj) { return :included_files, obj['includedFiles'] },
-      'triggerTemplate' => ->(obj) { return :trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggertemplate.new(obj['triggerTemplate']) },
+      'triggerTemplate' => ->(obj) { return :trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate']) },
       'build' => ->(obj) { return :build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build']) },
     }
   end

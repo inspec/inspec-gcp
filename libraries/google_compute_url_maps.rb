@@ -82,11 +82,11 @@ class UrlMaps < GcpResourceBase
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'defaultService' => ->(obj) { return :default_service, obj['defaultService'] },
       'description' => ->(obj) { return :description, obj['description'] },
-      'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostrulesArray.parse(obj['hostRules']) },
+      'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules']) },
       'id' => ->(obj) { return :id, obj['id'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'name' => ->(obj) { return :name, obj['name'] },
-      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathmatchersArray.parse(obj['pathMatchers']) },
+      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers']) },
       'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests']) },
     }
   end

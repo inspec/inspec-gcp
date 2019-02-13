@@ -43,7 +43,7 @@ class Subscription < GcpResourceBase
   def parse
     @name = name_from_self_link(@fetched['name'])
     @topic = @fetched['topic']
-    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushconfig.new(@fetched['pushConfig'])
+    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched['pushConfig'])
     @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
   end
 

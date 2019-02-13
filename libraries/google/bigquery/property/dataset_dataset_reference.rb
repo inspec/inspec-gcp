@@ -16,7 +16,7 @@
 module GoogleInSpec
   module BigQuery
     module Property
-      class DatasetDatasetreference
+      class DatasetDatasetReference
         attr_reader :dataset_id
 
         attr_reader :project_id

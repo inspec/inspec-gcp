@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Container
     module Property
-      class RegionalClusterNodeconfig
+      class RegionalClusterNodeConfig
         attr_reader :machine_type
 
         attr_reader :disk_size_gb
