@@ -34,17 +34,10 @@ class Dataset < GcpResourceBase
   attr_reader :labels
   attr_reader :last_modified_time
   attr_reader :location
-  def base
-    'https://www.googleapis.com/bigquery/v2/'
-  end
-
-  def url
-    'projects/{{project}}/datasets/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -69,5 +62,15 @@ class Dataset < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/bigquery/v2/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/datasets/{{name}}'
   end
 end

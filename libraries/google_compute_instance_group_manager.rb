@@ -36,17 +36,10 @@ class InstanceGroupManager < GcpResourceBase
   attr_reader :target_pools
   attr_reader :target_size
   attr_reader :zone
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -73,5 +66,15 @@ class InstanceGroupManager < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}'
   end
 end

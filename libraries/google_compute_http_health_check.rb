@@ -32,17 +32,10 @@ class HttpHealthCheck < GcpResourceBase
   attr_reader :request_path
   attr_reader :timeout_sec
   attr_reader :unhealthy_threshold
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/global/httpHealthChecks/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -67,5 +60,15 @@ class HttpHealthCheck < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/global/httpHealthChecks/{{name}}'
   end
 end

@@ -15,23 +15,15 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Compute Engine resources.
-class HttpsHealthCheck < GcpResourceBase
-  name 'google_compute_https_health_check'
-  desc 'HttpsHealthCheck'
+# A provider to manage Cloud Source Repositories resources.
+class Repository < GcpResourceBase
+  name 'google_sourcerepo_repository'
+  desc 'Repository'
   supports platform: 'gcp'
 
-  attr_reader :check_interval_sec
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :healthy_threshold
-  attr_reader :host
-  attr_reader :id
   attr_reader :name
-  attr_reader :port
-  attr_reader :request_path
-  attr_reader :timeout_sec
-  attr_reader :unhealthy_threshold
+  attr_reader :url
+  attr_reader :size
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -40,17 +32,9 @@ class HttpsHealthCheck < GcpResourceBase
   end
 
   def parse
-    @check_interval_sec = @fetched['checkIntervalSec']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @healthy_threshold = @fetched['healthyThreshold']
-    @host = @fetched['host']
-    @id = @fetched['id']
     @name = @fetched['name']
-    @port = @fetched['port']
-    @request_path = @fetched['requestPath']
-    @timeout_sec = @fetched['timeoutSec']
-    @unhealthy_threshold = @fetched['unhealthyThreshold']
+    @url = @fetched['url']
+    @size = @fetched['size']
   end
 
   # Handles parsing RFC3339 time string
@@ -65,10 +49,10 @@ class HttpsHealthCheck < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    'https://sourcerepo.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/global/httpsHealthChecks/{{name}}'
+    'projects/{{project}}/repos/{{name}}'
   end
 end
