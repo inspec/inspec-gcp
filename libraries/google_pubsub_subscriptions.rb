@@ -25,6 +25,7 @@ class Subscriptions < GcpResourceBase
 
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:topics, field: :topic)
+  filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:push_configs, field: :push_config)
   filter_table_config.add(:ack_deadline_seconds, field: :ack_deadline_seconds)
 
@@ -76,6 +77,7 @@ class Subscriptions < GcpResourceBase
     {
       'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
       'topic' => ->(obj) { return :topic, obj['topic'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
       'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig']) },
       'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
     }

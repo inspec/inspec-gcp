@@ -25,6 +25,7 @@ Properties that can be accessed from the `google_pubsub_subscriptions` resource:
 See [google_pubsub_subscription.md](google_pubsub_subscription.md) for more detailed information
   * `names`: an array of `google_pubsub_subscription` name
   * `topics`: an array of `google_pubsub_subscription` topic
+  * `labels`: an array of `google_pubsub_subscription` labels
   * `push_configs`: an array of `google_pubsub_subscription` push_config
   * `ack_deadline_seconds`: an array of `google_pubsub_subscription` ack_deadline_seconds
 

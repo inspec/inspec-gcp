@@ -22,6 +22,7 @@ class Topic < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :name
+  attr_reader :labels
   def base
     'https://pubsub.googleapis.com/v1/'
   end
@@ -38,6 +39,7 @@ class Topic < GcpResourceBase
 
   def parse
     @name = name_from_self_link(@fetched['name'])
+    @labels = @fetched['labels']
   end
 
   # Handles parsing RFC3339 time string
