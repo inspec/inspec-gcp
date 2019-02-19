@@ -36,12 +36,10 @@ module Inspec::Resources
         end
         return [] if !@projects || !@projects.projects
         @projects.projects.map do |project|
-          project_rows += [{
-                               project_id: project.project_id,
-                               project_name: project.name,
-                               project_number: project.project_number,
-                               lifecycle_state: project.lifecycle_state,
-                           }]
+          project_rows += [{ project_id: project.project_id,
+                            project_name: project.name,
+                            project_number: project.project_number,
+                            lifecycle_state: project.lifecycle_state }]
         end
         next_page = @projects.next_page_token
         break unless next_page
