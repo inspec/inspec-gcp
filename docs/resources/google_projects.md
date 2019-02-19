@@ -64,18 +64,27 @@ The following examples show how to use this InSpec audit resource.
         its('lifecycle_state') { should eq "ACTIVE" }
       end
     end
+
+### Test that a particular subset of ACTIVE projects with id 'prod*' exist
+
+    google_projects.where(project_id: /^prod/, lifecycle_state: 'ACTIVE').project_ids.each do |gcp_project_id|
+      describe google_project(project: gcp_project_id) do
+        it { should exist }
+      end
+    end
     
 <br>
 
 ## Filter Criteria
 
-This resource supports the following filter criteria:  `project_id`; `project_name` and `project_number`. Anyy of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria:  `project_id`; `project_name`; `project_number` and `lifecycle_state`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
 *  `project_ids` - an array of google_compute_project identifier strings
 *  `project_names` - an array of google_compute_project name strings
 *  `project_numbers`- an array of google_compute_project number identifier integers
+*  `lifecycle_state`- an array of google_compute_project lifecycle state strings
 
 <br>
 
