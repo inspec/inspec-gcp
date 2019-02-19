@@ -18,7 +18,7 @@ require 'google/compute/property/urlmap_host_rules'
 require 'google/compute/property/urlmap_path_matchers'
 require 'google/compute/property/urlmap_tests'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class UrlMap < GcpResourceBase
   name 'google_compute_url_map'
   desc 'UrlMap'

@@ -16,7 +16,7 @@
 require 'gcp_backend'
 require 'google/pubsub/property/subscription_push_config'
 
-# A provider to manage Google Cloud Pub/Sub resources.
+# A provider to manage Cloud Pub/Sub resources.
 class Subscription < GcpResourceBase
   name 'google_pubsub_subscription'
   desc 'Subscription'

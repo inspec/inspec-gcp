@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Cloud Pub/Sub resources.
+# A provider to manage Cloud Pub/Sub resources.
 class Topic < GcpResourceBase
   name 'google_pubsub_topic'
   desc 'Topic'

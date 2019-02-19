@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class SslCertificate < GcpResourceBase
   name 'google_compute_ssl_certificate'
   desc 'SslCertificate'

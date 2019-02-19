@@ -17,7 +17,7 @@ require 'gcp_backend'
 require 'google/bigquery/property/dataset_access'
 require 'google/bigquery/property/dataset_dataset_reference'
 
-# A provider to manage Google Cloud BigQuery resources.
+# A provider to manage BigQuery resources.
 class Dataset < GcpResourceBase
   name 'google_bigquery_dataset'
   desc 'Dataset'
