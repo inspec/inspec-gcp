@@ -26,17 +26,10 @@ class ResourceRecordSet < GcpResourceBase
   attr_reader :ttl
   attr_reader :target
   attr_reader :managed_zone
-  def base
-    'https://www.googleapis.com/dns/v1/'
-  end
-
-  def url
-    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    fetched = @connection.fetch(base, url, params)
+    fetched = @connection.fetch(product_url, resource_base_url, params)
     @fetched = unwrap(fetched, params)
     parse unless @fetched.nil?
   end
@@ -68,5 +61,15 @@ class ResourceRecordSet < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/dns/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}'
   end
 end

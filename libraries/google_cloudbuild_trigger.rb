@@ -34,17 +34,10 @@ class Trigger < GcpResourceBase
   attr_reader :included_files
   attr_reader :trigger_template
   attr_reader :build
-  def base
-    'https://cloudbuild.googleapis.com/v1/'
-  end
-
-  def url
-    'projects/{{project}}/triggers/{{id}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -68,5 +61,15 @@ class Trigger < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://cloudbuild.googleapis.com/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/triggers/{{id}}'
   end
 end

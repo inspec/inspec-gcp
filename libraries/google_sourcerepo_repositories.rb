@@ -14,29 +14,25 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Routers < GcpResourceBase
-  name 'google_compute_routers'
-  desc 'Router plural resource'
+class Repositorys < GcpResourceBase
+  name 'google_sourcerepo_repositories'
+  desc 'Repository plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:ids, field: :id)
-  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:descriptions, field: :description)
-  filter_table_config.add(:networks, field: :network)
-  filter_table_config.add(:bgps, field: :bgp)
-  filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:urls, field: :url)
+  filter_table_config.add(:sizes, field: :size)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('repos')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -69,13 +65,9 @@ class Routers < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'bgp' => ->(obj) { return :bgp, GoogleInSpec::Compute::Property::RouterBgp.new(obj['bgp']) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'url' => ->(obj) { return :url, obj['url'] },
+      'size' => ->(obj) { return :size, obj['size'] },
     }
   end
 
@@ -87,10 +79,10 @@ class Routers < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    'https://sourcerepo.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/routers'
+    'projects/{{project}}/repos'
   end
 end
