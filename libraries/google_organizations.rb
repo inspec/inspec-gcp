@@ -34,8 +34,7 @@ module Inspec::Resources
         @organizations.organizations.map do |organization|
           organizations_rows += [{ name: organization.name,
                                   display_name: organization.display_name,
-                                  lifecycle_state: organization.lifecycle_state,
-                                 }]
+                                  lifecycle_state: organization.lifecycle_state }]
         end
         next_page = @organizations.next_page_token
         break unless next_page
