@@ -23,7 +23,7 @@ class Topic < GcpResourceBase
 
   attr_reader :name
   attr_reader :labels
-  
+
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @fetched = @connection.fetch(product_url, resource_base_url, params)

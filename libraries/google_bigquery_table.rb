@@ -30,7 +30,7 @@ require 'google/bigquery/property/table_time_partitioning'
 require 'google/bigquery/property/table_view'
 require 'google/bigquery/property/table_view_user_defined_function_resources'
 
-# A provider to manage Google Cloud BigQuery resources.
+# A provider to manage BigQuery resources.
 class Table < GcpResourceBase
   name 'google_bigquery_table'
   desc 'Table'
