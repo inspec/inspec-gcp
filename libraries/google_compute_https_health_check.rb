@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class HttpsHealthCheck < GcpResourceBase
   name 'google_compute_https_health_check'
   desc 'HttpsHealthCheck'

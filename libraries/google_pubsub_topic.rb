@@ -15,14 +15,15 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Cloud Pub/Sub resources.
+# A provider to manage Cloud Pub/Sub resources.
 class Topic < GcpResourceBase
   name 'google_pubsub_topic'
   desc 'Topic'
   supports platform: 'gcp'
 
   attr_reader :name
-
+  attr_reader :labels
+  
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @fetched = @connection.fetch(product_url, resource_base_url, params)
@@ -31,6 +32,7 @@ class Topic < GcpResourceBase
 
   def parse
     @name = name_from_self_link(@fetched['name'])
+    @labels = @fetched['labels']
   end
 
   # Handles parsing RFC3339 time string

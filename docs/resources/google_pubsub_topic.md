@@ -21,3 +21,5 @@ end
 Properties that can be accessed from the `google_pubsub_topic` resource:
 
   * `name`: Name of the topic.
+
+  * `labels`: A set of key/value label pairs to assign to this Topic.

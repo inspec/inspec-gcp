@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Cloud DNS resources.
+# A provider to manage Cloud DNS resources.
 class ResourceRecordSet < GcpResourceBase
   name 'google_dns_resource_record_set'
   desc 'ResourceRecordSet'

@@ -28,6 +28,7 @@ Properties that can be accessed from the `google_pubsub_topics` resource:
 
 See [google_pubsub_topic.md](google_pubsub_topic.md) for more detailed information
   * `names`: an array of `google_pubsub_topic` name
+  * `labels`: an array of `google_pubsub_topic` labels
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

@@ -20,7 +20,7 @@ require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
 require 'google/compute/property/backendservice_connection_draining'
 require 'google/compute/property/backendservice_iap'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class BackendService < GcpResourceBase
   name 'google_compute_backend_service'
   desc 'BackendService'

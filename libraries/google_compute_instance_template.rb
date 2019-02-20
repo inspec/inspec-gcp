@@ -22,7 +22,7 @@ require 'google/compute/property/instancetemplate_properties_scheduling'
 require 'google/compute/property/instancetemplate_properties_service_accounts'
 require 'google/compute/property/instancetemplate_properties_tags'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class InstanceTemplate < GcpResourceBase
   name 'google_compute_instance_template'
   desc 'InstanceTemplate'

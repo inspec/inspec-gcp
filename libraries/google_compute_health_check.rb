@@ -19,7 +19,7 @@ require 'google/compute/property/healthcheck_https_health_check'
 require 'google/compute/property/healthcheck_ssl_health_check'
 require 'google/compute/property/healthcheck_tcp_health_check'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class HealthCheck < GcpResourceBase
   name 'google_compute_health_check'
   desc 'HealthCheck'
