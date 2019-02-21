@@ -6,7 +6,7 @@ gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources,def
 
 control 'gcp-organization-1.0' do
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != ''}
   impact 1.0
   title 'Ensure organization has the correct properties.'
 
