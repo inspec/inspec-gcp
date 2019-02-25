@@ -47,17 +47,10 @@ class RegionalCluster < GcpResourceBase
   attr_reader :current_node_count
   attr_reader :expire_time
   attr_reader :location
-  def base
-    'https://container.googleapis.com/v1/'
-  end
-
-  def url
-    'projects/{{project}}/locations/{{location}}/clusters/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -92,5 +85,15 @@ class RegionalCluster < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://container.googleapis.com/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/locations/{{location}}/clusters/{{name}}'
   end
 end

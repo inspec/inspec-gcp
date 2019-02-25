@@ -22,7 +22,7 @@ require 'google/compute/property/instancetemplate_properties_scheduling'
 require 'google/compute/property/instancetemplate_properties_service_accounts'
 require 'google/compute/property/instancetemplate_properties_tags'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class InstanceTemplate < GcpResourceBase
   name 'google_compute_instance_template'
   desc 'InstanceTemplate'
@@ -33,17 +33,10 @@ class InstanceTemplate < GcpResourceBase
   attr_reader :id
   attr_reader :name
   attr_reader :properties
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/global/instanceTemplates/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -62,5 +55,15 @@ class InstanceTemplate < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/global/instanceTemplates/{{name}}'
   end
 end

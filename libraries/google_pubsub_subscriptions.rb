@@ -25,18 +25,11 @@ class Subscriptions < GcpResourceBase
 
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:topics, field: :topic)
+  filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:push_configs, field: :push_config)
   filter_table_config.add(:ack_deadline_seconds, field: :ack_deadline_seconds)
 
   filter_table_config.connect(self, :table)
-
-  def base
-    'https://pubsub.googleapis.com/v1/'
-  end
-
-  def url
-    'projects/{{project}}/subscriptions'
-  end
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
@@ -46,7 +39,7 @@ class Subscriptions < GcpResourceBase
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(base, url, @params)
+    result = @connection.fetch_all(product_url, resource_base_url, @params)
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -84,5 +77,15 @@ class Subscriptions < GcpResourceBase
   # Handles parsing RFC3339 time string
   def parse_time_string(time_string)
     time_string ? Time.parse(time_string) : nil
+  end
+
+  private
+
+  def product_url
+    'https://pubsub.googleapis.com/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/subscriptions'
   end
 end

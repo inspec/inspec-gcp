@@ -43,7 +43,7 @@ namespace :test do
 
   task :init_workspace do
     # Initialize terraform workspace
-    cmd = format("cd %s/build/ && terraform init", integration_dir)
+    cmd = format("cd %s/build/ && terraform init -upgrade", integration_dir)
     sh(cmd)
   end
 

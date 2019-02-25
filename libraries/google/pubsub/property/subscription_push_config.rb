@@ -19,9 +19,12 @@ module GoogleInSpec
       class SubscriptionPushConfig
         attr_reader :push_endpoint
 
+        attr_reader :attributes
+
         def initialize(args = nil)
           return if args.nil?
           @push_endpoint = args['pushEndpoint']
+          @attributes = args['attributes']
         end
       end
     end

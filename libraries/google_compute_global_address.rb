@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class GlobalAddress < GcpResourceBase
   name 'google_compute_global_address'
   desc 'GlobalAddress'
@@ -29,17 +29,10 @@ class GlobalAddress < GcpResourceBase
   attr_reader :ip_version
   attr_reader :region
   attr_reader :address_type
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/global/addresses/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -61,5 +54,15 @@ class GlobalAddress < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/global/addresses/{{name}}'
   end
 end
