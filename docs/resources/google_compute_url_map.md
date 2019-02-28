@@ -68,3 +68,9 @@ Properties that can be accessed from the `google_compute_url_map` resource:
     * `path`: Path portion of the URL.
 
     * `service`: A reference to expected BackendService resource the given URL should be mapped to.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

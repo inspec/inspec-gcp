@@ -91,3 +91,9 @@ Properties that can be accessed from the `google_compute_disk` resource:
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
   * `source_snapshot_id`: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

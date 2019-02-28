@@ -47,3 +47,9 @@ Properties that can be accessed from the `google_compute_ssl_policy` resource:
     * `code`: A warning code, if applicable.
 
     * `message`: A human-readable description of the warning code.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

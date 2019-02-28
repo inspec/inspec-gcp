@@ -51,3 +51,9 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
   * `region`: A reference to the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules.
 
   * `target`: This target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.  Valid types: HTTP_PROXY, HTTPS_PROXY, SSL_PROXY, TCP_PROXY
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

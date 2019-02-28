@@ -44,3 +44,9 @@ Properties that can be accessed from the `google_compute_http_health_check` reso
   * `timeout_sec`: How long (in seconds) to wait before claiming failure. The default value is 5 seconds.  It is invalid for timeoutSec to have greater value than checkIntervalSec.
 
   * `unhealthy_threshold`: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

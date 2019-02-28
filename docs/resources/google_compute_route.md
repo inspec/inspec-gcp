@@ -45,3 +45,9 @@ Properties that can be accessed from the `google_compute_route` resource:
   * `next_hop_vpn_tunnel`: URL to a VpnTunnel that should handle matching packets.
 
   * `next_hop_network`: URL to a Network that should handle matching packets.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
