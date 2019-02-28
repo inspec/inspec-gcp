@@ -60,3 +60,9 @@ Properties that can be accessed from the `google_compute_instance_template` reso
     * `serviceAccounts`: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
 
     * `tags`: A list of tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

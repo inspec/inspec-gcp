@@ -25,3 +25,9 @@ Properties that can be accessed from the `google_sourcerepo_repository` resource
   * `url`: URL to clone the repository from Google Cloud Source Repositories.
 
   * `size`: The disk usage of the repo, in bytes.
+
+
+
+## GCP Permissions
+
+Ensure the [Cloud Source Repositories API](https://console.cloud.google.com/apis/library/sourcerepo.googleapis.com/) is enabled for the current project.

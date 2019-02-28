@@ -40,3 +40,7 @@ See [google_cloudbuild_trigger.md](google_cloudbuild_trigger.md) for more detail
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
+
+## GCP Permissions
+
+Ensure the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com/) is enabled for the current project.

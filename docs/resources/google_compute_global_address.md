@@ -36,3 +36,9 @@ Properties that can be accessed from the `google_compute_global_address` resourc
   * `region`: A reference to the region where the regional address resides.
 
   * `address_type`: The type of the address to reserve, default is EXTERNAL.  * EXTERNAL indicates public/external single IP address. * INTERNAL indicates internal IP ranges belonging to some network.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

@@ -109,3 +109,9 @@ Properties that can be accessed from the `google_bigquery_table` resource:
     * `bigtableOptions`: Additional options if sourceFormat is set to BIGTABLE.
 
   * `dataset`: Name of the dataset
+
+
+
+## GCP Permissions
+
+Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery-json.googleapis.com/) is enabled for the current project.

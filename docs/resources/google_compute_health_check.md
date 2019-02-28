@@ -91,3 +91,9 @@ Properties that can be accessed from the `google_compute_health_check` resource:
     * `portName`: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
 
     * `proxyHeader`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

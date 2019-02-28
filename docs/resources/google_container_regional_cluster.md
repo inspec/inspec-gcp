@@ -97,3 +97,9 @@ Properties that can be accessed from the `google_container_regional_cluster` res
   * `expire_time`: The time the cluster will be automatically deleted in RFC3339 text format.
 
   * `location`: The location where the cluster is deployed
+
+
+
+## GCP Permissions
+
+Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

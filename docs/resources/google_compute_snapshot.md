@@ -57,3 +57,9 @@ Properties that can be accessed from the `google_compute_snapshot` resource:
     * `rawKey`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     * `kmsKeyName`: The name of the encryption key that is stored in Google Cloud KMS.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

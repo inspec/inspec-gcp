@@ -30,3 +30,7 @@ See [google_dns_resource_record_set.md](google_dns_resource_record_set.md) for m
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
+
+## GCP Permissions
+
+Ensure the [Google Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com/) is enabled for the current project.

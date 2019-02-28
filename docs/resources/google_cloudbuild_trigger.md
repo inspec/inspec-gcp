@@ -62,3 +62,9 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
     * `images`: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build status is marked FAILURE.
 
     * `steps`: The operations to be performed on the workspace.
+
+
+
+## GCP Permissions
+
+Ensure the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com/) is enabled for the current project.
