@@ -28,4 +28,10 @@ Properties that can be accessed from the `google_dns_resource_record_set` resour
 
   * `target`: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
 
-  * `managed_zone`: Identifies the managed zone addressed by this request. Can be the managed zone name or id.
+  * `managed_zone`: Identifies the managed zone addressed by this request.
+
+
+
+## GCP Permissions
+
+Ensure the [Google Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com/) is enabled for the current project.

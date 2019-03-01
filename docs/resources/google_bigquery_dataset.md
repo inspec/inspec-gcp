@@ -71,3 +71,9 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
   * `last_modified_time`: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 
   * `location`: The geographic location where the dataset should reside. Possible values include EU and US. The default value is US.
+
+
+
+## GCP Permissions
+
+Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery-json.googleapis.com/) is enabled for the current project.

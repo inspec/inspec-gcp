@@ -21,3 +21,11 @@ end
 Properties that can be accessed from the `google_pubsub_topic` resource:
 
   * `name`: Name of the topic.
+
+  * `labels`: A set of key/value label pairs to assign to this Topic.
+
+
+
+## GCP Permissions
+
+Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.

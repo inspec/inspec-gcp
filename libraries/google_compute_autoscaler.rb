@@ -19,7 +19,7 @@ require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
 require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
 require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class Autoscaler < GcpResourceBase
   name 'google_compute_autoscaler'
   desc 'Autoscaler'
@@ -32,17 +32,10 @@ class Autoscaler < GcpResourceBase
   attr_reader :autoscaling_policy
   attr_reader :target
   attr_reader :zone
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -63,5 +56,15 @@ class Autoscaler < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}'
   end
 end

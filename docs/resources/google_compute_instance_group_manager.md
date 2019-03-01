@@ -71,3 +71,9 @@ Properties that can be accessed from the `google_compute_instance_group_manager`
   * `target_size`: The target number of running instances for this managed instance group. Deleting or abandoning instances reduces this number. Resizing the group changes this number.
 
   * `zone`: The zone the managed instance group resides.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

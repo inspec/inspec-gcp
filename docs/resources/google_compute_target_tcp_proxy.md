@@ -33,3 +33,9 @@ Properties that can be accessed from the `google_compute_target_tcp_proxy` resou
   * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 
   * `service`: A reference to the BackendService resource.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

@@ -20,7 +20,7 @@ require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
 require 'google/compute/property/backendservice_connection_draining'
 require 'google/compute/property/backendservice_iap'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class BackendService < GcpResourceBase
   name 'google_compute_backend_service'
   desc 'BackendService'
@@ -43,17 +43,10 @@ class BackendService < GcpResourceBase
   attr_reader :region
   attr_reader :session_affinity
   attr_reader :timeout_sec
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/global/backendServices/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -84,5 +77,15 @@ class BackendService < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/global/backendServices/{{name}}'
   end
 end

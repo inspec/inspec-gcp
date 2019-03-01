@@ -47,14 +47,6 @@ class RegionalClusters < GcpResourceBase
 
   filter_table_config.connect(self, :table)
 
-  def base
-    'https://container.googleapis.com/v1/'
-  end
-
-  def url
-    'projects/{{project}}/locations/{{location}}/clusters'
-  end
-
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
@@ -63,7 +55,7 @@ class RegionalClusters < GcpResourceBase
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(base, url, @params)
+    result = @connection.fetch_all(product_url, resource_base_url, @params)
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -118,5 +110,15 @@ class RegionalClusters < GcpResourceBase
   # Handles parsing RFC3339 time string
   def parse_time_string(time_string)
     time_string ? Time.parse(time_string) : nil
+  end
+
+  private
+
+  def product_url
+    'https://container.googleapis.com/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/locations/{{location}}/clusters'
   end
 end

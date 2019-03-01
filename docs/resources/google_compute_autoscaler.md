@@ -51,3 +51,9 @@ Properties that can be accessed from the `google_compute_autoscaler` resource:
   * `target`: URL of the managed instance group that this autoscaler will scale.
 
   * `zone`: URL of the zone where the instance group resides.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

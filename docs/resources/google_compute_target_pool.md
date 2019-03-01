@@ -41,3 +41,9 @@ Properties that can be accessed from the `google_compute_target_pool` resource:
   * `session_affinity`: Session affinity option. Must be one of these values:  - NONE: Connections from the same client IP may go to any instance in   the pool. - CLIENT_IP: Connections from the same client IP will go to the same   instance in the pool while that instance remains healthy. - CLIENT_IP_PROTO: Connections from the same client IP with the same   IP protocol will go to the same instance in the pool while that   instance remains healthy.
 
   * `region`: The region where the target pool resides.
+
+
+
+## GCP Permissions
+
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

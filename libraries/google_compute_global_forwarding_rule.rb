@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Google Compute Engine resources.
+# A provider to manage Compute Engine resources.
 class GlobalForwardingRule < GcpResourceBase
   name 'google_compute_global_forwarding_rule'
   desc 'GlobalForwardingRule'
@@ -36,17 +36,10 @@ class GlobalForwardingRule < GcpResourceBase
   attr_reader :subnetwork
   attr_reader :region
   attr_reader :target
-  def base
-    'https://www.googleapis.com/compute/v1/'
-  end
-
-  def url
-    'projects/{{project}}/global/forwardingRules/{{name}}'
-  end
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    @fetched = @connection.fetch(base, url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
@@ -75,5 +68,15 @@ class GlobalForwardingRule < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  private
+
+  def product_url
+    'https://www.googleapis.com/compute/v1/'
+  end
+
+  def resource_base_url
+    'projects/{{project}}/global/forwardingRules/{{name}}'
   end
 end
