@@ -35,7 +35,7 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
   * `substitutions`: Substitutions data for Build resource.
 
-  * `filename`: Path, from the source root, to a file whose contents is used for the template.
+  * `filename`: Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
 
   * `ignored_files`: ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support for `**`.  If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to trigger a build.  If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 
@@ -49,13 +49,13 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `dir`: Directory, relative to the source root, in which to run the build.  This must be a relative path. If a step's dir is specified and is an absolute path, this value is ignored for that step's execution.
 
-    * `branchName`: Name of the branch to build.
+    * `branchName`: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 
-    * `tagName`: Name of the tag to build.
+    * `tagName`: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
-    * `commitSha`: Explicit commit SHA to build.
+    * `commitSha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
-  * `build`: Contents of the build template.
+  * `build`: Contents of the build template. Either a filename or build template must be provided.
 
     * `tags`: Tags for annotation of a Build. These are not docker tags.
 
