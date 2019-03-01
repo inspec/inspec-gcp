@@ -285,7 +285,7 @@ class GcpApiConnection
       unless var_data.key?(v)
         raise "Missing variable :#{v} in #{var_data} on #{caller.join("\n")}}"
       end
-      template.gsub!(/{{#{v}}}/, CGI.escape(var_data[v].to_s))
+      template.gsub!(/{{#{v}}}/, var_data[v].to_s)
     end
     template
   end
