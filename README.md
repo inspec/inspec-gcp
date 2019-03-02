@@ -296,7 +296,7 @@ $ gcloud services enable compute.googleapis.com \
     cloudkms.googleapis.com \
     cloudbuild.googleapis.com
 ```
-5. Ensure the `In-use IP addresses` [quota](https://console.cloud.google.com/iam-admin/quotas) is set to 20 or above
+5. Ensure the `In-use IP addresses` [quota](https://console.cloud.google.com/iam-admin/quotas) is set to 20 or above for `europe-west2`
 
 6. Environment variables can be used to specify project details e.g.
 ```bash
