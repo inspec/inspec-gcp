@@ -286,9 +286,19 @@ This example assumes there are sufficient privileges to list all GCP projects.
 $ gcloud config set project <project-name>
 $ gcloud config list project
 ```
-3. Ensure the `In-use IP addresses` [quota](https://console.cloud.google.com/iam-admin/quotas) is set to 20 or above
+3. Enable billing for your new project
+4. Enable various services necessary to run the tests:
+```bash
+$ gcloud services enable compute.googleapis.com \
+    sourcerepo.googleapis.com \
+    dns.googleapis.com \
+    container.googleapis.com \
+    cloudkms.googleapis.com \
+    cloudbuild.googleapis.com
+```
+5. Ensure the `In-use IP addresses` [quota](https://console.cloud.google.com/iam-admin/quotas) is set to 20 or above
 
-4. Environment variables can be used to specify project details e.g.
+6. Environment variables can be used to specify project details e.g.
 ```bash
 export GCP_PROJECT_NAME=<project-name>
 export GCP_PROJECT_NUMBER=<project-number>
@@ -301,7 +311,7 @@ export GCP_ENABLE_PRIVILEGED_RESOURCES=1
 ```
 This takes effect during the "plan" task as described in the next section.  Affected terraform resources are included/excluded and associated inspec tests enabled/disabled accordingly.
 
-4. Run the integration tests via:
+7. Run the integration tests via:
 
 ```bash
 $ bundle install
