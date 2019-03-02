@@ -293,8 +293,6 @@ $ gcloud config list project
 export GCP_PROJECT_NAME=<project-name>
 export GCP_PROJECT_NUMBER=<project-number>
 export GCP_PROJECT_ID=<project-id>
-export GCP_LOCATION=<region, defaults to europe-west2>
-export GCP_ZONE=<zone, defaults to europe-west2-a>
 ```
 
 Some resources require elevated privileges to create in GCP.  These are disabled by default but can be activated via:
