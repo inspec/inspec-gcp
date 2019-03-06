@@ -27,6 +27,8 @@ class Subscription < GcpResourceBase
   attr_reader :labels
   attr_reader :push_config
   attr_reader :ack_deadline_seconds
+  attr_reader :message_retention_duration
+  attr_reader :retain_acked_messages
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -40,6 +42,8 @@ class Subscription < GcpResourceBase
     @labels = @fetched['labels']
     @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched['pushConfig'])
     @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
+    @message_retention_duration = @fetched['messageRetentionDuration']
+    @retain_acked_messages = @fetched['retainAckedMessages']
   end
 
   # Handles parsing RFC3339 time string

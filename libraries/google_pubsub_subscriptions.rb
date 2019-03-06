@@ -28,6 +28,8 @@ class Subscriptions < GcpResourceBase
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:push_configs, field: :push_config)
   filter_table_config.add(:ack_deadline_seconds, field: :ack_deadline_seconds)
+  filter_table_config.add(:message_retention_durations, field: :message_retention_duration)
+  filter_table_config.add(:retain_acked_messages, field: :retain_acked_messages)
 
   filter_table_config.connect(self, :table)
 
@@ -72,6 +74,8 @@ class Subscriptions < GcpResourceBase
       'labels' => ->(obj) { return :labels, obj['labels'] },
       'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig']) },
       'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
+      'messageRetentionDuration' => ->(obj) { return :message_retention_duration, obj['messageRetentionDuration'] },
+      'retainAckedMessages' => ->(obj) { return :retain_acked_messages, obj['retainAckedMessages'] },
     }
   end
 
