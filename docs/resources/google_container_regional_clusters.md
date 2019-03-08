@@ -27,6 +27,7 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `logging_services`: an array of `google_container_regional_cluster` logging_service
   * `monitoring_services`: an array of `google_container_regional_cluster` monitoring_service
   * `networks`: an array of `google_container_regional_cluster` network
+  * `private_cluster_configs`: an array of `google_container_regional_cluster` private_cluster_config
   * `cluster_ipv4_cidrs`: an array of `google_container_regional_cluster` cluster_ipv4_cidr
   * `addons_configs`: an array of `google_container_regional_cluster` addons_config
   * `subnetworks`: an array of `google_container_regional_cluster` subnetwork

@@ -31,6 +31,7 @@ class RegionalClusters < GcpResourceBase
   filter_table_config.add(:logging_services, field: :logging_service)
   filter_table_config.add(:monitoring_services, field: :monitoring_service)
   filter_table_config.add(:networks, field: :network)
+  filter_table_config.add(:private_cluster_configs, field: :private_cluster_config)
   filter_table_config.add(:cluster_ipv4_cidrs, field: :cluster_ipv4_cidr)
   filter_table_config.add(:addons_configs, field: :addons_config)
   filter_table_config.add(:subnetworks, field: :subnetwork)
@@ -91,6 +92,7 @@ class RegionalClusters < GcpResourceBase
       'loggingService' => ->(obj) { return :logging_service, obj['loggingService'] },
       'monitoringService' => ->(obj) { return :monitoring_service, obj['monitoringService'] },
       'network' => ->(obj) { return :network, obj['network'] },
+      'privateClusterConfig' => ->(obj) { return :private_cluster_config, GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(obj['privateClusterConfig']) },
       'clusterIpv4Cidr' => ->(obj) { return :cluster_ipv4_cidr, obj['clusterIpv4Cidr'] },
       'addonsConfig' => ->(obj) { return :addons_config, GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(obj['addonsConfig']) },
       'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
