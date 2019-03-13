@@ -35,6 +35,7 @@ class Disk < GcpResourceBase
   attr_reader :name
   attr_reader :size_gb
   attr_reader :users
+  attr_reader :physical_block_size_bytes
   attr_reader :type
   attr_reader :source_image
   attr_reader :zone
@@ -63,6 +64,7 @@ class Disk < GcpResourceBase
     @name = @fetched['name']
     @size_gb = @fetched['sizeGb']
     @users = @fetched['users']
+    @physical_block_size_bytes = @fetched['physicalBlockSizeBytes']
     @type = @fetched['type']
     @source_image = @fetched['sourceImage']
     @zone = @fetched['zone']

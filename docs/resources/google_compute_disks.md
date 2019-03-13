@@ -31,6 +31,7 @@ See [google_compute_disk.md](google_compute_disk.md) for more detailed informati
   * `names`: an array of `google_compute_disk` name
   * `size_gbs`: an array of `google_compute_disk` size_gb
   * `users`: an array of `google_compute_disk` users
+  * `physical_block_size_bytes`: an array of `google_compute_disk` physical_block_size_bytes
   * `types`: an array of `google_compute_disk` type
   * `source_images`: an array of `google_compute_disk` source_image
   * `zones`: an array of `google_compute_disk` zone

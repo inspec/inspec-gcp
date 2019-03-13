@@ -34,6 +34,7 @@ class Disks < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:size_gbs, field: :size_gb)
   filter_table_config.add(:users, field: :users)
+  filter_table_config.add(:physical_block_size_bytes, field: :physical_block_size_bytes)
   filter_table_config.add(:types, field: :type)
   filter_table_config.add(:source_images, field: :source_image)
   filter_table_config.add(:zones, field: :zone)
@@ -93,6 +94,7 @@ class Disks < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'sizeGb' => ->(obj) { return :size_gb, obj['sizeGb'] },
       'users' => ->(obj) { return :users, obj['users'] },
+      'physicalBlockSizeBytes' => ->(obj) { return :physical_block_size_bytes, obj['physicalBlockSizeBytes'] },
       'type' => ->(obj) { return :type, obj['type'] },
       'sourceImage' => ->(obj) { return :source_image, obj['sourceImage'] },
       'zone' => ->(obj) { return :zone, obj['zone'] },
