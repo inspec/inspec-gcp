@@ -23,7 +23,6 @@ class Dataset < GcpResourceBase
   desc 'Dataset'
   supports platform: 'gcp'
 
-  attr_reader :name
   attr_reader :access
   attr_reader :creation_time
   attr_reader :dataset_reference
@@ -42,7 +41,6 @@ class Dataset < GcpResourceBase
   end
 
   def parse
-    @name = @fetched['name']
     @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched['access'])
     @creation_time = @fetched['creationTime']
     @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'])
@@ -62,6 +60,10 @@ class Dataset < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def name
+    dataset_reference&.dataset_id
   end
 
   private

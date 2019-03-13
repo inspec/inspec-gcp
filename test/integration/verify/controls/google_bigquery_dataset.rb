@@ -34,6 +34,7 @@ control 'google_bigquery_dataset-1.0' do
     its('friendly_name') { should eq dataset['friendly_name'] }
     its('location') { should eq dataset['location'] }
     its('description') { should eq dataset['description'] }
+    its('name') { should eq dataset['dataset_id'] }
     its('default_table_expiration_ms') { should cmp dataset['default_table_expiration_ms'] }
   end
 
