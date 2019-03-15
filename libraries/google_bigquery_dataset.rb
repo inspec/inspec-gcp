@@ -63,6 +63,10 @@ class Dataset < GcpResourceBase
   def exists?
     !@fetched.nil?
   end
+  
+  def to_s
+    "Dataset #{@name}"
+  end
 
   private
 
