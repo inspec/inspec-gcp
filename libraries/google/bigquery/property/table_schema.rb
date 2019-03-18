@@ -20,9 +20,14 @@ module GoogleInSpec
       class TableSchema
         attr_reader :fields
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
-          @fields = GoogleInSpec::BigQuery::Property::TableSchemaFieldsArray.parse(args['fields'])
+          @parent_identifier = parent_identifier
+          @fields = GoogleInSpec::BigQuery::Property::TableSchemaFieldsArray.parse(args['fields'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} TableSchema"
         end
       end
     end

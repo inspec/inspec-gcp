@@ -29,14 +29,19 @@ module GoogleInSpec
 
         attr_reader :commit_sha
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @project_id = args['projectId']
           @repo_name = args['repoName']
           @dir = args['dir']
           @branch_name = args['branchName']
           @tag_name = args['tagName']
           @commit_sha = args['commitSha']
+        end
+
+        def to_s
+          "#{@parent_identifier} TriggerTriggerTemplate"
         end
       end
     end

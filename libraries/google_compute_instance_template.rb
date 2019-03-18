@@ -28,6 +28,7 @@ class InstanceTemplate < GcpResourceBase
   desc 'InstanceTemplate'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :id
@@ -36,6 +37,7 @@ class InstanceTemplate < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -45,7 +47,7 @@ class InstanceTemplate < GcpResourceBase
     @description = @fetched['description']
     @id = @fetched['id']
     @name = @fetched['name']
-    @properties = GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(@fetched['properties'])
+    @properties = GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(@fetched['properties'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -55,6 +57,10 @@ class InstanceTemplate < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "InstanceTemplate #{@params[:name]}"
   end
 
   private

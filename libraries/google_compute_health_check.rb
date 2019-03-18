@@ -25,6 +25,7 @@ class HealthCheck < GcpResourceBase
   desc 'HealthCheck'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :check_interval_sec
   attr_reader :creation_timestamp
   attr_reader :description
@@ -41,6 +42,7 @@ class HealthCheck < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -55,10 +57,10 @@ class HealthCheck < GcpResourceBase
     @timeout_sec = @fetched['timeoutSec']
     @unhealthy_threshold = @fetched['unhealthyThreshold']
     @type = @fetched['type']
-    @http_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(@fetched['httpHealthCheck'])
-    @https_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(@fetched['httpsHealthCheck'])
-    @tcp_health_check = GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(@fetched['tcpHealthCheck'])
-    @ssl_health_check = GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(@fetched['sslHealthCheck'])
+    @http_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(@fetched['httpHealthCheck'], to_s)
+    @https_health_check = GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(@fetched['httpsHealthCheck'], to_s)
+    @tcp_health_check = GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(@fetched['tcpHealthCheck'], to_s)
+    @ssl_health_check = GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(@fetched['sslHealthCheck'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -68,6 +70,10 @@ class HealthCheck < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "HealthCheck #{@params[:name]}"
   end
 
   private

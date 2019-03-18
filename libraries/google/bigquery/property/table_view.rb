@@ -22,10 +22,15 @@ module GoogleInSpec
 
         attr_reader :user_defined_function_resources
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @use_legacy_sql = args['useLegacySql']
-          @user_defined_function_resources = GoogleInSpec::BigQuery::Property::TableViewUserDefinedFunctionResourcesArray.parse(args['userDefinedFunctionResources'])
+          @user_defined_function_resources = GoogleInSpec::BigQuery::Property::TableViewUserDefinedFunctionResourcesArray.parse(args['userDefinedFunctionResources'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} TableView"
         end
       end
     end

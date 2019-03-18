@@ -81,7 +81,7 @@ class Tables < GcpResourceBase
 
   def transformers
     {
-      'tableReference' => ->(obj) { return :table_reference, GoogleInSpec::BigQuery::Property::TableTableReference.new(obj['tableReference']) },
+      'tableReference' => ->(obj) { return :table_reference, GoogleInSpec::BigQuery::Property::TableTableReference.new(obj['tableReference'], to_s) },
       'creationTime' => ->(obj) { return :creation_time, obj['creationTime'] },
       'friendlyName' => ->(obj) { return :friendly_name, obj['friendlyName'] },
       'id' => ->(obj) { return :id, obj['id'] },
@@ -92,13 +92,13 @@ class Tables < GcpResourceBase
       'numLongTermBytes' => ->(obj) { return :num_long_term_bytes, obj['numLongTermBytes'] },
       'numRows' => ->(obj) { return :num_rows, obj['numRows'] },
       'type' => ->(obj) { return :type, obj['type'] },
-      'view' => ->(obj) { return :view, GoogleInSpec::BigQuery::Property::TableView.new(obj['view']) },
-      'timePartitioning' => ->(obj) { return :time_partitioning, GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(obj['timePartitioning']) },
-      'streamingBuffer' => ->(obj) { return :streaming_buffer, GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(obj['streamingBuffer']) },
-      'schema' => ->(obj) { return :schema, GoogleInSpec::BigQuery::Property::TableSchema.new(obj['schema']) },
-      'encryptionConfiguration' => ->(obj) { return :encryption_configuration, GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(obj['encryptionConfiguration']) },
+      'view' => ->(obj) { return :view, GoogleInSpec::BigQuery::Property::TableView.new(obj['view'], to_s) },
+      'timePartitioning' => ->(obj) { return :time_partitioning, GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(obj['timePartitioning'], to_s) },
+      'streamingBuffer' => ->(obj) { return :streaming_buffer, GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(obj['streamingBuffer'], to_s) },
+      'schema' => ->(obj) { return :schema, GoogleInSpec::BigQuery::Property::TableSchema.new(obj['schema'], to_s) },
+      'encryptionConfiguration' => ->(obj) { return :encryption_configuration, GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(obj['encryptionConfiguration'], to_s) },
       'expirationTime' => ->(obj) { return :expiration_time, obj['expirationTime'] },
-      'externalDataConfiguration' => ->(obj) { return :external_data_configuration, GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(obj['externalDataConfiguration']) },
+      'externalDataConfiguration' => ->(obj) { return :external_data_configuration, GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(obj['externalDataConfiguration'], to_s) },
       'dataset' => ->(obj) { return :dataset, obj['dataset'] },
     }
   end

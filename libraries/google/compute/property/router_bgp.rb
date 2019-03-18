@@ -26,12 +26,17 @@ module GoogleInSpec
 
         attr_reader :advertised_ip_ranges
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @asn = args['asn']
           @advertise_mode = args['advertiseMode']
           @advertised_groups = args['advertisedGroups']
-          @advertised_ip_ranges = GoogleInSpec::Compute::Property::RouterBgpAdvertisedIpRangesArray.parse(args['advertisedIpRanges'])
+          @advertised_ip_ranges = GoogleInSpec::Compute::Property::RouterBgpAdvertisedIpRangesArray.parse(args['advertisedIpRanges'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} RouterBgp"
         end
       end
     end

@@ -21,6 +21,7 @@ class Folder < GcpResourceBase
   desc 'Folder'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :name
   attr_reader :lifecycle_state
   attr_reader :create_time
@@ -29,6 +30,7 @@ class Folder < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -48,6 +50,10 @@ class Folder < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Folder #{@params[:name]}"
   end
 
   private

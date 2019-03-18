@@ -73,7 +73,7 @@ class Autoscalers < GcpResourceBase
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'name' => ->(obj) { return :name, obj['name'] },
       'description' => ->(obj) { return :description, obj['description'] },
-      'autoscalingPolicy' => ->(obj) { return :autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(obj['autoscalingPolicy']) },
+      'autoscalingPolicy' => ->(obj) { return :autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s) },
       'target' => ->(obj) { return :target, obj['target'] },
       'zone' => ->(obj) { return :zone, obj['zone'] },
     }

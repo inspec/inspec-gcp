@@ -21,6 +21,7 @@ class ResourceRecordSet < GcpResourceBase
   desc 'ResourceRecordSet'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :name
   attr_reader :type
   attr_reader :ttl
@@ -29,6 +30,7 @@ class ResourceRecordSet < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     fetched = @connection.fetch(product_url, resource_base_url, params)
     @fetched = unwrap(fetched, params)
     parse unless @fetched.nil?
@@ -61,6 +63,10 @@ class ResourceRecordSet < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "ResourceRecordSet #{@params[:type]}"
   end
 
   private

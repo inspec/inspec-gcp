@@ -24,11 +24,16 @@ module GoogleInSpec
 
         attr_reader :column_families
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @ignore_unspecified_column_families = args['ignoreUnspecifiedColumnFamilies']
           @read_rowkey_as_string = args['readRowkeyAsString']
-          @column_families = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesArray.parse(args['columnFamilies'])
+          @column_families = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesArray.parse(args['columnFamilies'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} TableExternalDataConfigurationBigtableOptions"
         end
       end
     end

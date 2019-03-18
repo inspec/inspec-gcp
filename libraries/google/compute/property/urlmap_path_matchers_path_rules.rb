@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :service
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @paths = args['paths']
           @service = args['service']
+        end
+
+        def to_s
+          "#{@parent_identifier} UrlMapPathMatchersPathRules"
         end
       end
 
       class UrlMapPathMatchersPathRulesArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return UrlMapPathMatchersPathRules.new(value) unless value.is_a?(::Array)
-          value.map { |v| UrlMapPathMatchersPathRules.new(v) }
+          return UrlMapPathMatchersPathRules.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| UrlMapPathMatchersPathRules.new(v, parent_identifier) }
         end
       end
     end

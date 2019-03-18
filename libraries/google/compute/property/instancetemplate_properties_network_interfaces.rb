@@ -31,22 +31,27 @@ module GoogleInSpec
 
         attr_reader :subnetwork
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
-          @access_configs = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAccessConfigsArray.parse(args['accessConfigs'])
-          @alias_ip_ranges = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray.parse(args['aliasIpRanges'])
+          @parent_identifier = parent_identifier
+          @access_configs = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAccessConfigsArray.parse(args['accessConfigs'], to_s)
+          @alias_ip_ranges = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray.parse(args['aliasIpRanges'], to_s)
           @name = args['name']
           @network = args['network']
           @network_ip = args['networkIP']
           @subnetwork = args['subnetwork']
         end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfaces"
+        end
       end
 
       class InstanceTemplatePropertiesNetworkInterfacesArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfaces.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfaces.new(v) }
+          return InstanceTemplatePropertiesNetworkInterfaces.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesNetworkInterfaces.new(v, parent_identifier) }
         end
       end
     end

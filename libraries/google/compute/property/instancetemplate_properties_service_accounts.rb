@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :scopes
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @email = args['email']
           @scopes = args['scopes']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesServiceAccounts"
         end
       end
 
       class InstanceTemplatePropertiesServiceAccountsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesServiceAccounts.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesServiceAccounts.new(v) }
+          return InstanceTemplatePropertiesServiceAccounts.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesServiceAccounts.new(v, parent_identifier) }
         end
       end
     end

@@ -23,6 +23,7 @@ class InstanceGroupManager < GcpResourceBase
   desc 'InstanceGroupManager'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :base_instance_name
   attr_reader :creation_timestamp
   attr_reader :current_actions
@@ -39,6 +40,7 @@ class InstanceGroupManager < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -46,13 +48,13 @@ class InstanceGroupManager < GcpResourceBase
   def parse
     @base_instance_name = @fetched['baseInstanceName']
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @current_actions = GoogleInSpec::Compute::Property::InstanceGroupManagerCurrentActions.new(@fetched['currentActions'])
+    @current_actions = GoogleInSpec::Compute::Property::InstanceGroupManagerCurrentActions.new(@fetched['currentActions'], to_s)
     @description = @fetched['description']
     @id = @fetched['id']
     @instance_group = @fetched['instanceGroup']
     @instance_template = @fetched['instanceTemplate']
     @name = @fetched['name']
-    @named_ports = GoogleInSpec::Compute::Property::InstanceGroupManagerNamedPortsArray.parse(@fetched['namedPorts'])
+    @named_ports = GoogleInSpec::Compute::Property::InstanceGroupManagerNamedPortsArray.parse(@fetched['namedPorts'], to_s)
     @region = @fetched['region']
     @target_pools = @fetched['targetPools']
     @target_size = @fetched['targetSize']
@@ -66,6 +68,10 @@ class InstanceGroupManager < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "InstanceGroupManager #{@params[:name]}"
   end
 
   private

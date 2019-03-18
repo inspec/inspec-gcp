@@ -21,6 +21,7 @@ class HttpsHealthCheck < GcpResourceBase
   desc 'HttpsHealthCheck'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :check_interval_sec
   attr_reader :creation_timestamp
   attr_reader :description
@@ -35,6 +36,7 @@ class HttpsHealthCheck < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -60,6 +62,10 @@ class HttpsHealthCheck < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "HttpsHealthCheck #{@params[:name]}"
   end
 
   private

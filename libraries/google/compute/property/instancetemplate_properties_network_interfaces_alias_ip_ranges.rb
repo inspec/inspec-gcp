@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :subnetwork_range_name
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @ip_cidr_range = args['ipCidrRange']
           @subnetwork_range_name = args['subnetworkRangeName']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
         end
       end
 
       class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v) }
+          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
         end
       end
     end

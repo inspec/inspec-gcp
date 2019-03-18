@@ -20,9 +20,14 @@ module GoogleInSpec
       class BackendServiceCdnPolicy
         attr_reader :cache_key_policy
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
-          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'])
+          @parent_identifier = parent_identifier
+          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} BackendServiceCdnPolicy"
         end
       end
     end

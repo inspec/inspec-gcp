@@ -21,10 +21,15 @@ module GoogleInSpec
 
         attr_reader :sha256
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @raw_key = args['rawKey']
           @sha256 = args['sha256']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesDisksInitializeParamsSourceImageEncryptionKey"
         end
       end
     end

@@ -72,7 +72,7 @@ class Subscriptions < GcpResourceBase
       'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
       'topic' => ->(obj) { return :topic, obj['topic'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },
-      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig']) },
+      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig'], to_s) },
       'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
       'messageRetentionDuration' => ->(obj) { return :message_retention_duration, obj['messageRetentionDuration'] },
       'retainAckedMessages' => ->(obj) { return :retain_acked_messages, obj['retainAckedMessages'] },

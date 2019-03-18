@@ -37,8 +37,9 @@ module GoogleInSpec
 
         attr_reader :preemptible
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @machine_type = args['machineType']
           @disk_size_gb = args['diskSizeGb']
           @oauth_scopes = args['oauthScopes']
@@ -49,6 +50,10 @@ module GoogleInSpec
           @local_ssd_count = args['localSsdCount']
           @tags = args['tags']
           @preemptible = args['preemptible']
+        end
+
+        def to_s
+          "#{@parent_identifier} RegionalClusterNodeConfig"
         end
       end
     end

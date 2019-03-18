@@ -19,9 +19,14 @@ module GoogleInSpec
       class RegionalClusterAddonsConfigHttpLoadBalancing
         attr_reader :disabled
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @disabled = args['disabled']
+        end
+
+        def to_s
+          "#{@parent_identifier} RegionalClusterAddonsConfigHttpLoadBalancing"
         end
       end
     end

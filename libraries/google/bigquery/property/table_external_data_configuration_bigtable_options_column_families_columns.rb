@@ -27,21 +27,26 @@ module GoogleInSpec
 
         attr_reader :type
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @encoding = args['encoding']
           @field_name = args['fieldName']
           @only_read_latest = args['onlyReadLatest']
           @qualifier_string = args['qualifierString']
           @type = args['type']
         end
+
+        def to_s
+          "#{@parent_identifier} TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns"
+        end
       end
 
       class TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumnsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.new(value) unless value.is_a?(::Array)
-          value.map { |v| TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.new(v) }
+          return TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.new(v, parent_identifier) }
         end
       end
     end

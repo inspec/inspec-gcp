@@ -40,26 +40,31 @@ module GoogleInSpec
 
         attr_reader :type
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @auto_delete = args['autoDelete']
           @boot = args['boot']
           @device_name = args['deviceName']
-          @disk_encryption_key = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksDiskEncryptionKey.new(args['diskEncryptionKey'])
+          @disk_encryption_key = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksDiskEncryptionKey.new(args['diskEncryptionKey'], to_s)
           @index = args['index']
-          @initialize_params = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParams.new(args['initializeParams'])
+          @initialize_params = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParams.new(args['initializeParams'], to_s)
           @interface = args['interface']
           @mode = args['mode']
           @source = args['source']
           @type = args['type']
         end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesDisks"
+        end
       end
 
       class InstanceTemplatePropertiesDisksArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesDisks.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesDisks.new(v) }
+          return InstanceTemplatePropertiesDisks.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesDisks.new(v, parent_identifier) }
         end
       end
     end

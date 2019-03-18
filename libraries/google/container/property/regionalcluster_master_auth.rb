@@ -27,13 +27,18 @@ module GoogleInSpec
 
         attr_reader :client_key
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @username = args['username']
           @password = args['password']
           @cluster_ca_certificate = args['clusterCaCertificate']
           @client_certificate = args['clientCertificate']
           @client_key = args['clientKey']
+        end
+
+        def to_s
+          "#{@parent_identifier} RegionalClusterMasterAuth"
         end
       end
     end

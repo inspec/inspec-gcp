@@ -25,12 +25,17 @@ module GoogleInSpec
 
         attr_reader :oauth2_client_secret_sha256
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @enabled = args['enabled']
           @oauth2_client_id = args['oauth2ClientId']
           @oauth2_client_secret = args['oauth2ClientSecret']
           @oauth2_client_secret_sha256 = args['oauth2ClientSecretSha256']
+        end
+
+        def to_s
+          "#{@parent_identifier} BackendServiceIap"
         end
       end
     end

@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :description
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @range = args['range']
           @description = args['description']
+        end
+
+        def to_s
+          "#{@parent_identifier} RouterBgpAdvertisedIpRanges"
         end
       end
 
       class RouterBgpAdvertisedIpRangesArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return RouterBgpAdvertisedIpRanges.new(value) unless value.is_a?(::Array)
-          value.map { |v| RouterBgpAdvertisedIpRanges.new(v) }
+          return RouterBgpAdvertisedIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| RouterBgpAdvertisedIpRanges.new(v, parent_identifier) }
         end
       end
     end

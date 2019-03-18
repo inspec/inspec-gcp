@@ -43,18 +43,23 @@ module GoogleInSpec
 
         attr_reader :bigtable_options
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @autodetect = args['autodetect']
           @compression = args['compression']
           @ignore_unknown_values = args['ignoreUnknownValues']
           @max_bad_records = args['maxBadRecords']
           @source_format = args['sourceFormat']
           @source_uris = args['sourceUris']
-          @schema = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationSchema.new(args['schema'])
-          @google_sheets_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationGoogleSheetsOptions.new(args['googleSheetsOptions'])
-          @csv_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationCsvOptions.new(args['csvOptions'])
-          @bigtable_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptions.new(args['bigtableOptions'])
+          @schema = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationSchema.new(args['schema'], to_s)
+          @google_sheets_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationGoogleSheetsOptions.new(args['googleSheetsOptions'], to_s)
+          @csv_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationCsvOptions.new(args['csvOptions'], to_s)
+          @bigtable_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptions.new(args['bigtableOptions'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} TableExternalDataConfiguration"
         end
       end
     end

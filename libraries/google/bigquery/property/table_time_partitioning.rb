@@ -21,10 +21,15 @@ module GoogleInSpec
 
         attr_reader :type
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @expiration_ms = args['expirationMs']
           @type = args['type']
+        end
+
+        def to_s
+          "#{@parent_identifier} TableTimePartitioning"
         end
       end
     end
