@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :port
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @name = args['name']
           @port = args['port']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceGroupManagerNamedPorts"
         end
       end
 
       class InstanceGroupManagerNamedPortsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceGroupManagerNamedPorts.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceGroupManagerNamedPorts.new(v) }
+          return InstanceGroupManagerNamedPorts.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceGroupManagerNamedPorts.new(v, parent_identifier) }
         end
       end
     end

@@ -23,6 +23,7 @@ class Router < GcpResourceBase
   desc 'Router'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :id
   attr_reader :creation_timestamp
   attr_reader :name
@@ -33,6 +34,7 @@ class Router < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -43,7 +45,7 @@ class Router < GcpResourceBase
     @name = @fetched['name']
     @description = @fetched['description']
     @network = @fetched['network']
-    @bgp = GoogleInSpec::Compute::Property::RouterBgp.new(@fetched['bgp'])
+    @bgp = GoogleInSpec::Compute::Property::RouterBgp.new(@fetched['bgp'], to_s)
     @region = @fetched['region']
   end
 
@@ -54,6 +56,10 @@ class Router < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Router #{@params[:name]}"
   end
 
   private

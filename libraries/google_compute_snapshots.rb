@@ -86,8 +86,8 @@ class Snapshots < GcpResourceBase
       'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
       'sourceDisk' => ->(obj) { return :source_disk, obj['sourceDisk'] },
       'zone' => ->(obj) { return :zone, obj['zone'] },
-      'snapshotEncryptionKey' => ->(obj) { return :snapshot_encryption_key, GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(obj['snapshotEncryptionKey']) },
-      'sourceDiskEncryptionKey' => ->(obj) { return :source_disk_encryption_key, GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(obj['sourceDiskEncryptionKey']) },
+      'snapshotEncryptionKey' => ->(obj) { return :snapshot_encryption_key, GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(obj['snapshotEncryptionKey'], to_s) },
+      'sourceDiskEncryptionKey' => ->(obj) { return :source_disk_encryption_key, GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(obj['sourceDiskEncryptionKey'], to_s) },
     }
   end
 

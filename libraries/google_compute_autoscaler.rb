@@ -25,6 +25,7 @@ class Autoscaler < GcpResourceBase
   desc 'Autoscaler'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :id
   attr_reader :creation_timestamp
   attr_reader :name
@@ -35,6 +36,7 @@ class Autoscaler < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -44,7 +46,7 @@ class Autoscaler < GcpResourceBase
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @name = @fetched['name']
     @description = @fetched['description']
-    @autoscaling_policy = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(@fetched['autoscalingPolicy'])
+    @autoscaling_policy = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(@fetched['autoscalingPolicy'], to_s)
     @target = @fetched['target']
     @zone = @fetched['zone']
   end
@@ -56,6 +58,10 @@ class Autoscaler < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Autoscaler #{@params[:name]}"
   end
 
   private

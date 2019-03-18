@@ -27,13 +27,18 @@ module GoogleInSpec
 
         attr_reader :proxy_header
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @request = args['request']
           @response = args['response']
           @port = args['port']
           @port_name = args['portName']
           @proxy_header = args['proxyHeader']
+        end
+
+        def to_s
+          "#{@parent_identifier} HealthCheckSslHealthCheck"
         end
       end
     end

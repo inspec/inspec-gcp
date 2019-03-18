@@ -26,20 +26,25 @@ module GoogleInSpec
 
         attr_reader :path_rules
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @default_service = args['defaultService']
           @description = args['description']
           @name = args['name']
-          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesArray.parse(args['pathRules'])
+          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesArray.parse(args['pathRules'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} UrlMapPathMatchers"
         end
       end
 
       class UrlMapPathMatchersArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return UrlMapPathMatchers.new(value) unless value.is_a?(::Array)
-          value.map { |v| UrlMapPathMatchers.new(v) }
+          return UrlMapPathMatchers.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| UrlMapPathMatchers.new(v, parent_identifier) }
         end
       end
     end

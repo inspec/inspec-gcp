@@ -32,14 +32,19 @@ module GoogleInSpec
 
         attr_reader :load_balancing_utilization
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @min_num_replicas = args['minNumReplicas']
           @max_num_replicas = args['maxNumReplicas']
           @cool_down_period_sec = args['coolDownPeriodSec']
-          @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCpuUtilization.new(args['cpuUtilization'])
-          @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray.parse(args['customMetricUtilizations'])
-          @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyLoadBalancingUtilization.new(args['loadBalancingUtilization'])
+          @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCpuUtilization.new(args['cpuUtilization'], to_s)
+          @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray.parse(args['customMetricUtilizations'], to_s)
+          @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyLoadBalancingUtilization.new(args['loadBalancingUtilization'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} AutoscalerAutoscalingPolicy"
         end
       end
     end

@@ -23,10 +23,15 @@ module GoogleInSpec
 
         attr_reader :horizontal_pod_autoscaling
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
-          @http_load_balancing = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.new(args['httpLoadBalancing'])
-          @horizontal_pod_autoscaling = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.new(args['horizontalPodAutoscaling'])
+          @parent_identifier = parent_identifier
+          @http_load_balancing = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.new(args['httpLoadBalancing'], to_s)
+          @horizontal_pod_autoscaling = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.new(args['horizontalPodAutoscaling'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} RegionalClusterAddonsConfig"
         end
       end
     end

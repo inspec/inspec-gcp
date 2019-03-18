@@ -33,8 +33,9 @@ module GoogleInSpec
 
         attr_reader :restarting
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @abandoning = args['abandoning']
           @creating = args['creating']
           @creating_without_retries = args['creatingWithoutRetries']
@@ -43,6 +44,10 @@ module GoogleInSpec
           @recreating = args['recreating']
           @refreshing = args['refreshing']
           @restarting = args['restarting']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceGroupManagerCurrentActions"
         end
       end
     end

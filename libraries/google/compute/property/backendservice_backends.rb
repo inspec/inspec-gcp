@@ -35,8 +35,9 @@ module GoogleInSpec
 
         attr_reader :max_utilization
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @balancing_mode = args['balancingMode']
           @capacity_scaler = args['capacityScaler']
           @description = args['description']
@@ -47,13 +48,17 @@ module GoogleInSpec
           @max_rate_per_instance = args['maxRatePerInstance']
           @max_utilization = args['maxUtilization']
         end
+
+        def to_s
+          "#{@parent_identifier} BackendServiceBackends"
+        end
       end
 
       class BackendServiceBackendsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return BackendServiceBackends.new(value) unless value.is_a?(::Array)
-          value.map { |v| BackendServiceBackends.new(v) }
+          return BackendServiceBackends.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| BackendServiceBackends.new(v, parent_identifier) }
         end
       end
     end

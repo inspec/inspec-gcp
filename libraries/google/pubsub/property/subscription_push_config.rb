@@ -21,10 +21,15 @@ module GoogleInSpec
 
         attr_reader :attributes
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @push_endpoint = args['pushEndpoint']
           @attributes = args['attributes']
+        end
+
+        def to_s
+          "#{@parent_identifier} SubscriptionPushConfig"
         end
       end
     end

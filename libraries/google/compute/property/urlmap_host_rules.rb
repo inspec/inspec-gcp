@@ -23,19 +23,24 @@ module GoogleInSpec
 
         attr_reader :path_matcher
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @description = args['description']
           @hosts = args['hosts']
           @path_matcher = args['pathMatcher']
         end
+
+        def to_s
+          "#{@parent_identifier} UrlMapHostRules"
+        end
       end
 
       class UrlMapHostRulesArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return UrlMapHostRules.new(value) unless value.is_a?(::Array)
-          value.map { |v| UrlMapHostRules.new(v) }
+          return UrlMapHostRules.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| UrlMapHostRules.new(v, parent_identifier) }
         end
       end
     end

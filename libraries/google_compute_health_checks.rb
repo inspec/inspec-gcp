@@ -84,10 +84,10 @@ class HealthChecks < GcpResourceBase
       'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
       'unhealthyThreshold' => ->(obj) { return :unhealthy_threshold, obj['unhealthyThreshold'] },
       'type' => ->(obj) { return :type, obj['type'] },
-      'httpHealthCheck' => ->(obj) { return :http_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(obj['httpHealthCheck']) },
-      'httpsHealthCheck' => ->(obj) { return :https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck']) },
-      'tcpHealthCheck' => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck']) },
-      'sslHealthCheck' => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck']) },
+      'httpHealthCheck' => ->(obj) { return :http_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(obj['httpHealthCheck'], to_s) },
+      'httpsHealthCheck' => ->(obj) { return :https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck'], to_s) },
+      'tcpHealthCheck' => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s) },
+      'sslHealthCheck' => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s) },
     }
   end
 

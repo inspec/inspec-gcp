@@ -22,6 +22,7 @@ class SslPolicy < GcpResourceBase
   desc 'SslPolicy'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :id
@@ -35,6 +36,7 @@ class SslPolicy < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -49,7 +51,7 @@ class SslPolicy < GcpResourceBase
     @enabled_features = @fetched['enabledFeatures']
     @custom_features = @fetched['customFeatures']
     @fingerprint = @fetched['fingerprint']
-    @warnings = GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(@fetched['warnings'])
+    @warnings = GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(@fetched['warnings'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -59,6 +61,10 @@ class SslPolicy < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "SslPolicy #{@params[:name]}"
   end
 
   private

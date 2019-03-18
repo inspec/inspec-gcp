@@ -22,6 +22,7 @@ class Subscription < GcpResourceBase
   desc 'Subscription'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :name
   attr_reader :topic
   attr_reader :labels
@@ -32,6 +33,7 @@ class Subscription < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -40,7 +42,7 @@ class Subscription < GcpResourceBase
     @name = name_from_self_link(@fetched['name'])
     @topic = @fetched['topic']
     @labels = @fetched['labels']
-    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched['pushConfig'])
+    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched['pushConfig'], to_s)
     @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
     @message_retention_duration = @fetched['messageRetentionDuration']
     @retain_acked_messages = @fetched['retainAckedMessages']
@@ -53,6 +55,10 @@ class Subscription < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Subscription #{@params[:name]}"
   end
 
   private

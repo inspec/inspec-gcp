@@ -45,19 +45,24 @@ module GoogleInSpec
 
         attr_reader :tags
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @can_ip_forward = args['canIpForward']
           @description = args['description']
-          @disks = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksArray.parse(args['disks'])
+          @disks = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksArray.parse(args['disks'], to_s)
           @machine_type = args['machineType']
           @min_cpu_platform = args['minCpuPlatform']
           @metadata = args['metadata']
-          @guest_accelerators = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesGuestAcceleratorsArray.parse(args['guestAccelerators'])
-          @network_interfaces = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesArray.parse(args['networkInterfaces'])
-          @scheduling = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesScheduling.new(args['scheduling'])
-          @service_accounts = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesServiceAccountsArray.parse(args['serviceAccounts'])
-          @tags = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesTags.new(args['tags'])
+          @guest_accelerators = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesGuestAcceleratorsArray.parse(args['guestAccelerators'], to_s)
+          @network_interfaces = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesArray.parse(args['networkInterfaces'], to_s)
+          @scheduling = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesScheduling.new(args['scheduling'], to_s)
+          @service_accounts = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesServiceAccountsArray.parse(args['serviceAccounts'], to_s)
+          @tags = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesTags.new(args['tags'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplateProperties"
         end
       end
     end

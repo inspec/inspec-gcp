@@ -21,6 +21,7 @@ class GlobalForwardingRule < GcpResourceBase
   desc 'GlobalForwardingRule'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :id
@@ -39,6 +40,7 @@ class GlobalForwardingRule < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -68,6 +70,10 @@ class GlobalForwardingRule < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "GlobalForwardingRule #{@params[:name]}"
   end
 
   private

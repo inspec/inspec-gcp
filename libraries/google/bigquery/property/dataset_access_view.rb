@@ -23,11 +23,16 @@ module GoogleInSpec
 
         attr_reader :table_id
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @dataset_id = args['datasetId']
           @project_id = args['projectId']
           @table_id = args['tableId']
+        end
+
+        def to_s
+          "#{@parent_identifier} DatasetAccessView"
         end
       end
     end

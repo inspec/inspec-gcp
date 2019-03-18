@@ -21,6 +21,7 @@ class Route < GcpResourceBase
   desc 'Route'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :dest_range
   attr_reader :description
   attr_reader :name
@@ -35,6 +36,7 @@ class Route < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -60,6 +62,10 @@ class Route < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Route #{@params[:name]}"
   end
 
   private

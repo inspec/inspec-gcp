@@ -24,6 +24,7 @@ class UrlMap < GcpResourceBase
   desc 'UrlMap'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :default_service
   attr_reader :description
@@ -36,6 +37,7 @@ class UrlMap < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -44,12 +46,12 @@ class UrlMap < GcpResourceBase
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @default_service = @fetched['defaultService']
     @description = @fetched['description']
-    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'])
+    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'], to_s)
     @id = @fetched['id']
     @fingerprint = @fetched['fingerprint']
     @name = @fetched['name']
-    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'])
-    @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'])
+    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'], to_s)
+    @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -59,6 +61,10 @@ class UrlMap < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "UrlMap #{@params[:name]}"
   end
 
   private

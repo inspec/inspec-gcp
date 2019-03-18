@@ -26,6 +26,7 @@ class BackendService < GcpResourceBase
   desc 'BackendService'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :affinity_cookie_ttl_sec
   attr_reader :backends
   attr_reader :cdn_policy
@@ -46,21 +47,22 @@ class BackendService < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
   def parse
     @affinity_cookie_ttl_sec = @fetched['affinityCookieTtlSec']
-    @backends = GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(@fetched['backends'])
-    @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(@fetched['cdnPolicy'])
-    @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'])
+    @backends = GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(@fetched['backends'], to_s)
+    @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(@fetched['cdnPolicy'], to_s)
+    @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @enable_cdn = @fetched['enableCDN']
     @health_checks = @fetched['healthChecks']
     @id = @fetched['id']
-    @iap = GoogleInSpec::Compute::Property::BackendServiceIap.new(@fetched['iap'])
+    @iap = GoogleInSpec::Compute::Property::BackendServiceIap.new(@fetched['iap'], to_s)
     @load_balancing_scheme = @fetched['loadBalancingScheme']
     @name = @fetched['name']
     @port_name = @fetched['portName']
@@ -77,6 +79,10 @@ class BackendService < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "BackendService #{@params[:name]}"
   end
 
   private

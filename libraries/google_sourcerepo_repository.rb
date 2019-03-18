@@ -21,12 +21,14 @@ class Repository < GcpResourceBase
   desc 'Repository'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :name
   attr_reader :url
   attr_reader :size
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -44,6 +46,10 @@ class Repository < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Repository #{@params[:name]}"
   end
 
   private

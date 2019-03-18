@@ -24,6 +24,7 @@ class Trigger < GcpResourceBase
   desc 'Trigger'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :id
   attr_reader :description
   attr_reader :disabled
@@ -37,6 +38,7 @@ class Trigger < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -50,8 +52,8 @@ class Trigger < GcpResourceBase
     @filename = @fetched['filename']
     @ignored_files = @fetched['ignoredFiles']
     @included_files = @fetched['includedFiles']
-    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched['triggerTemplate'])
-    @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched['build'])
+    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched['triggerTemplate'], to_s)
+    @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched['build'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -61,6 +63,10 @@ class Trigger < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Trigger #{@params[:id]}"
   end
 
   private

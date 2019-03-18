@@ -23,11 +23,16 @@ module GoogleInSpec
 
         attr_reader :preemptible
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @automatic_restart = args['automaticRestart']
           @on_host_maintenance = args['onHostMaintenance']
           @preemptible = args['preemptible']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesScheduling"
         end
       end
     end

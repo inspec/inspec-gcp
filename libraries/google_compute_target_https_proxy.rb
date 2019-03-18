@@ -21,6 +21,7 @@ class TargetHttpsProxy < GcpResourceBase
   desc 'TargetHttpsProxy'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :id
@@ -32,6 +33,7 @@ class TargetHttpsProxy < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -54,6 +56,10 @@ class TargetHttpsProxy < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "TargetHttpsProxy #{@params[:name]}"
   end
 
   private

@@ -74,7 +74,7 @@ class Routers < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'network' => ->(obj) { return :network, obj['network'] },
-      'bgp' => ->(obj) { return :bgp, GoogleInSpec::Compute::Property::RouterBgp.new(obj['bgp']) },
+      'bgp' => ->(obj) { return :bgp, GoogleInSpec::Compute::Property::RouterBgp.new(obj['bgp'], to_s) },
       'region' => ->(obj) { return :region, obj['region'] },
     }
   end
