@@ -25,20 +25,25 @@ module GoogleInSpec
 
         attr_reader :owner
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @metric = args['metric']
           @limit = args['limit']
           @usage = args['usage']
           @owner = args['owner']
         end
+
+        def to_s
+          "#{@parent_identifier} RegionQuotas"
+        end
       end
 
       class RegionQuotasArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return RegionQuotas.new(value) unless value.is_a?(::Array)
-          value.map { |v| RegionQuotas.new(v) }
+          return RegionQuotas.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| RegionQuotas.new(v, parent_identifier) }
         end
       end
     end
