@@ -23,6 +23,7 @@ class Region < GcpResourceBase
   desc 'Region'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :deprecated
   attr_reader :description
@@ -34,17 +35,18 @@ class Region < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
   def parse
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::RegionDeprecated.new(@fetched['deprecated'])
+    @deprecated = GoogleInSpec::Compute::Property::RegionDeprecated.new(@fetched['deprecated'], to_s)
     @description = @fetched['description']
     @id = @fetched['id']
     @name = @fetched['name']
-    @quotas = GoogleInSpec::Compute::Property::RegionQuotasArray.parse(@fetched['quotas'])
+    @quotas = GoogleInSpec::Compute::Property::RegionQuotasArray.parse(@fetched['quotas'], to_s)
     @status = @fetched['status']
     @zones = @fetched['zones']
   end
@@ -58,6 +60,10 @@ class Region < GcpResourceBase
     !@fetched.nil?
   end
 
+  def to_s
+    "Region #{@params[:name]}"
+  end
+
   # helper for returning a list of zone short names rather than fully qualified URLs e.g.
   #   https://www.googleapis.com/compute/v1/projects/spaterson-project/zones/asia-east1-a
   def zone_names
@@ -68,11 +74,6 @@ class Region < GcpResourceBase
   def up?
     return false if !exists?
     @status == 'UP'
-  end
-
-  def to_s
-    name = @opts[:name] || @name
-    "Region #{name}"
   end
 
   private
