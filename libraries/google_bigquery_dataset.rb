@@ -23,7 +23,7 @@ class Dataset < GcpResourceBase
   desc 'Dataset'
   supports platform: 'gcp'
 
-  attr_reader :name
+  attr_reader :params
   attr_reader :access
   attr_reader :creation_time
   attr_reader :dataset_reference
@@ -37,15 +37,15 @@ class Dataset < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched['access'])
+    @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched['access'], to_s)
     @creation_time = @fetched['creationTime']
-    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'])
+    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'], to_s)
     @default_table_expiration_ms = @fetched['defaultTableExpirationMs']
     @description = @fetched['description']
     @friendly_name = @fetched['friendlyName']
@@ -62,6 +62,14 @@ class Dataset < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Dataset #{@params[:name]}"
+  end
+
+  def name
+    dataset_reference&.dataset_id
   end
 
   private

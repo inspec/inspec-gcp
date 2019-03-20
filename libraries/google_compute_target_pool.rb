@@ -21,6 +21,7 @@ class TargetPool < GcpResourceBase
   desc 'TargetPool'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :backup_pool
   attr_reader :creation_timestamp
   attr_reader :description
@@ -34,6 +35,7 @@ class TargetPool < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -58,6 +60,10 @@ class TargetPool < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "TargetPool #{@params[:name]}"
   end
 
   RSpec::Matchers.alias_matcher :has_target_instance, :be_has_target_instance

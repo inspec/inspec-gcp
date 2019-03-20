@@ -14,6 +14,7 @@ describe google_bigquery_dataset(project: 'chef-gcp-inspec', name: 'inspec_gcp_d
   its('friendly_name') { should eq 'A BigQuery dataset test' }
   its('location') { should eq 'EU' }
   its('description') { should eq 'Test BigQuery dataset description' }
+  its('name') { should eq 'inspec_gcp_dataset' }
   its('default_table_expiration_ms') { should cmp '3600000' }
 end
 
@@ -33,8 +34,6 @@ end
 
 ## Properties
 Properties that can be accessed from the `google_bigquery_dataset` resource:
-
-  * `name`: Dataset name
 
   * `access`: Access controls on the bucket.
 

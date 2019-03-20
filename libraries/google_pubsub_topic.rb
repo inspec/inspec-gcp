@@ -21,11 +21,13 @@ class Topic < GcpResourceBase
   desc 'Topic'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :name
   attr_reader :labels
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -42,6 +44,10 @@ class Topic < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Topic #{@params[:name]}"
   end
 
   private

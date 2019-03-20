@@ -21,6 +21,7 @@ class SslCertificate < GcpResourceBase
   desc 'SslCertificate'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :certificate
   attr_reader :creation_timestamp
   attr_reader :description
@@ -30,6 +31,7 @@ class SslCertificate < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -50,6 +52,10 @@ class SslCertificate < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "SslCertificate #{@params[:name]}"
   end
 
   private

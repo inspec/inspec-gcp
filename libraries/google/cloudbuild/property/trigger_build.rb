@@ -24,11 +24,16 @@ module GoogleInSpec
 
         attr_reader :steps
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @tags = args['tags']
           @images = args['images']
-          @steps = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsArray.parse(args['steps'])
+          @steps = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsArray.parse(args['steps'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} TriggerBuild"
         end
       end
     end

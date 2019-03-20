@@ -71,7 +71,7 @@ class InstanceTemplates < GcpResourceBase
       'description' => ->(obj) { return :description, obj['description'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'name' => ->(obj) { return :name, obj['name'] },
-      'properties' => ->(obj) { return :properties, GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(obj['properties']) },
+      'properties' => ->(obj) { return :properties, GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(obj['properties'], to_s) },
     }
   end
 

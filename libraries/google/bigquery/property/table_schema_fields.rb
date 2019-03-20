@@ -27,21 +27,26 @@ module GoogleInSpec
 
         attr_reader :type
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @description = args['description']
           @fields = args['fields']
           @mode = args['mode']
           @name = args['name']
           @type = args['type']
         end
+
+        def to_s
+          "#{@parent_identifier} TableSchemaFields"
+        end
       end
 
       class TableSchemaFieldsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return TableSchemaFields.new(value) unless value.is_a?(::Array)
-          value.map { |v| TableSchemaFields.new(v) }
+          return TableSchemaFields.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| TableSchemaFields.new(v, parent_identifier) }
         end
       end
     end

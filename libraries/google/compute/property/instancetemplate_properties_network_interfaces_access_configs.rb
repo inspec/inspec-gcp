@@ -23,19 +23,24 @@ module GoogleInSpec
 
         attr_reader :type
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @name = args['name']
           @nat_ip = args['natIP']
           @type = args['type']
         end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAccessConfigs"
+        end
       end
 
       class InstanceTemplatePropertiesNetworkInterfacesAccessConfigsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAccessConfigs.new(value) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAccessConfigs.new(v) }
+          return InstanceTemplatePropertiesNetworkInterfacesAccessConfigs.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAccessConfigs.new(v, parent_identifier) }
         end
       end
     end

@@ -23,6 +23,7 @@ class Snapshot < GcpResourceBase
   desc 'Snapshot'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :creation_timestamp
   attr_reader :id
   attr_reader :disk_size_gb
@@ -39,6 +40,7 @@ class Snapshot < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -55,8 +57,8 @@ class Snapshot < GcpResourceBase
     @label_fingerprint = @fetched['labelFingerprint']
     @source_disk = @fetched['sourceDisk']
     @zone = @fetched['zone']
-    @snapshot_encryption_key = GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(@fetched['snapshotEncryptionKey'])
-    @source_disk_encryption_key = GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(@fetched['sourceDiskEncryptionKey'])
+    @snapshot_encryption_key = GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(@fetched['snapshotEncryptionKey'], to_s)
+    @source_disk_encryption_key = GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(@fetched['sourceDiskEncryptionKey'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -66,6 +68,10 @@ class Snapshot < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Snapshot #{@params[:name]}"
   end
 
   private

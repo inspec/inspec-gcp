@@ -30,22 +30,27 @@ module GoogleInSpec
 
         attr_reader :view
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @domain = args['domain']
           @group_by_email = args['groupByEmail']
           @role = args['role']
           @special_group = args['specialGroup']
           @user_by_email = args['userByEmail']
-          @view = GoogleInSpec::BigQuery::Property::DatasetAccessView.new(args['view'])
+          @view = GoogleInSpec::BigQuery::Property::DatasetAccessView.new(args['view'], to_s)
+        end
+
+        def to_s
+          "#{@parent_identifier} DatasetAccess"
         end
       end
 
       class DatasetAccessArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return DatasetAccess.new(value) unless value.is_a?(::Array)
-          value.map { |v| DatasetAccess.new(v) }
+          return DatasetAccess.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| DatasetAccess.new(v, parent_identifier) }
         end
       end
     end

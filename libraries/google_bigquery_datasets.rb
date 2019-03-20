@@ -67,7 +67,7 @@ class Datasets < GcpResourceBase
 
   def transformers
     {
-      'datasetReference' => ->(obj) { return :dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj['datasetReference']) },
+      'datasetReference' => ->(obj) { return :dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj['datasetReference'], to_s) },
       'friendlyName' => ->(obj) { return :friendly_name, obj['friendlyName'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },

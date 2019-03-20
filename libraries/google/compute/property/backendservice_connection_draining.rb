@@ -19,9 +19,14 @@ module GoogleInSpec
       class BackendServiceConnectionDraining
         attr_reader :draining_timeout_sec
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @draining_timeout_sec = args['drainingTimeoutSec']
+        end
+
+        def to_s
+          "#{@parent_identifier} BackendServiceConnectionDraining"
         end
       end
     end

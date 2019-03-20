@@ -68,6 +68,18 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
   * `network`: The name of the Google Compute Engine network to which the cluster is connected. If left unspecified, the default network will be used.
 
+  * `private_cluster_config`: Configuration for a private cluster.
+
+    * `enablePrivateNodes`: Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
+
+    * `enablePrivateEndpoint`: Whether the master's internal IP address is used as the cluster endpoint.
+
+    * `masterIpv4CidrBlock`: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
+
+    * `privateEndpoint`: The internal IP address of this cluster's master endpoint.
+
+    * `publicEndpoint`: The external IP address of this cluster's master endpoint.
+
   * `cluster_ipv4_cidr`: The IP address range of the container pods in this cluster, in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8.
 
   * `addons_config`: Configurations for the various addons available to run in the cluster.

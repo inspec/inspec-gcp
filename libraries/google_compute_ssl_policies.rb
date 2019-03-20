@@ -81,7 +81,7 @@ class SslPolicys < GcpResourceBase
       'enabledFeatures' => ->(obj) { return :enabled_features, obj['enabledFeatures'] },
       'customFeatures' => ->(obj) { return :custom_features, obj['customFeatures'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'warnings' => ->(obj) { return :warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj['warnings']) },
+      'warnings' => ->(obj) { return :warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj['warnings'], to_s) },
     }
   end
 

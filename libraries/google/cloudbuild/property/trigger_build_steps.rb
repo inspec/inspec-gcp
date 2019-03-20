@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :args
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @name = args['name']
           @args = args['args']
+        end
+
+        def to_s
+          "#{@parent_identifier} TriggerBuildSteps"
         end
       end
 
       class TriggerBuildStepsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return TriggerBuildSteps.new(value) unless value.is_a?(::Array)
-          value.map { |v| TriggerBuildSteps.new(v) }
+          return TriggerBuildSteps.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| TriggerBuildSteps.new(v, parent_identifier) }
         end
       end
     end

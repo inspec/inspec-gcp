@@ -24,6 +24,7 @@ class Disk < GcpResourceBase
   desc 'Disk'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :label_fingerprint
   attr_reader :creation_timestamp
   attr_reader :description
@@ -35,6 +36,7 @@ class Disk < GcpResourceBase
   attr_reader :name
   attr_reader :size_gb
   attr_reader :users
+  attr_reader :physical_block_size_bytes
   attr_reader :type
   attr_reader :source_image
   attr_reader :zone
@@ -47,6 +49,7 @@ class Disk < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -63,14 +66,15 @@ class Disk < GcpResourceBase
     @name = @fetched['name']
     @size_gb = @fetched['sizeGb']
     @users = @fetched['users']
+    @physical_block_size_bytes = @fetched['physicalBlockSizeBytes']
     @type = @fetched['type']
     @source_image = @fetched['sourceImage']
     @zone = @fetched['zone']
-    @source_image_encryption_key = GoogleInSpec::Compute::Property::DiskSourceImageEncryptionKey.new(@fetched['sourceImageEncryptionKey'])
+    @source_image_encryption_key = GoogleInSpec::Compute::Property::DiskSourceImageEncryptionKey.new(@fetched['sourceImageEncryptionKey'], to_s)
     @source_image_id = @fetched['sourceImageId']
-    @disk_encryption_key = GoogleInSpec::Compute::Property::DiskDiskEncryptionKey.new(@fetched['diskEncryptionKey'])
+    @disk_encryption_key = GoogleInSpec::Compute::Property::DiskDiskEncryptionKey.new(@fetched['diskEncryptionKey'], to_s)
     @source_snapshot = @fetched['sourceSnapshot']
-    @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::DiskSourceSnapshotEncryptionKey.new(@fetched['sourceSnapshotEncryptionKey'])
+    @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::DiskSourceSnapshotEncryptionKey.new(@fetched['sourceSnapshotEncryptionKey'], to_s)
     @source_snapshot_id = @fetched['sourceSnapshotId']
   end
 
@@ -81,6 +85,10 @@ class Disk < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Disk #{@params[:name]}"
   end
 
   private

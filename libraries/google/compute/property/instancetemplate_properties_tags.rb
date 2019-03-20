@@ -21,10 +21,15 @@ module GoogleInSpec
 
         attr_reader :items
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @fingerprint = args['fingerprint']
           @items = args['items']
+        end
+
+        def to_s
+          "#{@parent_identifier} InstanceTemplatePropertiesTags"
         end
       end
     end

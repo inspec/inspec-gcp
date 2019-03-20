@@ -19,6 +19,7 @@ require 'google/container/property/regionalcluster_addons_config_horizontal_pod_
 require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
 require 'google/container/property/regionalcluster_master_auth'
 require 'google/container/property/regionalcluster_node_config'
+require 'google/container/property/regionalcluster_private_cluster_config'
 
 # A provider to manage Google Kubernetes Engine resources.
 class RegionalCluster < GcpResourceBase
@@ -26,6 +27,7 @@ class RegionalCluster < GcpResourceBase
   desc 'RegionalCluster'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :name
   attr_reader :description
   attr_reader :initial_node_count
@@ -34,6 +36,7 @@ class RegionalCluster < GcpResourceBase
   attr_reader :logging_service
   attr_reader :monitoring_service
   attr_reader :network
+  attr_reader :private_cluster_config
   attr_reader :cluster_ipv4_cidr
   attr_reader :addons_config
   attr_reader :subnetwork
@@ -50,6 +53,7 @@ class RegionalCluster < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
@@ -58,13 +62,14 @@ class RegionalCluster < GcpResourceBase
     @name = @fetched['name']
     @description = @fetched['description']
     @initial_node_count = @fetched['initialNodeCount']
-    @node_config = GoogleInSpec::Container::Property::RegionalClusterNodeConfig.new(@fetched['nodeConfig'])
-    @master_auth = GoogleInSpec::Container::Property::RegionalClusterMasterAuth.new(@fetched['masterAuth'])
+    @node_config = GoogleInSpec::Container::Property::RegionalClusterNodeConfig.new(@fetched['nodeConfig'], to_s)
+    @master_auth = GoogleInSpec::Container::Property::RegionalClusterMasterAuth.new(@fetched['masterAuth'], to_s)
     @logging_service = @fetched['loggingService']
     @monitoring_service = @fetched['monitoringService']
     @network = @fetched['network']
+    @private_cluster_config = GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(@fetched['privateClusterConfig'], to_s)
     @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
-    @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'])
+    @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
     @subnetwork = @fetched['subnetwork']
     @endpoint = @fetched['endpoint']
     @initial_cluster_version = @fetched['initialClusterVersion']
@@ -85,6 +90,10 @@ class RegionalCluster < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "RegionalCluster #{@params[:name]}"
   end
 
   private

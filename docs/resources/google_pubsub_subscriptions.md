@@ -28,6 +28,8 @@ See [google_pubsub_subscription.md](google_pubsub_subscription.md) for more deta
   * `labels`: an array of `google_pubsub_subscription` labels
   * `push_configs`: an array of `google_pubsub_subscription` push_config
   * `ack_deadline_seconds`: an array of `google_pubsub_subscription` ack_deadline_seconds
+  * `message_retention_durations`: an array of `google_pubsub_subscription` message_retention_duration
+  * `retain_acked_messages`: an array of `google_pubsub_subscription` retain_acked_messages
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

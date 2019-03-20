@@ -29,14 +29,19 @@ module GoogleInSpec
 
         attr_reader :skip_leading_rows
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @allow_jagged_rows = args['allowJaggedRows']
           @allow_quoted_newlines = args['allowQuotedNewlines']
           @encoding = args['encoding']
           @field_delimiter = args['fieldDelimiter']
           @quote = args['quote']
           @skip_leading_rows = args['skipLeadingRows']
+        end
+
+        def to_s
+          "#{@parent_identifier} TableExternalDataConfigurationCsvOptions"
         end
       end
     end

@@ -21,18 +21,23 @@ module GoogleInSpec
 
         attr_reader :message
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @code = args['code']
           @message = args['message']
+        end
+
+        def to_s
+          "#{@parent_identifier} SslPolicyWarnings"
         end
       end
 
       class SslPolicyWarningsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return SslPolicyWarnings.new(value) unless value.is_a?(::Array)
-          value.map { |v| SslPolicyWarnings.new(v) }
+          return SslPolicyWarnings.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| SslPolicyWarnings.new(v, parent_identifier) }
         end
       end
     end

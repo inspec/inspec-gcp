@@ -14,22 +14,31 @@
 #
 # ----------------------------------------------------------------------------
 module GoogleInSpec
-  module Compute
+  module Container
     module Property
-      class InstanceTemplatePropertiesDisksInitializeParamsSourceImageEncryptionKey
-        attr_reader :raw_key
+      class RegionalClusterPrivateClusterConfig
+        attr_reader :enable_private_nodes
 
-        attr_reader :sha256
+        attr_reader :enable_private_endpoint
+
+        attr_reader :master_ipv4_cidr_block
+
+        attr_reader :private_endpoint
+
+        attr_reader :public_endpoint
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @raw_key = args['rawKey']
-          @sha256 = args['sha256']
+          @enable_private_nodes = args['enablePrivateNodes']
+          @enable_private_endpoint = args['enablePrivateEndpoint']
+          @master_ipv4_cidr_block = args['masterIpv4CidrBlock']
+          @private_endpoint = args['privateEndpoint']
+          @public_endpoint = args['publicEndpoint']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesDisksInitializeParamsSourceImageEncryptionKey"
+          "#{@parent_identifier} RegionalClusterPrivateClusterConfig"
         end
       end
     end

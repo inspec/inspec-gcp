@@ -36,6 +36,7 @@ class Table < GcpResourceBase
   desc 'Table'
   supports platform: 'gcp'
 
+  attr_reader :params
   attr_reader :table_reference
   attr_reader :creation_time
   attr_reader :description
@@ -60,12 +61,13 @@ class Table < GcpResourceBase
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
+    @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params)
     parse unless @fetched.nil?
   end
 
   def parse
-    @table_reference = GoogleInSpec::BigQuery::Property::TableTableReference.new(@fetched['tableReference'])
+    @table_reference = GoogleInSpec::BigQuery::Property::TableTableReference.new(@fetched['tableReference'], to_s)
     @creation_time = @fetched['creationTime']
     @description = @fetched['description']
     @friendly_name = @fetched['friendlyName']
@@ -78,13 +80,13 @@ class Table < GcpResourceBase
     @num_long_term_bytes = @fetched['numLongTermBytes']
     @num_rows = @fetched['numRows']
     @type = @fetched['type']
-    @view = GoogleInSpec::BigQuery::Property::TableView.new(@fetched['view'])
-    @time_partitioning = GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(@fetched['timePartitioning'])
-    @streaming_buffer = GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(@fetched['streamingBuffer'])
-    @schema = GoogleInSpec::BigQuery::Property::TableSchema.new(@fetched['schema'])
-    @encryption_configuration = GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(@fetched['encryptionConfiguration'])
+    @view = GoogleInSpec::BigQuery::Property::TableView.new(@fetched['view'], to_s)
+    @time_partitioning = GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(@fetched['timePartitioning'], to_s)
+    @streaming_buffer = GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(@fetched['streamingBuffer'], to_s)
+    @schema = GoogleInSpec::BigQuery::Property::TableSchema.new(@fetched['schema'], to_s)
+    @encryption_configuration = GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(@fetched['encryptionConfiguration'], to_s)
     @expiration_time = @fetched['expirationTime']
-    @external_data_configuration = GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(@fetched['externalDataConfiguration'])
+    @external_data_configuration = GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(@fetched['externalDataConfiguration'], to_s)
     @dataset = @fetched['dataset']
   end
 
@@ -95,6 +97,10 @@ class Table < GcpResourceBase
 
   def exists?
     !@fetched.nil?
+  end
+
+  def to_s
+    "Table #{@params[:name]}"
   end
 
   private

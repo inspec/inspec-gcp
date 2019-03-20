@@ -19,9 +19,14 @@ module GoogleInSpec
       class AutoscalerAutoscalingPolicyCpuUtilization
         attr_reader :utilization_target
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @utilization_target = args['utilizationTarget']
+        end
+
+        def to_s
+          "#{@parent_identifier} AutoscalerAutoscalingPolicyCpuUtilization"
         end
       end
     end

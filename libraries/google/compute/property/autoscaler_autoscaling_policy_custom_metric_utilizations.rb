@@ -23,19 +23,24 @@ module GoogleInSpec
 
         attr_reader :utilization_target_type
 
-        def initialize(args = nil)
+        def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+          @parent_identifier = parent_identifier
           @metric = args['metric']
           @utilization_target = args['utilizationTarget']
           @utilization_target_type = args['utilizationTargetType']
         end
+
+        def to_s
+          "#{@parent_identifier} AutoscalerAutoscalingPolicyCustomMetricUtilizations"
+        end
       end
 
       class AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray
-        def self.parse(value)
+        def self.parse(value, parent_identifier)
           return if value.nil?
-          return AutoscalerAutoscalingPolicyCustomMetricUtilizations.new(value) unless value.is_a?(::Array)
-          value.map { |v| AutoscalerAutoscalingPolicyCustomMetricUtilizations.new(v) }
+          return AutoscalerAutoscalingPolicyCustomMetricUtilizations.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| AutoscalerAutoscalingPolicyCustomMetricUtilizations.new(v, parent_identifier) }
         end
       end
     end

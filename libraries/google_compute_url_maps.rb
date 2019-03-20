@@ -74,12 +74,12 @@ class UrlMaps < GcpResourceBase
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'defaultService' => ->(obj) { return :default_service, obj['defaultService'] },
       'description' => ->(obj) { return :description, obj['description'] },
-      'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules']) },
+      'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules'], to_s) },
       'id' => ->(obj) { return :id, obj['id'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'name' => ->(obj) { return :name, obj['name'] },
-      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers']) },
-      'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests']) },
+      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s) },
+      'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s) },
     }
   end
 
