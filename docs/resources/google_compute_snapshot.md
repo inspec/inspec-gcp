@@ -46,17 +46,17 @@ Properties that can be accessed from the `google_compute_snapshot` resource:
 
   * `snapshot_encryption_key`: The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
-    * `rawKey`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+    * `raw_key`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
-    * `kmsKeyName`: The name of the encryption key that is stored in Google Cloud KMS.
+    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
   * `source_disk_encryption_key`: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
-    * `rawKey`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+    * `raw_key`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
-    * `kmsKeyName`: The name of the encryption key that is stored in Google Cloud KMS.
+    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
 
 

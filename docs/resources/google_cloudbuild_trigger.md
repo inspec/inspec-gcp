@@ -43,17 +43,17 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
   * `trigger_template`: Template describing the types of source changes to trigger a build.  Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
 
-    * `projectId`: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+    * `project_id`: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
 
-    * `repoName`: Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+    * `repo_name`: Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
 
     * `dir`: Directory, relative to the source root, in which to run the build.  This must be a relative path. If a step's dir is specified and is an absolute path, this value is ignored for that step's execution.
 
-    * `branchName`: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+    * `branch_name`: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 
-    * `tagName`: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+    * `tag_name`: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
-    * `commitSha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+    * `commit_sha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
   * `build`: Contents of the build template. Either a filename or build template must be provided.
 

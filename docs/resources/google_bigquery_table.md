@@ -26,11 +26,11 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
   * `table_reference`: Reference describing the ID of this table
 
-    * `datasetId`: The ID of the dataset containing this table
+    * `dataset_id`: The ID of the dataset containing this table
 
-    * `projectId`: The ID of the project containing this table
+    * `project_id`: The ID of the project containing this table
 
-    * `tableId`: The ID of the the table
+    * `table_id`: The ID of the the table
 
   * `creation_time`: The time when this dataset was created, in milliseconds since the epoch.
 
@@ -58,23 +58,23 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
   * `view`: The view definition.
 
-    * `useLegacySql`: Specifies whether to use BigQuery's legacy SQL for this view
+    * `use_legacy_sql`: Specifies whether to use BigQuery's legacy SQL for this view
 
-    * `userDefinedFunctionResources`: Describes user-defined function resources used in the query.
+    * `user_defined_function_resources`: Describes user-defined function resources used in the query.
 
   * `time_partitioning`: If specified, configures time-based partitioning for this table.
 
-    * `expirationMs`: Number of milliseconds for which to keep the storage for a partition.
+    * `expiration_ms`: Number of milliseconds for which to keep the storage for a partition.
 
     * `type`: The only type supported is DAY, which will generate one partition per day.
 
   * `streaming_buffer`: Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 
-    * `estimatedBytes`: A lower-bound estimate of the number of bytes currently in the streaming buffer.
+    * `estimated_bytes`: A lower-bound estimate of the number of bytes currently in the streaming buffer.
 
-    * `estimatedRows`: A lower-bound estimate of the number of rows currently in the streaming buffer.
+    * `estimated_rows`: A lower-bound estimate of the number of rows currently in the streaming buffer.
 
-    * `oldestEntryTime`: Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+    * `oldest_entry_time`: Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
 
   * `schema`: Describes the schema of this table
 
@@ -82,7 +82,7 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
   * `encryption_configuration`: Custom encryption configuration
 
-    * `kmsKeyName`: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
+    * `kms_key_name`: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 
   * `expiration_time`: The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely.
 
@@ -92,21 +92,21 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
     * `compression`: The compression type of the data source
 
-    * `ignoreUnknownValues`: Indicates if BigQuery should allow extra values that are not represented in the table schema
+    * `ignore_unknown_values`: Indicates if BigQuery should allow extra values that are not represented in the table schema
 
-    * `maxBadRecords`: The maximum number of bad records that BigQuery can ignore when reading data
+    * `max_bad_records`: The maximum number of bad records that BigQuery can ignore when reading data
 
-    * `sourceFormat`: The data format
+    * `source_format`: The data format
 
-    * `sourceUris`: The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+    * `source_uris`: The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 
     * `schema`: The schema for the data. Schema is required for CSV and JSON formats
 
-    * `googleSheetsOptions`: Additional options if sourceFormat is set to GOOGLE_SHEETS.
+    * `google_sheets_options`: Additional options if sourceFormat is set to GOOGLE_SHEETS.
 
-    * `csvOptions`: Additional properties to set if sourceFormat is set to CSV.
+    * `csv_options`: Additional properties to set if sourceFormat is set to CSV.
 
-    * `bigtableOptions`: Additional options if sourceFormat is set to BIGTABLE.
+    * `bigtable_options`: Additional options if sourceFormat is set to BIGTABLE.
 
   * `dataset`: Name of the dataset
 

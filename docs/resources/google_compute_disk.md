@@ -66,29 +66,29 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
   * `source_image_encryption_key`: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
 
-    * `rawKey`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+    * `raw_key`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
-    * `kmsKeyName`: The name of the encryption key that is stored in Google Cloud KMS.
+    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
   * `source_image_id`: The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 
   * `disk_encryption_key`: Encrypts the disk using a customer-supplied encryption key.  After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk to a virtual machine).  Customer-supplied encryption keys do not protect access to metadata of the disk.  If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
 
-    * `rawKey`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+    * `raw_key`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
-    * `kmsKeyName`: The name of the encryption key that is stored in Google Cloud KMS.
+    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
   * `source_snapshot`: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot` * `projects/project/global/snapshots/snapshot` * `global/snapshots/snapshot`
 
   * `source_snapshot_encryption_key`: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
-    * `rawKey`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+    * `raw_key`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
-    * `kmsKeyName`: The name of the encryption key that is stored in Google Cloud KMS.
+    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
