@@ -41,7 +41,7 @@ Properties that can be accessed from the `google_compute_url_map` resource:
 
     * `hosts`: The list of host patterns to match. They must be valid hostnames, except * will match any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or ..
 
-    * `pathMatcher`: The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
+    * `path_matcher`: The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 
   * `id`: The unique identifier for the resource.
 
@@ -51,13 +51,13 @@ Properties that can be accessed from the `google_compute_url_map` resource:
 
   * `path_matchers`: The list of named PathMatchers to use against the URL.
 
-    * `defaultService`: A reference to a BackendService resource. This will be used if none of the pathRules defined by this PathMatcher is matched by the URL's path portion.
+    * `default_service`: A reference to a BackendService resource. This will be used if none of the pathRules defined by this PathMatcher is matched by the URL's path portion.
 
     * `description`: An optional description of this resource.
 
     * `name`: The name to which this PathMatcher is referred by the HostRule.
 
-    * `pathRules`: The list of path rules.
+    * `path_rules`: The list of path rules.
 
   * `tests`: The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
 

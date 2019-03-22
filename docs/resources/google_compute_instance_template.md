@@ -39,25 +39,25 @@ Properties that can be accessed from the `google_compute_instance_template` reso
 
   * `properties`: The instance properties for this instance template.
 
-    * `canIpForward`: Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false.
+    * `can_ip_forward`: Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false.
 
     * `description`: An optional text description for the instances that are created from this instance template.
 
     * `disks`: An array of disks that are associated with the instances that are created from this template.
 
-    * `machineType`: The machine type to use in the VM instance template.
+    * `machine_type`: The machine type to use in the VM instance template.
 
-    * `minCpuPlatform`: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms
+    * `min_cpu_platform`: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms
 
     * `metadata`: The metadata key/value pairs to assign to instances that are created from this template. These pairs can consist of custom metadata or predefined keys.
 
-    * `guestAccelerators`: List of the type and count of accelerator cards attached to the instance
+    * `guest_accelerators`: List of the type and count of accelerator cards attached to the instance
 
-    * `networkInterfaces`: An array of configurations for this interface. This specifies how this interface is configured to interact with other network services, such as connecting to the internet. Only one network interface is supported per instance.
+    * `network_interfaces`: An array of configurations for this interface. This specifies how this interface is configured to interact with other network services, such as connecting to the internet. Only one network interface is supported per instance.
 
     * `scheduling`: Sets the scheduling options for this instance.
 
-    * `serviceAccounts`: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
+    * `service_accounts`: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
 
     * `tags`: A list of tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035.
 

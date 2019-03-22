@@ -39,13 +39,13 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
     * `domain`: A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
 
-    * `groupByEmail`: An email address of a Google Group to grant access to
+    * `group_by_email`: An email address of a Google Group to grant access to
 
     * `role`: Describes the rights granted to the user specified by the other member of the access object
 
-    * `specialGroup`: A special group to grant access to.
+    * `special_group`: A special group to grant access to.
 
-    * `userByEmail`: An email address of a user to grant access to. For example: fred@example.com
+    * `user_by_email`: An email address of a user to grant access to. For example: fred@example.com
 
     * `view`: A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
 
@@ -53,9 +53,9 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
   * `dataset_reference`: A reference that identifies the dataset.
 
-    * `datasetId`: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+    * `dataset_id`: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 
-    * `projectId`: The ID of the project containing this dataset.
+    * `project_id`: The ID of the project containing this dataset.
 
   * `default_table_expiration_ms`: The default lifetime of all tables in the dataset, in milliseconds
 
