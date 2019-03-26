@@ -1,5 +1,42 @@
 # Change Log
 
+## [0.10.0](https://github.com/inspec/inspec-gcp/tree/0.10.0) (2019-03-26)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.9.0...0.10.0)
+
+**Closed issues:**
+
+- google\_compute\_router: iterating bgp.advertised\_ip\_ranges? [\#128](https://github.com/inspec/inspec-gcp/issues/128)
+- Fix dataset test display [\#125](https://github.com/inspec/inspec-gcp/issues/125)
+- test setup fails when specifying a region other than europe-west2 [\#114](https://github.com/inspec/inspec-gcp/issues/114)
+- Add support for google\_folders and related resources [\#111](https://github.com/inspec/inspec-gcp/issues/111)
+- Filter projects by ACTIVE status [\#108](https://github.com/inspec/inspec-gcp/issues/108)
+- JUnit, JSON Reporters not working  [\#89](https://github.com/inspec/inspec-gcp/issues/89)
+- google\_project\_alert\_policy doc use "name" when code ask "policy"  [\#86](https://github.com/inspec/inspec-gcp/issues/86)
+- google\_compute\_firewall: can't use allow\_ssh? when the the rule is a DENY rule [\#73](https://github.com/inspec/inspec-gcp/issues/73)
+- Support DNS record sets [\#66](https://github.com/inspec/inspec-gcp/issues/66)
+- Support regional clusters [\#65](https://github.com/inspec/inspec-gcp/issues/65)
+- Avoid dynamic property definition, or warn about it [\#25](https://github.com/inspec/inspec-gcp/issues/25)
+
+**Merged pull requests:**
+
+- Move region to MM generated [\#129](https://github.com/inspec/inspec-gcp/pull/129) ([slevenick](https://github.com/slevenick))
+- to\_s updates [\#127](https://github.com/inspec/inspec-gcp/pull/127) ([slevenick](https://github.com/slevenick))
+- Add folder resource [\#120](https://github.com/inspec/inspec-gcp/pull/120) ([slevenick](https://github.com/slevenick))
+- Update for google\_container\_regional\_clusters control. [\#118](https://github.com/inspec/inspec-gcp/pull/118) ([skpaterson](https://github.com/skpaterson))
+- Update google\_container\_regional\_cluster control to use correct region. [\#117](https://github.com/inspec/inspec-gcp/pull/117) ([skpaterson](https://github.com/skpaterson))
+- Ensure region selection works as expected. [\#116](https://github.com/inspec/inspec-gcp/pull/116) ([skpaterson](https://github.com/skpaterson))
+- improve test info in README [\#115](https://github.com/inspec/inspec-gcp/pull/115) ([bleything](https://github.com/bleything))
+- Add BigQuery, Source Repositories [\#113](https://github.com/inspec/inspec-gcp/pull/113) ([slevenick](https://github.com/slevenick))
+- Update google\_organization\(s\) controls only\_if condition to include o… [\#112](https://github.com/inspec/inspec-gcp/pull/112) ([skpaterson](https://github.com/skpaterson))
+- Add ability to test individual as well as multiple organisations [\#110](https://github.com/inspec/inspec-gcp/pull/110) ([walterdolce](https://github.com/walterdolce))
+- Implement ability to filter GCP projects by lifecycle state [\#109](https://github.com/inspec/inspec-gcp/pull/109) ([walterdolce](https://github.com/walterdolce))
+- Master updated [\#107](https://github.com/inspec/inspec-gcp/pull/107) ([slevenick](https://github.com/slevenick))
+- Merge most recent Magic Modules generated master [\#105](https://github.com/inspec/inspec-gcp/pull/105) ([slevenick](https://github.com/slevenick))
+- Http hc backend [\#104](https://github.com/inspec/inspec-gcp/pull/104) ([slevenick](https://github.com/slevenick))
+- Trigger healthcheck additions [\#103](https://github.com/inspec/inspec-gcp/pull/103) ([slevenick](https://github.com/slevenick))
+- Target pools autoscalers [\#102](https://github.com/inspec/inspec-gcp/pull/102) ([slevenick](https://github.com/slevenick))
+- Version bump 090 [\#101](https://github.com/inspec/inspec-gcp/pull/101) ([skpaterson](https://github.com/skpaterson))
+
 ## [v0.9.0](https://github.com/inspec/inspec-gcp/tree/v0.9.0) (2019-01-21)
 [Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.8.0...v0.9.0)
 
