@@ -13,24 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
 module GoogleInSpec
   module Compute
     module Property
-      class BackendServiceCdnPolicy
-        attr_reader :cache_key_policy
-
+      class BackendBucketCdnPolicy
         attr_reader :signed_url_cache_max_age_sec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'], to_s)
           @signed_url_cache_max_age_sec = args['signedUrlCacheMaxAgeSec']
         end
 
         def to_s
-          "#{@parent_identifier} BackendServiceCdnPolicy"
+          "#{@parent_identifier} BackendBucketCdnPolicy"
         end
       end
     end

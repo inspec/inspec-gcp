@@ -19,6 +19,7 @@ Properties that can be accessed from the `google_compute_backend_buckets` resour
 
 See [google_compute_backend_bucket.md](google_compute_backend_bucket.md) for more detailed information
   * `bucket_names`: an array of `google_compute_backend_bucket` bucket_name
+  * `cdn_policies`: an array of `google_compute_backend_bucket` cdn_policy
   * `creation_timestamps`: an array of `google_compute_backend_bucket` creation_timestamp
   * `descriptions`: an array of `google_compute_backend_bucket` description
   * `enable_cdns`: an array of `google_compute_backend_bucket` enable_cdn
