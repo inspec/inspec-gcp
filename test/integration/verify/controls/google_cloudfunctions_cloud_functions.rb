@@ -15,9 +15,9 @@
 title 'Test GCP google_cloudfunctions_cloud_functions resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_cloud_function_region = attribute(:gcp_cloud_function_region, default: 'gcp_cloud_function_region', description: 'The Cloud Function region.')
 cloudfunction = attribute('cloudfunction', default: {
   "name": "inspec-gcp-function",
-  "location": "europe-west1",
   "description": "A description of the function",
   "available_memory_mb": 128,
   "trigger_http": true,
@@ -29,7 +29,7 @@ control 'google_cloudfunctions_cloud_functions-1.0' do
   impact 1.0
   title 'google_cloudfunctions_cloud_functions resource test'
 
-  describe google_cloudfunctions_cloud_functions(project: gcp_project_id, location: cloudfunction['location']) do
+  describe google_cloudfunctions_cloud_functions(project: gcp_project_id, location: gcp_cloud_function_region) do
     its('descriptions') { should include cloudfunction['description'] }
     its('entry_points') { should include cloudfunction['entry_point'] }
   end

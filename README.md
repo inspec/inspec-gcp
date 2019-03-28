@@ -305,6 +305,7 @@ export GCP_LB_ZONE_MIG3="us-central1-c"
 export GCP_KUBE_CLUSTER_ZONE="us-central1-a"
 export GCP_KUBE_CLUSTER_ZONE_EXTRA1="us-central1-b"
 export GCP_KUBE_CLUSTER_ZONE_EXTRA2="us-central1-c"
+export GCP_CLOUD_FUNCTION_REGION="us-central1"
 ```
 
 Other regions can be targeted by updating the above.  For example, see [https://cloud.google.com/compute/docs/regions-zones/](https://cloud.google.com/compute/docs/regions-zones/) for suitable values.
