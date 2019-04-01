@@ -25,6 +25,10 @@ Properties that can be accessed from the `google_compute_backend_bucket` resourc
 
   * `bucket_name`: Cloud Storage bucket name.
 
+  * `cdn_policy`: Cloud CDN configuration for this Backend Bucket.
+
+    * `signed_url_cache_max_age_sec`: Maximum number of seconds the response to a signed URL request will be considered fresh. Defaults to 1hr (3600s). After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
+
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
   * `description`: An optional textual description of the resource; provided by the client when the resource is created.

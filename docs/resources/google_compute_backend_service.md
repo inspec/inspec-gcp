@@ -51,6 +51,8 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
     * `cache_key_policy`: The CacheKeyPolicy for this CdnPolicy.
 
+    * `signed_url_cache_max_age_sec`: Maximum number of seconds the response to a signed URL request will be considered fresh, defaults to 1hr (3600s). After this time period, the response will be revalidated before being served.  When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
+
   * `connection_draining`: Settings for connection draining
 
     * `draining_timeout_sec`: Time for which instance will be drained (not accept new connections, but still work to finish started).

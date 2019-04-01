@@ -24,6 +24,7 @@ class BackendBuckets < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:bucket_names, field: :bucket_name)
+  filter_table_config.add(:cdn_policies, field: :cdn_policy)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:enable_cdns, field: :enable_cdn)
@@ -69,6 +70,7 @@ class BackendBuckets < GcpResourceBase
   def transformers
     {
       'bucketName' => ->(obj) { return :bucket_name, obj['bucketName'] },
+      'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::BackendBucketCdnPolicy.new(obj['cdnPolicy'], to_s) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'description' => ->(obj) { return :description, obj['description'] },
       'enableCdn' => ->(obj) { return :enable_cdn, obj['enableCdn'] },
