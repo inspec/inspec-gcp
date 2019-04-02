@@ -59,6 +59,8 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
+  * `fingerprint`: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+
   * `description`: An optional description of this resource.
 
   * `enable_cdn`: If true, enable Cloud CDN for this BackendService.  When the load balancing scheme is INTERNAL, this field is not used.
@@ -85,7 +87,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `protocol`: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.  For internal load balancing, the possible values are TCP and UDP, and the default is TCP.
 
-  * `region`: The region where the regional backend service resides. This field is not applicable to global backend services.
+  * `security_policy`: The security policy associated with this backend service.
 
   * `session_affinity`: Type of session affinity to use. The default is NONE.  When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.  When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.  When the protocol is UDP, this field is not used.
 

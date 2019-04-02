@@ -28,6 +28,7 @@ class BackendServices < GcpResourceBase
   filter_table_config.add(:cdn_policies, field: :cdn_policy)
   filter_table_config.add(:connection_drainings, field: :connection_draining)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:enable_cdns, field: :enable_cdn)
   filter_table_config.add(:health_checks, field: :health_checks)
@@ -37,7 +38,7 @@ class BackendServices < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:port_names, field: :port_name)
   filter_table_config.add(:protocols, field: :protocol)
-  filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:security_policies, field: :security_policy)
   filter_table_config.add(:session_affinities, field: :session_affinity)
   filter_table_config.add(:timeout_secs, field: :timeout_sec)
 
@@ -84,6 +85,7 @@ class BackendServices < GcpResourceBase
       'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(obj['cdnPolicy'], to_s) },
       'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(obj['connectionDraining'], to_s) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'enableCDN' => ->(obj) { return :enable_cdn, obj['enableCDN'] },
       'healthChecks' => ->(obj) { return :health_checks, obj['healthChecks'] },
@@ -93,7 +95,7 @@ class BackendServices < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'portName' => ->(obj) { return :port_name, obj['portName'] },
       'protocol' => ->(obj) { return :protocol, obj['protocol'] },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'securityPolicy' => ->(obj) { return :security_policy, obj['securityPolicy'] },
       'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
       'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
     }
