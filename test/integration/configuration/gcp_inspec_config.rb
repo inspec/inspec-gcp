@@ -27,7 +27,7 @@ module GCPInspecConfig
       :gcp_zone_id => "2290",
       :gcp_region_id => "1290",
       # Cloud functions are only available in certain regions
-      :gcp_cloud_function_region => "us-central1",
+      :gcp_cloud_function_region => "us-central1"
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
       :gcp_int_vm_size => "f1-micro",
       :gcp_int_vm_image => "ubuntu-os-cloud/ubuntu-1604-lts",
