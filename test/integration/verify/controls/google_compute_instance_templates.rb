@@ -19,7 +19,7 @@ instance_template = attribute('instance_template', default: {
   "name": "inspec-gcp-instance-template",
   "description": "A description of the instance template",
   "instance_description": "A description of the instance itself",
-  "machine_type": "n1-standard-1",
+  "machine_type": "f1-micro",
   "tag": "foo",
   "can_ip_forward": false,
   "scheduling_automatic_restart": true,
