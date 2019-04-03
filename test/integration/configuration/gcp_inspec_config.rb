@@ -71,6 +71,7 @@ module GCPInspecConfig
       # GKE example parameters
       :gcp_kube_cluster_name => "gcp-inspec-kube-cluster",
       :gcp_kube_cluster_zone => "europe-west2-a",
+      :gcp_kube_cluster_size => 1,
       :gcp_kube_cluster_zone_extra1 => "europe-west2-b",
       :gcp_kube_cluster_zone_extra2 => "europe-west2-c",
       :gcp_kube_cluster_master_user => "gcp-inspec-kube-admin",

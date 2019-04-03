@@ -55,6 +55,7 @@ variable "gcp_ext_vm_data_disk_image" {}
 
 variable "gcp_kube_cluster_name" {}
 variable "gcp_kube_cluster_zone" {}
+variable "gcp_kube_cluster_size" {}
 variable "gcp_kube_cluster_zone_extra1" {}
 variable "gcp_kube_cluster_zone_extra2" {}
 variable "gcp_kube_cluster_master_user" {}
@@ -417,7 +418,7 @@ resource "google_container_cluster" "primary" {
   project = "${var.gcp_project_id}"
   name               = "${var.gcp_kube_cluster_name}"
   zone               = "${var.gcp_kube_cluster_zone}"
-  initial_node_count = 3
+  initial_node_count = "${var.gcp_kube_cluster_size}"
 
   additional_zones = [
     "${var.gcp_kube_cluster_zone_extra1}",
