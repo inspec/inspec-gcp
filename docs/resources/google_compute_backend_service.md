@@ -79,7 +79,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
     * `oauth2_client_secret_sha256`: OAuth2 Client Secret SHA-256 for IAP
 
-  * `load_balancing_scheme`: Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other.
+  * `load_balancing_scheme`: Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other. One of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
