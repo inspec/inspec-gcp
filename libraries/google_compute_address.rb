@@ -32,6 +32,10 @@ module Inspec::Resources
       !address.nil?
     end
 
+    def exists?
+      !address.nil?
+    end
+
     # How many users are there for the address
     def user_count
       users.count
