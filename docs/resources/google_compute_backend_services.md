@@ -26,6 +26,7 @@ See [google_compute_backend_service.md](google_compute_backend_service.md) for m
   * `cdn_policies`: an array of `google_compute_backend_service` cdn_policy
   * `connection_drainings`: an array of `google_compute_backend_service` connection_draining
   * `creation_timestamps`: an array of `google_compute_backend_service` creation_timestamp
+  * `fingerprints`: an array of `google_compute_backend_service` fingerprint
   * `descriptions`: an array of `google_compute_backend_service` description
   * `enable_cdns`: an array of `google_compute_backend_service` enable_cdn
   * `health_checks`: an array of `google_compute_backend_service` health_checks
@@ -35,7 +36,7 @@ See [google_compute_backend_service.md](google_compute_backend_service.md) for m
   * `names`: an array of `google_compute_backend_service` name
   * `port_names`: an array of `google_compute_backend_service` port_name
   * `protocols`: an array of `google_compute_backend_service` protocol
-  * `regions`: an array of `google_compute_backend_service` region
+  * `security_policies`: an array of `google_compute_backend_service` security_policy
   * `session_affinities`: an array of `google_compute_backend_service` session_affinity
   * `timeout_secs`: an array of `google_compute_backend_service` timeout_sec
 

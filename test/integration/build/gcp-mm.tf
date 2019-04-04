@@ -123,11 +123,11 @@ variable "cloudfunction" {
   type = "map"
 }
 
-variable "gcp_cloud_function_region" {}
-
 variable "backend_bucket" {
   type = "map"
 }
+
+variable "gcp_cloud_function_region" {}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = "${var.ssl_policy["name"]}"

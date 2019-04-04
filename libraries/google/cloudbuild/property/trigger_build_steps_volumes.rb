@@ -13,24 +13,31 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
 module GoogleInSpec
-  module Compute
+  module CloudBuild
     module Property
-      class BackendServiceCdnPolicy
-        attr_reader :cache_key_policy
+      class TriggerBuildStepsVolumes
+        attr_reader :name
 
-        attr_reader :signed_url_cache_max_age_sec
+        attr_reader :path
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'], to_s)
-          @signed_url_cache_max_age_sec = args['signedUrlCacheMaxAgeSec']
+          @name = args['name']
+          @path = args['path']
         end
 
         def to_s
-          "#{@parent_identifier} BackendServiceCdnPolicy"
+          "#{@parent_identifier} TriggerBuildStepsVolumes"
+        end
+      end
+
+      class TriggerBuildStepsVolumesArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return TriggerBuildStepsVolumes.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| TriggerBuildStepsVolumes.new(v, parent_identifier) }
         end
       end
     end

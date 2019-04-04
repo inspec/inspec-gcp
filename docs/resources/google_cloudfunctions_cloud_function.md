@@ -57,7 +57,7 @@ Properties that can be accessed from the `google_cloudfunctions_cloud_function` 
 
     * `url`: The URL pointing to the hosted repository where the function is defined
 
-    * `deployedUrl`: The URL pointing to the hosted repository where the function were defined at the time of deployment.
+    * `deployed_url`: The URL pointing to the hosted repository where the function were defined at the time of deployment.
 
   * `https_trigger`: An HTTPS endpoint type of source that can be triggered via URL.
 
@@ -65,7 +65,7 @@ Properties that can be accessed from the `google_cloudfunctions_cloud_function` 
 
   * `event_trigger`: An HTTPS endpoint type of source that can be triggered via URL.
 
-    * `eventType`: The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`.
+    * `event_type`: The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`.
 
     * `resource`: The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket.`
 

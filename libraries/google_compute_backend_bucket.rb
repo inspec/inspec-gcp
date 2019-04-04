@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/backendbucket_cdn_policy'
 
 # A provider to manage Compute Engine resources.
 class BackendBucket < GcpResourceBase
@@ -23,6 +24,7 @@ class BackendBucket < GcpResourceBase
 
   attr_reader :params
   attr_reader :bucket_name
+  attr_reader :cdn_policy
   attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :enable_cdn
@@ -38,6 +40,7 @@ class BackendBucket < GcpResourceBase
 
   def parse
     @bucket_name = @fetched['bucketName']
+    @cdn_policy = GoogleInSpec::Compute::Property::BackendBucketCdnPolicy.new(@fetched['cdnPolicy'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @enable_cdn = @fetched['enableCdn']

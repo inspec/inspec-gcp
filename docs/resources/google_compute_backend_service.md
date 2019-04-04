@@ -29,33 +29,37 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `backends`: The list of backends that serve this BackendService.
 
-    * `balancingMode`: Specifies the balancing mode for this backend.  For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).  This cannot be used for internal load balancing.
+    * `balancing_mode`: Specifies the balancing mode for this backend.  For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).  This cannot be used for internal load balancing.
 
-    * `capacityScaler`: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION).  Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].  This cannot be used for internal load balancing.
+    * `capacity_scaler`: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION).  Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].  This cannot be used for internal load balancing.
 
     * `description`: An optional description of this resource. Provide this property when you create the resource.
 
     * `group`: This instance group defines the list of instances that serve traffic. Member virtual machine instances from each instance group must live in the same zone as the instance group itself.  No two backends in a backend service are allowed to use same Instance Group resource.  When the BackendService has load balancing scheme INTERNAL, the instance group must be in a zone within the same region as the BackendService.
 
-    * `maxConnections`: The max number of simultaneous connections for the group. Can be used with either CONNECTION or UTILIZATION balancing modes.  For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.  This cannot be used for internal load balancing.
+    * `max_connections`: The max number of simultaneous connections for the group. Can be used with either CONNECTION or UTILIZATION balancing modes.  For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.  This cannot be used for internal load balancing.
 
-    * `maxConnectionsPerInstance`: The max number of simultaneous connections that a single backend instance can handle. This is used to calculate the capacity of the group. Can be used in either CONNECTION or UTILIZATION balancing modes.  For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.  This cannot be used for internal load balancing.
+    * `max_connections_per_instance`: The max number of simultaneous connections that a single backend instance can handle. This is used to calculate the capacity of the group. Can be used in either CONNECTION or UTILIZATION balancing modes.  For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.  This cannot be used for internal load balancing.
 
-    * `maxRate`: The max requests per second (RPS) of the group.  Can be used with either RATE or UTILIZATION balancing modes, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.  This cannot be used for internal load balancing.
+    * `max_rate`: The max requests per second (RPS) of the group.  Can be used with either RATE or UTILIZATION balancing modes, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.  This cannot be used for internal load balancing.
 
-    * `maxRatePerInstance`: The max requests per second (RPS) that a single backend instance can handle. This is used to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be set.  This cannot be used for internal load balancing.
+    * `max_rate_per_instance`: The max requests per second (RPS) that a single backend instance can handle. This is used to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be set.  This cannot be used for internal load balancing.
 
-    * `maxUtilization`: Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the group. The default is 0.8. Valid range is [0.0, 1.0].  This cannot be used for internal load balancing.
+    * `max_utilization`: Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the group. The default is 0.8. Valid range is [0.0, 1.0].  This cannot be used for internal load balancing.
 
   * `cdn_policy`: Cloud CDN configuration for this BackendService.
 
-    * `cacheKeyPolicy`: The CacheKeyPolicy for this CdnPolicy.
+    * `cache_key_policy`: The CacheKeyPolicy for this CdnPolicy.
+
+    * `signed_url_cache_max_age_sec`: Maximum number of seconds the response to a signed URL request will be considered fresh, defaults to 1hr (3600s). After this time period, the response will be revalidated before being served.  When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 
   * `connection_draining`: Settings for connection draining
 
-    * `drainingTimeoutSec`: Time for which instance will be drained (not accept new connections, but still work to finish started).
+    * `draining_timeout_sec`: Time for which instance will be drained (not accept new connections, but still work to finish started).
 
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
+
+  * `fingerprint`: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 
   * `description`: An optional description of this resource.
 
@@ -69,11 +73,11 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
     * `enabled`: Enables IAP.
 
-    * `oauth2ClientId`: OAuth2 Client ID for IAP
+    * `oauth2_client_id`: OAuth2 Client ID for IAP
 
-    * `oauth2ClientSecret`: OAuth2 Client Secret for IAP
+    * `oauth2_client_secret`: OAuth2 Client Secret for IAP
 
-    * `oauth2ClientSecretSha256`: OAuth2 Client Secret SHA-256 for IAP
+    * `oauth2_client_secret_sha256`: OAuth2 Client Secret SHA-256 for IAP
 
   * `load_balancing_scheme`: Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other.
 
@@ -83,7 +87,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `protocol`: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.  For internal load balancing, the possible values are TCP and UDP, and the default is TCP.
 
-  * `region`: The region where the regional backend service resides. This field is not applicable to global backend services.
+  * `security_policy`: The security policy associated with this backend service.
 
   * `session_affinity`: Type of session affinity to use. The default is NONE.  When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.  When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.  When the protocol is UDP, this field is not used.
 

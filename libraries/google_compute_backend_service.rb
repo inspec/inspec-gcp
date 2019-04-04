@@ -32,6 +32,7 @@ class BackendService < GcpResourceBase
   attr_reader :cdn_policy
   attr_reader :connection_draining
   attr_reader :creation_timestamp
+  attr_reader :fingerprint
   attr_reader :description
   attr_reader :enable_cdn
   attr_reader :health_checks
@@ -41,7 +42,7 @@ class BackendService < GcpResourceBase
   attr_reader :name
   attr_reader :port_name
   attr_reader :protocol
-  attr_reader :region
+  attr_reader :security_policy
   attr_reader :session_affinity
   attr_reader :timeout_sec
 
@@ -58,6 +59,7 @@ class BackendService < GcpResourceBase
     @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(@fetched['cdnPolicy'], to_s)
     @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
+    @fingerprint = @fetched['fingerprint']
     @description = @fetched['description']
     @enable_cdn = @fetched['enableCDN']
     @health_checks = @fetched['healthChecks']
@@ -67,7 +69,7 @@ class BackendService < GcpResourceBase
     @name = @fetched['name']
     @port_name = @fetched['portName']
     @protocol = @fetched['protocol']
-    @region = @fetched['region']
+    @security_policy = @fetched['securityPolicy']
     @session_affinity = @fetched['sessionAffinity']
     @timeout_sec = @fetched['timeoutSec']
   end

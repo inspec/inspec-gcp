@@ -36,7 +36,7 @@ Properties that can be accessed from the `google_compute_instance_group_manager`
 
     * `creating`: The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.  If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 
-    * `creatingWithoutRetries`: The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
+    * `creating_without_retries`: The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
 
     * `deleting`: The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
 
