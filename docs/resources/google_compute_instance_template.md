@@ -12,7 +12,7 @@ describe google_compute_instance_template(project: 'chef-gcp-inspec', name: 'ins
   it { should exist }
   its('description') { should eq 'A description of the instance template' }
   its('properties.description') { should eq 'A description of the instance itself' }
-  its('properties.machine_type') { should eq 'n1-standard-1' }
+  its('properties.machine_type') { should eq 'f1-micro' }
   its('properties.tags.items') { should include 'foo' }
   its('properties.disks.count') { should eq 1 }
   its('properties.disks.first.auto_delete') { should eq 'true' }
