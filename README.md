@@ -1,5 +1,11 @@
 # InSpec GCP (Google Cloud Platform) Resource Pack
 
+* **Project State: Active**
+* **Issues Response SLA: 3 business days**
+* **Pull Request Response SLA: 3 business days**
+
+For more information on project states and SLAs, see [this documentation](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md).
+
 This InSpec resource pack uses the native Google Cloud Platform (GCP) support in InSpec and provides the required resources to write tests for GCP.
 
 This implementation was inspired on the ideas by [Martez Reed](https://github.com/martezr/inspec-gcp).
