@@ -23,15 +23,11 @@ See [google_compute_global_forwarding_rule.md](google_compute_global_forwarding_
   * `ids`: an array of `google_compute_global_forwarding_rule` id
   * `ip_addresses`: an array of `google_compute_global_forwarding_rule` ip_address
   * `ip_protocols`: an array of `google_compute_global_forwarding_rule` ip_protocol
-  * `backend_services`: an array of `google_compute_global_forwarding_rule` backend_service
   * `ip_versions`: an array of `google_compute_global_forwarding_rule` ip_version
   * `load_balancing_schemes`: an array of `google_compute_global_forwarding_rule` load_balancing_scheme
   * `names`: an array of `google_compute_global_forwarding_rule` name
   * `networks`: an array of `google_compute_global_forwarding_rule` network
   * `port_ranges`: an array of `google_compute_global_forwarding_rule` port_range
-  * `ports`: an array of `google_compute_global_forwarding_rule` ports
-  * `subnetworks`: an array of `google_compute_global_forwarding_rule` subnetwork
-  * `regions`: an array of `google_compute_global_forwarding_rule` region
   * `targets`: an array of `google_compute_global_forwarding_rule` target
 
 ## Filter Criteria
