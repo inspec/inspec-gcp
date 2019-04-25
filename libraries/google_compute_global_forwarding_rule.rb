@@ -27,15 +27,11 @@ class GlobalForwardingRule < GcpResourceBase
   attr_reader :id
   attr_reader :ip_address
   attr_reader :ip_protocol
-  attr_reader :backend_service
   attr_reader :ip_version
   attr_reader :load_balancing_scheme
   attr_reader :name
   attr_reader :network
   attr_reader :port_range
-  attr_reader :ports
-  attr_reader :subnetwork
-  attr_reader :region
   attr_reader :target
 
   def initialize(params)
@@ -51,15 +47,11 @@ class GlobalForwardingRule < GcpResourceBase
     @id = @fetched['id']
     @ip_address = @fetched['IPAddress']
     @ip_protocol = @fetched['IPProtocol']
-    @backend_service = @fetched['backendService']
     @ip_version = @fetched['ipVersion']
     @load_balancing_scheme = @fetched['loadBalancingScheme']
     @name = @fetched['name']
     @network = @fetched['network']
     @port_range = @fetched['portRange']
-    @ports = @fetched['ports']
-    @subnetwork = @fetched['subnetwork']
-    @region = @fetched['region']
     @target = @fetched['target']
   end
 
