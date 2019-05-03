@@ -38,6 +38,10 @@ Properties that can be accessed from the `google_pubsub_subscription` resource:
 
   * `retain_acked_messages`: Indicates whether to retain acknowledged messages. If `true`, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
 
+  * `expiration_policy`: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. The minimum allowed value for expirationPolicy.ttl is 1 day.
+
+    * `ttl`: Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of ttl. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for ttl depend on the type of the associated resource, as well. If ttl is not set, the associated resource never expires. A duration in seconds with up to nine fractional digits, terminated by 's'. Example - "3.5s".
+
 
 
 ## GCP Permissions

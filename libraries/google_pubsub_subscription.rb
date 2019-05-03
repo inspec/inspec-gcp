@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/pubsub/property/subscription_expiration_policy'
 require 'google/pubsub/property/subscription_push_config'
 
 # A provider to manage Cloud Pub/Sub resources.
@@ -30,6 +31,7 @@ class Subscription < GcpResourceBase
   attr_reader :ack_deadline_seconds
   attr_reader :message_retention_duration
   attr_reader :retain_acked_messages
+  attr_reader :expiration_policy
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -46,6 +48,7 @@ class Subscription < GcpResourceBase
     @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
     @message_retention_duration = @fetched['messageRetentionDuration']
     @retain_acked_messages = @fetched['retainAckedMessages']
+    @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
   end
 
   # Handles parsing RFC3339 time string
