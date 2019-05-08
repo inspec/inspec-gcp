@@ -29,14 +29,14 @@ module Inspec::Resources
     def has_logging_enabled?
       return false if !defined?(@cluster.logging_service)
       return false if @cluster.logging_service.nil?
-      return true if @cluster.logging_service == 'logging.googleapis.com'
+      return true if /logging\.googleapis\.com/ =~ @cluster.logging_service
       false
     end
 
     def has_monitoring_enabled?
       return false if !defined?(@cluster.monitoring_service)
       return false if @cluster.monitoring_service.nil?
-      return true if @cluster.monitoring_service == 'monitoring.googleapis.com'
+      return true if /monitoring\.googleapis\.com/ =~ @cluster.monitoring_service
       false
     end
 
