@@ -1,14 +1,32 @@
 # Change Log
 
-## [0.10.0](https://github.com/inspec/inspec-gcp/tree/0.10.0) (2019-03-26)
-[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.9.0...0.10.0)
+## [v0.11.0](https://github.com/inspec/inspec-gcp/tree/v0.11.0) (2019-04-30)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.10.0...v0.11.0)
+
+**Closed issues:**
+
+- google\_container\_cluster method has\_logging\_enabled? reporting wrong [\#136](https://github.com/inspec/inspec-gcp/issues/136)
+- Add support for google\_subnetwork\_iam\_bindings [\#122](https://github.com/inspec/inspec-gcp/issues/122)
+- Add support for google\_folders and related resources [\#111](https://github.com/inspec/inspec-gcp/issues/111)
+
+**Merged pull requests:**
+
+- Subnet iam policy [\#142](https://github.com/inspec/inspec-gcp/pull/142) ([slevenick](https://github.com/slevenick))
+- Regional node pools [\#139](https://github.com/inspec/inspec-gcp/pull/139) ([slevenick](https://github.com/slevenick))
+- Add exists? method to google\_compute\_address [\#138](https://github.com/inspec/inspec-gcp/pull/138) ([ivantsepp](https://github.com/ivantsepp))
+- Logging enabled regex [\#137](https://github.com/inspec/inspec-gcp/pull/137) ([slevenick](https://github.com/slevenick))
+- Version bump 0100 [\#133](https://github.com/inspec/inspec-gcp/pull/133) ([skpaterson](https://github.com/skpaterson))
+- Correct names for nested object properties. [\#132](https://github.com/inspec/inspec-gcp/pull/132) ([slevenick](https://github.com/slevenick))
+- Add support for backend buckets, cloud functions [\#130](https://github.com/inspec/inspec-gcp/pull/130) ([slevenick](https://github.com/slevenick))
+
+## [v0.10.0](https://github.com/inspec/inspec-gcp/tree/v0.10.0) (2019-03-20)
+[Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.9.0...v0.10.0)
 
 **Closed issues:**
 
 - google\_compute\_router: iterating bgp.advertised\_ip\_ranges? [\#128](https://github.com/inspec/inspec-gcp/issues/128)
 - Fix dataset test display [\#125](https://github.com/inspec/inspec-gcp/issues/125)
 - test setup fails when specifying a region other than europe-west2 [\#114](https://github.com/inspec/inspec-gcp/issues/114)
-- Add support for google\_folders and related resources [\#111](https://github.com/inspec/inspec-gcp/issues/111)
 - Filter projects by ACTIVE status [\#108](https://github.com/inspec/inspec-gcp/issues/108)
 - JUnit, JSON Reporters not working  [\#89](https://github.com/inspec/inspec-gcp/issues/89)
 - google\_project\_alert\_policy doc use "name" when code ask "policy"  [\#86](https://github.com/inspec/inspec-gcp/issues/86)
