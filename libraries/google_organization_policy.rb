@@ -8,11 +8,9 @@ module Inspec::Resources
     desc 'Verifies configuration of an organization policy'
 
     example "
-      describe google_organization(name: 'google.com') do
+      describe google_organization_policy(name: 'organizations/123456', constraint: 'constraints/compute.disableGuestAttributesAccess') do
         it { should exist }
-        its('name') { should eq 'organizations/1234' }
-        its('display_name') { should eq 'google.com' }
-        its('lifecycle_state') { should eq 'ACTIVE' }
+        its('boolean_policy.enforced') { should be true }
       end
     "
     def initialize(opts = {})
