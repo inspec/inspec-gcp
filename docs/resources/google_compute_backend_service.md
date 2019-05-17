@@ -85,7 +85,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `port_name`: Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the load balancing scheme is EXTERNAL.
 
-  * `protocol`: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
+  * `protocol`: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if used with the GA API.
 
   * `security_policy`: The security policy associated with this backend service.
 
