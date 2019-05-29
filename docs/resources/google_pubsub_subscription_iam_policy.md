@@ -1,18 +1,18 @@
 ---
-title: About the google_compute_subnetwork_iam_policy resource
+title: About the google_pubsub_subscription_iam_policy resource
 platform: gcp
 ---
 
 ## Syntax
-A `google_compute_subnetwork_iam_policy` is used to test a Google Subnetwork Iam Policy resource
+A `google_pubsub_subscription_iam_policy` is used to test a Google Subscription Iam Policy resource
 
 ## Examples
 ```
-describe google_compute_subnetwork_iam_policy(project: "project", region: "region", name: "name") do
+describe google_pubsub_subscription_iam_policy(project: "project", name: "name") do
   it { should exist }
 end
 
-google_compute_subnetwork_iam_policy(project: "project", region: "region", name: "name").bindings.each do |binding|
+google_pubsub_subscription_iam_policy(project: "project", name: "name").bindings.each do |binding|
   describe binding do
     its('role') { should eq 'roles/editor'}
     its('members') { should include 'user:testuser@example.com'}
@@ -21,7 +21,7 @@ end
 ```
 
 ## Properties
-Properties that can be accessed from the `google_compute_subnetwork_iam_policy` resource:
+Properties that can be accessed from the `google_pubsub_subscription_iam_policy` resource:
 
   * `bindings`: Associates a list of members to a role.
 
@@ -39,4 +39,4 @@ Properties that can be accessed from the `google_compute_subnetwork_iam_policy` 
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
+Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.
