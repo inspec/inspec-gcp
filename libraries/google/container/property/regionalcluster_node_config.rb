@@ -13,6 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/container/property/regionalcluster_node_config_accelerators'
+require 'google/container/property/regionalcluster_node_config_taints'
 module GoogleInSpec
   module Container
     module Property
@@ -37,6 +39,14 @@ module GoogleInSpec
 
         attr_reader :preemptible
 
+        attr_reader :accelerators
+
+        attr_reader :disk_type
+
+        attr_reader :min_cpu_platform
+
+        attr_reader :taints
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -50,6 +60,10 @@ module GoogleInSpec
           @local_ssd_count = args['localSsdCount']
           @tags = args['tags']
           @preemptible = args['preemptible']
+          @accelerators = GoogleInSpec::Container::Property::RegionalClusterNodeConfigAcceleratorsArray.parse(args['accelerators'], to_s)
+          @disk_type = args['diskType']
+          @min_cpu_platform = args['minCpuPlatform']
+          @taints = GoogleInSpec::Container::Property::RegionalClusterNodeConfigTaintsArray.parse(args['taints'], to_s)
         end
 
         def to_s
