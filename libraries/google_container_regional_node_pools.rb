@@ -26,9 +26,14 @@ class RegionalNodePools < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:configs, field: :config)
   filter_table_config.add(:initial_node_counts, field: :initial_node_count)
+  filter_table_config.add(:statuses, field: :status)
+  filter_table_config.add(:status_messages, field: :status_message)
   filter_table_config.add(:versions, field: :version)
   filter_table_config.add(:autoscalings, field: :autoscaling)
   filter_table_config.add(:managements, field: :management)
+  filter_table_config.add(:max_pods_constraints, field: :max_pods_constraint)
+  filter_table_config.add(:conditions, field: :conditions)
+  filter_table_config.add(:pod_ipv4_cidr_sizes, field: :pod_ipv4_cidr_size)
   filter_table_config.add(:clusters, field: :cluster)
   filter_table_config.add(:locations, field: :location)
 
@@ -73,9 +78,14 @@ class RegionalNodePools < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'config' => ->(obj) { return :config, GoogleInSpec::Container::Property::RegionalNodePoolConfig.new(obj['config'], to_s) },
       'initialNodeCount' => ->(obj) { return :initial_node_count, obj['initialNodeCount'] },
+      'status' => ->(obj) { return :status, obj['status'] },
+      'statusMessage' => ->(obj) { return :status_message, obj['statusMessage'] },
       'version' => ->(obj) { return :version, obj['version'] },
       'autoscaling' => ->(obj) { return :autoscaling, GoogleInSpec::Container::Property::RegionalNodePoolAutoscaling.new(obj['autoscaling'], to_s) },
       'management' => ->(obj) { return :management, GoogleInSpec::Container::Property::RegionalNodePoolManagement.new(obj['management'], to_s) },
+      'maxPodsConstraint' => ->(obj) { return :max_pods_constraint, GoogleInSpec::Container::Property::RegionalNodePoolMaxPodsConstraint.new(obj['maxPodsConstraint'], to_s) },
+      'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::RegionalNodePoolConditionsArray.parse(obj['conditions'], to_s) },
+      'podIpv4CidrSize' => ->(obj) { return :pod_ipv4_cidr_size, obj['podIpv4CidrSize'] },
       'cluster' => ->(obj) { return :cluster, obj['cluster'] },
       'location' => ->(obj) { return :location, obj['location'] },
     }
