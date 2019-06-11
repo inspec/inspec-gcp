@@ -45,7 +45,19 @@ Properties that can be accessed from the `google_container_regional_node_pool` r
 
     * `preemptible`: Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
 
+    * `accelerators`: A list of hardware accelerators to be attached to each node
+
+    * `disk_type`: Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')  If unspecified, the default disk type is 'pd-standard'
+
+    * `min_cpu_platform`: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform
+
+    * `taints`: List of kubernetes taints to be applied to each node.
+
   * `initial_node_count`: The initial node count for the pool. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota.
+
+  * `status`: Status of nodes in this pool instance
+
+  * `status_message`: Additional information about the current status of this node pool instance
 
   * `version`: The version of the Kubernetes of this node.
 
@@ -64,6 +76,16 @@ Properties that can be accessed from the `google_container_regional_node_pool` r
     * `auto_repair`: A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
 
     * `upgrade_options`: Specifies the Auto Upgrade knobs for the node pool.
+
+  * `max_pods_constraint`: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+
+    * `max_pods_per_node`: Constraint enforced on the max num of pods per node.
+
+  * `conditions`: Which conditions caused the current node pool state.
+
+    * `code`: Machine-friendly representation of the condition
+
+  * `pod_ipv4_cidr_size`: The pod CIDR block size per node in this node pool.
 
   * `cluster`: The cluster this node pool belongs to.
 

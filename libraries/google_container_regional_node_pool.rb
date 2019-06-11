@@ -15,9 +15,13 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/container/property/regionalnodepool_autoscaling'
+require 'google/container/property/regionalnodepool_conditions'
 require 'google/container/property/regionalnodepool_config'
+require 'google/container/property/regionalnodepool_config_accelerators'
+require 'google/container/property/regionalnodepool_config_taints'
 require 'google/container/property/regionalnodepool_management'
 require 'google/container/property/regionalnodepool_management_upgrade_options'
+require 'google/container/property/regionalnodepool_max_pods_constraint'
 
 # A provider to manage Google Kubernetes Engine resources.
 class RegionalNodePool < GcpResourceBase
@@ -29,9 +33,14 @@ class RegionalNodePool < GcpResourceBase
   attr_reader :name
   attr_reader :config
   attr_reader :initial_node_count
+  attr_reader :status
+  attr_reader :status_message
   attr_reader :version
   attr_reader :autoscaling
   attr_reader :management
+  attr_reader :max_pods_constraint
+  attr_reader :conditions
+  attr_reader :pod_ipv4_cidr_size
   attr_reader :cluster
   attr_reader :location
 
@@ -46,9 +55,14 @@ class RegionalNodePool < GcpResourceBase
     @name = @fetched['name']
     @config = GoogleInSpec::Container::Property::RegionalNodePoolConfig.new(@fetched['config'], to_s)
     @initial_node_count = @fetched['initialNodeCount']
+    @status = @fetched['status']
+    @status_message = @fetched['statusMessage']
     @version = @fetched['version']
     @autoscaling = GoogleInSpec::Container::Property::RegionalNodePoolAutoscaling.new(@fetched['autoscaling'], to_s)
     @management = GoogleInSpec::Container::Property::RegionalNodePoolManagement.new(@fetched['management'], to_s)
+    @max_pods_constraint = GoogleInSpec::Container::Property::RegionalNodePoolMaxPodsConstraint.new(@fetched['maxPodsConstraint'], to_s)
+    @conditions = GoogleInSpec::Container::Property::RegionalNodePoolConditionsArray.parse(@fetched['conditions'], to_s)
+    @pod_ipv4_cidr_size = @fetched['podIpv4CidrSize']
     @cluster = @fetched['cluster']
     @location = @fetched['location']
   end
