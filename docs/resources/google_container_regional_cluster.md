@@ -26,7 +26,7 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
   * `description`: An optional description of this cluster.
 
-  * `initial_node_count`: The number of nodes to create in this cluster. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "nodePool" object, since this configuration (along with the "nodeConfig") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a nodePool at the same time.
+  * `initial_node_count`: The number of nodes to create in this cluster. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "nodePool" object, since this configuration (along with the "nodeConfig") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a nodePool at the same time.  This field has been deprecated. Please use nodePool.initial_node_count instead.
 
   * `node_config`: Parameters used in creating the cluster's nodes.  For requests, this field should only be used in lieu of a "nodePool" object, since this configuration (along with the "initialNodeCount") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a nodePool at the same time. For responses, this field will be populated with the node configuration of the first node pool. If unspecified, the defaults are used.
 
@@ -50,11 +50,21 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `preemptible`: Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
 
+    * `accelerators`: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
+
+    * `disk_type`: Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')  If unspecified, the default disk type is 'pd-standard'
+
+    * `min_cpu_platform`: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+
+    * `taints`: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+
   * `master_auth`: The authentication information for accessing the master endpoint.
 
     * `username`: The username to use for HTTP basic authentication to the master endpoint.
 
     * `password`: The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password.
+
+    * `client_certificate_config`: Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
 
     * `cluster_ca_certificate`: Base64-encoded public certificate that is the root of trust for the cluster.
 
@@ -88,7 +98,29 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `horizontal_pod_autoscaling`: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 
+    * `network_policy_config`: Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
+
   * `subnetwork`: The name of the Google Compute Engine subnetwork to which the cluster is connected.
+
+  * `locations`: The list of Google Compute Engine zones in which the cluster's nodes should be located.
+
+  * `resource_labels`: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
+
+  * `label_fingerprint`: The fingerprint of the set of labels for this cluster.
+
+  * `legacy_abac`: Configuration for the legacy ABAC authorization mode.
+
+    * `enabled`: Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
+
+  * `network_policy`: Configuration options for the NetworkPolicy feature.
+
+    * `provider`: The selected network policy provider.
+
+    * `enabled`: Whether network policy is enabled on the cluster.
+
+  * `default_max_pods_constraint`: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
+
+    * `max_pods_per_node`: Constraint enforced on the max num of pods per node.
 
   * `endpoint`: The IP address of this cluster's master endpoint.  The endpoint can be accessed from the internet at https://username:password@endpoint/  See the masterAuth property of this resource for username and password information.
 
@@ -100,6 +132,10 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
   * `create_time`: The time the cluster was created, in RFC3339 text format.
 
+  * `status`: The current status of this cluster.
+
+  * `status_message`: Additional information about the current status of this cluster, if available.
+
   * `node_ipv4_cidr_size`: The size of the address space on each node for hosting containers. This is provisioned from within the container_ipv4_cidr range.
 
   * `services_ipv4_cidr`: The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
@@ -107,6 +143,16 @@ Properties that can be accessed from the `google_container_regional_cluster` res
   * `current_node_count`: The number of nodes currently in the cluster.
 
   * `expire_time`: The time the cluster will be automatically deleted in RFC3339 text format.
+
+  * `enable_tpu`: Enable the ability to use Cloud TPUs in this cluster.
+
+  * `tpu_ipv4_cidr_block`: The IP address range of the Cloud TPUs in this cluster, in CIDR notation
+
+  * `conditions`: Which conditions caused the current cluster state.
+
+    * `code`: Machine-friendly representation of the condition
+
+    * `message`: Human-friendly representation of the condition
 
   * `location`: The location where the cluster is deployed
 

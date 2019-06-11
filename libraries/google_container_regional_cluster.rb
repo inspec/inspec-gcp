@@ -17,8 +17,16 @@ require 'gcp_backend'
 require 'google/container/property/regionalcluster_addons_config'
 require 'google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling'
 require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
+require 'google/container/property/regionalcluster_addons_config_network_policy_config'
+require 'google/container/property/regionalcluster_conditions'
+require 'google/container/property/regionalcluster_default_max_pods_constraint'
+require 'google/container/property/regionalcluster_legacy_abac'
 require 'google/container/property/regionalcluster_master_auth'
+require 'google/container/property/regionalcluster_master_auth_client_certificate_config'
+require 'google/container/property/regionalcluster_network_policy'
 require 'google/container/property/regionalcluster_node_config'
+require 'google/container/property/regionalcluster_node_config_accelerators'
+require 'google/container/property/regionalcluster_node_config_taints'
 require 'google/container/property/regionalcluster_private_cluster_config'
 
 # A provider to manage Google Kubernetes Engine resources.
@@ -40,15 +48,26 @@ class RegionalCluster < GcpResourceBase
   attr_reader :cluster_ipv4_cidr
   attr_reader :addons_config
   attr_reader :subnetwork
+  attr_reader :locations
+  attr_reader :resource_labels
+  attr_reader :label_fingerprint
+  attr_reader :legacy_abac
+  attr_reader :network_policy
+  attr_reader :default_max_pods_constraint
   attr_reader :endpoint
   attr_reader :initial_cluster_version
   attr_reader :current_master_version
   attr_reader :current_node_version
   attr_reader :create_time
+  attr_reader :status
+  attr_reader :status_message
   attr_reader :node_ipv4_cidr_size
   attr_reader :services_ipv4_cidr
   attr_reader :current_node_count
   attr_reader :expire_time
+  attr_reader :enable_tpu
+  attr_reader :tpu_ipv4_cidr_block
+  attr_reader :conditions
   attr_reader :location
 
   def initialize(params)
@@ -71,15 +90,26 @@ class RegionalCluster < GcpResourceBase
     @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
     @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
     @subnetwork = @fetched['subnetwork']
+    @locations = @fetched['locations']
+    @resource_labels = @fetched['resourceLabels']
+    @label_fingerprint = @fetched['labelFingerprint']
+    @legacy_abac = GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.new(@fetched['legacyAbac'], to_s)
+    @network_policy = GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.new(@fetched['networkPolicy'], to_s)
+    @default_max_pods_constraint = GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.new(@fetched['defaultMaxPodsConstraint'], to_s)
     @endpoint = @fetched['endpoint']
     @initial_cluster_version = @fetched['initialClusterVersion']
     @current_master_version = @fetched['currentMasterVersion']
     @current_node_version = @fetched['currentNodeVersion']
     @create_time = parse_time_string(@fetched['createTime'])
+    @status = @fetched['status']
+    @status_message = @fetched['statusMessage']
     @node_ipv4_cidr_size = @fetched['nodeIpv4CidrSize']
     @services_ipv4_cidr = @fetched['servicesIpv4Cidr']
     @current_node_count = @fetched['currentNodeCount']
     @expire_time = parse_time_string(@fetched['expireTime'])
+    @enable_tpu = @fetched['enableTpu']
+    @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
+    @conditions = GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(@fetched['conditions'], to_s)
     @location = @fetched['location']
   end
 

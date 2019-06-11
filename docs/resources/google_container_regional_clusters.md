@@ -31,15 +31,26 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `cluster_ipv4_cidrs`: an array of `google_container_regional_cluster` cluster_ipv4_cidr
   * `addons_configs`: an array of `google_container_regional_cluster` addons_config
   * `subnetworks`: an array of `google_container_regional_cluster` subnetwork
+  * `locations`: an array of `google_container_regional_cluster` locations
+  * `resource_labels`: an array of `google_container_regional_cluster` resource_labels
+  * `label_fingerprints`: an array of `google_container_regional_cluster` label_fingerprint
+  * `legacy_abacs`: an array of `google_container_regional_cluster` legacy_abac
+  * `network_policies`: an array of `google_container_regional_cluster` network_policy
+  * `default_max_pods_constraints`: an array of `google_container_regional_cluster` default_max_pods_constraint
   * `endpoints`: an array of `google_container_regional_cluster` endpoint
   * `initial_cluster_versions`: an array of `google_container_regional_cluster` initial_cluster_version
   * `current_master_versions`: an array of `google_container_regional_cluster` current_master_version
   * `current_node_versions`: an array of `google_container_regional_cluster` current_node_version
   * `create_times`: an array of `google_container_regional_cluster` create_time
+  * `statuses`: an array of `google_container_regional_cluster` status
+  * `status_messages`: an array of `google_container_regional_cluster` status_message
   * `node_ipv4_cidr_sizes`: an array of `google_container_regional_cluster` node_ipv4_cidr_size
   * `services_ipv4_cidrs`: an array of `google_container_regional_cluster` services_ipv4_cidr
   * `current_node_counts`: an array of `google_container_regional_cluster` current_node_count
   * `expire_times`: an array of `google_container_regional_cluster` expire_time
+  * `enable_tpus`: an array of `google_container_regional_cluster` enable_tpu
+  * `tpu_ipv4_cidr_blocks`: an array of `google_container_regional_cluster` tpu_ipv4_cidr_block
+  * `conditions`: an array of `google_container_regional_cluster` conditions
   * `locations`: an array of `google_container_regional_cluster` location
 
 ## Filter Criteria
