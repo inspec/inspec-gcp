@@ -13,36 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/regionalcluster_master_auth_client_certificate_config'
 module GoogleInSpec
   module Container
     module Property
-      class RegionalClusterMasterAuth
-        attr_reader :username
-
-        attr_reader :password
-
-        attr_reader :client_certificate_config
-
-        attr_reader :cluster_ca_certificate
-
-        attr_reader :client_certificate
-
-        attr_reader :client_key
+      class RegionalClusterAddonsConfigNetworkPolicyConfig
+        attr_reader :disabled
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @username = args['username']
-          @password = args['password']
-          @client_certificate_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthClientCertificateConfig.new(args['clientCertificateConfig'], to_s)
-          @cluster_ca_certificate = args['clusterCaCertificate']
-          @client_certificate = args['clientCertificate']
-          @client_key = args['clientKey']
+          @disabled = args['disabled']
         end
 
         def to_s
-          "#{@parent_identifier} RegionalClusterMasterAuth"
+          "#{@parent_identifier} RegionalClusterAddonsConfigNetworkPolicyConfig"
         end
       end
     end

@@ -35,15 +35,26 @@ class RegionalClusters < GcpResourceBase
   filter_table_config.add(:cluster_ipv4_cidrs, field: :cluster_ipv4_cidr)
   filter_table_config.add(:addons_configs, field: :addons_config)
   filter_table_config.add(:subnetworks, field: :subnetwork)
+  filter_table_config.add(:locations, field: :locations)
+  filter_table_config.add(:resource_labels, field: :resource_labels)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
+  filter_table_config.add(:legacy_abacs, field: :legacy_abac)
+  filter_table_config.add(:network_policies, field: :network_policy)
+  filter_table_config.add(:default_max_pods_constraints, field: :default_max_pods_constraint)
   filter_table_config.add(:endpoints, field: :endpoint)
   filter_table_config.add(:initial_cluster_versions, field: :initial_cluster_version)
   filter_table_config.add(:current_master_versions, field: :current_master_version)
   filter_table_config.add(:current_node_versions, field: :current_node_version)
   filter_table_config.add(:create_times, field: :create_time)
+  filter_table_config.add(:statuses, field: :status)
+  filter_table_config.add(:status_messages, field: :status_message)
   filter_table_config.add(:node_ipv4_cidr_sizes, field: :node_ipv4_cidr_size)
   filter_table_config.add(:services_ipv4_cidrs, field: :services_ipv4_cidr)
   filter_table_config.add(:current_node_counts, field: :current_node_count)
   filter_table_config.add(:expire_times, field: :expire_time)
+  filter_table_config.add(:enable_tpus, field: :enable_tpu)
+  filter_table_config.add(:tpu_ipv4_cidr_blocks, field: :tpu_ipv4_cidr_block)
+  filter_table_config.add(:conditions, field: :conditions)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -96,15 +107,26 @@ class RegionalClusters < GcpResourceBase
       'clusterIpv4Cidr' => ->(obj) { return :cluster_ipv4_cidr, obj['clusterIpv4Cidr'] },
       'addonsConfig' => ->(obj) { return :addons_config, GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(obj['addonsConfig'], to_s) },
       'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
+      'locations' => ->(obj) { return :locations, obj['locations'] },
+      'resourceLabels' => ->(obj) { return :resource_labels, obj['resourceLabels'] },
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
+      'legacyAbac' => ->(obj) { return :legacy_abac, GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.new(obj['legacyAbac'], to_s) },
+      'networkPolicy' => ->(obj) { return :network_policy, GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.new(obj['networkPolicy'], to_s) },
+      'defaultMaxPodsConstraint' => ->(obj) { return :default_max_pods_constraint, GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.new(obj['defaultMaxPodsConstraint'], to_s) },
       'endpoint' => ->(obj) { return :endpoint, obj['endpoint'] },
       'initialClusterVersion' => ->(obj) { return :initial_cluster_version, obj['initialClusterVersion'] },
       'currentMasterVersion' => ->(obj) { return :current_master_version, obj['currentMasterVersion'] },
       'currentNodeVersion' => ->(obj) { return :current_node_version, obj['currentNodeVersion'] },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
+      'status' => ->(obj) { return :status, obj['status'] },
+      'statusMessage' => ->(obj) { return :status_message, obj['statusMessage'] },
       'nodeIpv4CidrSize' => ->(obj) { return :node_ipv4_cidr_size, obj['nodeIpv4CidrSize'] },
       'servicesIpv4Cidr' => ->(obj) { return :services_ipv4_cidr, obj['servicesIpv4Cidr'] },
       'currentNodeCount' => ->(obj) { return :current_node_count, obj['currentNodeCount'] },
       'expireTime' => ->(obj) { return :expire_time, parse_time_string(obj['expireTime']) },
+      'enableTpu' => ->(obj) { return :enable_tpu, obj['enableTpu'] },
+      'tpuIpv4CidrBlock' => ->(obj) { return :tpu_ipv4_cidr_block, obj['tpuIpv4CidrBlock'] },
+      'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(obj['conditions'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end
