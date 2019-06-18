@@ -126,7 +126,7 @@ module GCPInspecConfig
   end
 
   # Create JSON for terraform
-  def self.store_json(file_name = "gcp-inspec.tfvars")
+  def self.store_json(file_name = "gcp-inspec.tfvars.json")
     load_mm_vars
     update_from_environment
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), "w") do |f|

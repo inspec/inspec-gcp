@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.11.5"
+  required_version = "~> 0.12.0"
 }
 
 # GCP Terraform Templates For Inspec Testing
@@ -98,8 +98,8 @@ variable "gcp_db_user_password" {}
 variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
-  region = "${var.gcp_location}",
-  version = "~> 1.16"
+  region = "${var.gcp_location}"
+  version = "~> 2.7.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
@@ -185,7 +185,7 @@ resource "google_compute_disk" "generic_compute_disk" {
   type  = "${var.gcp_compute_disk_type}"
   zone  = "${var.gcp_zone}"
   image = "${var.gcp_compute_disk_image}"
-  labels {
+  labels = {
     environment = "generic_compute_disk_label"
   }
 }
@@ -263,36 +263,6 @@ variable gcp_lb_ilb_name {
   default = "group1-ilb"
 }
 
-module "gce_lb_fr" {
-  project = "${var.gcp_project_id}"
-  source       = "github.com/GoogleCloudPlatform/terraform-google-lb?ref=1.0.2"
-  region       = "${var.gcp_lb_region}"
-  network      = "${var.gcp_lb_network}"
-  name         = "${var.gcp_lb_fr_name}"
-  service_port = "${module.mig1.service_port}"
-  target_tags  = ["${module.mig1.target_tags}"]
-}
-
-module "gce_ilb" {
-  project = "${var.gcp_project_id}"
-  source      = "github.com/GoogleCloudPlatform/terraform-google-lb-internal?ref=1.0.4"
-  region      = "${var.gcp_lb_region}"
-  name        = "${var.gcp_lb_ilb_name}"
-  ports       = ["${module.mig2.service_port}"]
-  health_port = "${module.mig2.service_port}"
-  source_tags = ["${module.mig1.target_tags}"]
-  target_tags = ["${module.mig2.target_tags}", "${module.mig3.target_tags}"]
-
-  backends = [
-    {
-      group = "${module.mig2.instance_group}"
-    },
-    {
-      group = "${module.mig3.instance_group}"
-    },
-  ]
-}
-
 # adapted from https://github.com/GoogleCloudPlatform/terraform-google-lb-internal/blob/master/examples/simple/mig.tf
 
 variable gcp_lb_mig1_name {
@@ -307,19 +277,10 @@ variable gcp_lb_mig3_name {
   default = "group3"
 }
 
-
-data "template_file" "group1-startup-script" {
-  template = "${file("${format("%s/templates/nginx_upstream.sh.tpl", path.module)}")}"
-
-  vars {
-    UPSTREAM = "${module.gce_ilb.ip_address}"
-  }
-}
-
 data "template_file" "group2-startup-script" {
   template = "${file("${format("%s/templates/gceme.sh.tpl", path.module)}")}"
 
-  vars {
+  vars = {
     PROXY_PATH = ""
   }
 }
@@ -327,55 +288,14 @@ data "template_file" "group2-startup-script" {
 data "template_file" "group3-startup-script" {
   template = "${file("${format("%s/templates/gceme.sh.tpl", path.module)}")}"
 
-  vars {
+  vars = {
     PROXY_PATH = ""
   }
 }
 
-module "mig1" {
-  project = "${var.gcp_project_id}"
-  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group?ref=1.1.13"
-  region            = "${var.gcp_lb_region}"
-  zone              = "${var.gcp_lb_zone}"
-  name              = "${var.gcp_lb_mig1_name}"
-  size              = 2
-  target_tags       = ["allow-${var.gcp_lb_mig1_name}"]
-  target_pools      = ["${module.gce_lb_fr.target_pool}"]
-  service_port      = 80
-  service_port_name = "http"
-  startup_script    = "${data.template_file.group1-startup-script.rendered}"
-}
-
-module "mig2" {
-  project = "${var.gcp_project_id}"
-  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group?ref=1.1.13"
-  region            = "${var.gcp_lb_region}"
-  zone              = "${var.gcp_lb_zone_mig2}"
-  name              = "${var.gcp_lb_mig2_name}"
-  size              = 2
-  target_tags       = ["allow-${var.gcp_lb_mig2_name}"]
-  service_port      = 80
-  service_port_name = "http"
-  startup_script    = "${data.template_file.group2-startup-script.rendered}"
-}
-
-module "mig3" {
-  project = "${var.gcp_project_id}"
-  source            = "github.com/GoogleCloudPlatform/terraform-google-managed-instance-group?ref=1.1.13"
-  region            = "${var.gcp_lb_region}"
-  zone              = "${var.gcp_lb_zone_mig3}"
-  name              = "${var.gcp_lb_mig3_name}"
-  size              = 2
-  target_tags       = ["allow-${var.gcp_lb_mig3_name}"]
-  service_port      = 80
-  service_port_name = "http"
-  startup_script    = "${data.template_file.group3-startup-script.rendered}"
-}
-
-
 resource "google_compute_instance_template" "default" {
   project      = "${var.gcp_project_id}"
-  name         = "${var.gcp_lb_mig1_name}-itpl"
+  name         = "app-itpl"
   machine_type = "f1-micro"
   network_interface {
     network = "default"
@@ -389,11 +309,11 @@ resource "google_compute_instance_template" "default" {
 
 resource "google_compute_region_instance_group_manager" "appserver" {
   project           = "${var.gcp_project_id}"
-  name              = "${var.gcp_lb_mig1_name}-rigm"
+  name              = "app-rigm"
   instance_template = "${google_compute_instance_template.default.self_link}"
   base_instance_name        = "app"
   region                    = "${var.gcp_lb_region}"
-  distribution_policy_zones = ["${var.gcp_lb_zone}", "${var.gcp_lb_zone_mig2}"]
+  distribution_policy_zones = ["${var.gcp_lb_zone}"]
   target_pools = []
   target_size  = 0
   named_port {
@@ -428,6 +348,10 @@ resource "google_container_cluster" "primary" {
   master_auth {
     username = "${var.gcp_kube_cluster_master_user}"
     password = "${var.gcp_kube_cluster_master_pass}"
+
+    client_certificate_config {
+      issue_client_certificate = false
+    }
   }
 
   maintenance_policy {
@@ -498,64 +422,64 @@ data "google_iam_policy" "gcp_inspec_admin_key_ring" {
     role = "roles/editor"
 
     members = [
-      "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+      "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}",
     ]
   }
 }
 
 resource "google_kms_key_ring_iam_policy" "key_ring_policy" {
   count = "${var.gcp_enable_privileged_resources}"
-  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_policy.id}"
-  policy_data = "${data.google_iam_policy.gcp_inspec_admin_key_ring.policy_data}"
+  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_policy[0].id}"
+  policy_data = "${data.google_iam_policy.gcp_inspec_admin_key_ring[0].policy_data}"
 }
 
 # Use the second key ring to attach an IAM binding plus IAM member affecting different roles
 
 resource "google_kms_key_ring_iam_binding" "key_ring_binding" {
   count = "${var.gcp_enable_privileged_resources}"
-  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id}"
   role        = "roles/editor"
 
   members = [
-    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}",
   ]
 }
 
 resource "google_kms_key_ring_iam_member" "key_ring_iam_member" {
   count = "${var.gcp_enable_privileged_resources}"
-  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id}"
   role        = "roles/owner"
-  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}"
 }
 
 resource "google_kms_crypto_key" "crypto_key_policy" {
   count = "${var.gcp_enable_privileged_resources}"
   name            = "${var.gcp_kms_crypto_key_name_policy}"
-  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_policy.id}"
+  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_policy[0].id}"
   rotation_period = "100000s"
 }
 
 resource "google_kms_crypto_key" "crypto_key_binding" {
   count = "${var.gcp_enable_privileged_resources}"
   name            = "${var.gcp_kms_crypto_key_name_binding}"
-  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_binding_member.id}"
+  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id}"
   rotation_period = "100000s"
 }
 
 resource "google_kms_crypto_key_iam_member" "crypto_key_iam_member" {
   count = "${var.gcp_enable_privileged_resources}"
-  crypto_key_id = "${google_kms_crypto_key.crypto_key_policy.id}"
+  crypto_key_id = "${google_kms_crypto_key.crypto_key_policy[0].id}"
   role          = "roles/editor"
-  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+  member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}"
 }
 
 resource "google_kms_crypto_key_iam_binding" "crypto_key_iam_binding" {
   count = "${var.gcp_enable_privileged_resources}"
-  crypto_key_id = "${google_kms_crypto_key.crypto_key_binding.id}"
+  crypto_key_id = "${google_kms_crypto_key.crypto_key_binding[0].id}"
   role          = "roles/editor"
 
   members = [
-    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}",
   ]
 }
 
@@ -575,7 +499,7 @@ resource "google_storage_default_object_acl" "bucket-default-acl" {
   count = "${var.gcp_enable_privileged_resources}"
   bucket = "${google_storage_bucket.generic-storage-bucket.name}"
   role_entity = [
-    "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
+    "OWNER:user-${google_service_account.generic_service_account_object_viewer[0].email}",
     "OWNER:project-owners-${var.gcp_project_number}",
   ]
 }
@@ -592,10 +516,10 @@ resource "google_storage_bucket" "bucket-with-acl" {
 # make use of project convenience values as described here -  https://cloud.google.com/storage/docs/access-control/lists
 resource "google_storage_bucket_acl" "bucket-acl" {
   count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-acl.name}"
+  bucket = "${google_storage_bucket.bucket-with-acl[0].name}"
 
   role_entity = [
-    "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
+    "OWNER:user-${google_service_account.generic_service_account_object_viewer[0].email}",
     "OWNER:project-owners-${var.gcp_project_number}",
   ]
 }
@@ -612,11 +536,11 @@ resource "google_storage_bucket" "bucket-with-iam-binding" {
 
 resource "google_storage_bucket_iam_binding" "bucket-iam-binding" {
   count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-iam-binding.name}"
+  bucket = "${google_storage_bucket.bucket-with-iam-binding[0].name}"
   role = "roles/storage.objectViewer"
 
   members = [
-    "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}",
+    "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}",
   ]
 }
 
@@ -629,9 +553,9 @@ resource "google_storage_bucket" "bucket-with-iam-member" {
 
 resource "google_storage_bucket_iam_member" "bucket-iam-member" {
   count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-iam-member.name}"
+  bucket = "${google_storage_bucket.bucket-with-iam-member[0].name}"
   role = "roles/storage.objectViewer"
-  member = "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}"
+  member = "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}"
 }
 
 # now for the IAM policy case
@@ -648,14 +572,14 @@ data "google_iam_policy" "bucket-iam-policy" {
   binding {
     role = "roles/storage.admin"
 
-    members = [ "serviceAccount:${google_service_account.generic_service_account_object_viewer.email}" ]
+    members = [ "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}" ]
   }
 }
 
 resource "google_storage_bucket_iam_policy" "bucket-iam-policy-add" {
   count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-iam-policy.name}"
-  policy_data = "${data.google_iam_policy.bucket-iam-policy.policy_data}"
+  bucket = "${google_storage_bucket.bucket-with-iam-policy[0].name}"
+  policy_data = "${data.google_iam_policy.bucket-iam-policy[0].policy_data}"
 }
 
 # finally let's create a bucket with object plus an object ACL
@@ -670,7 +594,7 @@ resource "google_storage_bucket" "bucket-with-object" {
 resource "google_storage_bucket_object" "bucket-object" {
   count = "${var.gcp_enable_privileged_resources}"
   name   = "${var.gcp_storage_bucket_object_name}"
-  bucket = "${google_storage_bucket.bucket-with-object.name}"
+  bucket = "${google_storage_bucket.bucket-with-object[0].name}"
   content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with ACL."
 }
 
@@ -678,12 +602,12 @@ resource "google_storage_bucket_object" "bucket-object" {
 
 resource "google_storage_object_acl" "bucket-object-acl" {
   count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-object.name}"
-  object = "${google_storage_bucket_object.bucket-object.name}"
+  bucket = "${google_storage_bucket.bucket-with-object[0].name}"
+  object = "${google_storage_bucket_object.bucket-object[0].name}"
 
   role_entity = [
     "OWNER:project-owners-${var.gcp_project_number}",
-    "OWNER:user-${google_service_account.generic_service_account_object_viewer.email}",
+    "OWNER:user-${google_service_account.generic_service_account_object_viewer[0].email}",
   ]
 }
 
@@ -755,8 +679,8 @@ resource "google_logging_project_sink" "project-logging-instance-sink" {
   count = "${var.gcp_enable_privileged_resources}"
   project = "${var.gcp_project_id}"
   name = "${var.gcp_logging_project_sink_name}"
-  destination = "storage.googleapis.com/${google_storage_bucket.project-logging-bucket.name}"
-  filter = "resource.type = gce_instance AND resource.labels.instance_id = \"${google_compute_instance.vm-with-project-logging.instance_id}\""
+  destination = "storage.googleapis.com/${google_storage_bucket.project-logging-bucket[0].name}"
+  filter = "resource.type = gce_instance AND resource.labels.instance_id = \"${google_compute_instance.vm-with-project-logging[0].instance_id}\""
 
   unique_writer_identity = true
 }
@@ -767,7 +691,7 @@ resource "google_project_iam_binding" "project-log-writer-iam-binding" {
   role = "roles/storage.objectCreator"
 
   members = [
-    "${google_logging_project_sink.project-logging-instance-sink.writer_identity}",
+    "${google_logging_project_sink.project-logging-instance-sink[0].writer_identity}",
   ]
 }
 
@@ -902,3 +826,46 @@ resource "google_sql_user" "cloud-sql-db-user" {
 }
 
 # End Google SQL resources
+
+# Resources that used to be created via terraform modules that no longer work
+resource "google_compute_firewall" "health-check-firewall" {
+  project = "${var.gcp_project_id}"
+  name    = "vm-hc-inspec-gcp"
+  network = "${var.gcp_network_name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
+}
+
+resource "google_compute_firewall" "default-ssh" {
+  project = "${var.gcp_project_id}"
+  name    = "vm-ssh-inspec-gcp"
+  network = "${var.gcp_network_name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["allow-ssh"]
+}
+
+resource "google_compute_firewall" "inspec-gcp-tag-test-fw" {
+  project = "${var.gcp_project_id}"
+  name    = "inspec-gcp-tag-test-fw"
+  network = "${var.gcp_network_name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["allow-gcp-inspec-app-mig2","allow-gcp-inspec-app-mig3"]
+  source_tags   = ["allow-gcp-inspec-app-mig1"]
+}
