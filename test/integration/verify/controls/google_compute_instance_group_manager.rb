@@ -16,7 +16,6 @@ title 'Test GCP google_compute_instance_group_manager resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-gcp_lb_mig1_name = attribute(:gcp_lb_mig1_name, default: 'gcp_lb_mig1_name', description: 'Managed instance group name.')
 instance_group_manager = attribute('instance_group_manager', default: {
   "name": "inspec-gcp-igm",
   "base_instance_name": "igm",
@@ -34,7 +33,6 @@ control 'google_compute_instance_group_manager-1.0' do
     its('named_ports.count') { should cmp 1 }
     its('named_ports.first.name') { should eq instance_group_manager['named_port_name'] }
     its('named_ports.first.port') { should eq instance_group_manager['named_port_port'] }
-    its('instance_template') { should match gcp_lb_mig1_name }
   end
 
   describe google_compute_instance_group_manager(project: gcp_project_id, zone: gcp_zone, name: 'nonexistent') do

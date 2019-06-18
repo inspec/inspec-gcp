@@ -26,7 +26,7 @@ namespace :test do
   plan_name = "inspec-gcp.plan"
 
   # Specify the file_name for terraform variables to be stored
-  variable_file_name = "inspec-gcp.tfvars"
+  variable_file_name = "inspec-gcp.tfvars.json"
 
   # The below file allows to inject parameters as profile attributes to inspec
   profile_attributes = "gcp-inspec-attributes.yaml"

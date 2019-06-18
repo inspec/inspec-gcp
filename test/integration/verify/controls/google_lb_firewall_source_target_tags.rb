@@ -1,15 +1,14 @@
 title 'Firewall Rule Properties'
 
 gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_lb_ilb_name = attribute(:gcp_lb_ilb_name, default: '', description: 'The GCP pattern ilb group firewall name.')
 
 control 'google-lb-internal-firewall-rule-target-tags-1.0' do
 
   impact 1.0
   title 'Ensure that the Firewall Rule has been configured correctly and has expected source and target tags'
 
-  describe google_compute_firewall(project: gcp_project_id, name: "#{gcp_lb_ilb_name}-ilb-fw") do
-    its('name') { should eq "#{gcp_lb_ilb_name}-ilb-fw" }
+  describe google_compute_firewall(project: gcp_project_id, name: "inspec-gcp-tag-test-fw") do
+    its('name') { should eq "inspec-gcp-tag-test-fw" }
     # For the currently in scope rule, SSH should not be allowed
     its('allowed_ssh?')  { should be false }
     # For the currently in scope rule, HTTP should not be allowed
