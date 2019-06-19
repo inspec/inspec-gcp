@@ -29,9 +29,13 @@ module GoogleInSpec
 
         attr_reader :max_connections_per_instance
 
+        attr_reader :max_connections_per_endpoint
+
         attr_reader :max_rate
 
         attr_reader :max_rate_per_instance
+
+        attr_reader :max_rate_per_endpoint
 
         attr_reader :max_utilization
 
@@ -44,8 +48,10 @@ module GoogleInSpec
           @group = args['group']
           @max_connections = args['maxConnections']
           @max_connections_per_instance = args['maxConnectionsPerInstance']
+          @max_connections_per_endpoint = args['maxConnectionsPerEndpoint']
           @max_rate = args['maxRate']
           @max_rate_per_instance = args['maxRatePerInstance']
+          @max_rate_per_endpoint = args['maxRatePerEndpoint']
           @max_utilization = args['maxUtilization']
         end
 
