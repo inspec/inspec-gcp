@@ -26,7 +26,10 @@ See [google_compute_global_address.md](google_compute_global_address.md) for mor
   * `names`: an array of `google_compute_global_address` name
   * `ip_versions`: an array of `google_compute_global_address` ip_version
   * `regions`: an array of `google_compute_global_address` region
+  * `prefix_lengths`: an array of `google_compute_global_address` prefix_length
   * `address_types`: an array of `google_compute_global_address` address_type
+  * `purposes`: an array of `google_compute_global_address` purpose
+  * `networks`: an array of `google_compute_global_address` network
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
