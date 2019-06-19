@@ -30,7 +30,10 @@ class GlobalAddresss < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:ip_versions, field: :ip_version)
   filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:prefix_lengths, field: :prefix_length)
   filter_table_config.add(:address_types, field: :address_type)
+  filter_table_config.add(:purposes, field: :purpose)
+  filter_table_config.add(:networks, field: :network)
 
   filter_table_config.connect(self, :table)
 
@@ -77,7 +80,10 @@ class GlobalAddresss < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
       'region' => ->(obj) { return :region, obj['region'] },
+      'prefixLength' => ->(obj) { return :prefix_length, obj['prefixLength'] },
       'addressType' => ->(obj) { return :address_type, obj['addressType'] },
+      'purpose' => ->(obj) { return :purpose, obj['purpose'] },
+      'network' => ->(obj) { return :network, obj['network'] },
     }
   end
 

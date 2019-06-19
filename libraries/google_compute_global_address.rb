@@ -29,7 +29,10 @@ class GlobalAddress < GcpResourceBase
   attr_reader :name
   attr_reader :ip_version
   attr_reader :region
+  attr_reader :prefix_length
   attr_reader :address_type
+  attr_reader :purpose
+  attr_reader :network
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -46,7 +49,10 @@ class GlobalAddress < GcpResourceBase
     @name = @fetched['name']
     @ip_version = @fetched['ipVersion']
     @region = @fetched['region']
+    @prefix_length = @fetched['prefixLength']
     @address_type = @fetched['addressType']
+    @purpose = @fetched['purpose']
+    @network = @fetched['network']
   end
 
   # Handles parsing RFC3339 time string

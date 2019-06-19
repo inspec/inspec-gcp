@@ -35,7 +35,13 @@ Properties that can be accessed from the `google_compute_global_address` resourc
 
   * `region`: A reference to the region where the regional address resides.
 
+  * `prefix_length`: The prefix length of the IP range. If not present, it means the address field is a single IP address.  This field is not applicable to addresses with addressType=EXTERNAL.
+
   * `address_type`: The type of the address to reserve, default is EXTERNAL.  * EXTERNAL indicates public/external single IP address. * INTERNAL indicates internal IP ranges belonging to some network.
+
+  * `purpose`: The purpose of the resource. For global internal addresses it can be  * VPC_PEERING - for peer networks  This should only be set when using an Internal address.
+
+  * `network`: The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be deleted if there are any reserved IP ranges referring to it.  This should only be set when using an Internal address.
 
 
 
