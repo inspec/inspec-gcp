@@ -27,7 +27,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `affinity_cookie_ttl_sec`: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.  When the load balancing scheme is INTERNAL, this field is not used.
 
-  * `backends`: The list of backends that serve this BackendService.
+  * `backends`: The set of backends that serve this BackendService.
 
     * `balancing_mode`: Specifies the balancing mode for this backend.  For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
 
@@ -69,7 +69,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `enable_cdn`: If true, enable Cloud CDN for this BackendService.
 
-  * `health_checks`: The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required.  For internal load balancing, a URL to a HealthCheck resource must be specified instead.
+  * `health_checks`: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required.  For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 
   * `id`: The unique identifier for the resource.
 
