@@ -62,7 +62,7 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `username`: The username to use for HTTP basic authentication to the master endpoint.
 
-    * `password`: The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password.
+    * `password`: The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password with a minimum of 16 characters.
 
     * `client_certificate_config`: Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
 
