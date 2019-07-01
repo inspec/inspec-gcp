@@ -24,6 +24,7 @@ class Topics < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:kms_key_names, field: :kms_key_name)
   filter_table_config.add(:labels, field: :labels)
 
   filter_table_config.connect(self, :table)
@@ -65,6 +66,7 @@ class Topics < GcpResourceBase
   def transformers
     {
       'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
+      'kmsKeyName' => ->(obj) { return :kms_key_name, obj['kmsKeyName'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },
     }
   end
