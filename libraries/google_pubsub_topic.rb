@@ -23,6 +23,7 @@ class Topic < GcpResourceBase
 
   attr_reader :params
   attr_reader :name
+  attr_reader :kms_key_name
   attr_reader :labels
 
   def initialize(params)
@@ -34,6 +35,7 @@ class Topic < GcpResourceBase
 
   def parse
     @name = name_from_self_link(@fetched['name'])
+    @kms_key_name = @fetched['kmsKeyName']
     @labels = @fetched['labels']
   end
 
