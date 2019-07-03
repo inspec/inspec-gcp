@@ -56,13 +56,6 @@ namespace :test do
 
   task :plan_integration_tests do
 
-    # Determine the storage account name and the admin password
-  #  sa_name = (0...15).map { (65 + rand(26)).chr }.join.downcase
-  #  admin_password = Passgen::generate(length: 12, uppercase: true, lowercase: true, symbols: true, digits: true)
-
-    # Use the first 4 characters of the storage account to create a suffix
-  #  suffix = sa_name[0..3]
-
     Rake::Task["test:generate_integration_test_variables"].execute
 
     puts "----> Setup"
@@ -77,11 +70,6 @@ namespace :test do
     # Apply the plan on GCP
     cmd = format("cd %s/build/ && terraform apply %s", integration_dir, plan_name)
     sh(cmd)
-    # attribute_file=File.join(File.dirname(__FILE__), ".attribute.yml")
-    # sh("cd #{integration_dir}/build/ && terraform output > #{attribute_file}")
-    # raw_output = File.read(attribute_file)
-    # yaml_output = raw_output.gsub(" = ", " : ")
-    # File.open(attribute_file, "w") {|file| file.puts yaml_output}
   end
 
   task :run_integration_tests do
@@ -93,9 +81,7 @@ namespace :test do
 
   task :cleanup_integration_tests do
     puts "----> Cleanup"
-    #cmd = format("cd %s/build/ && terraform destroy -force -var 'project_id=%s' -var 'storage_account_name=%s' -var 'admin_password=%s' -var 'suffix=%s'", integration_dir, project_id, sa_name, admin_password, suffix)
     cmd = format("cd %s/build/ && terraform destroy -force -var-file=%s || true", integration_dir, variable_file_name)
-    #   -var 'subscription_id=%s' -var 'client_id=%s' -var 'client_secret=%s' -var 'tenant_id=%s' -var 'admin_password=dummy' -var 'storage_account_name=dummy' -var 'suffix=dummy'", integration_dir, creds[:subscription_id], creds[:client_id], creds[:client_secret], creds[:tenant_id])
     sh(cmd)
 
   end
