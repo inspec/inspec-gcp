@@ -5,13 +5,12 @@
 # If any of the @config keys are exported as environment variables in uppercase, these take precedence.
 require 'json'
 require 'yaml'
-require 'passgen'
 require 'erb'
 
 module GCPInspecConfig
 
   # helper method for adding random strings
-  def self.add_random_string(length=25)
+  def self.add_random_string(length = 25)
     "#{(0...length).map { (65 + rand(26)).chr }.join.downcase}"
   end
 
@@ -75,7 +74,7 @@ module GCPInspecConfig
       :gcp_kube_cluster_zone_extra1 => "europe-west2-b",
       :gcp_kube_cluster_zone_extra2 => "europe-west2-c",
       :gcp_kube_cluster_master_user => "gcp-inspec-kube-admin",
-      :gcp_kube_cluster_master_pass => Passgen::generate(length: 20, uppercase: true, lowercase: true, symbols: true, digits: true),
+      :gcp_kube_cluster_master_pass => (("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + %w{! @ # $ % & / ( ) + ? *}).sample(20).join,
       :gcp_kube_nodepool_name => "default-pool",
       :gcp_inspec_user_email => "user:chef@example.com",
       :gcp_kms_key_ring_policy_name => "gcp-inspec-kms-key-ring-#{add_random_string}",
@@ -88,7 +87,7 @@ module GCPInspecConfig
       :gcp_logging_project_exclusion_name => "gcp-inspec-project-exclusion-#{add_random_string}",
       :gcp_network_name => "gcp-inspec-network",
       :gcp_subnetwork_name => "gcp-inspec-subnetwork",
-      :gcp_vpn_gateway_name =>"gcp-inspec-gateway",
+      :gcp_vpn_gateway_name => "gcp-inspec-gateway",
       :gcp_vpn_tunnel_name => "gcp-inspec-tunnel",
       :gcp_fr_esp_name => "gcp-inspec-fr-esp",
       :gcp_fr_udp_name => "gcp-inspec-fr-udp",
@@ -99,7 +98,7 @@ module GCPInspecConfig
       :gcp_db_type => "MYSQL_5_7",
       :gcp_db_size => "db-f1-micro",
       :gcp_db_user_name => "inspecgcpuser",
-      :gcp_db_user_password => Passgen::generate(length: 20, uppercase: true, lowercase: true, symbols: true, digits: true),
+      :gcp_db_user_password => (("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + %w{! @ # $ % & / ( ) + ? *}).sample(20).join,
       # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
       # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
       # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
@@ -118,7 +117,7 @@ module GCPInspecConfig
 
   # This method ensures any environment variables take precedence.
   def self.update_from_environment
-    @config.each { |k,v| @config[k] = ENV[k.to_s.upcase] || v }
+    @config.each { |k, v| @config[k] = ENV[k.to_s.upcase] || v }
   end
 
   def self.load_mm_vars
@@ -127,19 +126,19 @@ module GCPInspecConfig
   end
 
   # Create JSON for terraform
-  def self.store_json(file_name="gcp-inspec.tfvars")
+  def self.store_json(file_name = "gcp-inspec.tfvars")
     load_mm_vars
     update_from_environment
-    File.open(File.join(File.dirname(__FILE__),'..','build',file_name),"w") do |f|
+    File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), "w") do |f|
       f.write(@config.to_json)
     end
   end
 
   # Create YAML for inspec
-  def self.store_yaml(file_name="gcp-inspec-attributes.yaml")
+  def self.store_yaml(file_name = "gcp-inspec-attributes.yaml")
     load_mm_vars
     update_from_environment
-    File.open(File.join(File.dirname(__FILE__),'..','build',file_name),"w") do |f|
+    File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), "w") do |f|
       f.write(@config.to_yaml)
     end
   end
