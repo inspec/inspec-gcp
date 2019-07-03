@@ -82,7 +82,7 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
-  * `source_snapshot`: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot` * `projects/project/global/snapshots/snapshot` * `global/snapshots/snapshot`
+  * `source_snapshot`: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:  * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot` * `projects/project/global/snapshots/snapshot` * `global/snapshots/snapshot`
 
   * `source_snapshot_encryption_key`: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
