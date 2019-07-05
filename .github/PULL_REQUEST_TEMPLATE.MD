@@ -1,6 +1,6 @@
 ### Description
 
-Please describe what this change achieves. Ensure you have read the [Contributing to InSpec AWS](https://github.com/inspec/inspec-gcp/CONTRIBUTING.md) document before 
+Please describe what this change achieves. Ensure you have read the [Contributing to InSpec GCP](https://github.com/inspec/inspec-gcp/CONTRIBUTING.md) document before 
 submitting.
 
 ### Issues Resolved
