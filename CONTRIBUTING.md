@@ -1,12 +1,17 @@
-# Contributing to InSpec
 
-We are glad you want to contribute to InSpec! This document will help answer common questions you may have during your first contribution.
+
+
+# Contributing to the InSpec GCP Resource Pack
+
+We are glad you want to contribute to InSpec GCP! This document will help answer common questions you may have during your first contribution.
+
+All participants are expected to follow the [InSpec Code of Conduct](https://github.com/inspec/inspec/blob/master/CODE_OF_CONDUCT.md).
 
 ## Submitting Issues
 
 We utilize **Github Issues** for issue tracking and contributions. You can contribute in two ways:
 
-1. Reporting an issue or making a feature request [here](#issues).
+1. Reporting an issue or making a feature request [here](https://github.com/chef/inspec-gcp/issues/new).
 2. Adding features or fixing bugs yourself and contributing your code to InSpec.
 
 We ask you not to submit security concerns via Github. For details on submitting potential security issues please see <https://www.chef.io/security/>
@@ -23,13 +28,12 @@ We have a 3 step process for contributions:
 
 Chef Projects are built to last. We strive to ensure high quality throughout the experience. In order to ensure this, we require that all pull requests to Chef projects meet these specifications:
 
-1. **Tests:** To ensure high quality code and protect against future regressions, we require all the code in Chef Projects to have at least unit test coverage. See the [test/unit](https://github.com/chef/inspec/tree/master/test/unit)
-directory for the existing tests and use ```bundle exec rake test``` to run them.
-2. **Green CI Tests:** We use [Travis CI](https://travis-ci.org/) and/or [AppVeyor](https://www.appveyor.com/) CI systems to test all pull requests. We require these test runs to succeed on every pull request before being merged.
-3. **Up-to-date Documentation:**  Every code change should be reflected in an update for our [documentation](https://github.com/chef/inspec/tree/master/docs). We expect PRs to update the documentation with the code change.
+1. **Tests:** To ensure high quality code and protect against future regressions, we require InSpec GCP to have integration test coverage. See [test/integration/verify/controls](https://github.com/inspec/inspec-gcp/tree/master/test/integration/verify/controls). 
+2. **Green CI Tests:** We use [Travis CI](https://travis-ci.org/) to test all pull requests. We require these test runs to succeed on every pull request before being merged.
+3. **Up-to-date Documentation:**  Every code change should be reflected in an update for our [documentation](https://github.com/inspec/inspec-gcp/tree/master/docs). We expect PRs to update the documentation with the code change.
 
 In addition to this it would be nice to include the description of the problem you are solving
-  with your change. You can use [Issue Template](#issuetemplate) in the description section
+  with your change. You can use [Issue Template](https://github.com/inspec/inspec-gcp/tree/master/ISSUE_TEMPLATE.md) in the description section
   of the pull request.
 
 ### Code Review Process
@@ -38,12 +42,11 @@ Code review takes place in Github pull requests. See [this article](https://help
 
 Once you open a pull request, project maintainers will review your code and respond to your pull request with any feedback they might have. The process at this point is as follows:
 
-1. Two thumbs-up (:+1:) are required from project maintainers. See the master maintainers document for InSpec projects at <https://github.com/chef/inspec/blob/master/MAINTAINERS.md>.
+1. One thumbs-up (:+1:) are required from [inspec/inspec-cloud-devs](https://github.com/orgs/inspec/teams/inspec-cloud-devs)
 2. When ready, your pull request will be merged into `master`, we may require you to rebase your PR to the latest `master`.
-3. Once the PR is merged, you will be included in `CHANGELOG.md`.
+3. Once the PR is merged, you will be included in `CHANGELOG.md` in a subsequent release.
 
 If you would like to learn about when your code will be available in a release of Chef, read more about [Chef Release Cycles](#release-cycles).
-
 
 ### Developer Certification of Origin (DCO)
 
@@ -68,7 +71,7 @@ By making a contribution to this project, I certify that:
 
 (b) The contribution is based upon previous work that, to the
     best of my knowledge, is covered under an appropriate open
-    source license and I have the right under that license to   
+    source license and I have the right under that license to
     submit that work with modifications, whether created in whole
     or in part by me, under the same open source license (unless
     I am permitted to submit under a different license), as
@@ -127,20 +130,6 @@ Date:   Wed Sep 18 11:44:40 2015 -0700
 ------------------------------------------------------------------------
 ```
 
-## Release Cycles
-
-Our primary shipping vehicle is operating system specific packages that includes all the requirements of InSpec. We call these [Omnibus packages](https://github.com/chef/omnibus)
-
-We also release our software as gems to [Rubygems](https://rubygems.org/) but we strongly recommend using InSpec or ChefDK packages.
-
-Our version numbering roughly follows [Semantic Versioning](http://semver.org/) standard. Our standard version numbers look like X.Y.Z which mean:
-
-- X is a major release, which may not be fully compatible with prior major releases
-- Y is a minor release, which adds both new features and bug fixes
-- Z is a patch release, which adds just bug fixes
-
-After shipping a release of InSpec we bump at least the `Minor` version by one to start development of the next minor release. We do a release approximately every week. Announcements of releases are made to the [InSpec mailing list](https://discourse.chef.io/c/chef-release) when they are available.
-
 ## InSpec Community
 
 InSpec is made possible by a strong community of developers, system administrators, auditor and security experts. If you have any questions or if you would like to get involved in the InSpec community you can check out:
@@ -150,6 +139,6 @@ InSpec is made possible by a strong community of developers, system administrato
 
 Also here are some additional pointers to some awesome Chef content:
 
-- [InSpec Docs](http://inspec.io/docs/)
+- [InSpec Docs](https://www.inspec.io/docs/)
 - [Learn Chef](https://learn.chef.io/)
 - [Chef Website](https://www.chef.io/)
