@@ -430,6 +430,12 @@ resource "google_container_cluster" "primary" {
     password = "${var.gcp_kube_cluster_master_pass}"
   }
 
+  maintenance_policy {
+    daily_maintenance_window {
+      start_time = "23:00"
+    }
+  }
+
   node_config {
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
