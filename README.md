@@ -142,6 +142,7 @@ supports:
   - platform: gcp
 ```
 
+(For available inspec-gcp versions, see this list of [inspec-gcp versions](https://github.com/inspec/inspec-gcp/releases).)
 
 ## Resource documentation
 
