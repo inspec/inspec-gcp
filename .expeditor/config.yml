@@ -1,0 +1,38 @@
+# Documentation available at https://expeditor.chef.io/docs/getting-started/
+---
+
+pipelines:
+ - verify:
+    description: Pull Request validation tests
+    public: true
+
+slack:
+ notify_channel: inspec-notify
+
+github:
+ delete_branch_on_merge: true
+ minor_bump_labels:
+  - "Version: Bump Minor"
+ version_tag_format: v{{version}}
+ release_branch:
+  - master
+ 
+changelog:
+ categories:
+  - "Type: New Resource": "New Resources"
+  - "Type: New Feature": "New Features"
+  - "Type: Enhancement": "Enhancements"
+  - "Type: Bug": "Bug Fixes"
+
+merge_actions:
+ - built_in:bump_version:
+    ignore_labels:
+     - "Version: Skip Bump"
+     - "Expeditor: Skip All"
+ - bash:.expeditor/update_version.sh:
+    only_if: built_in:bump_version
+ - built_in:update_changelog:
+    ignore_labels:
+     - "Changelog: Skip Update"
+     - "Expeditor: Skip All"
+
