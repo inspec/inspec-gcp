@@ -134,14 +134,15 @@ The generated `inspec.yml` file automatically points to the InSpec GCP resource 
 name: my-profile
 title: My GCP InSpec Profile
 version: 0.1.0
-inspec_version: '>= 2.2.10'
+inspec_version: '>= 4.6.9'
 depends:
   - name: inspec-gcp
-    url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz
+    url: https://github.com/inspec/inspec-gcp/archive/x.tar.gz
 supports:
   - platform: gcp
 ```
 
+(For available inspec-gcp versions, see this list of [inspec-gcp versions](https://github.com/inspec/inspec-gcp/releases).)
 
 ## Resource documentation
 
