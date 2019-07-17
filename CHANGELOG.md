@@ -1,4 +1,6 @@
 # Change Log
+<!-- latest_release -->
+<!-- latest_release -->
 
 ## [v0.11.0](https://github.com/inspec/inspec-gcp/tree/v0.11.0) (2019-04-30)
 [Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.10.0...v0.11.0)
