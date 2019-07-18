@@ -27,6 +27,8 @@ module GoogleInSpec
 
         attr_reader :proxy_header
 
+        attr_reader :port_specification
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -35,6 +37,7 @@ module GoogleInSpec
           @port = args['port']
           @port_name = args['portName']
           @proxy_header = args['proxyHeader']
+          @port_specification = args['portSpecification']
         end
 
         def to_s
