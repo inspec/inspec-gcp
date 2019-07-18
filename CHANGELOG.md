@@ -1,6 +1,12 @@
 # Change Log
+<!-- latest_release 0.11.0 -->
+## [v0.11.0](https://github.com/inspec/inspec-gcp/tree/v0.11.0) (2019-07-18)
+
+#### Merged Pull Requests
+- Add expeditor and buildkite verify pipeline [#159](https://github.com/inspec/inspec-gcp/pull/159) ([miah](https://github.com/miah))
 <!-- latest_release -->
-<!-- latest_release -->
+
+
 
 ## [v0.11.0](https://github.com/inspec/inspec-gcp/tree/v0.11.0) (2019-04-30)
 [Full Changelog](https://github.com/inspec/inspec-gcp/compare/v0.10.0...v0.11.0)
