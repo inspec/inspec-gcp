@@ -45,6 +45,8 @@ Properties that can be accessed from the `google_compute_instance_template` reso
 
     * `disks`: An array of disks that are associated with the instances that are created from this template.
 
+    * `labels`: Labels to apply to this address.  A list of key->value pairs.
+
     * `machine_type`: The machine type to use in the VM instance template.
 
     * `min_cpu_platform`: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms
