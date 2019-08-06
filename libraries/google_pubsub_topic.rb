@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/pubsub/property/topic_message_storage_policy'
 
 # A provider to manage Cloud Pub/Sub resources.
 class Topic < GcpResourceBase
@@ -25,6 +26,7 @@ class Topic < GcpResourceBase
   attr_reader :name
   attr_reader :kms_key_name
   attr_reader :labels
+  attr_reader :message_storage_policy
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -37,6 +39,7 @@ class Topic < GcpResourceBase
     @name = name_from_self_link(@fetched['name'])
     @kms_key_name = @fetched['kmsKeyName']
     @labels = @fetched['labels']
+    @message_storage_policy = GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(@fetched['messageStoragePolicy'], to_s)
   end
 
   # Handles parsing RFC3339 time string

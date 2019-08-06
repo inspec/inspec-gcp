@@ -26,6 +26,7 @@ class Topics < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:kms_key_names, field: :kms_key_name)
   filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:message_storage_policies, field: :message_storage_policy)
 
   filter_table_config.connect(self, :table)
 
@@ -68,6 +69,7 @@ class Topics < GcpResourceBase
       'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
       'kmsKeyName' => ->(obj) { return :kms_key_name, obj['kmsKeyName'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },
+      'messageStoragePolicy' => ->(obj) { return :message_storage_policy, GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(obj['messageStoragePolicy'], to_s) },
     }
   end
 

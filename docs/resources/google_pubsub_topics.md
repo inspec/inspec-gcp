@@ -30,6 +30,7 @@ See [google_pubsub_topic.md](google_pubsub_topic.md) for more detailed informati
   * `names`: an array of `google_pubsub_topic` name
   * `kms_key_names`: an array of `google_pubsub_topic` kms_key_name
   * `labels`: an array of `google_pubsub_topic` labels
+  * `message_storage_policies`: an array of `google_pubsub_topic` message_storage_policy
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
