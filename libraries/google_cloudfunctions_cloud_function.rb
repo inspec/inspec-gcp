@@ -42,6 +42,7 @@ class CloudFunction < GcpResourceBase
   attr_reader :source_repository
   attr_reader :https_trigger
   attr_reader :event_trigger
+  attr_reader :location
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -68,6 +69,7 @@ class CloudFunction < GcpResourceBase
     @source_repository = GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(@fetched['sourceRepository'], to_s)
     @https_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(@fetched['httpsTrigger'], to_s)
     @event_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(@fetched['eventTrigger'], to_s)
+    @location = @fetched['location']
   end
 
   # Handles parsing RFC3339 time string
