@@ -35,6 +35,7 @@ See [google_cloudfunctions_cloud_function.md](google_cloudfunctions_cloud_functi
   * `source_repositories`: an array of `google_cloudfunctions_cloud_function` source_repository
   * `https_triggers`: an array of `google_cloudfunctions_cloud_function` https_trigger
   * `event_triggers`: an array of `google_cloudfunctions_cloud_function` event_trigger
+  * `locations`: an array of `google_cloudfunctions_cloud_function` location
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
