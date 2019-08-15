@@ -71,6 +71,8 @@ Properties that can be accessed from the `google_cloudfunctions_cloud_function` 
 
     * `service`: The hostname of the service that should be observed.
 
+  * `location`: The location of this cloud function.
+
 
 
 ## GCP Permissions

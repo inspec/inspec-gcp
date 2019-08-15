@@ -40,6 +40,7 @@ class CloudFunctions < GcpResourceBase
   filter_table_config.add(:source_repositories, field: :source_repository)
   filter_table_config.add(:https_triggers, field: :https_trigger)
   filter_table_config.add(:event_triggers, field: :event_trigger)
+  filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
 
@@ -96,6 +97,7 @@ class CloudFunctions < GcpResourceBase
       'sourceRepository' => ->(obj) { return :source_repository, GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(obj['sourceRepository'], to_s) },
       'httpsTrigger' => ->(obj) { return :https_trigger, GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(obj['httpsTrigger'], to_s) },
       'eventTrigger' => ->(obj) { return :event_trigger, GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(obj['eventTrigger'], to_s) },
+      'location' => ->(obj) { return :location, obj['location'] },
     }
   end
 
