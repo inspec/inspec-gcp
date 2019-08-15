@@ -22,7 +22,7 @@ Properties that can be accessed from the `google_pubsub_topic` resource:
 
   * `name`: Name of the topic.
 
-  * `kms_key_name`: The resource name of the Cloud KMS CryptoKey to be used to protect access to messsages published on this topic. Your project's PubSub service account (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.  The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+  * `kms_key_name`: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your project's PubSub service account (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.  The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 
   * `labels`: A set of key/value label pairs to assign to this Topic.
 
