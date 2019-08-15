@@ -44,7 +44,7 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
   * `last_attach_timestamp`: Last attach timestamp in RFC3339 text format.
 
-  * `last_detach_timestamp`: Last dettach timestamp in RFC3339 text format.
+  * `last_detach_timestamp`: Last detach timestamp in RFC3339 text format.
 
   * `labels`: Labels to apply to this disk.  A list of key->value pairs.
 
