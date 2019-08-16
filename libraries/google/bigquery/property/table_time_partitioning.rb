@@ -19,12 +19,15 @@ module GoogleInSpec
       class TableTimePartitioning
         attr_reader :expiration_ms
 
+        attr_reader :field
+
         attr_reader :type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @expiration_ms = args['expirationMs']
+          @field = args['field']
           @type = args['type']
         end
 

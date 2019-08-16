@@ -32,6 +32,8 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
     * `table_id`: The ID of the the table
 
+  * `clustering`: One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
+
   * `creation_time`: The time when this dataset was created, in milliseconds since the epoch.
 
   * `description`: A user-friendly description of the dataset
@@ -54,6 +56,8 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
   * `num_rows`: The number of rows of data in this table, excluding any data in the streaming buffer.
 
+  * `require_partition_filter`: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+
   * `type`: Describes the table type
 
   * `view`: The view definition.
@@ -65,6 +69,8 @@ Properties that can be accessed from the `google_bigquery_table` resource:
   * `time_partitioning`: If specified, configures time-based partitioning for this table.
 
     * `expiration_ms`: Number of milliseconds for which to keep the storage for a partition.
+
+    * `field`: If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
 
     * `type`: The only type supported is DAY, which will generate one partition per day.
 

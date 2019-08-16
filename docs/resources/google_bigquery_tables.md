@@ -23,6 +23,7 @@ Properties that can be accessed from the `google_bigquery_tables` resource:
 
 See [google_bigquery_table.md](google_bigquery_table.md) for more detailed information
   * `table_references`: an array of `google_bigquery_table` table_reference
+  * `clusterings`: an array of `google_bigquery_table` clustering
   * `creation_times`: an array of `google_bigquery_table` creation_time
   * `friendly_names`: an array of `google_bigquery_table` friendly_name
   * `ids`: an array of `google_bigquery_table` id
@@ -32,6 +33,7 @@ See [google_bigquery_table.md](google_bigquery_table.md) for more detailed infor
   * `num_bytes`: an array of `google_bigquery_table` num_bytes
   * `num_long_term_bytes`: an array of `google_bigquery_table` num_long_term_bytes
   * `num_rows`: an array of `google_bigquery_table` num_rows
+  * `require_partition_filters`: an array of `google_bigquery_table` require_partition_filter
   * `types`: an array of `google_bigquery_table` type
   * `views`: an array of `google_bigquery_table` view
   * `time_partitionings`: an array of `google_bigquery_table` time_partitioning

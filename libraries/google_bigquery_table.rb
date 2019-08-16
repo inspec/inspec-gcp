@@ -38,6 +38,7 @@ class Table < GcpResourceBase
 
   attr_reader :params
   attr_reader :table_reference
+  attr_reader :clustering
   attr_reader :creation_time
   attr_reader :description
   attr_reader :friendly_name
@@ -49,6 +50,7 @@ class Table < GcpResourceBase
   attr_reader :num_bytes
   attr_reader :num_long_term_bytes
   attr_reader :num_rows
+  attr_reader :require_partition_filter
   attr_reader :type
   attr_reader :view
   attr_reader :time_partitioning
@@ -68,6 +70,7 @@ class Table < GcpResourceBase
 
   def parse
     @table_reference = GoogleInSpec::BigQuery::Property::TableTableReference.new(@fetched['tableReference'], to_s)
+    @clustering = @fetched['clustering']
     @creation_time = @fetched['creationTime']
     @description = @fetched['description']
     @friendly_name = @fetched['friendlyName']
@@ -79,6 +82,7 @@ class Table < GcpResourceBase
     @num_bytes = @fetched['numBytes']
     @num_long_term_bytes = @fetched['numLongTermBytes']
     @num_rows = @fetched['numRows']
+    @require_partition_filter = @fetched['requirePartitionFilter']
     @type = @fetched['type']
     @view = GoogleInSpec::BigQuery::Property::TableView.new(@fetched['view'], to_s)
     @time_partitioning = GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(@fetched['timePartitioning'], to_s)

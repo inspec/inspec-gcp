@@ -24,6 +24,7 @@ class Tables < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:table_references, field: :table_reference)
+  filter_table_config.add(:clusterings, field: :clustering)
   filter_table_config.add(:creation_times, field: :creation_time)
   filter_table_config.add(:friendly_names, field: :friendly_name)
   filter_table_config.add(:ids, field: :id)
@@ -33,6 +34,7 @@ class Tables < GcpResourceBase
   filter_table_config.add(:num_bytes, field: :num_bytes)
   filter_table_config.add(:num_long_term_bytes, field: :num_long_term_bytes)
   filter_table_config.add(:num_rows, field: :num_rows)
+  filter_table_config.add(:require_partition_filters, field: :require_partition_filter)
   filter_table_config.add(:types, field: :type)
   filter_table_config.add(:views, field: :view)
   filter_table_config.add(:time_partitionings, field: :time_partitioning)
@@ -82,6 +84,7 @@ class Tables < GcpResourceBase
   def transformers
     {
       'tableReference' => ->(obj) { return :table_reference, GoogleInSpec::BigQuery::Property::TableTableReference.new(obj['tableReference'], to_s) },
+      'clustering' => ->(obj) { return :clustering, obj['clustering'] },
       'creationTime' => ->(obj) { return :creation_time, obj['creationTime'] },
       'friendlyName' => ->(obj) { return :friendly_name, obj['friendlyName'] },
       'id' => ->(obj) { return :id, obj['id'] },
@@ -91,6 +94,7 @@ class Tables < GcpResourceBase
       'numBytes' => ->(obj) { return :num_bytes, obj['numBytes'] },
       'numLongTermBytes' => ->(obj) { return :num_long_term_bytes, obj['numLongTermBytes'] },
       'numRows' => ->(obj) { return :num_rows, obj['numRows'] },
+      'requirePartitionFilter' => ->(obj) { return :require_partition_filter, obj['requirePartitionFilter'] },
       'type' => ->(obj) { return :type, obj['type'] },
       'view' => ->(obj) { return :view, GoogleInSpec::BigQuery::Property::TableView.new(obj['view'], to_s) },
       'timePartitioning' => ->(obj) { return :time_partitioning, GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(obj['timePartitioning'], to_s) },
