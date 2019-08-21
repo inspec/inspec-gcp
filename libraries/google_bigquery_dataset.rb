@@ -28,7 +28,9 @@ class Dataset < GcpResourceBase
   attr_reader :creation_time
   attr_reader :dataset_reference
   attr_reader :default_table_expiration_ms
+  attr_reader :default_partition_expiration_ms
   attr_reader :description
+  attr_reader :etag
   attr_reader :friendly_name
   attr_reader :id
   attr_reader :labels
@@ -47,7 +49,9 @@ class Dataset < GcpResourceBase
     @creation_time = @fetched['creationTime']
     @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'], to_s)
     @default_table_expiration_ms = @fetched['defaultTableExpirationMs']
+    @default_partition_expiration_ms = @fetched['defaultPartitionExpirationMs']
     @description = @fetched['description']
+    @etag = @fetched['etag']
     @friendly_name = @fetched['friendlyName']
     @id = @fetched['id']
     @labels = @fetched['labels']

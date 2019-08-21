@@ -20,6 +20,8 @@ Properties that can be accessed from the `google_bigquery_datasets` resource:
 
 See [google_bigquery_dataset.md](google_bigquery_dataset.md) for more detailed information
   * `dataset_references`: an array of `google_bigquery_dataset` dataset_reference
+  * `default_partition_expiration_ms`: an array of `google_bigquery_dataset` default_partition_expiration_ms
+  * `etags`: an array of `google_bigquery_dataset` etag
   * `friendly_names`: an array of `google_bigquery_dataset` friendly_name
   * `ids`: an array of `google_bigquery_dataset` id
   * `labels`: an array of `google_bigquery_dataset` labels
