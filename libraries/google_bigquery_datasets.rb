@@ -24,6 +24,8 @@ class Datasets < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:dataset_references, field: :dataset_reference)
+  filter_table_config.add(:default_partition_expiration_ms, field: :default_partition_expiration_ms)
+  filter_table_config.add(:etags, field: :etag)
   filter_table_config.add(:friendly_names, field: :friendly_name)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:labels, field: :labels)
@@ -68,6 +70,8 @@ class Datasets < GcpResourceBase
   def transformers
     {
       'datasetReference' => ->(obj) { return :dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj['datasetReference'], to_s) },
+      'defaultPartitionExpirationMs' => ->(obj) { return :default_partition_expiration_ms, obj['defaultPartitionExpirationMs'] },
+      'etag' => ->(obj) { return :etag, obj['etag'] },
       'friendlyName' => ->(obj) { return :friendly_name, obj['friendlyName'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },
