@@ -41,6 +41,7 @@ class RegionalClusters < GcpResourceBase
   filter_table_config.add(:legacy_abacs, field: :legacy_abac)
   filter_table_config.add(:network_policies, field: :network_policy)
   filter_table_config.add(:default_max_pods_constraints, field: :default_max_pods_constraint)
+  filter_table_config.add(:ip_allocation_policies, field: :ip_allocation_policy)
   filter_table_config.add(:endpoints, field: :endpoint)
   filter_table_config.add(:initial_cluster_versions, field: :initial_cluster_version)
   filter_table_config.add(:current_master_versions, field: :current_master_version)
@@ -113,6 +114,7 @@ class RegionalClusters < GcpResourceBase
       'legacyAbac' => ->(obj) { return :legacy_abac, GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.new(obj['legacyAbac'], to_s) },
       'networkPolicy' => ->(obj) { return :network_policy, GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.new(obj['networkPolicy'], to_s) },
       'defaultMaxPodsConstraint' => ->(obj) { return :default_max_pods_constraint, GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.new(obj['defaultMaxPodsConstraint'], to_s) },
+      'ipAllocationPolicy' => ->(obj) { return :ip_allocation_policy, GoogleInSpec::Container::Property::RegionalClusterIpAllocationPolicy.new(obj['ipAllocationPolicy'], to_s) },
       'endpoint' => ->(obj) { return :endpoint, obj['endpoint'] },
       'initialClusterVersion' => ->(obj) { return :initial_cluster_version, obj['initialClusterVersion'] },
       'currentMasterVersion' => ->(obj) { return :current_master_version, obj['currentMasterVersion'] },
