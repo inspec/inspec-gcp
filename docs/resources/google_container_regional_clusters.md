@@ -37,6 +37,7 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `legacy_abacs`: an array of `google_container_regional_cluster` legacy_abac
   * `network_policies`: an array of `google_container_regional_cluster` network_policy
   * `default_max_pods_constraints`: an array of `google_container_regional_cluster` default_max_pods_constraint
+  * `ip_allocation_policies`: an array of `google_container_regional_cluster` ip_allocation_policy
   * `endpoints`: an array of `google_container_regional_cluster` endpoint
   * `initial_cluster_versions`: an array of `google_container_regional_cluster` initial_cluster_version
   * `current_master_versions`: an array of `google_container_regional_cluster` current_master_version

@@ -122,6 +122,26 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `max_pods_per_node`: Constraint enforced on the max num of pods per node.
 
+  * `ip_allocation_policy`: Configuration for controlling how IPs are allocated in the cluster
+
+    * `use_ip_aliases`: Whether alias IPs will be used for pod IPs in the cluster
+
+    * `create_subnetwork`: Whether a new subnetwork will be created automatically for the cluster
+
+    * `subnetwork_name`: A custom subnetwork name to be used if createSubnetwork is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
+
+    * `cluster_secondary_range_name`: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork
+
+    * `services_secondary_range_name`: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork.
+
+    * `cluster_ipv4_cidr_block`: The IP address range for the cluster pod IPs. If this field is set, then cluster.cluster_ipv4_cidr must be left blank.  This field is only applicable when useIpAliases is true.  Set to blank to have a range chosen with the default size.  Set to /netmask (e.g. /14) to have a range chosen with a specific netmask.
+
+    * `node_ipv4_cidr_block`: The IP address range of the instance IPs in this cluster.  This is applicable only if createSubnetwork is true.  Set to blank to have a range chosen with the default size.  Set to /netmask (e.g. /14) to have a range chosen with a specific netmask.
+
+    * `services_ipv4_cidr_block`: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size.  This field is only applicable when useIpAliases is true.  Set to blank to have a range chosen with the default size.  Set to /netmask (e.g. /14) to have a range chosen with a specific netmask.
+
+    * `tpu_ipv4_cidr_block`: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size.  This field is only applicable when useIpAliases is true.  If unspecified, the range will use the default size.  Set to /netmask (e.g. /14) to have a range chosen with a specific netmask.
+
   * `endpoint`: The IP address of this cluster's master endpoint.  The endpoint can be accessed from the internet at https://username:password@endpoint/  See the masterAuth property of this resource for username and password information.
 
   * `initial_cluster_version`: The software version of the master endpoint and kubelets used in the cluster when it was first created. The version can be upgraded over time.

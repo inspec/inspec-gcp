@@ -20,6 +20,7 @@ require 'google/container/property/regionalcluster_addons_config_http_load_balan
 require 'google/container/property/regionalcluster_addons_config_network_policy_config'
 require 'google/container/property/regionalcluster_conditions'
 require 'google/container/property/regionalcluster_default_max_pods_constraint'
+require 'google/container/property/regionalcluster_ip_allocation_policy'
 require 'google/container/property/regionalcluster_legacy_abac'
 require 'google/container/property/regionalcluster_master_auth'
 require 'google/container/property/regionalcluster_master_auth_client_certificate_config'
@@ -54,6 +55,7 @@ class RegionalCluster < GcpResourceBase
   attr_reader :legacy_abac
   attr_reader :network_policy
   attr_reader :default_max_pods_constraint
+  attr_reader :ip_allocation_policy
   attr_reader :endpoint
   attr_reader :initial_cluster_version
   attr_reader :current_master_version
@@ -96,6 +98,7 @@ class RegionalCluster < GcpResourceBase
     @legacy_abac = GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.new(@fetched['legacyAbac'], to_s)
     @network_policy = GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.new(@fetched['networkPolicy'], to_s)
     @default_max_pods_constraint = GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.new(@fetched['defaultMaxPodsConstraint'], to_s)
+    @ip_allocation_policy = GoogleInSpec::Container::Property::RegionalClusterIpAllocationPolicy.new(@fetched['ipAllocationPolicy'], to_s)
     @endpoint = @fetched['endpoint']
     @initial_cluster_version = @fetched['initialClusterVersion']
     @current_master_version = @fetched['currentMasterVersion']
