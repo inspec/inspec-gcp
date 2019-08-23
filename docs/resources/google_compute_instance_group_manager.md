@@ -15,7 +15,6 @@ describe google_compute_instance_group_manager(project: 'chef-gcp-inspec', zone:
   its('named_ports.count') { should cmp 1 }
   its('named_ports.first.name') { should eq 'port' }
   its('named_ports.first.port') { should eq '80' }
-  its('instance_template') { should match 'gcp-managed-group-name' }
 end
 
 describe google_compute_instance_group_manager(project: 'chef-gcp-inspec', zone: 'zone', name: 'nonexistent') do
