@@ -11,7 +11,7 @@ local
 .terraform
 *.idea*
 *.env
-*inspec-gcp.tfvars
+*inspec-gcp.tfvars.json
 *gcp-inspec-attributes.yaml
 inspec-cassettes
 *terraform.tfvars
