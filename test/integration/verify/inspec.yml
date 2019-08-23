@@ -1,6 +1,6 @@
 name: inspec-gcp-integration-tests
 version: 0.11.0
-inspec_version: '>= 3.0.25'
+inspec_version: '>= 4.7.3' 
 depends:
   - name: inspec-gcp
     path: ../../../
