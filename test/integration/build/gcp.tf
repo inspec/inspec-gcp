@@ -99,7 +99,7 @@ variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
   region = "${var.gcp_location}"
-  version = "~> 2.7.0"
+  version = "~> 2.13.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
@@ -823,6 +823,7 @@ resource "google_sql_user" "cloud-sql-db-user" {
   name     = "${var.gcp_db_user_name}"
   instance = "${google_sql_database_instance.cloud-sql-db-instance.name}"
   password = "${var.gcp_db_user_password}"
+  host = "example.com"
 }
 
 # End Google SQL resources
@@ -831,7 +832,7 @@ resource "google_sql_user" "cloud-sql-db-user" {
 resource "google_compute_firewall" "health-check-firewall" {
   project = "${var.gcp_project_id}"
   name    = "vm-hc-inspec-gcp"
-  network = "${var.gcp_network_name}"
+  network = google_compute_network.inspec-gcp-network.name
 
   allow {
     protocol = "tcp"
@@ -844,7 +845,7 @@ resource "google_compute_firewall" "health-check-firewall" {
 resource "google_compute_firewall" "default-ssh" {
   project = "${var.gcp_project_id}"
   name    = "vm-ssh-inspec-gcp"
-  network = "${var.gcp_network_name}"
+  network = google_compute_network.inspec-gcp-network.name
 
   allow {
     protocol = "tcp"
@@ -858,7 +859,7 @@ resource "google_compute_firewall" "default-ssh" {
 resource "google_compute_firewall" "inspec-gcp-tag-test-fw" {
   project = "${var.gcp_project_id}"
   name    = "inspec-gcp-tag-test-fw"
-  network = "${var.gcp_network_name}"
+  network = google_compute_network.inspec-gcp-network.name
 
   allow {
     protocol = "tcp"
