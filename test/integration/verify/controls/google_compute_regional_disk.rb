@@ -8,17 +8,9 @@ control 'google_compute_regional_disk-1.0' do
   impact 1.0
   title 'google_compute_regional_disk resource test'
 
-  describe google_compute_regional_disk(project: gcp_project_id, name: gcp_compute_disk_name, region: gcp_region) do
+  describe google_compute_regional_disk(project: gcp_project_id, name: "#{gcp_compute_disk_name}-regional", region: gcp_region) do
     it { should exist }
     its('type') { should match gcp_compute_disk_type }
-  end
-
-  describe.one do
-    google_compute_regional_disk(project: gcp_project_id, name: gcp_compute_disk_name, region: gcp_region).labels.each_pair do |key, value|
-      describe key do
-        it { should cmp "environment" }
-      end
-    end
   end
 
   describe google_compute_regional_disk(project: gcp_project_id, name: 'nonexistent', region: gcp_region) do
