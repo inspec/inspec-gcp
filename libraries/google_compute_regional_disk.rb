@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'gcp_backend'
 require 'google/compute/property/disk_disk_encryption_key'
 require 'google/compute/property/disk_source_image_encryption_key'
