@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.12.3 -->
+<!-- latest_release 0.12.4 -->
+## [v0.12.4](https://github.com/inspec/inspec-gcp/tree/v0.12.4) (2019-08-23)
+
+#### Merged Pull Requests
+- Fix for regional compute disk creation and testing. [#171](https://github.com/inspec/inspec-gcp/pull/171) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v0.12.3](https://github.com/inspec/inspec-gcp/tree/v0.12.3) (2019-08-23)
 
 #### Merged Pull Requests
 - Updates to resources from MM [#167](https://github.com/inspec/inspec-gcp/pull/167) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.12.2](https://github.com/inspec/inspec-gcp/tree/v0.12.2) (2019-08-23)
 
