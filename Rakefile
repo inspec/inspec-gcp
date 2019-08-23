@@ -34,7 +34,7 @@ namespace :test do
   # run inspec check to verify that the profile is properly configured
   task :check do
     dir = File.join(File.dirname(__FILE__))
-    sh("bundle exec inspec check #{dir}")
+    sh("bundle exec inspec check #{dir} --chef-license=accept-silent")
     # run inspec check on the sample profile to ensure all resources are loaded okay
     # Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571
     #sh("cd #{integration_dir}/verify && bundle exec inspec check .")
@@ -75,7 +75,7 @@ namespace :test do
   task :run_integration_tests do
     puts "----> Run"
     # Since the default behaviour is to skip tests, the below absorbs an inspec "101 run okay + skipped only" exit code as successful
-    cmd = format("bundle exec inspec exec %s/verify --attrs %s/build/%s -t gcp://; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi", integration_dir, integration_dir, profile_attributes)
+    cmd = format("bundle exec inspec exec %s/verify --attrs %s/build/%s -t gcp:// --chef-license=accept-silent; rc=$?; if [ $rc -eq 0 ] || [ $rc -eq 101 ]; then exit 0; else exit 1; fi", integration_dir, integration_dir, profile_attributes)
     sh(cmd)
   end
 
