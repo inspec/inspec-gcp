@@ -16,7 +16,6 @@ title 'Test GCP google_compute_instance_group_managers resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-gcp_lb_mig1_name = attribute(:gcp_lb_mig1_name, default: 'gcp_lb_mig1_name', description: 'Managed instance group name.')
 instance_group_manager = attribute('instance_group_manager', default: {
   "name": "inspec-gcp-igm",
   "base_instance_name": "igm",
