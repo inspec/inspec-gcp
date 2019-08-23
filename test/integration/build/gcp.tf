@@ -874,7 +874,7 @@ resource "google_compute_firewall" "inspec-gcp-tag-test-fw" {
 resource "google_compute_region_disk" "regiondisk" {
   project = "${var.gcp_project_id}"
   name  = "${var.gcp_compute_disk_name}-regional"
-  type = "#{var.gcp_compute_disk_type}"
+  type = "${var.gcp_compute_disk_type}"
   region  = "${var.gcp_location}"
   replica_zones = ["${var.gcp_kube_cluster_zone}", "${var.gcp_kube_cluster_zone_extra1}"]
 }
