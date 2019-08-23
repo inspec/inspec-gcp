@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.12.2 -->
+<!-- latest_release 0.12.3 -->
+## [v0.12.3](https://github.com/inspec/inspec-gcp/tree/v0.12.3) (2019-08-23)
+
+#### Merged Pull Requests
+- Updates to resources from MM [#167](https://github.com/inspec/inspec-gcp/pull/167) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.12.2](https://github.com/inspec/inspec-gcp/tree/v0.12.2) (2019-08-23)
 
 #### Merged Pull Requests
 - Upgrade tf [#166](https://github.com/inspec/inspec-gcp/pull/166) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.12.1](https://github.com/inspec/inspec-gcp/tree/v0.12.1) (2019-08-23)
 
