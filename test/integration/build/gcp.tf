@@ -99,7 +99,7 @@ variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
   region = "${var.gcp_location}"
-  version = "~> 2.13.0"
+  version = "~> 2.14.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
