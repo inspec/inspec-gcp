@@ -52,6 +52,7 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `enable_tpus`: an array of `google_container_regional_cluster` enable_tpu
   * `tpu_ipv4_cidr_blocks`: an array of `google_container_regional_cluster` tpu_ipv4_cidr_block
   * `conditions`: an array of `google_container_regional_cluster` conditions
+  * `master_authorized_networks_configs`: an array of `google_container_regional_cluster` master_authorized_networks_config
   * `locations`: an array of `google_container_regional_cluster` location
 
 ## Filter Criteria

@@ -98,6 +98,8 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `horizontal_pod_autoscaling`: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 
+    * `kubernetes_dashboard`: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications.
+
     * `network_policy_config`: Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
 
   * `subnetwork`: The name of the Google Compute Engine subnetwork to which the cluster is connected.
@@ -173,6 +175,12 @@ Properties that can be accessed from the `google_container_regional_cluster` res
     * `code`: Machine-friendly representation of the condition
 
     * `message`: Human-friendly representation of the condition
+
+  * `master_authorized_networks_config`: Configuration for controlling how IPs are allocated in the cluster
+
+    * `enabled`: Whether or not master authorized networks is enabled.
+
+    * `cidr_blocks`: Define up to 50 external networks that could access Kubernetes master through HTTPS.
 
   * `location`: The location where the cluster is deployed
 

@@ -56,6 +56,7 @@ class RegionalClusters < GcpResourceBase
   filter_table_config.add(:enable_tpus, field: :enable_tpu)
   filter_table_config.add(:tpu_ipv4_cidr_blocks, field: :tpu_ipv4_cidr_block)
   filter_table_config.add(:conditions, field: :conditions)
+  filter_table_config.add(:master_authorized_networks_configs, field: :master_authorized_networks_config)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -129,6 +130,7 @@ class RegionalClusters < GcpResourceBase
       'enableTpu' => ->(obj) { return :enable_tpu, obj['enableTpu'] },
       'tpuIpv4CidrBlock' => ->(obj) { return :tpu_ipv4_cidr_block, obj['tpuIpv4CidrBlock'] },
       'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(obj['conditions'], to_s) },
+      'masterAuthorizedNetworksConfig' => ->(obj) { return :master_authorized_networks_config, GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.new(obj['masterAuthorizedNetworksConfig'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end
