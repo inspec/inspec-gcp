@@ -17,6 +17,7 @@ module GCPInspecConfig
   # Config for terraform / inspec in the below hash
   @config = {
       # Generic GCP resource parameters
+      :gcp_organization_id => '',
       :gcp_project_name => "SPaterson Project",
       :gcp_project_id => "spaterson-project",
       :gcp_project_number => "1041358276233",
