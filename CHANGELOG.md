@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.13.1 -->
+<!-- latest_release 0.13.2 -->
+## [v0.13.2](https://github.com/inspec/inspec-gcp/tree/v0.13.2) (2019-08-29)
+
+#### Merged Pull Requests
+- Propagate default empty string for org id. [#176](https://github.com/inspec/inspec-gcp/pull/176) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v0.13.1](https://github.com/inspec/inspec-gcp/tree/v0.13.1) (2019-08-29)
 
 #### Merged Pull Requests
 - Ensure an agreeable default value for gcp_organization_id for skipping affected tests. [#175](https://github.com/inspec/inspec-gcp/pull/175) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v0.13.0](https://github.com/inspec/inspec-gcp/tree/v0.13.0) (2019-08-27)
 
