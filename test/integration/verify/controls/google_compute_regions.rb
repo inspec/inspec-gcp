@@ -16,7 +16,6 @@ title 'Test GCP google_compute_regions resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-gcp_region_id = attribute(:gcp_region_id, default: 'gcp_region_id', description: 'A sample GCP region identifier to test for.')
 control 'google_compute_regions-1.0' do
   impact 1.0
   title 'google_compute_regions resource test'
@@ -25,6 +24,6 @@ control 'google_compute_regions-1.0' do
     its('count') { should be >= 1 }
     its('region_names') { should include "#{gcp_location}" }
     its('region_statuses') { should_not include "DOWN" }
-    its('region_ids') { should include gcp_region_id }
+    its('region_ids') { should include "1290" }
   end
 end

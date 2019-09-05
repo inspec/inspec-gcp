@@ -23,8 +23,6 @@ module GCPInspecConfig
       # Determine the storage account name and the admin password
       :gcp_location => "europe-west2",
       :gcp_zone => "europe-west2-a",
-      :gcp_zone_id => "2290",
-      :gcp_region_id => "1290",
       # Cloud functions are only available in certain regions
       :gcp_cloud_function_region => "us-central1",
       :gcp_int_vm_name => "gcp-inspec-int-linux-vm",
@@ -76,7 +74,6 @@ module GCPInspecConfig
       :gcp_kube_cluster_master_user => "gcp-inspec-kube-admin",
       :gcp_kube_cluster_master_pass => (("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + %w{! @ # $ % & / ( ) + ? *}).sample(20).join,
       :gcp_kube_nodepool_name => "default-pool",
-      :gcp_inspec_user_email => "user:chef@example.com",
       :gcp_kms_key_ring_policy_name => "gcp-inspec-kms-key-ring-#{add_random_string}",
       :gcp_kms_key_ring_binding_member_name => "gcp-inspec-kms-key-ring-#{add_random_string}",
       :gcp_kms_crypto_key_name_policy => "gcp-inspec-kms-crypto-key-policy-#{add_random_string}",

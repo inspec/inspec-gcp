@@ -303,7 +303,7 @@ module Network
     end
 
     def builder
-      Net::HTTP.const_get(request_type)
+      Net::HTTP.const_get(@request_type)
     end
 
     def send

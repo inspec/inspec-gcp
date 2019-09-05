@@ -337,10 +337,10 @@ resource "google_compute_region_instance_group_manager" "appserver" {
 resource "google_container_cluster" "primary" {
   project = "${var.gcp_project_id}"
   name               = "${var.gcp_kube_cluster_name}"
-  zone               = "${var.gcp_kube_cluster_zone}"
+  location           = "${var.gcp_kube_cluster_zone}"
   initial_node_count = "${var.gcp_kube_cluster_size}"
 
-  additional_zones = [
+  node_locations = [
     "${var.gcp_kube_cluster_zone_extra1}",
     "${var.gcp_kube_cluster_zone_extra2}",
   ]
