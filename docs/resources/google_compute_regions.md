@@ -12,7 +12,7 @@ describe google_compute_regions(project: 'chef-gcp-inspec') do
   its('count') { should be >= 1 }
   its('region_names') { should include "#{gcp_location}" }
   its('region_statuses') { should_not include "DOWN" }
-  its('region_ids') { should include gcp_region_id }
+  its('region_ids') { should include "1290" }
 end
 
 ```
