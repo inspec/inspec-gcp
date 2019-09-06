@@ -31,7 +31,7 @@ class ResourceRecordSet < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    fetched = @connection.fetch(product_url, resource_base_url, params)
+    fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
     @fetched = unwrap(fetched, params)
     parse unless @fetched.nil?
   end

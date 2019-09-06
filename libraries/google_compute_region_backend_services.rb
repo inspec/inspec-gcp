@@ -45,7 +45,7 @@ class RegionBackendServices < GcpResourceBase
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params)
+    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
