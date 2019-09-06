@@ -14,37 +14,29 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/pubsub/property/topic_message_storage_policy'
+require 'google/iam/property/iam_policy_audit_configs'
+require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud Pub/Sub resources.
-class Topic < GcpResourceBase
-  name 'google_pubsub_topic'
-  desc 'Topic'
+# A provider to manage Resource Manager IAM Policy resources.
+class ProjectIamPolicy < GcpResourceBase
+  name 'google_resourcemanager_project_iam_policy'
+  desc 'Project Iam Policy'
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :name
-  attr_reader :kms_key_name
-  attr_reader :labels
-  attr_reader :message_storage_policy
+  attr_reader :bindings
+  attr_reader :audit_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = name_from_self_link(@fetched['name'])
-    @kms_key_name = @fetched['kmsKeyName']
-    @labels = @fetched['labels']
-    @message_storage_policy = GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(@fetched['messageStoragePolicy'], to_s)
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
   end
 
   def exists?
@@ -52,16 +44,16 @@ class Topic < GcpResourceBase
   end
 
   def to_s
-    "Topic #{@params[:name]}"
+    "Project IamPolicy #{@params[:project_id]}"
   end
 
   private
 
   def product_url
-    'https://pubsub.googleapis.com/v1/'
+    'https://cloudresourcemanager.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/topics/{{name}}'
+    'projects/{{project_id}}:getIamPolicy'
   end
 end

@@ -1,18 +1,18 @@
 ---
-title: About the google_pubsub_topic_iam_policy resource
+title: About the google_resourcemanager_project_iam_policy resource
 platform: gcp
 ---
 
 ## Syntax
-A `google_pubsub_topic_iam_policy` is used to test a Google Topic Iam Policy resource
+A `google_resourcemanager_project_iam_policy` is used to test a Google Project Iam Policy resource
 
 ## Examples
 ```
-describe google_pubsub_topic_iam_policy(project: "project", name: "name") do
+describe google_resourcemanager_project_iam_policy(project_id: "projectId") do
   it { should exist }
 end
 
-google_pubsub_topic_iam_policy(project: "project", name: "name").bindings.each do |binding|
+google_resourcemanager_project_iam_policy(project_id: "projectId").bindings.each do |binding|
   describe binding do
     its('role') { should eq 'roles/editor'}
     its('members') { should include 'user:testuser@example.com'}
@@ -21,7 +21,7 @@ end
 ```
 
 ## Properties
-Properties that can be accessed from the `google_pubsub_topic_iam_policy` resource:
+Properties that can be accessed from the `google_resourcemanager_project_iam_policy` resource:
 
   * `bindings`: Associates a list of members to a role.
 
@@ -43,4 +43,4 @@ Properties that can be accessed from the `google_pubsub_topic_iam_policy` resour
 
 ## GCP Permissions
 
-Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.
+Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.
