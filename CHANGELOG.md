@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.13.2 -->
+<!-- latest_release 0.14.0 -->
+## [v0.14.0](https://github.com/inspec/inspec-gcp/tree/v0.14.0) (2019-09-16)
+
+#### Merged Pull Requests
+- Project iam policy [#177](https://github.com/inspec/inspec-gcp/pull/177) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.13.2](https://github.com/inspec/inspec-gcp/tree/v0.13.2) (2019-08-29)
 
 #### Merged Pull Requests
 - Propagate default empty string for org id. [#176](https://github.com/inspec/inspec-gcp/pull/176) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v0.13.1](https://github.com/inspec/inspec-gcp/tree/v0.13.1) (2019-08-29)
 
