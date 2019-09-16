@@ -31,6 +31,7 @@ See [google_compute_health_check.md](google_compute_health_check.md) for more de
   * `https_health_checks`: an array of `google_compute_health_check` https_health_check
   * `tcp_health_checks`: an array of `google_compute_health_check` tcp_health_check
   * `ssl_health_checks`: an array of `google_compute_health_check` ssl_health_check
+  * `http2_health_checks`: an array of `google_compute_health_check` http2_health_check
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
