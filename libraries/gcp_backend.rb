@@ -207,19 +207,20 @@ class GcpApiConnection
     Network::Authorization.new.from_application_default!
   end
 
-  def fetch(base_url, template, var_data)
+  def fetch(base_url, template, var_data, request_type = 'Get')
     get_request = Network::Base.new(
       build_uri(base_url, template, var_data),
       fetch_auth,
+      request_type,
     )
     return_if_object get_request.send
   end
 
-  def fetch_all(base_url, template, var_data)
-    next_page(build_uri(base_url, template, var_data))
+  def fetch_all(base_url, template, var_data, request_type = 'Get')
+    next_page(build_uri(base_url, template, var_data), request_type)
   end
 
-  def next_page(uri, token = nil)
+  def next_page(uri, request_type, token = nil)
     next_hash = {}
     next_hash['pageToken'] = token unless token.nil?
     current_params = Hash[URI.decode_www_form(uri.query || '')].merge(next_hash)
@@ -227,12 +228,13 @@ class GcpApiConnection
     get_request = Network::Base.new(
       uri,
       fetch_auth,
+      request_type,
     )
     result = JSON.parse(get_request.send.body)
     next_page_token = result['nextPageToken']
     return [result] if next_page_token.nil?
 
-    [result] + next_page(uri, next_page_token)
+    [result] + next_page(uri, request_type, next_page_token)
   end
 
   def return_if_object(response)
@@ -294,13 +296,14 @@ end
 # A handler for authenticated network request
 module Network
   class Base
-    def initialize(link, cred)
+    def initialize(link, cred, request_type)
       @link = link
       @cred = cred
+      @request_type = request_type
     end
 
     def builder
-      Net::HTTP.const_get('Get')
+      Net::HTTP.const_get(@request_type)
     end
 
     def send

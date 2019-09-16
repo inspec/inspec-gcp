@@ -2,7 +2,6 @@ title 'Zones Properties'
 
 gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
 gcp_zone = attribute(:gcp_zone, default: '', description: 'The GCP zone being used.')
-gcp_zone_id = attribute(:gcp_zone_id, default: '', description: 'A sample zone identifier to test for.')
 
 control 'gcp-zones-1.0' do
 
@@ -14,7 +13,7 @@ control 'gcp-zones-1.0' do
     its('count') { should be <= 100} # 46 at the time of writing
     its('zone_names') { should include gcp_zone }
     its('zone_statuses') { should_not include "DOWN" }
-    its('zone_ids') { should include gcp_zone_id.to_i }
+    its('zone_ids') { should include 2290 }
   end
 
 end

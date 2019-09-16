@@ -16,7 +16,6 @@ title 'Test GCP google_compute_region resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-gcp_region_id = attribute(:gcp_region_id, default: 'gcp_region_id', description: 'A sample GCP region identifier to test for.')
 control 'google_compute_region-1.0' do
   impact 1.0
   title 'google_compute_region resource test'

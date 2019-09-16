@@ -35,6 +35,10 @@ Properties that can be accessed from the `google_pubsub_subscription_iam_policy`
 
     * `audit_log_configs`: The configuration for logging of each type of permission.
 
+      * `log_type`: The log type that this config enables. For example, ADMIN_READ, DATA_WRITE or DATA_READ
+
+      * `exempted_members`: Specifies the identities that do not cause logging for this type of permission.
+
 
 
 ## GCP Permissions

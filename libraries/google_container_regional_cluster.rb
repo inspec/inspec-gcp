@@ -17,6 +17,7 @@ require 'gcp_backend'
 require 'google/container/property/regionalcluster_addons_config'
 require 'google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling'
 require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
+require 'google/container/property/regionalcluster_addons_config_kubernetes_dashboard'
 require 'google/container/property/regionalcluster_addons_config_network_policy_config'
 require 'google/container/property/regionalcluster_conditions'
 require 'google/container/property/regionalcluster_default_max_pods_constraint'
@@ -24,6 +25,8 @@ require 'google/container/property/regionalcluster_ip_allocation_policy'
 require 'google/container/property/regionalcluster_legacy_abac'
 require 'google/container/property/regionalcluster_master_auth'
 require 'google/container/property/regionalcluster_master_auth_client_certificate_config'
+require 'google/container/property/regionalcluster_master_authorized_networks_config'
+require 'google/container/property/regionalcluster_master_authorized_networks_config_cidr_blocks'
 require 'google/container/property/regionalcluster_network_policy'
 require 'google/container/property/regionalcluster_node_config'
 require 'google/container/property/regionalcluster_node_config_accelerators'
@@ -70,12 +73,13 @@ class RegionalCluster < GcpResourceBase
   attr_reader :enable_tpu
   attr_reader :tpu_ipv4_cidr_block
   attr_reader :conditions
+  attr_reader :master_authorized_networks_config
   attr_reader :location
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params)
+    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -113,6 +117,7 @@ class RegionalCluster < GcpResourceBase
     @enable_tpu = @fetched['enableTpu']
     @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
     @conditions = GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(@fetched['conditions'], to_s)
+    @master_authorized_networks_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
     @location = @fetched['location']
   end
 
