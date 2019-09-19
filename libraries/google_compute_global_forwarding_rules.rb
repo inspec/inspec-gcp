@@ -30,6 +30,7 @@ class GlobalForwardingRules < GcpResourceBase
   filter_table_config.add(:ip_protocols, field: :ip_protocol)
   filter_table_config.add(:ip_versions, field: :ip_version)
   filter_table_config.add(:load_balancing_schemes, field: :load_balancing_scheme)
+  filter_table_config.add(:metadata_filters, field: :metadata_filters)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:networks, field: :network)
   filter_table_config.add(:port_ranges, field: :port_range)
@@ -80,6 +81,7 @@ class GlobalForwardingRules < GcpResourceBase
       'IPProtocol' => ->(obj) { return :ip_protocol, obj['IPProtocol'] },
       'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
       'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
+      'metadataFilters' => ->(obj) { return :metadata_filters, GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(obj['metadataFilters'], to_s) },
       'name' => ->(obj) { return :name, obj['name'] },
       'network' => ->(obj) { return :network, obj['network'] },
       'portRange' => ->(obj) { return :port_range, obj['portRange'] },
