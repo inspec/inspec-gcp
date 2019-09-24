@@ -23,6 +23,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_region_backend_service` resource:
 
+
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
   * `health_checks`: The list of HealthChecks for checking the health of the backend service. Currently at most one health check can be specified, and a health check is required.
@@ -50,7 +51,6 @@ Properties that can be accessed from the `google_compute_region_backend_service`
     * `draining_timeout_sec`: Time for which instance will be drained (not accept new connections, but still work to finish started).
 
   * `load_balancing_scheme`: This signifies what the ForwardingRule will be used for and can only be INTERNAL for RegionBackendServices
-
 
 
 ## GCP Permissions

@@ -24,6 +24,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_route` resource:
 
+
   * `dest_range`: The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
 
   * `description`: An optional description of this resource. Provide this property when you create the resource.
@@ -45,7 +46,6 @@ Properties that can be accessed from the `google_compute_route` resource:
   * `next_hop_vpn_tunnel`: URL to a VpnTunnel that should handle matching packets.
 
   * `next_hop_network`: URL to a Network that should handle matching packets.
-
 
 
 ## GCP Permissions

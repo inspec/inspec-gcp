@@ -22,6 +22,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_container_regional_cluster` resource:
 
+
   * `name`: The name of this cluster. The name must be unique within this project and location, and can be up to 40 characters. Must be Lowercase letters, numbers, and hyphens only. Must start with a letter. Must end with a number or a letter.
 
   * `description`: An optional description of this cluster.
@@ -52,11 +53,21 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `accelerators`: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 
+      * `accelerator_count`: The number of accelerator cards exposed to an instance.
+
+      * `accelerator_type`: The accelerator type resource name
+
     * `disk_type`: Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')  If unspecified, the default disk type is 'pd-standard'
 
     * `min_cpu_platform`: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
 
     * `taints`: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+
+      * `key`: Key for taint
+
+      * `value`: Value for taint
+
+      * `effect`: Effect for taint
 
   * `master_auth`: The authentication information for accessing the master endpoint.
 
@@ -65,6 +76,8 @@ Properties that can be accessed from the `google_container_regional_cluster` res
     * `password`: The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password with a minimum of 16 characters.
 
     * `client_certificate_config`: Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
+
+      * `issue_client_certificate`: Issue a client certificate.
 
     * `cluster_ca_certificate`: Base64-encoded public certificate that is the root of trust for the cluster.
 
@@ -96,11 +109,19 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `http_load_balancing`: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
 
+      * `disabled`: Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers.
+
     * `horizontal_pod_autoscaling`: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
+
+      * `disabled`: Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
 
     * `kubernetes_dashboard`: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications.
 
+      * `disabled`: Whether the Kubernetes Dashboard is enabled for this cluster.
+
     * `network_policy_config`: Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
+
+      * `disabled`: Whether NetworkPolicy is enabled for this cluster.
 
   * `subnetwork`: The name of the Google Compute Engine subnetwork to which the cluster is connected.
 
@@ -182,8 +203,11 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
     * `cidr_blocks`: Define up to 50 external networks that could access Kubernetes master through HTTPS.
 
-  * `location`: The location where the cluster is deployed
+      * `display_name`: Optional field used to identify cidr blocks
 
+      * `cidr_block`: Block specified in CIDR notation
+
+  * `location`: The location where the cluster is deployed
 
 
 ## GCP Permissions

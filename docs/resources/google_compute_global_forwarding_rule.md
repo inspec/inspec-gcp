@@ -22,6 +22,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_global_forwarding_rule` resource:
 
+
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
   * `description`: An optional description of this resource. Provide this property when you create the resource.
@@ -42,6 +43,10 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
 
     * `filter_labels`: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria  This list must not be empty and can have at the most 64 entries.
 
+      * `name`: Name of the metadata label. The length must be between 1 and 1024 characters, inclusive.
+
+      * `value`: The value that the label must match. The value has a maximum length of 1024 characters.
+
   * `name`: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
   * `network`: This field is not used for external load balancing. For INTERNAL_SELF_MANAGED load balancing, this field identifies the network that the load balanced IP should belong to for this global forwarding rule. If this field is not specified, the default network will be used.
@@ -49,7 +54,6 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
   * `port_range`: This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.  Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.  Some types of forwarding target have constraints on the acceptable ports:  * TargetHttpProxy: 80, 8080 * TargetHttpsProxy: 443 * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,                   1883, 5222 * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,                   1883, 5222 * TargetVpnGateway: 500, 4500
 
   * `target`: The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
-
 
 
 ## GCP Permissions
