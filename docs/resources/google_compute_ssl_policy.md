@@ -24,6 +24,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_ssl_policy` resource:
 
+
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
   * `description`: An optional description of this resource.
@@ -47,7 +48,6 @@ Properties that can be accessed from the `google_compute_ssl_policy` resource:
     * `code`: A warning code, if applicable.
 
     * `message`: A human-readable description of the warning code.
-
 
 
 ## GCP Permissions

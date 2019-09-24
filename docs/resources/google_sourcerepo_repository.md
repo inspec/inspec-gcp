@@ -20,12 +20,12 @@ end
 ## Properties
 Properties that can be accessed from the `google_sourcerepo_repository` resource:
 
+
   * `name`: Resource name of the repository, of the form projects/{{project}}/repos/{{repo}}. The repo name may contain slashes. eg, projects/myproject/repos/name/with/slash
 
   * `url`: URL to clone the repository from Google Cloud Source Repositories.
 
   * `size`: The disk usage of the repo, in bytes.
-
 
 
 ## GCP Permissions

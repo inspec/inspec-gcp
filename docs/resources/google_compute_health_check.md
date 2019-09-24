@@ -22,6 +22,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_health_check` resource:
 
+
   * `check_interval_sec`: How often (in seconds) to send a health check. The default value is 5 seconds.
 
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
@@ -115,7 +116,6 @@ Properties that can be accessed from the `google_compute_health_check` resource:
     * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 
     * `port_specification`: Specifies how port is selected for health checking, can be one of the following values:    * `USE_FIXED_PORT`: The port number in `port` is used for health checking.    * `USE_NAMED_PORT`: The `portName` is used for health checking.    * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each   network endpoint is used for health checking. For other backends, the   port or named port specified in the Backend Service is used for health   checking.  If not specified, HTTP2 health check follows behavior specified in `port` and `portName` fields.
-
 
 
 ## GCP Permissions

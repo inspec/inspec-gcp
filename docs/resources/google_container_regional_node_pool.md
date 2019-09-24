@@ -21,6 +21,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_container_regional_node_pool` resource:
 
+
   * `name`: The name of the node pool.
 
   * `config`: The node configuration of the pool.
@@ -47,11 +48,21 @@ Properties that can be accessed from the `google_container_regional_node_pool` r
 
     * `accelerators`: A list of hardware accelerators to be attached to each node
 
+      * `accelerator_count`: The number of the accelerator cards exposed to an instance.
+
+      * `accelerator_type`: The accelerator type resource name
+
     * `disk_type`: Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')  If unspecified, the default disk type is 'pd-standard'
 
     * `min_cpu_platform`: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform
 
     * `taints`: List of kubernetes taints to be applied to each node.
+
+      * `key`: Key for taint
+
+      * `value`: Value for taint
+
+      * `effect`: Effect for taint
 
   * `initial_node_count`: The initial node count for the pool. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota.
 
@@ -77,6 +88,10 @@ Properties that can be accessed from the `google_container_regional_node_pool` r
 
     * `upgrade_options`: Specifies the Auto Upgrade knobs for the node pool.
 
+      * `auto_upgrade_start_time`: This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+
+      * `description`: This field is set when upgrades are about to commence with the description of the upgrade.
+
   * `max_pods_constraint`: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 
     * `max_pods_per_node`: Constraint enforced on the max num of pods per node.
@@ -90,7 +105,6 @@ Properties that can be accessed from the `google_container_regional_node_pool` r
   * `cluster`: The cluster this node pool belongs to.
 
   * `location`: The location where the node pool is deployed
-
 
 
 ## GCP Permissions

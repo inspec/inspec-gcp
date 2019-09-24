@@ -24,6 +24,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_bigquery_table` resource:
 
+
   * `table_reference`: Reference describing the ID of this table
 
     * `dataset_id`: The ID of the dataset containing this table
@@ -66,6 +67,10 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
     * `user_defined_function_resources`: Describes user-defined function resources used in the query.
 
+      * `inline_code`: An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+
+      * `resource_uri`: A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+
   * `time_partitioning`: If specified, configures time-based partitioning for this table.
 
     * `expiration_ms`: Number of milliseconds for which to keep the storage for a partition.
@@ -85,6 +90,16 @@ Properties that can be accessed from the `google_bigquery_table` resource:
   * `schema`: Describes the schema of this table
 
     * `fields`: Describes the fields in a table.
+
+      * `description`: The field description. The maximum length is 1,024 characters.
+
+      * `fields`: Describes the nested schema fields if the type property is set to RECORD.
+
+      * `mode`: The field mode
+
+      * `name`: The field name
+
+      * `type`: The field data type
 
   * `encryption_configuration`: Custom encryption configuration
 
@@ -108,14 +123,65 @@ Properties that can be accessed from the `google_bigquery_table` resource:
 
     * `schema`: The schema for the data. Schema is required for CSV and JSON formats
 
+      * `fields`: Describes the fields in a table.
+
+        * `description`: The field description
+
+        * `fields`: Describes the nested schema fields if the type property is set to RECORD
+
+        * `mode`: Field mode.
+
+        * `name`: Field name
+
+        * `type`: Field data type
+
     * `google_sheets_options`: Additional options if sourceFormat is set to GOOGLE_SHEETS.
+
+      * `skip_leading_rows`: The number of rows at the top of a Google Sheet that BigQuery will skip when reading the data.
 
     * `csv_options`: Additional properties to set if sourceFormat is set to CSV.
 
+      * `allow_jagged_rows`: Indicates if BigQuery should accept rows that are missing trailing optional columns
+
+      * `allow_quoted_newlines`: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file
+
+      * `encoding`: The character encoding of the data
+
+      * `field_delimiter`: The separator for fields in a CSV file
+
+      * `quote`: The value that is used to quote data sections in a CSV file
+
+      * `skip_leading_rows`: The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+
     * `bigtable_options`: Additional options if sourceFormat is set to BIGTABLE.
 
-  * `dataset`: Name of the dataset
+      * `ignore_unspecified_column_families`: If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema
 
+      * `read_rowkey_as_string`: If field is true, then the rowkey column families will be read and converted to string.
+
+      * `column_families`: List of column families to expose in the table schema along with their types.
+
+        * `columns`: Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs.
+
+          * `encoding`: The encoding of the values when the type is not STRING
+
+          * `field_name`: If the qualifier is not a valid BigQuery field identifier, a valid identifier must be provided as the column field name and is used as field name in queries.
+
+          * `only_read_latest`: If this is set, only the latest version of value in this column are exposed
+
+          * `qualifier_string`: Qualifier of the column
+
+          * `type`: The type to convert the value in cells of this column
+
+        * `encoding`: The encoding of the values when the type is not STRING
+
+        * `family_id`: Identifier of the column family.
+
+        * `only_read_latest`: If this is set only the latest version of value are exposed for all columns in this column family
+
+        * `type`: The type to convert the value in cells of this column family
+
+  * `dataset`: Name of the dataset
 
 
 ## GCP Permissions
