@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bundle'
+gem 'faraday', "~> 0.15.0"
 gem 'google-api-client'
 gem 'google-cloud'
 gem 'googleauth'
