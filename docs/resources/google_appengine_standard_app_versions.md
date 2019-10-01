@@ -22,6 +22,7 @@ See [google_appengine_standard_app_version.md](google_appengine_standard_app_ver
   * `version_ids`: an array of `google_appengine_standard_app_version` version_id
   * `runtimes`: an array of `google_appengine_standard_app_version` runtime
   * `threadsaves`: an array of `google_appengine_standard_app_version` threadsafe
+  * `instance_classes`: an array of `google_appengine_standard_app_version` instance_class
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

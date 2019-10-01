@@ -27,6 +27,7 @@ class StandardAppVersions < GcpResourceBase
   filter_table_config.add(:version_ids, field: :version_id)
   filter_table_config.add(:runtimes, field: :runtime)
   filter_table_config.add(:threadsaves, field: :threadsafe)
+  filter_table_config.add(:instance_classes, field: :instance_class)
 
   filter_table_config.connect(self, :table)
 
@@ -70,6 +71,7 @@ class StandardAppVersions < GcpResourceBase
       'id' => ->(obj) { return :version_id, obj['id'] },
       'runtime' => ->(obj) { return :runtime, obj['runtime'] },
       'threadsafe' => ->(obj) { return :threadsafe, obj['threadsafe'] },
+      'instanceClass' => ->(obj) { return :instance_class, obj['instanceClass'] },
     }
   end
 

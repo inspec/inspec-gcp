@@ -28,6 +28,8 @@ Properties that can be accessed from the `google_appengine_standard_app_version`
 
   * `threadsafe`: Whether multiple requests can be dispatched to this version at once.
 
+  * `instance_class`: Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only AutomaticScaling is supported at the moment)
+
 
 ## GCP Permissions
 
