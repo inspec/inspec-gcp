@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class RegionalClusters < GcpResourceBase
+class ContainerRegionalClusters < GcpResourceBase
   name 'google_container_regional_clusters'
   desc 'RegionalCluster plural resource'
   supports platform: 'gcp'

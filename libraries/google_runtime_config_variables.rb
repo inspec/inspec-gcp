@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Variables < GcpResourceBase
+class RuntimeConfigVariables < GcpResourceBase
   name 'google_runtime_config_variables'
   desc 'Variable plural resource'
   supports platform: 'gcp'

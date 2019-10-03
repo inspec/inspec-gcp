@@ -18,7 +18,7 @@ require 'google/compute/property/region_deprecated'
 require 'google/compute/property/region_quotas'
 
 # A provider to manage Compute Engine resources.
-class Region < GcpResourceBase
+class ComputeRegion < GcpResourceBase
   name 'google_compute_region'
   desc 'Region'
   supports platform: 'gcp'

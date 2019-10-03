@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Cloud Source Repositories resources.
-class Repository < GcpResourceBase
+class SourceRepoRepository < GcpResourceBase
   name 'google_sourcerepo_repository'
   desc 'Repository'
   supports platform: 'gcp'

@@ -21,7 +21,7 @@ require 'google/compute/property/backendservice_connection_draining'
 require 'google/compute/property/backendservice_iap'
 
 # A provider to manage Compute Engine resources.
-class BackendService < GcpResourceBase
+class ComputeBackendService < GcpResourceBase
   name 'google_compute_backend_service'
   desc 'BackendService'
   supports platform: 'gcp'

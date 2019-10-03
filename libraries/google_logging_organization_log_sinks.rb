@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class OrganizationLogSinks < GcpResourceBase
+class LoggingOrganizationLogSinks < GcpResourceBase
   name 'google_logging_organization_log_sinks'
   desc 'OrganizationLogSink plural resource'
   supports platform: 'gcp'

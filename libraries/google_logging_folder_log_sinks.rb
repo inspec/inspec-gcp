@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class FolderLogSinks < GcpResourceBase
+class LoggingFolderLogSinks < GcpResourceBase
   name 'google_logging_folder_log_sinks'
   desc 'FolderLogSink plural resource'
   supports platform: 'gcp'

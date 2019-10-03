@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Triggers < GcpResourceBase
+class CloudBuildTriggers < GcpResourceBase
   name 'google_cloudbuild_triggers'
   desc 'Trigger plural resource'
   supports platform: 'gcp'

@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class BackendServices < GcpResourceBase
+class ComputeBackendServices < GcpResourceBase
   name 'google_compute_backend_services'
   desc 'BackendService plural resource'
   supports platform: 'gcp'

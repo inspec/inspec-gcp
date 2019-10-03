@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Folders < GcpResourceBase
+class ResourceManagerFolders < GcpResourceBase
   name 'google_resourcemanager_folders'
   desc 'Folder plural resource'
   supports platform: 'gcp'

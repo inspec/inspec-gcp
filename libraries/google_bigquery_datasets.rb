@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Datasets < GcpResourceBase
+class BigQueryDatasets < GcpResourceBase
   name 'google_bigquery_datasets'
   desc 'Dataset plural resource'
   supports platform: 'gcp'

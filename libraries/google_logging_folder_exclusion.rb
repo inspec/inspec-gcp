@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Stackdriver Logging resources.
-class FolderExclusion < GcpResourceBase
+class LoggingFolderExclusion < GcpResourceBase
   name 'google_logging_folder_exclusion'
   desc 'FolderExclusion'
   supports platform: 'gcp'

@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Routes < GcpResourceBase
+class ComputeRoutes < GcpResourceBase
   name 'google_compute_routes'
   desc 'Route plural resource'
   supports platform: 'gcp'

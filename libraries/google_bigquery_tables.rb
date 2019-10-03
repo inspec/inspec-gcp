@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Tables < GcpResourceBase
+class BigQueryTables < GcpResourceBase
   name 'google_bigquery_tables'
   desc 'Table plural resource'
   supports platform: 'gcp'

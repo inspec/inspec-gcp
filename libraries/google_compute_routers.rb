@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Routers < GcpResourceBase
+class ComputeRouters < GcpResourceBase
   name 'google_compute_routers'
   desc 'Router plural resource'
   supports platform: 'gcp'

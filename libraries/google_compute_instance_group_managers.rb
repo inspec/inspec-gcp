@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class InstanceGroupManagers < GcpResourceBase
+class ComputeInstanceGroupManagers < GcpResourceBase
   name 'google_compute_instance_group_managers'
   desc 'InstanceGroupManager plural resource'
   supports platform: 'gcp'
