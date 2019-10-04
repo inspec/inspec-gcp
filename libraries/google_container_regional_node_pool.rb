@@ -24,7 +24,7 @@ require 'google/container/property/regionalnodepool_management_upgrade_options'
 require 'google/container/property/regionalnodepool_max_pods_constraint'
 
 # A provider to manage Google Kubernetes Engine resources.
-class RegionalNodePool < GcpResourceBase
+class ContainerRegionalNodePool < GcpResourceBase
   name 'google_container_regional_node_pool'
   desc 'RegionalNodePool'
   supports platform: 'gcp'

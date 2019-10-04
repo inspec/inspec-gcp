@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Stackdriver Logging resources.
-class FolderLogSink < GcpResourceBase
+class LoggingFolderLogSink < GcpResourceBase
   name 'google_logging_folder_log_sink'
   desc 'FolderLogSink'
   supports platform: 'gcp'

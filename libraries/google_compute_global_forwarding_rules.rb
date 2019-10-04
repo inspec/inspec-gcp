@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class GlobalForwardingRules < GcpResourceBase
+class ComputeGlobalForwardingRules < GcpResourceBase
   name 'google_compute_global_forwarding_rules'
   desc 'GlobalForwardingRule plural resource'
   supports platform: 'gcp'

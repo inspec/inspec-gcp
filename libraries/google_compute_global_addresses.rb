@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class GlobalAddresss < GcpResourceBase
+class ComputeGlobalAddresss < GcpResourceBase
   name 'google_compute_global_addresses'
   desc 'GlobalAddress plural resource'
   supports platform: 'gcp'

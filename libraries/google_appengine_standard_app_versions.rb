@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class StandardAppVersions < GcpResourceBase
+class AppEngineStandardAppVersions < GcpResourceBase
   name 'google_appengine_standard_app_versions'
   desc 'StandardAppVersion plural resource'
   supports platform: 'gcp'

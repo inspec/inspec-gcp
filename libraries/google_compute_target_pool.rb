@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Compute Engine resources.
-class TargetPool < GcpResourceBase
+class ComputeTargetPool < GcpResourceBase
   name 'google_compute_target_pool'
   desc 'TargetPool'
   supports platform: 'gcp'

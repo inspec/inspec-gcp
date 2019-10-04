@@ -14,33 +14,38 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class ComputeHttpsHealthChecks < GcpResourceBase
-  name 'google_compute_https_health_checks'
-  desc 'HttpsHealthCheck plural resource'
+class RedisInstances < GcpResourceBase
+  name 'google_redis_instances'
+  desc 'Instance plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:check_interval_secs, field: :check_interval_sec)
-  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
-  filter_table_config.add(:descriptions, field: :description)
-  filter_table_config.add(:healthy_thresholds, field: :healthy_threshold)
+  filter_table_config.add(:alternative_location_ids, field: :alternative_location_id)
+  filter_table_config.add(:authorized_networks, field: :authorized_network)
+  filter_table_config.add(:create_times, field: :create_time)
+  filter_table_config.add(:current_location_ids, field: :current_location_id)
+  filter_table_config.add(:display_names, field: :display_name)
   filter_table_config.add(:hosts, field: :host)
-  filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:redis_configs, field: :redis_configs)
+  filter_table_config.add(:location_ids, field: :location_id)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:memory_size_gbs, field: :memory_size_gb)
   filter_table_config.add(:ports, field: :port)
-  filter_table_config.add(:request_paths, field: :request_path)
-  filter_table_config.add(:timeout_secs, field: :timeout_sec)
-  filter_table_config.add(:unhealthy_thresholds, field: :unhealthy_threshold)
+  filter_table_config.add(:redis_versions, field: :redis_version)
+  filter_table_config.add(:reserved_ip_ranges, field: :reserved_ip_range)
+  filter_table_config.add(:tiers, field: :tier)
+  filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('instances')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -73,17 +78,22 @@ class ComputeHttpsHealthChecks < GcpResourceBase
 
   def transformers
     {
-      'checkIntervalSec' => ->(obj) { return :check_interval_sec, obj['checkIntervalSec'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'healthyThreshold' => ->(obj) { return :healthy_threshold, obj['healthyThreshold'] },
+      'alternativeLocationId' => ->(obj) { return :alternative_location_id, obj['alternativeLocationId'] },
+      'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
+      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
+      'currentLocationId' => ->(obj) { return :current_location_id, obj['currentLocationId'] },
+      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
       'host' => ->(obj) { return :host, obj['host'] },
-      'id' => ->(obj) { return :id, obj['id'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'redisConfigs' => ->(obj) { return :redis_configs, obj['redisConfigs'] },
+      'locationId' => ->(obj) { return :location_id, obj['locationId'] },
       'name' => ->(obj) { return :name, obj['name'] },
+      'memorySizeGb' => ->(obj) { return :memory_size_gb, obj['memorySizeGb'] },
       'port' => ->(obj) { return :port, obj['port'] },
-      'requestPath' => ->(obj) { return :request_path, obj['requestPath'] },
-      'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
-      'unhealthyThreshold' => ->(obj) { return :unhealthy_threshold, obj['unhealthyThreshold'] },
+      'redisVersion' => ->(obj) { return :redis_version, obj['redisVersion'] },
+      'reservedIpRange' => ->(obj) { return :reserved_ip_range, obj['reservedIpRange'] },
+      'tier' => ->(obj) { return :tier, obj['tier'] },
+      'region' => ->(obj) { return :region, obj['region'] },
     }
   end
 
@@ -95,10 +105,10 @@ class ComputeHttpsHealthChecks < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    'https://redis.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/global/httpsHealthChecks'
+    'projects/{{project}}/locations/{{region}}/instances'
   end
 end

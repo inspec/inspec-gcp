@@ -17,7 +17,7 @@ require 'gcp_backend'
 require 'google/compute/property/backendbucket_cdn_policy'
 
 # A provider to manage Compute Engine resources.
-class BackendBucket < GcpResourceBase
+class ComputeBackendBucket < GcpResourceBase
   name 'google_compute_backend_bucket'
   desc 'BackendBucket'
   supports platform: 'gcp'

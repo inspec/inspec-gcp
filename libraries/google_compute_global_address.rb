@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Compute Engine resources.
-class GlobalAddress < GcpResourceBase
+class ComputeGlobalAddress < GcpResourceBase
   name 'google_compute_global_address'
   desc 'GlobalAddress'
   supports platform: 'gcp'

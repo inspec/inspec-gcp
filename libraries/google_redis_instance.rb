@@ -15,24 +15,29 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Compute Engine resources.
-class ComputeHttpHealthCheck < GcpResourceBase
-  name 'google_compute_http_health_check'
-  desc 'HttpHealthCheck'
+# A provider to manage Cloud Memorystore resources.
+class RedisInstance < GcpResourceBase
+  name 'google_redis_instance'
+  desc 'Instance'
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :check_interval_sec
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :healthy_threshold
+  attr_reader :alternative_location_id
+  attr_reader :authorized_network
+  attr_reader :create_time
+  attr_reader :current_location_id
+  attr_reader :display_name
   attr_reader :host
-  attr_reader :id
+  attr_reader :labels
+  attr_reader :redis_configs
+  attr_reader :location_id
   attr_reader :name
+  attr_reader :memory_size_gb
   attr_reader :port
-  attr_reader :request_path
-  attr_reader :timeout_sec
-  attr_reader :unhealthy_threshold
+  attr_reader :redis_version
+  attr_reader :reserved_ip_range
+  attr_reader :tier
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -42,17 +47,22 @@ class ComputeHttpHealthCheck < GcpResourceBase
   end
 
   def parse
-    @check_interval_sec = @fetched['checkIntervalSec']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @healthy_threshold = @fetched['healthyThreshold']
+    @alternative_location_id = @fetched['alternativeLocationId']
+    @authorized_network = @fetched['authorizedNetwork']
+    @create_time = parse_time_string(@fetched['createTime'])
+    @current_location_id = @fetched['currentLocationId']
+    @display_name = @fetched['displayName']
     @host = @fetched['host']
-    @id = @fetched['id']
+    @labels = @fetched['labels']
+    @redis_configs = @fetched['redisConfigs']
+    @location_id = @fetched['locationId']
     @name = @fetched['name']
+    @memory_size_gb = @fetched['memorySizeGb']
     @port = @fetched['port']
-    @request_path = @fetched['requestPath']
-    @timeout_sec = @fetched['timeoutSec']
-    @unhealthy_threshold = @fetched['unhealthyThreshold']
+    @redis_version = @fetched['redisVersion']
+    @reserved_ip_range = @fetched['reservedIpRange']
+    @tier = @fetched['tier']
+    @region = @fetched['region']
   end
 
   # Handles parsing RFC3339 time string
@@ -65,16 +75,16 @@ class ComputeHttpHealthCheck < GcpResourceBase
   end
 
   def to_s
-    "HttpHealthCheck #{@params[:name]}"
+    "Instance #{@params[:name]}"
   end
 
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    'https://redis.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/global/httpHealthChecks/{{name}}'
+    'projects/{{project}}/locations/{{region}}/instances/{{name}}'
   end
 end

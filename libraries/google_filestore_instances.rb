@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Instances < GcpResourceBase
+class FilestoreInstances < GcpResourceBase
   name 'google_filestore_instances'
   desc 'Instance plural resource'
   supports platform: 'gcp'

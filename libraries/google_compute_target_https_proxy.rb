@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Compute Engine resources.
-class TargetHttpsProxy < GcpResourceBase
+class ComputeTargetHttpsProxy < GcpResourceBase
   name 'google_compute_target_https_proxy'
   desc 'TargetHttpsProxy'
   supports platform: 'gcp'

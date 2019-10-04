@@ -19,7 +19,7 @@ require 'google/compute/property/disk_source_image_encryption_key'
 require 'google/compute/property/disk_source_snapshot_encryption_key'
 
 # A provider to manage Compute Engine resources.
-class Disk < GcpResourceBase
+class ComputeDisk < GcpResourceBase
   name 'google_compute_disk'
   desc 'Disk'
   supports platform: 'gcp'

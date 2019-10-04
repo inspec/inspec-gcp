@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Topics < GcpResourceBase
+class PubsubTopics < GcpResourceBase
   name 'google_pubsub_topics'
   desc 'Topic plural resource'
   supports platform: 'gcp'

@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Repositorys < GcpResourceBase
+class SourceRepoRepositorys < GcpResourceBase
   name 'google_sourcerepo_repositories'
   desc 'Repository plural resource'
   supports platform: 'gcp'

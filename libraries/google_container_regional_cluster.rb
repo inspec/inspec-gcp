@@ -34,7 +34,7 @@ require 'google/container/property/regionalcluster_node_config_taints'
 require 'google/container/property/regionalcluster_private_cluster_config'
 
 # A provider to manage Google Kubernetes Engine resources.
-class RegionalCluster < GcpResourceBase
+class ContainerRegionalCluster < GcpResourceBase
   name 'google_container_regional_cluster'
   desc 'RegionalCluster'
   supports platform: 'gcp'

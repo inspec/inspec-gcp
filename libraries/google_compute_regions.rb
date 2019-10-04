@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Regions < GcpResourceBase
+class ComputeRegions < GcpResourceBase
   name 'google_compute_regions'
   desc 'Region plural resource'
   supports platform: 'gcp'

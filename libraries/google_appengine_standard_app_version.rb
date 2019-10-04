@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage App Engine resources.
-class StandardAppVersion < GcpResourceBase
+class AppEngineStandardAppVersion < GcpResourceBase
   name 'google_appengine_standard_app_version'
   desc 'StandardAppVersion'
   supports platform: 'gcp'

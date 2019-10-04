@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage Compute Engine resources.
-class Route < GcpResourceBase
+class ComputeRoute < GcpResourceBase
   name 'google_compute_route'
   desc 'Route'
   supports platform: 'gcp'

@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class SslPolicys < GcpResourceBase
+class ComputeSslPolicys < GcpResourceBase
   name 'google_compute_ssl_policies'
   desc 'SslPolicy plural resource'
   supports platform: 'gcp'

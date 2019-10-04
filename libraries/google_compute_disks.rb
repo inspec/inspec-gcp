@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Disks < GcpResourceBase
+class ComputeDisks < GcpResourceBase
   name 'google_compute_disks'
   desc 'Disk plural resource'
   supports platform: 'gcp'
