@@ -12,25 +12,26 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_snapshot resource.'
+title 'Test GCP google_compute_node_template resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
-snapshot = attribute('snapshot', default: {
-  "name": "inspec-gcp-disk-snapshot",
-  "disk_name": "inspec-snapshot-disk"
-}, description: 'Compute disk snapshot description')
-control 'google_compute_snapshot-1.0' do
+gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
+node_template = attribute('node_template', default: {
+  "name": "inspec-node-template",
+  "label_key": "key",
+  "label_value": "value"
+}, description: 'Node template description')
+control 'google_compute_node_template-1.0' do
   impact 1.0
-  title 'google_compute_snapshot resource test'
+  title 'google_compute_node_template resource test'
 
 
-  describe google_compute_snapshot(project: gcp_project_id, name: snapshot['name']) do
+  describe google_compute_node_template(project: gcp_project_id, region: gcp_location, name: node_template['name']) do
     it { should exist }
-    its('source_disk') { should match snapshot['disk_name'] }
+    its('node_affinity_labels') { should include(node_template['label_key'] => node_template['label_value']) }
   end
 
-  describe google_compute_snapshot(project: gcp_project_id, name: 'nonexistent') do
+  describe google_compute_node_template(project: gcp_project_id, region: gcp_location, name: 'nonexistent') do
     it { should_not exist }
   end
 end

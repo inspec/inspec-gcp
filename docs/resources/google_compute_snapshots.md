@@ -16,7 +16,7 @@ end
 describe.one do
   google_compute_snapshots(project: 'chef-gcp-inspec').names do |snapshot_name|
     describe google_compute_snapshot(project: 'chef-gcp-inspec', name: snapshot_name) do
-      its('source_disk') { should match 'my_disk' }
+      its('source_disk') { should match 'inspec-snapshot-disk' }
     end
   end
 end
