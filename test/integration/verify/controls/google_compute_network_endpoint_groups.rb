@@ -12,25 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_snapshot resource.'
+title 'Test GCP google_compute_network_endpoint_groups resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
-snapshot = attribute('snapshot', default: {
-  "name": "inspec-gcp-disk-snapshot",
-  "disk_name": "inspec-snapshot-disk"
-}, description: 'Compute disk snapshot description')
-control 'google_compute_snapshot-1.0' do
+network_endpoint_group = attribute('network_endpoint_group', default: {
+  "name": "inspec-gcp-endpoint-group",
+  "default_port": 90
+}, description: 'Network endpoint group description')
+gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name')
+control 'google_compute_network_endpoint_groups-1.0' do
   impact 1.0
-  title 'google_compute_snapshot resource test'
+  title 'google_compute_network_endpoint_groups resource test'
 
 
-  describe google_compute_snapshot(project: gcp_project_id, name: snapshot['name']) do
-    it { should exist }
-    its('source_disk') { should match snapshot['disk_name'] }
-  end
-
-  describe google_compute_snapshot(project: gcp_project_id, name: 'nonexistent') do
-    it { should_not exist }
+  describe google_compute_network_endpoint_groups(project: gcp_project_id, zone: gcp_zone) do
+    its('default_ports') { should include network_endpoint_group['default_port'] }
+    its('names') { should include network_endpoint_group['name'] }
   end
 end

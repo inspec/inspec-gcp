@@ -12,25 +12,25 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_snapshot resource.'
+title 'Test GCP google_compute_network_endpoint_group resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
-snapshot = attribute('snapshot', default: {
-  "name": "inspec-gcp-disk-snapshot",
-  "disk_name": "inspec-snapshot-disk"
-}, description: 'Compute disk snapshot description')
-control 'google_compute_snapshot-1.0' do
+network_endpoint_group = attribute('network_endpoint_group', default: {
+  "name": "inspec-gcp-endpoint-group",
+  "default_port": 90
+}, description: 'Network endpoint group description')
+gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name')
+control 'google_compute_network_endpoint_group-1.0' do
   impact 1.0
-  title 'google_compute_snapshot resource test'
+  title 'google_compute_network_endpoint_group resource test'
 
 
-  describe google_compute_snapshot(project: gcp_project_id, name: snapshot['name']) do
+  describe google_compute_network_endpoint_group(project: gcp_project_id, zone: gcp_zone, name: network_endpoint_group['name']) do
     it { should exist }
-    its('source_disk') { should match snapshot['disk_name'] }
+    its('default_port') { should cmp network_endpoint_group['default_port'] }
   end
 
-  describe google_compute_snapshot(project: gcp_project_id, name: 'nonexistent') do
+  describe google_compute_network_endpoint_group(project: gcp_project_id, zone: gcp_zone, name: 'nonexistent') do
     it { should_not exist }
   end
 end

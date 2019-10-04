@@ -11,7 +11,7 @@ A `google_compute_snapshot` is used to test a Google Snapshot resource
 
 describe google_compute_snapshot(project: 'chef-gcp-inspec', name: 'inspec-gcp-disk-snapshot') do
   it { should exist }
-  its('source_disk') { should match 'my_disk' }
+  its('source_disk') { should match 'inspec-snapshot-disk' }
 end
 
 describe google_compute_snapshot(project: 'chef-gcp-inspec', name: 'nonexistent') do
