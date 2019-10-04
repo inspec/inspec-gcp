@@ -30,6 +30,7 @@ class BigQueryDatasets < GcpResourceBase
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:locations, field: :location)
+  filter_table_config.add(:default_encryption_configurations, field: :default_encryption_configuration)
 
   filter_table_config.connect(self, :table)
 
@@ -76,6 +77,7 @@ class BigQueryDatasets < GcpResourceBase
       'id' => ->(obj) { return :id, obj['id'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },
       'location' => ->(obj) { return :location, obj['location'] },
+      'defaultEncryptionConfiguration' => ->(obj) { return :default_encryption_configuration, GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(obj['defaultEncryptionConfiguration'], to_s) },
     }
   end
 

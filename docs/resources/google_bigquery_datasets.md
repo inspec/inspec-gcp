@@ -26,6 +26,7 @@ See [google_bigquery_dataset.md](google_bigquery_dataset.md) for more detailed i
   * `ids`: an array of `google_bigquery_dataset` id
   * `labels`: an array of `google_bigquery_dataset` labels
   * `locations`: an array of `google_bigquery_dataset` location
+  * `default_encryption_configurations`: an array of `google_bigquery_dataset` default_encryption_configuration
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

@@ -16,6 +16,7 @@
 require 'gcp_backend'
 require 'google/bigquery/property/dataset_access'
 require 'google/bigquery/property/dataset_dataset_reference'
+require 'google/bigquery/property/dataset_default_encryption_configuration'
 
 # A provider to manage BigQuery resources.
 class BigQueryDataset < GcpResourceBase
@@ -36,6 +37,7 @@ class BigQueryDataset < GcpResourceBase
   attr_reader :labels
   attr_reader :last_modified_time
   attr_reader :location
+  attr_reader :default_encryption_configuration
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -57,6 +59,7 @@ class BigQueryDataset < GcpResourceBase
     @labels = @fetched['labels']
     @last_modified_time = @fetched['lastModifiedTime']
     @location = @fetched['location']
+    @default_encryption_configuration = GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(@fetched['defaultEncryptionConfiguration'], to_s)
   end
 
   # Handles parsing RFC3339 time string
