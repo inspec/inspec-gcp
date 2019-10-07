@@ -189,7 +189,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_container_node_pool](docs/resources/google_container_node_pool.md) | [google_container_node_pools](docs/resources/google_container_node_pools.md) | 
 | [google_container_regional_cluster](docs/resources/google_container_regional_cluster.md) | [google_container_regional_clusters](docs/resources/google_container_regional_clusters.md) | 
 | [google_dns_managed_zone](docs/resources/google_dns_managed_zone.md) | [google_dns_managed_zones](docs/resources/google_dns_managed_zones.md) |  
-| google_dns_resource_record_set](docs/resources/google_dns_resource_record_set.md) | [google_dns_resource_record_sets](docs/resources/google_dns_resource_record_sets.md) | 
+| [google_dns_resource_record_set](docs/resources/google_dns_resource_record_set.md) | [google_dns_resource_record_sets](docs/resources/google_dns_resource_record_sets.md) | 
 | [google_kms_crypto_key](docs/resources/google_kms_crypto_key.md) | [google_kms_crypto_key_iam_binding](docs/resources/google_kms_crypto_key_iam_binding.md) | 
 | [google_kms_crypto_key_iam_bindings](docs/resources/google_kms_crypto_key_iam_bindings.md) | [google_kms_crypto_keys](docs/resources/google_kms_crypto_keys.md) | 
 | [google_kms_key_ring](docs/resources/google_kms_key_ring.md) | [google_kms_key_ring_iam_binding](docs/resources/google_kms_key_ring_iam_binding.md) | 
