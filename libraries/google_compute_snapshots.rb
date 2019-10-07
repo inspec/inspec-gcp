@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class Snapshots < GcpResourceBase
+class ComputeSnapshots < GcpResourceBase
   name 'google_compute_snapshots'
   desc 'Snapshot plural resource'
   supports platform: 'gcp'

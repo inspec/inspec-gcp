@@ -31,7 +31,7 @@ require 'google/bigquery/property/table_view'
 require 'google/bigquery/property/table_view_user_defined_function_resources'
 
 # A provider to manage BigQuery resources.
-class Table < GcpResourceBase
+class BigQueryTable < GcpResourceBase
   name 'google_bigquery_table'
   desc 'Table'
   supports platform: 'gcp'

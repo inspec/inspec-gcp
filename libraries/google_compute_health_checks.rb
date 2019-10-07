@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class HealthChecks < GcpResourceBase
+class ComputeHealthChecks < GcpResourceBase
   name 'google_compute_health_checks'
   desc 'HealthCheck plural resource'
   supports platform: 'gcp'
@@ -36,6 +36,7 @@ class HealthChecks < GcpResourceBase
   filter_table_config.add(:https_health_checks, field: :https_health_check)
   filter_table_config.add(:tcp_health_checks, field: :tcp_health_check)
   filter_table_config.add(:ssl_health_checks, field: :ssl_health_check)
+  filter_table_config.add(:http2_health_checks, field: :http2_health_check)
 
   filter_table_config.connect(self, :table)
 
@@ -88,6 +89,7 @@ class HealthChecks < GcpResourceBase
       'httpsHealthCheck' => ->(obj) { return :https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck'], to_s) },
       'tcpHealthCheck' => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s) },
       'sslHealthCheck' => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s) },
+      'http2HealthCheck' => ->(obj) { return :http2_health_check, GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(obj['http2HealthCheck'], to_s) },
     }
   end
 

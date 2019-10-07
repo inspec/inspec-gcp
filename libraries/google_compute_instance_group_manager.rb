@@ -18,7 +18,7 @@ require 'google/compute/property/instancegroupmanager_current_actions'
 require 'google/compute/property/instancegroupmanager_named_ports'
 
 # A provider to manage Compute Engine resources.
-class InstanceGroupManager < GcpResourceBase
+class ComputeInstanceGroupManager < GcpResourceBase
   name 'google_compute_instance_group_manager'
   desc 'InstanceGroupManager'
   supports platform: 'gcp'

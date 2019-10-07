@@ -19,6 +19,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_appengine_standard_app_version` resource:
 
+
   * `name`: Full path to the Version resource in the API. Example, "v1".
 
   * `version_id`: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-". 
@@ -27,6 +28,7 @@ Properties that can be accessed from the `google_appengine_standard_app_version`
 
   * `threadsafe`: Whether multiple requests can be dispatched to this version at once.
 
+  * `instance_class`: Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only AutomaticScaling is supported at the moment)
 
 
 ## GCP Permissions

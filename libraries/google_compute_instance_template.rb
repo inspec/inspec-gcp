@@ -23,7 +23,7 @@ require 'google/compute/property/instancetemplate_properties_service_accounts'
 require 'google/compute/property/instancetemplate_properties_tags'
 
 # A provider to manage Compute Engine resources.
-class InstanceTemplate < GcpResourceBase
+class ComputeInstanceTemplate < GcpResourceBase
   name 'google_compute_instance_template'
   desc 'InstanceTemplate'
   supports platform: 'gcp'

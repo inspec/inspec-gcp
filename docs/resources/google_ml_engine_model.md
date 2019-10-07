@@ -24,6 +24,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_ml_engine_model` resource:
 
+
   * `name`: The name specified for the model.
 
   * `description`: The description specified for the model when it was created.
@@ -39,7 +40,6 @@ Properties that can be accessed from the `google_ml_engine_model` resource:
   * `online_prediction_console_logging`: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 
   * `labels`: One or more labels that you can add, to organize your models.
-
 
 
 ## GCP Permissions

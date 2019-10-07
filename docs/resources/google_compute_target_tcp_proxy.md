@@ -22,6 +22,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_target_tcp_proxy` resource:
 
+
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
   * `description`: An optional description of this resource.
@@ -33,7 +34,6 @@ Properties that can be accessed from the `google_compute_target_tcp_proxy` resou
   * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 
   * `service`: A reference to the BackendService resource.
-
 
 
 ## GCP Permissions

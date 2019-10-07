@@ -35,6 +35,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_bigquery_dataset` resource:
 
+
   * `access`: An array of objects that define dataset access for one or more entities.
 
     * `domain`: A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
@@ -48,6 +49,12 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
     * `user_by_email`: An email address of a user to grant access to. For example: fred@example.com
 
     * `view`: A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+
+      * `dataset_id`: The ID of the dataset containing this table.
+
+      * `project_id`: The ID of the project containing this table.
+
+      * `table_id`: The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 
   * `creation_time`: The time when this dataset was created, in milliseconds since the epoch.
 
@@ -75,6 +82,9 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
   * `location`: The geographic location where the dataset should reside. See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).   There are two types of locations, regional or multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a large geographic area, such as the United States, that contains at least two geographic places.   Possible regional values include: `asia-east1`, `asia-northeast1`, `asia-southeast1`, `australia-southeast1`, `europe-north1`, `europe-west2` and `us-east4`.   Possible multi-regional values: `EU` and `US`.   The default value is multi-regional location `US`. Changing this forces a new resource to be created.
 
+  * `default_encryption_configuration`: The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+
+    * `kms_key_name`: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 
 
 ## GCP Permissions

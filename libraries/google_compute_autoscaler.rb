@@ -20,7 +20,7 @@ require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_uti
 require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
 
 # A provider to manage Compute Engine resources.
-class Autoscaler < GcpResourceBase
+class ComputeAutoscaler < GcpResourceBase
   name 'google_compute_autoscaler'
   desc 'Autoscaler'
   supports platform: 'gcp'

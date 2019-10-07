@@ -25,6 +25,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_backend_service` resource:
 
+
   * `affinity_cookie_ttl_sec`: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.  When the load balancing scheme is INTERNAL, this field is not used.
 
   * `backends`: The set of backends that serve this BackendService.
@@ -54,6 +55,16 @@ Properties that can be accessed from the `google_compute_backend_service` resour
   * `cdn_policy`: Cloud CDN configuration for this BackendService.
 
     * `cache_key_policy`: The CacheKeyPolicy for this CdnPolicy.
+
+      * `include_host`: If true requests to different hosts will be cached separately.
+
+      * `include_protocol`: If true, http and https requests will be cached separately.
+
+      * `include_query_string`: If true, include query string parameters in the cache key according to query_string_whitelist and query_string_blacklist. If neither is set, the entire query string will be included.  If false, the query string will be excluded from the cache key entirely.
+
+      * `query_string_blacklist`: Names of query string parameters to exclude in cache keys.  All other parameters will be included. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
+
+      * `query_string_whitelist`: Names of query string parameters to include in cache keys.  All other parameters will be excluded. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
 
     * `signed_url_cache_max_age_sec`: Maximum number of seconds the response to a signed URL request will be considered fresh, defaults to 1hr (3600s). After this time period, the response will be revalidated before being served.  When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 
@@ -93,10 +104,9 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `security_policy`: The security policy associated with this backend service.
 
-  * `session_affinity`: Type of session affinity to use. The default is NONE.  When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.  When the protocol is UDP, this field is not used.
+  * `session_affinity`: Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
 
   * `timeout_sec`: How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is [1, 86400].
-
 
 
 ## GCP Permissions

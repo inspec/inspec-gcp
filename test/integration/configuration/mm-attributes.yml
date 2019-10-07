@@ -239,3 +239,65 @@ ml_model:
   description: My awesome ML model
   online_prediction_logging: true
   online_prediction_console_logging: true
+
+dataproc_cluster:
+  name: inspec-dataproc-cluster
+  label_key: label
+  label_value: value
+  config:
+    master_config:
+      num_instances: 1
+      machine_type: n1-standard-1
+      boot_disk_type: pd-ssd
+      boot_disk_size_gb: 15
+    worker_config:
+      num_instances: 2
+      machine_type: n1-standard-1
+      boot_disk_size_gb: 20
+      num_local_ssds: 1
+    preemptible_worker_config:
+      num_instances: 0
+    software_config:
+      prop_key: "dataproc:dataproc.allow.zero.workers"
+      prop_value: "true"
+    gce_cluster_config:
+      tag: foo
+
+folder_exclusion:
+  name: inspec-folder-exclusion
+  description: My folder exclusion description
+  filter: "resource.type = gce_instance AND severity <= DEBUG"
+
+filestore_instance:
+  name: inspecgcp
+  zone: us-central1-b
+  tier: PREMIUM
+  fileshare_capacity_gb: 2660
+  fileshare_name: inspecgcp
+  network_name: default
+  network_mode: MODE_IPV4
+
+folder_sink:
+  name: inspec-gcp-folder-sink
+  filter: resource.type = gce_instance AND severity >= ERROR
+
+runtimeconfig_config:
+  name: inspec-gcp-runtime-config
+  description: My runtime configurations
+
+runtimeconfig_variable:
+  name: prod-variables/hostname
+  text: example.com
+
+redis:
+  name: my-redis-cache
+  tier: STANDARD_HA
+  memory_size_gb: 1
+  region: us-central1
+  location_id: us-central1-a
+  alternative_location_id: us-central1-f
+  redis_version: REDIS_3_2
+  display_name: InSpec test instance
+  reserved_ip_range: "192.168.0.0/29"
+  label_key: key
+  label_value: value

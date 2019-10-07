@@ -21,6 +21,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_logging_organization_log_sink` resource:
 
+
   * `organization`: Id of the organization that this sink belongs to.
 
   * `name`: Name of the log sink.
@@ -32,7 +33,6 @@ Properties that can be accessed from the `google_logging_organization_log_sink` 
   * `writer_identity`: An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of uniqueWriterIdentity in those methods.
 
   * `include_children`: If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.
-
 
 
 ## GCP Permissions

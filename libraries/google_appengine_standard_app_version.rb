@@ -16,7 +16,7 @@
 require 'gcp_backend'
 
 # A provider to manage App Engine resources.
-class StandardAppVersion < GcpResourceBase
+class AppEngineStandardAppVersion < GcpResourceBase
   name 'google_appengine_standard_app_version'
   desc 'StandardAppVersion'
   supports platform: 'gcp'
@@ -26,6 +26,7 @@ class StandardAppVersion < GcpResourceBase
   attr_reader :version_id
   attr_reader :runtime
   attr_reader :threadsafe
+  attr_reader :instance_class
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -39,6 +40,7 @@ class StandardAppVersion < GcpResourceBase
     @version_id = @fetched['id']
     @runtime = @fetched['runtime']
     @threadsafe = @fetched['threadsafe']
+    @instance_class = @fetched['instanceClass']
   end
 
   # Handles parsing RFC3339 time string

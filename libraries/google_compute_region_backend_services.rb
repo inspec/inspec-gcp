@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class RegionBackendServices < GcpResourceBase
+class ComputeRegionBackendServices < GcpResourceBase
   name 'google_compute_region_backend_services'
   desc 'RegionBackendService plural resource'
   supports platform: 'gcp'

@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class InstanceTemplates < GcpResourceBase
+class ComputeInstanceTemplates < GcpResourceBase
   name 'google_compute_instance_templates'
   desc 'InstanceTemplate plural resource'
   supports platform: 'gcp'

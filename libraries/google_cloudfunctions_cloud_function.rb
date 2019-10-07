@@ -19,7 +19,7 @@ require 'google/cloudfunctions/property/cloudfunction_https_trigger'
 require 'google/cloudfunctions/property/cloudfunction_source_repository'
 
 # A provider to manage Cloud Functions resources.
-class CloudFunction < GcpResourceBase
+class CloudFunctionsCloudFunction < GcpResourceBase
   name 'google_cloudfunctions_cloud_function'
   desc 'CloudFunction'
   supports platform: 'gcp'

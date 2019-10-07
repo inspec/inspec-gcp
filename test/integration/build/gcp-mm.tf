@@ -153,6 +153,34 @@ variable "ml_model" {
   type = "map"
 }
 
+variable "dataproc_cluster" {
+  type = any
+}
+
+variable "folder_exclusion" {
+  type = "map"
+}
+
+variable "filestore_instance" {
+  type = "map"
+}
+
+variable "folder_sink" {
+  type = "map"
+}
+
+variable "runtimeconfig_config" {
+  type = "map"
+}
+
+variable "runtimeconfig_variable" {
+  type = "map"
+}
+
+variable "redis" {
+  type = "map"
+}
+
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = "${var.ssl_policy["name"]}"
   min_tls_version = "${var.ssl_policy["min_tls_version"]}"
@@ -579,8 +607,9 @@ resource "google_logging_organization_sink" "my-sink" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name    = "inspec-gcp-static-${var.gcp_project_id}"
-  project = var.gcp_project_id
+  name          = "inspec-gcp-static-${var.gcp_project_id}"
+  project       = var.gcp_project_id
+  force_destroy = true
 }
 
 resource "google_storage_bucket_object" "object" {
@@ -617,4 +646,113 @@ resource "google_ml_engine_model" "inspec-gcp-model" {
   regions                           = ["${var.ml_model["region"]}"]
   online_prediction_logging         = var.ml_model["online_prediction_logging"]
   online_prediction_console_logging = var.ml_model["online_prediction_console_logging"]
+}
+
+resource "google_dataproc_cluster" "mycluster" {
+  project = var.gcp_project_id
+  region  = var.gcp_location
+  name    = var.dataproc_cluster["name"]
+
+  labels = {
+    "${var.dataproc_cluster["label_key"]}" = "${var.dataproc_cluster["label_value"]}"
+  }
+
+  cluster_config {
+    master_config {
+      num_instances = var.dataproc_cluster["config"]["master_config"]["num_instances"]
+      machine_type  = var.dataproc_cluster["config"]["master_config"]["machine_type"]
+      disk_config {
+        boot_disk_type    = var.dataproc_cluster["config"]["master_config"]["boot_disk_type"]
+        boot_disk_size_gb = var.dataproc_cluster["config"]["master_config"]["boot_disk_size_gb"]
+      }
+    }
+
+    worker_config {
+      num_instances    = var.dataproc_cluster["config"]["worker_config"]["num_instances"]
+      machine_type     = var.dataproc_cluster["config"]["worker_config"]["machine_type"]
+      disk_config {
+        boot_disk_size_gb = var.dataproc_cluster["config"]["worker_config"]["boot_disk_size_gb"]
+        num_local_ssds    = var.dataproc_cluster["config"]["worker_config"]["num_local_ssds"]
+      }
+    }
+
+    # Override or set some custom properties
+    software_config {
+      override_properties = {
+        "${var.dataproc_cluster["config"]["software_config"]["prop_key"]}" = "${var.dataproc_cluster["config"]["software_config"]["prop_value"]}"
+      }
+    }
+
+    gce_cluster_config {
+      tags    = [var.dataproc_cluster["config"]["gce_cluster_config"]["tag"]]
+    }
+  }
+}
+
+resource "google_logging_folder_exclusion" "my-exclusion" {
+  count       = "${var.gcp_organization_id == "" ? 0 : var.gcp_enable_privileged_resources}"
+  name        = var.folder_exclusion["name"]
+  folder      = google_folder.inspec-gcp-folder.0.name
+
+  description = var.folder_exclusion["description"]
+
+  filter      = var.folder_exclusion["filter"]
+}
+
+resource "google_filestore_instance" "instance" {
+  project = var.gcp_project_id
+  name    = var.filestore_instance["name"]
+  zone    = var.filestore_instance["zone"]
+  tier    = var.filestore_instance["tier"]
+
+  file_shares {
+    capacity_gb = var.filestore_instance["fileshare_capacity_gb"]
+    name        = var.filestore_instance["fileshare_name"]
+  }
+
+  networks {
+    network = var.filestore_instance["network_name"]
+    modes   = [var.filestore_instance["network_mode"]]
+  }
+}
+
+resource "google_logging_folder_sink" "folder-sink" {
+  count       = "${var.gcp_organization_id == "" ? 0 : var.gcp_enable_privileged_resources}"
+  name        = var.folder_sink.name
+  folder      = google_folder.inspec-gcp-folder.0.name
+
+  destination = "storage.googleapis.com/${google_storage_bucket.generic-storage-bucket.name}"
+
+  filter      = var.folder_sink.filter
+}
+
+resource "google_runtimeconfig_config" "inspec-runtime-config" {
+  project = var.gcp_project_id
+  name = var.runtimeconfig_config["name"]
+  description = var.runtimeconfig_config["description"]
+}
+
+resource "google_runtimeconfig_variable" "inspec-runtime-variable" {
+  project = var.gcp_project_id
+  parent = "${google_runtimeconfig_config.inspec-runtime-config.name}"
+  name = var.runtimeconfig_variable["name"]
+  text = var.runtimeconfig_variable["text"]
+}
+
+resource "google_redis_instance" "inspec-redis" {
+  project        = var.gcp_project_id
+  name           = var.redis["name"]
+  tier           = var.redis["tier"]
+  memory_size_gb = var.redis["memory_size_gb"]
+
+  location_id             = var.redis["location_id"]
+  alternative_location_id = var.redis["alternative_location_id"]
+
+  redis_version     = var.redis["redis_version"]
+  display_name      = var.redis["display_name"]
+  reserved_ip_range = var.redis["reserved_ip_range"]
+
+  labels = {
+    "${var.redis["label_key"]}" = var.redis["label_value"]
+  }
 }

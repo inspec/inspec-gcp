@@ -25,6 +25,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_instance_group_manager` resource:
 
+
   * `base_instance_name`: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 
   * `creation_timestamp`: The creation timestamp for this managed instance group in RFC3339 text format.
@@ -70,7 +71,6 @@ Properties that can be accessed from the `google_compute_instance_group_manager`
   * `target_size`: The target number of running instances for this managed instance group. Deleting or abandoning instances reduces this number. Resizing the group changes this number.
 
   * `zone`: The zone the managed instance group resides.
-
 
 
 ## GCP Permissions

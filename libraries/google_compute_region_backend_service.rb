@@ -18,7 +18,7 @@ require 'google/compute/property/regionbackendservice_backends'
 require 'google/compute/property/regionbackendservice_connection_draining'
 
 # A provider to manage Compute Engine resources.
-class RegionBackendService < GcpResourceBase
+class ComputeRegionBackendService < GcpResourceBase
   name 'google_compute_region_backend_service'
   desc 'RegionBackendService'
   supports platform: 'gcp'

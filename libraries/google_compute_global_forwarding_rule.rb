@@ -14,9 +14,10 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/globalforwardingrule_metadata_filters'
 
 # A provider to manage Compute Engine resources.
-class GlobalForwardingRule < GcpResourceBase
+class ComputeGlobalForwardingRule < GcpResourceBase
   name 'google_compute_global_forwarding_rule'
   desc 'GlobalForwardingRule'
   supports platform: 'gcp'
@@ -29,6 +30,7 @@ class GlobalForwardingRule < GcpResourceBase
   attr_reader :ip_protocol
   attr_reader :ip_version
   attr_reader :load_balancing_scheme
+  attr_reader :metadata_filters
   attr_reader :name
   attr_reader :network
   attr_reader :port_range
@@ -49,6 +51,7 @@ class GlobalForwardingRule < GcpResourceBase
     @ip_protocol = @fetched['IPProtocol']
     @ip_version = @fetched['ipVersion']
     @load_balancing_scheme = @fetched['loadBalancingScheme']
+    @metadata_filters = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(@fetched['metadataFilters'], to_s)
     @name = @fetched['name']
     @network = @fetched['network']
     @port_range = @fetched['portRange']

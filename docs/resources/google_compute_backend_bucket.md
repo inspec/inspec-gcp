@@ -23,6 +23,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_compute_backend_bucket` resource:
 
+
   * `bucket_name`: Cloud Storage bucket name.
 
   * `cdn_policy`: Cloud CDN configuration for this Backend Bucket.
@@ -38,7 +39,6 @@ Properties that can be accessed from the `google_compute_backend_bucket` resourc
   * `id`: Unique identifier for the resource.
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.  Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
 
 
 ## GCP Permissions

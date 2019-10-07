@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class ResourceRecordSets < GcpResourceBase
+class DNSResourceRecordSets < GcpResourceBase
   name 'google_dns_resource_record_sets'
   desc 'ResourceRecordSet plural resource'
   supports platform: 'gcp'

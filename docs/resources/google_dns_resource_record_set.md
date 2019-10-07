@@ -20,6 +20,7 @@ end
 ## Properties
 Properties that can be accessed from the `google_dns_resource_record_set` resource:
 
+
   * `name`: For example, www.example.com.
 
   * `type`: One of valid DNS resource types.
@@ -29,7 +30,6 @@ Properties that can be accessed from the `google_dns_resource_record_set` resour
   * `target`: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
 
   * `managed_zone`: Identifies the managed zone addressed by this request.
-
 
 
 ## GCP Permissions
