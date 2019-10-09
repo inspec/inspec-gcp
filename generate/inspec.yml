@@ -1,0 +1,11 @@
+name: inspec-gcp-generate
+title: Google Cloud Platform Resource Generation
+maintainer: slevenick@google.com
+summary: For generation (TEST)
+copyright: TEST
+copyright_email: TEST
+version: 0.1.0
+license: Apache-2.0
+inspec_version: '>= 3.0.25'
+supports:
+  - platform: gcp

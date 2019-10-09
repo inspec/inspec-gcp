@@ -1,0 +1,12 @@
+title 'Test GCP <%= name %> resource.'
+
+control '<%= name %>_<%= number %>' do
+  impact 1.0
+  title '<%= name %> resource test'
+
+  describe <%= type %>(<%= identifiers %>) do
+    it { should exist }
+<% arr.flatten.each do |a| %>
+    <%= a %><% end %>
+  end
+end

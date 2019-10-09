@@ -3,6 +3,7 @@ AllCops:
   TargetRubyVersion: 2.4
   Exclude:
   - Gemfile
+  - generate/Gemfile
   - Rakefile
   - 'test/**/*'
   - 'examples/**/*'
