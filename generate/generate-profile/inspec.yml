@@ -1,0 +1,18 @@
+name: generate-profile
+title: GCP InSpec Profile
+maintainer: The Authors
+copyright: The Authors
+copyright_email: you@example.com
+license: Apache-2.0
+summary: An InSpec Compliance Profile For GCP
+version: 0.1.0
+inspec_version: '>= 3.0.25'
+attributes:
+- name: gcp_project_id
+  description: 'The GCP project identifier.'
+  type: string
+depends:
+- name: inspec-gcp-generate
+  path: ../
+supports:
+- platform: gcp
