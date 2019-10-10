@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.15.1 -->
+<!-- latest_release 0.15.2 -->
+## [v0.15.2](https://github.com/inspec/inspec-gcp/tree/v0.15.2) (2019-10-07)
+
+#### Merged Pull Requests
+- Add dataproc_cluster resource, doc fixes [#181](https://github.com/inspec/inspec-gcp/pull/181) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.15.1](https://github.com/inspec/inspec-gcp/tree/v0.15.1) (2019-09-19)
 
 #### Merged Pull Requests
 - docs: typo/fix broken URL link [#180](https://github.com/inspec/inspec-gcp/pull/180) ([pomverte](https://github.com/pomverte))
-<!-- latest_release -->
 
 ## [v0.15.0](https://github.com/inspec/inspec-gcp/tree/v0.15.0) (2019-09-16)
 
