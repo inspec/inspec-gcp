@@ -690,7 +690,7 @@ resource "google_compute_firewall" "dataproc" {
 
 resource "google_compute_network" "dataproc" {
   project = var.gcp_project_id
-  name = "dataproc-network"
+  name    = "dataproc-network"
 }
 
 resource "google_dataproc_cluster" "mycluster" {
