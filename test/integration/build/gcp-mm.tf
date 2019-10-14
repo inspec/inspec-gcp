@@ -181,6 +181,18 @@ variable "redis" {
   type = "map"
 }
 
+variable "network_endpoint_group" {
+  type = "map"
+}
+
+variable "node_template" {
+  type = "map"
+}
+
+variable "node_group" {
+  type = "map"
+}
+
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = "${var.ssl_policy["name"]}"
   min_tls_version = "${var.ssl_policy["min_tls_version"]}"
@@ -485,14 +497,22 @@ resource "google_compute_router" "gcp-inspec-router" {
   }
 }
 
+resource "google_compute_disk" "snapshot-disk" {
+  project = "${var.gcp_project_id}"
+  name  = var.snapshot["disk_name"]
+  type  = "${var.gcp_compute_disk_type}"
+  zone  = "${var.gcp_zone}"
+  image = "${var.gcp_compute_disk_image}"
+  labels = {
+    environment = "generic_compute_disk_label"
+  }
+}
+
 resource "google_compute_snapshot" "gcp-inspec-snapshot" {
   project = "${var.gcp_project_id}"
   name = "${var.snapshot["name"]}"
-  source_disk = "${google_compute_disk.generic_compute_disk.name}"
+  source_disk = "${google_compute_disk.snapshot-disk.name}"
   zone = "${var.gcp_zone}"
-  # Depends on the instance of the disk we are using. Allow instance to spin up
-  # Before snapshotting the disk to avoid resourceInUse errors
-  depends_on  = ["google_compute_instance.generic_external_vm_instance_data_disk"]
 }
 
 resource "google_compute_ssl_certificate" "gcp-inspec-ssl-certificate" {
@@ -648,6 +668,29 @@ resource "google_ml_engine_model" "inspec-gcp-model" {
   online_prediction_console_logging = var.ml_model["online_prediction_console_logging"]
 }
 
+resource "google_compute_firewall" "dataproc" {
+  name    = "dataproc-firewall"
+  network = "${google_compute_network.dataproc.name}"
+
+  source_ranges = ["10.128.0.0/9"]
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["0-65535"]
+  }
+  allow {
+    protocol = "udp"
+    ports    = ["0-65535"]
+  }
+}
+
+resource "google_compute_network" "dataproc" {
+  name = "dataproc-network"
+}
+
 resource "google_dataproc_cluster" "mycluster" {
   project = var.gcp_project_id
   region  = var.gcp_location
@@ -684,6 +727,7 @@ resource "google_dataproc_cluster" "mycluster" {
     }
 
     gce_cluster_config {
+      network = google_compute_network.dataproc.self_link
       tags    = [var.dataproc_cluster["config"]["gce_cluster_config"]["tag"]]
     }
   }
@@ -755,4 +799,40 @@ resource "google_redis_instance" "inspec-redis" {
   labels = {
     "${var.redis["label_key"]}" = var.redis["label_value"]
   }
+}
+
+resource "google_compute_network_endpoint_group" "inspec-endpoint-group" {
+  project      = var.gcp_project_id
+  name         = var.network_endpoint_group["name"]
+  network      = google_compute_subnetwork.inspec-gcp-subnetwork.network
+  subnetwork   = google_compute_subnetwork.inspec-gcp-subnetwork.self_link
+  default_port = var.network_endpoint_group["default_port"]
+  zone         = var.gcp_zone
+}
+
+data "google_compute_node_types" "zone-node-type" {
+  project = var.gcp_project_id
+  zone    = var.gcp_zone
+}
+
+resource "google_compute_node_template" "inspec-template" {
+  project = var.gcp_project_id
+  region = var.gcp_location
+
+  name = var.node_template["name"]
+  node_type = "${data.google_compute_node_types.zone-node-type.names[0]}"
+
+  node_affinity_labels = {
+    "${var.node_template["label_key"]}" = "${var.node_template["label_value"]}"
+  }
+}
+
+resource "google_compute_node_group" "inspec-node-group" {
+  project = var.gcp_project_id
+  name = var.node_group["name"]
+  zone = var.gcp_zone
+  description = var.node_group["description"]
+
+  size = var.node_group["size"]
+  node_template = "${google_compute_node_template.inspec-template.self_link}"
 }
