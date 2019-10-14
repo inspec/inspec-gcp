@@ -41,7 +41,7 @@ module GCPInspecConfig
       # We need to randomize the name of this role to avoid e.g.
       #    Error 400: You can't create a role with role_id (gcp_inspec_project_custom_role_id) where there is an existing role with that role_id in a deleted state.
       :gcp_project_iam_custom_role_id => "gcp_inspec_custom_role_id_#{add_random_string}",
-      :gcp_compute_disk_name => "gcp-inspec-compute-disk-name",
+      :gcp_compute_disk_name => "gcp-inspec-disk-#{add_random_string}",
       :gcp_compute_disk_type => "pd-standard",
       :gcp_compute_disk_image => "ubuntu-os-cloud/ubuntu-1604-lts",
       :gcp_ext_vm_data_disk_address_name => "gcp-inspec-generic-ext-compute-data-disk-address",
