@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.15.3 -->
+<!-- latest_release 0.16.0 -->
+## [v0.16.0](https://github.com/inspec/inspec-gcp/tree/v0.16.0) (2019-10-14)
+
+#### Merged Pull Requests
+- Add generate functionality [#186](https://github.com/inspec/inspec-gcp/pull/186) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.15.3](https://github.com/inspec/inspec-gcp/tree/v0.15.3) (2019-10-10)
 
 #### Merged Pull Requests
 - Fix dataproc test, add node groups, node templates, network endpoints [#185](https://github.com/inspec/inspec-gcp/pull/185) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.15.2](https://github.com/inspec/inspec-gcp/tree/v0.15.2) (2019-10-07)
 
