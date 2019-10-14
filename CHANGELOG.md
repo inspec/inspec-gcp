@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.16.0 -->
+<!-- latest_release 0.16.1 -->
+## [v0.16.1](https://github.com/inspec/inspec-gcp/tree/v0.16.1) (2019-10-14)
+
+#### Merged Pull Requests
+- Add project ID to new MM terraform resources.  Inject random name for… [#187](https://github.com/inspec/inspec-gcp/pull/187) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v0.16.0](https://github.com/inspec/inspec-gcp/tree/v0.16.0) (2019-10-14)
 
 #### Merged Pull Requests
 - Add generate functionality [#186](https://github.com/inspec/inspec-gcp/pull/186) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.15.3](https://github.com/inspec/inspec-gcp/tree/v0.15.3) (2019-10-10)
 
