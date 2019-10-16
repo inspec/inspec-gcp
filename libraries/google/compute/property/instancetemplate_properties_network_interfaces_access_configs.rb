@@ -23,12 +23,21 @@ module GoogleInSpec
 
         attr_reader :type
 
+        attr_reader :set_public_ptr
+
+        attr_reader :public_ptr_domain_name
+
+        attr_reader :network_tier
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @name = args['name']
           @nat_ip = args['natIP']
           @type = args['type']
+          @set_public_ptr = args['setPublicPtr']
+          @public_ptr_domain_name = args['publicPtrDomainName']
+          @network_tier = args['networkTier']
         end
 
         def to_s

@@ -110,6 +110,12 @@ Properties that can be accessed from the `google_compute_instance_template` reso
 
         * `type`: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
 
+        * `set_public_ptr`: Specifies whether a public DNS PTR record should be created to map the external IP address of the instance to a DNS domain name.
+
+        * `public_ptr_domain_name`: The DNS domain name for the public PTR record. You can set this field only if the setPublicPtr field is enabled.
+
+        * `network_tier`: This signifies the networking tier used for configuring this access configuration. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+
       * `alias_ip_ranges`: An array of alias IP ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 
         * `ip_cidr_range`: The IP CIDR range represented by this alias IP range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. This range may be a single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g. 10.1.2.0/24).
