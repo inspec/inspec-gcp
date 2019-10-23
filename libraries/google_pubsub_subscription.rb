@@ -16,6 +16,7 @@
 require 'gcp_backend'
 require 'google/pubsub/property/subscription_expiration_policy'
 require 'google/pubsub/property/subscription_push_config'
+require 'google/pubsub/property/subscription_push_config_oidc_token'
 
 # A provider to manage Cloud Pub/Sub resources.
 class PubsubSubscription < GcpResourceBase
