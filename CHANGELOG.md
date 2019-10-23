@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.16.1 -->
+<!-- latest_release 0.16.2 -->
+## [v0.16.2](https://github.com/inspec/inspec-gcp/tree/v0.16.2) (2019-10-23)
+
+#### Merged Pull Requests
+- Update check on DNSSEC to be case independent after API update from &#39;… [#188](https://github.com/inspec/inspec-gcp/pull/188) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v0.16.1](https://github.com/inspec/inspec-gcp/tree/v0.16.1) (2019-10-14)
 
 #### Merged Pull Requests
 - Add project ID to new MM terraform resources.  Inject random name for… [#187](https://github.com/inspec/inspec-gcp/pull/187) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v0.16.0](https://github.com/inspec/inspec-gcp/tree/v0.16.0) (2019-10-14)
 
