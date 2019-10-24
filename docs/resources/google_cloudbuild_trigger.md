@@ -50,9 +50,9 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `dir`: Directory, relative to the source root, in which to run the build.  This must be a relative path. If a step's dir is specified and is an absolute path, this value is ignored for that step's execution.
 
-    * `branch_name`: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+    * `branch_name`: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided. This field is a regular expression.
 
-    * `tag_name`: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+    * `tag_name`: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided. This field is a regular expression.
 
     * `commit_sha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
