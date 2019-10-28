@@ -8,10 +8,10 @@ A `google_compute_disks` is used to test a Google Disk resource
 
 ## Examples
 ```
-most_recent_image = google_compute_image(project: 'debian', name: 'debian-8-jessie-v20170523')
+most_recent_image = google_compute_image(project: 'debian-cloud', name: 'debian-10-buster-v20191014')
 describe google_compute_disks(project: 'chef-gcp-inspec', zone: 'zone') do
   it { should exist }
-  its('names') { should include 'my_disk' }
+  its('names') { should include 'inspec-snapshot-disk' }
   its('source_images') { should include most_recent_image.self_link }
 end
 ```
