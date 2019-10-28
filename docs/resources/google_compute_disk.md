@@ -9,9 +9,9 @@ A `google_compute_disk` is used to test a Google Disk resource
 ## Examples
 ```
 
-most_recent_image = google_compute_image(project: 'debian', name: 'debian-8-jessie-v20170523')
+most_recent_image = google_compute_image(project: 'debian-cloud', name: 'debian-10-buster-v20191014')
 
-describe google_compute_disk(project: 'chef-gcp-inspec', name: 'my_disk', zone: 'zone') do
+describe google_compute_disk(project: 'chef-gcp-inspec', name: 'inspec-snapshot-disk', zone: 'zone') do
   it { should exist }
   # Test that the image is the most recent image for the family
   its('source_image') { should match most_recent_image.self_link }
@@ -19,7 +19,7 @@ describe google_compute_disk(project: 'chef-gcp-inspec', name: 'my_disk', zone: 
 end
 
 describe.one do
-  google_compute_disk(project: 'chef-gcp-inspec', name: 'my_disk', zone: 'zone').labels.each_pair do |key, value|
+  google_compute_disk(project: 'chef-gcp-inspec', name: 'inspec-snapshot-disk', zone: 'zone').labels.each_pair do |key, value|
     describe key do
       it { should cmp "environment" }
     end
