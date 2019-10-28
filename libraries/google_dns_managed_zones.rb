@@ -39,7 +39,7 @@ module Inspec::Resources
         @managed_zones.managed_zones.map do |zone|
           dns_enabled=false
           if defined?(zone.dnssec_config.state)
-            dns_enabled=true if zone.dnssec_config.state.downcase == 'on'
+            dns_enabled=true if zone.dnssec_config.state.casecmp('on').zero?
           end
           managed_zones+=[{ zone_id: zone.id,
                             zone_name: zone.name,
