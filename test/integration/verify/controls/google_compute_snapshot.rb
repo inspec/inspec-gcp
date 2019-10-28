@@ -18,7 +18,9 @@ gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', descripti
 gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
 snapshot = attribute('snapshot', default: {
   "name": "inspec-gcp-disk-snapshot",
-  "disk_name": "inspec-snapshot-disk"
+  "disk_name": "inspec-snapshot-disk",
+  "disk_type": "pd-standard",
+  "disk_image": "debian-cloud/debian-10-buster-v20191014"
 }, description: 'Compute disk snapshot description')
 control 'google_compute_snapshot-1.0' do
   impact 1.0

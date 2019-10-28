@@ -16,9 +16,15 @@ title 'Test GCP google_compute_disk resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-gcp_compute_disk_name = attribute(:gcp_compute_disk_name, default: 'gcp_compute_disk_name', description: 'GCP Compute disk name.')
-gcp_compute_disk_image = attribute(:gcp_compute_disk_image, default: 'gcp_compute_disk_image', description: 'GCP Compute image identifier.')
-gcp_compute_disk_type = attribute(:gcp_compute_disk_type, default: 'gcp_compute_disk_type', description: 'GCP Compute disk type.')
+snapshot = attribute('snapshot', default: {
+  "name": "inspec-gcp-disk-snapshot",
+  "disk_name": "inspec-snapshot-disk",
+  "disk_type": "pd-standard",
+  "disk_image": "debian-cloud/debian-10-buster-v20191014"
+}, description: 'Disk snapshot description')
+gcp_compute_disk_name = snapshot["disk_name"]
+gcp_compute_disk_image = snapshot["disk_image"]
+gcp_compute_disk_type = snapshot["disk_type"]
 control 'google_compute_disk-1.0' do
   impact 1.0
   title 'google_compute_disk resource test'
