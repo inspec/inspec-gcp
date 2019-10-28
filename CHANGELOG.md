@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.17.0 -->
+<!-- latest_release 0.17.1 -->
+## [v0.17.1](https://github.com/inspec/inspec-gcp/tree/v0.17.1) (2019-10-28)
+
+#### Merged Pull Requests
+- Rubocop update [#195](https://github.com/inspec/inspec-gcp/pull/195) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.17.0](https://github.com/inspec/inspec-gcp/tree/v0.17.0) (2019-10-23)
 
 #### Merged Pull Requests
 - Add google_compute_router_nat [#190](https://github.com/inspec/inspec-gcp/pull/190) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.16.2](https://github.com/inspec/inspec-gcp/tree/v0.16.2) (2019-10-23)
 
