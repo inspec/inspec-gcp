@@ -3,11 +3,11 @@ title: About the google_service_account_key Resource
 platform: gcp
 ---
 
-# google\_service\_account
+# google\_service\_account\_key
 
 Use the `google_service_account_key` InSpec audit resource to test properties of a GCP project IAM service account key.
 
-<br>s
+<br>
 
 ## Syntax
 
