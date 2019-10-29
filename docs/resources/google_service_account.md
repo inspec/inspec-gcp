@@ -7,7 +7,7 @@ platform: gcp
 
 Use the `google_service_account` InSpec audit resource to test properties of a GCP project IAM service account.
 
-<br>s
+<br>
 
 ## Syntax
 
