@@ -28,6 +28,8 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
   * `id`: The unique identifier for the trigger.
 
+  * `name`: Name of the trigger. Must be unique within the project.
+
   * `description`: Human-readable description of the trigger.
 
   * `disabled`: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
