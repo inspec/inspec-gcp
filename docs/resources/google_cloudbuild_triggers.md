@@ -27,6 +27,7 @@ Properties that can be accessed from the `google_cloudbuild_triggers` resource:
 
 See [google_cloudbuild_trigger.md](google_cloudbuild_trigger.md) for more detailed information
   * `ids`: an array of `google_cloudbuild_trigger` id
+  * `names`: an array of `google_cloudbuild_trigger` name
   * `descriptions`: an array of `google_cloudbuild_trigger` description
   * `disableds`: an array of `google_cloudbuild_trigger` disabled
   * `create_times`: an array of `google_cloudbuild_trigger` create_time
