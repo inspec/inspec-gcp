@@ -14,33 +14,24 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class CloudBuildTriggers < GcpResourceBase
-  name 'google_cloudbuild_triggers'
-  desc 'Trigger plural resource'
+class SpannerDatabases < GcpResourceBase
+  name 'google_spanner_databases'
+  desc 'Database plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:descriptions, field: :description)
-  filter_table_config.add(:disableds, field: :disabled)
-  filter_table_config.add(:create_times, field: :create_time)
-  filter_table_config.add(:substitutions, field: :substitutions)
-  filter_table_config.add(:filenames, field: :filename)
-  filter_table_config.add(:ignored_files, field: :ignored_files)
-  filter_table_config.add(:included_files, field: :included_files)
-  filter_table_config.add(:trigger_templates, field: :trigger_template)
-  filter_table_config.add(:builds, field: :build)
+  filter_table_config.add(:instances, field: :instance)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('triggers')
+    @table = fetch_wrapped_resource('databases')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -73,17 +64,8 @@ class CloudBuildTriggers < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
       'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'substitutions' => ->(obj) { return :substitutions, obj['substitutions'] },
-      'filename' => ->(obj) { return :filename, obj['filename'] },
-      'ignoredFiles' => ->(obj) { return :ignored_files, obj['ignoredFiles'] },
-      'includedFiles' => ->(obj) { return :included_files, obj['includedFiles'] },
-      'triggerTemplate' => ->(obj) { return :trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate'], to_s) },
-      'build' => ->(obj) { return :build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build'], to_s) },
+      'instance' => ->(obj) { return :instance, obj['instance'] },
     }
   end
 
@@ -95,10 +77,10 @@ class CloudBuildTriggers < GcpResourceBase
   private
 
   def product_url
-    'https://cloudbuild.googleapis.com/v1/'
+    'https://spanner.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/triggers'
+    'projects/{{project}}/instances/{{instance}}/databases'
   end
 end

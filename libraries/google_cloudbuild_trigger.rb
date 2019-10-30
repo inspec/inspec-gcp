@@ -26,6 +26,7 @@ class CloudBuildTrigger < GcpResourceBase
 
   attr_reader :params
   attr_reader :id
+  attr_reader :name
   attr_reader :description
   attr_reader :disabled
   attr_reader :create_time
@@ -45,6 +46,7 @@ class CloudBuildTrigger < GcpResourceBase
 
   def parse
     @id = @fetched['id']
+    @name = @fetched['name']
     @description = @fetched['description']
     @disabled = @fetched['disabled']
     @create_time = parse_time_string(@fetched['createTime'])
