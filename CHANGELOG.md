@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.17.1 -->
+<!-- latest_release 0.18.0 -->
+## [v0.18.0](https://github.com/inspec/inspec-gcp/tree/v0.18.0) (2019-10-30)
+
+#### Merged Pull Requests
+- Add google_project_service [#196](https://github.com/inspec/inspec-gcp/pull/196) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.17.1](https://github.com/inspec/inspec-gcp/tree/v0.17.1) (2019-10-28)
 
 #### Merged Pull Requests
 - Rubocop update [#195](https://github.com/inspec/inspec-gcp/pull/195) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.17.0](https://github.com/inspec/inspec-gcp/tree/v0.17.0) (2019-10-23)
 
