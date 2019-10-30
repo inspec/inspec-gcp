@@ -48,6 +48,8 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
     * `user_by_email`: An email address of a user to grant access to. For example: fred@example.com
 
+    * `iam_member`: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example: `allUsers`
+
     * `view`: A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
 
       * `dataset_id`: The ID of the dataset containing this table.
