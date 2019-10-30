@@ -13,6 +13,15 @@ describe google_bigquery_datasets(project: 'chef-gcp-inspec') do
   its('friendly_names') { should include 'A BigQuery dataset test' }
   its('locations') { should include 'EU' }
 end
+
+google_bigquery_datasets(project: 'chef-gcp-inspec').ids.each do |name|
+  google_bigquery_dataset(project: 'chef-gcp-inspec', name: name.split(':').last).access.each do |access|
+    describe access do
+      # No bigquery dataset should allow access to allUsers
+      its('iam_member') { should_not cmp 'allUsers' }
+    end
+  end
+end
 ```
 
 ## Properties

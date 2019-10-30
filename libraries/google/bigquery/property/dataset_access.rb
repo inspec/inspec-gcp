@@ -28,6 +28,8 @@ module GoogleInSpec
 
         attr_reader :user_by_email
 
+        attr_reader :iam_member
+
         attr_reader :view
 
         def initialize(args = nil, parent_identifier = nil)
@@ -38,6 +40,7 @@ module GoogleInSpec
           @role = args['role']
           @special_group = args['specialGroup']
           @user_by_email = args['userByEmail']
+          @iam_member = args['iamMember']
           @view = GoogleInSpec::BigQuery::Property::DatasetAccessView.new(args['view'], to_s)
         end
 
