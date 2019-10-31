@@ -39,7 +39,7 @@ The following examples show how to use this InSpec audit resource.
 ### Test that a GCP project IAM service account does not have user managed keys
 
     describe google_service_account(name: 'projects/sample-project/serviceAccounts/sample-account@sample-project.iam.gserviceaccount.com') do
-      its('has_user_managed_keys?') {should cmp false }
+      it { should have_user_managed_keys }
     end
 
 <br>

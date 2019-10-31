@@ -92,12 +92,10 @@ class ContainerRegionalCluster < GcpResourceBase
     @logging_service = @fetched['loggingService']
     @monitoring_service = @fetched['monitoringService']
     @network = @fetched['network']
-    @network_self_link = @fetched['networkConfig']['network']
     @private_cluster_config = GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(@fetched['privateClusterConfig'], to_s)
     @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
     @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
     @subnetwork = @fetched['subnetwork']
-    @subnetwork_self_link = @fetched['networkConfig']['subnetwork']
     @locations = @fetched['locations']
     @resource_labels = @fetched['resourceLabels']
     @label_fingerprint = @fetched['labelFingerprint']
