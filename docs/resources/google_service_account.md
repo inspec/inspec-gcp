@@ -36,6 +36,12 @@ The following examples show how to use this InSpec audit resource.
       its('oauth2_client_id') { should eq 12345678 }
     end
 
+### Test that a GCP project IAM service account does not have user managed keys
+
+    describe google_service_account(name: 'projects/sample-project/serviceAccounts/sample-account@sample-project.iam.gserviceaccount.com') do
+      its('has_user_managed_keys?') {should cmp false }
+    end
+
 <br>
 
 ## Properties
