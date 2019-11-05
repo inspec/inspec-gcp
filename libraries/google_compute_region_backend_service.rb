@@ -24,17 +24,19 @@ class ComputeRegionBackendService < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :name
-  attr_reader :health_checks
   attr_reader :backends
+  attr_reader :connection_draining
+  attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :fingerprint
+  attr_reader :health_checks
+  attr_reader :id
+  attr_reader :load_balancing_scheme
+  attr_reader :name
   attr_reader :protocol
   attr_reader :session_affinity
-  attr_reader :region
   attr_reader :timeout_sec
-  attr_reader :connection_draining
-  attr_reader :load_balancing_scheme
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -44,17 +46,19 @@ class ComputeRegionBackendService < GcpResourceBase
   end
 
   def parse
-    @name = @fetched['name']
-    @health_checks = @fetched['healthChecks']
     @backends = GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(@fetched['backends'], to_s)
+    @connection_draining = GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
+    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @fingerprint = @fetched['fingerprint']
+    @health_checks = @fetched['healthChecks']
+    @id = @fetched['id']
+    @load_balancing_scheme = @fetched['loadBalancingScheme']
+    @name = @fetched['name']
     @protocol = @fetched['protocol']
     @session_affinity = @fetched['sessionAffinity']
-    @region = @fetched['region']
     @timeout_sec = @fetched['timeoutSec']
-    @connection_draining = GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
-    @load_balancing_scheme = @fetched['loadBalancingScheme']
+    @region = @fetched['region']
   end
 
   # Handles parsing RFC3339 time string
