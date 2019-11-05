@@ -20,17 +20,19 @@ end
 Properties that can be accessed from the `google_compute_region_backend_services` resource:
 
 See [google_compute_region_backend_service.md](google_compute_region_backend_service.md) for more detailed information
-  * `names`: an array of `google_compute_region_backend_service` name
-  * `health_checks`: an array of `google_compute_region_backend_service` health_checks
   * `backends`: an array of `google_compute_region_backend_service` backends
+  * `connection_drainings`: an array of `google_compute_region_backend_service` connection_draining
+  * `creation_timestamps`: an array of `google_compute_region_backend_service` creation_timestamp
   * `descriptions`: an array of `google_compute_region_backend_service` description
   * `fingerprints`: an array of `google_compute_region_backend_service` fingerprint
+  * `health_checks`: an array of `google_compute_region_backend_service` health_checks
+  * `ids`: an array of `google_compute_region_backend_service` id
+  * `load_balancing_schemes`: an array of `google_compute_region_backend_service` load_balancing_scheme
+  * `names`: an array of `google_compute_region_backend_service` name
   * `protocols`: an array of `google_compute_region_backend_service` protocol
   * `session_affinities`: an array of `google_compute_region_backend_service` session_affinity
-  * `regions`: an array of `google_compute_region_backend_service` region
   * `timeout_secs`: an array of `google_compute_region_backend_service` timeout_sec
-  * `connection_drainings`: an array of `google_compute_region_backend_service` connection_draining
-  * `load_balancing_schemes`: an array of `google_compute_region_backend_service` load_balancing_scheme
+  * `regions`: an array of `google_compute_region_backend_service` region
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
