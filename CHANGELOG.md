@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.19.1 -->
+<!-- latest_release 0.20.0 -->
+## [v0.20.0](https://github.com/inspec/inspec-gcp/tree/v0.20.0) (2019-11-06)
+
+#### Merged Pull Requests
+- Add Cloud Scheduler Job [#203](https://github.com/inspec/inspec-gcp/pull/203) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.19.1](https://github.com/inspec/inspec-gcp/tree/v0.19.1) (2019-11-04)
 
 #### Merged Pull Requests
 - Add a test example in google_service_account.md and fix for #200 [#199](https://github.com/inspec/inspec-gcp/pull/199) ([pradeepbhadani](https://github.com/pradeepbhadani))
-<!-- latest_release -->
 
 ## [v0.19.0](https://github.com/inspec/inspec-gcp/tree/v0.19.0) (2019-10-30)
 
