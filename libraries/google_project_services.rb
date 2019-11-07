@@ -26,6 +26,8 @@ class ServiceUsageServices < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:parents, field: :parent)
   filter_table_config.add(:states, field: :state)
+  filter_table_config.add(:disable_dependent_services, field: :disable_dependent_services)
+  filter_table_config.add(:configs, field: :config)
 
   filter_table_config.connect(self, :table)
 
@@ -68,6 +70,8 @@ class ServiceUsageServices < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'parent' => ->(obj) { return :parent, obj['parent'] },
       'state' => ->(obj) { return :state, obj['state'] },
+      'disableDependentServices' => ->(obj) { return :disable_dependent_services, obj['disableDependentServices'] },
+      'config' => ->(obj) { return :config, GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(obj['config'], to_s) },
     }
   end
 
