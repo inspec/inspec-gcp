@@ -14,6 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/serviceusage/property/service_config'
+require 'google/serviceusage/property/service_config_apis'
 
 # A provider to manage Service Usage resources.
 class ServiceUsageService < GcpResourceBase
@@ -25,6 +27,8 @@ class ServiceUsageService < GcpResourceBase
   attr_reader :name
   attr_reader :parent
   attr_reader :state
+  attr_reader :disable_dependent_services
+  attr_reader :config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -37,6 +41,8 @@ class ServiceUsageService < GcpResourceBase
     @name = @fetched['name']
     @parent = @fetched['parent']
     @state = @fetched['state']
+    @disable_dependent_services = @fetched['disableDependentServices']
+    @config = GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(@fetched['config'], to_s)
   end
 
   # Handles parsing RFC3339 time string

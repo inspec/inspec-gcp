@@ -24,6 +24,8 @@ See [google_project_service.md](google_project_service.md) for more detailed inf
   * `names`: an array of `google_project_service` name
   * `parents`: an array of `google_project_service` parent
   * `states`: an array of `google_project_service` state
+  * `disable_dependent_services`: an array of `google_project_service` disable_dependent_services
+  * `configs`: an array of `google_project_service` config
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
