@@ -120,7 +120,11 @@ class BigQueryTables < GcpResourceBase
       combo = item.merge(@params)
       item_identifiers = {}
       params.each do |param|
-        item_identifiers[param.to_sym] = combo[param.to_sym]
+        if param == 'name'
+          item_identifiers[param.to_sym] = item[:table_reference].table_id
+        else
+          item_identifiers[param.to_sym] = combo[param.to_sym]
+        end
       end
       result.push(item_identifiers)
     end
