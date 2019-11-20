@@ -11,7 +11,7 @@ A `google_billing_project_billing_info` is used to test a Google ProjectBillingI
 describe google_billing_project_billing_info(project_id: 'chef-gcp-inspec') do
   it { should exist }
 
-  its('billing_account_name') { should eq 'billingAccounts/012345-567890-ABCDEF'}
+  its('billing_account_name') { should eq 'billingAccounts/012345-567890-ABCDEF' }
   its('billing_enabled') { should eq true }
 end
 ```
