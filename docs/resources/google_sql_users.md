@@ -57,7 +57,7 @@ This resource supports the following filter criteria:  `user_id`; `user_name` an
 
 ## Properties
 
-*  `user_namess` - an array of google sql user name strings
+*  `user_names` - an array of google sql user name strings
 *  `user_instances`- an array of google_sql_database_instance name strings
 *  `user_hosts`- an array of google sql user host strings
 
