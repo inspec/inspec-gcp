@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.21.0 -->
+<!-- latest_release 0.21.1 -->
+## [v0.21.1](https://github.com/inspec/inspec-gcp/tree/v0.21.1) (2019-11-21)
+
+#### Merged Pull Requests
+- Add support for bigquery subnetworks and networks to generate [#206](https://github.com/inspec/inspec-gcp/pull/206) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.21.0](https://github.com/inspec/inspec-gcp/tree/v0.21.0) (2019-11-18)
 
 #### Merged Pull Requests
 - Add support for project billing info [#205](https://github.com/inspec/inspec-gcp/pull/205) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.20.0](https://github.com/inspec/inspec-gcp/tree/v0.20.0) (2019-11-06)
 
