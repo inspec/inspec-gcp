@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.21.1 -->
+<!-- latest_release 0.21.2 -->
+## [v0.21.2](https://github.com/inspec/inspec-gcp/tree/v0.21.2) (2019-11-26)
+
+#### Merged Pull Requests
+- Update google_sql_users.md [#208](https://github.com/inspec/inspec-gcp/pull/208) ([mattbowes](https://github.com/mattbowes))
+<!-- latest_release -->
+
 ## [v0.21.1](https://github.com/inspec/inspec-gcp/tree/v0.21.1) (2019-11-21)
 
 #### Merged Pull Requests
 - Add support for bigquery subnetworks and networks to generate [#206](https://github.com/inspec/inspec-gcp/pull/206) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.21.0](https://github.com/inspec/inspec-gcp/tree/v0.21.0) (2019-11-18)
 
