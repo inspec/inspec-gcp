@@ -46,7 +46,7 @@ Properties that can be accessed from the `google_redis_instance` resource:
 
   * `location_id`: The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId].
 
-  * `name`: The ID of the instance or a fully qualified identifier for the instance. 
+  * `name`: The ID of the instance or a fully qualified identifier for the instance.
 
   * `memory_size_gb`: Redis memory size in GiB.
 
