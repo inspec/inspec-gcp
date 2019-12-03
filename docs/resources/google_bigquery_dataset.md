@@ -44,7 +44,7 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
     * `role`: Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their Primitive counterparts, and will show a diff post-create. See [official docs](https://cloud.google.com/bigquery/docs/access-control).
 
-    * `special_group`: A special group to grant access to.   Possible values include:   * `projectOwners`: Owners of the enclosing project.   * `projectReaders`: Readers of the enclosing project.   * `projectWriters`: Writers of the enclosing project.   * `allAuthenticatedUsers`: All authenticated BigQuery users. 
+    * `special_group`: A special group to grant access to. Possible values include:   * `projectOwners`: Owners of the enclosing project.   * `projectReaders`: Readers of the enclosing project.   * `projectWriters`: Writers of the enclosing project.   * `allAuthenticatedUsers`: All authenticated BigQuery users. 
 
     * `user_by_email`: An email address of a user to grant access to. For example: fred@example.com
 
