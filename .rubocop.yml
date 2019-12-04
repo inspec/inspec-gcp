@@ -11,8 +11,6 @@ AllCops:
   - 'lib/bundles/inspec-init/templates/**/*'
 Documentation:
   Enabled: false
-AlignParameters:
-  Enabled: true
 Encoding:
   Enabled: true
 HashSyntax:
@@ -44,9 +42,11 @@ Style/PercentLiteralDelimiters:
     '%w': '{}'
     '%W': ()
     '%x': ()
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: false
 Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/ParameterAlignment:
   Enabled: false
 Naming/PredicateName:
   Enabled: false
