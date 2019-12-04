@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.21.3 -->
+<!-- latest_release 0.21.4 -->
+## [v0.21.4](https://github.com/inspec/inspec-gcp/tree/v0.21.4) (2019-12-04)
+
+#### Merged Pull Requests
+- Update cloud billing info test [#207](https://github.com/inspec/inspec-gcp/pull/207) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.21.3](https://github.com/inspec/inspec-gcp/tree/v0.21.3) (2019-12-04)
 
 #### Merged Pull Requests
 - Update rubocop deprecated settings. [#213](https://github.com/inspec/inspec-gcp/pull/213) ([skpaterson](https://github.com/skpaterson))
-<!-- latest_release -->
 
 ## [v0.21.2](https://github.com/inspec/inspec-gcp/tree/v0.21.2) (2019-11-26)
 
