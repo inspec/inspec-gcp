@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.21.2 -->
+<!-- latest_release 0.21.3 -->
+## [v0.21.3](https://github.com/inspec/inspec-gcp/tree/v0.21.3) (2019-12-04)
+
+#### Merged Pull Requests
+- Update rubocop deprecated settings. [#213](https://github.com/inspec/inspec-gcp/pull/213) ([skpaterson](https://github.com/skpaterson))
+<!-- latest_release -->
+
 ## [v0.21.2](https://github.com/inspec/inspec-gcp/tree/v0.21.2) (2019-11-26)
 
 #### Merged Pull Requests
 - Update google_sql_users.md [#208](https://github.com/inspec/inspec-gcp/pull/208) ([mattbowes](https://github.com/mattbowes))
-<!-- latest_release -->
 
 ## [v0.21.1](https://github.com/inspec/inspec-gcp/tree/v0.21.1) (2019-11-21)
 
