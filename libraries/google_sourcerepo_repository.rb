@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/sourcerepo/property/repository_pubsub_configs'
 
 # A provider to manage Cloud Source Repositories resources.
 class SourceRepoRepository < GcpResourceBase
@@ -25,6 +26,7 @@ class SourceRepoRepository < GcpResourceBase
   attr_reader :name
   attr_reader :url
   attr_reader :size
+  attr_reader :pubsub_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -37,6 +39,7 @@ class SourceRepoRepository < GcpResourceBase
     @name = @fetched['name']
     @url = @fetched['url']
     @size = @fetched['size']
+    @pubsub_configs = @fetched['pubsubConfigs']
   end
 
   # Handles parsing RFC3339 time string

@@ -27,6 +27,8 @@ Properties that can be accessed from the `google_sourcerepo_repository` resource
 
   * `size`: The disk usage of the repo, in bytes.
 
+  * `pubsub_configs`: How this repository publishes a change in the repository through Cloud Pub/Sub.  Keyed by the topic names.
+
 
 ## GCP Permissions
 
