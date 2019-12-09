@@ -81,7 +81,7 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
-    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
+    * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS. Your project's Compute Engine System service account (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 
   * `source_snapshot`: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:  * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot` * `projects/project/global/snapshots/snapshot` * `global/snapshots/snapshot`
 
