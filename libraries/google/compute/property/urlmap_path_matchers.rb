@@ -26,11 +26,11 @@ module GoogleInSpec
 
         attr_reader :description
 
-        attr_reader :path_rules
-
         attr_reader :header_action
 
         attr_reader :name
+
+        attr_reader :path_rules
 
         attr_reader :route_rules
 
@@ -39,9 +39,9 @@ module GoogleInSpec
           @parent_identifier = parent_identifier
           @default_service = args['defaultService']
           @description = args['description']
-          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesArray.parse(args['pathRules'], to_s)
           @header_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersHeaderAction.new(args['headerAction'], to_s)
           @name = args['name']
+          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesArray.parse(args['pathRules'], to_s)
           @route_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersRouteRulesArray.parse(args['routeRules'], to_s)
         end
 
