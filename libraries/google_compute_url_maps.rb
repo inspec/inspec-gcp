@@ -31,6 +31,7 @@ class ComputeUrlMaps < GcpResourceBase
   filter_table_config.add(:header_actions, field: :header_action)
   filter_table_config.add(:host_rules, field: :host_rules)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:path_matchers, field: :path_matchers)
   filter_table_config.add(:tests, field: :tests)
 
   filter_table_config.connect(self, :table)
@@ -79,6 +80,7 @@ class ComputeUrlMaps < GcpResourceBase
       'headerAction' => ->(obj) { return :header_action, GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(obj['headerAction'], to_s) },
       'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules'], to_s) },
       'name' => ->(obj) { return :name, obj['name'] },
+      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s) },
       'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s) },
     }
   end
