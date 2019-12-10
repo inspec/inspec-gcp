@@ -25,7 +25,6 @@ See [google_compute_url_map.md](google_compute_url_map.md) for more detailed inf
   * `header_actions`: an array of `google_compute_url_map` header_action
   * `host_rules`: an array of `google_compute_url_map` host_rules
   * `names`: an array of `google_compute_url_map` name
-  * `path_matchers`: an array of `google_compute_url_map` path_matchers
   * `tests`: an array of `google_compute_url_map` tests
 
 ## Filter Criteria
