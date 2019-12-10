@@ -14,6 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/urlmap_header_action'
+require 'google/compute/property/urlmap_header_action_request_headers_to_add'
+require 'google/compute/property/urlmap_header_action_response_headers_to_add'
 require 'google/compute/property/urlmap_host_rules'
 require 'google/compute/property/urlmap_path_matchers'
 require 'google/compute/property/urlmap_tests'
@@ -28,9 +31,10 @@ class ComputeUrlMap < GcpResourceBase
   attr_reader :creation_timestamp
   attr_reader :default_service
   attr_reader :description
-  attr_reader :host_rules
   attr_reader :id
   attr_reader :fingerprint
+  attr_reader :header_action
+  attr_reader :host_rules
   attr_reader :name
   attr_reader :path_matchers
   attr_reader :tests
@@ -46,9 +50,10 @@ class ComputeUrlMap < GcpResourceBase
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @default_service = @fetched['defaultService']
     @description = @fetched['description']
-    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'], to_s)
     @id = @fetched['id']
     @fingerprint = @fetched['fingerprint']
+    @header_action = GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(@fetched['headerAction'], to_s)
+    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'], to_s)
     @name = @fetched['name']
     @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'], to_s)
     @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'], to_s)

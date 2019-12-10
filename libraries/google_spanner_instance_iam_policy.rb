@@ -14,37 +14,29 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/sourcerepo/property/repository_pubsub_configs'
+require 'google/iam/property/iam_policy_audit_configs'
+require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud Source Repositories resources.
-class SourceRepoRepository < GcpResourceBase
-  name 'google_sourcerepo_repository'
-  desc 'Repository'
+# A provider to manage Cloud Spanner IAM Policy resources.
+class InstanceIamPolicy < GcpResourceBase
+  name 'google_spanner_instance_iam_policy'
+  desc 'Instance Iam Policy'
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :name
-  attr_reader :url
-  attr_reader :size
-  attr_reader :pubsub_configs
+  attr_reader :bindings
+  attr_reader :audit_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @url = @fetched['url']
-    @size = @fetched['size']
-    @pubsub_configs = @fetched['pubsubConfigs']
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
   end
 
   def exists?
@@ -52,16 +44,16 @@ class SourceRepoRepository < GcpResourceBase
   end
 
   def to_s
-    "Repository #{@params[:name]}"
+    "Instance IamPolicy #{@params[:name]}"
   end
 
   private
 
   def product_url
-    'https://sourcerepo.googleapis.com/v1/'
+    'https://spanner.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/repos/{{name}}'
+    'projects/{{project}}/instances/{{name}}:getIamPolicy'
   end
 end

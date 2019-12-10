@@ -13,7 +13,6 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_path_matchers_path_rules_route_action'
 require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_cors_policy'
 require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_fault_injection_policy'
 require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_fault_injection_policy_abort'
@@ -25,38 +24,38 @@ require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_re
 require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_timeout'
 require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_url_rewrite'
 require 'google/compute/property/urlmap_path_matchers_path_rules_route_action_weighted_backend_services'
-require 'google/compute/property/urlmap_path_matchers_path_rules_url_redirect'
 module GoogleInSpec
   module Compute
     module Property
-      class UrlMapPathMatchersPathRules
-        attr_reader :service
+      class UrlMapPathMatchersPathRulesRouteAction
+        attr_reader :cors_policy
 
-        attr_reader :paths
+        attr_reader :fault_injection_policy
 
-        attr_reader :route_action
+        attr_reader :request_mirror_policy
 
-        attr_reader :url_redirect
+        attr_reader :retry_policy
+
+        attr_reader :timeout
+
+        attr_reader :url_rewrite
+
+        attr_reader :weighted_backend_services
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @service = args['service']
-          @paths = args['paths']
-          @route_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteAction.new(args['routeAction'], to_s)
-          @url_redirect = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesUrlRedirect.new(args['urlRedirect'], to_s)
+          @cors_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionCorsPolicy.new(args['corsPolicy'], to_s)
+          @fault_injection_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicy.new(args['faultInjectionPolicy'], to_s)
+          @request_mirror_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicy.new(args['requestMirrorPolicy'], to_s)
+          @retry_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionRetryPolicy.new(args['retryPolicy'], to_s)
+          @timeout = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionTimeout.new(args['timeout'], to_s)
+          @url_rewrite = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionUrlRewrite.new(args['urlRewrite'], to_s)
+          @weighted_backend_services = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesArray.parse(args['weightedBackendServices'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} UrlMapPathMatchersPathRules"
-        end
-      end
-
-      class UrlMapPathMatchersPathRulesArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return UrlMapPathMatchersPathRules.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| UrlMapPathMatchersPathRules.new(v, parent_identifier) }
+          "#{@parent_identifier} UrlMapPathMatchersPathRulesRouteAction"
         end
       end
     end

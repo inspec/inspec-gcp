@@ -25,6 +25,7 @@ See [google_sourcerepo_repository.md](google_sourcerepo_repository.md) for more 
   * `names`: an array of `google_sourcerepo_repository` name
   * `urls`: an array of `google_sourcerepo_repository` url
   * `sizes`: an array of `google_sourcerepo_repository` size
+  * `pubsub_configs`: an array of `google_sourcerepo_repository` pubsub_configs
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
