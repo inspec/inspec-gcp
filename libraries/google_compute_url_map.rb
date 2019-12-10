@@ -18,6 +18,7 @@ require 'google/compute/property/urlmap_header_action'
 require 'google/compute/property/urlmap_header_action_request_headers_to_add'
 require 'google/compute/property/urlmap_header_action_response_headers_to_add'
 require 'google/compute/property/urlmap_host_rules'
+require 'google/compute/property/urlmap_path_matchers'
 require 'google/compute/property/urlmap_tests'
 
 # A provider to manage Compute Engine resources.
@@ -35,6 +36,7 @@ class ComputeUrlMap < GcpResourceBase
   attr_reader :header_action
   attr_reader :host_rules
   attr_reader :name
+  attr_reader :path_matchers
   attr_reader :tests
 
   def initialize(params)
@@ -53,6 +55,7 @@ class ComputeUrlMap < GcpResourceBase
     @header_action = GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(@fetched['headerAction'], to_s)
     @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'], to_s)
     @name = @fetched['name']
+    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'], to_s)
     @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'], to_s)
   end
 
