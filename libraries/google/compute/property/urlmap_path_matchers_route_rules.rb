@@ -36,6 +36,8 @@ module GoogleInSpec
       class UrlMapPathMatchersRouteRules
         attr_reader :priority
 
+        attr_reader :service
+
         attr_reader :header_action
 
         attr_reader :match_rules
@@ -48,6 +50,7 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @priority = args['priority']
+          @service = args['service']
           @header_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersRouteRulesHeaderAction.new(args['headerAction'], to_s)
           @match_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersRouteRulesMatchRulesArray.parse(args['matchRules'], to_s)
           @route_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersRouteRulesRouteAction.new(args['routeAction'], to_s)
