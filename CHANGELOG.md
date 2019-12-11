@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.22.0 -->
+<!-- latest_release 0.23.0 -->
+## [v0.23.0](https://github.com/inspec/inspec-gcp/tree/v0.23.0) (2019-12-11)
+
+#### Merged Pull Requests
+- Add ACM resources, fix file name bug [#218](https://github.com/inspec/inspec-gcp/pull/218) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.22.0](https://github.com/inspec/inspec-gcp/tree/v0.22.0) (2019-12-10)
 
 #### Merged Pull Requests
 - Add spanner instance IAM policy support [#214](https://github.com/inspec/inspec-gcp/pull/214) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.21.4](https://github.com/inspec/inspec-gcp/tree/v0.21.4) (2019-12-04)
 
