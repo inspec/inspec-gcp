@@ -16,7 +16,6 @@
 require 'google/compute/property/urlmap_path_matchers_header_action'
 require 'google/compute/property/urlmap_path_matchers_header_action_request_headers_to_add'
 require 'google/compute/property/urlmap_path_matchers_header_action_response_headers_to_add'
-require 'google/compute/property/urlmap_path_matchers_path_rules'
 module GoogleInSpec
   module Compute
     module Property
@@ -29,8 +28,6 @@ module GoogleInSpec
 
         attr_reader :name
 
-        attr_reader :path_rules
-
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -38,7 +35,6 @@ module GoogleInSpec
           @description = args['description']
           @header_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersHeaderAction.new(args['headerAction'], to_s)
           @name = args['name']
-          @path_rules = GoogleInSpec::Compute::Property::UrlMapPathMatchersPathRulesArray.parse(args['pathRules'], to_s)
         end
 
         def to_s
