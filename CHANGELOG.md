@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.23.0 -->
+<!-- latest_release 0.23.1 -->
+## [v0.23.1](https://github.com/inspec/inspec-gcp/tree/v0.23.1) (2019-12-11)
+
+#### Merged Pull Requests
+- Delete more UrlMap route rules [#219](https://github.com/inspec/inspec-gcp/pull/219) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.23.0](https://github.com/inspec/inspec-gcp/tree/v0.23.0) (2019-12-11)
 
 #### Merged Pull Requests
 - Add ACM resources, fix file name bug [#218](https://github.com/inspec/inspec-gcp/pull/218) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.22.0](https://github.com/inspec/inspec-gcp/tree/v0.22.0) (2019-12-10)
 
