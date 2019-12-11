@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.21.4 -->
+<!-- latest_release 0.22.0 -->
+## [v0.22.0](https://github.com/inspec/inspec-gcp/tree/v0.22.0) (2019-12-10)
+
+#### Merged Pull Requests
+- Add spanner instance IAM policy support [#214](https://github.com/inspec/inspec-gcp/pull/214) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.21.4](https://github.com/inspec/inspec-gcp/tree/v0.21.4) (2019-12-04)
 
 #### Merged Pull Requests
 - Update cloud billing info test [#207](https://github.com/inspec/inspec-gcp/pull/207) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.21.3](https://github.com/inspec/inspec-gcp/tree/v0.21.3) (2019-12-04)
 
