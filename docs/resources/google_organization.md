@@ -13,17 +13,12 @@ Use the `google_organization` InSpec audit resource to test properties of a GCP 
 
 Google organization have a name, display name (or domain) and lifecycle state. For more info, please see [here](https://cloud.google.com/resource-manager/docs/creating-managing-organization).
 
-A `google_organization` resource block declares the tests for a single GCP organization identified by `display_name` or `name`:
+A `google_organization` resource block declares the tests for a single GCP organization identified by `name`:
 
-    describe google_organization(display_name: 'google.com') do
+    describe google_organization(display_name: 'organizations/1234') do
       it { should exist }
       its('name') { should eq 'organizations/1234'  }
       its('display_name') { should eq 'google.com' }
-    end
-
-    describe google_organization(name: 'organizations/1234') do
-      it { should exist }
-      its('name') { should eq 'google.com'  }
       its('lifecycle_state') { should eq 'ACTIVE' }
     end
 

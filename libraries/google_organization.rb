@@ -8,7 +8,7 @@ module Inspec::Resources
     desc 'Verifies settings for an organization'
 
     example "
-      describe google_organization(name: 'google.com') do
+      describe google_organization(name: 'organizations/1234') do
         it { should exist }
         its('name') { should eq 'organizations/1234' }
         its('display_name') { should eq 'google.com' }
@@ -17,10 +17,11 @@ module Inspec::Resources
     "
     def initialize(opts = {})
       super(opts)
-      @display_name = opts[:name] || opts[:display_name]
-      catch_gcp_errors do
-        @organization = @gcp.gcp_project_client.get_organization(opts[:name])
-        create_resource_methods(@organization)
+      if opts[:name]
+        catch_gcp_errors do
+          @organization = @gcp.gcp_project_client.get_organization(opts[:name])
+          create_resource_methods(@organization)
+        end
       end
     end
 
