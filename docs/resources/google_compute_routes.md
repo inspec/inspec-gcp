@@ -31,6 +31,7 @@ See [google_compute_route.md](google_compute_route.md) for more detailed informa
   * `next_hop_ips`: an array of `google_compute_route` next_hop_ip
   * `next_hop_vpn_tunnels`: an array of `google_compute_route` next_hop_vpn_tunnel
   * `next_hop_networks`: an array of `google_compute_route` next_hop_network
+  * `next_hop_ilbs`: an array of `google_compute_route` next_hop_ilb
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
