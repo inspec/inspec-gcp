@@ -33,6 +33,7 @@ class ComputeRoute < GcpResourceBase
   attr_reader :next_hop_ip
   attr_reader :next_hop_vpn_tunnel
   attr_reader :next_hop_network
+  attr_reader :next_hop_ilb
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -53,6 +54,7 @@ class ComputeRoute < GcpResourceBase
     @next_hop_ip = @fetched['nextHopIp']
     @next_hop_vpn_tunnel = @fetched['nextHopVpnTunnel']
     @next_hop_network = @fetched['nextHopNetwork']
+    @next_hop_ilb = @fetched['nextHopIlb']
   end
 
   # Handles parsing RFC3339 time string
