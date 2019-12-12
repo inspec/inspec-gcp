@@ -127,8 +127,14 @@ module GCPInspecConfig
   def self.store_json(file_name = "gcp-inspec.tfvars.json")
     load_mm_vars
     update_from_environment
+    # These variables are used in InSpec controls but not terraform. Including them causes large warning messages about unused vars
+    unused_vars = [:gcp_enable_gcloud_calls, :gcp_kube_nodepool_name]
+    cfg = @config.clone
+    unused_vars.each do |unused_var|
+      cfg.delete(unused_var)
+    end
     File.open(File.join(File.dirname(__FILE__), '..', 'build', file_name), "w") do |f|
-      f.write(@config.to_json)
+      f.write(cfg.to_json)
     end
   end
 

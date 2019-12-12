@@ -98,26 +98,26 @@ variable "gcp_db_user_password" {}
 variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
-  region = "${var.gcp_location}"
+  region = var.gcp_location
   version = "~> 2.14.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  account_id   = "${var.gcp_service_account_display_name}"
-  display_name = "${var.gcp_service_account_display_name}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  account_id   = var.gcp_service_account_display_name
+  display_name = var.gcp_service_account_display_name
 }
 
 resource "google_compute_instance" "generic_internal_vm_instance" {
-  project = "${var.gcp_project_id}"
-  name         = "${var.gcp_int_vm_name}"
-  machine_type = "${var.gcp_int_vm_size}"
-  zone         = "${var.gcp_zone}"
+  project = var.gcp_project_id
+  name         = var.gcp_int_vm_name
+  machine_type = var.gcp_int_vm_size
+  zone         = var.gcp_zone
 
   boot_disk {
     initialize_params {
-      image = "${var.gcp_int_vm_image}"
+      image = var.gcp_int_vm_image
     }
   }
 
@@ -127,20 +127,20 @@ resource "google_compute_instance" "generic_internal_vm_instance" {
 }
 
 resource "google_compute_address" "generic_external_vm_address" {
-  project = "${var.gcp_project_id}"
-  name = "${var.gcp_ext_compute_address_name}"
-  region = "${var.gcp_location}"
+  project = var.gcp_project_id
+  name = var.gcp_ext_compute_address_name
+  region = var.gcp_location
 }
 
 resource "google_compute_instance" "generic_external_vm_instance" {
-  project = "${var.gcp_project_id}"
-  name         = "${var.gcp_ext_vm_name}"
-  machine_type = "${var.gcp_ext_vm_size}"
-  zone         = "${var.gcp_zone}"
+  project = var.gcp_project_id
+  name         = var.gcp_ext_vm_name
+  machine_type = var.gcp_ext_vm_size
+  zone         = var.gcp_zone
 
   boot_disk {
     initialize_params {
-      image = "${var.gcp_ext_vm_image}"
+      image = var.gcp_ext_vm_image
     }
   }
 
@@ -148,20 +148,20 @@ resource "google_compute_instance" "generic_external_vm_instance" {
     network = "default"
     access_config {
       // Ephemeral IP
-      nat_ip = "${google_compute_address.generic_external_vm_address.address}"
+      nat_ip = google_compute_address.generic_external_vm_address.address
     }
   }
 }
 
 resource "google_compute_instance" "generic_windows_internal_vm_instance" {
-  project = "${var.gcp_project_id}"
-  name         = "${var.gcp_windows_int_vm_name}"
-  machine_type = "${var.gcp_windows_int_vm_size}"
-  zone         = "${var.gcp_zone}"
+  project = var.gcp_project_id
+  name         = var.gcp_windows_int_vm_name
+  machine_type = var.gcp_windows_int_vm_size
+  zone         = var.gcp_zone
 
   boot_disk {
     initialize_params {
-      image = "${var.gcp_windows_int_vm_image}"
+      image = var.gcp_windows_int_vm_image
     }
   }
 
@@ -171,54 +171,54 @@ resource "google_compute_instance" "generic_windows_internal_vm_instance" {
 }
 
 resource "google_project_iam_custom_role" "generic_project_iam_custom_role" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  role_id     = "${var.gcp_project_iam_custom_role_id}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  role_id     = var.gcp_project_iam_custom_role_id
   title       = "GCP Inspec Generic Project IAM Custom Role"
   description = "Custom role allowing to list IAM roles only"
   permissions = ["iam.roles.list"]
 }
 
 resource "google_compute_disk" "generic_compute_disk" {
-  project = "${var.gcp_project_id}"
-  name  = "${var.gcp_compute_disk_name}"
-  type  = "${var.gcp_compute_disk_type}"
-  zone  = "${var.gcp_zone}"
-  image = "${var.gcp_compute_disk_image}"
+  project = var.gcp_project_id
+  name  = var.gcp_compute_disk_name
+  type  = var.gcp_compute_disk_type
+  zone  = var.gcp_zone
+  image = var.gcp_compute_disk_image
   labels = {
     environment = "generic_compute_disk_label"
   }
 }
 
 resource "google_compute_address" "generic_external_vm_address_data_disk" {
-  project = "${var.gcp_project_id}"
-  name = "${var.gcp_ext_vm_data_disk_address_name}"
-  region = "${var.gcp_location}"
+  project = var.gcp_project_id
+  name = var.gcp_ext_vm_data_disk_address_name
+  region = var.gcp_location
 }
 
 resource "google_compute_instance" "generic_external_vm_instance_data_disk" {
-  project = "${var.gcp_project_id}"
-  name         = "${var.gcp_ext_vm_data_disk_name}"
-  machine_type = "${var.gcp_ext_vm_data_disk_size}"
-  zone         = "${var.gcp_zone}"
+  project = var.gcp_project_id
+  name         = var.gcp_ext_vm_data_disk_name
+  machine_type = var.gcp_ext_vm_data_disk_size
+  zone         = var.gcp_zone
 
   boot_disk {
     initialize_params {
-      image = "${var.gcp_ext_vm_data_disk_image}"
+      image = var.gcp_ext_vm_data_disk_image
     }
   }
 
   attached_disk {
-    source = "${var.gcp_compute_disk_name}"
+    source = var.gcp_compute_disk_name
     mode = "READ_WRITE"
-    device_name = "${var.gcp_compute_disk_name}"
+    device_name = var.gcp_compute_disk_name
   }
 
   network_interface {
     network = "default"
     access_config {
       // Ephemeral IP
-      nat_ip = "${google_compute_address.generic_external_vm_address_data_disk.address}"
+      nat_ip = google_compute_address.generic_external_vm_address_data_disk.address
     }
   }
 }
@@ -294,7 +294,7 @@ data "template_file" "group3-startup-script" {
 }
 
 resource "google_compute_instance_template" "default" {
-  project      = "${var.gcp_project_id}"
+  project      = var.gcp_project_id
   name         = "app-itpl"
   machine_type = "f1-micro"
   network_interface {
@@ -308,12 +308,12 @@ resource "google_compute_instance_template" "default" {
 }
 
 resource "google_compute_region_instance_group_manager" "appserver" {
-  project           = "${var.gcp_project_id}"
+  project           = var.gcp_project_id
   name              = "app-rigm"
-  instance_template = "${google_compute_instance_template.default.self_link}"
+  instance_template = google_compute_instance_template.default.self_link
   base_instance_name        = "app"
-  region                    = "${var.gcp_lb_region}"
-  distribution_policy_zones = ["${var.gcp_lb_zone}"]
+  region                    = var.gcp_lb_region
+  distribution_policy_zones = [var.gcp_lb_zone]
   target_pools = []
   target_size  = 0
   named_port {
@@ -335,19 +335,19 @@ resource "google_compute_region_instance_group_manager" "appserver" {
 ##############################################################
 
 resource "google_container_cluster" "primary" {
-  project = "${var.gcp_project_id}"
-  name               = "${var.gcp_kube_cluster_name}"
-  location           = "${var.gcp_kube_cluster_zone}"
-  initial_node_count = "${var.gcp_kube_cluster_size}"
+  project = var.gcp_project_id
+  name               = var.gcp_kube_cluster_name
+  location           = var.gcp_kube_cluster_zone
+  initial_node_count = var.gcp_kube_cluster_size
 
   node_locations = [
-    "${var.gcp_kube_cluster_zone_extra1}",
-    "${var.gcp_kube_cluster_zone_extra2}",
+    var.gcp_kube_cluster_zone_extra1,
+    var.gcp_kube_cluster_zone_extra2,
   ]
 
   master_auth {
-    username = "${var.gcp_kube_cluster_master_user}"
-    password = "${var.gcp_kube_cluster_master_pass}"
+    username = var.gcp_kube_cluster_master_user
+    password = var.gcp_kube_cluster_master_pass
 
     client_certificate_config {
       issue_client_certificate = false
@@ -372,15 +372,15 @@ resource "google_container_cluster" "primary" {
 
 # The following outputs allow authentication and connectivity to the GKE Cluster.
 output "client_certificate" {
-  value = "${google_container_cluster.primary.master_auth.0.client_certificate}"
+  value = google_container_cluster.primary.master_auth.0.client_certificate
 }
 
 output "client_key" {
-  value = "${google_container_cluster.primary.master_auth.0.client_key}"
+  value = google_container_cluster.primary.master_auth.0.client_key
 }
 
 output "cluster_ca_certificate" {
-  value = "${google_container_cluster.primary.master_auth.0.cluster_ca_certificate}"
+  value = google_container_cluster.primary.master_auth.0.cluster_ca_certificate
 }
 
 # Future work - as a more realistic example, could stand up another cluster and
@@ -398,26 +398,26 @@ output "cluster_ca_certificate" {
 #Note: google_kms_key_ring_iam_policy cannot be used in conjunction with google_kms_key_ring_iam_binding and google_kms_key_ring_iam_member or they will fight over what your policy should be.
 
 resource "google_kms_key_ring" "gcp_kms_key_ring_policy" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_kms_key_ring_policy_name}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_kms_key_ring_policy_name
+  location = var.gcp_location
 }
 
 
 #Note: google_kms_key_ring_iam_binding resources can be used in conjunction with google_kms_key_ring_iam_member resources only if they do not grant privilege to the same role.
 
 resource "google_kms_key_ring" "gcp_kms_key_ring_binding_member" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_kms_key_ring_binding_member_name}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_kms_key_ring_binding_member_name
+  location = var.gcp_location
 }
 
 # Use the first key ring to attach an IAM policy
 
 data "google_iam_policy" "gcp_inspec_admin_key_ring" {
-  count = "${var.gcp_enable_privileged_resources}"
+  count = var.gcp_enable_privileged_resources
   binding {
     role = "roles/editor"
 
@@ -428,16 +428,16 @@ data "google_iam_policy" "gcp_inspec_admin_key_ring" {
 }
 
 resource "google_kms_key_ring_iam_policy" "key_ring_policy" {
-  count = "${var.gcp_enable_privileged_resources}"
-  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_policy[0].id}"
-  policy_data = "${data.google_iam_policy.gcp_inspec_admin_key_ring[0].policy_data}"
+  count = var.gcp_enable_privileged_resources
+  key_ring_id = google_kms_key_ring.gcp_kms_key_ring_policy[0].id
+  policy_data = data.google_iam_policy.gcp_inspec_admin_key_ring[0].policy_data
 }
 
 # Use the second key ring to attach an IAM binding plus IAM member affecting different roles
 
 resource "google_kms_key_ring_iam_binding" "key_ring_binding" {
-  count = "${var.gcp_enable_privileged_resources}"
-  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id}"
+  count = var.gcp_enable_privileged_resources
+  key_ring_id = google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id
   role        = "roles/editor"
 
   members = [
@@ -446,36 +446,36 @@ resource "google_kms_key_ring_iam_binding" "key_ring_binding" {
 }
 
 resource "google_kms_key_ring_iam_member" "key_ring_iam_member" {
-  count = "${var.gcp_enable_privileged_resources}"
-  key_ring_id = "${google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id}"
+  count = var.gcp_enable_privileged_resources
+  key_ring_id = google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id
   role        = "roles/owner"
   member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}"
 }
 
 resource "google_kms_crypto_key" "crypto_key_policy" {
-  count = "${var.gcp_enable_privileged_resources}"
-  name            = "${var.gcp_kms_crypto_key_name_policy}"
-  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_policy[0].id}"
+  count = var.gcp_enable_privileged_resources
+  name            = var.gcp_kms_crypto_key_name_policy
+  key_ring        = google_kms_key_ring.gcp_kms_key_ring_policy[0].id
   rotation_period = "100000s"
 }
 
 resource "google_kms_crypto_key" "crypto_key_binding" {
-  count = "${var.gcp_enable_privileged_resources}"
-  name            = "${var.gcp_kms_crypto_key_name_binding}"
-  key_ring        = "${google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id}"
+  count = var.gcp_enable_privileged_resources
+  name            = var.gcp_kms_crypto_key_name_binding
+  key_ring        = google_kms_key_ring.gcp_kms_key_ring_binding_member[0].id
   rotation_period = "100000s"
 }
 
 resource "google_kms_crypto_key_iam_member" "crypto_key_iam_member" {
-  count = "${var.gcp_enable_privileged_resources}"
-  crypto_key_id = "${google_kms_crypto_key.crypto_key_policy[0].id}"
+  count = var.gcp_enable_privileged_resources
+  crypto_key_id = google_kms_crypto_key.crypto_key_policy[0].id
   role          = "roles/editor"
   member      = "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}"
 }
 
 resource "google_kms_crypto_key_iam_binding" "crypto_key_iam_binding" {
-  count = "${var.gcp_enable_privileged_resources}"
-  crypto_key_id = "${google_kms_crypto_key.crypto_key_binding[0].id}"
+  count = var.gcp_enable_privileged_resources
+  crypto_key_id = google_kms_crypto_key.crypto_key_binding[0].id
   role          = "roles/editor"
 
   members = [
@@ -489,15 +489,15 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key_iam_binding" {
 # Start storage bucket resources
 
 resource "google_storage_bucket" "generic-storage-bucket" {
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_name}"
-  location = "${var.gcp_location}"
+  project = var.gcp_project_id
+  name     = var.gcp_storage_bucket_name
+  location = var.gcp_location
 }
 
 # let's add a default ACL on the previous bucket
 resource "google_storage_default_object_acl" "bucket-default-acl" {
-  count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.generic-storage-bucket.name}"
+  count = var.gcp_enable_privileged_resources
+  bucket = google_storage_bucket.generic-storage-bucket.name
   role_entity = [
     "OWNER:user-${google_service_account.generic_service_account_object_viewer[0].email}",
     "OWNER:project-owners-${var.gcp_project_number}",
@@ -507,16 +507,16 @@ resource "google_storage_default_object_acl" "bucket-default-acl" {
 # now test adding an ACL to a bucket
 
 resource "google_storage_bucket" "bucket-with-acl" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_acl}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_storage_bucket_acl
+  location = var.gcp_location
 }
 
 # make use of project convenience values as described here -  https://cloud.google.com/storage/docs/access-control/lists
 resource "google_storage_bucket_acl" "bucket-acl" {
-  count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-acl[0].name}"
+  count = var.gcp_enable_privileged_resources
+  bucket = google_storage_bucket.bucket-with-acl[0].name
 
   role_entity = [
     "OWNER:user-${google_service_account.generic_service_account_object_viewer[0].email}",
@@ -528,15 +528,15 @@ resource "google_storage_bucket_acl" "bucket-acl" {
 # for simplicity here, create a bucket for iam binding and member cases
 
 resource "google_storage_bucket" "bucket-with-iam-binding" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_binding}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_storage_bucket_binding
+  location = var.gcp_location
 }
 
 resource "google_storage_bucket_iam_binding" "bucket-iam-binding" {
-  count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-iam-binding[0].name}"
+  count = var.gcp_enable_privileged_resources
+  bucket = google_storage_bucket.bucket-with-iam-binding[0].name
   role = "roles/storage.objectViewer"
 
   members = [
@@ -545,15 +545,15 @@ resource "google_storage_bucket_iam_binding" "bucket-iam-binding" {
 }
 
 resource "google_storage_bucket" "bucket-with-iam-member" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_member}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_storage_bucket_member
+  location = var.gcp_location
 }
 
 resource "google_storage_bucket_iam_member" "bucket-iam-member" {
-  count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-iam-member[0].name}"
+  count = var.gcp_enable_privileged_resources
+  bucket = google_storage_bucket.bucket-with-iam-member[0].name
   role = "roles/storage.objectViewer"
   member = "serviceAccount:${google_service_account.generic_service_account_object_viewer[0].email}"
 }
@@ -561,14 +561,14 @@ resource "google_storage_bucket_iam_member" "bucket-iam-member" {
 # now for the IAM policy case
 
 resource "google_storage_bucket" "bucket-with-iam-policy" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_policy}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_storage_bucket_policy
+  location = var.gcp_location
 }
 
 data "google_iam_policy" "bucket-iam-policy" {
-  count = "${var.gcp_enable_privileged_resources}"
+  count = var.gcp_enable_privileged_resources
   binding {
     role = "roles/storage.admin"
 
@@ -577,33 +577,33 @@ data "google_iam_policy" "bucket-iam-policy" {
 }
 
 resource "google_storage_bucket_iam_policy" "bucket-iam-policy-add" {
-  count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-iam-policy[0].name}"
-  policy_data = "${data.google_iam_policy.bucket-iam-policy[0].policy_data}"
+  count = var.gcp_enable_privileged_resources
+  bucket = google_storage_bucket.bucket-with-iam-policy[0].name
+  policy_data = data.google_iam_policy.bucket-iam-policy[0].policy_data
 }
 
 # finally let's create a bucket with object plus an object ACL
 
 resource "google_storage_bucket" "bucket-with-object" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_storage_bucket_object}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_storage_bucket_object
+  location = var.gcp_location
 }
 
 resource "google_storage_bucket_object" "bucket-object" {
-  count = "${var.gcp_enable_privileged_resources}"
-  name   = "${var.gcp_storage_bucket_object_name}"
-  bucket = "${google_storage_bucket.bucket-with-object[0].name}"
+  count = var.gcp_enable_privileged_resources
+  name   = var.gcp_storage_bucket_object_name
+  bucket = google_storage_bucket.bucket-with-object[0].name
   content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with ACL."
 }
 
 #finally, add object ACL
 
 resource "google_storage_object_acl" "bucket-object-acl" {
-  count = "${var.gcp_enable_privileged_resources}"
-  bucket = "${google_storage_bucket.bucket-with-object[0].name}"
-  object = "${google_storage_bucket_object.bucket-object[0].name}"
+  count = var.gcp_enable_privileged_resources
+  bucket = google_storage_bucket.bucket-with-object[0].name
+  object = google_storage_bucket_object.bucket-object[0].name
 
   role_entity = [
     "OWNER:project-owners-${var.gcp_project_number}",
@@ -619,14 +619,14 @@ resource "google_storage_object_acl" "bucket-object-acl" {
 # will revisit based on outcome of https://github.com/terraform-providers/terraform-provider-google/issues/1871
 
 //resource "google_storage_bucket_object" "bucket-object-attach-policy" {
-//  count = "${var.gcp_enable_privileged_resources}"
+//  count = var.gcp_enable_privileged_resources
 //  name   = "${var.gcp_storage_bucket_object_name}-iam"
-//  bucket = "${google_storage_bucket.bucket-with-object.name}"
+//  bucket = google_storage_bucket.bucket-with-object.name
 //  content = "Bucket Object ${var.gcp_storage_bucket_object_name} for bucket ${var.gcp_storage_bucket_object} in ${var.gcp_project_id} with IAM policy."
 //}
 //
 //data "google_iam_policy" "object-iam-policy" {
-//  count = "${var.gcp_enable_privileged_resources}"
+//  count = var.gcp_enable_privileged_resources
 //  binding {
 //    role = "roles/storage.admin"
 //
@@ -636,10 +636,10 @@ resource "google_storage_object_acl" "bucket-object-acl" {
 //
 //# would expect this to be something like below:
 //resource "google_storage_object_iam_policy" "object-iam-policy-add" {
-//  count = "${var.gcp_enable_privileged_resources}"
-//  bucket = "${google_storage_bucket.bucket-with-object.name}"
-//  object = "${google_storage_bucket_object.bucket-object-attach-policy.name}"
-//  policy_data = "${data.google_iam_policy.object-iam-policy.policy_data}"
+//  count = var.gcp_enable_privileged_resources
+//  bucket = google_storage_bucket.bucket-with-object.name
+//  object = google_storage_bucket_object.bucket-object-attach-policy.name
+//  policy_data = data.google_iam_policy.object-iam-policy.policy_data
 //}
 
 
@@ -650,15 +650,15 @@ resource "google_storage_object_acl" "bucket-object-acl" {
 
 
 resource "google_compute_instance" "vm-with-project-logging" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name         = "${var.gcp_logging_vm_name}"
-  machine_type = "${var.gcp_int_vm_size}"
-  zone         = "${var.gcp_zone}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name         = var.gcp_logging_vm_name
+  machine_type = var.gcp_int_vm_size
+  zone         = var.gcp_zone
 
   boot_disk {
     initialize_params {
-      image = "${var.gcp_int_vm_image}"
+      image = var.gcp_int_vm_image
     }
   }
 
@@ -669,16 +669,16 @@ resource "google_compute_instance" "vm-with-project-logging" {
 }
 
 resource "google_storage_bucket" "project-logging-bucket" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_logging_bucket_name}"
-  location = "${var.gcp_location}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name     = var.gcp_logging_bucket_name
+  location = var.gcp_location
 }
 
 resource "google_logging_project_sink" "project-logging-instance-sink" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name = "${var.gcp_logging_project_sink_name}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name = var.gcp_logging_project_sink_name
   destination = "storage.googleapis.com/${google_storage_bucket.project-logging-bucket[0].name}"
   filter = "resource.type = gce_instance AND resource.labels.instance_id = \"${google_compute_instance.vm-with-project-logging[0].instance_id}\""
 
@@ -686,19 +686,19 @@ resource "google_logging_project_sink" "project-logging-instance-sink" {
 }
 
 resource "google_project_iam_binding" "project-log-writer-iam-binding" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
   role = "roles/storage.objectCreator"
 
   members = [
-    "${google_logging_project_sink.project-logging-instance-sink[0].writer_identity}",
+    google_logging_project_sink.project-logging-instance-sink[0].writer_identity,
   ]
 }
 
 resource "google_logging_project_exclusion" "project-logging-exclusion" {
-  count = "${var.gcp_enable_privileged_resources}"
-  project = "${var.gcp_project_id}"
-  name = "${var.gcp_logging_project_exclusion_name}"
+  count = var.gcp_enable_privileged_resources
+  project = var.gcp_project_id
+  name = var.gcp_logging_project_exclusion_name
 
   description = "Exclude GCE instance debug logs"
 
@@ -712,84 +712,84 @@ resource "google_logging_project_exclusion" "project-logging-exclusion" {
 # Start network resources
 
 resource "google_compute_network" "inspec-gcp-network" {
-  project = "${var.gcp_project_id}"
-  name                    =  "${var.gcp_network_name}"
+  project = var.gcp_project_id
+  name                    =  var.gcp_network_name
   auto_create_subnetworks = "false"
 }
 
 resource "google_compute_subnetwork" "inspec-gcp-subnetwork" {
-  project = "${var.gcp_project_id}"
+  project = var.gcp_project_id
   ip_cidr_range = "10.2.0.0/29" # i.e. 8 total & 6 usable IPs
-  name =  "${var.gcp_subnetwork_name}"
-  region = "${var.gcp_location}"
-  network = "${google_compute_network.inspec-gcp-network.self_link}"
+  name =  var.gcp_subnetwork_name
+  region = var.gcp_location
+  network = google_compute_network.inspec-gcp-network.self_link
 }
 
 resource "google_compute_vpn_gateway" "inspec-gcp-vpn-gateway" {
-  name = "${var.gcp_vpn_gateway_name}"
-  project = "${var.gcp_project_id}"
-  region = "${var.gcp_location}"
-  network = "${google_compute_network.inspec-gcp-network.self_link}"
+  name = var.gcp_vpn_gateway_name
+  project = var.gcp_project_id
+  region = var.gcp_location
+  network = google_compute_network.inspec-gcp-network.self_link
 }
 
 resource "google_compute_address" "inspec-gcp-address" {
-  name = "${var.gcp_address_name}"
-  project = "${var.gcp_project_id}"
-  region = "${var.gcp_location}"
+  name = var.gcp_address_name
+  project = var.gcp_project_id
+  region = var.gcp_location
 }
 
 resource "google_compute_address" "inspec-gcp-vpn-address" {
-  name = "${var.gcp_vpn_address_name}"
-  project = "${var.gcp_project_id}"
-  region = "${var.gcp_location}"
+  name = var.gcp_vpn_address_name
+  project = var.gcp_project_id
+  region = var.gcp_location
 }
 
 resource "google_compute_forwarding_rule" "inspec-gcp-fr-esp" {
-  name  = "${var.gcp_fr_esp_name}"
-  project = "${var.gcp_project_id}"
-  region = "${var.gcp_location}"
+  name  = var.gcp_fr_esp_name
+  project = var.gcp_project_id
+  region = var.gcp_location
 
   ip_protocol = "ESP"
-  ip_address = "${google_compute_address.inspec-gcp-vpn-address.address}"
-  target = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+  ip_address = google_compute_address.inspec-gcp-vpn-address.address
+  target = google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link
 }
 
 resource "google_compute_forwarding_rule" "inspec-gcp-fr-udp500" {
   name    = "${var.gcp_fr_udp_name}-500"
-  project = "${var.gcp_project_id}"
-  region  = "${var.gcp_location}"
+  project = var.gcp_project_id
+  region  = var.gcp_location
 
   ip_protocol = "UDP"
   port_range  = "500-500"
-  ip_address  = "${google_compute_address.inspec-gcp-vpn-address.address}"
-  target      = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+  ip_address  = google_compute_address.inspec-gcp-vpn-address.address
+  target      = google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link
 }
 
 resource "google_compute_forwarding_rule" "inspec-gcp-fr-udp4500" {
   name  = "${var.gcp_fr_udp_name}-4500"
-  project = "${var.gcp_project_id}"
-  region = "${var.gcp_location}"
+  project = var.gcp_project_id
+  region = var.gcp_location
 
   ip_protocol = "UDP"
   port_range = "4500-4500"
-  ip_address = "${google_compute_address.inspec-gcp-vpn-address.address}"
-  target = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+  ip_address = google_compute_address.inspec-gcp-vpn-address.address
+  target = google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link
 }
 
 resource "google_compute_vpn_tunnel" "inspec-gcp-vpn-tunnel" {
-  name = "${var.gcp_vpn_tunnel_name}"
-  project = "${var.gcp_project_id}"
-  region = "${var.gcp_location}"
-  peer_ip = "${google_compute_address.inspec-gcp-address.address}"
+  name = var.gcp_vpn_tunnel_name
+  project = var.gcp_project_id
+  region = var.gcp_location
+  peer_ip = google_compute_address.inspec-gcp-address.address
   shared_secret = "generic_secret"
-  target_vpn_gateway = "${google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link}"
+  target_vpn_gateway = google_compute_vpn_gateway.inspec-gcp-vpn-gateway.self_link
   remote_traffic_selector = ["0.0.0.0/0"]
   local_traffic_selector  = ["0.0.0.0/0"]
 
   depends_on = [
-    "google_compute_forwarding_rule.inspec-gcp-fr-esp",
-    "google_compute_forwarding_rule.inspec-gcp-fr-udp500",
-    "google_compute_forwarding_rule.inspec-gcp-fr-udp4500",
+    google_compute_forwarding_rule.inspec-gcp-fr-esp,
+    google_compute_forwarding_rule.inspec-gcp-fr-udp500,
+    google_compute_forwarding_rule.inspec-gcp-fr-udp4500,
   ]
 }
 
@@ -798,31 +798,31 @@ resource "google_compute_vpn_tunnel" "inspec-gcp-vpn-tunnel" {
 # Start Google SQL resources
 
 resource "google_sql_database_instance" "cloud-sql-db-instance" {
-  project = "${var.gcp_project_id}"
-  name = "${var.gcp_db_instance_name}"
-  database_version = "${var.gcp_db_type}"
-  region = "${var.gcp_location}"
+  project = var.gcp_project_id
+  name = var.gcp_db_instance_name
+  database_version = var.gcp_db_type
+  region = var.gcp_location
 
   settings {
     # Second-generation instance tiers are based on the machine
     # type. See argument reference below.
-    tier = "${var.gcp_db_size}"
+    tier = var.gcp_db_size
   }
 }
 
 resource "google_sql_database" "cloud-sql-db-name" {
-  project = "${var.gcp_project_id}"
-  name      = "${var.gcp_db_name}"
-  instance  = "${google_sql_database_instance.cloud-sql-db-instance.name}"
+  project = var.gcp_project_id
+  name      = var.gcp_db_name
+  instance  = google_sql_database_instance.cloud-sql-db-instance.name
   charset   = "utf8"
   collation = "utf8_general_ci"
 }
 
 resource "google_sql_user" "cloud-sql-db-user" {
-  project = "${var.gcp_project_id}"
-  name     = "${var.gcp_db_user_name}"
-  instance = "${google_sql_database_instance.cloud-sql-db-instance.name}"
-  password = "${var.gcp_db_user_password}"
+  project = var.gcp_project_id
+  name     = var.gcp_db_user_name
+  instance = google_sql_database_instance.cloud-sql-db-instance.name
+  password = var.gcp_db_user_password
   host = "example.com"
 }
 
@@ -830,7 +830,7 @@ resource "google_sql_user" "cloud-sql-db-user" {
 
 # Resources that used to be created via terraform modules that no longer work
 resource "google_compute_firewall" "health-check-firewall" {
-  project = "${var.gcp_project_id}"
+  project = var.gcp_project_id
   name    = "vm-hc-inspec-gcp"
   network = google_compute_network.inspec-gcp-network.name
 
@@ -843,7 +843,7 @@ resource "google_compute_firewall" "health-check-firewall" {
 }
 
 resource "google_compute_firewall" "default-ssh" {
-  project = "${var.gcp_project_id}"
+  project = var.gcp_project_id
   name    = "vm-ssh-inspec-gcp"
   network = google_compute_network.inspec-gcp-network.name
 
@@ -857,7 +857,7 @@ resource "google_compute_firewall" "default-ssh" {
 }
 
 resource "google_compute_firewall" "inspec-gcp-tag-test-fw" {
-  project = "${var.gcp_project_id}"
+  project = var.gcp_project_id
   name    = "inspec-gcp-tag-test-fw"
   network = google_compute_network.inspec-gcp-network.name
 
@@ -872,9 +872,9 @@ resource "google_compute_firewall" "inspec-gcp-tag-test-fw" {
 }
 
 resource "google_compute_region_disk" "regiondisk" {
-  project = "${var.gcp_project_id}"
+  project = var.gcp_project_id
   name  = "${var.gcp_compute_disk_name}-regional"
-  type = "${var.gcp_compute_disk_type}"
-  region  = "${var.gcp_location}"
-  replica_zones = ["${var.gcp_kube_cluster_zone}", "${var.gcp_kube_cluster_zone_extra1}"]
+  type = var.gcp_compute_disk_type
+  region  = var.gcp_location
+  replica_zones = [var.gcp_kube_cluster_zone, var.gcp_kube_cluster_zone_extra1]
 }
