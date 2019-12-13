@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.23.1 -->
+<!-- latest_release 0.23.2 -->
+## [v0.23.2](https://github.com/inspec/inspec-gcp/tree/v0.23.2) (2019-12-13)
+
+#### Merged Pull Requests
+- This resource is a singleton and is only driven off one unique key, &quot;… [#220](https://github.com/inspec/inspec-gcp/pull/220) ([lhasadreams](https://github.com/lhasadreams))
+<!-- latest_release -->
+
 ## [v0.23.1](https://github.com/inspec/inspec-gcp/tree/v0.23.1) (2019-12-11)
 
 #### Merged Pull Requests
 - Delete more UrlMap route rules [#219](https://github.com/inspec/inspec-gcp/pull/219) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.23.0](https://github.com/inspec/inspec-gcp/tree/v0.23.0) (2019-12-11)
 
