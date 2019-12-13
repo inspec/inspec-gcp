@@ -17,11 +17,10 @@ module Inspec::Resources
     "
     def initialize(opts = {})
       super(opts)
-      if opts[:name]
-        catch_gcp_errors do
-          @organization = @gcp.gcp_project_client.get_organization(opts[:name])
-          create_resource_methods(@organization)
-        end
+      raise Inspec::Exceptions::ResourceFailed, "google_organization is missing mandatory property 'name'" if opts[:name].nil?
+      catch_gcp_errors do
+        @organization = @gcp.gcp_project_client.get_organization(opts[:name])
+        create_resource_methods(@organization)
       end
     end
 
