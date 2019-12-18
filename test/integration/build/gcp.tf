@@ -99,7 +99,7 @@ variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
   region = var.gcp_location
-  version = "~> 2.14.0"
+  version = "~> 3.3.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
@@ -310,7 +310,9 @@ resource "google_compute_instance_template" "default" {
 resource "google_compute_region_instance_group_manager" "appserver" {
   project           = var.gcp_project_id
   name              = "app-rigm"
-  instance_template = google_compute_instance_template.default.self_link
+  version {
+    instance_template = google_compute_instance_template.default.self_link
+  }
   base_instance_name        = "app"
   region                    = var.gcp_lb_region
   distribution_policy_zones = [var.gcp_lb_zone]
