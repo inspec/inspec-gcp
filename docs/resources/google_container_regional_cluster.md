@@ -105,6 +105,10 @@ Properties that can be accessed from the `google_container_regional_cluster` res
 
   * `cluster_ipv4_cidr`: The IP address range of the container pods in this cluster, in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8.
 
+  * `enable_tpu`: (Optional) Whether to enable Cloud TPU resources in this cluster. See the official documentation - https://cloud.google.com/tpu/docs/kubernetes-engine-setup
+
+  * `tpu_ipv4_cidr_block`: The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+
   * `addons_config`: Configurations for the various addons available to run in the cluster.
 
     * `http_load_balancing`: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -186,10 +190,6 @@ Properties that can be accessed from the `google_container_regional_cluster` res
   * `current_node_count`: The number of nodes currently in the cluster.
 
   * `expire_time`: The time the cluster will be automatically deleted in RFC3339 text format.
-
-  * `enable_tpu`: Enable the ability to use Cloud TPUs in this cluster.
-
-  * `tpu_ipv4_cidr_block`: The IP address range of the Cloud TPUs in this cluster, in CIDR notation
 
   * `conditions`: Which conditions caused the current cluster state.
 

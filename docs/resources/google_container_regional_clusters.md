@@ -29,6 +29,8 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `networks`: an array of `google_container_regional_cluster` network
   * `private_cluster_configs`: an array of `google_container_regional_cluster` private_cluster_config
   * `cluster_ipv4_cidrs`: an array of `google_container_regional_cluster` cluster_ipv4_cidr
+  * `enable_tpus`: an array of `google_container_regional_cluster` enable_tpu
+  * `tpu_ipv4_cidr_blocks`: an array of `google_container_regional_cluster` tpu_ipv4_cidr_block
   * `addons_configs`: an array of `google_container_regional_cluster` addons_config
   * `subnetworks`: an array of `google_container_regional_cluster` subnetwork
   * `locations`: an array of `google_container_regional_cluster` locations
@@ -49,8 +51,6 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `services_ipv4_cidrs`: an array of `google_container_regional_cluster` services_ipv4_cidr
   * `current_node_counts`: an array of `google_container_regional_cluster` current_node_count
   * `expire_times`: an array of `google_container_regional_cluster` expire_time
-  * `enable_tpus`: an array of `google_container_regional_cluster` enable_tpu
-  * `tpu_ipv4_cidr_blocks`: an array of `google_container_regional_cluster` tpu_ipv4_cidr_block
   * `conditions`: an array of `google_container_regional_cluster` conditions
   * `master_authorized_networks_configs`: an array of `google_container_regional_cluster` master_authorized_networks_config
   * `locations`: an array of `google_container_regional_cluster` location

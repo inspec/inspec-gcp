@@ -50,6 +50,8 @@ class ContainerRegionalCluster < GcpResourceBase
   attr_reader :network
   attr_reader :private_cluster_config
   attr_reader :cluster_ipv4_cidr
+  attr_reader :enable_tpu
+  attr_reader :tpu_ipv4_cidr_block
   attr_reader :addons_config
   attr_reader :subnetwork
   attr_reader :locations
@@ -70,8 +72,6 @@ class ContainerRegionalCluster < GcpResourceBase
   attr_reader :services_ipv4_cidr
   attr_reader :current_node_count
   attr_reader :expire_time
-  attr_reader :enable_tpu
-  attr_reader :tpu_ipv4_cidr_block
   attr_reader :conditions
   attr_reader :master_authorized_networks_config
   attr_reader :location
@@ -94,6 +94,8 @@ class ContainerRegionalCluster < GcpResourceBase
     @network = @fetched['network']
     @private_cluster_config = GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(@fetched['privateClusterConfig'], to_s)
     @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
+    @enable_tpu = @fetched['enableTpu']
+    @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
     @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
     @subnetwork = @fetched['subnetwork']
     @locations = @fetched['locations']
@@ -114,8 +116,6 @@ class ContainerRegionalCluster < GcpResourceBase
     @services_ipv4_cidr = @fetched['servicesIpv4Cidr']
     @current_node_count = @fetched['currentNodeCount']
     @expire_time = parse_time_string(@fetched['expireTime'])
-    @enable_tpu = @fetched['enableTpu']
-    @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
     @conditions = GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(@fetched['conditions'], to_s)
     @master_authorized_networks_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
     @location = @fetched['location']
