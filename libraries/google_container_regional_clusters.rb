@@ -33,6 +33,8 @@ class ContainerRegionalClusters < GcpResourceBase
   filter_table_config.add(:networks, field: :network)
   filter_table_config.add(:private_cluster_configs, field: :private_cluster_config)
   filter_table_config.add(:cluster_ipv4_cidrs, field: :cluster_ipv4_cidr)
+  filter_table_config.add(:enable_tpus, field: :enable_tpu)
+  filter_table_config.add(:tpu_ipv4_cidr_blocks, field: :tpu_ipv4_cidr_block)
   filter_table_config.add(:addons_configs, field: :addons_config)
   filter_table_config.add(:subnetworks, field: :subnetwork)
   filter_table_config.add(:locations, field: :locations)
@@ -53,8 +55,6 @@ class ContainerRegionalClusters < GcpResourceBase
   filter_table_config.add(:services_ipv4_cidrs, field: :services_ipv4_cidr)
   filter_table_config.add(:current_node_counts, field: :current_node_count)
   filter_table_config.add(:expire_times, field: :expire_time)
-  filter_table_config.add(:enable_tpus, field: :enable_tpu)
-  filter_table_config.add(:tpu_ipv4_cidr_blocks, field: :tpu_ipv4_cidr_block)
   filter_table_config.add(:conditions, field: :conditions)
   filter_table_config.add(:master_authorized_networks_configs, field: :master_authorized_networks_config)
   filter_table_config.add(:locations, field: :location)
@@ -107,6 +107,8 @@ class ContainerRegionalClusters < GcpResourceBase
       'network' => ->(obj) { return :network, obj['network'] },
       'privateClusterConfig' => ->(obj) { return :private_cluster_config, GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(obj['privateClusterConfig'], to_s) },
       'clusterIpv4Cidr' => ->(obj) { return :cluster_ipv4_cidr, obj['clusterIpv4Cidr'] },
+      'enableTpu' => ->(obj) { return :enable_tpu, obj['enableTpu'] },
+      'tpuIpv4CidrBlock' => ->(obj) { return :tpu_ipv4_cidr_block, obj['tpuIpv4CidrBlock'] },
       'addonsConfig' => ->(obj) { return :addons_config, GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(obj['addonsConfig'], to_s) },
       'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
       'locations' => ->(obj) { return :locations, obj['locations'] },
@@ -127,8 +129,6 @@ class ContainerRegionalClusters < GcpResourceBase
       'servicesIpv4Cidr' => ->(obj) { return :services_ipv4_cidr, obj['servicesIpv4Cidr'] },
       'currentNodeCount' => ->(obj) { return :current_node_count, obj['currentNodeCount'] },
       'expireTime' => ->(obj) { return :expire_time, parse_time_string(obj['expireTime']) },
-      'enableTpu' => ->(obj) { return :enable_tpu, obj['enableTpu'] },
-      'tpuIpv4CidrBlock' => ->(obj) { return :tpu_ipv4_cidr_block, obj['tpuIpv4CidrBlock'] },
       'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(obj['conditions'], to_s) },
       'masterAuthorizedNetworksConfig' => ->(obj) { return :master_authorized_networks_config, GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.new(obj['masterAuthorizedNetworksConfig'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
