@@ -24,7 +24,6 @@ control 'gcp-generic-public-ip-address-1.0' do
     its('untrusted?') { should be false }
 
     its('region') { should match gcp_location}
-    its('kind') { should eq "compute#address" }
 
     # we attached this to the external generic vm so the status should be "in_use"
     its('status') { should eq "IN_USE" }
