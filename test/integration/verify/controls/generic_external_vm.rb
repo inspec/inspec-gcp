@@ -31,8 +31,6 @@ control 'gcp-generic-vm-linux-external-1.0' do
 
     its('status') { should eq 'RUNNING' }
 
-    its('kind') { should eq "compute#instance" }
-
     # there's one default tag e.g. => {:fingerprint=>"\xE3e\xA6J\x90|\xAD#"}
     its('tag_count'){should eq 1}
 

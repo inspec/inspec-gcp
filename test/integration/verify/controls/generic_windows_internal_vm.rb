@@ -30,8 +30,6 @@ control 'gcp-generic-vm-windows-internal-1.0' do
     its('cpu_platform') { should match "Intel" }
     its('status') { should eq 'RUNNING' }
 
-    its('kind') { should eq "compute#instance" }
-
     # there's one default tag e.g. => {:fingerprint=>"\xE3e\xA6J\x90|\xAD#"}
     its('tag_count'){should eq 1}
 

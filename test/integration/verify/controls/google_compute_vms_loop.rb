@@ -12,7 +12,6 @@ control 'gcp-vms-loop-1.0' do
     describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: instance_name) do
       it { should exist }
       its('zone') { should match gcp_zone }
-      its('kind') { should eq "compute#instance" }
       its('status') { should be_in ['RUNNING', 'PROVISIONING', 'STAGING', 'STOPPING', 'TERMINATED'] }
       its('tag_count'){ should be >= 1 }
     end

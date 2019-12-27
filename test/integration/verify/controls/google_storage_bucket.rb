@@ -14,7 +14,6 @@ control 'gcp-storage-bucket-1.0' do
     its('name') { should eq gcp_storage_bucket_name }
     its('id') { should eq gcp_storage_bucket_name }
     its('location') { should eq gcp_location.upcase }
-    its('kind') { should eq "storage#bucket" }
     its('project_number') {should eq gcp_project_number.to_i }
     its('storage_class') { should eq 'STANDARD' }
   end
