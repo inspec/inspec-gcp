@@ -10,7 +10,6 @@ control 'gcp-zones-loop-1.0' do
   google_compute_zones(project: gcp_project_id).zone_names.each do |zone_name|
     describe google_compute_zone(project: gcp_project_id, name: zone_name) do
       it { should exist }
-      its('kind') { should eq "compute#zone" }
       its('status') { should eq 'UP' }
       # or equivalently
       it { should be_up }

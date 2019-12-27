@@ -11,7 +11,6 @@ control 'gcp-generic-image-family-1.0' do
 
     its('name') { should match "ubuntu" }
     its('family') { should match "ubuntu" }
-    its('kind') { should eq "compute#image" }
     # the image should be available for use
     its('status') { should eq "READY" }
 
