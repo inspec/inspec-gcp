@@ -30,9 +30,6 @@ control 'gcp-generic-vm-windows-internal-1.0' do
     its('cpu_platform') { should match "Intel" }
     its('status') { should eq 'RUNNING' }
 
-    # there's one default tag e.g. => {:fingerprint=>"\xE3e\xA6J\x90|\xAD#"}
-    its('tag_count'){should eq 1}
-
     # see if the disk is present with the correct name
     its('disk_count'){should eq 1}
     its('first_disks_source_name') { should eq gcp_windows_int_vm_name }
