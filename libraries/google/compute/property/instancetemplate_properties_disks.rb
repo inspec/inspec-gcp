@@ -20,6 +20,8 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesDisks
+        attr_reader :licenses
+
         attr_reader :auto_delete
 
         attr_reader :boot
@@ -43,6 +45,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
+          @licenses = args['licenses']
           @auto_delete = args['autoDelete']
           @boot = args['boot']
           @device_name = args['deviceName']

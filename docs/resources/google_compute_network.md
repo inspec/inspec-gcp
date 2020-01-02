@@ -1,28 +1,22 @@
 ---
-title: About the google_compute_network Resource
+title: About the google_compute_network resource
 platform: gcp
 ---
 
-# google\_compute\_network
-
-Use the `google_compute_network` InSpec audit resource to test properties of a single GCP compute network.
-
-<br>
-
 ## Syntax
-
-A `google_compute_network` resource block declares the tests for a single GCP zone by project and name.
-
-    describe google_compute_network(project: 'chef-inspec-gcp',  name: 'gcp-inspec-network') do
-      it { should exist }
-      its('name') { should eq 'gcp-inspec-network' }
-    end
-
-<br>
+A `google_compute_network` is used to test a Google Network resource
 
 ## Examples
+```
+describe google_compute_network(project: 'chef-gcp-inspec', name: 'inspec-network') do
+  it { should exist }
+  its('routing_config.routing_mode') { should cmp 'REGIONAL' }
+end
 
-The following examples show how to use this InSpec audit resource.
+describe google_compute_network(project: 'chef-gcp-inspec', name: 'nonexistent') do
+  it { should_not exist }
+end
+```
 
 ### Test that a GCP compute network exists
 
@@ -63,15 +57,29 @@ The following examples show how to use this InSpec audit resource.
       its ('routing_config.routing_mode') { should eq "REGIONAL" }
     end
 
-<br>
-
 ## Properties
+Properties that can be accessed from the `google_compute_network` resource:
 
-*  `auto_create_subnetworks`, `creation_timestamp`, `creation_timestamp_date`, `id`, `kind`, `name`, `routing_config`, `subnetworks`
 
-<br>
+  * `description`: An optional description of this resource. The resource must be recreated to modify this field.
+
+  * `gateway_ipv4`: The gateway address for default routing out of the network. This value is selected by GCP.
+
+  * `id`: The unique identifier for the resource.
+
+  * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+
+  * `subnetworks`: Server-defined fully-qualified URLs for all subnetworks in this network.
+
+  * `auto_create_subnetworks`: When set to `true`, the network is created in "auto subnet mode" and it will create a subnet for each region automatically across the `10.128.0.0/9` address range.  When set to `false`, the network is created in "custom subnet mode" so the user can explicitly connect subnetwork resources.
+
+  * `creation_timestamp`: Creation timestamp in RFC3339 text format.
+
+  * `routing_config`: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
+
+    * `routing_mode`: The network-wide routing mode to use. If set to `REGIONAL`, this network's cloud routers will only advertise routes with subnetworks of this network in the same region as the router. If set to `GLOBAL`, this network's cloud routers will advertise routes with all subnetworks of this network, across regions.
 
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

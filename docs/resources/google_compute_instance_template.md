@@ -46,6 +46,8 @@ Properties that can be accessed from the `google_compute_instance_template` reso
 
     * `disks`: An array of disks that are associated with the instances that are created from this template.
 
+      * `licenses`: Any applicable license URI.
+
       * `auto_delete`: Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).  Tip: Disks should be set to autoDelete=true so that leftover disks are not left behind on machine deletion.
 
       * `boot`: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.

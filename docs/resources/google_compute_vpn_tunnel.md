@@ -1,69 +1,54 @@
 ---
-title: About the google_compute_vpn_tunnel Resource
+title: About the google_compute_vpn_tunnel resource
 platform: gcp
 ---
 
-# google\_compute\_vpn\_tunnel
-
-Use the `google_compute_vpn_tunnel` InSpec audit resource to test properties of a single GCP compute vpn_tunnel.
-
-<br>
-
 ## Syntax
-
-A `google_compute_vpn_tunnel` resource block declares the tests for a single GCP vpn_tunnel by project, region and name.
-
-    describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn-tunnel') do
-      it { should exist }
-      its('name') { should eq 'gcp-inspec-vpn-tunnel' }
-      its('region') { should match 'europe-west2' }
-    end
-
-<br>
+A `google_compute_vpn_tunnel` is used to test a Google VpnTunnel resource
 
 ## Examples
+```
+describe google_compute_vpn_tunnel(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-vpn-tunnel') do
+  it { should exist }
+  its('peer_ip') { should eq '15.0.0.120' }
+end
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that a GCP compute vpn_tunnel exists
-
-    describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn-tunnel') do
-      it { should exist }
-    end
-
-### Test when a GCP compute vpn_tunnel was created
-
-    describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn-tunnel') do
-      its('creation_timestamp_date') { should be > Time.now - 365*60*60*24*10 }
-    end
-
-### Test for an expected vpn_tunnel identifier 
-
-    describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn-tunnel') do
-      its('id') { should eq 12345567789 }
-    end    
-
-### Test that a vpn_tunnel peer address is as expected
-
-    describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn-tunnel') do
-      its('peer_ip') { should eq "123.123.123.123" }
-    end  
-
-### Test that a vpn_tunnel status is as expected
-
-    describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn_tunnel') do
-      its('status') { should eq "ESTABLISHED" }
-    end  
-
-<br>
+describe google_compute_vpn_tunnel(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'nonexistent') do
+  it { should_not exist }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_compute_vpn_tunnel` resource:
 
-* `creation_timestamp`, `description`, `detailed_status`, `id`, `ike_version`, `kind`, `local_traffic_selector`, `name`, `peer_ip`, `region`, `remote_traffic_selector`, `router`, `self_link`, `shared_secret`, `shared_secret_hash`, `status`, `target_vpn_gateway`
 
-<br>
+  * `id`: The unique identifier for the resource. This identifier is defined by the server.
+
+  * `creation_timestamp`: Creation timestamp in RFC3339 text format.
+
+  * `name`: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+
+  * `description`: An optional description of this resource.
+
+  * `target_vpn_gateway`: URL of the Target VPN gateway with which this VPN tunnel is associated.
+
+  * `router`: URL of router resource to be used for dynamic routing.
+
+  * `peer_ip`: IP address of the peer VPN gateway. Only IPv4 is supported.
+
+  * `shared_secret`: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
+
+  * `shared_secret_hash`: Hash of the shared secret.
+
+  * `ike_version`: IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
+
+  * `local_traffic_selector`: Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example `192.168.0.0/16`. The ranges should be disjoint. Only IPv4 is supported.
+
+  * `remote_traffic_selector`: Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example `192.168.0.0/16`. The ranges should be disjoint. Only IPv4 is supported.
+
+  * `region`: The region where the tunnel is located.
 
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
