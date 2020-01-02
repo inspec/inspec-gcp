@@ -1,72 +1,41 @@
 ---
-title: About the google_compute_vpn_tunnels Resource
+title: About the google_compute_vpn_tunnels resource
 platform: gcp
 ---
 
-# google\_compute\_vpn\_tunnels
-
-Use the `google_compute_vpn_tunnels` InSpec audit resource to test properties of all, or a filtered group of, GCP compute vpn_tunnels for a project and region.
-
-<br>
-
 ## Syntax
-
-A `google_compute_vpn_tunnels` resource block collects GCP vpn_tunnels by project and region, then tests that group.
-
-    describe google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region: 'europe-west2') do
-      it { should exist }
-    end
-
-Use this InSpec resource to enumerate IDs then test in-depth using `google_compute_vpn_tunnel`.
-
-    google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region:'europe-west2').vpn_tunnel_names.each do |vpn_tunnel_name|
-      describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: vpn_tunnel_name) do
-        its('creation_timestamp_date') { should be > Time.now - 365*60*60*24*10 }
-        its('target_vpn_gateway') { should match /gateway_name/ }
-        its('remote_traffic_selector') { should include "0.0.0.0/0" }
-        its('status') { should_not eq "ESTABLISHED" }
-      end
-    end
-
-<br>
+A `google_compute_vpn_tunnels` is used to test a Google VpnTunnel resource
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
-
-### Test that there are no more than a specified number of vpn_tunnels available for the project and region
-
-    describe google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region: 'europe-west2') do
-      its('count') { should be <= 100}
-    end
-
-### Test that an expected vpn_tunnel name is available for the project and region
-
-    describe google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region: 'europe-west2') do
-      its('vpn_tunnel_names') { should include "vpn_tunnel-name" }
-    end
-
-### Test that an expected vpn_tunnel target_vpn_gateways name is not present for the project and region
-
-    describe google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region: 'europe-west2') do
-      its('vpn_tunnel_target_vpn_gateways') { should not include "gateway-name" }
-    end
-
-    
-<br>
-
-## Filter Criteria
-
-This resource supports the following filter criteria:  `vpn_tunnel_name` and `vpn_tunnel_target_vpn_gateway`. Any of these may be used with `where`, as a block or as a method.
+```
+describe google_compute_vpn_tunnels(project: 'chef-gcp-inspec', region: 'europe-west2') do
+	its('vpn_tunnel_names') { should include 'inspec-vpn-tunnel' }
+  its('peer_ips') { should include '15.0.0.120' }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_compute_vpn_tunnels` resource:
 
-*  `vpn_tunnel_names` - an array of google_compute_vpn_tunnel name strings
-*  `vpn_tunnel_target_vpn_gateway` - an array of google_compute_target_vpn_gateway name strings
+See [google_compute_vpn_tunnel.md](google_compute_vpn_tunnel.md) for more detailed information
+  * `ids`: an array of `google_compute_vpn_tunnel` id
+  * `creation_timestamps`: an array of `google_compute_vpn_tunnel` creation_timestamp
+  * `vpn_tunnel_names`: an array of `google_compute_vpn_tunnel` name
+  * `descriptions`: an array of `google_compute_vpn_tunnel` description
+  * `target_vpn_gateways`: an array of `google_compute_vpn_tunnel` target_vpn_gateway
+  * `routers`: an array of `google_compute_vpn_tunnel` router
+  * `peer_ips`: an array of `google_compute_vpn_tunnel` peer_ip
+  * `shared_secrets`: an array of `google_compute_vpn_tunnel` shared_secret
+  * `shared_secret_hashes`: an array of `google_compute_vpn_tunnel` shared_secret_hash
+  * `ike_versions`: an array of `google_compute_vpn_tunnel` ike_version
+  * `local_traffic_selectors`: an array of `google_compute_vpn_tunnel` local_traffic_selector
+  * `remote_traffic_selectors`: an array of `google_compute_vpn_tunnel` remote_traffic_selector
+  * `regions`: an array of `google_compute_vpn_tunnel` region
 
-<br>
-
+## Filter Criteria
+This resource supports all of the above properties as filter criteria, which can be used
+with `where` as a block or a method.
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
