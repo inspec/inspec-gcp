@@ -153,6 +153,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_bigquery_dataset](docs/resources/google_bigquery_dataset.md) |  [google_bigquery_datasets](docs/resources/google_bigquery_datasets.md) |
 | [google_bigquery_table](docs/resources/google_bigquery_table.md) |  [google_bigquery_tables](docs/resources/google_bigquery_tables.md) |
 | [google_cloudbuild_trigger](docs/resources/google_cloudbuild_trigger.md) |  [google_cloudbuild_triggers](docs/resources/google_cloudbuild_triggers.md) |
+| [google_cloudfunctions_cloud_function](docs/resources/google_cloudfunctions_cloud_function.md) |  [google_cloudfunctions_cloud_functions](docs/resources/google_cloudfunctions_cloud_functions.md) |
 | [google_compute_address](docs/resources/google_compute_address.md) |  [google_compute_autoscaler](docs/resources/google_compute_autoscaler.md) |
 | [google_compute_autoscalers](docs/resources/google_compute_autoscalers.md) |  [google_compute_backend_service](docs/resources/google_compute_backend_service.md) |
 | [google_compute_backend_services](docs/resources/google_compute_backend_services.md) |  [google_compute_disk](docs/resources/google_compute_disk.md) |
