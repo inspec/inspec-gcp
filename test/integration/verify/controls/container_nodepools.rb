@@ -10,7 +10,7 @@ control 'gcp-container-cluster-node-pools-1.0' do
   impact 1.0
   title 'Ensure container cluster node pools have the correct properties in bulk.'
 
-  describe google_container_node_pools(project: gcp_project_id, zone: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name) do
+  describe google_container_node_pools(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name) do
     it { should exist }
     its('count') { should be <= 10}
     its('node_pool_names') { should include gcp_kube_nodepool_name }
