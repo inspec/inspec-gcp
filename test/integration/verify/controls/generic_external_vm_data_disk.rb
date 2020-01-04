@@ -40,7 +40,6 @@ control 'gcp-generic-vm-linux-external-data-disk-1.0' do
     its('first_disks_first_license') { should match "ubuntu"}
     # properties specific to the VM with attached disk
     its('second_disks_device_name') { should eq gcp_compute_disk_name }
-    its('second_disks_kind') { should eq "compute#attachedDisk" }
     its('second_disks_source_name') { should eq gcp_compute_disk_name }
     its('second_disks_first_license') { should match "ubuntu"}
 

@@ -32,9 +32,6 @@ control 'gcp-generic-vm-linux-internal-1.0' do
 
     its('kind') { should eq "compute#instance" }
 
-    # there's one default tag e.g. => {:fingerprint=>"\xE3e\xA6J\x90|\xAD#"}
-    its('tag_count'){should eq 1}
-
     # see if the disk is present with the correct name
     its('disk_count'){should eq 1}
 
