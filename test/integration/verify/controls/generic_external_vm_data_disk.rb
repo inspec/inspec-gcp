@@ -31,9 +31,6 @@ control 'gcp-generic-vm-linux-external-data-disk-1.0' do
 
     its('status') { should eq 'RUNNING' }
 
-    # there's one default tag e.g. => {:fingerprint=>"\xE3e\xA6J\x90|\xAD#"}
-    its('tag_count'){should eq 1}
-
     # see if the disks are present and correct
     its('disk_count'){should eq 2}
     its('first_disks_source_name') { should eq gcp_ext_vm_data_disk_name }

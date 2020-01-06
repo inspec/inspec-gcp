@@ -31,9 +31,6 @@ control 'gcp-generic-vm-linux-external-1.0' do
 
     its('status') { should eq 'RUNNING' }
 
-    # there's one default tag e.g. => {:fingerprint=>"\xE3e\xA6J\x90|\xAD#"}
-    its('tag_count'){should eq 1}
-
     # see if the disk is present with the correct name
     its('disk_count'){should eq 1}
     # see the internal vm control for more on the below

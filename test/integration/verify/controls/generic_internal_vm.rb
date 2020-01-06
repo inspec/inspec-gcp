@@ -30,8 +30,6 @@ control 'gcp-generic-vm-linux-internal-1.0' do
     its('cpu_platform') { should match "Intel" }
     its('status') { should eq 'RUNNING' }
 
-    its('kind') { should eq "compute#instance" }
-
     # see if the disk is present with the correct name
     its('disk_count'){should eq 1}
 
