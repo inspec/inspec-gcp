@@ -57,6 +57,7 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:expire_times, field: :expire_time)
   filter_table_config.add(:conditions, field: :conditions)
   filter_table_config.add(:master_authorized_networks_configs, field: :master_authorized_networks_config)
+  filter_table_config.add(:node_pools, field: :node_pools)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -131,6 +132,7 @@ class ContainerClusters < GcpResourceBase
       'expireTime' => ->(obj) { return :expire_time, parse_time_string(obj['expireTime']) },
       'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::ClusterConditionsArray.parse(obj['conditions'], to_s) },
       'masterAuthorizedNetworksConfig' => ->(obj) { return :master_authorized_networks_config, GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(obj['masterAuthorizedNetworksConfig'], to_s) },
+      'nodePools' => ->(obj) { return :node_pools, GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(obj['nodePools'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end

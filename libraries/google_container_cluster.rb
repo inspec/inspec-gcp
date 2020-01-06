@@ -31,6 +31,7 @@ require 'google/container/property/cluster_network_policy'
 require 'google/container/property/cluster_node_config'
 require 'google/container/property/cluster_node_config_accelerators'
 require 'google/container/property/cluster_node_config_taints'
+require 'google/container/property/cluster_node_pools'
 require 'google/container/property/cluster_private_cluster_config'
 
 # A provider to manage Google Kubernetes Engine resources.
@@ -74,6 +75,7 @@ class ContainerCluster < GcpResourceBase
   attr_reader :expire_time
   attr_reader :conditions
   attr_reader :master_authorized_networks_config
+  attr_reader :node_pools
   attr_reader :location
 
   def initialize(params)
@@ -118,6 +120,7 @@ class ContainerCluster < GcpResourceBase
     @expire_time = parse_time_string(@fetched['expireTime'])
     @conditions = GoogleInSpec::Container::Property::ClusterConditionsArray.parse(@fetched['conditions'], to_s)
     @master_authorized_networks_config = GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
+    @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched['nodePools'], to_s)
     @location = @fetched['location']
   end
 

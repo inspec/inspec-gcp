@@ -23,10 +23,10 @@ class ContainerNodePools < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:node_pool_names, field: :node_pool_name)
   filter_table_config.add(:configs, field: :config)
   filter_table_config.add(:initial_node_counts, field: :initial_node_count)
-  filter_table_config.add(:statuses, field: :status)
+  filter_table_config.add(:node_pool_statuses, field: :node_pool_status)
   filter_table_config.add(:status_messages, field: :status_message)
   filter_table_config.add(:versions, field: :version)
   filter_table_config.add(:autoscalings, field: :autoscaling)
@@ -75,10 +75,10 @@ class ContainerNodePools < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
+      'name' => ->(obj) { return :node_pool_name, obj['name'] },
       'config' => ->(obj) { return :config, GoogleInSpec::Container::Property::NodePoolConfig.new(obj['config'], to_s) },
       'initialNodeCount' => ->(obj) { return :initial_node_count, obj['initialNodeCount'] },
-      'status' => ->(obj) { return :status, obj['status'] },
+      'status' => ->(obj) { return :node_pool_status, obj['status'] },
       'statusMessage' => ->(obj) { return :status_message, obj['statusMessage'] },
       'version' => ->(obj) { return :version, obj['version'] },
       'autoscaling' => ->(obj) { return :autoscaling, GoogleInSpec::Container::Property::NodePoolAutoscaling.new(obj['autoscaling'], to_s) },
@@ -103,6 +103,6 @@ class ContainerNodePools < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools'
+    'projects/{{project}}/locations/{{location}}/clusters/{{cluster_name}}/nodePools'
   end
 end

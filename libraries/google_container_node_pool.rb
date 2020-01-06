@@ -77,7 +77,7 @@ class ContainerNodePool < GcpResourceBase
   end
 
   def to_s
-    "NodePool #{@params[:name]}"
+    "NodePool #{@params[:nodepool_name]}"
   end
 
   private
@@ -87,6 +87,6 @@ class ContainerNodePool < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}'
+    'projects/{{project}}/locations/{{location}}/clusters/{{cluster_name}}/nodePools/{{nodepool_name}}'
   end
 end
