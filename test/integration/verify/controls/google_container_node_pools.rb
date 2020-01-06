@@ -27,7 +27,7 @@ control 'google_container_node_pools-1.0' do
   impact 1.0
   title 'google_container_node_pools resource test'
 
-  describe google_container_node_pools(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster: gcp_kube_cluster_name) do
+  describe google_container_node_pools(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name) do
     its('initial_node_counts') { should include regional_node_pool['initial_node_count']}
   end
 end

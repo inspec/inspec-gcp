@@ -8,12 +8,12 @@ A `google_container_node_pool` is used to test a Google NodePool resource
 
 ## Examples
 ```
-describe google_container_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster: 'gcp-inspec-kube-cluster', name: 'inspec-gcp-regional-node-pool') do
+describe google_container_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster', nodepool_name: 'inspec-gcp-regional-node-pool') do
   it { should exist }
   its('initial_node_count') { should eq '1'}
 end
 
-describe google_container_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster: 'gcp-inspec-kube-cluster', name: 'nonexistent') do
+describe google_container_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster', nodepool_name: 'nonexistent') do
   it { should_not exist }
 end
 ```

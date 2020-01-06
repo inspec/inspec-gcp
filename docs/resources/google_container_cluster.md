@@ -208,6 +208,10 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
       * `cidr_block`: Block specified in CIDR notation
 
+  * `node_pools`: Node pools belonging to this cluster
+
+    * `name`: Name of the node pool
+
   * `location`: The location where the cluster is deployed
 
 

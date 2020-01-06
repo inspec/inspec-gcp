@@ -51,6 +51,7 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `expire_times`: an array of `google_container_cluster` expire_time
   * `conditions`: an array of `google_container_cluster` conditions
   * `master_authorized_networks_configs`: an array of `google_container_cluster` master_authorized_networks_config
+  * `node_pools`: an array of `google_container_cluster` node_pools
   * `locations`: an array of `google_container_cluster` location
 
 ## Filter Criteria

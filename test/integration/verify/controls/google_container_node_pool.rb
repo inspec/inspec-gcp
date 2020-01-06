@@ -27,12 +27,12 @@ control 'google_container_node_pool-1.0' do
   impact 1.0
   title 'google_container_node_pool resource test'
 
-  describe google_container_node_pool(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster: gcp_kube_cluster_name, name: regional_node_pool['name']) do
+  describe google_container_node_pool(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name, nodepool_name: regional_node_pool['name']) do
     it { should exist }
     its('initial_node_count') { should eq regional_node_pool['initial_node_count']}
   end
 
-  describe google_container_node_pool(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster: gcp_kube_cluster_name, name: 'nonexistent') do
+  describe google_container_node_pool(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name, nodepool_name: 'nonexistent') do
     it { should_not exist }
   end
 end

@@ -8,7 +8,7 @@ A `google_container_node_pools` is used to test a Google NodePool resource
 
 ## Examples
 ```
-describe google_container_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster: 'gcp-inspec-kube-cluster') do
+describe google_container_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster') do
   its('initial_node_counts') { should include '1'}
 end
 ```
@@ -17,10 +17,10 @@ end
 Properties that can be accessed from the `google_container_node_pools` resource:
 
 See [google_container_node_pool.md](google_container_node_pool.md) for more detailed information
-  * `names`: an array of `google_container_node_pool` name
+  * `node_pool_names`: an array of `google_container_node_pool` name
   * `configs`: an array of `google_container_node_pool` config
   * `initial_node_counts`: an array of `google_container_node_pool` initial_node_count
-  * `statuses`: an array of `google_container_node_pool` status
+  * `node_pool_statuses`: an array of `google_container_node_pool` status
   * `status_messages`: an array of `google_container_node_pool` status_message
   * `versions`: an array of `google_container_node_pool` version
   * `autoscalings`: an array of `google_container_node_pool` autoscaling
