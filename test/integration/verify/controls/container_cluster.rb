@@ -17,7 +17,7 @@ control 'gcp-gke-container-cluster-1.0' do
   describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: gcp_kube_cluster_name) do
     it { should exist }
     its('name') { should eq gcp_kube_cluster_name }
-    its('zone') { should match gcp_kube_cluster_zone }
+    its('location') { should match gcp_kube_cluster_zone }
 
     # the cluster should not be tainted
     its('tainted?') { should be false }
@@ -47,8 +47,8 @@ control 'gcp-gke-container-cluster-1.0' do
     # check ipv4 cidr size
     its('node_ipv4_cidr_size'){should eq 24}
 
-    # check there is one node pool in the cluster
-    its('node_pools.count'){should eq 1}
+    # check there are two node pools in the cluster
+    its('node_pools.count'){should eq 2}
 
   end
 end
