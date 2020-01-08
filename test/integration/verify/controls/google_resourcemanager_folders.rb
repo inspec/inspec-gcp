@@ -21,7 +21,7 @@ control 'google_resourcemanager_folders-1.0' do
   impact 1.0
   title 'google_resourcemanager_folders resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != ''}
+  only_if { gcp_enable_privileged_resources.to_i == 1 }
   describe.one do
     google_resourcemanager_folders(parent: "organizations/#{gcp_organization_id}").display_names.each do |display_name|
       describe display_name do

@@ -40,6 +40,11 @@ module GoogleInSpec
         def to_s
           "#{@parent_identifier} RegionDeprecated"
         end
+
+        # Handles parsing RFC3339 time string
+        def parse_time_string(time_string)
+          time_string ? Time.parse(time_string) : nil
+        end
       end
     end
   end

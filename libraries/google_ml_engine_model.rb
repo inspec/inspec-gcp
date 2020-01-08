@@ -48,11 +48,6 @@ class MLEngineModel < GcpResourceBase
     @labels = @fetched['labels']
   end
 
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
-  end
-
   def exists?
     !@fetched.nil?
   end

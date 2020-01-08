@@ -26,7 +26,7 @@ control 'google_access_context_manager_access_policies-1.0' do
   impact 1.0
   title 'google_access_context_manager_access_policies resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != ''}
+  only_if { gcp_enable_privileged_resources.to_i == 1 }
 
   describe google_access_context_manager_access_policies(org_id: gcp_organization_id) do
     its('count') { should be >= 1 }
