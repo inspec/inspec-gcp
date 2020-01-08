@@ -39,11 +39,6 @@ class BillingProjectBillingInfo < GcpResourceBase
     @billing_enabled = @fetched['billingEnabled']
   end
 
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
-  end
-
   def exists?
     !@fetched.nil?
   end

@@ -56,11 +56,6 @@ class DNSResourceRecordSet < GcpResourceBase
     @managed_zone = @fetched['managed_zone']
   end
 
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
-  end
-
   def exists?
     !@fetched.nil?
   end

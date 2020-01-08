@@ -1,49 +1,49 @@
 ---
-title: About the google_storage_bucket_acl Resource
+title: About the google_storage_bucket_acl resource
 platform: gcp
 ---
 
-# google\_storage\_bucket\_acl
-
-Use the `google_storage_bucket_acl` InSpec audit resource to test properties of a single GCP storage bucket ACL.  The 'entity' property below is as described in the [Google documentation here](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
-
-<br>
-
 ## Syntax
-
-A `google_storage_bucket_acl` resource block declares the tests for a single GCP storage bucket ACL by bucket name and entity.
-
-    describe google_storage_bucket_acl(bucket: 'bucket-buvsjjcndqz',  entity: 'user-object-viewer@spaterson-project.iam.gserviceaccount.com') do
-      it { should exist }
-    end
-
-<br>
+A `google_storage_bucket_acl` is used to test a Google BucketACL resource
 
 ## Examples
+```
+describe google_storage_bucket_acl(bucket: 'storage-bucket-name', entity: user-email) do
+  it { should exist }
+  its('role') { should cmp "OWNER" }
 
-The following examples show how to use this InSpec audit resource.
+  its('bucket') { should eq 'storage-bucket-name' }
+  its('email') { should include entity-email.com }
+end
 
-### Test that a GCP storage bucket ACL exists
-
-     describe google_storage_bucket_acl(bucket: 'bucket-buvsjjcndqz',  entity: 'user-object-viewer@spaterson-project.iam.gserviceaccount.com') do
-      it { should exist }
-    end
-
-### Test that a GCP storage bucket ACL has the expected role (READER, WRITER or OWNER)
-
-    describe google_storage_bucket_acl(bucket: 'bucket-buvsjjcndqz',  entity: 'user-object-viewer@spaterson-project.iam.gserviceaccount.com') do
-      its('role') { should eq 'OWNER' }
-    end
-
-<br>
+describe google_storage_bucket_acl(bucket: 'storage-bucket-name', entity: "allUsers") do
+  it { should_not exist }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_storage_bucket_acl` resource:
 
-*  `bucket`, `email`, `entity`, `etag`, `id`, `kind`, `role`
 
-<br>
+  * `domain`: The domain associated with the entity.
+
+  * `email`: The email address associated with the entity.
+
+  * `entity`: The entity holding the permission, in one of the following forms:   user-userId   user-email   group-groupId   group-email   domain-domain   project-team-projectId   allUsers   allAuthenticatedUsers Examples:   The user liz@example.com would be user-liz@example.com.   The group example@googlegroups.com would be   group-example@googlegroups.com.   To refer to all members of the Google Apps for Business domain   example.com, the entity would be domain-example.com.
+
+  * `entity_id`: The ID for the entity
+
+  * `id`: The ID of the access-control entry.
+
+  * `project_team`: The project team associated with the entity
+
+    * `project_number`: The project team associated with the entity
+
+    * `team`: The team.
+
+  * `role`: The access permission for the entity.
 
 
 ## GCP Permissions
 
-Ensure the [Google Cloud Storage API](https://console.cloud.google.com/apis/api/storage-component.googleapis.com/) is enabled.
+Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

@@ -1,50 +1,27 @@
 ---
-title: About the google_storage_bucket_iam_binding Resource
+title: About the google_storage_bucket_iam_binding resource
 platform: gcp
 ---
 
-# google\_storage\_bucket\_iam\_binding
-
-Use the `google_storage_bucket_iam_binding` InSpec audit resource to test properties of a single GCP storage bucket IAM binding.
-
-<br>
-
 ## Syntax
-
-A `google_storage_bucket_iam_binding` resource block declares the tests for a single GCP storage bucket IAM binding by bucket name and role.
-
-    describe google_storage_bucket_iam_binding(bucket: 'bucket-buvsjjcndqz',  role: 'roles/storage.objectViewer') do
-      it { should exist }
-    end
-
-<br>
+A `google_storage_bucket_iam_binding` is used to test a Google Bucket Iam Bindings
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
-
-### Test that a GCP storage bucket IAM binding exists
-
-    describe google_storage_bucket_iam_binding(bucket: 'bucket-buvsjjcndqz',  role: 'roles/storage.admin') do
-      it { should exist }
-    end
-
-### Test that a GCP storage bucket IAM binding role has the desired user or service account included
-
-    describe google_storage_bucket_iam_binding(bucket: 'bucket-buvsjjcndqz',  role: 'roles/storage.admin') do
-      its('members') {should include 'user:someuser@domain.com' }
-      its('members') {should include 'serviceAccount:someserviceaccount@domain.com' }
-    end
-
-<br>
+```
+describe google_storage_bucket_iam_binding(name: "name", role: "roles/editor") do
+  it { should exist }
+  its('members') { should include 'user:testuser@example.com' }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_storage_bucket_iam_binding` resource:
 
-*  `members`
+  * `role`: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
 
-<br>
+  * `members`: Specifies the identities requesting access for a Cloud Platform resource.
 
 
 ## GCP Permissions
 
-Ensure the [Google Cloud Storage API](https://console.cloud.google.com/apis/api/storage-component.googleapis.com/) is enabled.
+Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

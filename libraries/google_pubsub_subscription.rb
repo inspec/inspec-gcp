@@ -52,11 +52,6 @@ class PubsubSubscription < GcpResourceBase
     @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
   end
 
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
-  end
-
   def exists?
     !@fetched.nil?
   end
