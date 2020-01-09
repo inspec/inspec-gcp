@@ -15,12 +15,12 @@ control 'gcp-crypto-key-iam-binding-1.0' do
   impact 1.0
   title 'Ensure single KMS Crypto Key IAM Binding has the correct properties'
 
-  describe google_kms_crypto_key_iam_binding(crypto_key_url: "projects/#{gcp_project_id}/locations/#{gcp_location}/keyRings/#{gcp_kms_key_ring_binding_member_name}/cryptoKeys/#{gcp_kms_crypto_key_name_binding}", role: "roles/editor") do
+  describe google_kms_crypto_key_iam_binding(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_binding_member_name, crypto_key_name: gcp_kms_crypto_key_name_binding, role: "roles/editor") do
     it { should exist }
     its('members.count') { should eq 1}
   end
 
-  describe google_kms_crypto_key_iam_binding(crypto_key_url: "projects/#{gcp_project_id}/locations/#{gcp_location}/keyRings/#{gcp_kms_key_ring_policy_name}/cryptoKeys/#{gcp_kms_crypto_key_name_policy}", role: "roles/editor") do
+  describe google_kms_crypto_key_iam_binding(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_policy_name, crypto_key_name: gcp_kms_crypto_key_name_policy, role: "roles/editor") do
     it { should exist }
     its('members.count') { should eq 1}
   end

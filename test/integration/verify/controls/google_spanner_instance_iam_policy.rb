@@ -19,9 +19,12 @@ control 'google_spanner_instance_iam_policy-1.0' do
   impact 1.0
   title 'google_spanner_instance_iam_policy resource test'
 
-  describe google_spanner_instance_iam_policy(project: gcp_project_id, name: spannerinstance['name']) do
-    it { should exist }
-    its('role') { should eq "roles/editor" }
-    its('members') { should include "serviceAccount:#{gcp_service_account_display_name}-sp@#{gcp_project_id}.iam.gserviceaccount.com" }
+  describe.one do
+    google_spanner_instance_iam_policy(project: gcp_project_id, name: spannerinstance['name']).bindings.each do |binding|
+      describe binding do
+        its('role') { should eq "roles/editor" }
+        its('members') { should include "serviceAccount:#{gcp_service_account_display_name}-sp@#{gcp_project_id}.iam.gserviceaccount.com" }
+      end
+    end
   end
 end

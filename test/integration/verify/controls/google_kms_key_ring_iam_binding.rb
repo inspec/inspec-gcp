@@ -12,17 +12,17 @@ control 'gcp-kms-key-ring-iam-binding-1.0' do
   impact 1.0
   title 'Ensure single GCP GCP KMS Key Ring IAM bindings have the correct properties.  Examples below include attaching an IAM policy, binding and member to a key ring.'
 
-  describe google_kms_key_ring_iam_binding(key_ring_url: "projects/#{gcp_project_id}/locations/#{gcp_location}/keyRings/#{gcp_kms_key_ring_policy_name}", role: "roles/editor") do
+  describe google_kms_key_ring_iam_binding(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_policy_name, role: "roles/editor") do
     it { should exist }
     its ('members.count'){ should eq 1 }
   end
 
-  describe google_kms_key_ring_iam_binding(key_ring_url: "projects/#{gcp_project_id}/locations/#{gcp_location}/keyRings/#{gcp_kms_key_ring_binding_member_name}", role: "roles/editor") do
+  describe google_kms_key_ring_iam_binding(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_binding_member_name, role: "roles/editor") do
     it { should exist }
     its ('members.count'){ should eq 1 }
   end
 
-  describe google_kms_key_ring_iam_binding(key_ring_url: "projects/#{gcp_project_id}/locations/#{gcp_location}/keyRings/#{gcp_kms_key_ring_binding_member_name}", role: "roles/owner") do
+  describe google_kms_key_ring_iam_binding(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_binding_member_name, role: "roles/owner") do
     it { should exist }
     its ('members.count'){ should eq 1 }
   end
