@@ -55,7 +55,7 @@ class ComputeRouterNat < GcpResourceBase
   end
 
   def unwrap(fetched, params)
-    fetched[collection_item].find { |result| identity.all? { |id| result[id.to_sym] == params[id] } }
+    fetched[collection_item].find { |result| identity.all? { |id| result[id] == params[id.to_sym] } }
   end
 
   def parse
