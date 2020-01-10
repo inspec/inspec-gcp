@@ -47,6 +47,14 @@ class SubnetworkIamPolicy < GcpResourceBase
     "Subnetwork IamPolicy #{@params[:name]}"
   end
 
+  def iam_binding_roles
+    @bindings.map(&:role)
+  end
+
+  def count
+    @bindings.size
+  end
+
   private
 
   def product_url

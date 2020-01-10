@@ -14,17 +14,18 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/iam/property/iam_policy_audit_configs'
+require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud KMS resources.
-class KMSKeyRing < GcpResourceBase
-  name 'google_kms_key_ring'
-  desc 'KeyRing'
+# A provider to manage Cloud KMS IAM Policy resources.
+class CryptoKeyIamPolicy < GcpResourceBase
+  name 'google_kms_crypto_key_iam_policy'
+  desc 'CryptoKey Iam Policy'
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :create_time
-  attr_reader :key_ring_url
-  attr_reader :location
+  attr_reader :bindings
+  attr_reader :audit_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -34,14 +35,8 @@ class KMSKeyRing < GcpResourceBase
   end
 
   def parse
-    @create_time = parse_time_string(@fetched['createTime'])
-    @key_ring_url = @fetched['name']
-    @location = @fetched['location']
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
   end
 
   def exists?
@@ -49,11 +44,15 @@ class KMSKeyRing < GcpResourceBase
   end
 
   def to_s
-    "KeyRing #{@params[:name]}"
+    "CryptoKey IamPolicy #{@params[:crypto_key_name]}"
   end
 
-  def key_ring_name
-    name_from_self_link(@key_ring_url)
+  def iam_binding_roles
+    @bindings.map(&:role)
+  end
+
+  def count
+    @bindings.size
   end
 
   private
@@ -63,6 +62,6 @@ class KMSKeyRing < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/keyRings/{{name}}'
+    'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}/cryptoKeys/{{crypto_key_name}}:getIamPolicy'
   end
 end
