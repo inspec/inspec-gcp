@@ -91,7 +91,7 @@ module GCPInspecConfig
       :gcp_fr_udp_name => "gcp-inspec-fr-udp",
       :gcp_address_name => "gcp-inspec-address",
       :gcp_vpn_address_name => "gcp-inspec-vpn-address",
-      :gcp_db_instance_name => "gcp-inspec-db-#{add_random_string}",
+      :gcp_db_instance_name => "gcp-inspec-db",
       :gcp_db_name => "inspecgcp",
       :gcp_db_type => "MYSQL_5_7",
       :gcp_db_size => "db-f1-micro",
