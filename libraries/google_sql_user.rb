@@ -15,18 +15,17 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Cloud DNS resources.
-class DNSResourceRecordSet < GcpResourceBase
-  name 'google_dns_resource_record_set'
-  desc 'ResourceRecordSet'
+# A provider to manage Cloud SQL resources.
+class SQLUser < GcpResourceBase
+  name 'google_sql_user'
+  desc 'User'
   supports platform: 'gcp'
 
   attr_reader :params
+  attr_reader :host
   attr_reader :name
-  attr_reader :type
-  attr_reader :ttl
-  attr_reader :target
-  attr_reader :managed_zone
+  attr_reader :instance
+  attr_reader :password
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -37,11 +36,11 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def identity
-    %w{name type}
+    %w{name host}
   end
 
   def collection_item
-    'rrsets'
+    'items'
   end
 
   def unwrap(fetched, params)
@@ -49,11 +48,10 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def parse
+    @host = @fetched['host']
     @name = @fetched['name']
-    @type = @fetched['type']
-    @ttl = @fetched['ttl']
-    @target = @fetched['rrdatas']
-    @managed_zone = @fetched['managed_zone']
+    @instance = @fetched['instance']
+    @password = @fetched['password']
   end
 
   def exists?
@@ -61,16 +59,16 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def to_s
-    "ResourceRecordSet #{@params[:type]}"
+    "User #{@params[:database]}"
   end
 
   private
 
   def product_url
-    'https://www.googleapis.com/dns/v1/'
+    'https://www.googleapis.com/sql/v1beta4/'
   end
 
   def resource_base_url
-    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}'
+    'projects/{{project}}/instances/{{database}}/users'
   end
 end
