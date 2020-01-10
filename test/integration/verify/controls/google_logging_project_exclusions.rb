@@ -12,17 +12,18 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_logging_project_sinks resource.'
+title 'Test GCP google_logging_project_exclusions resource.'
 
-project_sink = attribute('project_sink', default: {"name"=>"inspec-gcp-org-sink", "filter"=>"resource.type = gce_instance AND severity = DEBUG"})
-gcp_project_id = attribute(:gcp_project_id, default: gcp_project_id, description: 'The project id.')
+project_exclusion = attribute('project_exclusion', default: {"name"=>"inspec-project-exclusion", "description"=>"My project exclusion description", "filter"=>"resource.type = gce_instance AND severity <= DEBUG"})
+gcp_project_id = attribute(:gcp_project_id, default: gcp_project_id, description: 'The project identifier')
 gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-control 'google_logging_project_sinks-1.0' do
+control 'google_logging_project_exclusions-1.0' do
   impact 1.0
-  title 'google_logging_project_sinks resource test'
+  title 'google_logging_project_exclusions resource test'
 
   only_if { gcp_enable_privileged_resources.to_i == 1 }
-  describe google_logging_project_sinks(project: gcp_project_id) do
-    its('names') { should include project_sink['name'] }
+
+  describe google_logging_project_exclusions(project: gcp_project_id) do
+    its('names'){ should include project_exclusion['name'] }
   end
 end
