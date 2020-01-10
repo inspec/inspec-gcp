@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class LoggingProjectSinks < GcpResourceBase
-  name 'google_logging_project_sinks'
-  desc 'ProjectSink plural resource'
+class LoggingProjectExclusions < GcpResourceBase
+  name 'google_logging_project_exclusions'
+  desc 'ProjectExclusion plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -25,17 +25,16 @@ class LoggingProjectSinks < GcpResourceBase
 
   filter_table_config.add(:projects, field: :project)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:filters, field: :filter)
-  filter_table_config.add(:destinations, field: :destination)
-  filter_table_config.add(:writer_identities, field: :writer_identity)
-  filter_table_config.add(:include_children, field: :include_children)
+  filter_table_config.add(:disableds, field: :disabled)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('sinks')
+    @table = fetch_wrapped_resource('exclusions')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -70,10 +69,9 @@ class LoggingProjectSinks < GcpResourceBase
     {
       'project' => ->(obj) { return :project, obj['project'] },
       'name' => ->(obj) { return :name, obj['name'] },
+      'description' => ->(obj) { return :description, obj['description'] },
       'filter' => ->(obj) { return :filter, obj['filter'] },
-      'destination' => ->(obj) { return :destination, obj['destination'] },
-      'writerIdentity' => ->(obj) { return :writer_identity, obj['writerIdentity'] },
-      'includeChildren' => ->(obj) { return :include_children, obj['includeChildren'] },
+      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
     }
   end
 
@@ -84,6 +82,6 @@ class LoggingProjectSinks < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/sinks'
+    'projects/{{project}}/exclusions'
   end
 end
