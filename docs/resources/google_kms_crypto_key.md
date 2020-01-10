@@ -1,62 +1,52 @@
 ---
-title: About the google_kms_crypto_key Resource
+title: About the google_kms_crypto_key resource
 platform: gcp
 ---
 
-# google\_kms\_crypto\_key
-
-Use the `google_kms_crypto_key` InSpec audit resource to test properties of a single GCP KMS crypto key.  See [this page](https://cloud.google.com/kms/docs/object-hierarchy?hl=en_US&_ga=2.223343707.-1730338523.1522320263#cryptokeyversion) for useful background.
-
-<br>
-
 ## Syntax
-
-A `google_kms_crypto_key` resource block declares the tests for a single GCP KMS crypto key by project, location, key ring name and key name. 
-
-    describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: 'crypto-key') do
-      it { should exist }
-    end
-
-<br>
+A `google_kms_crypto_key` is used to test a Google CryptoKey resource
 
 ## Examples
+```
+describe google_kms_crypto_key(project: 'chef-gcp-inspec', location: 'europe-west2', key_ring_name: 'kms-key-ring', name: 'kms-key') do
+  it { should exist }
+  its('crypto_key_name') { should cmp 'kms-key' }
+  its('primary_state') { should eq "ENABLED" }
+  its('purpose') { should eq "ENCRYPT_DECRYPT" }
+  its('next_rotation_time') { should be > Time.now - 100000 }
+  its('create_time') { should be > Time.now - 365*60*60*24*10 }
+end
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that a GCP KMS crypto key was created recently
-
-    describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: 'crypto-key') do
-      its('create_time_date') { should be > Time.now - 365*60*60*24*10 }
-    end
-
-### Test when the next rotation time for a GCP KMS crypto key is scheduled
-
-    describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: 'crypto-key') do
-      its('next_rotation_time_date') { should be > Time.now - 100000 }
-    end
-    
-### Check that the crypto key purpose is as expected
-    
-    describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: 'crypto-key') do
-      its('purpose') { should eq "ENCRYPT_DECRYPT" }
-    end
-
-### Check that the crypto key primary is in "ENABLED" state
-    
-    describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: 'crypto-key') do
-      its('primary_state') { should eq "ENABLED" }
-    end
-    
-    
-<br>
+describe google_kms_crypto_key(project: 'chef-gcp-inspec', location: 'europe-west2', key_ring_name: 'kms-key-ring', name: "nonexistent") do
+  it { should_not exist }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_kms_crypto_key` resource:
 
-* `create_time`, `create_time_date`, `name`, `crypto_key_name`, `crypto_key_url`, `next_rotation_time`, `next_rotation_time_date`, `primary_create_time`, `primary_create_time_date`, `primary_name`, `primary_state`, `purpose`, `rotation_period`
 
-<br>
+  * `crypto_key_name`: The resource name for the CryptoKey.
+
+  * `create_time`: The time that this resource was created on the server. This is in RFC3339 text format.
+
+  * `labels`: Labels with user-defined metadata to apply to this resource.
+
+  * `purpose`: The immutable purpose of this CryptoKey. See the [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose) for possible inputs.
+
+  * `rotation_period`: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits, followed by the letter `s` (seconds). It must be greater than a day (ie, 86400).
+
+  * `version_template`: A template describing settings for new crypto key versions.
+
+    * `algorithm`: The algorithm to use when creating a version based on this template. See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+
+    * `protection_level`: The protection level to use when creating a version based on this template.
+
+  * `next_rotation_time`: The time when KMS will create a new version of this Crypto Key.
+
+  * `key_ring`: The KeyRing that this key belongs to. Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 
 
 ## GCP Permissions
 
-Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.
