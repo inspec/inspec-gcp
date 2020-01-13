@@ -26,6 +26,7 @@ class KMSKeyRings < GcpResourceBase
   filter_table_config.add(:create_times, field: :create_time)
   filter_table_config.add(:key_ring_urls, field: :key_ring_url)
   filter_table_config.add(:locations, field: :location)
+  filter_table_config.add(:key_ring_names, field: :key_ring_name)
 
   filter_table_config.connect(self, :table)
 
