@@ -28,7 +28,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
     * `balancing_mode`: Specifies the balancing mode for this backend. Defaults to CONNECTION.
 
-    * `capacity_scaler`: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION).  A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].
+    * `capacity_scaler`: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION).  Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].
 
     * `description`: An optional description of this resource. Provide this property when you create the resource.
 
