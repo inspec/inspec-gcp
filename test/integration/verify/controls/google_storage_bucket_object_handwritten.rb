@@ -15,7 +15,7 @@ control 'gcp-storage-bucket-object-1.0' do
     its('name') { should eq gcp_storage_bucket_object_name }
     its('size') { should be > 0 }
     its('content_type') { should eq "text/plain; charset=utf-8" }
-    its('time_created_date') { should be > Time.now - 365*60*60*24*10 }
-    its('updated_date') { should be > Time.now - 365*60*60*24*10 }
+    its('time_created') { should be > Time.now - 365*60*60*24*10 }
+    its('time_updated') { should be > Time.now - 365*60*60*24*10 }
   end
 end

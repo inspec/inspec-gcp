@@ -14,11 +14,10 @@ control 'gcp-kms-crypto-key-1.0' do
 
   describe google_kms_crypto_key(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_policy_name, name: gcp_kms_crypto_key_name_policy) do
     it { should exist }
-    its('create_time_date') { should be > Time.now - 365*60*60*24*10 }
+    its('create_time') { should be > Time.now - 365*60*60*24*10 }
     its('crypto_key_name'){ should eq gcp_kms_crypto_key_name_policy }
     its('primary_state') { should eq "ENABLED" }
     its('purpose') { should eq "ENCRYPT_DECRYPT" }
-    its('next_rotation_time_date') { should be > Time.now - 100000 }
-    its('create_time_date') { should be > Time.now - 365*60*60*24*10 }
+    its('next_rotation_time') { should be > Time.now - 100000 }
   end
 end
