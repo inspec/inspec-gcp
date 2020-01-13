@@ -82,6 +82,12 @@ class StorageBucketObject < GcpResourceBase
     @params[:bucket]
   end
 
+  # rubocop:disable Lint/DuplicateMethods
+  def size
+    @size&.to_i
+  end
+  # rubocop:enable Lint/DuplicateMethods
+
   private
 
   def product_url
