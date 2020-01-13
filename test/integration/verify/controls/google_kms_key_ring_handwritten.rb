@@ -13,7 +13,7 @@ control 'gcp-key-ring-1.0' do
 
   describe google_kms_key_ring(project: gcp_project_id, location: gcp_location, name: gcp_kms_key_ring_policy_name) do
     it { should exist }
-    its('create_time_date') { should be > Time.now - 365*60*60*24*10 }
+    its('create_time') { should be > Time.now - 365*60*60*24*10 }
     its('key_ring_name'){ should eq gcp_kms_key_ring_policy_name }
   end
 end
