@@ -47,16 +47,12 @@ namespace :test do
     sh(cmd)
   end
 
-  task :generate_integration_test_variables do
+  task :plan_integration_tests, [:seed] do |t, args|
     puts "----> Generating terraform and inspec variable files"
-    #p GCPInspecConfig.config[:gcp_project_id]
-    GCPInspecConfig.store_json(variable_file_name)
-    GCPInspecConfig.store_yaml(profile_attributes)
-  end
-
-  task :plan_integration_tests do
-
-    Rake::Task["test:generate_integration_test_variables"].execute
+    puts "Seeding random suffixes with: #{args.seed}" unless args.seed.nil?
+    config = GCPInspecConfig::Config.new(args.seed)
+    config.store_json(variable_file_name)
+    config.store_yaml(profile_attributes)
 
     puts "----> Setup"
     # Create the plan that can be applied to GCP
