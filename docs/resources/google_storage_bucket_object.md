@@ -25,8 +25,6 @@ end
 Properties that can be accessed from the `google_storage_bucket_object` resource:
 
 
-  * `bucket`: The name of the bucket.
-
   * `object`: The name of the object.
 
   * `content_type`: The Content-Type of the object data.  See https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types for more information on possible Content-Types
