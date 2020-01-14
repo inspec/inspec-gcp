@@ -22,7 +22,6 @@ class StorageBucketObject < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :bucket
   attr_reader :object
   attr_reader :content_type
   attr_reader :crc32c
@@ -48,7 +47,6 @@ class StorageBucketObject < GcpResourceBase
   end
 
   def parse
-    @bucket = @fetched['bucket']
     @object = @fetched['object']
     @content_type = @fetched['contentType']
     @crc32c = @fetched['crc32c']
@@ -78,6 +76,10 @@ class StorageBucketObject < GcpResourceBase
 
   def to_s
     "BucketObject #{@params[:object]}"
+  end
+
+  def bucket
+    @params[:bucket]
   end
 
   # rubocop:disable Lint/DuplicateMethods
