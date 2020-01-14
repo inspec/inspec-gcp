@@ -392,6 +392,10 @@ Changed Quota:
 
 Sometimes there can be occasional errors when performing the cleanup rake task. This happens when resources are already deleted and can be ignored.
 
+## Upgrading to version 1.0
+
+A guide on upgrading to version 1.0 can be found [here](docs/version_1_upgrade.md)
+
 ## Support
 
 The InSpec GCP resources are community supported. For bugs and features, please open a github issue and label it appropriately.
