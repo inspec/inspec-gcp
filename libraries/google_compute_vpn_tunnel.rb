@@ -27,6 +27,11 @@ class ComputeVpnTunnel < GcpResourceBase
   attr_reader :name
   attr_reader :description
   attr_reader :target_vpn_gateway
+  attr_reader :vpn_gateway
+  attr_reader :vpn_gateway_interface
+  attr_reader :peer_external_gateway
+  attr_reader :peer_external_gateway_interface
+  attr_reader :peer_gcp_gateway
   attr_reader :router
   attr_reader :peer_ip
   attr_reader :shared_secret
@@ -34,12 +39,14 @@ class ComputeVpnTunnel < GcpResourceBase
   attr_reader :ike_version
   attr_reader :local_traffic_selector
   attr_reader :remote_traffic_selector
+  attr_reader :labels
+  attr_reader :label_fingerprint
   attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -49,6 +56,11 @@ class ComputeVpnTunnel < GcpResourceBase
     @name = @fetched['name']
     @description = @fetched['description']
     @target_vpn_gateway = @fetched['targetVpnGateway']
+    @vpn_gateway = @fetched['vpnGateway']
+    @vpn_gateway_interface = @fetched['vpnGatewayInterface']
+    @peer_external_gateway = @fetched['peerExternalGateway']
+    @peer_external_gateway_interface = @fetched['peerExternalGatewayInterface']
+    @peer_gcp_gateway = @fetched['peerGcpGateway']
     @router = @fetched['router']
     @peer_ip = @fetched['peerIp']
     @shared_secret = @fetched['sharedSecret']
@@ -56,6 +68,8 @@ class ComputeVpnTunnel < GcpResourceBase
     @ike_version = @fetched['ikeVersion']
     @local_traffic_selector = @fetched['localTrafficSelector']
     @remote_traffic_selector = @fetched['remoteTrafficSelector']
+    @labels = @fetched['labels']
+    @label_fingerprint = @fetched['labelFingerprint']
     @region = @fetched['region']
   end
 
@@ -74,8 +88,12 @@ class ComputeVpnTunnel < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

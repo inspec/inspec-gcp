@@ -81,7 +81,7 @@ class ContainerCluster < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -216,8 +216,12 @@ class ContainerCluster < GcpResourceBase
 
   private
 
-  def product_url
-    'https://container.googleapis.com/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://container.googleapis.com/v1beta1/'
+    else
+      'https://container.googleapis.com/v1/'
+    end
   end
 
   def resource_base_url

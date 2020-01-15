@@ -28,6 +28,8 @@ class ComputeGlobalAddresss < GcpResourceBase
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
   filter_table_config.add(:ip_versions, field: :ip_version)
   filter_table_config.add(:regions, field: :region)
   filter_table_config.add(:prefix_lengths, field: :prefix_length)
@@ -78,6 +80,8 @@ class ComputeGlobalAddresss < GcpResourceBase
       'description' => ->(obj) { return :description, obj['description'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'name' => ->(obj) { return :name, obj['name'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
       'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
       'region' => ->(obj) { return :region, obj['region'] },
       'prefixLength' => ->(obj) { return :prefix_length, obj['prefixLength'] },
@@ -94,8 +98,12 @@ class ComputeGlobalAddresss < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

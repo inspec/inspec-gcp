@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_dataproc_clusters` is used to test a Google Cluster resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_dataproc_clusters(project: 'chef-gcp-inspec', region: 'europe-west2') do

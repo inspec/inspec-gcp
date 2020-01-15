@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_addresses` is used to test a Google Address resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_addresses(project: 'chef-gcp-inspec', location: 'europe-west2') do
@@ -28,6 +32,8 @@ See [google_compute_address.md](google_compute_address.md) for more detailed inf
   * `network_tiers`: an array of `google_compute_address` network_tier
   * `subnetworks`: an array of `google_compute_address` subnetwork
   * `users`: an array of `google_compute_address` users
+  * `labels`: (Beta only) an array of `google_compute_address` labels
+  * `label_fingerprints`: (Beta only) an array of `google_compute_address` label_fingerprint
   * `statuses`: an array of `google_compute_address` status
   * `regions`: an array of `google_compute_address` region
 

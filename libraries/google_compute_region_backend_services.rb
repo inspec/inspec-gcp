@@ -23,18 +23,26 @@ class ComputeRegionBackendServices < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:affinity_cookie_ttl_secs, field: :affinity_cookie_ttl_sec)
   filter_table_config.add(:backends, field: :backends)
+  filter_table_config.add(:circuit_breakers, field: :circuit_breakers)
+  filter_table_config.add(:consistent_hashes, field: :consistent_hash)
   filter_table_config.add(:connection_drainings, field: :connection_draining)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:failover_policies, field: :failover_policy)
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:health_checks, field: :health_checks)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:load_balancing_schemes, field: :load_balancing_scheme)
+  filter_table_config.add(:locality_lb_policies, field: :locality_lb_policy)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:outlier_detections, field: :outlier_detection)
   filter_table_config.add(:protocols, field: :protocol)
   filter_table_config.add(:session_affinities, field: :session_affinity)
   filter_table_config.add(:timeout_secs, field: :timeout_sec)
+  filter_table_config.add(:log_configs, field: :log_config)
+  filter_table_config.add(:networks, field: :network)
   filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
@@ -75,18 +83,26 @@ class ComputeRegionBackendServices < GcpResourceBase
 
   def transformers
     {
+      'affinityCookieTtlSec' => ->(obj) { return :affinity_cookie_ttl_sec, obj['affinityCookieTtlSec'] },
       'backends' => ->(obj) { return :backends, GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(obj['backends'], to_s) },
+      'circuitBreakers' => ->(obj) { return :circuit_breakers, GoogleInSpec::Compute::Property::RegionBackendServiceCircuitBreakers.new(obj['circuitBreakers'], to_s) },
+      'consistentHash' => ->(obj) { return :consistent_hash, GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHash.new(obj['consistentHash'], to_s) },
       'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(obj['connectionDraining'], to_s) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'description' => ->(obj) { return :description, obj['description'] },
+      'failoverPolicy' => ->(obj) { return :failover_policy, GoogleInSpec::Compute::Property::RegionBackendServiceFailoverPolicy.new(obj['failoverPolicy'], to_s) },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'healthChecks' => ->(obj) { return :health_checks, obj['healthChecks'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
+      'localityLbPolicy' => ->(obj) { return :locality_lb_policy, obj['localityLbPolicy'] },
       'name' => ->(obj) { return :name, obj['name'] },
+      'outlierDetection' => ->(obj) { return :outlier_detection, GoogleInSpec::Compute::Property::RegionBackendServiceOutlierDetection.new(obj['outlierDetection'], to_s) },
       'protocol' => ->(obj) { return :protocol, obj['protocol'] },
       'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
       'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
+      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::RegionBackendServiceLogConfig.new(obj['logConfig'], to_s) },
+      'network' => ->(obj) { return :network, obj['network'] },
       'region' => ->(obj) { return :region, obj['region'] },
     }
   end
@@ -98,8 +114,12 @@ class ComputeRegionBackendServices < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

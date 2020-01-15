@@ -75,8 +75,12 @@ class DataprocClusters < GcpResourceBase
 
   private
 
-  def product_url
-    'https://dataproc.googleapis.com/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://dataproc.googleapis.com/v1beta2/'
+    else
+      'https://dataproc.googleapis.com/v1/'
+    end
   end
 
   def resource_base_url

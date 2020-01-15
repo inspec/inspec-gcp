@@ -28,6 +28,11 @@ class ComputeVpnTunnels < GcpResourceBase
   filter_table_config.add(:vpn_tunnel_names, field: :vpn_tunnel_name)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:target_vpn_gateways, field: :target_vpn_gateway)
+  filter_table_config.add(:vpn_gateways, field: :vpn_gateway)
+  filter_table_config.add(:vpn_gateway_interfaces, field: :vpn_gateway_interface)
+  filter_table_config.add(:peer_external_gateways, field: :peer_external_gateway)
+  filter_table_config.add(:peer_external_gateway_interfaces, field: :peer_external_gateway_interface)
+  filter_table_config.add(:peer_gcp_gateways, field: :peer_gcp_gateway)
   filter_table_config.add(:routers, field: :router)
   filter_table_config.add(:peer_ips, field: :peer_ip)
   filter_table_config.add(:shared_secrets, field: :shared_secret)
@@ -35,6 +40,8 @@ class ComputeVpnTunnels < GcpResourceBase
   filter_table_config.add(:ike_versions, field: :ike_version)
   filter_table_config.add(:local_traffic_selectors, field: :local_traffic_selector)
   filter_table_config.add(:remote_traffic_selectors, field: :remote_traffic_selector)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
   filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
@@ -80,6 +87,11 @@ class ComputeVpnTunnels < GcpResourceBase
       'name' => ->(obj) { return :vpn_tunnel_name, obj['name'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'targetVpnGateway' => ->(obj) { return :target_vpn_gateway, obj['targetVpnGateway'] },
+      'vpnGateway' => ->(obj) { return :vpn_gateway, obj['vpnGateway'] },
+      'vpnGatewayInterface' => ->(obj) { return :vpn_gateway_interface, obj['vpnGatewayInterface'] },
+      'peerExternalGateway' => ->(obj) { return :peer_external_gateway, obj['peerExternalGateway'] },
+      'peerExternalGatewayInterface' => ->(obj) { return :peer_external_gateway_interface, obj['peerExternalGatewayInterface'] },
+      'peerGcpGateway' => ->(obj) { return :peer_gcp_gateway, obj['peerGcpGateway'] },
       'router' => ->(obj) { return :router, obj['router'] },
       'peerIp' => ->(obj) { return :peer_ip, obj['peerIp'] },
       'sharedSecret' => ->(obj) { return :shared_secret, obj['sharedSecret'] },
@@ -87,6 +99,8 @@ class ComputeVpnTunnels < GcpResourceBase
       'ikeVersion' => ->(obj) { return :ike_version, obj['ikeVersion'] },
       'localTrafficSelector' => ->(obj) { return :local_traffic_selector, obj['localTrafficSelector'] },
       'remoteTrafficSelector' => ->(obj) { return :remote_traffic_selector, obj['remoteTrafficSelector'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
       'region' => ->(obj) { return :region, obj['region'] },
     }
   end
@@ -98,8 +112,12 @@ class ComputeVpnTunnels < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

@@ -35,6 +35,9 @@ class ComputeForwardingRule < GcpResourceBase
   attr_reader :ports
   attr_reader :subnetwork
   attr_reader :target
+  attr_reader :allow_global_access
+  attr_reader :labels
+  attr_reader :label_fingerprint
   attr_reader :all_ports
   attr_reader :network_tier
   attr_reader :service_label
@@ -44,7 +47,7 @@ class ComputeForwardingRule < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -62,6 +65,9 @@ class ComputeForwardingRule < GcpResourceBase
     @ports = @fetched['ports']
     @subnetwork = @fetched['subnetwork']
     @target = @fetched['target']
+    @allow_global_access = @fetched['allowGlobalAccess']
+    @labels = @fetched['labels']
+    @label_fingerprint = @fetched['labelFingerprint']
     @all_ports = @fetched['allPorts']
     @network_tier = @fetched['networkTier']
     @service_label = @fetched['serviceLabel']
@@ -84,8 +90,12 @@ class ComputeForwardingRule < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

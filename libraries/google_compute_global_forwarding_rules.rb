@@ -29,6 +29,8 @@ class ComputeGlobalForwardingRules < GcpResourceBase
   filter_table_config.add(:ip_addresses, field: :ip_address)
   filter_table_config.add(:ip_protocols, field: :ip_protocol)
   filter_table_config.add(:ip_versions, field: :ip_version)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
   filter_table_config.add(:load_balancing_schemes, field: :load_balancing_scheme)
   filter_table_config.add(:metadata_filters, field: :metadata_filters)
   filter_table_config.add(:names, field: :name)
@@ -80,6 +82,8 @@ class ComputeGlobalForwardingRules < GcpResourceBase
       'IPAddress' => ->(obj) { return :ip_address, obj['IPAddress'] },
       'IPProtocol' => ->(obj) { return :ip_protocol, obj['IPProtocol'] },
       'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
       'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
       'metadataFilters' => ->(obj) { return :metadata_filters, GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(obj['metadataFilters'], to_s) },
       'name' => ->(obj) { return :name, obj['name'] },
@@ -96,8 +100,12 @@ class ComputeGlobalForwardingRules < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

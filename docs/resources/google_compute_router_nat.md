@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_router_nat` is used to test a Google RouterNat resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_router_nat(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router', name: 'inspec-router-nat') do
@@ -31,6 +35,8 @@ Properties that can be accessed from the `google_compute_router_nat` resource:
   * `nat_ip_allocate_option`: How external IPs should be allocated for this NAT. Valid values are `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
 
   * `nat_ips`: Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+
+  * `drain_nat_ips`: (Beta only) A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT.
 
   * `source_subnetwork_ip_ranges_to_nat`: How NAT should be configured per Subnetwork. If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the IP ranges in every Subnetwork are allowed to Nat. If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP ranges in every Subnetwork are allowed to Nat. `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this network in this region.
 

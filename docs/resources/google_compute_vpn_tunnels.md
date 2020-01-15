@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_vpn_tunnels` is used to test a Google VpnTunnel resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_vpn_tunnels(project: 'chef-gcp-inspec', region: 'europe-west2') do
@@ -23,6 +27,11 @@ See [google_compute_vpn_tunnel.md](google_compute_vpn_tunnel.md) for more detail
   * `vpn_tunnel_names`: an array of `google_compute_vpn_tunnel` name
   * `descriptions`: an array of `google_compute_vpn_tunnel` description
   * `target_vpn_gateways`: an array of `google_compute_vpn_tunnel` target_vpn_gateway
+  * `vpn_gateways`: (Beta only) an array of `google_compute_vpn_tunnel` vpn_gateway
+  * `vpn_gateway_interfaces`: (Beta only) an array of `google_compute_vpn_tunnel` vpn_gateway_interface
+  * `peer_external_gateways`: (Beta only) an array of `google_compute_vpn_tunnel` peer_external_gateway
+  * `peer_external_gateway_interfaces`: (Beta only) an array of `google_compute_vpn_tunnel` peer_external_gateway_interface
+  * `peer_gcp_gateways`: (Beta only) an array of `google_compute_vpn_tunnel` peer_gcp_gateway
   * `routers`: an array of `google_compute_vpn_tunnel` router
   * `peer_ips`: an array of `google_compute_vpn_tunnel` peer_ip
   * `shared_secrets`: an array of `google_compute_vpn_tunnel` shared_secret
@@ -30,6 +39,8 @@ See [google_compute_vpn_tunnel.md](google_compute_vpn_tunnel.md) for more detail
   * `ike_versions`: an array of `google_compute_vpn_tunnel` ike_version
   * `local_traffic_selectors`: an array of `google_compute_vpn_tunnel` local_traffic_selector
   * `remote_traffic_selectors`: an array of `google_compute_vpn_tunnel` remote_traffic_selector
+  * `labels`: (Beta only) an array of `google_compute_vpn_tunnel` labels
+  * `label_fingerprints`: (Beta only) an array of `google_compute_vpn_tunnel` label_fingerprint
   * `regions`: an array of `google_compute_vpn_tunnel` region
 
 ## Filter Criteria

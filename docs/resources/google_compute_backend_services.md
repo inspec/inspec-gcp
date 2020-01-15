@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_backend_services` is used to test a Google BackendService resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_backend_services(project: 'chef-gcp-inspec') do
@@ -23,9 +27,12 @@ Properties that can be accessed from the `google_compute_backend_services` resou
 See [google_compute_backend_service.md](google_compute_backend_service.md) for more detailed information
   * `affinity_cookie_ttl_secs`: an array of `google_compute_backend_service` affinity_cookie_ttl_sec
   * `backends`: an array of `google_compute_backend_service` backends
+  * `circuit_breakers`: (Beta only) an array of `google_compute_backend_service` circuit_breakers
+  * `consistent_hashes`: (Beta only) an array of `google_compute_backend_service` consistent_hash
   * `cdn_policies`: an array of `google_compute_backend_service` cdn_policy
   * `connection_drainings`: an array of `google_compute_backend_service` connection_draining
   * `creation_timestamps`: an array of `google_compute_backend_service` creation_timestamp
+  * `custom_request_headers`: (Beta only) an array of `google_compute_backend_service` custom_request_headers
   * `fingerprints`: an array of `google_compute_backend_service` fingerprint
   * `descriptions`: an array of `google_compute_backend_service` description
   * `enable_cdns`: an array of `google_compute_backend_service` enable_cdn
@@ -33,12 +40,15 @@ See [google_compute_backend_service.md](google_compute_backend_service.md) for m
   * `ids`: an array of `google_compute_backend_service` id
   * `iaps`: an array of `google_compute_backend_service` iap
   * `load_balancing_schemes`: an array of `google_compute_backend_service` load_balancing_scheme
+  * `locality_lb_policies`: (Beta only) an array of `google_compute_backend_service` locality_lb_policy
   * `names`: an array of `google_compute_backend_service` name
+  * `outlier_detections`: (Beta only) an array of `google_compute_backend_service` outlier_detection
   * `port_names`: an array of `google_compute_backend_service` port_name
   * `protocols`: an array of `google_compute_backend_service` protocol
   * `security_policies`: an array of `google_compute_backend_service` security_policy
   * `session_affinities`: an array of `google_compute_backend_service` session_affinity
   * `timeout_secs`: an array of `google_compute_backend_service` timeout_sec
+  * `log_configs`: (Beta only) an array of `google_compute_backend_service` log_config
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

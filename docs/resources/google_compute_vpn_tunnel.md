@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_vpn_tunnel` is used to test a Google VpnTunnel resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_vpn_tunnel(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-vpn-tunnel') do
@@ -32,6 +36,16 @@ Properties that can be accessed from the `google_compute_vpn_tunnel` resource:
 
   * `target_vpn_gateway`: URL of the Target VPN gateway with which this VPN tunnel is associated.
 
+  * `vpn_gateway`: (Beta only) URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway resource is created.
+
+  * `vpn_gateway_interface`: (Beta only) The interface ID of the VPN gateway with which this VPN tunnel is associated.
+
+  * `peer_external_gateway`: (Beta only) URL of the peer side external VPN gateway to which this VPN tunnel is connected.
+
+  * `peer_external_gateway_interface`: (Beta only) The interface ID of the external VPN gateway to which this VPN tunnel is connected.
+
+  * `peer_gcp_gateway`: (Beta only) URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway.
+
   * `router`: URL of router resource to be used for dynamic routing.
 
   * `peer_ip`: IP address of the peer VPN gateway. Only IPv4 is supported.
@@ -45,6 +59,10 @@ Properties that can be accessed from the `google_compute_vpn_tunnel` resource:
   * `local_traffic_selector`: Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example `192.168.0.0/16`. The ranges should be disjoint. Only IPv4 is supported.
 
   * `remote_traffic_selector`: Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example `192.168.0.0/16`. The ranges should be disjoint. Only IPv4 is supported.
+
+  * `labels`: (Beta only) Labels to apply to this VpnTunnel.
+
+  * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `region`: The region where the tunnel is located.
 

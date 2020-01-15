@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_global_forwarding_rule` is used to test a Google GlobalForwardingRule resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_global_forwarding_rule(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-forwarding-rule') do
@@ -34,6 +38,10 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
   * `ip_protocol`: The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCP is valid.
 
   * `ip_version`: The IP Version that will be used by this global forwarding rule. Valid options are IPV4 or IPV6.
+
+  * `labels`: (Beta only) Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+  * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `load_balancing_scheme`: This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)  NOTE: Currently global forwarding rules cannot be used for INTERNAL load balancing.
 

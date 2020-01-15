@@ -33,6 +33,7 @@ class CloudBuildTriggers < GcpResourceBase
   filter_table_config.add(:ignored_files, field: :ignored_files)
   filter_table_config.add(:included_files, field: :included_files)
   filter_table_config.add(:trigger_templates, field: :trigger_template)
+  filter_table_config.add(:githubs, field: :github)
   filter_table_config.add(:builds, field: :build)
 
   filter_table_config.connect(self, :table)
@@ -83,6 +84,7 @@ class CloudBuildTriggers < GcpResourceBase
       'ignoredFiles' => ->(obj) { return :ignored_files, obj['ignoredFiles'] },
       'includedFiles' => ->(obj) { return :included_files, obj['includedFiles'] },
       'triggerTemplate' => ->(obj) { return :trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate'], to_s) },
+      'github' => ->(obj) { return :github, GoogleInSpec::CloudBuild::Property::TriggerGithub.new(obj['github'], to_s) },
       'build' => ->(obj) { return :build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build'], to_s) },
     }
   end
@@ -94,7 +96,7 @@ class CloudBuildTriggers < GcpResourceBase
 
   private
 
-  def product_url
+  def product_url(_ = nil)
     'https://cloudbuild.googleapis.com/v1/'
   end
 

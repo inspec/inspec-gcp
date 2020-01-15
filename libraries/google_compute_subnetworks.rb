@@ -30,6 +30,8 @@ class ComputeSubnetworks < GcpResourceBase
   filter_table_config.add(:ip_cidr_ranges, field: :ip_cidr_range)
   filter_table_config.add(:subnetwork_names, field: :subnetwork_name)
   filter_table_config.add(:networks, field: :network)
+  filter_table_config.add(:purposes, field: :purpose)
+  filter_table_config.add(:roles, field: :role)
   filter_table_config.add(:secondary_ip_ranges, field: :secondary_ip_ranges)
   filter_table_config.add(:private_ip_google_accesses, field: :private_ip_google_access)
   filter_table_config.add(:regions, field: :region)
@@ -80,6 +82,8 @@ class ComputeSubnetworks < GcpResourceBase
       'ipCidrRange' => ->(obj) { return :ip_cidr_range, obj['ipCidrRange'] },
       'name' => ->(obj) { return :subnetwork_name, obj['name'] },
       'network' => ->(obj) { return :network, obj['network'] },
+      'purpose' => ->(obj) { return :purpose, obj['purpose'] },
+      'role' => ->(obj) { return :role, obj['role'] },
       'secondaryIpRanges' => ->(obj) { return :secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s) },
       'privateIpGoogleAccess' => ->(obj) { return :private_ip_google_access, obj['privateIpGoogleAccess'] },
       'region' => ->(obj) { return :region, obj['region'] },
@@ -94,8 +98,12 @@ class ComputeSubnetworks < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

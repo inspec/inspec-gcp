@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_target_tcp_proxy` is used to test a Google TargetTcpProxy resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_target_tcp_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-target-tcp-proxy') do

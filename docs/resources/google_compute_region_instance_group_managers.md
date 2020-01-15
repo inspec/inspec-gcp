@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_region_instance_group_managers` is used to test a Google RegionInstanceGroupManager resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_region_instance_group_managers(project: 'chef-gcp-inspec', region: 'europe-west2') do

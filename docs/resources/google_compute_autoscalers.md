@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_autoscalers` is used to test a Google Autoscaler resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 autoscalers = google_compute_autoscalers(project: 'chef-gcp-inspec', zone: 'zone')

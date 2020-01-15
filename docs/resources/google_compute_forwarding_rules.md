@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_forwarding_rules` is used to test a Google ForwardingRule resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 
@@ -31,6 +35,9 @@ See [google_compute_forwarding_rule.md](google_compute_forwarding_rule.md) for m
   * `ports`: an array of `google_compute_forwarding_rule` ports
   * `subnetworks`: an array of `google_compute_forwarding_rule` subnetwork
   * `targets`: an array of `google_compute_forwarding_rule` target
+  * `allow_global_accesses`: (Beta only) an array of `google_compute_forwarding_rule` allow_global_access
+  * `labels`: (Beta only) an array of `google_compute_forwarding_rule` labels
+  * `label_fingerprints`: (Beta only) an array of `google_compute_forwarding_rule` label_fingerprint
   * `all_ports`: an array of `google_compute_forwarding_rule` all_ports
   * `network_tiers`: an array of `google_compute_forwarding_rule` network_tier
   * `service_labels`: an array of `google_compute_forwarding_rule` service_label
