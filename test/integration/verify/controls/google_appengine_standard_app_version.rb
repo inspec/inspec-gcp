@@ -23,10 +23,12 @@ standardappversion = attribute('standardappversion', default: {
   "entrypoint": "node ./app.js",
   "port": "8080"
 }, description: 'Cloud App Engine definition')
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 control 'google_appengine_standard_app_version-1.0' do
   impact 1.0
   title 'google_appengine_standard_app_version resource test'
 
+  only_if { gcp_enable_privileged_resources.to_i == 1 }
 
   describe google_appengine_standard_app_version(project: gcp_project_id, location: gcp_location, version_id: standardappversion['version_id'], service: standardappversion['service']) do
     it { should exist }
