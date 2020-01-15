@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_global_address` is used to test a Google GlobalAddress resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_global_address(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
@@ -31,6 +35,10 @@ Properties that can be accessed from the `google_compute_global_address` resourc
   * `id`: The unique identifier for the resource. This identifier is defined by the server.
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.  Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+
+  * `labels`: (Beta only) Labels to apply to this address.  A list of key->value pairs.
+
+  * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `ip_version`: The IP Version that will be used by this address. Valid options are `IPV4` or `IPV6`. The default value is `IPV4`.
 

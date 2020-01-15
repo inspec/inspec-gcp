@@ -144,8 +144,12 @@ class ContainerClusters < GcpResourceBase
 
   private
 
-  def product_url
-    'https://container.googleapis.com/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://container.googleapis.com/v1beta1/'
+    else
+      'https://container.googleapis.com/v1/'
+    end
   end
 
   def resource_base_url

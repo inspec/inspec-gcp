@@ -75,7 +75,7 @@ class SourceRepoRepositorys < GcpResourceBase
 
   private
 
-  def product_url
+  def product_url(_ = nil)
     'https://sourcerepo.googleapis.com/v1/'
   end
 

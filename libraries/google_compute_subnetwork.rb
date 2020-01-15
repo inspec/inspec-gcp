@@ -31,6 +31,8 @@ class ComputeSubnetwork < GcpResourceBase
   attr_reader :ip_cidr_range
   attr_reader :name
   attr_reader :network
+  attr_reader :purpose
+  attr_reader :role
   attr_reader :secondary_ip_ranges
   attr_reader :private_ip_google_access
   attr_reader :region
@@ -39,7 +41,7 @@ class ComputeSubnetwork < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -51,6 +53,8 @@ class ComputeSubnetwork < GcpResourceBase
     @ip_cidr_range = @fetched['ipCidrRange']
     @name = @fetched['name']
     @network = @fetched['network']
+    @purpose = @fetched['purpose']
+    @role = @fetched['role']
     @secondary_ip_ranges = GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(@fetched['secondaryIpRanges'], to_s)
     @private_ip_google_access = @fetched['privateIpGoogleAccess']
     @region = @fetched['region']
@@ -76,8 +80,12 @@ class ComputeSubnetwork < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

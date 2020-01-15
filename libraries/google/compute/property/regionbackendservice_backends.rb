@@ -23,6 +23,8 @@ module GoogleInSpec
 
         attr_reader :description
 
+        attr_reader :failover
+
         attr_reader :group
 
         attr_reader :max_connections
@@ -45,6 +47,7 @@ module GoogleInSpec
           @balancing_mode = args['balancingMode']
           @capacity_scaler = args['capacityScaler']
           @description = args['description']
+          @failover = args['failover']
           @group = args['group']
           @max_connections = args['maxConnections']
           @max_connections_per_instance = args['maxConnectionsPerInstance']

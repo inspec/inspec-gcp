@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_https_health_checks` is used to test a Google HttpsHealthCheck resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_https_health_checks(project: 'chef-gcp-inspec') do

@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_global_addresses` is used to test a Google GlobalAddress resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_global_addresses(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
@@ -24,6 +28,8 @@ See [google_compute_global_address.md](google_compute_global_address.md) for mor
   * `descriptions`: an array of `google_compute_global_address` description
   * `ids`: an array of `google_compute_global_address` id
   * `names`: an array of `google_compute_global_address` name
+  * `labels`: (Beta only) an array of `google_compute_global_address` labels
+  * `label_fingerprints`: (Beta only) an array of `google_compute_global_address` label_fingerprint
   * `ip_versions`: an array of `google_compute_global_address` ip_version
   * `regions`: an array of `google_compute_global_address` region
   * `prefix_lengths`: an array of `google_compute_global_address` prefix_length

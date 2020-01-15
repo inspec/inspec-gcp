@@ -33,6 +33,8 @@ class ComputeAddresss < GcpResourceBase
   filter_table_config.add(:network_tiers, field: :network_tier)
   filter_table_config.add(:subnetworks, field: :subnetwork)
   filter_table_config.add(:users, field: :users)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
   filter_table_config.add(:statuses, field: :status)
   filter_table_config.add(:regions, field: :region)
 
@@ -84,6 +86,8 @@ class ComputeAddresss < GcpResourceBase
       'networkTier' => ->(obj) { return :network_tier, obj['networkTier'] },
       'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
       'users' => ->(obj) { return :users, obj['users'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
       'status' => ->(obj) { return :status, obj['status'] },
       'region' => ->(obj) { return :region, obj['region'] },
     }
@@ -96,8 +100,12 @@ class ComputeAddresss < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

@@ -46,7 +46,7 @@ class ComputeFirewall < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -255,8 +255,12 @@ class ComputeFirewall < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

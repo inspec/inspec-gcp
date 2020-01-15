@@ -19,16 +19,22 @@ module GoogleInSpec
       class AutoscalerAutoscalingPolicyCustomMetricUtilizations
         attr_reader :metric
 
+        attr_reader :single_instance_assignment
+
         attr_reader :utilization_target
 
         attr_reader :utilization_target_type
+
+        attr_reader :filter
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @metric = args['metric']
+          @single_instance_assignment = args['singleInstanceAssignment']
           @utilization_target = args['utilizationTarget']
           @utilization_target_type = args['utilizationTargetType']
+          @filter = args['filter']
         end
 
         def to_s

@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_redis_instance` is used to test a Google Instance resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_redis_instance(project: 'chef-gcp-inspec', region: 'us-central1', name: 'my-redis-cache') do

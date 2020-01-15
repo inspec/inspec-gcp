@@ -25,9 +25,12 @@ class ComputeBackendServices < GcpResourceBase
 
   filter_table_config.add(:affinity_cookie_ttl_secs, field: :affinity_cookie_ttl_sec)
   filter_table_config.add(:backends, field: :backends)
+  filter_table_config.add(:circuit_breakers, field: :circuit_breakers)
+  filter_table_config.add(:consistent_hashes, field: :consistent_hash)
   filter_table_config.add(:cdn_policies, field: :cdn_policy)
   filter_table_config.add(:connection_drainings, field: :connection_draining)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:custom_request_headers, field: :custom_request_headers)
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:enable_cdns, field: :enable_cdn)
@@ -35,12 +38,15 @@ class ComputeBackendServices < GcpResourceBase
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:iaps, field: :iap)
   filter_table_config.add(:load_balancing_schemes, field: :load_balancing_scheme)
+  filter_table_config.add(:locality_lb_policies, field: :locality_lb_policy)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:outlier_detections, field: :outlier_detection)
   filter_table_config.add(:port_names, field: :port_name)
   filter_table_config.add(:protocols, field: :protocol)
   filter_table_config.add(:security_policies, field: :security_policy)
   filter_table_config.add(:session_affinities, field: :session_affinity)
   filter_table_config.add(:timeout_secs, field: :timeout_sec)
+  filter_table_config.add(:log_configs, field: :log_config)
 
   filter_table_config.connect(self, :table)
 
@@ -82,9 +88,12 @@ class ComputeBackendServices < GcpResourceBase
     {
       'affinityCookieTtlSec' => ->(obj) { return :affinity_cookie_ttl_sec, obj['affinityCookieTtlSec'] },
       'backends' => ->(obj) { return :backends, GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(obj['backends'], to_s) },
+      'circuitBreakers' => ->(obj) { return :circuit_breakers, GoogleInSpec::Compute::Property::BackendServiceCircuitBreakers.new(obj['circuitBreakers'], to_s) },
+      'consistentHash' => ->(obj) { return :consistent_hash, GoogleInSpec::Compute::Property::BackendServiceConsistentHash.new(obj['consistentHash'], to_s) },
       'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(obj['cdnPolicy'], to_s) },
       'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(obj['connectionDraining'], to_s) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'customRequestHeaders' => ->(obj) { return :custom_request_headers, obj['customRequestHeaders'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'enableCDN' => ->(obj) { return :enable_cdn, obj['enableCDN'] },
@@ -92,12 +101,15 @@ class ComputeBackendServices < GcpResourceBase
       'id' => ->(obj) { return :id, obj['id'] },
       'iap' => ->(obj) { return :iap, GoogleInSpec::Compute::Property::BackendServiceIap.new(obj['iap'], to_s) },
       'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
+      'localityLbPolicy' => ->(obj) { return :locality_lb_policy, obj['localityLbPolicy'] },
       'name' => ->(obj) { return :name, obj['name'] },
+      'outlierDetection' => ->(obj) { return :outlier_detection, GoogleInSpec::Compute::Property::BackendServiceOutlierDetection.new(obj['outlierDetection'], to_s) },
       'portName' => ->(obj) { return :port_name, obj['portName'] },
       'protocol' => ->(obj) { return :protocol, obj['protocol'] },
       'securityPolicy' => ->(obj) { return :security_policy, obj['securityPolicy'] },
       'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
       'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
+      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::BackendServiceLogConfig.new(obj['logConfig'], to_s) },
     }
   end
 
@@ -108,8 +120,12 @@ class ComputeBackendServices < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

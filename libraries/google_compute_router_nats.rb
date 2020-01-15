@@ -26,6 +26,7 @@ class ComputeRouterNats < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:nat_ip_allocate_options, field: :nat_ip_allocate_option)
   filter_table_config.add(:nat_ips, field: :nat_ips)
+  filter_table_config.add(:drain_nat_ips, field: :drain_nat_ips)
   filter_table_config.add(:source_subnetwork_ip_ranges_to_nats, field: :source_subnetwork_ip_ranges_to_nat)
   filter_table_config.add(:subnetworks, field: :subnetwork)
   filter_table_config.add(:min_ports_per_vms, field: :min_ports_per_vm)
@@ -78,6 +79,7 @@ class ComputeRouterNats < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'natIpAllocateOption' => ->(obj) { return :nat_ip_allocate_option, obj['natIpAllocateOption'] },
       'natIps' => ->(obj) { return :nat_ips, obj['natIps'] },
+      'drainNatIps' => ->(obj) { return :drain_nat_ips, obj['drainNatIps'] },
       'sourceSubnetworkIpRangesToNat' => ->(obj) { return :source_subnetwork_ip_ranges_to_nat, obj['sourceSubnetworkIpRangesToNat'] },
       'subnetworks' => ->(obj) { return :subnetwork, GoogleInSpec::Compute::Property::RouterNatSubnetworkArray.parse(obj['subnetworks'], to_s) },
       'minPortsPerVm' => ->(obj) { return :min_ports_per_vm, obj['minPortsPerVm'] },
@@ -93,8 +95,12 @@ class ComputeRouterNats < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

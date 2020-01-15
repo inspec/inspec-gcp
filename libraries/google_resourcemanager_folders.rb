@@ -82,7 +82,7 @@ class ResourceManagerFolders < GcpResourceBase
 
   private
 
-  def product_url
+  def product_url(_ = nil)
     'https://cloudresourcemanager.googleapis.com/v2/'
   end
 

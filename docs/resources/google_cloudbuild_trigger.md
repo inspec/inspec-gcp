@@ -58,6 +58,24 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `commit_sha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
+  * `github`: (Beta only) Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+
+    * `owner`: Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+
+    * `name`: Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+
+    * `pull_request`: filter to match changes in pull requests.  Specify only one of pullRequest or push.
+
+      * `branch`: Regex of branches to match.
+
+      * `comment_control`: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+
+    * `push`: filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+
+      * `branch`: Regex of branches to match.  Specify only one of branch or tag.
+
+      * `tag`: Regex of tags to match.  Specify only one of branch or tag.
+
   * `build`: Contents of the build template. Either a filename or build template must be provided.
 
     * `tags`: Tags for annotation of a Build. These are not docker tags.

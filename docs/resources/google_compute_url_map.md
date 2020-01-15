@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_url_map` is used to test a Google UrlMap resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_url_map(project: 'chef-gcp-inspec', name: 'inspec-gcp-url-map') do

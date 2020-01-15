@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_node_group` is used to test a Google NodeGroup resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 

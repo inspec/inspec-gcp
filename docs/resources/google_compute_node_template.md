@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_node_template` is used to test a Google NodeTemplate resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 
@@ -40,6 +44,10 @@ Properties that can be accessed from the `google_compute_node_template` resource
     * `memory`: Physical memory available to the node, defined in MB.
 
     * `local_ssd`: Use local SSD
+
+  * `server_binding`: (Beta only) The server binding policy for nodes using this template. Determines where the nodes should restart following a maintenance event.
+
+    * `type`: Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`, nodes using this template will restart on any physical server following a maintenance event.  If `RESTART_NODE_ON_MINIMAL_SERVER`, nodes using this template will restart on the same physical server following a maintenance event, instead of being live migrated to or restarted on a new physical server. This option may be useful if you are using software licenses tied to the underlying server characteristics such as physical sockets or cores, to avoid the need for additional licenses when maintenance occurs. However, VMs on such nodes will experience outages while maintenance is applied.
 
   * `region`: Region where nodes using the node template will be created
 

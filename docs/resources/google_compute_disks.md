@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_disks` is used to test a Google Disk resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 most_recent_image = google_compute_image(project: 'debian-cloud', name: 'debian-10-buster-v20191014')
@@ -34,6 +38,7 @@ See [google_compute_disk.md](google_compute_disk.md) for more detailed informati
   * `physical_block_size_bytes`: an array of `google_compute_disk` physical_block_size_bytes
   * `types`: an array of `google_compute_disk` type
   * `source_images`: an array of `google_compute_disk` source_image
+  * `resource_policies`: (Beta only) an array of `google_compute_disk` resource_policies
   * `zones`: an array of `google_compute_disk` zone
   * `source_image_encryption_keys`: an array of `google_compute_disk` source_image_encryption_key
   * `source_image_ids`: an array of `google_compute_disk` source_image_id

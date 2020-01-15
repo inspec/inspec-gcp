@@ -43,7 +43,7 @@ class StorageBucketObject < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -88,7 +88,7 @@ class StorageBucketObject < GcpResourceBase
 
   private
 
-  def product_url
+  def product_url(_ = nil)
     'https://www.googleapis.com/storage/v1/'
   end
 

@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_router_nats` is used to test a Google RouterNat resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_router_nats(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router') do
@@ -20,6 +24,7 @@ See [google_compute_router_nat.md](google_compute_router_nat.md) for more detail
   * `names`: an array of `google_compute_router_nat` name
   * `nat_ip_allocate_options`: an array of `google_compute_router_nat` nat_ip_allocate_option
   * `nat_ips`: an array of `google_compute_router_nat` nat_ips
+  * `drain_nat_ips`: (Beta only) an array of `google_compute_router_nat` drain_nat_ips
   * `source_subnetwork_ip_ranges_to_nats`: an array of `google_compute_router_nat` source_subnetwork_ip_ranges_to_nat
   * `subnetworks`: an array of `google_compute_router_nat` subnetwork
   * `min_ports_per_vms`: an array of `google_compute_router_nat` min_ports_per_vm

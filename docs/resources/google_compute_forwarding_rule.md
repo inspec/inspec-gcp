@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_forwarding_rule` is used to test a Google ForwardingRule resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 
@@ -52,6 +56,12 @@ Properties that can be accessed from the `google_compute_forwarding_rule` resour
   * `subnetwork`: The subnetwork that the load balanced IP should belong to for this Forwarding Rule.  This field is only used for INTERNAL load balancing.  If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
 
   * `target`: The URL of the target resource to receive the matched traffic. The target must live in the same region as the forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
+
+  * `allow_global_access`: (Beta only) If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+
+  * `labels`: (Beta only) Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+  * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `all_ports`: For internal TCP/UDP load balancing (i.e. load balancing scheme is INTERNAL and protocol is TCP/UDP), set this to true to allow packets addressed to any ports to be forwarded to the backends configured with this forwarding rule. Used with backend service. Cannot be set if port or portRange are set.
 

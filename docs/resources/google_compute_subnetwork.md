@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_subnetwork` is used to test a Google Subnetwork resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_subnetwork(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-subnet') do
@@ -81,6 +85,10 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
   * `name`: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
   * `network`: The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+
+  * `purpose`: (Beta only) The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE.  If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+
+  * `role`: (Beta only) The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
 
   * `secondary_ip_ranges`: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges.
 

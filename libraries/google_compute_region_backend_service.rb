@@ -15,7 +15,17 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/compute/property/regionbackendservice_backends'
+require 'google/compute/property/regionbackendservice_circuit_breakers'
+require 'google/compute/property/regionbackendservice_circuit_breakers_connect_timeout'
 require 'google/compute/property/regionbackendservice_connection_draining'
+require 'google/compute/property/regionbackendservice_consistent_hash'
+require 'google/compute/property/regionbackendservice_consistent_hash_http_cookie'
+require 'google/compute/property/regionbackendservice_consistent_hash_http_cookie_ttl'
+require 'google/compute/property/regionbackendservice_failover_policy'
+require 'google/compute/property/regionbackendservice_log_config'
+require 'google/compute/property/regionbackendservice_outlier_detection'
+require 'google/compute/property/regionbackendservice_outlier_detection_base_ejection_time'
+require 'google/compute/property/regionbackendservice_outlier_detection_interval'
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionBackendService < GcpResourceBase
@@ -24,40 +34,56 @@ class ComputeRegionBackendService < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
+  attr_reader :affinity_cookie_ttl_sec
   attr_reader :backends
+  attr_reader :circuit_breakers
+  attr_reader :consistent_hash
   attr_reader :connection_draining
   attr_reader :creation_timestamp
   attr_reader :description
+  attr_reader :failover_policy
   attr_reader :fingerprint
   attr_reader :health_checks
   attr_reader :id
   attr_reader :load_balancing_scheme
+  attr_reader :locality_lb_policy
   attr_reader :name
+  attr_reader :outlier_detection
   attr_reader :protocol
   attr_reader :session_affinity
   attr_reader :timeout_sec
+  attr_reader :log_config
+  attr_reader :network
   attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
   def parse
+    @affinity_cookie_ttl_sec = @fetched['affinityCookieTtlSec']
     @backends = GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(@fetched['backends'], to_s)
+    @circuit_breakers = GoogleInSpec::Compute::Property::RegionBackendServiceCircuitBreakers.new(@fetched['circuitBreakers'], to_s)
+    @consistent_hash = GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHash.new(@fetched['consistentHash'], to_s)
     @connection_draining = GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
+    @failover_policy = GoogleInSpec::Compute::Property::RegionBackendServiceFailoverPolicy.new(@fetched['failoverPolicy'], to_s)
     @fingerprint = @fetched['fingerprint']
     @health_checks = @fetched['healthChecks']
     @id = @fetched['id']
     @load_balancing_scheme = @fetched['loadBalancingScheme']
+    @locality_lb_policy = @fetched['localityLbPolicy']
     @name = @fetched['name']
+    @outlier_detection = GoogleInSpec::Compute::Property::RegionBackendServiceOutlierDetection.new(@fetched['outlierDetection'], to_s)
     @protocol = @fetched['protocol']
     @session_affinity = @fetched['sessionAffinity']
     @timeout_sec = @fetched['timeoutSec']
+    @log_config = GoogleInSpec::Compute::Property::RegionBackendServiceLogConfig.new(@fetched['logConfig'], to_s)
+    @network = @fetched['network']
     @region = @fetched['region']
   end
 
@@ -76,8 +102,12 @@ class ComputeRegionBackendService < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

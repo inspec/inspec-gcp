@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_address` is used to test a Google Address resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_address(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-global-address') do
@@ -68,6 +72,10 @@ Properties that can be accessed from the `google_compute_address` resource:
   * `subnetwork`: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
 
   * `users`: The URLs of the resources that are using this address.
+
+  * `labels`: (Beta only) Labels to apply to this address.  A list of key->value pairs.
+
+  * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `status`: The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
 

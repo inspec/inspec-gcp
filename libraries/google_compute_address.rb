@@ -32,13 +32,15 @@ class ComputeAddress < GcpResourceBase
   attr_reader :network_tier
   attr_reader :subnetwork
   attr_reader :users
+  attr_reader :labels
+  attr_reader :label_fingerprint
   attr_reader :status
   attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
     parse unless @fetched.nil?
   end
 
@@ -53,6 +55,8 @@ class ComputeAddress < GcpResourceBase
     @network_tier = @fetched['networkTier']
     @subnetwork = @fetched['subnetwork']
     @users = @fetched['users']
+    @labels = @fetched['labels']
+    @label_fingerprint = @fetched['labelFingerprint']
     @status = @fetched['status']
     @region = @fetched['region']
   end
@@ -87,8 +91,12 @@ class ComputeAddress < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url

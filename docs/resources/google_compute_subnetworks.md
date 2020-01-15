@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_compute_subnetworks` is used to test a Google Subnetwork resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_compute_subnetworks(project: 'chef-gcp-inspec', region: 'europe-west2') do
@@ -25,6 +29,8 @@ See [google_compute_subnetwork.md](google_compute_subnetwork.md) for more detail
   * `ip_cidr_ranges`: an array of `google_compute_subnetwork` ip_cidr_range
   * `subnetwork_names`: an array of `google_compute_subnetwork` name
   * `networks`: an array of `google_compute_subnetwork` network
+  * `purposes`: (Beta only) an array of `google_compute_subnetwork` purpose
+  * `roles`: (Beta only) an array of `google_compute_subnetwork` role
   * `secondary_ip_ranges`: an array of `google_compute_subnetwork` secondary_ip_ranges
   * `private_ip_google_accesses`: an array of `google_compute_subnetwork` private_ip_google_access
   * `regions`: an array of `google_compute_subnetwork` region

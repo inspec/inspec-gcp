@@ -36,6 +36,9 @@ class ComputeForwardingRules < GcpResourceBase
   filter_table_config.add(:ports, field: :ports)
   filter_table_config.add(:subnetworks, field: :subnetwork)
   filter_table_config.add(:targets, field: :target)
+  filter_table_config.add(:allow_global_accesses, field: :allow_global_access)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
   filter_table_config.add(:all_ports, field: :all_ports)
   filter_table_config.add(:network_tiers, field: :network_tier)
   filter_table_config.add(:service_labels, field: :service_label)
@@ -93,6 +96,9 @@ class ComputeForwardingRules < GcpResourceBase
       'ports' => ->(obj) { return :ports, obj['ports'] },
       'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
       'target' => ->(obj) { return :target, obj['target'] },
+      'allowGlobalAccess' => ->(obj) { return :allow_global_access, obj['allowGlobalAccess'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
       'allPorts' => ->(obj) { return :all_ports, obj['allPorts'] },
       'networkTier' => ->(obj) { return :network_tier, obj['networkTier'] },
       'serviceLabel' => ->(obj) { return :service_label, obj['serviceLabel'] },
@@ -108,8 +114,12 @@ class ComputeForwardingRules < GcpResourceBase
 
   private
 
-  def product_url
-    'https://www.googleapis.com/compute/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://www.googleapis.com/compute/beta/'
+    else
+      'https://www.googleapis.com/compute/v1/'
+    end
   end
 
   def resource_base_url
