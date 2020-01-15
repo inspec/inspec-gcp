@@ -8,11 +8,11 @@ A `google_kms_key_ring_iam_policy` is used to test a Google KeyRing Iam Policy r
 
 ## Examples
 ```
-describe google_kms_key_ring_iam_policy(project: "project", location: "location", name: "name") do
+describe google_kms_key_ring_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name") do
   it { should exist }
 end
 
-google_kms_key_ring_iam_policy(project: "project", location: "location", name: "name").bindings.each do |binding|
+google_kms_key_ring_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name").bindings.each do |binding|
   describe binding do
     its('role') { should eq 'roles/editor'}
     its('members') { should include 'user:testuser@example.com'}
@@ -22,6 +22,8 @@ end
 
 ## Properties
 Properties that can be accessed from the `google_kms_key_ring_iam_policy` resource:
+
+  * `iam_binding_roles`: The list of roles that exist on the policy.
 
   * `bindings`: Associates a list of members to a role.
 

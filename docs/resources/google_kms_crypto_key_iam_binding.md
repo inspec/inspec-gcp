@@ -8,7 +8,7 @@ A `google_kms_crypto_key_iam_binding` is used to test a Google CryptoKey Iam Bin
 
 ## Examples
 ```
-describe google_kms_crypto_key_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", name: "name", role: "roles/editor") do
+describe google_kms_crypto_key_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", crypto_key_name: "crypto_key_name", role: "roles/editor") do
   it { should exist }
   its('members') { should include 'user:testuser@example.com' }
 end

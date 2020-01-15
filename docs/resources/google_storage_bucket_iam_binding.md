@@ -8,7 +8,7 @@ A `google_storage_bucket_iam_binding` is used to test a Google Bucket Iam Bindin
 
 ## Examples
 ```
-describe google_storage_bucket_iam_binding(name: "name", role: "roles/editor") do
+describe google_storage_bucket_iam_binding(bucket: "bucket", role: "roles/editor") do
   it { should exist }
   its('members') { should include 'user:testuser@example.com' }
 end

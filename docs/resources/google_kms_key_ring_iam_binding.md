@@ -8,7 +8,7 @@ A `google_kms_key_ring_iam_binding` is used to test a Google KeyRing Iam Binding
 
 ## Examples
 ```
-describe google_kms_key_ring_iam_binding(project: "project", location: "location", name: "name", role: "roles/editor") do
+describe google_kms_key_ring_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", role: "roles/editor") do
   it { should exist }
   its('members') { should include 'user:testuser@example.com' }
 end

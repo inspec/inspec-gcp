@@ -23,6 +23,8 @@ end
 ## Properties
 Properties that can be accessed from the `google_runtime_config_config_iam_policy` resource:
 
+  * `iam_binding_roles`: The list of roles that exist on the policy.
+
   * `bindings`: Associates a list of members to a role.
 
     * `role`: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
