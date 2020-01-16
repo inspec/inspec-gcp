@@ -1,56 +1,90 @@
 ---
-title: About the google_dns_managed_zones Resource
+title: About the google_dns_managed_zone resource
 platform: gcp
 ---
 
-# google\_dns\_managed\_zone
-
-Use the `google_dns_managed_zones` InSpec audit resource to test properties of a single GCP DNS managed zone.
-
-<br>
-
 ## Syntax
+A `google_dns_managed_zone` is used to test a Google ManagedZone resource
 
-A `google_dns_managed_zone` resource block declares the tests for a single GCP zone by project and name.
 
-    describe google_dns_managed_zone(project: 'chef-inspec-gcp',  zone: 'zone-name') do
-      it { should exist }
-    end
-
-<br>
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
+```
+describe google_dns_managed_zone(project: 'chef-gcp-inspec', zone: 'example-zone') do
+  it { should exist }
+  its('dns_name') { should cmp 'dns-zone-name.com.' }
 
-The following examples show how to use this InSpec audit resource.
+  its('description') { should cmp 'example description' }
+  its('zone_signing_key_algorithm') { should cmp 'rsasha256' }
+  its('key_signing_key_algorithm') { should cmp 'rsasha512' }
+end
 
-### Test that a GCP compute zone exists
-
-    describe google_dns_managed_zone(project: 'chef-inspec-gcp',  zone: 'zone-name') do
-      it { should exist }
-    end
-
-### Test that a GCP DNS managed zone has the expected DNS name
-
-    describe google_dns_managed_zone(project: 'chef-inspec-gcp',  zone: 'zone-name') do
-      its('dns_name') { should match 'mydomain.com' }
-    end
-
-### Test that a GCP DNS managed zone has expected name server
-
-    describe google_dns_managed_zone(project: 'chef-inspec-gcp',  zone: 'zone-name') do
-      its('name_servers') { should include 'ns-cloud-d1.googledomains.com.' }
-    end
-
-
-<br>
+describe google_dns_managed_zone(project: 'chef-gcp-inspec', zone: 'nonexistent') do
+  it { should_not exist }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_dns_managed_zone` resource:
 
-*  `creation_time`, `creation_time_date`, `description`, `dns_name`, `dnssec_config`, `id`, `kind`, `name`, `name_servers`, `key_signing_key_algorithm`, `zone_signing_key_algorithm`
 
-<br>
+  * `description`: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
+
+  * `dns_name`: The DNS name of this managed zone, for instance "example.com.".
+
+  * `dnssec_config`: DNSSEC configuration
+
+    * `kind`: Identifies what kind of resource this is
+
+    * `non_existence`: Specifies the mechanism used to provide authenticated denial-of-existence responses.
+
+    * `state`: Specifies whether DNSSEC is enabled, and what mode it is in
+
+    * `default_key_specs`: Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. If you provide a spec for keySigning or zoneSigning, you must also provide one for the other.
+
+      * `algorithm`: String mnemonic specifying the DNSSEC algorithm of this key
+
+      * `key_length`: Length of the keys in bits
+
+      * `key_type`: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets. 
+
+      * `kind`: Identifies what kind of resource this is
+
+  * `id`: Unique identifier for the resource; defined by the server.
+
+  * `name`: User assigned name for this resource. Must be unique within the project.
+
+  * `name_servers`: Delegate your managed_zone to these virtual name servers; defined by the server
+
+  * `name_server_set`: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.
+
+  * `creation_time`: The time that this resource was created on the server. This is in RFC3339 text format.
+
+  * `labels`: A set of key/value label pairs to assign to this ManagedZone.
+
+  * `visibility`: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources. Must be one of: `public`, `private`.
+
+  * `private_visibility_config`: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+
+    * `networks`: The list of VPC networks that can see this zone.
+
+      * `network_url`: The fully qualified URL of the VPC network to bind to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+
+  * `forwarding_config`: (Beta only) The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
+
+    * `target_name_servers`: List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+
+      * `ipv4_address`: IPv4 address of a target name server.
+
+  * `peering_config`: (Beta only) The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
+
+    * `target_network`: The network with which to peer.
+
+      * `network_url`: The fully qualified URL of the VPC network to forward queries to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 
 
 ## GCP Permissions
 
-Ensure the [Cloud DNS API](https://console.cloud.google.com/apis/api/dns.googleapis.com/) is enabled for the project.
+Ensure the [Google Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com/) is enabled for the current project.
