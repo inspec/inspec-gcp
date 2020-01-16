@@ -15,6 +15,7 @@ google_cloud_scheduler_jobs(project: 'chef-gcp-inspec', region: ).names.each do 
 	  its('description') { should cmp 'A description' }
 	  its('schedule') { should cmp '*/8 * * * *' }
 	  its('time_zone') { should cmp 'America/New_York' }
+	  its('attempt_deadline') { should cmp '' }
 	  its('http_target.http_method') { should cmp 'POST' }
 	  its('http_target.uri') { should cmp 'https://example.com/ping' }
 	end
@@ -29,6 +30,7 @@ See [google_cloud_scheduler_job.md](google_cloud_scheduler_job.md) for more deta
   * `descriptions`: an array of `google_cloud_scheduler_job` description
   * `schedules`: an array of `google_cloud_scheduler_job` schedule
   * `time_zones`: an array of `google_cloud_scheduler_job` time_zone
+  * `attempt_deadlines`: an array of `google_cloud_scheduler_job` attempt_deadline
   * `retry_configs`: an array of `google_cloud_scheduler_job` retry_config
   * `pubsub_targets`: an array of `google_cloud_scheduler_job` pubsub_target
   * `app_engine_http_targets`: an array of `google_cloud_scheduler_job` app_engine_http_target
