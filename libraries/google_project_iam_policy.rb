@@ -14,19 +14,21 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/iam/property/iam_policy_audit_configs'
 require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Resource Manager IAM Binding resources.
-class ProjectIamBinding < GcpResourceBase
-  name 'google_project_iam_binding'
-  desc 'Project Iam Binding'
+# A provider to manage Resource Manager IAM Policy resources.
+class ProjectIamPolicy < GcpResourceBase
+  name 'google_project_iam_policy'
+  desc 'Project Iam Policy'
   supports platform: 'gcp'
 
   attr_reader :params
+  attr_reader :bindings
+  attr_reader :audit_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
-    raise "Expected 'role' to be defined for iam_binding resource" unless params.key?(:role)
     @params = params
     @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
     parse unless @fetched.nil?
@@ -34,23 +36,23 @@ class ProjectIamBinding < GcpResourceBase
 
   def parse
     @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
-    @bindings.each do |binding|
-      next if binding.role != params[:role]
-      @members_list = binding.members
-      @iam_binding_exists = true
-    end
+    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
   end
 
   def exists?
-    @iam_binding_exists
-  end
-
-  def members
-    @members_list
+    !@fetched.nil?
   end
 
   def to_s
-    "Project IamBinding #{@params[:project]} Role: #{@params[:role]}"
+    "Project IamPolicy #{@params[:project]}"
+  end
+
+  def iam_binding_roles
+    @bindings.map(&:role)
+  end
+
+  def count
+    @bindings.size
   end
 
   private
