@@ -137,7 +137,7 @@ module Inspec::Resources
 
     def service_account_scopes
       # note instances can have only one service account defined
-      return [] if @instance.service_accounts[0].nil? || !defined?(@instance.service_accounts[0].scopes) || @instance.service_accounts[0].scopes.nil?
+      return [] if @instance.service_accounts.nil? || @instance.service_accounts[0].nil? || !defined?(@instance.service_accounts[0].scopes) || @instance.service_accounts[0].scopes.nil?
       @instance.service_accounts[0].scopes
     end
 
