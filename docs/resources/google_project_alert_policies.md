@@ -1,36 +1,19 @@
 ---
-title: About the google_project_alert_policies Resource
+title: About the google_project_alert_policies resource
 platform: gcp
 ---
 
-# google\_compute\_alert\_policies
-
-Use the `google_project_alert_policies` InSpec audit resource to test properties of all, or a filtered group of, GCP project alert policies.
-
-<br>
-
 ## Syntax
-
-A `google_project_alert_policies` resource block collects GCP project alert policies by project then tests that group.
-
-    describe google_project_alert_policies(project: 'chef-inspec-gcp') do
-      it { should exist }
-    end
-
-Use this InSpec resource to enumerate IDs then test in-depth using `google_project_alert_policy`.
-
-    google_project_alert_policies(project: 'chef-inspec-gcp').policy_names.each do |policy_name|
-      describe google_project_alert_policy(policy: policy_name) do
-        it { should exist }
-        it { should be_enabled }
-      end
-    end
-
-<br>
+A `google_project_alert_policies` is used to test a Google AlertPolicy resource
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
+```
+describe google_project_alert_policies(project: 'chef-gcp-inspec') do
+  it { should exist }
+  its('policy_display_names') { should include 'Display'}
+  its('combiners') { should include 'OR'}
+end
+```
 
 ### Test that there are no more than a specified number of project alert policies available for the project
 
@@ -55,24 +38,25 @@ The following examples show how to use this InSpec audit resource.
     describe google_project_alert_policies(project: 'chef-inspec-gcp') do
       its('policy_enabled_states') { should_not include false }
     end
-    
-    
-<br>
-
-## Filter Criteria
-
-This resource supports the following filter criteria:  `policy_name`; `policy_display_name`; `policy_filter_list` and `policy_enabled_state`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
+Properties that can be accessed from the `google_project_alert_policies` resource:
 
-*  `policy_names` - an array of google_project_alert_policy name strings
-*  `policy_display_names` - an array of google_project_alert_policy display name strings
-*  `policy_enabled_states`- an array of google_project_alert_policy enabled status booleans
-*  `policy_filter_lists`- an array of google_project_alert_policy_condition filter string arrays
+See [google_project_alert_policy.md](google_project_alert_policy.md) for more detailed information
+  * `policy_names`: an array of `google_project_alert_policy` name
+  * `policy_display_names`: an array of `google_project_alert_policy` display_name
+  * `combiners`: an array of `google_project_alert_policy` combiner
+  * `creation_records`: an array of `google_project_alert_policy` creation_record
+  * `policy_enabled_states`: an array of `google_project_alert_policy` enabled
+  * `conditions`: an array of `google_project_alert_policy` conditions
+  * `notification_channels`: an array of `google_project_alert_policy` notification_channels
+  * `user_labels`: an array of `google_project_alert_policy` user_labels
+  * `documentations`: an array of `google_project_alert_policy` documentation
 
-<br>
-
+## Filter Criteria
+This resource supports all of the above properties as filter criteria, which can be used
+with `where` as a block or a method.
 
 ## GCP Permissions
 
-Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/api/logging.googleapis.com/) is enabled for the project.
+Ensure the [Stackdriver Monitoring API](https://console.cloud.google.com/apis/library/monitoring.googleapis.com/) is enabled for the current project.
