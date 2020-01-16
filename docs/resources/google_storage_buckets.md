@@ -19,6 +19,7 @@ Properties that can be accessed from the `google_storage_buckets` resource:
 See [google_storage_bucket.md](google_storage_bucket.md) for more detailed information
   * `acls`: an array of `google_storage_bucket` acl
   * `cors`: an array of `google_storage_bucket` cors
+  * `default_event_based_holds`: an array of `google_storage_bucket` default_event_based_hold
   * `default_object_acls`: an array of `google_storage_bucket` default_object_acl
   * `bucket_ids`: an array of `google_storage_bucket` id
   * `lifecycles`: an array of `google_storage_bucket` lifecycle
