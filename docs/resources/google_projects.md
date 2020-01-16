@@ -1,36 +1,19 @@
 ---
-title: About the google_projects Resource
+title: About the google_projects resource
 platform: gcp
 ---
 
-# google\_projects
-
-Use the `google_projects` InSpec audit resource to test properties of all, or a filtered group of, GCP projects in a particular organisation.
-
-<br>
-
 ## Syntax
-
-A `google_projects` resource block collects GCP projects then tests that group.
-
-    describe google_projects do
-      it { should exist }
-    end
-
-Use this InSpec resource to enumerate IDs then test in-depth using `google_compute_project`.
-
-    google_projects.project_ids.each do |project_id|
-      describe google_project(project: project_id) do
-        it { should exist }
-        its('lifecycle_state') { should eq "ACTIVE" }
-      end
-    end
-
-<br>
+A `google_projects` is used to test a Google Project resource
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
+```
+describe google_projects() do
+  its('count') { should be >= 1 }
+  its('project_ids') { should include 'chef-gcp-inspec' }
+  its('lifecycle_states') { should include 'ACTIVE' }
+end
+```
 
 ### Test that there are no more than a specified number of projects available for the project
 
@@ -72,23 +55,23 @@ The following examples show how to use this InSpec audit resource.
         it { should exist }
       end
     end
-    
-<br>
-
-## Filter Criteria
-
-This resource supports the following filter criteria:  `project_id`; `project_name`; `project_number` and `lifecycle_state`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
+Properties that can be accessed from the `google_projects` resource:
 
-*  `project_ids` - an array of google_compute_project identifier strings
-*  `project_names` - an array of google_compute_project name strings
-*  `project_numbers`- an array of google_compute_project number identifier integers
-*  `lifecycle_state`- an array of google_compute_project lifecycle state strings
+See [google_project.md](google_project.md) for more detailed information
+  * `numbers`: an array of `google_project` number
+  * `lifecycle_states`: an array of `google_project` lifecycle_state
+  * `project_names`: an array of `google_project` name
+  * `create_times`: an array of `google_project` create_time
+  * `labels`: an array of `google_project` labels
+  * `parents`: an array of `google_project` parent
+  * `project_ids`: an array of `google_project` project_id
 
-<br>
-
+## Filter Criteria
+This resource supports all of the above properties as filter criteria, which can be used
+with `where` as a block or a method.
 
 ## GCP Permissions
 
-Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the project.
+Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

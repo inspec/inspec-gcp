@@ -1,49 +1,27 @@
 ---
-title: About the google_project_iam_binding Resource
+title: About the google_project_iam_binding resource
 platform: gcp
 ---
 
-# google\_project\_iam\_binding
-
-Use the `google_project_iam_binding` InSpec audit resource to test properties of a single GCP project IAM binding.
-
-<br>
-
 ## Syntax
-
-A `google_project_iam_binding` resource block declares the tests for a single GCP project IAM binding by role.
-
-    describe google_project_iam_binding(project: 'chef-inspec-gcp',  role: 'roles/compute.admin') do
-      it { should exist }
-    end
-
-<br>
+A `google_project_iam_binding` is used to test a Google Project Iam Bindings
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
-
-### Test that a GCP project iam_binding exists
-
-    describe google_project_iam_binding(project: 'chef-inspec-gcp',  role: 'roles/compute.admin') do
-      it { should exist }
-    end
-
-### Test that a GCP project IAM binding role has the desired user included
-
-    describe google_project_iam_binding(project: 'chef-inspec-gcp',  role: 'roles/compute.admin') do
-      its('members') {should include 'user:someuser@domain.com' }
-    end
-
-<br>
+```
+describe google_project_iam_binding(project: "project", role: "roles/editor") do
+  it { should exist }
+  its('members') { should include 'user:testuser@example.com' }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_project_iam_binding` resource:
 
-*  `members`
+  * `role`: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
 
-<br>
+  * `members`: Specifies the identities requesting access for a Cloud Platform resource.
 
 
 ## GCP Permissions
 
-Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the project.
+Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

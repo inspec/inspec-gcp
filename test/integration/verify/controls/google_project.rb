@@ -12,16 +12,16 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_projects resource.'
+title 'Test GCP google_project resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-control 'google_projects-1.0' do
+control 'google_project-1.0' do
   impact 1.0
-  title 'google_projects resource test'
+  title 'google_project resource test'
 
-  describe google_projects() do
-    its('count') { should be >= 1 }
-    its('project_ids') { should include gcp_project_id }
-    its('lifecycle_states') { should include 'ACTIVE' }
+  describe google_project(project: gcp_project_id) do
+    it { should exist }
+    its('project_id') { should cmp gcp_project_id }
+    its('lifecycle_state') { should cmp 'ACTIVE' }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
@@ -11,17 +13,25 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+module GoogleInSpec
+  module ResourceManager
+    module Property
+      class ProjectParent
+        attr_reader :type
 
-title 'Test GCP google_projects resource.'
+        attr_reader :id
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-control 'google_projects-1.0' do
-  impact 1.0
-  title 'google_projects resource test'
+        def initialize(args = nil, parent_identifier = nil)
+          return if args.nil?
+          @parent_identifier = parent_identifier
+          @type = args['type']
+          @id = args['id']
+        end
 
-  describe google_projects() do
-    its('count') { should be >= 1 }
-    its('project_ids') { should include gcp_project_id }
-    its('lifecycle_states') { should include 'ACTIVE' }
+        def to_s
+          "#{@parent_identifier} ProjectParent"
+        end
+      end
+    end
   end
 end
