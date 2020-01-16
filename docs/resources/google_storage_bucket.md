@@ -56,6 +56,8 @@ Properties that can be accessed from the `google_storage_bucket` resource:
 
     * `response_header`: The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
 
+  * `default_event_based_hold`: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+
   * `default_object_acl`: Default access controls to apply to new objects when no ACL is provided.
 
     * `bucket`: The name of the bucket.

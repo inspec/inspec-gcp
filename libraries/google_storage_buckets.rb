@@ -25,6 +25,7 @@ class StorageBuckets < GcpResourceBase
 
   filter_table_config.add(:acls, field: :acl)
   filter_table_config.add(:cors, field: :cors)
+  filter_table_config.add(:default_event_based_holds, field: :default_event_based_hold)
   filter_table_config.add(:default_object_acls, field: :default_object_acl)
   filter_table_config.add(:bucket_ids, field: :bucket_id)
   filter_table_config.add(:lifecycles, field: :lifecycle)
@@ -82,6 +83,7 @@ class StorageBuckets < GcpResourceBase
     {
       'acl' => ->(obj) { return :acl, GoogleInSpec::Storage::Property::BucketAclArray.parse(obj['acl'], to_s) },
       'cors' => ->(obj) { return :cors, GoogleInSpec::Storage::Property::BucketCorsArray.parse(obj['cors'], to_s) },
+      'defaultEventBasedHold' => ->(obj) { return :default_event_based_hold, obj['defaultEventBasedHold'] },
       'defaultObjectAcl' => ->(obj) { return :default_object_acl, GoogleInSpec::Storage::Property::BucketDefaultObjectAclArray.parse(obj['defaultObjectAcl'], to_s) },
       'id' => ->(obj) { return :bucket_id, obj['id'] },
       'lifecycle' => ->(obj) { return :lifecycle, GoogleInSpec::Storage::Property::BucketLifecycle.new(obj['lifecycle'], to_s) },
