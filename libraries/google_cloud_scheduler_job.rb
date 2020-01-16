@@ -33,6 +33,7 @@ class CloudSchedulerJob < GcpResourceBase
   attr_reader :description
   attr_reader :schedule
   attr_reader :time_zone
+  attr_reader :attempt_deadline
   attr_reader :retry_config
   attr_reader :pubsub_target
   attr_reader :app_engine_http_target
@@ -51,6 +52,7 @@ class CloudSchedulerJob < GcpResourceBase
     @description = @fetched['description']
     @schedule = @fetched['schedule']
     @time_zone = @fetched['timeZone']
+    @attempt_deadline = @fetched['attemptDeadline']
     @retry_config = GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(@fetched['retryConfig'], to_s)
     @pubsub_target = GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(@fetched['pubsubTarget'], to_s)
     @app_engine_http_target = GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(@fetched['appEngineHttpTarget'], to_s)

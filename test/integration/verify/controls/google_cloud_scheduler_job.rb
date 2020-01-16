@@ -34,6 +34,7 @@ control 'google_cloud_scheduler_job-1.0' do
     its('description') { should cmp scheduler_job['description'] }
     its('schedule') { should cmp scheduler_job['schedule'] }
     its('time_zone') { should cmp scheduler_job['time_zone'] }
+    its('attempt_deadline') { should cmp scheduler_job['attempt_deadline'] }
     its('http_target.http_method') { should cmp scheduler_job['http_method'] }
     its('http_target.uri') { should cmp scheduler_job['http_target_uri'] }
   end

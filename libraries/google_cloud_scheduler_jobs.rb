@@ -27,6 +27,7 @@ class CloudSchedulerJobs < GcpResourceBase
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:schedules, field: :schedule)
   filter_table_config.add(:time_zones, field: :time_zone)
+  filter_table_config.add(:attempt_deadlines, field: :attempt_deadline)
   filter_table_config.add(:retry_configs, field: :retry_config)
   filter_table_config.add(:pubsub_targets, field: :pubsub_target)
   filter_table_config.add(:app_engine_http_targets, field: :app_engine_http_target)
@@ -75,6 +76,7 @@ class CloudSchedulerJobs < GcpResourceBase
       'description' => ->(obj) { return :description, obj['description'] },
       'schedule' => ->(obj) { return :schedule, obj['schedule'] },
       'timeZone' => ->(obj) { return :time_zone, obj['timeZone'] },
+      'attemptDeadline' => ->(obj) { return :attempt_deadline, obj['attemptDeadline'] },
       'retryConfig' => ->(obj) { return :retry_config, GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(obj['retryConfig'], to_s) },
       'pubsubTarget' => ->(obj) { return :pubsub_target, GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(obj['pubsubTarget'], to_s) },
       'appEngineHttpTarget' => ->(obj) { return :app_engine_http_target, GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(obj['appEngineHttpTarget'], to_s) },
