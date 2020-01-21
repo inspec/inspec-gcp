@@ -1,27 +1,22 @@
 ---
-title: About the google_compute_zone Resource
+title: About the google_compute_zone resource
 platform: gcp
 ---
 
-# google\_compute\_zone
-
-Use the `google_compute_zone` InSpec audit resource to test properties of a single GCP compute zone.
-
-<br>
-
 ## Syntax
+A `google_compute_zone` is used to test a Google Zone resource
 
-A `google_compute_zone` resource block declares the tests for a single GCP zone by project and name.
 
-    describe google_compute_zone(project: 'chef-inspec-gcp',  zone: 'us-east1-b') do
-      its('name') { should match 'us-east1-b' }
-    end
-
-<br>
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
+```
+describe google_compute_zone(project: 'chef-gcp-inspec', "us-central1-a") do
+  it { should exist }
+  it { should be_up }
+end
+```
 
 ### Test that a GCP compute zone exists
 
@@ -43,15 +38,37 @@ The following examples show how to use this InSpec audit resource.
       its('available_cpu_platforms') { should include "Intel Skylake" }
     end
 
-<br>
-
 ## Properties
+Properties that can be accessed from the `google_compute_zone` resource:
 
-*  `available_cpu_platforms`, `creation_timestamp`, `description`, `id`, `kind`, `name`, `region`, `status`, `region_name`
 
-<br>
+  * `creation_timestamp`: Creation timestamp in RFC3339 text format.
+
+  * `deprecated`: The deprecation status associated with this machine type.
+
+    * `deleted`: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.
+
+    * `deprecated`: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED. This is only informational and the status will not change unless the client explicitly changes it.
+
+    * `obsolete`: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it.
+
+    * `replacement`: The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
+
+    * `state`: The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
+
+  * `description`: An optional textual description of the resource.
+
+  * `id`: The unique identifier for the resource.
+
+  * `name`: Name of the resource.
+
+  * `region`: The region where the zone is located.
+
+  * `status`: The status of the zone.
+
+  * `available_cpu_platforms`: The available CPU platforms in this zone
 
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
