@@ -20,7 +20,7 @@ control 'google_compute_zones-1.0' do
   title 'google_compute_zones resource test'
 
   google_compute_zones(project: gcp_project_id).zone_names.each do |zone_name|
-    describe google_compute_zones(project: gcp_project_id, name: zone_name) do
+    describe google_compute_zone(project: gcp_project_id, name: zone_name) do
       it { should exist }
       it { should be_up }
     end

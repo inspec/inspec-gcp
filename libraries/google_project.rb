@@ -65,6 +65,10 @@ class ResourceManagerProject < GcpResourceBase
     @name
   end
 
+  def project_number
+    @number&.to_i
+  end
+
   def label_value_by_key(label_key)
     return nil if @labels.nil? || !@labels.has_key(label_key)
     @labels[label_key]

@@ -65,7 +65,7 @@ class ComputeZone < GcpResourceBase
 
   # helper method for retrieving a region name
   def region_name
-    @region&.split('/').last
+    @region&.split('/')&.last
   end
 
   def up?

@@ -12,7 +12,7 @@ This resource has beta fields available. To retrieve these fields, include `beta
 
 ## Examples
 ```
-describe google_compute_zone(project: 'chef-gcp-inspec', "us-central1-a") do
+describe google_compute_zone(project: 'chef-gcp-inspec', name: "us-central1-a") do
   it { should exist }
   it { should be_up }
 end
