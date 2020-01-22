@@ -285,7 +285,10 @@ class GcpApiConnection
   def expand_variables(template, var_data)
     extract_variables(template).each do |v|
       unless var_data.key?(v)
-        raise "Missing variable :#{v} in #{var_data} on #{caller.join("\n")}}"
+        # Magic Modules uses % as an indicator that the param needs to be URL escaped
+        raise "Missing variable :#{v} in #{var_data} on #{caller.join("\n")}}" unless var_data.key?(v.gsub('%', ''))
+
+        template.gsub!(/{{%#{v}}}/, CGI.escape(var_data[v].to_s))
       end
       template.gsub!(/{{#{v}}}/, var_data[v].to_s)
     end
