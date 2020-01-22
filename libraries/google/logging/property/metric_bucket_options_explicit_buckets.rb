@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
@@ -11,16 +13,22 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+module GoogleInSpec
+  module Logging
+    module Property
+      class MetricBucketOptionsExplicitBuckets
+        attr_reader :bounds
 
-title 'Test GCP google_compute_zone resource.'
+        def initialize(args = nil, parent_identifier = nil)
+          return if args.nil?
+          @parent_identifier = parent_identifier
+          @bounds = args['bounds']
+        end
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-control 'google_compute_zone-1.0' do
-  impact 1.0
-  title 'google_compute_zone resource test'
-
-  describe google_compute_zone(project: gcp_project_id, name: "us-central1-a") do
-    it { should exist }
-    it { should be_up }
+        def to_s
+          "#{@parent_identifier} MetricBucketOptionsExplicitBuckets"
+        end
+      end
+    end
   end
 end

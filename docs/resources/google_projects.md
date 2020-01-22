@@ -60,7 +60,7 @@ end
 Properties that can be accessed from the `google_projects` resource:
 
 See [google_project.md](google_project.md) for more detailed information
-  * `numbers`: an array of `google_project` number
+  * `project_numbers`: an array of `google_project` number
   * `lifecycle_states`: an array of `google_project` lifecycle_state
   * `project_names`: an array of `google_project` name
   * `create_times`: an array of `google_project` create_time

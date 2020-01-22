@@ -61,7 +61,7 @@ class DNSManagedZones < GcpResourceBase
           name, value = transform(key, hash)
           hash_with_symbols[name] = value
         end
-        hash_with_symbols[:dnssec_config_state] = hash['dnssecConfig']&.['state']&.downcase == 'on'
+        hash_with_symbols[:dnssec_config_state] = hash.dig('dnssecConfig', 'state')&.downcase == 'on'
         converted.push(hash_with_symbols)
       end
     end

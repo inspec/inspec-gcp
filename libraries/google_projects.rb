@@ -23,7 +23,7 @@ class ResourceManagerProjects < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:numbers, field: :number)
+  filter_table_config.add(:project_numbers, field: :project_number)
   filter_table_config.add(:lifecycle_states, field: :lifecycle_state)
   filter_table_config.add(:project_names, field: :project_name)
   filter_table_config.add(:create_times, field: :create_time)
@@ -69,7 +69,7 @@ class ResourceManagerProjects < GcpResourceBase
 
   def transformers
     {
-      'projectNumber' => ->(obj) { return :number, obj['projectNumber'] },
+      'projectNumber' => ->(obj) { return :project_number, obj['projectNumber'] },
       'lifecycleState' => ->(obj) { return :lifecycle_state, obj['lifecycleState'] },
       'name' => ->(obj) { return :project_name, obj['name'] },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
