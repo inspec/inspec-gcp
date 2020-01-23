@@ -262,8 +262,7 @@ class GcpApiConnection
 
   def build_uri(base_url, template, var_data)
     URI.join(
-      base_url,
-      expand_variables(template, var_data),
+      "#{base_url}#{expand_variables(template, var_data)}"
     )
   end
 
