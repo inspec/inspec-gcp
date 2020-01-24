@@ -1,49 +1,59 @@
 ---
-title: About the google_compute_project_info Resource
+title: About the google_compute_project_info resource
 platform: gcp
 ---
 
-# google\_compute\_project\_info
-
-Use the `google_compute_project_info` InSpec audit resource to test GCP compute project information.
-
-<br>
-
 ## Syntax
+A `google_compute_project_info` is used to test a Google ProjectInfo resource
 
-A `google_compute_project_info` resource block declares the tests for GCP compute project information by project identifier.
 
-    describe google_compute_project_info(project: 'chef-inspec-gcp') do
-      its('name') { should match 'chef-inspec-gcp' }
-    end
-
-<br>
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-
-The following examples show how to use this InSpec audit resource.
-
-### Test that GCP compute project information exists
-
-    describe google_compute_project_info(project: 'chef-inspec-gcp') do
-      it { should exist }
-    end
-
-### Test that GCP compute project default service account is as expected
-
-    describe google_compute_project_info(project: 'chef-inspec-gcp') do
-      its('default_service_account') { should eq '12345-compute@developer.gserviceaccount.com' }
-    end
-
-<br>
+```
+describe google_compute_project_info(project: 'chef-gcp-inspec') do
+	it { should exist }
+	its('default_service_account') { should match "developer.gserviceaccount.com" }
+	it { should_not be_has_enabled_oslogin }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_compute_project_info` resource:
 
-*  `common_instance_metadata`, `creation_timestamp`,  `creation_timestamp_date`, `default_service_account`, `id`, `kind`, `name`, `quotas`, `xpn_project_status`
 
-<br>
+  * `name`: The name of this project
+
+  * `common_instance_metadata`: Metadata shared for all instances in this project
+
+    * `items`: Array of key/values
+
+      * `key`: Key of the metadata key/value pair
+
+      * `value`: Value of the metadata key/value pair
+
+  * `enabled_features`: Restricted features enabled for use on this project
+
+  * `default_service_account`: Default service account used by VMs in this project
+
+  * `xpn_project_status`: The role this project has in a shared VPC configuration.
+
+  * `default_network_tier`: The default network tier used for configuring resources in this project
+
+  * `quotas`: Quotas applied to this project
+
+    * `metric`: Name of the quota metric
+
+    * `limit`: Quota limit for this metric
+
+    * `usage`: Current usage of this metric
+
+    * `owner`: Owning resource. This is the resource on which this quota is applied.
+
+  * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
 
 ## GCP Permissions
 
-Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the project where the resource is located.
+Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
