@@ -1,54 +1,37 @@
 ---
-title: About the google_organization Resource
+title: About the google_organization resource
 platform: gcp
 ---
 
-# google\_organization
-
-Use the `google_organization` InSpec audit resource to test properties of a GCP organization.  
-
-<br>
-
 ## Syntax
-
-Google organization have a name, display name (or domain) and lifecycle state. For more info, please see [here](https://cloud.google.com/resource-manager/docs/creating-managing-organization).
-
-A `google_organization` resource block declares the tests for a single GCP organization identified by `name`:
-
-    describe google_organization(display_name: 'organizations/1234') do
-      it { should exist }
-      its('name') { should eq 'organizations/1234'  }
-      its('display_name') { should eq 'google.com' }
-      its('lifecycle_state') { should eq 'ACTIVE' }
-    end
-
-<br>
+A `google_organization` is used to test a Google Organization resource
 
 ## Examples
+```
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that a GCP organization has the expected name
-
-    describe google_organization(name: 'organizations/1234') do
-      its('name') { should eq 'organizations/1234' }
-    end
-
-### Test that a GCP organization has the expected lifecycle state e.g. "ACTIVE"
-
-    describe google_organization(display_name: 'google.com') do
-      its('lifecycle_state') { should eq "ACTIVE" }
-    end
-
-<br>
+describe google_organization(name: "organizations/123456") do
+  its('name') { should eq "organizations/123456" }
+  its('lifecycle_state') { should cmp 'ACTIVE' }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_organization` resource:
 
-*  `name`, `display_name`, `lifecycle_state`
 
-<br>
+  * `name`: The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organizationId]". For example, "organizations/1234".
+
+  * `display_name`: A human-readable string that refers to the Organization in the GCP Console UI. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization.
+
+  * `lifecycle_state`: The lifecycle state of the folder. Updates to the lifecycleState must be performed via folders.delete and folders.undelete.
+
+  * `creation_time`: Timestamp when the Organization was created. Assigned by the server.
+
+  * `owner`: The entity that owns the Organization
+
+    * `directory_customer_id`: The G Suite customer id used in the Directory API
 
 
 ## GCP Permissions
 
-Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the project.
+Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.
