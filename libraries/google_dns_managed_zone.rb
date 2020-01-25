@@ -43,6 +43,7 @@ class DNSManagedZone < GcpResourceBase
   attr_reader :private_visibility_config
   attr_reader :forwarding_config
   attr_reader :peering_config
+  attr_reader :reverse_lookup
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -65,6 +66,7 @@ class DNSManagedZone < GcpResourceBase
     @private_visibility_config = GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfig.new(@fetched['privateVisibilityConfig'], to_s)
     @forwarding_config = GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(@fetched['forwardingConfig'], to_s)
     @peering_config = GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(@fetched['peeringConfig'], to_s)
+    @reverse_lookup = @fetched['reverseLookupConfig']
   end
 
   # Handles parsing RFC3339 time string

@@ -36,6 +36,7 @@ See [google_dns_managed_zone.md](google_dns_managed_zone.md) for more detailed i
   * `private_visibility_configs`: an array of `google_dns_managed_zone` private_visibility_config
   * `forwarding_configs`: (Beta only) an array of `google_dns_managed_zone` forwarding_config
   * `peering_configs`: (Beta only) an array of `google_dns_managed_zone` peering_config
+  * `reverse_lookups`: (Beta only) an array of `google_dns_managed_zone` reverse_lookup
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
