@@ -36,6 +36,7 @@ class DNSManagedZones < GcpResourceBase
   filter_table_config.add(:private_visibility_configs, field: :private_visibility_config)
   filter_table_config.add(:forwarding_configs, field: :forwarding_config)
   filter_table_config.add(:peering_configs, field: :peering_config)
+  filter_table_config.add(:reverse_lookups, field: :reverse_lookup)
   filter_table_config.add(:dnssec_config_states, field: :dnssec_config_state)
 
   filter_table_config.connect(self, :table)
@@ -90,6 +91,7 @@ class DNSManagedZones < GcpResourceBase
       'privateVisibilityConfig' => ->(obj) { return :private_visibility_config, GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfig.new(obj['privateVisibilityConfig'], to_s) },
       'forwardingConfig' => ->(obj) { return :forwarding_config, GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(obj['forwardingConfig'], to_s) },
       'peeringConfig' => ->(obj) { return :peering_config, GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(obj['peeringConfig'], to_s) },
+      'reverseLookupConfig' => ->(obj) { return :reverse_lookup, obj['reverseLookupConfig'] },
     }
   end
 

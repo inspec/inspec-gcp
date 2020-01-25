@@ -19,10 +19,13 @@ module GoogleInSpec
       class ManagedZoneForwardingConfigTargetNameServers
         attr_reader :ipv4_address
 
+        attr_reader :forwarding_path
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @ipv4_address = args['ipv4Address']
+          @forwarding_path = args['forwardingPath']
         end
 
         def to_s
