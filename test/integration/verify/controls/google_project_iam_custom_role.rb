@@ -12,17 +12,23 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_service_account_key resource.'
+title 'Test GCP google_project_iam_custom_role resource.'
 
 gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_service_account_display_name = attribute(:gcp_service_account_display_name, default: 'gcp_service_account_display_name', description: 'The IAM service account display name.')
+gcp_project_iam_custom_role_id = attribute(:gcp_project_iam_custom_role_id, default: 'gcp_project_iam_custom_role_id', description: 'The IAM custom role identifier.')
 gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-control 'google_service_account_key-1.0' do
+control 'google_project_iam_custom_role-1.0' do
   impact 1.0
-  title 'google_service_account_key resource test'
+  title 'google_project_iam_custom_role resource test'
 
   only_if { gcp_enable_privileged_resources.to_i == 1 }
-  google_service_account_keys(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com").key_names.each do |sa_key_name|
-  	describe 
+  describe google_project_iam_custom_role(project: gcp_project_id, name: gcp_project_iam_custom_role_id) do
+    it { should exist }
+    its('stage') { should eq 'GA' }
+    its('included_permissions') { should eq ["iam.roles.list"] }
+  end
+
+  describe google_project_iam_custom_role(project: gcp_project_id, name: 'nonexistent') do
+    it { should_not exist }
   end
 end
