@@ -14,32 +14,28 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class IAMServiceAccountKeys < GcpResourceBase
-  name 'google_service_account_keys'
-  desc 'ServiceAccountKey plural resource'
+class IAMCustomRoles < GcpResourceBase
+  name 'google_project_iam_custom_roles'
+  desc 'CustomRole plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:key_names, field: :key_name)
-  filter_table_config.add(:private_key_types, field: :private_key_type)
-  filter_table_config.add(:key_algorithms, field: :key_algorithm)
-  filter_table_config.add(:private_key_data, field: :private_key_data)
-  filter_table_config.add(:public_key_data, field: :public_key_data)
-  filter_table_config.add(:valid_after_times, field: :valid_after_time)
-  filter_table_config.add(:valid_before_times, field: :valid_before_time)
-  filter_table_config.add(:key_types, field: :key_type)
-  filter_table_config.add(:service_accounts, field: :service_account)
-  filter_table_config.add(:paths, field: :path)
+  filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:titles, field: :title)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:included_permissions, field: :included_permissions)
+  filter_table_config.add(:stages, field: :stage)
+  filter_table_config.add(:deleteds, field: :deleted)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('serviceAccountKeys')
+    @table = fetch_wrapped_resource('roles')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -72,22 +68,13 @@ class IAMServiceAccountKeys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :key_name, obj['name'] },
-      'privateKeyType' => ->(obj) { return :private_key_type, obj['privateKeyType'] },
-      'keyAlgorithm' => ->(obj) { return :key_algorithm, obj['keyAlgorithm'] },
-      'privateKeyData' => ->(obj) { return :private_key_data, obj['privateKeyData'] },
-      'publicKeyData' => ->(obj) { return :public_key_data, obj['publicKeyData'] },
-      'validAfterTime' => ->(obj) { return :valid_after_time, parse_time_string(obj['validAfterTime']) },
-      'validBeforeTime' => ->(obj) { return :valid_before_time, parse_time_string(obj['validBeforeTime']) },
-      'keyType' => ->(obj) { return :key_type, obj['keyType'] },
-      'serviceAccount' => ->(obj) { return :service_account, obj['serviceAccount'] },
-      'path' => ->(obj) { return :path, obj['path'] },
+      'name' => ->(obj) { return :name, obj['name'] },
+      'title' => ->(obj) { return :title, obj['title'] },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'includedPermissions' => ->(obj) { return :included_permissions, obj['includedPermissions'] },
+      'stage' => ->(obj) { return :stage, obj['stage'] },
+      'deleted' => ->(obj) { return :deleted, obj['deleted'] },
     }
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
   end
 
   private
@@ -97,6 +84,6 @@ class IAMServiceAccountKeys < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/serviceAccounts/{{service_account}}/keys'
+    'projects/{{project}}/roles?view=FULL'
   end
 end

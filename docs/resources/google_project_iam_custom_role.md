@@ -1,50 +1,41 @@
 ---
-title: About the google_project_iam_custom_role Resource
+title: About the google_project_iam_custom_role resource
 platform: gcp
 ---
 
-# google\_project\_iam\_custom\_role
-
-Use the `google_project_iam_custom_role` InSpec audit resource to test properties of a GCP project IAM custom role.
-
-<br>s
-
 ## Syntax
-
-A `google_project_iam_custom_role` resource block declares the tests for a single GCP project IAM custom role by project and name.
-
-    describe google_project_iam_custom_role(project: 'chef-inspec-gcp', name: 'chef-inspec-gcp-role-abcd') do
-      it { should exist }
-      its('name') { should eq 'chef-inspec-gcp-role-abcd'  }
-    end
-
-<br>
+A `google_project_iam_custom_role` is used to test a Google CustomRole resource
 
 ## Examples
+```
+describe google_project_iam_custom_role(project: 'chef-gcp-inspec', name: 'admin-role') do
+  it { should exist }
+  its('stage') { should eq 'GA' }
+  its('included_permissions') { should eq ["iam.roles.list"] }
+end
 
-The following examples show how to use this InSpec audit resource.
-
-### Test that a GCP project IAM custom role has the expected stage in the launch lifecycle
-
-    describe google_project_iam_custom_role(project: 'chef-inspec-gcp', name: 'chef-inspec-gcp-role-abcd') do
-      its('stage') { should eq "GA" }
-    end
-
-### Test that a GCP project IAM custom role has the expected included permissions
-
-    describe google_project_iam_custom_role(project: 'chef-inspec-gcp', name: 'chef-inspec-gcp-role-abcd') do
-      its('included_permissions') { should eq ["iam.roles.list"] }
-    end
-
-<br>
+describe google_project_iam_custom_role(project: 'chef-gcp-inspec', name: 'nonexistent') do
+  it { should_not exist }
+end
+```
 
 ## Properties
+Properties that can be accessed from the `google_project_iam_custom_role` resource:
 
-*  `description`, `etag`, `included_permissions`, `name`, `stage`, `title`
 
-<br>
+  * `name`: The name of the role.
+
+  * `title`: A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+
+  * `description`: Human-readable description for the role
+
+  * `included_permissions`: Names of permissions this role grants when bound in an IAM policy.
+
+  * `stage`: The current launch stage of the role.
+
+  * `deleted`: The current deleted state of the role
 
 
 ## GCP Permissions
 
-Ensure the [Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/library/iam.googleapis.com/) is enabled for the project.
+Ensure the [Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/library/iam.googleapis.com/) is enabled for the current project.
