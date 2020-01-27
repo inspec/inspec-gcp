@@ -21,7 +21,7 @@ module GCPInspecConfig
       end
       @config = {
         # Generic GCP resource parameters
-        :gcp_organization_id => '',
+        :gcp_organization_id => '953310715741',
         :gcp_project_name => "SPaterson Project",
         :gcp_project_id => "spaterson-project",
         :gcp_project_number => "1041358276233",
@@ -107,7 +107,7 @@ module GCPInspecConfig
         # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
         #
         # Note, would prefer to use boolean true or false here but will revisit for a future version of tf, see here for more detail: https://www.terraform.io/docs/configuration/variables.html
-        :gcp_enable_privileged_resources => 0,
+        :gcp_enable_privileged_resources => 1,
         # Some controls make use of the gcloud command and grep to discover live data to then test against.
         # Only test execution is affected by this flag, resource creation via terraform is unaffected.
         # Default behaviour is for this to be disabled, enable by changing the below flag.
