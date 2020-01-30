@@ -46,7 +46,7 @@ class StorageBucketObjects < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('objects')
+    @table = fetch_wrapped_resource('items')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -111,6 +111,6 @@ class StorageBucketObjects < GcpResourceBase
   end
 
   def resource_base_url
-    'b/{{bucket}}/o/{{object}}'
+    'b/{{bucket}}/o'
   end
 end
