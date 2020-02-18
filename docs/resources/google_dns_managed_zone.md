@@ -66,7 +66,7 @@ Properties that can be accessed from the `google_dns_managed_zone` resource:
 
       * `key_length`: Length of the keys in bits
 
-      * `key_type`: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets. 
+      * `key_type`: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets.
 
       * `kind`: Identifies what kind of resource this is
 
