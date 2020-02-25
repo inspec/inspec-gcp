@@ -69,6 +69,8 @@ Properties that can be accessed from the `google_compute_forwarding_rule` resour
 
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
+  * `is_mirroring_collector`: (Beta only) Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
+
   * `description`: An optional description of this resource. Provide this property when you create the resource.
 
   * `id`: The unique identifier for the resource.
