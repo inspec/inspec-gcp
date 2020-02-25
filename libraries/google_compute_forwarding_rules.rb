@@ -24,6 +24,7 @@ class ComputeForwardingRules < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:is_mirroring_collectors, field: :is_mirroring_collector)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:forwarding_rule_ids, field: :forwarding_rule_id)
   filter_table_config.add(:ip_addresses, field: :ip_address)
@@ -84,6 +85,7 @@ class ComputeForwardingRules < GcpResourceBase
   def transformers
     {
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
+      'isMirroringCollector' => ->(obj) { return :is_mirroring_collector, obj['isMirroringCollector'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'id' => ->(obj) { return :forwarding_rule_id, obj['id'] },
       'IPAddress' => ->(obj) { return :ip_address, obj['IPAddress'] },

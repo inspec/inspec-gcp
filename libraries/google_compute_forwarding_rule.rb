@@ -23,6 +23,7 @@ class ComputeForwardingRule < GcpResourceBase
 
   attr_reader :params
   attr_reader :creation_timestamp
+  attr_reader :is_mirroring_collector
   attr_reader :description
   attr_reader :id
   attr_reader :ip_address
@@ -53,6 +54,7 @@ class ComputeForwardingRule < GcpResourceBase
 
   def parse
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
+    @is_mirroring_collector = @fetched['isMirroringCollector']
     @description = @fetched['description']
     @id = @fetched['id']
     @ip_address = @fetched['IPAddress']
