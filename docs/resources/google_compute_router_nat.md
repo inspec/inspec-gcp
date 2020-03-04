@@ -36,7 +36,7 @@ Properties that can be accessed from the `google_compute_router_nat` resource:
 
   * `nat_ips`: Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
 
-  * `drain_nat_ips`: (Beta only) A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT.
+  * `drain_nat_ips`: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT.
 
   * `source_subnetwork_ip_ranges_to_nat`: How NAT should be configured per Subnetwork. If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the IP ranges in every Subnetwork are allowed to Nat. If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP ranges in every Subnetwork are allowed to Nat. `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this network in this region.
 
