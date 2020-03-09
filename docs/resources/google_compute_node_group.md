@@ -38,6 +38,14 @@ Properties that can be accessed from the `google_compute_node_group` resource:
 
   * `size`: The total number of nodes in the node group.
 
+  * `autoscaling_policy`: (Beta only) If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes of your node groups.
+
+    * `mode`: The autoscaling mode. Set to one of the following:   - OFF: Disables the autoscaler.   - ON: Enables scaling in and scaling out.   - ONLY_SCALE_OUT: Enables only scaling out.    You must use this mode if your node groups are configured to    restart their hosted VMs on minimal servers.
+
+    * `min_nodes`: Minimum size of the node group. Must be less  than or equal to max-nodes. The default value is 0.
+
+    * `max_nodes`: Maximum size of the node group. Set to a value less than or equal to 100 and greater than or equal to min-nodes.
+
   * `zone`: Zone where this node group is located
 
 
