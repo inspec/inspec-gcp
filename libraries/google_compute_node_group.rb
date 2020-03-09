@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/nodegroup_autoscaling_policy'
 
 # A provider to manage Compute Engine resources.
 class ComputeNodeGroup < GcpResourceBase
@@ -27,6 +28,7 @@ class ComputeNodeGroup < GcpResourceBase
   attr_reader :name
   attr_reader :node_template
   attr_reader :size
+  attr_reader :autoscaling_policy
   attr_reader :zone
 
   def initialize(params)
@@ -42,6 +44,7 @@ class ComputeNodeGroup < GcpResourceBase
     @name = @fetched['name']
     @node_template = @fetched['nodeTemplate']
     @size = @fetched['size']
+    @autoscaling_policy = GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(@fetched['autoscalingPolicy'], to_s)
     @zone = @fetched['zone']
   end
 
