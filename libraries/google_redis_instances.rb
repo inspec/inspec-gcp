@@ -25,6 +25,7 @@ class RedisInstances < GcpResourceBase
 
   filter_table_config.add(:alternative_location_ids, field: :alternative_location_id)
   filter_table_config.add(:authorized_networks, field: :authorized_network)
+  filter_table_config.add(:connect_modes, field: :connect_mode)
   filter_table_config.add(:create_times, field: :create_time)
   filter_table_config.add(:current_location_ids, field: :current_location_id)
   filter_table_config.add(:display_names, field: :display_name)
@@ -80,6 +81,7 @@ class RedisInstances < GcpResourceBase
     {
       'alternativeLocationId' => ->(obj) { return :alternative_location_id, obj['alternativeLocationId'] },
       'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
+      'connectMode' => ->(obj) { return :connect_mode, obj['connectMode'] },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
       'currentLocationId' => ->(obj) { return :current_location_id, obj['currentLocationId'] },
       'displayName' => ->(obj) { return :display_name, obj['displayName'] },

@@ -24,6 +24,7 @@ class RedisInstance < GcpResourceBase
   attr_reader :params
   attr_reader :alternative_location_id
   attr_reader :authorized_network
+  attr_reader :connect_mode
   attr_reader :create_time
   attr_reader :current_location_id
   attr_reader :display_name
@@ -49,6 +50,7 @@ class RedisInstance < GcpResourceBase
   def parse
     @alternative_location_id = @fetched['alternativeLocationId']
     @authorized_network = @fetched['authorizedNetwork']
+    @connect_mode = @fetched['connectMode']
     @create_time = parse_time_string(@fetched['createTime'])
     @current_location_id = @fetched['currentLocationId']
     @display_name = @fetched['displayName']
