@@ -19,6 +19,7 @@ require 'google/container/property/cluster_addons_config_horizontal_pod_autoscal
 require 'google/container/property/cluster_addons_config_http_load_balancing'
 require 'google/container/property/cluster_addons_config_kubernetes_dashboard'
 require 'google/container/property/cluster_addons_config_network_policy_config'
+require 'google/container/property/cluster_binary_authorization'
 require 'google/container/property/cluster_conditions'
 require 'google/container/property/cluster_default_max_pods_constraint'
 require 'google/container/property/cluster_ip_allocation_policy'
@@ -32,6 +33,7 @@ require 'google/container/property/cluster_node_config'
 require 'google/container/property/cluster_node_config_accelerators'
 require 'google/container/property/cluster_node_config_taints'
 require 'google/container/property/cluster_node_pools'
+require 'google/container/property/cluster_pod_security_policy_config'
 require 'google/container/property/cluster_private_cluster_config'
 
 # A provider to manage Google Kubernetes Engine resources.
@@ -76,6 +78,8 @@ class ContainerCluster < GcpResourceBase
   attr_reader :conditions
   attr_reader :master_authorized_networks_config
   attr_reader :node_pools
+  attr_reader :pod_security_policy_config
+  attr_reader :binary_authorization
   attr_reader :location
 
   def initialize(params)
@@ -121,6 +125,8 @@ class ContainerCluster < GcpResourceBase
     @conditions = GoogleInSpec::Container::Property::ClusterConditionsArray.parse(@fetched['conditions'], to_s)
     @master_authorized_networks_config = GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
     @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched['nodePools'], to_s)
+    @pod_security_policy_config = GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(@fetched['podSecurityPolicyConfig'], to_s)
+    @binary_authorization = GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(@fetched['binaryAuthorization'], to_s)
     @location = @fetched['location']
   end
 
