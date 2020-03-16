@@ -58,6 +58,8 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:conditions, field: :conditions)
   filter_table_config.add(:master_authorized_networks_configs, field: :master_authorized_networks_config)
   filter_table_config.add(:node_pools, field: :node_pools)
+  filter_table_config.add(:pod_security_policy_configs, field: :pod_security_policy_config)
+  filter_table_config.add(:binary_authorizations, field: :binary_authorization)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -133,6 +135,8 @@ class ContainerClusters < GcpResourceBase
       'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::ClusterConditionsArray.parse(obj['conditions'], to_s) },
       'masterAuthorizedNetworksConfig' => ->(obj) { return :master_authorized_networks_config, GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(obj['masterAuthorizedNetworksConfig'], to_s) },
       'nodePools' => ->(obj) { return :node_pools, GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(obj['nodePools'], to_s) },
+      'podSecurityPolicyConfig' => ->(obj) { return :pod_security_policy_config, GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(obj['podSecurityPolicyConfig'], to_s) },
+      'binaryAuthorization' => ->(obj) { return :binary_authorization, GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(obj['binaryAuthorization'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end

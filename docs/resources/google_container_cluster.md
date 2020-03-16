@@ -252,6 +252,14 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `name`: Name of the node pool
 
+  * `pod_security_policy_config`: (Beta only) Configuration for the PodSecurityPolicy feature.
+
+    * `enabled`: If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
+  * `binary_authorization`: Configuration for the BinaryAuthorization feature.
+
+    * `enabled`: If enabled, all container images will be validated by Binary Authorization.
+
   * `location`: The location where the cluster is deployed
 
 
