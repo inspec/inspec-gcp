@@ -95,7 +95,7 @@ Properties that can be accessed from the `google_compute_forwarding_rule` resour
 
   * `target`: The URL of the target resource to receive the matched traffic. The target must live in the same region as the forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
 
-  * `allow_global_access`: (Beta only) If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+  * `allow_global_access`: If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
 
   * `labels`: (Beta only) Labels to apply to this forwarding rule.  A list of key->value pairs.
 
