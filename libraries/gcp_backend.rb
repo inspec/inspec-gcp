@@ -212,7 +212,7 @@ class GcpApiConnection
       build_uri(base_url, template, var_data),
       fetch_auth,
       request_type,
-      body
+      body,
     )
     return_if_object get_request.send
   end
@@ -315,7 +315,7 @@ module Network
       request = @cred.authorize(builder.new(@link))
       request['User-Agent'] = generate_user_agent
       if @body
-        request['Content-Type'] = "application/json"
+        request['Content-Type'] = 'application/json'
         request.body = @body
       end
       response = transport(request).request(request)
