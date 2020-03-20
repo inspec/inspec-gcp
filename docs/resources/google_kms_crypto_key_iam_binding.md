@@ -14,6 +14,7 @@ describe google_kms_crypto_key_iam_binding(project: "project", location: "locati
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_kms_crypto_key_iam_binding` resource:
 

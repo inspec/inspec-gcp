@@ -14,6 +14,7 @@ describe google_pubsub_subscription_iam_binding(project: "project", name: "name"
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_pubsub_subscription_iam_binding` resource:
 

@@ -14,6 +14,7 @@ describe google_kms_key_ring_iam_binding(project: "project", location: "location
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_kms_key_ring_iam_binding` resource:
 

@@ -14,6 +14,7 @@ describe google_organization_iam_binding(name: "name", role: "roles/editor") do
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_organization_iam_binding` resource:
 

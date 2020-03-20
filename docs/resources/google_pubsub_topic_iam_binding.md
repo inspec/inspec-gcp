@@ -14,6 +14,7 @@ describe google_pubsub_topic_iam_binding(project: "project", name: "name", role:
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_pubsub_topic_iam_binding` resource:
 
