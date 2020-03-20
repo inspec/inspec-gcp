@@ -207,11 +207,12 @@ class GcpApiConnection
     Network::Authorization.new.from_application_default!
   end
 
-  def fetch(base_url, template, var_data, request_type = 'Get')
+  def fetch(base_url, template, var_data, request_type = 'Get', body = nil)
     get_request = Network::Base.new(
       build_uri(base_url, template, var_data),
       fetch_auth,
       request_type,
+      body
     )
     return_if_object get_request.send
   end
@@ -299,10 +300,11 @@ end
 # A handler for authenticated network request
 module Network
   class Base
-    def initialize(link, cred, request_type)
+    def initialize(link, cred, request_type, body = nil)
       @link = link
       @cred = cred
       @request_type = request_type
+      @body = body
     end
 
     def builder
@@ -312,6 +314,10 @@ module Network
     def send
       request = @cred.authorize(builder.new(@link))
       request['User-Agent'] = generate_user_agent
+      if @body
+        request['Content-Type'] = "application/json"
+        request.body = @body
+      end
       response = transport(request).request(request)
       unless ENV['GOOGLE_HTTP_VERBOSE'].nil?
         puts ["network(#{request}: [#{response.code}]",
