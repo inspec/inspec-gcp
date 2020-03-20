@@ -14,6 +14,7 @@ describe google_compute_subnetwork_iam_binding(project: "project", region: "regi
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_compute_subnetwork_iam_binding` resource:
 

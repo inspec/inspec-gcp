@@ -14,6 +14,7 @@ describe google_spanner_instance_iam_binding(project: "project", name: "name", r
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_spanner_instance_iam_binding` resource:
 

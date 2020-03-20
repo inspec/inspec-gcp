@@ -20,6 +20,8 @@ google_project_iam_policy(project: "project").bindings.each do |binding|
 end
 ```
 
+This resource supports [IAM conditions](https://cloud.google.com/iam/docs/conditions-overview).
+
 ## Properties
 Properties that can be accessed from the `google_project_iam_policy` resource:
 
@@ -30,6 +32,14 @@ Properties that can be accessed from the `google_project_iam_policy` resource:
     * `role`: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
 
     * `members`: Specifies the identities requesting access for a Cloud Platform resource.
+
+    * `condition`: Contains information about when this binding is to be applied.
+
+      * `expression`: Textual representation of an expression in Common Expression Language syntax.
+
+      * `title`: An optional title for the expression, i.e. a short string describing its purpose.
+
+      * `description`: An optional description of the expression. This is a longer text which describes the expression.
 
   * `audit_configs`: Specifies cloud audit logging configuration for this policy.
 

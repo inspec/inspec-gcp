@@ -14,6 +14,7 @@ describe google_runtime_config_config_iam_binding(project: "project", name: "nam
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_runtime_config_config_iam_binding` resource:
 

@@ -14,6 +14,7 @@ describe google_storage_bucket_iam_binding(bucket: "bucket", role: "roles/editor
 end
 ```
 
+
 ## Properties
 Properties that can be accessed from the `google_storage_bucket_iam_binding` resource:
 
