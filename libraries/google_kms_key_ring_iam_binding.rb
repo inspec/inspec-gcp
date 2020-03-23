@@ -52,7 +52,7 @@ class KeyRingIamBinding < GcpResourceBase
         end
       else
         # No condition defined in control, skip any binding with a condition
-        next unless (binding.condition.title.nil? && binding.condition.description.nil? && binding.condition.expression.nil?)
+        next unless binding.condition.title.nil? && binding.condition.description.nil? && binding.condition.expression.nil?
       end
       @members_list = binding.members
       @condition = binding.condition

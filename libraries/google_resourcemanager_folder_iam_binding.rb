@@ -16,10 +16,10 @@
 require 'gcp_backend'
 require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud Pub/Sub IAM Binding resources.
-class TopicIamBinding < GcpResourceBase
-  name 'google_pubsub_topic_iam_binding'
-  desc 'Topic Iam Binding'
+# A provider to manage Resource Manager IAM Binding resources.
+class FolderIamBinding < GcpResourceBase
+  name 'google_resourcemanager_folder_iam_binding'
+  desc 'Folder Iam Binding'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -30,7 +30,7 @@ class TopicIamBinding < GcpResourceBase
     super(params.merge({ use_http_transport: true }))
     raise "Expected 'role' to be defined for iam_binding resource" unless params.key?(:role)
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
     parse unless @fetched.nil?
   end
 
@@ -69,16 +69,16 @@ class TopicIamBinding < GcpResourceBase
   end
 
   def to_s
-    "Topic IamBinding #{@params[:name]} Role: #{@params[:role]}"
+    "Folder IamBinding #{@params[:name]} Role: #{@params[:role]}"
   end
 
   private
 
   def product_url
-    'https://pubsub.googleapis.com/v1/'
+    'https://cloudresourcemanager.googleapis.com/v2/'
   end
 
   def resource_base_url
-    'projects/{{project}}/topics/{{name}}:getIamPolicy'
+    '{{name}}:getIamPolicy'
   end
 end

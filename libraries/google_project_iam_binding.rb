@@ -30,7 +30,7 @@ class ProjectIamBinding < GcpResourceBase
     super(params.merge({ use_http_transport: true }))
     raise "Expected 'role' to be defined for iam_binding resource" unless params.key?(:role)
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post', {'options' => {'requestedPolicyVersion' => 3 }}.to_json )
+    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post', { 'options' => { 'requestedPolicyVersion' => 3 } }.to_json)
     parse unless @fetched.nil?
   end
 
@@ -52,7 +52,7 @@ class ProjectIamBinding < GcpResourceBase
         end
       else
         # No condition defined in control, skip any binding with a condition
-        next unless (binding.condition.title.nil? && binding.condition.description.nil? && binding.condition.expression.nil?)
+        next unless binding.condition.title.nil? && binding.condition.description.nil? && binding.condition.expression.nil?
       end
       @members_list = binding.members
       @condition = binding.condition
