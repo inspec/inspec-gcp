@@ -43,7 +43,7 @@ See [google_compute_region_backend_service.md](google_compute_region_backend_ser
   * `session_affinities`: an array of `google_compute_region_backend_service` session_affinity
   * `timeout_secs`: an array of `google_compute_region_backend_service` timeout_sec
   * `log_configs`: (Beta only) an array of `google_compute_region_backend_service` log_config
-  * `networks`: (Beta only) an array of `google_compute_region_backend_service` network
+  * `networks`: an array of `google_compute_region_backend_service` network
   * `regions`: an array of `google_compute_region_backend_service` region
 
 ## Filter Criteria

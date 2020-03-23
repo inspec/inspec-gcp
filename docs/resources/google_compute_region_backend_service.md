@@ -164,7 +164,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
     * `sample_rate`: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 
-  * `network`: (Beta only) The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
+  * `network`: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
 
   * `region`: A reference to the region where the regional backend service resides.
 
