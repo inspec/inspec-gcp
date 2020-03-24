@@ -6,6 +6,10 @@ platform: gcp
 ## Syntax
 A `google_project_service` is used to test a Google Service resource
 
+
+## Beta Resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+
 ## Examples
 ```
 describe google_project_service(project: 'chef-gcp-inspec', name: 'maps-android-backend.googleapis.com') do

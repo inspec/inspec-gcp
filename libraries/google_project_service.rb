@@ -55,8 +55,12 @@ class ServiceUsageService < GcpResourceBase
 
   private
 
-  def product_url(_ = nil)
-    'https://serviceusage.googleapis.com/v1/'
+  def product_url(beta = false)
+    if beta
+      'https://serviceusage.googleapis.com/v1beta1/'
+    else
+      'https://serviceusage.googleapis.com/v1/'
+    end
   end
 
   def resource_base_url
