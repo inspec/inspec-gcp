@@ -22,6 +22,5 @@ control 'google_compute_project_info-1.0' do
   describe google_compute_project_info(project: gcp_project_id) do
   	it { should exist }
   	its('default_service_account') { should match "developer.gserviceaccount.com" }
-  	it { should_not be_has_enabled_oslogin }
   end
 end

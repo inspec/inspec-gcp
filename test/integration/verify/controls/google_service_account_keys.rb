@@ -21,7 +21,7 @@ control 'google_service_account_keys-1.0' do
   impact 1.0
   title 'google_service_account_keys resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_service_account_keys(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com") do
     its('count') { should be <= 1000 }
   end

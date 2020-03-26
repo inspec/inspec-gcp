@@ -15,7 +15,6 @@ This resource has beta fields available. To retrieve these fields, include `beta
 describe google_compute_project_info(project: 'chef-gcp-inspec') do
 	it { should exist }
 	its('default_service_account') { should match "developer.gserviceaccount.com" }
-	it { should_not be_has_enabled_oslogin }
 end
 ```
 

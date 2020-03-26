@@ -28,7 +28,7 @@ control 'google_appengine_standard_app_version-1.0' do
   impact 1.0
   title 'google_appengine_standard_app_version resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
 
   describe google_appengine_standard_app_version(project: gcp_project_id, location: gcp_location, version_id: standardappversion['version_id'], service: standardappversion['service']) do
     it { should exist }

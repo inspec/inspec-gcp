@@ -22,7 +22,7 @@ control 'google_kms_key_rings-1.0' do
   impact 1.0
   title 'google_kms_key_rings resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_kms_key_rings(project: gcp_project_id, location: gcp_location) do
     its('key_ring_names'){ should include gcp_kms_key_ring_policy_name }
   end

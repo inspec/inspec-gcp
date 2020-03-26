@@ -21,7 +21,7 @@ control 'google_service_accounts-1.0' do
   impact 1.0
   title 'google_service_accounts resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_service_accounts(project: gcp_project_id, name: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com") do
     its('service_account_emails') { should include "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com" }
     its('count') { should be <= 1000 }
