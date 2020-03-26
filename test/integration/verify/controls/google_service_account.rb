@@ -21,7 +21,7 @@ control 'google_service_account-1.0' do
   impact 1.0
   title 'google_service_account resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_service_account(project: gcp_project_id, name: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com") do
     it { should exist }
     its('display_name') { should cmp gcp_service_account_display_name }

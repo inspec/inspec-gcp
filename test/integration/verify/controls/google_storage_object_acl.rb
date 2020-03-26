@@ -23,7 +23,7 @@ control 'google_storage_object_acl-1.0' do
   impact 1.0
   title 'google_storage_object_acl resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_storage_object_acl(bucket: gcp_storage_bucket_object, object: gcp_storage_bucket_object_name, entity: "user-#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com") do
     it { should exist }
     its('role') { should cmp "OWNER" }

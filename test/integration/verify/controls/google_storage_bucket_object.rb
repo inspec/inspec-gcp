@@ -23,7 +23,7 @@ control 'google_storage_bucket_object-1.0' do
   impact 1.0
   title 'google_storage_bucket_object resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_storage_bucket_object(bucket: gcp_storage_bucket_object, object: gcp_storage_bucket_object_name) do
     it { should exist }
     its('size.to_i') { should be > 0 }

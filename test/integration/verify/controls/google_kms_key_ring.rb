@@ -22,7 +22,7 @@ control 'google_kms_key_ring-1.0' do
   impact 1.0
   title 'google_kms_key_ring resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_kms_key_ring(project: gcp_project_id, location: gcp_location, name: gcp_kms_key_ring_policy_name) do
     it { should exist }
     its('create_time') { should be > Time.now - 365*60*60*24*10 }

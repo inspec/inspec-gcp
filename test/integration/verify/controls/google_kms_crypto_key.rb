@@ -23,7 +23,7 @@ control 'google_kms_crypto_key-1.0' do
   impact 1.0
   title 'google_kms_crypto_key resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_kms_crypto_key(project: gcp_project_id, location: gcp_location, key_ring_name: gcp_kms_key_ring_policy_name, name: gcp_kms_crypto_key_name_policy) do
     it { should exist }
     its('crypto_key_name') { should cmp gcp_kms_crypto_key_name_policy }

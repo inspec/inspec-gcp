@@ -28,7 +28,7 @@ control 'google_appengine_standard_app_versions-1.0' do
   impact 1.0
   title 'google_appengine_standard_app_versions resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
 
   describe google_appengine_standard_app_versions(project: gcp_project_id, location: gcp_location,service: standardappversion['service']) do
     its('runtimes') { should include standardappversion['runtime'] }

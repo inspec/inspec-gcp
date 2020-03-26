@@ -20,7 +20,7 @@ control 'google_organizations-1.0' do
   impact 1.0
   title 'google_organizations resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
 
   describe google_organizations do
     its('names') { should include "organizations/#{gcp_organization_id}" }

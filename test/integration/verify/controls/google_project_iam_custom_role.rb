@@ -21,7 +21,7 @@ control 'google_project_iam_custom_role-1.0' do
   impact 1.0
   title 'google_project_iam_custom_role resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_project_iam_custom_role(project: gcp_project_id, name: gcp_project_iam_custom_role_id) do
     it { should exist }
     its('stage') { should eq 'GA' }

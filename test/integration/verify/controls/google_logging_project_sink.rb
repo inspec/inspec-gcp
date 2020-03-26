@@ -21,7 +21,7 @@ control 'google_logging_project_sink-1.0' do
   impact 1.0
   title 'google_logging_project_sink resource test'
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   describe google_logging_project_sink(project: gcp_project_id, name: project_sink['name']) do
     it { should exist }
     its('filter') { should cmp project_sink['filter'] }
