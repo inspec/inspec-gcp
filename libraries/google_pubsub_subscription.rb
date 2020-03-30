@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/pubsub/property/subscription_dead_letter_policy'
 require 'google/pubsub/property/subscription_expiration_policy'
 require 'google/pubsub/property/subscription_push_config'
 require 'google/pubsub/property/subscription_push_config_oidc_token'
@@ -33,6 +34,7 @@ class PubsubSubscription < GcpResourceBase
   attr_reader :message_retention_duration
   attr_reader :retain_acked_messages
   attr_reader :expiration_policy
+  attr_reader :dead_letter_policy
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -50,6 +52,7 @@ class PubsubSubscription < GcpResourceBase
     @message_retention_duration = @fetched['messageRetentionDuration']
     @retain_acked_messages = @fetched['retainAckedMessages']
     @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
+    @dead_letter_policy = GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(@fetched['deadLetterPolicy'], to_s)
   end
 
   def exists?
