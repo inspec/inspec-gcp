@@ -13,30 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/accesscontextmanager/property/serviceperimeter_status_vpc_accessible_services'
 module GoogleInSpec
   module AccessContextManager
     module Property
-      class ServicePerimeterStatus
-        attr_reader :resources
+      class ServicePerimeterStatusVPCAccessibleServices
+        attr_reader :enable_restriction
 
-        attr_reader :access_levels
-
-        attr_reader :restricted_services
-
-        attr_reader :vpc_accessible_services
+        attr_reader :allowed_services
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @resources = args['resources']
-          @access_levels = args['accessLevels']
-          @restricted_services = args['restrictedServices']
-          @vpc_accessible_services = GoogleInSpec::AccessContextManager::Property::ServicePerimeterStatusVPCAccessibleServices.new(args['vpcAccessibleServices'], to_s)
+          @enable_restriction = args['enableRestriction']
+          @allowed_services = args['allowedServices']
         end
 
         def to_s
-          "#{@parent_identifier} ServicePerimeterStatus"
+          "#{@parent_identifier} ServicePerimeterStatusVPCAccessibleServices"
         end
       end
     end

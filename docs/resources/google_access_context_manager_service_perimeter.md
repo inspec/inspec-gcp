@@ -42,6 +42,12 @@ Properties that can be accessed from the `google_access_context_manager_service_
 
     * `restricted_services`: GCP services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 
+    * `vpc_accessible_services`: Specifies how APIs are allowed to communicate within the Service Perimeter.
+
+      * `enable_restriction`: Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowedServices'.
+
+      * `allowed_services`: The list of APIs usable within the Service Perimeter. Must be empty unless `enableRestriction` is True.
+
   * `parent`: The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
 
   * `name`: Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
