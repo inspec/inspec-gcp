@@ -15,6 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/accesscontextmanager/property/serviceperimeter_status'
+require 'google/accesscontextmanager/property/serviceperimeter_status_vpc_accessible_services'
 
 # A provider to manage Access Context Manager resources.
 class AccessContextManagerServicePerimeter < GcpResourceBase
