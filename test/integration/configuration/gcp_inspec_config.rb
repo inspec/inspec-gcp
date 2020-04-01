@@ -102,7 +102,7 @@ module GCPInspecConfig
         :gcp_db_user_name => "inspecgcpuser",
         :gcp_db_user_password => (("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + %w{! @ # $ % & / ( ) + ? *}).sample(20).join,
         :gcp_dns_zone_name => "dnszone-#{add_random_string}.com.",
-        :gcp_organization_iam_custom_role_id => "org-role",
+        :gcp_organization_iam_custom_role_id => "org_role_#{add_random_string}",
         # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
         # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
         # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
