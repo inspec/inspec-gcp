@@ -19,6 +19,7 @@ gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'G
 gcp_kms_key_ring_policy_name = attribute(:gcp_kms_key_ring_policy_name, default: 'gcp_kms_key_ring_policy_name', description: 'Key ring name')
 gcp_kms_crypto_key_name_policy = attribute(:gcp_kms_crypto_key_name_policy, default: 'gcp_kms_crypto_key_name_policy', description: 'Key name')
 gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 'gcp_enable_privileged_resources', description: 'If we are running tests with escalated permissions(required for this test)')
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
 control 'google_kms_crypto_key-1.0' do
   impact 1.0
   title 'google_kms_crypto_key resource test'
