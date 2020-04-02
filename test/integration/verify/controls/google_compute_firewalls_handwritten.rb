@@ -18,7 +18,7 @@ control 'gcp-firewalls-1.0' do
     its('firewall_names') { should include "default-allow-internal" }
     its('firewall_names') { should include "default-allow-icmp" }
     # Only make the call if the configuration flag is specified and the test will run
-    gcp_firewall_id = `gcloud compute firewall-rules list --filter="name=default-allow-ssh" --format=json | grep id | grep -o '[0-9]\\+'`.chomp.to_i
+    gcp_firewall_id = `gcloud compute firewall-rules list --filter="name=default-allow-ssh" --format=json | grep id | grep -o '[0-9]\\+'`.chomp
     its('firewall_ids') { should include gcp_firewall_id }
   end
 

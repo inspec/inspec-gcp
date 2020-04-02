@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
-require 'time'  
+require 'time'
 require 'google/apis/cloudkms_v1'
 
 module Inspec::Resources
