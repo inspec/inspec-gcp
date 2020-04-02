@@ -18,7 +18,6 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      Inspec.deprecate :google_kms_key_ring_iam_bindings, 'google_kms_key_ring_iam_bindings is deprecated, please use to google_kms_key_ring_iam_policy'
       @key_ring_url = opts[:key_ring_url]
     end
 
