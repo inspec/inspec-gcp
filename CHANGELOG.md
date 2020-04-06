@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 0.23.4 -->
+<!-- latest_release 1.0.0 -->
+## [v1.0.0](https://github.com/inspec/inspec-gcp/tree/v1.0.0) (2020-04-06)
+
+#### Merged Pull Requests
+- inspec-gcp 1.0 [#226](https://github.com/inspec/inspec-gcp/pull/226) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v0.23.4](https://github.com/inspec/inspec-gcp/tree/v0.23.4) (2020-01-21)
 
 #### Merged Pull Requests
 - service_account_scopes nilclass [#227](https://github.com/inspec/inspec-gcp/pull/227) ([bgeesaman](https://github.com/bgeesaman))
-<!-- latest_release -->
 
 ## [v0.23.3](https://github.com/inspec/inspec-gcp/tree/v0.23.3) (2020-01-14)
 
