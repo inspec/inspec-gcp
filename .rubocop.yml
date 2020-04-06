@@ -54,8 +54,6 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Style/ConditionalAssignment:
   Enabled: false
-Style/BracesAroundHashParameters:
-  Enabled: false
 Style/AndOr:
   Enabled: false
 Style/Not:
