@@ -50,6 +50,10 @@ class StorageBucket < GcpResourceBase
   attr_reader :website
   attr_reader :project
   attr_reader :predefined_default_object_acl
+<<<<<<< HEAD
+  attr_reader :labels
+=======
+>>>>>>> gcp/master
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -78,6 +82,7 @@ class StorageBucket < GcpResourceBase
     @website = GoogleInSpec::Storage::Property::BucketWebsite.new(@fetched['website'], to_s)
     @project = @fetched['project']
     @predefined_default_object_acl = @fetched['predefinedDefaultObjectAcl']
+    @labels = @fetched['labels']
   end
 
   # Handles parsing RFC3339 time string

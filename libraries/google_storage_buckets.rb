@@ -42,6 +42,7 @@ class StorageBuckets < GcpResourceBase
   filter_table_config.add(:websites, field: :website)
   filter_table_config.add(:projects, field: :project)
   filter_table_config.add(:predefined_default_object_acls, field: :predefined_default_object_acl)
+  filter_table_config.add(:labels, field: :labels)
 
   filter_table_config.connect(self, :table)
 
@@ -100,6 +101,7 @@ class StorageBuckets < GcpResourceBase
       'website' => ->(obj) { return :website, GoogleInSpec::Storage::Property::BucketWebsite.new(obj['website'], to_s) },
       'project' => ->(obj) { return :project, obj['project'] },
       'predefinedDefaultObjectAcl' => ->(obj) { return :predefined_default_object_acl, obj['predefinedDefaultObjectAcl'] },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
     }
   end
 

@@ -14,6 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/accesscontextmanager/property/serviceperimeter_spec'
+require 'google/accesscontextmanager/property/serviceperimeter_spec_vpc_accessible_services'
 require 'google/accesscontextmanager/property/serviceperimeter_status'
 require 'google/accesscontextmanager/property/serviceperimeter_status_vpc_accessible_services'
 
@@ -30,6 +32,8 @@ class AccessContextManagerServicePerimeter < GcpResourceBase
   attr_reader :update_time
   attr_reader :perimeter_type
   attr_reader :status
+  attr_reader :spec
+  attr_reader :use_explicit_dry_run_spec
   attr_reader :parent
   attr_reader :name
 
@@ -47,6 +51,8 @@ class AccessContextManagerServicePerimeter < GcpResourceBase
     @update_time = parse_time_string(@fetched['updateTime'])
     @perimeter_type = @fetched['perimeterType']
     @status = GoogleInSpec::AccessContextManager::Property::ServicePerimeterStatus.new(@fetched['status'], to_s)
+    @spec = GoogleInSpec::AccessContextManager::Property::ServicePerimeterSpec.new(@fetched['spec'], to_s)
+    @use_explicit_dry_run_spec = @fetched['useExplicitDryRunSpec']
     @parent = @fetched['parent']
     @name = name_from_self_link(@fetched['name'])
   end

@@ -37,6 +37,7 @@ class ComputeHealthChecks < GcpResourceBase
   filter_table_config.add(:tcp_health_checks, field: :tcp_health_check)
   filter_table_config.add(:ssl_health_checks, field: :ssl_health_check)
   filter_table_config.add(:http2_health_checks, field: :http2_health_check)
+  filter_table_config.add(:log_configs, field: :log_config)
 
   filter_table_config.connect(self, :table)
 
@@ -90,6 +91,7 @@ class ComputeHealthChecks < GcpResourceBase
       'tcpHealthCheck' => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s) },
       'sslHealthCheck' => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s) },
       'http2HealthCheck' => ->(obj) { return :http2_health_check, GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(obj['http2HealthCheck'], to_s) },
+      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::HealthCheckLogConfig.new(obj['logConfig'], to_s) },
     }
   end
 

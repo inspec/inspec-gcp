@@ -13,6 +13,10 @@ describe google_storage_bucket(name: bucket-name) do
   its('location') { should cmp 'europe-west2'.upcase }
 
   its('storage_class') { should eq "STANDARD" }
+<<<<<<< HEAD
+  its('labels') { should include("key" => "value") }
+=======
+>>>>>>> gcp/master
 end
 
 describe google_storage_bucket(name: "nonexistent") do
@@ -165,6 +169,8 @@ Properties that can be accessed from the `google_storage_bucket` resource:
   * `project`: A valid API project identifier.
 
   * `predefined_default_object_acl`: Apply a predefined set of default object access controls to this bucket.  Acceptable values are:   - "authenticatedRead": Object owner gets OWNER access, and     allAuthenticatedUsers get READER access.   - "bucketOwnerFullControl": Object owner gets OWNER access, and     project team owners get OWNER access.   - "bucketOwnerRead": Object owner gets OWNER access, and project     team owners get READER access.   - "private": Object owner gets OWNER access.   - "projectPrivate": Object owner gets OWNER access, and project team     members get access according to their roles.   - "publicRead": Object owner gets OWNER access, and allUsers get     READER access.
+
+  * `labels`: Labels applied to this bucket.  A list of key->value pairs.
 
 
 ## GCP Permissions

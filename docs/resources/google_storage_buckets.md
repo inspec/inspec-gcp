@@ -58,6 +58,7 @@ See [google_storage_bucket.md](google_storage_bucket.md) for more detailed infor
   * `websites`: an array of `google_storage_bucket` website
   * `projects`: an array of `google_storage_bucket` project
   * `predefined_default_object_acls`: an array of `google_storage_bucket` predefined_default_object_acl
+  * `labels`: an array of `google_storage_bucket` labels
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
