@@ -13,10 +13,7 @@ describe google_storage_bucket(name: bucket-name) do
   its('location') { should cmp 'europe-west2'.upcase }
 
   its('storage_class') { should eq "STANDARD" }
-<<<<<<< HEAD
   its('labels') { should include("key" => "value") }
-=======
->>>>>>> gcp/master
 end
 
 describe google_storage_bucket(name: "nonexistent") do
