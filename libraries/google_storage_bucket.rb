@@ -50,10 +50,7 @@ class StorageBucket < GcpResourceBase
   attr_reader :website
   attr_reader :project
   attr_reader :predefined_default_object_acl
-<<<<<<< HEAD
   attr_reader :labels
-=======
->>>>>>> gcp/master
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
