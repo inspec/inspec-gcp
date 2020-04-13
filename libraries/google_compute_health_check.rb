@@ -17,6 +17,7 @@ require 'gcp_backend'
 require 'google/compute/property/healthcheck_http2_health_check'
 require 'google/compute/property/healthcheck_http_health_check'
 require 'google/compute/property/healthcheck_https_health_check'
+require 'google/compute/property/healthcheck_log_config'
 require 'google/compute/property/healthcheck_ssl_health_check'
 require 'google/compute/property/healthcheck_tcp_health_check'
 
@@ -41,6 +42,7 @@ class ComputeHealthCheck < GcpResourceBase
   attr_reader :tcp_health_check
   attr_reader :ssl_health_check
   attr_reader :http2_health_check
+  attr_reader :log_config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -64,6 +66,7 @@ class ComputeHealthCheck < GcpResourceBase
     @tcp_health_check = GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(@fetched['tcpHealthCheck'], to_s)
     @ssl_health_check = GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(@fetched['sslHealthCheck'], to_s)
     @http2_health_check = GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(@fetched['http2HealthCheck'], to_s)
+    @log_config = GoogleInSpec::Compute::Property::HealthCheckLogConfig.new(@fetched['logConfig'], to_s)
   end
 
   # Handles parsing RFC3339 time string

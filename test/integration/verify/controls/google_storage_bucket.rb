@@ -25,6 +25,7 @@ control 'google_storage_bucket-1.0' do
     its('location') { should cmp gcp_location.upcase }
 
     its('storage_class') { should eq "STANDARD" }
+    its('labels') { should include("key" => "value") }
   end
 
   describe google_storage_bucket(name: "nonexistent") do

@@ -29,6 +29,8 @@ See [google_access_context_manager_service_perimeter.md](google_access_context_m
   * `update_times`: an array of `google_access_context_manager_service_perimeter` update_time
   * `perimeter_types`: an array of `google_access_context_manager_service_perimeter` perimeter_type
   * `statuses`: an array of `google_access_context_manager_service_perimeter` status
+  * `specs`: an array of `google_access_context_manager_service_perimeter` spec
+  * `use_explicit_dry_run_specs`: an array of `google_access_context_manager_service_perimeter` use_explicit_dry_run_spec
   * `parents`: an array of `google_access_context_manager_service_perimeter` parent
   * `names`: an array of `google_access_context_manager_service_perimeter` name
 

@@ -29,6 +29,8 @@ class AccessContextManagerServicePerimeters < GcpResourceBase
   filter_table_config.add(:update_times, field: :update_time)
   filter_table_config.add(:perimeter_types, field: :perimeter_type)
   filter_table_config.add(:statuses, field: :status)
+  filter_table_config.add(:specs, field: :spec)
+  filter_table_config.add(:use_explicit_dry_run_specs, field: :use_explicit_dry_run_spec)
   filter_table_config.add(:parents, field: :parent)
   filter_table_config.add(:names, field: :name)
 
@@ -76,6 +78,8 @@ class AccessContextManagerServicePerimeters < GcpResourceBase
       'updateTime' => ->(obj) { return :update_time, parse_time_string(obj['updateTime']) },
       'perimeterType' => ->(obj) { return :perimeter_type, obj['perimeterType'] },
       'status' => ->(obj) { return :status, GoogleInSpec::AccessContextManager::Property::ServicePerimeterStatus.new(obj['status'], to_s) },
+      'spec' => ->(obj) { return :spec, GoogleInSpec::AccessContextManager::Property::ServicePerimeterSpec.new(obj['spec'], to_s) },
+      'useExplicitDryRunSpec' => ->(obj) { return :use_explicit_dry_run_spec, obj['useExplicitDryRunSpec'] },
       'parent' => ->(obj) { return :parent, obj['parent'] },
       'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
     }
