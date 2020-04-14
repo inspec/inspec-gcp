@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.0.0 -->
+<!-- latest_release 1.1.0 -->
+## [v1.1.0](https://github.com/inspec/inspec-gcp/tree/v1.1.0) (2020-04-14)
+
+#### Merged Pull Requests
+- Catch up to mm master, bucket labels [#244](https://github.com/inspec/inspec-gcp/pull/244) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.0.0](https://github.com/inspec/inspec-gcp/tree/v1.0.0) (2020-04-06)
 
 #### Merged Pull Requests
 - inspec-gcp 1.0 [#226](https://github.com/inspec/inspec-gcp/pull/226) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v0.23.4](https://github.com/inspec/inspec-gcp/tree/v0.23.4) (2020-01-21)
 
