@@ -17,10 +17,12 @@ require 'gcp_backend'
 require 'google/storage/property/bucket_acl'
 require 'google/storage/property/bucket_cors'
 require 'google/storage/property/bucket_default_object_acl'
+require 'google/storage/property/bucket_encryption'
 require 'google/storage/property/bucket_lifecycle'
 require 'google/storage/property/bucket_lifecycle_rule'
 require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_owner'
+require 'google/storage/property/bucket_retention_policy'
 require 'google/storage/property/bucket_versioning'
 require 'google/storage/property/bucket_website'
 
@@ -48,9 +50,11 @@ class StorageBucket < GcpResourceBase
   attr_reader :updated
   attr_reader :versioning
   attr_reader :website
+  attr_reader :labels
+  attr_reader :encryption
+  attr_reader :retention_policy
   attr_reader :project
   attr_reader :predefined_default_object_acl
-  attr_reader :labels
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -77,9 +81,11 @@ class StorageBucket < GcpResourceBase
     @updated = parse_time_string(@fetched['updated'])
     @versioning = GoogleInSpec::Storage::Property::BucketVersioning.new(@fetched['versioning'], to_s)
     @website = GoogleInSpec::Storage::Property::BucketWebsite.new(@fetched['website'], to_s)
+    @labels = @fetched['labels']
+    @encryption = GoogleInSpec::Storage::Property::BucketEncryption.new(@fetched['encryption'], to_s)
+    @retention_policy = GoogleInSpec::Storage::Property::BucketRetentionPolicy.new(@fetched['retentionPolicy'], to_s)
     @project = @fetched['project']
     @predefined_default_object_acl = @fetched['predefinedDefaultObjectAcl']
-    @labels = @fetched['labels']
   end
 
   # Handles parsing RFC3339 time string

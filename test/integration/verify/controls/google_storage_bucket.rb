@@ -26,6 +26,7 @@ control 'google_storage_bucket-1.0' do
 
     its('storage_class') { should eq "STANDARD" }
     its('labels') { should include("key" => "value") }
+    its('retention_policy.retention_period') { should cmp 1000 }
   end
 
   describe google_storage_bucket(name: "nonexistent") do

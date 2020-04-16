@@ -14,6 +14,7 @@ describe google_storage_bucket(name: bucket-name) do
 
   its('storage_class') { should eq "STANDARD" }
   its('labels') { should include("key" => "value") }
+  its('retention_policy.retention_period') { should cmp 1000 }
 end
 
 describe google_storage_bucket(name: "nonexistent") do
@@ -163,11 +164,23 @@ Properties that can be accessed from the `google_storage_bucket` resource:
 
     * `not_found_page`: If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
 
+  * `labels`: Labels applied to this bucket.  A list of key->value pairs.
+
+  * `encryption`: Encryption configuration for the bucket
+
+    * `default_kms_key_name`: A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+
+  * `retention_policy`: Retention policy for the bucket
+
+    * `effective_time`: The time from which the retention policy was effective
+
+    * `is_locked`: If the retention policy is locked. If true, the retention policy cannot be removed and the period cannot be reduced.
+
+    * `retention_period`: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or made noncurrent.
+
   * `project`: A valid API project identifier.
 
   * `predefined_default_object_acl`: Apply a predefined set of default object access controls to this bucket.  Acceptable values are:   - "authenticatedRead": Object owner gets OWNER access, and     allAuthenticatedUsers get READER access.   - "bucketOwnerFullControl": Object owner gets OWNER access, and     project team owners get OWNER access.   - "bucketOwnerRead": Object owner gets OWNER access, and project     team owners get READER access.   - "private": Object owner gets OWNER access.   - "projectPrivate": Object owner gets OWNER access, and project team     members get access according to their roles.   - "publicRead": Object owner gets OWNER access, and allUsers get     READER access.
-
-  * `labels`: Labels applied to this bucket.  A list of key->value pairs.
 
 
 ## GCP Permissions

@@ -56,9 +56,11 @@ See [google_storage_bucket.md](google_storage_bucket.md) for more detailed infor
   * `updateds`: an array of `google_storage_bucket` updated
   * `versionings`: an array of `google_storage_bucket` versioning
   * `websites`: an array of `google_storage_bucket` website
+  * `labels`: an array of `google_storage_bucket` labels
+  * `encryptions`: an array of `google_storage_bucket` encryption
+  * `retention_policies`: an array of `google_storage_bucket` retention_policy
   * `projects`: an array of `google_storage_bucket` project
   * `predefined_default_object_acls`: an array of `google_storage_bucket` predefined_default_object_acl
-  * `labels`: an array of `google_storage_bucket` labels
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
