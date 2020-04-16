@@ -40,9 +40,11 @@ class StorageBuckets < GcpResourceBase
   filter_table_config.add(:updateds, field: :updated)
   filter_table_config.add(:versionings, field: :versioning)
   filter_table_config.add(:websites, field: :website)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:encryptions, field: :encryption)
+  filter_table_config.add(:retention_policies, field: :retention_policy)
   filter_table_config.add(:projects, field: :project)
   filter_table_config.add(:predefined_default_object_acls, field: :predefined_default_object_acl)
-  filter_table_config.add(:labels, field: :labels)
 
   filter_table_config.connect(self, :table)
 
@@ -99,9 +101,11 @@ class StorageBuckets < GcpResourceBase
       'updated' => ->(obj) { return :updated, parse_time_string(obj['updated']) },
       'versioning' => ->(obj) { return :versioning, GoogleInSpec::Storage::Property::BucketVersioning.new(obj['versioning'], to_s) },
       'website' => ->(obj) { return :website, GoogleInSpec::Storage::Property::BucketWebsite.new(obj['website'], to_s) },
+      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'encryption' => ->(obj) { return :encryption, GoogleInSpec::Storage::Property::BucketEncryption.new(obj['encryption'], to_s) },
+      'retentionPolicy' => ->(obj) { return :retention_policy, GoogleInSpec::Storage::Property::BucketRetentionPolicy.new(obj['retentionPolicy'], to_s) },
       'project' => ->(obj) { return :project, obj['project'] },
       'predefinedDefaultObjectAcl' => ->(obj) { return :predefined_default_object_acl, obj['predefinedDefaultObjectAcl'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
     }
   end
 
