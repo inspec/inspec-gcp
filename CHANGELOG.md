@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.1.0 -->
+<!-- latest_release 1.2.0 -->
+## [v1.2.0](https://github.com/inspec/inspec-gcp/tree/v1.2.0) (2020-04-16)
+
+#### Merged Pull Requests
+- Add security policies [#246](https://github.com/inspec/inspec-gcp/pull/246) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.1.0](https://github.com/inspec/inspec-gcp/tree/v1.1.0) (2020-04-14)
 
 #### Merged Pull Requests
 - Catch up to mm master, bucket labels [#244](https://github.com/inspec/inspec-gcp/pull/244) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.0.0](https://github.com/inspec/inspec-gcp/tree/v1.0.0) (2020-04-06)
 
