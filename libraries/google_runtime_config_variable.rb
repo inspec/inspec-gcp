@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Cloud Runtime Configuration resources.
+# A provider to manage Runtime Configurator resources.
 class RuntimeConfigVariable < GcpResourceBase
   name 'google_runtime_config_variable'
   desc 'Variable'

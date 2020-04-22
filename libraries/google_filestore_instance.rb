@@ -17,7 +17,7 @@ require 'gcp_backend'
 require 'google/filestore/property/instance_file_shares'
 require 'google/filestore/property/instance_networks'
 
-# A provider to manage Cloud Filestore resources.
+# A provider to manage Filestore resources.
 class FilestoreInstance < GcpResourceBase
   name 'google_filestore_instance'
   desc 'Instance'

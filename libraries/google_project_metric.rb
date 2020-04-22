@@ -21,7 +21,7 @@ require 'google/logging/property/metric_bucket_options_linear_buckets'
 require 'google/logging/property/metric_metric_descriptor'
 require 'google/logging/property/metric_metric_descriptor_labels'
 
-# A provider to manage Stackdriver Logging resources.
+# A provider to manage Cloud (Stackdriver) Logging resources.
 class LoggingMetric < GcpResourceBase
   name 'google_project_metric'
   desc 'Metric'

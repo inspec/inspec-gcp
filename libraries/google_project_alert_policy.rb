@@ -18,7 +18,7 @@ require 'google/monitoring/property/alertpolicy_conditions'
 require 'google/monitoring/property/alertpolicy_creation_record'
 require 'google/monitoring/property/alertpolicy_documentation'
 
-# A provider to manage Stackdriver Monitoring resources.
+# A provider to manage Cloud (Stackdriver) Monitoring resources.
 class MonitoringAlertPolicy < GcpResourceBase
   name 'google_project_alert_policy'
   desc 'AlertPolicy'

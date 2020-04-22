@@ -17,7 +17,7 @@ require 'gcp_backend'
 require 'google/iam/property/iam_policy_audit_configs'
 require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud Runtime Configuration IAM Policy resources.
+# A provider to manage Runtime Configurator IAM Policy resources.
 class ConfigIamPolicy < GcpResourceBase
   name 'google_runtime_config_config_iam_policy'
   desc 'Config Iam Policy'

@@ -31,7 +31,7 @@ require 'google/dataproc/property/cluster_config_worker_config'
 require 'google/dataproc/property/cluster_config_worker_config_disk_config'
 require 'google/dataproc/property/cluster_config_worker_config_managed_group_config'
 
-# A provider to manage Cloud Dataproc resources.
+# A provider to manage Dataproc resources.
 class DataprocCluster < GcpResourceBase
   name 'google_dataproc_cluster'
   desc 'Cluster'

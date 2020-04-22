@@ -16,7 +16,7 @@
 require 'gcp_backend'
 require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud KMS IAM Binding resources.
+# A provider to manage Cloud Key Management Service IAM Binding resources.
 class KeyRingIamBinding < GcpResourceBase
   name 'google_kms_key_ring_iam_binding'
   desc 'KeyRing Iam Binding'

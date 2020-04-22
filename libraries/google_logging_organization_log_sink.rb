@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Stackdriver Logging resources.
+# A provider to manage Cloud (Stackdriver) Logging resources.
 class LoggingOrganizationLogSink < GcpResourceBase
   name 'google_logging_organization_log_sink'
   desc 'OrganizationLogSink'
