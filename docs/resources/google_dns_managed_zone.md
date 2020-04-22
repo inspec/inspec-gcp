@@ -106,6 +106,12 @@ Properties that can be accessed from the `google_dns_managed_zone` resource:
 
   * `reverse_lookup`: (Beta only) Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under `private_visibility_config`.
 
+  * `service_directory_config`: (Beta only) The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+
+    * `namespace`: The namespace associated with the zone.
+
+      * `namespace_url`: The fully qualified URL of the service directory namespace that should be associated with the zone. Ignored for `public` visibility zones.
+
 
 ## GCP Permissions
 

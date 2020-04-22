@@ -22,6 +22,8 @@ require 'google/dns/property/managedzone_peering_config'
 require 'google/dns/property/managedzone_peering_config_target_network'
 require 'google/dns/property/managedzone_private_visibility_config'
 require 'google/dns/property/managedzone_private_visibility_config_networks'
+require 'google/dns/property/managedzone_service_directory_config'
+require 'google/dns/property/managedzone_service_directory_config_namespace'
 
 # A provider to manage Cloud DNS resources.
 class DNSManagedZone < GcpResourceBase
@@ -44,6 +46,7 @@ class DNSManagedZone < GcpResourceBase
   attr_reader :forwarding_config
   attr_reader :peering_config
   attr_reader :reverse_lookup
+  attr_reader :service_directory_config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -67,6 +70,7 @@ class DNSManagedZone < GcpResourceBase
     @forwarding_config = GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(@fetched['forwardingConfig'], to_s)
     @peering_config = GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(@fetched['peeringConfig'], to_s)
     @reverse_lookup = @fetched['reverseLookupConfig']
+    @service_directory_config = GoogleInSpec::DNS::Property::ManagedZoneServiceDirectoryConfig.new(@fetched['serviceDirectoryConfig'], to_s)
   end
 
   # Handles parsing RFC3339 time string
