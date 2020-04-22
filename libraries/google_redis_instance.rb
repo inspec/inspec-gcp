@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Cloud Memorystore resources.
+# A provider to manage Memorystore (Redis) resources.
 class RedisInstance < GcpResourceBase
   name 'google_redis_instance'
   desc 'Instance'

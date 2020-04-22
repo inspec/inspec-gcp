@@ -17,7 +17,7 @@ require 'gcp_backend'
 require 'google/iam/property/iam_policy_audit_configs'
 require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud KMS IAM Policy resources.
+# A provider to manage Cloud Key Management Service IAM Policy resources.
 class KeyRingIamPolicy < GcpResourceBase
   name 'google_kms_key_ring_iam_policy'
   desc 'KeyRing Iam Policy'

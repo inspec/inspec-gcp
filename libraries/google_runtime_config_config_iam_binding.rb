@@ -16,7 +16,7 @@
 require 'gcp_backend'
 require 'google/iam/property/iam_policy_bindings'
 
-# A provider to manage Cloud Runtime Configuration IAM Binding resources.
+# A provider to manage Runtime Configurator IAM Binding resources.
 class ConfigIamBinding < GcpResourceBase
   name 'google_runtime_config_config_iam_binding'
   desc 'Config Iam Binding'

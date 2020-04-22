@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Cloud KMS resources.
+# A provider to manage Cloud Key Management Service resources.
 class KMSKeyRing < GcpResourceBase
   name 'google_kms_key_ring'
   desc 'KeyRing'

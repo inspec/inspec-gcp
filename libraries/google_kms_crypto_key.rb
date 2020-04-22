@@ -16,7 +16,7 @@
 require 'gcp_backend'
 require 'google/kms/property/cryptokey_version_template'
 
-# A provider to manage Cloud KMS resources.
+# A provider to manage Cloud Key Management Service resources.
 class KMSCryptoKey < GcpResourceBase
   name 'google_kms_crypto_key'
   desc 'CryptoKey'

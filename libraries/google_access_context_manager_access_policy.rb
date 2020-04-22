@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 
-# A provider to manage Access Context Manager resources.
+# A provider to manage Access Context Manager (VPC Service Controls) resources.
 class AccessContextManagerAccessPolicy < GcpResourceBase
   name 'google_access_context_manager_access_policy'
   desc 'AccessPolicy'
