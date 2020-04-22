@@ -37,6 +37,7 @@ class DNSManagedZones < GcpResourceBase
   filter_table_config.add(:forwarding_configs, field: :forwarding_config)
   filter_table_config.add(:peering_configs, field: :peering_config)
   filter_table_config.add(:reverse_lookups, field: :reverse_lookup)
+  filter_table_config.add(:service_directory_configs, field: :service_directory_config)
   filter_table_config.add(:dnssec_config_states, field: :dnssec_config_state)
 
   filter_table_config.connect(self, :table)
@@ -92,6 +93,7 @@ class DNSManagedZones < GcpResourceBase
       'forwardingConfig' => ->(obj) { return :forwarding_config, GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(obj['forwardingConfig'], to_s) },
       'peeringConfig' => ->(obj) { return :peering_config, GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(obj['peeringConfig'], to_s) },
       'reverseLookupConfig' => ->(obj) { return :reverse_lookup, obj['reverseLookupConfig'] },
+      'serviceDirectoryConfig' => ->(obj) { return :service_directory_config, GoogleInSpec::DNS::Property::ManagedZoneServiceDirectoryConfig.new(obj['serviceDirectoryConfig'], to_s) },
     }
   end
 
