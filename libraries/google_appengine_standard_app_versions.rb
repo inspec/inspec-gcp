@@ -28,6 +28,9 @@ class AppEngineStandardAppVersions < GcpResourceBase
   filter_table_config.add(:runtimes, field: :runtime)
   filter_table_config.add(:threadsaves, field: :threadsafe)
   filter_table_config.add(:instance_classes, field: :instance_class)
+  filter_table_config.add(:automatic_scalings, field: :automatic_scaling)
+  filter_table_config.add(:basic_scalings, field: :basic_scaling)
+  filter_table_config.add(:manual_scalings, field: :manual_scaling)
 
   filter_table_config.connect(self, :table)
 
@@ -72,6 +75,9 @@ class AppEngineStandardAppVersions < GcpResourceBase
       'runtime' => ->(obj) { return :runtime, obj['runtime'] },
       'threadsafe' => ->(obj) { return :threadsafe, obj['threadsafe'] },
       'instanceClass' => ->(obj) { return :instance_class, obj['instanceClass'] },
+      'automaticScaling' => ->(obj) { return :automatic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(obj['automaticScaling'], to_s) },
+      'basicScaling' => ->(obj) { return :basic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(obj['basicScaling'], to_s) },
+      'manualScaling' => ->(obj) { return :manual_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(obj['manualScaling'], to_s) },
     }
   end
 

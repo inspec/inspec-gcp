@@ -14,6 +14,10 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/appengine/property/standardappversion_automatic_scaling'
+require 'google/appengine/property/standardappversion_automatic_scaling_standard_scheduler_settings'
+require 'google/appengine/property/standardappversion_basic_scaling'
+require 'google/appengine/property/standardappversion_manual_scaling'
 
 # A provider to manage App Engine resources.
 class AppEngineStandardAppVersion < GcpResourceBase
@@ -27,6 +31,9 @@ class AppEngineStandardAppVersion < GcpResourceBase
   attr_reader :runtime
   attr_reader :threadsafe
   attr_reader :instance_class
+  attr_reader :automatic_scaling
+  attr_reader :basic_scaling
+  attr_reader :manual_scaling
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -41,6 +48,9 @@ class AppEngineStandardAppVersion < GcpResourceBase
     @runtime = @fetched['runtime']
     @threadsafe = @fetched['threadsafe']
     @instance_class = @fetched['instanceClass']
+    @automatic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(@fetched['automaticScaling'], to_s)
+    @basic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(@fetched['basicScaling'], to_s)
+    @manual_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(@fetched['manualScaling'], to_s)
   end
 
   def exists?
