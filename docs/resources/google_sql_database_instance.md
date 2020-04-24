@@ -169,6 +169,8 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
     * `settings_version`: The version of instance settings. This is a required field for  update method to make sure concurrent updates are handled properly.  During update, use the most recent settingsVersion value for this  instance and do not try to update this value.
 
+    * `user_labels`: User-provided labels, represented as a dictionary where each label is a single key value pair.
+
   * `gce_zone`: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 
   * `state`: The current serving state of the database instance.
