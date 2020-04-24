@@ -33,6 +33,8 @@ module GoogleInSpec
 
         attr_reader :settings_version
 
+        attr_reader :user_labels
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -42,6 +44,7 @@ module GoogleInSpec
           @availability_type = args['availabilityType']
           @backup_configuration = GoogleInSpec::SQL::Property::DatabaseInstanceSettingsBackupConfiguration.new(args['backupConfiguration'], to_s)
           @settings_version = args['settingsVersion']
+          @user_labels = args['userLabels']
         end
 
         def to_s
