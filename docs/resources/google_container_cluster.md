@@ -109,6 +109,11 @@ Properties that can be accessed from the `google_container_cluster` resource:
       * `value`: Value for taint
 
       * `effect`: Effect for taint
+      Possible values:
+        * EFFECT_UNSPECIFIED
+        * NO_SCHEDULE
+        * PREFER_NO_SCHEDULE
+        * NO_EXECUTE
 
   * `master_auth`: The authentication information for accessing the master endpoint.
 
@@ -127,8 +132,14 @@ Properties that can be accessed from the `google_container_cluster` resource:
     * `client_key`: Base64-encoded private key used by clients to authenticate to the cluster endpoint.
 
   * `logging_service`: The logging service the cluster should use to write logs. Currently available options:  logging.googleapis.com - the Google Cloud Logging service. none - no logs will be exported from the cluster.  if left as an empty string,logging.googleapis.com will be used.
+  Possible values:
+    * logging.googleapis.com
+    * none
 
   * `monitoring_service`: The monitoring service the cluster should use to write metrics. Currently available options:  monitoring.googleapis.com - the Google Cloud Monitoring service. none - no metrics will be exported from the cluster.  if left as an empty string, monitoring.googleapis.com will be used.
+  Possible values:
+    * monitoring.googleapis.com
+    * none
 
   * `network`: The name of the Google Compute Engine network to which the cluster is connected. If left unspecified, the default network will be used.
 
@@ -183,6 +194,9 @@ Properties that can be accessed from the `google_container_cluster` resource:
   * `network_policy`: Configuration options for the NetworkPolicy feature.
 
     * `provider`: The selected network policy provider.
+    Possible values:
+      * PROVIDER_UNSPECIFIED
+      * CALICO
 
     * `enabled`: Whether network policy is enabled on the cluster.
 
@@ -221,6 +235,14 @@ Properties that can be accessed from the `google_container_cluster` resource:
   * `create_time`: The time the cluster was created, in RFC3339 text format.
 
   * `status`: The current status of this cluster.
+  Possible values:
+    * STATUS_UNSPECIFIED
+    * PROVISIONING
+    * RUNNING
+    * RECONCILING
+    * STOPPING
+    * ERROR
+    * DEGRADED
 
   * `status_message`: Additional information about the current status of this cluster, if available.
 

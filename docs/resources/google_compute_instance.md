@@ -145,12 +145,21 @@ Properties that can be accessed from the `google_compute_instance` resource:
         * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 
     * `interface`: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI.
+    Possible values:
+      * SCSI
+      * NVME
 
     * `mode`: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
+    Possible values:
+      * READ_WRITE
+      * READ_ONLY
 
     * `source`: Reference to a disk. When creating a new instance, one of initializeParams.sourceImage or disks.source is required.  If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks.
 
     * `type`: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
+    Possible values:
+      * SCRATCH
+      * PERSISTENT
 
     * `licenses`: Any applicable publicly visible licenses.
 
@@ -185,12 +194,17 @@ Properties that can be accessed from the `google_compute_instance` resource:
       * `nat_ip`: Reference to an address. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 
       * `type`: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+      Possible values:
+        * ONE_TO_ONE_NAT
 
       * `set_public_ptr`: Specifies whether a public DNS PTR record should be created to map the external IP address of the instance to a DNS domain name.
 
       * `public_ptr_domain_name`: The DNS domain name for the public PTR record. You can set this field only if the setPublicPtr field is enabled.
 
       * `network_tier`: This signifies the networking tier used for configuring this access configuration. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+      Possible values:
+        * PREMIUM
+        * STANDARD
 
     * `alias_ip_ranges`: An array of alias IP ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 
@@ -229,6 +243,14 @@ Properties that can be accessed from the `google_compute_instance` resource:
     * `enable_integrity_monitoring`: Defines whether the instance has integrity monitoring enabled.
 
   * `status`: The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.  As a user, use RUNNING to keep a machine "on" and TERMINATED to turn a machine off
+  Possible values:
+    * PROVISIONING
+    * STAGING
+    * RUNNING
+    * STOPPING
+    * SUSPENDING
+    * SUSPENDED
+    * TERMINATED
 
   * `status_message`: An optional, human-readable explanation of the status.
 

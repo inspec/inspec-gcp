@@ -60,6 +60,10 @@ Properties that can be accessed from the `google_bigquery_table` resource:
   * `require_partition_filter`: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 
   * `type`: Describes the table type
+  Possible values:
+    * TABLE
+    * VIEW
+    * EXTERNAL
 
   * `view`: The view definition.
 
@@ -78,6 +82,8 @@ Properties that can be accessed from the `google_bigquery_table` resource:
     * `field`: If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
 
     * `type`: The only type supported is DAY, which will generate one partition per day.
+    Possible values:
+      * DAY
 
   * `streaming_buffer`: Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 
@@ -96,10 +102,24 @@ Properties that can be accessed from the `google_bigquery_table` resource:
       * `fields`: Describes the nested schema fields if the type property is set to RECORD.
 
       * `mode`: The field mode
+      Possible values:
+        * NULLABLE
+        * REQUIRED
+        * REPEATED
 
       * `name`: The field name
 
       * `type`: The field data type
+      Possible values:
+        * STRING
+        * BYTES
+        * INTEGER
+        * FLOAT
+        * TIMESTAMP
+        * DATE
+        * TIME
+        * DATETIME
+        * RECORD
 
   * `encryption_configuration`: Custom encryption configuration
 
@@ -112,12 +132,22 @@ Properties that can be accessed from the `google_bigquery_table` resource:
     * `autodetect`: Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 
     * `compression`: The compression type of the data source
+    Possible values:
+      * GZIP
+      * NONE
 
     * `ignore_unknown_values`: Indicates if BigQuery should allow extra values that are not represented in the table schema
 
     * `max_bad_records`: The maximum number of bad records that BigQuery can ignore when reading data
 
     * `source_format`: The data format
+    Possible values:
+      * CSV
+      * GOOGLE_SHEETS
+      * NEWLINE_DELIMITED_JSON
+      * AVRO
+      * DATASTORE_BACKUP
+      * BIGTABLE
 
     * `source_uris`: The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 
@@ -130,10 +160,24 @@ Properties that can be accessed from the `google_bigquery_table` resource:
         * `fields`: Describes the nested schema fields if the type property is set to RECORD
 
         * `mode`: Field mode.
+        Possible values:
+          * NULLABLE
+          * REQUIRED
+          * REPEATED
 
         * `name`: Field name
 
         * `type`: Field data type
+        Possible values:
+          * STRING
+          * BYTES
+          * INTEGER
+          * FLOAT
+          * TIMESTAMP
+          * DATE
+          * TIME
+          * DATETIME
+          * RECORD
 
     * `google_sheets_options`: Additional options if sourceFormat is set to GOOGLE_SHEETS.
 
@@ -146,6 +190,9 @@ Properties that can be accessed from the `google_bigquery_table` resource:
       * `allow_quoted_newlines`: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file
 
       * `encoding`: The character encoding of the data
+      Possible values:
+        * UTF-8
+        * ISO-8859-1
 
       * `field_delimiter`: The separator for fields in a CSV file
 
@@ -164,6 +211,9 @@ Properties that can be accessed from the `google_bigquery_table` resource:
         * `columns`: Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs.
 
           * `encoding`: The encoding of the values when the type is not STRING
+          Possible values:
+            * TEXT
+            * BINARY
 
           * `field_name`: If the qualifier is not a valid BigQuery field identifier, a valid identifier must be provided as the column field name and is used as field name in queries.
 
@@ -172,14 +222,29 @@ Properties that can be accessed from the `google_bigquery_table` resource:
           * `qualifier_string`: Qualifier of the column
 
           * `type`: The type to convert the value in cells of this column
+          Possible values:
+            * BYTES
+            * STRING
+            * INTEGER
+            * FLOAT
+            * BOOLEAN
 
         * `encoding`: The encoding of the values when the type is not STRING
+        Possible values:
+          * TEXT
+          * BINARY
 
         * `family_id`: Identifier of the column family.
 
         * `only_read_latest`: If this is set only the latest version of value are exposed for all columns in this column family
 
         * `type`: The type to convert the value in cells of this column family
+        Possible values:
+          * BYTES
+          * STRING
+          * INTEGER
+          * FLOAT
+          * BOOLEAN
 
   * `dataset`: Name of the dataset
 

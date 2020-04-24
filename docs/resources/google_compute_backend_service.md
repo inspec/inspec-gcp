@@ -35,6 +35,10 @@ Properties that can be accessed from the `google_compute_backend_service` resour
   * `backends`: The set of backends that serve this BackendService.
 
     * `balancing_mode`: Specifies the balancing mode for this backend.  For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
+    Possible values:
+      * UTILIZATION
+      * RATE
+      * CONNECTION
 
     * `capacity_scaler`: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION).  Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].
 
@@ -136,9 +140,19 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
     * `oauth2_client_secret_sha256`: OAuth2 Client Secret SHA-256 for IAP
 
-  * `load_balancing_scheme`: Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other. Must be `EXTERNAL` or `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+  * `load_balancing_scheme`: Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other.
+  Possible values:
+    * EXTERNAL
+    * INTERNAL_SELF_MANAGED
 
   * `locality_lb_policy`: (Beta only) The load balancing algorithm used within the scope of the locality. The possible values are -  ROUND_ROBIN - This is a simple policy in which each healthy backend               is selected in round robin order.  LEAST_REQUEST - An O(1) algorithm which selects two random healthy                 hosts and picks the host which has fewer active requests.  RING_HASH - The ring/modulo hash load balancer implements consistent             hashing to backends. The algorithm has the property that the             addition/removal of a host from a set of N hosts only affects             1/N of the requests.  RANDOM - The load balancer selects a random healthy host.  ORIGINAL_DESTINATION - Backend host is selected based on the client                        connection metadata, i.e., connections are opened                        to the same address as the destination address of                        the incoming connection before the connection                        was redirected to the load balancer.  MAGLEV - used as a drop in replacement for the ring hash load balancer.          Maglev is not as stable as ring hash but has faster table lookup          build times and host selection times. For more information about          Maglev, refer to https://ai.google/research/pubs/pub44824  This field is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+  Possible values:
+    * ROUND_ROBIN
+    * LEAST_REQUEST
+    * RING_HASH
+    * RANDOM
+    * ORIGINAL_DESTINATION
+    * MAGLEV
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
@@ -176,11 +190,25 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `port_name`: Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the load balancing scheme is EXTERNAL.
 
-  * `protocol`: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if used with the GA API.
+  * `protocol`: The protocol this BackendService uses to communicate with backends. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if used with the GA API.
+  Possible values:
+    * HTTP
+    * HTTPS
+    * HTTP2
+    * TCP
+    * SSL
 
   * `security_policy`: The security policy associated with this backend service.
 
   * `session_affinity`: Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+  Possible values:
+    * NONE
+    * CLIENT_IP
+    * CLIENT_IP_PORT_PROTO
+    * CLIENT_IP_PROTO
+    * GENERATED_COOKIE
+    * HEADER_FIELD
+    * HTTP_COOKIE
 
   * `timeout_sec`: How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is [1, 86400].
 

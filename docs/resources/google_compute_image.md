@@ -53,6 +53,10 @@ Properties that can be accessed from the `google_compute_image` resource:
     * `replacement`: The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
 
     * `state`: The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
+    Possible values:
+      * DEPRECATED
+      * OBSOLETE
+      * DELETED
 
   * `description`: An optional description of this resource. Provide this property when you create the resource.
 
@@ -63,6 +67,12 @@ Properties that can be accessed from the `google_compute_image` resource:
   * `guest_os_features`: A list of features to enable on the guest operating system. Applicable only for bootable images.
 
     * `type`: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+    Possible values:
+      * MULTI_IP_SUBNET
+      * SECURE_BOOT
+      * UEFI_COMPATIBLE
+      * VIRTIO_SCSI_MULTIQUEUE
+      * WINDOWS
 
   * `id`: The unique identifier for the resource. This identifier is defined by the server.
 
@@ -85,6 +95,8 @@ Properties that can be accessed from the `google_compute_image` resource:
   * `raw_disk`: The parameters of the raw disk image.
 
     * `container_type`: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+    Possible values:
+      * TAR
 
     * `sha1_checksum`: An optional SHA1 checksum of the disk image before unpackaging. This is provided by the client when the disk image is created.
 
@@ -103,10 +115,16 @@ Properties that can be accessed from the `google_compute_image` resource:
   * `source_disk_id`: The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
 
   * `source_type`: The type of the image used to create this disk. The default and only value is RAW
+  Possible values:
+    * RAW
 
   * `self_link`: The self link of the image
 
   * `status`: The status of the image. Either `READY` `PENDING` or `FAILED`.
+  Possible values:
+    * READY
+    * PENDING
+    * FAILED
 
 
 ## GCP Permissions

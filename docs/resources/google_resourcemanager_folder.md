@@ -25,6 +25,10 @@ Properties that can be accessed from the `google_resourcemanager_folder` resourc
   * `name`: The resource name of the Folder. Its format is folders/{folder_id}, for example: "folders/1234".
 
   * `lifecycle_state`: The lifecycle state of the folder. Updates to the lifecycleState must be performed via folders.delete and folders.undelete.
+  Possible values:
+    * LIFECYCLE_STATE_UNSPECIFIED
+    * ACTIVE
+    * DELETE_REQUESTED
 
   * `create_time`: Time of creation
 

@@ -33,6 +33,9 @@ Properties that can be accessed from the `google_access_context_manager_service_
   * `update_time`: Time the AccessPolicy was updated in UTC.
 
   * `perimeter_type`: Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.  In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are governed entirely by the regular perimeter that resource is in.  Perimeter Bridges are typically useful when building more complex topologies with many independent perimeters that need to share some data with a common perimeter, but should not be able to share data among themselves.
+  Possible values:
+    * PERIMETER_TYPE_REGULAR
+    * PERIMETER_TYPE_BRIDGE
 
   * `status`: ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
 

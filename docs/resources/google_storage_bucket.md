@@ -63,8 +63,16 @@ Properties that can be accessed from the `google_storage_bucket` resource:
       * `project_number`: The project team associated with the entity
 
       * `team`: The team.
+      Possible values:
+        * editors
+        * owners
+        * viewers
 
     * `role`: The access permission for the entity.
+    Possible values:
+      * OWNER
+      * READER
+      * WRITER
 
   * `cors`: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 
@@ -101,8 +109,15 @@ Properties that can be accessed from the `google_storage_bucket` resource:
       * `project_number`: The project team associated with the entity
 
       * `team`: The team.
+      Possible values:
+        * editors
+        * owners
+        * viewers
 
     * `role`: The access permission for the entity.
+    Possible values:
+      * OWNER
+      * READER
 
   * `id`: The ID of the bucket. For buckets, the id and name properities are the same.
 
@@ -115,6 +130,9 @@ Properties that can be accessed from the `google_storage_bucket` resource:
         * `storage_class`: Target storage class. Required iff the type of the action is SetStorageClass.
 
         * `type`: Type of the action. Currently, only Delete and SetStorageClass are supported.
+        Possible values:
+          * Delete
+          * SetStorageClass
 
       * `condition`: The condition(s) under which the action will be taken.
 
@@ -149,6 +167,13 @@ Properties that can be accessed from the `google_storage_bucket` resource:
   * `project_number`: The project number of the project the bucket belongs to.
 
   * `storage_class`: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
+  Possible values:
+    * MULTI_REGIONAL
+    * REGIONAL
+    * STANDARD
+    * NEARLINE
+    * COLDLINE
+    * DURABLE_REDUCED_AVAILABILITY
 
   * `time_created`: The creation time of the bucket in RFC 3339 format.
 
@@ -181,6 +206,13 @@ Properties that can be accessed from the `google_storage_bucket` resource:
   * `project`: A valid API project identifier.
 
   * `predefined_default_object_acl`: Apply a predefined set of default object access controls to this bucket.  Acceptable values are:   - "authenticatedRead": Object owner gets OWNER access, and     allAuthenticatedUsers get READER access.   - "bucketOwnerFullControl": Object owner gets OWNER access, and     project team owners get OWNER access.   - "bucketOwnerRead": Object owner gets OWNER access, and project     team owners get READER access.   - "private": Object owner gets OWNER access.   - "projectPrivate": Object owner gets OWNER access, and project team     members get access according to their roles.   - "publicRead": Object owner gets OWNER access, and allUsers get     READER access.
+  Possible values:
+    * authenticatedRead
+    * bucketOwnerFullControl
+    * bucketOwnerRead
+    * private
+    * projectPrivate
+    * publicRead
 
 
 ## GCP Permissions

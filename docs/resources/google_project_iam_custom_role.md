@@ -44,6 +44,13 @@ Properties that can be accessed from the `google_project_iam_custom_role` resour
   * `included_permissions`: Names of permissions this role grants when bound in an IAM policy.
 
   * `stage`: The current launch stage of the role.
+  Possible values:
+    * ALPHA
+    * BETA
+    * GA
+    * DEPRECATED
+    * DISABLED
+    * EAP
 
   * `deleted`: The current deleted state of the role
 

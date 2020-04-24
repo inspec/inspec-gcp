@@ -33,7 +33,9 @@ Properties that can be accessed from the `google_compute_network_endpoint_group`
 
   * `description`: An optional description of this resource. Provide this property when you create the resource.
 
-  * `network_endpoint_type`: Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+  * `network_endpoint_type`: Type of network endpoints in this network endpoint group.
+  Possible values:
+    * GCE_VM_IP_PORT
 
   * `size`: Number of network endpoints in the network endpoint group.
 

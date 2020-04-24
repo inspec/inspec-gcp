@@ -44,6 +44,12 @@ Properties that can be accessed from the `google_compute_health_check` resource:
   * `unhealthy_threshold`: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
 
   * `type`: Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+  Possible values:
+    * TCP
+    * SSL
+    * HTTP
+    * HTTPS
+    * HTTP2
 
   * `http_health_check`: A nested object resource
 
@@ -57,9 +63,16 @@ Properties that can be accessed from the `google_compute_health_check` resource:
 
     * `port_name`: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
 
-    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend.
+    Possible values:
+      * NONE
+      * PROXY_V1
 
     * `port_specification`: Specifies how port is selected for health checking, can be one of the following values:    * `USE_FIXED_PORT`: The port number in `port` is used for health checking.    * `USE_NAMED_PORT`: The `portName` is used for health checking.    * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each   network endpoint is used for health checking. For other backends, the   port or named port specified in the Backend Service is used for health   checking.  If not specified, HTTP health check follows behavior specified in `port` and `portName` fields.
+    Possible values:
+      * USE_FIXED_PORT
+      * USE_NAMED_PORT
+      * USE_SERVING_PORT
 
   * `https_health_check`: A nested object resource
 
@@ -73,9 +86,16 @@ Properties that can be accessed from the `google_compute_health_check` resource:
 
     * `port_name`: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
 
-    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend.
+    Possible values:
+      * NONE
+      * PROXY_V1
 
     * `port_specification`: Specifies how port is selected for health checking, can be one of the following values:    * `USE_FIXED_PORT`: The port number in `port` is used for health checking.    * `USE_NAMED_PORT`: The `portName` is used for health checking.    * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each   network endpoint is used for health checking. For other backends, the   port or named port specified in the Backend Service is used for health   checking.  If not specified, HTTPS health check follows behavior specified in `port` and `portName` fields.
+    Possible values:
+      * USE_FIXED_PORT
+      * USE_NAMED_PORT
+      * USE_SERVING_PORT
 
   * `tcp_health_check`: A nested object resource
 
@@ -87,9 +107,16 @@ Properties that can be accessed from the `google_compute_health_check` resource:
 
     * `port_name`: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
 
-    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend.
+    Possible values:
+      * NONE
+      * PROXY_V1
 
     * `port_specification`: Specifies how port is selected for health checking, can be one of the following values:    * `USE_FIXED_PORT`: The port number in `port` is used for health checking.    * `USE_NAMED_PORT`: The `portName` is used for health checking.    * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each   network endpoint is used for health checking. For other backends, the   port or named port specified in the Backend Service is used for health   checking.  If not specified, TCP health check follows behavior specified in `port` and `portName` fields.
+    Possible values:
+      * USE_FIXED_PORT
+      * USE_NAMED_PORT
+      * USE_SERVING_PORT
 
   * `ssl_health_check`: A nested object resource
 
@@ -101,9 +128,16 @@ Properties that can be accessed from the `google_compute_health_check` resource:
 
     * `port_name`: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
 
-    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend.
+    Possible values:
+      * NONE
+      * PROXY_V1
 
     * `port_specification`: Specifies how port is selected for health checking, can be one of the following values:    * `USE_FIXED_PORT`: The port number in `port` is used for health checking.    * `USE_NAMED_PORT`: The `portName` is used for health checking.    * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each   network endpoint is used for health checking. For other backends, the   port or named port specified in the Backend Service is used for health   checking.  If not specified, SSL health check follows behavior specified in `port` and `portName` fields.
+    Possible values:
+      * USE_FIXED_PORT
+      * USE_NAMED_PORT
+      * USE_SERVING_PORT
 
   * `http2_health_check`: A nested object resource
 
@@ -117,9 +151,16 @@ Properties that can be accessed from the `google_compute_health_check` resource:
 
     * `port_name`: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
 
-    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+    * `proxy_header`: Specifies the type of proxy header to append before sending data to the backend.
+    Possible values:
+      * NONE
+      * PROXY_V1
 
     * `port_specification`: Specifies how port is selected for health checking, can be one of the following values:    * `USE_FIXED_PORT`: The port number in `port` is used for health checking.    * `USE_NAMED_PORT`: The `portName` is used for health checking.    * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each   network endpoint is used for health checking. For other backends, the   port or named port specified in the Backend Service is used for health   checking.  If not specified, HTTP2 health check follows behavior specified in `port` and `portName` fields.
+    Possible values:
+      * USE_FIXED_PORT
+      * USE_NAMED_PORT
+      * USE_SERVING_PORT
 
   * `log_config`: (Beta only) Configure logging on this health check.
 

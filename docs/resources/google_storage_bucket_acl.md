@@ -52,8 +52,16 @@ Properties that can be accessed from the `google_storage_bucket_acl` resource:
     * `project_number`: The project team associated with the entity
 
     * `team`: The team.
+    Possible values:
+      * editors
+      * owners
+      * viewers
 
   * `role`: The access permission for the entity.
+  Possible values:
+    * OWNER
+    * READER
+    * WRITER
 
 
 ## GCP Permissions

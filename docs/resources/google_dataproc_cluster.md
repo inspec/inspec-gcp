@@ -140,6 +140,12 @@ Properties that can be accessed from the `google_dataproc_cluster` resource:
       * `properties`: The properties to set on daemon config files. Property keys are specified in the prefix:property format, for example `core:hadoop.tmp.dir`
 
       * `optional_components`: The set of optional components to activate on the cluster.  Possible values include: COMPONENT_UNSPECIFIED, ANACONDA, HIVE_WEBHCAT, JUPYTER, ZEPPELIN
+      Possible values:
+        * COMPONENT_UNSPECIFIED
+        * ANACONDA
+        * HIVE_WEBHCAT
+        * JUPYTER
+        * ZEPPELIN
 
     * `initialization_actions`: Specifies an executable to run on a fully configured node and a timeout period for executable completion.
 

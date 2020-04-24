@@ -35,6 +35,10 @@ Properties that can be accessed from the `google_filestore_instance` resource:
   * `create_time`: Creation timestamp in RFC3339 text format.
 
   * `tier`: The service tier of the instance.
+  Possible values:
+    * TIER_UNSPECIFIED
+    * STANDARD
+    * PREMIUM
 
   * `labels`: Resource labels to represent user-provided metadata.
 

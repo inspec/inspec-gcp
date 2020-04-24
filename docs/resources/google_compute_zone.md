@@ -55,6 +55,10 @@ Properties that can be accessed from the `google_compute_zone` resource:
     * `replacement`: The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
 
     * `state`: The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
+    Possible values:
+      * DEPRECATED
+      * OBSOLETE
+      * DELETED
 
   * `description`: An optional textual description of the resource.
 
@@ -65,6 +69,9 @@ Properties that can be accessed from the `google_compute_zone` resource:
   * `region`: The region where the zone is located.
 
   * `status`: The status of the zone.
+  Possible values:
+    * UP
+    * DOWN
 
   * `available_cpu_platforms`: The available CPU platforms in this zone
 

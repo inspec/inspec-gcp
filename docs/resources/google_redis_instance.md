@@ -36,7 +36,10 @@ Properties that can be accessed from the `google_redis_instance` resource:
 
   * `authorized_network`: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
 
-  * `connect_mode`: The connection mode of the Redis instance. Can be either `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default connect mode if not provided is `DIRECT_PEERING`.
+  * `connect_mode`: The connection mode of the Redis instance.
+  Possible values:
+    * DIRECT_PEERING
+    * PRIVATE_SERVICE_ACCESS
 
   * `create_time`: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 
@@ -63,6 +66,9 @@ Properties that can be accessed from the `google_redis_instance` resource:
   * `reserved_ip_range`: The CIDR range of internal addresses that are reserved for this instance. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and non-overlapping with existing subnets in an authorized network.
 
   * `tier`: The service tier of the instance. Must be one of these values:  - BASIC: standalone instance - STANDARD_HA: highly available primary/replica instances
+  Possible values:
+    * BASIC
+    * STANDARD_HA
 
   * `region`: The name of the Redis region of the instance.
 

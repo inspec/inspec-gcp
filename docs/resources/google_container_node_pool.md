@@ -133,6 +133,12 @@ Properties that can be accessed from the `google_container_node_pool` resource:
   * `conditions`: Which conditions caused the current node pool state.
 
     * `code`: Machine-friendly representation of the condition
+    Possible values:
+      * UNKNOWN
+      * GCE_STOCKOUT
+      * GKE_SERVICE_ACCOUNT_DELETED
+      * GCE_QUOTA_EXCEEDED
+      * SET_BY_OPERATOR
 
   * `pod_ipv4_cidr_size`: The pod CIDR block size per node in this node pool.
 

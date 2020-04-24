@@ -69,6 +69,9 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
       * `branch`: Regex of branches to match.
 
       * `comment_control`: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+      Possible values:
+        * COMMENTS_DISABLED
+        * COMMENTS_ENABLED
 
     * `push`: filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
 

@@ -41,6 +41,10 @@ Properties that can be accessed from the `google_project_alert_policy` resource:
   * `display_name`: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
 
   * `combiner`: How to combine the results of multiple conditions to determine if an incident should be opened.
+  Possible values:
+    * AND
+    * OR
+    * AND_WITH_MATCHING_RESOURCE
 
   * `creation_record`: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
 
@@ -57,12 +61,47 @@ Properties that can be accessed from the `google_project_alert_policy` resource:
       * `aggregations`: Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.
 
         * `per_series_aligner`: The approach to be used to align individual time series. Not all alignment functions may be applied to all time series, depending on the metric type and value type of the original time series. Alignment may change the metric type or the value type of the time series.Time series data must be aligned in order to perform cross- time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.
+        Possible values:
+          * ALIGN_NONE
+          * ALIGN_DELTA
+          * ALIGN_RATE
+          * ALIGN_INTERPOLATE
+          * ALIGN_NEXT_OLDER
+          * ALIGN_MIN
+          * ALIGN_MAX
+          * ALIGN_MEAN
+          * ALIGN_COUNT
+          * ALIGN_SUM
+          * ALIGN_STDDEV
+          * ALIGN_COUNT_TRUE
+          * ALIGN_COUNT_FALSE
+          * ALIGN_FRACTION_TRUE
+          * ALIGN_PERCENTILE_99
+          * ALIGN_PERCENTILE_95
+          * ALIGN_PERCENTILE_50
+          * ALIGN_PERCENTILE_05
+          * ALIGN_PERCENT_CHANGE
 
         * `group_by_fields`: The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how the time series are partitioned into subsets prior to applying the aggregation function. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If crossSeriesReducer is not defined, this field is ignored.
 
         * `alignment_period`: The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60 seconds. After per-time series alignment, each time series will contain data points only on the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an error is returned.
 
         * `cross_series_reducer`: The approach to be used to combine time series. Not all reducer functions may be applied to all time series, depending on the metric type and the value type of the original time series. Reduction may change the metric type of value type of the time series.Time series data must be aligned in order to perform cross- time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.
+        Possible values:
+          * REDUCE_NONE
+          * REDUCE_MEAN
+          * REDUCE_MIN
+          * REDUCE_MAX
+          * REDUCE_SUM
+          * REDUCE_STDDEV
+          * REDUCE_COUNT
+          * REDUCE_COUNT_TRUE
+          * REDUCE_COUNT_FALSE
+          * REDUCE_FRACTION_TRUE
+          * REDUCE_PERCENTILE_99
+          * REDUCE_PERCENTILE_95
+          * REDUCE_PERCENTILE_50
+          * REDUCE_PERCENTILE_05
 
       * `trigger`: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
 
@@ -85,16 +124,58 @@ Properties that can be accessed from the `google_project_alert_policy` resource:
       * `denominator_aggregations`: Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.This field is similar to the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this field.
 
         * `per_series_aligner`: The approach to be used to align individual time series. Not all alignment functions may be applied to all time series, depending on the metric type and value type of the original time series. Alignment may change the metric type or the value type of the time series.Time series data must be aligned in order to perform cross- time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.
+        Possible values:
+          * ALIGN_NONE
+          * ALIGN_DELTA
+          * ALIGN_RATE
+          * ALIGN_INTERPOLATE
+          * ALIGN_NEXT_OLDER
+          * ALIGN_MIN
+          * ALIGN_MAX
+          * ALIGN_MEAN
+          * ALIGN_COUNT
+          * ALIGN_SUM
+          * ALIGN_STDDEV
+          * ALIGN_COUNT_TRUE
+          * ALIGN_COUNT_FALSE
+          * ALIGN_FRACTION_TRUE
+          * ALIGN_PERCENTILE_99
+          * ALIGN_PERCENTILE_95
+          * ALIGN_PERCENTILE_50
+          * ALIGN_PERCENTILE_05
+          * ALIGN_PERCENT_CHANGE
 
         * `group_by_fields`: The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how the time series are partitioned into subsets prior to applying the aggregation function. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If crossSeriesReducer is not defined, this field is ignored.
 
         * `alignment_period`: The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60 seconds. After per-time series alignment, each time series will contain data points only on the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an error is returned.
 
         * `cross_series_reducer`: The approach to be used to combine time series. Not all reducer functions may be applied to all time series, depending on the metric type and the value type of the original time series. Reduction may change the metric type of value type of the time series.Time series data must be aligned in order to perform cross- time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.
+        Possible values:
+          * REDUCE_NONE
+          * REDUCE_MEAN
+          * REDUCE_MIN
+          * REDUCE_MAX
+          * REDUCE_SUM
+          * REDUCE_STDDEV
+          * REDUCE_COUNT
+          * REDUCE_COUNT_TRUE
+          * REDUCE_COUNT_FALSE
+          * REDUCE_FRACTION_TRUE
+          * REDUCE_PERCENTILE_99
+          * REDUCE_PERCENTILE_95
+          * REDUCE_PERCENTILE_50
+          * REDUCE_PERCENTILE_05
 
       * `duration`: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 
       * `comparison`: The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side. Only COMPARISON_LT and COMPARISON_GT are supported currently.
+      Possible values:
+        * COMPARISON_GT
+        * COMPARISON_GE
+        * COMPARISON_LT
+        * COMPARISON_LE
+        * COMPARISON_EQ
+        * COMPARISON_NE
 
       * `trigger`: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
 
@@ -105,12 +186,47 @@ Properties that can be accessed from the `google_project_alert_policy` resource:
       * `aggregations`: Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this field.
 
         * `per_series_aligner`: The approach to be used to align individual time series. Not all alignment functions may be applied to all time series, depending on the metric type and value type of the original time series. Alignment may change the metric type or the value type of the time series.Time series data must be aligned in order to perform cross- time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.
+        Possible values:
+          * ALIGN_NONE
+          * ALIGN_DELTA
+          * ALIGN_RATE
+          * ALIGN_INTERPOLATE
+          * ALIGN_NEXT_OLDER
+          * ALIGN_MIN
+          * ALIGN_MAX
+          * ALIGN_MEAN
+          * ALIGN_COUNT
+          * ALIGN_SUM
+          * ALIGN_STDDEV
+          * ALIGN_COUNT_TRUE
+          * ALIGN_COUNT_FALSE
+          * ALIGN_FRACTION_TRUE
+          * ALIGN_PERCENTILE_99
+          * ALIGN_PERCENTILE_95
+          * ALIGN_PERCENTILE_50
+          * ALIGN_PERCENTILE_05
+          * ALIGN_PERCENT_CHANGE
 
         * `group_by_fields`: The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how the time series are partitioned into subsets prior to applying the aggregation function. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If crossSeriesReducer is not defined, this field is ignored.
 
         * `alignment_period`: The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60 seconds. After per-time series alignment, each time series will contain data points only on the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an error is returned.
 
         * `cross_series_reducer`: The approach to be used to combine time series. Not all reducer functions may be applied to all time series, depending on the metric type and the value type of the original time series. Reduction may change the metric type of value type of the time series.Time series data must be aligned in order to perform cross- time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.
+        Possible values:
+          * REDUCE_NONE
+          * REDUCE_MEAN
+          * REDUCE_MIN
+          * REDUCE_MAX
+          * REDUCE_SUM
+          * REDUCE_STDDEV
+          * REDUCE_COUNT
+          * REDUCE_COUNT_TRUE
+          * REDUCE_COUNT_FALSE
+          * REDUCE_FRACTION_TRUE
+          * REDUCE_PERCENTILE_99
+          * REDUCE_PERCENTILE_95
+          * REDUCE_PERCENTILE_50
+          * REDUCE_PERCENTILE_05
 
       * `filter`: A filter that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to verify the time series that will be retrieved / processed) and must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
 
