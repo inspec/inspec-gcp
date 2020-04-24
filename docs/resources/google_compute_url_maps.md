@@ -31,6 +31,7 @@ See [google_compute_url_map.md](google_compute_url_map.md) for more detailed inf
   * `names`: an array of `google_compute_url_map` name
   * `path_matchers`: an array of `google_compute_url_map` path_matchers
   * `tests`: an array of `google_compute_url_map` tests
+  * `default_url_redirects`: an array of `google_compute_url_map` default_url_redirect
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

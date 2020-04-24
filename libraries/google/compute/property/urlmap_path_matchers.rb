@@ -13,6 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/urlmap_path_matchers_default_url_redirect'
 require 'google/compute/property/urlmap_path_matchers_header_action'
 require 'google/compute/property/urlmap_path_matchers_header_action_request_headers_to_add'
 require 'google/compute/property/urlmap_path_matchers_header_action_response_headers_to_add'
@@ -28,6 +29,8 @@ module GoogleInSpec
 
         attr_reader :name
 
+        attr_reader :default_url_redirect
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -35,6 +38,7 @@ module GoogleInSpec
           @description = args['description']
           @header_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersHeaderAction.new(args['headerAction'], to_s)
           @name = args['name']
+          @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultUrlRedirect.new(args['defaultUrlRedirect'], to_s)
         end
 
         def to_s

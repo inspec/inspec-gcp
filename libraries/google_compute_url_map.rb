@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/urlmap_default_url_redirect'
 require 'google/compute/property/urlmap_header_action'
 require 'google/compute/property/urlmap_header_action_request_headers_to_add'
 require 'google/compute/property/urlmap_header_action_response_headers_to_add'
@@ -38,6 +39,7 @@ class ComputeUrlMap < GcpResourceBase
   attr_reader :name
   attr_reader :path_matchers
   attr_reader :tests
+  attr_reader :default_url_redirect
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -57,6 +59,7 @@ class ComputeUrlMap < GcpResourceBase
     @name = @fetched['name']
     @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'], to_s)
     @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'], to_s)
+    @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(@fetched['defaultUrlRedirect'], to_s)
   end
 
   # Handles parsing RFC3339 time string
