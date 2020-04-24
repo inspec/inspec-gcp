@@ -35,19 +35,35 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
 
   * `ip_address`: The IP address that this forwarding rule is serving on behalf of.  Addresses are restricted based on the forwarding rule's load balancing scheme (external or internal) and scope (global or regional). The address must be a global IP for external global forwarding rules.  If this field is empty, an ephemeral IPv4 address from the same scope (global) is chosen. Global forwarding rules supports either IPv4 or IPv6.  When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address resource (internal regional static IP address), with a purpose of GCE_END_POINT and addressType of INTERNAL.  An address can be specified either by a literal IP address or a URL reference to an existing Address resource. The following examples are all valid:  * 100.1.2.3 * https://www.googleapis.com/compute/v1/projects/project/regions/      region/addresses/address * projects/project/regions/region/addresses/address * regions/region/addresses/address * global/addresses/address * address
 
-  * `ip_protocol`: The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCP is valid.
+  * `ip_protocol`: The IP protocol to which this rule applies. When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCP is valid.
+  Possible values:
+    * TCP
+    * UDP
+    * ESP
+    * AH
+    * SCTP
+    * ICMP
 
-  * `ip_version`: The IP Version that will be used by this global forwarding rule. Valid options are IPV4 or IPV6.
+  * `ip_version`: The IP Version that will be used by this global forwarding rule.
+  Possible values:
+    * IPV4
+    * IPV6
 
   * `labels`: (Beta only) Labels to apply to this forwarding rule.  A list of key->value pairs.
 
   * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `load_balancing_scheme`: This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)  NOTE: Currently global forwarding rules cannot be used for INTERNAL load balancing.
+  Possible values:
+    * EXTERNAL
+    * INTERNAL_SELF_MANAGED
 
   * `metadata_filters`: Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. If a match takes place, the relevant routing configuration is made available to those proxies.  For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels in the provided metadata.  metadataFilters specified here can be overridden by those specified in the UrlMap that this ForwardingRule references.  metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 
     * `filter_match_criteria`: Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match.  MATCH_ANY - At least one of the filterLabels must have a matching label in the provided metadata. MATCH_ALL - All filterLabels must have matching labels in the provided metadata.
+    Possible values:
+      * MATCH_ANY
+      * MATCH_ALL
 
     * `filter_labels`: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria  This list must not be empty and can have at the most 64 entries.
 

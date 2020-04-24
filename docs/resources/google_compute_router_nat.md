@@ -33,12 +33,19 @@ Properties that can be accessed from the `google_compute_router_nat` resource:
   * `name`: Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
 
   * `nat_ip_allocate_option`: How external IPs should be allocated for this NAT. Valid values are `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+  Possible values:
+    * MANUAL_ONLY
+    * AUTO_ONLY
 
   * `nat_ips`: Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
 
   * `drain_nat_ips`: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT.
 
   * `source_subnetwork_ip_ranges_to_nat`: How NAT should be configured per Subnetwork. If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the IP ranges in every Subnetwork are allowed to Nat. If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP ranges in every Subnetwork are allowed to Nat. `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this network in this region.
+  Possible values:
+    * ALL_SUBNETWORKS_ALL_IP_RANGES
+    * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES
+    * LIST_OF_SUBNETWORKS
 
   * `subnetwork`: One or more subnetwork NAT configurations. Only used if `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
 
@@ -62,7 +69,11 @@ Properties that can be accessed from the `google_compute_router_nat` resource:
 
     * `enable`: Indicates whether or not to export logs.
 
-    * `filter`: Specifies the desired filtering of logs on this NAT. Valid values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+    * `filter`: Specifies the desired filtering of logs on this NAT.
+    Possible values:
+      * ERRORS_ONLY
+      * TRANSLATIONS_ONLY
+      * ALL
 
   * `router`: The name of the Cloud Router in which this NAT will be configured.
 

@@ -55,7 +55,10 @@ Properties that can be accessed from the `google_compute_address` resource:
 
   * `address`: The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
 
-  * `address_type`: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+  * `address_type`: The type of address to reserve.
+  Possible values:
+    * INTERNAL
+    * EXTERNAL
 
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
@@ -66,8 +69,13 @@ Properties that can be accessed from the `google_compute_address` resource:
   * `name`: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
   * `purpose`: The purpose of this resource, which can be one of the following values:  - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.  This should only be set when using an Internal address.
+  Possible values:
+    * GCE_ENDPOINT
 
-  * `network_tier`: The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+  * `network_tier`: The networking tier used for configuring this address. If this field is not specified, it is assumed to be PREMIUM.
+  Possible values:
+    * PREMIUM
+    * STANDARD
 
   * `subnetwork`: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
 
@@ -78,6 +86,10 @@ Properties that can be accessed from the `google_compute_address` resource:
   * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
   * `status`: The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
+  Possible values:
+    * RESERVING
+    * RESERVED
+    * IN_USE
 
   * `region`: URL of the region where the regional address resides. This field is not applicable to global addresses.
 

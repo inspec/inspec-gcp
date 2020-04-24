@@ -83,6 +83,10 @@ Properties that can be accessed from the `google_compute_region` resource:
     * `replacement`: The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
 
     * `state`: The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
+    Possible values:
+      * DEPRECATED
+      * OBSOLETE
+      * DELETED
 
   * `description`: An optional description of this resource.
 
@@ -101,6 +105,9 @@ Properties that can be accessed from the `google_compute_region` resource:
     * `owner`: Owning resource. This is the resource on which this quota is applied.
 
   * `status`: Status of the region, either UP or DOWN.
+  Possible values:
+    * UP
+    * DOWN
 
   * `zones`: List of zones within the region
 

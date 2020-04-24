@@ -87,8 +87,14 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
   * `network`: The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
 
   * `purpose`: (Beta only) The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE.  If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+  Possible values:
+    * INTERNAL_HTTPS_LOAD_BALANCER
+    * PRIVATE
 
   * `role`: (Beta only) The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+  Possible values:
+    * ACTIVE
+    * BACKUP
 
   * `secondary_ip_ranges`: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges.
 
@@ -105,10 +111,20 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
     * `enable`: If logging is enabled for this subnetwork
 
     * `aggregation_interval`: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection. Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+    Possible values:
+      * INTERVAL_5_SEC
+      * INTERVAL_30_SEC
+      * INTERVAL_1_MIN
+      * INTERVAL_5_MIN
+      * INTERVAL_10_MIN
+      * INTERVAL_15_MIN
 
     * `flow_sampling`: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 which means half of all collected logs are reported.
 
-    * `metadata`: Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Default is `INCLUDE_ALL_METADATA`.
+    * `metadata`: Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs.
+    Possible values:
+      * EXCLUDE_ALL_METADATA
+      * INCLUDE_ALL_METADATA
 
 
 ## GCP Permissions

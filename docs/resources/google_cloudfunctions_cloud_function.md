@@ -31,6 +31,13 @@ Properties that can be accessed from the `google_cloudfunctions_cloud_function` 
   * `description`: User-provided description of a function.
 
   * `status`: Status of the function deployment.
+  Possible values:
+    * CLOUD_FUNCTION_STATUS_UNSPECIFIED
+    * ACTOVE
+    * OFFLINE
+    * DEPLOY_IN_PROGRESS
+    * DELETE_IN_PROGRESS
+    * UNKNOWN
 
   * `entry_point`: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in source_location.
 

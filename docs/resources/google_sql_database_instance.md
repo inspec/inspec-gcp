@@ -53,10 +53,19 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
 
   * `backend_type`: * FIRST_GEN: First Generation instance. MySQL only. * SECOND_GEN: Second Generation instance or PostgreSQL instance. * EXTERNAL: A database server that is not managed by Google.
+  Possible values:
+    * FIRST_GEN
+    * SECOND_GEN
+    * EXTERNAL
 
   * `connection_name`: Connection name of the Cloud SQL instance used in connection strings.
 
   * `database_version`: The database engine type and version. For First Generation instances, can be MYSQL_5_5, or MYSQL_5_6. For Second Generation instances, can be MYSQL_5_6 or MYSQL_5_7. Defaults to MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6  The databaseVersion property can not be changed after instance creation.
+  Possible values:
+    * MYSQL_5_5
+    * MYSQL_5_6
+    * MYSQL_5_7
+    * POSTGRES_9_6
 
   * `failover_replica`: The name and status of the failover replica. This property is applicable only to Second Generation instances.
 
@@ -65,6 +74,10 @@ Properties that can be accessed from the `google_sql_database_instance` resource
     * `name`: The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
 
   * `instance_type`: The instance type. This can be one of the following. * CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating   from a master. * ON_PREMISES_INSTANCE: An instance running on the customer's   premises. * READ_REPLICA_INSTANCE: A Cloud SQL instance configured as a   read-replica.
+  Possible values:
+    * CLOUD_SQL_INSTANCE
+    * ON_PREMISES_INSTANCE
+    * READ_REPLICA_INSTANCE
 
   * `ip_addresses`: The assigned IP addresses for the instance.
 
@@ -73,6 +86,9 @@ Properties that can be accessed from the `google_sql_database_instance` resource
     * `time_to_retire`: The due time for this IP to be retired in RFC 3339 format, for example 2012-11-15T16:19:00.094Z. This field is only available when the IP is scheduled to be retired.
 
     * `type`: The type of this IP address. A PRIMARY address is an address that can accept incoming connections. An OUTGOING address is the source address of connections originating from the instance, if supported.
+    Possible values:
+      * PRIMARY
+      * OUTGOING
 
   * `ipv6_address`: The IPv6 address assigned to the instance. This property is applicable only to First Generation instances.
 
@@ -139,6 +155,9 @@ Properties that can be accessed from the `google_sql_database_instance` resource
     * `tier`: The tier or machine type for this instance, for example db-n1-standard-1. For MySQL instances, this field determines whether the instance is Second Generation (recommended) or First Generation.
 
     * `availability_type`: The availabilityType define if your postgres instance is run zonal  or regional.
+    Possible values:
+      * ZONAL
+      * REGIONAL
 
     * `backup_configuration`: The daily backup configuration for the instance.
 
@@ -153,6 +172,14 @@ Properties that can be accessed from the `google_sql_database_instance` resource
   * `gce_zone`: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 
   * `state`: The current serving state of the database instance.
+  Possible values:
+    * SQL_INSTANCE_STATE_UNSPECIFIED
+    * RUNNABLE
+    * SUSPENDED
+    * PENDING_DELETE
+    * PENDING_CREATE
+    * MAINTENANCE
+    * FAILED
 
 
 ## GCP Permissions

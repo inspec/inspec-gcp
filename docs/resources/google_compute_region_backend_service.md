@@ -32,7 +32,11 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `backends`: The set of backends that serve this RegionBackendService.
 
-    * `balancing_mode`: Specifies the balancing mode for this backend. Defaults to CONNECTION.
+    * `balancing_mode`: Specifies the balancing mode for this backend.
+    Possible values:
+      * UTILIZATION
+      * RATE
+      * CONNECTION
 
     * `capacity_scaler`: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION).  ~>**NOTE**: This field cannot be set for INTERNAL region backend services (default loadBalancingScheme), but is required for non-INTERNAL backend service. The total capacity_scaler for all backends must be non-zero.  A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].
 
@@ -114,9 +118,19 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `id`: The unique identifier for the resource.
 
-  * `load_balancing_scheme`: Indicates what kind of load balancing this regional backend service will be used for. A backend service created for one type of load balancing cannot be used with the other(s). Must be `INTERNAL` or `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+  * `load_balancing_scheme`: Indicates what kind of load balancing this regional backend service will be used for. A backend service created for one type of load balancing cannot be used with the other(s).
+  Possible values:
+    * INTERNAL
+    * INTERNAL_MANAGED
 
   * `locality_lb_policy`: (Beta only) The load balancing algorithm used within the scope of the locality. The possible values are -  ROUND_ROBIN - This is a simple policy in which each healthy backend               is selected in round robin order.  LEAST_REQUEST - An O(1) algorithm which selects two random healthy                 hosts and picks the host which has fewer active requests.  RING_HASH - The ring/modulo hash load balancer implements consistent             hashing to backends. The algorithm has the property that the             addition/removal of a host from a set of N hosts only affects             1/N of the requests.  RANDOM - The load balancer selects a random healthy host.  ORIGINAL_DESTINATION - Backend host is selected based on the client                        connection metadata, i.e., connections are opened                        to the same address as the destination address of                        the incoming connection before the connection                        was redirected to the load balancer.  MAGLEV - used as a drop in replacement for the ring hash load balancer.          Maglev is not as stable as ring hash but has faster table lookup          build times and host selection times. For more information about          Maglev, refer to https://ai.google/research/pubs/pub44824  This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+  Possible values:
+    * ROUND_ROBIN
+    * LEAST_REQUEST
+    * RING_HASH
+    * RANDOM
+    * ORIGINAL_DESTINATION
+    * MAGLEV
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
@@ -152,9 +166,24 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
     * `success_rate_stdev_factor`: This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
 
-  * `protocol`: The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if used with the GA API.
+  * `protocol`: The protocol this RegionBackendService uses to communicate with backends. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if used with the GA API.
+  Possible values:
+    * HTTP
+    * HTTPS
+    * HTTP2
+    * SSL
+    * TCP
+    * UDP
 
   * `session_affinity`: Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+  Possible values:
+    * NONE
+    * CLIENT_IP
+    * CLIENT_IP_PORT_PROTO
+    * CLIENT_IP_PROTO
+    * GENERATED_COOKIE
+    * HEADER_FIELD
+    * HTTP_COOKIE
 
   * `timeout_sec`: How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is [1, 86400].
 

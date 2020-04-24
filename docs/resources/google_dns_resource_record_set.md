@@ -28,6 +28,20 @@ Properties that can be accessed from the `google_dns_resource_record_set` resour
   * `name`: For example, www.example.com.
 
   * `type`: One of valid DNS resource types.
+  Possible values:
+    * A
+    * AAAA
+    * CAA
+    * CNAME
+    * MX
+    * NAPTR
+    * NS
+    * PTR
+    * SOA
+    * SPF
+    * SRV
+    * TLSA
+    * TXT
 
   * `ttl`: Number of seconds that this ResourceRecordSet can be cached by resolvers.
 

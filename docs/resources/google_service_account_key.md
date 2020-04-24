@@ -26,8 +26,16 @@ Properties that can be accessed from the `google_service_account_key` resource:
   * `name`: The name of the key.
 
   * `private_key_type`: Output format for the service account key.
+  Possible values:
+    * TYPE_UNSPECIFIED
+    * TYPE_PKCS12_FILE
+    * TYPE_GOOGLE_CREDENTIALS_FILE
 
   * `key_algorithm`: Specifies the algorithm for the key.
+  Possible values:
+    * KEY_ALG_UNSPECIFIED
+    * KEY_ALG_RSA_1024
+    * KEY_ALG_RSA_2048
 
   * `private_key_data`: Private key data. Base-64 encoded.
 
@@ -38,6 +46,10 @@ Properties that can be accessed from the `google_service_account_key` resource:
   * `valid_before_time`: Key can only be used before this time.
 
   * `key_type`: Specifies the type of the key. Possible values include KEY_TYPE_UNSPECIFIED, USER_MANAGED and SYSTEM_MANAGED
+  Possible values:
+    * KEY_TYPE_UNSPECIFIED
+    * USER_MANAGED
+    * SYSTEM_MANAGED
 
   * `service_account`: The name of the serviceAccount.
 

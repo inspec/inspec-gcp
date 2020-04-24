@@ -57,6 +57,10 @@ Properties that can be accessed from the `google_kms_crypto_key` resource:
   * `labels`: Labels with user-defined metadata to apply to this resource.
 
   * `purpose`: The immutable purpose of this CryptoKey. See the [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose) for possible inputs.
+  Possible values:
+    * ENCRYPT_DECRYPT
+    * ASYMMETRIC_SIGN
+    * ASYMMETRIC_DECRYPT
 
   * `rotation_period`: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits, followed by the letter `s` (seconds). It must be greater than a day (ie, 86400).
 
@@ -65,6 +69,9 @@ Properties that can be accessed from the `google_kms_crypto_key` resource:
     * `algorithm`: The algorithm to use when creating a version based on this template. See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
 
     * `protection_level`: The protection level to use when creating a version based on this template.
+    Possible values:
+      * SOFTWARE
+      * HSM
 
   * `next_rotation_time`: The time when KMS will create a new version of this Crypto Key.
 

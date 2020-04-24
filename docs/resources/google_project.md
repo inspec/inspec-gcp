@@ -40,6 +40,11 @@ Properties that can be accessed from the `google_project` resource:
   * `number`: Number uniquely identifying the project.
 
   * `lifecycle_state`: The Project lifecycle state.
+  Possible values:
+    * LIFECYCLE_STATE_UNSPECIFIED
+    * ACTIVE
+    * DELETE_REQUESTED
+    * DELETE_IN_PROGRESS
 
   * `name`: The user-assigned display name of the Project. It must be 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 

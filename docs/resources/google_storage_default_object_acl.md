@@ -56,8 +56,15 @@ Properties that can be accessed from the `google_storage_default_object_acl` res
     * `project_number`: The project team associated with the entity
 
     * `team`: The team.
+    Possible values:
+      * editors
+      * owners
+      * viewers
 
   * `role`: The access permission for the entity.
+  Possible values:
+    * OWNER
+    * READER
 
 
 ## GCP Permissions
