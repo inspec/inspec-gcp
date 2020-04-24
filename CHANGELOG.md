@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.2.0 -->
+<!-- latest_release 1.3.0 -->
+## [v1.3.0](https://github.com/inspec/inspec-gcp/tree/v1.3.0) (2020-04-17)
+
+#### Merged Pull Requests
+- Add encryption, retention policy to buckets (#3384) (#382) [#250](https://github.com/inspec/inspec-gcp/pull/250) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.2.0](https://github.com/inspec/inspec-gcp/tree/v1.2.0) (2020-04-16)
 
 #### Merged Pull Requests
 - Add security policies [#246](https://github.com/inspec/inspec-gcp/pull/246) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.1.0](https://github.com/inspec/inspec-gcp/tree/v1.1.0) (2020-04-14)
 
