@@ -9,7 +9,7 @@ A `google_service_account_key` is used to test a Google ServiceAccountKey resour
 ## Examples
 ```
 google_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com").key_names.each do |sa_key_name|
-	describe google_service_account_key(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com", name: sa_key_name) do
+	describe google_service_account_key(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com", name: sa_key_name.split('/').last) do
 		it { should exist }
 		its('key_type') { should_not cmp 'USER_MANAGED' }
 	end

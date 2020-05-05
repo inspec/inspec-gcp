@@ -24,7 +24,7 @@ control 'google_service_account_key-1.0' do
 
   only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
   google_service_account_keys(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com").key_names.each do |sa_key_name|
-  	describe google_service_account_key(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com", name: sa_key_name) do
+  	describe google_service_account_key(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com", name: sa_key_name.split('/').last) do
   		it { should exist }
   		its('key_type') { should_not cmp 'USER_MANAGED' }
   	end

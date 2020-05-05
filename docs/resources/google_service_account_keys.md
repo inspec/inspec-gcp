@@ -10,6 +10,7 @@ A `google_service_account_keys` is used to test a Google ServiceAccountKey resou
 ```
 describe google_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com") do
   its('count') { should be <= 1000 }
+  its('key_types') { should_not include 'USER_MANAGED' }
 end
 ```
 
