@@ -124,7 +124,7 @@ Properties that can be accessed from the `google_compute_url_map` resource:
         * SEE_OTHER
         * TEMPORARY_REDIRECT
 
-      * `strip_query`: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+      * `strip_query`: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
 
   * `tests`: The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 

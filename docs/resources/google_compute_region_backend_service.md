@@ -28,7 +28,7 @@ end
 Properties that can be accessed from the `google_compute_region_backend_service` resource:
 
 
-  * `affinity_cookie_ttl_sec`: (Beta only) Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.  When the load balancing scheme is INTERNAL, this field is not used.
+  * `affinity_cookie_ttl_sec`: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.  When the load balancing scheme is INTERNAL, this field is not used.
 
   * `backends`: The set of backends that serve this RegionBackendService.
 
@@ -42,7 +42,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
     * `description`: An optional description of this resource. Provide this property when you create the resource.
 
-    * `failover`: (Beta only) This field designates whether this is a failover backend. More than one failover backend can be configured for a given RegionBackendService.
+    * `failover`: This field designates whether this is a failover backend. More than one failover backend can be configured for a given RegionBackendService.
 
     * `group`: The fully-qualified URL of an Instance Group or Network Endpoint Group resource. In case of instance group this defines the list of instances that serve traffic. Member virtual machine instances from each instance group must live in the same zone as the instance group itself. No two backends in a backend service are allowed to use same Instance Group resource.  For Network Endpoint Groups this defines list of endpoints. All endpoints of Network Endpoint Group must be hosted on instances located in the same zone as the Network Endpoint Group.  Backend services cannot mix Instance Group and Network Endpoint Group backends.  When the `load_balancing_scheme` is INTERNAL, only instance groups are supported.  Note that you must specify an Instance Group or Network Endpoint Group resource using the fully-qualified URL, rather than a partial URL.
 
@@ -60,9 +60,9 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
     * `max_utilization`: Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the group. Valid range is [0.0, 1.0]. Cannot be set for INTERNAL backend services.
 
-  * `circuit_breakers`: (Beta only) Settings controlling the volume of connections to a backend service. This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+  * `circuit_breakers`: Settings controlling the volume of connections to a backend service. This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
 
-    * `connect_timeout`: The timeout for new network connections to hosts.
+    * `connect_timeout`: (Beta only) The timeout for new network connections to hosts.
 
       * `seconds`: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
 
@@ -78,7 +78,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
     * `max_retries`: The maximum number of parallel retries to the backend cluster. Defaults to 3.
 
-  * `consistent_hash`: (Beta only) Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field only applies when all of the following are true -   * `load_balancing_scheme` is set to INTERNAL_MANAGED   * `protocol` is set to HTTP, HTTPS, or HTTP2   * `locality_lb_policy` is set to MAGLEV or RING_HASH
+  * `consistent_hash`: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field only applies when all of the following are true -   * `load_balancing_scheme` is set to INTERNAL_MANAGED   * `protocol` is set to HTTP, HTTPS, or HTTP2   * `locality_lb_policy` is set to MAGLEV or RING_HASH
 
     * `http_cookie`: Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
 
@@ -104,7 +104,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `description`: An optional description of this resource.
 
-  * `failover_policy`: (Beta only) Policy for failovers.
+  * `failover_policy`: Policy for failovers.
 
     * `disable_connection_drain_on_failover`: On failover or failback, this field indicates whether connection drain will be honored. Setting this to true has the following effect: connections to the old active pool are not drained. Connections to the new active pool use the timeout of 10 min (currently fixed). Setting to false has the following effect: both old and new connections will have a drain timeout of 10 min. This can be set to true only if the protocol is TCP. The default is false.
 
@@ -123,7 +123,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
     * INTERNAL
     * INTERNAL_MANAGED
 
-  * `locality_lb_policy`: (Beta only) The load balancing algorithm used within the scope of the locality. The possible values are -  ROUND_ROBIN - This is a simple policy in which each healthy backend               is selected in round robin order.  LEAST_REQUEST - An O(1) algorithm which selects two random healthy                 hosts and picks the host which has fewer active requests.  RING_HASH - The ring/modulo hash load balancer implements consistent             hashing to backends. The algorithm has the property that the             addition/removal of a host from a set of N hosts only affects             1/N of the requests.  RANDOM - The load balancer selects a random healthy host.  ORIGINAL_DESTINATION - Backend host is selected based on the client                        connection metadata, i.e., connections are opened                        to the same address as the destination address of                        the incoming connection before the connection                        was redirected to the load balancer.  MAGLEV - used as a drop in replacement for the ring hash load balancer.          Maglev is not as stable as ring hash but has faster table lookup          build times and host selection times. For more information about          Maglev, refer to https://ai.google/research/pubs/pub44824  This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+  * `locality_lb_policy`: The load balancing algorithm used within the scope of the locality. The possible values are -  ROUND_ROBIN - This is a simple policy in which each healthy backend               is selected in round robin order.  LEAST_REQUEST - An O(1) algorithm which selects two random healthy                 hosts and picks the host which has fewer active requests.  RING_HASH - The ring/modulo hash load balancer implements consistent             hashing to backends. The algorithm has the property that the             addition/removal of a host from a set of N hosts only affects             1/N of the requests.  RANDOM - The load balancer selects a random healthy host.  ORIGINAL_DESTINATION - Backend host is selected based on the client                        connection metadata, i.e., connections are opened                        to the same address as the destination address of                        the incoming connection before the connection                        was redirected to the load balancer.  MAGLEV - used as a drop in replacement for the ring hash load balancer.          Maglev is not as stable as ring hash but has faster table lookup          build times and host selection times. For more information about          Maglev, refer to https://ai.google/research/pubs/pub44824  This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
   Possible values:
     * ROUND_ROBIN
     * LEAST_REQUEST
@@ -134,7 +134,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
-  * `outlier_detection`: (Beta only) Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+  * `outlier_detection`: Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
 
     * `base_ejection_time`: The base time that a host is ejected for. The real time is equal to the base time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
 
@@ -187,7 +187,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `timeout_sec`: How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is [1, 86400].
 
-  * `log_config`: (Beta only) This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
+  * `log_config`: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
 
     * `enable`: Whether to enable logging for the load balancer traffic served by this backend service.
 
