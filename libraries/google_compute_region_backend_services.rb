@@ -38,6 +38,7 @@ class ComputeRegionBackendServices < GcpResourceBase
   filter_table_config.add(:locality_lb_policies, field: :locality_lb_policy)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:outlier_detections, field: :outlier_detection)
+  filter_table_config.add(:port_names, field: :port_name)
   filter_table_config.add(:protocols, field: :protocol)
   filter_table_config.add(:session_affinities, field: :session_affinity)
   filter_table_config.add(:timeout_secs, field: :timeout_sec)
@@ -98,6 +99,7 @@ class ComputeRegionBackendServices < GcpResourceBase
       'localityLbPolicy' => ->(obj) { return :locality_lb_policy, obj['localityLbPolicy'] },
       'name' => ->(obj) { return :name, obj['name'] },
       'outlierDetection' => ->(obj) { return :outlier_detection, GoogleInSpec::Compute::Property::RegionBackendServiceOutlierDetection.new(obj['outlierDetection'], to_s) },
+      'portName' => ->(obj) { return :port_name, obj['portName'] },
       'protocol' => ->(obj) { return :protocol, obj['protocol'] },
       'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
       'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },

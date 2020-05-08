@@ -39,6 +39,7 @@ See [google_compute_region_backend_service.md](google_compute_region_backend_ser
   * `locality_lb_policies`: an array of `google_compute_region_backend_service` locality_lb_policy
   * `names`: an array of `google_compute_region_backend_service` name
   * `outlier_detections`: an array of `google_compute_region_backend_service` outlier_detection
+  * `port_names`: an array of `google_compute_region_backend_service` port_name
   * `protocols`: an array of `google_compute_region_backend_service` protocol
   * `session_affinities`: an array of `google_compute_region_backend_service` session_affinity
   * `timeout_secs`: an array of `google_compute_region_backend_service` timeout_sec
