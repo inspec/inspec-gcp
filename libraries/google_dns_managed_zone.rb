@@ -87,14 +87,14 @@ class DNSManagedZone < GcpResourceBase
   end
 
   def key_signing_key_algorithm
-    specs = @dnssec_config&.default_key_specs | []
+    specs = @dnssec_config&.default_key_specs
     specs.each do |spec|
       return spec.algorithm if spec.key_type == 'keySigning'
     end
   end
 
   def zone_signing_key_algorithm
-    specs = @dnssec_config&.default_key_specs | []
+    specs = @dnssec_config&.default_key_specs
     specs.each do |spec|
       return spec.algorithm if spec.key_type == 'zoneSigning'
     end

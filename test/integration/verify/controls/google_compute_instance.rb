@@ -38,6 +38,8 @@ control 'google_compute_instance-1.0' do
     its('tags.items') { should include instance['tag_2'] }
     its('tag_count') { should cmp 2 }
     its('service_account_scopes') { should include instance['sa_scope'] }
+    its('metadata_keys') { should include instance['metadata_key'] }
+    its('metadata_values') { should include instance['metadata_value'] }
   end
 
   describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: 'nonexistent') do
