@@ -49,6 +49,7 @@ class ComputeRegionBackendService < GcpResourceBase
   attr_reader :locality_lb_policy
   attr_reader :name
   attr_reader :outlier_detection
+  attr_reader :port_name
   attr_reader :protocol
   attr_reader :session_affinity
   attr_reader :timeout_sec
@@ -79,6 +80,7 @@ class ComputeRegionBackendService < GcpResourceBase
     @locality_lb_policy = @fetched['localityLbPolicy']
     @name = @fetched['name']
     @outlier_detection = GoogleInSpec::Compute::Property::RegionBackendServiceOutlierDetection.new(@fetched['outlierDetection'], to_s)
+    @port_name = @fetched['portName']
     @protocol = @fetched['protocol']
     @session_affinity = @fetched['sessionAffinity']
     @timeout_sec = @fetched['timeoutSec']
