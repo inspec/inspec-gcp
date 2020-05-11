@@ -158,7 +158,7 @@ Properties that can be accessed from the `google_compute_instance_template` reso
 
       * `preemptible`: Defines whether the instance is preemptible. This can only be set during instance creation, it cannot be set or changed after the instance has been created.
 
-    * `service_accounts`: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
+    * `service_accounts`: An array of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
 
       * `email`: Email address of the service account.
 
