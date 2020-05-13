@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.4.0 -->
+<!-- latest_release 1.5.0 -->
+## [v1.5.0](https://github.com/inspec/inspec-gcp/tree/v1.5.0) (2020-05-07)
+
+#### Merged Pull Requests
+- Fix Service account keys, MM-updates [#256](https://github.com/inspec/inspec-gcp/pull/256) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.4.0](https://github.com/inspec/inspec-gcp/tree/v1.4.0) (2020-04-28)
 
 #### Merged Pull Requests
 - SQL labels, MM updates [#254](https://github.com/inspec/inspec-gcp/pull/254) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.3.0](https://github.com/inspec/inspec-gcp/tree/v1.3.0) (2020-04-17)
 
