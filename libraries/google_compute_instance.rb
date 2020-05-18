@@ -186,7 +186,7 @@ class ComputeInstance < GcpResourceBase
 
   def metadata_value_by_key(metadata_key)
     return [] if !defined?(@metadata) || @metadata.nil?
-    @metadata["items"]&.each do |item|
+    @metadata['items']&.each do |item|
       if item['key'] == metadata_key
         return item['value']
       end
