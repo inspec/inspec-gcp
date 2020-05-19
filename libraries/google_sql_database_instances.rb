@@ -38,6 +38,8 @@ class SQLDatabaseInstances < GcpResourceBase
   filter_table_config.add(:settings, field: :settings)
   filter_table_config.add(:instance_zones, field: :instance_zone)
   filter_table_config.add(:instance_states, field: :instance_state)
+  filter_table_config.add(:disk_encryption_configurations, field: :disk_encryption_configuration)
+  filter_table_config.add(:disk_encryption_statuses, field: :disk_encryption_status)
 
   filter_table_config.connect(self, :table)
 
@@ -92,6 +94,8 @@ class SQLDatabaseInstances < GcpResourceBase
       'settings' => ->(obj) { return :settings, GoogleInSpec::SQL::Property::DatabaseInstanceSettings.new(obj['settings'], to_s) },
       'gceZone' => ->(obj) { return :instance_zone, obj['gceZone'] },
       'state' => ->(obj) { return :instance_state, obj['state'] },
+      'diskEncryptionConfiguration' => ->(obj) { return :disk_encryption_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(obj['diskEncryptionConfiguration'], to_s) },
+      'diskEncryptionStatus' => ->(obj) { return :disk_encryption_status, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(obj['diskEncryptionStatus'], to_s) },
     }
   end
 

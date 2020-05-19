@@ -69,6 +69,8 @@ See [google_sql_database_instance.md](google_sql_database_instance.md) for more 
   * `settings`: an array of `google_sql_database_instance` settings
   * `instance_zones`: an array of `google_sql_database_instance` gce_zone
   * `instance_states`: an array of `google_sql_database_instance` state
+  * `disk_encryption_configurations`: an array of `google_sql_database_instance` disk_encryption_configuration
+  * `disk_encryption_statuses`: an array of `google_sql_database_instance` disk_encryption_status
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

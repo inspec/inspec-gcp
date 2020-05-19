@@ -14,6 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/sql/property/databaseinstance_disk_encryption_configuration'
+require 'google/sql/property/databaseinstance_disk_encryption_status'
 require 'google/sql/property/databaseinstance_failover_replica'
 require 'google/sql/property/databaseinstance_ip_addresses'
 require 'google/sql/property/databaseinstance_replica_configuration'
@@ -46,6 +48,8 @@ class SQLDatabaseInstance < GcpResourceBase
   attr_reader :settings
   attr_reader :gce_zone
   attr_reader :state
+  attr_reader :disk_encryption_configuration
+  attr_reader :disk_encryption_status
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -70,6 +74,8 @@ class SQLDatabaseInstance < GcpResourceBase
     @settings = GoogleInSpec::SQL::Property::DatabaseInstanceSettings.new(@fetched['settings'], to_s)
     @gce_zone = @fetched['gceZone']
     @state = @fetched['state']
+    @disk_encryption_configuration = GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(@fetched['diskEncryptionConfiguration'], to_s)
+    @disk_encryption_status = GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(@fetched['diskEncryptionStatus'], to_s)
   end
 
   def exists?

@@ -183,6 +183,14 @@ Properties that can be accessed from the `google_sql_database_instance` resource
     * MAINTENANCE
     * FAILED
 
+  * `disk_encryption_configuration`: Disk encyption settings
+
+    * `kms_key_name`: The KMS key used to encrypt the Cloud SQL instance
+
+  * `disk_encryption_status`: Disk encyption status
+
+    * `kms_key_version_name`: The KMS key version used to encrypt the Cloud SQL instance
+
 
 ## GCP Permissions
 
