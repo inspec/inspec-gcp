@@ -86,10 +86,10 @@ class MonitoringAlertPolicys < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://monitoring.googleapis.com/v3/'
+    'https://monitoring.googleapis.com/'
   end
 
   def resource_base_url
-    'projects/{{project}}/alertPolicies'
+    'v3/projects/{{project}}/alertPolicies'
   end
 end
