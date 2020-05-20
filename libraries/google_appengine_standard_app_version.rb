@@ -68,6 +68,6 @@ class AppEngineStandardAppVersion < GcpResourceBase
   end
 
   def resource_base_url
-    'apps/{{project}}/services/{{service}}/versions/{{version_id}}'
+    'apps/{{project}}/services/{{service}}/versions/{{version_id}}?view=FULL'
   end
 end
