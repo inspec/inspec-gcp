@@ -28,6 +28,8 @@ Properties that can be accessed from the `google_appengine_standard_app_version`
 
   * `threadsafe`: Whether multiple requests can be dispatched to this version at once.
 
+  * `inbound_services`: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+
   * `instance_class`: Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 
   * `automatic_scaling`: Automatic scaling is based on request rate, response latencies, and other application metrics.

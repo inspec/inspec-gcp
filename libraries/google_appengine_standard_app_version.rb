@@ -30,6 +30,7 @@ class AppEngineStandardAppVersion < GcpResourceBase
   attr_reader :version_id
   attr_reader :runtime
   attr_reader :threadsafe
+  attr_reader :inbound_services
   attr_reader :instance_class
   attr_reader :automatic_scaling
   attr_reader :basic_scaling
@@ -47,6 +48,7 @@ class AppEngineStandardAppVersion < GcpResourceBase
     @version_id = @fetched['id']
     @runtime = @fetched['runtime']
     @threadsafe = @fetched['threadsafe']
+    @inbound_services = @fetched['inboundServices']
     @instance_class = @fetched['instanceClass']
     @automatic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(@fetched['automaticScaling'], to_s)
     @basic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(@fetched['basicScaling'], to_s)
