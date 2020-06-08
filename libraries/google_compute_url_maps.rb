@@ -34,6 +34,7 @@ class ComputeUrlMaps < GcpResourceBase
   filter_table_config.add(:path_matchers, field: :path_matchers)
   filter_table_config.add(:tests, field: :tests)
   filter_table_config.add(:default_url_redirects, field: :default_url_redirect)
+  filter_table_config.add(:default_route_actions, field: :default_route_action)
 
   filter_table_config.connect(self, :table)
 
@@ -84,6 +85,7 @@ class ComputeUrlMaps < GcpResourceBase
       'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s) },
       'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s) },
       'defaultUrlRedirect' => ->(obj) { return :default_url_redirect, GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(obj['defaultUrlRedirect'], to_s) },
+      'defaultRouteAction' => ->(obj) { return :default_route_action, GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(obj['defaultRouteAction'], to_s) },
     }
   end
 

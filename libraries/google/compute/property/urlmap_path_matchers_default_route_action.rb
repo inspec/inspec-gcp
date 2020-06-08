@@ -13,7 +13,6 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_path_matchers_default_route_action'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_cors_policy'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_fault_injection_policy'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_fault_injection_policy_abort'
@@ -25,47 +24,38 @@ require 'google/compute/property/urlmap_path_matchers_default_route_action_retry
 require 'google/compute/property/urlmap_path_matchers_default_route_action_timeout'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_url_rewrite'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_weighted_backend_services'
-require 'google/compute/property/urlmap_path_matchers_default_url_redirect'
-require 'google/compute/property/urlmap_path_matchers_header_action'
-require 'google/compute/property/urlmap_path_matchers_header_action_request_headers_to_add'
-require 'google/compute/property/urlmap_path_matchers_header_action_response_headers_to_add'
 module GoogleInSpec
   module Compute
     module Property
-      class UrlMapPathMatchers
-        attr_reader :default_service
+      class UrlMapPathMatchersDefaultRouteAction
+        attr_reader :weighted_backend_services
 
-        attr_reader :description
+        attr_reader :url_rewrite
 
-        attr_reader :header_action
+        attr_reader :timeout
 
-        attr_reader :name
+        attr_reader :retry_policy
 
-        attr_reader :default_url_redirect
+        attr_reader :request_mirror_policy
 
-        attr_reader :default_route_action
+        attr_reader :cors_policy
+
+        attr_reader :fault_injection_policy
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @default_service = args['defaultService']
-          @description = args['description']
-          @header_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersHeaderAction.new(args['headerAction'], to_s)
-          @name = args['name']
-          @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultUrlRedirect.new(args['defaultUrlRedirect'], to_s)
-          @default_route_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteAction.new(args['defaultRouteAction'], to_s)
+          @weighted_backend_services = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionWeightedBackendServicesArray.parse(args['weightedBackendServices'], to_s)
+          @url_rewrite = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionUrlRewrite.new(args['urlRewrite'], to_s)
+          @timeout = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionTimeout.new(args['timeout'], to_s)
+          @retry_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionRetryPolicy.new(args['retryPolicy'], to_s)
+          @request_mirror_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionRequestMirrorPolicy.new(args['requestMirrorPolicy'], to_s)
+          @cors_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionCorsPolicy.new(args['corsPolicy'], to_s)
+          @fault_injection_policy = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionFaultInjectionPolicy.new(args['faultInjectionPolicy'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} UrlMapPathMatchers"
-        end
-      end
-
-      class UrlMapPathMatchersArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return UrlMapPathMatchers.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| UrlMapPathMatchers.new(v, parent_identifier) }
+          "#{@parent_identifier} UrlMapPathMatchersDefaultRouteAction"
         end
       end
     end
