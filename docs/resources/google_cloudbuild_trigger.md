@@ -52,6 +52,8 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `dir`: Directory, relative to the source root, in which to run the build.  This must be a relative path. If a step's dir is specified and is an absolute path, this value is ignored for that step's execution.
 
+    * `invert_regex`: Only trigger a build if the revision regex does NOT match the revision regex.
+
     * `branch_name`: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided. This field is a regular expression.
 
     * `tag_name`: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided. This field is a regular expression.
@@ -73,7 +75,11 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
         * COMMENTS_DISABLED
         * COMMENTS_ENABLED
 
+      * `invert_regex`: If true, branches that do NOT match the git_ref will trigger a build.
+
     * `push`: filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+
+      * `invert_regex`: When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
       * `branch`: Regex of branches to match.  Specify only one of branch or tag.
 

@@ -23,6 +23,8 @@ module GoogleInSpec
 
         attr_reader :dir
 
+        attr_reader :invert_regex
+
         attr_reader :branch_name
 
         attr_reader :tag_name
@@ -35,6 +37,7 @@ module GoogleInSpec
           @project_id = args['projectId']
           @repo_name = args['repoName']
           @dir = args['dir']
+          @invert_regex = args['invertRegex']
           @branch_name = args['branchName']
           @tag_name = args['tagName']
           @commit_sha = args['commitSha']

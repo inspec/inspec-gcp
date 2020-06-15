@@ -21,11 +21,14 @@ module GoogleInSpec
 
         attr_reader :comment_control
 
+        attr_reader :invert_regex
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @branch = args['branch']
           @comment_control = args['commentControl']
+          @invert_regex = args['invertRegex']
         end
 
         def to_s
