@@ -31,6 +31,7 @@ class ComputeNodeTemplate < GcpResourceBase
   attr_reader :node_type
   attr_reader :node_type_flexibility
   attr_reader :server_binding
+  attr_reader :cpu_overcommit_type
   attr_reader :region
 
   def initialize(params)
@@ -48,6 +49,7 @@ class ComputeNodeTemplate < GcpResourceBase
     @node_type = @fetched['nodeType']
     @node_type_flexibility = GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(@fetched['nodeTypeFlexibility'], to_s)
     @server_binding = GoogleInSpec::Compute::Property::NodeTemplateServerBinding.new(@fetched['serverBinding'], to_s)
+    @cpu_overcommit_type = @fetched['cpuOvercommitType']
     @region = @fetched['region']
   end
 

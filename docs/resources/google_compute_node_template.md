@@ -52,6 +52,11 @@ Properties that can be accessed from the `google_compute_node_template` resource
       * RESTART_NODE_ON_ANY_SERVER
       * RESTART_NODE_ON_MINIMAL_SERVERS
 
+  * `cpu_overcommit_type`: (Beta only) CPU overcommit.
+  Possible values:
+    * ENABLED
+    * DISABLED
+
   * `region`: Region where nodes using the node template will be created
 
 
