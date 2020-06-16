@@ -55,7 +55,7 @@ Properties that can be accessed from the `google_compute_node_template` resource
   * `cpu_overcommit_type`: (Beta only) CPU overcommit.
   Possible values:
     * ENABLED
-    * DISABLED
+    * NONE
 
   * `region`: Region where nodes using the node template will be created
 
