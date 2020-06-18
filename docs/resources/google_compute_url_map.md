@@ -128,34 +128,6 @@ Properties that can be accessed from the `google_compute_url_map` resource:
 
     * `default_route_action`: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.  Only one of defaultRouteAction or defaultUrlRedirect must be set.
 
-      * `weighted_backend_services`: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non 0 number.  Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions like Url rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
-
-        * `backend_service`: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
-
-        * `weight`: Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) .  The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy.  The value must be between 0 and 1000
-
-        * `header_action`: Specifies changes to request and response headers that need to take effect for the selected backendService.  headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
-
-          * `request_headers_to_remove`: A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
-
-          * `request_headers_to_add`: Headers to add to a matching request prior to forwarding the request to the backendService.
-
-            * `header_name`: The name of the header to add.
-
-            * `header_value`: The value of the header to add.
-
-            * `replace`: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
-
-          * `response_headers_to_remove`: A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
-
-          * `response_headers_to_add`: Headers to add the response prior to sending the response back to the client.
-
-            * `header_name`: The name of the header to add.
-
-            * `header_value`: The value of the header to add.
-
-            * `replace`: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
-
       * `url_rewrite`: The spec to modify the URL of the request, prior to forwarding the request to the matched service.
 
         * `path_prefix_rewrite`: Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.  The value must be between 1 and 1024 characters.

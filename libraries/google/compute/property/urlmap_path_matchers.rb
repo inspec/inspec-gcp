@@ -24,7 +24,6 @@ require 'google/compute/property/urlmap_path_matchers_default_route_action_retry
 require 'google/compute/property/urlmap_path_matchers_default_route_action_retry_policy_per_try_timeout'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_timeout'
 require 'google/compute/property/urlmap_path_matchers_default_route_action_url_rewrite'
-require 'google/compute/property/urlmap_path_matchers_default_route_action_weighted_backend_services'
 require 'google/compute/property/urlmap_path_matchers_default_url_redirect'
 require 'google/compute/property/urlmap_path_matchers_header_action'
 require 'google/compute/property/urlmap_path_matchers_header_action_request_headers_to_add'
