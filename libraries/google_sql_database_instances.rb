@@ -40,6 +40,7 @@ class SQLDatabaseInstances < GcpResourceBase
   filter_table_config.add(:instance_states, field: :instance_state)
   filter_table_config.add(:disk_encryption_configurations, field: :disk_encryption_configuration)
   filter_table_config.add(:disk_encryption_statuses, field: :disk_encryption_status)
+  filter_table_config.add(:server_ca_certs, field: :server_ca_cert)
 
   filter_table_config.connect(self, :table)
 
@@ -96,6 +97,7 @@ class SQLDatabaseInstances < GcpResourceBase
       'state' => ->(obj) { return :instance_state, obj['state'] },
       'diskEncryptionConfiguration' => ->(obj) { return :disk_encryption_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(obj['diskEncryptionConfiguration'], to_s) },
       'diskEncryptionStatus' => ->(obj) { return :disk_encryption_status, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(obj['diskEncryptionStatus'], to_s) },
+      'serverCaCert' => ->(obj) { return :server_ca_cert, GoogleInSpec::SQL::Property::DatabaseInstanceServerCaCert.new(obj['serverCaCert'], to_s) },
     }
   end
 

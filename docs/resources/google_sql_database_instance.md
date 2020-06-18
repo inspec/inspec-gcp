@@ -191,6 +191,20 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
     * `kms_key_version_name`: The KMS key version used to encrypt the Cloud SQL instance
 
+  * `server_ca_cert`: SSL configuration
+
+    * `cert`: PEM representation of the X.509 certificate.
+
+    * `cert_serial_number`: Serial number, as extracted from the certificate.
+
+    * `common_name`: User supplied name. Constrained to [a-zA-Z.-_ ]+.
+
+    * `create_time`: The time when the certificate was created in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
+
+    * `expiration_time`: The time when the certificate expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
+
+    * `sha1_fingerprint`: SHA-1 fingerprint of the certificate.
+
 
 ## GCP Permissions
 

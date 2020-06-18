@@ -14,22 +14,19 @@
 #
 # ----------------------------------------------------------------------------
 module GoogleInSpec
-  module Memcache
+  module Container
     module Property
-      class InstanceNodeConfig
-        attr_reader :cpu_count
-
-        attr_reader :memory_size_mb
+      class ClusterReleaseChannel
+        attr_reader :channel
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cpu_count = args['cpuCount']
-          @memory_size_mb = args['memorySizeMb']
+          @channel = args['channel']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceNodeConfig"
+          "#{@parent_identifier} ClusterReleaseChannel"
         end
       end
     end

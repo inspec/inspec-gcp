@@ -20,6 +20,7 @@ require 'google/sql/property/databaseinstance_failover_replica'
 require 'google/sql/property/databaseinstance_ip_addresses'
 require 'google/sql/property/databaseinstance_replica_configuration'
 require 'google/sql/property/databaseinstance_replica_configuration_mysql_replica_configuration'
+require 'google/sql/property/databaseinstance_server_ca_cert'
 require 'google/sql/property/databaseinstance_settings'
 require 'google/sql/property/databaseinstance_settings_backup_configuration'
 require 'google/sql/property/databaseinstance_settings_database_flags'
@@ -50,6 +51,7 @@ class SQLDatabaseInstance < GcpResourceBase
   attr_reader :state
   attr_reader :disk_encryption_configuration
   attr_reader :disk_encryption_status
+  attr_reader :server_ca_cert
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -76,6 +78,7 @@ class SQLDatabaseInstance < GcpResourceBase
     @state = @fetched['state']
     @disk_encryption_configuration = GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(@fetched['diskEncryptionConfiguration'], to_s)
     @disk_encryption_status = GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(@fetched['diskEncryptionStatus'], to_s)
+    @server_ca_cert = GoogleInSpec::SQL::Property::DatabaseInstanceServerCaCert.new(@fetched['serverCaCert'], to_s)
   end
 
   def exists?

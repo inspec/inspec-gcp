@@ -71,6 +71,7 @@ See [google_sql_database_instance.md](google_sql_database_instance.md) for more 
   * `instance_states`: an array of `google_sql_database_instance` state
   * `disk_encryption_configurations`: an array of `google_sql_database_instance` disk_encryption_configuration
   * `disk_encryption_statuses`: an array of `google_sql_database_instance` disk_encryption_status
+  * `server_ca_certs`: an array of `google_sql_database_instance` server_ca_cert
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

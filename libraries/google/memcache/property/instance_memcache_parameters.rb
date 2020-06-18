@@ -16,20 +16,20 @@
 module GoogleInSpec
   module Memcache
     module Property
-      class InstanceNodeConfig
-        attr_reader :cpu_count
+      class InstanceMemcacheParameters
+        attr_reader :id
 
-        attr_reader :memory_size_mb
+        attr_reader :params
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cpu_count = args['cpuCount']
-          @memory_size_mb = args['memorySizeMb']
+          @id = args['id']
+          @params = args['params']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceNodeConfig"
+          "#{@parent_identifier} InstanceMemcacheParameters"
         end
       end
     end

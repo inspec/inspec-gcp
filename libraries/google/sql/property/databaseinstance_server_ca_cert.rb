@@ -14,22 +14,39 @@
 #
 # ----------------------------------------------------------------------------
 module GoogleInSpec
-  module Memcache
+  module SQL
     module Property
-      class InstanceNodeConfig
-        attr_reader :cpu_count
+      class DatabaseInstanceServerCaCert
+        attr_reader :cert
 
-        attr_reader :memory_size_mb
+        attr_reader :cert_serial_number
+
+        attr_reader :common_name
+
+        attr_reader :create_time
+
+        attr_reader :expiration_time
+
+        attr_reader :sha1_fingerprint
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cpu_count = args['cpuCount']
-          @memory_size_mb = args['memorySizeMb']
+          @cert = args['cert']
+          @cert_serial_number = args['certSerialNumber']
+          @common_name = args['commonName']
+          @create_time = parse_time_string(args['createTime'])
+          @expiration_time = parse_time_string(args['expirationTime'])
+          @sha1_fingerprint = args['sha1Fingerprint']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceNodeConfig"
+          "#{@parent_identifier} DatabaseInstanceServerCaCert"
+        end
+
+        # Handles parsing RFC3339 time string
+        def parse_time_string(time_string)
+          time_string ? Time.parse(time_string) : nil
         end
       end
     end
