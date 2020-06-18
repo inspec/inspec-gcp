@@ -68,9 +68,10 @@ Properties that can be accessed from the `google_compute_address` resource:
 
   * `name`: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
-  * `purpose`: The purpose of this resource, which can be one of the following values:  - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.  This should only be set when using an Internal address.
+  * `purpose`: The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers This should only be set when using an Internal address.
   Possible values:
     * GCE_ENDPOINT
+    * SHARED_LOADBALANCER_VIP
 
   * `network_tier`: The networking tier used for configuring this address. If this field is not specified, it is assumed to be PREMIUM.
   Possible values:
