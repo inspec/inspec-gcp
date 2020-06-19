@@ -213,7 +213,7 @@ class ComputeInstance < GcpResourceBase
     return false if !defined?(@metadata['items']) || @metadata['items'].nil?
     @metadata['items'].each do |element|
       return false if element['key']=='serial-port-enable' and element['value'].casecmp('true').zero?
-      return false if element['key']=='serial-port-enable' and element['value']=='0'
+      return false if element['key']=='serial-port-enable' and element['value']=='1'
     end
     true
   end
