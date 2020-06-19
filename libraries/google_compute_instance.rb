@@ -203,8 +203,8 @@ class ComputeInstance < GcpResourceBase
   def block_project_ssh_keys
     return false if !defined?(@metadata['items']) || @metadata['items'].nil?
     @metadata['items'].each do |element|
-      return true if element.key=='block-project-ssh-keys' and element.value.casecmp('true').zero?
-      return true if element.key=='block-project-ssh-keys' and element.value=='1'
+      return true if element['key']=='block-project-ssh-keys' and element['value'].casecmp('true').zero?
+      return true if element['key']=='block-project-ssh-keys' and element['value']=='1'
     end
     false
   end
@@ -212,8 +212,8 @@ class ComputeInstance < GcpResourceBase
   def has_serial_port_disabled?
     return false if !defined?(@metadata['items']) || @metadata['items'].nil?
     @metadata['items'].each do |element|
-      return true if element.key=='serial-port-enable' and element.value.casecmp('false').zero?
-      return true if element.key=='serial-port-enable' and element.value=='0'
+      return true if element['key']=='serial-port-enable' and element['value'].casecmp('false').zero?
+      return true if element['key']=='serial-port-enable' and element['value']=='0'
     end
     false
   end
