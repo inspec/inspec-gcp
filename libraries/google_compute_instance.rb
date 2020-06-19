@@ -212,10 +212,10 @@ class ComputeInstance < GcpResourceBase
   def has_serial_port_disabled?
     return false if !defined?(@metadata['items']) || @metadata['items'].nil?
     @metadata['items'].each do |element|
-      return true if element['key']=='serial-port-enable' and element['value'].casecmp('false').zero?
-      return true if element['key']=='serial-port-enable' and element['value']=='0'
+      return false if element['key']=='serial-port-enable' and element['value'].casecmp('true').zero?
+      return false if element['key']=='serial-port-enable' and element['value']=='1'
     end
-    false
+    true
   end
 
   def has_disks_encrypted_with_csek?
