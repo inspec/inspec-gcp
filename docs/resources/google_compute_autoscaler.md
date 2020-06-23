@@ -47,6 +47,22 @@ Properties that can be accessed from the `google_compute_autoscaler` resource:
 
     * `cool_down_period_sec`: The number of seconds that the autoscaler should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds.  Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
 
+    * `mode`: Defines operating mode for this policy.
+    Possible values:
+      * OFF
+      * ONLY_UP
+      * ON
+
+    * `scale_down_control`: (Beta only) Defines scale down controls to reduce the risk of response latency and outages due to abrupt scale-in events
+
+      * `max_scaled_down_replicas`: A nested object resource
+
+        * `fixed`: Specifies a fixed number of VM instances. This must be a positive integer.
+
+        * `percent`: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+
+      * `time_window_sec`: How long back autoscaling should look when computing recommendations to include directives regarding slower scale down, as described above.
+
     * `cpu_utilization`: Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group.
 
       * `utilization_target`: The target CPU utilization that the autoscaler should maintain. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.  If the CPU level is below the target utilization, the autoscaler scales down the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.  If the average CPU is above the target utilization, the autoscaler scales up until it reaches the maximum number of instances you specified or until the average utilization reaches the target utilization.
