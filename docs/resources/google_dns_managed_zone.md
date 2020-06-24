@@ -109,7 +109,7 @@ Properties that can be accessed from the `google_dns_managed_zone` resource:
 
       * `network_url`: The fully qualified URL of the VPC network to bind to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 
-  * `forwarding_config`: (Beta only) The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
+  * `forwarding_config`: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
 
     * `target_name_servers`: List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
 
@@ -120,7 +120,7 @@ Properties that can be accessed from the `google_dns_managed_zone` resource:
         * default
         * private
 
-  * `peering_config`: (Beta only) The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
+  * `peering_config`: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
 
     * `target_network`: The network with which to peer.
 

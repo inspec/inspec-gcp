@@ -60,6 +60,7 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:node_pools, field: :node_pools)
   filter_table_config.add(:pod_security_policy_configs, field: :pod_security_policy_config)
   filter_table_config.add(:binary_authorizations, field: :binary_authorization)
+  filter_table_config.add(:release_channels, field: :release_channel)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -137,6 +138,7 @@ class ContainerClusters < GcpResourceBase
       'nodePools' => ->(obj) { return :node_pools, GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(obj['nodePools'], to_s) },
       'podSecurityPolicyConfig' => ->(obj) { return :pod_security_policy_config, GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(obj['podSecurityPolicyConfig'], to_s) },
       'binaryAuthorization' => ->(obj) { return :binary_authorization, GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(obj['binaryAuthorization'], to_s) },
+      'releaseChannel' => ->(obj) { return :release_channel, GoogleInSpec::Container::Property::ClusterReleaseChannel.new(obj['releaseChannel'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end

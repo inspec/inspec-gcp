@@ -17,6 +17,8 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerGithubPush
+        attr_reader :invert_regex
+
         attr_reader :branch
 
         attr_reader :tag
@@ -24,6 +26,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
+          @invert_regex = args['invertRegex']
           @branch = args['branch']
           @tag = args['tag']
         end

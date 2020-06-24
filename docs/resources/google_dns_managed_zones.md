@@ -54,8 +54,8 @@ See [google_dns_managed_zone.md](google_dns_managed_zone.md) for more detailed i
   * `labels`: an array of `google_dns_managed_zone` labels
   * `visibilities`: an array of `google_dns_managed_zone` visibility
   * `private_visibility_configs`: an array of `google_dns_managed_zone` private_visibility_config
-  * `forwarding_configs`: (Beta only) an array of `google_dns_managed_zone` forwarding_config
-  * `peering_configs`: (Beta only) an array of `google_dns_managed_zone` peering_config
+  * `forwarding_configs`: an array of `google_dns_managed_zone` forwarding_config
+  * `peering_configs`: an array of `google_dns_managed_zone` peering_config
   * `reverse_lookups`: (Beta only) an array of `google_dns_managed_zone` reverse_lookup
   * `service_directory_configs`: (Beta only) an array of `google_dns_managed_zone` service_directory_config
 

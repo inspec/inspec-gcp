@@ -13,6 +13,17 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/urlmap_path_matchers_default_route_action'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_cors_policy'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_fault_injection_policy'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_fault_injection_policy_abort'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_fault_injection_policy_delay'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_fault_injection_policy_delay_fixed_delay'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_request_mirror_policy'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_retry_policy'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_retry_policy_per_try_timeout'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_timeout'
+require 'google/compute/property/urlmap_path_matchers_default_route_action_url_rewrite'
 require 'google/compute/property/urlmap_path_matchers_default_url_redirect'
 require 'google/compute/property/urlmap_path_matchers_header_action'
 require 'google/compute/property/urlmap_path_matchers_header_action_request_headers_to_add'
@@ -31,6 +42,8 @@ module GoogleInSpec
 
         attr_reader :default_url_redirect
 
+        attr_reader :default_route_action
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -39,6 +52,7 @@ module GoogleInSpec
           @header_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersHeaderAction.new(args['headerAction'], to_s)
           @name = args['name']
           @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultUrlRedirect.new(args['defaultUrlRedirect'], to_s)
+          @default_route_action = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteAction.new(args['defaultRouteAction'], to_s)
         end
 
         def to_s

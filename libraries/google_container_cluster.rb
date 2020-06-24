@@ -35,6 +35,7 @@ require 'google/container/property/cluster_node_config_taints'
 require 'google/container/property/cluster_node_pools'
 require 'google/container/property/cluster_pod_security_policy_config'
 require 'google/container/property/cluster_private_cluster_config'
+require 'google/container/property/cluster_release_channel'
 
 # A provider to manage Google Kubernetes Engine resources.
 class ContainerCluster < GcpResourceBase
@@ -80,6 +81,7 @@ class ContainerCluster < GcpResourceBase
   attr_reader :node_pools
   attr_reader :pod_security_policy_config
   attr_reader :binary_authorization
+  attr_reader :release_channel
   attr_reader :location
 
   def initialize(params)
@@ -127,6 +129,7 @@ class ContainerCluster < GcpResourceBase
     @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched['nodePools'], to_s)
     @pod_security_policy_config = GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(@fetched['podSecurityPolicyConfig'], to_s)
     @binary_authorization = GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(@fetched['binaryAuthorization'], to_s)
+    @release_channel = GoogleInSpec::Container::Property::ClusterReleaseChannel.new(@fetched['releaseChannel'], to_s)
     @location = @fetched['location']
   end
 

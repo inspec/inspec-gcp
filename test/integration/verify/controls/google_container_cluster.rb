@@ -35,4 +35,9 @@ control 'google_container_cluster-1.0' do
   describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: 'nonexistent') do
     it { should_not exist }
   end
+
+  describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: gcp_kube_cluster_name, beta: true) do
+    it { should exist }
+    its('release_channel.channel') { should cmp "RAPID" }
+  end
 end

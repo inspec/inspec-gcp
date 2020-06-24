@@ -85,6 +85,7 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `node_pools`: an array of `google_container_cluster` node_pools
   * `pod_security_policy_configs`: (Beta only) an array of `google_container_cluster` pod_security_policy_config
   * `binary_authorizations`: an array of `google_container_cluster` binary_authorization
+  * `release_channels`: (Beta only) an array of `google_container_cluster` release_channel
   * `locations`: an array of `google_container_cluster` location
 
 ## Filter Criteria

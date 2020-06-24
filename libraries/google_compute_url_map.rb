@@ -14,6 +14,18 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/urlmap_default_route_action'
+require 'google/compute/property/urlmap_default_route_action_cors_policy'
+require 'google/compute/property/urlmap_default_route_action_fault_injection_policy'
+require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_abort'
+require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_delay'
+require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_delay_fixed_delay'
+require 'google/compute/property/urlmap_default_route_action_request_mirror_policy'
+require 'google/compute/property/urlmap_default_route_action_retry_policy'
+require 'google/compute/property/urlmap_default_route_action_retry_policy_per_try_timeout'
+require 'google/compute/property/urlmap_default_route_action_timeout'
+require 'google/compute/property/urlmap_default_route_action_url_rewrite'
+require 'google/compute/property/urlmap_default_route_action_weighted_backend_services'
 require 'google/compute/property/urlmap_default_url_redirect'
 require 'google/compute/property/urlmap_header_action'
 require 'google/compute/property/urlmap_header_action_request_headers_to_add'
@@ -40,6 +52,7 @@ class ComputeUrlMap < GcpResourceBase
   attr_reader :path_matchers
   attr_reader :tests
   attr_reader :default_url_redirect
+  attr_reader :default_route_action
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -60,6 +73,7 @@ class ComputeUrlMap < GcpResourceBase
     @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'], to_s)
     @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'], to_s)
     @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(@fetched['defaultUrlRedirect'], to_s)
+    @default_route_action = GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(@fetched['defaultRouteAction'], to_s)
   end
 
   # Handles parsing RFC3339 time string

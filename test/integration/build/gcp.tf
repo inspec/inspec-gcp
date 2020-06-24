@@ -99,7 +99,12 @@ variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
   region = var.gcp_location
-  version = "~> 3.3.0"
+  version = "~> 3.26.0"
+}
+
+provider "google-beta" {
+  region = var.gcp_location
+  version = "~> 3.26.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {
@@ -338,6 +343,7 @@ resource "google_compute_region_instance_group_manager" "appserver" {
 
 resource "google_container_cluster" "primary" {
   project = var.gcp_project_id
+  provider = google-beta
   name               = var.gcp_kube_cluster_name
   location           = var.gcp_kube_cluster_zone
   initial_node_count = var.gcp_kube_cluster_size
@@ -369,6 +375,10 @@ resource "google_container_cluster" "primary" {
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
+  }
+
+  release_channel {
+    channel = "RAPID"
   }
 }
 

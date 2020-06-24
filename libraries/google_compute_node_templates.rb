@@ -30,6 +30,7 @@ class ComputeNodeTemplates < GcpResourceBase
   filter_table_config.add(:node_types, field: :node_type)
   filter_table_config.add(:node_type_flexibilities, field: :node_type_flexibility)
   filter_table_config.add(:server_bindings, field: :server_binding)
+  filter_table_config.add(:cpu_overcommit_types, field: :cpu_overcommit_type)
   filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
@@ -77,6 +78,7 @@ class ComputeNodeTemplates < GcpResourceBase
       'nodeType' => ->(obj) { return :node_type, obj['nodeType'] },
       'nodeTypeFlexibility' => ->(obj) { return :node_type_flexibility, GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(obj['nodeTypeFlexibility'], to_s) },
       'serverBinding' => ->(obj) { return :server_binding, GoogleInSpec::Compute::Property::NodeTemplateServerBinding.new(obj['serverBinding'], to_s) },
+      'cpuOvercommitType' => ->(obj) { return :cpu_overcommit_type, obj['cpuOvercommitType'] },
       'region' => ->(obj) { return :region, obj['region'] },
     }
   end

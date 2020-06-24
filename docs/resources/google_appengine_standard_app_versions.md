@@ -22,6 +22,7 @@ See [google_appengine_standard_app_version.md](google_appengine_standard_app_ver
   * `version_ids`: an array of `google_appengine_standard_app_version` version_id
   * `runtimes`: an array of `google_appengine_standard_app_version` runtime
   * `threadsaves`: an array of `google_appengine_standard_app_version` threadsafe
+  * `inbound_services`: an array of `google_appengine_standard_app_version` inbound_services
   * `instance_classes`: an array of `google_appengine_standard_app_version` instance_class
   * `automatic_scalings`: an array of `google_appengine_standard_app_version` automatic_scaling
   * `basic_scalings`: an array of `google_appengine_standard_app_version` basic_scaling
