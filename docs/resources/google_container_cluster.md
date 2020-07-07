@@ -120,6 +120,12 @@ Properties that can be accessed from the `google_container_cluster` resource:
         * PREFER_NO_SCHEDULE
         * NO_EXECUTE
 
+    * `shielded_instance_config`: Shielded Instance options.
+
+      * `enable_secure_boot`: Defines whether the instance has Secure Boot enabled.  Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+
+      * `enable_integrity_monitoring`: Defines whether the instance has integrity monitoring enabled.  Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+
   * `master_auth`: The authentication information for accessing the master endpoint.
 
     * `username`: The username to use for HTTP basic authentication to the master endpoint.
@@ -287,14 +293,9 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `enabled`: If enabled, all container images will be validated by Binary Authorization.
 
-  * `release_channel`: (Beta only) ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk and frequency of updates.
+  * `shielded_nodes`: (Beta only) Shielded Nodes configuration.
 
-    * `channel`: Which release channel the cluster is subscribed to.
-    Possible values:
-      * UNSPECIFIED
-      * RAPID
-      * REGULAR
-      * STABLE
+    * `enabled`: Whether Shielded Nodes features are enabled on all nodes in this cluster.
 
   * `location`: The location where the cluster is deployed
 
