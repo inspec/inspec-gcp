@@ -31,7 +31,7 @@ class MemcacheInstances < GcpResourceBase
   filter_table_config.add(:authorized_networks, field: :authorized_network)
   filter_table_config.add(:node_counts, field: :node_count)
   filter_table_config.add(:node_configs, field: :node_config)
-  filter_table_config.add(:memcache_parameters, field: :memcache_parameters)
+  filter_table_config.add(:parameters, field: :parameters)
   filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
@@ -80,7 +80,7 @@ class MemcacheInstances < GcpResourceBase
       'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
       'nodeCount' => ->(obj) { return :node_count, obj['nodeCount'] },
       'nodeConfig' => ->(obj) { return :node_config, GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(obj['nodeConfig'], to_s) },
-      'memcacheParameters' => ->(obj) { return :memcache_parameters, GoogleInSpec::Memcache::Property::InstanceMemcacheParameters.new(obj['memcacheParameters'], to_s) },
+      'parameters' => ->(obj) { return :parameters, GoogleInSpec::Memcache::Property::InstanceParameters.new(obj['parameters'], to_s) },
       'region' => ->(obj) { return :region, obj['region'] },
     }
   end

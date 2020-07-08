@@ -14,8 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/memcache/property/instance_memcache_parameters'
 require 'google/memcache/property/instance_node_config'
+require 'google/memcache/property/instance_parameters'
 
 # A provider to manage Memcache resources.
 class MemcacheInstance < GcpResourceBase
@@ -32,7 +32,7 @@ class MemcacheInstance < GcpResourceBase
   attr_reader :authorized_network
   attr_reader :node_count
   attr_reader :node_config
-  attr_reader :memcache_parameters
+  attr_reader :parameters
   attr_reader :region
 
   def initialize(params)
@@ -51,7 +51,7 @@ class MemcacheInstance < GcpResourceBase
     @authorized_network = @fetched['authorizedNetwork']
     @node_count = @fetched['nodeCount']
     @node_config = GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(@fetched['nodeConfig'], to_s)
-    @memcache_parameters = GoogleInSpec::Memcache::Property::InstanceMemcacheParameters.new(@fetched['memcacheParameters'], to_s)
+    @parameters = GoogleInSpec::Memcache::Property::InstanceParameters.new(@fetched['parameters'], to_s)
     @region = @fetched['region']
   end
 

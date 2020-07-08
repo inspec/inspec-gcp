@@ -26,7 +26,7 @@ See [google_memcache_instance.md](google_memcache_instance.md) for more detailed
   * `authorized_networks`: (Beta only) an array of `google_memcache_instance` authorized_network
   * `node_counts`: (Beta only) an array of `google_memcache_instance` node_count
   * `node_configs`: (Beta only) an array of `google_memcache_instance` node_config
-  * `memcache_parameters`: (Beta only) an array of `google_memcache_instance` memcache_parameters
+  * `parameters`: (Beta only) an array of `google_memcache_instance` parameters
   * `regions`: (Beta only) an array of `google_memcache_instance` region
 
 ## Filter Criteria

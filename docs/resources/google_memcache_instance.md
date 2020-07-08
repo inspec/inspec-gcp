@@ -42,7 +42,7 @@ Properties that can be accessed from the `google_memcache_instance` resource:
 
     * `memory_size_mb`: (Beta only) Memory size in Mebibytes for each memcache node.
 
-  * `memcache_parameters`: (Beta only) User-specified parameters for this memcache instance.
+  * `parameters`: (Beta only) User-specified parameters for this memcache instance.
 
     * `id`: (Beta only) This is a unique ID associated with this set of parameters.
 
