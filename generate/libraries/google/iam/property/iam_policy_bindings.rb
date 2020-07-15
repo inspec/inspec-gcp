@@ -23,9 +23,10 @@ module GoogleInSpec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+
           @parent_identifier = parent_identifier
-          @role = args['role']
-          @members = args['members']
+          @role = args["role"]
+          @members = args["members"]
         end
 
         def to_s
@@ -37,6 +38,7 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return IamPolicyBindings.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| IamPolicyBindings.new(v, parent_identifier) }
         end
       end

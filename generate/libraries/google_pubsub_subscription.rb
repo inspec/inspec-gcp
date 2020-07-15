@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/pubsub/property/subscription_expiration_policy'
-require 'google/pubsub/property/subscription_push_config'
+require "gcp_backend"
+require "google/pubsub/property/subscription_expiration_policy"
+require "google/pubsub/property/subscription_push_config"
 
 # A provider to manage Cloud Pub/Sub resources.
 class PubsubSubscription < GcpResourceBase
-  name 'google_pubsub_subscription'
-  desc 'Subscription'
-  supports platform: 'gcp'
+  name "google_pubsub_subscription"
+  desc "Subscription"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -36,20 +36,20 @@ class PubsubSubscription < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = name_from_self_link(@fetched['name'])
-    @topic = @fetched['topic']
-    @labels = @fetched['labels']
-    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched['pushConfig'], to_s)
-    @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
-    @message_retention_duration = @fetched['messageRetentionDuration']
-    @retain_acked_messages = @fetched['retainAckedMessages']
-    @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
+    @name = name_from_self_link(@fetched["name"])
+    @topic = @fetched["topic"]
+    @labels = @fetched["labels"]
+    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched["pushConfig"], to_s)
+    @ack_deadline_seconds = @fetched["ackDeadlineSeconds"]
+    @message_retention_duration = @fetched["messageRetentionDuration"]
+    @retain_acked_messages = @fetched["retainAckedMessages"]
+    @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched["expirationPolicy"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -67,32 +67,33 @@ class PubsubSubscription < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'topic' => ->(x, _) { x.nil? ? [] : ["its('topic') { should cmp #{x.inspect} }"] },
-      'labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'push_config' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.un_parse(x, 'push_config') },
-      'ack_deadline_seconds' => ->(x, _) { x.nil? ? [] : ["its('ack_deadline_seconds') { should cmp #{x.inspect} }"] },
-      'message_retention_duration' => ->(x, _) { x.nil? ? [] : ["its('message_retention_duration') { should cmp #{x.inspect} }"] },
-      'retain_acked_messages' => ->(x, _) { x.nil? ? [] : ["its('retain_acked_messages') { should cmp #{x.inspect} }"] },
-      'expiration_policy' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.un_parse(x, 'expiration_policy') },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "topic" => ->(x, _) { x.nil? ? [] : ["its('topic') { should cmp #{x.inspect} }"] },
+      "labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "push_config" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.un_parse(x, "push_config") },
+      "ack_deadline_seconds" => ->(x, _) { x.nil? ? [] : ["its('ack_deadline_seconds') { should cmp #{x.inspect} }"] },
+      "message_retention_duration" => ->(x, _) { x.nil? ? [] : ["its('message_retention_duration') { should cmp #{x.inspect} }"] },
+      "retain_acked_messages" => ->(x, _) { x.nil? ? [] : ["its('retain_acked_messages') { should cmp #{x.inspect} }"] },
+      "expiration_policy" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.un_parse(x, "expiration_policy") },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Subscription'
+    name = "Subscription"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_pubsub_subscription',
+      type: "google_pubsub_subscription",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -100,10 +101,10 @@ class PubsubSubscription < GcpResourceBase
   private
 
   def product_url
-    'https://pubsub.googleapis.com/v1/'
+    "https://pubsub.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/subscriptions/{{name}}'
+    "projects/{{project}}/subscriptions/{{name}}"
   end
 end

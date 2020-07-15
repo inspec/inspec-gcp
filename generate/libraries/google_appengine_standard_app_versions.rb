@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class AppEngineStandardAppVersions < GcpResourceBase
-  name 'google_appengine_standard_app_versions'
-  desc 'StandardAppVersion plural resource'
-  supports platform: 'gcp'
+  name "google_appengine_standard_app_versions"
+  desc "StandardAppVersion plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,18 +33,19 @@ class AppEngineStandardAppVersions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('versions')
+    @table = fetch_wrapped_resource("versions")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -66,10 +67,10 @@ class AppEngineStandardAppVersions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'id' => ->(obj) { return :version_id, obj['id'] },
-      'runtime' => ->(obj) { return :runtime, obj['runtime'] },
-      'threadsafe' => ->(obj) { return :threadsafe, obj['threadsafe'] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "id" => ->(obj) { return :version_id, obj["id"] },
+      "runtime" => ->(obj) { return :runtime, obj["runtime"] },
+      "threadsafe" => ->(obj) { return :threadsafe, obj["threadsafe"] },
     }
   end
 
@@ -96,10 +97,10 @@ class AppEngineStandardAppVersions < GcpResourceBase
   private
 
   def product_url
-    'https://appengine.googleapis.com/v1/'
+    "https://appengine.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'apps/{{project}}/services/{{service}}/versions'
+    "apps/{{project}}/services/{{service}}/versions"
   end
 end

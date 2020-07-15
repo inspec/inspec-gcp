@@ -12,18 +12,18 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_dns_managed_zones resource.'
+title "Test GCP google_dns_managed_zones resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_dns_zone_name = attribute(:gcp_dns_zone_name, default: 'gcp_dns_zone_name', description: 'The DNS name of the DNS zone.')
-dns_managed_zone = attribute('dns_managed_zone', default: {"name"=>"example-zone", "description"=>"example description", "dnssec_config_state"=>"on"})
-control 'google_dns_managed_zones-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_dns_zone_name = attribute(:gcp_dns_zone_name, default: "gcp_dns_zone_name", description: "The DNS name of the DNS zone.")
+dns_managed_zone = attribute("dns_managed_zone", default: { "name" => "example-zone", "description" => "example description", "dnssec_config_state" => "on" })
+control "google_dns_managed_zones-1.0" do
   impact 1.0
-  title 'google_dns_managed_zones resource test'
+  title "google_dns_managed_zones resource test"
 
   describe google_dns_managed_zones(project: gcp_project_id) do
     it { should exist }
-    its('zone_names') { should include dns_managed_zone['name'] }
-    its('zone_dns_names') { should include gcp_dns_zone_name }
+    its("zone_names") { should include dns_managed_zone["name"] }
+    its("zone_dns_names") { should include gcp_dns_zone_name }
   end
 end

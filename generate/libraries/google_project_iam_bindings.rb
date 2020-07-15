@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleProjectIAMBindings < GcpResourceBase
-    name 'google_project_iam_bindings'
-    desc 'Verifies settings for GCP project iam_bindings in bulk'
+    name "google_project_iam_bindings"
+    desc "Verifies settings for GCP project iam_bindings in bulk"
 
     example "
       describe google_project_iam_bindings(project: 'chef-inspec-gcp') do
@@ -31,8 +31,9 @@ module Inspec::Resources
         @iam_bindings = @gcp.gcp_project_client.get_project_iam_policy(@project)
       end
       return [] if !@iam_bindings || !@iam_bindings.bindings
+
       @iam_bindings.bindings.map do |iam_binding|
-        iam_binding_rows+=[{ iam_binding_role: iam_binding.role }]
+        iam_binding_rows += [{ iam_binding_role: iam_binding.role }]
       end
       @table = iam_binding_rows
     end

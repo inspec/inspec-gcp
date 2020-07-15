@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'json'
+require "gcp_backend"
+require "json"
 
 module Inspec::Resources
   class GoogleStorageObjectAcl < GcpResourceBase
-    name 'google_storage_object_acl'
-    desc 'Verifies settings for a storage object ACL'
+    name "google_storage_object_acl"
+    desc "Verifies settings for a storage object ACL"
 
     example "
       describe google_storage_object_acl(bucket: 'bucket-buvsjjcndqz', object: 'bucket-object-pmxbiikq', entity: 'user-object-viewer@spaterson-project.iam.gserviceaccount.com') do
@@ -25,8 +25,8 @@ module Inspec::Resources
         create_resource_methods(@acl)
         # all non-existing entities raise a "Not Found" client error
       rescue Google::Apis::ClientError => e
-        @acl=nil
-        @error=JSON.parse(e.body)
+        @acl = nil
+        @error = JSON.parse(e.body)
       end
     end
 

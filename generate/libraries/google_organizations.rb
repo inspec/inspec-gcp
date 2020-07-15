@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeOrganizations < GcpResourceBase
-    name 'google_organizations'
-    desc 'Verifies settings for GCP organizations in bulk'
+    name "google_organizations"
+    desc "Verifies settings for GCP organizations in bulk"
 
     example "
       describe google_organizations do
@@ -31,6 +31,7 @@ module Inspec::Resources
           @organizations = @gcp.gcp_project_client.search_organizations({})
         end
         return [] if !@organizations || !@organizations.organizations
+
         @organizations.organizations.map do |organization|
           organizations_rows += [{ name: organization.name,
                                   display_name: organization.display_name,

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleLoggingProjectSinks < GcpResourceBase
-    name 'google_logging_project_sinks'
-    desc 'Verifies settings for GCP project logging sinks in bulk'
+    name "google_logging_project_sinks"
+    desc "Verifies settings for GCP project logging sinks in bulk"
 
     example "
       describe google_logging_project_sinks(project: 'chef-inspec-gcp') do
@@ -33,9 +33,10 @@ module Inspec::Resources
           @sinks = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).list_project_sinks("projects/#{@project}", page_token: next_page)
         end
         return [] if !@sinks || !@sinks.sinks
+
         @sinks.sinks.map do |sink|
           logging_sink = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).get_project_sink("projects/#{@project}/sinks/#{sink.name}")
-          sink_rows+=[{ sink_name: sink.name,
+          sink_rows += [{ sink_name: sink.name,
                         sink_destination: sink.destination,
                         sink_filter: logging_sink.filter }]
         end

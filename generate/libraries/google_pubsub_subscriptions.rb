@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class PubsubSubscriptions < GcpResourceBase
-  name 'google_pubsub_subscriptions'
-  desc 'Subscription plural resource'
-  supports platform: 'gcp'
+  name "google_pubsub_subscriptions"
+  desc "Subscription plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -37,18 +37,19 @@ class PubsubSubscriptions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('subscriptions')
+    @table = fetch_wrapped_resource("subscriptions")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -70,14 +71,14 @@ class PubsubSubscriptions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
-      'topic' => ->(obj) { return :topic, obj['topic'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig'], to_s) },
-      'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
-      'messageRetentionDuration' => ->(obj) { return :message_retention_duration, obj['messageRetentionDuration'] },
-      'retainAckedMessages' => ->(obj) { return :retain_acked_messages, obj['retainAckedMessages'] },
-      'expirationPolicy' => ->(obj) { return :expiration_policy, GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(obj['expirationPolicy'], to_s) },
+      "name" => ->(obj) { return :name, name_from_self_link(obj["name"]) },
+      "topic" => ->(obj) { return :topic, obj["topic"] },
+      "labels" => ->(obj) { return :labels, obj["labels"] },
+      "pushConfig" => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj["pushConfig"], to_s) },
+      "ackDeadlineSeconds" => ->(obj) { return :ack_deadline_seconds, obj["ackDeadlineSeconds"] },
+      "messageRetentionDuration" => ->(obj) { return :message_retention_duration, obj["messageRetentionDuration"] },
+      "retainAckedMessages" => ->(obj) { return :retain_acked_messages, obj["retainAckedMessages"] },
+      "expirationPolicy" => ->(obj) { return :expiration_policy, GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(obj["expirationPolicy"], to_s) },
     }
   end
 
@@ -104,10 +105,10 @@ class PubsubSubscriptions < GcpResourceBase
   private
 
   def product_url
-    'https://pubsub.googleapis.com/v1/'
+    "https://pubsub.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/subscriptions'
+    "projects/{{project}}/subscriptions"
   end
 end

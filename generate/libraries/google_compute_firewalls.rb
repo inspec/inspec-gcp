@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeFirewalls < GcpResourceBase
-  name 'google_compute_firewalls'
-  desc 'Firewall plural resource'
-  supports platform: 'gcp'
+  name "google_compute_firewalls"
+  desc "Firewall plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -45,18 +45,19 @@ class ComputeFirewalls < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -78,22 +79,22 @@ class ComputeFirewalls < GcpResourceBase
 
   def transformers
     {
-      'allowed' => ->(obj) { return :allowed, GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(obj['allowed'], to_s) },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'denied' => ->(obj) { return :denied, GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(obj['denied'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'destinationRanges' => ->(obj) { return :destination_ranges, obj['destinationRanges'] },
-      'direction' => ->(obj) { return :direction, obj['direction'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'priority' => ->(obj) { return :priority, obj['priority'] },
-      'sourceRanges' => ->(obj) { return :source_ranges, obj['sourceRanges'] },
-      'sourceServiceAccounts' => ->(obj) { return :source_service_accounts, obj['sourceServiceAccounts'] },
-      'sourceTags' => ->(obj) { return :source_tags, obj['sourceTags'] },
-      'targetServiceAccounts' => ->(obj) { return :target_service_accounts, obj['targetServiceAccounts'] },
-      'targetTags' => ->(obj) { return :target_tags, obj['targetTags'] },
+      "allowed" => ->(obj) { return :allowed, GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(obj["allowed"], to_s) },
+      "creationTimestamp" => ->(obj) { return :creation_timestamp, parse_time_string(obj["creationTimestamp"]) },
+      "denied" => ->(obj) { return :denied, GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(obj["denied"], to_s) },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "destinationRanges" => ->(obj) { return :destination_ranges, obj["destinationRanges"] },
+      "direction" => ->(obj) { return :direction, obj["direction"] },
+      "disabled" => ->(obj) { return :disabled, obj["disabled"] },
+      "id" => ->(obj) { return :id, obj["id"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "network" => ->(obj) { return :network, obj["network"] },
+      "priority" => ->(obj) { return :priority, obj["priority"] },
+      "sourceRanges" => ->(obj) { return :source_ranges, obj["sourceRanges"] },
+      "sourceServiceAccounts" => ->(obj) { return :source_service_accounts, obj["sourceServiceAccounts"] },
+      "sourceTags" => ->(obj) { return :source_tags, obj["sourceTags"] },
+      "targetServiceAccounts" => ->(obj) { return :target_service_accounts, obj["targetServiceAccounts"] },
+      "targetTags" => ->(obj) { return :target_tags, obj["targetTags"] },
     }
   end
 
@@ -120,10 +121,10 @@ class ComputeFirewalls < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/firewalls'
+    "projects/{{project}}/global/firewalls"
   end
 end

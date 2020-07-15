@@ -12,31 +12,30 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_disk resource.'
+title "Test GCP google_compute_disk resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-snapshot = attribute('snapshot', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_zone = attribute(:gcp_zone, default: "gcp_zone", description: "The GCP project zone.")
+snapshot = attribute("snapshot", default: {
   "name": "inspec-gcp-disk-snapshot",
   "disk_name": "inspec-snapshot-disk",
   "disk_type": "pd-standard",
-  "disk_image": "debian-cloud/debian-10-buster-v20191014"
-}, description: 'Disk snapshot description')
+  "disk_image": "debian-cloud/debian-10-buster-v20191014",
+}, description: "Disk snapshot description")
 gcp_compute_disk_name = snapshot["disk_name"]
 gcp_compute_disk_image = snapshot["disk_image"]
 gcp_compute_disk_type = snapshot["disk_type"]
-control 'google_compute_disk-1.0' do
+control "google_compute_disk-1.0" do
   impact 1.0
-  title 'google_compute_disk resource test'
+  title "google_compute_disk resource test"
 
-
-  most_recent_image = google_compute_image(project: gcp_compute_disk_image.split('/').first, name: gcp_compute_disk_image.split('/').last)
+  most_recent_image = google_compute_image(project: gcp_compute_disk_image.split("/").first, name: gcp_compute_disk_image.split("/").last)
 
   describe google_compute_disk(project: gcp_project_id, name: gcp_compute_disk_name, zone: gcp_zone) do
     it { should exist }
     # Test that the image is the most recent image for the family
-    its('source_image') { should match most_recent_image.self_link }
-    its('type') { should match gcp_compute_disk_type }
+    its("source_image") { should match most_recent_image.self_link }
+    its("type") { should match gcp_compute_disk_type }
   end
 
   describe.one do
@@ -47,7 +46,7 @@ control 'google_compute_disk-1.0' do
     end
   end
 
-  describe google_compute_disk(project: gcp_project_id, name: 'nonexistent', zone: gcp_zone) do
+  describe google_compute_disk(project: gcp_project_id, name: "nonexistent", zone: gcp_zone) do
     it { should_not exist }
   end
 end

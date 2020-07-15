@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/mlengine/property/model_default_version'
+require "gcp_backend"
+require "google/mlengine/property/model_default_version"
 
 # A provider to manage ML Engine resources.
 class MLEngineModel < GcpResourceBase
-  name 'google_ml_engine_model'
-  desc 'Model'
-  supports platform: 'gcp'
+  name "google_ml_engine_model"
+  desc "Model"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -34,19 +34,19 @@ class MLEngineModel < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @default_version = GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(@fetched['defaultVersion'], to_s)
-    @regions = @fetched['regions']
-    @online_prediction_logging = @fetched['onlinePredictionLogging']
-    @online_prediction_console_logging = @fetched['onlinePredictionConsoleLogging']
-    @labels = @fetched['labels']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @default_version = GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(@fetched["defaultVersion"], to_s)
+    @regions = @fetched["regions"]
+    @online_prediction_logging = @fetched["onlinePredictionLogging"]
+    @online_prediction_console_logging = @fetched["onlinePredictionConsoleLogging"]
+    @labels = @fetched["labels"]
   end
 
   # Handles parsing RFC3339 time string
@@ -64,31 +64,32 @@ class MLEngineModel < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'default_version' => ->(x, _) { x.nil? ? [] : GoogleInSpec::MLEngine::Property::ModelDefaultVersion.un_parse(x, 'default_version') },
-      'regions' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('regions') { should include #{single.inspect} }" } },
-      'online_prediction_logging' => ->(x, _) { x.nil? ? [] : ["its('online_prediction_logging') { should cmp #{x.inspect} }"] },
-      'online_prediction_console_logging' => ->(x, _) { x.nil? ? [] : ["its('online_prediction_console_logging') { should cmp #{x.inspect} }"] },
-      'labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "default_version" => ->(x, _) { x.nil? ? [] : GoogleInSpec::MLEngine::Property::ModelDefaultVersion.un_parse(x, "default_version") },
+      "regions" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('regions') { should include #{single.inspect} }" } },
+      "online_prediction_logging" => ->(x, _) { x.nil? ? [] : ["its('online_prediction_logging') { should cmp #{x.inspect} }"] },
+      "online_prediction_console_logging" => ->(x, _) { x.nil? ? [] : ["its('online_prediction_console_logging') { should cmp #{x.inspect} }"] },
+      "labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Model'
+    name = "Model"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_ml_engine_model',
+      type: "google_ml_engine_model",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -96,10 +97,10 @@ class MLEngineModel < GcpResourceBase
   private
 
   def product_url
-    'https://ml.googleapis.com/v1/'
+    "https://ml.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/models/{{name}}'
+    "projects/{{project}}/models/{{name}}"
   end
 end

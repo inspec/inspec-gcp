@@ -30,11 +30,12 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @network = arguments['network']
-          @modes = arguments['modes']
-          @reserved_ip_range = arguments['reservedIpRange']
-          @ip_addresses = arguments['ipAddresses']
+          @network = arguments["network"]
+          @modes = arguments["modes"]
+          @reserved_ip_range = arguments["reservedIpRange"]
+          @ip_addresses = arguments["ipAddresses"]
         end
 
         def to_s
@@ -43,11 +44,12 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'network' => ->(x, path) { x.nil? ? [] : ["its('#{path}.network') { should cmp #{x.inspect} }"] },
-            'modes' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.modes') { should include #{single.inspect} }" } },
-            'reserved_ip_range' => ->(x, path) { x.nil? ? [] : ["its('#{path}.reserved_ip_range') { should cmp #{x.inspect} }"] },
-            'ip_addresses' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.ip_addresses') { should include #{single.inspect} }" } },
+            "network" => ->(x, path) { x.nil? ? [] : ["its('#{path}.network') { should cmp #{x.inspect} }"] },
+            "modes" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.modes') { should include #{single.inspect} }" } },
+            "reserved_ip_range" => ->(x, path) { x.nil? ? [] : ["its('#{path}.reserved_ip_range') { should cmp #{x.inspect} }"] },
+            "ip_addresses" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.ip_addresses') { should include #{single.inspect} }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -68,11 +70,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return InstanceNetworks.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| InstanceNetworks.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| InstanceNetworks.un_parse(v, path) }
         end
       end

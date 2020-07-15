@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options_column_families_columns'
+require "google/bigquery/property/table_external_data_configuration_bigtable_options_column_families_columns"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -33,12 +33,13 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @columns = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumnsArray.parse(arguments['columns'], to_s)
-          @encoding = arguments['encoding']
-          @family_id = arguments['familyId']
-          @only_read_latest = arguments['onlyReadLatest']
-          @type = arguments['type']
+          @columns = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumnsArray.parse(arguments["columns"], to_s)
+          @encoding = arguments["encoding"]
+          @family_id = arguments["familyId"]
+          @only_read_latest = arguments["onlyReadLatest"]
+          @type = arguments["type"]
         end
 
         def to_s
@@ -47,12 +48,13 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'columns' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.columns') { should include '#{single.to_json}' }" } },
-            'encoding' => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
-            'family_id' => ->(x, path) { x.nil? ? [] : ["its('#{path}.family_id') { should cmp #{x.inspect} }"] },
-            'only_read_latest' => ->(x, path) { x.nil? ? [] : ["its('#{path}.only_read_latest') { should cmp #{x.inspect} }"] },
-            'type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
+            "columns" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.columns') { should include '#{single.to_json}' }" } },
+            "encoding" => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
+            "family_id" => ->(x, path) { x.nil? ? [] : ["its('#{path}.family_id') { should cmp #{x.inspect} }"] },
+            "only_read_latest" => ->(x, path) { x.nil? ? [] : ["its('#{path}.only_read_latest') { should cmp #{x.inspect} }"] },
+            "type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -73,11 +75,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return TableExternalDataConfigurationBigtableOptionsColumnFamilies.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| TableExternalDataConfigurationBigtableOptionsColumnFamilies.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| TableExternalDataConfigurationBigtableOptionsColumnFamilies.un_parse(v, path) }
         end
       end

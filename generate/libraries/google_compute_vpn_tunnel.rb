@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeVpnTunnel < GcpResourceBase
-    name 'google_compute_vpn_tunnel'
-    desc 'Verifies settings for a compute vpn_tunnel'
+    name "google_compute_vpn_tunnel"
+    desc "Verifies settings for a compute vpn_tunnel"
 
     example "
       describe google_compute_vpn_tunnel(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-vpn_tunnel') do
@@ -29,6 +29,7 @@ module Inspec::Resources
 
     def creation_timestamp_date
       return false if !defined?(creation_timestamp) || creation_timestamp.nil?
+
       Time.parse(creation_timestamp.to_s)
     end
 

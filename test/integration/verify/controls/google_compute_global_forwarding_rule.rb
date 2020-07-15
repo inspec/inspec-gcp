@@ -12,24 +12,24 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_global_forwarding_rule resource.'
+title "Test GCP google_compute_global_forwarding_rule resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-global_forwarding_rule = attribute('global_forwarding_rule', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+global_forwarding_rule = attribute("global_forwarding_rule", default: {
   "name": "inspec-gcp-global-forwarding-rule",
-  "port_range": "80-80"
-}, description: 'Compute global forwarding rule definition')
-control 'google_compute_global_forwarding_rule-1.0' do
+  "port_range": "80-80",
+}, description: "Compute global forwarding rule definition")
+control "google_compute_global_forwarding_rule-1.0" do
   impact 1.0
-  title 'google_compute_global_forwarding_rule resource test'
+  title "google_compute_global_forwarding_rule resource test"
 
-  describe google_compute_global_forwarding_rule(project: gcp_project_id, name: global_forwarding_rule['name']) do
+  describe google_compute_global_forwarding_rule(project: gcp_project_id, name: global_forwarding_rule["name"]) do
     it { should exist }
-    its('port_range') { should eq global_forwarding_rule['port_range'] }
-    its('target') { should  match /\/inspec-gcp-http-proxy$/ }
+    its("port_range") { should eq global_forwarding_rule["port_range"] }
+    its("target") { should match(%r{/inspec-gcp-http-proxy$}) }
   end
 
-  describe google_compute_global_forwarding_rule(project: gcp_project_id, name: 'nonexistent') do
+  describe google_compute_global_forwarding_rule(project: gcp_project_id, name: "nonexistent") do
     it { should_not exist }
   end
 end

@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeGlobalForwardingRules < GcpResourceBase
-  name 'google_compute_global_forwarding_rules'
-  desc 'GlobalForwardingRule plural resource'
-  supports platform: 'gcp'
+  name "google_compute_global_forwarding_rules"
+  desc "GlobalForwardingRule plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,18 +41,19 @@ class ComputeGlobalForwardingRules < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -74,18 +75,18 @@ class ComputeGlobalForwardingRules < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'IPAddress' => ->(obj) { return :ip_address, obj['IPAddress'] },
-      'IPProtocol' => ->(obj) { return :ip_protocol, obj['IPProtocol'] },
-      'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
-      'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
-      'metadataFilters' => ->(obj) { return :metadata_filters, GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(obj['metadataFilters'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'portRange' => ->(obj) { return :port_range, obj['portRange'] },
-      'target' => ->(obj) { return :target, obj['target'] },
+      "creationTimestamp" => ->(obj) { return :creation_timestamp, parse_time_string(obj["creationTimestamp"]) },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "id" => ->(obj) { return :id, obj["id"] },
+      "IPAddress" => ->(obj) { return :ip_address, obj["IPAddress"] },
+      "IPProtocol" => ->(obj) { return :ip_protocol, obj["IPProtocol"] },
+      "ipVersion" => ->(obj) { return :ip_version, obj["ipVersion"] },
+      "loadBalancingScheme" => ->(obj) { return :load_balancing_scheme, obj["loadBalancingScheme"] },
+      "metadataFilters" => ->(obj) { return :metadata_filters, GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(obj["metadataFilters"], to_s) },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "network" => ->(obj) { return :network, obj["network"] },
+      "portRange" => ->(obj) { return :port_range, obj["portRange"] },
+      "target" => ->(obj) { return :target, obj["target"] },
     }
   end
 
@@ -112,10 +113,10 @@ class ComputeGlobalForwardingRules < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/forwardingRules'
+    "projects/{{project}}/global/forwardingRules"
   end
 end

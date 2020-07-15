@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/logging_v2'
+require "gcp_backend"
+require "google/apis/logging_v2"
 
 module Inspec::Resources
   class GoogleProjectMetric < GcpResourceBase
-    name 'google_project_metric'
-    desc 'Verifies settings for a project metric'
+    name "google_project_metric"
+    desc "Verifies settings for a project metric"
 
     example "
       describe google_project_metric(project: 'chef-inspec-gcp',  metric: 'metric_name') do

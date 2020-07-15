@@ -21,8 +21,9 @@ module GoogleInSpec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+
           @parent_identifier = parent_identifier
-          @enforced = args['enforced']
+          @enforced = args["enforced"]
         end
 
         def to_s

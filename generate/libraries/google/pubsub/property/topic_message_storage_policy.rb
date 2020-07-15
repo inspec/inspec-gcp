@@ -24,8 +24,9 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @allowed_persistence_regions = arguments['allowedPersistenceRegions']
+          @allowed_persistence_regions = arguments["allowedPersistenceRegions"]
         end
 
         def to_s
@@ -34,8 +35,9 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'allowed_persistence_regions' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.allowed_persistence_regions') { should include #{single.inspect} }" } },
+            "allowed_persistence_regions" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.allowed_persistence_regions') { should include #{single.inspect} }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

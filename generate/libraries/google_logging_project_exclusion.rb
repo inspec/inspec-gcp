@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/logging_v2'
+require "gcp_backend"
+require "google/apis/logging_v2"
 
 module Inspec::Resources
   class GoogleLoggingProjectExclusion < GcpResourceBase
-    name 'google_logging_project_exclusion'
-    desc 'Verifies settings for a project logging exclusion'
+    name "google_logging_project_exclusion"
+    desc "Verifies settings for a project logging exclusion"
 
     example "
       describe google_logging_project_exclusion(project: 'chef-inspec-gcp',  exclusion: 'exclusion-name-abcd') do

@@ -12,22 +12,22 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_container_node_pools resource.'
+title "Test GCP google_container_node_pools resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: 'gcp_kube_cluster_zone', description: 'The zone that the kube cluster resides in.')
-gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: 'gcp_kube_cluster_name', description: 'The parent container clusters name.')
-regional_node_pool = attribute('regional_node_pool', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: "gcp_kube_cluster_zone", description: "The zone that the kube cluster resides in.")
+gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: "gcp_kube_cluster_name", description: "The parent container clusters name.")
+regional_node_pool = attribute("regional_node_pool", default: {
   "name": "inspec-gcp-regional-node-pool",
   "cluster_name": "inspec-gcp-regional-node-pool-cluster",
   "node_count": 1,
-  "initial_node_count": 1
-}, description: 'Regional Node Pool definition')
-control 'google_container_node_pools-1.0' do
+  "initial_node_count": 1,
+}, description: "Regional Node Pool definition")
+control "google_container_node_pools-1.0" do
   impact 1.0
-  title 'google_container_node_pools resource test'
+  title "google_container_node_pools resource test"
 
   describe google_container_node_pools(project: gcp_project_id, location: gcp_kube_cluster_zone, cluster_name: gcp_kube_cluster_name) do
-    its('initial_node_counts') { should include regional_node_pool['initial_node_count']}
+    its("initial_node_counts") { should include regional_node_pool["initial_node_count"] }
   end
 end

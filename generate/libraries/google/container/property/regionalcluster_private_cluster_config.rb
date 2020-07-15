@@ -32,12 +32,13 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @enable_private_nodes = arguments['enablePrivateNodes']
-          @enable_private_endpoint = arguments['enablePrivateEndpoint']
-          @master_ipv4_cidr_block = arguments['masterIpv4CidrBlock']
-          @private_endpoint = arguments['privateEndpoint']
-          @public_endpoint = arguments['publicEndpoint']
+          @enable_private_nodes = arguments["enablePrivateNodes"]
+          @enable_private_endpoint = arguments["enablePrivateEndpoint"]
+          @master_ipv4_cidr_block = arguments["masterIpv4CidrBlock"]
+          @private_endpoint = arguments["privateEndpoint"]
+          @public_endpoint = arguments["publicEndpoint"]
         end
 
         def to_s
@@ -46,12 +47,13 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'enable_private_nodes' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_private_nodes') { should cmp #{x.inspect} }"] },
-            'enable_private_endpoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_private_endpoint') { should cmp #{x.inspect} }"] },
-            'master_ipv4_cidr_block' => ->(x, path) { x.nil? ? [] : ["its('#{path}.master_ipv4_cidr_block') { should cmp #{x.inspect} }"] },
-            'private_endpoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.private_endpoint') { should cmp #{x.inspect} }"] },
-            'public_endpoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.public_endpoint') { should cmp #{x.inspect} }"] },
+            "enable_private_nodes" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_private_nodes') { should cmp #{x.inspect} }"] },
+            "enable_private_endpoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_private_endpoint') { should cmp #{x.inspect} }"] },
+            "master_ipv4_cidr_block" => ->(x, path) { x.nil? ? [] : ["its('#{path}.master_ipv4_cidr_block') { should cmp #{x.inspect} }"] },
+            "private_endpoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.private_endpoint') { should cmp #{x.inspect} }"] },
+            "public_endpoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.public_endpoint') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

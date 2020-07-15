@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class RuntimeConfigConfigs < GcpResourceBase
-  name 'google_runtime_config_configs'
-  desc 'Config plural resource'
-  supports platform: 'gcp'
+  name "google_runtime_config_configs"
+  desc "Config plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -31,18 +31,19 @@ class RuntimeConfigConfigs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('configs')
+    @table = fetch_wrapped_resource("configs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -64,8 +65,8 @@ class RuntimeConfigConfigs < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "name" => ->(obj) { return :name, obj["name"] },
     }
   end
 
@@ -92,10 +93,10 @@ class RuntimeConfigConfigs < GcpResourceBase
   private
 
   def product_url
-    'https://runtimeconfig.googleapis.com/v1beta1/'
+    "https://runtimeconfig.googleapis.com/v1beta1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/configs'
+    "projects/{{project}}/configs"
   end
 end

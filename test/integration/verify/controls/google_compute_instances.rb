@@ -12,11 +12,11 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_instances resource.'
+title "Test GCP google_compute_instances resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
-instance = attribute('instance', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_zone = attribute(:gcp_zone, default: "gcp_zone", description: "GCP zone name of the compute disk")
+instance = attribute("instance", default: {
   "name": "inspec-instance",
   "machine_type": "n1-standard-1",
   "tag_1": "foo",
@@ -24,14 +24,13 @@ instance = attribute('instance', default: {
   "metadata_key": "123",
   "metadata_value": "asdf",
   "sa_scope": "https://www.googleapis.com/auth/compute.readonly",
-  "startup_script": "echo hi > /test.txt"
-}, description: 'Compute instance description')
-control 'google_compute_instances-1.0' do
+  "startup_script": "echo hi > /test.txt",
+}, description: "Compute instance description")
+control "google_compute_instances-1.0" do
   impact 1.0
-  title 'google_compute_instances resource test'
-
+  title "google_compute_instances resource test"
 
   describe google_compute_instances(project: gcp_project_id, zone: gcp_zone) do
-    its('instance_names') { should include instance['name'] }
+    its("instance_names") { should include instance["name"] }
   end
 end

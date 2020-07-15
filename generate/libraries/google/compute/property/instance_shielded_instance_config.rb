@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @enable_secure_boot = arguments['enableSecureBoot']
-          @enable_vtpm = arguments['enableVtpm']
-          @enable_integrity_monitoring = arguments['enableIntegrityMonitoring']
+          @enable_secure_boot = arguments["enableSecureBoot"]
+          @enable_vtpm = arguments["enableVtpm"]
+          @enable_integrity_monitoring = arguments["enableIntegrityMonitoring"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'enable_secure_boot' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_secure_boot') { should cmp #{x.inspect} }"] },
-            'enable_vtpm' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_vtpm') { should cmp #{x.inspect} }"] },
-            'enable_integrity_monitoring' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_integrity_monitoring') { should cmp #{x.inspect} }"] },
+            "enable_secure_boot" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_secure_boot') { should cmp #{x.inspect} }"] },
+            "enable_vtpm" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_vtpm') { should cmp #{x.inspect} }"] },
+            "enable_integrity_monitoring" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enable_integrity_monitoring') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

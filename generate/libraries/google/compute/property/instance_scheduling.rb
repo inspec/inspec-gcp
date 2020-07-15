@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @automatic_restart = arguments['automaticRestart']
-          @on_host_maintenance = arguments['onHostMaintenance']
-          @preemptible = arguments['preemptible']
+          @automatic_restart = arguments["automaticRestart"]
+          @on_host_maintenance = arguments["onHostMaintenance"]
+          @preemptible = arguments["preemptible"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'automatic_restart' => ->(x, path) { x.nil? ? [] : ["its('#{path}.automatic_restart') { should cmp #{x.inspect} }"] },
-            'on_host_maintenance' => ->(x, path) { x.nil? ? [] : ["its('#{path}.on_host_maintenance') { should cmp #{x.inspect} }"] },
-            'preemptible' => ->(x, path) { x.nil? ? [] : ["its('#{path}.preemptible') { should cmp #{x.inspect} }"] },
+            "automatic_restart" => ->(x, path) { x.nil? ? [] : ["its('#{path}.automatic_restart') { should cmp #{x.inspect} }"] },
+            "on_host_maintenance" => ->(x, path) { x.nil? ? [] : ["its('#{path}.on_host_maintenance') { should cmp #{x.inspect} }"] },
+            "preemptible" => ->(x, path) { x.nil? ? [] : ["its('#{path}.preemptible') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

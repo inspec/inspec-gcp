@@ -12,21 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_runtime_config_config resource.'
+title "Test GCP google_runtime_config_config resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-runtimeconfig_config = attribute('runtimeconfig_config', default: {"name"=>"inspec-gcp-runtime-config", "description"=>"My runtime configurations"})
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+runtimeconfig_config = attribute("runtimeconfig_config", default: { "name" => "inspec-gcp-runtime-config", "description" => "My runtime configurations" })
 
-control 'google_runtime_config_config-1.0' do
+control "google_runtime_config_config-1.0" do
   impact 1.0
-  title 'google_runtime_config_config resource test'
+  title "google_runtime_config_config resource test"
 
-  describe google_runtime_config_config(project: gcp_project_id, name: runtimeconfig_config['name']) do
+  describe google_runtime_config_config(project: gcp_project_id, name: runtimeconfig_config["name"]) do
     it { should exist }
-    its('description') { should cmp runtimeconfig_config['description'] }
+    its("description") { should cmp runtimeconfig_config["description"] }
   end
 
-  describe google_runtime_config_config(project: gcp_project_id, name: 'nonexistent') do
+  describe google_runtime_config_config(project: gcp_project_id, name: "nonexistent") do
     it { should_not exist }
   end
 end

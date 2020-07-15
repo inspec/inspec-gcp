@@ -23,9 +23,10 @@ module GoogleInSpec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+
           @parent_identifier = parent_identifier
-          @log_type = args['logType']
-          @exempted_members = args['exemptedMembers']
+          @log_type = args["logType"]
+          @exempted_members = args["exemptedMembers"]
         end
 
         def to_s
@@ -37,6 +38,7 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return IamPolicyAuditConfigsAuditLogConfigs.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| IamPolicyAuditConfigsAuditLogConfigs.new(v, parent_identifier) }
         end
       end

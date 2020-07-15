@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleKMSKeyRings < GcpResourceBase
-    name 'google_kms_key_rings'
-    desc 'Verifies settings for GCP KMS key rings in bulk'
+    name "google_kms_key_rings"
+    desc "Verifies settings for GCP KMS key rings in bulk"
 
     example "
       describe google_kms_key_rings(project: 'chef-inspec-gcp', location: 'us-east1') do
@@ -35,8 +35,9 @@ module Inspec::Resources
           @key_rings = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).list_project_location_key_rings("projects/#{@project}/locations/#{@location}", page_token: next_page)
         end
         return [] if !@key_rings || !@key_rings.key_rings
+
         @key_rings.key_rings.map do |key_ring|
-          key_ring_rows += [{ key_ring_name: key_ring.name.split('/').last,
+          key_ring_rows += [{ key_ring_name: key_ring.name.split("/").last,
                               key_ring_url: key_ring.name }]
         end
         next_page = @key_rings.next_page_token

@@ -26,9 +26,10 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @inline_code = arguments['inlineCode']
-          @resource_uri = arguments['resourceUri']
+          @inline_code = arguments["inlineCode"]
+          @resource_uri = arguments["resourceUri"]
         end
 
         def to_s
@@ -37,9 +38,10 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'inline_code' => ->(x, path) { x.nil? ? [] : ["its('#{path}.inline_code') { should cmp #{x.inspect} }"] },
-            'resource_uri' => ->(x, path) { x.nil? ? [] : ["its('#{path}.resource_uri') { should cmp #{x.inspect} }"] },
+            "inline_code" => ->(x, path) { x.nil? ? [] : ["its('#{path}.inline_code') { should cmp #{x.inspect} }"] },
+            "resource_uri" => ->(x, path) { x.nil? ? [] : ["its('#{path}.resource_uri') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -60,11 +62,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return TableViewUserDefinedFunctionResources.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| TableViewUserDefinedFunctionResources.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| TableViewUserDefinedFunctionResources.un_parse(v, path) }
         end
       end

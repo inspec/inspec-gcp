@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleContainerClusters < GcpResourceBase
-    name 'google_container_clusters'
-    desc 'Verifies settings for GCP container clusters in bulk'
+    name "google_container_clusters"
+    desc "Verifies settings for GCP container clusters in bulk"
 
     example "
       describe google_container_clusters(project: 'chef-inspec-gcp', zone: 'europe-west2-a') do
@@ -35,8 +35,9 @@ module Inspec::Resources
         @clusters = @gcp.gcp_client(Google::Apis::ContainerV1::ContainerService).list_zone_clusters(@project, @zone)
       end
       return [] if !@clusters || !@clusters.clusters
+
       @clusters.clusters.map do |cluster|
-        cluster_rows+=[{ cluster_name: cluster.name,
+        cluster_rows += [{ cluster_name: cluster.name,
                          cluster_status: cluster.status,
                          cluster_subnetwork: cluster.subnetwork }]
       end

@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/iam/property/iam_policy_audit_configs'
-require 'google/iam/property/iam_policy_bindings'
+require "gcp_backend"
+require "google/iam/property/iam_policy_audit_configs"
+require "google/iam/property/iam_policy_bindings"
 
 # A provider to manage Cloud Runtime Configuration IAM Policy resources.
 class ConfigIamPolicy < GcpResourceBase
-  name 'google_runtime_config_config_iam_policy'
-  desc 'Config Iam Policy'
-  supports platform: 'gcp'
+  name "google_runtime_config_config_iam_policy"
+  desc "Config Iam Policy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :bindings
@@ -30,13 +30,13 @@ class ConfigIamPolicy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
-    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched["bindings"], to_s)
+    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched["auditConfigs"], to_s)
   end
 
   def exists?
@@ -50,10 +50,10 @@ class ConfigIamPolicy < GcpResourceBase
   private
 
   def product_url
-    'https://runtimeconfig.googleapis.com/v1beta1/'
+    "https://runtimeconfig.googleapis.com/v1beta1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/configs/{{name}}:getIamPolicy'
+    "projects/{{project}}/configs/{{name}}:getIamPolicy"
   end
 end

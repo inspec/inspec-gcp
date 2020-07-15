@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleDnsManagedZone < GcpResourceBase
-    name 'google_dns_managed_zone'
-    desc 'Verifies settings for a GCP DNS managed zone'
+    name "google_dns_managed_zone"
+    desc "Verifies settings for a GCP DNS managed zone"
 
     example "
       describe google_dns_managed_zone(project: 'chef-inspec-gcp',  zone: 'zone-name') do
@@ -35,17 +35,20 @@ module Inspec::Resources
 
     def creation_time_date
       return false if !defined?(@managed_zone.creation_time) || @managed_zone.creation_time.nil?
+
       Time.parse(@managed_zone.creation_time)
     end
 
     def key_signing_key_algorithm
-      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs KEY_SIGNING'" if !@key_specs.key?('KEY_SIGNING')
-      @key_specs['KEY_SIGNING']
+      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs KEY_SIGNING'" unless @key_specs.key?("KEY_SIGNING")
+
+      @key_specs["KEY_SIGNING"]
     end
 
     def zone_signing_key_algorithm
-      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs ZONE_SIGNING'" if !@key_specs.key?('ZONE_SIGNING')
-      @key_specs['ZONE_SIGNING']
+      raise Inspec::Exceptions::ResourceFailed, "google_dns_managed_zone is missing expected property 'dnssec_config.default_key_specs ZONE_SIGNING'" unless @key_specs.key?("ZONE_SIGNING")
+
+      @key_specs["ZONE_SIGNING"]
     end
 
     def to_s

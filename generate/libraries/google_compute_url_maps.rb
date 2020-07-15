@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeUrlMaps < GcpResourceBase
-  name 'google_compute_url_maps'
-  desc 'UrlMap plural resource'
-  supports platform: 'gcp'
+  name "google_compute_url_maps"
+  desc "UrlMap plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,18 +38,19 @@ class ComputeUrlMaps < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -71,15 +72,15 @@ class ComputeUrlMaps < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'defaultService' => ->(obj) { return :default_service, obj['defaultService'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules'], to_s) },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s) },
-      'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s) },
+      "creationTimestamp" => ->(obj) { return :creation_timestamp, parse_time_string(obj["creationTimestamp"]) },
+      "defaultService" => ->(obj) { return :default_service, obj["defaultService"] },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "hostRules" => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj["hostRules"], to_s) },
+      "id" => ->(obj) { return :id, obj["id"] },
+      "fingerprint" => ->(obj) { return :fingerprint, obj["fingerprint"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "pathMatchers" => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj["pathMatchers"], to_s) },
+      "tests" => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj["tests"], to_s) },
     }
   end
 
@@ -106,10 +107,10 @@ class ComputeUrlMaps < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/urlMaps'
+    "projects/{{project}}/global/urlMaps"
   end
 end

@@ -34,13 +34,14 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @allow_jagged_rows = arguments['allowJaggedRows']
-          @allow_quoted_newlines = arguments['allowQuotedNewlines']
-          @encoding = arguments['encoding']
-          @field_delimiter = arguments['fieldDelimiter']
-          @quote = arguments['quote']
-          @skip_leading_rows = arguments['skipLeadingRows']
+          @allow_jagged_rows = arguments["allowJaggedRows"]
+          @allow_quoted_newlines = arguments["allowQuotedNewlines"]
+          @encoding = arguments["encoding"]
+          @field_delimiter = arguments["fieldDelimiter"]
+          @quote = arguments["quote"]
+          @skip_leading_rows = arguments["skipLeadingRows"]
         end
 
         def to_s
@@ -49,13 +50,14 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'allow_jagged_rows' => ->(x, path) { x.nil? ? [] : ["its('#{path}.allow_jagged_rows') { should cmp #{x.inspect} }"] },
-            'allow_quoted_newlines' => ->(x, path) { x.nil? ? [] : ["its('#{path}.allow_quoted_newlines') { should cmp #{x.inspect} }"] },
-            'encoding' => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
-            'field_delimiter' => ->(x, path) { x.nil? ? [] : ["its('#{path}.field_delimiter') { should cmp #{x.inspect} }"] },
-            'quote' => ->(x, path) { x.nil? ? [] : ["its('#{path}.quote') { should cmp #{x.inspect} }"] },
-            'skip_leading_rows' => ->(x, path) { x.nil? ? [] : ["its('#{path}.skip_leading_rows') { should cmp #{x.inspect} }"] },
+            "allow_jagged_rows" => ->(x, path) { x.nil? ? [] : ["its('#{path}.allow_jagged_rows') { should cmp #{x.inspect} }"] },
+            "allow_quoted_newlines" => ->(x, path) { x.nil? ? [] : ["its('#{path}.allow_quoted_newlines') { should cmp #{x.inspect} }"] },
+            "encoding" => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
+            "field_delimiter" => ->(x, path) { x.nil? ? [] : ["its('#{path}.field_delimiter') { should cmp #{x.inspect} }"] },
+            "quote" => ->(x, path) { x.nil? ? [] : ["its('#{path}.quote') { should cmp #{x.inspect} }"] },
+            "skip_leading_rows" => ->(x, path) { x.nil? ? [] : ["its('#{path}.skip_leading_rows') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

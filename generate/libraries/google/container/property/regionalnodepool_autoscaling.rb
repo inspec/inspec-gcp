@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @enabled = arguments['enabled']
-          @min_node_count = arguments['minNodeCount']
-          @max_node_count = arguments['maxNodeCount']
+          @enabled = arguments["enabled"]
+          @min_node_count = arguments["minNodeCount"]
+          @max_node_count = arguments["maxNodeCount"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'enabled' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
-            'min_node_count' => ->(x, path) { x.nil? ? [] : ["its('#{path}.min_node_count') { should cmp #{x.inspect} }"] },
-            'max_node_count' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_node_count') { should cmp #{x.inspect} }"] },
+            "enabled" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
+            "min_node_count" => ->(x, path) { x.nil? ? [] : ["its('#{path}.min_node_count') { should cmp #{x.inspect} }"] },
+            "max_node_count" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_node_count') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

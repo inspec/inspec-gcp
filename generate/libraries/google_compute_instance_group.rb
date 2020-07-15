@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeInstanceGroup < GcpResourceBase
-    name 'google_compute_instance_group'
-    desc 'Verifies settings for a compute instance group'
+    name "google_compute_instance_group"
+    desc "Verifies settings for a compute instance group"
 
     example "
       describe google_compute_instance_group(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: 'gcp-inspec-test') do
@@ -38,8 +38,10 @@ module Inspec::Resources
     def find_named_ports(key = :name)
       # check all name/port values for a match
       return false if !defined?(named_ports) || named_ports.nil?
+
       named_ports.each do |named_port|
         next if !defined?(named_port.item[key]) || named_port.item[key].nil?
+
         return named_port.item[key]
       end
       false

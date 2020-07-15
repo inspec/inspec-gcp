@@ -12,16 +12,16 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_runtime_config_configs resource.'
+title "Test GCP google_runtime_config_configs resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-runtimeconfig_config = attribute('runtimeconfig_config', default: {"name"=>"inspec-gcp-runtime-config", "description"=>"My runtime configurations"})
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+runtimeconfig_config = attribute("runtimeconfig_config", default: { "name" => "inspec-gcp-runtime-config", "description" => "My runtime configurations" })
 
-control 'google_runtime_config_configs-1.0' do
+control "google_runtime_config_configs-1.0" do
   impact 1.0
-  title 'google_runtime_config_configs resource test'
+  title "google_runtime_config_configs resource test"
 
   describe google_runtime_config_configs(project: gcp_project_id) do
-    its('descriptions') { should include runtimeconfig_config['description'] }
+    its("descriptions") { should include runtimeconfig_config["description"] }
   end
 end

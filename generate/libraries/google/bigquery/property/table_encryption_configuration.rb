@@ -24,8 +24,9 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @kms_key_name = arguments['kmsKeyName']
+          @kms_key_name = arguments["kmsKeyName"]
         end
 
         def to_s
@@ -34,8 +35,9 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'kms_key_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.kms_key_name') { should cmp #{x.inspect} }"] },
+            "kms_key_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.kms_key_name') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

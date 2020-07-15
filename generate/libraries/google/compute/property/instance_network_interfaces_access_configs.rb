@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @name = arguments['name']
-          @nat_ip = arguments['natIP']
-          @type = arguments['type']
+          @name = arguments["name"]
+          @nat_ip = arguments["natIP"]
+          @type = arguments["type"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
-            'nat_ip' => ->(x, path) { x.nil? ? [] : ["its('#{path}.nat_ip') { should cmp #{x.inspect} }"] },
-            'type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
+            "name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
+            "nat_ip" => ->(x, path) { x.nil? ? [] : ["its('#{path}.nat_ip') { should cmp #{x.inspect} }"] },
+            "type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -64,11 +66,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return InstanceNetworkInterfacesAccessConfigs.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| InstanceNetworkInterfacesAccessConfigs.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| InstanceNetworkInterfacesAccessConfigs.un_parse(v, path) }
         end
       end

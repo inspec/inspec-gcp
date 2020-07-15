@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageDefaultObjectAcl < GcpResourceBase
-    name 'google_storage_default_object_acl'
-    desc 'Verifies settings for a storage default object ACL'
+    name "google_storage_default_object_acl"
+    desc "Verifies settings for a storage default object ACL"
 
     example "
       describe google_storage_default_object_acl(bucket: 'bucket-buvsjjcndqz',  entity: 'user-object-viewer@spaterson-project.iam.gserviceaccount.com') do
@@ -23,8 +23,8 @@ module Inspec::Resources
         create_resource_methods(@acl)
       # all non-existing entities raise a "Not Found" client error
       rescue Google::Apis::ClientError => e
-        @acl=nil
-        @error=JSON.parse(e.body)
+        @acl = nil
+        @error = JSON.parse(e.body)
       end
     end
 

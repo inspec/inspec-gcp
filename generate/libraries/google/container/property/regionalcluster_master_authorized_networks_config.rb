@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/regionalcluster_master_authorized_networks_config_cidr_blocks'
+require "google/container/property/regionalcluster_master_authorized_networks_config_cidr_blocks"
 module GoogleInSpec
   module Container
     module Property
@@ -27,9 +27,10 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @enabled = arguments['enabled']
-          @cidr_blocks = GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfigCidrBlocksArray.parse(arguments['cidrBlocks'], to_s)
+          @enabled = arguments["enabled"]
+          @cidr_blocks = GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfigCidrBlocksArray.parse(arguments["cidrBlocks"], to_s)
         end
 
         def to_s
@@ -38,9 +39,10 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'enabled' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
-            'cidr_blocks' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.cidr_blocks') { should include '#{single.to_json}' }" } },
+            "enabled" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
+            "cidr_blocks" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.cidr_blocks') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

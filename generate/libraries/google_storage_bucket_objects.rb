@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBucketObjects < GcpResourceBase
-    name 'google_storage_bucket_objects'
-    desc 'Verifies settings for GCP storage bucket objects in bulk'
+    name "google_storage_bucket_objects"
+    desc "Verifies settings for GCP storage bucket objects in bulk"
 
     example "
       describe google_storage_bucket_objects(bucket: 'bucket-name') do
@@ -34,8 +34,9 @@ module Inspec::Resources
           @bucket_objects = @gcp.gcp_storage_client.list_objects(@bucket, page_token: next_page)
         end
         return [] if !@bucket_objects || !@bucket_objects.items
+
         @bucket_objects.items.map do |object|
-          bucket_object_rows+=[{ object_name: object.name,
+          bucket_object_rows += [{ object_name: object.name,
                                  object_bucket: object.bucket,
                                  object_created_time: Time.parse(object.time_created.to_s) }]
         end

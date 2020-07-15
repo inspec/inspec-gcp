@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class CloudFunctionsCloudFunctions < GcpResourceBase
-  name 'google_cloudfunctions_cloud_functions'
-  desc 'CloudFunction plural resource'
-  supports platform: 'gcp'
+  name "google_cloudfunctions_cloud_functions"
+  desc "CloudFunction plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -47,18 +47,19 @@ class CloudFunctionsCloudFunctions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('functions')
+    @table = fetch_wrapped_resource("functions")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -80,24 +81,24 @@ class CloudFunctionsCloudFunctions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'entryPoint' => ->(obj) { return :entry_point, obj['entryPoint'] },
-      'runtime' => ->(obj) { return :runtime, obj['runtime'] },
-      'timeout' => ->(obj) { return :timeout, obj['timeout'] },
-      'availableMemoryMb' => ->(obj) { return :available_memory_mb, obj['availableMemoryMb'] },
-      'serviceAccountEmail' => ->(obj) { return :service_account_email, obj['serviceAccountEmail'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'versionId' => ->(obj) { return :version_id, obj['versionId'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'environmentVariables' => ->(obj) { return :environment_variables, obj['environmentVariables'] },
-      'sourceArchiveUrl' => ->(obj) { return :source_archive_url, obj['sourceArchiveUrl'] },
-      'sourceUploadUrl' => ->(obj) { return :source_upload_url, obj['sourceUploadUrl'] },
-      'sourceRepository' => ->(obj) { return :source_repository, GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(obj['sourceRepository'], to_s) },
-      'httpsTrigger' => ->(obj) { return :https_trigger, GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(obj['httpsTrigger'], to_s) },
-      'eventTrigger' => ->(obj) { return :event_trigger, GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(obj['eventTrigger'], to_s) },
-      'location' => ->(obj) { return :location, obj['location'] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "status" => ->(obj) { return :status, obj["status"] },
+      "entryPoint" => ->(obj) { return :entry_point, obj["entryPoint"] },
+      "runtime" => ->(obj) { return :runtime, obj["runtime"] },
+      "timeout" => ->(obj) { return :timeout, obj["timeout"] },
+      "availableMemoryMb" => ->(obj) { return :available_memory_mb, obj["availableMemoryMb"] },
+      "serviceAccountEmail" => ->(obj) { return :service_account_email, obj["serviceAccountEmail"] },
+      "updateTime" => ->(obj) { return :update_time, obj["updateTime"] },
+      "versionId" => ->(obj) { return :version_id, obj["versionId"] },
+      "labels" => ->(obj) { return :labels, obj["labels"] },
+      "environmentVariables" => ->(obj) { return :environment_variables, obj["environmentVariables"] },
+      "sourceArchiveUrl" => ->(obj) { return :source_archive_url, obj["sourceArchiveUrl"] },
+      "sourceUploadUrl" => ->(obj) { return :source_upload_url, obj["sourceUploadUrl"] },
+      "sourceRepository" => ->(obj) { return :source_repository, GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(obj["sourceRepository"], to_s) },
+      "httpsTrigger" => ->(obj) { return :https_trigger, GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(obj["httpsTrigger"], to_s) },
+      "eventTrigger" => ->(obj) { return :event_trigger, GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(obj["eventTrigger"], to_s) },
+      "location" => ->(obj) { return :location, obj["location"] },
     }
   end
 
@@ -124,10 +125,10 @@ class CloudFunctionsCloudFunctions < GcpResourceBase
   private
 
   def product_url
-    'https://cloudfunctions.googleapis.com/v1/'
+    "https://cloudfunctions.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/functions'
+    "projects/{{project}}/locations/{{location}}/functions"
   end
 end

@@ -12,19 +12,19 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_target_https_proxies resource.'
+title "Test GCP google_compute_target_https_proxies resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-https_proxy = attribute('https_proxy', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+https_proxy = attribute("https_proxy", default: {
   "name": "inspec-gcp-https-proxy",
-  "description": "A HTTPS target proxy"
-}, description: 'Compute HTTPS proxy definition')
-control 'google_compute_target_https_proxies-1.0' do
+  "description": "A HTTPS target proxy",
+}, description: "Compute HTTPS proxy definition")
+control "google_compute_target_https_proxies-1.0" do
   impact 1.0
-  title 'google_compute_target_https_proxies resource test'
+  title "google_compute_target_https_proxies resource test"
 
   describe google_compute_target_https_proxies(project: gcp_project_id) do
-    its('names') { should include https_proxy['name'] }
-    its('descriptions') { should include https_proxy['description'] }
+    its("names") { should include https_proxy["name"] }
+    its("descriptions") { should include https_proxy["description"] }
   end
 end

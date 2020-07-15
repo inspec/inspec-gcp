@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleCloudSqlUsers < GcpResourceBase
-    name 'google_sql_users'
-    desc 'Verifies settings for GCP Cloud SQL Database users in bulk'
+    name "google_sql_users"
+    desc "Verifies settings for GCP Cloud SQL Database users in bulk"
 
     example "
       describe google_sql_users(project: 'chef-inspec-gcp', database: 'database') do
@@ -31,8 +31,9 @@ module Inspec::Resources
         @users = @gcp.gcp_client(Google::Apis::SqladminV1beta4::SQLAdminService).list_users(opts[:project], opts[:database])
       end
       return [] if !@users || !@users.items
+
       @users.items.map do |user|
-        user_rows+=[{ user_name: user.name,
+        user_rows += [{ user_name: user.name,
                       user_host: user.host,
                       user_instance: user.instance }]
       end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeZone < GcpResourceBase
-    name 'google_compute_zone'
-    desc 'Verifies settings for a zone'
+    name "google_compute_zone"
+    desc "Verifies settings for a zone"
 
     example "
       describe google_compute_zone(project: 'chef-inspec-gcp',  zone: 'us-east1-b') do
@@ -26,8 +26,9 @@ module Inspec::Resources
 
     # helper method for retrieving a region name
     def region_name
-      return '' if !defined?(region) || region.nil?
-      region.split('/').last
+      return "" if !defined?(region) || region.nil?
+
+      region.split("/").last
     end
 
     def exists?
@@ -36,7 +37,8 @@ module Inspec::Resources
 
     def up?
       return false if !defined?(status) || status.nil?
-      status == 'UP'
+
+      status == "UP"
     end
 
     def to_s

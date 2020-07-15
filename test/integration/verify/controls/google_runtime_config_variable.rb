@@ -12,22 +12,22 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_runtime_config_variable resource.'
+title "Test GCP google_runtime_config_variable resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-runtimeconfig_config = attribute('runtimeconfig_config', default: {"name"=>"inspec-gcp-runtime-config", "description"=>"My runtime configurations"})
-runtimeconfig_variable = attribute('runtimeconfig_variable', default: {"name"=>"prod-variables/hostname", "text"=>"example.com"})
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+runtimeconfig_config = attribute("runtimeconfig_config", default: { "name" => "inspec-gcp-runtime-config", "description" => "My runtime configurations" })
+runtimeconfig_variable = attribute("runtimeconfig_variable", default: { "name" => "prod-variables/hostname", "text" => "example.com" })
 
-control 'google_runtime_config_variable-1.0' do
+control "google_runtime_config_variable-1.0" do
   impact 1.0
-  title 'google_runtime_config_variable resource test'
+  title "google_runtime_config_variable resource test"
 
-  describe google_runtime_config_variable(project: gcp_project_id, config: runtimeconfig_config['name'], name: runtimeconfig_variable['name']) do
+  describe google_runtime_config_variable(project: gcp_project_id, config: runtimeconfig_config["name"], name: runtimeconfig_variable["name"]) do
     it { should exist }
-    its('text') { should cmp runtimeconfig_variable['text'] }
+    its("text") { should cmp runtimeconfig_variable["text"] }
   end
 
-  describe google_runtime_config_variable(project: gcp_project_id, config: runtimeconfig_config['name'], name: 'nonexistent') do
+  describe google_runtime_config_variable(project: gcp_project_id, config: runtimeconfig_config["name"], name: "nonexistent") do
     it { should_not exist }
   end
 end

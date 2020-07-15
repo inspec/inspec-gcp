@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/nodetemplate_node_type_flexibility'
+require "gcp_backend"
+require "google/compute/property/nodetemplate_node_type_flexibility"
 
 # A provider to manage Compute Engine resources.
 class ComputeNodeTemplate < GcpResourceBase
-  name 'google_compute_node_template'
-  desc 'NodeTemplate'
-  supports platform: 'gcp'
+  name "google_compute_node_template"
+  desc "NodeTemplate"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -34,19 +34,19 @@ class ComputeNodeTemplate < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @name = @fetched['name']
-    @node_affinity_labels = @fetched['nodeAffinityLabels']
-    @node_type = @fetched['nodeType']
-    @node_type_flexibility = GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(@fetched['nodeTypeFlexibility'], to_s)
-    @region = @fetched['region']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @name = @fetched["name"]
+    @node_affinity_labels = @fetched["nodeAffinityLabels"]
+    @node_type = @fetched["nodeType"]
+    @node_type_flexibility = GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(@fetched["nodeTypeFlexibility"], to_s)
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -64,31 +64,32 @@ class ComputeNodeTemplate < GcpResourceBase
 
   def un_parse
     {
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'node_affinity_labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('node_affinity_labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'node_type' => ->(x, _) { x.nil? ? [] : ["its('node_type') { should cmp #{x.inspect} }"] },
-      'node_type_flexibility' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.un_parse(x, 'node_type_flexibility') },
-      'region' => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "node_affinity_labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('node_affinity_labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "node_type" => ->(x, _) { x.nil? ? [] : ["its('node_type') { should cmp #{x.inspect} }"] },
+      "node_type_flexibility" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.un_parse(x, "node_type_flexibility") },
+      "region" => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'NodeTemplate'
+    name = "NodeTemplate"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_compute_node_template',
+      type: "google_compute_node_template",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -96,10 +97,10 @@ class ComputeNodeTemplate < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}'
+    "projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}"
   end
 end

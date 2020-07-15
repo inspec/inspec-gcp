@@ -12,29 +12,29 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_cloud_scheduler_job resource.'
+title "Test GCP google_cloud_scheduler_job resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-scheduler_job = attribute('scheduler_job', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+scheduler_job = attribute("scheduler_job", default: {
   "region": "us-central1",
   "name": "job-name",
   "description": "A description",
   "schedule": "*/8 * * * *",
   "time_zone": "America/New_York",
   "http_method": "POST",
-  "http_target_uri": "https://example.com/ping"
-}, description: 'Cloud Scheduler Job configuration')
-control 'google_cloud_scheduler_job-1.0' do
+  "http_target_uri": "https://example.com/ping",
+}, description: "Cloud Scheduler Job configuration")
+control "google_cloud_scheduler_job-1.0" do
   impact 1.0
-  title 'google_cloud_scheduler_job resource test'
+  title "google_cloud_scheduler_job resource test"
 
-  describe google_cloud_scheduler_job(project: gcp_project_id, region: scheduler_job['region'], name: scheduler_job['name']) do
+  describe google_cloud_scheduler_job(project: gcp_project_id, region: scheduler_job["region"], name: scheduler_job["name"]) do
     it { should exist }
 
-    its('description') { should cmp scheduler_job['description'] }
-    its('schedule') { should cmp scheduler_job['schedule'] }
-    its('time_zone') { should cmp scheduler_job['time_zone'] }
-    its('http_target.http_method') { should cmp scheduler_job['http_method'] }
-    its('http_target.uri') { should cmp scheduler_job['http_target_uri'] }
+    its("description") { should cmp scheduler_job["description"] }
+    its("schedule") { should cmp scheduler_job["schedule"] }
+    its("time_zone") { should cmp scheduler_job["time_zone"] }
+    its("http_target.http_method") { should cmp scheduler_job["http_method"] }
+    its("http_target.uri") { should cmp scheduler_job["http_target_uri"] }
   end
 end

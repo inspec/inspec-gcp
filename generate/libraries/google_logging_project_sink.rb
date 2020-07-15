@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/logging_v2'
+require "gcp_backend"
+require "google/apis/logging_v2"
 
 module Inspec::Resources
   class GoogleLoggingProjectSink < GcpResourceBase
-    name 'google_logging_project_sink'
-    desc 'Verifies settings for a project logging sink'
+    name "google_logging_project_sink"
+    desc "Verifies settings for a project logging sink"
 
     example "
       describe google_logging_project_sink(project: 'chef-inspec-gcp',  sink: 'sink-name-abcd') do

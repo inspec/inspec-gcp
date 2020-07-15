@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeHealthChecks < GcpResourceBase
-  name 'google_compute_health_checks'
-  desc 'HealthCheck plural resource'
-  supports platform: 'gcp'
+  name "google_compute_health_checks"
+  desc "HealthCheck plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -43,18 +43,19 @@ class ComputeHealthChecks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -76,20 +77,20 @@ class ComputeHealthChecks < GcpResourceBase
 
   def transformers
     {
-      'checkIntervalSec' => ->(obj) { return :check_interval_sec, obj['checkIntervalSec'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'healthyThreshold' => ->(obj) { return :healthy_threshold, obj['healthyThreshold'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
-      'unhealthyThreshold' => ->(obj) { return :unhealthy_threshold, obj['unhealthyThreshold'] },
-      'type' => ->(obj) { return :type, obj['type'] },
-      'httpHealthCheck' => ->(obj) { return :http_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(obj['httpHealthCheck'], to_s) },
-      'httpsHealthCheck' => ->(obj) { return :https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck'], to_s) },
-      'tcpHealthCheck' => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s) },
-      'sslHealthCheck' => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s) },
-      'http2HealthCheck' => ->(obj) { return :http2_health_check, GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(obj['http2HealthCheck'], to_s) },
+      "checkIntervalSec" => ->(obj) { return :check_interval_sec, obj["checkIntervalSec"] },
+      "creationTimestamp" => ->(obj) { return :creation_timestamp, parse_time_string(obj["creationTimestamp"]) },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "healthyThreshold" => ->(obj) { return :healthy_threshold, obj["healthyThreshold"] },
+      "id" => ->(obj) { return :id, obj["id"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "timeoutSec" => ->(obj) { return :timeout_sec, obj["timeoutSec"] },
+      "unhealthyThreshold" => ->(obj) { return :unhealthy_threshold, obj["unhealthyThreshold"] },
+      "type" => ->(obj) { return :type, obj["type"] },
+      "httpHealthCheck" => ->(obj) { return :http_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(obj["httpHealthCheck"], to_s) },
+      "httpsHealthCheck" => ->(obj) { return :https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj["httpsHealthCheck"], to_s) },
+      "tcpHealthCheck" => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj["tcpHealthCheck"], to_s) },
+      "sslHealthCheck" => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj["sslHealthCheck"], to_s) },
+      "http2HealthCheck" => ->(obj) { return :http2_health_check, GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(obj["http2HealthCheck"], to_s) },
     }
   end
 
@@ -116,10 +117,10 @@ class ComputeHealthChecks < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/healthChecks'
+    "projects/{{project}}/global/healthChecks"
   end
 end

@@ -32,12 +32,13 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @encoding = arguments['encoding']
-          @field_name = arguments['fieldName']
-          @only_read_latest = arguments['onlyReadLatest']
-          @qualifier_string = arguments['qualifierString']
-          @type = arguments['type']
+          @encoding = arguments["encoding"]
+          @field_name = arguments["fieldName"]
+          @only_read_latest = arguments["onlyReadLatest"]
+          @qualifier_string = arguments["qualifierString"]
+          @type = arguments["type"]
         end
 
         def to_s
@@ -46,12 +47,13 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'encoding' => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
-            'field_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.field_name') { should cmp #{x.inspect} }"] },
-            'only_read_latest' => ->(x, path) { x.nil? ? [] : ["its('#{path}.only_read_latest') { should cmp #{x.inspect} }"] },
-            'qualifier_string' => ->(x, path) { x.nil? ? [] : ["its('#{path}.qualifier_string') { should cmp #{x.inspect} }"] },
-            'type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
+            "encoding" => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
+            "field_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.field_name') { should cmp #{x.inspect} }"] },
+            "only_read_latest" => ->(x, path) { x.nil? ? [] : ["its('#{path}.only_read_latest') { should cmp #{x.inspect} }"] },
+            "qualifier_string" => ->(x, path) { x.nil? ? [] : ["its('#{path}.qualifier_string') { should cmp #{x.inspect} }"] },
+            "type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -72,11 +74,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| TableExternalDataConfigurationBigtableOptionsColumnFamiliesColumns.un_parse(v, path) }
         end
       end

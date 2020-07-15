@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeDisks < GcpResourceBase
-  name 'google_compute_disks'
-  desc 'Disk plural resource'
-  supports platform: 'gcp'
+  name "google_compute_disks"
+  desc "Disk plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -50,18 +50,19 @@ class ComputeDisks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -83,27 +84,27 @@ class ComputeDisks < GcpResourceBase
 
   def transformers
     {
-      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'lastAttachTimestamp' => ->(obj) { return :last_attach_timestamp, parse_time_string(obj['lastAttachTimestamp']) },
-      'lastDetachTimestamp' => ->(obj) { return :last_detach_timestamp, parse_time_string(obj['lastDetachTimestamp']) },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'licenses' => ->(obj) { return :licenses, obj['licenses'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'sizeGb' => ->(obj) { return :size_gb, obj['sizeGb'] },
-      'users' => ->(obj) { return :users, obj['users'] },
-      'physicalBlockSizeBytes' => ->(obj) { return :physical_block_size_bytes, obj['physicalBlockSizeBytes'] },
-      'type' => ->(obj) { return :type, obj['type'] },
-      'sourceImage' => ->(obj) { return :source_image, obj['sourceImage'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
-      'sourceImageEncryptionKey' => ->(obj) { return :source_image_encryption_key, GoogleInSpec::Compute::Property::DiskSourceImageEncryptionKey.new(obj['sourceImageEncryptionKey'], to_s) },
-      'sourceImageId' => ->(obj) { return :source_image_id, obj['sourceImageId'] },
-      'diskEncryptionKey' => ->(obj) { return :disk_encryption_key, GoogleInSpec::Compute::Property::DiskDiskEncryptionKey.new(obj['diskEncryptionKey'], to_s) },
-      'sourceSnapshot' => ->(obj) { return :source_snapshot, obj['sourceSnapshot'] },
-      'sourceSnapshotEncryptionKey' => ->(obj) { return :source_snapshot_encryption_key, GoogleInSpec::Compute::Property::DiskSourceSnapshotEncryptionKey.new(obj['sourceSnapshotEncryptionKey'], to_s) },
-      'sourceSnapshotId' => ->(obj) { return :source_snapshot_id, obj['sourceSnapshotId'] },
+      "labelFingerprint" => ->(obj) { return :label_fingerprint, obj["labelFingerprint"] },
+      "creationTimestamp" => ->(obj) { return :creation_timestamp, parse_time_string(obj["creationTimestamp"]) },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "id" => ->(obj) { return :id, obj["id"] },
+      "lastAttachTimestamp" => ->(obj) { return :last_attach_timestamp, parse_time_string(obj["lastAttachTimestamp"]) },
+      "lastDetachTimestamp" => ->(obj) { return :last_detach_timestamp, parse_time_string(obj["lastDetachTimestamp"]) },
+      "labels" => ->(obj) { return :labels, obj["labels"] },
+      "licenses" => ->(obj) { return :licenses, obj["licenses"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "sizeGb" => ->(obj) { return :size_gb, obj["sizeGb"] },
+      "users" => ->(obj) { return :users, obj["users"] },
+      "physicalBlockSizeBytes" => ->(obj) { return :physical_block_size_bytes, obj["physicalBlockSizeBytes"] },
+      "type" => ->(obj) { return :type, obj["type"] },
+      "sourceImage" => ->(obj) { return :source_image, obj["sourceImage"] },
+      "zone" => ->(obj) { return :zone, obj["zone"] },
+      "sourceImageEncryptionKey" => ->(obj) { return :source_image_encryption_key, GoogleInSpec::Compute::Property::DiskSourceImageEncryptionKey.new(obj["sourceImageEncryptionKey"], to_s) },
+      "sourceImageId" => ->(obj) { return :source_image_id, obj["sourceImageId"] },
+      "diskEncryptionKey" => ->(obj) { return :disk_encryption_key, GoogleInSpec::Compute::Property::DiskDiskEncryptionKey.new(obj["diskEncryptionKey"], to_s) },
+      "sourceSnapshot" => ->(obj) { return :source_snapshot, obj["sourceSnapshot"] },
+      "sourceSnapshotEncryptionKey" => ->(obj) { return :source_snapshot_encryption_key, GoogleInSpec::Compute::Property::DiskSourceSnapshotEncryptionKey.new(obj["sourceSnapshotEncryptionKey"], to_s) },
+      "sourceSnapshotId" => ->(obj) { return :source_snapshot_id, obj["sourceSnapshotId"] },
     }
   end
 
@@ -130,10 +131,10 @@ class ComputeDisks < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/disks'
+    "projects/{{project}}/zones/{{zone}}/disks"
   end
 end

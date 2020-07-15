@@ -12,12 +12,12 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_zones resource.'
+title "Test GCP google_compute_zones resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-control 'google_compute_zones-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+control "google_compute_zones-1.0" do
   impact 1.0
-  title 'google_compute_zones resource test'
+  title "google_compute_zones resource test"
 
   google_compute_zones(project: gcp_project_id).zone_names.each do |zone_name|
     describe google_compute_zone(project: gcp_project_id, name: zone_name) do

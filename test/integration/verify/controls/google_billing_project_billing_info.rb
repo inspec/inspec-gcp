@@ -12,21 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_billing_project_billing_info resource.'
+title "Test GCP google_billing_project_billing_info resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_billing_account = attribute(:gcp_billing_account, default: 'gcp_billing_account', description: 'The GCP billing account name.')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-control 'google_billing_project_billing_info-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_billing_account = attribute(:gcp_billing_account, default: "gcp_billing_account", description: "The GCP billing account name.")
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: "The identifier of the organization")
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 0, description: "Flag to enable privileged resources requiring elevated privileges in GCP.")
+control "google_billing_project_billing_info-1.0" do
   impact 1.0
-  title 'google_billing_project_billing_info resource test'
+  title "google_billing_project_billing_info resource test"
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != "" }
   describe google_billing_project_billing_info(project_id: gcp_project_id) do
     it { should exist }
 
-    its('billing_account_name') { should eq gcp_billing_account }
-    its('billing_enabled') { should eq true }
+    its("billing_account_name") { should eq gcp_billing_account }
+    its("billing_enabled") { should eq true }
   end
 end

@@ -12,21 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_service_account_key resource.'
+title "Test GCP google_service_account_key resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_service_account_display_name = attribute(:gcp_service_account_display_name, default: 'gcp_service_account_display_name', description: 'The IAM service account display name.')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
-control 'google_service_account_key-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_service_account_display_name = attribute(:gcp_service_account_display_name, default: "gcp_service_account_display_name", description: "The IAM service account display name.")
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 0, description: "Flag to enable privileged resources requiring elevated privileges in GCP.")
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: "The identifier of the organization")
+control "google_service_account_key-1.0" do
   impact 1.0
-  title 'google_service_account_key resource test'
+  title "google_service_account_key resource test"
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != "" }
   google_service_account_keys(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com").key_names.each do |sa_key_name|
-  	describe google_service_account_key(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com", name: sa_key_name.split('/').last) do
-  		it { should exist }
-  		its('key_type') { should_not cmp 'USER_MANAGED' }
-  	end
+    describe google_service_account_key(project: gcp_project_id, service_account: "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com", name: sa_key_name.split("/").last) do
+      it { should exist }
+      its("key_type") { should_not cmp "USER_MANAGED" }
+    end
   end
 end

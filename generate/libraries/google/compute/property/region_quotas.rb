@@ -30,11 +30,12 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @metric = arguments['metric']
-          @limit = arguments['limit']
-          @usage = arguments['usage']
-          @owner = arguments['owner']
+          @metric = arguments["metric"]
+          @limit = arguments["limit"]
+          @usage = arguments["usage"]
+          @owner = arguments["owner"]
         end
 
         def to_s
@@ -43,11 +44,12 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'metric' => ->(x, path) { x.nil? ? [] : ["its('#{path}.metric') { should cmp #{x.inspect} }"] },
-            'limit' => ->(x, path) { x.nil? ? [] : ["its('#{path}.limit') { should cmp #{x.inspect} }"] },
-            'usage' => ->(x, path) { x.nil? ? [] : ["its('#{path}.usage') { should cmp #{x.inspect} }"] },
-            'owner' => ->(x, path) { x.nil? ? [] : ["its('#{path}.owner') { should cmp #{x.inspect} }"] },
+            "metric" => ->(x, path) { x.nil? ? [] : ["its('#{path}.metric') { should cmp #{x.inspect} }"] },
+            "limit" => ->(x, path) { x.nil? ? [] : ["its('#{path}.limit') { should cmp #{x.inspect} }"] },
+            "usage" => ->(x, path) { x.nil? ? [] : ["its('#{path}.usage') { should cmp #{x.inspect} }"] },
+            "owner" => ->(x, path) { x.nil? ? [] : ["its('#{path}.owner') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -68,11 +70,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return RegionQuotas.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| RegionQuotas.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| RegionQuotas.un_parse(v, path) }
         end
       end

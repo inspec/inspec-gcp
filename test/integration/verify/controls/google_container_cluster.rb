@@ -12,32 +12,32 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_container_cluster resource.'
+title "Test GCP google_container_cluster resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: 'gcp_kube_cluster_name', description: 'GCP container cluster name')
-gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: 'gcp_kube_cluster_zone', description: 'GCP container cluster zone')
-gcp_kube_cluster_size = attribute(:gcp_kube_cluster_size, default: 'gcp_kube_cluster_size', description: 'GCP container cluster size')
-gcp_kube_cluster_zone_extra1 = attribute(:gcp_kube_cluster_zone_extra1, default: 'gcp_kube_cluster_zone_extra1', description: 'First extra zone for the cluster')
-gcp_kube_cluster_zone_extra2 = attribute(:gcp_kube_cluster_zone_extra2, default: 'gcp_kube_cluster_zone_extra2', description: 'Second extra zone for the cluster')
-gcp_kube_cluster_master_user = attribute(:gcp_kube_cluster_master_user, default: 'gcp_kube_cluster_master_user', description: 'GCP container cluster admin username')
-control 'google_container_cluster-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: "gcp_kube_cluster_name", description: "GCP container cluster name")
+gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: "gcp_kube_cluster_zone", description: "GCP container cluster zone")
+gcp_kube_cluster_size = attribute(:gcp_kube_cluster_size, default: "gcp_kube_cluster_size", description: "GCP container cluster size")
+gcp_kube_cluster_zone_extra1 = attribute(:gcp_kube_cluster_zone_extra1, default: "gcp_kube_cluster_zone_extra1", description: "First extra zone for the cluster")
+gcp_kube_cluster_zone_extra2 = attribute(:gcp_kube_cluster_zone_extra2, default: "gcp_kube_cluster_zone_extra2", description: "Second extra zone for the cluster")
+gcp_kube_cluster_master_user = attribute(:gcp_kube_cluster_master_user, default: "gcp_kube_cluster_master_user", description: "GCP container cluster admin username")
+control "google_container_cluster-1.0" do
   impact 1.0
-  title 'google_container_cluster resource test'
+  title "google_container_cluster resource test"
 
   describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: gcp_kube_cluster_name) do
     it { should exist }
-    its('locations.sort'){ should cmp [ gcp_kube_cluster_zone, gcp_kube_cluster_zone_extra1, gcp_kube_cluster_zone_extra2 ].sort }
+    its("locations.sort") { should cmp [ gcp_kube_cluster_zone, gcp_kube_cluster_zone_extra1, gcp_kube_cluster_zone_extra2 ].sort }
 
-    its('master_auth.username') { should eq gcp_kube_cluster_master_user }
+    its("master_auth.username") { should eq gcp_kube_cluster_master_user }
   end
 
-  describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: 'nonexistent') do
+  describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: "nonexistent") do
     it { should_not exist }
   end
 
   describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: gcp_kube_cluster_name, beta: true) do
     it { should exist }
-    its('release_channel.channel') { should cmp "RAPID" }
+    its("release_channel.channel") { should cmp "RAPID" }
   end
 end

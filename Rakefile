@@ -1,22 +1,23 @@
 #!/usr/bin/env rake
 
-require 'rake/testtask'
-require 'rubocop/rake_task'
-#require 'inifile'
-require_relative 'test/integration/configuration/gcp_inspec_config'
+require "rake/testtask"
+require "rubocop/rake_task"
+require "chefstyle"
+# require 'inifile'
+require_relative "test/integration/configuration/gcp_inspec_config"
 
 # Rubocop
-desc 'Run Rubocop lint checks'
+desc "Run Rubocop lint checks"
 task :rubocop do
   RuboCop::RakeTask.new
 end
 
 # lint the project
-desc 'Run robocop linter'
+desc "Run robocop linter"
 task lint: [:rubocop]
 
 # run tests
-task default: [:lint, 'test:check']
+task default: [:lint, "test:check"]
 
 namespace :test do
   # Specify the directory for the integration tests
@@ -37,9 +38,8 @@ namespace :test do
     sh("bundle exec inspec check #{dir} --chef-license=accept-silent")
     # run inspec check on the sample profile to ensure all resources are loaded okay
     # Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571
-    #sh("cd #{integration_dir}/verify && bundle exec inspec check .")
+    # sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
-  
 
   task :init_workspace do
     # Initialize terraform workspace
@@ -57,7 +57,7 @@ namespace :test do
     puts "----> Setup"
     # Create the plan that can be applied to GCP
     cmd = format("cd %s/build/ && terraform plan  -var-file=%s -out %s", integration_dir, variable_file_name, plan_name)
- #   puts cmd
+    #   puts cmd
     sh(cmd)
 
   end
@@ -85,7 +85,7 @@ namespace :test do
   desc "Perform Integration Tests"
   task :integration do
     Rake::Task["test:init_workspace"].execute
-    if File.exists?(File.join(integration_dir,"build",variable_file_name))
+    if File.exist?(File.join(integration_dir, "build", variable_file_name))
       Rake::Task["test:cleanup_integration_tests"].execute
     end
     Rake::Task["test:plan_integration_tests"].execute
@@ -99,11 +99,11 @@ end
 # the necessary gem is installed.
 # use `rake changelog to=1.2.0`
 begin
-  v = ENV['to']
-  require 'github_changelog_generator/task'
+  v = ENV["to"]
+  require "github_changelog_generator/task"
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
     config.future_release = v
   end
 rescue LoadError
-  puts '>>>>> GitHub Changelog Generator not loaded, omitting tasks'
+  puts ">>>>> GitHub Changelog Generator not loaded, omitting tasks"
 end

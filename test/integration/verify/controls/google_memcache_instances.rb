@@ -12,19 +12,19 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_memcache_instances resource.'
+title "Test GCP google_memcache_instances resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-memcache_instance = attribute('memcache_instance', default: {
-  "name": "mem-instance"
-}, description: 'Memcache settings')
-control 'google_memcache_instances-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_location = attribute(:gcp_location, default: "gcp_location", description: "The GCP project region.")
+memcache_instance = attribute("memcache_instance", default: {
+  "name": "mem-instance",
+}, description: "Memcache settings")
+control "google_memcache_instances-1.0" do
   impact 1.0
-  title 'google_memcache_instances resource test'
+  title "google_memcache_instances resource test"
 
   describe google_memcache_instances(project: gcp_project_id, region: gcp_location) do
-  	its('count') { should be >= 1 }
-    its('node_counts') { should include 1 }
+    its("count") { should be >= 1 }
+    its("node_counts") { should include 1 }
   end
 end

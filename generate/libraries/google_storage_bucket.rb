@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBucket < GcpResourceBase
-    name 'google_storage_bucket'
-    desc 'Verifies settings for a bucket'
+    name "google_storage_bucket"
+    desc "Verifies settings for a bucket"
 
     example "
       describe google_storage_bucket(name: 'inspec-test-bucket') do
@@ -30,14 +30,16 @@ module Inspec::Resources
     end
 
     def has_versioning_enabled?
-      return false if !defined?(@bucket.versioning)
+      return false unless defined?(@bucket.versioning)
       return false if @bucket.versioning.nil?
+
       @bucket.versioning.enabled
     end
 
     def has_logging_enabled?
-      return false if !defined?(@bucket.logging)
+      return false unless defined?(@bucket.logging)
       return false if @bucket.logging.nil?
+
       true
     end
 

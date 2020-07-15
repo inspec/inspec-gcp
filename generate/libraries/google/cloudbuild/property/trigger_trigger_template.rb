@@ -34,13 +34,14 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @project_id = arguments['projectId']
-          @repo_name = arguments['repoName']
-          @dir = arguments['dir']
-          @branch_name = arguments['branchName']
-          @tag_name = arguments['tagName']
-          @commit_sha = arguments['commitSha']
+          @project_id = arguments["projectId"]
+          @repo_name = arguments["repoName"]
+          @dir = arguments["dir"]
+          @branch_name = arguments["branchName"]
+          @tag_name = arguments["tagName"]
+          @commit_sha = arguments["commitSha"]
         end
 
         def to_s
@@ -49,13 +50,14 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'project_id' => ->(x, path) { x.nil? ? [] : ["its('#{path}.project_id') { should cmp #{x.inspect} }"] },
-            'repo_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.repo_name') { should cmp #{x.inspect} }"] },
-            'dir' => ->(x, path) { x.nil? ? [] : ["its('#{path}.dir') { should cmp #{x.inspect} }"] },
-            'branch_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.branch_name') { should cmp #{x.inspect} }"] },
-            'tag_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.tag_name') { should cmp #{x.inspect} }"] },
-            'commit_sha' => ->(x, path) { x.nil? ? [] : ["its('#{path}.commit_sha') { should cmp #{x.inspect} }"] },
+            "project_id" => ->(x, path) { x.nil? ? [] : ["its('#{path}.project_id') { should cmp #{x.inspect} }"] },
+            "repo_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.repo_name') { should cmp #{x.inspect} }"] },
+            "dir" => ->(x, path) { x.nil? ? [] : ["its('#{path}.dir') { should cmp #{x.inspect} }"] },
+            "branch_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.branch_name') { should cmp #{x.inspect} }"] },
+            "tag_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.tag_name') { should cmp #{x.inspect} }"] },
+            "commit_sha" => ->(x, path) { x.nil? ? [] : ["its('#{path}.commit_sha') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

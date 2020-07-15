@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleServiceAccounts < GcpResourceBase
-    name 'google_service_accounts'
-    desc 'Verifies settings for GCP compute service accounts in bulk'
+    name "google_service_accounts"
+    desc "Verifies settings for GCP compute service accounts in bulk"
 
     example "
       describe google_service_accounts(project: 'chef-inspec-gcp') do
@@ -35,8 +35,9 @@ module Inspec::Resources
           @service_accounts = @gcp.gcp_iam_client.list_project_service_accounts("projects/#{@project}", page_token: next_page)
         end
         return [] if !@service_accounts || !@service_accounts.accounts
+
         @service_accounts.accounts.map do |service_account|
-          service_account_rows+=[{ service_account_id: service_account.unique_id,
+          service_account_rows += [{ service_account_id: service_account.unique_id,
                                    service_account_name: service_account.name,
                                    service_account_display_name: service_account.display_name,
                                    service_account_email: service_account.email }]

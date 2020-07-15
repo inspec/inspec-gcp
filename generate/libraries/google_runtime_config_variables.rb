@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class RuntimeConfigVariables < GcpResourceBase
-  name 'google_runtime_config_variables'
-  desc 'Variable plural resource'
-  supports platform: 'gcp'
+  name "google_runtime_config_variables"
+  desc "Variable plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,18 +33,19 @@ class RuntimeConfigVariables < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('variables')
+    @table = fetch_wrapped_resource("variables")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -66,10 +67,10 @@ class RuntimeConfigVariables < GcpResourceBase
 
   def transformers
     {
-      'value' => ->(obj) { return :value, obj['value'] },
-      'text' => ->(obj) { return :text, obj['text'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'config' => ->(obj) { return :config, obj['config'] },
+      "value" => ->(obj) { return :value, obj["value"] },
+      "text" => ->(obj) { return :text, obj["text"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "config" => ->(obj) { return :config, obj["config"] },
     }
   end
 
@@ -96,10 +97,10 @@ class RuntimeConfigVariables < GcpResourceBase
   private
 
   def product_url
-    'https://runtimeconfig.googleapis.com/v1beta1/'
+    "https://runtimeconfig.googleapis.com/v1beta1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/configs/{{config}}/variables?returnValues=true'
+    "projects/{{project}}/configs/{{config}}/variables?returnValues=true"
   end
 end

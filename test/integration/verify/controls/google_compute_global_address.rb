@@ -12,23 +12,23 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_global_address resource.'
+title "Test GCP google_compute_global_address resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-global_address = attribute('global_address', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+global_address = attribute("global_address", default: {
   "name": "inspec-gcp-global-address",
-  "ip_version": "IPV6"
-}, description: 'Compute Global Address definition')
-control 'google_compute_global_address-1.0' do
+  "ip_version": "IPV6",
+}, description: "Compute Global Address definition")
+control "google_compute_global_address-1.0" do
   impact 1.0
-  title 'google_compute_global_address resource test'
+  title "google_compute_global_address resource test"
 
-  describe google_compute_global_address(project: gcp_project_id, name: global_address['name']) do
+  describe google_compute_global_address(project: gcp_project_id, name: global_address["name"]) do
     it { should exist }
-    its('ip_version') { should eq global_address['ip_version'] }
+    its("ip_version") { should eq global_address["ip_version"] }
   end
 
-  describe google_compute_global_address(project: gcp_project_id, name: 'nonexistent') do
+  describe google_compute_global_address(project: gcp_project_id, name: "nonexistent") do
     it { should_not exist }
   end
 end

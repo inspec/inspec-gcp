@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/resourcemanager/property/organizationpolicy_boolean_policy'
-require 'google/resourcemanager/property/organizationpolicy_list_policy'
+require "gcp_backend"
+require "google/resourcemanager/property/organizationpolicy_boolean_policy"
+require "google/resourcemanager/property/organizationpolicy_list_policy"
 
 # A provider to manage Resource Manager resources.
 class OrganizationPolicy < GcpResourceBase
-  name 'google_resourcemanager_organization_policy'
-  desc 'OrganizationPolicy'
-  supports platform: 'gcp'
+  name "google_resourcemanager_organization_policy"
+  desc "OrganizationPolicy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :version
@@ -43,11 +43,11 @@ class OrganizationPolicy < GcpResourceBase
   end
 
   def parse
-    @version = @fetched['version']
-    @constraint = @fetched['constraint']
-    @update_time = parse_time_string(@fetched['updateTime'])
-    @list_policy = GoogleInSpec::ResourceManager::Property::OrganizationPolicyListPolicy.new(@fetched['listPolicy'], to_s)
-    @boolean_policy = GoogleInSpec::ResourceManager::Property::OrganizationPolicyBooleanPolicy.new(@fetched['booleanPolicy'], to_s)
+    @version = @fetched["version"]
+    @constraint = @fetched["constraint"]
+    @update_time = parse_time_string(@fetched["updateTime"])
+    @list_policy = GoogleInSpec::ResourceManager::Property::OrganizationPolicyListPolicy.new(@fetched["listPolicy"], to_s)
+    @boolean_policy = GoogleInSpec::ResourceManager::Property::OrganizationPolicyBooleanPolicy.new(@fetched["booleanPolicy"], to_s)
   end
 
   # Handles parsing RFC3339 time string

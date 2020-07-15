@@ -12,32 +12,32 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_region_instance_group_manager resource.'
+title "Test GCP google_compute_region_instance_group_manager resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-rigm = attribute('rigm', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_location = attribute(:gcp_location, default: "gcp_location", description: "The GCP project region.")
+rigm = attribute("rigm", default: {
   "name": "inspec-rigm",
   "base_instance_name": "rigm1",
   "target_size": 1,
   "named_port_name": "https",
   "named_port_port": 8888,
-  "healing_delay": 300
-}, description: 'Compute region instance group manager description')
-control 'google_compute_region_instance_group_manager-1.0' do
+  "healing_delay": 300,
+}, description: "Compute region instance group manager description")
+control "google_compute_region_instance_group_manager-1.0" do
   impact 1.0
-  title 'google_compute_region_instance_group_manager resource test'
+  title "google_compute_region_instance_group_manager resource test"
 
-  describe google_compute_region_instance_group_manager(project: gcp_project_id, region: gcp_location, name: rigm['name']) do
+  describe google_compute_region_instance_group_manager(project: gcp_project_id, region: gcp_location, name: rigm["name"]) do
     it { should exist }
-    its('base_instance_name') { should eq rigm['base_instance_name'] }
-    its('target_size') { should eq rigm['target_size'] }
-    its('named_ports.first.name') { should eq rigm['named_port_name'] }
-    its('named_ports.first.port') { should eq rigm['named_port_port'] }
-    its('auto_healing_policies.first.initial_delay_sec') { should eq rigm['healing_delay'] }
+    its("base_instance_name") { should eq rigm["base_instance_name"] }
+    its("target_size") { should eq rigm["target_size"] }
+    its("named_ports.first.name") { should eq rigm["named_port_name"] }
+    its("named_ports.first.port") { should eq rigm["named_port_port"] }
+    its("auto_healing_policies.first.initial_delay_sec") { should eq rigm["healing_delay"] }
   end
 
-  describe google_compute_region_instance_group_manager(project: gcp_project_id, region: gcp_location, name: 'nonexistent') do
+  describe google_compute_region_instance_group_manager(project: gcp_project_id, region: gcp_location, name: "nonexistent") do
     it { should_not exist }
   end
 end

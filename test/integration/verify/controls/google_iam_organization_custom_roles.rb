@@ -12,17 +12,17 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_iam_organization_custom_roles resource.'
+title "Test GCP google_iam_organization_custom_roles resource."
 
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of the folder')
-gcp_organization_iam_custom_role_id = attribute(:gcp_organization_iam_custom_role_id, default: 'gcp_organization_iam_custom_role_id', description: 'The IAM custom role identifier.')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-control 'google_iam_organization_custom_roles-1.0' do
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: "The identifier of the organization that is the parent of the folder")
+gcp_organization_iam_custom_role_id = attribute(:gcp_organization_iam_custom_role_id, default: "gcp_organization_iam_custom_role_id", description: "The IAM custom role identifier.")
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 0, description: "Flag to enable privileged resources requiring elevated privileges in GCP.")
+control "google_iam_organization_custom_roles-1.0" do
   impact 1.0
-  title 'google_iam_organization_custom_roles resource test'
+  title "google_iam_organization_custom_roles resource test"
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != "" }
   describe google_iam_organization_custom_roles(org_id: gcp_organization_id) do
-    its('names') { should include "organizations/#{gcp_organization_id}/roles/#{gcp_organization_iam_custom_role_id}" }
+    its("names") { should include "organizations/#{gcp_organization_id}/roles/#{gcp_organization_iam_custom_role_id}" }
   end
 end

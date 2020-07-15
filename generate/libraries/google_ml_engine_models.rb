@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class MLEngineModels < GcpResourceBase
-  name 'google_ml_engine_models'
-  desc 'Model plural resource'
-  supports platform: 'gcp'
+  name "google_ml_engine_models"
+  desc "Model plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -36,18 +36,19 @@ class MLEngineModels < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('models')
+    @table = fetch_wrapped_resource("models")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -69,13 +70,13 @@ class MLEngineModels < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'defaultVersion' => ->(obj) { return :default_version, GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(obj['defaultVersion'], to_s) },
-      'regions' => ->(obj) { return :regions, obj['regions'] },
-      'onlinePredictionLogging' => ->(obj) { return :online_prediction_logging, obj['onlinePredictionLogging'] },
-      'onlinePredictionConsoleLogging' => ->(obj) { return :online_prediction_console_logging, obj['onlinePredictionConsoleLogging'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "defaultVersion" => ->(obj) { return :default_version, GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(obj["defaultVersion"], to_s) },
+      "regions" => ->(obj) { return :regions, obj["regions"] },
+      "onlinePredictionLogging" => ->(obj) { return :online_prediction_logging, obj["onlinePredictionLogging"] },
+      "onlinePredictionConsoleLogging" => ->(obj) { return :online_prediction_console_logging, obj["onlinePredictionConsoleLogging"] },
+      "labels" => ->(obj) { return :labels, obj["labels"] },
     }
   end
 
@@ -102,10 +103,10 @@ class MLEngineModels < GcpResourceBase
   private
 
   def product_url
-    'https://ml.googleapis.com/v1/'
+    "https://ml.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/models'
+    "projects/{{project}}/models"
   end
 end

@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/backendservice_backends'
-require 'google/compute/property/backendservice_cdn_policy'
-require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
-require 'google/compute/property/backendservice_connection_draining'
-require 'google/compute/property/backendservice_iap'
+require "gcp_backend"
+require "google/compute/property/backendservice_backends"
+require "google/compute/property/backendservice_cdn_policy"
+require "google/compute/property/backendservice_cdn_policy_cache_key_policy"
+require "google/compute/property/backendservice_connection_draining"
+require "google/compute/property/backendservice_iap"
 
 # A provider to manage Compute Engine resources.
 class ComputeBackendService < GcpResourceBase
-  name 'google_compute_backend_service'
-  desc 'BackendService'
-  supports platform: 'gcp'
+  name "google_compute_backend_service"
+  desc "BackendService"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :affinity_cookie_ttl_sec
@@ -49,30 +49,30 @@ class ComputeBackendService < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @affinity_cookie_ttl_sec = @fetched['affinityCookieTtlSec']
-    @backends = GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(@fetched['backends'], to_s)
-    @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(@fetched['cdnPolicy'], to_s)
-    @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @fingerprint = @fetched['fingerprint']
-    @description = @fetched['description']
-    @enable_cdn = @fetched['enableCDN']
-    @health_checks = @fetched['healthChecks']
-    @id = @fetched['id']
-    @iap = GoogleInSpec::Compute::Property::BackendServiceIap.new(@fetched['iap'], to_s)
-    @load_balancing_scheme = @fetched['loadBalancingScheme']
-    @name = @fetched['name']
-    @port_name = @fetched['portName']
-    @protocol = @fetched['protocol']
-    @security_policy = @fetched['securityPolicy']
-    @session_affinity = @fetched['sessionAffinity']
-    @timeout_sec = @fetched['timeoutSec']
+    @affinity_cookie_ttl_sec = @fetched["affinityCookieTtlSec"]
+    @backends = GoogleInSpec::Compute::Property::BackendServiceBackendsArray.parse(@fetched["backends"], to_s)
+    @cdn_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.new(@fetched["cdnPolicy"], to_s)
+    @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched["connectionDraining"], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @fingerprint = @fetched["fingerprint"]
+    @description = @fetched["description"]
+    @enable_cdn = @fetched["enableCDN"]
+    @health_checks = @fetched["healthChecks"]
+    @id = @fetched["id"]
+    @iap = GoogleInSpec::Compute::Property::BackendServiceIap.new(@fetched["iap"], to_s)
+    @load_balancing_scheme = @fetched["loadBalancingScheme"]
+    @name = @fetched["name"]
+    @port_name = @fetched["portName"]
+    @protocol = @fetched["protocol"]
+    @security_policy = @fetched["securityPolicy"]
+    @session_affinity = @fetched["sessionAffinity"]
+    @timeout_sec = @fetched["timeoutSec"]
   end
 
   # Handles parsing RFC3339 time string
@@ -90,42 +90,43 @@ class ComputeBackendService < GcpResourceBase
 
   def un_parse
     {
-      'affinity_cookie_ttl_sec' => ->(x, _) { x.nil? ? [] : ["its('affinity_cookie_ttl_sec') { should cmp #{x.inspect} }"] },
-      'backends' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('backends') { should include '#{single.to_json}' }" } },
-      'cdn_policy' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.un_parse(x, 'cdn_policy') },
-      'connection_draining' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.un_parse(x, 'connection_draining') },
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'fingerprint' => ->(x, _) { x.nil? ? [] : ["its('fingerprint') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'enable_cdn' => ->(x, _) { x.nil? ? [] : ["its('enable_cdn') { should cmp #{x.inspect} }"] },
-      'health_checks' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('health_checks') { should include #{single.inspect} }" } },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'iap' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceIap.un_parse(x, 'iap') },
-      'load_balancing_scheme' => ->(x, _) { x.nil? ? [] : ["its('load_balancing_scheme') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'port_name' => ->(x, _) { x.nil? ? [] : ["its('port_name') { should cmp #{x.inspect} }"] },
-      'protocol' => ->(x, _) { x.nil? ? [] : ["its('protocol') { should cmp #{x.inspect} }"] },
-      'security_policy' => ->(x, _) { x.nil? ? [] : ["its('security_policy') { should cmp #{x.inspect} }"] },
-      'session_affinity' => ->(x, _) { x.nil? ? [] : ["its('session_affinity') { should cmp #{x.inspect} }"] },
-      'timeout_sec' => ->(x, _) { x.nil? ? [] : ["its('timeout_sec') { should cmp #{x.inspect} }"] },
+      "affinity_cookie_ttl_sec" => ->(x, _) { x.nil? ? [] : ["its('affinity_cookie_ttl_sec') { should cmp #{x.inspect} }"] },
+      "backends" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('backends') { should include '#{single.to_json}' }" } },
+      "cdn_policy" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceCdnPolicy.un_parse(x, "cdn_policy") },
+      "connection_draining" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.un_parse(x, "connection_draining") },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "fingerprint" => ->(x, _) { x.nil? ? [] : ["its('fingerprint') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "enable_cdn" => ->(x, _) { x.nil? ? [] : ["its('enable_cdn') { should cmp #{x.inspect} }"] },
+      "health_checks" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('health_checks') { should include #{single.inspect} }" } },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "iap" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceIap.un_parse(x, "iap") },
+      "load_balancing_scheme" => ->(x, _) { x.nil? ? [] : ["its('load_balancing_scheme') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "port_name" => ->(x, _) { x.nil? ? [] : ["its('port_name') { should cmp #{x.inspect} }"] },
+      "protocol" => ->(x, _) { x.nil? ? [] : ["its('protocol') { should cmp #{x.inspect} }"] },
+      "security_policy" => ->(x, _) { x.nil? ? [] : ["its('security_policy') { should cmp #{x.inspect} }"] },
+      "session_affinity" => ->(x, _) { x.nil? ? [] : ["its('session_affinity') { should cmp #{x.inspect} }"] },
+      "timeout_sec" => ->(x, _) { x.nil? ? [] : ["its('timeout_sec') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'BackendService'
+    name = "BackendService"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_compute_backend_service',
+      type: "google_compute_backend_service",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -133,10 +134,10 @@ class ComputeBackendService < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/backendServices/{{name}}'
+    "projects/{{project}}/global/backendServices/{{name}}"
   end
 end

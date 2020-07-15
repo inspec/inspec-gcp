@@ -12,19 +12,19 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_global_forwarding_rules resource.'
+title "Test GCP google_compute_global_forwarding_rules resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-global_forwarding_rule = attribute('global_forwarding_rule', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+global_forwarding_rule = attribute("global_forwarding_rule", default: {
   "name": "inspec-gcp-global-forwarding-rule",
-  "port_range": "80-80"
-}, description: 'Compute global forwarding rule definition')
-control 'google_compute_global_forwarding_rules-1.0' do
+  "port_range": "80-80",
+}, description: "Compute global forwarding rule definition")
+control "google_compute_global_forwarding_rules-1.0" do
   impact 1.0
-  title 'google_compute_global_forwarding_rules resource test'
+  title "google_compute_global_forwarding_rules resource test"
 
   describe google_compute_global_forwarding_rules(project: gcp_project_id) do
-    its('count') { should be >= 1 }
-    its('port_ranges') { should include global_forwarding_rule['port_range'] }
+    its("count") { should be >= 1 }
+    its("port_ranges") { should include global_forwarding_rule["port_range"] }
   end
 end

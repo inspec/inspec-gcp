@@ -34,13 +34,14 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @request = arguments['request']
-          @response = arguments['response']
-          @port = arguments['port']
-          @port_name = arguments['portName']
-          @proxy_header = arguments['proxyHeader']
-          @port_specification = arguments['portSpecification']
+          @request = arguments["request"]
+          @response = arguments["response"]
+          @port = arguments["port"]
+          @port_name = arguments["portName"]
+          @proxy_header = arguments["proxyHeader"]
+          @port_specification = arguments["portSpecification"]
         end
 
         def to_s
@@ -49,13 +50,14 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'request' => ->(x, path) { x.nil? ? [] : ["its('#{path}.request') { should cmp #{x.inspect} }"] },
-            'response' => ->(x, path) { x.nil? ? [] : ["its('#{path}.response') { should cmp #{x.inspect} }"] },
-            'port' => ->(x, path) { x.nil? ? [] : ["its('#{path}.port') { should cmp #{x.inspect} }"] },
-            'port_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.port_name') { should cmp #{x.inspect} }"] },
-            'proxy_header' => ->(x, path) { x.nil? ? [] : ["its('#{path}.proxy_header') { should cmp #{x.inspect} }"] },
-            'port_specification' => ->(x, path) { x.nil? ? [] : ["its('#{path}.port_specification') { should cmp #{x.inspect} }"] },
+            "request" => ->(x, path) { x.nil? ? [] : ["its('#{path}.request') { should cmp #{x.inspect} }"] },
+            "response" => ->(x, path) { x.nil? ? [] : ["its('#{path}.response') { should cmp #{x.inspect} }"] },
+            "port" => ->(x, path) { x.nil? ? [] : ["its('#{path}.port') { should cmp #{x.inspect} }"] },
+            "port_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.port_name') { should cmp #{x.inspect} }"] },
+            "proxy_header" => ->(x, path) { x.nil? ? [] : ["its('#{path}.proxy_header') { should cmp #{x.inspect} }"] },
+            "port_specification" => ->(x, path) { x.nil? ? [] : ["its('#{path}.port_specification') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

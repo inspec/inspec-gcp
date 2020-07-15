@@ -12,22 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_spanner_database resource.'
+title "Test GCP google_spanner_database resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-spannerdatabase = attribute('spannerdatabase', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+spannerdatabase = attribute("spannerdatabase", default: {
   "name": "spdatabase",
   "instance": "spinstance",
-  "ddl": "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)"
-}, description: 'Cloud Spanner definition') 
+  "ddl": "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)",
+}, description: "Cloud Spanner definition")
 
-control 'google_spanner_database-1.0' do
+control "google_spanner_database-1.0" do
   impact 1.0
-  title 'google_spanner_database resource test'
+  title "google_spanner_database resource test"
 
-
-  describe google_spanner_database(project: gcp_project_id, instance: spannerdatabase['instance'], name: spannerdatabase['name']) do
+  describe google_spanner_database(project: gcp_project_id, instance: spannerdatabase["instance"], name: spannerdatabase["name"]) do
     it { should exist }
-    its('name') { should match spannerdatabase['name'] }
+    its("name") { should match spannerdatabase["name"] }
   end
 end

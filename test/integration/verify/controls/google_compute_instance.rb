@@ -12,11 +12,11 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_instance resource.'
+title "Test GCP google_compute_instance resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
-instance = attribute('instance', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_zone = attribute(:gcp_zone, default: "gcp_zone", description: "GCP zone name of the compute disk")
+instance = attribute("instance", default: {
   "name": "inspec-instance",
   "machine_type": "n1-standard-1",
   "tag_1": "foo",
@@ -24,25 +24,24 @@ instance = attribute('instance', default: {
   "metadata_key": "123",
   "metadata_value": "asdf",
   "sa_scope": "https://www.googleapis.com/auth/compute.readonly",
-  "startup_script": "echo hi > /test.txt"
-}, description: 'Compute instance description')
-control 'google_compute_instance-1.0' do
+  "startup_script": "echo hi > /test.txt",
+}, description: "Compute instance description")
+control "google_compute_instance-1.0" do
   impact 1.0
-  title 'google_compute_instance resource test'
+  title "google_compute_instance resource test"
 
-
-  describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: instance['name']) do
+  describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: instance["name"]) do
     it { should exist }
-    its('machine_type') { should match instance['machine_type'] }
-    its('tags.items') { should include instance['tag_1'] }
-    its('tags.items') { should include instance['tag_2'] }
-    its('tag_count') { should cmp 2 }
-    its('service_account_scopes') { should include instance['sa_scope'] }
-    its('metadata_keys') { should include instance['metadata_key'] }
-    its('metadata_values') { should include instance['metadata_value'] }
+    its("machine_type") { should match instance["machine_type"] }
+    its("tags.items") { should include instance["tag_1"] }
+    its("tags.items") { should include instance["tag_2"] }
+    its("tag_count") { should cmp 2 }
+    its("service_account_scopes") { should include instance["sa_scope"] }
+    its("metadata_keys") { should include instance["metadata_key"] }
+    its("metadata_values") { should include instance["metadata_value"] }
   end
 
-  describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: 'nonexistent') do
+  describe google_compute_instance(project: gcp_project_id, zone: gcp_zone, name: "nonexistent") do
     it { should_not exist }
   end
 end

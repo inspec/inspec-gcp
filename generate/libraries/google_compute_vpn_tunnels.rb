@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeVpnTunnels < GcpResourceBase
-    name 'google_compute_vpn_tunnels'
-    desc 'Verifies settings for GCP compute vpn_tunnels in bulk'
+    name "google_compute_vpn_tunnels"
+    desc "Verifies settings for GCP compute vpn_tunnels in bulk"
 
     example "
       describe google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region: 'europe-west2') do
@@ -34,8 +34,9 @@ module Inspec::Resources
           @vpn_tunnels = @gcp.gcp_compute_client.list_vpn_tunnels(@project, @region, page_token: next_page)
         end
         return [] if !@vpn_tunnels || !@vpn_tunnels.items
+
         @vpn_tunnels.items.map do |tunnel|
-          tunnel_rows+=[{ vpn_tunnel_name: tunnel.name, vpn_tunnel_target_vpn_gateway: tunnel.target_vpn_gateway }]
+          tunnel_rows += [{ vpn_tunnel_name: tunnel.name, vpn_tunnel_target_vpn_gateway: tunnel.target_vpn_gateway }]
         end
         next_page = @vpn_tunnels.next_page_token
         break unless next_page

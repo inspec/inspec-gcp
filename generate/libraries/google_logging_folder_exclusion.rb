@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Stackdriver Logging resources.
 class LoggingFolderExclusion < GcpResourceBase
-  name 'google_logging_folder_exclusion'
-  desc 'FolderExclusion'
-  supports platform: 'gcp'
+  name "google_logging_folder_exclusion"
+  desc "FolderExclusion"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :folder
@@ -31,17 +31,17 @@ class LoggingFolderExclusion < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @folder = @fetched['folder']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @filter = @fetched['filter']
-    @disabled = @fetched['disabled']
+    @folder = @fetched["folder"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @filter = @fetched["filter"]
+    @disabled = @fetched["disabled"]
   end
 
   # Handles parsing RFC3339 time string
@@ -59,29 +59,30 @@ class LoggingFolderExclusion < GcpResourceBase
 
   def un_parse
     {
-      'folder' => ->(x, _) { x.nil? ? [] : ["its('folder') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'filter' => ->(x, _) { x.nil? ? [] : ["its('filter') { should cmp #{x.inspect} }"] },
-      'disabled' => ->(x, _) { x.nil? ? [] : ["its('disabled') { should cmp #{x.inspect} }"] },
+      "folder" => ->(x, _) { x.nil? ? [] : ["its('folder') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "filter" => ->(x, _) { x.nil? ? [] : ["its('filter') { should cmp #{x.inspect} }"] },
+      "disabled" => ->(x, _) { x.nil? ? [] : ["its('disabled') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'FolderExclusion'
+    name = "FolderExclusion"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_logging_folder_exclusion',
+      type: "google_logging_folder_exclusion",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -89,10 +90,10 @@ class LoggingFolderExclusion < GcpResourceBase
   private
 
   def product_url
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'folders/{{folder}}/exclusions/{{name}}'
+    "folders/{{folder}}/exclusions/{{name}}"
   end
 end

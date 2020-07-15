@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/admin_directory_v1'
+require "gcp_backend"
+require "google/apis/admin_directory_v1"
 
 module Inspec::Resources
   class GoogleUsers < GcpResourceBase
-    name 'google_users'
-    desc 'Verifies settings for GCP users in bulk'
+    name "google_users"
+    desc "Verifies settings for GCP users in bulk"
 
     example "
       describe google_users(customer: 'my_customer') do
@@ -17,8 +17,8 @@ module Inspec::Resources
     def initialize(opts = {})
       # Call the parent class constructor
       super(opts)
-      @customer = opts[:customer] || 'my_customer'
-      @domain = opts[:domain] || ''
+      @customer = opts[:customer] || "my_customer"
+      @domain = opts[:domain] || ""
     end
 
     # FilterTable setup
@@ -36,8 +36,9 @@ module Inspec::Resources
           @users = @gcp.gcp_admin_client.list_users(customer: @customer, domain: @domain, page_token: next_page)
         end
         return [] if !@users || !@users.users
+
         @users.users.map do |user|
-          user_rows+=[{ user_id: user.id,
+          user_rows += [{ user_id: user.id,
                         user_name: user.name.full_name,
                         user_email: user.primary_email }]
         end

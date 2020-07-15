@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeProjectInfo < GcpResourceBase
-    name 'google_compute_project_info'
-    desc 'Verifies settings for GCP Compute Project Info'
+    name "google_compute_project_info"
+    desc "Verifies settings for GCP Compute Project Info"
 
     example "
       describe google_compute_project_info(project: 'chef-inspec-gcp') do
@@ -25,14 +25,16 @@ module Inspec::Resources
 
     def has_enabled_oslogin?
       return false if !defined?(@project_info.common_instance_metadata.items) || @project_info.common_instance_metadata.items.nil?
+
       @project_info.common_instance_metadata.items.each do |element|
-        return true if element.key=='enable-oslogin' and element.value.casecmp('true').zero?
+        return true if (element.key == "enable-oslogin") && element.value.casecmp("true").zero?
       end
       false
     end
 
     def creation_timestamp_date
       return false if !defined?(creation_timestamp) || creation_timestamp.nil?
+
       Time.parse(creation_timestamp.to_s)
     end
 

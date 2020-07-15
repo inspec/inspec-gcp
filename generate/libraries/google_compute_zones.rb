@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeZones < GcpResourceBase
-    name 'google_compute_zones'
-    desc 'Verifies settings for GCP compute zones in bulk'
+    name "google_compute_zones"
+    desc "Verifies settings for GCP compute zones in bulk"
 
     example "
       describe google_compute_zones(project: 'chef-inspec-gcp') do
@@ -32,8 +32,9 @@ module Inspec::Resources
         @zones = @gcp.gcp_compute_client.list_zones(@project)
       end
       return [] if !@zones || !@zones.items
+
       @zones.items.map do |zone|
-        zone_rows+=[{ zone_id: zone.id,
+        zone_rows += [{ zone_id: zone.id,
                           zone_name: zone.name,
                           zone_status: zone.status }]
       end

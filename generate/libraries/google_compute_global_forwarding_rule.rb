@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/globalforwardingrule_metadata_filters'
+require "gcp_backend"
+require "google/compute/property/globalforwardingrule_metadata_filters"
 
 # A provider to manage Compute Engine resources.
 class ComputeGlobalForwardingRule < GcpResourceBase
-  name 'google_compute_global_forwarding_rule'
-  desc 'GlobalForwardingRule'
-  supports platform: 'gcp'
+  name "google_compute_global_forwarding_rule"
+  desc "GlobalForwardingRule"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -39,24 +39,24 @@ class ComputeGlobalForwardingRule < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @ip_address = @fetched['IPAddress']
-    @ip_protocol = @fetched['IPProtocol']
-    @ip_version = @fetched['ipVersion']
-    @load_balancing_scheme = @fetched['loadBalancingScheme']
-    @metadata_filters = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(@fetched['metadataFilters'], to_s)
-    @name = @fetched['name']
-    @network = @fetched['network']
-    @port_range = @fetched['portRange']
-    @target = @fetched['target']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @ip_address = @fetched["IPAddress"]
+    @ip_protocol = @fetched["IPProtocol"]
+    @ip_version = @fetched["ipVersion"]
+    @load_balancing_scheme = @fetched["loadBalancingScheme"]
+    @metadata_filters = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(@fetched["metadataFilters"], to_s)
+    @name = @fetched["name"]
+    @network = @fetched["network"]
+    @port_range = @fetched["portRange"]
+    @target = @fetched["target"]
   end
 
   # Handles parsing RFC3339 time string
@@ -74,36 +74,37 @@ class ComputeGlobalForwardingRule < GcpResourceBase
 
   def un_parse
     {
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'ip_address' => ->(x, _) { x.nil? ? [] : ["its('ip_address') { should cmp #{x.inspect} }"] },
-      'ip_protocol' => ->(x, _) { x.nil? ? [] : ["its('ip_protocol') { should cmp #{x.inspect} }"] },
-      'ip_version' => ->(x, _) { x.nil? ? [] : ["its('ip_version') { should cmp #{x.inspect} }"] },
-      'load_balancing_scheme' => ->(x, _) { x.nil? ? [] : ["its('load_balancing_scheme') { should cmp #{x.inspect} }"] },
-      'metadata_filters' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('metadata_filters') { should include '#{single.to_json}' }" } },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'network' => ->(x, _) { x.nil? ? [] : ["its('network') { should cmp #{x.inspect} }"] },
-      'port_range' => ->(x, _) { x.nil? ? [] : ["its('port_range') { should cmp #{x.inspect} }"] },
-      'target' => ->(x, _) { x.nil? ? [] : ["its('target') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "ip_address" => ->(x, _) { x.nil? ? [] : ["its('ip_address') { should cmp #{x.inspect} }"] },
+      "ip_protocol" => ->(x, _) { x.nil? ? [] : ["its('ip_protocol') { should cmp #{x.inspect} }"] },
+      "ip_version" => ->(x, _) { x.nil? ? [] : ["its('ip_version') { should cmp #{x.inspect} }"] },
+      "load_balancing_scheme" => ->(x, _) { x.nil? ? [] : ["its('load_balancing_scheme') { should cmp #{x.inspect} }"] },
+      "metadata_filters" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('metadata_filters') { should include '#{single.to_json}' }" } },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "network" => ->(x, _) { x.nil? ? [] : ["its('network') { should cmp #{x.inspect} }"] },
+      "port_range" => ->(x, _) { x.nil? ? [] : ["its('port_range') { should cmp #{x.inspect} }"] },
+      "target" => ->(x, _) { x.nil? ? [] : ["its('target') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'GlobalForwardingRule'
+    name = "GlobalForwardingRule"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_compute_global_forwarding_rule',
+      type: "google_compute_global_forwarding_rule",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -111,10 +112,10 @@ class ComputeGlobalForwardingRule < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/forwardingRules/{{name}}'
+    "projects/{{project}}/global/forwardingRules/{{name}}"
   end
 end

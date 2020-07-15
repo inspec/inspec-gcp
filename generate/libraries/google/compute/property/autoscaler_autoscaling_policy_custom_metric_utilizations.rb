@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @metric = arguments['metric']
-          @utilization_target = arguments['utilizationTarget']
-          @utilization_target_type = arguments['utilizationTargetType']
+          @metric = arguments["metric"]
+          @utilization_target = arguments["utilizationTarget"]
+          @utilization_target_type = arguments["utilizationTargetType"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'metric' => ->(x, path) { x.nil? ? [] : ["its('#{path}.metric') { should cmp #{x.inspect} }"] },
-            'utilization_target' => ->(x, path) { x.nil? ? [] : ["its('#{path}.utilization_target') { should cmp #{x.inspect} }"] },
-            'utilization_target_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.utilization_target_type') { should cmp #{x.inspect} }"] },
+            "metric" => ->(x, path) { x.nil? ? [] : ["its('#{path}.metric') { should cmp #{x.inspect} }"] },
+            "utilization_target" => ->(x, path) { x.nil? ? [] : ["its('#{path}.utilization_target') { should cmp #{x.inspect} }"] },
+            "utilization_target_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.utilization_target_type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -64,11 +66,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return AutoscalerAutoscalingPolicyCustomMetricUtilizations.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| AutoscalerAutoscalingPolicyCustomMetricUtilizations.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| AutoscalerAutoscalingPolicyCustomMetricUtilizations.un_parse(v, path) }
         end
       end

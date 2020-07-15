@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class DNSResourceRecordSets < GcpResourceBase
-  name 'google_dns_resource_record_sets'
-  desc 'ResourceRecordSet plural resource'
-  supports platform: 'gcp'
+  name "google_dns_resource_record_sets"
+  desc "ResourceRecordSet plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,18 +34,19 @@ class DNSResourceRecordSets < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('rrsets')
+    @table = fetch_wrapped_resource("rrsets")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -67,11 +68,11 @@ class DNSResourceRecordSets < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'type' => ->(obj) { return :type, obj['type'] },
-      'ttl' => ->(obj) { return :ttl, obj['ttl'] },
-      'rrdatas' => ->(obj) { return :target, obj['rrdatas'] },
-      'managed_zone' => ->(obj) { return :managed_zone, obj['managed_zone'] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "type" => ->(obj) { return :type, obj["type"] },
+      "ttl" => ->(obj) { return :ttl, obj["ttl"] },
+      "rrdatas" => ->(obj) { return :target, obj["rrdatas"] },
+      "managed_zone" => ->(obj) { return :managed_zone, obj["managed_zone"] },
     }
   end
 
@@ -98,10 +99,10 @@ class DNSResourceRecordSets < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/dns/v1/'
+    "https://www.googleapis.com/dns/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets'
+    "projects/{{project}}/managedZones/{{managed_zone}}/rrsets"
   end
 end

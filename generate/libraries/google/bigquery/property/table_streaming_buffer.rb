@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @estimated_bytes = arguments['estimatedBytes']
-          @estimated_rows = arguments['estimatedRows']
-          @oldest_entry_time = arguments['oldestEntryTime']
+          @estimated_bytes = arguments["estimatedBytes"]
+          @estimated_rows = arguments["estimatedRows"]
+          @oldest_entry_time = arguments["oldestEntryTime"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'estimated_bytes' => ->(x, path) { x.nil? ? [] : ["its('#{path}.estimated_bytes') { should cmp #{x.inspect} }"] },
-            'estimated_rows' => ->(x, path) { x.nil? ? [] : ["its('#{path}.estimated_rows') { should cmp #{x.inspect} }"] },
-            'oldest_entry_time' => ->(x, path) { x.nil? ? [] : ["its('#{path}.oldest_entry_time') { should cmp #{x.inspect} }"] },
+            "estimated_bytes" => ->(x, path) { x.nil? ? [] : ["its('#{path}.estimated_bytes') { should cmp #{x.inspect} }"] },
+            "estimated_rows" => ->(x, path) { x.nil? ? [] : ["its('#{path}.estimated_rows') { should cmp #{x.inspect} }"] },
+            "oldest_entry_time" => ->(x, path) { x.nil? ? [] : ["its('#{path}.oldest_entry_time') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeSslPolicys < GcpResourceBase
-  name 'google_compute_ssl_policies'
-  desc 'SslPolicy plural resource'
-  supports platform: 'gcp'
+  name "google_compute_ssl_policies"
+  desc "SslPolicy plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,18 +39,19 @@ class ComputeSslPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -72,16 +73,16 @@ class ComputeSslPolicys < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'profile' => ->(obj) { return :profile, obj['profile'] },
-      'minTlsVersion' => ->(obj) { return :min_tls_version, obj['minTlsVersion'] },
-      'enabledFeatures' => ->(obj) { return :enabled_features, obj['enabledFeatures'] },
-      'customFeatures' => ->(obj) { return :custom_features, obj['customFeatures'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'warnings' => ->(obj) { return :warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj['warnings'], to_s) },
+      "creationTimestamp" => ->(obj) { return :creation_timestamp, parse_time_string(obj["creationTimestamp"]) },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "id" => ->(obj) { return :id, obj["id"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "profile" => ->(obj) { return :profile, obj["profile"] },
+      "minTlsVersion" => ->(obj) { return :min_tls_version, obj["minTlsVersion"] },
+      "enabledFeatures" => ->(obj) { return :enabled_features, obj["enabledFeatures"] },
+      "customFeatures" => ->(obj) { return :custom_features, obj["customFeatures"] },
+      "fingerprint" => ->(obj) { return :fingerprint, obj["fingerprint"] },
+      "warnings" => ->(obj) { return :warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj["warnings"], to_s) },
     }
   end
 
@@ -108,10 +109,10 @@ class ComputeSslPolicys < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/sslPolicies'
+    "projects/{{project}}/global/sslPolicies"
   end
 end

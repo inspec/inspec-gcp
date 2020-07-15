@@ -12,21 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_region resource.'
+title "Test GCP google_compute_region resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-control 'google_compute_region-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_location = attribute(:gcp_location, default: "gcp_location", description: "The GCP project region.")
+control "google_compute_region-1.0" do
   impact 1.0
-  title 'google_compute_region resource test'
+  title "google_compute_region resource test"
 
   describe google_compute_region(project: gcp_project_id, name: gcp_location) do
     it { should exist }
     it { should be_up }
-    its('zone_names') { should include "#{gcp_location}-a" }
+    its("zone_names") { should include "#{gcp_location}-a" }
   end
 
-  describe google_compute_region(project: gcp_project_id, name: 'notthere') do
+  describe google_compute_region(project: gcp_project_id, name: "notthere") do
     it { should_not exist }
   end
 end

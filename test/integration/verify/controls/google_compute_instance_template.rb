@@ -12,10 +12,10 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_instance_template resource.'
+title "Test GCP google_compute_instance_template resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-instance_template = attribute('instance_template', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+instance_template = attribute("instance_template", default: {
   "name": "inspec-gcp-instance-template",
   "description": "A description of the instance template",
   "instance_description": "A description of the instance itself",
@@ -28,26 +28,26 @@ instance_template = attribute('instance_template', default: {
   "disk_auto_delete": true,
   "disk_boot": true,
   "network_interface_network": "default",
-  "service_account_scope": "storage-ro"
-}, description: 'An instance template definition')
-control 'google_compute_instance_template-1.0' do
+  "service_account_scope": "storage-ro",
+}, description: "An instance template definition")
+control "google_compute_instance_template-1.0" do
   impact 1.0
-  title 'google_compute_instance_template resource test'
+  title "google_compute_instance_template resource test"
 
-  describe google_compute_instance_template(project: gcp_project_id, name: instance_template['name']) do
+  describe google_compute_instance_template(project: gcp_project_id, name: instance_template["name"]) do
     it { should exist }
-    its('description') { should eq instance_template['description'] }
-    its('properties.description') { should eq instance_template['instance_description'] }
-    its('properties.machine_type') { should eq instance_template['machine_type'] }
-    its('properties.tags.items') { should include instance_template['tag'] }
-    its('properties.disks.count') { should eq 1 }
-    its('properties.disks.first.auto_delete') { should eq instance_template['disk_auto_delete'] }
-    its('properties.disks.first.boot') { should eq instance_template['disk_boot'] }
-    its('properties.network_interfaces.count') { should eq 1 }
-    its('properties.service_accounts.count') { should eq 1 }
+    its("description") { should eq instance_template["description"] }
+    its("properties.description") { should eq instance_template["instance_description"] }
+    its("properties.machine_type") { should eq instance_template["machine_type"] }
+    its("properties.tags.items") { should include instance_template["tag"] }
+    its("properties.disks.count") { should eq 1 }
+    its("properties.disks.first.auto_delete") { should eq instance_template["disk_auto_delete"] }
+    its("properties.disks.first.boot") { should eq instance_template["disk_boot"] }
+    its("properties.network_interfaces.count") { should eq 1 }
+    its("properties.service_accounts.count") { should eq 1 }
   end
 
-  describe google_compute_instance_template(project: gcp_project_id, name: 'nonexistent') do
+  describe google_compute_instance_template(project: gcp_project_id, name: "nonexistent") do
     it { should_not exist }
   end
 end

@@ -12,25 +12,25 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_storage_object_acl resource.'
+title "Test GCP google_storage_object_acl resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_storage_bucket_object = attribute(:gcp_storage_bucket_object, default: 'gcp_storage_bucket_object', description: 'The name of the storage bucket with ACLs attached')
-gcp_service_account_display_name = attribute(:gcp_service_account_display_name, default: 'gcp_service_account_display_name', description: 'The name of the service account assigned permissions')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 'gcp_enable_privileged_resources', description: 'If we are running tests with escalated permissions(required for this test)')
-gcp_storage_bucket_object_name = attribute(:gcp_storage_bucket_object_name, default: 'gcp_storage_bucket_object_name', description: 'The name of the object with ACLs')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
-control 'google_storage_object_acl-1.0' do
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_storage_bucket_object = attribute(:gcp_storage_bucket_object, default: "gcp_storage_bucket_object", description: "The name of the storage bucket with ACLs attached")
+gcp_service_account_display_name = attribute(:gcp_service_account_display_name, default: "gcp_service_account_display_name", description: "The name of the service account assigned permissions")
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: "gcp_enable_privileged_resources", description: "If we are running tests with escalated permissions(required for this test)")
+gcp_storage_bucket_object_name = attribute(:gcp_storage_bucket_object_name, default: "gcp_storage_bucket_object_name", description: "The name of the object with ACLs")
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: "The identifier of the organization")
+control "google_storage_object_acl-1.0" do
   impact 1.0
-  title 'google_storage_object_acl resource test'
+  title "google_storage_object_acl resource test"
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != "" }
   describe google_storage_object_acl(bucket: gcp_storage_bucket_object, object: gcp_storage_bucket_object_name, entity: "user-#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com") do
     it { should exist }
-    its('role') { should cmp "OWNER" }
+    its("role") { should cmp "OWNER" }
 
-    its('bucket') { should eq gcp_storage_bucket_object }
-    its('email') { should include "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com" }
+    its("bucket") { should eq gcp_storage_bucket_object }
+    its("email") { should include "#{gcp_service_account_display_name}@#{gcp_project_id}.iam.gserviceaccount.com" }
   end
 
   describe google_storage_object_acl(bucket: gcp_storage_bucket_object, object: gcp_storage_bucket_object_name, entity: "allUsers") do

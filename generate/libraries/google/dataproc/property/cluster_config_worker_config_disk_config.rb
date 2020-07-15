@@ -28,10 +28,11 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @boot_disk_type = arguments['bootDiskType']
-          @boot_disk_size_gb = arguments['bootDiskSizeGb']
-          @num_local_ssds = arguments['numLocalSsds']
+          @boot_disk_type = arguments["bootDiskType"]
+          @boot_disk_size_gb = arguments["bootDiskSizeGb"]
+          @num_local_ssds = arguments["numLocalSsds"]
         end
 
         def to_s
@@ -40,10 +41,11 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'boot_disk_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.boot_disk_type') { should cmp #{x.inspect} }"] },
-            'boot_disk_size_gb' => ->(x, path) { x.nil? ? [] : ["its('#{path}.boot_disk_size_gb') { should cmp #{x.inspect} }"] },
-            'num_local_ssds' => ->(x, path) { x.nil? ? [] : ["its('#{path}.num_local_ssds') { should cmp #{x.inspect} }"] },
+            "boot_disk_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.boot_disk_type') { should cmp #{x.inspect} }"] },
+            "boot_disk_size_gb" => ->(x, path) { x.nil? ? [] : ["its('#{path}.boot_disk_size_gb') { should cmp #{x.inspect} }"] },
+            "num_local_ssds" => ->(x, path) { x.nil? ? [] : ["its('#{path}.num_local_ssds') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

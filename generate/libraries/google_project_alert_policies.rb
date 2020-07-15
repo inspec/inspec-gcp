@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/monitoring_v3'
+require "gcp_backend"
+require "google/apis/monitoring_v3"
 
 module Inspec::Resources
   class GoogleProjectAlertPolicies < GcpResourceBase
-    name 'google_project_alert_policies'
-    desc 'Verifies settings for GCP project alert policies in bulk'
+    name "google_project_alert_policies"
+    desc "Verifies settings for GCP project alert policies in bulk"
 
     example "
       describe google_project_alert_policies(project: 'chef-inspec-gcp') do
@@ -34,14 +34,16 @@ module Inspec::Resources
         @policies = @gcp.gcp_client(Google::Apis::MonitoringV3::MonitoringService).list_project_alert_policies("projects/#{@project}")
       end
       return [] if !@policies || !@policies.alert_policies
+
       @policies.alert_policies.map do |policy|
         policy_filters = []
         policy.conditions.each do |condition|
           next if !defined?(condition.condition_threshold.filter) || condition.condition_threshold.filter.nil?
-          policy_filters+=[condition.condition_threshold.filter]
+
+          policy_filters += [condition.condition_threshold.filter]
         end
 
-        policy_rows+=[{ policy_name: policy.name,
+        policy_rows += [{ policy_name: policy.name,
                         policy_display_name: policy.display_name,
                         policy_enabled_state: policy.enabled,
                         policy_filter_list: policy_filters }]

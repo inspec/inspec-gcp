@@ -12,29 +12,29 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_project_metrics resource.'
+title "Test GCP google_project_metrics resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-logging_metric = attribute('logging_metric', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+logging_metric = attribute("logging_metric", default: {
   "name": "some/metric",
   "filter": "resource.type=gae_app AND severity>=ERROR",
   "metric_kind": "DELTA",
-  "value_type": "INT64"
-}, description: 'Logging metric definition')
-control 'google_project_metrics-1.0' do
+  "value_type": "INT64",
+}, description: "Logging metric definition")
+control "google_project_metrics-1.0" do
   impact 1.0
-  title 'google_project_metrics resource test'
+  title "google_project_metrics resource test"
 
   describe google_project_metrics(project: gcp_project_id) do
     it { should exist }
-    its('metric_filters') { should include logging_metric['filter'] }
-    its('metric_names') { should include logging_metric['name'] }
+    its("metric_filters") { should include logging_metric["filter"] }
+    its("metric_names") { should include logging_metric["name"] }
   end
 
   describe.one do
     google_project_metrics(project: gcp_project_id).metric_types.each do |metric_type|
       describe metric_type do
-        it { should match logging_metric['name'] }
+        it { should match logging_metric["name"] }
       end
     end
   end

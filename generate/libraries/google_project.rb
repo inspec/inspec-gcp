@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleProject < GcpResourceBase
-    name 'google_project'
-    desc 'Verifies settings for a project'
+    name "google_project"
+    desc "Verifies settings for a project"
 
     example "
       describe google_project(project: 'chef-inspec-gcp') do
@@ -28,6 +28,7 @@ module Inspec::Resources
 
     def label_value_by_key(label_key)
       return [] if !defined?(labels) || labels.nil?
+
       labels.item[label_key]
     end
 

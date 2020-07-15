@@ -12,10 +12,10 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_instance_templates resource.'
+title "Test GCP google_compute_instance_templates resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-instance_template = attribute('instance_template', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+instance_template = attribute("instance_template", default: {
   "name": "inspec-gcp-instance-template",
   "description": "A description of the instance template",
   "instance_description": "A description of the instance itself",
@@ -28,13 +28,13 @@ instance_template = attribute('instance_template', default: {
   "disk_auto_delete": true,
   "disk_boot": true,
   "network_interface_network": "default",
-  "service_account_scope": "storage-ro"
-}, description: 'An instance template definition')
-control 'google_compute_instance_templates-1.0' do
+  "service_account_scope": "storage-ro",
+}, description: "An instance template definition")
+control "google_compute_instance_templates-1.0" do
   impact 1.0
-  title 'google_compute_instance_templates resource test'
+  title "google_compute_instance_templates resource test"
 
   describe google_compute_instance_templates(project: gcp_project_id) do
-    its('names') { should include instance_template['name'] }
+    its("names") { should include instance_template["name"] }
   end
 end

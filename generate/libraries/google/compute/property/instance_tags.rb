@@ -26,9 +26,10 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @fingerprint = arguments['fingerprint']
-          @items = arguments['items']
+          @fingerprint = arguments["fingerprint"]
+          @items = arguments["items"]
         end
 
         def to_s
@@ -37,9 +38,10 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'fingerprint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.fingerprint') { should cmp #{x.inspect} }"] },
-            'items' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.items') { should include #{single.inspect} }" } },
+            "fingerprint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.fingerprint') { should cmp #{x.inspect} }"] },
+            "items" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.items') { should include #{single.inspect} }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

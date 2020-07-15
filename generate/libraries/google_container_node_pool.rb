@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/container_v1'
+require "gcp_backend"
+require "google/apis/container_v1"
 
 module Inspec::Resources
   class GoogleContainerNodePool < GcpResourceBase
-    name 'google_container_node_pool'
-    desc 'Verifies settings for a container nodepool'
+    name "google_container_node_pool"
+    desc "Verifies settings for a container nodepool"
 
     example "
       describe google_container_node_pool(project: 'chef-inspec-gcp', zone: 'europe-west2-a', cluster_name: 'cluster-name', nodepool_name: 'inspec-test') do
@@ -26,32 +26,37 @@ module Inspec::Resources
     end
 
     def has_automatic_node_repair?
-      return false if !defined?(@nodepool.management.auto_repair)
+      return false unless defined?(@nodepool.management.auto_repair)
       return false if @nodepool.management.auto_repair.nil?
+
       @nodepool.management.auto_repair
     end
 
     def has_automatic_node_upgrade?
-      return false if !defined?(@nodepool.management.auto_upgrade)
+      return false unless defined?(@nodepool.management.auto_upgrade)
       return false if @nodepool.management.auto_upgrade.nil?
+
       @nodepool.management.auto_upgrade
     end
 
     def config_image_type
-      return '' if !defined?(@nodepool.config.image_type)
-      return '' if @nodepool.config.image_type.nil?
+      return "" unless defined?(@nodepool.config.image_type)
+      return "" if @nodepool.config.image_type.nil?
+
       @nodepool.config.image_type
     end
 
     def config_service_account
-      return '' if !defined?(@nodepool.config.service_account)
-      return '' if @nodepool.config.service_account.nil?
+      return "" unless defined?(@nodepool.config.service_account)
+      return "" if @nodepool.config.service_account.nil?
+
       @nodepool.config.service_account
     end
 
     def config_oauth_scopes
-      return false if !defined?(@nodepool.config.oauth_scopes)
+      return false unless defined?(@nodepool.config.oauth_scopes)
       return false if @nodepool.config.oauth_scopes.nil?
+
       @nodepool.config.oauth_scopes
     end
 

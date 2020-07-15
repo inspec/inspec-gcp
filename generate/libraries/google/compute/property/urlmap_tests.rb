@@ -30,11 +30,12 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @description = arguments['description']
-          @host = arguments['host']
-          @path = arguments['path']
-          @service = arguments['service']
+          @description = arguments["description"]
+          @host = arguments["host"]
+          @path = arguments["path"]
+          @service = arguments["service"]
         end
 
         def to_s
@@ -43,11 +44,12 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'description' => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
-            'host' => ->(x, path) { x.nil? ? [] : ["its('#{path}.host') { should cmp #{x.inspect} }"] },
-            'path' => ->(x, path) { x.nil? ? [] : ["its('#{path}.path') { should cmp #{x.inspect} }"] },
-            'service' => ->(x, path) { x.nil? ? [] : ["its('#{path}.service') { should cmp #{x.inspect} }"] },
+            "description" => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
+            "host" => ->(x, path) { x.nil? ? [] : ["its('#{path}.host') { should cmp #{x.inspect} }"] },
+            "path" => ->(x, path) { x.nil? ? [] : ["its('#{path}.path') { should cmp #{x.inspect} }"] },
+            "service" => ->(x, path) { x.nil? ? [] : ["its('#{path}.service') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -68,11 +70,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return UrlMapTests.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| UrlMapTests.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| UrlMapTests.un_parse(v, path) }
         end
       end

@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class LoggingOrganizationLogSinks < GcpResourceBase
-  name 'google_logging_organization_log_sinks'
-  desc 'OrganizationLogSink plural resource'
-  supports platform: 'gcp'
+  name "google_logging_organization_log_sinks"
+  desc "OrganizationLogSink plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,18 +35,19 @@ class LoggingOrganizationLogSinks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('sinks')
+    @table = fetch_wrapped_resource("sinks")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -68,12 +69,12 @@ class LoggingOrganizationLogSinks < GcpResourceBase
 
   def transformers
     {
-      'organization' => ->(obj) { return :organization, obj['organization'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'filter' => ->(obj) { return :filter, obj['filter'] },
-      'destination' => ->(obj) { return :destination, obj['destination'] },
-      'writerIdentity' => ->(obj) { return :writer_identity, obj['writerIdentity'] },
-      'includeChildren' => ->(obj) { return :include_children, obj['includeChildren'] },
+      "organization" => ->(obj) { return :organization, obj["organization"] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "filter" => ->(obj) { return :filter, obj["filter"] },
+      "destination" => ->(obj) { return :destination, obj["destination"] },
+      "writerIdentity" => ->(obj) { return :writer_identity, obj["writerIdentity"] },
+      "includeChildren" => ->(obj) { return :include_children, obj["includeChildren"] },
     }
   end
 
@@ -100,10 +101,10 @@ class LoggingOrganizationLogSinks < GcpResourceBase
   private
 
   def product_url
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'organizations/{{organization}}/sinks'
+    "organizations/{{organization}}/sinks"
   end
 end

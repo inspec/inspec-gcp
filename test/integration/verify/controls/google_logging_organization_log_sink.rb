@@ -12,22 +12,22 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_logging_organization_log_sink resource.'
+title "Test GCP google_logging_organization_log_sink resource."
 
-org_sink = attribute('org_sink', default: {"name"=>"inspec-gcp-org-sink", "filter"=>"resource.type = gce_instance"})
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of this folder')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-control 'google_logging_organization_log_sink-1.0' do
+org_sink = attribute("org_sink", default: { "name" => "inspec-gcp-org-sink", "filter" => "resource.type = gce_instance" })
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: "The identifier of the organization that is the parent of this folder")
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 0, description: "Flag to enable privileged resources requiring elevated privileges in GCP.")
+control "google_logging_organization_log_sink-1.0" do
   impact 1.0
-  title 'google_logging_organization_log_sink resource test'
+  title "google_logging_organization_log_sink resource test"
 
-  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != '' }
-  describe google_logging_organization_log_sink(organization: gcp_organization_id, name: org_sink['name']) do
+  only_if { gcp_enable_privileged_resources.to_i == 1 && gcp_organization_id != "" }
+  describe google_logging_organization_log_sink(organization: gcp_organization_id, name: org_sink["name"]) do
     it { should exist }
-    its('filter') { should cmp org_sink['filter'] }
+    its("filter") { should cmp org_sink["filter"] }
   end
 
-  describe google_logging_organization_log_sink(organization: gcp_organization_id, name: 'nonexistent') do
+  describe google_logging_organization_log_sink(organization: gcp_organization_id, name: "nonexistent") do
     it { should_not exist }
   end
 end

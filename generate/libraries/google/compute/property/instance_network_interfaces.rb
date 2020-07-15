@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/instance_network_interfaces_access_configs'
-require 'google/compute/property/instance_network_interfaces_alias_ip_ranges'
+require "google/compute/property/instance_network_interfaces_access_configs"
+require "google/compute/property/instance_network_interfaces_alias_ip_ranges"
 module GoogleInSpec
   module Compute
     module Property
@@ -36,13 +36,14 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @access_configs = GoogleInSpec::Compute::Property::InstanceNetworkInterfacesAccessConfigsArray.parse(arguments['accessConfigs'], to_s)
-          @alias_ip_ranges = GoogleInSpec::Compute::Property::InstanceNetworkInterfacesAliasIpRangesArray.parse(arguments['aliasIpRanges'], to_s)
-          @name = arguments['name']
-          @network = arguments['network']
-          @network_ip = arguments['networkIP']
-          @subnetwork = arguments['subnetwork']
+          @access_configs = GoogleInSpec::Compute::Property::InstanceNetworkInterfacesAccessConfigsArray.parse(arguments["accessConfigs"], to_s)
+          @alias_ip_ranges = GoogleInSpec::Compute::Property::InstanceNetworkInterfacesAliasIpRangesArray.parse(arguments["aliasIpRanges"], to_s)
+          @name = arguments["name"]
+          @network = arguments["network"]
+          @network_ip = arguments["networkIP"]
+          @subnetwork = arguments["subnetwork"]
         end
 
         def to_s
@@ -51,13 +52,14 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'access_configs' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.access_configs') { should include '#{single.to_json}' }" } },
-            'alias_ip_ranges' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.alias_ip_ranges') { should include '#{single.to_json}' }" } },
-            'name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
-            'network' => ->(x, path) { x.nil? ? [] : ["its('#{path}.network') { should cmp #{x.inspect} }"] },
-            'network_ip' => ->(x, path) { x.nil? ? [] : ["its('#{path}.network_ip') { should cmp #{x.inspect} }"] },
-            'subnetwork' => ->(x, path) { x.nil? ? [] : ["its('#{path}.subnetwork') { should cmp #{x.inspect} }"] },
+            "access_configs" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.access_configs') { should include '#{single.to_json}' }" } },
+            "alias_ip_ranges" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.alias_ip_ranges') { should include '#{single.to_json}' }" } },
+            "name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
+            "network" => ->(x, path) { x.nil? ? [] : ["its('#{path}.network') { should cmp #{x.inspect} }"] },
+            "network_ip" => ->(x, path) { x.nil? ? [] : ["its('#{path}.network_ip') { should cmp #{x.inspect} }"] },
+            "subnetwork" => ->(x, path) { x.nil? ? [] : ["its('#{path}.subnetwork') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -78,11 +80,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return InstanceNetworkInterfaces.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| InstanceNetworkInterfaces.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| InstanceNetworkInterfaces.un_parse(v, path) }
         end
       end

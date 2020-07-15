@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleServiceAccountKeys < GcpResourceBase
-    name 'google_service_account_keys'
-    desc 'Verifies settings for GCP service account keys in bulk'
+    name "google_service_account_keys"
+    desc "Verifies settings for GCP service account keys in bulk"
 
     example "
       describe google_service_account_keys(service_account: 'projects/sample-project/serviceAccounts/sample-account@sample-project.iam.gserviceaccount.com') do
@@ -33,8 +33,9 @@ module Inspec::Resources
         @service_account_keys = @gcp.gcp_iam_client.list_project_service_account_keys(@service_account)
       end
       return [] if !@service_account_keys || !@service_account_keys.keys
+
       @service_account_keys.keys.map do |sa_key|
-        account_key_rows+=[{ key_name: sa_key.name,
+        account_key_rows += [{ key_name: sa_key.name,
                              valid_after_time: Time.parse(sa_key.valid_after_time),
                              valid_before_time: Time.parse(sa_key.valid_before_time) }]
       end

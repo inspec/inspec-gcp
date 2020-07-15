@@ -23,9 +23,10 @@ module GoogleInSpec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
+
           @parent_identifier = parent_identifier
-          @allowed_values = args['allowedValues']
-          @denied_values = args['deniedValues']
+          @allowed_values = args["allowedValues"]
+          @denied_values = args["deniedValues"]
         end
 
         def to_s

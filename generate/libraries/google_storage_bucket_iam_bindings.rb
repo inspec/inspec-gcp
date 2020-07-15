@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBucketIamBindings < GcpResourceBase
-    name 'google_storage_bucket_iam_bindings'
-    desc 'Verifies settings for GCP storage bucket IAM bindings in bulk'
+    name "google_storage_bucket_iam_bindings"
+    desc "Verifies settings for GCP storage bucket IAM bindings in bulk"
 
     example "
       describe google_storage_bucket_iam_bindings(bucket: 'bucket-buvsjjcndqz') do
@@ -31,8 +31,9 @@ module Inspec::Resources
         @iam_bindings = @gcp.gcp_storage_client.get_bucket_iam_policy(@bucket)
       end
       return [] if !@iam_bindings || !@iam_bindings.bindings
+
       @iam_bindings.bindings.map do |iam_binding|
-        iam_binding_rows+=[{ iam_binding_role: iam_binding.role }]
+        iam_binding_rows += [{ iam_binding_role: iam_binding.role }]
       end
       @table = iam_binding_rows
     end

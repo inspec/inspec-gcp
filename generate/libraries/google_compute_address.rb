@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeAddress < GcpResourceBase
-    name 'google_compute_address'
-    desc 'Verifies settings for a compute address'
+    name "google_compute_address"
+    desc "Verifies settings for a compute address"
 
     example "
       describe google_compute_address(project: 'chef-inspec-gcp', location: 'us-west2', name: 'gcp-inspec-test') do
@@ -16,7 +16,7 @@ module Inspec::Resources
       end
     "
 
-    supports platform: 'gcp'
+    supports platform: "gcp"
 
     def initialize(opts = {})
       # Call the parent class constructor
@@ -43,7 +43,7 @@ module Inspec::Resources
 
     # Return the first user resource base name
     def user_resource_name
-      users.first.split('/').last
+      users.first.split("/").last
     end
 
     def to_s

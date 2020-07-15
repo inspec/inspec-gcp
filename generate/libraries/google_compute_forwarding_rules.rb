@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeForwardingRules < GcpResourceBase
-    name 'google_compute_forwarding_rules'
-    desc 'Verifies settings for GCP compute forwarding_rules in bulk'
+    name "google_compute_forwarding_rules"
+    desc "Verifies settings for GCP compute forwarding_rules in bulk"
 
     example "
       describe google_compute_forwarding_rules(project: 'chef-inspec-gcp', region: 'europe-west1') do
@@ -38,9 +38,10 @@ module Inspec::Resources
           @forwarding_rules = @gcp.gcp_compute_client.list_forwarding_rules(@project, @region, page_token: next_page)
         end
         return [] if !@forwarding_rules || !@forwarding_rules.items
+
         @forwarding_rules.items.map do |forwarding_rule|
-          forwarding_rule_network = forwarding_rule.network.split('/').last if !forwarding_rule.network.nil?
-          forwarding_rule_rows+=[{ forwarding_rule_id: forwarding_rule.id,
+          forwarding_rule_network = forwarding_rule.network.split("/").last unless forwarding_rule.network.nil?
+          forwarding_rule_rows += [{ forwarding_rule_id: forwarding_rule.id,
                         forwarding_rule_name: forwarding_rule.name,
                         forwarding_rule_network: forwarding_rule_network,
                         forwarding_rule_load_balancing_scheme: forwarding_rule.load_balancing_scheme }]

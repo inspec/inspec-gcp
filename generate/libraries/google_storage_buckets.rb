@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBuckets < GcpResourceBase
-    name 'google_storage_buckets'
-    desc 'Verifies settings for GCP storage buckets in bulk'
+    name "google_storage_buckets"
+    desc "Verifies settings for GCP storage buckets in bulk"
 
     example "
       describe google_storage_buckets(project: 'chef-inspec-gcp') do
@@ -36,8 +36,9 @@ module Inspec::Resources
           @buckets = @gcp.gcp_storage_client.list_buckets(@project, page_token: next_page)
         end
         return [] if !@buckets || !@buckets.items
+
         @buckets.items.map do |bucket|
-          bucket_rows+=[{ bucket_id: bucket.id,
+          bucket_rows += [{ bucket_id: bucket.id,
                           bucket_name: bucket.name,
                           bucket_project_number: bucket.project_number,
                           bucket_location: bucket.location }]

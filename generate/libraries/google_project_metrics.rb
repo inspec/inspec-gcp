@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/logging_v2'
+require "gcp_backend"
+require "google/apis/logging_v2"
 
 module Inspec::Resources
   class GoogleProjectMetrics < GcpResourceBase
-    name 'google_project_metrics'
-    desc 'Verifies settings for GCP project metrics in bulk'
+    name "google_project_metrics"
+    desc "Verifies settings for GCP project metrics in bulk"
 
     example "
       describe google_project_metrics(project: 'chef-inspec-gcp') do
@@ -35,8 +35,9 @@ module Inspec::Resources
           @metrics = @gcp.gcp_client(Google::Apis::LoggingV2::LoggingService).list_project_metrics("projects/#{@project}", page_token: next_page)
         end
         return [] if !@metrics || !@metrics.metrics
+
         @metrics.metrics.map do |metric|
-          metric_rows+=[{ metric_name: metric.name,
+          metric_rows += [{ metric_name: metric.name,
                           metric_filter: metric.filter,
                           metric_type: metric.metric_descriptor.type }]
         end

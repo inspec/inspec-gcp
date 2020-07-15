@@ -26,9 +26,10 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @push_endpoint = arguments['pushEndpoint']
-          @attributes = arguments['attributes']
+          @push_endpoint = arguments["pushEndpoint"]
+          @attributes = arguments["attributes"]
         end
 
         def to_s
@@ -37,9 +38,10 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'push_endpoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.push_endpoint') { should cmp #{x.inspect} }"] },
-            'attributes' => ->(x, path) { x.nil? ? [] : x.map { |k, v| "its('#{path}.attributes') { should include(#{k.inspect} => #{v.inspect}) }" } },
+            "push_endpoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.push_endpoint') { should cmp #{x.inspect} }"] },
+            "attributes" => ->(x, path) { x.nil? ? [] : x.map { |k, v| "its('#{path}.attributes') { should include(#{k.inspect} => #{v.inspect}) }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

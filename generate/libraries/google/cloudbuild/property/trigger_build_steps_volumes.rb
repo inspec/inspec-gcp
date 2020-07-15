@@ -26,9 +26,10 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @name = arguments['name']
-          @path = arguments['path']
+          @name = arguments["name"]
+          @path = arguments["path"]
         end
 
         def to_s
@@ -37,9 +38,10 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
-            'path' => ->(x, path) { x.nil? ? [] : ["its('#{path}.path') { should cmp #{x.inspect} }"] },
+            "name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
+            "path" => ->(x, path) { x.nil? ? [] : ["its('#{path}.path') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)
@@ -60,11 +62,13 @@ module GoogleInSpec
         def self.parse(value, parent_identifier)
           return if value.nil?
           return TriggerBuildStepsVolumes.new(value, parent_identifier) unless value.is_a?(::Array)
+
           value.map { |v| TriggerBuildStepsVolumes.new(v, parent_identifier) }
         end
 
         def self.un_parse(arr, path)
           return if arr.nil?
+
           value.map { |v| TriggerBuildStepsVolumes.un_parse(v, path) }
         end
       end

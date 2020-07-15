@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleOrganizationPolicy < GcpResourceBase
-    name 'google_organization_policy'
-    desc 'Verifies configuration of an organization policy'
+    name "google_organization_policy"
+    desc "Verifies configuration of an organization policy"
 
     example "
       describe google_organization_policy(name: 'organizations/123456', constraint: 'constraints/compute.disableGuestAttributesAccess') do

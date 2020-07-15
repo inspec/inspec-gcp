@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleProjectIamCustomRole < GcpResourceBase
-    name 'google_project_iam_custom_role'
-    desc 'Verifies settings for a project IAM role'
+    name "google_project_iam_custom_role"
+    desc "Verifies settings for a project IAM role"
 
     example "
       describe google_project_iam_custom_role(project: 'chef-inspec-gcp', name: 'admin12345') do

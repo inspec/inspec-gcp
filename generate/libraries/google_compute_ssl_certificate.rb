@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeSslCertificate < GcpResourceBase
-  name 'google_compute_ssl_certificate'
-  desc 'SslCertificate'
-  supports platform: 'gcp'
+  name "google_compute_ssl_certificate"
+  desc "SslCertificate"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :certificate
@@ -32,18 +32,18 @@ class ComputeSslCertificate < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @certificate = @fetched['certificate']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @private_key = @fetched['privateKey']
+    @certificate = @fetched["certificate"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @private_key = @fetched["privateKey"]
   end
 
   # Handles parsing RFC3339 time string
@@ -61,30 +61,31 @@ class ComputeSslCertificate < GcpResourceBase
 
   def un_parse
     {
-      'certificate' => ->(x, _) { x.nil? ? [] : ["its('certificate') { should cmp #{x.inspect} }"] },
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'private_key' => ->(x, _) { x.nil? ? [] : ["its('private_key') { should cmp #{x.inspect} }"] },
+      "certificate" => ->(x, _) { x.nil? ? [] : ["its('certificate') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "private_key" => ->(x, _) { x.nil? ? [] : ["its('private_key') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'SslCertificate'
+    name = "SslCertificate"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
+
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
       name: name,
       arr: arr,
-      type: 'google_compute_ssl_certificate',
+      type: "google_compute_ssl_certificate",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -92,10 +93,10 @@ class ComputeSslCertificate < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/sslCertificates/{{name}}'
+    "projects/{{project}}/global/sslCertificates/{{name}}"
   end
 end

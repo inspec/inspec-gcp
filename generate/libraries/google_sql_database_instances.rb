@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleCloudSqlDatabaseInstances < GcpResourceBase
-    name 'google_sql_database_instances'
-    desc 'Verifies settings for GCP Cloud SQL Database instances in bulk'
+    name "google_sql_database_instances"
+    desc "Verifies settings for GCP Cloud SQL Database instances in bulk"
 
     example "
       describe google_sql_database_instances(project: 'chef-inspec-gcp') do
@@ -33,8 +33,9 @@ module Inspec::Resources
         @databases = @gcp.gcp_client(Google::Apis::SqladminV1beta4::SQLAdminService).list_instances(opts[:project])
       end
       return [] if !@databases || !@databases.items
+
       @databases.items.map do |instance|
-        instance_rows+=[{ instance_name: instance.name,
+        instance_rows += [{ instance_name: instance.name,
                           instance_version: instance.database_version,
                           instance_region: instance.region,
                           instance_zone: instance.gce_zone,

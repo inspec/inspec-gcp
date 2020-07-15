@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeImage < GcpResourceBase
-    name 'google_compute_image'
-    desc 'Verifies settings for an image'
+    name "google_compute_image"
+    desc "Verifies settings for an image"
 
     example "
       describe google_compute_image(project: 'chef-inspec-gcp', name: 'image-1') do

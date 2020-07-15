@@ -12,22 +12,21 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_instance_groups resource.'
+title "Test GCP google_compute_instance_groups resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name')
-instance_group = attribute('instance_group', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+gcp_zone = attribute(:gcp_zone, default: "gcp_zone", description: "GCP zone name")
+instance_group = attribute("instance_group", default: {
   "name": "inspec-instance-group",
   "description": "My instance group for testing",
   "named_port_name": "https",
-  "named_port_port": 8080
-}, description: 'Instance group')
-control 'google_compute_instance_groups-1.0' do
+  "named_port_port": 8080,
+}, description: "Instance group")
+control "google_compute_instance_groups-1.0" do
   impact 1.0
-  title 'google_compute_instance_groups resource test'
-
+  title "google_compute_instance_groups resource test"
 
   describe google_compute_instance_groups(project: gcp_project_id, zone: gcp_zone) do
-    its('instance_group_names') { should include instance_group['name'] }
+    its("instance_group_names") { should include instance_group["name"] }
   end
 end

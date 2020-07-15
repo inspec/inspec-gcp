@@ -12,23 +12,23 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_network resource.'
+title "Test GCP google_compute_network resource."
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-network = attribute('network', default: {
+gcp_project_id = attribute(:gcp_project_id, default: "gcp_project_id", description: "The GCP project identifier.")
+network = attribute("network", default: {
   "name": "inspec-network",
-  "routing_mode": "REGIONAL"
-}, description: 'Network description')
-control 'google_compute_network-1.0' do
+  "routing_mode": "REGIONAL",
+}, description: "Network description")
+control "google_compute_network-1.0" do
   impact 1.0
-  title 'google_compute_network resource test'
+  title "google_compute_network resource test"
 
-  describe google_compute_network(project: gcp_project_id, name: network['name']) do
+  describe google_compute_network(project: gcp_project_id, name: network["name"]) do
     it { should exist }
-    its('routing_config.routing_mode') { should cmp network['routing_mode'] }
+    its("routing_config.routing_mode") { should cmp network["routing_mode"] }
   end
 
-  describe google_compute_network(project: gcp_project_id, name: 'nonexistent') do
+  describe google_compute_network(project: gcp_project_id, name: "nonexistent") do
     it { should_not exist }
   end
 end

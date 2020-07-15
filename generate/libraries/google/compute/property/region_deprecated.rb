@@ -32,12 +32,13 @@ module GoogleInSpec
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
           return if arguments.nil?
+
           @parent_identifier = parent_identifier
-          @deleted = parse_time_string(arguments['deleted'])
-          @deprecated = parse_time_string(arguments['deprecated'])
-          @obsolete = parse_time_string(arguments['obsolete'])
-          @replacement = arguments['replacement']
-          @state = arguments['state']
+          @deleted = parse_time_string(arguments["deleted"])
+          @deprecated = parse_time_string(arguments["deprecated"])
+          @obsolete = parse_time_string(arguments["obsolete"])
+          @replacement = arguments["replacement"]
+          @state = arguments["state"]
         end
 
         def to_s
@@ -46,12 +47,13 @@ module GoogleInSpec
 
         def self.un_parse(item, current_path)
           return if item.nil?
+
           way_to_parse = {
-            'deleted' => ->(x, path) { x.nil? ? [] : ["its('#{path}.deleted.to_s') { should cmp '#{x.inspect}' }"] },
-            'deprecated' => ->(x, path) { x.nil? ? [] : ["its('#{path}.deprecated.to_s') { should cmp '#{x.inspect}' }"] },
-            'obsolete' => ->(x, path) { x.nil? ? [] : ["its('#{path}.obsolete.to_s') { should cmp '#{x.inspect}' }"] },
-            'replacement' => ->(x, path) { x.nil? ? [] : ["its('#{path}.replacement') { should cmp #{x.inspect} }"] },
-            'state' => ->(x, path) { x.nil? ? [] : ["its('#{path}.state') { should cmp #{x.inspect} }"] },
+            "deleted" => ->(x, path) { x.nil? ? [] : ["its('#{path}.deleted.to_s') { should cmp '#{x.inspect}' }"] },
+            "deprecated" => ->(x, path) { x.nil? ? [] : ["its('#{path}.deprecated.to_s') { should cmp '#{x.inspect}' }"] },
+            "obsolete" => ->(x, path) { x.nil? ? [] : ["its('#{path}.obsolete.to_s') { should cmp '#{x.inspect}' }"] },
+            "replacement" => ->(x, path) { x.nil? ? [] : ["its('#{path}.replacement') { should cmp #{x.inspect} }"] },
+            "state" => ->(x, path) { x.nil? ? [] : ["its('#{path}.state') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

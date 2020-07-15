@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class FilestoreInstances < GcpResourceBase
-  name 'google_filestore_instances'
-  desc 'Instance plural resource'
-  supports platform: 'gcp'
+  name "google_filestore_instances"
+  desc "Instance plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,18 +38,19 @@ class FilestoreInstances < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('instances')
+    @table = fetch_wrapped_resource("instances")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|
       next if response.nil? || !response.key?(wrap_path)
+
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
@@ -71,15 +72,15 @@ class FilestoreInstances < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'tier' => ->(obj) { return :tier, obj['tier'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'fileShares' => ->(obj) { return :file_shares, GoogleInSpec::Filestore::Property::InstanceFileSharesArray.parse(obj['fileShares'], to_s) },
-      'networks' => ->(obj) { return :networks, GoogleInSpec::Filestore::Property::InstanceNetworksArray.parse(obj['networks'], to_s) },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      "name" => ->(obj) { return :name, obj["name"] },
+      "description" => ->(obj) { return :description, obj["description"] },
+      "createTime" => ->(obj) { return :create_time, parse_time_string(obj["createTime"]) },
+      "tier" => ->(obj) { return :tier, obj["tier"] },
+      "labels" => ->(obj) { return :labels, obj["labels"] },
+      "fileShares" => ->(obj) { return :file_shares, GoogleInSpec::Filestore::Property::InstanceFileSharesArray.parse(obj["fileShares"], to_s) },
+      "networks" => ->(obj) { return :networks, GoogleInSpec::Filestore::Property::InstanceNetworksArray.parse(obj["networks"], to_s) },
+      "etag" => ->(obj) { return :etag, obj["etag"] },
+      "zone" => ->(obj) { return :zone, obj["zone"] },
     }
   end
 
@@ -106,10 +107,10 @@ class FilestoreInstances < GcpResourceBase
   private
 
   def product_url
-    'https://file.googleapis.com/v1/'
+    "https://file.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{zone}}/instances'
+    "projects/{{project}}/locations/{{zone}}/instances"
   end
 end

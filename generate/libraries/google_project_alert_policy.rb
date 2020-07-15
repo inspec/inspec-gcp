@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/monitoring_v3'
+require "gcp_backend"
+require "google/apis/monitoring_v3"
 
 module Inspec::Resources
   class GoogleProjectAlertPolicy < GcpResourceBase
-    name 'google_project_alert_policy'
-    desc 'Verifies settings for a single GCP project alert policy'
+    name "google_project_alert_policy"
+    desc "Verifies settings for a single GCP project alert policy"
 
     example "
       describe google_project_alert_policy(policy: 'projects/spaterson-project/alertPolicies/9271751234503117449') do
@@ -26,6 +26,7 @@ module Inspec::Resources
 
     def enabled?
       return false if !defined?(@policy.enabled) || @policy.enabled.nil?
+
       @policy.enabled
     end
 
