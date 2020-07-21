@@ -1,26 +1,43 @@
----
-title: About the google_runtime_config_configs resource
-platform: gcp
----
++++
+title = "google_runtime_config_configs resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_runtime_config_configs"
+    identifier = "inspec/resources/gcp/google_runtime_config_configs.md google_runtime_config_configs resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_runtime_config_configs.md)
 
 ## Syntax
+
 A `google_runtime_config_configs` is used to test a Google Config resource
 
 ## Examples
-```
+
+```ruby
 describe google_runtime_config_configs(project: 'chef-gcp-inspec') do
   its('descriptions') { should include 'My runtime configurations' }
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_runtime_config_configs` resource:
 
-See [google_runtime_config_config.md](google_runtime_config_config.md) for more detailed information
-  * `descriptions`: an array of `google_runtime_config_config` description
-  * `names`: an array of `google_runtime_config_config` name
+See the [google_runtime_config_config](/inspec/resources/google_runtime_config_config/#properties) resource for more information.
+
+`descriptions`
+: an array of `google_runtime_config_config` description
+
+`names`
+: an array of `google_runtime_config_config` name
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

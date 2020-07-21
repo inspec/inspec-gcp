@@ -1,13 +1,24 @@
----
-title: About the google_organization resource
-platform: gcp
----
++++
+title = "google_organization resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_organization"
+    identifier = "inspec/resources/gcp/google_organization.md google_organization resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_organization.md)
 
 ## Syntax
+
 A `google_organization` is used to test a Google Organization resource
 
 ## Examples
-```
+
+```ruby
 
 describe google_organization(name: "organizations/123456") do
   its('name') { should eq "organizations/123456" }
@@ -28,25 +39,32 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_organization` resource:
 
+`name`
+: The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organizationId]". For example, "organizations/1234".
 
-  * `name`: The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organizationId]". For example, "organizations/1234".
+`display_name`
+: A human-readable string that refers to the Organization in the GCP Console UI. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization.
 
-  * `display_name`: A human-readable string that refers to the Organization in the GCP Console UI. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization.
+`lifecycle_state`
+: The lifecycle state of the folder. Updates to the lifecycleState must be performed via folders.delete and folders.undelete.
 
-  * `lifecycle_state`: The lifecycle state of the folder. Updates to the lifecycleState must be performed via folders.delete and folders.undelete.
   Possible values:
-    * LIFECYCLE_STATE_UNSPECIFIED
-    * ACTIVE
-    * DELETE_REQUESTED
 
-  * `creation_time`: Timestamp when the Organization was created. Assigned by the server.
+  - LIFECYCLE_STATE_UNSPECIFIED
+  - ACTIVE
+  - DELETE_REQUESTED
 
-  * `owner`: The entity that owns the Organization
+`creation_time`
+: Timestamp when the Organization was created. Assigned by the server.
 
-    * `directory_customer_id`: The G Suite customer id used in the Directory API
+`owner`
+: The entity that owns the Organization
 
+  `directory_customer_id`
+  : The G Suite customer id used in the Directory API
 
 ## GCP Permissions
 

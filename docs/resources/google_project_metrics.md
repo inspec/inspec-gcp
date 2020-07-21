@@ -1,13 +1,24 @@
----
-title: About the google_project_metrics resource
-platform: gcp
----
++++
+title = "google_project_metrics resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_project_metrics"
+    identifier = "inspec/resources/gcp/google_project_metrics.md google_project_metrics resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_project_metrics.md)
 
 ## Syntax
+
 A `google_project_metrics` is used to test a Google Metric resource
 
 ## Examples
-```
+
+```ruby
 describe google_project_metrics(project: 'chef-gcp-inspec') do
   it { should exist }
   its('metric_filters') { should include 'resource.type=gae_app AND severity>=ERROR' }
@@ -35,7 +46,7 @@ end
       its('metric_names') { should include "metric-name" }
     end
 
-### Test that a subset of all metrics with name matching "*project*" have a particular writer identity 
+### Test that a subset of all metrics with name matching "_project_" have a particular writer identity
 
     google_project_metrics(project: 'chef-inspec-gcp').where(metric_name: /project/).metric_names.each do |metric_name|
       describe google_project_metric(project: 'chef-inspec-gcp',  metric: metric_name) do
@@ -44,18 +55,34 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project_metrics` resource:
 
-See [google_project_metric.md](google_project_metric.md) for more detailed information
-  * `metric_names`: an array of `google_project_metric` name
-  * `descriptions`: an array of `google_project_metric` description
-  * `metric_filters`: an array of `google_project_metric` filter
-  * `metric_descriptors`: an array of `google_project_metric` metric_descriptor
-  * `label_extractors`: an array of `google_project_metric` label_extractors
-  * `value_extractors`: an array of `google_project_metric` value_extractor
-  * `bucket_options`: an array of `google_project_metric` bucket_options
+See the [google_project_metric](/inspec/resources/google_project_metric/#properties) resource for more information.
+
+`metric_names`
+: an array of `google_project_metric` name
+
+`descriptions`
+: an array of `google_project_metric` description
+
+`metric_filters`
+: an array of `google_project_metric` filter
+
+`metric_descriptors`
+: an array of `google_project_metric` metric_descriptor
+
+`label_extractors`
+: an array of `google_project_metric` label_extractors
+
+`value_extractors`
+: an array of `google_project_metric` value_extractor
+
+`bucket_options`
+: an array of `google_project_metric` bucket_options
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

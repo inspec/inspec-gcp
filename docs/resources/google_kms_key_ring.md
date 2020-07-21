@@ -1,13 +1,24 @@
----
-title: About the google_kms_key_ring resource
-platform: gcp
----
++++
+title = "google_kms_key_ring resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_kms_key_ring"
+    identifier = "inspec/resources/gcp/google_kms_key_ring.md google_kms_key_ring resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_kms_key_ring.md)
 
 ## Syntax
+
 A `google_kms_key_ring` is used to test a Google KeyRing resource
 
 ## Examples
-```
+
+```ruby
 describe google_kms_key_ring(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'kms-key-ring') do
   it { should exist }
   its('create_time') { should be > Time.now - 365*60*60*24*10 }
@@ -26,7 +37,7 @@ end
       it { should exist }
     end
 
-### Test that a GCP kms key ring is in the expected state 
+### Test that a GCP kms key ring is in the expected state
 
 For any existing key ring, below should definitely be true!
 
@@ -35,15 +46,17 @@ For any existing key ring, below should definitely be true!
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_key_ring` resource:
 
+`create_time`
+: The time that this resource was created on the server. This is in RFC3339 text format.
 
-  * `create_time`: The time that this resource was created on the server. This is in RFC3339 text format.
+`key_ring_url`
+: The full resource name for the KeyRing
 
-  * `key_ring_url`: The full resource name for the KeyRing
-
-  * `location`: The location for the KeyRing. A full list of valid locations can be found by running `gcloud kms locations list`.
-
+`location`
+: The location for the KeyRing. A full list of valid locations can be found by running `gcloud kms locations list`.
 
 ## GCP Permissions
 

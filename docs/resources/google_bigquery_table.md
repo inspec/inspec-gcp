@@ -1,13 +1,24 @@
----
-title: About the google_bigquery_table resource
-platform: gcp
----
++++
+title = "google_bigquery_table resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_bigquery_table"
+    identifier = "inspec/resources/gcp/google_bigquery_table.md google_bigquery_table resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_bigquery_table.md)
 
 ## Syntax
+
 A `google_bigquery_table` is used to test a Google Table resource
 
 ## Examples
-```
+
+```ruby
 describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: 'inspec_gcp_bigquery_table') do
   it { should exist }
 
@@ -22,232 +33,331 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_bigquery_table` resource:
 
+`table_reference`
+: Reference describing the ID of this table
 
-  * `table_reference`: Reference describing the ID of this table
+`dataset_id`
+: The ID of the dataset containing this table
 
-    * `dataset_id`: The ID of the dataset containing this table
+`project_id`
+: The ID of the project containing this table
 
-    * `project_id`: The ID of the project containing this table
+`table_id`
+: The ID of the the table
 
-    * `table_id`: The ID of the the table
+`clustering`
+: One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
 
-  * `clustering`: One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
+`creation_time`
+: The time when this dataset was created, in milliseconds since the epoch.
 
-  * `creation_time`: The time when this dataset was created, in milliseconds since the epoch.
+`description`
+: A user-friendly description of the dataset
 
-  * `description`: A user-friendly description of the dataset
+`friendly_name`
+: A descriptive name for this table
 
-  * `friendly_name`: A descriptive name for this table
+`id`
+: An opaque ID uniquely identifying the table.
 
-  * `id`: An opaque ID uniquely identifying the table.
+`labels`
+: The labels associated with this dataset. You can use these to organize and group your datasets
 
-  * `labels`: The labels associated with this dataset. You can use these to organize and group your datasets
+`last_modified_time`
+: The time when this table was last modified, in milliseconds since the epoch.
 
-  * `last_modified_time`: The time when this table was last modified, in milliseconds since the epoch.
+`location`
+: The geographic location where the table resides. This value is inherited from the dataset.
 
-  * `location`: The geographic location where the table resides. This value is inherited from the dataset.
+`name`
+: Name of the table
 
-  * `name`: Name of the table
+`num_bytes`
+: The size of this table in bytes, excluding any data in the streaming buffer.
 
-  * `num_bytes`: The size of this table in bytes, excluding any data in the streaming buffer.
+`num_long_term_bytes`
+: The number of bytes in the table that are considered "long-term storage".
 
-  * `num_long_term_bytes`: The number of bytes in the table that are considered "long-term storage".
+`num_rows`
+: The number of rows of data in this table, excluding any data in the streaming buffer.
 
-  * `num_rows`: The number of rows of data in this table, excluding any data in the streaming buffer.
+`require_partition_filter`
+: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 
-  * `require_partition_filter`: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+`type`
+: Describes the table type
 
-  * `type`: Describes the table type
   Possible values:
-    * TABLE
-    * VIEW
-    * EXTERNAL
 
-  * `view`: The view definition.
+  - TABLE
+  - VIEW
+  - EXTERNAL
 
-    * `use_legacy_sql`: Specifies whether to use BigQuery's legacy SQL for this view
+`view`
+: The view definition.
 
-    * `user_defined_function_resources`: Describes user-defined function resources used in the query.
+`use_legacy_sql`
+: Specifies whether to use BigQuery's legacy SQL for this view
 
-      * `inline_code`: An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+`user_defined_function_resources`
+: Describes user-defined function resources used in the query.
 
-      * `resource_uri`: A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+  `inline_code`
+  : An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
 
-  * `time_partitioning`: If specified, configures time-based partitioning for this table.
+  `resource_uri`
+  : A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
 
-    * `expiration_ms`: Number of milliseconds for which to keep the storage for a partition.
+`time_partitioning`
+: If specified, configures time-based partitioning for this table.
 
-    * `field`: If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+`expiration_ms`
+: Number of milliseconds for which to keep the storage for a partition.
 
-    * `type`: The only type supported is DAY, which will generate one partition per day.
+`field`
+: If not set, the table is partitioned by pseudo column, referenced via either '\_PARTITIONTIME' as TIMESTAMP type, or '\_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+
+`type`
+: The only type supported is DAY, which will generate one partition per day.
+
+  Possible values:
+
+  - DAY
+
+`streaming_buffer`
+: Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+
+`estimated_bytes`
+: A lower-bound estimate of the number of bytes currently in the streaming buffer.
+
+`estimated_rows`
+: A lower-bound estimate of the number of rows currently in the streaming buffer.
+
+`oldest_entry_time`
+: Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
+
+`schema`
+: Describes the schema of this table
+
+`fields`
+: Describes the fields in a table.
+
+  `description`
+  : The field description. The maximum length is 1,024 characters.
+
+  `fields`
+  : Describes the nested schema fields if the type property is set to RECORD.
+
+  `mode`
+  : The field mode
+
     Possible values:
-      * DAY
 
-  * `streaming_buffer`: Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+    - NULLABLE
+    - REQUIRED
+    - REPEATED
 
-    * `estimated_bytes`: A lower-bound estimate of the number of bytes currently in the streaming buffer.
+  `name`
+  : The field name
 
-    * `estimated_rows`: A lower-bound estimate of the number of rows currently in the streaming buffer.
+  `type`
+  : The field data type
 
-    * `oldest_entry_time`: Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-
-  * `schema`: Describes the schema of this table
-
-    * `fields`: Describes the fields in a table.
-
-      * `description`: The field description. The maximum length is 1,024 characters.
-
-      * `fields`: Describes the nested schema fields if the type property is set to RECORD.
-
-      * `mode`: The field mode
-      Possible values:
-        * NULLABLE
-        * REQUIRED
-        * REPEATED
-
-      * `name`: The field name
-
-      * `type`: The field data type
-      Possible values:
-        * STRING
-        * BYTES
-        * INTEGER
-        * FLOAT
-        * TIMESTAMP
-        * DATE
-        * TIME
-        * DATETIME
-        * RECORD
-
-  * `encryption_configuration`: Custom encryption configuration
-
-    * `kms_key_name`: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
-
-  * `expiration_time`: The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely.
-
-  * `external_data_configuration`: Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-
-    * `autodetect`: Try to detect schema and format options automatically. Any option specified explicitly will be honored.
-
-    * `compression`: The compression type of the data source
     Possible values:
-      * GZIP
-      * NONE
+    - STRING
+    - BYTES
+    - INTEGER
+    - FLOAT
+    - TIMESTAMP
+    - DATE
+    - TIME
+    - DATETIME
+    - RECORD
 
-    * `ignore_unknown_values`: Indicates if BigQuery should allow extra values that are not represented in the table schema
+`encryption_configuration`
+: Custom encryption configuration
 
-    * `max_bad_records`: The maximum number of bad records that BigQuery can ignore when reading data
+`kms_key_name`
+: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 
-    * `source_format`: The data format
-    Possible values:
-      * CSV
-      * GOOGLE_SHEETS
-      * NEWLINE_DELIMITED_JSON
-      * AVRO
-      * DATASTORE_BACKUP
-      * BIGTABLE
+`expiration_time`
+: The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely.
 
-    * `source_uris`: The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+`external_data_configuration`
+: Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
 
-    * `schema`: The schema for the data. Schema is required for CSV and JSON formats
+`autodetect`
+: Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 
-      * `fields`: Describes the fields in a table.
+`compression`
+: The compression type of the data source
 
-        * `description`: The field description
+  Possible values:
 
-        * `fields`: Describes the nested schema fields if the type property is set to RECORD
+  - GZIP
+  - NONE
 
-        * `mode`: Field mode.
-        Possible values:
-          * NULLABLE
-          * REQUIRED
-          * REPEATED
+`ignore_unknown_values`
+: Indicates if BigQuery should allow extra values that are not represented in the table schema
 
-        * `name`: Field name
+`max_bad_records`
+: The maximum number of bad records that BigQuery can ignore when reading data
 
-        * `type`: Field data type
-        Possible values:
-          * STRING
-          * BYTES
-          * INTEGER
-          * FLOAT
-          * TIMESTAMP
-          * DATE
-          * TIME
-          * DATETIME
-          * RECORD
+`source_format`
+: The data format
 
-    * `google_sheets_options`: Additional options if sourceFormat is set to GOOGLE_SHEETS.
+  Possible values:
 
-      * `skip_leading_rows`: The number of rows at the top of a Google Sheet that BigQuery will skip when reading the data.
+  - CSV
+  - GOOGLE_SHEETS
+  - NEWLINE_DELIMITED_JSON
+  - AVRO
+  - DATASTORE_BACKUP
+  - BIGTABLE
 
-    * `csv_options`: Additional properties to set if sourceFormat is set to CSV.
+`source_uris`
+: The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '_' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '_' wildcard character is not allowed.
 
-      * `allow_jagged_rows`: Indicates if BigQuery should accept rows that are missing trailing optional columns
+`schema`
+: The schema for the data. Schema is required for CSV and JSON formats
 
-      * `allow_quoted_newlines`: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file
+  `fields`
+  : Describes the fields in a table.
 
-      * `encoding`: The character encoding of the data
+    `description`
+    : The field description
+
+    `fields`
+    : Describes the nested schema fields if the type property is set to RECORD
+
+    `mode`
+    : Field mode.
       Possible values:
-        * UTF-8
-        * ISO-8859-1
 
-      * `field_delimiter`: The separator for fields in a CSV file
+      - NULLABLE
+      - REQUIRED
+      - REPEATED
 
-      * `quote`: The value that is used to quote data sections in a CSV file
+    `name`
+    : Field name
 
-      * `skip_leading_rows`: The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+    `type`
+    : Field data type
 
-    * `bigtable_options`: Additional options if sourceFormat is set to BIGTABLE.
+      Possible values:
+      - STRING
+      - BYTES
+      - INTEGER
+      - FLOAT
+      - TIMESTAMP
+      - DATE
+      - TIME
+      - DATETIME
+      - RECORD
 
-      * `ignore_unspecified_column_families`: If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema
+`google_sheets_options`
+: Additional options if sourceFormat is set to GOOGLE_SHEETS.
 
-      * `read_rowkey_as_string`: If field is true, then the rowkey column families will be read and converted to string.
+  `skip_leading_rows`
+  : The number of rows at the top of a Google Sheet that BigQuery will skip when reading the data.
 
-      * `column_families`: List of column families to expose in the table schema along with their types.
+`csv_options`
+: Additional properties to set if sourceFormat is set to CSV.
 
-        * `columns`: Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs.
+  `allow_jagged_rows`
+  : Indicates if BigQuery should accept rows that are missing trailing optional columns
 
-          * `encoding`: The encoding of the values when the type is not STRING
-          Possible values:
-            * TEXT
-            * BINARY
+  `allow_quoted_newlines`
+  : Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file
 
-          * `field_name`: If the qualifier is not a valid BigQuery field identifier, a valid identifier must be provided as the column field name and is used as field name in queries.
+  `encoding`
+  : The character encoding of the data
 
-          * `only_read_latest`: If this is set, only the latest version of value in this column are exposed
+    Possible values:
 
-          * `qualifier_string`: Qualifier of the column
+    - UTF-8
+    - ISO-8859-1
 
-          * `type`: The type to convert the value in cells of this column
-          Possible values:
-            * BYTES
-            * STRING
-            * INTEGER
-            * FLOAT
-            * BOOLEAN
+  `field_delimiter`
+  : The separator for fields in a CSV file
 
-        * `encoding`: The encoding of the values when the type is not STRING
+  `quote`
+  : The value that is used to quote data sections in a CSV file
+
+  `skip_leading_rows`
+  : The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+
+`bigtable_options`
+: Additional options if sourceFormat is set to BIGTABLE.
+
+  `ignore_unspecified_column_families`
+  : If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema
+
+  `read_rowkey_as_string`
+  : If field is true, then the rowkey column families will be read and converted to string.
+
+  `column_families`
+  : List of column families to expose in the table schema along with their types.
+
+    `columns`
+    : Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs.
+
+      `encoding`
+      : The encoding of the values when the type is not STRING
+
         Possible values:
-          * TEXT
-          * BINARY
 
-        * `family_id`: Identifier of the column family.
+        - TEXT
+        - BINARY
 
-        * `only_read_latest`: If this is set only the latest version of value are exposed for all columns in this column family
+      `field_name`
+      : If the qualifier is not a valid BigQuery field identifier, a valid identifier must be provided as the column field name and is used as field name in queries.
 
-        * `type`: The type to convert the value in cells of this column family
+      `only_read_latest`
+      : If this is set, only the latest version of value in this column are exposed
+
+      `qualifier_string`
+      : Qualifier of the column
+
+      `type`
+      : The type to convert the value in cells of this column
+
         Possible values:
-          * BYTES
-          * STRING
-          * INTEGER
-          * FLOAT
-          * BOOLEAN
+        - BYTES
+        - STRING
+        - INTEGER
+        - FLOAT
+        - BOOLEAN
 
-  * `dataset`: Name of the dataset
+    `encoding`
+    : The encoding of the values when the type is not STRING
 
+      Possible values:
+
+      - TEXT
+      - BINARY
+
+    `family_id`
+    : Identifier of the column family.
+
+    `only_read_latest`
+    : If this is set only the latest version of value are exposed for all columns in this column family
+
+    `type`
+    : The type to convert the value in cells of this column family
+
+      Possible values:
+      - BYTES
+      - STRING
+      - INTEGER
+      - FLOAT
+      - BOOLEAN
+
+`dataset`
+: Name of the dataset
 
 ## GCP Permissions
 

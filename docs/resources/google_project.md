@@ -1,13 +1,24 @@
----
-title: About the google_project resource
-platform: gcp
----
++++
+title = "google_project resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_project"
+    identifier = "inspec/resources/gcp/google_project.md google_project resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_project.md)
 
 ## Syntax
+
 A `google_project` is used to test a Google Project resource
 
 ## Examples
-```
+
+```ruby
 describe google_project(project: 'chef-gcp-inspec') do
   it { should exist }
   its('project_id') { should cmp 'chef-gcp-inspec' }
@@ -34,32 +45,42 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project` resource:
 
+`number`
+: Number uniquely identifying the project.
 
-  * `number`: Number uniquely identifying the project.
+`lifecycle_state`
+: The Project lifecycle state.
 
-  * `lifecycle_state`: The Project lifecycle state.
   Possible values:
-    * LIFECYCLE_STATE_UNSPECIFIED
-    * ACTIVE
-    * DELETE_REQUESTED
-    * DELETE_IN_PROGRESS
 
-  * `name`: The user-assigned display name of the Project. It must be 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
+  - LIFECYCLE_STATE_UNSPECIFIED
+  - ACTIVE
+  - DELETE_REQUESTED
+  - DELETE_IN_PROGRESS
 
-  * `create_time`: Time of creation
+`name`
+: The user-assigned display name of the Project. It must be 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 
-  * `labels`: The labels associated with this Project.  Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.  Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.  No more than 256 labels can be associated with a given resource.  Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed
+`create_time`
+: Time of creation
 
-  * `parent`: A parent organization
+`labels`
+: The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed
 
-    * `type`: Must be organization.
+`parent`
+: A parent organization
 
-    * `id`: Id of the organization
+  `type`
+  : Must be organization.
 
-  * `project_id`: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited.
+  `id`
+  : Id of the organization
 
+`project_id`
+: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited.
 
 ## GCP Permissions
 

@@ -1,17 +1,28 @@
----
-title: About the google_compute_ssl_certificates resource
-platform: gcp
----
++++
+title = "google_compute_ssl_certificates resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_compute_ssl_certificates"
+    identifier = "inspec/resources/gcp/google_compute_ssl_certificates.md google_compute_ssl_certificates resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_compute_ssl_certificates.md)
 
 ## Syntax
+
 A `google_compute_ssl_certificates` is used to test a Google SslCertificate resource
 
-
 ## Beta Resource
+
 This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-```
+
+```ruby
 describe google_compute_ssl_certificates(project: 'chef-gcp-inspec') do
 
   its('names') { should include 'inspec-gcp-ssl-certificate' }
@@ -38,17 +49,31 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_ssl_certificates` resource:
 
-See [google_compute_ssl_certificate.md](google_compute_ssl_certificate.md) for more detailed information
-  * `certificates`: an array of `google_compute_ssl_certificate` certificate
-  * `creation_timestamps`: an array of `google_compute_ssl_certificate` creation_timestamp
-  * `descriptions`: an array of `google_compute_ssl_certificate` description
-  * `ids`: an array of `google_compute_ssl_certificate` id
-  * `names`: an array of `google_compute_ssl_certificate` name
-  * `private_keys`: an array of `google_compute_ssl_certificate` private_key
+See the [google_compute_ssl_certificate](/inspec/resources/google_compute_ssl_certificate/#properties) resource for more information.
+
+`certificates`
+: an array of `google_compute_ssl_certificate` certificate
+
+`creation_timestamps`
+: an array of `google_compute_ssl_certificate` creation_timestamp
+
+`descriptions`
+: an array of `google_compute_ssl_certificate` description
+
+`ids`
+: an array of `google_compute_ssl_certificate` id
+
+`names`
+: an array of `google_compute_ssl_certificate` name
+
+`private_keys`
+: an array of `google_compute_ssl_certificate` private_key
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

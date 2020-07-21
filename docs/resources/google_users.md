@@ -1,23 +1,30 @@
----
-title: About the google_users Resource
-platform: gcp
----
++++
+title = "google_users resource"
+draft = false
+platform = "gcp"
 
-# google\_users
+[menu]
+  [menu.inspec]
+    title = "google_users"
+    identifier = "inspec/resources/gcp/google_users.md google_users resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_users.md)
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec/blob/master/www/content/inspec/resources/google_users.md)
 
 Use the `google_users` InSpec audit resource to test properties of all, or a filtered group of, GCP users.
 
-<br>
-
 ## Syntax
 
-A `google_users` resource block collects GCP users for the specified customer.  As documented [here](https://developers.google.com/admin-sdk/directory/v1/reference/users/list), this defaults to the `my_customer` alias to represent your account's `customerId`.
+A `google_users` resource block collects GCP users for the specified customer. As documented [here](https://developers.google.com/admin-sdk/directory/v1/reference/users/list), this defaults to the `my_customer` alias to represent your account's `customerId`.
 
     describe google_users(customer: 'my_customer') do
       it { should exist }
     end
 
-The `domain` argument can optionally be provided to get fields from only one domain. Either the customer or the domain parameter must be provided. 
+The `domain` argument can optionally be provided to get fields from only one domain. Either the customer or the domain parameter must be provided.
 
     describe google_users(domain: 'my_domain.com') do
       it { should exist }
@@ -31,8 +38,6 @@ Use this InSpec resource to enumerate IDs then test in-depth using `google_user`
         it { should_not be_suspended }
       end
     end
-
-<br>
 
 ## Examples
 
@@ -57,21 +62,16 @@ The following examples show how to use this InSpec audit resource.
         it { should exist }
       end
     end
-    
-<br>
 
 ## Filter Criteria
 
-This resource supports the following filter criteria:  `user_id`; `user_full_name` and `user_email`. Any of these may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria: `user_id`; `user_full_name` and `user_email`. Any of these may be used with `where`, as a block or as a method.
 
 ## Properties
 
-*  `user_ids` - an array of google_user identifier integers
-*  `user_full_names` - an array of google_user full name strings
-*  `user_emails`- an array of google_user primary email address strings
-
-<br>
-
+- `user_ids` - an array of google_user identifier integers
+- `user_full_names` - an array of google_user full name strings
+- `user_emails`- an array of google_user primary email address strings
 
 ## GCP Permissions
 

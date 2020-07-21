@@ -1,13 +1,20 @@
----
-title: About the google_project_alert_policy_condition Resource
-platform: gcp
----
++++
+title = "google_project_alert_policy_condition resource"
+draft = false
+platform = "gcp"
 
-# google\_project\_alert\_policy\_condition
+[menu]
+  [menu.inspec]
+    title = "google_project_alert_policy_condition"
+    identifier = "inspec/resources/gcp/google_project_alert_policy_condition.md google_project_alert_policy_condition resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_project_alert_policy_condition.md)
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec/blob/master/www/content/inspec/resources/google_project_alert_policy_condition.md)
 
 Use the `google_project_alert_policy_condition` InSpec audit resource to test properties of a single GCP project alert policy condition.
-
-<br>
 
 ## Syntax
 
@@ -17,12 +24,9 @@ A `google_project_alert_policy_condition` resource block declares the tests for 
       it { should exist }
     end
 
-<br>
-
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
-
 
 ### Test that a GCP project alert policy condition has a particular threshold value
 
@@ -36,14 +40,9 @@ The following examples show how to use this InSpec audit resource.
       its('aggregation_alignment_period'){ should eq '60s' }
     end
 
-<br>
-
 ## Properties
 
-*  `condition_threshold_value`, `aggregation_alignment_period`, `aggregation_per_series_aligner`, `aggregation_cross_series_reducer`
-
-<br>
-
+- `condition_threshold_value`, `aggregation_alignment_period`, `aggregation_per_series_aligner`, `aggregation_cross_series_reducer`
 
 ## GCP Permissions
 

@@ -1,17 +1,28 @@
----
-title: About the google_compute_global_addresses resource
-platform: gcp
----
++++
+title = "google_compute_global_addresses resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_compute_global_addresses"
+    identifier = "inspec/resources/gcp/google_compute_global_addresses.md google_compute_global_addresses resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_compute_global_addresses.md)
 
 ## Syntax
+
 A `google_compute_global_addresses` is used to test a Google GlobalAddress resource
 
-
 ## Beta Resource
+
 This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-```
+
+```ruby
 describe google_compute_global_addresses(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
   its('count') { should be >= 1 }
   its('names') { should include 'inspec-gcp-global-address' }
@@ -20,24 +31,52 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_global_addresses` resource:
 
-See [google_compute_global_address.md](google_compute_global_address.md) for more detailed information
-  * `addresses`: an array of `google_compute_global_address` address
-  * `creation_timestamps`: an array of `google_compute_global_address` creation_timestamp
-  * `descriptions`: an array of `google_compute_global_address` description
-  * `ids`: an array of `google_compute_global_address` id
-  * `names`: an array of `google_compute_global_address` name
-  * `labels`: (Beta only) an array of `google_compute_global_address` labels
-  * `label_fingerprints`: (Beta only) an array of `google_compute_global_address` label_fingerprint
-  * `ip_versions`: an array of `google_compute_global_address` ip_version
-  * `regions`: an array of `google_compute_global_address` region
-  * `prefix_lengths`: an array of `google_compute_global_address` prefix_length
-  * `address_types`: an array of `google_compute_global_address` address_type
-  * `purposes`: an array of `google_compute_global_address` purpose
-  * `networks`: an array of `google_compute_global_address` network
+See the [google_compute_global_address](/inspec/resources/google_compute_global_address/#properties) resource for more information.
+
+`addresses`
+: an array of `google_compute_global_address` address
+
+`creation_timestamps`
+: an array of `google_compute_global_address` creation_timestamp
+
+`descriptions`
+: an array of `google_compute_global_address` description
+
+`ids`
+: an array of `google_compute_global_address` id
+
+`names`
+: an array of `google_compute_global_address` name
+
+`labels`
+: (Beta only) an array of `google_compute_global_address` labels
+
+`label_fingerprints`
+: (Beta only) an array of `google_compute_global_address` label_fingerprint
+
+`ip_versions`
+: an array of `google_compute_global_address` ip_version
+
+`regions`
+: an array of `google_compute_global_address` region
+
+`prefix_lengths`
+: an array of `google_compute_global_address` prefix_length
+
+`address_types`
+: an array of `google_compute_global_address` address_type
+
+`purposes`
+: an array of `google_compute_global_address` purpose
+
+`networks`
+: an array of `google_compute_global_address` network
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

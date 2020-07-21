@@ -1,13 +1,24 @@
----
-title: About the google_service_account_key resource
-platform: gcp
----
++++
+title = "google_service_account_key resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_service_account_key"
+    identifier = "inspec/resources/gcp/google_service_account_key.md google_service_account_key resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_service_account_key.md)
 
 ## Syntax
+
 A `google_service_account_key` is used to test a Google ServiceAccountKey resource
 
 ## Examples
-```
+
+```ruby
 google_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com").key_names.each do |sa_key_name|
 	describe google_service_account_key(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com", name: sa_key_name.split('/').last) do
 		it { should exist }
@@ -23,41 +34,56 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_service_account_key` resource:
 
+`name`
+: The name of the key.
 
-  * `name`: The name of the key.
+`private_key_type`
+: Output format for the service account key.
 
-  * `private_key_type`: Output format for the service account key.
   Possible values:
-    * TYPE_UNSPECIFIED
-    * TYPE_PKCS12_FILE
-    * TYPE_GOOGLE_CREDENTIALS_FILE
 
-  * `key_algorithm`: Specifies the algorithm for the key.
+  - TYPE_UNSPECIFIED
+  - TYPE_PKCS12_FILE
+  - TYPE_GOOGLE_CREDENTIALS_FILE
+
+`key_algorithm`
+: Specifies the algorithm for the key.
+
   Possible values:
-    * KEY_ALG_UNSPECIFIED
-    * KEY_ALG_RSA_1024
-    * KEY_ALG_RSA_2048
 
-  * `private_key_data`: Private key data. Base-64 encoded.
+  - KEY_ALG_UNSPECIFIED
+  - KEY_ALG_RSA_1024
+  - KEY_ALG_RSA_2048
 
-  * `public_key_data`: Public key data. Base-64 encoded.
+`private_key_data`
+: Private key data. Base-64 encoded.
 
-  * `valid_after_time`: Key can only be used after this time.
+`public_key_data`
+: Public key data. Base-64 encoded.
 
-  * `valid_before_time`: Key can only be used before this time.
+`valid_after_time`
+: Key can only be used after this time.
 
-  * `key_type`: Specifies the type of the key. Possible values include KEY_TYPE_UNSPECIFIED, USER_MANAGED and SYSTEM_MANAGED
+`valid_before_time`
+: Key can only be used before this time.
+
+`key_type`
+: Specifies the type of the key.
+
   Possible values:
-    * KEY_TYPE_UNSPECIFIED
-    * USER_MANAGED
-    * SYSTEM_MANAGED
 
-  * `service_account`: The name of the serviceAccount.
+  - KEY_TYPE_UNSPECIFIED
+  - USER_MANAGED
+  - SYSTEM_MANAGED
 
-  * `path`: The full name of the file that will hold the service account private key. The management of this file will depend on the value of sync_file parameter.  File path must be absolute.
+`service_account`
+: The name of the serviceAccount.
 
+`path`
+: The full name of the file that will hold the service account private key. The management of this file will depend on the value of sync_file parameter. File path must be absolute.
 
 ## GCP Permissions
 

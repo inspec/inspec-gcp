@@ -1,15 +1,22 @@
----
-title: About the google_project_iam_bindings Resource
-platform: gcp
----
++++
+title = "google_project_iam_bindings resource"
+draft = false
+platform = "gcp"
 
-# google\_project\_iam\_bindings
+[menu]
+  [menu.inspec]
+    title = "google_project_iam_bindings"
+    identifier = "inspec/resources/gcp/google_project_iam_bindings.md google_project_iam_bindings resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_project_iam_bindings.md)
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec/blob/master/www/content/inspec/resources/google_project_iam_bindings.md)
 
 **This resource is deprecated. Please use `google_project_iam_policy` instead**
 
 Use the `google_project_iam_bindings` InSpec audit resource to test properties of all, or a filtered group of, GCP project IAM bindings.
-
-<br>
 
 ## Syntax
 
@@ -28,8 +35,6 @@ Use this InSpec resource to enumerate roles then test in-depth using `google_pro
       end
     end
 
-<br>
-
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
@@ -45,25 +50,20 @@ The following examples show how to use this InSpec audit resource.
     describe google_project_iam_bindings(project: 'chef-inspec-gcp') do
       its('iam_binding_roles') { should include "roles/storage.admin" }
     end
-    
+
 ### Test that a particular role does not exist using filtering of the plural resource
 
     describe google_project_iam_bindings(project: 'chef-inspec-gcp').where(iam_binding_role: "roles/iam.securityReviewer") do
       it { should_not exist }
     end
 
-<br>
-
 ## Filter Criteria
 
-This resource supports the following filter criteria:  `iam_binding_role`.  This may be used with `where`, as a block or as a method.
+This resource supports the following filter criteria: `iam_binding_role`. This may be used with `where`, as a block or as a method.
 
 ## Properties
 
-*  `iam_binding_roles` - an array of google_project_iam_binding role strings e.g. `["roles/compute.admin", "roles/owner"]`
-
-<br>
-
+- `iam_binding_roles` - an array of google_project_iam_binding role strings e.g. `["roles/compute.admin", "roles/owner"]`
 
 ## GCP Permissions
 

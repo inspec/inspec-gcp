@@ -1,17 +1,28 @@
----
-title: About the google_compute_autoscalers resource
-platform: gcp
----
++++
+title = "google_compute_autoscalers resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_compute_autoscalers"
+    identifier = "inspec/resources/gcp/google_compute_autoscalers.md google_compute_autoscalers resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_compute_autoscalers.md)
 
 ## Syntax
+
 A `google_compute_autoscalers` is used to test a Google Autoscaler resource
 
-
 ## Beta Resource
+
 This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-```
+
+```ruby
 autoscalers = google_compute_autoscalers(project: 'chef-gcp-inspec', zone: 'zone')
 describe.one do
   autoscalers.autoscaling_policies.each do |autoscaling_policy|
@@ -26,18 +37,34 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_autoscalers` resource:
 
-See [google_compute_autoscaler.md](google_compute_autoscaler.md) for more detailed information
-  * `ids`: an array of `google_compute_autoscaler` id
-  * `creation_timestamps`: an array of `google_compute_autoscaler` creation_timestamp
-  * `names`: an array of `google_compute_autoscaler` name
-  * `descriptions`: an array of `google_compute_autoscaler` description
-  * `autoscaling_policies`: an array of `google_compute_autoscaler` autoscaling_policy
-  * `targets`: an array of `google_compute_autoscaler` target
-  * `zones`: an array of `google_compute_autoscaler` zone
+See the [google_compute_autoscaler](/inspec/resources/google_compute_autoscaler/#properties) resource for more information.
+
+`ids`
+: an array of `google_compute_autoscaler` id
+
+`creation_timestamps`
+: an array of `google_compute_autoscaler` creation_timestamp
+
+`names`
+: an array of `google_compute_autoscaler` name
+
+`descriptions`
+: an array of `google_compute_autoscaler` description
+
+`autoscaling_policies`
+: an array of `google_compute_autoscaler` autoscaling_policy
+
+`targets`
+: an array of `google_compute_autoscaler` target
+
+`zones`
+: an array of `google_compute_autoscaler` zone
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

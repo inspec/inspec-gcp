@@ -1,13 +1,20 @@
----
-title: About the google_project_logging_audit_config Resource
-platform: gcp
----
++++
+title = "google_project_logging_audit_config resource"
+draft = false
+platform = "gcp"
 
-# google\_project\_logging\_audit\_config
+[menu]
+  [menu.inspec]
+    title = "google_project_logging_audit_config"
+    identifier = "inspec/resources/gcp/google_project_logging_audit_config.md google_project_logging_audit_config resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_project_logging_audit_config.md)
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec/blob/master/www/content/inspec/resources/google_project_logging_audit_config.md)
 
 Use the `google_compute_zone` InSpec audit resource to test properties of a single GCP compute zone.
-
-<br>
 
 ## Syntax
 
@@ -17,12 +24,9 @@ A `google_project_logging_audit_config` resource block declares the tests for a 
       it { should exist }
     end
 
-<br>
-
 ## Examples
 
 The following examples show how to use this InSpec audit resource.
-
 
 ### Test that a GCP project logging audit configuration has a default type defined
 
@@ -30,21 +34,15 @@ The following examples show how to use this InSpec audit resource.
       its('default_types') { should include 'ADMIN_READ' }
     end
 
-
 ### Test that a GCP project logging audit configuration has default exempted members
 
     describe google_compute_zone(project: 'chef-inspec-gcp',  zone: 'us-east1-b') do
       it { should_not have_default_exempted_members }
     end
 
-<br>
-
 ## Properties
 
-*  `default_types`, `default_exempted_members`
-
-<br>
-
+- `default_types`, `default_exempted_members`
 
 ## GCP Permissions
 

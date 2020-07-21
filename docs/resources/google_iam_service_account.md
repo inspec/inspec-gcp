@@ -1,13 +1,24 @@
----
-title: About the google_iam_service_account resource
-platform: gcp
----
++++
+title = "google_iam_service_account resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_iam_service_account"
+    identifier = "inspec/resources/gcp/google_iam_service_account.md google_iam_service_account resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_iam_service_account.md)
 
 ## Syntax
+
 A `google_iam_service_account` is used to test a Google ServiceAccount resource
 
 ## Examples
-```
+
+```ruby
 describe google_iam_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
   it { should exist }
   its('display_name') { should cmp '' }
@@ -19,21 +30,26 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_iam_service_account` resource:
 
+`name`
+: The name of the service account.
 
-  * `name`: The name of the service account.
+`project_id`
+: Id of the project that owns the service account.
 
-  * `project_id`: Id of the project that owns the service account.
+`unique_id`
+: Unique and stable id of the service account
 
-  * `unique_id`: Unique and stable id of the service account
+`email`
+: Email address of the service account.
 
-  * `email`: Email address of the service account.
+`display_name`
+: User specified description of service account.
 
-  * `display_name`: User specified description of service account.
-
-  * `oauth2_client_id`: OAuth2 client id for the service account.
-
+`oauth2_client_id`
+: OAuth2 client id for the service account.
 
 ## GCP Permissions
 

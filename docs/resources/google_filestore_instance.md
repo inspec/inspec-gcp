@@ -1,13 +1,24 @@
----
-title: About the google_filestore_instance resource
-platform: gcp
----
++++
+title = "google_filestore_instance resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_filestore_instance"
+    identifier = "inspec/resources/gcp/google_filestore_instance.md google_filestore_instance resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_filestore_instance.md)
 
 ## Syntax
+
 A `google_filestore_instance` is used to test a Google Instance resource
 
 ## Examples
-```
+
+```ruby
 describe google_filestore_instance(project: 'chef-gcp-inspec', zone: 'us-central1-b', name: 'inspecgcp') do
   it { should exist }
   its('tier') { should cmp 'PREMIUM' }
@@ -25,42 +36,58 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_filestore_instance` resource:
 
+`name`
+: The resource name of the instance.
 
-  * `name`: The resource name of the instance.
+`description`
+: A description of the instance.
 
-  * `description`: A description of the instance.
+`create_time`
+: Creation timestamp in RFC3339 text format.
 
-  * `create_time`: Creation timestamp in RFC3339 text format.
+`tier`
+: The service tier of the instance.
 
-  * `tier`: The service tier of the instance.
   Possible values:
-    * TIER_UNSPECIFIED
-    * STANDARD
-    * PREMIUM
 
-  * `labels`: Resource labels to represent user-provided metadata.
+  - TIER_UNSPECIFIED
+  - STANDARD
+  - PREMIUM
 
-  * `file_shares`: File system shares on the instance. For this version, only a single file share is supported.
+`labels`
+: Resource labels to represent user-provided metadata.
 
-    * `name`: The name of the fileshare (16 characters or less)
+`file_shares`
+: File system shares on the instance. For this version, only a single file share is supported.
 
-    * `capacity_gb`: File share capacity in GiB. This must be at least 1024 GiB for the standard tier, or 2560 GiB for the premium tier.
+  `name`
+  : The name of the fileshare (16 characters or less)
 
-  * `networks`: VPC networks to which the instance is connected. For this version, only a single network is supported.
+  `capacity_gb`
+  : File share capacity in GiB. This must be at least 1024 GiB for the standard tier, or 2560 GiB for the premium tier.
 
-    * `network`: The name of the GCE VPC network to which the instance is connected.
+`networks`
+: VPC networks to which the instance is connected. For this version, only a single network is supported.
 
-    * `modes`: IP versions for which the instance has IP addresses assigned.
+  `network`
+  : The name of the GCE VPC network to which the instance is connected.
 
-    * `reserved_ip_range`: A /29 CIDR block that identifies the range of IP addresses reserved for this instance.
+  `modes`
+  : IP versions for which the instance has IP addresses assigned.
 
-    * `ip_addresses`: A list of IPv4 or IPv6 addresses.
+  `reserved_ip_range`
+  : A /29 CIDR block that identifies the range of IP addresses reserved for this instance.
 
-  * `etag`: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+  `ip_addresses`
+  : A list of IPv4 or IPv6 addresses.
 
-  * `zone`: The name of the Filestore zone of the instance.
+`etag`
+: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 
+`zone`
+: The name of the Filestore zone of the instance.
 
 ## GCP Permissions

@@ -1,13 +1,24 @@
----
-title: About the google_projects resource
-platform: gcp
----
++++
+title = "google_projects resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_projects"
+    identifier = "inspec/resources/gcp/google_projects.md google_projects resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_projects.md)
 
 ## Syntax
+
 A `google_projects` is used to test a Google Project resource
 
 ## Examples
-```
+
+```ruby
 describe google_projects() do
   its('count') { should be >= 1 }
   its('project_ids') { should include 'chef-gcp-inspec' }
@@ -32,14 +43,14 @@ end
     describe google_projects do
       its('project_ids'){ should include "gcp_project_id" }
     end
-    
+
 ### Test that an expected project number is available
 
     describe google_projects do
       its('project_numbers'){ should include 1122334455 }
-    end    
+    end
 
-### Test that a particular subset of projects with id 'prod*' are in ACTIVE lifecycle state
+### Test that a particular subset of projects with id 'prod\*' are in ACTIVE lifecycle state
 
     google_projects.where(project_id: /^prod/).project_ids.each do |gcp_project_id|
       describe google_project(project: gcp_project_id) do
@@ -48,7 +59,7 @@ end
       end
     end
 
-### Test that a particular subset of ACTIVE projects with id 'prod*' exist
+### Test that a particular subset of ACTIVE projects with id 'prod\*' exist
 
     google_projects.where(project_id: /^prod/, lifecycle_state: 'ACTIVE').project_ids.each do |gcp_project_id|
       describe google_project(project: gcp_project_id) do
@@ -57,18 +68,34 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_projects` resource:
 
-See [google_project.md](google_project.md) for more detailed information
-  * `project_numbers`: an array of `google_project` number
-  * `lifecycle_states`: an array of `google_project` lifecycle_state
-  * `project_names`: an array of `google_project` name
-  * `create_times`: an array of `google_project` create_time
-  * `labels`: an array of `google_project` labels
-  * `parents`: an array of `google_project` parent
-  * `project_ids`: an array of `google_project` project_id
+See the [google_project](/inspec/resources/google_project/#properties) resource for more information.
+
+`project_numbers`
+: an array of `google_project` number
+
+`lifecycle_states`
+: an array of `google_project` lifecycle_state
+
+`project_names`
+: an array of `google_project` name
+
+`create_times`
+: an array of `google_project` create_time
+
+`labels`
+: an array of `google_project` labels
+
+`parents`
+: an array of `google_project` parent
+
+`project_ids`
+: an array of `google_project` project_id
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

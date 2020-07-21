@@ -1,17 +1,28 @@
----
-title: About the google_project_service resource
-platform: gcp
----
++++
+title = "google_project_service resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_project_service"
+    identifier = "inspec/resources/gcp/google_project_service.md google_project_service resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_project_service.md)
 
 ## Syntax
+
 A `google_project_service` is used to test a Google Service resource
 
-
 ## Beta Resource
+
 This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-```
+
+```ruby
 describe google_project_service(project: 'chef-gcp-inspec', name: 'maps-android-backend.googleapis.com') do
   it { should exist }
   its('state') { should cmp "ENABLED" }
@@ -19,33 +30,44 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_project_service` resource:
 
+`name`
+: The resource name of the service
 
-  * `name`: The resource name of the service
+`parent`
+: The name of the parent of this service. For example 'projects/123'
 
-  * `parent`: The name of the parent of this service. For example 'projects/123'
+`state`
+: Whether or not the service has been enabled for use by the consumer.
 
-  * `state`: Whether or not the service has been enabled for use by the consumer.
   Possible values:
-    * STATE_UNSPECIFIED
-    * DISABLED
-    * ENABLED
 
-  * `disable_dependent_services`: Indicates if dependent services should also be disabled. Can only be turned on if service is disabled.
+  - STATE_UNSPECIFIED
+  - DISABLED
+  - ENABLED
 
-  * `config`: The service configuration of the available service.
+`disable_dependent_services`
+: Indicates if dependent services should also be disabled. Can only be turned on if service is disabled.
 
-    * `name`: The DNS address at which this service is available.
+`config`
+: The service configuration of the available service.
 
-    * `title`: The product title for this service
+  `name`
+  : The DNS address at which this service is available.
 
-    * `apis`: The list of API interfaces exported by this service.
+  `title`
+  : The product title for this service
 
-      * `name`: Name of the API
+  `apis`
+  : The list of API interfaces exported by this service.
 
-      * `version`: The version of the API
+    `name`
+    : Name of the API
 
+    `version`
+    : The version of the API
 
 ## GCP Permissions
 

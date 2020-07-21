@@ -1,13 +1,20 @@
----
-title: About the google_organization_policy Resource
-platform: gcp
----
++++
+title = "google_organization_policy resource"
+draft = false
+platform = "gcp"
 
-# google\_organization\_policy
+[menu]
+  [menu.inspec]
+    title = "google_organization_policy"
+    identifier = "inspec/resources/gcp/google_organization_policy.md google_organization_policy resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_organization_policy.md)
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec/blob/master/www/content/inspec/resources/google_organization_policy.md)
 
 Use the `google_organization_policy` InSpec audit resource to test constraints set on a GCP organization.
-
-<br>
 
 ## Syntax
 
@@ -19,8 +26,6 @@ A `google_organization_policy` resource block declares the tests for a single GC
       it { should exist }
       its('boolean_policy.enforced') { should be true }
     end
-
-<br>
 
 ## Examples
 
@@ -42,24 +47,25 @@ The following examples show how to use this InSpec audit resource.
       its('list_policy.denied_values') { should include 'denied' }
     end
 
-<br>
-
 ## Properties
 
-  * `update_time`: The time stamp this policy was last updated.
+`update_time`
+: The time stamp this policy was last updated.
 
-  * `boolean_policy`: Only available for constraints that are boolean policies.
+`boolean_policy`
+: Only available for constraints that are boolean policies.
 
-    * `enforced`: Boolean for if this policy is enforced.
+  `enforced`
+  : Boolean for if this policy is enforced.
 
-  * `list_policy`: Available for list policies.
+`list_policy`
+: Available for list policies.
 
-    * `allowed_values`: List of values allowed at this resource.
+  `allowed_values`
+  : List of values allowed at this resource.
 
-    * `denied_values`: List of values denied at this resource.
-
-<br>
-
+  `denied_values`
+  : List of values denied at this resource.
 
 ## GCP Permissions
 

@@ -1,13 +1,24 @@
----
-title: About the google_organizations resource
-platform: gcp
----
++++
+title = "google_organizations resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_organizations"
+    identifier = "inspec/resources/gcp/google_organizations.md google_organizations resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_organizations.md)
 
 ## Syntax
+
 A `google_organizations` is used to test a Google Organization resource
 
 ## Examples
-```
+
+```ruby
 
 describe google_organizations do
   its('names') { should include "organizations/123456" }
@@ -31,14 +42,14 @@ end
     describe google_organizations do
       its('display_names') { should include "google.com" }
     end
-    
+
 ### Test that all organizations are ACTIVE
 
     describe google_organizations do
       its('lifecycle_state'){ should eq 'ACTIVE' }
-    end    
+    end
 
-### Test that a particular subset of ACTIVE organizations with display name 'goog*' exist
+### Test that a particular subset of ACTIVE organizations with display name 'goog\*' exist
 
     google_organizations.where(display_name: /^goog/, lifecycle_state: 'ACTIVE').names.each do |name|
       describe google_organization(name: name) do
@@ -47,16 +58,28 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_organizations` resource:
 
-See [google_organization.md](google_organization.md) for more detailed information
-  * `names`: an array of `google_organization` name
-  * `display_names`: an array of `google_organization` display_name
-  * `lifecycle_states`: an array of `google_organization` lifecycle_state
-  * `creation_times`: an array of `google_organization` creation_time
-  * `owners`: an array of `google_organization` owner
+See the [google_organization](/inspec/resources/google_organization/#properties) resource for more information.
+
+`names`
+: an array of `google_organization` name
+
+`display_names`
+: an array of `google_organization` display_name
+
+`lifecycle_states`
+: an array of `google_organization` lifecycle_state
+
+`creation_times`
+: an array of `google_organization` creation_time
+
+`owners`
+: an array of `google_organization` owner
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 

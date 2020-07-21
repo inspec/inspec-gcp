@@ -1,13 +1,24 @@
----
-title: About the google_logging_project_exclusion resource
-platform: gcp
----
++++
+title = "google_logging_project_exclusion resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_logging_project_exclusion"
+    identifier = "inspec/resources/gcp/google_logging_project_exclusion.md google_logging_project_exclusion resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_logging_project_exclusion.md)
 
 ## Syntax
+
 A `google_logging_project_exclusion` is used to test a Google ProjectExclusion resource
 
 ## Examples
-```
+
+```ruby
 
 describe google_logging_project_exclusion(project: 'chef-gcp-inspec', name: 'inspec-project-exclusion') do
 	it { should exist }
@@ -39,19 +50,23 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_logging_project_exclusion` resource:
 
+`project`
+: Id of the project that this exclusion applies to.
 
-  * `project`: Id of the project that this exclusion applies to.
+`name`
+: Name of the exclusion, specified by the server during create.
 
-  * `name`: Name of the exclusion, specified by the server during create.
+`description`
+: A user provided description of this exclusion.
 
-  * `description`: A user provided description of this exclusion.
+`filter`
+: An advanced logs filter. The only exported log entries are those that are in the resource owning the sink and that match the filter.
 
-  * `filter`: An advanced logs filter. The only exported log entries are those that are in the resource owning the sink and that match the filter.
-
-  * `disabled`: If set to true then this exclusion is disabled and it does not exclude any log entries.
-
+`disabled`
+: If set to true then this exclusion is disabled and it does not exclude any log entries.
 
 ## GCP Permissions
 

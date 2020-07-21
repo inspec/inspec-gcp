@@ -1,17 +1,28 @@
----
-title: About the google_compute_ssl_certificate resource
-platform: gcp
----
++++
+title = "google_compute_ssl_certificate resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_compute_ssl_certificate"
+    identifier = "inspec/resources/gcp/google_compute_ssl_certificate.md google_compute_ssl_certificate resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_compute_ssl_certificate.md)
 
 ## Syntax
+
 A `google_compute_ssl_certificate` is used to test a Google SslCertificate resource
 
-
 ## Beta Resource
+
 This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-```
+
+```ruby
 describe google_compute_ssl_certificate(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-certificate') do
   it { should exist }
   its('description') { should eq 'A fake ssl certificate (DO NOT USE)' }
@@ -41,21 +52,26 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_ssl_certificate` resource:
 
+`certificate`
+: The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 
-  * `certificate`: The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
+`creation_timestamp`
+: Creation timestamp in RFC3339 text format.
 
-  * `creation_timestamp`: Creation timestamp in RFC3339 text format.
+`description`
+: An optional description of this resource.
 
-  * `description`: An optional description of this resource.
+`id`
+: The unique identifier for the resource.
 
-  * `id`: The unique identifier for the resource.
+`name`
+: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
-  * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-  * `private_key`: The write-only private key in PEM format.
-
+`private_key`
+: The write-only private key in PEM format.
 
 ## GCP Permissions
 

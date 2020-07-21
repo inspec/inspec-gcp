@@ -1,13 +1,24 @@
----
-title: About the google_sql_user resource
-platform: gcp
----
++++
+title = "google_sql_user resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_sql_user"
+    identifier = "inspec/resources/gcp/google_sql_user.md google_sql_user resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_sql_user.md)
 
 ## Syntax
+
 A `google_sql_user` is used to test a Google User resource
 
 ## Examples
-```
+
+```ruby
 
 describe google_sql_user(project: 'chef-gcp-inspec', database: 'my-database', name: 'user-name', host: "example.com") do
   it { should exist }
@@ -21,17 +32,20 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_user` resource:
 
+`host`
+: The host name from which the user can connect. For insert operations, host defaults to an empty string. For update operations, host is specified as part of the request URL. The host name cannot be updated after insertion.
 
-  * `host`: The host name from which the user can connect. For insert operations, host defaults to an empty string. For update operations, host is specified as part of the request URL. The host name cannot be updated after insertion.
+`name`
+: The name of the user in the Cloud SQL instance.
 
-  * `name`: The name of the user in the Cloud SQL instance.
+`instance`
+: The name of the Cloud SQL instance. This does not include the project ID.
 
-  * `instance`: The name of the Cloud SQL instance. This does not include the project ID.
-
-  * `password`: The password for the user.
-
+`password`
+: The password for the user.
 
 ## GCP Permissions
 

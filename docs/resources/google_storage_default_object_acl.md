@@ -1,13 +1,24 @@
----
-title: About the google_storage_default_object_acl resource
-platform: gcp
----
++++
+title = "google_storage_default_object_acl resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_storage_default_object_acl"
+    identifier = "inspec/resources/gcp/google_storage_default_object_acl.md google_storage_default_object_acl resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_storage_default_object_acl.md)
 
 ## Syntax
+
 A `google_storage_default_object_acl` is used to test a Google DefaultObjectACL resource
 
 ## Examples
-```
+
+```ruby
 describe google_storage_default_object_acl(bucket: 'gcp-inspec-storage-bucket', entity: user-email) do
   it { should exist }
   its('role') { should cmp "OWNER" }
@@ -34,38 +45,51 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_storage_default_object_acl` resource:
 
+`domain`
+: The domain associated with the entity.
 
-  * `domain`: The domain associated with the entity.
+`email`
+: The email address associated with the entity.
 
-  * `email`: The email address associated with the entity.
+`entity`
+: The entity holding the permission, in one of the following forms: _ user-{{userId}} _ user-{{email}} (such as "user-liz@example.com") _ group-{{groupId}} _ group-{{email}} (such as "group-example@googlegroups.com") _ domain-{{domain}} (such as "domain-example.com") _ project-team-{{projectId}} _ allUsers _ allAuthenticatedUsers
 
-  * `entity`: The entity holding the permission, in one of the following forms:   * user-{{userId}}   * user-{{email}} (such as "user-liz@example.com")   * group-{{groupId}}   * group-{{email}} (such as "group-example@googlegroups.com")   * domain-{{domain}} (such as "domain-example.com")   * project-team-{{projectId}}   * allUsers   * allAuthenticatedUsers
+`entity_id`
+: The ID for the entity
 
-  * `entity_id`: The ID for the entity
+`generation`
+: The content generation of the object, if applied to an object.
 
-  * `generation`: The content generation of the object, if applied to an object.
+`id`
+: The ID of the access-control entry.
 
-  * `id`: The ID of the access-control entry.
+`object`
+: The name of the object, if applied to an object.
 
-  * `object`: The name of the object, if applied to an object.
+`project_team`
+: The project team associated with the entity
 
-  * `project_team`: The project team associated with the entity
+`project_number`
+: The project team associated with the entity
 
-    * `project_number`: The project team associated with the entity
+`team`
+: The team.
 
-    * `team`: The team.
-    Possible values:
-      * editors
-      * owners
-      * viewers
-
-  * `role`: The access permission for the entity.
   Possible values:
-    * OWNER
-    * READER
+  - editors
+  - owners
+  - viewers
 
+`role`
+: The access permission for the entity.
+
+  Possible values:
+
+  - OWNER
+  - READER
 
 ## GCP Permissions
 

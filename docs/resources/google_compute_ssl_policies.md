@@ -1,17 +1,28 @@
----
-title: About the google_compute_ssl_policies resource
-platform: gcp
----
++++
+title = "google_compute_ssl_policies resource"
+draft = false
+platform = "gcp"
+
+[menu]
+  [menu.inspec]
+    title = "google_compute_ssl_policies"
+    identifier = "inspec/resources/gcp/google_compute_ssl_policies.md google_compute_ssl_policies resource"
+    parent = "inspec/resources/gcp"
++++
+
+[\[edit on GitHub\]](https://github.com/inspec/inspec-gcp/blob/master/docs/resources/google_compute_ssl_policies.md)
 
 ## Syntax
+
 A `google_compute_ssl_policies` is used to test a Google SslPolicy resource
 
-
 ## Beta Resource
+
 This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
 
 ## Examples
-```
+
+```ruby
 describe google_compute_ssl_policies(project: 'chef-gcp-inspec') do
   it { should exist }
   its('names') { should include 'inspec-gcp-ssl-policy' }
@@ -27,21 +38,43 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_ssl_policies` resource:
 
-See [google_compute_ssl_policy.md](google_compute_ssl_policy.md) for more detailed information
-  * `creation_timestamps`: an array of `google_compute_ssl_policy` creation_timestamp
-  * `descriptions`: an array of `google_compute_ssl_policy` description
-  * `ids`: an array of `google_compute_ssl_policy` id
-  * `names`: an array of `google_compute_ssl_policy` name
-  * `profiles`: an array of `google_compute_ssl_policy` profile
-  * `min_tls_versions`: an array of `google_compute_ssl_policy` min_tls_version
-  * `enabled_features`: an array of `google_compute_ssl_policy` enabled_features
-  * `custom_features`: an array of `google_compute_ssl_policy` custom_features
-  * `fingerprints`: an array of `google_compute_ssl_policy` fingerprint
-  * `warnings`: an array of `google_compute_ssl_policy` warnings
+See the [google_compute_ssl_policy](/inspec/resources/google_compute_ssl_policy/#properties) resource for more information.
+
+`creation_timestamps`
+: an array of `google_compute_ssl_policy` creation_timestamp
+
+`descriptions`
+: an array of `google_compute_ssl_policy` description
+
+`ids`
+: an array of `google_compute_ssl_policy` id
+
+`names`
+: an array of `google_compute_ssl_policy` name
+
+`profiles`
+: an array of `google_compute_ssl_policy` profile
+
+`min_tls_versions`
+: an array of `google_compute_ssl_policy` min_tls_version
+
+`enabled_features`
+: an array of `google_compute_ssl_policy` enabled_features
+
+`custom_features`
+: an array of `google_compute_ssl_policy` custom_features
+
+`fingerprints`
+: an array of `google_compute_ssl_policy` fingerprint
+
+`warnings`
+: an array of `google_compute_ssl_policy` warnings
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
