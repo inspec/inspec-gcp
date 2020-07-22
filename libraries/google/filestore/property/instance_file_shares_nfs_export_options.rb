@@ -13,35 +13,40 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/filestore/property/instance_file_shares_nfs_export_options'
 module GoogleInSpec
   module Filestore
     module Property
-      class InstanceFileShares
-        attr_reader :name
+      class InstanceFileSharesNfsExportOptions
+        attr_reader :ip_ranges
 
-        attr_reader :capacity_gb
+        attr_reader :access_mode
 
-        attr_reader :nfs_export_options
+        attr_reader :squash_mode
+
+        attr_reader :anon_uid
+
+        attr_reader :anon_gid
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @capacity_gb = args['capacityGb']
-          @nfs_export_options = GoogleInSpec::Filestore::Property::InstanceFileSharesNfsExportOptionsArray.parse(args['nfsExportOptions'], to_s)
+          @ip_ranges = args['ipRanges']
+          @access_mode = args['accessMode']
+          @squash_mode = args['squashMode']
+          @anon_uid = args['anonUid']
+          @anon_gid = args['anonGid']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceFileShares"
+          "#{@parent_identifier} InstanceFileSharesNfsExportOptions"
         end
       end
 
-      class InstanceFileSharesArray
+      class InstanceFileSharesNfsExportOptionsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceFileShares.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceFileShares.new(v, parent_identifier) }
+          return InstanceFileSharesNfsExportOptions.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceFileSharesNfsExportOptions.new(v, parent_identifier) }
         end
       end
     end
