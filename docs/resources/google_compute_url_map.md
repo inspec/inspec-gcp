@@ -116,7 +116,7 @@ Properties that can be accessed from the `google_compute_url_map` resource:
 
       * `prefix_redirect`: The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
 
-      * `redirect_response_code`: The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+      * `redirect_response_code`: The HTTP Status code to use for this RedirectAction. Supported values are:  * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  * FOUND, which corresponds to 302.  * SEE_OTHER which corresponds to 303.  * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.  * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
       Possible values:
         * FOUND
         * MOVED_PERMANENTLY_DEFAULT
@@ -212,7 +212,7 @@ Properties that can be accessed from the `google_compute_url_map` resource:
 
     * `prefix_redirect`: The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
 
-    * `redirect_response_code`: The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+    * `redirect_response_code`: The HTTP Status code to use for this RedirectAction. Supported values are:  * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  * FOUND, which corresponds to 302.  * SEE_OTHER which corresponds to 303.  * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.  * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
     Possible values:
       * FOUND
       * MOVED_PERMANENTLY_DEFAULT
