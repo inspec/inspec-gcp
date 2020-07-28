@@ -101,9 +101,14 @@ Properties that can be accessed from the `google_compute_firewall` resource:
 
   * `disabled`: Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 
-  * `log_config`: This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported to Stackdriver.
+  * `log_config`: This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
 
-    * `enable_logging`: This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported to Stackdriver.
+    * `enable`: This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported to Stackdriver.
+
+    * `metadata`: This field denotes whether to include or exclude metadata for firewall logs.
+    Possible values:
+      * EXCLUDE_ALL_METADATA
+      * INCLUDE_ALL_METADATA
 
   * `id`: The unique identifier for the resource.
 
