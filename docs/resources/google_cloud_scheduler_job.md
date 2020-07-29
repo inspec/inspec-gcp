@@ -47,7 +47,7 @@ Properties that can be accessed from the `google_cloud_scheduler_job` resource:
 
   * `pubsub_target`: Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
 
-    * `topic_name`: The full resource name for the Cloud Pub/Sub topic to which messages will be published when a job is delivered. ~>**NOTE**: The topic name must be in the same format as required by PubSub's PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
+    * `topic_name`: The full resource name for the Cloud Pub/Sub topic to which messages will be published when a job is delivered. ~>**NOTE:** The topic name must be in the same format as required by PubSub's PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
 
     * `data`: The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
 
