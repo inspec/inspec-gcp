@@ -29,6 +29,7 @@ See [google_cloudbuild_trigger.md](google_cloudbuild_trigger.md) for more detail
   * `ids`: an array of `google_cloudbuild_trigger` id
   * `names`: an array of `google_cloudbuild_trigger` name
   * `descriptions`: an array of `google_cloudbuild_trigger` description
+  * `tags`: an array of `google_cloudbuild_trigger` tags
   * `disableds`: an array of `google_cloudbuild_trigger` disabled
   * `create_times`: an array of `google_cloudbuild_trigger` create_time
   * `substitutions`: an array of `google_cloudbuild_trigger` substitutions

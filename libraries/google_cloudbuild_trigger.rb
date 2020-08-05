@@ -15,6 +15,10 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/cloudbuild/property/trigger_build'
+require 'google/cloudbuild/property/trigger_build_secrets'
+require 'google/cloudbuild/property/trigger_build_source'
+require 'google/cloudbuild/property/trigger_build_source_repo_source'
+require 'google/cloudbuild/property/trigger_build_source_storage_source'
 require 'google/cloudbuild/property/trigger_build_steps'
 require 'google/cloudbuild/property/trigger_github'
 require 'google/cloudbuild/property/trigger_github_pull_request'
@@ -31,6 +35,7 @@ class CloudBuildTrigger < GcpResourceBase
   attr_reader :id
   attr_reader :name
   attr_reader :description
+  attr_reader :tags
   attr_reader :disabled
   attr_reader :create_time
   attr_reader :substitutions
@@ -52,6 +57,7 @@ class CloudBuildTrigger < GcpResourceBase
     @id = @fetched['id']
     @name = @fetched['name']
     @description = @fetched['description']
+    @tags = @fetched['tags']
     @disabled = @fetched['disabled']
     @create_time = parse_time_string(@fetched['createTime'])
     @substitutions = @fetched['substitutions']

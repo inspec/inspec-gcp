@@ -32,6 +32,8 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
   * `description`: Human-readable description of the trigger.
 
+  * `tags`: Tags for annotation of a BuildTrigger
+
   * `disabled`: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 
   * `create_time`: Time when the trigger was created.
@@ -87,11 +89,51 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
   * `build`: Contents of the build template. Either a filename or build template must be provided.
 
+    * `source`: The location of the source files to build.
+
+      * `storage_source`: Location of the source in an archive file in Google Cloud Storage.
+
+        * `bucket`: Google Cloud Storage bucket containing the source.
+
+        * `object`: Google Cloud Storage object containing the source. This object must be a gzipped archive file (.tar.gz) containing source to build.
+
+        * `generation`: Google Cloud Storage generation for the object.  If the generation is omitted, the latest generation will be used
+
+      * `repo_source`: Location of the source in a Google Cloud Source Repository.
+
+        * `project_id`: ID of the project that owns the Cloud Source Repository.  If omitted, the project ID requesting the build is assumed.
+
+        * `repo_name`: Name of the Cloud Source Repository.
+
+        * `dir`: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's dir is specified and is an absolute path,  this value is ignored for that step's execution.
+
+        * `invert_regex`: Only trigger a build if the revision regex does NOT match the revision regex.
+
+        * `substitutions`: Substitutions to use in a triggered build. Should only be used with triggers.run
+
+        * `branch_name`: Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided. The syntax of the regular expressions accepted is the syntax accepted by RE2 and  described at https://github.com/google/re2/wiki/Syntax
+
+        * `tag_name`: Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided. The syntax of the regular expressions accepted is the syntax accepted by RE2 and  described at https://github.com/google/re2/wiki/Syntax
+
+        * `commit_sha`: Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+
     * `tags`: Tags for annotation of a Build. These are not docker tags.
 
     * `images`: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build status is marked FAILURE.
 
+    * `substitutions`: Substitutions data for Build resource.
+
+    * `queue_ttl`: TTL in queue for this build. If provided and the build is enqueued longer than this value,  the build will expire and the build status will be EXPIRED. The TTL starts ticking from createTime. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+
+    * `logs_bucket`: Google Cloud Storage bucket where logs should be written.  Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+
     * `timeout`: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT. This timeout must be equal to or greater than the sum of the timeouts for build steps within the build. The expected format is the number of seconds followed by s. Default time is ten minutes (600s).
+
+    * `secrets`: Secrets to decrypt using Cloud Key Management Service.
+
+      * `kms_key_name`: Cloud KMS key name to use to decrypt these envs.
+
+      * `secret_env`: Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets,  and must be used by at least one build step. Values can be at most 64 KB in size.  There can be at most 100 secret values across all of a build's secrets.
 
     * `steps`: The operations to be performed on the workspace.
 
