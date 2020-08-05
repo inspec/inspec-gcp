@@ -25,11 +25,14 @@ class MemcacheInstances < GcpResourceBase
 
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:display_names, field: :display_name)
+  filter_table_config.add(:memcache_nodes, field: :memcache_nodes)
   filter_table_config.add(:create_times, field: :create_time)
   filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:memcache_full_versions, field: :memcache_full_version)
   filter_table_config.add(:zones, field: :zones)
   filter_table_config.add(:authorized_networks, field: :authorized_network)
   filter_table_config.add(:node_counts, field: :node_count)
+  filter_table_config.add(:memcache_versions, field: :memcache_version)
   filter_table_config.add(:node_configs, field: :node_config)
   filter_table_config.add(:parameters, field: :parameters)
   filter_table_config.add(:regions, field: :region)
@@ -74,11 +77,14 @@ class MemcacheInstances < GcpResourceBase
     {
       'name' => ->(obj) { return :name, obj['name'] },
       'displayName' => ->(obj) { return :display_name, obj['displayName'] },
+      'memcacheNodes' => ->(obj) { return :memcache_nodes, GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(obj['memcacheNodes'], to_s) },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
       'labels' => ->(obj) { return :labels, obj['labels'] },
+      'memcacheFullVersion' => ->(obj) { return :memcache_full_version, obj['memcacheFullVersion'] },
       'zones' => ->(obj) { return :zones, obj['zones'] },
       'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
       'nodeCount' => ->(obj) { return :node_count, obj['nodeCount'] },
+      'memcacheVersion' => ->(obj) { return :memcache_version, obj['memcacheVersion'] },
       'nodeConfig' => ->(obj) { return :node_config, GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(obj['nodeConfig'], to_s) },
       'parameters' => ->(obj) { return :parameters, GoogleInSpec::Memcache::Property::InstanceParameters.new(obj['parameters'], to_s) },
       'region' => ->(obj) { return :region, obj['region'] },
