@@ -44,6 +44,8 @@ class ComputeImage < GcpResourceBase
   attr_reader :source_disk
   attr_reader :source_disk_encryption_key
   attr_reader :source_disk_id
+  attr_reader :source_image
+  attr_reader :source_snapshot
   attr_reader :source_type
   attr_reader :self_link
   attr_reader :status
@@ -76,6 +78,8 @@ class ComputeImage < GcpResourceBase
     @source_disk = @fetched['sourceDisk']
     @source_disk_encryption_key = GoogleInSpec::Compute::Property::ImageSourceDiskEncryptionKey.new(@fetched['sourceDiskEncryptionKey'], to_s)
     @source_disk_id = @fetched['sourceDiskId']
+    @source_image = @fetched['sourceImage']
+    @source_snapshot = @fetched['sourceSnapshot']
     @source_type = @fetched['sourceType']
     @self_link = @fetched['selfLink']
     @status = @fetched['status']
