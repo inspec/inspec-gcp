@@ -49,6 +49,8 @@ Properties that can be accessed from the `google_pubsub_subscription` resource:
 
     * `ttl`: Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is not set, the associated resource never expires. A duration in seconds with up to nine fractional digits, terminated by 's'. Example - "3.5s".
 
+  * `filter`: The subscription only delivers the messages that match the filter.  Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,  you can't modify the filter.
+
   * `dead_letter_policy`: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled.  The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
 
     * `dead_letter_topic`: The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.  The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e.,  service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic.  The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.

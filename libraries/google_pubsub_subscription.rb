@@ -34,6 +34,7 @@ class PubsubSubscription < GcpResourceBase
   attr_reader :message_retention_duration
   attr_reader :retain_acked_messages
   attr_reader :expiration_policy
+  attr_reader :filter
   attr_reader :dead_letter_policy
 
   def initialize(params)
@@ -52,6 +53,7 @@ class PubsubSubscription < GcpResourceBase
     @message_retention_duration = @fetched['messageRetentionDuration']
     @retain_acked_messages = @fetched['retainAckedMessages']
     @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
+    @filter = @fetched['filter']
     @dead_letter_policy = GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(@fetched['deadLetterPolicy'], to_s)
   end
 
