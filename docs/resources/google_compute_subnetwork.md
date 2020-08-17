@@ -110,7 +110,7 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
 
     * `enable`: If logging is enabled for this subnetwork
 
-    * `aggregation_interval`: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection. Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+    * `aggregation_interval`: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
     Possible values:
       * INTERVAL_5_SEC
       * INTERVAL_30_SEC
