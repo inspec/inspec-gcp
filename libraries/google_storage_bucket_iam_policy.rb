@@ -58,7 +58,7 @@ class BucketIamPolicy < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/storage/v1/'
+    'https://storage.googleapis.com/storage/v1/'
   end
 
   def resource_base_url
