@@ -36,6 +36,7 @@ class PubsubSubscription < GcpResourceBase
   attr_reader :expiration_policy
   attr_reader :filter
   attr_reader :dead_letter_policy
+  attr_reader :enable_message_ordering
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -55,6 +56,7 @@ class PubsubSubscription < GcpResourceBase
     @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
     @filter = @fetched['filter']
     @dead_letter_policy = GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(@fetched['deadLetterPolicy'], to_s)
+    @enable_message_ordering = @fetched['enableMessageOrdering']
   end
 
   def exists?
