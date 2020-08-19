@@ -22,11 +22,15 @@ Properties that can be accessed from the `google_appengine_standard_app_version`
 
   * `name`: Full path to the Version resource in the API. Example, "v1".
 
-  * `version_id`: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-". 
+  * `version_id`: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 
   * `runtime`: Desired runtime. Example python27.
 
   * `threadsafe`: Whether multiple requests can be dispatched to this version at once.
+
+  * `vpc_access_connector`: Enables VPC connectivity for standard apps.
+
+    * `name`: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 
   * `inbound_services`: A list of the types of messages that this application is able to receive.
 
@@ -62,7 +66,7 @@ Properties that can be accessed from the `google_appengine_standard_app_version`
 
   * `manual_scaling`: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 
-    * `instances`: Number of instances to assign to the service at the start.  **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2  Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
+    * `instances`: Number of instances to assign to the service at the start.  **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2 Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
 
 
 ## GCP Permissions

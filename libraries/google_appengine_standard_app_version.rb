@@ -18,6 +18,7 @@ require 'google/appengine/property/standardappversion_automatic_scaling'
 require 'google/appengine/property/standardappversion_automatic_scaling_standard_scheduler_settings'
 require 'google/appengine/property/standardappversion_basic_scaling'
 require 'google/appengine/property/standardappversion_manual_scaling'
+require 'google/appengine/property/standardappversion_vpc_access_connector'
 
 # A provider to manage App Engine resources.
 class AppEngineStandardAppVersion < GcpResourceBase
@@ -30,6 +31,7 @@ class AppEngineStandardAppVersion < GcpResourceBase
   attr_reader :version_id
   attr_reader :runtime
   attr_reader :threadsafe
+  attr_reader :vpc_access_connector
   attr_reader :inbound_services
   attr_reader :instance_class
   attr_reader :automatic_scaling
@@ -48,6 +50,7 @@ class AppEngineStandardAppVersion < GcpResourceBase
     @version_id = @fetched['id']
     @runtime = @fetched['runtime']
     @threadsafe = @fetched['threadsafe']
+    @vpc_access_connector = GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(@fetched['vpcAccessConnector'], to_s)
     @inbound_services = @fetched['inboundServices']
     @instance_class = @fetched['instanceClass']
     @automatic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(@fetched['automaticScaling'], to_s)
