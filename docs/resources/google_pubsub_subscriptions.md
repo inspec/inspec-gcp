@@ -33,6 +33,7 @@ See [google_pubsub_subscription.md](google_pubsub_subscription.md) for more deta
   * `expiration_policies`: an array of `google_pubsub_subscription` expiration_policy
   * `filters`: an array of `google_pubsub_subscription` filter
   * `dead_letter_policies`: an array of `google_pubsub_subscription` dead_letter_policy
+  * `retry_policies`: an array of `google_pubsub_subscription` retry_policy
   * `enable_message_orderings`: an array of `google_pubsub_subscription` enable_message_ordering
 
 ## Filter Criteria
