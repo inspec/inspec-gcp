@@ -27,6 +27,7 @@ class MemcacheInstances < GcpResourceBase
   filter_table_config.add(:display_names, field: :display_name)
   filter_table_config.add(:memcache_nodes, field: :memcache_nodes)
   filter_table_config.add(:create_times, field: :create_time)
+  filter_table_config.add(:discovery_endpoints, field: :discovery_endpoint)
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:memcache_full_versions, field: :memcache_full_version)
   filter_table_config.add(:zones, field: :zones)
@@ -79,6 +80,7 @@ class MemcacheInstances < GcpResourceBase
       'displayName' => ->(obj) { return :display_name, obj['displayName'] },
       'memcacheNodes' => ->(obj) { return :memcache_nodes, GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(obj['memcacheNodes'], to_s) },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
+      'discoveryEndpoint' => ->(obj) { return :discovery_endpoint, parse_time_string(obj['discoveryEndpoint']) },
       'labels' => ->(obj) { return :labels, obj['labels'] },
       'memcacheFullVersion' => ->(obj) { return :memcache_full_version, obj['memcacheFullVersion'] },
       'zones' => ->(obj) { return :zones, obj['zones'] },

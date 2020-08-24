@@ -29,6 +29,7 @@ class MemcacheInstance < GcpResourceBase
   attr_reader :display_name
   attr_reader :memcache_nodes
   attr_reader :create_time
+  attr_reader :discovery_endpoint
   attr_reader :labels
   attr_reader :memcache_full_version
   attr_reader :zones
@@ -51,6 +52,7 @@ class MemcacheInstance < GcpResourceBase
     @display_name = @fetched['displayName']
     @memcache_nodes = GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(@fetched['memcacheNodes'], to_s)
     @create_time = parse_time_string(@fetched['createTime'])
+    @discovery_endpoint = parse_time_string(@fetched['discoveryEndpoint'])
     @labels = @fetched['labels']
     @memcache_full_version = @fetched['memcacheFullVersion']
     @zones = @fetched['zones']

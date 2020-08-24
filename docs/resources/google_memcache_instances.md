@@ -22,6 +22,7 @@ See [google_memcache_instance.md](google_memcache_instance.md) for more detailed
   * `display_names`: (Beta only) an array of `google_memcache_instance` display_name
   * `memcache_nodes`: (Beta only) an array of `google_memcache_instance` memcache_nodes
   * `create_times`: (Beta only) an array of `google_memcache_instance` create_time
+  * `discovery_endpoints`: (Beta only) an array of `google_memcache_instance` discovery_endpoint
   * `labels`: (Beta only) an array of `google_memcache_instance` labels
   * `memcache_full_versions`: (Beta only) an array of `google_memcache_instance` memcache_full_version
   * `zones`: (Beta only) an array of `google_memcache_instance` zones

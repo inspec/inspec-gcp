@@ -40,6 +40,8 @@ Properties that can be accessed from the `google_memcache_instance` resource:
 
   * `create_time`: (Beta only) Creation timestamp in RFC3339 text format.
 
+  * `discovery_endpoint`: (Beta only) Endpoint for Discovery API
+
   * `labels`: (Beta only) Resource labels to represent user-provided metadata.
 
   * `memcache_full_version`: (Beta only) The full version of memcached server running on this instance.
