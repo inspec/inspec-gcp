@@ -25,6 +25,10 @@ module GoogleInSpec
 
         attr_reader :metadata
 
+        attr_reader :metadata_fields
+
+        attr_reader :filter_expr
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -32,6 +36,8 @@ module GoogleInSpec
           @aggregation_interval = args['aggregationInterval']
           @flow_sampling = args['flowSampling']
           @metadata = args['metadata']
+          @metadata_fields = args['metadataFields']
+          @filter_expr = args['filterExpr']
         end
 
         def to_s
