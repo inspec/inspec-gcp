@@ -65,7 +65,9 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
   * `type`: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
 
-  * `source_image`: The source image used to create this disk. If the source image is deleted, this field will not be set.  To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-8 to use the latest Debian 8 image:  projects/debian-cloud/global/images/family/debian-8  Alternatively, use a specific version of a public operating system image:  projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD  To create a disk with a private image that you created, specify the image name in the following format:  global/images/my-private-image  You can also specify a private image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:  global/images/family/my-private-family
+  * `erase_windows_vss_signature`: (Beta only) Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+
+  * `source_image`: The source image used to create this disk. If the source image is deleted, this field will not be set.  To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:  projects/debian-cloud/global/images/family/debian-9  Alternatively, use a specific version of a public operating system image:  projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD  To create a disk with a private image that you created, specify the image name in the following format:  global/images/my-private-image  You can also specify a private image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:  global/images/family/my-private-family
 
   * `resource_policies`: (Beta only) Resource policies applied to this disk for automatic snapshot creations.
 
@@ -79,6 +81,8 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key.  If absent, the Compute Engine Service Agent service account is used.
+
   * `source_image_id`: The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 
   * `disk_encryption_key`: Encrypts the disk using a customer-supplied encryption key.  After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk to a virtual machine).  Customer-supplied encryption keys do not protect access to metadata of the disk.  If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
@@ -89,6 +93,8 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS. Your project's Compute Engine System service account (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key.  If absent, the Compute Engine Service Agent service account is used.
+
   * `source_snapshot`: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:  * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot` * `projects/project/global/snapshots/snapshot` * `global/snapshots/snapshot`
 
   * `source_snapshot_encryption_key`: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
@@ -98,6 +104,8 @@ Properties that can be accessed from the `google_compute_disk` resource:
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
     * `sha256`: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key.  If absent, the Compute Engine Service Agent service account is used.
 
   * `source_snapshot_id`: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 

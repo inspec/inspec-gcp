@@ -38,6 +38,7 @@ class ComputeDisk < GcpResourceBase
   attr_reader :users
   attr_reader :physical_block_size_bytes
   attr_reader :type
+  attr_reader :erase_windows_vss_signature
   attr_reader :source_image
   attr_reader :resource_policies
   attr_reader :zone
@@ -69,6 +70,7 @@ class ComputeDisk < GcpResourceBase
     @users = @fetched['users']
     @physical_block_size_bytes = @fetched['physicalBlockSizeBytes']
     @type = @fetched['type']
+    @erase_windows_vss_signature = @fetched['eraseWindowsVssSignature']
     @source_image = @fetched['sourceImage']
     @resource_policies = @fetched['resourcePolicies']
     @zone = @fetched['zone']
