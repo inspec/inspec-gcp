@@ -81,7 +81,7 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
-    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key.  If absent, the Compute Engine Service Agent service account is used.
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
   * `source_image_id`: The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 
@@ -93,7 +93,7 @@ Properties that can be accessed from the `google_compute_disk` resource:
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS. Your project's Compute Engine System service account (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
 
-    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key.  If absent, the Compute Engine Service Agent service account is used.
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
   * `source_snapshot`: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:  * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot` * `projects/project/global/snapshots/snapshot` * `global/snapshots/snapshot`
 

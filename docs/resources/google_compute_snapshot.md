@@ -39,6 +39,8 @@ Properties that can be accessed from the `google_compute_snapshot` resource:
 
   * `storage_bytes`: A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
 
+  * `storage_locations`: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
+
   * `licenses`: A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).  snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied encryption key.
 
   * `labels`: Labels to apply to this Snapshot.
@@ -57,11 +59,15 @@ Properties that can be accessed from the `google_compute_snapshot` resource:
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
 
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
+
   * `source_disk_encryption_key`: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
     * `raw_key`: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     * `kms_key_name`: The name of the encryption key that is stored in Google Cloud KMS.
+
+    * `kms_key_service_account`: The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
 
 ## GCP Permissions

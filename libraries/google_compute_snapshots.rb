@@ -29,6 +29,7 @@ class ComputeSnapshots < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:storage_bytes, field: :storage_bytes)
+  filter_table_config.add(:storage_locations, field: :storage_locations)
   filter_table_config.add(:licenses, field: :licenses)
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
@@ -81,6 +82,7 @@ class ComputeSnapshots < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'storageBytes' => ->(obj) { return :storage_bytes, obj['storageBytes'] },
+      'storageLocations' => ->(obj) { return :storage_locations, obj['storageLocations'] },
       'licenses' => ->(obj) { return :licenses, obj['licenses'] },
       'labels' => ->(obj) { return :labels, obj['labels'] },
       'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },

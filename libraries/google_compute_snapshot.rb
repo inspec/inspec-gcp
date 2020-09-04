@@ -30,6 +30,7 @@ class ComputeSnapshot < GcpResourceBase
   attr_reader :name
   attr_reader :description
   attr_reader :storage_bytes
+  attr_reader :storage_locations
   attr_reader :licenses
   attr_reader :labels
   attr_reader :label_fingerprint
@@ -52,6 +53,7 @@ class ComputeSnapshot < GcpResourceBase
     @name = @fetched['name']
     @description = @fetched['description']
     @storage_bytes = @fetched['storageBytes']
+    @storage_locations = @fetched['storageLocations']
     @licenses = @fetched['licenses']
     @labels = @fetched['labels']
     @label_fingerprint = @fetched['labelFingerprint']
