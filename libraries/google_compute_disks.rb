@@ -36,7 +36,6 @@ class ComputeDisks < GcpResourceBase
   filter_table_config.add(:users, field: :users)
   filter_table_config.add(:physical_block_size_bytes, field: :physical_block_size_bytes)
   filter_table_config.add(:types, field: :type)
-  filter_table_config.add(:erase_windows_vss_signatures, field: :erase_windows_vss_signature)
   filter_table_config.add(:source_images, field: :source_image)
   filter_table_config.add(:resource_policies, field: :resource_policies)
   filter_table_config.add(:zones, field: :zone)
@@ -98,7 +97,6 @@ class ComputeDisks < GcpResourceBase
       'users' => ->(obj) { return :users, obj['users'] },
       'physicalBlockSizeBytes' => ->(obj) { return :physical_block_size_bytes, obj['physicalBlockSizeBytes'] },
       'type' => ->(obj) { return :type, obj['type'] },
-      'eraseWindowsVssSignature' => ->(obj) { return :erase_windows_vss_signature, obj['eraseWindowsVssSignature'] },
       'sourceImage' => ->(obj) { return :source_image, obj['sourceImage'] },
       'resourcePolicies' => ->(obj) { return :resource_policies, obj['resourcePolicies'] },
       'zone' => ->(obj) { return :zone, obj['zone'] },

@@ -37,7 +37,6 @@ See [google_compute_disk.md](google_compute_disk.md) for more detailed informati
   * `users`: an array of `google_compute_disk` users
   * `physical_block_size_bytes`: an array of `google_compute_disk` physical_block_size_bytes
   * `types`: an array of `google_compute_disk` type
-  * `erase_windows_vss_signatures`: (Beta only) an array of `google_compute_disk` erase_windows_vss_signature
   * `source_images`: an array of `google_compute_disk` source_image
   * `resource_policies`: (Beta only) an array of `google_compute_disk` resource_policies
   * `zones`: an array of `google_compute_disk` zone
