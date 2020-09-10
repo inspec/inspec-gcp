@@ -8,18 +8,18 @@ A `google_iam_service_account` is used to test a Google ServiceAccount resource
 
 ## Examples
 ```
-describe google_iam_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
+describe google_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
   it { should exist }
   its('display_name') { should cmp '' }
 end
 
-describe google_iam_service_account(project: 'chef-gcp-inspec', name: "nonexistent@project-id.iam.gserviceaccount.com") do
+describe google_service_account(project: 'chef-gcp-inspec', name: "nonexistent@project-id.iam.gserviceaccount.com") do
   it { should_not exist }
 end
 ```
 
 ## Properties
-Properties that can be accessed from the `google_iam_service_account` resource:
+Properties that can be accessed from the `google_service_account` resource:
 
 
   * `name`: The name of the service account.
