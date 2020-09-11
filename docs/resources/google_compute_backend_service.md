@@ -197,6 +197,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
     * HTTP2
     * TCP
     * SSL
+    * GRPC
 
   * `security_policy`: The security policy associated with this backend service.
 
