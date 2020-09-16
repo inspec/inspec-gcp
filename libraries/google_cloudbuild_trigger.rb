@@ -15,6 +15,11 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/cloudbuild/property/trigger_build'
+require 'google/cloudbuild/property/trigger_build_artifacts'
+require 'google/cloudbuild/property/trigger_build_artifacts_objects'
+require 'google/cloudbuild/property/trigger_build_artifacts_objects_timing'
+require 'google/cloudbuild/property/trigger_build_options'
+require 'google/cloudbuild/property/trigger_build_options_volumes'
 require 'google/cloudbuild/property/trigger_build_secrets'
 require 'google/cloudbuild/property/trigger_build_source'
 require 'google/cloudbuild/property/trigger_build_source_repo_source'

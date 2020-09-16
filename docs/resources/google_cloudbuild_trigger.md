@@ -163,6 +163,72 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
       * `wait_for`: The ID(s) of the step(s) that this build step depends on.  This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
 
+    * `artifacts`: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+
+      * `images`: A list of images to be pushed upon the successful completion of all build steps.  The images will be pushed using the builder service account's credentials.  The digests of the pushed images will be stored in the Build resource's results field.  If any of the images fail to be pushed, the build is marked FAILURE.
+
+      * `objects`: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.  Files in the workspace matching specified paths globs will be uploaded to the Cloud Storage location using the builder service account's credentials.  The location and generation of the uploaded objects will be stored in the Build resource's results field.  If any objects fail to be pushed, the build is marked FAILURE.
+
+        * `location`: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".  Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
+
+        * `paths`: Path globs used to match files in the build's workspace.
+
+        * `timing`: Output only. Stores timing information for pushing all artifact objects.
+
+          * `start_time`: Start of time span.  A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+
+          * `end_time`: End of time span.  A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+
+    * `options`: Special options for this build.
+
+      * `source_provenance_hash`: Requested hash for SourceProvenance.
+
+      * `requested_verify_option`: Requested verifiability options.
+      Possible values:
+        * NOT_VERIFIED
+        * VERIFIED
+
+      * `machine_type`: Compute Engine machine type on which to run the build.
+      Possible values:
+        * UNSPECIFIED
+        * N1_HIGHCPU_8
+        * N1_HIGHCPU_32
+
+      * `disk_size_gb`: Requested disk size for the VM that runs the build. Note that this is NOT "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+
+      * `substitution_option`: Option to specify behavior when there is an error in the substitution checks.  NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+      Possible values:
+        * MUST_MATCH
+        * ALLOW_LOOSE
+
+      * `dynamic_substitutions`: Option to specify whether or not to apply bash style string operations to the substitutions.  NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+
+      * `log_streaming_option`: Option to define build log streaming behavior to Google Cloud Storage.
+      Possible values:
+        * STREAM_DEFAULT
+        * STREAM_ON
+        * STREAM_OFF
+
+      * `worker_pool`: Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}  This field is experimental.
+
+      * `logging`: Option to specify the logging mode, which determines if and where build logs are stored.
+      Possible values:
+        * LOGGING_UNSPECIFIED
+        * LEGACY
+        * GCS_ONLY
+        * STACKDRIVER_ONLY
+        * NONE
+
+      * `env`: A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value.  The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+
+      * `secret_env`: A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's Secret. These variables will be available to all build steps in this build.
+
+      * `volumes`: Global list of volumes to mount for ALL build steps  Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step.  Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
+
+        * `name`: Name of the volume to mount.  Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
+
+        * `path`: Path at which to mount the volume.  Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
+
 
 ## GCP Permissions
 
