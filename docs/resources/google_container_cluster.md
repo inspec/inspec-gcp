@@ -192,6 +192,12 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
   * `subnetwork`: The name of the Google Compute Engine subnetwork to which the cluster is connected.
 
+  * `datapath_provider`: (Beta only) The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+  Possible values:
+    * DATAPATH_PROVIDER_UNSPECIFIED
+    * LEGACY_DATAPATH
+    * ADVANCED_DATAPATH
+
   * `locations`: The list of Google Compute Engine zones in which the cluster's nodes should be located.
 
   * `resource_labels`: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.

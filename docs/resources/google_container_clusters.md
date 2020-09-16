@@ -62,6 +62,7 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `tpu_ipv4_cidr_blocks`: an array of `google_container_cluster` tpu_ipv4_cidr_block
   * `addons_configs`: an array of `google_container_cluster` addons_config
   * `subnetworks`: an array of `google_container_cluster` subnetwork
+  * `datapath_providers`: (Beta only) an array of `google_container_cluster` datapath_provider
   * `locations`: an array of `google_container_cluster` locations
   * `resource_labels`: an array of `google_container_cluster` resource_labels
   * `label_fingerprints`: an array of `google_container_cluster` label_fingerprint

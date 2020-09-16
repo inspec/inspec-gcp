@@ -59,6 +59,7 @@ class ContainerCluster < GcpResourceBase
   attr_reader :tpu_ipv4_cidr_block
   attr_reader :addons_config
   attr_reader :subnetwork
+  attr_reader :datapath_provider
   attr_reader :locations
   attr_reader :resource_labels
   attr_reader :label_fingerprint
@@ -107,6 +108,7 @@ class ContainerCluster < GcpResourceBase
     @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
     @addons_config = GoogleInSpec::Container::Property::ClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
     @subnetwork = @fetched['subnetwork']
+    @datapath_provider = @fetched['datapathProvider']
     @locations = @fetched['locations']
     @resource_labels = @fetched['resourceLabels']
     @label_fingerprint = @fetched['labelFingerprint']
