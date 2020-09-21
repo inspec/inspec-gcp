@@ -70,6 +70,7 @@ Properties that can be accessed from the `google_compute_image` resource:
     Possible values:
       * MULTI_IP_SUBNET
       * SECURE_BOOT
+      * SEV_CAPABLE
       * UEFI_COMPATIBLE
       * VIRTIO_SCSI_MULTIQUEUE
       * WINDOWS
