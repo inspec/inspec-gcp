@@ -86,6 +86,22 @@ Properties that can be accessed from the `google_compute_network` resource:
       * REGIONAL
       * GLOBAL
 
+  * `peerings`: Peerings for a network
+
+    * `name`: Name of the peering.
+
+    * `state`: State of the peering.
+
+    * `state_details`: Details about the current state of the peering.
+
+    * `network`: URL of the peer network
+
+    * `export_custom_routes`: Whether to export the custom routes to the peer network.
+
+    * `import_custom_routes`: Whether to import the custom routes to the peer network.
+
+    * `peer_mtu`: Maximum Transmission Unit in bytes.
+
 
 ## GCP Permissions
 

@@ -48,6 +48,7 @@ See [google_compute_network.md](google_compute_network.md) for more detailed inf
   * `auto_create_subnetworks`: an array of `google_compute_network` auto_create_subnetworks
   * `creation_timestamps`: an array of `google_compute_network` creation_timestamp
   * `routing_configs`: an array of `google_compute_network` routing_config
+  * `peerings`: an array of `google_compute_network` peerings
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

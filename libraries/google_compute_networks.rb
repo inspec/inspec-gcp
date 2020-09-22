@@ -31,6 +31,7 @@ class ComputeNetworks < GcpResourceBase
   filter_table_config.add(:auto_create_subnetworks, field: :auto_create_subnetworks)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:routing_configs, field: :routing_config)
+  filter_table_config.add(:peerings, field: :peerings)
 
   filter_table_config.connect(self, :table)
 
@@ -78,6 +79,7 @@ class ComputeNetworks < GcpResourceBase
       'autoCreateSubnetworks' => ->(obj) { return :auto_create_subnetworks, obj['autoCreateSubnetworks'] },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'routingConfig' => ->(obj) { return :routing_config, GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(obj['routingConfig'], to_s) },
+      'peerings' => ->(obj) { return :peerings, GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(obj['peerings'], to_s) },
     }
   end
 
