@@ -36,6 +36,7 @@ class RedisInstances < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:memory_size_gbs, field: :memory_size_gb)
   filter_table_config.add(:ports, field: :port)
+  filter_table_config.add(:persistence_iam_identities, field: :persistence_iam_identity)
   filter_table_config.add(:redis_versions, field: :redis_version)
   filter_table_config.add(:reserved_ip_ranges, field: :reserved_ip_range)
   filter_table_config.add(:tiers, field: :tier)
@@ -92,6 +93,7 @@ class RedisInstances < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'memorySizeGb' => ->(obj) { return :memory_size_gb, obj['memorySizeGb'] },
       'port' => ->(obj) { return :port, obj['port'] },
+      'persistenceIamIdentity' => ->(obj) { return :persistence_iam_identity, obj['persistenceIamIdentity'] },
       'redisVersion' => ->(obj) { return :redis_version, obj['redisVersion'] },
       'reservedIpRange' => ->(obj) { return :reserved_ip_range, obj['reservedIpRange'] },
       'tier' => ->(obj) { return :tier, obj['tier'] },

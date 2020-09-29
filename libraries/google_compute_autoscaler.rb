@@ -18,6 +18,8 @@ require 'google/compute/property/autoscaler_autoscaling_policy'
 require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
 require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
 require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
+require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control'
+require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas'
 
 # A provider to manage Compute Engine resources.
 class ComputeAutoscaler < GcpResourceBase
@@ -68,9 +70,9 @@ class ComputeAutoscaler < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://www.googleapis.com/compute/beta/'
+      'https://compute.googleapis.com/compute/beta/'
     else
-      'https://www.googleapis.com/compute/v1/'
+      'https://compute.googleapis.com/compute/v1/'
     end
   end
 

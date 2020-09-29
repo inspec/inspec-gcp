@@ -17,12 +17,15 @@ module GoogleInSpec
   module Compute
     module Property
       class FirewallLogConfig
-        attr_reader :enable_logging
+        attr_reader :enable
+
+        attr_reader :metadata
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_logging = args['enable']
+          @enable = args['enable']
+          @metadata = args['metadata']
         end
 
         def to_s

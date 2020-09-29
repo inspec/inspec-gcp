@@ -16,6 +16,8 @@
 require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
 require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
 require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
+require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control'
+require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas'
 module GoogleInSpec
   module Compute
     module Property
@@ -25,6 +27,10 @@ module GoogleInSpec
         attr_reader :max_num_replicas
 
         attr_reader :cool_down_period_sec
+
+        attr_reader :mode
+
+        attr_reader :scale_down_control
 
         attr_reader :cpu_utilization
 
@@ -38,6 +44,8 @@ module GoogleInSpec
           @min_num_replicas = args['minNumReplicas']
           @max_num_replicas = args['maxNumReplicas']
           @cool_down_period_sec = args['coolDownPeriodSec']
+          @mode = args['mode']
+          @scale_down_control = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleDownControl.new(args['scaleDownControl'], to_s)
           @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCpuUtilization.new(args['cpuUtilization'], to_s)
           @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray.parse(args['customMetricUtilizations'], to_s)
           @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyLoadBalancingUtilization.new(args['loadBalancingUtilization'], to_s)

@@ -18,6 +18,7 @@ require 'google/pubsub/property/subscription_dead_letter_policy'
 require 'google/pubsub/property/subscription_expiration_policy'
 require 'google/pubsub/property/subscription_push_config'
 require 'google/pubsub/property/subscription_push_config_oidc_token'
+require 'google/pubsub/property/subscription_retry_policy'
 
 # A provider to manage Cloud Pub/Sub resources.
 class PubsubSubscription < GcpResourceBase
@@ -34,7 +35,10 @@ class PubsubSubscription < GcpResourceBase
   attr_reader :message_retention_duration
   attr_reader :retain_acked_messages
   attr_reader :expiration_policy
+  attr_reader :filter
   attr_reader :dead_letter_policy
+  attr_reader :retry_policy
+  attr_reader :enable_message_ordering
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -52,7 +56,10 @@ class PubsubSubscription < GcpResourceBase
     @message_retention_duration = @fetched['messageRetentionDuration']
     @retain_acked_messages = @fetched['retainAckedMessages']
     @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
+    @filter = @fetched['filter']
     @dead_letter_policy = GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(@fetched['deadLetterPolicy'], to_s)
+    @retry_policy = GoogleInSpec::Pubsub::Property::SubscriptionRetryPolicy.new(@fetched['retryPolicy'], to_s)
+    @enable_message_ordering = @fetched['enableMessageOrdering']
   end
 
   def exists?

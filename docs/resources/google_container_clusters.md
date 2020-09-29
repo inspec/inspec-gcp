@@ -62,6 +62,7 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `tpu_ipv4_cidr_blocks`: an array of `google_container_cluster` tpu_ipv4_cidr_block
   * `addons_configs`: an array of `google_container_cluster` addons_config
   * `subnetworks`: an array of `google_container_cluster` subnetwork
+  * `datapath_providers`: (Beta only) an array of `google_container_cluster` datapath_provider
   * `locations`: an array of `google_container_cluster` locations
   * `resource_labels`: an array of `google_container_cluster` resource_labels
   * `label_fingerprints`: an array of `google_container_cluster` label_fingerprint
@@ -85,7 +86,7 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `node_pools`: an array of `google_container_cluster` node_pools
   * `pod_security_policy_configs`: (Beta only) an array of `google_container_cluster` pod_security_policy_config
   * `binary_authorizations`: an array of `google_container_cluster` binary_authorization
-  * `release_channels`: (Beta only) an array of `google_container_cluster` release_channel
+  * `shielded_nodes`: (Beta only) an array of `google_container_cluster` shielded_nodes
   * `locations`: an array of `google_container_cluster` location
 
 ## Filter Criteria

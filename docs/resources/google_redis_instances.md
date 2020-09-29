@@ -39,6 +39,7 @@ See [google_redis_instance.md](google_redis_instance.md) for more detailed infor
   * `names`: an array of `google_redis_instance` name
   * `memory_size_gbs`: an array of `google_redis_instance` memory_size_gb
   * `ports`: an array of `google_redis_instance` port
+  * `persistence_iam_identities`: an array of `google_redis_instance` persistence_iam_identity
   * `redis_versions`: an array of `google_redis_instance` redis_version
   * `reserved_ip_ranges`: an array of `google_redis_instance` reserved_ip_range
   * `tiers`: an array of `google_redis_instance` tier

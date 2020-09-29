@@ -78,7 +78,7 @@ Properties that can be accessed from the `google_compute_firewall` resource:
 
   * `allowed`: The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
 
-    * `ip_protocol`: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip), or the IP protocol number.
+    * `ip_protocol`: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 
     * `ports`: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.  Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
 
@@ -86,7 +86,7 @@ Properties that can be accessed from the `google_compute_firewall` resource:
 
   * `denied`: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
 
-    * `ip_protocol`: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip), or the IP protocol number.
+    * `ip_protocol`: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
 
     * `ports`: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.  Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
 
@@ -101,9 +101,14 @@ Properties that can be accessed from the `google_compute_firewall` resource:
 
   * `disabled`: Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 
-  * `log_config`: This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported to Stackdriver.
+  * `log_config`: This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
 
-    * `enable_logging`: This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported to Stackdriver.
+    * `enable`: This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported to Stackdriver.
+
+    * `metadata`: This field denotes whether to include or exclude metadata for firewall logs.
+    Possible values:
+      * EXCLUDE_ALL_METADATA
+      * INCLUDE_ALL_METADATA
 
   * `id`: The unique identifier for the resource.
 

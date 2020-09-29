@@ -176,6 +176,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
     * SSL
     * TCP
     * UDP
+    * GRPC
 
   * `session_affinity`: Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
   Possible values:

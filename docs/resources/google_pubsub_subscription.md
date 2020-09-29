@@ -49,11 +49,21 @@ Properties that can be accessed from the `google_pubsub_subscription` resource:
 
     * `ttl`: Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of ttl. If ttl is not set, the associated resource never expires. A duration in seconds with up to nine fractional digits, terminated by 's'. Example - "3.5s".
 
+  * `filter`: The subscription only delivers the messages that match the filter.  Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,  you can't modify the filter.
+
   * `dead_letter_policy`: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled.  The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
 
-    * `dead_letter_topic`: The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.  The Cloud Pub/Sub service\naccount associated with the enclosing subscription's parent project (i.e.,  service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic.  The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
+    * `dead_letter_topic`: The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.  The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e.,  service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic.  The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
 
     * `max_delivery_attempts`: The maximum number of delivery attempts for any message. The value must be between 5 and 100.  The number of delivery attempts is defined as 1 + (the sum of number of  NACKs and number of times the acknowledgement deadline has been exceeded for the message).  A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend ack_deadlines.  This field will be honored on a best effort basis.  If this parameter is 0, a default value of 5 is used.
+
+  * `retry_policy`: A policy that specifies how Pub/Sub retries message delivery for this subscription.  If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.  RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+
+    * `minimum_backoff`: The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+
+    * `maximum_backoff`: The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.  A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+
+  * `enable_message_ordering`: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
 
 
 ## GCP Permissions

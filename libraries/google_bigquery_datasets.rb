@@ -84,7 +84,7 @@ class BigQueryDatasets < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/bigquery/v2/'
+    'https://bigquery.googleapis.com/bigquery/v2/'
   end
 
   def resource_base_url

@@ -14,8 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/memcache/property/instance_memcache_parameters'
+require 'google/memcache/property/instance_memcache_nodes'
 require 'google/memcache/property/instance_node_config'
+require 'google/memcache/property/instance_parameters'
 
 # A provider to manage Memcache resources.
 class MemcacheInstance < GcpResourceBase
@@ -26,13 +27,17 @@ class MemcacheInstance < GcpResourceBase
   attr_reader :params
   attr_reader :name
   attr_reader :display_name
+  attr_reader :memcache_nodes
   attr_reader :create_time
+  attr_reader :discovery_endpoint
   attr_reader :labels
+  attr_reader :memcache_full_version
   attr_reader :zones
   attr_reader :authorized_network
   attr_reader :node_count
+  attr_reader :memcache_version
   attr_reader :node_config
-  attr_reader :memcache_parameters
+  attr_reader :parameters
   attr_reader :region
 
   def initialize(params)
@@ -45,13 +50,17 @@ class MemcacheInstance < GcpResourceBase
   def parse
     @name = @fetched['name']
     @display_name = @fetched['displayName']
+    @memcache_nodes = GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(@fetched['memcacheNodes'], to_s)
     @create_time = parse_time_string(@fetched['createTime'])
+    @discovery_endpoint = parse_time_string(@fetched['discoveryEndpoint'])
     @labels = @fetched['labels']
+    @memcache_full_version = @fetched['memcacheFullVersion']
     @zones = @fetched['zones']
     @authorized_network = @fetched['authorizedNetwork']
     @node_count = @fetched['nodeCount']
+    @memcache_version = @fetched['memcacheVersion']
     @node_config = GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(@fetched['nodeConfig'], to_s)
-    @memcache_parameters = GoogleInSpec::Memcache::Property::InstanceMemcacheParameters.new(@fetched['memcacheParameters'], to_s)
+    @parameters = GoogleInSpec::Memcache::Property::InstanceParameters.new(@fetched['parameters'], to_s)
     @region = @fetched['region']
   end
 

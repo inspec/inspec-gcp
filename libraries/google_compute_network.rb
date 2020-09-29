@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/network_peerings'
 require 'google/compute/property/network_routing_config'
 
 # A provider to manage Compute Engine resources.
@@ -31,6 +32,7 @@ class ComputeNetwork < GcpResourceBase
   attr_reader :auto_create_subnetworks
   attr_reader :creation_timestamp
   attr_reader :routing_config
+  attr_reader :peerings
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -48,6 +50,7 @@ class ComputeNetwork < GcpResourceBase
     @auto_create_subnetworks = @fetched['autoCreateSubnetworks']
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @routing_config = GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(@fetched['routingConfig'], to_s)
+    @peerings = GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(@fetched['peerings'], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -80,9 +83,9 @@ class ComputeNetwork < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://www.googleapis.com/compute/beta/'
+      'https://compute.googleapis.com/compute/beta/'
     else
-      'https://www.googleapis.com/compute/v1/'
+      'https://compute.googleapis.com/compute/v1/'
     end
   end
 

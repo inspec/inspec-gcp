@@ -31,7 +31,10 @@ class PubsubSubscriptions < GcpResourceBase
   filter_table_config.add(:message_retention_durations, field: :message_retention_duration)
   filter_table_config.add(:retain_acked_messages, field: :retain_acked_messages)
   filter_table_config.add(:expiration_policies, field: :expiration_policy)
+  filter_table_config.add(:filters, field: :filter)
   filter_table_config.add(:dead_letter_policies, field: :dead_letter_policy)
+  filter_table_config.add(:retry_policies, field: :retry_policy)
+  filter_table_config.add(:enable_message_orderings, field: :enable_message_ordering)
 
   filter_table_config.connect(self, :table)
 
@@ -79,7 +82,10 @@ class PubsubSubscriptions < GcpResourceBase
       'messageRetentionDuration' => ->(obj) { return :message_retention_duration, obj['messageRetentionDuration'] },
       'retainAckedMessages' => ->(obj) { return :retain_acked_messages, obj['retainAckedMessages'] },
       'expirationPolicy' => ->(obj) { return :expiration_policy, GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(obj['expirationPolicy'], to_s) },
+      'filter' => ->(obj) { return :filter, obj['filter'] },
       'deadLetterPolicy' => ->(obj) { return :dead_letter_policy, GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(obj['deadLetterPolicy'], to_s) },
+      'retryPolicy' => ->(obj) { return :retry_policy, GoogleInSpec::Pubsub::Property::SubscriptionRetryPolicy.new(obj['retryPolicy'], to_s) },
+      'enableMessageOrdering' => ->(obj) { return :enable_message_ordering, obj['enableMessageOrdering'] },
     }
   end
 

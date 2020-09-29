@@ -31,7 +31,10 @@ See [google_pubsub_subscription.md](google_pubsub_subscription.md) for more deta
   * `message_retention_durations`: an array of `google_pubsub_subscription` message_retention_duration
   * `retain_acked_messages`: an array of `google_pubsub_subscription` retain_acked_messages
   * `expiration_policies`: an array of `google_pubsub_subscription` expiration_policy
+  * `filters`: an array of `google_pubsub_subscription` filter
   * `dead_letter_policies`: an array of `google_pubsub_subscription` dead_letter_policy
+  * `retry_policies`: an array of `google_pubsub_subscription` retry_policy
+  * `enable_message_orderings`: an array of `google_pubsub_subscription` enable_message_ordering
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

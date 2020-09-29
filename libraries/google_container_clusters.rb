@@ -37,6 +37,7 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:tpu_ipv4_cidr_blocks, field: :tpu_ipv4_cidr_block)
   filter_table_config.add(:addons_configs, field: :addons_config)
   filter_table_config.add(:subnetworks, field: :subnetwork)
+  filter_table_config.add(:datapath_providers, field: :datapath_provider)
   filter_table_config.add(:locations, field: :locations)
   filter_table_config.add(:resource_labels, field: :resource_labels)
   filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
@@ -60,7 +61,7 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:node_pools, field: :node_pools)
   filter_table_config.add(:pod_security_policy_configs, field: :pod_security_policy_config)
   filter_table_config.add(:binary_authorizations, field: :binary_authorization)
-  filter_table_config.add(:release_channels, field: :release_channel)
+  filter_table_config.add(:shielded_nodes, field: :shielded_nodes)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -115,6 +116,7 @@ class ContainerClusters < GcpResourceBase
       'tpuIpv4CidrBlock' => ->(obj) { return :tpu_ipv4_cidr_block, obj['tpuIpv4CidrBlock'] },
       'addonsConfig' => ->(obj) { return :addons_config, GoogleInSpec::Container::Property::ClusterAddonsConfig.new(obj['addonsConfig'], to_s) },
       'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
+      'datapathProvider' => ->(obj) { return :datapath_provider, obj['datapathProvider'] },
       'locations' => ->(obj) { return :locations, obj['locations'] },
       'resourceLabels' => ->(obj) { return :resource_labels, obj['resourceLabels'] },
       'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
@@ -138,7 +140,7 @@ class ContainerClusters < GcpResourceBase
       'nodePools' => ->(obj) { return :node_pools, GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(obj['nodePools'], to_s) },
       'podSecurityPolicyConfig' => ->(obj) { return :pod_security_policy_config, GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(obj['podSecurityPolicyConfig'], to_s) },
       'binaryAuthorization' => ->(obj) { return :binary_authorization, GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(obj['binaryAuthorization'], to_s) },
-      'releaseChannel' => ->(obj) { return :release_channel, GoogleInSpec::Container::Property::ClusterReleaseChannel.new(obj['releaseChannel'], to_s) },
+      'shieldedNodes' => ->(obj) { return :shielded_nodes, GoogleInSpec::Container::Property::ClusterShieldedNodes.new(obj['shieldedNodes'], to_s) },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end

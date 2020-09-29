@@ -36,6 +36,7 @@ See [google_compute_snapshot.md](google_compute_snapshot.md) for more detailed i
   * `names`: an array of `google_compute_snapshot` name
   * `descriptions`: an array of `google_compute_snapshot` description
   * `storage_bytes`: an array of `google_compute_snapshot` storage_bytes
+  * `storage_locations`: an array of `google_compute_snapshot` storage_locations
   * `licenses`: an array of `google_compute_snapshot` licenses
   * `labels`: an array of `google_compute_snapshot` labels
   * `label_fingerprints`: an array of `google_compute_snapshot` label_fingerprint

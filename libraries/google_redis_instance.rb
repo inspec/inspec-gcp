@@ -35,6 +35,7 @@ class RedisInstance < GcpResourceBase
   attr_reader :name
   attr_reader :memory_size_gb
   attr_reader :port
+  attr_reader :persistence_iam_identity
   attr_reader :redis_version
   attr_reader :reserved_ip_range
   attr_reader :tier
@@ -61,6 +62,7 @@ class RedisInstance < GcpResourceBase
     @name = @fetched['name']
     @memory_size_gb = @fetched['memorySizeGb']
     @port = @fetched['port']
+    @persistence_iam_identity = @fetched['persistenceIamIdentity']
     @redis_version = @fetched['redisVersion']
     @reserved_ip_range = @fetched['reservedIpRange']
     @tier = @fetched['tier']

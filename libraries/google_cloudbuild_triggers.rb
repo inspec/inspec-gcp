@@ -26,6 +26,7 @@ class CloudBuildTriggers < GcpResourceBase
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:tags, field: :tags)
   filter_table_config.add(:disableds, field: :disabled)
   filter_table_config.add(:create_times, field: :create_time)
   filter_table_config.add(:substitutions, field: :substitutions)
@@ -77,6 +78,7 @@ class CloudBuildTriggers < GcpResourceBase
       'id' => ->(obj) { return :id, obj['id'] },
       'name' => ->(obj) { return :name, obj['name'] },
       'description' => ->(obj) { return :description, obj['description'] },
+      'tags' => ->(obj) { return :tags, obj['tags'] },
       'disabled' => ->(obj) { return :disabled, obj['disabled'] },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
       'substitutions' => ->(obj) { return :substitutions, obj['substitutions'] },

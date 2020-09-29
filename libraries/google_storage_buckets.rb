@@ -117,7 +117,7 @@ class StorageBuckets < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/storage/v1/'
+    'https://storage.googleapis.com/storage/v1/'
   end
 
   def resource_base_url

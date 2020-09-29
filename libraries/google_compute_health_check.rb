@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/healthcheck_grpc_health_check'
 require 'google/compute/property/healthcheck_http2_health_check'
 require 'google/compute/property/healthcheck_http_health_check'
 require 'google/compute/property/healthcheck_https_health_check'
@@ -42,6 +43,7 @@ class ComputeHealthCheck < GcpResourceBase
   attr_reader :tcp_health_check
   attr_reader :ssl_health_check
   attr_reader :http2_health_check
+  attr_reader :grpc_health_check
   attr_reader :log_config
 
   def initialize(params)
@@ -66,6 +68,7 @@ class ComputeHealthCheck < GcpResourceBase
     @tcp_health_check = GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(@fetched['tcpHealthCheck'], to_s)
     @ssl_health_check = GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(@fetched['sslHealthCheck'], to_s)
     @http2_health_check = GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(@fetched['http2HealthCheck'], to_s)
+    @grpc_health_check = GoogleInSpec::Compute::Property::HealthCheckGrpcHealthCheck.new(@fetched['grpcHealthCheck'], to_s)
     @log_config = GoogleInSpec::Compute::Property::HealthCheckLogConfig.new(@fetched['logConfig'], to_s)
   end
 
@@ -86,9 +89,9 @@ class ComputeHealthCheck < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://www.googleapis.com/compute/beta/'
+      'https://compute.googleapis.com/compute/beta/'
     else
-      'https://www.googleapis.com/compute/v1/'
+      'https://compute.googleapis.com/compute/v1/'
     end
   end
 

@@ -23,12 +23,15 @@ module GoogleInSpec
 
         attr_reader :sha256
 
+        attr_reader :kms_key_service_account
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @raw_key = args['rawKey']
           @kms_key_name = args['kmsKeyName']
           @sha256 = args['sha256']
+          @kms_key_service_account = args['kmsKeyServiceAccount']
         end
 
         def to_s

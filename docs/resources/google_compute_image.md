@@ -70,6 +70,7 @@ Properties that can be accessed from the `google_compute_image` resource:
     Possible values:
       * MULTI_IP_SUBNET
       * SECURE_BOOT
+      * SEV_CAPABLE
       * UEFI_COMPATIBLE
       * VIRTIO_SCSI_MULTIQUEUE
       * WINDOWS
@@ -113,6 +114,10 @@ Properties that can be accessed from the `google_compute_image` resource:
     * `kms_key_name`: (Beta only) The name of the encryption key that is stored in Google Cloud KMS.
 
   * `source_disk_id`: The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
+
+  * `source_image`: URL of the source image used to create this image. In order to create an image, you must provide the full or partial URL of one of the following:  The selfLink URL This property The rawDisk.source URL The sourceDisk URL
+
+  * `source_snapshot`: URL of the source snapshot used to create this image.  In order to create an image, you must provide the full or partial URL of one of the following:  The selfLink URL This property The sourceImage URL The rawDisk.source URL The sourceDisk URL
 
   * `source_type`: The type of the image used to create this disk. The default and only value is RAW
   Possible values:

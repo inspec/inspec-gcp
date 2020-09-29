@@ -110,7 +110,7 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
 
     * `enable`: If logging is enabled for this subnetwork
 
-    * `aggregation_interval`: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection. Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+    * `aggregation_interval`: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
     Possible values:
       * INTERVAL_5_SEC
       * INTERVAL_30_SEC
@@ -125,6 +125,11 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
     Possible values:
       * EXCLUDE_ALL_METADATA
       * INCLUDE_ALL_METADATA
+      * CUSTOM_METADATA
+
+    * `metadata_fields`: List of metadata fields that should be added to reported logs. Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+
+    * `filter_expr`: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
 
 
 ## GCP Permissions
