@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.7.0 -->
+<!-- latest_release 1.8.0 -->
+## [v1.8.0](https://github.com/inspec/inspec-gcp/tree/v1.8.0) (2020-09-29)
+
+#### Merged Pull Requests
+- MM updates [#280](https://github.com/inspec/inspec-gcp/pull/280) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.7.0](https://github.com/inspec/inspec-gcp/tree/v1.7.0) (2020-06-24)
 
 #### Merged Pull Requests
 - Memcache updates [#269](https://github.com/inspec/inspec-gcp/pull/269) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.6.0](https://github.com/inspec/inspec-gcp/tree/v1.6.0) (2020-05-19)
 
