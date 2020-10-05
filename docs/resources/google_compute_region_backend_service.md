@@ -114,7 +114,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `fingerprint`: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 
-  * `health_checks`: The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most one health check can be specified, and a health check is required.
+  * `health_checks`: The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most one health check can be specified.   A health check must be specified unless the backend service uses an internet or serverless NEG as a backend.
 
   * `id`: The unique identifier for the resource.
 

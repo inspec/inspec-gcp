@@ -126,7 +126,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `enable_cdn`: If true, enable Cloud CDN for this BackendService.
 
-  * `health_checks`: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified.  A health check must be specified unless the backend service uses an internet NEG as a backend.  For internal load balancing, a URL to a HealthCheck resource must be specified instead.
+  * `health_checks`: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified.  A health check must be specified unless the backend service uses an internet or serverless NEG as a backend.  For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 
   * `id`: The unique identifier for the resource.
 
