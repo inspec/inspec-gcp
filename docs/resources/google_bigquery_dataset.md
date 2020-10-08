@@ -82,7 +82,7 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
   * `last_modified_time`: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 
-  * `location`: The geographic location where the dataset should reside. See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).   There are two types of locations, regional or multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a large geographic area, such as the United States, that contains at least two geographic places.   Possible regional values include: `asia-east1`, `asia-northeast1`, `asia-southeast1`, `australia-southeast1`, `europe-north1`, `europe-west2` and `us-east4`.   Possible multi-regional values: `EU` and `US`.   The default value is multi-regional location `US`. Changing this forces a new resource to be created.
+  * `location`: The geographic location where the dataset should reside. See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).   There are two types of locations, regional or multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a large geographic area, such as the United States, that contains at least two geographic places.   The default value is multi-regional location `US`. Changing this forces a new resource to be created.
 
   * `default_encryption_configuration`: The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
 
