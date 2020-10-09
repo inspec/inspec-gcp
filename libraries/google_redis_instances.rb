@@ -24,6 +24,7 @@ class RedisInstances < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:alternative_location_ids, field: :alternative_location_id)
+  filter_table_config.add(:auth_enableds, field: :auth_enabled)
   filter_table_config.add(:authorized_networks, field: :authorized_network)
   filter_table_config.add(:connect_modes, field: :connect_mode)
   filter_table_config.add(:create_times, field: :create_time)
@@ -81,6 +82,7 @@ class RedisInstances < GcpResourceBase
   def transformers
     {
       'alternativeLocationId' => ->(obj) { return :alternative_location_id, obj['alternativeLocationId'] },
+      'authEnabled' => ->(obj) { return :auth_enabled, obj['authEnabled'] },
       'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
       'connectMode' => ->(obj) { return :connect_mode, obj['connectMode'] },
       'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
