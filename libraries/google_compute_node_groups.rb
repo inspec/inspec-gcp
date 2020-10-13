@@ -28,6 +28,7 @@ class ComputeNodeGroups < GcpResourceBase
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:node_templates, field: :node_template)
   filter_table_config.add(:sizes, field: :size)
+  filter_table_config.add(:maintenance_policies, field: :maintenance_policy)
   filter_table_config.add(:autoscaling_policies, field: :autoscaling_policy)
   filter_table_config.add(:zones, field: :zone)
 
@@ -74,6 +75,7 @@ class ComputeNodeGroups < GcpResourceBase
       'name' => ->(obj) { return :name, obj['name'] },
       'nodeTemplate' => ->(obj) { return :node_template, obj['nodeTemplate'] },
       'size' => ->(obj) { return :size, obj['size'] },
+      'maintenancePolicy' => ->(obj) { return :maintenance_policy, obj['maintenancePolicy'] },
       'autoscalingPolicy' => ->(obj) { return :autoscaling_policy, GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s) },
       'zone' => ->(obj) { return :zone, obj['zone'] },
     }
