@@ -43,7 +43,7 @@ Properties that can be accessed from the `google_compute_target_pool` resource:
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
-  * `session_affinity`: Session affinity option. Must be one of these values:  - NONE: Connections from the same client IP may go to any instance in   the pool. - CLIENT_IP: Connections from the same client IP will go to the same   instance in the pool while that instance remains healthy. - CLIENT_IP_PROTO: Connections from the same client IP with the same   IP protocol will go to the same instance in the pool while that   instance remains healthy.
+  * `session_affinity`: Session affinity option. Must be one of these values:  * NONE: Connections from the same client IP may go to any instance in   the pool. * CLIENT_IP: Connections from the same client IP will go to the same   instance in the pool while that instance remains healthy. * CLIENT_IP_PROTO: Connections from the same client IP with the same   IP protocol will go to the same instance in the pool while that   instance remains healthy.
   Possible values:
     * NONE
     * CLIENT_IP
