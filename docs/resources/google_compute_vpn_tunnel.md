@@ -66,15 +66,15 @@ Properties that can be accessed from the `google_compute_vpn_tunnel` resource:
 
   * `target_vpn_gateway`: URL of the Target VPN gateway with which this VPN tunnel is associated.
 
-  * `vpn_gateway`: (Beta only) URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway resource is created.
+  * `vpn_gateway`: URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway resource is created.
 
-  * `vpn_gateway_interface`: (Beta only) The interface ID of the VPN gateway with which this VPN tunnel is associated.
+  * `vpn_gateway_interface`: The interface ID of the VPN gateway with which this VPN tunnel is associated.
 
-  * `peer_external_gateway`: (Beta only) URL of the peer side external VPN gateway to which this VPN tunnel is connected.
+  * `peer_external_gateway`: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 
-  * `peer_external_gateway_interface`: (Beta only) The interface ID of the external VPN gateway to which this VPN tunnel is connected.
+  * `peer_external_gateway_interface`: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 
-  * `peer_gcp_gateway`: (Beta only) URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway.
+  * `peer_gcp_gateway`: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway.
 
   * `router`: URL of router resource to be used for dynamic routing.
 
