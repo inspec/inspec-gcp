@@ -33,6 +33,7 @@ class ComputeNetwork < GcpResourceBase
   attr_reader :creation_timestamp
   attr_reader :routing_config
   attr_reader :peerings
+  attr_reader :mtu
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -51,6 +52,7 @@ class ComputeNetwork < GcpResourceBase
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @routing_config = GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(@fetched['routingConfig'], to_s)
     @peerings = GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(@fetched['peerings'], to_s)
+    @mtu = @fetched['mtu']
   end
 
   # Handles parsing RFC3339 time string
