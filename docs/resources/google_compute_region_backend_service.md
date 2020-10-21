@@ -120,6 +120,7 @@ Properties that can be accessed from the `google_compute_region_backend_service`
 
   * `load_balancing_scheme`: Indicates what kind of load balancing this regional backend service will be used for. A backend service created for one type of load balancing cannot be used with the other(s).
   Possible values:
+    * EXTERNAL
     * INTERNAL
     * INTERNAL_MANAGED
 
