@@ -308,7 +308,7 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `enabled`: If enabled, all container images will be validated by Binary Authorization.
 
-  * `release_channel`: (Beta only) ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk and frequency of updates.
+  * `release_channel`: ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk and frequency of updates.
 
     * `channel`: Which release channel the cluster is subscribed to.
     Possible values:
@@ -321,7 +321,7 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `enabled`: Whether Shielded Nodes features are enabled on all nodes in this cluster.
 
-  * `network_config`: ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk and frequency of updates.
+  * `network_config`: Network configurations
 
     * `enable_intra_node_visibility`: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 

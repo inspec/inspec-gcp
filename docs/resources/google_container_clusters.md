@@ -87,7 +87,7 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `node_pools`: an array of `google_container_cluster` node_pools
   * `pod_security_policy_configs`: (Beta only) an array of `google_container_cluster` pod_security_policy_config
   * `binary_authorizations`: an array of `google_container_cluster` binary_authorization
-  * `release_channels`: (Beta only) an array of `google_container_cluster` release_channel
+  * `release_channels`: an array of `google_container_cluster` release_channel
   * `shielded_nodes`: an array of `google_container_cluster` shielded_nodes
   * `network_configs`: an array of `google_container_cluster` network_config
   * `enable_kubernetes_alphas`: an array of `google_container_cluster` enable_kubernetes_alpha
