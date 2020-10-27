@@ -21,6 +21,7 @@ require 'google/container/property/cluster_addons_config_kubernetes_dashboard'
 require 'google/container/property/cluster_addons_config_network_policy_config'
 require 'google/container/property/cluster_binary_authorization'
 require 'google/container/property/cluster_conditions'
+require 'google/container/property/cluster_database_encryption'
 require 'google/container/property/cluster_default_max_pods_constraint'
 require 'google/container/property/cluster_ip_allocation_policy'
 require 'google/container/property/cluster_legacy_abac'
@@ -28,6 +29,7 @@ require 'google/container/property/cluster_master_auth'
 require 'google/container/property/cluster_master_auth_client_certificate_config'
 require 'google/container/property/cluster_master_authorized_networks_config'
 require 'google/container/property/cluster_master_authorized_networks_config_cidr_blocks'
+require 'google/container/property/cluster_network_config'
 require 'google/container/property/cluster_network_policy'
 require 'google/container/property/cluster_node_config'
 require 'google/container/property/cluster_node_config_accelerators'
@@ -36,6 +38,7 @@ require 'google/container/property/cluster_node_config_taints'
 require 'google/container/property/cluster_node_pools'
 require 'google/container/property/cluster_pod_security_policy_config'
 require 'google/container/property/cluster_private_cluster_config'
+require 'google/container/property/cluster_release_channel'
 require 'google/container/property/cluster_shielded_nodes'
 
 # A provider to manage Google Kubernetes Engine resources.
@@ -53,6 +56,7 @@ class ContainerCluster < GcpResourceBase
   attr_reader :logging_service
   attr_reader :monitoring_service
   attr_reader :network
+  attr_reader :database_encryption
   attr_reader :private_cluster_config
   attr_reader :cluster_ipv4_cidr
   attr_reader :enable_tpu
@@ -83,7 +87,10 @@ class ContainerCluster < GcpResourceBase
   attr_reader :node_pools
   attr_reader :pod_security_policy_config
   attr_reader :binary_authorization
+  attr_reader :release_channel
   attr_reader :shielded_nodes
+  attr_reader :network_config
+  attr_reader :enable_kubernetes_alpha
   attr_reader :location
 
   def initialize(params)
@@ -102,6 +109,7 @@ class ContainerCluster < GcpResourceBase
     @logging_service = @fetched['loggingService']
     @monitoring_service = @fetched['monitoringService']
     @network = @fetched['network']
+    @database_encryption = GoogleInSpec::Container::Property::ClusterDatabaseEncryption.new(@fetched['databaseEncryption'], to_s)
     @private_cluster_config = GoogleInSpec::Container::Property::ClusterPrivateClusterConfig.new(@fetched['privateClusterConfig'], to_s)
     @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
     @enable_tpu = @fetched['enableTpu']
@@ -132,7 +140,10 @@ class ContainerCluster < GcpResourceBase
     @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched['nodePools'], to_s)
     @pod_security_policy_config = GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(@fetched['podSecurityPolicyConfig'], to_s)
     @binary_authorization = GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(@fetched['binaryAuthorization'], to_s)
+    @release_channel = GoogleInSpec::Container::Property::ClusterReleaseChannel.new(@fetched['releaseChannel'], to_s)
     @shielded_nodes = GoogleInSpec::Container::Property::ClusterShieldedNodes.new(@fetched['shieldedNodes'], to_s)
+    @network_config = GoogleInSpec::Container::Property::ClusterNetworkConfig.new(@fetched['networkConfig'], to_s)
+    @enable_kubernetes_alpha = @fetched['enableKubernetesAlpha']
     @location = @fetched['location']
   end
 
