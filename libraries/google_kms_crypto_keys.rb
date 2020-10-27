@@ -31,6 +31,7 @@ class KMSCryptoKeys < GcpResourceBase
   filter_table_config.add(:version_templates, field: :version_template)
   filter_table_config.add(:next_rotation_times, field: :next_rotation_time)
   filter_table_config.add(:key_rings, field: :key_ring)
+  filter_table_config.add(:skip_initial_version_creations, field: :skip_initial_version_creation)
 
   filter_table_config.connect(self, :table)
 
@@ -78,6 +79,7 @@ class KMSCryptoKeys < GcpResourceBase
       'versionTemplate' => ->(obj) { return :version_template, GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(obj['versionTemplate'], to_s) },
       'nextRotationTime' => ->(obj) { return :next_rotation_time, parse_time_string(obj['nextRotationTime']) },
       'keyRing' => ->(obj) { return :key_ring, obj['keyRing'] },
+      'skipInitialVersionCreation' => ->(obj) { return :skip_initial_version_creation, obj['skipInitialVersionCreation'] },
     }
   end
 
