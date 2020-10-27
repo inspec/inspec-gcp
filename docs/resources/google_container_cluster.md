@@ -308,9 +308,14 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `enabled`: If enabled, all container images will be validated by Binary Authorization.
 
-  * `shielded_nodes`: (Beta only) Shielded Nodes configuration.
+  * `release_channel`: (Beta only) ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk and frequency of updates.
 
-    * `enabled`: Whether Shielded Nodes features are enabled on all nodes in this cluster.
+    * `channel`: Which release channel the cluster is subscribed to.
+    Possible values:
+      * UNSPECIFIED
+      * RAPID
+      * REGULAR
+      * STABLE
 
   * `shielded_nodes`: Shielded Nodes configuration.
 
