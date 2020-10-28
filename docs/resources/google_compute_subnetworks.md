@@ -58,6 +58,7 @@ See [google_compute_subnetwork.md](google_compute_subnetwork.md) for more detail
   * `roles`: (Beta only) an array of `google_compute_subnetwork` role
   * `secondary_ip_ranges`: an array of `google_compute_subnetwork` secondary_ip_ranges
   * `private_ip_google_accesses`: an array of `google_compute_subnetwork` private_ip_google_access
+  * `private_ipv6_google_accesses`: an array of `google_compute_subnetwork` private_ipv6_google_access
   * `regions`: an array of `google_compute_subnetwork` region
   * `log_configs`: an array of `google_compute_subnetwork` log_config
 

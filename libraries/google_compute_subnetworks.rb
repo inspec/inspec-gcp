@@ -34,6 +34,7 @@ class ComputeSubnetworks < GcpResourceBase
   filter_table_config.add(:roles, field: :role)
   filter_table_config.add(:secondary_ip_ranges, field: :secondary_ip_ranges)
   filter_table_config.add(:private_ip_google_accesses, field: :private_ip_google_access)
+  filter_table_config.add(:private_ipv6_google_accesses, field: :private_ipv6_google_access)
   filter_table_config.add(:regions, field: :region)
   filter_table_config.add(:log_configs, field: :log_config)
 
@@ -86,6 +87,7 @@ class ComputeSubnetworks < GcpResourceBase
       'role' => ->(obj) { return :role, obj['role'] },
       'secondaryIpRanges' => ->(obj) { return :secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s) },
       'privateIpGoogleAccess' => ->(obj) { return :private_ip_google_access, obj['privateIpGoogleAccess'] },
+      'privateIpv6GoogleAccess' => ->(obj) { return :private_ipv6_google_access, obj['privateIpv6GoogleAccess'] },
       'region' => ->(obj) { return :region, obj['region'] },
       'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj['logConfig'], to_s) },
     }

@@ -35,6 +35,7 @@ class ComputeSubnetwork < GcpResourceBase
   attr_reader :role
   attr_reader :secondary_ip_ranges
   attr_reader :private_ip_google_access
+  attr_reader :private_ipv6_google_access
   attr_reader :region
   attr_reader :log_config
 
@@ -57,6 +58,7 @@ class ComputeSubnetwork < GcpResourceBase
     @role = @fetched['role']
     @secondary_ip_ranges = GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(@fetched['secondaryIpRanges'], to_s)
     @private_ip_google_access = @fetched['privateIpGoogleAccess']
+    @private_ipv6_google_access = @fetched['privateIpv6GoogleAccess']
     @region = @fetched['region']
     @log_config = GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(@fetched['logConfig'], to_s)
   end
