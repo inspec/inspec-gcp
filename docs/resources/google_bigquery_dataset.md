@@ -42,9 +42,9 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
     * `group_by_email`: An email address of a Google Group to grant access to.
 
-    * `role`: Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their Primitive counterparts. See [official docs](https://cloud.google.com/bigquery/docs/access-control).
+    * `role`: Describes the rights granted to the user specified by the other member of the access object. Basic, predefined, and custom roles are supported. Predefined roles that have equivalent basic roles are swapped by the API to their basic counterparts. See [official docs](https://cloud.google.com/bigquery/docs/access-control).
 
-    * `special_group`: A special group to grant access to. Possible values include:   * `projectOwners`: Owners of the enclosing project.   * `projectReaders`: Readers of the enclosing project.   * `projectWriters`: Writers of the enclosing project.   * `allAuthenticatedUsers`: All authenticated BigQuery users. 
+    * `special_group`: A special group to grant access to. Possible values include:   * `projectOwners`: Owners of the enclosing project.   * `projectReaders`: Readers of the enclosing project.   * `projectWriters`: Writers of the enclosing project.   * `allAuthenticatedUsers`: All authenticated BigQuery users.
 
     * `user_by_email`: An email address of a user to grant access to. For example: fred@example.com
 
@@ -82,7 +82,7 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
 
   * `last_modified_time`: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 
-  * `location`: The geographic location where the dataset should reside. See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).   There are two types of locations, regional or multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a large geographic area, such as the United States, that contains at least two geographic places.   Possible regional values include: `asia-east1`, `asia-northeast1`, `asia-southeast1`, `australia-southeast1`, `europe-north1`, `europe-west2` and `us-east4`.   Possible multi-regional values: `EU` and `US`.   The default value is multi-regional location `US`. Changing this forces a new resource to be created.
+  * `location`: The geographic location where the dataset should reside. See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).   There are two types of locations, regional or multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a large geographic area, such as the United States, that contains at least two geographic places.   The default value is multi-regional location `US`. Changing this forces a new resource to be created.
 
   * `default_encryption_configuration`: The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
 

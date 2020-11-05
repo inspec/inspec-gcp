@@ -31,6 +31,7 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:logging_services, field: :logging_service)
   filter_table_config.add(:monitoring_services, field: :monitoring_service)
   filter_table_config.add(:cluster_networks, field: :cluster_network)
+  filter_table_config.add(:database_encryptions, field: :database_encryption)
   filter_table_config.add(:private_cluster_configs, field: :private_cluster_config)
   filter_table_config.add(:cluster_ipv4_cidrs, field: :cluster_ipv4_cidr)
   filter_table_config.add(:enable_tpus, field: :enable_tpu)
@@ -61,7 +62,10 @@ class ContainerClusters < GcpResourceBase
   filter_table_config.add(:node_pools, field: :node_pools)
   filter_table_config.add(:pod_security_policy_configs, field: :pod_security_policy_config)
   filter_table_config.add(:binary_authorizations, field: :binary_authorization)
+  filter_table_config.add(:release_channels, field: :release_channel)
   filter_table_config.add(:shielded_nodes, field: :shielded_nodes)
+  filter_table_config.add(:network_configs, field: :network_config)
+  filter_table_config.add(:enable_kubernetes_alphas, field: :enable_kubernetes_alpha)
   filter_table_config.add(:locations, field: :location)
 
   filter_table_config.connect(self, :table)
@@ -110,6 +114,7 @@ class ContainerClusters < GcpResourceBase
       'loggingService' => ->(obj) { return :logging_service, obj['loggingService'] },
       'monitoringService' => ->(obj) { return :monitoring_service, obj['monitoringService'] },
       'network' => ->(obj) { return :cluster_network, obj['network'] },
+      'databaseEncryption' => ->(obj) { return :database_encryption, GoogleInSpec::Container::Property::ClusterDatabaseEncryption.new(obj['databaseEncryption'], to_s) },
       'privateClusterConfig' => ->(obj) { return :private_cluster_config, GoogleInSpec::Container::Property::ClusterPrivateClusterConfig.new(obj['privateClusterConfig'], to_s) },
       'clusterIpv4Cidr' => ->(obj) { return :cluster_ipv4_cidr, obj['clusterIpv4Cidr'] },
       'enableTpu' => ->(obj) { return :enable_tpu, obj['enableTpu'] },
@@ -140,7 +145,10 @@ class ContainerClusters < GcpResourceBase
       'nodePools' => ->(obj) { return :node_pools, GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(obj['nodePools'], to_s) },
       'podSecurityPolicyConfig' => ->(obj) { return :pod_security_policy_config, GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(obj['podSecurityPolicyConfig'], to_s) },
       'binaryAuthorization' => ->(obj) { return :binary_authorization, GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(obj['binaryAuthorization'], to_s) },
+      'releaseChannel' => ->(obj) { return :release_channel, GoogleInSpec::Container::Property::ClusterReleaseChannel.new(obj['releaseChannel'], to_s) },
       'shieldedNodes' => ->(obj) { return :shielded_nodes, GoogleInSpec::Container::Property::ClusterShieldedNodes.new(obj['shieldedNodes'], to_s) },
+      'networkConfig' => ->(obj) { return :network_config, GoogleInSpec::Container::Property::ClusterNetworkConfig.new(obj['networkConfig'], to_s) },
+      'enableKubernetesAlpha' => ->(obj) { return :enable_kubernetes_alpha, obj['enableKubernetesAlpha'] },
       'location' => ->(obj) { return :location, obj['location'] },
     }
   end

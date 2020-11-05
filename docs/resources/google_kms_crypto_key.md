@@ -77,6 +77,8 @@ Properties that can be accessed from the `google_kms_crypto_key` resource:
 
   * `key_ring`: The KeyRing that this key belongs to. Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 
+  * `skip_initial_version_creation`: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.  You must use the `google_kms_key_ring_import_job` resource to import the CryptoKeyVersion.
+
 
 ## GCP Permissions
 

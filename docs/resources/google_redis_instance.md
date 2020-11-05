@@ -34,6 +34,8 @@ Properties that can be accessed from the `google_redis_instance` resource:
 
   * `alternative_location_id`: Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in [locationId].
 
+  * `auth_enabled`: (Beta only) Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
+
   * `authorized_network`: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default network will be used.
 
   * `connect_mode`: The connection mode of the Redis instance.

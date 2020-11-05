@@ -104,6 +104,13 @@ Properties that can be accessed from the `google_container_node_pool` resource:
 
       * `enable_integrity_monitoring`: Defines whether the instance has integrity monitoring enabled.  Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.
 
+    * `workload_meta_config`: WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
+
+      * `mode`: Mode is the configuration for how to expose metadata to workloads running on the node pool.
+      Possible values:
+        * GCE_METADATA
+        * GKE_METADATA
+
   * `initial_node_count`: The initial node count for the pool. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota.
 
   * `status`: Status of nodes in this pool instance

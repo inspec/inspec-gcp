@@ -154,6 +154,15 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
   * `network`: The name of the Google Compute Engine network to which the cluster is connected. If left unspecified, the default network will be used.
 
+  * `database_encryption`: Configuration of etcd encryption.
+
+    * `state`: Denotes the state of etcd encryption.
+    Possible values:
+      * ENCRYPTED
+      * DECRYPTED
+
+    * `key_name`: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. `projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key`
+
   * `private_cluster_config`: Configuration for a private cluster.
 
     * `enable_private_nodes`: Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
@@ -299,9 +308,30 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `enabled`: If enabled, all container images will be validated by Binary Authorization.
 
-  * `shielded_nodes`: (Beta only) Shielded Nodes configuration.
+  * `release_channel`: ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk and frequency of updates.
+
+    * `channel`: Which release channel the cluster is subscribed to.
+    Possible values:
+      * UNSPECIFIED
+      * RAPID
+      * REGULAR
+      * STABLE
+
+  * `shielded_nodes`: Shielded Nodes configuration.
 
     * `enabled`: Whether Shielded Nodes features are enabled on all nodes in this cluster.
+
+  * `network_config`: Network configurations
+
+    * `enable_intra_node_visibility`: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+
+    * `network`: The relative name of the Google Compute Engine network to which the cluster is connected. Example: projects/my-project/global/networks/my-network
+
+    * `subnetwork`: The relative name of the Google Compute Engine subnetwork to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+
+    * `default_snat_status`: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.
+
+  * `enable_kubernetes_alpha`: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes.
 
   * `location`: The location where the cluster is deployed
 

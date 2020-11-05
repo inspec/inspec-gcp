@@ -76,6 +76,7 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
       Possible values:
         * COMMENTS_DISABLED
         * COMMENTS_ENABLED
+        * COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY
 
       * `invert_regex`: If true, branches that do NOT match the git_ref will trigger a build.
 

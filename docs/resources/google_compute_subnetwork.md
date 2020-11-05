@@ -104,6 +104,8 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
 
   * `private_ip_google_access`: When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private Google Access.
 
+  * `private_ipv6_google_access`: The private IPv6 google access type for the VMs in this subnet.
+
   * `region`: The GCP region for this subnetwork.
 
   * `log_config`: Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -129,7 +131,7 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
 
     * `metadata_fields`: List of metadata fields that should be added to reported logs. Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
 
-    * `filter_expr`: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+    * `filter_expr`: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field. The default value is 'true', which evaluates to include everything.
 
 
 ## GCP Permissions

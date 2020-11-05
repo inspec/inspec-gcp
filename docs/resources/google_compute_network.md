@@ -102,6 +102,8 @@ Properties that can be accessed from the `google_compute_network` resource:
 
     * `peer_mtu`: Maximum Transmission Unit in bytes.
 
+  * `mtu`: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+
 
 ## GCP Permissions
 

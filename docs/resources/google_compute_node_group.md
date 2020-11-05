@@ -38,7 +38,9 @@ Properties that can be accessed from the `google_compute_node_group` resource:
 
   * `size`: The total number of nodes in the node group.
 
-  * `autoscaling_policy`: (Beta only) If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes of your node groups.
+  * `maintenance_policy`: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
+
+  * `autoscaling_policy`: If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes of your node groups.
 
     * `mode`: The autoscaling mode. Set to one of the following:   - OFF: Disables the autoscaler.   - ON: Enables scaling in and scaling out.   - ONLY_SCALE_OUT: Enables only scaling out.   You must use this mode if your node groups are configured to   restart their hosted VMs on minimal servers.
     Possible values:

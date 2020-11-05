@@ -45,11 +45,11 @@ See [google_compute_vpn_tunnel.md](google_compute_vpn_tunnel.md) for more detail
   * `vpn_tunnel_names`: an array of `google_compute_vpn_tunnel` name
   * `descriptions`: an array of `google_compute_vpn_tunnel` description
   * `target_vpn_gateways`: an array of `google_compute_vpn_tunnel` target_vpn_gateway
-  * `vpn_gateways`: (Beta only) an array of `google_compute_vpn_tunnel` vpn_gateway
-  * `vpn_gateway_interfaces`: (Beta only) an array of `google_compute_vpn_tunnel` vpn_gateway_interface
-  * `peer_external_gateways`: (Beta only) an array of `google_compute_vpn_tunnel` peer_external_gateway
-  * `peer_external_gateway_interfaces`: (Beta only) an array of `google_compute_vpn_tunnel` peer_external_gateway_interface
-  * `peer_gcp_gateways`: (Beta only) an array of `google_compute_vpn_tunnel` peer_gcp_gateway
+  * `vpn_gateways`: an array of `google_compute_vpn_tunnel` vpn_gateway
+  * `vpn_gateway_interfaces`: an array of `google_compute_vpn_tunnel` vpn_gateway_interface
+  * `peer_external_gateways`: an array of `google_compute_vpn_tunnel` peer_external_gateway
+  * `peer_external_gateway_interfaces`: an array of `google_compute_vpn_tunnel` peer_external_gateway_interface
+  * `peer_gcp_gateways`: an array of `google_compute_vpn_tunnel` peer_gcp_gateway
   * `routers`: an array of `google_compute_vpn_tunnel` router
   * `peer_ips`: an array of `google_compute_vpn_tunnel` peer_ip
   * `shared_secrets`: an array of `google_compute_vpn_tunnel` shared_secret

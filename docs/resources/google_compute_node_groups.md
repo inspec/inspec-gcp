@@ -30,7 +30,8 @@ See [google_compute_node_group.md](google_compute_node_group.md) for more detail
   * `names`: an array of `google_compute_node_group` name
   * `node_templates`: an array of `google_compute_node_group` node_template
   * `sizes`: an array of `google_compute_node_group` size
-  * `autoscaling_policies`: (Beta only) an array of `google_compute_node_group` autoscaling_policy
+  * `maintenance_policies`: an array of `google_compute_node_group` maintenance_policy
+  * `autoscaling_policies`: an array of `google_compute_node_group` autoscaling_policy
   * `zones`: an array of `google_compute_node_group` zone
 
 ## Filter Criteria

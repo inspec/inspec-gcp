@@ -49,6 +49,7 @@ See [google_compute_network.md](google_compute_network.md) for more detailed inf
   * `creation_timestamps`: an array of `google_compute_network` creation_timestamp
   * `routing_configs`: an array of `google_compute_network` routing_config
   * `peerings`: an array of `google_compute_network` peerings
+  * `mtus`: an array of `google_compute_network` mtu
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

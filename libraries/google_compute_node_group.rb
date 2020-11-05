@@ -28,6 +28,7 @@ class ComputeNodeGroup < GcpResourceBase
   attr_reader :name
   attr_reader :node_template
   attr_reader :size
+  attr_reader :maintenance_policy
   attr_reader :autoscaling_policy
   attr_reader :zone
 
@@ -44,6 +45,7 @@ class ComputeNodeGroup < GcpResourceBase
     @name = @fetched['name']
     @node_template = @fetched['nodeTemplate']
     @size = @fetched['size']
+    @maintenance_policy = @fetched['maintenancePolicy']
     @autoscaling_policy = GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(@fetched['autoscalingPolicy'], to_s)
     @zone = @fetched['zone']
   end

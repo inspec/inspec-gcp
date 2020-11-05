@@ -37,6 +37,7 @@ class ComputeDisk < GcpResourceBase
   attr_reader :size_gb
   attr_reader :users
   attr_reader :physical_block_size_bytes
+  attr_reader :interface
   attr_reader :type
   attr_reader :source_image
   attr_reader :resource_policies
@@ -68,6 +69,7 @@ class ComputeDisk < GcpResourceBase
     @size_gb = @fetched['sizeGb']
     @users = @fetched['users']
     @physical_block_size_bytes = @fetched['physicalBlockSizeBytes']
+    @interface = @fetched['interface']
     @type = @fetched['type']
     @source_image = @fetched['sourceImage']
     @resource_policies = @fetched['resourcePolicies']

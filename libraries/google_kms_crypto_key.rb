@@ -31,6 +31,7 @@ class KMSCryptoKey < GcpResourceBase
   attr_reader :version_template
   attr_reader :next_rotation_time
   attr_reader :key_ring
+  attr_reader :skip_initial_version_creation
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -48,6 +49,7 @@ class KMSCryptoKey < GcpResourceBase
     @version_template = GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(@fetched['versionTemplate'], to_s)
     @next_rotation_time = parse_time_string(@fetched['nextRotationTime'])
     @key_ring = @fetched['keyRing']
+    @skip_initial_version_creation = @fetched['skipInitialVersionCreation']
   end
 
   # Handles parsing RFC3339 time string

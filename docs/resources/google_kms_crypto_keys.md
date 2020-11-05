@@ -38,6 +38,7 @@ See [google_kms_crypto_key.md](google_kms_crypto_key.md) for more detailed infor
   * `version_templates`: an array of `google_kms_crypto_key` version_template
   * `next_rotation_times`: an array of `google_kms_crypto_key` next_rotation_time
   * `key_rings`: an array of `google_kms_crypto_key` key_ring
+  * `skip_initial_version_creations`: an array of `google_kms_crypto_key` skip_initial_version_creation
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

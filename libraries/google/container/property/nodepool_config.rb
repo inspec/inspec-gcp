@@ -16,6 +16,7 @@
 require 'google/container/property/nodepool_config_accelerators'
 require 'google/container/property/nodepool_config_shielded_instance_config'
 require 'google/container/property/nodepool_config_taints'
+require 'google/container/property/nodepool_config_workload_meta_config'
 module GoogleInSpec
   module Container
     module Property
@@ -50,6 +51,8 @@ module GoogleInSpec
 
         attr_reader :shielded_instance_config
 
+        attr_reader :workload_meta_config
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -68,6 +71,7 @@ module GoogleInSpec
           @min_cpu_platform = args['minCpuPlatform']
           @taints = GoogleInSpec::Container::Property::NodePoolConfigTaintsArray.parse(args['taints'], to_s)
           @shielded_instance_config = GoogleInSpec::Container::Property::NodePoolConfigShieldedInstanceConfig.new(args['shieldedInstanceConfig'], to_s)
+          @workload_meta_config = GoogleInSpec::Container::Property::NodePoolConfigWorkloadMetaConfig.new(args['workloadMetaConfig'], to_s)
         end
 
         def to_s
