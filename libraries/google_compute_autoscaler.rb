@@ -20,6 +20,8 @@ require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_uti
 require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
 require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control'
 require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas'
+require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control'
+require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas'
 
 # A provider to manage Compute Engine resources.
 class ComputeAutoscaler < GcpResourceBase
