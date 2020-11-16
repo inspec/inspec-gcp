@@ -44,6 +44,7 @@ class ComputeBackendService < GcpResourceBase
   attr_reader :connection_draining
   attr_reader :creation_timestamp
   attr_reader :custom_request_headers
+  attr_reader :custom_response_headers
   attr_reader :fingerprint
   attr_reader :description
   attr_reader :enable_cdn
@@ -77,6 +78,7 @@ class ComputeBackendService < GcpResourceBase
     @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @custom_request_headers = @fetched['customRequestHeaders']
+    @custom_response_headers = @fetched['customResponseHeaders']
     @fingerprint = @fetched['fingerprint']
     @description = @fetched['description']
     @enable_cdn = @fetched['enableCDN']

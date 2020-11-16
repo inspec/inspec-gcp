@@ -31,6 +31,7 @@ class ComputeBackendServices < GcpResourceBase
   filter_table_config.add(:connection_drainings, field: :connection_draining)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:custom_request_headers, field: :custom_request_headers)
+  filter_table_config.add(:custom_response_headers, field: :custom_response_headers)
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:enable_cdns, field: :enable_cdn)
@@ -94,6 +95,7 @@ class ComputeBackendServices < GcpResourceBase
       'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(obj['connectionDraining'], to_s) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'customRequestHeaders' => ->(obj) { return :custom_request_headers, obj['customRequestHeaders'] },
+      'customResponseHeaders' => ->(obj) { return :custom_response_headers, obj['customResponseHeaders'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'description' => ->(obj) { return :description, obj['description'] },
       'enableCDN' => ->(obj) { return :enable_cdn, obj['enableCDN'] },
