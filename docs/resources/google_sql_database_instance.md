@@ -108,13 +108,13 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
       * `ca_certificate`: PEM representation of the trusted CA's x509 certificate.
 
-      * `client_certificate`: PEM representation of the slave's x509 certificate
+      * `client_certificate`: PEM representation of the replica's x509 certificate
 
-      * `client_key`: PEM representation of the slave's private key. The corresponding public key is encoded in the client's certificate.
+      * `client_key`: PEM representation of the replica's private key. The corresponding public key is encoded in the client's certificate.
 
       * `connect_retry_interval`: Seconds to wait between connect retries. MySQL's default is 60 seconds.
 
-      * `dump_file_path`: Path to a SQL dump file in Google Cloud Storage from which the slave instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should have the binlog coordinates from which replication should begin. This can be accomplished by setting --master-data to 1 when using mysqldump.
+      * `dump_file_path`: Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should have the binlog coordinates from which replication should begin. This can be accomplished by setting --master-data to 1 when using mysqldump.
 
       * `master_heartbeat_period`: Interval in milliseconds between replication heartbeats.
 
