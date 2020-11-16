@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.1 -->
+<!-- latest_release 1.8.2 -->
+## [v1.8.2](https://github.com/inspec/inspec-gcp/tree/v1.8.2) (2020-11-16)
+
+#### Merged Pull Requests
+- Add AccessLevels, MM updates [#285](https://github.com/inspec/inspec-gcp/pull/285) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.8.1](https://github.com/inspec/inspec-gcp/tree/v1.8.1) (2020-11-05)
 
 #### Merged Pull Requests
 - MM updates, container cluster additions [#284](https://github.com/inspec/inspec-gcp/pull/284) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.8.0](https://github.com/inspec/inspec-gcp/tree/v1.8.0) (2020-09-29)
 
