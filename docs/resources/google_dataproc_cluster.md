@@ -158,7 +158,7 @@ Properties that can be accessed from the `google_dataproc_cluster` resource:
 
     * `encryption_config`: Encryption settings for the cluster.
 
-      * `gce_pd_kms_key_name`: The Cloud KMS key name to use for PD disk encyption for all instances in the cluster.
+      * `gce_pd_kms_key_name`: The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
 
     * `security_config`: Kerberos config holder.
 
