@@ -67,7 +67,7 @@ Properties that can be accessed from the `google_cloud_scheduler_job` resource:
 
     * `relative_uri`: The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL.  It can contain a path, query string arguments, and \# fragments.  If the relative URL is empty, then the root path "/" will be used.  No spaces are allowed, and the maximum length allowed is 2083 characters
 
-    * `body`: HTTP request body.  A request body is allowed only if the HTTP method is POST or PUT.  It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
+    * `body`: HTTP request body.  A request body is allowed only if the HTTP method is POST or PUT.  It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.  A base64-encoded string.
 
     * `headers`: HTTP request headers. This map contains the header field names and values.  Headers can be set when the job is created.
 
@@ -77,7 +77,7 @@ Properties that can be accessed from the `google_cloud_scheduler_job` resource:
 
     * `http_method`: Which HTTP method to use for the request.
 
-    * `body`: HTTP request body.  A request body is allowed only if the HTTP method is POST, PUT, or PATCH.  It is an error to set body on a job with an incompatible HttpMethod.
+    * `body`: HTTP request body.  A request body is allowed only if the HTTP method is POST, PUT, or PATCH.  It is an error to set body on a job with an incompatible HttpMethod.  A base64-encoded string.
 
     * `headers`: This map contains the header field names and values.  Repeated headers are not supported, but a header value can contain commas.
 
