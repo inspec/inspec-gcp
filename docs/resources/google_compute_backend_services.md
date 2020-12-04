@@ -33,7 +33,7 @@ See [google_compute_backend_service.md](google_compute_backend_service.md) for m
   * `connection_drainings`: an array of `google_compute_backend_service` connection_draining
   * `creation_timestamps`: an array of `google_compute_backend_service` creation_timestamp
   * `custom_request_headers`: an array of `google_compute_backend_service` custom_request_headers
-  * `custom_response_headers`: an array of `google_compute_backend_service` custom_response_headers
+  * `custom_response_headers`: (Beta only) an array of `google_compute_backend_service` custom_response_headers
   * `fingerprints`: an array of `google_compute_backend_service` fingerprint
   * `descriptions`: an array of `google_compute_backend_service` description
   * `enable_cdns`: an array of `google_compute_backend_service` enable_cdn

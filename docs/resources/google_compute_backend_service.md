@@ -142,7 +142,7 @@ Properties that can be accessed from the `google_compute_backend_service` resour
 
   * `custom_request_headers`: Headers that the HTTP/S load balancer should add to proxied requests.
 
-  * `custom_response_headers`: Headers that the HTTP/S load balancer should add to proxied responses.
+  * `custom_response_headers`: (Beta only) Headers that the HTTP/S load balancer should add to proxied responses.
 
   * `fingerprint`: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 
