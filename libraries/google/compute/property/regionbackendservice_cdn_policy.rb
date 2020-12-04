@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
-require 'google/compute/property/backendservice_cdn_policy_negative_caching_policy'
+require 'google/compute/property/regionbackendservice_cdn_policy_cache_key_policy'
+require 'google/compute/property/regionbackendservice_cdn_policy_negative_caching_policy'
 module GoogleInSpec
   module Compute
     module Property
-      class BackendServiceCdnPolicy
+      class RegionBackendServiceCdnPolicy
         attr_reader :cache_key_policy
 
         attr_reader :signed_url_cache_max_age_sec
@@ -40,19 +40,19 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'], to_s)
+          @cache_key_policy = GoogleInSpec::Compute::Property::RegionBackendServiceCdnPolicyCacheKeyPolicy.new(args['cacheKeyPolicy'], to_s)
           @signed_url_cache_max_age_sec = args['signedUrlCacheMaxAgeSec']
           @default_ttl = args['defaultTtl']
           @max_ttl = args['maxTtl']
           @client_ttl = args['clientTtl']
           @negative_caching = args['negativeCaching']
-          @negative_caching_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyNegativeCachingPolicyArray.parse(args['negativeCachingPolicy'], to_s)
+          @negative_caching_policy = GoogleInSpec::Compute::Property::RegionBackendServiceCdnPolicyNegativeCachingPolicyArray.parse(args['negativeCachingPolicy'], to_s)
           @cache_mode = args['cacheMode']
           @serve_while_stale = args['serveWhileStale']
         end
 
         def to_s
-          "#{@parent_identifier} BackendServiceCdnPolicy"
+          "#{@parent_identifier} RegionBackendServiceCdnPolicy"
         end
       end
     end

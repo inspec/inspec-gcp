@@ -49,6 +49,10 @@ Properties that can be accessed from the `google_compute_backend_bucket` resourc
       * `ttl`: (Beta only) The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 
     * `cache_mode`: (Beta only) Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+    Possible values:
+      * USE_ORIGIN_HEADERS
+      * FORCE_CACHE_ALL
+      * CACHE_ALL_STATIC
 
     * `serve_while_stale`: (Beta only) Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. 
 
