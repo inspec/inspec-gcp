@@ -194,13 +194,6 @@ class ContainerCluster < GcpResourceBase
     true
   end
 
-  def has_kubernetes_dashboard_disabled?
-    return false if !defined?(@addons_config.kubernetes_dashboard)
-    return false if @addons_config.kubernetes_dashboard.to_h.empty?
-    return true if  @addons_config.kubernetes_dashboard.to_h=={ 'disabled': true }
-    false
-  end
-
   def has_basic_authorization?
     return false if @master_auth.username.nil? and @master_auth.password.nil?
     true
