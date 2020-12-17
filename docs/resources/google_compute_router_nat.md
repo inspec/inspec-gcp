@@ -75,6 +75,8 @@ Properties that can be accessed from the `google_compute_router_nat` resource:
       * TRANSLATIONS_ONLY
       * ALL
 
+  * `enable_endpoint_independent_mapping`: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+
   * `router`: The name of the Cloud Router in which this NAT will be configured.
 
   * `region`: Region where the router and NAT reside.

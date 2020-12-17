@@ -35,6 +35,7 @@ class ComputeRouterNats < GcpResourceBase
   filter_table_config.add(:tcp_established_idle_timeout_secs, field: :tcp_established_idle_timeout_sec)
   filter_table_config.add(:tcp_transitory_idle_timeout_secs, field: :tcp_transitory_idle_timeout_sec)
   filter_table_config.add(:log_configs, field: :log_config)
+  filter_table_config.add(:enable_endpoint_independent_mappings, field: :enable_endpoint_independent_mapping)
   filter_table_config.add(:routers, field: :router)
   filter_table_config.add(:regions, field: :region)
 
@@ -88,6 +89,7 @@ class ComputeRouterNats < GcpResourceBase
       'tcpEstablishedIdleTimeoutSec' => ->(obj) { return :tcp_established_idle_timeout_sec, obj['tcpEstablishedIdleTimeoutSec'] },
       'tcpTransitoryIdleTimeoutSec' => ->(obj) { return :tcp_transitory_idle_timeout_sec, obj['tcpTransitoryIdleTimeoutSec'] },
       'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::RouterNatLogConfig.new(obj['logConfig'], to_s) },
+      'enableEndpointIndependentMapping' => ->(obj) { return :enable_endpoint_independent_mapping, obj['enableEndpointIndependentMapping'] },
       'router' => ->(obj) { return :router, obj['router'] },
       'region' => ->(obj) { return :region, obj['region'] },
     }

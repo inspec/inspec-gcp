@@ -36,6 +36,7 @@ class ComputeRouterNat < GcpResourceBase
   attr_reader :tcp_established_idle_timeout_sec
   attr_reader :tcp_transitory_idle_timeout_sec
   attr_reader :log_config
+  attr_reader :enable_endpoint_independent_mapping
   attr_reader :router
   attr_reader :region
 
@@ -72,6 +73,7 @@ class ComputeRouterNat < GcpResourceBase
     @tcp_established_idle_timeout_sec = @fetched['tcpEstablishedIdleTimeoutSec']
     @tcp_transitory_idle_timeout_sec = @fetched['tcpTransitoryIdleTimeoutSec']
     @log_config = GoogleInSpec::Compute::Property::RouterNatLogConfig.new(@fetched['logConfig'], to_s)
+    @enable_endpoint_independent_mapping = @fetched['enableEndpointIndependentMapping']
     @router = @fetched['router']
     @region = @fetched['region']
   end
