@@ -48,7 +48,7 @@ Properties that can be accessed from the `google_compute_forwarding_rules` resou
 
 See [google_compute_forwarding_rule.md](google_compute_forwarding_rule.md) for more detailed information
   * `creation_timestamps`: an array of `google_compute_forwarding_rule` creation_timestamp
-  * `is_mirroring_collectors`: (Beta only) an array of `google_compute_forwarding_rule` is_mirroring_collector
+  * `is_mirroring_collectors`: an array of `google_compute_forwarding_rule` is_mirroring_collector
   * `descriptions`: an array of `google_compute_forwarding_rule` description
   * `forwarding_rule_ids`: an array of `google_compute_forwarding_rule` id
   * `ip_addresses`: an array of `google_compute_forwarding_rule` ip_address
