@@ -154,7 +154,7 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
     * `tier`: The tier or machine type for this instance, for example db-n1-standard-1. For MySQL instances, this field determines whether the instance is Second Generation (recommended) or First Generation.
 
-    * `availability_type`: The availabilityType define if your postgres instance is run zonal  or regional.
+    * `availability_type`: The availabilityType define if your postgres instance is run zonal or regional.
     Possible values:
       * ZONAL
       * REGIONAL
@@ -163,11 +163,11 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
       * `enabled`: Enable Autobackup for your instance.
 
-      * `binary_log_enabled`: Whether binary log is enabled. If backup configuration  is disabled, binary log must be disabled as well. MySQL only.
+      * `binary_log_enabled`: Whether binary log is enabled. If backup configuration is disabled, binary log must be disabled as well. MySQL only.
 
       * `start_time`: Define the backup start time in UTC (HH:MM)
 
-    * `settings_version`: The version of instance settings. This is a required field for  update method to make sure concurrent updates are handled properly.  During update, use the most recent settingsVersion value for this  instance and do not try to update this value.
+    * `settings_version`: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 
     * `user_labels`: User-provided labels, represented as a dictionary where each label is a single key value pair.
 
