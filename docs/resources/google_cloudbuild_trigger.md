@@ -62,7 +62,7 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `commit_sha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
-  * `github`: (Beta only) Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+  * `github`: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 
     * `owner`: Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 
