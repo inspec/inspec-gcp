@@ -97,3 +97,5 @@ Properties that can be accessed from the `google_cloud_scheduler_job` resource:
 
 
 ## GCP Permissions
+
+Ensure the [Cloud Scheduler](https://console.cloud.google.com/apis/library/cloudscheduler.googleapis.com/) is enabled for the current project.
