@@ -52,7 +52,7 @@ class MemcacheInstance < GcpResourceBase
     @display_name = @fetched['displayName']
     @memcache_nodes = GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(@fetched['memcacheNodes'], to_s)
     @create_time = parse_time_string(@fetched['createTime'])
-    @discovery_endpoint = parse_time_string(@fetched['discoveryEndpoint'])
+    @discovery_endpoint = @fetched['discoveryEndpoint']
     @labels = @fetched['labels']
     @memcache_full_version = @fetched['memcacheFullVersion']
     @zones = @fetched['zones']
