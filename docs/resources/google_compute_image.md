@@ -74,6 +74,7 @@ Properties that can be accessed from the `google_compute_image` resource:
       * UEFI_COMPATIBLE
       * VIRTIO_SCSI_MULTIQUEUE
       * WINDOWS
+      * GVNIC
 
   * `id`: The unique identifier for the resource. This identifier is defined by the server.
 

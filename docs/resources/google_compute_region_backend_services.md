@@ -28,10 +28,12 @@ See [google_compute_region_backend_service.md](google_compute_region_backend_ser
   * `backends`: an array of `google_compute_region_backend_service` backends
   * `circuit_breakers`: an array of `google_compute_region_backend_service` circuit_breakers
   * `consistent_hashes`: an array of `google_compute_region_backend_service` consistent_hash
+  * `cdn_policies`: an array of `google_compute_region_backend_service` cdn_policy
   * `connection_drainings`: an array of `google_compute_region_backend_service` connection_draining
   * `creation_timestamps`: an array of `google_compute_region_backend_service` creation_timestamp
   * `descriptions`: an array of `google_compute_region_backend_service` description
   * `failover_policies`: an array of `google_compute_region_backend_service` failover_policy
+  * `enable_cdns`: an array of `google_compute_region_backend_service` enable_cdn
   * `fingerprints`: an array of `google_compute_region_backend_service` fingerprint
   * `health_checks`: an array of `google_compute_region_backend_service` health_checks
   * `ids`: an array of `google_compute_region_backend_service` id

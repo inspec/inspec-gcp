@@ -33,6 +33,7 @@ See [google_compute_router_nat.md](google_compute_router_nat.md) for more detail
   * `tcp_established_idle_timeout_secs`: an array of `google_compute_router_nat` tcp_established_idle_timeout_sec
   * `tcp_transitory_idle_timeout_secs`: an array of `google_compute_router_nat` tcp_transitory_idle_timeout_sec
   * `log_configs`: an array of `google_compute_router_nat` log_config
+  * `enable_endpoint_independent_mappings`: an array of `google_compute_router_nat` enable_endpoint_independent_mapping
   * `routers`: an array of `google_compute_router_nat` router
   * `regions`: an array of `google_compute_router_nat` region
 

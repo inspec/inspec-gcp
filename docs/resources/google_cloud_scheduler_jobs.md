@@ -41,3 +41,5 @@ This resource supports all of the above properties as filter criteria, which can
 with `where` as a block or a method.
 
 ## GCP Permissions
+
+Ensure the [Cloud Scheduler](https://console.cloud.google.com/apis/library/cloudscheduler.googleapis.com/) is enabled for the current project.

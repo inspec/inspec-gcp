@@ -27,10 +27,12 @@ class ComputeRegionBackendServices < GcpResourceBase
   filter_table_config.add(:backends, field: :backends)
   filter_table_config.add(:circuit_breakers, field: :circuit_breakers)
   filter_table_config.add(:consistent_hashes, field: :consistent_hash)
+  filter_table_config.add(:cdn_policies, field: :cdn_policy)
   filter_table_config.add(:connection_drainings, field: :connection_draining)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:failover_policies, field: :failover_policy)
+  filter_table_config.add(:enable_cdns, field: :enable_cdn)
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:health_checks, field: :health_checks)
   filter_table_config.add(:ids, field: :id)
@@ -88,10 +90,12 @@ class ComputeRegionBackendServices < GcpResourceBase
       'backends' => ->(obj) { return :backends, GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(obj['backends'], to_s) },
       'circuitBreakers' => ->(obj) { return :circuit_breakers, GoogleInSpec::Compute::Property::RegionBackendServiceCircuitBreakers.new(obj['circuitBreakers'], to_s) },
       'consistentHash' => ->(obj) { return :consistent_hash, GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHash.new(obj['consistentHash'], to_s) },
+      'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::RegionBackendServiceCdnPolicy.new(obj['cdnPolicy'], to_s) },
       'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(obj['connectionDraining'], to_s) },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
       'description' => ->(obj) { return :description, obj['description'] },
       'failoverPolicy' => ->(obj) { return :failover_policy, GoogleInSpec::Compute::Property::RegionBackendServiceFailoverPolicy.new(obj['failoverPolicy'], to_s) },
+      'enableCDN' => ->(obj) { return :enable_cdn, obj['enableCDN'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'healthChecks' => ->(obj) { return :health_checks, obj['healthChecks'] },
       'id' => ->(obj) { return :id, obj['id'] },

@@ -15,6 +15,9 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/compute/property/regionbackendservice_backends'
+require 'google/compute/property/regionbackendservice_cdn_policy'
+require 'google/compute/property/regionbackendservice_cdn_policy_cache_key_policy'
+require 'google/compute/property/regionbackendservice_cdn_policy_negative_caching_policy'
 require 'google/compute/property/regionbackendservice_circuit_breakers'
 require 'google/compute/property/regionbackendservice_circuit_breakers_connect_timeout'
 require 'google/compute/property/regionbackendservice_connection_draining'
@@ -38,10 +41,12 @@ class ComputeRegionBackendService < GcpResourceBase
   attr_reader :backends
   attr_reader :circuit_breakers
   attr_reader :consistent_hash
+  attr_reader :cdn_policy
   attr_reader :connection_draining
   attr_reader :creation_timestamp
   attr_reader :description
   attr_reader :failover_policy
+  attr_reader :enable_cdn
   attr_reader :fingerprint
   attr_reader :health_checks
   attr_reader :id
@@ -69,10 +74,12 @@ class ComputeRegionBackendService < GcpResourceBase
     @backends = GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(@fetched['backends'], to_s)
     @circuit_breakers = GoogleInSpec::Compute::Property::RegionBackendServiceCircuitBreakers.new(@fetched['circuitBreakers'], to_s)
     @consistent_hash = GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHash.new(@fetched['consistentHash'], to_s)
+    @cdn_policy = GoogleInSpec::Compute::Property::RegionBackendServiceCdnPolicy.new(@fetched['cdnPolicy'], to_s)
     @connection_draining = GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @description = @fetched['description']
     @failover_policy = GoogleInSpec::Compute::Property::RegionBackendServiceFailoverPolicy.new(@fetched['failoverPolicy'], to_s)
+    @enable_cdn = @fetched['enableCDN']
     @fingerprint = @fetched['fingerprint']
     @health_checks = @fetched['healthChecks']
     @id = @fetched['id']

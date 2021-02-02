@@ -97,6 +97,8 @@ Properties that can be accessed from the `google_compute_autoscaler` resource:
 
       * `utilization_target`: Fraction of backend capacity utilization (set in HTTP(s) load balancing configuration) that autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8.
 
+    * `scaling_schedules`: (Beta only) Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+
   * `target`: URL of the managed instance group that this autoscaler will scale.
 
   * `zone`: URL of the zone where the instance group resides.

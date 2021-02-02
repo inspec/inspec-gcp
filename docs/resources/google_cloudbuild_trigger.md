@@ -62,7 +62,7 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `commit_sha`: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 
-  * `github`: (Beta only) Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+  * `github`: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 
     * `owner`: Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 
@@ -138,7 +138,7 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
     * `steps`: The operations to be performed on the workspace.
 
-      * `name`: The name of the container image that will run this particular build step.  If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary.  The Docker daemon's cache will already have the latest versions of all of the officially supported build steps (https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them.  If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+      * `name`: The name of the container image that will run this particular build step.  If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary.  The Docker daemon's cache will already have the latest versions of all of the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders  for images and examples). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them.  If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 
       * `args`: A list of arguments that will be presented to the step when it is started.  If the image used to run the step's container has an entrypoint, the args are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 

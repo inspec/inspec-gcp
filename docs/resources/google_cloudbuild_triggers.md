@@ -37,7 +37,7 @@ See [google_cloudbuild_trigger.md](google_cloudbuild_trigger.md) for more detail
   * `ignored_files`: an array of `google_cloudbuild_trigger` ignored_files
   * `included_files`: an array of `google_cloudbuild_trigger` included_files
   * `trigger_templates`: an array of `google_cloudbuild_trigger` trigger_template
-  * `githubs`: (Beta only) an array of `google_cloudbuild_trigger` github
+  * `githubs`: an array of `google_cloudbuild_trigger` github
   * `builds`: an array of `google_cloudbuild_trigger` build
 
 ## Filter Criteria

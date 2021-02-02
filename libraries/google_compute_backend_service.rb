@@ -17,6 +17,7 @@ require 'gcp_backend'
 require 'google/compute/property/backendservice_backends'
 require 'google/compute/property/backendservice_cdn_policy'
 require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
+require 'google/compute/property/backendservice_cdn_policy_negative_caching_policy'
 require 'google/compute/property/backendservice_circuit_breakers'
 require 'google/compute/property/backendservice_circuit_breakers_connect_timeout'
 require 'google/compute/property/backendservice_connection_draining'
@@ -44,6 +45,7 @@ class ComputeBackendService < GcpResourceBase
   attr_reader :connection_draining
   attr_reader :creation_timestamp
   attr_reader :custom_request_headers
+  attr_reader :custom_response_headers
   attr_reader :fingerprint
   attr_reader :description
   attr_reader :enable_cdn
@@ -77,6 +79,7 @@ class ComputeBackendService < GcpResourceBase
     @connection_draining = GoogleInSpec::Compute::Property::BackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
     @custom_request_headers = @fetched['customRequestHeaders']
+    @custom_response_headers = @fetched['customResponseHeaders']
     @fingerprint = @fetched['fingerprint']
     @description = @fetched['description']
     @enable_cdn = @fetched['enableCDN']

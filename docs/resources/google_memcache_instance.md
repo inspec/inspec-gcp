@@ -68,7 +68,7 @@ Properties that can be accessed from the `google_memcache_instance` resource:
 
     * `params`: (Beta only) User-defined set of parameters to use in the memcache process.
 
-  * `region`: (Beta only) The name of the Memcache region of the instance.
+  * `region`: (Beta only) The region of the Memcache instance. If it is not provided, the provider region is used.
 
 
 ## GCP Permissions

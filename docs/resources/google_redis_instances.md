@@ -27,7 +27,7 @@ Properties that can be accessed from the `google_redis_instances` resource:
 
 See [google_redis_instance.md](google_redis_instance.md) for more detailed information
   * `alternative_location_ids`: an array of `google_redis_instance` alternative_location_id
-  * `auth_enableds`: (Beta only) an array of `google_redis_instance` auth_enabled
+  * `auth_enableds`: an array of `google_redis_instance` auth_enabled
   * `authorized_networks`: an array of `google_redis_instance` authorized_network
   * `connect_modes`: an array of `google_redis_instance` connect_mode
   * `create_times`: an array of `google_redis_instance` create_time
