@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.3 -->
+<!-- latest_release 1.8.4 -->
+## [v1.8.4](https://github.com/inspec/inspec-gcp/tree/v1.8.4) (2021-02-02)
+
+#### Merged Pull Requests
+- Several updates to CI testing [#306](https://github.com/inspec/inspec-gcp/pull/306) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v1.8.3](https://github.com/inspec/inspec-gcp/tree/v1.8.3) (2021-02-02)
 
 #### Merged Pull Requests
 - Update inspec-bin requirement from 4.16.0 to 4.26.4 [#304](https://github.com/inspec/inspec-gcp/pull/304) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v1.8.2](https://github.com/inspec/inspec-gcp/tree/v1.8.2) (2020-11-16)
 
