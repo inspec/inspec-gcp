@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.5 -->
+<!-- latest_release 1.8.6 -->
+## [v1.8.6](https://github.com/inspec/inspec-gcp/tree/v1.8.6) (2021-02-02)
+
+#### Merged Pull Requests
+- Adjusting examples to use updated lib name [#277](https://github.com/inspec/inspec-gcp/pull/277) ([lowwalker](https://github.com/lowwalker))
+<!-- latest_release -->
+
 ## [v1.8.5](https://github.com/inspec/inspec-gcp/tree/v1.8.5) (2021-02-02)
 
 #### Merged Pull Requests
 - MM updates [#303](https://github.com/inspec/inspec-gcp/pull/303) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.8.4](https://github.com/inspec/inspec-gcp/tree/v1.8.4) (2021-02-02)
 
