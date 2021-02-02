@@ -6,7 +6,7 @@ gem 'google-api-client'
 gem 'google-cloud'
 gem 'googleauth'
 gem 'inifile'
-gem 'inspec-bin', '4.16.0'
+gem 'inspec-bin', '4.26.4'
 gem 'rubocop', '>= 0.77.0'
 
 group :development do
