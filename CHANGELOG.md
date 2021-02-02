@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.4 -->
+<!-- latest_release 1.8.5 -->
+## [v1.8.5](https://github.com/inspec/inspec-gcp/tree/v1.8.5) (2021-02-02)
+
+#### Merged Pull Requests
+- MM updates [#303](https://github.com/inspec/inspec-gcp/pull/303) ([slevenick](https://github.com/slevenick))
+<!-- latest_release -->
+
 ## [v1.8.4](https://github.com/inspec/inspec-gcp/tree/v1.8.4) (2021-02-02)
 
 #### Merged Pull Requests
 - Several updates to CI testing [#306](https://github.com/inspec/inspec-gcp/pull/306) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.8.3](https://github.com/inspec/inspec-gcp/tree/v1.8.3) (2021-02-02)
 
