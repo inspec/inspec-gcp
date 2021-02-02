@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.2 -->
+<!-- latest_release 1.8.3 -->
+## [v1.8.3](https://github.com/inspec/inspec-gcp/tree/v1.8.3) (2021-02-02)
+
+#### Merged Pull Requests
+- Update inspec-bin requirement from 4.16.0 to 4.26.4 [#304](https://github.com/inspec/inspec-gcp/pull/304) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v1.8.2](https://github.com/inspec/inspec-gcp/tree/v1.8.2) (2020-11-16)
 
 #### Merged Pull Requests
 - Add AccessLevels, MM updates [#285](https://github.com/inspec/inspec-gcp/pull/285) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.8.1](https://github.com/inspec/inspec-gcp/tree/v1.8.1) (2020-11-05)
 
