@@ -1,4 +1,10 @@
 ---
+expeditor:
+  defaults:
+    buildkite:
+      timeout_in_minutes: 20
+
+
 steps:
 
 - label: lint-ruby-2.6
