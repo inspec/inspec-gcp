@@ -41,6 +41,8 @@ class RedisInstances < GcpResourceBase
   filter_table_config.add(:redis_versions, field: :redis_version)
   filter_table_config.add(:reserved_ip_ranges, field: :reserved_ip_range)
   filter_table_config.add(:tiers, field: :tier)
+  filter_table_config.add(:transit_encryption_modes, field: :transit_encryption_mode)
+  filter_table_config.add(:server_ca_certs, field: :server_ca_certs)
   filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
@@ -99,6 +101,8 @@ class RedisInstances < GcpResourceBase
       'redisVersion' => ->(obj) { return :redis_version, obj['redisVersion'] },
       'reservedIpRange' => ->(obj) { return :reserved_ip_range, obj['reservedIpRange'] },
       'tier' => ->(obj) { return :tier, obj['tier'] },
+      'transitEncryptionMode' => ->(obj) { return :transit_encryption_mode, obj['transitEncryptionMode'] },
+      'serverCaCerts' => ->(obj) { return :server_ca_certs, GoogleInSpec::Redis::Property::InstanceServerCaCertsArray.parse(obj['serverCaCerts'], to_s) },
       'region' => ->(obj) { return :region, obj['region'] },
     }
   end
