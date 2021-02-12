@@ -33,9 +33,9 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
 
   * `id`: The unique identifier for the resource.
 
-  * `ip_address`: The IP address that this forwarding rule is serving on behalf of.  Addresses are restricted based on the forwarding rule's load balancing scheme (external or internal) and scope (global or regional). The address must be a global IP for external global forwarding rules.  If this field is empty, an ephemeral IPv4 address from the same scope (global) is chosen. Global forwarding rules supports either IPv4 or IPv6.  When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address resource (internal regional static IP address), with a purpose of GCE_END_POINT and addressType of INTERNAL.  An address can be specified either by a literal IP address or a URL reference to an existing Address resource. The following examples are all valid:  * 100.1.2.3 * https://www.googleapis.com/compute/v1/projects/project/regions/      region/addresses/address * projects/project/regions/region/addresses/address * regions/region/addresses/address * global/addresses/address * address
+  * `ip_address`: The IP address that this forwarding rule is serving on behalf of.  Addresses are restricted based on the forwarding rule's load balancing scheme (external or internal) and scope (global or regional). The address must be a global IP for external global forwarding rules.  If this field is empty, an ephemeral IPv4 address from the same scope (global) is chosen. Global forwarding rules supports either IPv4 or IPv6.  When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address resource (internal regional static IP address), with a purpose of GCE_END_POINT and addressType of INTERNAL.  ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) This must be a URL reference to an existing Address resource (internal global static IP address), with a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.  An address can be specified either by a literal IP address or a URL reference to an existing Address resource. The following examples are all valid:  * 100.1.2.3 * https://www.googleapis.com/compute/v1/projects/project/regions/      region/addresses/address * projects/project/regions/region/addresses/address * regions/region/addresses/address * global/addresses/address * address
 
-  * `ip_protocol`: The IP protocol to which this rule applies. When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCP is valid.
+  * `ip_protocol`: The IP protocol to which this rule applies. When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL
   Possible values:
     * TCP
     * UDP
@@ -53,7 +53,7 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
 
   * `label_fingerprint`: (Beta only) The fingerprint used for optimistic locking of this resource.  Used internally during updates.
 
-  * `load_balancing_scheme`: This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)  NOTE: Currently global forwarding rules cannot be used for INTERNAL load balancing.
+  * `load_balancing_scheme`: This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)  ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set "" if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
   Possible values:
     * EXTERNAL
     * INTERNAL_SELF_MANAGED
@@ -77,7 +77,7 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
 
   * `port_range`: This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.  Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.  Some types of forwarding target have constraints on the acceptable ports:  * TargetHttpProxy: 80, 8080 * TargetHttpsProxy: 443 * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,                   1883, 5222 * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,                   1883, 5222 * TargetVpnGateway: 500, 4500
 
-  * `target`: The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
+  * `target`: The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.  ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 
 
 ## GCP Permissions
