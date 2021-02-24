@@ -19,10 +19,13 @@ module GoogleInSpec
       class AutoscalerAutoscalingPolicyCpuUtilization
         attr_reader :utilization_target
 
+        attr_reader :predictive_method
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @utilization_target = args['utilizationTarget']
+          @predictive_method = args['predictiveMethod']
         end
 
         def to_s
