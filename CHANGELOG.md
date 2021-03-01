@@ -1,10 +1,35 @@
 # Change Log
-<!-- latest_release 1.8.1 -->
+<!-- latest_release 1.8.6 -->
+## [v1.8.6](https://github.com/inspec/inspec-gcp/tree/v1.8.6) (2021-02-02)
+
+#### Merged Pull Requests
+- Adjusting examples to use updated lib name [#277](https://github.com/inspec/inspec-gcp/pull/277) ([lowwalker](https://github.com/lowwalker))
+<!-- latest_release -->
+
+## [v1.8.5](https://github.com/inspec/inspec-gcp/tree/v1.8.5) (2021-02-02)
+
+#### Merged Pull Requests
+- MM updates [#303](https://github.com/inspec/inspec-gcp/pull/303) ([slevenick](https://github.com/slevenick))
+
+## [v1.8.4](https://github.com/inspec/inspec-gcp/tree/v1.8.4) (2021-02-02)
+
+#### Merged Pull Requests
+- Several updates to CI testing [#306](https://github.com/inspec/inspec-gcp/pull/306) ([clintoncwolfe](https://github.com/clintoncwolfe))
+
+## [v1.8.3](https://github.com/inspec/inspec-gcp/tree/v1.8.3) (2021-02-02)
+
+#### Merged Pull Requests
+- Update inspec-bin requirement from 4.16.0 to 4.26.4 [#304](https://github.com/inspec/inspec-gcp/pull/304) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v1.8.2](https://github.com/inspec/inspec-gcp/tree/v1.8.2) (2020-11-16)
+
+#### Merged Pull Requests
+- Add AccessLevels, MM updates [#285](https://github.com/inspec/inspec-gcp/pull/285) ([slevenick](https://github.com/slevenick))
+
 ## [v1.8.1](https://github.com/inspec/inspec-gcp/tree/v1.8.1) (2020-11-05)
 
 #### Merged Pull Requests
 - MM updates, container cluster additions [#284](https://github.com/inspec/inspec-gcp/pull/284) ([slevenick](https://github.com/slevenick))
-<!-- latest_release -->
 
 ## [v1.8.0](https://github.com/inspec/inspec-gcp/tree/v1.8.0) (2020-09-29)
 

@@ -16,7 +16,7 @@ desc 'Run robocop linter'
 task lint: [:rubocop]
 
 # run tests
-task default: [:lint, 'test:check']
+task default: ['test:check']
 
 namespace :test do
   # Specify the directory for the integration tests
@@ -39,7 +39,7 @@ namespace :test do
     # Disabling inspec check on profile with path dependency due to https://github.com/inspec/inspec/issues/3571
     #sh("cd #{integration_dir}/verify && bundle exec inspec check .")
   end
-  
+
 
   task :init_workspace do
     # Initialize terraform workspace
