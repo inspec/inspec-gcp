@@ -74,6 +74,23 @@ Properties that can be accessed from the `google_redis_instance` resource:
     * BASIC
     * STANDARD_HA
 
+  * `transit_encryption_mode`: (Beta only) The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.  - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+  Possible values:
+    * SERVER_AUTHENTICATION
+    * DISABLED
+
+  * `server_ca_certs`: (Beta only) List of server CA certificates for the instance.
+
+    * `serial_number`: Serial number, as extracted from the certificate.
+
+    * `cert`: Serial number, as extracted from the certificate.
+
+    * `create_time`: The time when the certificate was created.
+
+    * `expire_time`: The time when the certificate expires.
+
+    * `sha1_fingerprint`: Sha1 Fingerprint of the certificate.
+
   * `region`: The name of the Redis region of the instance.
 
 

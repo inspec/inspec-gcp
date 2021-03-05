@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/redis/property/instance_server_ca_certs'
 
 # A provider to manage Memorystore (Redis) resources.
 class RedisInstance < GcpResourceBase
@@ -40,6 +41,8 @@ class RedisInstance < GcpResourceBase
   attr_reader :redis_version
   attr_reader :reserved_ip_range
   attr_reader :tier
+  attr_reader :transit_encryption_mode
+  attr_reader :server_ca_certs
   attr_reader :region
 
   def initialize(params)
@@ -68,6 +71,8 @@ class RedisInstance < GcpResourceBase
     @redis_version = @fetched['redisVersion']
     @reserved_ip_range = @fetched['reservedIpRange']
     @tier = @fetched['tier']
+    @transit_encryption_mode = @fetched['transitEncryptionMode']
+    @server_ca_certs = GoogleInSpec::Redis::Property::InstanceServerCaCertsArray.parse(@fetched['serverCaCerts'], to_s)
     @region = @fetched['region']
   end
 

@@ -14,22 +14,39 @@
 #
 # ----------------------------------------------------------------------------
 module GoogleInSpec
-  module Compute
+  module Redis
     module Property
-      class AutoscalerAutoscalingPolicyCpuUtilization
-        attr_reader :utilization_target
+      class InstanceServerCaCerts
+        attr_reader :serial_number
 
-        attr_reader :predictive_method
+        attr_reader :cert
+
+        attr_reader :create_time
+
+        attr_reader :expire_time
+
+        attr_reader :sha1_fingerprint
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @utilization_target = args['utilizationTarget']
-          @predictive_method = args['predictiveMethod']
+          @serial_number = args['serialNumber']
+          @cert = args['cert']
+          @create_time = args['createTime']
+          @expire_time = args['expireTime']
+          @sha1_fingerprint = args['sha1Fingerprint']
         end
 
         def to_s
-          "#{@parent_identifier} AutoscalerAutoscalingPolicyCpuUtilization"
+          "#{@parent_identifier} InstanceServerCaCerts"
+        end
+      end
+
+      class InstanceServerCaCertsArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return InstanceServerCaCerts.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceServerCaCerts.new(v, parent_identifier) }
         end
       end
     end

@@ -44,6 +44,8 @@ See [google_redis_instance.md](google_redis_instance.md) for more detailed infor
   * `redis_versions`: an array of `google_redis_instance` redis_version
   * `reserved_ip_ranges`: an array of `google_redis_instance` reserved_ip_range
   * `tiers`: an array of `google_redis_instance` tier
+  * `transit_encryption_modes`: (Beta only) an array of `google_redis_instance` transit_encryption_mode
+  * `server_ca_certs`: (Beta only) an array of `google_redis_instance` server_ca_certs
   * `regions`: an array of `google_redis_instance` region
 
 ## Filter Criteria
