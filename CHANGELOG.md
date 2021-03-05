@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.7 -->
+<!-- latest_release 1.8.8 -->
+## [v1.8.8](https://github.com/inspec/inspec-gcp/tree/v1.8.8) (2021-03-05)
+
+#### Merged Pull Requests
+- Conditionally pin chef-utils on ruby 2.5 [#310](https://github.com/inspec/inspec-gcp/pull/310) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v1.8.7](https://github.com/inspec/inspec-gcp/tree/v1.8.7) (2021-03-05)
 
 #### Merged Pull Requests
 - Add 4 new features from Magic Modules (modular magician master branch) [#308](https://github.com/inspec/inspec-gcp/pull/308) ([trickyearlobe](https://github.com/trickyearlobe))
-<!-- latest_release -->
 
 ## [v1.8.6](https://github.com/inspec/inspec-gcp/tree/v1.8.6) (2021-02-02)
 
