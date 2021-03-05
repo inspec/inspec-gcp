@@ -6,7 +6,7 @@ gem 'google-api-client'
 gem 'google-cloud'
 gem 'googleauth'
 gem 'inifile'
-gem 'inspec-bin', '4.16.0'
+gem 'inspec-bin', '4.26.13'
 gem 'rubocop', '>= 0.77.0'
 
 if Gem.ruby_version.to_s.start_with?("2.5")
