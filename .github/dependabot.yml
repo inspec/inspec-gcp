@@ -1,0 +1,16 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: inspec-bin
+    versions:
+    - 4.26.13
+    - 4.28.0
+    - 4.29.3
+    - 4.31.0
+    - 4.31.1
+    - 4.32.0
