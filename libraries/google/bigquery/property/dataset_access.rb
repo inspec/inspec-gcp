@@ -18,19 +18,7 @@ module GoogleInSpec
   module BigQuery
     module Property
       class DatasetAccess
-        attr_reader :domain
-
-        attr_reader :group_by_email
-
-        attr_reader :role
-
-        attr_reader :special_group
-
-        attr_reader :user_by_email
-
-        attr_reader :iam_member
-
-        attr_reader :view
+        attr_reader :domain, :group_by_email, :role, :special_group, :user_by_email, :iam_member, :view
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

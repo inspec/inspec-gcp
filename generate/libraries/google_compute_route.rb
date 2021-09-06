@@ -21,18 +21,7 @@ class ComputeRoute < GcpResourceBase
   desc 'Route'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :dest_range
-  attr_reader :description
-  attr_reader :name
-  attr_reader :network
-  attr_reader :priority
-  attr_reader :tags
-  attr_reader :next_hop_gateway
-  attr_reader :next_hop_instance
-  attr_reader :next_hop_ip
-  attr_reader :next_hop_vpn_tunnel
-  attr_reader :next_hop_network
+  attr_reader :params, :dest_range, :description, :name, :network, :priority, :tags, :next_hop_gateway, :next_hop_instance, :next_hop_ip, :next_hop_vpn_tunnel, :next_hop_network
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

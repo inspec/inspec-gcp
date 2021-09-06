@@ -18,13 +18,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuild
-        attr_reader :arguments
-
-        attr_reader :tags
-
-        attr_reader :images
-
-        attr_reader :steps
+        attr_reader :arguments, :tags, :images, :steps
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -17,9 +17,7 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class ServicePerimeterStatusVPCAccessibleServices
-        attr_reader :enable_restriction
-
-        attr_reader :allowed_services
+        attr_reader :enable_restriction, :allowed_services
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

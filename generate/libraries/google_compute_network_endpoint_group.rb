@@ -21,16 +21,7 @@ class ComputeNetworkEndpointGroup < GcpResourceBase
   desc 'NetworkEndpointGroup'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :id
-  attr_reader :name
-  attr_reader :description
-  attr_reader :network_endpoint_type
-  attr_reader :size
-  attr_reader :network
-  attr_reader :subnetwork
-  attr_reader :default_port
-  attr_reader :zone
+  attr_reader :params, :id, :name, :description, :network_endpoint_type, :size, :network, :subnetwork, :default_port, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

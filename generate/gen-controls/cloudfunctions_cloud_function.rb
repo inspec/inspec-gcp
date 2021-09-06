@@ -9,7 +9,7 @@ control 'google_cloudfunctions_cloud_function-1.0' do
   impact 1.0
   title 'google_cloudfunctions_cloud_function resource test'
 
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_cloudfunctions_cloud_function')
   filters = []

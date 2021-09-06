@@ -17,13 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalNodePoolAutoscaling
-        attr_reader :arguments
-
-        attr_reader :enabled
-
-        attr_reader :min_node_count
-
-        attr_reader :max_node_count
+        attr_reader :arguments, :enabled, :min_node_count, :max_node_count
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

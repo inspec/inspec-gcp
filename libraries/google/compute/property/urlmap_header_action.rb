@@ -19,13 +19,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapHeaderAction
-        attr_reader :request_headers_to_add
-
-        attr_reader :request_headers_to_remove
-
-        attr_reader :response_headers_to_add
-
-        attr_reader :response_headers_to_remove
+        attr_reader :request_headers_to_add, :request_headers_to_remove, :response_headers_to_add, :response_headers_to_remove
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

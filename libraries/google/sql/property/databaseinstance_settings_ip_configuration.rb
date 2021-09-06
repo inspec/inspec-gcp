@@ -18,11 +18,7 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceSettingsIpConfiguration
-        attr_reader :ipv4_enabled
-
-        attr_reader :authorized_networks
-
-        attr_reader :require_ssl
+        attr_reader :ipv4_enabled, :authorized_networks, :require_ssl
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

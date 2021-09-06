@@ -28,12 +28,7 @@ class ComputeInstanceTemplate < GcpResourceBase
   desc 'InstanceTemplate'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :id
-  attr_reader :name
-  attr_reader :properties
+  attr_reader :params, :creation_timestamp, :description, :id, :name, :properties
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

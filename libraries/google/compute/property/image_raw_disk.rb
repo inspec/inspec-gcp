@@ -17,11 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class ImageRawDisk
-        attr_reader :container_type
-
-        attr_reader :sha1_checksum
-
-        attr_reader :source
+        attr_reader :container_type, :sha1_checksum, :source
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

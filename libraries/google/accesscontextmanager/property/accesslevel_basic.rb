@@ -18,9 +18,7 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class AccessLevelBasic
-        attr_reader :combining_function
-
-        attr_reader :conditions
+        attr_reader :combining_function, :conditions
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

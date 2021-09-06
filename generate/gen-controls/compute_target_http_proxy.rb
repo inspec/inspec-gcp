@@ -9,7 +9,7 @@ control 'google_compute_target_http_proxy-1.0' do
   impact 1.0
   title 'google_compute_target_http_proxy resource test'
 
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_compute_target_http_proxy')
   filters = []

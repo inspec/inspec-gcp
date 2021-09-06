@@ -17,11 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class NodePoolAutoscaling
-        attr_reader :enabled
-
-        attr_reader :min_node_count
-
-        attr_reader :max_node_count
+        attr_reader :enabled, :min_node_count, :max_node_count
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

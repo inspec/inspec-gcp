@@ -19,11 +19,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendServiceConsistentHash
-        attr_reader :http_cookie
-
-        attr_reader :http_header_name
-
-        attr_reader :minimum_ring_size
+        attr_reader :http_cookie, :http_header_name, :minimum_ring_size
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

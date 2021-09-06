@@ -20,11 +20,7 @@ module GoogleInSpec
   module Logging
     module Property
       class MetricBucketOptions
-        attr_reader :linear_buckets
-
-        attr_reader :exponential_buckets
-
-        attr_reader :explicit_buckets
+        attr_reader :linear_buckets, :exponential_buckets, :explicit_buckets
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

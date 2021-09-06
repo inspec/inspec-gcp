@@ -17,15 +17,7 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketLifecycleRuleCondition
-        attr_reader :age_days
-
-        attr_reader :created_before
-
-        attr_reader :is_live
-
-        attr_reader :matches_storage_class
-
-        attr_reader :num_newer_versions
+        attr_reader :age_days, :created_before, :is_live, :matches_storage_class, :num_newer_versions
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

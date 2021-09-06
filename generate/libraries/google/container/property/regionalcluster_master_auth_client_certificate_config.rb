@@ -17,9 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterMasterAuthClientCertificateConfig
-        attr_reader :arguments
-
-        attr_reader :issue_client_certificate
+        attr_reader :arguments, :issue_client_certificate
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

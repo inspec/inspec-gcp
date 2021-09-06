@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class ProjectInfoCommonInstanceMetadataItems
-        attr_reader :key
-
-        attr_reader :value
+        attr_reader :key, :value
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

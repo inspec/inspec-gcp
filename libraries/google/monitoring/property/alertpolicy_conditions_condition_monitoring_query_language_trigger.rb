@@ -17,9 +17,7 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditionsConditionMonitoringQueryLanguageTrigger
-        attr_reader :percent
-
-        attr_reader :count
+        attr_reader :percent, :count
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

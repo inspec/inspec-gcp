@@ -23,18 +23,7 @@ class ComputeRegionBackendService < GcpResourceBase
   desc 'RegionBackendService'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :health_checks
-  attr_reader :backends
-  attr_reader :description
-  attr_reader :fingerprint
-  attr_reader :protocol
-  attr_reader :session_affinity
-  attr_reader :region
-  attr_reader :timeout_sec
-  attr_reader :connection_draining
-  attr_reader :load_balancing_scheme
+  attr_reader :params, :name, :health_checks, :backends, :description, :fingerprint, :protocol, :session_affinity, :region, :timeout_sec, :connection_draining, :load_balancing_scheme
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

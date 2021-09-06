@@ -17,15 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionDeprecated
-        attr_reader :deleted
-
-        attr_reader :deprecated
-
-        attr_reader :obsolete
-
-        attr_reader :replacement
-
-        attr_reader :state
+        attr_reader :deleted, :deprecated, :obsolete, :replacement, :state
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

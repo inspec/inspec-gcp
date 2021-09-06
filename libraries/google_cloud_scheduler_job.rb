@@ -28,17 +28,7 @@ class CloudSchedulerJob < GcpResourceBase
   desc 'Job'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :description
-  attr_reader :schedule
-  attr_reader :time_zone
-  attr_reader :attempt_deadline
-  attr_reader :retry_config
-  attr_reader :pubsub_target
-  attr_reader :app_engine_http_target
-  attr_reader :http_target
-  attr_reader :region
+  attr_reader :params, :name, :description, :schedule, :time_zone, :attempt_deadline, :retry_config, :pubsub_target, :app_engine_http_target, :http_target, :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

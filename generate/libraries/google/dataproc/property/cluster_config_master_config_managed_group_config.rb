@@ -17,11 +17,7 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigMasterConfigManagedGroupConfig
-        attr_reader :arguments
-
-        attr_reader :instance_template_name
-
-        attr_reader :instance_group_manager_name
+        attr_reader :arguments, :instance_template_name, :instance_group_manager_name
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

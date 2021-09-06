@@ -17,11 +17,7 @@ module GoogleInSpec
   module Iam
     module Property
       class IamBindingCondition
-        attr_reader :title
-
-        attr_reader :description
-
-        attr_reader :expression
+        attr_reader :title, :description, :expression
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

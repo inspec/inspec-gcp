@@ -21,10 +21,7 @@ class BillingProjectBillingInfo < GcpResourceBase
   desc 'ProjectBillingInfo'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :project_id
-  attr_reader :billing_account_name
-  attr_reader :billing_enabled
+  attr_reader :params, :project_id, :billing_account_name, :billing_enabled
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

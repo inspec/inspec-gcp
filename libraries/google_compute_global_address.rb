@@ -21,20 +21,7 @@ class ComputeGlobalAddress < GcpResourceBase
   desc 'GlobalAddress'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :address
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :id
-  attr_reader :name
-  attr_reader :labels
-  attr_reader :label_fingerprint
-  attr_reader :ip_version
-  attr_reader :region
-  attr_reader :prefix_length
-  attr_reader :address_type
-  attr_reader :purpose
-  attr_reader :network
+  attr_reader :params, :address, :creation_timestamp, :description, :id, :name, :labels, :label_fingerprint, :ip_version, :region, :prefix_length, :address_type, :purpose, :network
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

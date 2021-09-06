@@ -18,17 +18,7 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class AccessLevelBasicConditionsDevicePolicy
-        attr_reader :require_screen_lock
-
-        attr_reader :allowed_encryption_statuses
-
-        attr_reader :allowed_device_management_levels
-
-        attr_reader :os_constraints
-
-        attr_reader :require_admin_approval
-
-        attr_reader :require_corp_owned
+        attr_reader :require_screen_lock, :allowed_encryption_statuses, :allowed_device_management_levels, :os_constraints, :require_admin_approval, :require_corp_owned
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

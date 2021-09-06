@@ -37,9 +37,7 @@ module Inspec::Resources
       defined?(@audit_logging_configs.audit_configs) && !@audit_logging_configs.audit_configs.nil?
     end
 
-    attr_reader :default_types
-
-    attr_reader :default_exempted_members
+    attr_reader :default_types, :default_exempted_members
 
     def has_default_exempted_members?
       @default_exempted_members.values.any?

@@ -17,9 +17,7 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceFailoverReplica
-        attr_reader :available
-
-        attr_reader :name
+        attr_reader :available, :name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

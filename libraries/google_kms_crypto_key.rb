@@ -22,16 +22,7 @@ class KMSCryptoKey < GcpResourceBase
   desc 'CryptoKey'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :crypto_key_name
-  attr_reader :create_time
-  attr_reader :labels
-  attr_reader :purpose
-  attr_reader :rotation_period
-  attr_reader :version_template
-  attr_reader :next_rotation_time
-  attr_reader :key_ring
-  attr_reader :skip_initial_version_creation
+  attr_reader :params, :crypto_key_name, :create_time, :labels, :purpose, :rotation_period, :version_template, :next_rotation_time, :key_ring, :skip_initial_version_creation
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

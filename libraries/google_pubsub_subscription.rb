@@ -26,19 +26,7 @@ class PubsubSubscription < GcpResourceBase
   desc 'Subscription'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :topic
-  attr_reader :labels
-  attr_reader :push_config
-  attr_reader :ack_deadline_seconds
-  attr_reader :message_retention_duration
-  attr_reader :retain_acked_messages
-  attr_reader :expiration_policy
-  attr_reader :filter
-  attr_reader :dead_letter_policy
-  attr_reader :retry_policy
-  attr_reader :enable_message_ordering
+  attr_reader :params, :name, :topic, :labels, :push_config, :ack_deadline_seconds, :message_retention_duration, :retain_acked_messages, :expiration_policy, :filter, :dead_letter_policy, :retry_policy, :enable_message_ordering
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

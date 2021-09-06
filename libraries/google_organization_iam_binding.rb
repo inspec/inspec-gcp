@@ -22,9 +22,7 @@ class OrganizationIamBinding < GcpResourceBase
   desc 'Organization Iam Binding'
   supports platform: 'gcp'
 
-  attr_reader :params
-
-  attr_reader :condition
+  attr_reader :params, :condition
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

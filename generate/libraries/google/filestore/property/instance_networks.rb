@@ -17,15 +17,7 @@ module GoogleInSpec
   module Filestore
     module Property
       class InstanceNetworks
-        attr_reader :arguments
-
-        attr_reader :network
-
-        attr_reader :modes
-
-        attr_reader :reserved_ip_range
-
-        attr_reader :ip_addresses
+        attr_reader :arguments, :network, :modes, :reserved_ip_range, :ip_addresses
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -17,11 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceShieldedInstanceConfig
-        attr_reader :enable_secure_boot
-
-        attr_reader :enable_vtpm
-
-        attr_reader :enable_integrity_monitoring
+        attr_reader :enable_secure_boot, :enable_vtpm, :enable_integrity_monitoring
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -33,25 +33,7 @@ class SQLDatabaseInstance < GcpResourceBase
   desc 'DatabaseInstance'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :backend_type
-  attr_reader :connection_name
-  attr_reader :database_version
-  attr_reader :failover_replica
-  attr_reader :instance_type
-  attr_reader :ip_addresses
-  attr_reader :ipv6_address
-  attr_reader :master_instance_name
-  attr_reader :max_disk_size
-  attr_reader :name
-  attr_reader :region
-  attr_reader :replica_configuration
-  attr_reader :settings
-  attr_reader :gce_zone
-  attr_reader :state
-  attr_reader :disk_encryption_configuration
-  attr_reader :disk_encryption_status
-  attr_reader :server_ca_cert
+  attr_reader :params, :backend_type, :connection_name, :database_version, :failover_replica, :instance_type, :ip_addresses, :ipv6_address, :master_instance_name, :max_disk_size, :name, :region, :replica_configuration, :settings, :gce_zone, :state, :disk_encryption_configuration, :disk_encryption_status, :server_ca_cert
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

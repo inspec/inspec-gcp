@@ -23,20 +23,7 @@ class ComputeInstanceGroupManager < GcpResourceBase
   desc 'InstanceGroupManager'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :base_instance_name
-  attr_reader :creation_timestamp
-  attr_reader :current_actions
-  attr_reader :description
-  attr_reader :id
-  attr_reader :instance_group
-  attr_reader :instance_template
-  attr_reader :name
-  attr_reader :named_ports
-  attr_reader :region
-  attr_reader :target_pools
-  attr_reader :target_size
-  attr_reader :zone
+  attr_reader :params, :base_instance_name, :creation_timestamp, :current_actions, :description, :id, :instance_group, :instance_template, :name, :named_ports, :region, :target_pools, :target_size, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

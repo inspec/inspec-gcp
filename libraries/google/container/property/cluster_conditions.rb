@@ -17,9 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterConditions
-        attr_reader :code
-
-        attr_reader :message
+        attr_reader :code, :message
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

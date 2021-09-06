@@ -17,13 +17,7 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableTimePartitioning
-        attr_reader :arguments
-
-        attr_reader :expiration_ms
-
-        attr_reader :field
-
-        attr_reader :type
+        attr_reader :arguments, :expiration_ms, :field, :type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

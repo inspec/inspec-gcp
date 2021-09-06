@@ -22,16 +22,7 @@ class StorageObjectACL < GcpResourceBase
   desc 'ObjectACL'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :domain
-  attr_reader :email
-  attr_reader :entity
-  attr_reader :entity_id
-  attr_reader :generation
-  attr_reader :id
-  attr_reader :object
-  attr_reader :project_team
-  attr_reader :role
+  attr_reader :params, :domain, :email, :entity, :entity_id, :generation, :id, :object, :project_team, :role
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

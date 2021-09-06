@@ -17,9 +17,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildSecrets
-        attr_reader :kms_key_name
-
-        attr_reader :secret_env
+        attr_reader :kms_key_name, :secret_env
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,9 +17,7 @@ module GoogleInSpec
   module SourceRepo
     module Property
       class RepositoryPubsubConfigs
-        attr_reader :message_format
-
-        attr_reader :service_account_email
+        attr_reader :message_format, :service_account_email
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

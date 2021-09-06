@@ -9,7 +9,7 @@ control 'google_dataproc_cluster-1.0' do
   impact 1.0
   title 'google_dataproc_cluster resource test'
 
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_dataproc_cluster')
   filters = []

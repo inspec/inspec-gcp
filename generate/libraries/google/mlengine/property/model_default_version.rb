@@ -17,9 +17,7 @@ module GoogleInSpec
   module MLEngine
     module Property
       class ModelDefaultVersion
-        attr_reader :arguments
-
-        attr_reader :name
+        attr_reader :arguments, :name
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

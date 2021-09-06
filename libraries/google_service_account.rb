@@ -21,13 +21,7 @@ class IAMServiceAccount < GcpResourceBase
   desc 'ServiceAccount'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :project_id
-  attr_reader :unique_id
-  attr_reader :email
-  attr_reader :display_name
-  attr_reader :oauth2_client_id
+  attr_reader :params, :name, :project_id, :unique_id, :email, :display_name, :oauth2_client_id
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -20,27 +20,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceDisks
-        attr_reader :auto_delete
-
-        attr_reader :boot
-
-        attr_reader :device_name
-
-        attr_reader :disk_encryption_key
-
-        attr_reader :index
-
-        attr_reader :initialize_params
-
-        attr_reader :interface
-
-        attr_reader :mode
-
-        attr_reader :source
-
-        attr_reader :type
-
-        attr_reader :licenses
+        attr_reader :auto_delete, :boot, :device_name, :disk_encryption_key, :index, :initialize_params, :interface, :mode, :source, :type, :licenses
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

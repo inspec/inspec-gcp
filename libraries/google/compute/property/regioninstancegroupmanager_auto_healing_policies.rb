@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionInstanceGroupManagerAutoHealingPolicies
-        attr_reader :health_check
-
-        attr_reader :initial_delay_sec
+        attr_reader :health_check, :initial_delay_sec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
