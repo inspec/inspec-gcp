@@ -37,7 +37,11 @@ class DataprocCluster < GcpResourceBase
   desc 'Cluster'
   supports platform: 'gcp'
 
-  attr_reader :params, :cluster_name, :labels, :config, :region
+  attr_reader :params
+  attr_reader :cluster_name
+  attr_reader :labels
+  attr_reader :config
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

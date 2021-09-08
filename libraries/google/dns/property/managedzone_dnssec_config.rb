@@ -18,7 +18,13 @@ module GoogleInSpec
   module DNS
     module Property
       class ManagedZoneDnssecConfig
-        attr_reader :kind, :non_existence, :state, :default_key_specs
+        attr_reader :kind
+
+        attr_reader :non_existence
+
+        attr_reader :state
+
+        attr_reader :default_key_specs
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,11 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworks
-        attr_reader :expiration_time, :name, :value
+        attr_reader :expiration_time
+
+        attr_reader :name
+
+        attr_reader :value
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

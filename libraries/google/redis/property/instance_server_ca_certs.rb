@@ -17,7 +17,15 @@ module GoogleInSpec
   module Redis
     module Property
       class InstanceServerCaCerts
-        attr_reader :serial_number, :cert, :create_time, :expire_time, :sha1_fingerprint
+        attr_reader :serial_number
+
+        attr_reader :cert
+
+        attr_reader :create_time
+
+        attr_reader :expire_time
+
+        attr_reader :sha1_fingerprint
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

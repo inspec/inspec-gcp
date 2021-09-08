@@ -22,7 +22,14 @@ class StorageBucketACL < GcpResourceBase
   desc 'BucketACL'
   supports platform: 'gcp'
 
-  attr_reader :params, :domain, :email, :entity, :entity_id, :id, :project_team, :role
+  attr_reader :params
+  attr_reader :domain
+  attr_reader :email
+  attr_reader :entity
+  attr_reader :entity_id
+  attr_reader :id
+  attr_reader :project_team
+  attr_reader :role
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

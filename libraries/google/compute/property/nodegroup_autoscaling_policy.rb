@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class NodeGroupAutoscalingPolicy
-        attr_reader :mode, :min_nodes, :max_nodes
+        attr_reader :mode
+
+        attr_reader :min_nodes
+
+        attr_reader :max_nodes
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -18,7 +18,17 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableExternalDataConfigurationBigtableOptionsColumnFamilies
-        attr_reader :arguments, :columns, :encoding, :family_id, :only_read_latest, :type
+        attr_reader :arguments
+
+        attr_reader :columns
+
+        attr_reader :encoding
+
+        attr_reader :family_id
+
+        attr_reader :only_read_latest
+
+        attr_reader :type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

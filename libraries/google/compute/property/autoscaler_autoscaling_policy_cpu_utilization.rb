@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicyCpuUtilization
-        attr_reader :utilization_target, :predictive_method
+        attr_reader :utilization_target
+
+        attr_reader :predictive_method
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

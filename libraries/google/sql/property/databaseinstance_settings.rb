@@ -21,7 +21,19 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceSettings
-        attr_reader :database_flags, :ip_configuration, :tier, :availability_type, :backup_configuration, :settings_version, :user_labels
+        attr_reader :database_flags
+
+        attr_reader :ip_configuration
+
+        attr_reader :tier
+
+        attr_reader :availability_type
+
+        attr_reader :backup_configuration
+
+        attr_reader :settings_version
+
+        attr_reader :user_labels
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -21,7 +21,23 @@ class RedisInstance < GcpResourceBase
   desc 'Instance'
   supports platform: 'gcp'
 
-  attr_reader :params, :alternative_location_id, :authorized_network, :create_time, :current_location_id, :display_name, :host, :labels, :redis_configs, :location_id, :name, :memory_size_gb, :port, :redis_version, :reserved_ip_range, :tier, :region
+  attr_reader :params
+  attr_reader :alternative_location_id
+  attr_reader :authorized_network
+  attr_reader :create_time
+  attr_reader :current_location_id
+  attr_reader :display_name
+  attr_reader :host
+  attr_reader :labels
+  attr_reader :redis_configs
+  attr_reader :location_id
+  attr_reader :name
+  attr_reader :memory_size_gb
+  attr_reader :port
+  attr_reader :redis_version
+  attr_reader :reserved_ip_range
+  attr_reader :tier
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

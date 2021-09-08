@@ -32,7 +32,17 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchers
-        attr_reader :default_service, :description, :header_action, :name, :default_url_redirect, :default_route_action
+        attr_reader :default_service
+
+        attr_reader :description
+
+        attr_reader :header_action
+
+        attr_reader :name
+
+        attr_reader :default_url_redirect
+
+        attr_reader :default_route_action
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

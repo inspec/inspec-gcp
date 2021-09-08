@@ -23,7 +23,12 @@ class OrganizationPolicy < GcpResourceBase
   desc 'OrganizationPolicy'
   supports platform: 'gcp'
 
-  attr_reader :params, :version, :constraint, :update_time, :list_policy, :boolean_policy
+  attr_reader :params
+  attr_reader :version
+  attr_reader :constraint
+  attr_reader :update_time
+  attr_reader :list_policy
+  attr_reader :boolean_policy
 
   def initialize(opts)
     super(opts)

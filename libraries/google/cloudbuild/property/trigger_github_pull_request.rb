@@ -17,7 +17,11 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerGithubPullRequest
-        attr_reader :branch, :comment_control, :invert_regex
+        attr_reader :branch
+
+        attr_reader :comment_control
+
+        attr_reader :invert_regex
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

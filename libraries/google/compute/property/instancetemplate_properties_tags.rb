@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesTags
-        attr_reader :fingerprint, :items
+        attr_reader :fingerprint
+
+        attr_reader :items
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,17 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceNetworkInterfacesAccessConfigs
-        attr_reader :name, :nat_ip, :type, :set_public_ptr, :public_ptr_domain_name, :network_tier
+        attr_reader :name
+
+        attr_reader :nat_ip
+
+        attr_reader :type
+
+        attr_reader :set_public_ptr
+
+        attr_reader :public_ptr_domain_name
+
+        attr_reader :network_tier
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,21 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigGceClusterConfig
-        attr_reader :arguments, :zone_uri, :network_uri, :subnetwork_uri, :internal_ip_only, :service_account_scopes, :tags, :metadata
+        attr_reader :arguments
+
+        attr_reader :zone_uri
+
+        attr_reader :network_uri
+
+        attr_reader :subnetwork_uri
+
+        attr_reader :internal_ip_only
+
+        attr_reader :service_account_scopes
+
+        attr_reader :tags
+
+        attr_reader :metadata
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

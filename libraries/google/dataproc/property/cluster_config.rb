@@ -32,7 +32,23 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfig
-        attr_reader :config_bucket, :gce_cluster_config, :master_config, :worker_config, :secondary_worker_config, :software_config, :initialization_actions, :encryption_config, :security_config
+        attr_reader :config_bucket
+
+        attr_reader :gce_cluster_config
+
+        attr_reader :master_config
+
+        attr_reader :worker_config
+
+        attr_reader :secondary_worker_config
+
+        attr_reader :software_config
+
+        attr_reader :initialization_actions
+
+        attr_reader :encryption_config
+
+        attr_reader :security_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -21,7 +21,21 @@ class ComputeAddress < GcpResourceBase
   desc 'Address'
   supports platform: 'gcp'
 
-  attr_reader :params, :address, :address_type, :creation_timestamp, :description, :id, :name, :purpose, :network_tier, :subnetwork, :users, :labels, :label_fingerprint, :status, :region
+  attr_reader :params
+  attr_reader :address
+  attr_reader :address_type
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :id
+  attr_reader :name
+  attr_reader :purpose
+  attr_reader :network_tier
+  attr_reader :subnetwork
+  attr_reader :users
+  attr_reader :labels
+  attr_reader :label_fingerprint
+  attr_reader :status
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

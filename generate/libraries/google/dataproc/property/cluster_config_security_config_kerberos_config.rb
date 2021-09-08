@@ -17,7 +17,33 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigSecurityConfigKerberosConfig
-        attr_reader :arguments, :enable_kerberos, :rootprincipal_password_uri, :kms_key_uri, :keystore_uri, :truststore_uri, :key_password_uri, :truststore_password_uri, :cross_realm_trust_realm, :cross_realm_trust_admin_server, :cross_realm_trust_shared_password_uri, :kdc_db_key_uri, :tgt_lifetime_hours, :realm
+        attr_reader :arguments
+
+        attr_reader :enable_kerberos
+
+        attr_reader :rootprincipal_password_uri
+
+        attr_reader :kms_key_uri
+
+        attr_reader :keystore_uri
+
+        attr_reader :truststore_uri
+
+        attr_reader :key_password_uri
+
+        attr_reader :truststore_password_uri
+
+        attr_reader :cross_realm_trust_realm
+
+        attr_reader :cross_realm_trust_admin_server
+
+        attr_reader :cross_realm_trust_shared_password_uri
+
+        attr_reader :kdc_db_key_uri
+
+        attr_reader :tgt_lifetime_hours
+
+        attr_reader :realm
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

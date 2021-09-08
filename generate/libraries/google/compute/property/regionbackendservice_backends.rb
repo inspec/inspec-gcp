@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionBackendServiceBackends
-        attr_reader :arguments, :description, :group
+        attr_reader :arguments
+
+        attr_reader :description
+
+        attr_reader :group
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

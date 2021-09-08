@@ -17,7 +17,9 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketLogging
-        attr_reader :log_bucket, :log_object_prefix
+        attr_reader :log_bucket
+
+        attr_reader :log_object_prefix
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

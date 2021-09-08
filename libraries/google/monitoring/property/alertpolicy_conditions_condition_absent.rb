@@ -19,7 +19,13 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditionsConditionAbsent
-        attr_reader :aggregations, :trigger, :duration, :filter
+        attr_reader :aggregations
+
+        attr_reader :trigger
+
+        attr_reader :duration
+
+        attr_reader :filter
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigInitializationActions
-        attr_reader :arguments, :executable_file, :execution_timeout
+        attr_reader :arguments
+
+        attr_reader :executable_file
+
+        attr_reader :execution_timeout
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -18,7 +18,9 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigSecurityConfig
-        attr_reader :arguments, :kerberos_config
+        attr_reader :arguments
+
+        attr_reader :kerberos_config
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

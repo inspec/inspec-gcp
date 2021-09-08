@@ -26,7 +26,25 @@ class ComputeBackendService < GcpResourceBase
   desc 'BackendService'
   supports platform: 'gcp'
 
-  attr_reader :params, :affinity_cookie_ttl_sec, :backends, :cdn_policy, :connection_draining, :creation_timestamp, :fingerprint, :description, :enable_cdn, :health_checks, :id, :iap, :load_balancing_scheme, :name, :port_name, :protocol, :security_policy, :session_affinity, :timeout_sec
+  attr_reader :params
+  attr_reader :affinity_cookie_ttl_sec
+  attr_reader :backends
+  attr_reader :cdn_policy
+  attr_reader :connection_draining
+  attr_reader :creation_timestamp
+  attr_reader :fingerprint
+  attr_reader :description
+  attr_reader :enable_cdn
+  attr_reader :health_checks
+  attr_reader :id
+  attr_reader :iap
+  attr_reader :load_balancing_scheme
+  attr_reader :name
+  attr_reader :port_name
+  attr_reader :protocol
+  attr_reader :security_policy
+  attr_reader :session_affinity
+  attr_reader :timeout_sec
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

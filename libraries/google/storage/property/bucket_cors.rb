@@ -17,7 +17,13 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketCors
-        attr_reader :max_age_seconds, :method, :origin, :response_header
+        attr_reader :max_age_seconds
+
+        attr_reader :method
+
+        attr_reader :origin
+
+        attr_reader :response_header
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

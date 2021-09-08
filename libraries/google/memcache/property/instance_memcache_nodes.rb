@@ -17,7 +17,15 @@ module GoogleInSpec
   module Memcache
     module Property
       class InstanceMemcacheNodes
-        attr_reader :node_id, :zone, :port, :host, :state
+        attr_reader :node_id
+
+        attr_reader :zone
+
+        attr_reader :port
+
+        attr_reader :host
+
+        attr_reader :state
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

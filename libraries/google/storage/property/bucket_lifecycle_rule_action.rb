@@ -17,7 +17,9 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketLifecycleRuleAction
-        attr_reader :storage_class, :type
+        attr_reader :storage_class
+
+        attr_reader :type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

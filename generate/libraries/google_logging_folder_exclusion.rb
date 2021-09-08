@@ -21,7 +21,12 @@ class LoggingFolderExclusion < GcpResourceBase
   desc 'FolderExclusion'
   supports platform: 'gcp'
 
-  attr_reader :params, :folder, :name, :description, :filter, :disabled
+  attr_reader :params
+  attr_reader :folder
+  attr_reader :name
+  attr_reader :description
+  attr_reader :filter
+  attr_reader :disabled
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,7 +17,13 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceNetworkInterfacesAccessConfigs
-        attr_reader :arguments, :name, :nat_ip, :type
+        attr_reader :arguments
+
+        attr_reader :name
+
+        attr_reader :nat_ip
+
+        attr_reader :type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Logging
     module Property
       class MetricBucketOptionsLinearBuckets
-        attr_reader :num_finite_buckets, :width, :offset
+        attr_reader :num_finite_buckets
+
+        attr_reader :width
+
+        attr_reader :offset
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

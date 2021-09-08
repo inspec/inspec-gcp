@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesScheduling
-        attr_reader :automatic_restart, :on_host_maintenance, :preemptible
+        attr_reader :automatic_restart
+
+        attr_reader :on_host_maintenance
+
+        attr_reader :preemptible
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

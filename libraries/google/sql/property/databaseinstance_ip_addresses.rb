@@ -17,7 +17,11 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceIpAddresses
-        attr_reader :ip_address, :time_to_retire, :type
+        attr_reader :ip_address
+
+        attr_reader :time_to_retire
+
+        attr_reader :type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Logging
     module Property
       class MetricMetricDescriptorLabels
-        attr_reader :key, :description, :value_type
+        attr_reader :key
+
+        attr_reader :description
+
+        attr_reader :value_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

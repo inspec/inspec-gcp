@@ -17,7 +17,17 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceServerCaCert
-        attr_reader :cert, :cert_serial_number, :common_name, :create_time, :expiration_time, :sha1_fingerprint
+        attr_reader :cert
+
+        attr_reader :cert_serial_number
+
+        attr_reader :common_name
+
+        attr_reader :create_time
+
+        attr_reader :expiration_time
+
+        attr_reader :sha1_fingerprint
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

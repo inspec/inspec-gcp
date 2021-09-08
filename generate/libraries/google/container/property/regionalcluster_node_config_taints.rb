@@ -17,7 +17,13 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterNodeConfigTaints
-        attr_reader :arguments, :key, :value, :effect
+        attr_reader :arguments
+
+        attr_reader :key
+
+        attr_reader :value
+
+        attr_reader :effect
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

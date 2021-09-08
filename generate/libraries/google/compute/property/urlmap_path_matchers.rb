@@ -18,7 +18,15 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchers
-        attr_reader :arguments, :default_service, :description, :name, :path_rules
+        attr_reader :arguments
+
+        attr_reader :default_service
+
+        attr_reader :description
+
+        attr_reader :name
+
+        attr_reader :path_rules
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

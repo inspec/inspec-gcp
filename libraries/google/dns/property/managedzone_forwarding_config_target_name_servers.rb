@@ -17,7 +17,9 @@ module GoogleInSpec
   module DNS
     module Property
       class ManagedZoneForwardingConfigTargetNameServers
-        attr_reader :ipv4_address, :forwarding_path
+        attr_reader :ipv4_address
+
+        attr_reader :forwarding_path
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -25,7 +25,25 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicy
-        attr_reader :min_num_replicas, :max_num_replicas, :cool_down_period_sec, :mode, :scale_down_control, :scale_in_control, :cpu_utilization, :custom_metric_utilizations, :load_balancing_utilization, :scaling_schedules
+        attr_reader :min_num_replicas
+
+        attr_reader :max_num_replicas
+
+        attr_reader :cool_down_period_sec
+
+        attr_reader :mode
+
+        attr_reader :scale_down_control
+
+        attr_reader :scale_in_control
+
+        attr_reader :cpu_utilization
+
+        attr_reader :custom_metric_utilizations
+
+        attr_reader :load_balancing_utilization
+
+        attr_reader :scaling_schedules
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

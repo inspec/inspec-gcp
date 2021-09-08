@@ -47,7 +47,51 @@ class ContainerCluster < GcpResourceBase
   desc 'Cluster'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :description, :initial_node_count, :node_config, :master_auth, :logging_service, :monitoring_service, :network, :database_encryption, :private_cluster_config, :cluster_ipv4_cidr, :enable_tpu, :tpu_ipv4_cidr_block, :addons_config, :subnetwork, :datapath_provider, :locations, :resource_labels, :label_fingerprint, :legacy_abac, :network_policy, :default_max_pods_constraint, :ip_allocation_policy, :endpoint, :initial_cluster_version, :current_master_version, :current_node_version, :create_time, :status, :status_message, :node_ipv4_cidr_size, :services_ipv4_cidr, :current_node_count, :expire_time, :conditions, :master_authorized_networks_config, :node_pools, :pod_security_policy_config, :binary_authorization, :release_channel, :shielded_nodes, :network_config, :enable_kubernetes_alpha, :location
+  attr_reader :params
+  attr_reader :name
+  attr_reader :description
+  attr_reader :initial_node_count
+  attr_reader :node_config
+  attr_reader :master_auth
+  attr_reader :logging_service
+  attr_reader :monitoring_service
+  attr_reader :network
+  attr_reader :database_encryption
+  attr_reader :private_cluster_config
+  attr_reader :cluster_ipv4_cidr
+  attr_reader :enable_tpu
+  attr_reader :tpu_ipv4_cidr_block
+  attr_reader :addons_config
+  attr_reader :subnetwork
+  attr_reader :datapath_provider
+  attr_reader :locations
+  attr_reader :resource_labels
+  attr_reader :label_fingerprint
+  attr_reader :legacy_abac
+  attr_reader :network_policy
+  attr_reader :default_max_pods_constraint
+  attr_reader :ip_allocation_policy
+  attr_reader :endpoint
+  attr_reader :initial_cluster_version
+  attr_reader :current_master_version
+  attr_reader :current_node_version
+  attr_reader :create_time
+  attr_reader :status
+  attr_reader :status_message
+  attr_reader :node_ipv4_cidr_size
+  attr_reader :services_ipv4_cidr
+  attr_reader :current_node_count
+  attr_reader :expire_time
+  attr_reader :conditions
+  attr_reader :master_authorized_networks_config
+  attr_reader :node_pools
+  attr_reader :pod_security_policy_config
+  attr_reader :binary_authorization
+  attr_reader :release_channel
+  attr_reader :shielded_nodes
+  attr_reader :network_config
+  attr_reader :enable_kubernetes_alpha
+  attr_reader :location
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

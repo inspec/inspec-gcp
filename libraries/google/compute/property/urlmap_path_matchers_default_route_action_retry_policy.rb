@@ -18,7 +18,11 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchersDefaultRouteActionRetryPolicy
-        attr_reader :retry_conditions, :num_retries, :per_try_timeout
+        attr_reader :retry_conditions
+
+        attr_reader :num_retries
+
+        attr_reader :per_try_timeout
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

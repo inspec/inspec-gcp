@@ -25,7 +25,14 @@ class ComputeAutoscaler < GcpResourceBase
   desc 'Autoscaler'
   supports platform: 'gcp'
 
-  attr_reader :params, :id, :creation_timestamp, :name, :description, :autoscaling_policy, :target, :zone
+  attr_reader :params
+  attr_reader :id
+  attr_reader :creation_timestamp
+  attr_reader :name
+  attr_reader :description
+  attr_reader :autoscaling_policy
+  attr_reader :target
+  attr_reader :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

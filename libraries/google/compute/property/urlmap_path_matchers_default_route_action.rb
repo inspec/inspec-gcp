@@ -27,7 +27,17 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchersDefaultRouteAction
-        attr_reader :url_rewrite, :timeout, :retry_policy, :request_mirror_policy, :cors_policy, :fault_injection_policy
+        attr_reader :url_rewrite
+
+        attr_reader :timeout
+
+        attr_reader :retry_policy
+
+        attr_reader :request_mirror_policy
+
+        attr_reader :cors_policy
+
+        attr_reader :fault_injection_policy
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

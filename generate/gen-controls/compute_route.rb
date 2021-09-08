@@ -9,7 +9,7 @@ control 'google_compute_route-1.0' do
   impact 1.0
   title 'google_compute_route resource test'
 
-  logger = Logger.new($stdout)
+  logger = Logger.new(STDOUT)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_compute_route')
   filters = []

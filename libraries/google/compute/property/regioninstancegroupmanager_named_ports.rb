@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionInstanceGroupManagerNamedPorts
-        attr_reader :name, :port
+        attr_reader :name
+
+        attr_reader :port
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

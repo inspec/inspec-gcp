@@ -21,7 +21,17 @@ class ComputeTargetPool < GcpResourceBase
   desc 'TargetPool'
   supports platform: 'gcp'
 
-  attr_reader :params, :backup_pool, :creation_timestamp, :description, :failover_ratio, :health_check, :id, :instances, :name, :session_affinity, :region
+  attr_reader :params
+  attr_reader :backup_pool
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :failover_ratio
+  attr_reader :health_check
+  attr_reader :id
+  attr_reader :instances
+  attr_reader :name
+  attr_reader :session_affinity
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

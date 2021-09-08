@@ -23,7 +23,22 @@ class ComputeRouterNat < GcpResourceBase
   desc 'RouterNat'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :nat_ip_allocate_option, :nat_ips, :drain_nat_ips, :source_subnetwork_ip_ranges_to_nat, :subnetwork, :min_ports_per_vm, :udp_idle_timeout_sec, :icmp_idle_timeout_sec, :tcp_established_idle_timeout_sec, :tcp_transitory_idle_timeout_sec, :log_config, :enable_endpoint_independent_mapping, :router, :region
+  attr_reader :params
+  attr_reader :name
+  attr_reader :nat_ip_allocate_option
+  attr_reader :nat_ips
+  attr_reader :drain_nat_ips
+  attr_reader :source_subnetwork_ip_ranges_to_nat
+  attr_reader :subnetwork
+  attr_reader :min_ports_per_vm
+  attr_reader :udp_idle_timeout_sec
+  attr_reader :icmp_idle_timeout_sec
+  attr_reader :tcp_established_idle_timeout_sec
+  attr_reader :tcp_transitory_idle_timeout_sec
+  attr_reader :log_config
+  attr_reader :enable_endpoint_independent_mapping
+  attr_reader :router
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,7 +17,9 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyCreationRecord
-        attr_reader :mutate_time, :mutated_by
+        attr_reader :mutate_time
+
+        attr_reader :mutated_by
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

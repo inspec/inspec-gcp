@@ -21,7 +21,13 @@ class ComputeNodeGroup < GcpResourceBase
   desc 'NodeGroup'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :description, :name, :node_template, :size, :zone
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :name
+  attr_reader :node_template
+  attr_reader :size
+  attr_reader :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

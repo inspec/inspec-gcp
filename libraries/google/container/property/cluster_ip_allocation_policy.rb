@@ -17,7 +17,23 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterIpAllocationPolicy
-        attr_reader :use_ip_aliases, :create_subnetwork, :subnetwork_name, :cluster_secondary_range_name, :services_secondary_range_name, :cluster_ipv4_cidr_block, :node_ipv4_cidr_block, :services_ipv4_cidr_block, :tpu_ipv4_cidr_block
+        attr_reader :use_ip_aliases
+
+        attr_reader :create_subnetwork
+
+        attr_reader :subnetwork_name
+
+        attr_reader :cluster_secondary_range_name
+
+        attr_reader :services_secondary_range_name
+
+        attr_reader :cluster_ipv4_cidr_block
+
+        attr_reader :node_ipv4_cidr_block
+
+        attr_reader :services_ipv4_cidr_block
+
+        attr_reader :tpu_ipv4_cidr_block
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

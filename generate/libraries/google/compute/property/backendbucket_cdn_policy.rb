@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendBucketCdnPolicy
-        attr_reader :arguments, :signed_url_cache_max_age_sec
+        attr_reader :arguments
+
+        attr_reader :signed_url_cache_max_age_sec
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

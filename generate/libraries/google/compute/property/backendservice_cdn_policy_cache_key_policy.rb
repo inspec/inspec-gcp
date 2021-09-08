@@ -17,7 +17,17 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendServiceCdnPolicyCacheKeyPolicy
-        attr_reader :arguments, :include_host, :include_protocol, :include_query_string, :query_string_blacklist, :query_string_whitelist
+        attr_reader :arguments
+
+        attr_reader :include_host
+
+        attr_reader :include_protocol
+
+        attr_reader :include_query_string
+
+        attr_reader :query_string_blacklist
+
+        attr_reader :query_string_whitelist
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

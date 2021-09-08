@@ -17,7 +17,15 @@ module GoogleInSpec
   module CloudScheduler
     module Property
       class JobRetryConfig
-        attr_reader :retry_count, :max_retry_duration, :min_backoff_duration, :max_backoff_duration, :max_doublings
+        attr_reader :retry_count
+
+        attr_reader :max_retry_duration
+
+        attr_reader :min_backoff_duration
+
+        attr_reader :max_backoff_duration
+
+        attr_reader :max_doublings
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

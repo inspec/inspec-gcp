@@ -9,7 +9,7 @@ control 'google_compute_instance_group_manager-1.0' do
   impact 1.0
   title 'google_compute_instance_group_manager resource test'
 
-  logger = Logger.new($stdout)
+  logger = Logger.new(STDOUT)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_compute_instance_group_manager')
   filters = []

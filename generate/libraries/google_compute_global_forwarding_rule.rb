@@ -22,7 +22,19 @@ class ComputeGlobalForwardingRule < GcpResourceBase
   desc 'GlobalForwardingRule'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :description, :id, :ip_address, :ip_protocol, :ip_version, :load_balancing_scheme, :metadata_filters, :name, :network, :port_range, :target
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :id
+  attr_reader :ip_address
+  attr_reader :ip_protocol
+  attr_reader :ip_version
+  attr_reader :load_balancing_scheme
+  attr_reader :metadata_filters
+  attr_reader :name
+  attr_reader :network
+  attr_reader :port_range
+  attr_reader :target
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

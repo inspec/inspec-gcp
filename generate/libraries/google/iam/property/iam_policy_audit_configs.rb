@@ -18,7 +18,9 @@ module GoogleInSpec
   module Iam
     module Property
       class IamPolicyAuditConfigs
-        attr_reader :service, :audit_log_configs
+        attr_reader :service
+
+        attr_reader :audit_log_configs
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -19,7 +19,19 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigWorkerConfig
-        attr_reader :num_instances, :instance_names, :image_uri, :machine_type_uri, :disk_config, :is_preemptible, :managed_group_config
+        attr_reader :num_instances
+
+        attr_reader :instance_names
+
+        attr_reader :image_uri
+
+        attr_reader :machine_type_uri
+
+        attr_reader :disk_config
+
+        attr_reader :is_preemptible
+
+        attr_reader :managed_group_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

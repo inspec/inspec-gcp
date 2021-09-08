@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class FirewallDenied
-        attr_reader :ip_protocol, :ports
+        attr_reader :ip_protocol
+
+        attr_reader :ports
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

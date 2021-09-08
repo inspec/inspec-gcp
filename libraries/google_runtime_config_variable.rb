@@ -21,7 +21,11 @@ class RuntimeConfigVariable < GcpResourceBase
   desc 'Variable'
   supports platform: 'gcp'
 
-  attr_reader :params, :value, :text, :name, :config
+  attr_reader :params
+  attr_reader :value
+  attr_reader :text
+  attr_reader :name
+  attr_reader :config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketRetentionPolicy
-        attr_reader :effective_time, :is_locked, :retention_period
+        attr_reader :effective_time
+
+        attr_reader :is_locked
+
+        attr_reader :retention_period
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

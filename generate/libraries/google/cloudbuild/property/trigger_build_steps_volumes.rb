@@ -17,7 +17,11 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildStepsVolumes
-        attr_reader :arguments, :name, :path
+        attr_reader :arguments
+
+        attr_reader :name
+
+        attr_reader :path
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

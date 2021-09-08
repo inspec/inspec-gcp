@@ -25,7 +25,13 @@ class AccessContextManagerAccessLevel < GcpResourceBase
   desc 'AccessLevel'
   supports platform: 'gcp'
 
-  attr_reader :params, :title, :description, :basic, :custom, :parent, :name
+  attr_reader :params
+  attr_reader :title
+  attr_reader :description
+  attr_reader :basic
+  attr_reader :custom
+  attr_reader :parent
+  attr_reader :name
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

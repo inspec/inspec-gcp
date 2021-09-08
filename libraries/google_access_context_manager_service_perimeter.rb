@@ -25,7 +25,17 @@ class AccessContextManagerServicePerimeter < GcpResourceBase
   desc 'ServicePerimeter'
   supports platform: 'gcp'
 
-  attr_reader :params, :title, :description, :create_time, :update_time, :perimeter_type, :status, :spec, :use_explicit_dry_run_spec, :parent, :name
+  attr_reader :params
+  attr_reader :title
+  attr_reader :description
+  attr_reader :create_time
+  attr_reader :update_time
+  attr_reader :perimeter_type
+  attr_reader :status
+  attr_reader :spec
+  attr_reader :use_explicit_dry_run_spec
+  attr_reader :parent
+  attr_reader :name
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

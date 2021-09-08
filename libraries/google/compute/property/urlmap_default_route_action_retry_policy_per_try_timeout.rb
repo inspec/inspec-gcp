@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapDefaultRouteActionRetryPolicyPerTryTimeout
-        attr_reader :seconds, :nanos
+        attr_reader :seconds
+
+        attr_reader :nanos
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

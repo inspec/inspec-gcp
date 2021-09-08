@@ -18,7 +18,27 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildSteps
-        attr_reader :name, :args, :env, :id, :entrypoint, :dir, :secret_env, :timeout, :timing, :volumes, :wait_for
+        attr_reader :name
+
+        attr_reader :args
+
+        attr_reader :env
+
+        attr_reader :id
+
+        attr_reader :entrypoint
+
+        attr_reader :dir
+
+        attr_reader :secret_env
+
+        attr_reader :timeout
+
+        attr_reader :timing
+
+        attr_reader :volumes
+
+        attr_reader :wait_for
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

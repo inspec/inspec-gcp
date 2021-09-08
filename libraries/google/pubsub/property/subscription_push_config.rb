@@ -18,7 +18,11 @@ module GoogleInSpec
   module Pubsub
     module Property
       class SubscriptionPushConfig
-        attr_reader :oidc_token, :push_endpoint, :attributes
+        attr_reader :oidc_token
+
+        attr_reader :push_endpoint
+
+        attr_reader :attributes
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

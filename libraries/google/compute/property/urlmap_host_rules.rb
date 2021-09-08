@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapHostRules
-        attr_reader :description, :hosts, :path_matcher
+        attr_reader :description
+
+        attr_reader :hosts
+
+        attr_reader :path_matcher
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

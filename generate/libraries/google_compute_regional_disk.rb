@@ -11,7 +11,31 @@ class RegionalDisk < GcpResourceBase
   desc 'RegionalDisk'
   supports platform: 'gcp'
 
-  attr_reader :id, :creation_timestamp, :name, :params, :description, :size_gb, :zone, :source_snapshot, :source_snapshot_id, :source_snapshot_encryption_key, :source_image, :source_image_id, :source_image_encryption_key, :type, :licenses, :last_attach_timestamp, :last_detach_timestamp, :users, :disk_encryption_key, :labels, :label_fingerprint, :physical_block_size_bytes, :region, :replica_zones, :status
+  attr_reader :id
+  attr_reader :creation_timestamp
+  attr_reader :name
+  attr_reader :params
+  attr_reader :description
+  attr_reader :size_gb
+  attr_reader :zone
+  attr_reader :source_snapshot
+  attr_reader :source_snapshot_id
+  attr_reader :source_snapshot_encryption_key
+  attr_reader :source_image
+  attr_reader :source_image_id
+  attr_reader :source_image_encryption_key
+  attr_reader :type
+  attr_reader :licenses
+  attr_reader :last_attach_timestamp
+  attr_reader :last_detach_timestamp
+  attr_reader :users
+  attr_reader :disk_encryption_key
+  attr_reader :labels
+  attr_reader :label_fingerprint
+  attr_reader :physical_block_size_bytes
+  attr_reader :region
+  attr_reader :replica_zones
+  attr_reader :status
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

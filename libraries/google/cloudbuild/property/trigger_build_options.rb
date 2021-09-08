@@ -18,7 +18,29 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildOptions
-        attr_reader :source_provenance_hash, :requested_verify_option, :machine_type, :disk_size_gb, :substitution_option, :dynamic_substitutions, :log_streaming_option, :worker_pool, :logging, :env, :secret_env, :volumes
+        attr_reader :source_provenance_hash
+
+        attr_reader :requested_verify_option
+
+        attr_reader :machine_type
+
+        attr_reader :disk_size_gb
+
+        attr_reader :substitution_option
+
+        attr_reader :dynamic_substitutions
+
+        attr_reader :log_streaming_option
+
+        attr_reader :worker_pool
+
+        attr_reader :logging
+
+        attr_reader :env
+
+        attr_reader :secret_env
+
+        attr_reader :volumes
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

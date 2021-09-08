@@ -22,7 +22,9 @@ class KeyRingIamBinding < GcpResourceBase
   desc 'KeyRing Iam Binding'
   supports platform: 'gcp'
 
-  attr_reader :params, :condition
+  attr_reader :params
+
+  attr_reader :condition
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -21,7 +21,12 @@ class ResourceManagerFolder < GcpResourceBase
   desc 'Folder'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :lifecycle_state, :create_time, :parent, :display_name
+  attr_reader :params
+  attr_reader :name
+  attr_reader :lifecycle_state
+  attr_reader :create_time
+  attr_reader :parent
+  attr_reader :display_name
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

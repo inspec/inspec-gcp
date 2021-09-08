@@ -17,7 +17,9 @@ module GoogleInSpec
   module AppEngine
     module Property
       class StandardAppVersionBasicScaling
-        attr_reader :idle_timeout, :max_instances
+        attr_reader :idle_timeout
+
+        attr_reader :max_instances
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

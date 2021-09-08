@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterNetworkPolicy
-        attr_reader :provider, :enabled
+        attr_reader :provider
+
+        attr_reader :enabled
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

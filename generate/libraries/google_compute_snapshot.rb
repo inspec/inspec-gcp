@@ -23,7 +23,20 @@ class ComputeSnapshot < GcpResourceBase
   desc 'Snapshot'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :id, :disk_size_gb, :name, :description, :storage_bytes, :licenses, :labels, :label_fingerprint, :source_disk, :zone, :snapshot_encryption_key, :source_disk_encryption_key
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :id
+  attr_reader :disk_size_gb
+  attr_reader :name
+  attr_reader :description
+  attr_reader :storage_bytes
+  attr_reader :licenses
+  attr_reader :labels
+  attr_reader :label_fingerprint
+  attr_reader :source_disk
+  attr_reader :zone
+  attr_reader :snapshot_encryption_key
+  attr_reader :source_disk_encryption_key
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class RouterNatSubnetwork
-        attr_reader :name, :source_ip_ranges_to_nat, :secondary_ip_range_names
+        attr_reader :name
+
+        attr_reader :source_ip_ranges_to_nat
+
+        attr_reader :secondary_ip_range_names
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

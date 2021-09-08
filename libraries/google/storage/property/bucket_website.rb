@@ -17,7 +17,9 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketWebsite
-        attr_reader :main_page_suffix, :not_found_page
+        attr_reader :main_page_suffix
+
+        attr_reader :not_found_page
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

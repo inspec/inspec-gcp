@@ -17,7 +17,9 @@ module GoogleInSpec
   module Storage
     module Property
       class DefaultObjectACLProjectTeam
-        attr_reader :project_number, :team
+        attr_reader :project_number
+
+        attr_reader :team
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

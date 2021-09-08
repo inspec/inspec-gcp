@@ -24,7 +24,20 @@ class BigQueryDataset < GcpResourceBase
   desc 'Dataset'
   supports platform: 'gcp'
 
-  attr_reader :params, :access, :creation_time, :dataset_reference, :default_table_expiration_ms, :default_partition_expiration_ms, :description, :etag, :friendly_name, :id, :labels, :last_modified_time, :location, :default_encryption_configuration
+  attr_reader :params
+  attr_reader :access
+  attr_reader :creation_time
+  attr_reader :dataset_reference
+  attr_reader :default_table_expiration_ms
+  attr_reader :default_partition_expiration_ms
+  attr_reader :description
+  attr_reader :etag
+  attr_reader :friendly_name
+  attr_reader :id
+  attr_reader :labels
+  attr_reader :last_modified_time
+  attr_reader :location
+  attr_reader :default_encryption_configuration
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range, :subnetwork_range_name
+        attr_reader :ip_cidr_range
+
+        attr_reader :subnetwork_range_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

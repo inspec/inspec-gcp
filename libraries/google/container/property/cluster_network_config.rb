@@ -17,7 +17,13 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterNetworkConfig
-        attr_reader :enable_intra_node_visibility, :network, :subnetwork, :default_snat_status
+        attr_reader :enable_intra_node_visibility
+
+        attr_reader :network
+
+        attr_reader :subnetwork
+
+        attr_reader :default_snat_status
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

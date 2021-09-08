@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalNodePoolConditions
-        attr_reader :arguments, :code
+        attr_reader :arguments
+
+        attr_reader :code
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
