@@ -53,7 +53,7 @@ $ cat /Users/john/.config/gcloud/myproject-1-feb7993e8660.json
 
 And InSpec can be instructed to use it by setting this ENV variable prior to running `inspec exec`:
 ```bash
-$ export GOOGLE_APPLICATION_CREDENTIALS='/Users/john/.config/gcloud/myproject-1-feb7993e8660.json'
+$ export GOOGLE_APPLICATION_CREDENTIALS='/Users/sample_user/.config/gcloud/myproject-1-feb7993e8660.json'
 ```
 
 ### Enable the appropriate APIs that you want to use:
@@ -69,18 +69,17 @@ Since this is an InSpec resource pack, it only defines InSpec resources. It incl
 
 ```bash
 $ inspec init profile --platform gcp my-profile
-Create new profile at /Users/spaterson/my-profile
- * Create directory libraries
- * Create file README.md
- * Create directory controls
- * Create file controls/example.rb
- * Create file inspec.yml
- * Create file attributes.yml
- * Create file libraries/.gitkeep 
- 
+
+Creating new profile at /Users/sample_user/my-profile
+ * Creating file README.md
+ * Creating directory controls
+ * Creating file controls/example.rb
+ * Creating file inputs.yml
+ * Creating file inspec.yml
+
 ```
 
-### Update `attributes.yml` to point to your project
+### Update `inputs.yml` to point to your project
 
 ```
 gcp_project_id: 'my-gcp-project'
@@ -90,7 +89,7 @@ gcp_project_id: 'my-gcp-project'
 
 ```
 $ cd my-profile/
-$ inspec exec . -t gcp:// --attrs attributes.yml
+$ inspec exec . -t gcp:// --input-file inputs.yml
 
 Profile: GCP InSpec Profile (my-profile)
 Version: 0.1.0
@@ -99,23 +98,34 @@ Target:  gcp://local-service-account@my-gcp-project.iam.gserviceaccount.com
   ✔  gcp-single-region-1.0: Ensure single region has the correct properties.
      ✔  Region europe-west2 zone_names should include "europe-west2-a"
   ✔  gcp-regions-loop-1.0: Ensure regions have the correct properties in bulk.
-     ✔  Region asia-east1 should be up
-     ✔  Region asia-northeast1 should be up
-     ✔  Region asia-south1 should be up
-     ✔  Region asia-southeast1 should be up
-     ✔  Region australia-southeast1 should be up
-     ✔  Region europe-north1 should be up
-     ✔  Region europe-west1 should be up
-     ✔  Region europe-west2 should be up
-     ✔  Region europe-west3 should be up
-     ✔  Region europe-west4 should be up
-     ✔  Region northamerica-northeast1 should be up
-     ✔  Region southamerica-east1 should be up
-     ✔  Region us-central1 should be up
-     ✔  Region us-east1 should be up
-     ✔  Region us-east4 should be up
-     ✔  Region us-west1 should be up
-     ✔  Region us-west2 should be up
+     ✔  Region asia-east1 is expected to be up
+     ✔  Region asia-east2 is expected to be up
+     ✔  Region asia-northeast1 is expected to be up
+     ✔  Region asia-northeast2 is expected to be up
+     ✔  Region asia-northeast3 is expected to be up
+     ✔  Region asia-south1 is expected to be up
+     ✔  Region asia-south2 is expected to be up
+     ✔  Region asia-southeast1 is expected to be up
+     ✔  Region asia-southeast2 is expected to be up
+     ✔  Region australia-southeast1 is expected to be up
+     ✔  Region australia-southeast2 is expected to be up
+     ✔  Region europe-central2 is expected to be up
+     ✔  Region europe-north1 is expected to be up
+     ✔  Region europe-west1 is expected to be up
+     ✔  Region europe-west2 is expected to be up
+     ✔  Region europe-west3 is expected to be up
+     ✔  Region europe-west4 is expected to be up
+     ✔  Region europe-west6 is expected to be up
+     ✔  Region northamerica-northeast1 is expected to be up
+     ✔  Region northamerica-northeast2 is expected to be up
+     ✔  Region southamerica-east1 is expected to be up
+     ✔  Region us-central1 is expected to be up
+     ✔  Region us-east1 is expected to be up
+     ✔  Region us-east4 is expected to be up
+     ✔  Region us-west1 is expected to be up
+     ✔  Region us-west2 is expected to be up
+     ✔  Region us-west3 is expected to be up
+     ✔  Region us-west4 is expected to be up
 
 
 Profile: Google Cloud Platform Resource Pack (inspec-gcp)
@@ -125,7 +135,7 @@ Target:  gcp://local-service-account@my-gcp-project.iam.gserviceaccount.com
      No tests executed.
 
 Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
-Test Summary: 18 successful, 0 failures, 0 skipped
+Test Summary:  29 successful, 0 failures, 0 skipped
 ```
 
 The generated `inspec.yml` file automatically points to the InSpec GCP resource pack:
@@ -134,7 +144,11 @@ The generated `inspec.yml` file automatically points to the InSpec GCP resource 
 name: my-profile
 title: My GCP InSpec Profile
 version: 0.1.0
-inspec_version: '>= 4.6.9'
+inspec_version: '>= 4'
+inputs:
+  - name: gcp_project_id
+    required: true
+    description: 'The GCP project identifier.'
 depends:
   - name: inspec-gcp
     url: https://github.com/inspec/inspec-gcp/archive/x.tar.gz
@@ -150,6 +164,7 @@ The following resources are available in the InSpec GCP Profile
 
 | InSpec GCP Supported Resources| [https://www.inspec.io/docs/reference/resources/#gcp-resources](https://www.inspec.io/docs/reference/resources/#gcp-resources) |
 |:---|:---|
+| Singular Resource | Plural Resource |
 | [google_bigquery_dataset](docs/resources/google_bigquery_dataset.md) |  [google_bigquery_datasets](docs/resources/google_bigquery_datasets.md) |
 | [google_bigquery_table](docs/resources/google_bigquery_table.md) |  [google_bigquery_tables](docs/resources/google_bigquery_tables.md) |
 | [google_cloudbuild_trigger](docs/resources/google_cloudbuild_trigger.md) |  [google_cloudbuild_triggers](docs/resources/google_cloudbuild_triggers.md) |
