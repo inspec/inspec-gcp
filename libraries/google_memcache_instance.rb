@@ -24,21 +24,7 @@ class MemcacheInstance < GcpResourceBase
   desc 'Instance'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :display_name
-  attr_reader :memcache_nodes
-  attr_reader :create_time
-  attr_reader :discovery_endpoint
-  attr_reader :labels
-  attr_reader :memcache_full_version
-  attr_reader :zones
-  attr_reader :authorized_network
-  attr_reader :node_count
-  attr_reader :memcache_version
-  attr_reader :node_config
-  attr_reader :parameters
-  attr_reader :region
+  attr_reader :params, :name, :display_name, :memcache_nodes, :create_time, :discovery_endpoint, :labels, :memcache_full_version, :zones, :authorized_network, :node_count, :memcache_version, :node_config, :parameters, :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

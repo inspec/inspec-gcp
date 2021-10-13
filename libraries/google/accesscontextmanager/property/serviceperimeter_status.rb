@@ -18,13 +18,7 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class ServicePerimeterStatus
-        attr_reader :resources
-
-        attr_reader :access_levels
-
-        attr_reader :restricted_services
-
-        attr_reader :vpc_accessible_services
+        attr_reader :resources, :access_levels, :restricted_services, :vpc_accessible_services
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

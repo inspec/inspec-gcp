@@ -19,17 +19,7 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class AccessLevelBasicConditions
-        attr_reader :ip_subnetworks
-
-        attr_reader :required_access_levels
-
-        attr_reader :members
-
-        attr_reader :negate
-
-        attr_reader :device_policy
-
-        attr_reader :regions
+        attr_reader :ip_subnetworks, :required_access_levels, :members, :negate, :device_policy, :regions
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

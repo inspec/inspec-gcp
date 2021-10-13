@@ -23,17 +23,7 @@ class ComputeNetwork < GcpResourceBase
   desc 'Network'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :description
-  attr_reader :gateway_ipv4
-  attr_reader :id
-  attr_reader :name
-  attr_reader :subnetworks
-  attr_reader :auto_create_subnetworks
-  attr_reader :creation_timestamp
-  attr_reader :routing_config
-  attr_reader :peerings
-  attr_reader :mtu
+  attr_reader :params, :description, :gateway_ipv4, :id, :name, :subnetworks, :auto_create_subnetworks, :creation_timestamp, :routing_config, :peerings, :mtu
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -83,7 +73,7 @@ class ComputeNetwork < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

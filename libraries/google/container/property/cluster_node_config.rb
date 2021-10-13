@@ -20,35 +20,7 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterNodeConfig
-        attr_reader :machine_type
-
-        attr_reader :disk_size_gb
-
-        attr_reader :oauth_scopes
-
-        attr_reader :service_account
-
-        attr_reader :metadata
-
-        attr_reader :image_type
-
-        attr_reader :labels
-
-        attr_reader :local_ssd_count
-
-        attr_reader :tags
-
-        attr_reader :preemptible
-
-        attr_reader :accelerators
-
-        attr_reader :disk_type
-
-        attr_reader :min_cpu_platform
-
-        attr_reader :taints
-
-        attr_reader :shielded_instance_config
+        attr_reader :machine_type, :disk_size_gb, :oauth_scopes, :service_account, :metadata, :image_type, :labels, :local_ssd_count, :tags, :preemptible, :accelerators, :disk_type, :min_cpu_platform, :taints, :shielded_instance_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

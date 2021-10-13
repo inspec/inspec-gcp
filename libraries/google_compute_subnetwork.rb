@@ -23,21 +23,7 @@ class ComputeSubnetwork < GcpResourceBase
   desc 'Subnetwork'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :gateway_address
-  attr_reader :id
-  attr_reader :ip_cidr_range
-  attr_reader :name
-  attr_reader :network
-  attr_reader :purpose
-  attr_reader :role
-  attr_reader :secondary_ip_ranges
-  attr_reader :private_ip_google_access
-  attr_reader :private_ipv6_google_access
-  attr_reader :region
-  attr_reader :log_config
+  attr_reader :params, :creation_timestamp, :description, :gateway_address, :id, :ip_cidr_range, :name, :network, :purpose, :role, :secondary_ip_ranges, :private_ip_google_access, :private_ipv6_google_access, :region, :log_config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -82,7 +68,7 @@ class ComputeSubnetwork < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

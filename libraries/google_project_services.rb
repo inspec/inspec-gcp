@@ -77,7 +77,7 @@ class ServiceUsageServices < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://serviceusage.googleapis.com/v1beta1/'
     else

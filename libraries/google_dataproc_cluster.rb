@@ -37,11 +37,7 @@ class DataprocCluster < GcpResourceBase
   desc 'Cluster'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :cluster_name
-  attr_reader :labels
-  attr_reader :config
-  attr_reader :region
+  attr_reader :params, :cluster_name, :labels, :config, :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -67,7 +63,7 @@ class DataprocCluster < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://dataproc.googleapis.com/v1beta2/'
     else

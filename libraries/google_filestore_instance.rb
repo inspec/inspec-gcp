@@ -23,16 +23,7 @@ class FilestoreInstance < GcpResourceBase
   desc 'Instance'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :description
-  attr_reader :create_time
-  attr_reader :tier
-  attr_reader :labels
-  attr_reader :file_shares
-  attr_reader :networks
-  attr_reader :etag
-  attr_reader :zone
+  attr_reader :params, :name, :description, :create_time, :tier, :labels, :file_shares, :networks, :etag, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -68,7 +59,7 @@ class FilestoreInstance < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://file.googleapis.com/v1beta1/'
     else

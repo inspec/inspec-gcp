@@ -22,14 +22,7 @@ class ResourceManagerProject < GcpResourceBase
   desc 'Project'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :number
-  attr_reader :lifecycle_state
-  attr_reader :name
-  attr_reader :create_time
-  attr_reader :labels
-  attr_reader :parent
-  attr_reader :project_id
+  attr_reader :params, :number, :lifecycle_state, :name, :create_time, :labels, :parent, :project_id
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

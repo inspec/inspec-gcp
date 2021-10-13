@@ -18,11 +18,7 @@ module GoogleInSpec
   module Iam
     module Property
       class IamPolicyBindings
-        attr_reader :role
-
-        attr_reader :members
-
-        attr_reader :condition
+        attr_reader :role, :members, :condition
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

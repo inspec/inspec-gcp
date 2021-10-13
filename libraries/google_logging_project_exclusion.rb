@@ -21,12 +21,7 @@ class LoggingProjectExclusion < GcpResourceBase
   desc 'ProjectExclusion'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :project
-  attr_reader :name
-  attr_reader :description
-  attr_reader :filter
-  attr_reader :disabled
+  attr_reader :params, :project, :name, :description, :filter, :disabled
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

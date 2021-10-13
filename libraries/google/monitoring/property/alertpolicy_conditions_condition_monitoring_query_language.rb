@@ -18,11 +18,7 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditionsConditionMonitoringQueryLanguage
-        attr_reader :query
-
-        attr_reader :duration
-
-        attr_reader :trigger
+        attr_reader :query, :duration, :trigger
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

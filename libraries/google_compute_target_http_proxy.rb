@@ -21,12 +21,7 @@ class ComputeTargetHttpProxy < GcpResourceBase
   desc 'TargetHttpProxy'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :id
-  attr_reader :name
-  attr_reader :url_map
+  attr_reader :params, :creation_timestamp, :description, :id, :name, :url_map
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -58,7 +53,7 @@ class ComputeTargetHttpProxy < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

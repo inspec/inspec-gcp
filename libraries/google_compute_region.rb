@@ -23,15 +23,7 @@ class ComputeRegion < GcpResourceBase
   desc 'Region'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :deprecated
-  attr_reader :description
-  attr_reader :id
-  attr_reader :name
-  attr_reader :quotas
-  attr_reader :status
-  attr_reader :zones
+  attr_reader :params, :creation_timestamp, :deprecated, :description, :id, :name, :quotas, :status, :zones
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -78,7 +70,7 @@ class ComputeRegion < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

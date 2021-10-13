@@ -17,9 +17,7 @@ module GoogleInSpec
   module Memcache
     module Property
       class InstanceNodeConfig
-        attr_reader :cpu_count
-
-        attr_reader :memory_size_mb
+        attr_reader :cpu_count, :memory_size_mb
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

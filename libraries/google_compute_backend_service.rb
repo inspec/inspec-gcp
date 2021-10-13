@@ -36,32 +36,7 @@ class ComputeBackendService < GcpResourceBase
   desc 'BackendService'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :affinity_cookie_ttl_sec
-  attr_reader :backends
-  attr_reader :circuit_breakers
-  attr_reader :consistent_hash
-  attr_reader :cdn_policy
-  attr_reader :connection_draining
-  attr_reader :creation_timestamp
-  attr_reader :custom_request_headers
-  attr_reader :custom_response_headers
-  attr_reader :fingerprint
-  attr_reader :description
-  attr_reader :enable_cdn
-  attr_reader :health_checks
-  attr_reader :id
-  attr_reader :iap
-  attr_reader :load_balancing_scheme
-  attr_reader :locality_lb_policy
-  attr_reader :name
-  attr_reader :outlier_detection
-  attr_reader :port_name
-  attr_reader :protocol
-  attr_reader :security_policy
-  attr_reader :session_affinity
-  attr_reader :timeout_sec
-  attr_reader :log_config
+  attr_reader :params, :affinity_cookie_ttl_sec, :backends, :circuit_breakers, :consistent_hash, :cdn_policy, :connection_draining, :creation_timestamp, :custom_request_headers, :custom_response_headers, :fingerprint, :description, :enable_cdn, :health_checks, :id, :iap, :load_balancing_scheme, :locality_lb_policy, :name, :outlier_detection, :port_name, :protocol, :security_policy, :session_affinity, :timeout_sec, :log_config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -113,7 +88,7 @@ class ComputeBackendService < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

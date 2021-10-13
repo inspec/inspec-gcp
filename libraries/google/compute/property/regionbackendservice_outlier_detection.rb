@@ -19,27 +19,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionBackendServiceOutlierDetection
-        attr_reader :base_ejection_time
-
-        attr_reader :consecutive_errors
-
-        attr_reader :consecutive_gateway_failure
-
-        attr_reader :enforcing_consecutive_errors
-
-        attr_reader :enforcing_consecutive_gateway_failure
-
-        attr_reader :enforcing_success_rate
-
-        attr_reader :interval
-
-        attr_reader :max_ejection_percent
-
-        attr_reader :success_rate_minimum_hosts
-
-        attr_reader :success_rate_request_volume
-
-        attr_reader :success_rate_stdev_factor
+        attr_reader :base_ejection_time, :consecutive_errors, :consecutive_gateway_failure, :enforcing_consecutive_errors, :enforcing_consecutive_gateway_failure, :enforcing_success_rate, :interval, :max_ejection_percent, :success_rate_minimum_hosts, :success_rate_request_volume, :success_rate_stdev_factor
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

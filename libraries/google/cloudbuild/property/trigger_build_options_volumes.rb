@@ -17,9 +17,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildOptionsVolumes
-        attr_reader :name
-
-        attr_reader :path
+        attr_reader :name, :path
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -26,29 +26,7 @@ class ComputeImage < GcpResourceBase
   desc 'Image'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :archive_size_bytes
-  attr_reader :creation_timestamp
-  attr_reader :deprecated
-  attr_reader :description
-  attr_reader :disk_size_gb
-  attr_reader :family
-  attr_reader :guest_os_features
-  attr_reader :id
-  attr_reader :image_encryption_key
-  attr_reader :labels
-  attr_reader :label_fingerprint
-  attr_reader :licenses
-  attr_reader :name
-  attr_reader :raw_disk
-  attr_reader :source_disk
-  attr_reader :source_disk_encryption_key
-  attr_reader :source_disk_id
-  attr_reader :source_image
-  attr_reader :source_snapshot
-  attr_reader :source_type
-  attr_reader :self_link
-  attr_reader :status
+  attr_reader :params, :archive_size_bytes, :creation_timestamp, :deprecated, :description, :disk_size_gb, :family, :guest_os_features, :id, :image_encryption_key, :labels, :label_fingerprint, :licenses, :name, :raw_disk, :source_disk, :source_disk_encryption_key, :source_disk_id, :source_image, :source_snapshot, :source_type, :self_link, :status
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -100,7 +78,7 @@ class ComputeImage < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

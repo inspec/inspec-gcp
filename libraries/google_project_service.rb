@@ -23,12 +23,7 @@ class ServiceUsageService < GcpResourceBase
   desc 'Service'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :parent
-  attr_reader :state
-  attr_reader :disable_dependent_services
-  attr_reader :config
+  attr_reader :params, :name, :parent, :state, :disable_dependent_services, :config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -55,7 +50,7 @@ class ServiceUsageService < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://serviceusage.googleapis.com/v1beta1/'
     else

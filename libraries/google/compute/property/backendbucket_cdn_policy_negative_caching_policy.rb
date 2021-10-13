@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendBucketCdnPolicyNegativeCachingPolicy
-        attr_reader :code
-
-        attr_reader :ttl
+        attr_reader :code, :ttl
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

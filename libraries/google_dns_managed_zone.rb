@@ -31,22 +31,7 @@ class DNSManagedZone < GcpResourceBase
   desc 'ManagedZone'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :description
-  attr_reader :dns_name
-  attr_reader :dnssec_config
-  attr_reader :id
-  attr_reader :name
-  attr_reader :name_servers
-  attr_reader :name_server_set
-  attr_reader :creation_time
-  attr_reader :labels
-  attr_reader :visibility
-  attr_reader :private_visibility_config
-  attr_reader :forwarding_config
-  attr_reader :peering_config
-  attr_reader :reverse_lookup
-  attr_reader :service_directory_config
+  attr_reader :params, :description, :dns_name, :dnssec_config, :id, :name, :name_servers, :name_server_set, :creation_time, :labels, :visibility, :private_visibility_config, :forwarding_config, :peering_config, :reverse_lookup, :service_directory_config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -102,7 +87,7 @@ class DNSManagedZone < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://dns.googleapis.com/dns/v1beta2/'
     else

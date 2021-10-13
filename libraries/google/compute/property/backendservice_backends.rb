@@ -17,27 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendServiceBackends
-        attr_reader :balancing_mode
-
-        attr_reader :capacity_scaler
-
-        attr_reader :description
-
-        attr_reader :group
-
-        attr_reader :max_connections
-
-        attr_reader :max_connections_per_instance
-
-        attr_reader :max_connections_per_endpoint
-
-        attr_reader :max_rate
-
-        attr_reader :max_rate_per_instance
-
-        attr_reader :max_rate_per_endpoint
-
-        attr_reader :max_utilization
+        attr_reader :balancing_mode, :capacity_scaler, :description, :group, :max_connections, :max_connections_per_instance, :max_connections_per_endpoint, :max_rate, :max_rate_per_instance, :max_rate_per_endpoint, :max_utilization
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

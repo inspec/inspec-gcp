@@ -17,13 +17,7 @@ module GoogleInSpec
   module AppEngine
     module Property
       class StandardAppVersionAutomaticScalingStandardSchedulerSettings
-        attr_reader :target_cpu_utilization
-
-        attr_reader :target_throughput_utilization
-
-        attr_reader :min_instances
-
-        attr_reader :max_instances
+        attr_reader :target_cpu_utilization, :target_throughput_utilization, :min_instances, :max_instances
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

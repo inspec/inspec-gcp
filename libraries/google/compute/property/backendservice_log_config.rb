@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendServiceLogConfig
-        attr_reader :enable
-
-        attr_reader :sample_rate
+        attr_reader :enable, :sample_rate
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

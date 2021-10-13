@@ -17,21 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionInstanceGroupManagerCurrentActions
-        attr_reader :abandoning
-
-        attr_reader :creating
-
-        attr_reader :creating_without_retries
-
-        attr_reader :deleting
-
-        attr_reader :none
-
-        attr_reader :recreating
-
-        attr_reader :refreshing
-
-        attr_reader :restarting
+        attr_reader :abandoning, :creating, :creating_without_retries, :deleting, :none, :recreating, :refreshing, :restarting
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,13 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapTests
-        attr_reader :description
-
-        attr_reader :host
-
-        attr_reader :path
-
-        attr_reader :service
+        attr_reader :description, :host, :path, :service
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

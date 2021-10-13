@@ -22,10 +22,7 @@ class ComputeSecurityPolicy < GcpResourceBase
   desc 'SecurityPolicy'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :id
-  attr_reader :rules
+  attr_reader :params, :name, :id, :rules
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -50,7 +47,7 @@ class ComputeSecurityPolicy < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

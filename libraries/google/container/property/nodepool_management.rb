@@ -18,11 +18,7 @@ module GoogleInSpec
   module Container
     module Property
       class NodePoolManagement
-        attr_reader :auto_upgrade
-
-        attr_reader :auto_repair
-
-        attr_reader :upgrade_options
+        attr_reader :auto_upgrade, :auto_repair, :upgrade_options
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
