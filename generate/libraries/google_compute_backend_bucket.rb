@@ -22,14 +22,7 @@ class ComputeBackendBucket < GcpResourceBase
   desc 'BackendBucket'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :bucket_name
-  attr_reader :cdn_policy
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :enable_cdn
-  attr_reader :id
-  attr_reader :name
+  attr_reader :params, :bucket_name, :cdn_policy, :creation_timestamp, :description, :enable_cdn, :id, :name
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

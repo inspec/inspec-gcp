@@ -20,15 +20,7 @@ module GoogleInSpec
   module Compute
     module Property
       class SecurityPolicyRules
-        attr_reader :description
-
-        attr_reader :priority
-
-        attr_reader :action
-
-        attr_reader :preview
-
-        attr_reader :match
+        attr_reader :description, :priority, :action, :preview, :match
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

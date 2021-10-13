@@ -26,15 +26,7 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditions
-        attr_reader :condition_absent
-
-        attr_reader :name
-
-        attr_reader :condition_monitoring_query_language
-
-        attr_reader :condition_threshold
-
-        attr_reader :display_name
+        attr_reader :condition_absent, :name, :condition_monitoring_query_language, :condition_threshold, :display_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

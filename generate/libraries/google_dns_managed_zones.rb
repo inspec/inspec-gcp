@@ -38,8 +38,8 @@ module Inspec::Resources
         return [] if !@managed_zones || !@managed_zones.managed_zones
         @managed_zones.managed_zones.map do |zone|
           dns_enabled=false
-          if defined?(zone.dnssec_config.state)
-            dns_enabled=true if zone.dnssec_config.state == 'on'
+          if defined?(zone.dnssec_config.state) && (zone.dnssec_config.state == 'on')
+            dns_enabled=true
           end
           managed_zones+=[{ zone_id: zone.id,
                             zone_name: zone.name,

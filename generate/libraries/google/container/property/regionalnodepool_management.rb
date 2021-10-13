@@ -18,13 +18,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalNodePoolManagement
-        attr_reader :arguments
-
-        attr_reader :auto_upgrade
-
-        attr_reader :auto_repair
-
-        attr_reader :upgrade_options
+        attr_reader :arguments, :auto_upgrade, :auto_repair, :upgrade_options
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

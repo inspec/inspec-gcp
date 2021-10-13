@@ -18,11 +18,7 @@ module GoogleInSpec
   module Filestore
     module Property
       class InstanceFileShares
-        attr_reader :name
-
-        attr_reader :capacity_gb
-
-        attr_reader :nfs_export_options
+        attr_reader :name, :capacity_gb, :nfs_export_options
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

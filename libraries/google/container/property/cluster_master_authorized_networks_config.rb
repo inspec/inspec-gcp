@@ -18,9 +18,7 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterMasterAuthorizedNetworksConfig
-        attr_reader :enabled
-
-        attr_reader :cidr_blocks
+        attr_reader :enabled, :cidr_blocks
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

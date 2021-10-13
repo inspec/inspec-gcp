@@ -17,9 +17,7 @@ module GoogleInSpec
   module KMS
     module Property
       class CryptoKeyVersionTemplate
-        attr_reader :algorithm
-
-        attr_reader :protection_level
+        attr_reader :algorithm, :protection_level
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

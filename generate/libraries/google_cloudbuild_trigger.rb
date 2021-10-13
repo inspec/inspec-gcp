@@ -24,17 +24,7 @@ class CloudBuildTrigger < GcpResourceBase
   desc 'Trigger'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :id
-  attr_reader :description
-  attr_reader :disabled
-  attr_reader :create_time
-  attr_reader :substitutions
-  attr_reader :filename
-  attr_reader :ignored_files
-  attr_reader :included_files
-  attr_reader :trigger_template
-  attr_reader :build
+  attr_reader :params, :id, :description, :disabled, :create_time, :substitutions, :filename, :ignored_files, :included_files, :trigger_template, :build
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

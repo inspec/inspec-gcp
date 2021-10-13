@@ -17,11 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :arguments
-
-        attr_reader :ip_cidr_range
-
-        attr_reader :subnetwork_range_name
+        attr_reader :arguments, :ip_cidr_range, :subnetwork_range_name
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

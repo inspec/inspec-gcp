@@ -17,15 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionQuotas
-        attr_reader :arguments
-
-        attr_reader :metric
-
-        attr_reader :limit
-
-        attr_reader :usage
-
-        attr_reader :owner
+        attr_reader :arguments, :metric, :limit, :usage, :owner
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -18,11 +18,7 @@ module GoogleInSpec
   module ServiceUsage
     module Property
       class ServiceConfig
-        attr_reader :name
-
-        attr_reader :title
-
-        attr_reader :apis
+        attr_reader :name, :title, :apis
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

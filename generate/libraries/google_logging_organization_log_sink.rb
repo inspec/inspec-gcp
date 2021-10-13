@@ -21,13 +21,7 @@ class LoggingOrganizationLogSink < GcpResourceBase
   desc 'OrganizationLogSink'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :organization
-  attr_reader :name
-  attr_reader :filter
-  attr_reader :destination
-  attr_reader :writer_identity
-  attr_reader :include_children
+  attr_reader :params, :organization, :name, :filter, :destination, :writer_identity, :include_children
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

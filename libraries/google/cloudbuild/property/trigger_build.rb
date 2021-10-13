@@ -27,27 +27,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuild
-        attr_reader :source
-
-        attr_reader :tags
-
-        attr_reader :images
-
-        attr_reader :substitutions
-
-        attr_reader :queue_ttl
-
-        attr_reader :logs_bucket
-
-        attr_reader :timeout
-
-        attr_reader :secrets
-
-        attr_reader :steps
-
-        attr_reader :artifacts
-
-        attr_reader :options
+        attr_reader :source, :tags, :images, :substitutions, :queue_ttl, :logs_bucket, :timeout, :secrets, :steps, :artifacts, :options
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

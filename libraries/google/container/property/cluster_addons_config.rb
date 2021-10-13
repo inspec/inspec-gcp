@@ -22,15 +22,7 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterAddonsConfig
-        attr_reader :http_load_balancing
-
-        attr_reader :horizontal_pod_autoscaling
-
-        attr_reader :kubernetes_dashboard
-
-        attr_reader :network_policy_config
-
-        attr_reader :gce_persistent_disk_csi_driver_config
+        attr_reader :http_load_balancing, :horizontal_pod_autoscaling, :kubernetes_dashboard, :network_policy_config, :gce_persistent_disk_csi_driver_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

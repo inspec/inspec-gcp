@@ -17,13 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendServiceIap
-        attr_reader :enabled
-
-        attr_reader :oauth2_client_id
-
-        attr_reader :oauth2_client_secret
-
-        attr_reader :oauth2_client_secret_sha256
+        attr_reader :enabled, :oauth2_client_id, :oauth2_client_secret, :oauth2_client_secret_sha256
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

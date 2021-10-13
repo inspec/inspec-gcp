@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas
-        attr_reader :fixed
-
-        attr_reader :percent
+        attr_reader :fixed, :percent
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

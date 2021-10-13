@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesDisksInitializeParamsSourceImageEncryptionKey
-        attr_reader :raw_key
-
-        attr_reader :sha256
+        attr_reader :raw_key, :sha256
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

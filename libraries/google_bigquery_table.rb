@@ -36,30 +36,7 @@ class BigQueryTable < GcpResourceBase
   desc 'Table'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :table_reference
-  attr_reader :clustering
-  attr_reader :creation_time
-  attr_reader :description
-  attr_reader :friendly_name
-  attr_reader :id
-  attr_reader :labels
-  attr_reader :last_modified_time
-  attr_reader :location
-  attr_reader :name
-  attr_reader :num_bytes
-  attr_reader :num_long_term_bytes
-  attr_reader :num_rows
-  attr_reader :require_partition_filter
-  attr_reader :type
-  attr_reader :view
-  attr_reader :time_partitioning
-  attr_reader :streaming_buffer
-  attr_reader :schema
-  attr_reader :encryption_configuration
-  attr_reader :expiration_time
-  attr_reader :external_data_configuration
-  attr_reader :dataset
+  attr_reader :params, :table_reference, :clustering, :creation_time, :description, :friendly_name, :id, :labels, :last_modified_time, :location, :name, :num_bytes, :num_long_term_bytes, :num_rows, :require_partition_filter, :type, :view, :time_partitioning, :streaming_buffer, :schema, :encryption_configuration, :expiration_time, :external_data_configuration, :dataset
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

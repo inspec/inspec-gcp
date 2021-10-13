@@ -17,9 +17,7 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableExternalDataConfigurationGoogleSheetsOptions
-        attr_reader :arguments
-
-        attr_reader :skip_leading_rows
+        attr_reader :arguments, :skip_leading_rows
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

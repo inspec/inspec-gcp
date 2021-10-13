@@ -17,9 +17,7 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketACLProjectTeam
-        attr_reader :project_number
-
-        attr_reader :team
+        attr_reader :project_number, :team
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

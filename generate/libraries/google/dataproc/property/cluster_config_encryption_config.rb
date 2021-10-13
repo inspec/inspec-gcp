@@ -17,9 +17,7 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigEncryptionConfig
-        attr_reader :arguments
-
-        attr_reader :gce_pd_kms_key_name
+        attr_reader :arguments, :gce_pd_kms_key_name
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

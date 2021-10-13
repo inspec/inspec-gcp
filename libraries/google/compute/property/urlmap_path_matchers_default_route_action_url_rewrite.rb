@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchersDefaultRouteActionUrlRewrite
-        attr_reader :path_prefix_rewrite
-
-        attr_reader :host_rewrite
+        attr_reader :path_prefix_rewrite, :host_rewrite
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

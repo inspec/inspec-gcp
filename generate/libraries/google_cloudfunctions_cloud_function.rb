@@ -24,25 +24,7 @@ class CloudFunctionsCloudFunction < GcpResourceBase
   desc 'CloudFunction'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :description
-  attr_reader :status
-  attr_reader :entry_point
-  attr_reader :runtime
-  attr_reader :timeout
-  attr_reader :available_memory_mb
-  attr_reader :service_account_email
-  attr_reader :update_time
-  attr_reader :version_id
-  attr_reader :labels
-  attr_reader :environment_variables
-  attr_reader :source_archive_url
-  attr_reader :source_upload_url
-  attr_reader :source_repository
-  attr_reader :https_trigger
-  attr_reader :event_trigger
-  attr_reader :location
+  attr_reader :params, :name, :description, :status, :entry_point, :runtime, :timeout, :available_memory_mb, :service_account_email, :update_time, :version_id, :labels, :environment_variables, :source_archive_url, :source_upload_url, :source_repository, :https_trigger, :event_trigger, :location
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,13 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class DiskSourceSnapshotEncryptionKey
-        attr_reader :arguments
-
-        attr_reader :raw_key
-
-        attr_reader :kms_key_name
-
-        attr_reader :sha256
+        attr_reader :arguments, :raw_key, :kms_key_name, :sha256
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

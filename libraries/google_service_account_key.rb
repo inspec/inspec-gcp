@@ -21,17 +21,7 @@ class IAMServiceAccountKey < GcpResourceBase
   desc 'ServiceAccountKey'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :private_key_type
-  attr_reader :key_algorithm
-  attr_reader :private_key_data
-  attr_reader :public_key_data
-  attr_reader :valid_after_time
-  attr_reader :valid_before_time
-  attr_reader :key_type
-  attr_reader :service_account
-  attr_reader :path
+  attr_reader :params, :name, :private_key_type, :key_algorithm, :private_key_data, :public_key_data, :valid_after_time, :valid_before_time, :key_type, :service_account, :path
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

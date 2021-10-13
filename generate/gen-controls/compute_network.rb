@@ -9,7 +9,7 @@ control 'google_compute_network-1.0' do
   impact 1.0
   title 'google_compute_network resource test'
 
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_compute_network')
   filters = []

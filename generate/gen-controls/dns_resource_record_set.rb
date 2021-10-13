@@ -9,7 +9,7 @@ control 'google_dns_resource_record_set-1.0' do
   impact 1.0
   title 'google_dns_resource_record_set resource test'
 
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_dns_resource_record_set')
   filters = []

@@ -17,17 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicyScalingSchedules
-        attr_reader :min_required_replicas
-
-        attr_reader :schedule
-
-        attr_reader :time_zone
-
-        attr_reader :duration_sec
-
-        attr_reader :disabled
-
-        attr_reader :description
+        attr_reader :min_required_replicas, :schedule, :time_zone, :duration_sec, :disabled, :description
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

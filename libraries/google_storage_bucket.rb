@@ -32,29 +32,7 @@ class StorageBucket < GcpResourceBase
   desc 'Bucket'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :acl
-  attr_reader :cors
-  attr_reader :default_event_based_hold
-  attr_reader :default_object_acl
-  attr_reader :id
-  attr_reader :lifecycle
-  attr_reader :location
-  attr_reader :logging
-  attr_reader :metageneration
-  attr_reader :name
-  attr_reader :owner
-  attr_reader :project_number
-  attr_reader :storage_class
-  attr_reader :time_created
-  attr_reader :updated
-  attr_reader :versioning
-  attr_reader :website
-  attr_reader :labels
-  attr_reader :encryption
-  attr_reader :retention_policy
-  attr_reader :project
-  attr_reader :predefined_default_object_acl
+  attr_reader :params, :acl, :cors, :default_event_based_hold, :default_object_acl, :id, :lifecycle, :location, :logging, :metageneration, :name, :owner, :project_number, :storage_class, :time_created, :updated, :versioning, :website, :labels, :encryption, :retention_policy, :project, :predefined_default_object_acl
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

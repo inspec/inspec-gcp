@@ -17,9 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class NodePoolManagementUpgradeOptions
-        attr_reader :auto_upgrade_start_time
-
-        attr_reader :description
+        attr_reader :auto_upgrade_start_time, :description
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

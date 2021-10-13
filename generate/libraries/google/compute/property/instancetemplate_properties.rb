@@ -23,31 +23,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplateProperties
-        attr_reader :arguments
-
-        attr_reader :can_ip_forward
-
-        attr_reader :description
-
-        attr_reader :disks
-
-        attr_reader :labels
-
-        attr_reader :machine_type
-
-        attr_reader :min_cpu_platform
-
-        attr_reader :metadata
-
-        attr_reader :guest_accelerators
-
-        attr_reader :network_interfaces
-
-        attr_reader :scheduling
-
-        attr_reader :service_accounts
-
-        attr_reader :tags
+        attr_reader :arguments, :can_ip_forward, :description, :disks, :labels, :machine_type, :min_cpu_platform, :metadata, :guest_accelerators, :network_interfaces, :scheduling, :service_accounts, :tags
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

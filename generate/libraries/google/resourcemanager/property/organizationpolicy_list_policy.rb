@@ -17,9 +17,7 @@ module GoogleInSpec
   module ResourceManager
     module Property
       class OrganizationPolicyListPolicy
-        attr_reader :allowed_values
-
-        attr_reader :denied_values
+        attr_reader :allowed_values, :denied_values
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,9 +17,7 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyDocumentation
-        attr_reader :content
-
-        attr_reader :mime_type
+        attr_reader :content, :mime_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

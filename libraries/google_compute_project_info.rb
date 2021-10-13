@@ -24,15 +24,7 @@ class ComputeProjectInfo < GcpResourceBase
   desc 'ProjectInfo'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :common_instance_metadata
-  attr_reader :enabled_features
-  attr_reader :default_service_account
-  attr_reader :xpn_project_status
-  attr_reader :default_network_tier
-  attr_reader :quotas
-  attr_reader :creation_timestamp
+  attr_reader :params, :name, :common_instance_metadata, :enabled_features, :default_service_account, :xpn_project_status, :default_network_tier, :quotas, :creation_timestamp
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

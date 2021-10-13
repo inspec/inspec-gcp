@@ -21,18 +21,7 @@ class ComputeHttpHealthCheck < GcpResourceBase
   desc 'HttpHealthCheck'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :check_interval_sec
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :healthy_threshold
-  attr_reader :host
-  attr_reader :id
-  attr_reader :name
-  attr_reader :port
-  attr_reader :request_path
-  attr_reader :timeout_sec
-  attr_reader :unhealthy_threshold
+  attr_reader :params, :check_interval_sec, :creation_timestamp, :description, :healthy_threshold, :host, :id, :name, :port, :request_path, :timeout_sec, :unhealthy_threshold
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

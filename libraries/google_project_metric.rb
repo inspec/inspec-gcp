@@ -27,14 +27,7 @@ class LoggingMetric < GcpResourceBase
   desc 'Metric'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :description
-  attr_reader :filter
-  attr_reader :metric_descriptor
-  attr_reader :label_extractors
-  attr_reader :value_extractor
-  attr_reader :bucket_options
+  attr_reader :params, :name, :description, :filter, :metric_descriptor, :label_extractors, :value_extractor, :bucket_options
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

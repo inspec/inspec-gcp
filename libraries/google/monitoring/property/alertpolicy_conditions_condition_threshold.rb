@@ -20,21 +20,7 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditionsConditionThreshold
-        attr_reader :threshold_value
-
-        attr_reader :denominator_filter
-
-        attr_reader :denominator_aggregations
-
-        attr_reader :duration
-
-        attr_reader :comparison
-
-        attr_reader :trigger
-
-        attr_reader :aggregations
-
-        attr_reader :filter
+        attr_reader :threshold_value, :denominator_filter, :denominator_aggregations, :duration, :comparison, :trigger, :aggregations, :filter
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

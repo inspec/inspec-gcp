@@ -17,9 +17,7 @@ module GoogleInSpec
   module Pubsub
     module Property
       class SubscriptionPushConfigOidcToken
-        attr_reader :service_account_email
-
-        attr_reader :audience
+        attr_reader :service_account_email, :audience
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

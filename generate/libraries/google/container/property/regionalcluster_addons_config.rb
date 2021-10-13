@@ -21,15 +21,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterAddonsConfig
-        attr_reader :arguments
-
-        attr_reader :http_load_balancing
-
-        attr_reader :horizontal_pod_autoscaling
-
-        attr_reader :kubernetes_dashboard
-
-        attr_reader :network_policy_config
+        attr_reader :arguments, :http_load_balancing, :horizontal_pod_autoscaling, :kubernetes_dashboard, :network_policy_config
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

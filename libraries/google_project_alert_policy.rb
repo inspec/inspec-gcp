@@ -24,16 +24,7 @@ class MonitoringAlertPolicy < GcpResourceBase
   desc 'AlertPolicy'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :display_name
-  attr_reader :combiner
-  attr_reader :creation_record
-  attr_reader :enabled
-  attr_reader :conditions
-  attr_reader :notification_channels
-  attr_reader :user_labels
-  attr_reader :documentation
+  attr_reader :params, :name, :display_name, :combiner, :creation_record, :enabled, :conditions, :notification_channels, :user_labels, :documentation
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

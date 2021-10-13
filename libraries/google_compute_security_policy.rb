@@ -22,10 +22,7 @@ class ComputeSecurityPolicy < GcpResourceBase
   desc 'SecurityPolicy'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :id
-  attr_reader :rules
+  attr_reader :params, :name, :id, :rules
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

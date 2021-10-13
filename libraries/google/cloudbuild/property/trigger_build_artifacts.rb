@@ -19,9 +19,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildArtifacts
-        attr_reader :images
-
-        attr_reader :objects
+        attr_reader :images, :objects
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

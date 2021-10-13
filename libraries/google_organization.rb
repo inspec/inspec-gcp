@@ -22,12 +22,7 @@ class ResourceManagerOrganization < GcpResourceBase
   desc 'Organization'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :display_name
-  attr_reader :lifecycle_state
-  attr_reader :creation_time
-  attr_reader :owner
+  attr_reader :params, :name, :display_name, :lifecycle_state, :creation_time, :owner
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

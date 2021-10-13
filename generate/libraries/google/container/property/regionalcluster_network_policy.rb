@@ -17,11 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterNetworkPolicy
-        attr_reader :arguments
-
-        attr_reader :provider
-
-        attr_reader :enabled
+        attr_reader :arguments, :provider, :enabled
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

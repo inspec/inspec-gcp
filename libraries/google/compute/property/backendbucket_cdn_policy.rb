@@ -18,21 +18,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendBucketCdnPolicy
-        attr_reader :signed_url_cache_max_age_sec
-
-        attr_reader :default_ttl
-
-        attr_reader :max_ttl
-
-        attr_reader :client_ttl
-
-        attr_reader :negative_caching
-
-        attr_reader :negative_caching_policy
-
-        attr_reader :cache_mode
-
-        attr_reader :serve_while_stale
+        attr_reader :signed_url_cache_max_age_sec, :default_ttl, :max_ttl, :client_ttl, :negative_caching, :negative_caching_policy, :cache_mode, :serve_while_stale
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

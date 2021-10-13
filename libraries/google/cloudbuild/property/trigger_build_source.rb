@@ -19,9 +19,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildSource
-        attr_reader :storage_source
-
-        attr_reader :repo_source
+        attr_reader :storage_source, :repo_source
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

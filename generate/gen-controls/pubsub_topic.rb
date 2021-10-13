@@ -9,7 +9,7 @@ control 'google_pubsub_topic-1.0' do
   impact 1.0
   title 'google_pubsub_topic resource test'
 
-  logger = Logger.new(STDOUT)
+  logger = Logger.new($stdout)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_pubsub_topic')
   filters = []
