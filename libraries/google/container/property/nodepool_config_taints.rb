@@ -17,7 +17,11 @@ module GoogleInSpec
   module Container
     module Property
       class NodePoolConfigTaints
-        attr_reader :key, :value, :effect
+        attr_reader :key
+
+        attr_reader :value
+
+        attr_reader :effect
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

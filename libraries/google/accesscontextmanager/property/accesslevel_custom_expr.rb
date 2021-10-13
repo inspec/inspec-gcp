@@ -17,7 +17,13 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class AccessLevelCustomExpr
-        attr_reader :expression, :title, :description, :location
+        attr_reader :expression
+
+        attr_reader :title
+
+        attr_reader :description
+
+        attr_reader :location
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

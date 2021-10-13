@@ -22,7 +22,11 @@ class SourceRepoRepository < GcpResourceBase
   desc 'Repository'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :url, :size, :pubsub_configs
+  attr_reader :params
+  attr_reader :name
+  attr_reader :url
+  attr_reader :size
+  attr_reader :pubsub_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

@@ -17,7 +17,15 @@ module GoogleInSpec
   module Filestore
     module Property
       class InstanceFileSharesNfsExportOptions
-        attr_reader :ip_ranges, :access_mode, :squash_mode, :anon_uid, :anon_gid
+        attr_reader :ip_ranges
+
+        attr_reader :access_mode
+
+        attr_reader :squash_mode
+
+        attr_reader :anon_uid
+
+        attr_reader :anon_gid
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

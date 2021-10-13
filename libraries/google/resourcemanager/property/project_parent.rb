@@ -17,7 +17,9 @@ module GoogleInSpec
   module ResourceManager
     module Property
       class ProjectParent
-        attr_reader :type, :id
+        attr_reader :type
+
+        attr_reader :id
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

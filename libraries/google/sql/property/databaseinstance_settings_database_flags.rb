@@ -17,7 +17,9 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceSettingsDatabaseFlags
-        attr_reader :name, :value
+        attr_reader :name
+
+        attr_reader :value
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -24,7 +24,24 @@ class ComputeFirewall < GcpResourceBase
   desc 'Firewall'
   supports platform: 'gcp'
 
-  attr_reader :params, :allowed, :creation_timestamp, :denied, :description, :destination_ranges, :direction, :disabled, :log_config, :id, :name, :network, :priority, :source_ranges, :source_service_accounts, :source_tags, :target_service_accounts, :target_tags
+  attr_reader :params
+  attr_reader :allowed
+  attr_reader :creation_timestamp
+  attr_reader :denied
+  attr_reader :description
+  attr_reader :destination_ranges
+  attr_reader :direction
+  attr_reader :disabled
+  attr_reader :log_config
+  attr_reader :id
+  attr_reader :name
+  attr_reader :network
+  attr_reader :priority
+  attr_reader :source_ranges
+  attr_reader :source_service_accounts
+  attr_reader :source_tags
+  attr_reader :target_service_accounts
+  attr_reader :target_tags
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -205,7 +222,7 @@ class ComputeFirewall < GcpResourceBase
     false
   end
 
-  # NOTE: that port_list only accepts individual ports to match, not ranges
+  # note that port_list only accepts individual ports to match, not ranges
   def port_protocol_allowed(single_port, protocol = 'tcp')
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed' or 'denied'" if !defined?(allowed) || !defined?(denied)
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'allowed' and 'denied' cannot both be nil" if allowed.nil? && denied.nil?

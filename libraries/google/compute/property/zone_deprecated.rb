@@ -17,7 +17,15 @@ module GoogleInSpec
   module Compute
     module Property
       class ZoneDeprecated
-        attr_reader :deleted, :deprecated, :obsolete, :replacement, :state
+        attr_reader :deleted
+
+        attr_reader :deprecated
+
+        attr_reader :obsolete
+
+        attr_reader :replacement
+
+        attr_reader :state
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

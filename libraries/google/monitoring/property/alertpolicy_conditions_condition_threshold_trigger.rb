@@ -17,7 +17,9 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditionsConditionThresholdTrigger
-        attr_reader :percent, :count
+        attr_reader :percent
+
+        attr_reader :count
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

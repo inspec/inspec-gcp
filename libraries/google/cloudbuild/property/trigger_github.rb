@@ -19,7 +19,13 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerGithub
-        attr_reader :owner, :name, :pull_request, :push
+        attr_reader :owner
+
+        attr_reader :name
+
+        attr_reader :pull_request
+
+        attr_reader :push
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

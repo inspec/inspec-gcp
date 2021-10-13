@@ -17,7 +17,11 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterMasterAuthorizedNetworksConfigCidrBlocks
-        attr_reader :arguments, :display_name, :cidr_block
+        attr_reader :arguments
+
+        attr_reader :display_name
+
+        attr_reader :cidr_block
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

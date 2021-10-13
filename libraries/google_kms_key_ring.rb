@@ -21,7 +21,10 @@ class KMSKeyRing < GcpResourceBase
   desc 'KeyRing'
   supports platform: 'gcp'
 
-  attr_reader :params, :create_time, :key_ring_url, :location
+  attr_reader :params
+  attr_reader :create_time
+  attr_reader :key_ring_url
+  attr_reader :location
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

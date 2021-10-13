@@ -18,7 +18,11 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildArtifactsObjects
-        attr_reader :location, :paths, :timing
+        attr_reader :location
+
+        attr_reader :paths
+
+        attr_reader :timing
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

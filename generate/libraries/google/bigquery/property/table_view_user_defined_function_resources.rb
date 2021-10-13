@@ -17,7 +17,11 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableViewUserDefinedFunctionResources
-        attr_reader :arguments, :inline_code, :resource_uri
+        attr_reader :arguments
+
+        attr_reader :inline_code
+
+        attr_reader :resource_uri
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

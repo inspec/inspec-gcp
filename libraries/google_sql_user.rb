@@ -21,7 +21,11 @@ class SQLUser < GcpResourceBase
   desc 'User'
   supports platform: 'gcp'
 
-  attr_reader :params, :host, :name, :instance, :password
+  attr_reader :params
+  attr_reader :host
+  attr_reader :name
+  attr_reader :instance
+  attr_reader :password
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

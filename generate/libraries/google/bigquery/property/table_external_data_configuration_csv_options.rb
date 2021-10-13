@@ -17,7 +17,19 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableExternalDataConfigurationCsvOptions
-        attr_reader :arguments, :allow_jagged_rows, :allow_quoted_newlines, :encoding, :field_delimiter, :quote, :skip_leading_rows
+        attr_reader :arguments
+
+        attr_reader :allow_jagged_rows
+
+        attr_reader :allow_quoted_newlines
+
+        attr_reader :encoding
+
+        attr_reader :field_delimiter
+
+        attr_reader :quote
+
+        attr_reader :skip_leading_rows
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

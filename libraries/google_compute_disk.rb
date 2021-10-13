@@ -24,7 +24,31 @@ class ComputeDisk < GcpResourceBase
   desc 'Disk'
   supports platform: 'gcp'
 
-  attr_reader :params, :label_fingerprint, :creation_timestamp, :description, :id, :last_attach_timestamp, :last_detach_timestamp, :labels, :licenses, :name, :size_gb, :users, :physical_block_size_bytes, :interface, :type, :source_image, :resource_policies, :multi_writer, :zone, :source_image_encryption_key, :source_image_id, :disk_encryption_key, :source_snapshot, :source_snapshot_encryption_key, :source_snapshot_id
+  attr_reader :params
+  attr_reader :label_fingerprint
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :id
+  attr_reader :last_attach_timestamp
+  attr_reader :last_detach_timestamp
+  attr_reader :labels
+  attr_reader :licenses
+  attr_reader :name
+  attr_reader :size_gb
+  attr_reader :users
+  attr_reader :physical_block_size_bytes
+  attr_reader :interface
+  attr_reader :type
+  attr_reader :source_image
+  attr_reader :resource_policies
+  attr_reader :multi_writer
+  attr_reader :zone
+  attr_reader :source_image_encryption_key
+  attr_reader :source_image_id
+  attr_reader :disk_encryption_key
+  attr_reader :source_snapshot
+  attr_reader :source_snapshot_encryption_key
+  attr_reader :source_snapshot_id
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

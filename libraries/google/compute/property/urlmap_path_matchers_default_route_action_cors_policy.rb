@@ -17,7 +17,21 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchersDefaultRouteActionCorsPolicy
-        attr_reader :allow_origins, :allow_origin_regexes, :allow_methods, :allow_headers, :expose_headers, :max_age, :allow_credentials, :disabled
+        attr_reader :allow_origins
+
+        attr_reader :allow_origin_regexes
+
+        attr_reader :allow_methods
+
+        attr_reader :allow_headers
+
+        attr_reader :expose_headers
+
+        attr_reader :max_age
+
+        attr_reader :allow_credentials
+
+        attr_reader :disabled
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

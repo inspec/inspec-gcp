@@ -17,7 +17,13 @@ module GoogleInSpec
   module Monitoring
     module Property
       class AlertPolicyConditionsConditionThresholdDenominatorAggregations
-        attr_reader :per_series_aligner, :group_by_fields, :alignment_period, :cross_series_reducer
+        attr_reader :per_series_aligner
+
+        attr_reader :group_by_fields
+
+        attr_reader :alignment_period
+
+        attr_reader :cross_series_reducer
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

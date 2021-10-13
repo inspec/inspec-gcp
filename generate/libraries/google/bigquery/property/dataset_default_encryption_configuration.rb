@@ -17,7 +17,9 @@ module GoogleInSpec
   module BigQuery
     module Property
       class DatasetDefaultEncryptionConfiguration
-        attr_reader :arguments, :kms_key_name
+        attr_reader :arguments
+
+        attr_reader :kms_key_name
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

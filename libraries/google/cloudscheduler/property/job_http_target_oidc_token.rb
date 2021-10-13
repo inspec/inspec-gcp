@@ -17,7 +17,9 @@ module GoogleInSpec
   module CloudScheduler
     module Property
       class JobHttpTargetOidcToken
-        attr_reader :service_account_email, :audience
+        attr_reader :service_account_email
+
+        attr_reader :audience
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

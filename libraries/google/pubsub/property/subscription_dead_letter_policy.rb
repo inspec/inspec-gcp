@@ -17,7 +17,9 @@ module GoogleInSpec
   module Pubsub
     module Property
       class SubscriptionDeadLetterPolicy
-        attr_reader :dead_letter_topic, :max_delivery_attempts
+        attr_reader :dead_letter_topic
+
+        attr_reader :max_delivery_attempts
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

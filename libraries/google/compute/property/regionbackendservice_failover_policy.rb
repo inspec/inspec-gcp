@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionBackendServiceFailoverPolicy
-        attr_reader :disable_connection_drain_on_failover, :drop_traffic_if_unhealthy, :failover_ratio
+        attr_reader :disable_connection_drain_on_failover
+
+        attr_reader :drop_traffic_if_unhealthy
+
+        attr_reader :failover_ratio
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

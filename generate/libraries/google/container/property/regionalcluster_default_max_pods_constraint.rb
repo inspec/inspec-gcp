@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterDefaultMaxPodsConstraint
-        attr_reader :arguments, :max_pods_per_node
+        attr_reader :arguments
+
+        attr_reader :max_pods_per_node
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -31,7 +31,20 @@ class ContainerNodePool < GcpResourceBase
   desc 'NodePool'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :config, :initial_node_count, :status, :status_message, :version, :autoscaling, :management, :max_pods_constraint, :conditions, :pod_ipv4_cidr_size, :cluster, :location
+  attr_reader :params
+  attr_reader :name
+  attr_reader :config
+  attr_reader :initial_node_count
+  attr_reader :status
+  attr_reader :status_message
+  attr_reader :version
+  attr_reader :autoscaling
+  attr_reader :management
+  attr_reader :max_pods_constraint
+  attr_reader :conditions
+  attr_reader :pod_ipv4_cidr_size
+  attr_reader :cluster
+  attr_reader :location
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

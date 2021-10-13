@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class ImageSourceDiskEncryptionKey
-        attr_reader :raw_key, :sha256, :kms_key_name
+        attr_reader :raw_key
+
+        attr_reader :sha256
+
+        attr_reader :kms_key_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

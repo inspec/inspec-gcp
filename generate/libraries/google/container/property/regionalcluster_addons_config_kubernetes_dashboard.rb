@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterAddonsConfigKubernetesDashboard
-        attr_reader :arguments, :disabled
+        attr_reader :arguments
+
+        attr_reader :disabled
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

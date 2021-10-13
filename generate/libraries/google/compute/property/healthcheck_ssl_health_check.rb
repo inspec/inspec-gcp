@@ -17,7 +17,19 @@ module GoogleInSpec
   module Compute
     module Property
       class HealthCheckSslHealthCheck
-        attr_reader :arguments, :request, :response, :port, :port_name, :proxy_header, :port_specification
+        attr_reader :arguments
+
+        attr_reader :request
+
+        attr_reader :response
+
+        attr_reader :port
+
+        attr_reader :port_name
+
+        attr_reader :proxy_header
+
+        attr_reader :port_specification
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

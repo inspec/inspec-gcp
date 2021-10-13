@@ -17,7 +17,11 @@ module GoogleInSpec
   module CloudScheduler
     module Property
       class JobAppEngineHttpTargetAppEngineRouting
-        attr_reader :service, :version, :instance
+        attr_reader :service
+
+        attr_reader :version
+
+        attr_reader :instance
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

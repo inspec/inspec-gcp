@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class RouterNatLogConfig
-        attr_reader :enable, :filter
+        attr_reader :enable
+
+        attr_reader :filter
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,9 @@ module GoogleInSpec
   module Memcache
     module Property
       class InstanceMemcacheParameters
-        attr_reader :id, :params
+        attr_reader :id
+
+        attr_reader :params
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

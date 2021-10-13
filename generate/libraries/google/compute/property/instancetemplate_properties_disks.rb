@@ -20,7 +20,27 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesDisks
-        attr_reader :arguments, :auto_delete, :boot, :device_name, :disk_encryption_key, :index, :initialize_params, :interface, :mode, :source, :type
+        attr_reader :arguments
+
+        attr_reader :auto_delete
+
+        attr_reader :boot
+
+        attr_reader :device_name
+
+        attr_reader :disk_encryption_key
+
+        attr_reader :index
+
+        attr_reader :initialize_params
+
+        attr_reader :interface
+
+        attr_reader :mode
+
+        attr_reader :source
+
+        attr_reader :type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

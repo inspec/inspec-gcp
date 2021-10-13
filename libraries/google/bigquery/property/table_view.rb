@@ -18,7 +18,9 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableView
-        attr_reader :use_legacy_sql, :user_defined_function_resources
+        attr_reader :use_legacy_sql
+
+        attr_reader :user_defined_function_resources
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

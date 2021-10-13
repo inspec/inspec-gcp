@@ -18,7 +18,15 @@ module GoogleInSpec
   module CloudScheduler
     module Property
       class JobAppEngineHttpTarget
-        attr_reader :http_method, :app_engine_routing, :relative_uri, :body, :headers
+        attr_reader :http_method
+
+        attr_reader :app_engine_routing
+
+        attr_reader :relative_uri
+
+        attr_reader :body
+
+        attr_reader :headers
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -21,7 +21,13 @@ class IAMCustomRole < GcpResourceBase
   desc 'CustomRole'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :title, :description, :included_permissions, :stage, :deleted
+  attr_reader :params
+  attr_reader :name
+  attr_reader :title
+  attr_reader :description
+  attr_reader :included_permissions
+  attr_reader :stage
+  attr_reader :deleted
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

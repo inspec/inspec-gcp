@@ -21,7 +21,12 @@ class DNSResourceRecordSet < GcpResourceBase
   desc 'ResourceRecordSet'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :type, :ttl, :target, :managed_zone
+  attr_reader :params
+  attr_reader :name
+  attr_reader :type
+  attr_reader :ttl
+  attr_reader :target
+  attr_reader :managed_zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

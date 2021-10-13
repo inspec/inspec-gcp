@@ -24,7 +24,20 @@ class ComputeRegionInstanceGroupManager < GcpResourceBase
   desc 'RegionInstanceGroupManager'
   supports platform: 'gcp'
 
-  attr_reader :params, :base_instance_name, :creation_timestamp, :current_actions, :description, :id, :instance_group, :instance_template, :name, :named_ports, :target_pools, :target_size, :auto_healing_policies, :region
+  attr_reader :params
+  attr_reader :base_instance_name
+  attr_reader :creation_timestamp
+  attr_reader :current_actions
+  attr_reader :description
+  attr_reader :id
+  attr_reader :instance_group
+  attr_reader :instance_template
+  attr_reader :name
+  attr_reader :named_ports
+  attr_reader :target_pools
+  attr_reader :target_size
+  attr_reader :auto_healing_policies
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

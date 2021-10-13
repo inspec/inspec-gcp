@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class ClusterDatabaseEncryption
-        attr_reader :state, :key_name
+        attr_reader :state
+
+        attr_reader :key_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

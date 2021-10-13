@@ -23,7 +23,27 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableExternalDataConfiguration
-        attr_reader :arguments, :autodetect, :compression, :ignore_unknown_values, :max_bad_records, :source_format, :source_uris, :schema, :google_sheets_options, :csv_options, :bigtable_options
+        attr_reader :arguments
+
+        attr_reader :autodetect
+
+        attr_reader :compression
+
+        attr_reader :ignore_unknown_values
+
+        attr_reader :max_bad_records
+
+        attr_reader :source_format
+
+        attr_reader :source_uris
+
+        attr_reader :schema
+
+        attr_reader :google_sheets_options
+
+        attr_reader :csv_options
+
+        attr_reader :bigtable_options
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

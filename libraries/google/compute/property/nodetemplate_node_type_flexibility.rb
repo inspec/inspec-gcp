@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class NodeTemplateNodeTypeFlexibility
-        attr_reader :cpus, :memory, :local_ssd
+        attr_reader :cpus
+
+        attr_reader :memory
+
+        attr_reader :local_ssd
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

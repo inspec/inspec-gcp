@@ -21,7 +21,12 @@ class AccessContextManagerAccessPolicy < GcpResourceBase
   desc 'AccessPolicy'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :create_time, :update_time, :parent, :title
+  attr_reader :params
+  attr_reader :name
+  attr_reader :create_time
+  attr_reader :update_time
+  attr_reader :parent
+  attr_reader :title
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

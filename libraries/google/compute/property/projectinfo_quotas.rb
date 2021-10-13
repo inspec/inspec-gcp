@@ -17,7 +17,13 @@ module GoogleInSpec
   module Compute
     module Property
       class ProjectInfoQuotas
-        attr_reader :metric, :limit, :usage, :owner
+        attr_reader :metric
+
+        attr_reader :limit
+
+        attr_reader :usage
+
+        attr_reader :owner
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

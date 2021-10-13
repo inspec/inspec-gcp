@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class SslPolicyWarnings
-        attr_reader :arguments, :code, :message
+        attr_reader :arguments
+
+        attr_reader :code
+
+        attr_reader :message
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

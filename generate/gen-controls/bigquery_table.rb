@@ -9,7 +9,7 @@ control 'google_bigquery_table-1.0' do
   impact 1.0
   title 'google_bigquery_table resource test'
 
-  logger = Logger.new($stdout)
+  logger = Logger.new(STDOUT)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_bigquery_table')
   filters = []

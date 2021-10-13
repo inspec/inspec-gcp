@@ -17,7 +17,13 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableStreamingBuffer
-        attr_reader :arguments, :estimated_bytes, :estimated_rows, :oldest_entry_time
+        attr_reader :arguments
+
+        attr_reader :estimated_bytes
+
+        attr_reader :estimated_rows
+
+        attr_reader :oldest_entry_time
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

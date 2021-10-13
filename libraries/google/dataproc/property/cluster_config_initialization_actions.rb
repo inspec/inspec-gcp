@@ -17,7 +17,9 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigInitializationActions
-        attr_reader :executable_file, :execution_timeout
+        attr_reader :executable_file
+
+        attr_reader :execution_timeout
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

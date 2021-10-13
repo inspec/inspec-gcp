@@ -21,7 +21,13 @@ class ComputeTargetTcpProxy < GcpResourceBase
   desc 'TargetTcpProxy'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :description, :id, :name, :proxy_header, :service
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :id
+  attr_reader :name
+  attr_reader :proxy_header
+  attr_reader :service
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

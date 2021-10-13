@@ -9,7 +9,7 @@ control 'google_ml_engine_model-1.0' do
   impact 1.0
   title 'google_ml_engine_model resource test'
 
-  logger = Logger.new($stdout)
+  logger = Logger.new(STDOUT)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_ml_engine_model')
   filters = []

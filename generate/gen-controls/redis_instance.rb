@@ -9,7 +9,7 @@ control 'google_redis_instance-1.0' do
   impact 1.0
   title 'google_redis_instance resource test'
 
-  logger = Logger.new($stdout)
+  logger = Logger.new(STDOUT)
   logger.level = Logger::WARN
   logger.warn('Generating tests for google_redis_instance')
   filters = []

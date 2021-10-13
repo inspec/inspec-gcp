@@ -17,7 +17,9 @@ module GoogleInSpec
   module Storage
     module Property
       class BucketOwner
-        attr_reader :entity, :entity_id
+        attr_reader :entity
+
+        attr_reader :entity_id
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

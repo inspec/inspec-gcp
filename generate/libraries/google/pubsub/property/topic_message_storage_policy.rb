@@ -17,7 +17,9 @@ module GoogleInSpec
   module Pubsub
     module Property
       class TopicMessageStoragePolicy
-        attr_reader :arguments, :allowed_persistence_regions
+        attr_reader :arguments
+
+        attr_reader :allowed_persistence_regions
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

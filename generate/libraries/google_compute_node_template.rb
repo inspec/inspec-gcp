@@ -22,7 +22,14 @@ class ComputeNodeTemplate < GcpResourceBase
   desc 'NodeTemplate'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :description, :name, :node_affinity_labels, :node_type, :node_type_flexibility, :region
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :name
+  attr_reader :node_affinity_labels
+  attr_reader :node_type
+  attr_reader :node_type_flexibility
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

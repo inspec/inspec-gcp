@@ -17,7 +17,15 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicyCustomMetricUtilizations
-        attr_reader :metric, :single_instance_assignment, :utilization_target, :utilization_target_type, :filter
+        attr_reader :metric
+
+        attr_reader :single_instance_assignment
+
+        attr_reader :utilization_target
+
+        attr_reader :utilization_target_type
+
+        attr_reader :filter
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

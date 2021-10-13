@@ -18,7 +18,15 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceDisksInitializeParams
-        attr_reader :disk_name, :disk_size_gb, :disk_type, :source_image, :source_image_encryption_key
+        attr_reader :disk_name
+
+        attr_reader :disk_size_gb
+
+        attr_reader :disk_type
+
+        attr_reader :source_image
+
+        attr_reader :source_image_encryption_key
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

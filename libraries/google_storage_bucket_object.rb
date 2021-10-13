@@ -21,7 +21,24 @@ class StorageBucketObject < GcpResourceBase
   desc 'BucketObject'
   supports platform: 'gcp'
 
-  attr_reader :params, :bucket, :object, :content_type, :crc32c, :etag, :generation, :id, :md5_hash, :media_link, :metageneration, :name, :size, :storage_class, :time_created, :time_deleted, :time_storage_class_updated, :time_updated
+  attr_reader :params
+  attr_reader :bucket
+  attr_reader :object
+  attr_reader :content_type
+  attr_reader :crc32c
+  attr_reader :etag
+  attr_reader :generation
+  attr_reader :id
+  attr_reader :md5_hash
+  attr_reader :media_link
+  attr_reader :metageneration
+  attr_reader :name
+  attr_reader :size
+  attr_reader :storage_class
+  attr_reader :time_created
+  attr_reader :time_deleted
+  attr_reader :time_storage_class_updated
+  attr_reader :time_updated
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

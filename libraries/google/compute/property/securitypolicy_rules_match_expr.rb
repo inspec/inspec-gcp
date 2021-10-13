@@ -17,7 +17,13 @@ module GoogleInSpec
   module Compute
     module Property
       class SecurityPolicyRulesMatchExpr
-        attr_reader :expression, :title, :description, :location
+        attr_reader :expression
+
+        attr_reader :title
+
+        attr_reader :description
+
+        attr_reader :location
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

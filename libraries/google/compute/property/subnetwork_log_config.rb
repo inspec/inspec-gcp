@@ -17,7 +17,17 @@ module GoogleInSpec
   module Compute
     module Property
       class SubnetworkLogConfig
-        attr_reader :enable, :aggregation_interval, :flow_sampling, :metadata, :metadata_fields, :filter_expr
+        attr_reader :enable
+
+        attr_reader :aggregation_interval
+
+        attr_reader :flow_sampling
+
+        attr_reader :metadata
+
+        attr_reader :metadata_fields
+
+        attr_reader :filter_expr
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

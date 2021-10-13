@@ -22,7 +22,11 @@ class PubsubTopic < GcpResourceBase
   desc 'Topic'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :kms_key_name, :labels, :message_storage_policy
+  attr_reader :params
+  attr_reader :name
+  attr_reader :kms_key_name
+  attr_reader :labels
+  attr_reader :message_storage_policy
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

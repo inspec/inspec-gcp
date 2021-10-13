@@ -18,7 +18,17 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesDisksInitializeParams
-        attr_reader :arguments, :disk_name, :disk_size_gb, :disk_type, :source_image, :source_image_encryption_key
+        attr_reader :arguments
+
+        attr_reader :disk_name
+
+        attr_reader :disk_size_gb
+
+        attr_reader :disk_type
+
+        attr_reader :source_image
+
+        attr_reader :source_image_encryption_key
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

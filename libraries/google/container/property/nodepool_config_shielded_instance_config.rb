@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class NodePoolConfigShieldedInstanceConfig
-        attr_reader :enable_secure_boot, :enable_integrity_monitoring
+        attr_reader :enable_secure_boot
+
+        attr_reader :enable_integrity_monitoring
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

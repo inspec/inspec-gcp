@@ -18,7 +18,9 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapDefaultRouteActionFaultInjectionPolicyDelay
-        attr_reader :fixed_delay, :percentage
+        attr_reader :fixed_delay
+
+        attr_reader :percentage
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

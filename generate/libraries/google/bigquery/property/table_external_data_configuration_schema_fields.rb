@@ -17,7 +17,17 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableExternalDataConfigurationSchemaFields
-        attr_reader :arguments, :description, :fields, :mode, :name, :type
+        attr_reader :arguments
+
+        attr_reader :description
+
+        attr_reader :fields
+
+        attr_reader :mode
+
+        attr_reader :name
+
+        attr_reader :type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

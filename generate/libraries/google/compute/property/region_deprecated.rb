@@ -17,7 +17,17 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionDeprecated
-        attr_reader :arguments, :deleted, :deprecated, :obsolete, :replacement, :state
+        attr_reader :arguments
+
+        attr_reader :deleted
+
+        attr_reader :deprecated
+
+        attr_reader :obsolete
+
+        attr_reader :replacement
+
+        attr_reader :state
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

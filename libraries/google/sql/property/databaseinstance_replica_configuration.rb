@@ -18,7 +18,13 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceReplicaConfiguration
-        attr_reader :failover_target, :mysql_replica_configuration, :replica_names, :service_account_email_address
+        attr_reader :failover_target
+
+        attr_reader :mysql_replica_configuration
+
+        attr_reader :replica_names
+
+        attr_reader :service_account_email_address
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

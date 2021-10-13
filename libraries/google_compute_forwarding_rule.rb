@@ -21,7 +21,29 @@ class ComputeForwardingRule < GcpResourceBase
   desc 'ForwardingRule'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :is_mirroring_collector, :description, :id, :ip_address, :ip_protocol, :backend_service, :load_balancing_scheme, :name, :network, :port_range, :ports, :subnetwork, :target, :allow_global_access, :labels, :label_fingerprint, :all_ports, :network_tier, :service_label, :service_name, :region
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :is_mirroring_collector
+  attr_reader :description
+  attr_reader :id
+  attr_reader :ip_address
+  attr_reader :ip_protocol
+  attr_reader :backend_service
+  attr_reader :load_balancing_scheme
+  attr_reader :name
+  attr_reader :network
+  attr_reader :port_range
+  attr_reader :ports
+  attr_reader :subnetwork
+  attr_reader :target
+  attr_reader :allow_global_access
+  attr_reader :labels
+  attr_reader :label_fingerprint
+  attr_reader :all_ports
+  attr_reader :network_tier
+  attr_reader :service_label
+  attr_reader :service_name
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

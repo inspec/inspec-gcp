@@ -22,7 +22,17 @@ class ComputeSslPolicy < GcpResourceBase
   desc 'SslPolicy'
   supports platform: 'gcp'
 
-  attr_reader :params, :creation_timestamp, :description, :id, :name, :profile, :min_tls_version, :enabled_features, :custom_features, :fingerprint, :warnings
+  attr_reader :params
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :id
+  attr_reader :name
+  attr_reader :profile
+  attr_reader :min_tls_version
+  attr_reader :enabled_features
+  attr_reader :custom_features
+  attr_reader :fingerprint
+  attr_reader :warnings
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

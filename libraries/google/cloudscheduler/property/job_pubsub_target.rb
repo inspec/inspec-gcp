@@ -17,7 +17,11 @@ module GoogleInSpec
   module CloudScheduler
     module Property
       class JobPubsubTarget
-        attr_reader :topic_name, :data, :attributes
+        attr_reader :topic_name
+
+        attr_reader :data
+
+        attr_reader :attributes
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapDefaultRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdd
-        attr_reader :header_name, :header_value, :replace
+        attr_reader :header_name
+
+        attr_reader :header_value
+
+        attr_reader :replace
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

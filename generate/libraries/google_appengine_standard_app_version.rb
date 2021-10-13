@@ -21,7 +21,11 @@ class AppEngineStandardAppVersion < GcpResourceBase
   desc 'StandardAppVersion'
   supports platform: 'gcp'
 
-  attr_reader :params, :name, :version_id, :runtime, :threadsafe
+  attr_reader :params
+  attr_reader :name
+  attr_reader :version_id
+  attr_reader :runtime
+  attr_reader :threadsafe
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

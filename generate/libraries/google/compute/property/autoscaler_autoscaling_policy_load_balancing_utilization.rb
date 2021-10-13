@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicyLoadBalancingUtilization
-        attr_reader :arguments, :utilization_target
+        attr_reader :arguments
+
+        attr_reader :utilization_target
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

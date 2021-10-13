@@ -17,7 +17,13 @@ module GoogleInSpec
   module Compute
     module Property
       class HealthCheckGrpcHealthCheck
-        attr_reader :port, :port_name, :port_specification, :grpc_service_name
+        attr_reader :port
+
+        attr_reader :port_name
+
+        attr_reader :port_specification
+
+        attr_reader :grpc_service_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

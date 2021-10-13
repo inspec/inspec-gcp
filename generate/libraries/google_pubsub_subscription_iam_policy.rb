@@ -23,7 +23,9 @@ class SubscriptionIamPolicy < GcpResourceBase
   desc 'Subscription Iam Policy'
   supports platform: 'gcp'
 
-  attr_reader :params, :bindings, :audit_configs
+  attr_reader :params
+  attr_reader :bindings
+  attr_reader :audit_configs
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

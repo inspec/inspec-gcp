@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterLegacyAbac
-        attr_reader :arguments, :enabled
+        attr_reader :arguments
+
+        attr_reader :enabled
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

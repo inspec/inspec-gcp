@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceGroupManagerNamedPorts
-        attr_reader :arguments, :name, :port
+        attr_reader :arguments
+
+        attr_reader :name
+
+        attr_reader :port
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

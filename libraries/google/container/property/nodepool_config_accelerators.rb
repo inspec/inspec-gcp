@@ -17,7 +17,9 @@ module GoogleInSpec
   module Container
     module Property
       class NodePoolConfigAccelerators
-        attr_reader :accelerator_count, :accelerator_type
+        attr_reader :accelerator_count
+
+        attr_reader :accelerator_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

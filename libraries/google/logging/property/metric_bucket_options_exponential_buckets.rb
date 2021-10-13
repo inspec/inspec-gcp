@@ -17,7 +17,11 @@ module GoogleInSpec
   module Logging
     module Property
       class MetricBucketOptionsExponentialBuckets
-        attr_reader :num_finite_buckets, :growth_factor, :scale
+        attr_reader :num_finite_buckets
+
+        attr_reader :growth_factor
+
+        attr_reader :scale
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

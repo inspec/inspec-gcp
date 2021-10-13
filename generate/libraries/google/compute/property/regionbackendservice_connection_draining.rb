@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionBackendServiceConnectionDraining
-        attr_reader :arguments, :draining_timeout_sec
+        attr_reader :arguments
+
+        attr_reader :draining_timeout_sec
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

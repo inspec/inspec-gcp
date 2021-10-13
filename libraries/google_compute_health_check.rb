@@ -28,7 +28,23 @@ class ComputeHealthCheck < GcpResourceBase
   desc 'HealthCheck'
   supports platform: 'gcp'
 
-  attr_reader :params, :check_interval_sec, :creation_timestamp, :description, :healthy_threshold, :id, :name, :timeout_sec, :unhealthy_threshold, :type, :http_health_check, :https_health_check, :tcp_health_check, :ssl_health_check, :http2_health_check, :grpc_health_check, :log_config
+  attr_reader :params
+  attr_reader :check_interval_sec
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :healthy_threshold
+  attr_reader :id
+  attr_reader :name
+  attr_reader :timeout_sec
+  attr_reader :unhealthy_threshold
+  attr_reader :type
+  attr_reader :http_health_check
+  attr_reader :https_health_check
+  attr_reader :tcp_health_check
+  attr_reader :ssl_health_check
+  attr_reader :http2_health_check
+  attr_reader :grpc_health_check
+  attr_reader :log_config
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

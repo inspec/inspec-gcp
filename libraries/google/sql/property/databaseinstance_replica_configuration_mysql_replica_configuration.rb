@@ -17,7 +17,25 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceReplicaConfigurationMysqlReplicaConfiguration
-        attr_reader :ca_certificate, :client_certificate, :client_key, :connect_retry_interval, :dump_file_path, :master_heartbeat_period, :password, :ssl_cipher, :username, :verify_server_certificate
+        attr_reader :ca_certificate
+
+        attr_reader :client_certificate
+
+        attr_reader :client_key
+
+        attr_reader :connect_retry_interval
+
+        attr_reader :dump_file_path
+
+        attr_reader :master_heartbeat_period
+
+        attr_reader :password
+
+        attr_reader :ssl_cipher
+
+        attr_reader :username
+
+        attr_reader :verify_server_certificate
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,19 @@ module GoogleInSpec
   module Compute
     module Property
       class NetworkPeerings
-        attr_reader :name, :state, :state_details, :network, :export_custom_routes, :import_custom_routes, :peer_mtu
+        attr_reader :name
+
+        attr_reader :state
+
+        attr_reader :state_details
+
+        attr_reader :network
+
+        attr_reader :export_custom_routes
+
+        attr_reader :import_custom_routes
+
+        attr_reader :peer_mtu
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

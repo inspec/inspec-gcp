@@ -17,7 +17,9 @@ module GoogleInSpec
   module Compute
     module Property
       class SslPolicyWarnings
-        attr_reader :code, :message
+        attr_reader :code
+
+        attr_reader :message
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

@@ -17,7 +17,11 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceServiceAccounts
-        attr_reader :arguments, :email, :scopes
+        attr_reader :arguments
+
+        attr_reader :email
+
+        attr_reader :scopes
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

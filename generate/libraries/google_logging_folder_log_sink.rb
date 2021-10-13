@@ -21,7 +21,13 @@ class LoggingFolderLogSink < GcpResourceBase
   desc 'FolderLogSink'
   supports platform: 'gcp'
 
-  attr_reader :params, :folder, :name, :filter, :destination, :writer_identity, :include_children
+  attr_reader :params
+  attr_reader :folder
+  attr_reader :name
+  attr_reader :filter
+  attr_reader :destination
+  attr_reader :writer_identity
+  attr_reader :include_children
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

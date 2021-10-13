@@ -17,7 +17,9 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerBuildArtifactsObjectsTiming
-        attr_reader :start_time, :end_time
+        attr_reader :start_time
+
+        attr_reader :end_time
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
