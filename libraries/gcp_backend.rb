@@ -16,7 +16,7 @@ class GcpResourceBase < Inspec.resource(1)
   attr_reader :opts, :gcp
 
   def initialize(opts)
-    @opts = opts
+    @opts = super()
     # ensure we have a GCP connection, resources can choose which of the clients to instantiate
     @gcp = inspec.backend
 
@@ -403,9 +403,9 @@ module Network
       req
     end
   end
+
   # Extension methods to enable retrieving the authentication token.
   module TokenProperty
-    attr_reader :token
-    attr_writer :token
+    attr_accessor :token
   end
 end

@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class FirewallLogConfig
-        attr_reader :enable
-
-        attr_reader :metadata
+        attr_reader :enable, :metadata
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

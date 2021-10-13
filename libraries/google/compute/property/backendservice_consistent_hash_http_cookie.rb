@@ -18,11 +18,7 @@ module GoogleInSpec
   module Compute
     module Property
       class BackendServiceConsistentHashHttpCookie
-        attr_reader :ttl
-
-        attr_reader :name
-
-        attr_reader :path
+        attr_reader :ttl, :name, :path
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

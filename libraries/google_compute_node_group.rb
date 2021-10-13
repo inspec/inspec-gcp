@@ -22,15 +22,7 @@ class ComputeNodeGroup < GcpResourceBase
   desc 'NodeGroup'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :name
-  attr_reader :node_template
-  attr_reader :size
-  attr_reader :maintenance_policy
-  attr_reader :autoscaling_policy
-  attr_reader :zone
+  attr_reader :params, :creation_timestamp, :description, :name, :node_template, :size, :maintenance_policy, :autoscaling_policy, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -65,7 +57,7 @@ class ComputeNodeGroup < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

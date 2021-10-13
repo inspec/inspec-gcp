@@ -40,19 +40,7 @@ class ComputeUrlMap < GcpResourceBase
   desc 'UrlMap'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :default_service
-  attr_reader :description
-  attr_reader :id
-  attr_reader :fingerprint
-  attr_reader :header_action
-  attr_reader :host_rules
-  attr_reader :name
-  attr_reader :path_matchers
-  attr_reader :tests
-  attr_reader :default_url_redirect
-  attr_reader :default_route_action
+  attr_reader :params, :creation_timestamp, :default_service, :description, :id, :fingerprint, :header_action, :host_rules, :name, :path_matchers, :tests, :default_url_redirect, :default_route_action
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -91,7 +79,7 @@ class ComputeUrlMap < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

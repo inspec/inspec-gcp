@@ -30,14 +30,7 @@ class ComputeAutoscaler < GcpResourceBase
   desc 'Autoscaler'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :id
-  attr_reader :creation_timestamp
-  attr_reader :name
-  attr_reader :description
-  attr_reader :autoscaling_policy
-  attr_reader :target
-  attr_reader :zone
+  attr_reader :params, :id, :creation_timestamp, :name, :description, :autoscaling_policy, :target, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -71,7 +64,7 @@ class ComputeAutoscaler < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

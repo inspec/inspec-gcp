@@ -18,17 +18,7 @@ module GoogleInSpec
   module AppEngine
     module Property
       class StandardAppVersionAutomaticScaling
-        attr_reader :max_concurrent_requests
-
-        attr_reader :max_idle_instances
-
-        attr_reader :max_pending_latency
-
-        attr_reader :min_idle_instances
-
-        attr_reader :min_pending_latency
-
-        attr_reader :standard_scheduler_settings
+        attr_reader :max_concurrent_requests, :max_idle_instances, :max_pending_latency, :min_idle_instances, :min_pending_latency, :standard_scheduler_settings
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

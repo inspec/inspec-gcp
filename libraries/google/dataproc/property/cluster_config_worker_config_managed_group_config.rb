@@ -17,9 +17,7 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigWorkerConfigManagedGroupConfig
-        attr_reader :instance_template_name
-
-        attr_reader :instance_group_manager_name
+        attr_reader :instance_template_name, :instance_group_manager_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

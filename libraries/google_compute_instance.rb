@@ -28,29 +28,7 @@ class ComputeInstance < GcpResourceBase
   desc 'Instance'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :can_ip_forward
-  attr_reader :cpu_platform
-  attr_reader :creation_timestamp
-  attr_reader :deletion_protection
-  attr_reader :disks
-  attr_reader :guest_accelerators
-  attr_reader :hostname
-  attr_reader :id
-  attr_reader :label_fingerprint
-  attr_reader :labels
-  attr_reader :metadata
-  attr_reader :machine_type
-  attr_reader :min_cpu_platform
-  attr_reader :name
-  attr_reader :network_interfaces
-  attr_reader :scheduling
-  attr_reader :service_accounts
-  attr_reader :shielded_instance_config
-  attr_reader :status
-  attr_reader :status_message
-  attr_reader :tags
-  attr_reader :zone
+  attr_reader :params, :can_ip_forward, :cpu_platform, :creation_timestamp, :deletion_protection, :disks, :guest_accelerators, :hostname, :id, :label_fingerprint, :labels, :metadata, :machine_type, :min_cpu_platform, :name, :network_interfaces, :scheduling, :service_accounts, :shielded_instance_config, :status, :status_message, :tags, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -195,7 +173,7 @@ class ComputeInstance < GcpResourceBase
   end
 
   def service_account_scopes
-    # note instances can have only one service account defined
+    # NOTE: instances can have only one service account defined
     return [] if @service_accounts[0].nil? || !defined?(@service_accounts[0].scopes) || @service_accounts[0].scopes.nil?
     @service_accounts[0].scopes
   end
@@ -231,7 +209,7 @@ class ComputeInstance < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

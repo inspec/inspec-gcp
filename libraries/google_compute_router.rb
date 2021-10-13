@@ -23,14 +23,7 @@ class ComputeRouter < GcpResourceBase
   desc 'Router'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :id
-  attr_reader :creation_timestamp
-  attr_reader :name
-  attr_reader :description
-  attr_reader :network
-  attr_reader :bgp
-  attr_reader :region
+  attr_reader :params, :id, :creation_timestamp, :name, :description, :network, :bgp, :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -64,7 +57,7 @@ class ComputeRouter < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

@@ -17,19 +17,7 @@ module GoogleInSpec
   module CloudBuild
     module Property
       class TriggerTriggerTemplate
-        attr_reader :project_id
-
-        attr_reader :repo_name
-
-        attr_reader :dir
-
-        attr_reader :invert_regex
-
-        attr_reader :branch_name
-
-        attr_reader :tag_name
-
-        attr_reader :commit_sha
+        attr_reader :project_id, :repo_name, :dir, :invert_regex, :branch_name, :tag_name, :commit_sha
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

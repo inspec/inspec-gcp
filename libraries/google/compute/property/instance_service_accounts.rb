@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceServiceAccounts
-        attr_reader :email
-
-        attr_reader :scopes
+        attr_reader :email, :scopes
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

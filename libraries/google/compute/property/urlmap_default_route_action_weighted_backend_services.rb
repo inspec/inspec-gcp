@@ -20,11 +20,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapDefaultRouteActionWeightedBackendServices
-        attr_reader :backend_service
-
-        attr_reader :weight
-
-        attr_reader :header_action
+        attr_reader :backend_service, :weight, :header_action
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

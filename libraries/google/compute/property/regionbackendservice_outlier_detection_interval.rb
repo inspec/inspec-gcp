@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionBackendServiceOutlierDetectionInterval
-        attr_reader :seconds
-
-        attr_reader :nanos
+        attr_reader :seconds, :nanos
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

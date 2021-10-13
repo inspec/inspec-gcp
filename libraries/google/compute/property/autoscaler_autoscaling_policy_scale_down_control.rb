@@ -18,9 +18,7 @@ module GoogleInSpec
   module Compute
     module Property
       class AutoscalerAutoscalingPolicyScaleDownControl
-        attr_reader :max_scaled_down_replicas
-
-        attr_reader :time_window_sec
+        attr_reader :max_scaled_down_replicas, :time_window_sec
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

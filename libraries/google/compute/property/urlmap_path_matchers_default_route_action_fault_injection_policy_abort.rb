@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchersDefaultRouteActionFaultInjectionPolicyAbort
-        attr_reader :http_status
-
-        attr_reader :percentage
+        attr_reader :http_status, :percentage
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

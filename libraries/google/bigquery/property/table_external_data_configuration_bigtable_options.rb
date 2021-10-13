@@ -18,11 +18,7 @@ module GoogleInSpec
   module BigQuery
     module Property
       class TableExternalDataConfigurationBigtableOptions
-        attr_reader :ignore_unspecified_column_families
-
-        attr_reader :read_rowkey_as_string
-
-        attr_reader :column_families
+        attr_reader :ignore_unspecified_column_families, :read_rowkey_as_string, :column_families
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

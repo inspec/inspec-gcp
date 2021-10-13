@@ -21,12 +21,7 @@ class SpannerInstance < GcpResourceBase
   desc 'Instance'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :config
-  attr_reader :display_name
-  attr_reader :node_count
-  attr_reader :labels
+  attr_reader :params, :name, :config, :display_name, :node_count, :labels
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

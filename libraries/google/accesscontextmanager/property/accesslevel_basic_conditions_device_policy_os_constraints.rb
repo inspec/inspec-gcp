@@ -17,9 +17,7 @@ module GoogleInSpec
   module AccessContextManager
     module Property
       class AccessLevelBasicConditionsDevicePolicyOsConstraints
-        attr_reader :minimum_version
-
-        attr_reader :os_type
+        attr_reader :minimum_version, :os_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

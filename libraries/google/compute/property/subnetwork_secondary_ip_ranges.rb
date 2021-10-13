@@ -17,9 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class SubnetworkSecondaryIpRanges
-        attr_reader :range_name
-
-        attr_reader :ip_cidr_range
+        attr_reader :range_name, :ip_cidr_range
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

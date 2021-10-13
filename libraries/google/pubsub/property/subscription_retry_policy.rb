@@ -17,9 +17,7 @@ module GoogleInSpec
   module Pubsub
     module Property
       class SubscriptionRetryPolicy
-        attr_reader :minimum_backoff
-
-        attr_reader :maximum_backoff
+        attr_reader :minimum_backoff, :maximum_backoff
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

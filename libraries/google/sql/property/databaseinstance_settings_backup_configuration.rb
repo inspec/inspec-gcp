@@ -17,11 +17,7 @@ module GoogleInSpec
   module SQL
     module Property
       class DatabaseInstanceSettingsBackupConfiguration
-        attr_reader :enabled
-
-        attr_reader :binary_log_enabled
-
-        attr_reader :start_time
+        attr_reader :enabled, :binary_log_enabled, :start_time
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

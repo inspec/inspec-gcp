@@ -17,17 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapPathMatchersDefaultUrlRedirect
-        attr_reader :host_redirect
-
-        attr_reader :https_redirect
-
-        attr_reader :path_redirect
-
-        attr_reader :prefix_redirect
-
-        attr_reader :redirect_response_code
-
-        attr_reader :strip_query
+        attr_reader :host_redirect, :https_redirect, :path_redirect, :prefix_redirect, :redirect_response_code, :strip_query
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

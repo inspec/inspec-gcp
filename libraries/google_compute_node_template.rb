@@ -23,16 +23,7 @@ class ComputeNodeTemplate < GcpResourceBase
   desc 'NodeTemplate'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :name
-  attr_reader :node_affinity_labels
-  attr_reader :node_type
-  attr_reader :node_type_flexibility
-  attr_reader :server_binding
-  attr_reader :cpu_overcommit_type
-  attr_reader :region
+  attr_reader :params, :creation_timestamp, :description, :name, :node_affinity_labels, :node_type, :node_type_flexibility, :server_binding, :cpu_overcommit_type, :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -68,7 +59,7 @@ class ComputeNodeTemplate < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

@@ -21,9 +21,7 @@ class RuntimeConfigConfig < GcpResourceBase
   desc 'Config'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :description
-  attr_reader :name
+  attr_reader :params, :description, :name
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

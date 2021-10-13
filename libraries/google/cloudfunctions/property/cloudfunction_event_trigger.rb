@@ -17,11 +17,7 @@ module GoogleInSpec
   module CloudFunctions
     module Property
       class CloudFunctionEventTrigger
-        attr_reader :event_type
-
-        attr_reader :resource
-
-        attr_reader :service
+        attr_reader :event_type, :resource, :service
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

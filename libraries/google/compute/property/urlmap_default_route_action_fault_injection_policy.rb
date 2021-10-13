@@ -20,9 +20,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapDefaultRouteActionFaultInjectionPolicy
-        attr_reader :delay
-
-        attr_reader :abort
+        attr_reader :delay, :abort
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

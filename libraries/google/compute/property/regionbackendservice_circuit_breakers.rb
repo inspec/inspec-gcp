@@ -18,17 +18,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionBackendServiceCircuitBreakers
-        attr_reader :connect_timeout
-
-        attr_reader :max_requests_per_connection
-
-        attr_reader :max_connections
-
-        attr_reader :max_pending_requests
-
-        attr_reader :max_requests
-
-        attr_reader :max_retries
+        attr_reader :connect_timeout, :max_requests_per_connection, :max_connections, :max_pending_requests, :max_requests, :max_retries
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

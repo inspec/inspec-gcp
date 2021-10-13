@@ -17,9 +17,7 @@ module GoogleInSpec
   module CloudFunctions
     module Property
       class CloudFunctionSourceRepository
-        attr_reader :url
-
-        attr_reader :deployed_url
+        attr_reader :url, :deployed_url
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?

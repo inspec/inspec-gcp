@@ -21,12 +21,7 @@ class DNSResourceRecordSet < GcpResourceBase
   desc 'ResourceRecordSet'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :type
-  attr_reader :ttl
-  attr_reader :target
-  attr_reader :managed_zone
+  attr_reader :params, :name, :type, :ttl, :target, :managed_zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -66,7 +61,7 @@ class DNSResourceRecordSet < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://dns.googleapis.com/dns/v1beta2/'
     else

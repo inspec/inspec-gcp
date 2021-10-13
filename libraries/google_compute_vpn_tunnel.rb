@@ -21,27 +21,7 @@ class ComputeVpnTunnel < GcpResourceBase
   desc 'VpnTunnel'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :id
-  attr_reader :creation_timestamp
-  attr_reader :name
-  attr_reader :description
-  attr_reader :target_vpn_gateway
-  attr_reader :vpn_gateway
-  attr_reader :vpn_gateway_interface
-  attr_reader :peer_external_gateway
-  attr_reader :peer_external_gateway_interface
-  attr_reader :peer_gcp_gateway
-  attr_reader :router
-  attr_reader :peer_ip
-  attr_reader :shared_secret
-  attr_reader :shared_secret_hash
-  attr_reader :ike_version
-  attr_reader :local_traffic_selector
-  attr_reader :remote_traffic_selector
-  attr_reader :labels
-  attr_reader :label_fingerprint
-  attr_reader :region
+  attr_reader :params, :id, :creation_timestamp, :name, :description, :target_vpn_gateway, :vpn_gateway, :vpn_gateway_interface, :peer_external_gateway, :peer_external_gateway_interface, :peer_gcp_gateway, :router, :peer_ip, :shared_secret, :shared_secret_hash, :ike_version, :local_traffic_selector, :remote_traffic_selector, :labels, :label_fingerprint, :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -88,7 +68,7 @@ class ComputeVpnTunnel < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

@@ -22,16 +22,7 @@ class ComputeInstanceGroup < GcpResourceBase
   desc 'InstanceGroup'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
-  attr_reader :id
-  attr_reader :name
-  attr_reader :named_ports
-  attr_reader :network
-  attr_reader :region
-  attr_reader :subnetwork
-  attr_reader :zone
+  attr_reader :params, :creation_timestamp, :description, :id, :name, :named_ports, :network, :region, :subnetwork, :zone
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -86,7 +77,7 @@ class ComputeInstanceGroup < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
+  def product_url(beta: false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

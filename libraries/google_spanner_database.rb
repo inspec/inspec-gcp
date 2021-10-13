@@ -21,9 +21,7 @@ class SpannerDatabase < GcpResourceBase
   desc 'Database'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :instance
+  attr_reader :params, :name, :instance
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
