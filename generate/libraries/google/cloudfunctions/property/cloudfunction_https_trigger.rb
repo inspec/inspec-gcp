@@ -17,9 +17,7 @@ module GoogleInSpec
   module CloudFunctions
     module Property
       class CloudFunctionHttpsTrigger
-        attr_reader :arguments
-
-        attr_reader :url
+        attr_reader :arguments, :url
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

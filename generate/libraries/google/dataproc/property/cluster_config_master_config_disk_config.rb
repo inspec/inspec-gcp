@@ -17,13 +17,7 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigMasterConfigDiskConfig
-        attr_reader :arguments
-
-        attr_reader :boot_disk_type
-
-        attr_reader :boot_disk_size_gb
-
-        attr_reader :num_local_ssds
+        attr_reader :arguments, :boot_disk_type, :boot_disk_size_gb, :num_local_ssds
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

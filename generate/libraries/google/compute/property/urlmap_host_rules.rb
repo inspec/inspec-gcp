@@ -17,13 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class UrlMapHostRules
-        attr_reader :arguments
-
-        attr_reader :description
-
-        attr_reader :hosts
-
-        attr_reader :path_matcher
+        attr_reader :arguments, :description, :hosts, :path_matcher
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

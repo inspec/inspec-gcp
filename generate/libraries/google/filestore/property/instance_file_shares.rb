@@ -17,11 +17,7 @@ module GoogleInSpec
   module Filestore
     module Property
       class InstanceFileShares
-        attr_reader :arguments
-
-        attr_reader :name
-
-        attr_reader :capacity_gb
+        attr_reader :arguments, :name, :capacity_gb
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

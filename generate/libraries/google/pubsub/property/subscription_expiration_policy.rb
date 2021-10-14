@@ -17,9 +17,7 @@ module GoogleInSpec
   module Pubsub
     module Property
       class SubscriptionExpirationPolicy
-        attr_reader :arguments
-
-        attr_reader :ttl
+        attr_reader :arguments, :ttl
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

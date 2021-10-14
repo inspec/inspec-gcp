@@ -17,13 +17,7 @@ module GoogleInSpec
   module Dataproc
     module Property
       class ClusterConfigSoftwareConfig
-        attr_reader :arguments
-
-        attr_reader :image_version
-
-        attr_reader :properties
-
-        attr_reader :optional_components
+        attr_reader :arguments, :image_version, :properties, :optional_components
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

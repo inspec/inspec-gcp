@@ -17,11 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class RouterBgpAdvertisedIpRanges
-        attr_reader :arguments
-
-        attr_reader :range
-
-        attr_reader :description
+        attr_reader :arguments, :range, :description
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -17,11 +17,7 @@ module GoogleInSpec
   module BigQuery
     module Property
       class DatasetDatasetReference
-        attr_reader :arguments
-
-        attr_reader :dataset_id
-
-        attr_reader :project_id
+        attr_reader :arguments, :dataset_id, :project_id
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

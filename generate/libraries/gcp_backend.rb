@@ -16,10 +16,9 @@ class GcpResourceBase < Inspec.resource(1)
   attr_reader :opts, :gcp
 
   def initialize(opts)
-    @opts = opts
+    @opts = super()
     # ensure we have a GCP connection, resources can choose which of the clients to instantiate
     @gcp = inspec.backend
-
     # Magic Modules generated resources use an alternate transport method
     # In the future this will be moved into the train-gcp plugin itself
     @connection = GcpApiConnection.new if opts[:use_http_transport]
@@ -394,9 +393,9 @@ module Network
       req
     end
   end
+
   # Extension methods to enable retrieving the authentication token.
   module TokenProperty
-    attr_reader :token
-    attr_writer :token
+    attr_accessor :token
   end
 end

@@ -22,14 +22,7 @@ class MLEngineModel < GcpResourceBase
   desc 'Model'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :name
-  attr_reader :description
-  attr_reader :default_version
-  attr_reader :regions
-  attr_reader :online_prediction_logging
-  attr_reader :online_prediction_console_logging
-  attr_reader :labels
+  attr_reader :params, :name, :description, :default_version, :regions, :online_prediction_logging, :online_prediction_console_logging, :labels
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

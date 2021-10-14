@@ -17,11 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalNodePoolConfigAccelerators
-        attr_reader :arguments
-
-        attr_reader :accelerator_count
-
-        attr_reader :accelerator_type
+        attr_reader :arguments, :accelerator_count, :accelerator_type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

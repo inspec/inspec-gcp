@@ -17,13 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesDisksDiskEncryptionKey
-        attr_reader :arguments
-
-        attr_reader :raw_key
-
-        attr_reader :rsa_encrypted_key
-
-        attr_reader :sha256
+        attr_reader :arguments, :raw_key, :rsa_encrypted_key, :sha256
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

@@ -17,17 +17,7 @@ module GoogleInSpec
   module Container
     module Property
       class RegionalClusterPrivateClusterConfig
-        attr_reader :arguments
-
-        attr_reader :enable_private_nodes
-
-        attr_reader :enable_private_endpoint
-
-        attr_reader :master_ipv4_cidr_block
-
-        attr_reader :private_endpoint
-
-        attr_reader :public_endpoint
+        attr_reader :arguments, :enable_private_nodes, :enable_private_endpoint, :master_ipv4_cidr_block, :private_endpoint, :public_endpoint
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

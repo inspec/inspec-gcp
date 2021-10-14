@@ -24,16 +24,7 @@ class ComputeUrlMap < GcpResourceBase
   desc 'UrlMap'
   supports platform: 'gcp'
 
-  attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :default_service
-  attr_reader :description
-  attr_reader :host_rules
-  attr_reader :id
-  attr_reader :fingerprint
-  attr_reader :name
-  attr_reader :path_matchers
-  attr_reader :tests
+  attr_reader :params, :creation_timestamp, :default_service, :description, :host_rules, :id, :fingerprint, :name, :path_matchers, :tests
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))

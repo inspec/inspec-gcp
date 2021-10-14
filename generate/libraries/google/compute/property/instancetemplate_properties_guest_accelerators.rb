@@ -17,11 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesGuestAccelerators
-        attr_reader :arguments
-
-        attr_reader :accelerator_count
-
-        attr_reader :accelerator_type
+        attr_reader :arguments, :accelerator_count, :accelerator_type
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments

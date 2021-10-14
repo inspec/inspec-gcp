@@ -17,11 +17,7 @@ module GoogleInSpec
   module Compute
     module Property
       class GlobalForwardingRuleMetadataFiltersFilterLabels
-        attr_reader :arguments
-
-        attr_reader :name
-
-        attr_reader :value
+        attr_reader :arguments, :name, :value
 
         def initialize(arguments = nil, parent_identifier = nil)
           @arguments = arguments
