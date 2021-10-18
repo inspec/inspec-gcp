@@ -85,5 +85,3 @@ Lint/MissingSuper:
   Enabled: false
 Metrics/MethodLength:
   Enabled: false
-Style/AccessorGrouping:
-  Enabled: : false
