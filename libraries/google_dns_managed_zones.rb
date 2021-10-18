@@ -104,7 +104,7 @@ class DNSManagedZones < GcpResourceBase
 
   private
 
-  def product_url(beta: false)
+  def product_url(beta = false)
     if beta
       'https://dns.googleapis.com/dns/v1beta2/'
     else

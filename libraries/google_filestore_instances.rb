@@ -90,7 +90,7 @@ class FilestoreInstances < GcpResourceBase
 
   private
 
-  def product_url(beta: false)
+  def product_url(beta = false)
     if beta
       'https://file.googleapis.com/v1beta1/'
     else

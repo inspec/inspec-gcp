@@ -60,7 +60,7 @@ class ComputeInstanceTemplate < GcpResourceBase
 
   private
 
-  def product_url(beta: false)
+  def product_url(beta = false)
     if beta
       'https://compute.googleapis.com/compute/beta/'
     else

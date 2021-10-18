@@ -70,7 +70,7 @@ class RedisInstance < GcpResourceBase
 
   private
 
-  def product_url(beta: false)
+  def product_url(beta = false)
     if beta
       'https://redis.googleapis.com/v1beta1/'
     else
