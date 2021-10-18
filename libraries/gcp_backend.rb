@@ -403,9 +403,9 @@ module Network
       req
     end
   end
+
   # Extension methods to enable retrieving the authentication token.
   module TokenProperty
-    attr_reader :token
-    attr_writer :token
+    attr_accessor :token
   end
 end
