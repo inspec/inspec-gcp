@@ -1,9 +1,8 @@
-
 # frozen_string_literal: false
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -15,12 +14,12 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/compute/property/zone_deprecated'
+require 'google/compute/property/acceleratortype_deprecated'
 
 # A provider to manage Compute Engine resources.
 class ComputeAcceleratorType < GcpResourceBase
   name 'google_compute_accelerator_type'
-  desc 'Accelerator Type'
+  desc 'AcceleratorType'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -30,8 +29,6 @@ class ComputeAcceleratorType < GcpResourceBase
   attr_reader :id
   attr_reader :name
   attr_reader :zone
-  attr_reader :selfLink
-  attr_reader :availableCpuPlatforms
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -42,13 +39,11 @@ class ComputeAcceleratorType < GcpResourceBase
 
   def parse
     @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::ZoneDeprecated.new(@fetched['deprecated'], to_s)
+    @deprecated = GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(@fetched['deprecated'], to_s)
     @description = @fetched['description']
     @id = @fetched['id']
     @name = @fetched['name']
     @zone = @fetched['zone']
-    @selfLink = @fetched['selfLink']
-    @availableCpuPlatforms = @fetched['availableCpuPlatforms']
   end
 
   # Handles parsing RFC3339 time string
@@ -66,15 +61,11 @@ class ComputeAcceleratorType < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
-    if beta
-      'https://compute.googleapis.com/compute/beta/'
-    else
-      'https://compute.googleapis.com/compute/v1/'
-    end
+  def product_url(_ = nil)
+    'https://compute.googleapis.com/compute/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/acceleratorTypes/{{accelerator_id}}'
+    'projects/{{project}}/zones/{{zone}}/acceleratorTypes/{{name}}'
   end
 end

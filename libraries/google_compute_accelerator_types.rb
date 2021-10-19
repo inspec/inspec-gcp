@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -16,7 +16,7 @@
 require 'gcp_backend'
 class ComputeAcceleratorTypes < GcpResourceBase
   name 'google_compute_accelerator_types'
-  desc 'Zone plural resource'
+  desc 'AcceleratorType plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -69,7 +69,7 @@ class ComputeAcceleratorTypes < GcpResourceBase
   def transformers
     {
       'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'deprecated' => ->(obj) { return :deprecated, GoogleInSpec::Compute::Property::ZoneDeprecated.new(obj['deprecated'], to_s) },
+      'deprecated' => ->(obj) { return :deprecated, GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(obj['deprecated'], to_s) },
       'description' => ->(obj) { return :description, obj['description'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'name' => ->(obj) { return :name, obj['name'] },
@@ -84,16 +84,11 @@ class ComputeAcceleratorTypes < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
-    if beta
-      'https://compute.googleapis.com/compute/beta/'
-    else
-      'https://compute.googleapis.com/compute/v1/'
-    end
+  def product_url(_ = nil)
+    'https://compute.googleapis.com/compute/v1/'
   end
 
   def resource_base_url
     'projects/{{project}}/zones/{{zone}}/acceleratorTypes'
   end
 end
-
