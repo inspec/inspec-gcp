@@ -195,7 +195,7 @@ class ComputeInstance < GcpResourceBase
   end
 
   def service_account_scopes
-    # note instances can have only one service account defined
+    # NOTE: instances can have only one service account defined
     return [] if @service_accounts[0].nil? || !defined?(@service_accounts[0].scopes) || @service_accounts[0].scopes.nil?
     @service_accounts[0].scopes
   end

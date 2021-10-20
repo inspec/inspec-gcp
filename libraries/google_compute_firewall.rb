@@ -222,7 +222,7 @@ class ComputeFirewall < GcpResourceBase
     false
   end
 
-  # note that port_list only accepts individual ports to match, not ranges
+  # NOTE: that port_list only accepts individual ports to match, not ranges
   def port_protocol_allowed(single_port, protocol = 'tcp')
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed' or 'denied'" if !defined?(allowed) || !defined?(denied)
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'allowed' and 'denied' cannot both be nil" if allowed.nil? && denied.nil?
