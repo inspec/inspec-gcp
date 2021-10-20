@@ -25,8 +25,6 @@ module GoogleInSpec
 
         attr_reader :replacement
 
-        attr_reader :state
-
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
