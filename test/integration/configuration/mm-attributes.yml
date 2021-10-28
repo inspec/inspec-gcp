@@ -447,3 +447,7 @@ security_policy:
 
 memcache_instance:
   name: mem-instance
+
+global_operation:
+  name: operation-1634799391539-5ced765030229-be5d5765-6623920f
+  operationType: "delete"
