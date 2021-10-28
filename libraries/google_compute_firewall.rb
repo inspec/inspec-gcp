@@ -229,7 +229,7 @@ class ComputeFirewall < GcpResourceBase
 
   def allow_ip_range_list(ip_range_list, only = false)
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction) || direction.nil?
-    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'allowed' cannot be nil" if allowed.nil?
+    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed'" if !defined?(allowed) || allowed.nil?
     # the intention here is for firewall rules plural to be filtered based on direction, then tested for particular IP ranges
     # e.g.        describe google_compute_firewalls(project: 'chef-inspec-gcp').where(firewall_direction: 'INGRESS').firewall_names.each do |firewall_name| do
     #               describe google_compute_firewall(project: 'chef-inspec-gcp',  name: firewall_name) do
@@ -252,7 +252,7 @@ class ComputeFirewall < GcpResourceBase
 
   def deny_ip_range_list(ip_range_list, only = false)
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction) || direction.nil?
-    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'denied' cannot be nil" if denied.nil?
+    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'denied'" if !defined?(denied) || denied.nil?
     ranges = nil
     if direction == 'INGRESS'
       return false if !defined?(source_ranges) || source_ranges.nil?
@@ -310,6 +310,10 @@ class ComputeFirewall < GcpResourceBase
     allowed_flag = denied.nil?
     return match_rule_protocol(allowed, single_port, protocol, allowed_flag) if allowed_flag
     match_rule_protocol(denied, single_port, protocol, allowed_flag)
+  end
+
+  def port_protocol_denied(single_port, protocol = 'tcp')
+    port_protocol_allowed(single_port, protocol = 'tcp')
   end
 
   def single_port_matches(rule_port, single_port)
