@@ -21,10 +21,10 @@ module GCPInspecConfig
       end
       @config = {
         # Generic GCP resource parameters
-        :gcp_organization_id => '953310715741',
-        :gcp_project_name => "SPaterson Project",
-        :gcp_project_id => "spaterson-project",
-        :gcp_project_number => "1041358276233",
+        :gcp_organization_id => '827482578277',
+        :gcp_project_name => "ppradhan",
+        :gcp_project_id => "ppradhan",
+        :gcp_project_number => "165434197229",
         # Determine the storage account name and the admin password
         :gcp_location => "europe-west2",
         :gcp_zone => "europe-west2-a",
@@ -103,7 +103,7 @@ module GCPInspecConfig
         :gcp_db_user_password => (("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a + %w{! @ # $ % & / ( ) + ? *}).sample(20).join,
         :gcp_dns_zone_name => "dnszone-#{add_random_string}.com.",
         :gcp_organization_iam_custom_role_id => "org_role_#{add_random_string}",
-        # Some resources require elevated privileges to create and therefore test against.  The below flag is used to control
+        # Some resources require elevated privileges to create and therefore test against.  The below flag is used to controls
         # both the terraform resource creation and the inspec test execution for those resources.  Default behaviour is for this to
         # be disabled meaning a user needs no special GCP privileges to run the integration test pack.
         #

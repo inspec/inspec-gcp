@@ -449,5 +449,5 @@ memcache_instance:
   name: mem-instance
 
 global_operation:
-  name: operation-1634799391539-5ced765030229-be5d5765-6623920f
-  operationType: "delete"
+  name: operation-1635274037755-5cf45e8217d56-c081cd9a-c3ea7346
+  operationType: "compute.externalVpnGateways.insert"
