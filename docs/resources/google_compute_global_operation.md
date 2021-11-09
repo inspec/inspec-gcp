@@ -8,7 +8,7 @@ A `google_compute_global_operation` is used to test a Google GlobalOperation res
 
 ## Examples
 ```
-describe google_compute_accelerator_type(project: 'chef-gcp-inspec', name: 'operation-1634799391539-5ced765030229-be5d5765-6623920f') do
+describe google_compute_global_operation(project: 'chef-gcp-inspec', name: 'operation-1634799391539-5ced765030229-be5d5765-6623920f') do
   it { should exist }
   it { should be_up }
   its('operation_type') { should include 'delete' }
