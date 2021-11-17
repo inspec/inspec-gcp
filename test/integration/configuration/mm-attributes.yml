@@ -249,11 +249,11 @@ dataproc_cluster:
       num_instances: 1
       machine_type: n1-standard-1
       boot_disk_type: pd-ssd
-      boot_disk_size_gb: 15
+      boot_disk_size_gb: 30
     worker_config:
       num_instances: 2
       machine_type: n1-standard-1
-      boot_disk_size_gb: 20
+      boot_disk_size_gb: 40
       num_local_ssds: 1
     preemptible_worker_config:
       num_instances: 0
@@ -447,3 +447,15 @@ security_policy:
 
 memcache_instance:
   name: mem-instance
+
+accelerator_type:
+  name: accelerator_id
+
+global_operation:
+  name: operation-1635274037755-5cf45e8217d56-c081cd9a-c3ea7346
+  operationType: "compute.externalVpnGateways.insert"
+
+interconnect_location:
+  name: akl-zone1-1353
+  facility_provider_facility_id: 'Auckland - Albany'
+  facility_provider: Vocus
