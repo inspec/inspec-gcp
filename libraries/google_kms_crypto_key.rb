@@ -66,7 +66,7 @@ class KMSCryptoKey < GcpResourceBase
   end
 
   def primary_state
-    @fetched['primary']['state']
+    @fetched['primary']['state'] unless @fetched.dig('primary', 'state').nil?
   end
 
   private
