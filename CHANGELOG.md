@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.8.10 -->
+<!-- latest_release 1.9.0 -->
+## [v1.9.0](https://github.com/inspec/inspec-gcp/tree/v1.9.0) (2021-11-23)
+
+#### Merged Pull Requests
+- Fix for #366 to add error handling for missing primary_state attribute [#367](https://github.com/inspec/inspec-gcp/pull/367) ([jonlives](https://github.com/jonlives))
+<!-- latest_release -->
+
 ## [v1.8.10](https://github.com/inspec/inspec-gcp/tree/v1.8.10) (2021-10-18)
 
 #### Merged Pull Requests
 - Add support for regional disks (plural) [#331](https://github.com/inspec/inspec-gcp/pull/331) ([frits-v](https://github.com/frits-v))
-<!-- latest_release -->
 
 ## [v1.8.9](https://github.com/inspec/inspec-gcp/tree/v1.8.9) (2021-10-18)
 
