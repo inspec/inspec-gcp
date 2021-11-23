@@ -67,7 +67,6 @@ class KMSCryptoKey < GcpResourceBase
 
   def primary_state
     return if @fetched.nil? || @fetched.empty?
-    
     @fetched.dig('primary', 'state')
   end
 
