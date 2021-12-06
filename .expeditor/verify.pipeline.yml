@@ -7,30 +7,6 @@ expeditor:
 
 steps:
 
-- label: lint-ruby-2.6
-  command:
-    - RAKE_TASK=lint /workdir/.expeditor/buildkite/verify.sh
-  expeditor:
-    executor:
-      docker:
-        image: ruby:2.6-stretch
-
-- label: run-tests-ruby-2.5
-  command:
-    - RAKE_TASK=default /workdir/.expeditor/buildkite/verify.sh
-  expeditor:
-    executor:
-      docker:
-        image: ruby:2.5-stretch
-
-- label: run-tests-ruby-2.6
-  command:
-    - RAKE_TASK=default /workdir/.expeditor/buildkite/verify.sh
-  expeditor:
-    executor:
-      docker:
-        image: ruby:2.6-stretch
-
 - label: run-tests-ruby-2.7
   command:
     - RAKE_TASK=default /workdir/.expeditor/buildkite/verify.sh
