@@ -447,3 +447,7 @@ security_policy:
 
 memcache_instance:
   name: mem-instance
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
