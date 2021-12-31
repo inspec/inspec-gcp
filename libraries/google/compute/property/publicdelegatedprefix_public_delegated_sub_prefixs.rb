@@ -16,28 +16,43 @@
 module GoogleInSpec
   module Compute
     module Property
-      class ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs
-        attr_reader :content
+      class PublicDelegatedPrefixPublicDelegatedSubPrefixs
+        attr_reader :name
 
-        attr_reader :file_type
+        attr_reader :description
+
+        attr_reader :region
+
+        attr_reader :status
+
+        attr_reader :ip_cidr_range
+
+        attr_reader :delegatee_project
+
+        attr_reader :is_address
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @content = args['content']
-          @file_type = args['fileType']
+          @name = args['name']
+          @description = args['description']
+          @region = args['region']
+          @status = args['status']
+          @ip_cidr_range = args['ipCidrRange']
+          @delegatee_project = args['delegateeProject']
+          @is_address = args['isAddress']
         end
 
         def to_s
-          "#{@parent_identifier} ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs"
+          "#{@parent_identifier} PublicDelegatedPrefixPublicDelegatedSubPrefixs"
         end
       end
 
-      class ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxsArray
+      class PublicDelegatedPrefixPublicDelegatedSubPrefixsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs.new(v, parent_identifier) }
+          return PublicDelegatedPrefixPublicDelegatedSubPrefixs.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| PublicDelegatedPrefixPublicDelegatedSubPrefixs.new(v, parent_identifier) }
         end
       end
     end
