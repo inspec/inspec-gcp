@@ -450,3 +450,7 @@ memcache_instance:
 
 accelerator_type:
   name: accelerator_id
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
