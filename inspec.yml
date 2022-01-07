@@ -4,7 +4,11 @@ maintainer: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 summary: This resource pack provides compliance resources_old_ignore for Google Cloud Platform
 copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
+<<<<<<< HEAD
 version: 1.8.10
+=======
+version: 1.10.0
+>>>>>>> 502794d4411c24bee601062c35a40b15f5266499
 license: Apache-2.0
 inspec_version: '>= 4.7.3' 
 supports:

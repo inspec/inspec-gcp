@@ -448,6 +448,7 @@ security_policy:
 memcache_instance:
   name: mem-instance
 
+
 accelerator_type:
   name: accelerator_id
 
@@ -458,3 +459,7 @@ external_vpn_gateway:
   name: external-gateway
   redundancy_type: SINGLE_IP_INTERNALLY_REDUNDANT
   description: "An externally managed VPN gateway"
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
