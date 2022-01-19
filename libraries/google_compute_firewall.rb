@@ -69,7 +69,7 @@ class ComputeFirewall < GcpResourceBase
     @source_tags = @fetched['sourceTags']
     @target_service_accounts = @fetched['targetServiceAccounts']
     @target_tags = @fetched['targetTags']
-    @action = @allowed.nil? ? "deny" : "allow"
+    @action = @allowed.nil? ? 'deny' : 'allow'
   end
 
   # Handles parsing RFC3339 time string
@@ -313,7 +313,7 @@ class ComputeFirewall < GcpResourceBase
   end
 
   def port_protocol_denied(single_port, protocol = 'tcp')
-    port_protocol_allowed(single_port, protocol = 'tcp')
+    port_protocol_allowed(single_port, protocol)
   end
 
   def single_port_matches(rule_port, single_port)
