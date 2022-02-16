@@ -451,3 +451,10 @@ memcache_instance:
 container_engine_versions:
   valid_master_version: '1.21.5-gke.1802'
   valid_node_version: '1.21.5-gke.1802'
+
+sql_database_flag:
+  name : audit_log
+  type : STRING
+  applies_to: MYSQL_5_6
+  allowed_string_values: ON
+  requires_restart: true
