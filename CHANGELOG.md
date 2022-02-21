@@ -1,10 +1,35 @@
 # Change Log
-<!-- latest_release 1.8.8 -->
+<!-- latest_release 1.10.1 -->
+## [v1.10.1](https://github.com/inspec/inspec-gcp/tree/v1.10.1) (2022-02-21)
+
+#### Merged Pull Requests
+- RESOURCE-200 2.5 , 2.6 ruby version removed [#397](https://github.com/inspec/inspec-gcp/pull/397) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.0](https://github.com/inspec/inspec-gcp/tree/v1.10.0) (2021-12-06)
+
+#### Merged Pull Requests
+- Added Support for GKE ServerConfig resource pack [#370](https://github.com/inspec/inspec-gcp/pull/370) ([varunsharma5](https://github.com/varunsharma5))
+
+## [v1.9.0](https://github.com/inspec/inspec-gcp/tree/v1.9.0) (2021-11-23)
+
+#### Merged Pull Requests
+- Fix for #366 to add error handling for missing primary_state attribute [#367](https://github.com/inspec/inspec-gcp/pull/367) ([jonlives](https://github.com/jonlives))
+
+## [v1.8.10](https://github.com/inspec/inspec-gcp/tree/v1.8.10) (2021-10-18)
+
+#### Merged Pull Requests
+- Add support for regional disks (plural) [#331](https://github.com/inspec/inspec-gcp/pull/331) ([frits-v](https://github.com/frits-v))
+
+## [v1.8.9](https://github.com/inspec/inspec-gcp/tree/v1.8.9) (2021-10-18)
+
+#### Merged Pull Requests
+- Issue/gce persistent disk csi driver config 350 v2 [#356](https://github.com/inspec/inspec-gcp/pull/356) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.8.8](https://github.com/inspec/inspec-gcp/tree/v1.8.8) (2021-03-05)
 
 #### Merged Pull Requests
 - Conditionally pin chef-utils on ruby 2.5 [#310](https://github.com/inspec/inspec-gcp/pull/310) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v1.8.7](https://github.com/inspec/inspec-gcp/tree/v1.8.7) (2021-03-05)
 

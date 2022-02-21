@@ -6,10 +6,6 @@ platform: gcp
 ## Syntax
 A `google_container_cluster` is used to test a Google Cluster resource
 
-
-## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
-
 ## Examples
 ```
 describe google_container_cluster(project: 'chef-gcp-inspec', location: 'europe-west2-a', name: 'gcp-inspec-kube-cluster') do
@@ -199,13 +195,11 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
       * `disabled`: Whether NetworkPolicy is enabled for this cluster.
 
-  * `subnetwork`: The name of the Google Compute Engine subnetwork to which the cluster is connected.
+    * `gce_persistent_disk_csi_driver_config`: Configuration for enable the automatic deployment and management of the persistent disk driver without having to manually set it up.
 
-  * `datapath_provider`: (Beta only) The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-  Possible values:
-    * DATAPATH_PROVIDER_UNSPECIFIED
-    * LEGACY_DATAPATH
-    * ADVANCED_DATAPATH
+      * `enabled`: Whether NetworkPolicy is enabled for this cluster.
+
+  * `subnetwork`: The name of the Google Compute Engine subnetwork to which the cluster is connected.
 
   * `locations`: The list of Google Compute Engine zones in which the cluster's nodes should be located.
 
@@ -299,10 +293,6 @@ Properties that can be accessed from the `google_container_cluster` resource:
   * `node_pools`: Node pools belonging to this cluster
 
     * `name`: Name of the node pool
-
-  * `pod_security_policy_config`: (Beta only) Configuration for the PodSecurityPolicy feature.
-
-    * `enabled`: If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
   * `binary_authorization`: Configuration for the BinaryAuthorization feature.
 
