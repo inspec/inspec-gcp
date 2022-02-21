@@ -451,3 +451,7 @@ memcache_instance:
 global_operation:
   name: operation-1635274037755-5cf45e8217d56-c081cd9a-c3ea7346
   operationType: "compute.externalVpnGateways.insert"
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
