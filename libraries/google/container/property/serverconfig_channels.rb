@@ -16,17 +16,31 @@
 module GoogleInSpec
   module Container
     module Property
-      class ClusterLegacyAbac
-        attr_reader :enabled
+      class ServerConfigChannels
+        attr_reader :channel
+
+        attr_reader :default_version
+
+        attr_reader :valid_versions
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enabled = args['enabled']
+          @channel = args['channel']
+          @default_version = args['defaultVersion']
+          @valid_versions = args['validVersions']
         end
 
         def to_s
-          "#{@parent_identifier} ClusterLegacyAbac"
+          "#{@parent_identifier} ServerConfigChannels"
+        end
+      end
+
+      class ServerConfigChannelsArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return ServerConfigChannels.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| ServerConfigChannels.new(v, parent_identifier) }
         end
       end
     end

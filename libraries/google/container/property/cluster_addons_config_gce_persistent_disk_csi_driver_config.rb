@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Container
     module Property
-      class ClusterLegacyAbac
+      class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig
         attr_reader :enabled
 
         def initialize(args = nil, parent_identifier = nil)
@@ -26,7 +26,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ClusterLegacyAbac"
+          "#{@parent_identifier} ClusterAddonsConfigGcePersistentDiskCsiDriverConfig"
         end
       end
     end
