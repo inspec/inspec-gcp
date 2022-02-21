@@ -459,3 +459,8 @@ interconnect_location:
   name: akl-zone1-1353
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
+
