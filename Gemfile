@@ -11,7 +11,7 @@ gem 'rubocop', '>= 0.77.0'
 
 
 if Gem.ruby_version < Gem::Version.new("3.0.0")
-  gem "io-event", "< 1.0.0"
+  gem "io-event", "= 0.4.0"
 end
 group :development do
   gem 'github_changelog_generator'
