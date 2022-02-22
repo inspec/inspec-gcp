@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.5 -->
+<!-- latest_release 1.10.6 -->
+## [v1.10.6](https://github.com/inspec/inspec-gcp/tree/v1.10.6) (2022-02-22)
+
+#### Merged Pull Requests
+- Firewall rules [#361](https://github.com/inspec/inspec-gcp/pull/361) ([ben-watt-es](https://github.com/ben-watt-es))
+<!-- latest_release -->
+
 ## [v1.10.5](https://github.com/inspec/inspec-gcp/tree/v1.10.5) (2022-02-22)
 
 #### Merged Pull Requests
 - RESOURCE-64 F/license codes [#371](https://github.com/inspec/inspec-gcp/pull/371) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.4](https://github.com/inspec/inspec-gcp/tree/v1.10.4) (2022-02-22)
 
