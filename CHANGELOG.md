@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.2 -->
+<!-- latest_release 1.10.3 -->
+## [v1.10.3](https://github.com/inspec/inspec-gcp/tree/v1.10.3) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-72 New resource disk types [#358](https://github.com/inspec/inspec-gcp/pull/358) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.2](https://github.com/inspec/inspec-gcp/tree/v1.10.2) (2022-02-21)
 
 #### Merged Pull Requests
 - RESOURCE-73 F/accelerator types [#357](https://github.com/inspec/inspec-gcp/pull/357) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.1](https://github.com/inspec/inspec-gcp/tree/v1.10.1) (2022-02-21)
 
