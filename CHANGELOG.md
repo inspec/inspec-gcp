@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.8 -->
+<!-- latest_release 1.10.9 -->
+## [v1.10.9](https://github.com/inspec/inspec-gcp/tree/v1.10.9) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-67 imageFamilyViews [#373](https://github.com/inspec/inspec-gcp/pull/373) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.8](https://github.com/inspec/inspec-gcp/tree/v1.10.8) (2022-02-22)
 
 #### Merged Pull Requests
 - soumyo/updated_readme_file [#333](https://github.com/inspec/inspec-gcp/pull/333) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.10.7](https://github.com/inspec/inspec-gcp/tree/v1.10.7) (2022-02-22)
 
