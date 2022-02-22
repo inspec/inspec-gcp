@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -15,6 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/container/property/cluster_addons_config'
+require 'google/container/property/cluster_addons_config_gce_persistent_disk_csi_driver_config'
 require 'google/container/property/cluster_addons_config_horizontal_pod_autoscaling'
 require 'google/container/property/cluster_addons_config_http_load_balancing'
 require 'google/container/property/cluster_addons_config_kubernetes_dashboard'
@@ -36,7 +37,6 @@ require 'google/container/property/cluster_node_config_accelerators'
 require 'google/container/property/cluster_node_config_shielded_instance_config'
 require 'google/container/property/cluster_node_config_taints'
 require 'google/container/property/cluster_node_pools'
-require 'google/container/property/cluster_pod_security_policy_config'
 require 'google/container/property/cluster_private_cluster_config'
 require 'google/container/property/cluster_release_channel'
 require 'google/container/property/cluster_shielded_nodes'
@@ -63,7 +63,6 @@ class ContainerCluster < GcpResourceBase
   attr_reader :tpu_ipv4_cidr_block
   attr_reader :addons_config
   attr_reader :subnetwork
-  attr_reader :datapath_provider
   attr_reader :locations
   attr_reader :resource_labels
   attr_reader :label_fingerprint
@@ -85,7 +84,6 @@ class ContainerCluster < GcpResourceBase
   attr_reader :conditions
   attr_reader :master_authorized_networks_config
   attr_reader :node_pools
-  attr_reader :pod_security_policy_config
   attr_reader :binary_authorization
   attr_reader :release_channel
   attr_reader :shielded_nodes
@@ -116,7 +114,6 @@ class ContainerCluster < GcpResourceBase
     @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
     @addons_config = GoogleInSpec::Container::Property::ClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
     @subnetwork = @fetched['subnetwork']
-    @datapath_provider = @fetched['datapathProvider']
     @locations = @fetched['locations']
     @resource_labels = @fetched['resourceLabels']
     @label_fingerprint = @fetched['labelFingerprint']
@@ -138,7 +135,6 @@ class ContainerCluster < GcpResourceBase
     @conditions = GoogleInSpec::Container::Property::ClusterConditionsArray.parse(@fetched['conditions'], to_s)
     @master_authorized_networks_config = GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
     @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched['nodePools'], to_s)
-    @pod_security_policy_config = GoogleInSpec::Container::Property::ClusterPodSecurityPolicyConfig.new(@fetched['podSecurityPolicyConfig'], to_s)
     @binary_authorization = GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(@fetched['binaryAuthorization'], to_s)
     @release_channel = GoogleInSpec::Container::Property::ClusterReleaseChannel.new(@fetched['releaseChannel'], to_s)
     @shielded_nodes = GoogleInSpec::Container::Property::ClusterShieldedNodes.new(@fetched['shieldedNodes'], to_s)
@@ -232,12 +228,8 @@ class ContainerCluster < GcpResourceBase
 
   private
 
-  def product_url(beta = false)
-    if beta
-      'https://container.googleapis.com/v1beta1/'
-    else
-      'https://container.googleapis.com/v1/'
-    end
+  def product_url(_ = nil)
+    'https://container.googleapis.com/v1/'
   end
 
   def resource_base_url
