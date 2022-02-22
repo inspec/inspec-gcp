@@ -1326,11 +1326,11 @@ resource "google_compute_router" "gcr" {
     asn = 16550
   }
 }
+
 resource "google_compute_interconnect_attachment" "on_prem" {
-  project = var.gcp_project_id
   name                     = "on-prem-attachment"
   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
   type                     = "PARTNER"
-  router                   = google_compute_router.gcr.id
+  router                   = google_compute_router.gcp-inspec-router.id
   mtu                      = 1500
 }
