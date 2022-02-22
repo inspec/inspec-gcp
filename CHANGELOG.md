@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.7 -->
+<!-- latest_release 1.10.8 -->
+## [v1.10.8](https://github.com/inspec/inspec-gcp/tree/v1.10.8) (2022-02-22)
+
+#### Merged Pull Requests
+- soumyo/updated_readme_file [#333](https://github.com/inspec/inspec-gcp/pull/333) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.10.7](https://github.com/inspec/inspec-gcp/tree/v1.10.7) (2022-02-22)
 
 #### Merged Pull Requests
 - RESOURCE-70 F/global operations [#362](https://github.com/inspec/inspec-gcp/pull/362) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.6](https://github.com/inspec/inspec-gcp/tree/v1.10.6) (2022-02-22)
 
