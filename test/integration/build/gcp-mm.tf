@@ -1318,7 +1318,6 @@ resource "google_memcache_instance" "instance" {
   node_count = 1
 }
 
-
 resource "google_compute_external_vpn_gateway" "external_gateway" {
   name            = "external-gateway"
   redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
