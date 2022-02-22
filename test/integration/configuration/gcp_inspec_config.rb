@@ -21,10 +21,10 @@ module GCPInspecConfig
       end
       @config = {
         # Generic GCP resource parameters
-        :gcp_organization_id => '953310715741',
-        :gcp_project_name => "SPaterson Project",
-        :gcp_project_id => "spaterson-project",
-        :gcp_project_number => "1041358276233",
+        :gcp_organization_id => '827482578277',
+        :gcp_project_name => "ppradhan",
+        :gcp_project_id => "ppradhan",
+        :gcp_project_number => "165434197229",
         # Determine the storage account name and the admin password
         :gcp_location => "europe-west2",
         :gcp_zone => "europe-west2-a",
