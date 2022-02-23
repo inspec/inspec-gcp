@@ -448,17 +448,6 @@ security_policy:
 memcache_instance:
   name: mem-instance
 
-container_engine_versions:
-  valid_master_version: '1.21.5-gke.1802'
-  valid_node_version: '1.21.5-gke.1802'
-
-sql_database_flag:
-  name : audit_log
-  type : STRING
-  applies_to: MYSQL_5_6
-  allowed_string_values: ON
-  requires_restart: true
-
 accelerator_type:
   name: accelerator_id
 
@@ -470,6 +459,20 @@ interconnect_location:
   name: akl-zone1-1353
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
+
+disk_type:
+  name: disk_type_name
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
+
+sql_database_flag:
+  name : audit_log
+  type : STRING
+  applies_to: MYSQL_5_6
+  allowed_string_values: ON
+  requires_restart: true
 
 image_family_views:
   zone: us-central1-c
