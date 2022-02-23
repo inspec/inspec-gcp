@@ -17,6 +17,8 @@ HashSyntax:
   Enabled: true
 ClassLength:
   Max: 200
+  Exclude:
+  - 'libraries/google_compute_firewall.rb'
 LineLength:
   Enabled: false
 EmptyLinesAroundBlockBody:
