@@ -5,7 +5,7 @@ ssl_policy:
   custom_feature: 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
   custom_feature2: 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
 
-topic:
+topic: 
   name: 'inspec-gcp-topic'
 
 subscription:
@@ -232,7 +232,7 @@ standardappversion:
   runtime: nodejs10
   entrypoint: "node ./app.js"
   port: "8080"
-
+  
 ml_model:
   name: ml_model
   region: us-central1
@@ -338,7 +338,7 @@ spannerinstance:
 spannerdatabase:
   name: spdatabase
   instance: spinstance
-  ddl: "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)"
+  ddl: "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)" 
 
 scheduler_job:
   # region must match where the appengine instance is deployed
@@ -437,7 +437,7 @@ logging_metric:
 compute_image:
   name: inspec-image
   source: https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz
-
+ 
 security_policy:
   name: sec-policy
   action: deny(403)
@@ -447,6 +447,9 @@ security_policy:
 
 memcache_instance:
   name: mem-instance
+
+license_code:
+  name: code_name
 
 accelerator_type:
   name: accelerator_id
@@ -460,31 +463,12 @@ interconnect_location:
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
 
-image_family_views:
-  zone: us-central1-c
-  name: image-1
-  source_type: RAW
-  status: READY
-  archive_size_bytes: 539099200
-  disk_size_gb: 3
-  family: test
+disk_type:
+  name: disk_type_name
 
-license_code:
-  name: akl-zone1-1353
-
-region_instance_group:
-  name: instance-group-2
-  region: us-central1
-  size: 1
-  named_port_name: 'port'
-  named_port_port: 80
-
-region_operation:
-  name: operation-1641188435323-5d4a6f5b26934-9281422c-dce238f5
-  region: us-central1
-  operation_type: "compute.instanceGroupManagers.insert"
-  status: DONE
-  progress: 100
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
 
 sql_database_flag:
   name : audit_log
