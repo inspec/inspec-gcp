@@ -1,10 +1,61 @@
 # Change Log
-<!-- latest_release 1.10.0 -->
+<!-- latest_release 1.10.10 -->
+## [v1.10.10](https://github.com/inspec/inspec-gcp/tree/v1.10.10) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-36 sql flags [#396](https://github.com/inspec/inspec-gcp/pull/396) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.9](https://github.com/inspec/inspec-gcp/tree/v1.10.9) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-67 imageFamilyViews [#373](https://github.com/inspec/inspec-gcp/pull/373) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.8](https://github.com/inspec/inspec-gcp/tree/v1.10.8) (2022-02-22)
+
+#### Merged Pull Requests
+- soumyo/updated_readme_file [#333](https://github.com/inspec/inspec-gcp/pull/333) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.10.7](https://github.com/inspec/inspec-gcp/tree/v1.10.7) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-70 F/global operations [#362](https://github.com/inspec/inspec-gcp/pull/362) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.6](https://github.com/inspec/inspec-gcp/tree/v1.10.6) (2022-02-22)
+
+#### Merged Pull Requests
+- Firewall rules [#361](https://github.com/inspec/inspec-gcp/pull/361) ([ben-watt-es](https://github.com/ben-watt-es))
+
+## [v1.10.5](https://github.com/inspec/inspec-gcp/tree/v1.10.5) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-64 F/license codes [#371](https://github.com/inspec/inspec-gcp/pull/371) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.4](https://github.com/inspec/inspec-gcp/tree/v1.10.4) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-66 f/interconnect_location [#363](https://github.com/inspec/inspec-gcp/pull/363) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.3](https://github.com/inspec/inspec-gcp/tree/v1.10.3) (2022-02-22)
+
+#### Merged Pull Requests
+- RESOURCE-72 New resource disk types [#358](https://github.com/inspec/inspec-gcp/pull/358) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.2](https://github.com/inspec/inspec-gcp/tree/v1.10.2) (2022-02-21)
+
+#### Merged Pull Requests
+- RESOURCE-73 F/accelerator types [#357](https://github.com/inspec/inspec-gcp/pull/357) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.1](https://github.com/inspec/inspec-gcp/tree/v1.10.1) (2022-02-21)
+
+#### Merged Pull Requests
+- RESOURCE-200 2.5 , 2.6 ruby version removed [#397](https://github.com/inspec/inspec-gcp/pull/397) ([sa-progress](https://github.com/sa-progress))
+
+
 ## [v1.10.0](https://github.com/inspec/inspec-gcp/tree/v1.10.0) (2021-12-06)
 
 #### Merged Pull Requests
 - Added Support for GKE ServerConfig resource pack [#370](https://github.com/inspec/inspec-gcp/pull/370) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.9.0](https://github.com/inspec/inspec-gcp/tree/v1.9.0) (2021-11-23)
 
