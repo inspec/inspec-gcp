@@ -1,10 +1,20 @@
 # Change Log
-<!-- latest_release 1.10.9 -->
+<!-- latest_release 1.10.11 -->
+## [v1.10.11](https://github.com/inspec/inspec-gcp/tree/v1.10.11) (2022-02-23)
+
+#### Merged Pull Requests
+- F/sql database3 [#395](https://github.com/inspec/inspec-gcp/pull/395) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.10](https://github.com/inspec/inspec-gcp/tree/v1.10.10) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-36 sql flags [#396](https://github.com/inspec/inspec-gcp/pull/396) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.10.9](https://github.com/inspec/inspec-gcp/tree/v1.10.9) (2022-02-22)
 
 #### Merged Pull Requests
 - RESOURCE-67 imageFamilyViews [#373](https://github.com/inspec/inspec-gcp/pull/373) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.8](https://github.com/inspec/inspec-gcp/tree/v1.10.8) (2022-02-22)
 
