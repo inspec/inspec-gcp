@@ -53,7 +53,7 @@ $ cat /Users/john/.config/gcloud/myproject-1-feb7993e8660.json
 
 And InSpec can be instructed to use it by setting this ENV variable prior to running `inspec exec`:
 ```bash
-$ export GOOGLE_APPLICATION_CREDENTIALS='/Users/john/.config/gcloud/myproject-1-feb7993e8660.json'
+$ export GOOGLE_APPLICATION_CREDENTIALS='/Users/sample_user/.config/gcloud/myproject-1-feb7993e8660.json'
 ```
 
 ### Enable the appropriate APIs that you want to use:
@@ -69,6 +69,8 @@ Since this is an InSpec resource pack, it only defines InSpec resources. It incl
 
 ```bash
 $ inspec init profile --platform gcp my-profile
+
+
 Create new profile at /Users/spaterson/my-profile
  * Create directory libraries
  * Create file README.md
@@ -76,11 +78,11 @@ Create new profile at /Users/spaterson/my-profile
  * Create file controls/example.rb
  * Create file inspec.yml
  * Create file attributes.yml
- * Create file libraries/.gitkeep 
- 
+ * Create file libraries/.gitkeep
+
 ```
 
-### Update `attributes.yml` to point to your project
+### Update `inputs.yml` to point to your project
 
 ```
 gcp_project_id: 'my-gcp-project'
@@ -90,7 +92,7 @@ gcp_project_id: 'my-gcp-project'
 
 ```
 $ cd my-profile/
-$ inspec exec . -t gcp:// --attrs attributes.yml
+$ inspec exec . -t gcp:// --input-file inputs.yml
 
 Profile: GCP InSpec Profile (my-profile)
 Version: 0.1.0
@@ -99,23 +101,34 @@ Target:  gcp://local-service-account@my-gcp-project.iam.gserviceaccount.com
   ✔  gcp-single-region-1.0: Ensure single region has the correct properties.
      ✔  Region europe-west2 zone_names should include "europe-west2-a"
   ✔  gcp-regions-loop-1.0: Ensure regions have the correct properties in bulk.
-     ✔  Region asia-east1 should be up
-     ✔  Region asia-northeast1 should be up
-     ✔  Region asia-south1 should be up
-     ✔  Region asia-southeast1 should be up
-     ✔  Region australia-southeast1 should be up
-     ✔  Region europe-north1 should be up
-     ✔  Region europe-west1 should be up
-     ✔  Region europe-west2 should be up
-     ✔  Region europe-west3 should be up
-     ✔  Region europe-west4 should be up
-     ✔  Region northamerica-northeast1 should be up
-     ✔  Region southamerica-east1 should be up
-     ✔  Region us-central1 should be up
-     ✔  Region us-east1 should be up
-     ✔  Region us-east4 should be up
-     ✔  Region us-west1 should be up
-     ✔  Region us-west2 should be up
+     ✔  Region asia-east1 is expected to be up
+     ✔  Region asia-east2 is expected to be up
+     ✔  Region asia-northeast1 is expected to be up
+     ✔  Region asia-northeast2 is expected to be up
+     ✔  Region asia-northeast3 is expected to be up
+     ✔  Region asia-south1 is expected to be up
+     ✔  Region asia-south2 is expected to be up
+     ✔  Region asia-southeast1 is expected to be up
+     ✔  Region asia-southeast2 is expected to be up
+     ✔  Region australia-southeast1 is expected to be up
+     ✔  Region australia-southeast2 is expected to be up
+     ✔  Region europe-central2 is expected to be up
+     ✔  Region europe-north1 is expected to be up
+     ✔  Region europe-west1 is expected to be up
+     ✔  Region europe-west2 is expected to be up
+     ✔  Region europe-west3 is expected to be up
+     ✔  Region europe-west4 is expected to be up
+     ✔  Region europe-west6 is expected to be up
+     ✔  Region northamerica-northeast1 is expected to be up
+     ✔  Region northamerica-northeast2 is expected to be up
+     ✔  Region southamerica-east1 is expected to be up
+     ✔  Region us-central1 is expected to be up
+     ✔  Region us-east1 is expected to be up
+     ✔  Region us-east4 is expected to be up
+     ✔  Region us-west1 is expected to be up
+     ✔  Region us-west2 is expected to be up
+     ✔  Region us-west3 is expected to be up
+     ✔  Region us-west4 is expected to be up
 
 
 Profile: Google Cloud Platform Resource Pack (inspec-gcp)
@@ -125,7 +138,7 @@ Target:  gcp://local-service-account@my-gcp-project.iam.gserviceaccount.com
      No tests executed.
 
 Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
-Test Summary: 18 successful, 0 failures, 0 skipped
+Test Summary:  29 successful, 0 failures, 0 skipped
 ```
 
 The generated `inspec.yml` file automatically points to the InSpec GCP resource pack:
@@ -134,7 +147,11 @@ The generated `inspec.yml` file automatically points to the InSpec GCP resource 
 name: my-profile
 title: My GCP InSpec Profile
 version: 0.1.0
-inspec_version: '>= 4.6.9'
+inspec_version: '>= 4'
+inputs:
+  - name: gcp_project_id
+    required: true
+    description: 'The GCP project identifier.'
 depends:
   - name: inspec-gcp
     url: https://github.com/inspec/inspec-gcp/archive/x.tar.gz
@@ -150,6 +167,7 @@ The following resources are available in the InSpec GCP Profile
 
 | InSpec GCP Supported Resources| [https://www.inspec.io/docs/reference/resources/#gcp-resources](https://www.inspec.io/docs/reference/resources/#gcp-resources) |
 |:---|:---|
+| Singular Resource | Plural Resource |
 | [google_bigquery_dataset](docs/resources/google_bigquery_dataset.md) |  [google_bigquery_datasets](docs/resources/google_bigquery_datasets.md) |
 | [google_bigquery_table](docs/resources/google_bigquery_table.md) |  [google_bigquery_tables](docs/resources/google_bigquery_tables.md) |
 | [google_cloudbuild_trigger](docs/resources/google_cloudbuild_trigger.md) |  [google_cloudbuild_triggers](docs/resources/google_cloudbuild_triggers.md) |
@@ -172,49 +190,50 @@ The following resources are available in the InSpec GCP Profile
 | [google_compute_network](docs/resources/google_compute_network.md) |  [google_compute_networks](docs/resources/google_compute_networks.md) |
 | [google_compute_project_info](docs/resources/google_compute_project_info.md) |  [google_compute_region](docs/resources/google_compute_region.md) |
 | [google_compute_region_instance_group_manager](docs/resources/google_compute_region_instance_group_manager.md) |  [google_compute_region_instance_group_managers](docs/resources/google_compute_region_instance_group_managers.md) |
-| [google_compute_regional_disk](docs/resources/google_compute_regional_disk.md) | [google_compute_regions](docs/resources/google_compute_regions.md) |  
-| [google_compute_route](docs/resources/google_compute_route.md) | [google_compute_router](docs/resources/google_compute_router.md) |  
-| [google_compute_routers](docs/resources/google_compute_routers.md) | [google_compute_routes](docs/resources/google_compute_routes.md) |  
-| [google_compute_snapshot](docs/resources/google_compute_snapshot.md) | [google_compute_snapshots](docs/resources/google_compute_snapshots.md) |  
-| [google_compute_ssl_certificate](docs/resources/google_compute_ssl_certificate.md) | [google_compute_ssl_certificates](docs/resources/google_compute_ssl_certificates.md) |  
-| [google_compute_ssl_policies](docs/resources/google_compute_ssl_policies.md) | [google_compute_ssl_policy](docs/resources/google_compute_ssl_policy.md) |  
-| [google_compute_subnetwork](docs/resources/google_compute_subnetwork.md) | [google_compute_subnetworks](docs/resources/google_compute_subnetworks.md) |  
-| [google_compute_target_http_proxies](docs/resources/google_compute_target_http_proxies.md) | [google_compute_target_http_proxy](docs/resources/google_compute_target_http_proxy.md) |  
-| [google_compute_target_https_proxies](docs/resources/google_compute_target_https_proxies.md) | [google_compute_target_https_proxy](docs/resources/google_compute_target_https_proxy.md) |  
-| [google_compute_target_pool](docs/resources/google_compute_target_pool.md) | [google_compute_target_pools](docs/resources/google_compute_target_pools.md) | 
-| [google_compute_target_tcp_proxies](docs/resources/google_compute_target_tcp_proxies.md) | [google_compute_target_tcp_proxy](docs/resources/google_compute_target_tcp_proxy.md) |  
-| [google_compute_url_map](docs/resources/google_compute_url_map.md) | [google_compute_url_maps](docs/resources/google_compute_url_maps.md) |  
-| [google_compute_vpn_tunnel](docs/resources/google_compute_vpn_tunnel.md) | [google_compute_vpn_tunnels](docs/resources/google_compute_vpn_tunnels.md) | 
-| [google_compute_zone](docs/resources/google_compute_zone.md) | [google_compute_zones](docs/resources/google_compute_zones.md) | 
-| [google_container_cluster](docs/resources/google_container_cluster.md) | [google_container_clusters](docs/resources/google_container_clusters.md) | 
-| [google_container_node_pool](docs/resources/google_container_node_pool.md) | [google_container_node_pools](docs/resources/google_container_node_pools.md) | 
-| [google_container_regional_cluster](docs/resources/google_container_regional_cluster.md) | [google_container_regional_clusters](docs/resources/google_container_regional_clusters.md) | 
-| [google_dns_managed_zone](docs/resources/google_dns_managed_zone.md) | [google_dns_managed_zones](docs/resources/google_dns_managed_zones.md) |  
-| [google_dns_resource_record_set](docs/resources/google_dns_resource_record_set.md) | [google_dns_resource_record_sets](docs/resources/google_dns_resource_record_sets.md) | 
-| [google_kms_crypto_key](docs/resources/google_kms_crypto_key.md) | [google_kms_crypto_key_iam_binding](docs/resources/google_kms_crypto_key_iam_binding.md) | 
-| [google_kms_crypto_key_iam_bindings](docs/resources/google_kms_crypto_key_iam_bindings.md) | [google_kms_crypto_keys](docs/resources/google_kms_crypto_keys.md) | 
-| [google_kms_key_ring](docs/resources/google_kms_key_ring.md) | [google_kms_key_ring_iam_binding](docs/resources/google_kms_key_ring_iam_binding.md) | 
-| [google_kms_key_ring_iam_bindings](docs/resources/google_kms_key_ring_iam_bindings.md) | [google_kms_key_rings](docs/resources/google_kms_key_rings.md) | 
-| [google_logging_project_exclusion](docs/resources/google_logging_project_exclusion.md) | [google_logging_project_sink](docs/resources/google_logging_project_sink.md) | 
-| [google_logging_project_sinks](docs/resources/google_logging_project_sinks.md) | [google_organization](docs/resources/google_organization.md) | 
-| [google_organizations](docs/resources/google_organizations.md) | [google_project](docs/resources/google_project.md) | 
-| [google_project_alert_policies](docs/resources/google_project_alert_policies.md) | [google_project_alert_policy](docs/resources/google_project_alert_policy.md) | 
-| [google_project_alert_policy_condition](docs/resources/google_project_alert_policy_condition.md) | [google_project_iam_binding](docs/resources/google_project_iam_binding.md) | 
-| [google_project_iam_bindings](docs/resources/google_project_iam_bindings.md) | [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md) | 
-| [google_project_logging_audit_config](docs/resources/google_project_logging_audit_config.md) | [google_project_metric](docs/resources/google_project_metric.md) | 
-| [google_project_metrics](docs/resources/google_project_metrics.md) | [google_projects](docs/resources/google_projects.md) | 
-| [google_pubsub_subscription](docs/resources/google_pubsub_subscription.md) | [google_pubsub_subscriptions](docs/resources/google_pubsub_subscriptions.md) | 
-| [google_pubsub_topic](docs/resources/google_pubsub_topic.md) | [google_pubsub_topics](docs/resources/google_pubsub_topics.md) | 
-| [google_service_account](docs/resources/google_service_account.md) | [google_service_account_key](docs/resources/google_service_account_key.md) | 
-| [google_service_account_keys](docs/resources/google_service_account_keys.md) | [google_service_accounts](docs/resources/google_service_accounts.md) | 
-| [google_sourcerepo_repositories](docs/resources/google_sourcerepo_repositories.md) | [google_sourcerepo_repository](docs/resources/google_sourcerepo_repository.md) | 
-| [google_sql_database_instance](docs/resources/google_sql_database_instance.md) | [google_sql_database_instances](docs/resources/google_sql_database_instances.md) | 
-| [google_sql_users](docs/resources/google_sql_users.md) | [google_storage_bucket](docs/resources/google_storage_bucket.md) | 
-| [google_storage_bucket_acl](docs/resources/google_storage_bucket_acl.md) | [google_storage_bucket_iam_binding](docs/resources/google_storage_bucket_iam_binding.md) | 
-| [google_storage_bucket_iam_bindings](docs/resources/google_storage_bucket_iam_bindings.md) | [google_storage_bucket_object](docs/resources/google_storage_bucket_object.md) | 
-| [google_storage_bucket_objects](docs/resources/google_storage_bucket_objects.md) | [google_storage_buckets](docs/resources/google_storage_buckets.md) | 
-| [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md) | [google_storage_object_acl](docs/resources/google_storage_object_acl.md) | 
+| [google_compute_regional_disk](docs/resources/google_compute_regional_disk.md) | [google_compute_regions](docs/resources/google_compute_regions.md) |
+| [google_compute_route](docs/resources/google_compute_route.md) | [google_compute_router](docs/resources/google_compute_router.md) |
+| [google_compute_routers](docs/resources/google_compute_routers.md) | [google_compute_routes](docs/resources/google_compute_routes.md) |
+| [google_compute_snapshot](docs/resources/google_compute_snapshot.md) | [google_compute_snapshots](docs/resources/google_compute_snapshots.md) |
+| [google_compute_ssl_certificate](docs/resources/google_compute_ssl_certificate.md) | [google_compute_ssl_certificates](docs/resources/google_compute_ssl_certificates.md) |
+| [google_compute_ssl_policies](docs/resources/google_compute_ssl_policies.md) | [google_compute_ssl_policy](docs/resources/google_compute_ssl_policy.md) |
+| [google_compute_subnetwork](docs/resources/google_compute_subnetwork.md) | [google_compute_subnetworks](docs/resources/google_compute_subnetworks.md) |
+| [google_compute_target_http_proxies](docs/resources/google_compute_target_http_proxies.md) | [google_compute_target_http_proxy](docs/resources/google_compute_target_http_proxy.md) |
+| [google_compute_target_https_proxies](docs/resources/google_compute_target_https_proxies.md) | [google_compute_target_https_proxy](docs/resources/google_compute_target_https_proxy.md) |
+| [google_compute_target_pool](docs/resources/google_compute_target_pool.md) | [google_compute_target_pools](docs/resources/google_compute_target_pools.md) |
+| [google_compute_target_tcp_proxies](docs/resources/google_compute_target_tcp_proxies.md) | [google_compute_target_tcp_proxy](docs/resources/google_compute_target_tcp_proxy.md) |
+| [google_compute_url_map](docs/resources/google_compute_url_map.md) | [google_compute_url_maps](docs/resources/google_compute_url_maps.md) |
+| [google_compute_vpn_tunnel](docs/resources/google_compute_vpn_tunnel.md) | [google_compute_vpn_tunnels](docs/resources/google_compute_vpn_tunnels.md) |
+| [google_compute_zone](docs/resources/google_compute_zone.md) | [google_compute_zones](docs/resources/google_compute_zones.md) |
+| [google_container_cluster](docs/resources/google_container_cluster.md) | [google_container_clusters](docs/resources/google_container_clusters.md) |
+| [google_container_node_pool](docs/resources/google_container_node_pool.md) | [google_container_node_pools](docs/resources/google_container_node_pools.md) |
+| [google_container_regional_cluster](docs/resources/google_container_regional_cluster.md) | [google_container_regional_clusters](docs/resources/google_container_regional_clusters.md) |
+| [google_dns_managed_zone](docs/resources/google_dns_managed_zone.md) | [google_dns_managed_zones](docs/resources/google_dns_managed_zones.md) |
+| [google_dns_resource_record_set](docs/resources/google_dns_resource_record_set.md) | [google_dns_resource_record_sets](docs/resources/google_dns_resource_record_sets.md) |
+| [google_kms_crypto_key](docs/resources/google_kms_crypto_key.md) | [google_kms_crypto_key_iam_binding](docs/resources/google_kms_crypto_key_iam_binding.md) |
+| [google_kms_crypto_key_iam_bindings](docs/resources/google_kms_crypto_key_iam_bindings.md) | [google_kms_crypto_keys](docs/resources/google_kms_crypto_keys.md) |
+| [google_kms_key_ring](docs/resources/google_kms_key_ring.md) | [google_kms_key_ring_iam_binding](docs/resources/google_kms_key_ring_iam_binding.md) |
+| [google_kms_key_ring_iam_bindings](docs/resources/google_kms_key_ring_iam_bindings.md) | [google_kms_key_rings](docs/resources/google_kms_key_rings.md) |
+| [google_logging_project_exclusion](docs/resources/google_logging_project_exclusion.md) | [google_logging_project_sink](docs/resources/google_logging_project_sink.md) |
+| [google_logging_project_sinks](docs/resources/google_logging_project_sinks.md) | [google_organization](docs/resources/google_organization.md) |
+| [google_organizations](docs/resources/google_organizations.md) | [google_project](docs/resources/google_project.md) |
+| [google_project_alert_policies](docs/resources/google_project_alert_policies.md) | [google_project_alert_policy](docs/resources/google_project_alert_policy.md) |
+| [google_project_alert_policy_condition](docs/resources/google_project_alert_policy_condition.md) | [google_project_iam_binding](docs/resources/google_project_iam_binding.md) |
+| [google_project_iam_bindings](docs/resources/google_project_iam_bindings.md) | [google_project_iam_custom_role](docs/resources/google_project_iam_custom_role.md) |
+| [google_project_logging_audit_config](docs/resources/google_project_logging_audit_config.md) | [google_project_metric](docs/resources/google_project_metric.md) |
+| [google_project_metrics](docs/resources/google_project_metrics.md) | [google_projects](docs/resources/google_projects.md) |
+| [google_pubsub_subscription](docs/resources/google_pubsub_subscription.md) | [google_pubsub_subscriptions](docs/resources/google_pubsub_subscriptions.md) |
+| [google_pubsub_topic](docs/resources/google_pubsub_topic.md) | [google_pubsub_topics](docs/resources/google_pubsub_topics.md) |
+| [google_service_account](docs/resources/google_service_account.md) | [google_service_account_key](docs/resources/google_service_account_key.md) |
+| [google_service_account_keys](docs/resources/google_service_account_keys.md) | [google_service_accounts](docs/resources/google_service_accounts.md) |
+| [google_sourcerepo_repositories](docs/resources/google_sourcerepo_repositories.md) | [google_sourcerepo_repository](docs/resources/google_sourcerepo_repository.md) |
+| [google_sql_database_instance](docs/resources/google_sql_database_instance.md) | [google_sql_database_instances](docs/resources/google_sql_database_instances.md) |
+| [google_sql_users](docs/resources/google_sql_users.md) | [google_storage_bucket](docs/resources/google_storage_bucket.md) |
+| [google_storage_bucket_acl](docs/resources/google_storage_bucket_acl.md) | [google_storage_bucket_iam_binding](docs/resources/google_storage_bucket_iam_binding.md) |
+| [google_storage_bucket_iam_bindings](docs/resources/google_storage_bucket_iam_bindings.md) | [google_storage_bucket_object](docs/resources/google_storage_bucket_object.md) |
+| [google_storage_bucket_objects](docs/resources/google_storage_bucket_objects.md) | [google_storage_buckets](docs/resources/google_storage_buckets.md) |
+| [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md) | [google_storage_object_acl](docs/resources/google_storage_object_acl.md) |
 | [google_user](docs/resources/google_user.md) | [google_users](docs/resources/google_users.md) |
+| [google_compute_regional_disks](docs/resources/google_compute_regional_disks.md) | |
 
 ## Examples
 
@@ -341,7 +360,7 @@ $ bundle exec rake test:setup_integration_tests
   * Run integration tests - runs the tests (inspec exec)
 ``` bash
 $ bundle exec rake test:run_integration_tests
-```   
+```
   * Clean up integration tests - removes GCP resources (terraform destroy)
 ``` bash
 $ bundle exec rake test:cleanup_integration_tests
