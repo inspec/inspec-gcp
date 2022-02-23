@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.14 -->
+<!-- latest_release 1.10.15 -->
+## [v1.10.15](https://github.com/inspec/inspec-gcp/tree/v1.10.15) (2022-02-23)
+
+#### Merged Pull Requests
+- Replace deprecated --without flag with bundle config [#330](https://github.com/inspec/inspec-gcp/pull/330) ([jayashrig158](https://github.com/jayashrig158))
+<!-- latest_release -->
+
 ## [v1.10.14](https://github.com/inspec/inspec-gcp/tree/v1.10.14) (2022-02-23)
 
 #### Merged Pull Requests
 - RESOURCE-53 Region Operations Bump version to 1.10.0 by Chef Expeditor [#381](https://github.com/inspec/inspec-gcp/pull/381) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.13](https://github.com/inspec/inspec-gcp/tree/v1.10.13) (2022-02-23)
 
