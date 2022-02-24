@@ -460,6 +460,20 @@ interconnect_location:
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
 
+disk_type:
+  name: disk_type_name
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
+
+sql_database_flag:
+  name : audit_log
+  type : STRING
+  applies_to: MYSQL_5_6
+  allowed_string_values: ON
+  requires_restart: true
+
 image_family_views:
   zone: us-central1-c
   name: image-1
@@ -492,3 +506,6 @@ zone_operation:
   operation_type: "compute.instanceGroupManagers.insert"
   status: DONE
   progress: 100
+  
+public_delegated_prefix:
+  name: test

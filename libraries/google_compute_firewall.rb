@@ -42,6 +42,7 @@ class ComputeFirewall < GcpResourceBase
   attr_reader :source_tags
   attr_reader :target_service_accounts
   attr_reader :target_tags
+  attr_reader :action
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -68,6 +69,7 @@ class ComputeFirewall < GcpResourceBase
     @source_tags = @fetched['sourceTags']
     @target_service_accounts = @fetched['targetServiceAccounts']
     @target_tags = @fetched['targetTags']
+    @action = @allowed.nil? ? 'deny' : 'allow'
   end
 
   # Handles parsing RFC3339 time string
@@ -88,17 +90,33 @@ class ComputeFirewall < GcpResourceBase
     port_protocol_allowed('80')
   end
 
+  def denied_http?
+    port_protocol_denied('80')
+  end
+
   # Check whether the firewall rule allows SSH access (tcp ingress on port 22)
   def allowed_ssh?
     port_protocol_allowed('22')
+  end
+
+  def denied_ssh?
+    port_protocol_denied('22')
   end
 
   def allowed_https?
     port_protocol_allowed('443')
   end
 
+  def denied_https?
+    port_protocol_denied('443')
+  end
+
   def allowed_rdp?
     port_protocol_allowed('3389')
+  end
+
+  def denied_rdp?
+    port_protocol_denied('3389')
   end
 
   def allow_port_protocol?(port, protocol)
@@ -106,6 +124,12 @@ class ComputeFirewall < GcpResourceBase
   end
 
   RSpec::Matchers.alias_matcher :allow_port_protocol, :be_allow_port_protocol
+
+  def deny_port_protocol?(port, protocol)
+    port_protocol_denied(port, protocol)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_port_protocol, :be_deny_port_protocol
 
   # initial implementation allows to search for target source and destination tags - can
   # filter plural firewalls based on direction to pin down the desired rules and choose the appropriate method
@@ -117,12 +141,26 @@ class ComputeFirewall < GcpResourceBase
 
   RSpec::Matchers.alias_matcher :allow_source_tags, :be_allow_source_tags
 
+  def deny_source_tags?(tag_list)
+    return false if !defined?(source_tags) || source_tags.nil?
+    match_list_helper(source_tags, tag_list)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_source_tags, :be_deny_source_tags
+
   def allow_target_tags?(tag_list)
     return false if !defined?(target_tags) || target_tags.nil?
     match_list_helper(target_tags, tag_list)
   end
 
   RSpec::Matchers.alias_matcher :allow_target_tags, :be_allow_target_tags
+
+  def deny_target_tags?(tag_list)
+    return false if !defined?(target_tags) || target_tags.nil?
+    match_list_helper(target_tags, tag_list)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_target_tags, :be_deny_target_tags
 
   def allow_source_tags_only?(tag_list)
     return false if !defined?(source_tags) || source_tags.nil?
@@ -131,12 +169,26 @@ class ComputeFirewall < GcpResourceBase
 
   RSpec::Matchers.alias_matcher :allow_source_tags_only, :be_allow_source_tags_only
 
+  def deny_source_tags_only?(tag_list)
+    return false if !defined?(source_tags) || source_tags.nil?
+    match_list_helper(source_tags, tag_list, true)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_source_tags_only, :be_deny_source_tags_only
+
   def allow_target_tags_only?(tag_list)
     return false if !defined?(target_tags) || target_tags.nil?
     match_list_helper(target_tags, tag_list, true)
   end
 
   RSpec::Matchers.alias_matcher :allow_target_tags_only, :be_allow_target_tags_only
+
+  def deny_target_tags_only?(tag_list)
+    return false if !defined?(target_tags) || target_tags.nil?
+    match_list_helper(target_tags, tag_list, true)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_target_tags_only, :be_deny_target_tags_only
 
   def match_list_helper(source_list, target_list, only = false)
     # helps streamline matching exact equality versus inclusion of target and source lists
@@ -157,14 +209,27 @@ class ComputeFirewall < GcpResourceBase
 
   RSpec::Matchers.alias_matcher :allow_ip_ranges_only, :be_allow_ip_ranges_only
 
+  def deny_ip_ranges_only?(ip_range_list)
+    deny_ip_range_list(ip_range_list, true)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_ip_ranges_only, :be_deny_ip_ranges_only
+
   def allow_ip_ranges?(ip_range_list)
     allow_ip_range_list(ip_range_list)
   end
 
   RSpec::Matchers.alias_matcher :allow_ip_ranges, :be_allow_ip_ranges
 
+  def deny_ip_ranges?(ip_range_list)
+    deny_ip_range_list(ip_range_list)
+  end
+
+  RSpec::Matchers.alias_matcher :deny_ip_ranges, :be_deny_ip_ranges
+
   def allow_ip_range_list(ip_range_list, only = false)
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction) || direction.nil?
+    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed'" if !defined?(allowed) || allowed.nil?
     # the intention here is for firewall rules plural to be filtered based on direction, then tested for particular IP ranges
     # e.g.        describe google_compute_firewalls(project: 'chef-inspec-gcp').where(firewall_direction: 'INGRESS').firewall_names.each do |firewall_name| do
     #               describe google_compute_firewall(project: 'chef-inspec-gcp',  name: firewall_name) do
@@ -172,6 +237,22 @@ class ComputeFirewall < GcpResourceBase
     #               end
     #             end
     # direction affects what the property is e.g. INGRESS->source_ranges, EGRESS->destination_ranges
+    ranges = nil
+    if direction == 'INGRESS'
+      return false if !defined?(source_ranges) || source_ranges.nil?
+      ranges = source_ranges
+    else
+      return false if !defined?(destination_ranges) || destination_ranges.nil?
+      ranges = destination_ranges
+    end
+    return false if !defined?(ranges) || ranges.nil?
+    # so now we have a list of IP addresses to compare
+    match_list_helper(ranges, ip_range_list, only)
+  end
+
+  def deny_ip_range_list(ip_range_list, only = false)
+    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction) || direction.nil?
+    raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'denied'" if !defined?(denied) || denied.nil?
     ranges = nil
     if direction == 'INGRESS'
       return false if !defined?(source_ranges) || source_ranges.nil?
@@ -229,6 +310,10 @@ class ComputeFirewall < GcpResourceBase
     allowed_flag = denied.nil?
     return match_rule_protocol(allowed, single_port, protocol, allowed_flag) if allowed_flag
     match_rule_protocol(denied, single_port, protocol, allowed_flag)
+  end
+
+  def port_protocol_denied(single_port, protocol = 'tcp')
+    port_protocol_allowed(single_port, protocol)
   end
 
   def single_port_matches(rule_port, single_port)
