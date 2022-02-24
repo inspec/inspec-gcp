@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.13.0"
+  required_version = "~> 0.13.2"
 }
 
 # GCP Terraform Templates For Inspec Testing
