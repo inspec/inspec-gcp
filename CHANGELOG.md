@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.15 -->
+<!-- latest_release 1.10.16 -->
+## [v1.10.16](https://github.com/inspec/inspec-gcp/tree/v1.10.16) (2022-02-24)
+
+#### Merged Pull Requests
+- RESOURCE-34 Sql Connect Bump version to 1.10.0 by Chef Expeditor [#391](https://github.com/inspec/inspec-gcp/pull/391) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.15](https://github.com/inspec/inspec-gcp/tree/v1.10.15) (2022-02-23)
 
 #### Merged Pull Requests
 - Replace deprecated --without flag with bundle config [#330](https://github.com/inspec/inspec-gcp/pull/330) ([jayashrig158](https://github.com/jayashrig158))
-<!-- latest_release -->
 
 ## [v1.10.14](https://github.com/inspec/inspec-gcp/tree/v1.10.14) (2022-02-23)
 
@@ -75,6 +80,7 @@
 
 #### Merged Pull Requests
 - RESOURCE-200 2.5 , 2.6 ruby version removed [#397](https://github.com/inspec/inspec-gcp/pull/397) ([sa-progress](https://github.com/sa-progress))
+
 
 ## [v1.10.0](https://github.com/inspec/inspec-gcp/tree/v1.10.0) (2021-12-06)
 
