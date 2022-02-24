@@ -76,6 +76,7 @@
 #### Merged Pull Requests
 - RESOURCE-200 2.5 , 2.6 ruby version removed [#397](https://github.com/inspec/inspec-gcp/pull/397) ([sa-progress](https://github.com/sa-progress))
 
+
 ## [v1.10.0](https://github.com/inspec/inspec-gcp/tree/v1.10.0) (2021-12-06)
 
 #### Merged Pull Requests
