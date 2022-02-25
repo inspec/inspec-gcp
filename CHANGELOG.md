@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.17 -->
+<!-- latest_release 1.10.18 -->
+## [v1.10.18](https://github.com/inspec/inspec-gcp/tree/v1.10.18) (2022-02-25)
+
+#### Merged Pull Requests
+- RESOURCE-71 external vpn gateway [#360](https://github.com/inspec/inspec-gcp/pull/360) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.17](https://github.com/inspec/inspec-gcp/tree/v1.10.17) (2022-02-25)
 
 #### Merged Pull Requests
 - fix doc: inspec-gcp google_container_node_pool resource [#355](https://github.com/inspec/inspec-gcp/pull/355) ([pradeepbhadani](https://github.com/pradeepbhadani))
-<!-- latest_release -->
 
 ## [v1.10.16](https://github.com/inspec/inspec-gcp/tree/v1.10.16) (2022-02-24)
 
