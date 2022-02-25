@@ -1,10 +1,10 @@
 # Change Log
 
-<!-- latest_release 1.10.18 -->
-## [v1.10.18](https://github.com/inspec/inspec-gcp/tree/v1.10.18) (2022-02-25)
+<!-- latest_release 1.10.19 -->
+## [v1.10.19](https://github.com/inspec/inspec-gcp/tree/v1.10.19) (2022-02-25)
 
 #### Merged Pull Requests
-- RESOURCE-71 external vpn gateway [#360](https://github.com/inspec/inspec-gcp/pull/360) ([sa-progress](https://github.com/sa-progress))
+- RESOURCE-51 Bump version to 1.10.0 by Chef Expeditor Zone Operation [#389](https://github.com/inspec/inspec-gcp/pull/389) ([sa-progress](https://github.com/sa-progress))
 <!-- latest_release -->
 
 ## [v1.10.17](https://github.com/inspec/inspec-gcp/tree/v1.10.17) (2022-02-25)
@@ -96,7 +96,6 @@
 
 #### Merged Pull Requests
 - Added Support for GKE ServerConfig resource pack [#370](https://github.com/inspec/inspec-gcp/pull/370) ([varunsharma5](https://github.com/varunsharma5))
-<!-- latest_release -->
 
 ## [v1.9.0](https://github.com/inspec/inspec-gcp/tree/v1.9.0) (2021-11-23)
 
