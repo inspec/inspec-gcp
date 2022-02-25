@@ -249,11 +249,11 @@ dataproc_cluster:
       num_instances: 1
       machine_type: n1-standard-1
       boot_disk_type: pd-ssd
-      boot_disk_size_gb: 15
+      boot_disk_size_gb: 30
     worker_config:
       num_instances: 2
       machine_type: n1-standard-1
-      boot_disk_size_gb: 20
+      boot_disk_size_gb: 40
       num_local_ssds: 1
     preemptible_worker_config:
       num_instances: 0
@@ -460,20 +460,6 @@ interconnect_location:
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
 
-disk_type:
-  name: disk_type_name
-
-container_engine_versions:
-  valid_master_version: '1.21.5-gke.1802'
-  valid_node_version: '1.21.5-gke.1802'
-
-sql_database_flag:
-  name : audit_log
-  type : STRING
-  applies_to: MYSQL_5_6
-  allowed_string_values: ON
-  requires_restart: true
-
 image_family_views:
   zone: us-central1-c
   name: image-1
@@ -500,12 +486,16 @@ region_operation:
   status: DONE
   progress: 100
 
-zone_operation:
-  name: operation-1641188179305-5d4a6e66fe2bd-8fd1812d-d97f3b69
-  zone: us-central1-a
-  operation_type: "compute.instanceGroupManagers.insert"
+sql_connect:
+  region: us-central1
+  database_version: POSTGRES_13
+  backend_type: SECOND_GEN
+  cert_serial_number: 0
+  common_name: "test_gcp_1"
+  sha1_fingerprint: "80c5c611c0a591db967c7dda3467e23127288fed"
+  instance: test-pg
+
+sql_operation:
+  name: e5c522f1-8391-4830-a8ff-ff1cc4a7b2a5
   status: DONE
-  progress: 100
-  
-public_delegated_prefix:
-  name: test
+  operation_type: CREATE
