@@ -1,10 +1,15 @@
 # Change Log
-<!-- latest_release 1.10.16 -->
+<!-- latest_release 1.10.17 -->
+## [v1.10.17](https://github.com/inspec/inspec-gcp/tree/v1.10.17) (2022-02-25)
+
+#### Merged Pull Requests
+- fix doc: inspec-gcp google_container_node_pool resource [#355](https://github.com/inspec/inspec-gcp/pull/355) ([pradeepbhadani](https://github.com/pradeepbhadani))
+<!-- latest_release -->
+
 ## [v1.10.16](https://github.com/inspec/inspec-gcp/tree/v1.10.16) (2022-02-24)
 
 #### Merged Pull Requests
 - RESOURCE-34 Sql Connect Bump version to 1.10.0 by Chef Expeditor [#391](https://github.com/inspec/inspec-gcp/pull/391) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.15](https://github.com/inspec/inspec-gcp/tree/v1.10.15) (2022-02-23)
 
