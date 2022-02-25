@@ -1,10 +1,45 @@
 # Change Log
-<!-- latest_release 1.10.9 -->
+<!-- latest_release 1.10.16 -->
+## [v1.10.16](https://github.com/inspec/inspec-gcp/tree/v1.10.16) (2022-02-24)
+
+#### Merged Pull Requests
+- RESOURCE-34 Sql Connect Bump version to 1.10.0 by Chef Expeditor [#391](https://github.com/inspec/inspec-gcp/pull/391) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.15](https://github.com/inspec/inspec-gcp/tree/v1.10.15) (2022-02-23)
+
+#### Merged Pull Requests
+- Replace deprecated --without flag with bundle config [#330](https://github.com/inspec/inspec-gcp/pull/330) ([jayashrig158](https://github.com/jayashrig158))
+
+## [v1.10.14](https://github.com/inspec/inspec-gcp/tree/v1.10.14) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-53 Region Operations Bump version to 1.10.0 by Chef Expeditor [#381](https://github.com/inspec/inspec-gcp/pull/381) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.13](https://github.com/inspec/inspec-gcp/tree/v1.10.13) (2022-02-23)
+
+#### Merged Pull Requests
+- Update inspec-bin requirement from 4.16.0 to 4.37.8 [#323](https://github.com/inspec/inspec-gcp/pull/323) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v1.10.12](https://github.com/inspec/inspec-gcp/tree/v1.10.12) (2022-02-23)
+
+#### Merged Pull Requests
+- Upgrade to GitHub-native Dependabot [#319](https://github.com/inspec/inspec-gcp/pull/319) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v1.10.11](https://github.com/inspec/inspec-gcp/tree/v1.10.11) (2022-02-23)
+
+#### Merged Pull Requests
+- F/sql database3 [#395](https://github.com/inspec/inspec-gcp/pull/395) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.10](https://github.com/inspec/inspec-gcp/tree/v1.10.10) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-36 sql flags [#396](https://github.com/inspec/inspec-gcp/pull/396) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.10.9](https://github.com/inspec/inspec-gcp/tree/v1.10.9) (2022-02-22)
 
 #### Merged Pull Requests
 - RESOURCE-67 imageFamilyViews [#373](https://github.com/inspec/inspec-gcp/pull/373) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.8](https://github.com/inspec/inspec-gcp/tree/v1.10.8) (2022-02-22)
 
@@ -45,6 +80,7 @@
 
 #### Merged Pull Requests
 - RESOURCE-200 2.5 , 2.6 ruby version removed [#397](https://github.com/inspec/inspec-gcp/pull/397) ([sa-progress](https://github.com/sa-progress))
+
 
 ## [v1.10.0](https://github.com/inspec/inspec-gcp/tree/v1.10.0) (2021-12-06)
 
