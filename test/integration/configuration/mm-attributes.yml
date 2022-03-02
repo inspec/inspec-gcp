@@ -448,11 +448,6 @@ security_policy:
 memcache_instance:
   name: mem-instance
 
-<<<<<<< Updated upstream
-container_engine_versions:
-  valid_master_version: '1.21.5-gke.1802'
-  valid_node_version: '1.21.5-gke.1802'
-=======
 accelerator_type:
   name: accelerator_id
 
@@ -464,6 +459,20 @@ interconnect_location:
   name: akl-zone1-1353
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
+
+disk_type:
+  name: disk_type_name
+
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
+
+sql_database_flag:
+  name : audit_log
+  type : STRING
+  applies_to: MYSQL_5_6
+  allowed_string_values: ON
+  requires_restart: true
 
 image_family_views:
   zone: us-central1-c
@@ -484,7 +493,19 @@ region_instance_group:
   named_port_name: 'port'
   named_port_port: 80
 
-region_health_check_service:
-  name: instance-group-2
+region_operation:
+  name: operation-1641188435323-5d4a6f5b26934-9281422c-dce238f5
   region: us-central1
-  health_status_aggregation_policy: NO_AGGREGATION
+  operation_type: "compute.instanceGroupManagers.insert"
+  status: DONE
+  progress: 100
+
+zone_operation:
+  name: operation-1641188179305-5d4a6e66fe2bd-8fd1812d-d97f3b69
+  zone: us-central1-a
+  operation_type: "compute.instanceGroupManagers.insert"
+  status: DONE
+  progress: 100
+
+public_delegated_prefix:
+  name: test
