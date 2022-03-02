@@ -288,7 +288,7 @@ resource "google_compute_target_pool" "gcp-inspec-target-pool" {
   project = var.gcp_project_id
   name = var.target_pool["name"]
   session_affinity = var.target_pool["session_affinity"]
-  
+
   instances = [
     "${var.gcp_zone}/${var.gcp_ext_vm_name}",
   ]
@@ -481,7 +481,7 @@ resource "google_compute_route" "gcp-inspec-route" {
   # google_compute_route depends on next_hop_ip belonging to a subnetwork
   # of the named network in this block. Since inspec-gcp-network does not
   # automatically create subnetworks, we need to create a dependency so
-  # the route is not created before the subnetwork 
+  # the route is not created before the subnetwork
   depends_on  = [google_compute_subnetwork.inspec-gcp-subnetwork]
 }
 
@@ -1112,9 +1112,13 @@ variable "rigm" {
   type = any
 }
 
+variable "sql_connect" {
+  type = any
+}
+
 resource "google_compute_region_instance_group_manager" "inspec-rigm" {
   project                    = var.gcp_project_id
-  region                     = var.gcp_location  
+  region                     = var.gcp_location
   name                       = var.rigm["name"]
 
   base_instance_name         = var.rigm["base_instance_name"]
@@ -1324,4 +1328,10 @@ resource "google_compute_interconnect_attachment" "on_prem" {
   type                     = "PARTNER"
   router                   = google_compute_router.gcp-inspec-router.id
   mtu                      = 1500
+}
+
+resource "google_sql_ssl_cert" "client_cert" {
+  project = var.gcp_project_id
+  common_name = var.sql_connect["common_name"]
+  instance    = var.gcp_db_instance_name
 }
