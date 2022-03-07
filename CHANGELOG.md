@@ -1,10 +1,36 @@
 # Change Log
-<!-- latest_release 1.10.13 -->
+
+<!-- latest_release 1.10.19 -->
+## [v1.10.19](https://github.com/inspec/inspec-gcp/tree/v1.10.19) (2022-02-25)
+
+#### Merged Pull Requests
+- RESOURCE-51 Bump version to 1.10.0 by Chef Expeditor Zone Operation [#389](https://github.com/inspec/inspec-gcp/pull/389) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.17](https://github.com/inspec/inspec-gcp/tree/v1.10.17) (2022-02-25)
+
+#### Merged Pull Requests
+- fix doc: inspec-gcp google_container_node_pool resource [#355](https://github.com/inspec/inspec-gcp/pull/355) ([pradeepbhadani](https://github.com/pradeepbhadani))
+
+## [v1.10.16](https://github.com/inspec/inspec-gcp/tree/v1.10.16) (2022-02-24)
+
+#### Merged Pull Requests
+- RESOURCE-34 Sql Connect Bump version to 1.10.0 by Chef Expeditor [#391](https://github.com/inspec/inspec-gcp/pull/391) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.15](https://github.com/inspec/inspec-gcp/tree/v1.10.15) (2022-02-23)
+
+#### Merged Pull Requests
+- Replace deprecated --without flag with bundle config [#330](https://github.com/inspec/inspec-gcp/pull/330) ([jayashrig158](https://github.com/jayashrig158))
+
+## [v1.10.14](https://github.com/inspec/inspec-gcp/tree/v1.10.14) (2022-02-23)
+
+#### Merged Pull Requests
+- RESOURCE-53 Region Operations Bump version to 1.10.0 by Chef Expeditor [#381](https://github.com/inspec/inspec-gcp/pull/381) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.10.13](https://github.com/inspec/inspec-gcp/tree/v1.10.13) (2022-02-23)
 
 #### Merged Pull Requests
 - Update inspec-bin requirement from 4.16.0 to 4.37.8 [#323](https://github.com/inspec/inspec-gcp/pull/323) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v1.10.12](https://github.com/inspec/inspec-gcp/tree/v1.10.12) (2022-02-23)
 
