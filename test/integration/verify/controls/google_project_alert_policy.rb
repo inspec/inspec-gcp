@@ -14,8 +14,8 @@
 
 title 'Test GCP google_project_alert_policy resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-alert_policy = attribute('alert_policy', default: {
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+alert_policy = input('alert_policy', value: {
   "display_name": "Display",
   "combiner": "OR",
   "condition_display_name": "condition",
@@ -23,6 +23,7 @@ alert_policy = attribute('alert_policy', default: {
   "condition_duration": "60s",
   "condition_comparison": "COMPARISON_GT"
 }, description: 'Alert Policy description')
+
 control 'google_project_alert_policy-1.0' do
   impact 1.0
   title 'google_project_alert_policy resource test'

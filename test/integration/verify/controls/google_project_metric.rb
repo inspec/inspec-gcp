@@ -14,13 +14,14 @@
 
 title 'Test GCP google_project_metric resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-logging_metric = attribute('logging_metric', default: {
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+logging_metric = input('logging_metric', value: {
   "name": "some/metric",
   "filter": "resource.type=gae_app AND severity>=ERROR",
   "metric_kind": "DELTA",
   "value_type": "INT64"
 }, description: 'Logging metric definition')
+
 control 'google_project_metric-1.0' do
   impact 1.0
   title 'google_project_metric resource test'

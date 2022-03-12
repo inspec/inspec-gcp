@@ -1,7 +1,7 @@
 title 'Firewalls Properties'
 
-gcp_project_id = input(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_enable_gcloud_calls = input(:gcp_enable_gcloud_calls,default:0,description:'Flag to enable the use of gcloud command line to pull in live data to test against.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_enable_gcloud_calls = input(:gcp_enable_gcloud_calls, value: 0, description: 'Flag to enable the use of gcloud command line to pull in live data to test against.')
 
 control 'gcp-firewalls-1.0' do
 

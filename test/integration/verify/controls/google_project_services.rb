@@ -14,10 +14,11 @@
 
 title 'Test GCP google_project_services resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-service = attribute('service', default: {
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+service = input('service', value: {
   "name": "maps-android-backend.googleapis.com"
 }, description: 'Service description')
+
 control 'google_project_services-1.0' do
   impact 1.0
   title 'google_project_services resource test'

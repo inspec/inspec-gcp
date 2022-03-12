@@ -8,7 +8,6 @@ gcp_kube_cluster_master_pass = input(:gcp_kube_cluster_master_pass, value: '', d
 gcp_kube_cluster_zone_extra1 = input(:gcp_kube_cluster_zone_extra1, value: '', description: 'The GKE cluster secondary zone.')
 gcp_kube_cluster_zone_extra2 = input(:gcp_kube_cluster_zone_extra2, value: '', description: 'The GKE cluster tertiary zone.')
 
-
 control 'gcp-gke-container-cluster-1.0' do
 
   impact 1.0

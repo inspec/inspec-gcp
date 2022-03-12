@@ -14,8 +14,8 @@
 
 title 'Test GCP google_redis_instance resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-redis = attribute('redis', default: {"name"=>"my-redis-cache", "tier"=>"STANDARD_HA", "memory_size_gb"=>1, "region"=>"us-central1", "location_id"=>"us-central1-a", "alternative_location_id"=>"us-central1-f", "redis_version"=>"REDIS_3_2", "display_name"=>"InSpec test instance", "reserved_ip_range"=>"192.168.0.0/29", "label_key"=>"key", "label_value"=>"value"})
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+redis = input('redis', value: {"name"=>"my-redis-cache", "tier"=>"STANDARD_HA", "memory_size_gb"=>1, "region"=>"us-central1", "location_id"=>"us-central1-a", "alternative_location_id"=>"us-central1-f", "redis_version"=>"REDIS_3_2", "display_name"=>"InSpec test instance", "reserved_ip_range"=>"192.168.0.0/29", "label_key"=>"key", "label_value"=>"value"})
 
 control 'google_redis_instance-1.0' do
   impact 1.0

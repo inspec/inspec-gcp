@@ -14,15 +14,16 @@
 
 title 'Test GCP google_ml_engine_models resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-ml_model = attribute('ml_model', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+ml_model = input('ml_model', value: {
   "name": "ml_model",
   "region": "us-central1",
   "description": "My awesome ML model",
   "online_prediction_logging": true,
   "online_prediction_console_logging": true
 }, description: 'Machine learning model definition')
+
 control 'google_ml_engine_models-1.0' do
   impact 1.0
   title 'google_ml_engine_models resource test'
