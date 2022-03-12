@@ -14,13 +14,14 @@
 
 title 'Test GCP google_cloudbuild_triggers resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-trigger = attribute('trigger', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+trigger = input('trigger', default: {
   "trigger_template_project": "trigger-project",
   "trigger_template_branch": "trigger-branch",
   "trigger_template_repo": "trigger-repo",
   "filename": "cloudbuild.yaml"
 }, description: 'CloudBuild trigger definition')
+
 control 'google_cloudbuild_triggers-1.0' do
   impact 1.0
   title 'google_cloudbuild_triggers resource test'

@@ -14,17 +14,18 @@
 
 title 'Test GCP google_appengine_standard_app_versions resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project location.')
-standardappversion = attribute('standardappversion', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, default: 'gcp_location', description: 'The GCP project location.')
+standardappversion = input('standardappversion', default: {
   "version_id": "v2",
   "service": "default",
   "runtime": "nodejs10",
   "entrypoint": "node ./app.js",
   "port": "8080"
 }, description: 'Cloud App Engine definition')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_organization_id = input(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
+
 control 'google_appengine_standard_app_versions-1.0' do
   impact 1.0
   title 'google_appengine_standard_app_versions resource test'

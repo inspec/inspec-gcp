@@ -14,13 +14,14 @@
 
 title 'Test GCP google_compute_backend_buckets resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_storage_bucket_name = attribute(:gcp_storage_bucket_name, default: 'gcp_storage_bucket_name', description: 'The GCS bucket name to use for the backend bucket.')
-backend_bucket = attribute('backend_bucket', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_storage_bucket_name = input(:gcp_storage_bucket_name, default: 'gcp_storage_bucket_name', description: 'The GCS bucket name to use for the backend bucket.')
+backend_bucket = input('backend_bucket', default: {
   "name": "inspec-gcp-backend-bucket",
   "description": "Backend bucket example",
   "enable_cdn": true
 }, description: 'Backend bucket definition')
+
 control 'google_compute_backend_buckets-1.0' do
   impact 1.0
   title 'google_compute_backend_buckets resource test'

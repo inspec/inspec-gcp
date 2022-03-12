@@ -14,8 +14,9 @@
 
 title 'Test GCP google_compute_accelerator_type resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-accelerator_type = attribute('accelerator_type', default: null, description: 'The accelerator type')
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+accelerator_type = input('accelerator_type', default: null, description: 'The accelerator type')
+
 control 'google_compute_accelerator_type-1.0' do
   impact 1.0
   title 'google_compute_accelerator_type resource test'

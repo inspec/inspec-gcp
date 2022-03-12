@@ -14,10 +14,11 @@
 
 title 'Test GCP google_sourcerepo_repository resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-repository = attribute('repository', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+repository = input('repository', default: {
   "name": "inspec-gcp-repository"
 }, description: 'Source Repository definition')
+
 control 'google_sourcerepo_repository-1.0' do
   impact 1.0
   title 'google_sourcerepo_repository resource test'

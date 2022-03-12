@@ -1,8 +1,8 @@
 title 'Storage Bucket Object Properties'
 
-gcp_storage_bucket_object = attribute(:gcp_storage_bucket_object, default: '', description: 'The GCP bucket with objects.')
-gcp_storage_bucket_object_name = attribute(:gcp_storage_bucket_object_name, default: '', description: 'The GCP bucket object name.')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources,default:0,description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_storage_bucket_object = input(:gcp_storage_bucket_object, default: '', description: 'The GCP bucket with objects.')
+gcp_storage_bucket_object_name = input(:gcp_storage_bucket_object_name, default: '', description: 'The GCP bucket object name.')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources,default:0,description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'gcp-storage-bucket-object-1.0' do
 

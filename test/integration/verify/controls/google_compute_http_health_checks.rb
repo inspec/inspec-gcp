@@ -14,13 +14,14 @@
 
 title 'Test GCP google_compute_http_health_checks resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-http_health_check = attribute('http_health_check', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+http_health_check = input('http_health_check', default: {
   "name": "inspec-gcp-http-health-check",
   "request_path": "/health_check",
   "timeout_sec": 20,
   "check_interval_sec": 20
 }, description: 'HTTP health check definition')
+
 control 'google_compute_http_health_checks-1.0' do
   impact 1.0
   title 'google_compute_http_health_checks resource test'

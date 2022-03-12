@@ -14,11 +14,12 @@
 
 title 'Test GCP google_compute_global_address resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-global_address = attribute('global_address', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+global_address = input('global_address', default: {
   "name": "inspec-gcp-global-address",
   "ip_version": "IPV6"
 }, description: 'Compute Global Address definition')
+
 control 'google_compute_global_address-1.0' do
   impact 1.0
   title 'google_compute_global_address resource test'

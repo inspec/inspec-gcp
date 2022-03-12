@@ -14,8 +14,8 @@
 
 title 'Test GCP google_spanner_instances resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-spannerinstance = attribute('spannerinstance', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+spannerinstance = input('spannerinstance', default: {
   "config": "regional-us-east1",
   "name": "spinstance",
   "display_name": "inspectest",
@@ -27,7 +27,6 @@ spannerinstance = attribute('spannerinstance', default: {
 control 'google_spanner_instances-1.0' do
   impact 1.0
   title 'google_spanner_instances resource test'
-
 
   describe.one do
     google_spanner_instances(project: gcp_project_id, config: spannerinstance['config']).configs.each do |config|

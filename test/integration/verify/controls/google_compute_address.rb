@@ -14,13 +14,14 @@
 
 title 'Test GCP google_compute_address resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-address = attribute('address', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
+address = input('address', default: {
   "name": "inspec-gcp-global-address",
   "address_type": "INTERNAL",
   "address": "10.2.0.3"
 }, description: 'Address definition')
+
 control 'google_compute_address-1.0' do
   impact 1.0
   title 'google_compute_address resource test'

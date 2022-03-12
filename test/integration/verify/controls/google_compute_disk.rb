@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_disk resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-snapshot = attribute('snapshot', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
+snapshot = input('snapshot', default: {
   "name": "inspec-gcp-disk-snapshot",
   "disk_name": "inspec-snapshot-disk",
   "disk_type": "pd-standard",
@@ -25,6 +25,7 @@ snapshot = attribute('snapshot', default: {
 gcp_compute_disk_name = snapshot["disk_name"]
 gcp_compute_disk_image = snapshot["disk_image"]
 gcp_compute_disk_type = snapshot["disk_type"]
+
 control 'google_compute_disk-1.0' do
   impact 1.0
   title 'google_compute_disk resource test'

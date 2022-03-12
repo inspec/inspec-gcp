@@ -14,9 +14,8 @@
 
 title 'Test GCP google_compute_external_vpn_gateway resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-
-external_vpn_gateway = attribute('external_vpn_gateway', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+external_vpn_gateway = input('external_vpn_gateway', default: {
   "name": "external-gateway",
   "redundancy_type": "SINGLE_IP_INTERNALLY_REDUNDANT",
   "description": "An externally managed VPN gateway",

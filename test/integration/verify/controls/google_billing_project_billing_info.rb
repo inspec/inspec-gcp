@@ -14,10 +14,11 @@
 
 title 'Test GCP google_billing_project_billing_info resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_billing_account = attribute(:gcp_billing_account, default: 'gcp_billing_account', description: 'The GCP billing account name.')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_billing_account = input(:gcp_billing_account, default: 'gcp_billing_account', description: 'The GCP billing account name.')
+gcp_organization_id = input(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+
 control 'google_billing_project_billing_info-1.0' do
   impact 1.0
   title 'google_billing_project_billing_info resource test'

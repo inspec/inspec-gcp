@@ -14,14 +14,14 @@
 
 title 'Test GCP google_bigquery_tables resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-bigquery_table = attribute('bigquery_table', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+bigquery_table = input('bigquery_table', default: {
   "table_id": "inspec_gcp_bigquery_table",
   "description": "A BigQuery table",
   "expiration_time": 1738882264000,
   "time_partitioning_type": "DAY"
 }, description: 'BigQuery table definition')
-dataset = attribute('dataset', default: {
+dataset = input('dataset', default: {
   "dataset_id": "inspec_gcp_dataset",
   "friendly_name": "A BigQuery dataset test",
   "description": "Test BigQuery dataset description",
@@ -30,6 +30,7 @@ dataset = attribute('dataset', default: {
   "access_writer_role": "WRITER",
   "access_writer_special_group": "projectWriters"
 }, description: 'BigQuery dataset definition')
+
 control 'google_bigquery_tables-1.0' do
   impact 1.0
   title 'google_bigquery_tables resource test'

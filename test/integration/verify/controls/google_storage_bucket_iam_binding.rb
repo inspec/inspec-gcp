@@ -1,11 +1,11 @@
 title 'Test single GCP storage bucket IAM binding'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_storage_bucket_binding = attribute(:gcp_storage_bucket_binding, default: '', description: 'The GCP bucket with IAM binding.')
-gcp_storage_bucket_member = attribute(:gcp_storage_bucket_member, default: '', description: 'The GCP bucket with IAM member.')
-gcp_storage_bucket_policy = attribute(:gcp_storage_bucket_policy, default: '', description: 'The GCP bucket with IAM policy.')
-gcp_service_account_display_name = attribute(:gcp_service_account_display_name, default:'', description: 'Service account display name.')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources,default:0,description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_project_id = input(:gcp_project_id, default: '', description: 'The GCP project identifier.')
+gcp_storage_bucket_binding = input(:gcp_storage_bucket_binding, default: '', description: 'The GCP bucket with IAM binding.')
+gcp_storage_bucket_member = input(:gcp_storage_bucket_member, default: '', description: 'The GCP bucket with IAM member.')
+gcp_storage_bucket_policy = input(:gcp_storage_bucket_policy, default: '', description: 'The GCP bucket with IAM policy.')
+gcp_service_account_display_name = input(:gcp_service_account_display_name, default:'', description: 'Service account display name.')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources,default:0,description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'gcp-storage-bucket-iam-binding-1.0' do
 

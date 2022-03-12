@@ -14,8 +14,8 @@
 
 title 'Test GCP google_cloud_scheduler_jobs resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-scheduler_job = attribute('scheduler_job', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+scheduler_job = input('scheduler_job', default: {
   "region": "us-central1",
   "name": "job-name",
   "description": "A description",
@@ -24,6 +24,7 @@ scheduler_job = attribute('scheduler_job', default: {
   "http_method": "POST",
   "http_target_uri": "https://example.com/ping"
 }, description: 'Cloud Scheduler Job configuration')
+
 control 'google_cloud_scheduler_jobs-1.0' do
   impact 1.0
   title 'google_cloud_scheduler_jobs resource test'

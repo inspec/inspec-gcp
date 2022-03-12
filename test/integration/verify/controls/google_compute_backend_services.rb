@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_backend_services resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-backend_service = attribute('backend_service', default: {
+gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+backend_service = input('backend_service', default: {
   "name": "inspec-gcp-backend-service",
   "description": "A description",
   "port_name": "http",
@@ -23,6 +23,7 @@ backend_service = attribute('backend_service', default: {
   "timeout_sec": 10,
   "enable_cdn": true
 }, description: 'Backend service definition')
+
 control 'google_compute_backend_services-1.0' do
   impact 1.0
   title 'google_compute_backend_services resource test'
