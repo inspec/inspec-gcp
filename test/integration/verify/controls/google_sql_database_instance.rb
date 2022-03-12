@@ -1,7 +1,7 @@
 title 'Test GCP google_sql_database_instance resource.'
 
+# gcp_location = input(:gcp_location, value: '', description: 'The GCP project location.')
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
-gcp_location = input(:gcp_location, value: '', description: 'The GCP project location.')
 gcp_db_instance_name = input(:gcp_db_instance_name, value: '', description: 'Database instance name.')
 
 control 'google_sql_database_instance-1.0' do

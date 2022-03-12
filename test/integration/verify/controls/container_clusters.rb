@@ -5,7 +5,6 @@ gcp_kube_cluster_name = input(:gcp_kube_cluster_name, value: '', description: 'T
 gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: '', description: 'The GKE cluster zone.')
 
 control 'gcp-container-clusters-1.0' do
-
   impact 1.0
   title 'Ensure container clusters have the correct properties in bulk.'
 

@@ -1,10 +1,10 @@
 title 'Test GCP google_memcache_instances resource.'
 
+# memcache_instance = input('memcache_instance', value: {
+#   "name": "mem-instance"
+# }, description: 'Memcache settings')
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 gcp_location = input(:gcp_location, value: '', description: 'The GCP project region.')
-memcache_instance = input('memcache_instance', value: {
-  "name": "mem-instance"
-}, description: 'Memcache settings')
 
 control 'google_memcache_instances-1.0' do
   impact 1.0

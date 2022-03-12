@@ -1,7 +1,7 @@
 title 'Test single GCP KMS Crypto Key'
 
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
-gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value:'',description: 'GCP key ring name to test against.')
+gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value: '',description: 'GCP key ring name to test against.')
 gcp_location = input(:gcp_location, value: '', description: 'The GCP region being used.')
 gcp_kms_crypto_key_name_policy = input(:gcp_kms_crypto_key_name_policy, value: '', description: 'The GCP cryto key name.')
 gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')

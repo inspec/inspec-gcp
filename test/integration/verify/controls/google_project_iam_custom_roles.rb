@@ -1,7 +1,7 @@
 title 'Test GCP google_project_iam_custom_roles resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_project_iam_custom_role_id = input(:gcp_project_iam_custom_role_id, value: 'gcp_project_iam_custom_role_id', description: 'The IAM custom role identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_project_iam_custom_role_id = input(:gcp_project_iam_custom_role_id, value: '', description: 'The IAM custom role identifier.')
 gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description: 'Flag to enable privileged resources requiring elevated privileges in GCP.')
 gcp_organization_id = vainputlue(:gcp_organization_id, value: '', description: 'The identifier of the organization')
 

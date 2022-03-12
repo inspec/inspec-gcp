@@ -4,7 +4,7 @@ folder = input('folder', value: {
   "display_name"=>"inspec-gcp-folder"
 })
 gcp_organization_id = input(:gcp_organization_id, value: '', description: 'The identifier of the organization that is the parent of this folder')
-gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description: 'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'google_resourcemanager_folder-1.0' do
   impact 1.0

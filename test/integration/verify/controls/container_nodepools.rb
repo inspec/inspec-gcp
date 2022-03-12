@@ -6,7 +6,6 @@ gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: '', description: 'T
 gcp_kube_nodepool_name = input(:gcp_kube_nodepool_name, value:'', description: 'The GKE cluster node pool name.')
 
 control 'gcp-container-cluster-node-pools-1.0' do
-
   impact 1.0
   title 'Ensure container cluster node pools have the correct properties in bulk.'
 

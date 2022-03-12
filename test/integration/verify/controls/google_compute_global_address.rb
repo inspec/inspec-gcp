@@ -1,6 +1,6 @@
 title 'Test GCP google_compute_global_address resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 global_address = input('global_address', value: {
   "name": "inspec-gcp-global-address",
   "ip_version": "IPV6"

@@ -4,10 +4,9 @@ gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project
 gcp_kube_cluster_name = input(:gcp_kube_cluster_name, value: '', description: 'The GKE cluster name.')
 gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: '', description: 'The GKE cluster zone.')
 gcp_kube_cluster_size = input(:gcp_kube_cluster_size, value: '', description: 'The GKE cluster initial size.')
-gcp_kube_nodepool_name = input(:gcp_kube_nodepool_name, value:'', description: 'The GKE cluster node pool name.')
+gcp_kube_nodepool_name = input(:gcp_kube_nodepool_name, value: '', description: 'The GKE cluster node pool name.')
 
 control 'gcp-gke-container-node-pool-1.0' do
-
   impact 1.0
   title 'Ensure GKE Container Node Pool was built correctly'
 

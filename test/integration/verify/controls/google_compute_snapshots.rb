@@ -1,7 +1,7 @@
 title 'Test GCP google_compute_snapshots resource.'
 
-gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 # gcp_zone = input(:gcp_zone, value: '', description: 'GCP zone name of the compute disk')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 snapshot = input('snapshot', value: {
   "name": "inspec-gcp-disk-snapshot",
   "disk_name": "inspec-snapshot-disk",

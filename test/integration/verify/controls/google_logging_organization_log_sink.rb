@@ -5,7 +5,7 @@ org_sink = input('org_sink', value: {
   "filter"=>"resource.type = gce_instance"
 })
 gcp_organization_id = input(:gcp_organization_id, value: '', description: 'The identifier of the organization that is the parent of this folder')
-gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description: 'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'google_logging_organization_log_sink-1.0' do
   impact 1.0

@@ -7,7 +7,6 @@ gcp_ext_vm_size = input(:gcp_ext_vm_size, value: '', description: 'The GCP VM ma
 #gcp_int_vm_image = input(:gcp_ext_vm_image, value: '', description: 'The GCP VM image.')
 
 control 'gcp-generic-vm-linux-external-1.0' do
-
   impact 1.0
   title 'Ensure External VM was built and has the correct properties'
 

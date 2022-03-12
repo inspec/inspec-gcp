@@ -3,7 +3,6 @@ title 'Firewall Rule Properties'
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 
 control 'google-lb-internal-firewall-rule-ip-ranges-1.0' do
-
   impact 1.0
   title 'Ensure that the Firewall Rule has been configured correctly with extra focus on expected IP ranges'
 

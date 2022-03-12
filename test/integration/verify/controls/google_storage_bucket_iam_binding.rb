@@ -8,7 +8,6 @@ gcp_service_account_display_name = input(:gcp_service_account_display_name, valu
 gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'gcp-storage-bucket-iam-binding-1.0' do
-
   only_if { gcp_enable_privileged_resources.to_i == 1 }
   impact 1.0
   title 'Ensure storage bucket IAM binding has the correct properties.'

@@ -7,6 +7,7 @@ folder_exclusion = input('folder_exclusion', value: {
 })
 gcp_organization_id = input(:gcp_organization_id, value: '', description: 'The identifier of the organization that is the parent of the folder')
 gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description: 'Flag to enable privileged resources requiring elevated privileges in GCP.')
+
 control 'google_logging_folder_exclusion-1.0' do
   impact 1.0
   title 'google_logging_folder_exclusion resource test'

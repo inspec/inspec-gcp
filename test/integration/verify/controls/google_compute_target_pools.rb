@@ -1,13 +1,13 @@
 title 'Test GCP google_compute_target_pools resource.'
 
+# gcp_ext_vm_name = input(:gcp_ext_vm_name, value: '', description: 'The name of a VM instance.')
+# gcp_zone = input(:gcp_zone, value: '', description: 'The GCP zone.')
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 gcp_location = input(:gcp_location, value: '', description: 'The GCP project region.')
-# gcp_ext_vm_name = input(:gcp_ext_vm_name, value: '', description: 'The name of a VM instance.')
 target_pool = input('target_pool', value: {
   "name": "inspec-gcp-target-pool",
   "session_affinity": "CLIENT_IP"
 }, description: 'Target pool definition')
-# gcp_zone = input(:gcp_zone, value: '', description: 'The GCP zone.')
 
 control 'google_compute_target_pools-1.0' do
   impact 1.0

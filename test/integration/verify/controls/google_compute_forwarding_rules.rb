@@ -1,8 +1,8 @@
 title 'Test GCP google_compute_forwarding_rules resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_lb_region = input(:gcp_lb_region, value: 'gcp_lb_region', description: 'The region used for the forwarding rule.')
-gcp_fr_udp_name = input(:gcp_fr_udp_name, value: 'gcp_fr_udp_name', description: 'The forwarding rule name.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_lb_region = input(:gcp_lb_region, value: '', description: 'The region used for the forwarding rule.')
+gcp_fr_udp_name = input(:gcp_fr_udp_name, value: '', description: 'The forwarding rule name.')
 
 control 'google_compute_forwarding_rules-1.0' do
   impact 1.0

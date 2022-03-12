@@ -1,7 +1,9 @@
 title 'Test GCP google_pubsub_topics resource.'
 
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
-topic = input('topic', value: {"name"=>"inspec-gcp-topic"})
+topic = input('topic', value: {
+  "name"=>"inspec-gcp-topic"
+})
 
 control 'google_pubsub_topics-1.0' do
   impact 1.0

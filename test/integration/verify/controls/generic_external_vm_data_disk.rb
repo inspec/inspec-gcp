@@ -7,7 +7,6 @@ gcp_ext_vm_data_disk_size = input(:gcp_ext_vm_size, value: '', description: 'The
 gcp_compute_disk_name = input(:gcp_compute_disk_name, value: '', description: 'The GCP VM attached disk name.')
 
 control 'gcp-generic-vm-linux-external-data-disk-1.0' do
-
   impact 1.0
   title 'Ensure External VM was built with attached data disk and has the correct properties'
 

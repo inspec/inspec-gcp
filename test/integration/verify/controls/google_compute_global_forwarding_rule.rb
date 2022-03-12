@@ -1,6 +1,6 @@
 title 'Test GCP google_compute_global_forwarding_rule resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 global_forwarding_rule = input('global_forwarding_rule', value: {
   "name": "inspec-gcp-global-forwarding-rule",
   "port_range": "80-80"

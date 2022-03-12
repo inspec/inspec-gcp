@@ -1,6 +1,6 @@
 title 'Test GCP google_compute_backend_service resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 backend_service = input('backend_service', value: {
   "name": "inspec-gcp-backend-service",
   "description": "A description",

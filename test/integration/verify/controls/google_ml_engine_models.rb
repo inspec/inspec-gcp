@@ -1,7 +1,7 @@
 title 'Test GCP google_ml_engine_models resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+# gcp_location = input(:gcp_location, value: '', description: 'The GCP project region.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 ml_model = input('ml_model', value: {
   "name": "ml_model",
   "region": "us-central1",

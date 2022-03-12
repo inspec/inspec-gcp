@@ -16,7 +16,6 @@ control 'google_compute_disk-1.0' do
   impact 1.0
   title 'google_compute_disk resource test'
 
-
   most_recent_image = google_compute_image(project: gcp_compute_disk_image.split('/').first, name: gcp_compute_disk_image.split('/').last)
 
   describe google_compute_disk(project: gcp_project_id, name: gcp_compute_disk_name, zone: gcp_zone) do

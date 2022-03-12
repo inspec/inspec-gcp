@@ -1,7 +1,7 @@
 title 'Test GCP google_storage_buckets resource.'
 
 gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
-gcp_location = input(:gcp_location, value: '', description: 'GCP location')
+# gcp_location = input(:gcp_location, value: '', description: 'GCP location')
 
 control 'google_storage_buckets-1.0' do
   impact 1.0

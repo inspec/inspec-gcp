@@ -1,6 +1,6 @@
 title 'Test GCP google_compute_http_health_check resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 http_health_check = input('http_health_check', value: {
   "name": "inspec-gcp-http-health-check",
   "request_path": "/health_check",

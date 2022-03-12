@@ -9,9 +9,9 @@ control 'gcp-projects-firewalls-loop-1.0' do
       describe google_compute_firewall(project: project_name, name: firewall_name) do
         it { should exist }
         its('direction') { should eq "INGRESS" }
-#  below uncommented is the same as the example in the README
-#  leaving out as some of the terraform resources have SSH open
-#        its('allowed_ssh?')  { should be false }
+        # below uncommented is the same as the example in the README
+        # leaving out as some of the terraform resources have SSH open
+        # its('allowed_ssh?')  { should be false }
       end
     end
   end
