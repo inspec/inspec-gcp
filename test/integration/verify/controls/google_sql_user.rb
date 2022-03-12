@@ -14,10 +14,10 @@
 
 title 'Test GCP google_sql_user resource.'
 
-gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = input(:gcp_location, default: 'gcp_location', description: 'The GCP project location.')
-gcp_db_instance_name = input(:gcp_db_instance_name, default: 'gcp_db_instance_name', description: 'Database instance name.')
-gcp_db_user_name = input(:gcp_db_user_name, default: 'gcp_db_user_name', description: 'SQL database user name.')
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project location.')
+gcp_db_instance_name = input(:gcp_db_instance_name, value: 'gcp_db_instance_name', description: 'Database instance name.')
+gcp_db_user_name = input(:gcp_db_user_name, value: 'gcp_db_user_name', description: 'SQL database user name.')
 
 control 'google_sql_user-1.0' do
   impact 1.0

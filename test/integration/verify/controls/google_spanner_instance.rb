@@ -14,8 +14,8 @@
 
 title 'Test GCP google_spanner_instance resource.'
 
-gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-spannerinstance = input('spannerinstance', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+spannerinstance = input('spannerinstance', value: {
   "config": "regional-us-east1",
   "name": "spinstance",
   "display_name": "inspectest",

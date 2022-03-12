@@ -14,8 +14,8 @@
 
 title 'Test GCP google_sourcerepo_repositories resource.'
 
-gcp_project_id = input(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-repository = input('repository', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+repository = input('repository', value: {
   "name": "inspec-gcp-repository"
 }, description: 'Source Repository definition')
 
