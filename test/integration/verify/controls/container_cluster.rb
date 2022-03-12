@@ -1,12 +1,12 @@
 title 'GKE Container Cluster Properties'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: '', description: 'The GKE cluster name.')
-gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: '', description: 'The GKE cluster zone.')
-gcp_kube_cluster_master_user = attribute(:gcp_kube_cluster_master_user, default: '', description: 'The GKE cluster master user.')
-gcp_kube_cluster_master_pass = attribute(:gcp_kube_cluster_master_pass, default: '', description: 'The GKE cluster master password.')
-gcp_kube_cluster_zone_extra1 = attribute(:gcp_kube_cluster_zone_extra1, default: '', description: 'The GKE cluster secondary zone.')
-gcp_kube_cluster_zone_extra2 = attribute(:gcp_kube_cluster_zone_extra2, default: '', description: 'The GKE cluster tertiary zone.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_kube_cluster_name = input(:gcp_kube_cluster_name, value: '', description: 'The GKE cluster name.')
+gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: '', description: 'The GKE cluster zone.')
+gcp_kube_cluster_master_user = input(:gcp_kube_cluster_master_user, value: '', description: 'The GKE cluster master user.')
+gcp_kube_cluster_master_pass = input(:gcp_kube_cluster_master_pass, value: '', description: 'The GKE cluster master password.')
+gcp_kube_cluster_zone_extra1 = input(:gcp_kube_cluster_zone_extra1, value: '', description: 'The GKE cluster secondary zone.')
+gcp_kube_cluster_zone_extra2 = input(:gcp_kube_cluster_zone_extra2, value: '', description: 'The GKE cluster tertiary zone.')
 
 
 control 'gcp-gke-container-cluster-1.0' do
@@ -36,8 +36,8 @@ control 'gcp-gke-container-cluster-1.0' do
     its('master_auth.password'){ should eq gcp_kube_cluster_master_pass}
 
     # no special network settings currently applied
-    its('network'){should eq "default"}
-    its('subnetwork'){should eq "default"}
+    its('network'){should eq "value"}
+    its('subnetwork'){should eq "value"}
 
     # check node configuration settings
     its('node_config.disk_size_gb'){should eq 100}
