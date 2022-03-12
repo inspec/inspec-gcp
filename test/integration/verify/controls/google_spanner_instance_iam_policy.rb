@@ -1,6 +1,6 @@
 title 'Test GCP google_spanner_instance_iam_policy resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 spannerinstance = input('spannerinstance', value: {
   "config": "regional-us-east1",
   "name": "spinstance",
@@ -10,7 +10,7 @@ spannerinstance = input('spannerinstance', value: {
   "label_value": "test"
 }, description: 'Cloud Spanner definition')
 gcp_service_account_display_name = input(:gcp_service_account_display_name, value: '', description: 'Service account display name.')
-gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 0, description: 'Flag to enable privileged resources requiring elevated privileges in GCP.')
 
 control 'google_spanner_instance_iam_policy-1.0' do
 

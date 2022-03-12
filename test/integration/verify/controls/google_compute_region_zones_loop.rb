@@ -1,10 +1,9 @@
 title 'Loop over all zones in a GCP region'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_region = attribute(:gcp_location, default: '', description: 'The GCP region being used.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_region = input(:gcp_location, value: '', description: 'The GCP region being used.')
 
 control 'gcp-region-zones-loop-1.0' do
-
   impact 1.0
   title 'Ensure all zones in a region are available using google_compute_zone for detail.'
 

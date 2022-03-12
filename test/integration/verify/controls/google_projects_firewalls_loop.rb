@@ -1,7 +1,6 @@
 title 'Loop over all GCP Projects and look at firewalls in INGRESS direction'
 
 control 'gcp-projects-firewalls-loop-1.0' do
-
   impact 1.0
   title 'Ensure INGRESS firewalls in all projects have the correct properties using google_compute_firewall for detail.'
 

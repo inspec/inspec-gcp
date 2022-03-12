@@ -1,10 +1,9 @@
 title 'Loop over all GCP Virtual Machines'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: '', description: 'The GCP zone being used.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: '', description: 'The GCP zone being used.')
 
 control 'gcp-vms-loop-1.0' do
-
   impact 1.0
   title 'Ensure VMs have the correct properties in bulk using google_compute_instance for detail.'
 

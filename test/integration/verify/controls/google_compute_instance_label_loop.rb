@@ -1,9 +1,8 @@
 title 'Loop over all GCP Zones to find all Compute Instances with a particular Label'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
 
 control 'gcp-zones-compute-label-loop-1.0' do
-
   impact 1.0
   title 'Ensure labels for compute instances across all zones have or do not have a particular label.'
 
