@@ -4,7 +4,7 @@ platform: gcp
 ---
 
 ## Syntax
-A `google_sql_ssl_certs` is used to test a Google SslCert resource
+A `google_sql_ssl_certs` is used to test a Google SslCerts resource
 
 ## Examples
 ```
