@@ -16,29 +16,31 @@
 module GoogleInSpec
   module Compute
     module Property
-      class ImageFamilyViewImageSourceDiskEncryptionKey
-        attr_reader :sha256
+      class InterconnectCircuitInfos
+        attr_reader :google_circuit_id
 
-        attr_reader :kms_key_service_account
+        attr_reader :google_demarc_id
 
-        attr_reader :raw_key
-
-        attr_reader :rsa_encrypted_key
-
-        attr_reader :kms_key_name
+        attr_reader :customer_demarc_id
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @sha256 = args['sha256']
-          @kms_key_service_account = args['kmsKeyServiceAccount']
-          @raw_key = args['rawKey']
-          @rsa_encrypted_key = args['rsaEncryptedKey']
-          @kms_key_name = args['kmsKeyName']
+          @google_circuit_id = args['googleCircuitId']
+          @google_demarc_id = args['googleDemarcId']
+          @customer_demarc_id = args['customerDemarcId']
         end
 
         def to_s
-          "#{@parent_identifier} ImageFamilyViewImageSourceDiskEncryptionKey"
+          "#{@parent_identifier} InterconnectCircuitInfos"
+        end
+      end
+
+      class InterconnectCircuitInfosArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return InterconnectCircuitInfos.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InterconnectCircuitInfos.new(v, parent_identifier) }
         end
       end
     end

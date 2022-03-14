@@ -14,25 +14,25 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/compute/property/imagefamilyview_image'
-require 'google/compute/property/imagefamilyview_image_deprecated'
-require 'google/compute/property/imagefamilyview_image_image_encryption_key'
-require 'google/compute/property/imagefamilyview_image_raw_disk'
-require 'google/compute/property/imagefamilyview_image_source_disk_encryption_key'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbs'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbxs'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_keks'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_pk'
+require 'google/compute/property/regioninstancegroup_named_ports'
 
 # A provider to manage Compute Engine resources.
-class ComputeImageFamilyView < GcpResourceBase
-  name 'google_compute_image_family_view'
-  desc 'ImageFamilyView'
+class ComputeRegionInstanceGroup < GcpResourceBase
+  name 'google_compute_region_instance_group'
+  desc 'RegionInstanceGroup'
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :image
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :id
+  attr_reader :name
+  attr_reader :fingerprint
+  attr_reader :network
+  attr_reader :zone
+  attr_reader :size
+  attr_reader :region
+  attr_reader :named_ports
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -42,7 +42,21 @@ class ComputeImageFamilyView < GcpResourceBase
   end
 
   def parse
-    @image = GoogleInSpec::Compute::Property::ImageFamilyViewImage.new(@fetched['image'], to_s)
+    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
+    @description = @fetched['description']
+    @id = @fetched['id']
+    @name = @fetched['name']
+    @fingerprint = @fetched['fingerprint']
+    @network = @fetched['network']
+    @zone = @fetched['zone']
+    @size = @fetched['size']
+    @region = @fetched['region']
+    @named_ports = GoogleInSpec::Compute::Property::RegionInstanceGroupNamedPortsArray.parse(@fetched['namedPorts'], to_s)
+  end
+
+  # Handles parsing RFC3339 time string
+  def parse_time_string(time_string)
+    time_string ? Time.parse(time_string) : nil
   end
 
   def exists?
@@ -50,7 +64,7 @@ class ComputeImageFamilyView < GcpResourceBase
   end
 
   def to_s
-    "ImageFamilyView #{@params[:name]}"
+    "RegionInstanceGroup #{@params[:name]}"
   end
 
   private
@@ -60,6 +74,6 @@ class ComputeImageFamilyView < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/imageFamilyViews/{{name}}'
+    'projects/{{project}}/regions/{{region}}/instanceGroups/{{name}}'
   end
 end
