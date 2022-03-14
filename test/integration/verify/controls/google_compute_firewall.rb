@@ -27,5 +27,6 @@ control 'google_compute_firewall-1.0' do
     its('direction') { should cmp 'INGRESS' }
     its('log_config_enabled?') { should be true }
     its('source_tags') { should include firewall['source_tag'] }
+    its('allowed.first.ports.first') { should include '22'}
   end
 end

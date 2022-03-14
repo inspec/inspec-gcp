@@ -1,10 +1,10 @@
 # Change Log
 
-<!-- latest_release 1.10.22 -->
-## [v1.10.22](https://github.com/inspec/inspec-gcp/tree/v1.10.22) (2022-03-14)
+<!-- latest_release 1.10.23 -->
+## [v1.10.23](https://github.com/inspec/inspec-gcp/tree/v1.10.23) (2022-03-14)
 
 #### Merged Pull Requests
-- RESOURCE-198 SQL SSL Cert [#399](https://github.com/inspec/inspec-gcp/pull/399) ([sa-progress](https://github.com/sa-progress))
+- RESOURCE-55 region health check services [#401](https://github.com/inspec/inspec-gcp/pull/401) ([sa-progress](https://github.com/sa-progress))
 <!-- latest_release -->
 
 ## [v1.10.21](https://github.com/inspec/inspec-gcp/tree/v1.10.21) (2022-03-14)
@@ -116,7 +116,6 @@
 
 #### Merged Pull Requests
 - Fix for #366 to add error handling for missing primary_state attribute [#367](https://github.com/inspec/inspec-gcp/pull/367) ([jonlives](https://github.com/jonlives))
-<!-- latest_release -->
 
 ## [v1.8.10](https://github.com/inspec/inspec-gcp/tree/v1.8.10) (2021-10-18)
 
