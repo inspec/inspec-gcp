@@ -33,7 +33,7 @@ control 'gcp-generic-vm-linux-external-1.0' do
 
     # see if the disk is present with the correct name
     its('disk_count'){should eq 1}
-    # see the internal vm control for more on the below
+    # see the internal vm controls for more on the below
     #its('disks_source') { should eq gcp_ext_vm_name }
     #it { should disks_source_name_equal(0,gcp_ext_vm_name) }
     its('first_disks_source_name') { should eq gcp_ext_vm_name }
