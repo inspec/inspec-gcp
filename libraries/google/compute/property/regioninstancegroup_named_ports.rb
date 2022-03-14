@@ -16,29 +16,28 @@
 module GoogleInSpec
   module Compute
     module Property
-      class ImageFamilyViewImageSourceDiskEncryptionKey
-        attr_reader :sha256
+      class RegionInstanceGroupNamedPorts
+        attr_reader :name
 
-        attr_reader :kms_key_service_account
-
-        attr_reader :raw_key
-
-        attr_reader :rsa_encrypted_key
-
-        attr_reader :kms_key_name
+        attr_reader :port
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @sha256 = args['sha256']
-          @kms_key_service_account = args['kmsKeyServiceAccount']
-          @raw_key = args['rawKey']
-          @rsa_encrypted_key = args['rsaEncryptedKey']
-          @kms_key_name = args['kmsKeyName']
+          @name = args['name']
+          @port = args['port']
         end
 
         def to_s
-          "#{@parent_identifier} ImageFamilyViewImageSourceDiskEncryptionKey"
+          "#{@parent_identifier} RegionInstanceGroupNamedPorts"
+        end
+      end
+
+      class RegionInstanceGroupNamedPortsArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return RegionInstanceGroupNamedPorts.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| RegionInstanceGroupNamedPorts.new(v, parent_identifier) }
         end
       end
     end
