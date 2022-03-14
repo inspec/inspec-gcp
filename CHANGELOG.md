@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.21 -->
+<!-- latest_release 1.10.22 -->
+## [v1.10.22](https://github.com/inspec/inspec-gcp/tree/v1.10.22) (2022-03-14)
+
+#### Merged Pull Requests
+- RESOURCE-198 SQL SSL Cert [#399](https://github.com/inspec/inspec-gcp/pull/399) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.21](https://github.com/inspec/inspec-gcp/tree/v1.10.21) (2022-03-14)
 
 #### Merged Pull Requests
 - RESOURCE-54 F/region instance group [#377](https://github.com/inspec/inspec-gcp/pull/377) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.20](https://github.com/inspec/inspec-gcp/tree/v1.10.20) (2022-03-14)
 
