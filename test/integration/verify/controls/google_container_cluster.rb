@@ -28,7 +28,7 @@ control 'google_container_cluster-1.0' do
   describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: gcp_kube_cluster_name) do
     it { should exist }
     its('locations.sort'){ should cmp [ gcp_kube_cluster_zone, gcp_kube_cluster_zone_extra1, gcp_kube_cluster_zone_extra2 ].sort }
-
+    its('legacy_abac.enabled') { should eq true}
     its('master_auth.username') { should eq gcp_kube_cluster_master_user }
   end
 
