@@ -14,7 +14,7 @@
 
 title 'Test GCP google_sql_ssl_certs resource.'
 
-gcp_project_id = attribute(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
 sql_connect = attribute('sql_connect', value: {
   "region": "us-central1",
   "database_version": "POSTGRES_13",
