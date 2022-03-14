@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.20 -->
+<!-- latest_release 1.10.21 -->
+## [v1.10.21](https://github.com/inspec/inspec-gcp/tree/v1.10.21) (2022-03-14)
+
+#### Merged Pull Requests
+- RESOURCE-54 F/region instance group [#377](https://github.com/inspec/inspec-gcp/pull/377) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.20](https://github.com/inspec/inspec-gcp/tree/v1.10.20) (2022-03-14)
 
 #### Merged Pull Requests
 - RESOURCE-65 added resource interconnects [#368](https://github.com/inspec/inspec-gcp/pull/368) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.19](https://github.com/inspec/inspec-gcp/tree/v1.10.19) (2022-02-25)
 
