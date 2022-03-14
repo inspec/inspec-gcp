@@ -16,34 +16,51 @@
 module GoogleInSpec
   module Compute
     module Property
-      class ImageFamilyViewImageDeprecated
-        attr_reader :deleted
+      class InterconnectExpectedOutages
+        attr_reader :name
 
-        attr_reader :deprecated
+        attr_reader :description
 
-        attr_reader :obsolete
-
-        attr_reader :replacement
+        attr_reader :source
 
         attr_reader :state
+
+        attr_reader :issue_type
+
+        attr_reader :affected_circuits
+
+        attr_reader :start_time
+
+        attr_reader :end_time
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @deleted = parse_time_string(args['deleted'])
-          @deprecated = parse_time_string(args['deprecated'])
-          @obsolete = parse_time_string(args['obsolete'])
-          @replacement = args['replacement']
+          @name = args['name']
+          @description = args['description']
+          @source = args['source']
           @state = args['state']
+          @issue_type = args['issueType']
+          @affected_circuits = args['affectedCircuits']
+          @start_time = parse_time_string(args['startTime'])
+          @end_time = parse_time_string(args['endTime'])
         end
 
         def to_s
-          "#{@parent_identifier} ImageFamilyViewImageDeprecated"
+          "#{@parent_identifier} InterconnectExpectedOutages"
         end
 
         # Handles parsing RFC3339 time string
         def parse_time_string(time_string)
           time_string ? Time.parse(time_string) : nil
+        end
+      end
+
+      class InterconnectExpectedOutagesArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return InterconnectExpectedOutages.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InterconnectExpectedOutages.new(v, parent_identifier) }
         end
       end
     end

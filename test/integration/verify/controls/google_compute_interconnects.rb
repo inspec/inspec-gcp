@@ -1,5 +1,3 @@
-# frozen_string_literal: false
-
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
@@ -13,25 +11,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-module GoogleInSpec
-  module Compute
-    module Property
-      class ImageFamilyViewImageSourceSnapshotEncryptionKeyPk
-        attr_reader :content
 
-        attr_reader :file_type
+title 'Test GCP google_compute_interconnects resource.'
 
-        def initialize(args = nil, parent_identifier = nil)
-          return if args.nil?
-          @parent_identifier = parent_identifier
-          @content = args['content']
-          @file_type = args['fileType']
-        end
+gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+control 'google_compute_interconnects-1.0' do
+  impact 1.0
+  title 'google_compute_interconnects resource test'
 
-        def to_s
-          "#{@parent_identifier} ImageFamilyViewImageSourceSnapshotEncryptionKeyPk"
-        end
-      end
-    end
+  describe google_compute_interconnects(project: gcp_project_id) do
+    it { should exist }
   end
 end
