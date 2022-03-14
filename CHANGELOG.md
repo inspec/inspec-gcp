@@ -1,10 +1,26 @@
 # Change Log
-<!-- latest_release 1.10.16 -->
+
+<!-- latest_release 1.10.20 -->
+## [v1.10.20](https://github.com/inspec/inspec-gcp/tree/v1.10.20) (2022-03-14)
+
+#### Merged Pull Requests
+- RESOURCE-65 added resource interconnects [#368](https://github.com/inspec/inspec-gcp/pull/368) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.19](https://github.com/inspec/inspec-gcp/tree/v1.10.19) (2022-02-25)
+
+#### Merged Pull Requests
+- RESOURCE-51 Bump version to 1.10.0 by Chef Expeditor Zone Operation [#389](https://github.com/inspec/inspec-gcp/pull/389) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.17](https://github.com/inspec/inspec-gcp/tree/v1.10.17) (2022-02-25)
+
+#### Merged Pull Requests
+- fix doc: inspec-gcp google_container_node_pool resource [#355](https://github.com/inspec/inspec-gcp/pull/355) ([pradeepbhadani](https://github.com/pradeepbhadani))
+
 ## [v1.10.16](https://github.com/inspec/inspec-gcp/tree/v1.10.16) (2022-02-24)
 
 #### Merged Pull Requests
 - RESOURCE-34 Sql Connect Bump version to 1.10.0 by Chef Expeditor [#391](https://github.com/inspec/inspec-gcp/pull/391) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.15](https://github.com/inspec/inspec-gcp/tree/v1.10.15) (2022-02-23)
 
@@ -80,7 +96,6 @@
 
 #### Merged Pull Requests
 - RESOURCE-200 2.5 , 2.6 ruby version removed [#397](https://github.com/inspec/inspec-gcp/pull/397) ([sa-progress](https://github.com/sa-progress))
-
 
 ## [v1.10.0](https://github.com/inspec/inspec-gcp/tree/v1.10.0) (2021-12-06)
 

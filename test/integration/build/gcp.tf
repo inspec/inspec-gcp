@@ -99,12 +99,12 @@ variable "gcp_enable_privileged_resources" {}
 
 provider "google" {
   region = var.gcp_location
-  version = "~> 3.26.0"
+  version = "~> 3.90.0"
 }
 
 provider "google-beta" {
   region = var.gcp_location
-  version = "~> 3.26.0"
+  version = "~> 3.90.0"
 }
 
 resource "google_service_account" "generic_service_account_object_viewer" {

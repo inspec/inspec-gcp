@@ -1318,6 +1318,24 @@ resource "google_memcache_instance" "instance" {
   node_count = 1
 }
 
+resource "google_compute_router" "gcr" {
+  project = var.gcp_project_id
+  name    = "router"
+  network = "test"
+  bgp {
+    asn = 16550
+  }
+}
+resource "google_compute_external_vpn_gateway" "external_gateway" {
+  name            = "external-gateway"
+  redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
+  description     = "An externally managed VPN gateway"
+  project         = var.gcp_project_id
+  interface {
+    id         = 0
+    ip_address = "8.8.8.8"
+  }
+}
 resource "google_compute_interconnect_attachment" "on_prem" {
   name                     = "on-prem-attachment"
   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
