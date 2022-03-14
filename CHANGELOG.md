@@ -116,6 +116,7 @@
 
 #### Merged Pull Requests
 - Fix for #366 to add error handling for missing primary_state attribute [#367](https://github.com/inspec/inspec-gcp/pull/367) ([jonlives](https://github.com/jonlives))
+<!-- latest_release -->
 
 ## [v1.8.10](https://github.com/inspec/inspec-gcp/tree/v1.8.10) (2021-10-18)
 

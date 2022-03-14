@@ -531,6 +531,6 @@ zone_operation:
   operation_type: "compute.instanceGroupManagers.insert"
   status: DONE
   progress: 100
-  
+
 public_delegated_prefix:
   name: test
