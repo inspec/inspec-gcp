@@ -1112,6 +1112,10 @@ variable "rigm" {
   type = any
 }
 
+variable "sql_connect" {
+  type = any
+}
+
 resource "google_compute_region_instance_group_manager" "inspec-rigm" {
   project                    = var.gcp_project_id
   region                     = var.gcp_location
@@ -1342,4 +1346,10 @@ resource "google_compute_interconnect_attachment" "on_prem" {
   type                     = "PARTNER"
   router                   = google_compute_router.gcp-inspec-router.id
   mtu                      = 1500
+}
+
+resource "google_sql_ssl_cert" "client_cert" {
+  project = var.gcp_project_id
+  common_name = var.sql_connect["common_name"]
+  instance    = var.gcp_db_instance_name
 }
