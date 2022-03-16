@@ -16,28 +16,28 @@
 module GoogleInSpec
   module Compute
     module Property
-      class ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs
-        attr_reader :content
+      class RegionInstanceGroupNamedPorts
+        attr_reader :name
 
-        attr_reader :file_type
+        attr_reader :port
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @content = args['content']
-          @file_type = args['fileType']
+          @name = args['name']
+          @port = args['port']
         end
 
         def to_s
-          "#{@parent_identifier} ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs"
+          "#{@parent_identifier} RegionInstanceGroupNamedPorts"
         end
       end
 
-      class ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxsArray
+      class RegionInstanceGroupNamedPortsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ImageFamilyViewImageSourceSnapshotEncryptionKeyDbxs.new(v, parent_identifier) }
+          return RegionInstanceGroupNamedPorts.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| RegionInstanceGroupNamedPorts.new(v, parent_identifier) }
         end
       end
     end
