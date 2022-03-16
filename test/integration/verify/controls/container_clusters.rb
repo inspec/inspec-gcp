@@ -1,8 +1,8 @@
 title 'Retrieve  all GCP Container Clusters for a project and zone'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: '', description: 'The GKE cluster name.')
-gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: '', description: 'The GKE cluster zone.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_kube_cluster_name = input(:gcp_kube_cluster_name, value: '', description: 'The GKE cluster name.')
+gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: '', description: 'The GKE cluster zone.')
 
 control 'gcp-container-clusters-1.0' do
 
