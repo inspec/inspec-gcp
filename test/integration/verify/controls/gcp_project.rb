@@ -1,8 +1,8 @@
 title 'Project Properties'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_project_name = attribute(:gcp_project_name, default: '', description: 'The GCP project name.')
-gcp_project_number = attribute(:gcp_project_number, default: '', description: 'The GCP project number.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_project_name = input(:gcp_project_name, value: '', description: 'The GCP project name.')
+gcp_project_number = input(:gcp_project_number, value: '', description: 'The GCP project number.')
 
 control 'gcp-project' do
 
