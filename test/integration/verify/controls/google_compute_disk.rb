@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_disk resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-snapshot = attribute('snapshot', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: 'gcp_zone', description: 'The GCP project zone.')
+snapshot = input('snapshot', value: {
   "name": "inspec-gcp-disk-snapshot",
   "disk_name": "inspec-snapshot-disk",
   "disk_type": "pd-standard",
