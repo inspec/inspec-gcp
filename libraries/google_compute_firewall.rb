@@ -119,6 +119,10 @@ class ComputeFirewall < GcpResourceBase
     port_protocol_denied('3389')
   end
 
+  def allowed_dns?
+    port_protocol_allowed('53')
+  end
+
   def allow_port_protocol?(port, protocol)
     port_protocol_allowed(port, protocol)
   end
