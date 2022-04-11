@@ -120,7 +120,39 @@ class ComputeFirewall < GcpResourceBase
   end
 
   def allowed_dns?
-    port_protocol_allowed('53')
+    port_protocol_allowed('53') || port_protocol_allowed('53', 'udp')
+  end
+
+  def allowed_cifs?
+    port_protocol_allowed('445', 'udp')
+  end
+
+  def allowed_ftp?
+    port_protocol_allowed('20') || port_protocol_allowed('21')
+  end
+
+  def allowed_hdfs_name_node_service?
+    port_protocol_allowed('8020')
+  end
+
+  def allowed_name_node_webui_service?
+    port_protocol_allowed('50070') || port_protocol_allowed('50470')
+  end
+
+  def allowed_kibana?
+    port_protocol_allowed('5601')
+  end
+
+  def allowed_mysql?
+    port_protocol_allowed('4333') || port_protocol_allowed('3306')
+  end
+
+  def allowed_net_bios?
+    port_protocol_allowed('137', 'udp') || port_protocol_allowed('138', 'udp')
+  end
+
+  def allowed_oracle?
+    port_protocol_allowed('1521')
   end
 
   def allow_port_protocol?(port, protocol)
