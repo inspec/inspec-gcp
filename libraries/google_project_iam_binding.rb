@@ -41,6 +41,7 @@ class ProjectIamBinding < GcpResourceBase
       if params[:condition]
         # Control defines a condition, match via this condition
         condition = params[:condition]
+
         if condition[:title] && condition[:title] != binding&.condition&.title
           next
         end

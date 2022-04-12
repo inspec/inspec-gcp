@@ -155,6 +155,42 @@ class ComputeFirewall < GcpResourceBase
     port_protocol_allowed('1521')
   end
 
+  def allowed_postgre_sql?
+    port_protocol_allowed('5432')
+  end
+
+  def allowed_rpc?
+    port_protocol_allowed('135')
+  end
+
+  def allowed_sql_server?
+    port_protocol_allowed('1434') || port_protocol_allowed('1433')
+  end
+
+  def allowed_smtp?
+    port_protocol_allowed('25')
+  end
+
+  def allowed_windows_smb?
+    port_protocol_allowed('445')
+  end
+
+  def allowed_vnc_server?
+    port_protocol_allowed('5900')
+  end
+
+  def allowed_vnc_client?
+    port_protocol_allowed('5500')
+  end
+
+  def allowed_telnet?
+    port_protocol_allowed('23')
+  end
+
+  def allowed_oracle_auto_data_warehouse?
+    port_protocol_allowed('1522')
+  end
+
   def allow_port_protocol?(port, protocol)
     port_protocol_allowed(port, protocol)
   end
