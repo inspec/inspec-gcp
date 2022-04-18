@@ -191,6 +191,14 @@ class ComputeFirewall < GcpResourceBase
     port_protocol_allowed('1522')
   end
 
+  def allowed_salt_master?
+    port_protocol_allowed('4505') || port_protocol_allowed('4506')
+  end
+
+  def allowed_docker?
+    port_protocol_allowed('2375') || port_protocol_allowed('2376')
+  end
+
   def allow_port_protocol?(port, protocol)
     port_protocol_allowed(port, protocol)
   end
