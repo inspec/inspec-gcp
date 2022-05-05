@@ -29,6 +29,10 @@ class GcpResourceBase < Inspec.resource(1)
     @failed_resource
   end
 
+  def resource_id
+    @connection.resource_id
+  end
+
   # Intercept GCP exceptions
   def catch_gcp_errors
     yield
@@ -248,8 +252,19 @@ class GcpApiConnection
     result = JSON.parse(response.body)
     raise_if_errors result, %w{error errors}, 'message'
     raise "Bad response: #{response}" unless response.is_a?(Net::HTTPOK)
+    fetch_id result
     result
   end
+
+  def fetch_id(result)
+    if result.key?('id')
+      @resource_id = result['id']
+    else
+      @resource_id = result['name']
+    end
+
+  end
+  attr_reader :resource_id
 
   def raise_if_errors(response, err_path, msg_field)
     errors = self.class.navigate(response, err_path)
