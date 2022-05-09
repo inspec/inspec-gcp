@@ -256,14 +256,12 @@ class GcpApiConnection
     result
   end
 
-def fetch_id(result)
-  @resource_id = if result.key?('id') 
-                   result['id']
-                 else 
-                   result['name']
-                 end 
-end
-
+  def fetch_id(result)
+    @resource_id = if result.key?('id')
+                     result['id']
+                   else
+                     result['name']
+                   end
   end
   attr_reader :resource_id
 
