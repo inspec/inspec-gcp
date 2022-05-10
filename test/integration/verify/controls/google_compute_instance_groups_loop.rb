@@ -1,7 +1,7 @@
 title 'Google compute instance groups properties'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_lb_zone = attribute(:gcp_lb_zone, default: '', description: 'The GCP pattern zone for the managed instance group (mig1).')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_lb_zone = input(:gcp_lb_zone, value: '', description: 'The GCP pattern zone for the managed instance group (mig1).')
 
 control 'gcp-compute-instance-groups-loop-1.0' do
 
