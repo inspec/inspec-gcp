@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.25 -->
+<!-- latest_release 1.10.26 -->
+## [v1.10.26](https://github.com/inspec/inspec-gcp/tree/v1.10.26) (2022-05-10)
+
+#### Merged Pull Requests
+- RESOURCE-356 add-superclass-resource-id-method-for-gcp [#414](https://github.com/inspec/inspec-gcp/pull/414) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.25](https://github.com/inspec/inspec-gcp/tree/v1.10.25) (2022-05-06)
 
 #### Merged Pull Requests
 -  RESOURCE-37-sql  added for sql operations [#412](https://github.com/inspec/inspec-gcp/pull/412) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.24](https://github.com/inspec/inspec-gcp/tree/v1.10.24) (2022-04-22)
 
