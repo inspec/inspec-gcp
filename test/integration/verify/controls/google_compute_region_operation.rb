@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_region_operation resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-region_operation = attribute('region_operation', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+region_operation = input('region_operation', value: {
   "name": "operation-1641188435323-5d4a6f5b26934-9281422c-dce238f5",
   "region": "us-central1",
   "operation_type": "compute.instanceGroupManagers.insert",

@@ -14,10 +14,10 @@
 
 title 'Test GCP google_container_node_pool resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: 'gcp_kube_cluster_zone', description: 'The zone that the kube cluster resides in.')
-gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: 'gcp_kube_cluster_name', description: 'The parent container clusters name.')
-regional_node_pool = attribute('regional_node_pool', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: 'gcp_kube_cluster_zone', description: 'The zone that the kube cluster resides in.')
+gcp_kube_cluster_name = input(:gcp_kube_cluster_name, value: 'gcp_kube_cluster_name', description: 'The parent container clusters name.')
+regional_node_pool = input('regional_node_pool', value: {
   "name": "inspec-gcp-regional-node-pool",
   "cluster_name": "inspec-gcp-regional-node-pool-cluster",
   "node_count": 1,

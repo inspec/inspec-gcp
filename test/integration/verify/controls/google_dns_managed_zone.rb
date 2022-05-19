@@ -14,9 +14,9 @@
 
 title 'Test GCP google_dns_managed_zone resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_dns_zone_name = attribute(:gcp_dns_zone_name, default: 'gcp_dns_zone_name', description: 'The DNS name of the DNS zone.')
-dns_managed_zone = attribute('dns_managed_zone', default: {"name"=>"example-zone", "description"=>"example description", "dnssec_config_state"=>"on"})
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_dns_zone_name = input(:gcp_dns_zone_name, value: 'gcp_dns_zone_name', description: 'The DNS name of the DNS zone.')
+dns_managed_zone = input('dns_managed_zone', value: {"name"=>"example-zone", "description"=>"example description", "dnssec_config_state"=>"on"})
 control 'google_dns_managed_zone-1.0' do
   impact 1.0
   title 'google_dns_managed_zone resource test'
