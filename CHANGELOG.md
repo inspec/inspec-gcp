@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.26 -->
+<!-- latest_release 1.10.27 -->
+## [v1.10.27](https://github.com/inspec/inspec-gcp/tree/v1.10.27) (2022-05-19)
+
+#### Merged Pull Requests
+- Do not raise an error when calling resource_id if @connection is nil [#416](https://github.com/inspec/inspec-gcp/pull/416) ([rbclark](https://github.com/rbclark))
+<!-- latest_release -->
+
 ## [v1.10.26](https://github.com/inspec/inspec-gcp/tree/v1.10.26) (2022-05-10)
 
 #### Merged Pull Requests
 - RESOURCE-356 add-superclass-resource-id-method-for-gcp [#414](https://github.com/inspec/inspec-gcp/pull/414) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.25](https://github.com/inspec/inspec-gcp/tree/v1.10.25) (2022-05-06)
 
