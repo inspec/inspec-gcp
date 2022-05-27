@@ -14,7 +14,7 @@
 
 title 'Test GCP google_sql_flags resource.'
 
-sql_database_flag = attribute('sql_database_flag', default: {
+sql_database_flag = input('sql_database_flag', default: {
   "name": "audit_log",
   "type": "STRING",
   "applies_to": "MYSQL_5_6",
