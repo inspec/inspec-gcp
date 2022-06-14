@@ -133,6 +133,10 @@ variable "region_backend_service_health_check" {
   type = any
 }
 
+variable "region_health_check" {
+  type = any
+}
+
 variable "region_backend_service" {
   type = any
 }
@@ -314,6 +318,18 @@ resource "google_compute_health_check" "gcp-inspec-health-check" {
  tcp_health_check {
    port = var.health_check["tcp_health_check_port"]
  }
+}
+
+resource "google_compute_region_health_check" "tcp-region-health-check" {
+  project = var.gcp_project_id
+  name     = var.region_health_check["name"]
+  region   = var.region_health_check["region"]
+  timeout_sec        = 1
+  check_interval_sec = 1
+
+  tcp_health_check {
+    port = "80"
+  }
 }
 
 resource "google_compute_backend_service" "gcp-inspec-backend-service" {
