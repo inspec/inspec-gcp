@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_url_map resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-url_map = attribute('url_map', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+url_map = input('url_map', value: {
   "name": "inspec-gcp-url-map",
   "description": "URL map description",
   "host_rule_host": "site.com",
@@ -24,7 +24,7 @@ url_map = attribute('url_map', default: {
   "test_host": "test.com",
   "test_path": "/home"
 }, description: 'Compute URL map definition')
-backend_service = attribute('backend_service', default: {
+backend_service = input('backend_service', value: {
   "name": "inspec-gcp-backend-service",
   "description": "A description",
   "port_name": "http",

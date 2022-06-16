@@ -14,9 +14,9 @@
 
 title 'Test GCP google_cloudfunctions_cloud_function resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_cloud_function_region = attribute(:gcp_cloud_function_region, default: 'gcp_cloud_function_region', description: 'The Cloud Function region.')
-cloudfunction = attribute('cloudfunction', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_cloud_function_region = input(:gcp_cloud_function_region, value: 'gcp_cloud_function_region', description: 'The Cloud Function region.')
+cloudfunction = input('cloudfunction', value: {
   "name": "inspec-gcp-function",
   "description": "A description of the function",
   "available_memory_mb": 128,

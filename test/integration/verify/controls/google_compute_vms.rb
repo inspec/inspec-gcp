@@ -1,9 +1,9 @@
 title 'Virtual Machines Properties'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: '', description: 'The GCP zone being used.')
-gcp_ext_vm_data_disk_name = attribute(:gcp_ext_vm_data_disk_name, default: '', description: 'A valid GCP VM name to check for.')
-gcp_enable_gcloud_calls = attribute(:gcp_enable_gcloud_calls,default:0,description:'Flag to enable the use of gcloud command line to pull in live data to test against.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: '', description: 'The GCP zone being used.')
+gcp_ext_vm_data_disk_name = input(:gcp_ext_vm_data_disk_name, value: '', description: 'A valid GCP VM name to check for.')
+gcp_enable_gcloud_calls = input(:gcp_enable_gcloud_calls,value:0,description:'Flag to enable the use of gcloud command line to pull in live data to test against.')
 
 control 'gcp-vms-1.0' do
 

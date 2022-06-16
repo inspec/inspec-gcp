@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_target_https_proxy resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-https_proxy = attribute('https_proxy', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+https_proxy = input('https_proxy', value: {
   "name": "inspec-gcp-https-proxy",
   "description": "A HTTPS target proxy"
 }, description: 'Compute HTTPS proxy definition')

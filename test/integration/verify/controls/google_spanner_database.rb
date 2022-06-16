@@ -14,8 +14,8 @@
 
 title 'Test GCP google_spanner_database resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-spannerdatabase = attribute('spannerdatabase', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+spannerdatabase = input('spannerdatabase', default: {
   "name": "spdatabase",
   "instance": "spinstance",
   "ddl": "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)"

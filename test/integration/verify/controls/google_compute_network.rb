@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_network resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-network = attribute('network', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+network = input('network', value: {
   "name": "inspec-network",
   "routing_mode": "REGIONAL"
 }, description: 'Network description')

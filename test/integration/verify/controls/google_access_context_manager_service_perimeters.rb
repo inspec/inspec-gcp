@@ -14,9 +14,9 @@
 
 title 'Test GCP google_access_context_manager_service_perimeters resource.'
 
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of the perimeter')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-service_perimeter = attribute('service_perimeter', default: {
+gcp_organization_id = input(:gcp_organization_id, value: 'gcp_organization_id', description: 'The identifier of the organization that is the parent of the perimeter')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+service_perimeter = input('service_perimeter', value: {
   "name": "restrict_all",
   "title": "restrict_all",
   "restricted_service": "storage.googleapis.com",

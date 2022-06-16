@@ -1,9 +1,9 @@
 title 'Public IP Address Properties'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: '', description: 'The GCP region being used.')
-gcp_ext_compute_address_name = attribute(:gcp_ext_compute_address_name,default: '',description:'The GCP compute address.')
-gcp_ext_vm_name = attribute(:gcp_ext_vm_name, default: '', description: 'The GCP generic external VM name.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: '', description: 'The GCP region being used.')
+gcp_ext_compute_address_name = input(:gcp_ext_compute_address_name,value: '',description:'The GCP compute address.')
+gcp_ext_vm_name = input(:gcp_ext_vm_name, value: '', description: 'The GCP generic external VM name.')
 
 control 'gcp-generic-public-ip-address-1.0' do
 

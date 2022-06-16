@@ -14,10 +14,10 @@
 
 title 'Test GCP google_logging_project_sink resource.'
 
-project_sink = attribute('project_sink', default: {"name"=>"inspec-gcp-org-sink", "filter"=>"resource.type = gce_instance AND severity = DEBUG"})
-gcp_project_id = attribute(:gcp_project_id, default: gcp_project_id, description: 'The project id.')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
+project_sink = input('project_sink', default: {"name"=>"inspec-gcp-org-sink", "filter"=>"resource.type = gce_instance AND severity = DEBUG"})
+gcp_project_id = input(:gcp_project_id, default: gcp_project_id, description: 'The project id.')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+gcp_organization_id = input(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
 control 'google_logging_project_sink-1.0' do
   impact 1.0
   title 'google_logging_project_sink resource test'

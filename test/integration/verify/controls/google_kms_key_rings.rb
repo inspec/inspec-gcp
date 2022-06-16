@@ -14,11 +14,11 @@
 
 title 'Test GCP google_kms_key_rings resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'GCP location')
-gcp_kms_key_ring_policy_name = attribute(:gcp_kms_key_ring_policy_name, default: 'gcp_kms_key_ring_policy_name', description: 'Key ring name')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default: 'gcp_enable_privileged_resources', description: 'If we are running tests with escalated permissions(required for this test)')
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'GCP location')
+gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value: 'gcp_kms_key_ring_policy_name', description: 'Key ring name')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 'gcp_enable_privileged_resources', description: 'If we are running tests with escalated permissions(required for this test)')
+gcp_organization_id = input(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization')
 control 'google_kms_key_rings-1.0' do
   impact 1.0
   title 'google_kms_key_rings resource test'

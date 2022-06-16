@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_image resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-compute_image = attribute('compute_image', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+compute_image = input('compute_image', value: {
   "name": "inspec-image",
   "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"
 }, description: 'Compute image description')

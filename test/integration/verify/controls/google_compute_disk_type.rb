@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_disk_type resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-disk_type = attribute('disk_type', default: null, description: 'The accelerator type')
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+disk_type = input('disk_type', value: null, description: 'The accelerator type')
 control 'google_compute_disk_type-1.0' do
   impact 1.0
   title 'google_compute_disk_type resource test'

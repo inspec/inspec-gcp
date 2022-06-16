@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_region_instance_groups resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-region_instance_group = attribute('region_instance_group', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+region_instance_group = input('region_instance_group', value: {
   "name": "instance-group-2",
   "region": "us-central1",
   "size": 1,
