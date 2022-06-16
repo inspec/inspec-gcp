@@ -14,8 +14,8 @@
 
 title 'Test GCP google_storage_buckets resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'GCP location')
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'GCP location')
 control 'google_storage_buckets-1.0' do
   impact 1.0
   title 'google_storage_buckets resource test'

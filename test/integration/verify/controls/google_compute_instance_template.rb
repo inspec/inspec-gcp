@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_instance_template resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-instance_template = attribute('instance_template', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+instance_template = input('instance_template', value: {
   "name": "inspec-gcp-instance-template",
   "description": "A description of the instance template",
   "instance_description": "A description of the instance itself",

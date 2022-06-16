@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_instances resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name of the compute disk')
-instance = attribute('instance', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: 'gcp_zone', description: 'GCP zone name of the compute disk')
+instance = input('instance', value: {
   "name": "inspec-instance",
   "machine_type": "n1-standard-1",
   "tag_1": "foo",

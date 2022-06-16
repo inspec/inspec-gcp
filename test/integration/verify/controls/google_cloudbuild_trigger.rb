@@ -14,8 +14,8 @@
 
 title 'Test GCP google_cloudbuild_trigger resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-trigger = attribute('trigger', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+trigger = input('trigger', value: {
   "trigger_template_project": "trigger-project",
   "trigger_template_branch": "trigger-branch",
   "trigger_template_repo": "trigger-repo",

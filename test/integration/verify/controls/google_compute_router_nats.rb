@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_router_nats resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-router = attribute('router', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+router = input('router', value: {
   "name": "inspec-gcp-router",
   "bgp_asn": 64514,
   "bgp_advertise_mode": "CUSTOM",
@@ -24,7 +24,7 @@ router = attribute('router', default: {
   "bgp_advertised_ip_range1": "1.2.3.4",
   "bgp_advertised_ip_range2": "6.7.0.0/16"
 }, description: 'Compute router description')
-router_nat = attribute('router_nat', default: {
+router_nat = input('router_nat', value: {
   "name": "inspec-router-nat",
   "nat_ip_allocate_option": "AUTO_ONLY",
   "source_subnetwork_ip_ranges_to_nat": "ALL_SUBNETWORKS_ALL_IP_RANGES",

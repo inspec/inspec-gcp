@@ -14,13 +14,13 @@
 
 title 'Test GCP google_compute_node_group resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-node_group = attribute('node_group', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+node_group = input('node_group', value: {
   "name": "inspec-node-group",
   "description": "A description of the node group",
   "size": 0
 }, description: 'Node group description')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name')
+gcp_zone = input(:gcp_zone, value: 'gcp_zone', description: 'GCP zone name')
 control 'google_compute_node_group-1.0' do
   impact 1.0
   title 'google_compute_node_group resource test'

@@ -14,15 +14,15 @@
 
 title 'Test GCP google_dns_resource_record_sets resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-record_set = attribute('record_set', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+record_set = input('record_set', value: {
   "name": "backend.my.domain.com.",
   "type": "A",
   "ttl": 300,
   "rrdatas1": "8.8.8.8",
   "rrdatas2": "8.8.4.4"
 })
-managed_zone = attribute('managed_zone', default: {
+managed_zone = input('managed_zone', value: {
   "name": "inspec-gcp-managed-zone",
   "dns_name": "my.domain.com.",
   "description": "A test DNS zone",

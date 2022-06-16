@@ -14,8 +14,8 @@
 
 title 'Test GCP google_bigquery_dataset resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-dataset = attribute('dataset', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+dataset = input('dataset', value: {
   "dataset_id": "inspec_gcp_dataset",
   "friendly_name": "A BigQuery dataset test",
   "description": "Test BigQuery dataset description",

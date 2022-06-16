@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_vpn_tunnels resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-vpn_tunnel = attribute('vpn_tunnel', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+vpn_tunnel = input('vpn_tunnel', value: {
   "name": "inspec-vpn-tunnel",
   "peer_ip": "15.0.0.120",
   "shared_secret": "super secret"

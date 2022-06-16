@@ -14,15 +14,15 @@
 
 title 'Test GCP google_compute_autoscaler resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP project zone.')
-instance_group_manager = attribute('instance_group_manager', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: 'gcp_zone', description: 'The GCP project zone.')
+instance_group_manager = input('instance_group_manager', value: {
   "name": "inspec-gcp-igm",
   "base_instance_name": "igm",
   "named_port_name": "port",
   "named_port_port": 80
 }, description: 'Instance group manager definition')
-autoscaler = attribute('autoscaler', default: {
+autoscaler = input('autoscaler', value: {
   "name": "inspec-gcp-autoscaler",
   "max_replicas": 5,
   "min_replicas": 1,

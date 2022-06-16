@@ -1,9 +1,9 @@
 title 'Test GCP google_compute_regional_disk resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_region = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-gcp_compute_disk_name = attribute(:gcp_compute_disk_name, default: 'gcp_compute_disk_name', description: 'GCP Compute disk name.')
-gcp_compute_disk_type = attribute(:gcp_compute_disk_type, default: 'gcp_compute_disk_type', description: 'GCP Compute disk type.')
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_region = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+gcp_compute_disk_name = input(:gcp_compute_disk_name, value: 'gcp_compute_disk_name', description: 'GCP Compute disk name.')
+gcp_compute_disk_type = input(:gcp_compute_disk_type, value: 'gcp_compute_disk_type', description: 'GCP Compute disk type.')
 control 'google_compute_regional_disk-1.0' do
   impact 1.0
   title 'google_compute_regional_disk resource test'

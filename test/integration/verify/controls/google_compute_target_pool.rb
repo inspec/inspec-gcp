@@ -14,14 +14,14 @@
 
 title 'Test GCP google_compute_target_pool resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-gcp_ext_vm_name = attribute(:gcp_ext_vm_name, default: 'gcp_ext_vm_name', description: 'The name of a VM instance.')
-target_pool = attribute('target_pool', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+gcp_ext_vm_name = input(:gcp_ext_vm_name, value: 'gcp_ext_vm_name', description: 'The name of a VM instance.')
+target_pool = input('target_pool', value: {
   "name": "inspec-gcp-target-pool",
   "session_affinity": "CLIENT_IP"
 }, description: 'Target pool definition')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'The GCP zone.')
+gcp_zone = input(:gcp_zone, value: 'gcp_zone', description: 'The GCP zone.')
 control 'google_compute_target_pool-1.0' do
   impact 1.0
   title 'google_compute_target_pool resource test'

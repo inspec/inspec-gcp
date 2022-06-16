@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_firewalls resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-firewall = attribute('firewall', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+firewall = input('firewall', value: {
   "name": "inspec-gcp-firewall",
   "source_tag": "some-tag"
 }, description: 'Firewall rule definition')
