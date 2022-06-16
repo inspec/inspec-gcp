@@ -90,10 +90,6 @@ class ComputeFirewall < GcpResourceBase
     port_protocol_allowed('80')
   end
 
-  def allowed_dns?
-    port_protocol_allowed('53')
-  end
-
   def denied_http?
     port_protocol_denied('80')
   end
