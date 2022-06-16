@@ -1,11 +1,36 @@
 # Change Log
 
-<!-- latest_release 1.10.23 -->
+<!-- latest_release 1.10.28 -->
+## [v1.10.28](https://github.com/inspec/inspec-gcp/tree/v1.10.28) (2022-06-15)
+
+#### Merged Pull Requests
+- RESOURCE-325-soc2-section-cc6-6-gcp [#411](https://github.com/inspec/inspec-gcp/pull/411) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.10.27](https://github.com/inspec/inspec-gcp/tree/v1.10.27) (2022-05-19)
+
+#### Merged Pull Requests
+- Do not raise an error when calling resource_id if @connection is nil [#416](https://github.com/inspec/inspec-gcp/pull/416) ([rbclark](https://github.com/rbclark))
+
+## [v1.10.26](https://github.com/inspec/inspec-gcp/tree/v1.10.26) (2022-05-10)
+
+#### Merged Pull Requests
+- RESOURCE-356 add-superclass-resource-id-method-for-gcp [#414](https://github.com/inspec/inspec-gcp/pull/414) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.25](https://github.com/inspec/inspec-gcp/tree/v1.10.25) (2022-05-06)
+
+#### Merged Pull Requests
+-  RESOURCE-37-sql  added for sql operations [#412](https://github.com/inspec/inspec-gcp/pull/412) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.24](https://github.com/inspec/inspec-gcp/tree/v1.10.24) (2022-04-22)
+
+#### Merged Pull Requests
+- RESOURCE-68 compute-global-public-delegated-prefixes [#413](https://github.com/inspec/inspec-gcp/pull/413) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.10.23](https://github.com/inspec/inspec-gcp/tree/v1.10.23) (2022-03-14)
 
 #### Merged Pull Requests
 - RESOURCE-55 region health check services [#401](https://github.com/inspec/inspec-gcp/pull/401) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.21](https://github.com/inspec/inspec-gcp/tree/v1.10.21) (2022-03-14)
 

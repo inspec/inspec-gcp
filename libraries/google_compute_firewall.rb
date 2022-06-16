@@ -123,6 +123,86 @@ class ComputeFirewall < GcpResourceBase
     port_protocol_denied('3389')
   end
 
+  def allowed_dns?
+    port_protocol_allowed('53') || port_protocol_allowed('53', 'udp')
+  end
+
+  def allowed_cifs?
+    port_protocol_allowed('445', 'udp')
+  end
+
+  def allowed_ftp?
+    port_protocol_allowed('20') || port_protocol_allowed('21')
+  end
+
+  def allowed_hdfs_name_node_service?
+    port_protocol_allowed('8020')
+  end
+
+  def allowed_name_node_webui_service?
+    port_protocol_allowed('50070') || port_protocol_allowed('50470')
+  end
+
+  def allowed_kibana?
+    port_protocol_allowed('5601')
+  end
+
+  def allowed_mysql?
+    port_protocol_allowed('4333') || port_protocol_allowed('3306')
+  end
+
+  def allowed_net_bios?
+    port_protocol_allowed('137', 'udp') || port_protocol_allowed('138', 'udp')
+  end
+
+  def allowed_oracle?
+    port_protocol_allowed('1521')
+  end
+
+  def allowed_postgre_sql?
+    port_protocol_allowed('5432')
+  end
+
+  def allowed_rpc?
+    port_protocol_allowed('135')
+  end
+
+  def allowed_sql_server?
+    port_protocol_allowed('1434') || port_protocol_allowed('1433')
+  end
+
+  def allowed_smtp?
+    port_protocol_allowed('25')
+  end
+
+  def allowed_windows_smb?
+    port_protocol_allowed('445')
+  end
+
+  def allowed_vnc_server?
+    port_protocol_allowed('5900')
+  end
+
+  def allowed_vnc_client?
+    port_protocol_allowed('5500')
+  end
+
+  def allowed_telnet?
+    port_protocol_allowed('23')
+  end
+
+  def allowed_oracle_auto_data_warehouse?
+    port_protocol_allowed('1522')
+  end
+
+  def allowed_salt_master?
+    port_protocol_allowed('4505') || port_protocol_allowed('4506')
+  end
+
+  def allowed_docker?
+    port_protocol_allowed('2375') || port_protocol_allowed('2376')
+  end
+
   def allow_port_protocol?(port, protocol)
     port_protocol_allowed(port, protocol)
   end
