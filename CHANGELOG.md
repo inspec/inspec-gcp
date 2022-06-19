@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.29 -->
+<!-- latest_release 1.10.30 -->
+## [v1.10.30](https://github.com/inspec/inspec-gcp/tree/v1.10.30) (2022-06-19)
+
+#### Merged Pull Requests
+- RESOURCE-409-magic-module-template-for-health-region-check [#419](https://github.com/inspec/inspec-gcp/pull/419) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.29](https://github.com/inspec/inspec-gcp/tree/v1.10.29) (2022-06-16)
 
 #### Merged Pull Requests
 - input and value updated from controls [#407](https://github.com/inspec/inspec-gcp/pull/407) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.28](https://github.com/inspec/inspec-gcp/tree/v1.10.28) (2022-06-15)
 
