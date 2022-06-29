@@ -14,10 +14,10 @@
 
 title 'Test GCP google_container_server_config resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_kube_cluster_zone = attribute(:gcp_kube_cluster_zone, default: 'gcp_kube_cluster_zone', description: 'The zone that the kube cluster resides in.')
-gcp_kube_cluster_name = attribute(:gcp_kube_cluster_name, default: 'gcp_kube_cluster_name', description: 'The parent container clusters name.')
-container_engine_versions = attribute('container_engine_versions', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_kube_cluster_zone = input(:gcp_kube_cluster_zone, value: 'gcp_kube_cluster_zone', description: 'The zone that the kube cluster resides in.')
+gcp_kube_cluster_name = input(:gcp_kube_cluster_name, value: 'gcp_kube_cluster_name', description: 'The parent container clusters name.')
+container_engine_versions = input('container_engine_versions', value: {
   "valid_master_version": "1.21.5-gke.1802",
   "valid_node_version": "1.21.5-gke.1802"
 }, description: 'Google Kubernetes Engine versions in a zone or region for a given project.')

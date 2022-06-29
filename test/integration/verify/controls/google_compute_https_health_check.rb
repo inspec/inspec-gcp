@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_https_health_check resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-https_health_check = attribute('https_health_check', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+https_health_check = input('https_health_check', value: {
   "name": "inspec-gcp-https-health-check",
   "request_path": "/https_health_check",
   "timeout_sec": 15,

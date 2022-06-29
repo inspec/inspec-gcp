@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_zone_operation resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-zone_operation = attribute('zone_operation', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+zone_operation = input('zone_operation', value: {
   "name": "operation-1641188179305-5d4a6e66fe2bd-8fd1812d-d97f3b69",
   "zone": "us-central1-a",
   "operation_type": "compute.instanceGroupManagers.insert",

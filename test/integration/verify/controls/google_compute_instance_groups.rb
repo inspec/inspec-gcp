@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_instance_groups resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: 'gcp_zone', description: 'GCP zone name')
-instance_group = attribute('instance_group', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: 'gcp_zone', description: 'GCP zone name')
+instance_group = input('instance_group', value: {
   "name": "inspec-instance-group",
   "description": "My instance group for testing",
   "named_port_name": "https",

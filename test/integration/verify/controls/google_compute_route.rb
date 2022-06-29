@@ -14,14 +14,14 @@
 
 title 'Test GCP google_compute_route resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-route = attribute('route', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+route = input('route', value: {
   "name": "inspec-gcp-route",
   "dest_range": "15.0.0.0/24",
   "next_hop_ip": "10.2.0.1",
   "priority": 100
 }, description: 'Compute route description')
-gcp_network_name = attribute(:gcp_network_name, default: 'gcp_network_name', description: 'GCP network name')
+gcp_network_name = input(:gcp_network_name, value: 'gcp_network_name', description: 'GCP network name')
 control 'google_compute_route-1.0' do
   impact 1.0
   title 'google_compute_route resource test'

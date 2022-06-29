@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_target_tcp_proxy resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-target_tcp_proxy = attribute('target_tcp_proxy', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+target_tcp_proxy = input('target_tcp_proxy', value: {
   "name": "inspec-gcp-target-tcp-proxy",
   "proxy_header": "NONE",
   "tcp_backend_service_name": "gcp-inspec-tcp-backend-service"

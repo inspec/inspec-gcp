@@ -30,7 +30,7 @@ class GcpResourceBase < Inspec.resource(1)
   end
 
   def resource_id
-    @connection.resource_id
+    @connection&.resource_id
   end
 
   # Intercept GCP exceptions

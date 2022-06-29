@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_region_instance_group_managers resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-rigm = attribute('rigm', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+rigm = input('rigm', value: {
   "name": "inspec-rigm",
   "base_instance_name": "rigm1",
   "target_size": 1,

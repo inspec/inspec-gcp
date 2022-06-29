@@ -14,9 +14,9 @@
 
 title 'Test GCP google_resourcemanager_folders resource.'
 
-folder = attribute('folder', default: {"display_name"=>"inspec-gcp-folder"})
-gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of this folder')
-gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+folder = input('folder', default: {"display_name"=>"inspec-gcp-folder"})
+gcp_organization_id = input(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of this folder')
+gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 control 'google_resourcemanager_folders-1.0' do
   impact 1.0
   title 'google_resourcemanager_folders resource test'

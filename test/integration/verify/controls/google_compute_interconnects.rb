@@ -14,7 +14,7 @@
 
 title 'Test GCP google_compute_interconnects resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 control 'google_compute_interconnects-1.0' do
   impact 1.0
   title 'google_compute_interconnects resource test'

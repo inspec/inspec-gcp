@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_health_check_service resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-region_health_check_service = attribute('region_health_check_service', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+region_health_check_service = input('region_health_check_service', value: {
   "name": "instance-group-2",
   "region": "us-central1",
   "health_status_aggregation_policy": "NO_AGGREGATION"
