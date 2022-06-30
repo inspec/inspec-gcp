@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.30 -->
+<!-- latest_release 1.10.31 -->
+## [v1.10.31](https://github.com/inspec/inspec-gcp/tree/v1.10.31) (2022-06-30)
+
+#### Merged Pull Requests
+- support reading profile from creds [#417](https://github.com/inspec/inspec-gcp/pull/417) ([sathish-progress](https://github.com/sathish-progress))
+<!-- latest_release -->
+
 ## [v1.10.30](https://github.com/inspec/inspec-gcp/tree/v1.10.30) (2022-06-19)
 
 #### Merged Pull Requests
 - RESOURCE-409-magic-module-template-for-health-region-check [#419](https://github.com/inspec/inspec-gcp/pull/419) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.29](https://github.com/inspec/inspec-gcp/tree/v1.10.29) (2022-06-16)
 
