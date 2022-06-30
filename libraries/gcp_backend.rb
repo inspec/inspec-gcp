@@ -195,7 +195,9 @@ end
 
 class GcpApiConnection
   def initialize
-    @service_account_file = ENV['GOOGLE_APPLICATION_CREDENTIALS']
+    config_name = Inspec::Config.cached.unpack_train_credentials[:host]
+    ENV['CLOUDSDK_ACTIVE_CONFIG_NAME'] = config_name
+    @service_account_file = config_name.blank? && ENV['GOOGLE_APPLICATION_CREDENTIALS']
   end
 
   def fetch_auth
