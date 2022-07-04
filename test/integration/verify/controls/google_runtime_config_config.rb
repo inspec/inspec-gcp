@@ -14,8 +14,8 @@
 
 title 'Test GCP google_runtime_config_config resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-runtimeconfig_config = input('runtimeconfig_config', default: {"name"=>"inspec-gcp-runtime-config", "description"=>"My runtime configurations"})
+gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+runtimeconfig_config = attribute('runtimeconfig_config', default: {"name"=>"inspec-gcp-runtime-config", "description"=>"My runtime configurations"})
 
 control 'google_runtime_config_config-1.0' do
   impact 1.0

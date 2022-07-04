@@ -14,8 +14,8 @@
 
 title 'Test GCP google_project_alert_policy resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-alert_policy = input('alert_policy', default: {
+gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
+alert_policy = attribute('alert_policy', default: {
   "display_name": "Display",
   "combiner": "OR",
   "condition_display_name": "condition",

@@ -14,9 +14,9 @@
 
 title 'Test GCP google_logging_organization_log_sink resource.'
 
-org_sink = input('org_sink', default: {"name"=>"inspec-gcp-org-sink", "filter"=>"resource.type = gce_instance"})
-gcp_organization_id = input(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of this folder')
-gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
+org_sink = attribute('org_sink', default: {"name"=>"inspec-gcp-org-sink", "filter"=>"resource.type = gce_instance"})
+gcp_organization_id = attribute(:gcp_organization_id, default: gcp_organization_id, description: 'The identifier of the organization that is the parent of this folder')
+gcp_enable_privileged_resources = attribute(:gcp_enable_privileged_resources, default:0, description:'Flag to enable privileged resources requiring elevated privileges in GCP.')
 control 'google_logging_organization_log_sink-1.0' do
   impact 1.0
   title 'google_logging_organization_log_sink resource test'

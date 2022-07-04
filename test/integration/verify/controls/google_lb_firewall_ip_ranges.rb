@@ -1,6 +1,6 @@
 title 'Firewall Rule Properties'
 
-gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
 
 control 'google-lb-internal-firewall-rule-ip-ranges-1.0' do
 
