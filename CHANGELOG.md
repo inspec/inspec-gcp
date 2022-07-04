@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.31 -->
+<!-- latest_release 1.10.32 -->
+## [v1.10.32](https://github.com/inspec/inspec-gcp/tree/v1.10.32) (2022-07-04)
+
+#### Merged Pull Requests
+- Allow more flexibility to GOOGLE_APPLICATION_CREDENTIALS parsing [#415](https://github.com/inspec/inspec-gcp/pull/415) ([rbclark](https://github.com/rbclark))
+<!-- latest_release -->
+
 ## [v1.10.31](https://github.com/inspec/inspec-gcp/tree/v1.10.31) (2022-06-30)
 
 #### Merged Pull Requests
 - support reading profile from creds [#417](https://github.com/inspec/inspec-gcp/pull/417) ([sathish-progress](https://github.com/sathish-progress))
-<!-- latest_release -->
 
 ## [v1.10.30](https://github.com/inspec/inspec-gcp/tree/v1.10.30) (2022-06-19)
 

@@ -191,7 +191,7 @@ end
 
 class GcpApiConnection
   def initialize
-    @service_account_file = ENV['GOOGLE_APPLICATION_CREDENTIALS']
+    @google_application_credentials = ENV['GOOGLE_APPLICATION_CREDENTIALS']
   end
 
   def fetch_auth
@@ -200,8 +200,8 @@ class GcpApiConnection
         [
           'https://www.googleapis.com/auth/cloud-platform',
         ],
-      ).from_service_account_json!(
-        @service_account_file,
+      ).from_google_credentials_json!(
+        @google_application_credentials,
       )
     end
     Network::Authorization.new.from_application_default!
@@ -362,10 +362,10 @@ module Network
       self
     end
 
-    def from_service_account_json!(service_account_file)
+    def from_google_credentials_json!(credentials_file)
       raise 'Missing argument for scopes' if @scopes.empty?
-      @authorization = ::Google::Auth::ServiceAccountCredentials.make_creds(
-        json_key_io: File.open(service_account_file),
+      @authorization = ::Google::Auth::DefaultCredentials.make_creds(
+        json_key_io: File.open(credentials_file),
         scope: @scopes,
       )
       self
