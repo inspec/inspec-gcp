@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.33 -->
+<!-- latest_release 1.10.34 -->
+## [v1.10.34](https://github.com/inspec/inspec-gcp/tree/v1.10.34) (2022-07-04)
+
+#### Merged Pull Requests
+- google_project_iam_binding.rb file added [#424](https://github.com/inspec/inspec-gcp/pull/424) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.33](https://github.com/inspec/inspec-gcp/tree/v1.10.33) (2022-07-04)
 
 #### Merged Pull Requests
 - 420 undefined method google project iam binding [#423](https://github.com/inspec/inspec-gcp/pull/423) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.32](https://github.com/inspec/inspec-gcp/tree/v1.10.32) (2022-07-04)
 
