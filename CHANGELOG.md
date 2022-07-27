@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.35 -->
+<!-- latest_release 1.10.36 -->
+## [v1.10.36](https://github.com/inspec/inspec-gcp/tree/v1.10.36) (2022-07-27)
+
+#### Merged Pull Requests
+- RESOURCE-458-gcp-cloud-kms-ekm-connections [#425](https://github.com/inspec/inspec-gcp/pull/425) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.35](https://github.com/inspec/inspec-gcp/tree/v1.10.35) (2022-07-13)
 
 #### Merged Pull Requests
 - RESOURCE 456-gcp-cloud-kms-projects-locations [#422](https://github.com/inspec/inspec-gcp/pull/422) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.34](https://github.com/inspec/inspec-gcp/tree/v1.10.34) (2022-07-04)
 
