@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.36 -->
+<!-- latest_release 1.10.37 -->
+## [v1.10.37](https://github.com/inspec/inspec-gcp/tree/v1.10.37) (2022-07-29)
+
+#### Merged Pull Requests
+- RESOURCE-466-magic-moment-gcp-cloud-kms-key-rings-import-jobs [#426](https://github.com/inspec/inspec-gcp/pull/426) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.10.36](https://github.com/inspec/inspec-gcp/tree/v1.10.36) (2022-07-27)
 
 #### Merged Pull Requests
 - RESOURCE-458-gcp-cloud-kms-ekm-connections [#425](https://github.com/inspec/inspec-gcp/pull/425) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.35](https://github.com/inspec/inspec-gcp/tree/v1.10.35) (2022-07-13)
 
