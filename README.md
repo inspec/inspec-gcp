@@ -13,6 +13,7 @@ This implementation was inspired on the ideas by [Martez Reed](https://github.co
 ### Install and configure the Google cloud SDK*
 
 Download the [SDK](https://cloud.google.com/sdk/docs/) and run the installation:
+
 ```
 ./google-cloud-sdk/install.sh
 ```
@@ -20,11 +21,12 @@ Download the [SDK](https://cloud.google.com/sdk/docs/) and run the installation:
 ### Create credentials file via:
 
 ```bash
-$ gcloud auth application-default login
+gcloud auth application-default login
 ```
 If successful, this should be similar to:
 ```bash
 $ cat ~/.config/gcloud/application_default_credentials.json
+
 {
   "client_id": "764086051850-6qr4p6gpi6hn50asdr.apps.googleusercontent.com",
   "client_secret": "d-fasdfasdfasdfaweroi23jknrmfs;f8sh",
@@ -126,7 +128,7 @@ supports:
 
 ## Run the tests
 
-```
+```bash
 $ cd my-gcp-profile/
 $ inspec exec . -t gcp:// --input-file inputs.yml
 
@@ -151,17 +153,24 @@ Target ID: 8123456-12a3-1234-123a-a12s5c5abcx1
      ✔  Region australia-southeast2 is expected to be up
      ✔  Region europe-central2 is expected to be up
      ✔  Region europe-north1 is expected to be up
+     ✔  Region europe-southwest1 is expected to be up
      ✔  Region europe-west1 is expected to be up
      ✔  Region europe-west2 is expected to be up
      ✔  Region europe-west3 is expected to be up
      ✔  Region europe-west4 is expected to be up
      ✔  Region europe-west6 is expected to be up
+     ✔  Region europe-west8 is expected to be up
+     ✔  Region europe-west9 is expected to be up
+     ✔  Region me-west1 is expected to be up
      ✔  Region northamerica-northeast1 is expected to be up
      ✔  Region northamerica-northeast2 is expected to be up
      ✔  Region southamerica-east1 is expected to be up
+     ✔  Region southamerica-west1 is expected to be up
      ✔  Region us-central1 is expected to be up
      ✔  Region us-east1 is expected to be up
      ✔  Region us-east4 is expected to be up
+     ✔  Region us-east5 is expected to be up
+     ✔  Region us-south1 is expected to be up
      ✔  Region us-west1 is expected to be up
      ✔  Region us-west2 is expected to be up
      ✔  Region us-west3 is expected to be up
