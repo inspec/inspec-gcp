@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.10.38 -->
+<!-- latest_release 1.10.39 -->
+## [v1.10.39](https://github.com/inspec/inspec-gcp/tree/v1.10.39) (2023-01-31)
+
+#### Merged Pull Requests
+- RESOURCE-564 Update the Readme.md file in inspec-gcp [#434](https://github.com/inspec/inspec-gcp/pull/434) ([soumyo13](https://github.com/soumyo13))
+<!-- latest_release -->
+
 ## [v1.10.38](https://github.com/inspec/inspec-gcp/tree/v1.10.38) (2023-01-31)
 
 #### Merged Pull Requests
 - RESOURCE-586  Fix the build lint issue in inspec-gcp [#435](https://github.com/inspec/inspec-gcp/pull/435) ([soumyo13](https://github.com/soumyo13))
-<!-- latest_release -->
 
 ## [v1.10.37](https://github.com/inspec/inspec-gcp/tree/v1.10.37) (2022-07-29)
 
