@@ -30,7 +30,6 @@ See [google_cloud_scheduler_job.md](google_cloud_scheduler_job.md) for more deta
   * `schedules`: an array of `google_cloud_scheduler_job` schedule
   * `time_zones`: an array of `google_cloud_scheduler_job` time_zone
   * `states`: an array of `google_cloud_scheduler_job` state
-  * `pauseds`: an array of `google_cloud_scheduler_job` paused
   * `attempt_deadlines`: an array of `google_cloud_scheduler_job` attempt_deadline
   * `retry_configs`: an array of `google_cloud_scheduler_job` retry_config
   * `pubsub_targets`: an array of `google_cloud_scheduler_job` pubsub_target
