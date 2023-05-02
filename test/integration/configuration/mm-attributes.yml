@@ -348,7 +348,7 @@ spannerdatabase:
   ddl: "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)" 
 
 scheduler_job:
-  # region must match where the appengine instance is deployed
+  # region must match where the apengine instance is deployed
   region: us-central1
   name: job-name
   description: A description

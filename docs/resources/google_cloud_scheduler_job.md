@@ -31,6 +31,10 @@ Properties that can be accessed from the `google_cloud_scheduler_job` resource:
 
   * `time_zone`: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the tz database.
 
+  * `state`: State of the job.
+
+  * `paused`: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+
   * `attempt_deadline`: The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 
   * `retry_config`: By default, if a job does not complete successfully,  meaning that an acknowledgement is not received from the handler,  then it will be retried with exponential backoff according to the settings
