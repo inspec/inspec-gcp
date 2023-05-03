@@ -12,7 +12,7 @@ attributes:
   description: 'The GCP project identifier.'
   type: string
 depends:
-- name: inspec-gcp-generate
+- name: inspec-gcp
   path: ../
 supports:
 - platform: gcp
