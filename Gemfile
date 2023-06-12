@@ -19,4 +19,5 @@ group :development do
   gem 'rake'
   gem 'vcr'
   gem 'webmock'
+  gem 'license_scout', '~> 2.6', '>= 2.6.2'
 end
