@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.0 -->
+<!-- latest_release 1.11.1 -->
+## [v1.11.1](https://github.com/inspec/inspec-gcp/tree/v1.11.1) (2023-06-12)
+
+#### Merged Pull Requests
+- Fix blog post link [#436](https://github.com/inspec/inspec-gcp/pull/436) ([futtetennista](https://github.com/futtetennista))
+<!-- latest_release -->
+
 ## [v1.11.0](https://github.com/inspec/inspec-gcp/tree/v1.11.0) (2023-05-03)
 
 #### Merged Pull Requests
 - RESOURCE-599 State added in Cloud Scheduler files generated from MM [#439](https://github.com/inspec/inspec-gcp/pull/439) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.39](https://github.com/inspec/inspec-gcp/tree/v1.10.39) (2023-01-31)
 
