@@ -466,7 +466,7 @@ bundle exec rake test:cleanup_integration_tests
 ## Further Reading
 
 * [Introduction to InSpec GCP](https://lollyrock.com/articles/inspec-cloud-gcp-setup/)
-* [InSpec GCP Deep Dive](https://blog.chef.io/2018/06/19/inspec-gcp-deep-dive/)
+* [InSpec GCP Deep Dive](https://www.chef.io/blog/inspec-gcp-deep-dive)
 
 ## FAQ
 
