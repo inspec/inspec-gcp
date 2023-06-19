@@ -103,7 +103,7 @@ class SQLDatabaseInstance < GcpResourceBase
   end
 
   def primary_ip_address
-    return '' if !@ip_addresses.size.zero? || @ip_addresses[0].ip_address.nil?
+    return '' if !@ip_addresses.empty? || @ip_addresses[0].ip_address.nil?
     @ip_addresses[0].ip_address
   end
 
