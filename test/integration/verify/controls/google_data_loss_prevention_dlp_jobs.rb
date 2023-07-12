@@ -16,15 +16,34 @@ title 'Test GCP google_data_loss_prevention_dlp_jobs resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 dlp = input('dlp', value: {
-  "name": "inspec-gcp-dlp",
-  "location": "us-east-2"
+  "name": "i-inspec-gcp-dlp",
+  "location": "us-east-2",
+  "type": "INSPECT_JOB",
+  "state": "ACTIVE",
+  "inspectDetails": {
+    "requestedOptions": {
+      "snapshotInspectTemplate": "",
+      "jobConfig": {
+        "storageConfig": {
+          "hybridOptions": {
+            "description": "test",
+            "tableOptions": ""
+          }
+        }
+      }
+    }
+  }
 }, description: 'DLP ')
 control 'google_data_loss_prevention_dlp_jobs-1.0' do
   impact 1.0
   title 'google_data_loss_prevention_dlp_jobs resource test'
 
 
-  describe google_data_loss_prevention_dlp_jobs(project: gcp_project_id, location: us-east-2) do
+
+  describe google_data_loss_prevention_dlp_jobs(project: gcp_project_id, location: dlp['location']) do
     it { should exist }
+    its('names') { should include dlp['name'] }
+    its('types') { should include dlp['type'] }
+    its('states') { should include dlp['state'] }
   end
 end

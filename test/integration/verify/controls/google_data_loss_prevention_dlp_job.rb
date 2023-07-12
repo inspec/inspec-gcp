@@ -16,19 +16,38 @@ title 'Test GCP google_data_loss_prevention_dlp_job resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 dlp = input('dlp', value: {
-  "name": "inspec-gcp-dlp",
-  "location": "us-east-2"
+  "name": "i-inspec-gcp-dlp",
+  "location": "us-east-2",
+  "type": "INSPECT_JOB",
+  "state": "ACTIVE",
+  "inspectDetails": {
+    "requestedOptions": {
+      "snapshotInspectTemplate": "",
+      "jobConfig": {
+        "storageConfig": {
+          "hybridOptions": {
+            "description": "test",
+            "tableOptions": ""
+          }
+        }
+      }
+    }
+  }
 }, description: 'DLP ')
 control 'google_data_loss_prevention_dlp_job-1.0' do
   impact 1.0
   title 'google_data_loss_prevention_dlp_job resource test'
 
 
-  describe google_data_loss_prevention_dlp_job(project: gcp_project_id, location: us-east-2, name: inspec-gcp-dlp) do
+  describe google_data_loss_prevention_dlp_job(project: gcp_project_id, location: dlp['location'], name: dlp['name']) do
     it { should exist }
+    its('name') { should cmp dlp['name'] }
+    its('type') { should cmp dlp['type'] }
+    its('state') { should cmp dlp['state'] }
+    its('inspectDetails.requestedOptions.snapshotInspectTemplate') { should cmp dlp['inspectDetails']['requestedOptions']['snapshotInspectTemplate'] }
   end
 
-  describe google_data_loss_prevention_dlp_job(project: gcp_project_id, location: us-east-2, name: 'nonexistent') do
+  describe google_data_loss_prevention_dlp_job(project: gcp_project_id , location: dlp['location'], name: 'nonexistent') do
     it { should_not exist }
   end
 end
