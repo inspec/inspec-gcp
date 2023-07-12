@@ -8,8 +8,13 @@ A `google_data_loss_prevention_dlp_jobs` is used to test a Google DlpJob resourc
 
 ## Examples
 ```
-describe google_data_loss_prevention_dlp_jobs(project: 'chef-gcp-inspec') do
+
+
+describe google_data_loss_prevention_dlp_jobs(project: 'chef-gcp-inspec', location: us-east-2) do
   it { should exist }
+  its('names') { should include i-inspec-gcp-dlp }
+  its('types') { should include INSPECT_JOB }
+  its('state') { should include ACTIVE }
 end
 ```
 

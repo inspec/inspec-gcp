@@ -16,17 +16,26 @@
 module GoogleInSpec
   module DataLossPrevention
     module Property
-      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfig
-        attr_reader :transformation_error_handling
+      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigRecordTransformationsFieldTransformationsConditionExpressionsConditionsConditionsNewValueTimeValue
+        attr_reader :hours
+
+        attr_reader :minutes
+
+        attr_reader :seconds
+
+        attr_reader :nanos
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @transformation_error_handling = args['transformationErrorHandling']
+          @hours = args['hours']
+          @minutes = args['minutes']
+          @seconds = args['seconds']
+          @nanos = args['nanos']
         end
 
         def to_s
-          "#{@parent_identifier} DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfig"
+          "#{@parent_identifier} DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigRecordTransformationsFieldTransformationsConditionExpressionsConditionsConditionsNewValueTimeValue"
         end
       end
     end

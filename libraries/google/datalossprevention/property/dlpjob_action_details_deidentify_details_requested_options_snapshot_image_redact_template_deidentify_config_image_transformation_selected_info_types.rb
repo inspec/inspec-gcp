@@ -16,28 +16,25 @@
 module GoogleInSpec
   module DataLossPrevention
     module Property
-      class DlpJobErrorsDetailsStatusDetails
-        attr_reader :@type
-
-        attr_reader :field1
+      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationSelectedInfoTypes
+        attr_reader :name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @@type = args['@type']
-          @field1 = args['field1']
+          @name = args['name']
         end
 
         def to_s
-          "#{@parent_identifier} DlpJobErrorsDetailsStatusDetails"
+          "#{@parent_identifier} DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationSelectedInfoTypes"
         end
       end
 
-      class DlpJobErrorsDetailsStatusDetailsArray
+      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationSelectedInfoTypesArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return DlpJobErrorsDetailsStatusDetails.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| DlpJobErrorsDetailsStatusDetails.new(v, parent_identifier) }
+          return DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationSelectedInfoTypes.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationSelectedInfoTypes.new(v, parent_identifier) }
         end
       end
     end

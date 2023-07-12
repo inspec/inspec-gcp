@@ -16,13 +16,15 @@ title 'Test GCP google_data_loss_prevention_dlp_jobs resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 dlp = input('dlp', value: {
-  "name": "inspec-gcp-dlp"
-}, description: 'DLP Name')
+  "name": "inspec-gcp-dlp",
+  "location": "us-east-2"
+}, description: 'DLP ')
 control 'google_data_loss_prevention_dlp_jobs-1.0' do
   impact 1.0
   title 'google_data_loss_prevention_dlp_jobs resource test'
 
-  describe google_data_loss_prevention_dlp_jobs(project: gcp_project_id) do
+
+  describe google_data_loss_prevention_dlp_jobs(project: gcp_project_id, location: us-east-2) do
     it { should exist }
   end
 end

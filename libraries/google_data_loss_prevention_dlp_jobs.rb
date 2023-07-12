@@ -83,8 +83,8 @@ class DataLossPreventionDlpJobs < GcpResourceBase
       'jobTriggerName' => ->(obj) { return :job_trigger_name, obj['jobTriggerName'] },
       'errors' => ->(obj) { return :errors, GoogleInSpec::DataLossPrevention::Property::DlpJobErrorsArray.parse(obj['errors'], to_s) },
       'actionDetails' => ->(obj) { return :action_details, GoogleInSpec::DataLossPrevention::Property::DlpJobActionDetailsArray.parse(obj['actionDetails'], to_s) },
-      'riskDetails' => ->(obj) { return :risk_details, GoogleInSpec::DataLossPrevention::Property::DlpJobRiskDetailsArray.parse(obj['riskDetails'], to_s) },
-      'inspectDetails' => ->(obj) { return :inspect_details, GoogleInSpec::DataLossPrevention::Property::DlpJobInspectDetailsArray.parse(obj['inspectDetails'], to_s) },
+      'riskDetails' => ->(obj) { return :risk_details, obj['riskDetails'] },
+      'inspectDetails' => ->(obj) { return :inspect_details, obj['inspectDetails'] },
       'parent' => ->(obj) { return :parent, obj['parent'] },
     }
   end
@@ -96,6 +96,6 @@ class DataLossPreventionDlpJobs < GcpResourceBase
   end
 
   def resource_base_url
-    '{{parent}}/dlpJobs'
+    'projects/{{project}}/locations/{{location}}/dlpJobs'
   end
 end

@@ -16,28 +16,26 @@
 module GoogleInSpec
   module DataLossPrevention
     module Property
-      class DlpJobRiskDetailsDeidentifyStatsRequestedOptionsDetails
-        attr_reader :@type
+      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigRecordTransformationsRecordSuppressionsConditionExpressionsConditionsConditionsNewValueTimeValue
+        attr_reader :hours
 
-        attr_reader :field1
+        attr_reader :minutes
+
+        attr_reader :seconds
+
+        attr_reader :nanos
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @@type = args['@type']
-          @field1 = args['field1']
+          @hours = args['hours']
+          @minutes = args['minutes']
+          @seconds = args['seconds']
+          @nanos = args['nanos']
         end
 
         def to_s
-          "#{@parent_identifier} DlpJobRiskDetailsDeidentifyStatsRequestedOptionsDetails"
-        end
-      end
-
-      class DlpJobRiskDetailsDeidentifyStatsRequestedOptionsDetailsArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return DlpJobRiskDetailsDeidentifyStatsRequestedOptionsDetails.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| DlpJobRiskDetailsDeidentifyStatsRequestedOptionsDetails.new(v, parent_identifier) }
+          "#{@parent_identifier} DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigRecordTransformationsRecordSuppressionsConditionExpressionsConditionsConditionsNewValueTimeValue"
         end
       end
     end

@@ -13,31 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/datalossprevention/property/dlpjob_action_details_deidentify_details_requested_options_snapshot_image_redact_template_deidentify_config_info_type_transformations_transformations'
 module GoogleInSpec
   module DataLossPrevention
     module Property
-      class DlpJobActionDetailsDeidentifyStatsRequestedOptionsDetails
-        attr_reader :@type
-
-        attr_reader :field1
+      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigInfoTypeTransformations
+        attr_reader :transformations
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @@type = args['@type']
-          @field1 = args['field1']
+          @transformations = GoogleInSpec::DataLossPrevention::Property::DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigInfoTypeTransformationsTransformationsArray.parse(args['transformations'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} DlpJobActionDetailsDeidentifyStatsRequestedOptionsDetails"
-        end
-      end
-
-      class DlpJobActionDetailsDeidentifyStatsRequestedOptionsDetailsArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return DlpJobActionDetailsDeidentifyStatsRequestedOptionsDetails.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| DlpJobActionDetailsDeidentifyStatsRequestedOptionsDetails.new(v, parent_identifier) }
+          "#{@parent_identifier} DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigInfoTypeTransformations"
         end
       end
     end

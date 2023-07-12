@@ -16,8 +16,6 @@
 require 'gcp_backend'
 require 'google/datalossprevention/property/dlpjob_action_details'
 require 'google/datalossprevention/property/dlpjob_errors'
-require 'google/datalossprevention/property/dlpjob_inspect_details'
-require 'google/datalossprevention/property/dlpjob_risk_details'
 
 # A provider to manage Data loss prevention resources.
 class DataLossPreventionDlpJob < GcpResourceBase
@@ -56,8 +54,8 @@ class DataLossPreventionDlpJob < GcpResourceBase
     @job_trigger_name = @fetched['jobTriggerName']
     @errors = GoogleInSpec::DataLossPrevention::Property::DlpJobErrorsArray.parse(@fetched['errors'], to_s)
     @action_details = GoogleInSpec::DataLossPrevention::Property::DlpJobActionDetailsArray.parse(@fetched['actionDetails'], to_s)
-    @risk_details = GoogleInSpec::DataLossPrevention::Property::DlpJobRiskDetailsArray.parse(@fetched['riskDetails'], to_s)
-    @inspect_details = GoogleInSpec::DataLossPrevention::Property::DlpJobInspectDetailsArray.parse(@fetched['inspectDetails'], to_s)
+    @risk_details = @fetched['riskDetails']
+    @inspect_details = @fetched['inspectDetails']
     @parent = @fetched['parent']
   end
 
@@ -76,6 +74,6 @@ class DataLossPreventionDlpJob < GcpResourceBase
   end
 
   def resource_base_url
-    '{{parent}}/dlpJobs/{{name}}'
+    'projects/{{project}}/locations/{{location}}/dlpJobs/{{name}}'
   end
 end

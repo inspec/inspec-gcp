@@ -16,28 +16,23 @@
 module GoogleInSpec
   module DataLossPrevention
     module Property
-      class DlpJobInspectDetailsDeidentifyStatsRequestedOptionsDetails
-        attr_reader :@type
+      class DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationRedactionColor
+        attr_reader :red
 
-        attr_reader :field1
+        attr_reader :green
+
+        attr_reader :blue
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @@type = args['@type']
-          @field1 = args['field1']
+          @red = args['red']
+          @green = args['green']
+          @blue = args['blue']
         end
 
         def to_s
-          "#{@parent_identifier} DlpJobInspectDetailsDeidentifyStatsRequestedOptionsDetails"
-        end
-      end
-
-      class DlpJobInspectDetailsDeidentifyStatsRequestedOptionsDetailsArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return DlpJobInspectDetailsDeidentifyStatsRequestedOptionsDetails.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| DlpJobInspectDetailsDeidentifyStatsRequestedOptionsDetails.new(v, parent_identifier) }
+          "#{@parent_identifier} DlpJobActionDetailsDeidentifyDetailsRequestedOptionsSnapshotImageRedactTemplateDeidentifyConfigImageTransformationRedactionColor"
         end
       end
     end
