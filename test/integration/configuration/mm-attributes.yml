@@ -527,3 +527,22 @@ sql_operation:
   name: e5c522f1-8391-4830-a8ff-ff1cc4a7b2a5
   status: DONE
   progress: 100
+
+dlp:
+  name: "i-inspec-gcp-dlp"
+  location: "us-east-2"
+  type: "INSPECT_JOB"
+  state: "ACTIVE"
+  inspectDetails:
+    requestedOptions:
+      snapshotInspectTemplate: ""
+      jobConfig:
+        storageConfig:
+          hybridOptions:
+            description: "test"
+            tableOptions: ""
+  job_attribute_name: "job_attribute-1"
+  job_trigger_status: "HEALTHY"
+  job_trigger_name: "name1"
+  job_trigger_display_name: "dp"
+  job_trigger_description: "description"
