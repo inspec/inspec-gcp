@@ -10,10 +10,10 @@ A `google_data_loss_prevention_job_triggers` is used to test a Google JobTrigger
 ```
 
 
-describe google_data_loss_prevention_job_triggers(project: 'chef-gcp-inspec', location: 'us-east-2') do
+describe google_data_loss_prevention_job_triggers(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}") do
 it { should exist }
 its('names') { should include 'name1' }
-its('displayNames') { should include 'dp' }
+its('display_name') { should include 'dp' }
 its('descriptions') { should include 'description' }
 its('status') { should include 'HEALTHY' }
 end

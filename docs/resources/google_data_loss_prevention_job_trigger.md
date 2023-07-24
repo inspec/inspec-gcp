@@ -9,15 +9,15 @@ A `google_data_loss_prevention_job_trigger` is used to test a Google JobTrigger 
 ## Examples
 ```
 
-describe google_data_loss_prevention_job_trigger(project: 'chef-gcp-inspec',name: 'name1') do
+describe google_data_loss_prevention_job_trigger(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}",name: 'name1') do
 it { should exist }
 its('name') { should cmp 'name1' }
-its('displayName') { should cmp 'dp' }
+its('display_name') { should cmp 'dp' }
 its('description') { should cmp 'description' }
 its('status') { should cmp 'HEALTHY' }
 end
 
-describe google_data_loss_prevention_job_trigger(project: 'chef-gcp-inspec', name: 'nonexistent') do
+describe google_data_loss_prevention_job_trigger(parent: 'chef-gcp-inspec', name: 'nonexistent') do
 it { should_not exist }
 end
 ```

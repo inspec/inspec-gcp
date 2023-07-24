@@ -44,15 +44,15 @@ control 'google_data_loss_prevention_job_trigger-1.0' do
   title 'google_data_loss_prevention_job_trigger resource test'
 
 
-  describe google_data_loss_prevention_job_trigger(project: gcp_project_id,name: dlp['job_trigger_name']) do
+  describe google_data_loss_prevention_job_trigger(parent: "projects/#{gcp_project_id}/locations/#{dlp['location']}",name: dlp['job_trigger_name']) do
   it { should exist }
   its('name') { should cmp dlp['job_trigger_name'] }
-  its('displayName') { should cmp dlp['job_trigger_display_name'] }
+  its('display_name') { should cmp dlp['job_trigger_display_name'] }
   its('description') { should cmp dlp['job_trigger_description'] }
   its('status') { should cmp dlp['job_trigger_status'] }
   end
 
-  describe google_data_loss_prevention_job_trigger(project: gcp_project_id, name: 'nonexistent') do
+  describe google_data_loss_prevention_job_trigger(parent: gcp_project_id, name: 'nonexistent') do
   it { should_not exist }
   end
 end

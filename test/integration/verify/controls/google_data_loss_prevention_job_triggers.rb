@@ -45,10 +45,10 @@ control 'google_data_loss_prevention_job_triggers-1.0' do
 
 
 
-  describe google_data_loss_prevention_job_triggers(project: gcp_project_id, location: dlp['location']) do
+  describe google_data_loss_prevention_job_triggers(parent: "projects/#{gcp_project_id}/locations/#{dlp['location']}") do
   it { should exist }
   its('names') { should include dlp['job_trigger_name'] }
-  its('displayNames') { should include dlp['job_trigger_display_name'] }
+  its('display_name') { should include dlp['job_trigger_display_name'] }
   its('descriptions') { should include dlp['job_trigger_description'] }
   its('status') { should include dlp['job_trigger_status'] }
   end
