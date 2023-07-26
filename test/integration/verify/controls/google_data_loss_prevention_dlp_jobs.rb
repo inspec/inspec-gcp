@@ -40,7 +40,7 @@ control 'google_data_loss_prevention_dlp_jobs-1.0' do
 
 
 
-  describe google_data_loss_prevention_dlp_jobs(project: gcp_project_id, location: dlp['location']) do
+  describe google_data_loss_prevention_dlp_jobs(parent: "projects/#{gcp_project_id}/locations/#{dlp['location']}") do
     it { should exist }
     its('names') { should include dlp['name'] }
     its('types') { should include dlp['type'] }

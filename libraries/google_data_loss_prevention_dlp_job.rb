@@ -74,6 +74,6 @@ class DataLossPreventionDlpJob < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/dlpJobs/{{name}}'
+    '{{parent}}/dlpJobs/{{name}}'
   end
 end

@@ -39,7 +39,7 @@ control 'google_data_loss_prevention_dlp_job-1.0' do
   title 'google_data_loss_prevention_dlp_job resource test'
 
 
-  describe google_data_loss_prevention_dlp_job(project: gcp_project_id, location: dlp['location'], name: dlp['name']) do
+  describe google_data_loss_prevention_dlp_job(parent: "projects/#{gcp_project_id}/locations/#{dlp['location']}", name: dlp['name']) do
     it { should exist }
     its('name') { should cmp dlp['name'] }
     its('type') { should cmp dlp['type'] }
@@ -47,7 +47,7 @@ control 'google_data_loss_prevention_dlp_job-1.0' do
     its('inspectDetails.requestedOptions.snapshotInspectTemplate') { should cmp dlp['inspectDetails']['requestedOptions']['snapshotInspectTemplate'] }
   end
 
-  describe google_data_loss_prevention_dlp_job(project: gcp_project_id , location: dlp['location'], name: 'nonexistent') do
+  describe google_data_loss_prevention_dlp_job(parent: "projects/#{gcp_project_id}/locations/#{dlp['location']}", name: 'nonexistent') do
     it { should_not exist }
   end
 end
