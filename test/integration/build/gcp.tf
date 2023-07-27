@@ -1,16 +1,16 @@
 terraform {
-  required_version = "~> 0.13.2"
+  required_version = "~> 1.5.2"
 }
 
-# GCP Terraform Templates For Inspec Testing
+## GCP Terraform Templates For Inspec Testing
+##
+## Starts off with 'generic' resource descriptions, mostly taken from here:
+## https://www.terraform.io/docs/providers/google/
+## Then moves onto a more 'realistic' example adapted from
+## https://github.com/GoogleCloudPlatform/terraform-google-lb-internal/tree/master/examples/simple
 #
-# Starts off with 'generic' resource descriptions, mostly taken from here:
-# https://www.terraform.io/docs/providers/google/
-# Then moves onto a more 'realistic' example adapted from
-# https://github.com/GoogleCloudPlatform/terraform-google-lb-internal/tree/master/examples/simple
-
-
-# Configure variables
+#
+## Configure variables
 
 variable "gcp_project_name" {}
 variable "gcp_project_id" {}
@@ -106,7 +106,7 @@ provider "google-beta" {
   region = var.gcp_location
   version = "~> 3.90.0"
 }
-
+#
 resource "google_service_account" "generic_service_account_object_viewer" {
   count = var.gcp_enable_privileged_resources
   project = var.gcp_project_id

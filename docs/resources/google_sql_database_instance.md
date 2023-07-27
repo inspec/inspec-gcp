@@ -9,7 +9,7 @@ A `google_sql_database_instance` is used to test a Google DatabaseInstance resou
 ## Examples
 ```
 
-describe google_sql_database_instance(project: 'chef-gcp-inspec', database: 'my-database') do
+describe google_sql_database_instance(project: 'chef-gcp-inspec', instance: 'my-database') do
   it { should exist }
   its('state') { should eq 'RUNNABLE' }
   its('backend_type') { should eq 'SECOND_GEN' }
@@ -57,6 +57,8 @@ Properties that can be accessed from the `google_sql_database_instance` resource
     * FIRST_GEN
     * SECOND_GEN
     * EXTERNAL
+
+  * `kind`: This is always sql#instancesList.
 
   * `connection_name`: Connection name of the Cloud SQL instance used in connection strings.
 
@@ -132,6 +134,8 @@ Properties that can be accessed from the `google_sql_database_instance` resource
 
   * `settings`: The user settings.
 
+    * `kind`: This is always sql#settings.
+
     * `database_flags`: The database flags passed to the instance at startup
 
       * `name`: The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags should be specified with underscores, not hyphens.
@@ -170,6 +174,36 @@ Properties that can be accessed from the `google_sql_database_instance` resource
     * `settings_version`: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 
     * `user_labels`: User-provided labels, represented as a dictionary where each label is a single key value pair.
+
+    * `activation_policy`: Specifies when the instance is activated.
+    Possible values:
+      * SQL_ACTIVATION_POLICY_UNSPECIFIED
+      * ALWAYS
+      * NEVER
+
+    * `data_disk_size_gb`: The size of data disk, in GB. The data disk size minimum is 10GB.
+
+    * `data_disk_type`: Specifies when the instance is activated.
+    Possible values:
+      * SQL_ACTIVATION_POLICY_UNSPECIFIED
+      * ALWAYS
+      * NEVER
+
+    * `pricing_plan`: The pricing plan for this instance.
+    Possible values:
+      * SQL_PRICING_PLAN_UNSPECIFIED
+      * PACKAGE
+      * PER_USE
+
+    * `replication_type`: The pricing plan for this instance.
+    Possible values:
+      * SQL_REPLICATION_TYPE_UNSPECIFIED
+      * SYNCHRONOUS
+      * ASYNCHRONOUS
+
+    * `storage_auto_resize`: Configuration to increase storage size automatically. The default value is true.
+
+    * `storage_auto_resize_limit`: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 
   * `gce_zone`: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 

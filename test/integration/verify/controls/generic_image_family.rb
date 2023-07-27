@@ -1,6 +1,6 @@
 title 'Image Family'
 
-gcp_int_vm_image = attribute(:gcp_ext_vm_image, default: '', description: 'The GCP VM image.')
+gcp_int_vm_image = input(:gcp_ext_vm_image, value: '', description: 'The GCP VM image.')
 
 control 'gcp-generic-image-family-1.0' do
 

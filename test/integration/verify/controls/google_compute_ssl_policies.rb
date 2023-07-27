@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_ssl_policies resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-ssl_policy = attribute('ssl_policy', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+ssl_policy = input('ssl_policy', value: {
   "name": "inspec-gcp-ssl-policy",
   "min_tls_version": "TLS_1_2",
   "profile": "CUSTOM",

@@ -55,6 +55,13 @@ health_check:
   check_interval_sec: 10
   tcp_health_check_port: 80
 
+region_health_check:
+  name: inspec-gcp-region-health-check
+  region: us-central1
+  timeout_sec: 10
+  check_interval_sec: 10
+  tcp_health_check_port: 80
+
 backend_service:
   name: inspec-gcp-backend-service
   description: A description
@@ -341,7 +348,7 @@ spannerdatabase:
   ddl: "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)" 
 
 scheduler_job:
-  # region must match where the appengine instance is deployed
+  # region must match where the apengine instance is deployed
   region: us-central1
   name: job-name
   description: A description
@@ -460,20 +467,6 @@ interconnect_location:
   facility_provider_facility_id: 'Auckland - Albany'
   facility_provider: Vocus
 
-disk_type:
-  name: disk_type_name
-
-container_engine_versions:
-  valid_master_version: '1.21.5-gke.1802'
-  valid_node_version: '1.21.5-gke.1802'
-
-sql_database_flag:
-  name : audit_log
-  type : STRING
-  applies_to: MYSQL_5_6
-  allowed_string_values: ON
-  requires_restart: true
-
 image_family_views:
   zone: us-central1-c
   name: image-1
@@ -493,6 +486,17 @@ region_instance_group:
   named_port_name: 'port'
   named_port_port: 80
 
+container_engine_versions:
+  valid_master_version: '1.21.5-gke.1802'
+  valid_node_version: '1.21.5-gke.1802'
+
+sql_database_flag:
+  name : audit_log
+  type : STRING
+  applies_to: MYSQL_5_6
+  allowed_string_values: ON
+  requires_restart: true
+
 region_operation:
   name: operation-1641188435323-5d4a6f5b26934-9281422c-dce238f5
   region: us-central1
@@ -500,12 +504,40 @@ region_operation:
   status: DONE
   progress: 100
 
+sql_connect:
+  region: us-central1
+  database_version: POSTGRES_13
+  backend_type: SECOND_GEN
+  cert_serial_number: 0
+  common_name: "Test-10001"
+  sha1_fingerprint: "80c5c611c0a591db967c7dda3467e23127288fed"
+  instance: test-pg
+
 zone_operation:
   name: operation-1641188179305-5d4a6e66fe2bd-8fd1812d-d97f3b69
   zone: us-central1-a
   operation_type: "compute.instanceGroupManagers.insert"
   status: DONE
   progress: 100
-  
+
 public_delegated_prefix:
   name: test
+
+sql_operation:
+  name: e5c522f1-8391-4830-a8ff-ff1cc4a7b2a5
+  status: DONE
+  progress: 100
+
+dlp:
+  name: "i-inspec-gcp-dlp"
+  location: "us-east-2"
+  type: "INSPECT_JOB"
+  state: "ACTIVE"
+  inspectDetails:
+    requestedOptions:
+      snapshotInspectTemplate: ""
+      jobConfig:
+        storageConfig:
+          hybridOptions:
+            description: "test"
+            tableOptions: ""

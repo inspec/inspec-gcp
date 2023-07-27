@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_license_code resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-license_code = attribute('license_code', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+license_code = input('license_code', value: {
   "name": "akl-zone1-1353"
 }, description: 'License codes are mirrored across all projects that have permissions to read the License Code.')
 control 'google_compute_license_code-1.0' do

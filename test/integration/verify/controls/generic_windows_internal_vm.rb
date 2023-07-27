@@ -1,10 +1,10 @@
 title 'Internal Windows Virtual Machine Properties'
 
-gcp_project_id = attribute(:gcp_project_id, default: '', description: 'The GCP project identifier.')
-gcp_zone = attribute(:gcp_zone, default: '', description: 'The GCP zone being used.')
-gcp_windows_int_vm_name = attribute(:gcp_windows_int_vm_name, default: '', description: 'The GCP VM name.')
-gcp_windows_int_vm_size = attribute(:gcp_windows_int_vm_size, default: '', description: 'The GCP VM size.')
-#gcp_windows_int_vm_image = attribute(:gcp_int_vm_size, default: '', description: 'The GCP VM size.')
+gcp_project_id = input(:gcp_project_id, value: '', description: 'The GCP project identifier.')
+gcp_zone = input(:gcp_zone, value: '', description: 'The GCP zone being used.')
+gcp_windows_int_vm_name = input(:gcp_windows_int_vm_name, value: '', description: 'The GCP VM name.')
+gcp_windows_int_vm_size = input(:gcp_windows_int_vm_size, value: '', description: 'The GCP VM size.')
+#gcp_windows_int_vm_image = input(:gcp_int_vm_size, value: '', description: 'The GCP VM size.')
 
 control 'gcp-generic-vm-windows-internal-1.0' do
 

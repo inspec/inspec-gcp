@@ -1,11 +1,121 @@
 # Change Log
 
-<!-- latest_release 1.10.21 -->
+<!-- latest_release 1.11.4 -->
+## [v1.11.4](https://github.com/inspec/inspec-gcp/tree/v1.11.4) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-4077  DLP job resources [#441](https://github.com/inspec/inspec-gcp/pull/441) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.3](https://github.com/inspec/inspec-gcp/tree/v1.11.3) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-1604 api updated from beta4 to v1 [#440](https://github.com/inspec/inspec-gcp/pull/440) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.2](https://github.com/inspec/inspec-gcp/tree/v1.11.2) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-4288 wrong atrribute workloadMetadataConfig fixed [#442](https://github.com/inspec/inspec-gcp/pull/442) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.1](https://github.com/inspec/inspec-gcp/tree/v1.11.1) (2023-06-12)
+
+#### Merged Pull Requests
+- Fix blog post link [#436](https://github.com/inspec/inspec-gcp/pull/436) ([futtetennista](https://github.com/futtetennista))
+
+## [v1.11.0](https://github.com/inspec/inspec-gcp/tree/v1.11.0) (2023-05-03)
+
+#### Merged Pull Requests
+- RESOURCE-599 State added in Cloud Scheduler files generated from MM [#439](https://github.com/inspec/inspec-gcp/pull/439) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.39](https://github.com/inspec/inspec-gcp/tree/v1.10.39) (2023-01-31)
+
+#### Merged Pull Requests
+- RESOURCE-564 Update the Readme.md file in inspec-gcp [#434](https://github.com/inspec/inspec-gcp/pull/434) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.10.38](https://github.com/inspec/inspec-gcp/tree/v1.10.38) (2023-01-31)
+
+#### Merged Pull Requests
+- RESOURCE-586  Fix the build lint issue in inspec-gcp [#435](https://github.com/inspec/inspec-gcp/pull/435) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.10.37](https://github.com/inspec/inspec-gcp/tree/v1.10.37) (2022-07-29)
+
+#### Merged Pull Requests
+- RESOURCE-466-magic-moment-gcp-cloud-kms-key-rings-import-jobs [#426](https://github.com/inspec/inspec-gcp/pull/426) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.36](https://github.com/inspec/inspec-gcp/tree/v1.10.36) (2022-07-27)
+
+#### Merged Pull Requests
+- RESOURCE-458-gcp-cloud-kms-ekm-connections [#425](https://github.com/inspec/inspec-gcp/pull/425) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.35](https://github.com/inspec/inspec-gcp/tree/v1.10.35) (2022-07-13)
+
+#### Merged Pull Requests
+- RESOURCE 456-gcp-cloud-kms-projects-locations [#422](https://github.com/inspec/inspec-gcp/pull/422) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.34](https://github.com/inspec/inspec-gcp/tree/v1.10.34) (2022-07-04)
+
+#### Merged Pull Requests
+- google_project_iam_binding.rb file added [#424](https://github.com/inspec/inspec-gcp/pull/424) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.33](https://github.com/inspec/inspec-gcp/tree/v1.10.33) (2022-07-04)
+
+#### Merged Pull Requests
+- 420 undefined method google project iam binding [#423](https://github.com/inspec/inspec-gcp/pull/423) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.32](https://github.com/inspec/inspec-gcp/tree/v1.10.32) (2022-07-04)
+
+#### Merged Pull Requests
+- Allow more flexibility to GOOGLE_APPLICATION_CREDENTIALS parsing [#415](https://github.com/inspec/inspec-gcp/pull/415) ([rbclark](https://github.com/rbclark))
+
+## [v1.10.31](https://github.com/inspec/inspec-gcp/tree/v1.10.31) (2022-06-30)
+
+#### Merged Pull Requests
+- support reading profile from creds [#417](https://github.com/inspec/inspec-gcp/pull/417) ([sathish-progress](https://github.com/sathish-progress))
+
+## [v1.10.30](https://github.com/inspec/inspec-gcp/tree/v1.10.30) (2022-06-19)
+
+#### Merged Pull Requests
+- RESOURCE-409-magic-module-template-for-health-region-check [#419](https://github.com/inspec/inspec-gcp/pull/419) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.29](https://github.com/inspec/inspec-gcp/tree/v1.10.29) (2022-06-16)
+
+#### Merged Pull Requests
+- input and value updated from controls [#407](https://github.com/inspec/inspec-gcp/pull/407) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.28](https://github.com/inspec/inspec-gcp/tree/v1.10.28) (2022-06-15)
+
+#### Merged Pull Requests
+- RESOURCE-325-soc2-section-cc6-6-gcp [#411](https://github.com/inspec/inspec-gcp/pull/411) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.27](https://github.com/inspec/inspec-gcp/tree/v1.10.27) (2022-05-19)
+
+#### Merged Pull Requests
+- Do not raise an error when calling resource_id if @connection is nil [#416](https://github.com/inspec/inspec-gcp/pull/416) ([rbclark](https://github.com/rbclark))
+
+## [v1.10.26](https://github.com/inspec/inspec-gcp/tree/v1.10.26) (2022-05-10)
+
+#### Merged Pull Requests
+- RESOURCE-356 add-superclass-resource-id-method-for-gcp [#414](https://github.com/inspec/inspec-gcp/pull/414) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.25](https://github.com/inspec/inspec-gcp/tree/v1.10.25) (2022-05-06)
+
+#### Merged Pull Requests
+-  RESOURCE-37-sql  added for sql operations [#412](https://github.com/inspec/inspec-gcp/pull/412) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.24](https://github.com/inspec/inspec-gcp/tree/v1.10.24) (2022-04-22)
+
+#### Merged Pull Requests
+- RESOURCE-68 compute-global-public-delegated-prefixes [#413](https://github.com/inspec/inspec-gcp/pull/413) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.23](https://github.com/inspec/inspec-gcp/tree/v1.10.23) (2022-03-14)
+
+#### Merged Pull Requests
+- RESOURCE-55 region health check services [#401](https://github.com/inspec/inspec-gcp/pull/401) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.10.21](https://github.com/inspec/inspec-gcp/tree/v1.10.21) (2022-03-14)
 
 #### Merged Pull Requests
 - RESOURCE-54 F/region instance group [#377](https://github.com/inspec/inspec-gcp/pull/377) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.20](https://github.com/inspec/inspec-gcp/tree/v1.10.20) (2022-03-14)
 

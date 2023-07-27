@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_interconnect_locations resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-interconnect_location = attribute('interconnect_location', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+interconnect_location = input('interconnect_location', value: {
   "name": "akl-zone1-1353",
   "facility_provider_facility_id": "Auckland - Albany",
   "facility_provider": "Vocus"

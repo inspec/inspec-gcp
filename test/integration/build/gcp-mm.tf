@@ -133,6 +133,10 @@ variable "region_backend_service_health_check" {
   type = any
 }
 
+variable "region_health_check" {
+  type = any
+}
+
 variable "region_backend_service" {
   type = any
 }
@@ -314,6 +318,18 @@ resource "google_compute_health_check" "gcp-inspec-health-check" {
  tcp_health_check {
    port = var.health_check["tcp_health_check_port"]
  }
+}
+
+resource "google_compute_region_health_check" "tcp-region-health-check" {
+  project = var.gcp_project_id
+  name     = var.region_health_check["name"]
+  region   = var.region_health_check["region"]
+  timeout_sec        = 1
+  check_interval_sec = 1
+
+  tcp_health_check {
+    port = "80"
+  }
 }
 
 resource "google_compute_backend_service" "gcp-inspec-backend-service" {
@@ -1112,6 +1128,10 @@ variable "rigm" {
   type = any
 }
 
+variable "sql_connect" {
+  type = any
+}
+
 resource "google_compute_region_instance_group_manager" "inspec-rigm" {
   project                    = var.gcp_project_id
   region                     = var.gcp_location
@@ -1342,4 +1362,21 @@ resource "google_compute_interconnect_attachment" "on_prem" {
   type                     = "PARTNER"
   router                   = google_compute_router.gcp-inspec-router.id
   mtu                      = 1500
+}
+
+resource "google_sql_ssl_cert" "client_cert" {
+  project = var.gcp_project_id
+  common_name = var.sql_connect["common_name"]
+  instance    = var.gcp_db_instance_name
+}
+
+resource "google_data_loss_prevention_stored_info_type" "basic" {
+  parent = "projects/my-project-name"
+  description = "Description"
+  display_name = "Displayname"
+
+  regex {
+    pattern = "patient"
+    group_indexes = [2]
+  }
 }

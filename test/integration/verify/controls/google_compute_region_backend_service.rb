@@ -14,9 +14,9 @@
 
 title 'Test GCP google_compute_region_backend_service resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = attribute(:gcp_location, default: 'gcp_location', description: 'The GCP project region.')
-region_backend_service = attribute('region_backend_service', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project region.')
+region_backend_service = input('region_backend_service', value: {
   "name": "inspec-gcp-region-backend-service",
   "description": "A regional description",
   "protocol": "TCP",

@@ -24,8 +24,17 @@ control 'google_sql_database_instance-1.0' do
 
   describe google_sql_database_instance(project: gcp_project_id, database: gcp_db_instance_name) do
     it { should exist }
+    its('settings.activation_policy') { should eq 'ALWAYS' }
+    its('settings.data_disk_size_gb') { should eq "10" }
+    its('settings.data_disk_type') { should eq "PD_SSD"}
+    its('settings.kind') { should eq "sql#settings"}
+    its('settings.pricing_plan') { should eq "PER_USE"}
+    its('settings.replication_type') { should eq "SYNCHRONOUS"}
+    its('settings.storage_auto_resize') { should eq true}
+    its('settings.storage_auto_resize_limit') { should eq "0"}
+    its('settings.tier') { should eq 'db-custom-2-8192' }
     its('state') { should eq 'RUNNABLE' }
     its('backend_type') { should eq 'SECOND_GEN' }
-    its('database_version') { should eq 'MYSQL_5_7' }
+    its('database_version') { should eq 'MYSQL_8_0_26' }
   end
 end

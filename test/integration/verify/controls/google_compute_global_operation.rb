@@ -14,8 +14,8 @@
 
 title 'Test GCP google_compute_global_operation resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-global_operation = attribute('global_operation', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+global_operation = input('global_operation', value: {
   "name": "operation-1635274037755-5cf45e8217d56-c081cd9a-c3ea7346",
   "operationType": "compute.externalVpnGateways.delete"
 }, description: 'Global operation rule definition')
