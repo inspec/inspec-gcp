@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.2 -->
+<!-- latest_release 1.11.3 -->
+## [v1.11.3](https://github.com/inspec/inspec-gcp/tree/v1.11.3) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-1604 api updated from beta4 to v1 [#440](https://github.com/inspec/inspec-gcp/pull/440) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.2](https://github.com/inspec/inspec-gcp/tree/v1.11.2) (2023-07-27)
 
 #### Merged Pull Requests
 - CHEF-4288 wrong atrribute workloadMetadataConfig fixed [#442](https://github.com/inspec/inspec-gcp/pull/442) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.1](https://github.com/inspec/inspec-gcp/tree/v1.11.1) (2023-06-12)
 
