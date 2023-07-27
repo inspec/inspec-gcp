@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.3 -->
+<!-- latest_release 1.11.4 -->
+## [v1.11.4](https://github.com/inspec/inspec-gcp/tree/v1.11.4) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-4077  DLP job resources [#441](https://github.com/inspec/inspec-gcp/pull/441) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.3](https://github.com/inspec/inspec-gcp/tree/v1.11.3) (2023-07-27)
 
 #### Merged Pull Requests
 - CHEF-1604 api updated from beta4 to v1 [#440](https://github.com/inspec/inspec-gcp/pull/440) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.2](https://github.com/inspec/inspec-gcp/tree/v1.11.2) (2023-07-27)
 
