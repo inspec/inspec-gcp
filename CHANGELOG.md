@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.1 -->
+<!-- latest_release 1.11.2 -->
+## [v1.11.2](https://github.com/inspec/inspec-gcp/tree/v1.11.2) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-4288 wrong atrribute workloadMetadataConfig fixed [#442](https://github.com/inspec/inspec-gcp/pull/442) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.1](https://github.com/inspec/inspec-gcp/tree/v1.11.1) (2023-06-12)
 
 #### Merged Pull Requests
 - Fix blog post link [#436](https://github.com/inspec/inspec-gcp/pull/436) ([futtetennista](https://github.com/futtetennista))
-<!-- latest_release -->
 
 ## [v1.11.0](https://github.com/inspec/inspec-gcp/tree/v1.11.0) (2023-05-03)
 

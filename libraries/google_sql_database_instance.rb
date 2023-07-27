@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -35,6 +35,7 @@ class SQLDatabaseInstance < GcpResourceBase
 
   attr_reader :params
   attr_reader :backend_type
+  attr_reader :kind
   attr_reader :connection_name
   attr_reader :database_version
   attr_reader :failover_replica
@@ -62,6 +63,7 @@ class SQLDatabaseInstance < GcpResourceBase
 
   def parse
     @backend_type = @fetched['backendType']
+    @kind = @fetched['kind']
     @connection_name = @fetched['connectionName']
     @database_version = @fetched['databaseVersion']
     @failover_replica = GoogleInSpec::SQL::Property::DatabaseInstanceFailoverReplica.new(@fetched['failoverReplica'], to_s)
@@ -86,7 +88,7 @@ class SQLDatabaseInstance < GcpResourceBase
   end
 
   def to_s
-    "DatabaseInstance #{@params[:database]}"
+    "DatabaseInstance #{@params[:instance]}"
   end
 
   def has_ip_configuration_require_ssl?
@@ -101,17 +103,17 @@ class SQLDatabaseInstance < GcpResourceBase
   end
 
   def primary_ip_address
-    return '' if !@ip_addresses.size.empty? || @ip_addresses[0].ip_address.nil?
+    return '' if !@ip_addresses.empty? || @ip_addresses[0].ip_address.nil?
     @ip_addresses[0].ip_address
   end
 
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/sql/v1beta4/'
+    'https://sqladmin.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{database}}'
+    'projects/{{project}}/instances/{{instance}}'
   end
 end
