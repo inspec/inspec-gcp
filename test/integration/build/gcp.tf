@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.13.2"
+  required_version = "~> 1.5.2"
 }
 
 ## GCP Terraform Templates For Inspec Testing
@@ -106,7 +106,7 @@ provider "google-beta" {
   region = var.gcp_location
   version = "~> 3.90.0"
 }
-
+#
 resource "google_service_account" "generic_service_account_object_viewer" {
   count = var.gcp_enable_privileged_resources
   project = var.gcp_project_id

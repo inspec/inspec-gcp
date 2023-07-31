@@ -55,6 +55,7 @@ Properties that can be accessed from the `google_sql_database_instances` resourc
 
 See [google_sql_database_instance.md](google_sql_database_instance.md) for more detailed information
   * `backend_types`: an array of `google_sql_database_instance` backend_type
+  * `kinds`: an array of `google_sql_database_instance` kind
   * `connection_names`: an array of `google_sql_database_instance` connection_name
   * `instance_versions`: an array of `google_sql_database_instance` database_version
   * `failover_replicas`: an array of `google_sql_database_instance` failover_replica

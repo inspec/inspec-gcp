@@ -1369,3 +1369,14 @@ resource "google_sql_ssl_cert" "client_cert" {
   common_name = var.sql_connect["common_name"]
   instance    = var.gcp_db_instance_name
 }
+
+resource "google_data_loss_prevention_stored_info_type" "basic" {
+  parent = "projects/my-project-name"
+  description = "Description"
+  display_name = "Displayname"
+
+  regex {
+    pattern = "patient"
+    group_indexes = [2]
+  }
+}

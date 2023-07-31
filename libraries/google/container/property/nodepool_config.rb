@@ -71,7 +71,7 @@ module GoogleInSpec
           @min_cpu_platform = args['minCpuPlatform']
           @taints = GoogleInSpec::Container::Property::NodePoolConfigTaintsArray.parse(args['taints'], to_s)
           @shielded_instance_config = GoogleInSpec::Container::Property::NodePoolConfigShieldedInstanceConfig.new(args['shieldedInstanceConfig'], to_s)
-          @workload_meta_config = GoogleInSpec::Container::Property::NodePoolConfigWorkloadMetaConfig.new(args['workloadMetaConfig'], to_s)
+          @workload_meta_config = GoogleInSpec::Container::Property::NodePoolConfigWorkloadMetaConfig.new(args['workloadMetadataConfig'], to_s)
         end
 
         def to_s
