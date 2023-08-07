@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -24,6 +24,7 @@ class SQLDatabaseInstances < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:backend_types, field: :backend_type)
+  filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:connection_names, field: :connection_name)
   filter_table_config.add(:instance_versions, field: :instance_version)
   filter_table_config.add(:failover_replicas, field: :failover_replica)
@@ -81,6 +82,7 @@ class SQLDatabaseInstances < GcpResourceBase
   def transformers
     {
       'backendType' => ->(obj) { return :backend_type, obj['backendType'] },
+      'kind' => ->(obj) { return :kind, obj['kind'] },
       'connectionName' => ->(obj) { return :connection_name, obj['connectionName'] },
       'databaseVersion' => ->(obj) { return :instance_version, obj['databaseVersion'] },
       'failoverReplica' => ->(obj) { return :failover_replica, GoogleInSpec::SQL::Property::DatabaseInstanceFailoverReplica.new(obj['failoverReplica'], to_s) },
@@ -104,7 +106,7 @@ class SQLDatabaseInstances < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/sql/v1beta4/'
+    'https://sqladmin.googleapis.com/v1/'
   end
 
   def resource_base_url

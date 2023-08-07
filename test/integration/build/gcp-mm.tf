@@ -1370,6 +1370,7 @@ resource "google_sql_ssl_cert" "client_cert" {
   instance    = var.gcp_db_instance_name
 }
 
+
 resource "google_data_loss_prevention_inspect_template" "basic" {
   parent = "projects/my-project-name"
   description = "My description"
@@ -1472,5 +1473,4 @@ resource "google_data_loss_prevention_inspect_template" "basic" {
         }
       }
     }
-  }
 }
