@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.5 -->
+<!-- latest_release 1.11.6 -->
+## [v1.11.6](https://github.com/inspec/inspec-gcp/tree/v1.11.6) (2023-08-16)
+
+#### Merged Pull Requests
+- CHEF-4074 dlp inspect template resource [#445](https://github.com/inspec/inspec-gcp/pull/445) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.5](https://github.com/inspec/inspec-gcp/tree/v1.11.5) (2023-08-16)
 
 #### Merged Pull Requests
 - CHEF-4073 DLP-job-trigger-resource [#443](https://github.com/inspec/inspec-gcp/pull/443) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.4](https://github.com/inspec/inspec-gcp/tree/v1.11.4) (2023-07-27)
 
