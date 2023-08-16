@@ -191,7 +191,6 @@ Test Summary:  36 successful, 0 failures, 0 skipped
 ## Resource documentation
 
 The following resources are available in the InSpec GCP Profile
-
 | InSpec GCP Supported Resources                                                                                       | [https://www.inspec.io/docs/reference/resources/#gcp-resources](https://www.inspec.io/docs/reference/resources/#gcp-resources) |
 |:---------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|
 | Singular Resource                                                                                                    | Plural Resource                                                                                                                |
@@ -269,6 +268,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_dns_resource_record_set](docs/resources/google_dns_resource_record_set.md)                                   | [google_dns_resource_record_sets](docs/resources/google_dns_resource_record_sets.md)                                           |
 | [google_data_loss_prevention_dlp_job](docs/resources/google_data_loss_prevention_dlp_job.md)                         | [google_data_loss_prevention_dlp_jobs](docs/resources/google_data_loss_prevention_dlp_jobs.md)                                 |
 | [google_data_loss_prevention_dlp_inspect_template](docs/resources/google_data_loss_prevention_inspect_template.md)            | [google_data_loss_prevention_dlp_inspect_template](docs/resources/google_data_loss_prevention_inspect_templates.md)                     |
+| [google_data_loss_prevention_job_trigger](docs/resources/google_data_loss_prevention_job_trigger.md)                                   | [google_data_loss_prevention_job_triggers](docs/resources/google_data_loss_prevention_job_triggers.md)                         |
 | [google_filestore_instance](docs/resources/google_filestore_instance.md)                                             | [google_filestore_instances](docs/resources/google_filestore_instances.md)                                                     |
 | [google_iam_organization_custom_role](docs/resources/google_iam_organization_custom_role.md)                         | [google_iam_organization_custom_roles](docs/resources/google_iam_organization_custom_roles.md)                                 |
 | [google_kms_crypto_key](docs/resources/google_kms_crypto_key.md)                                                     | [google_kms_crypto_keys](docs/resources/google_kms_crypto_keys.md)                                                             |
@@ -336,7 +336,6 @@ The following resources are available in the InSpec GCP Profile
 | [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md)                             | No Plural Resource                                                                                                             |
 | [google_storage_object_acl](docs/resources/google_storage_object_acl.md)                                             | No Plural Resource                                                                                                             |
 | [google_user](docs/resources/google_user.md)                                                                         | [google_users](docs/resources/google_users.md)                                                                                 |
-
 ## Examples
 
 ### Check SSH is Disabled for INGRESS across all GCP Projects
