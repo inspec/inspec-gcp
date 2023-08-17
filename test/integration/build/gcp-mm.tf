@@ -1371,6 +1371,17 @@ resource "google_sql_ssl_cert" "client_cert" {
 }
 
 
+resource "google_data_loss_prevention_stored_info_type" "basic" {
+  parent = "projects/my-project-name"
+  description = "Description"
+  display_name = "Displayname"
+
+  regex {
+    pattern = "patient"
+    group_indexes = [2]
+  }
+}
+
 resource "google_data_loss_prevention_inspect_template" "basic" {
   parent = "projects/my-project-name"
   description = "My description"
@@ -1474,3 +1485,4 @@ resource "google_data_loss_prevention_inspect_template" "basic" {
       }
     }
 }
+

@@ -546,3 +546,5 @@ dlp:
   job_trigger_name: "name1"
   job_trigger_display_name: "dp"
   job_trigger_description: "description"
+  description: "Description"
+  display_name: "Displayname"
