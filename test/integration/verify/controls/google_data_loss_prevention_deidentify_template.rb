@@ -41,7 +41,7 @@ dlp = input('dlp', value: {
   "job_trigger_display_name": "dp",
   "job_trigger_description": "description",
   "deidentify_templates": {
-    "name": "dlp-template-bala",
+    "name": "dlp-template-inspec",
     "location": "europe-west2",
     "type": "Infotype"
   }
