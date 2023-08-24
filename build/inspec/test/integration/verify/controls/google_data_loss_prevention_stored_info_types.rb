@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
@@ -16,34 +18,32 @@ title 'Test GCP google_data_loss_prevention_stored_info_types resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 dlp = input('dlp', value: {
-  "name": "i-inspec-gcp-dlp",
-  "location": "us-east-2",
-  "type": "INSPECT_JOB",
-  "state": "ACTIVE",
+              "name": 'i-inspec-gcp-dlp',
+  "location": 'us-east-2',
+  "type": 'INSPECT_JOB',
+  "state": 'ACTIVE',
   "inspectDetails": {
     "requestedOptions": {
-      "snapshotInspectTemplate": "",
+      "snapshotInspectTemplate": '',
       "jobConfig": {
         "storageConfig": {
           "hybridOptions": {
-            "description": "test",
-            "tableOptions": ""
-          }
-        }
-      }
-    }
+            "description": 'test',
+            "tableOptions": '',
+          },
+        },
+      },
+    },
   },
-  "description": "Description",
-  "display_name": "Displayname"
-}, description: 'DLP ')
+  "description": 'Description',
+  "display_name": 'Displayname',
+            }, description: 'DLP ')
 control 'google_data_loss_prevention_stored_info_types-1.0' do
   impact 1.0
   title 'google_data_loss_prevention_stored_info_types resource test'
 
-
-
   describe google_data_loss_prevention_stored_info_types(parent: "projects/#{gcp_project_id}/locations/#{dlp['location']}") do
-  it { should exist }
-  its('names') { should include dlp['name'] }
+    it { should exist }
+    its('names') { should include dlp['name'] }
   end
 end
