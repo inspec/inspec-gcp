@@ -60,7 +60,7 @@ Style/AndOr:
 Style/Not:
   Enabled: false
 Naming/FileName:
-  Enabled: true
+  Enabled: false
   Regex: !ruby/regexp '/^.{3,100}$/'
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
