@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.7 -->
+<!-- latest_release 1.11.8 -->
+## [v1.11.8](https://github.com/inspec/inspec-gcp/tree/v1.11.8) (2023-08-24)
+
+#### Merged Pull Requests
+- Naming linting fix [#448](https://github.com/inspec/inspec-gcp/pull/448) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.7](https://github.com/inspec/inspec-gcp/tree/v1.11.7) (2023-08-17)
 
 #### Merged Pull Requests
 -  CHEF-4075 Resource added for Dlp stored info types [#446](https://github.com/inspec/inspec-gcp/pull/446) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.6](https://github.com/inspec/inspec-gcp/tree/v1.11.6) (2023-08-16)
 
