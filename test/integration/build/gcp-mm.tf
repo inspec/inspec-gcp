@@ -1484,5 +1484,22 @@ resource "google_data_loss_prevention_inspect_template" "basic" {
         }
       }
     }
+  }
+}
+variable "compute_image_family_view_name" {
+  default = "test"
+}
+variable "compute_image_family_image_name" {
+  default = "image-1"
+}
+variable "compute_image_family_source_disk" {
+  default = "projects/ppradhan/zones/us-central1-a/disks/inspec-image-1"
+}
+
+resource "google_compute_image" "image_family_view" {
+  project = var.gcp_project_id
+  name    = var.compute_image_family_image_name
+  source_disk = var.compute_image_family_source_disk
+  family = var.compute_image_family_view_name
 }
 
