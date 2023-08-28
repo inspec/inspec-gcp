@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.8 -->
+<!-- latest_release 1.11.9 -->
+## [v1.11.9](https://github.com/inspec/inspec-gcp/tree/v1.11.9) (2023-08-28)
+
+#### Merged Pull Requests
+- No Change [#454](https://github.com/inspec/inspec-gcp/pull/454) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.8](https://github.com/inspec/inspec-gcp/tree/v1.11.8) (2023-08-24)
 
 #### Merged Pull Requests
 - Naming linting fix [#448](https://github.com/inspec/inspec-gcp/pull/448) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.7](https://github.com/inspec/inspec-gcp/tree/v1.11.7) (2023-08-17)
 
