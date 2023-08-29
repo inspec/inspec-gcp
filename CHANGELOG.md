@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.11 -->
+<!-- latest_release 1.11.12 -->
+## [v1.11.12](https://github.com/inspec/inspec-gcp/tree/v1.11.12) (2023-08-29)
+
+#### Merged Pull Requests
+- CHEF-4076 Resource added for DeIdentify Template  [#447](https://github.com/inspec/inspec-gcp/pull/447) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.11](https://github.com/inspec/inspec-gcp/tree/v1.11.11) (2023-08-29)
 
 #### Merged Pull Requests
 - Removed unused files [#460](https://github.com/inspec/inspec-gcp/pull/460) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.10](https://github.com/inspec/inspec-gcp/tree/v1.11.10) (2023-08-29)
 
