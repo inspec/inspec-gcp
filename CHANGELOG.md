@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.10 -->
+<!-- latest_release 1.11.11 -->
+## [v1.11.11](https://github.com/inspec/inspec-gcp/tree/v1.11.11) (2023-08-29)
+
+#### Merged Pull Requests
+- Removed unused files [#460](https://github.com/inspec/inspec-gcp/pull/460) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.10](https://github.com/inspec/inspec-gcp/tree/v1.11.10) (2023-08-29)
 
 #### Merged Pull Requests
 - Removed the support for expeditor changes for ruby run time 2.7 [#459](https://github.com/inspec/inspec-gcp/pull/459) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.9](https://github.com/inspec/inspec-gcp/tree/v1.11.9) (2023-08-28)
 
