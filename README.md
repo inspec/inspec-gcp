@@ -1,6 +1,6 @@
 # InSpec GCP (Google Cloud Platform) Resource Pack
 
-* **Project State: Maintained**
+* **Project State-: Maintained**
 
 For more information on project states and SLAs, see [this documentation](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md).
 

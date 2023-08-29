@@ -1,11 +1,21 @@
 # Change Log
 
-<!-- latest_release 1.11.8 -->
+<!-- latest_release 1.11.10 -->
+## [v1.11.10](https://github.com/inspec/inspec-gcp/tree/v1.11.10) (2023-08-29)
+
+#### Merged Pull Requests
+- Removed the support for expeditor changes for ruby run time 2.7 [#459](https://github.com/inspec/inspec-gcp/pull/459) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.9](https://github.com/inspec/inspec-gcp/tree/v1.11.9) (2023-08-28)
+
+#### Merged Pull Requests
+- No Change [#454](https://github.com/inspec/inspec-gcp/pull/454) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.8](https://github.com/inspec/inspec-gcp/tree/v1.11.8) (2023-08-24)
 
 #### Merged Pull Requests
 - Naming linting fix [#448](https://github.com/inspec/inspec-gcp/pull/448) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.7](https://github.com/inspec/inspec-gcp/tree/v1.11.7) (2023-08-17)
 
