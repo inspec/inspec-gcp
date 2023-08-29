@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
@@ -16,14 +18,14 @@ title 'Test GCP google_compute_region_security_policy resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_security_policy = input('security_policy', value: {
-  "securitypolicy": "value_securitypolicy"
-}, description: 'region_security_policy description')
+region_security_policy = input('security_policy', value: {
+                                 "securitypolicy": 'value_securitypolicy',
+                               }, description: 'region_security_policy description')
 control 'google_compute_region_security_policy-1.0' do
   impact 1.0
   title 'google_compute_region_security_policy resource test'
 
-        describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], name: region_security_policy['name']) do
-       it { should exist }
-     end
+  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], name: region_security_policy['name']) do
+    it { should exist }
+  end
 end
