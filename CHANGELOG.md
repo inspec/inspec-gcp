@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.13 -->
+<!-- latest_release 1.11.14 -->
+## [v1.11.14](https://github.com/inspec/inspec-gcp/tree/v1.11.14) (2023-08-29)
+
+#### Merged Pull Requests
+- CHEF-5883-ImageFamilyView Resource-GCP Compute [#449](https://github.com/inspec/inspec-gcp/pull/449) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.13](https://github.com/inspec/inspec-gcp/tree/v1.11.13) (2023-08-29)
 
 #### Merged Pull Requests
 - CHEF-4076-DeidentifyTemplate [#461](https://github.com/inspec/inspec-gcp/pull/461) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.12](https://github.com/inspec/inspec-gcp/tree/v1.11.12) (2023-08-29)
 
