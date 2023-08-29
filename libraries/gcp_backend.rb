@@ -290,7 +290,7 @@ class GcpApiConnection
     return default unless source.key?(key)
     result = source.fetch(key)
     return navigate(result, path, default) unless path.empty?
-    return result if path.empty?
+    result if path.empty?
   end
 
   def extract_variables(template)
