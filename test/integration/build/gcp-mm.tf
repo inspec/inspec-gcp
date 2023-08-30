@@ -184,6 +184,9 @@ variable "redis" {
 variable "network_endpoint_group" {
   type = any
 }
+variable "global_network_endpoint_group" {
+  type = any
+}
 
 variable "node_template" {
   type = any
@@ -871,6 +874,13 @@ resource "google_compute_network_endpoint_group" "inspec-endpoint-group" {
   subnetwork   = google_compute_subnetwork.inspec-gcp-subnetwork.self_link
   default_port = var.network_endpoint_group["default_port"]
   zone         = var.gcp_zone
+}
+
+resource "google_compute_global_network_endpoint_group" "inspec-global-endpoint-group" {
+  project      = var.gcp_project_id
+  name         = var.global_network_endpoint_group["name"]
+  default_port = var.global_network_endpoint_group["default_port"]
+  network_endpoint_type = "INTERNET_IP_PORT"
 }
 
 data "google_compute_node_types" "zone-node-type" {
