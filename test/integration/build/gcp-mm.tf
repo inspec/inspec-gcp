@@ -880,7 +880,7 @@ resource "google_compute_global_network_endpoint_group" "inspec-global-endpoint-
   project      = var.gcp_project_id
   name         = var.global_network_endpoint_group["name"]
   default_port = var.global_network_endpoint_group["default_port"]
-  network_endpoint_type = "INTERNET_IP_PORT"
+  network_endpoint_type = var.global_network_endpoint_group["network_endpoint_type"]
 }
 
 data "google_compute_node_types" "zone-node-type" {
