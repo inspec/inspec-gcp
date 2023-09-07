@@ -24,21 +24,45 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:kinds, field: :kind)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:self_links, field: :self_link)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:descriptions, field: :description)
-  filter_table_config.add(:rules, field: :rules)
-  filter_table_config.add(:adaptive_protection_configs, field: :adaptive_protection_config)
-  filter_table_config.add(:ddos_protection_configs, field: :ddos_protection_config)
-  filter_table_config.add(:advanced_options_configs, field: :advanced_options_config)
-  filter_table_config.add(:recaptcha_options_configs, field: :recaptcha_options_config)
-  filter_table_config.add(:fingerprints, field: :fingerprint)
-  filter_table_config.add(:self_links, field: :self_link)
+  filter_table_config.add(:interconnects, field: :interconnect)
+  filter_table_config.add(:routers, field: :router)
+  filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:google_reference_ids, field: :google_reference_id)
+  filter_table_config.add(:mtus, field: :mtu)
+  filter_table_config.add(:private_interconnect_infos, field: :private_interconnect_info)
+  filter_table_config.add(:operational_statuses, field: :operational_status)
+  filter_table_config.add(:cloud_router_ip_addresses, field: :cloud_router_ip_address)
+  filter_table_config.add(:customer_router_ip_addresses, field: :customer_router_ip_address)
   filter_table_config.add(:types, field: :type)
+  filter_table_config.add(:pairing_keys, field: :pairing_key)
+  filter_table_config.add(:admin_enableds, field: :admin_enabled)
+  filter_table_config.add(:vlan_tag8021qs, field: :vlan_tag8021q)
+  filter_table_config.add(:edge_availability_domains, field: :edge_availability_domain)
+  filter_table_config.add(:candidate_subnets, field: :candidate_subnets)
+  filter_table_config.add(:bandwidths, field: :bandwidth)
+  filter_table_config.add(:partner_metadata, field: :partner_metadata)
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
-  filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:states, field: :state)
+  filter_table_config.add(:partner_asns, field: :partner_asn)
+  filter_table_config.add(:encryptions, field: :encryption)
+  filter_table_config.add(:ipsec_internal_addresses, field: :ipsec_internal_addresses)
+  filter_table_config.add(:dataplane_versions, field: :dataplane_version)
+  filter_table_config.add(:satisfies_pzs, field: :satisfies_pzs)
+  filter_table_config.add(:stack_types, field: :stack_type)
+  filter_table_config.add(:cloud_router_ipv6_addresses, field: :cloud_router_ipv6_address)
+  filter_table_config.add(:customer_router_ipv6_addresses, field: :customer_router_ipv6_address)
+  filter_table_config.add(:candidate_ipv6_subnets, field: :candidate_ipv6_subnets)
+  filter_table_config.add(:cloud_router_ipv6_interface_ids, field: :cloud_router_ipv6_interface_id)
+  filter_table_config.add(:customer_router_ipv6_interface_ids, field: :customer_router_ipv6_interface_id)
+  filter_table_config.add(:subnet_lengths, field: :subnet_length)
+  filter_table_config.add(:remote_services, field: :remote_service)
+  filter_table_config.add(:configuration_constraints, field: :configuration_constraints)
 
   filter_table_config.connect(self, :table)
 
@@ -79,21 +103,45 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   def transformers
     {
       'kind' => ->(obj) { return :kind, obj['kind'] },
+      'description' => ->(obj) { return :description, obj['description'] },
+      'selfLink' => ->(obj) { return :self_link, obj['selfLink'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, obj['creationTimestamp'] },
       'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'rules' => ->(obj) { return :rules, GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(obj['rules'], to_s) },
-      'adaptiveProtectionConfig' => ->(obj) { return :adaptive_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(obj['adaptiveProtectionConfig'], to_s) },
-      'ddosProtectionConfig' => ->(obj) { return :ddos_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(obj['ddosProtectionConfig'], to_s) },
-      'advancedOptionsConfig' => ->(obj) { return :advanced_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(obj['advancedOptionsConfig'], to_s) },
-      'recaptchaOptionsConfig' => ->(obj) { return :recaptcha_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(obj['recaptchaOptionsConfig'], to_s) },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'selfLink' => ->(obj) { return :self_link, obj['selfLink'] },
+      'interconnect' => ->(obj) { return :interconnect, obj['interconnect'] },
+      'router' => ->(obj) { return :router, obj['router'] },
+      'region' => ->(obj) { return :region, obj['region'] },
+      'googleReferenceId' => ->(obj) { return :google_reference_id, obj['googleReferenceId'] },
+      'mtu' => ->(obj) { return :mtu, obj['mtu'] },
+      'privateInterconnectInfo' => ->(obj) { return :private_interconnect_info, GoogleInSpec::Compute::Property::RegionSecurityPolicyPrivateInterconnectInfo.new(obj['privateInterconnectInfo'], to_s) },
+      'operationalStatus' => ->(obj) { return :operational_status, obj['operationalStatus'] },
+      'cloudRouterIpAddress' => ->(obj) { return :cloud_router_ip_address, obj['cloudRouterIpAddress'] },
+      'customerRouterIpAddress' => ->(obj) { return :customer_router_ip_address, obj['customerRouterIpAddress'] },
       'type' => ->(obj) { return :type, obj['type'] },
+      'pairingKey' => ->(obj) { return :pairing_key, obj['pairingKey'] },
+      'adminEnabled' => ->(obj) { return :admin_enabled, obj['adminEnabled'] },
+      'vlanTag8021q' => ->(obj) { return :vlan_tag8021q, obj['vlanTag8021q'] },
+      'edgeAvailabilityDomain' => ->(obj) { return :edge_availability_domain, obj['edgeAvailabilityDomain'] },
+      'candidateSubnets' => ->(obj) { return :candidate_subnets, obj['candidateSubnets'] },
+      'bandwidth' => ->(obj) { return :bandwidth, obj['bandwidth'] },
+      'partnerMetadata' => ->(obj) { return :partner_metadata, GoogleInSpec::Compute::Property::RegionSecurityPolicyPartnerMetadata.new(obj['partnerMetadata'], to_s) },
       'labels' => ->(obj) { return :labels, GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(obj['labels'], to_s) },
       'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'state' => ->(obj) { return :state, obj['state'] },
+      'partnerAsn' => ->(obj) { return :partner_asn, obj['partnerAsn'] },
+      'encryption' => ->(obj) { return :encryption, obj['encryption'] },
+      'ipsecInternalAddresses' => ->(obj) { return :ipsec_internal_addresses, obj['ipsecInternalAddresses'] },
+      'dataplaneVersion' => ->(obj) { return :dataplane_version, obj['dataplaneVersion'] },
+      'satisfiesPzs' => ->(obj) { return :satisfies_pzs, obj['satisfiesPzs'] },
+      'stackType' => ->(obj) { return :stack_type, obj['stackType'] },
+      'cloudRouterIpv6Address' => ->(obj) { return :cloud_router_ipv6_address, obj['cloudRouterIpv6Address'] },
+      'customerRouterIpv6Address' => ->(obj) { return :customer_router_ipv6_address, obj['customerRouterIpv6Address'] },
+      'candidateIpv6Subnets' => ->(obj) { return :candidate_ipv6_subnets, obj['candidateIpv6Subnets'] },
+      'cloudRouterIpv6InterfaceId' => ->(obj) { return :cloud_router_ipv6_interface_id, obj['cloudRouterIpv6InterfaceId'] },
+      'customerRouterIpv6InterfaceId' => ->(obj) { return :customer_router_ipv6_interface_id, obj['customerRouterIpv6InterfaceId'] },
+      'subnetLength' => ->(obj) { return :subnet_length, obj['subnetLength'] },
+      'remoteService' => ->(obj) { return :remote_service, obj['remoteService'] },
+      'configurationConstraints' => ->(obj) { return :configuration_constraints, GoogleInSpec::Compute::Property::RegionSecurityPolicyConfigurationConstraints.new(obj['configurationConstraints'], to_s) },
     }
   end
 
@@ -104,6 +152,6 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/securityPolicies/{{securityPolicy}}'
+    'projects/{{project}}/regions/{{region}}/interconnectAttachments/{{interconnectAttachment}}'
   end
 end

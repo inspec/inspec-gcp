@@ -8,7 +8,7 @@ A `google_compute_region_security_policy` is used to test a Google RegionSecurit
 
 ## Examples
 ```
-      describe google_compute_region_security_policy(project: 'chef-gcp-inspec', region: ' ', name: ' ') do
+      describe google_compute_region_security_policy(project: 'chef-gcp-inspec', region: ' ', securityPolicy: ' ') do
      it { should exist }
    end
 ```
@@ -17,7 +17,11 @@ A `google_compute_region_security_policy` is used to test a Google RegionSecurit
 Properties that can be accessed from the `google_compute_region_security_policy` resource:
 
 
-  * `kind`: [Output only] Type of the resource. Always compute#securityPolicyfor security policies 
+  * `kind`: Type of the resource. Always compute#interconnectAttachment for interconnect attachments. 
+
+  * `description`: An optional description of this resource. 
+
+  * `self_link`: Server-defined URL for the resource. 
 
   * `id`: string (uint64 format) The unique identifier for the resource. This identifier is defined by the server. 
 
@@ -25,270 +29,185 @@ Properties that can be accessed from the `google_compute_region_security_policy`
 
   * `name`: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. 
 
-  * `description`: An optional description of this resource. Provide this property when you create the resource. 
+  * `interconnect`: URL of the underlying Interconnect object that this attachment's traffic will traverse through. 
 
-  * `rules`: object A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added. 
+  * `router`: URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured. 
 
-    * `kind`: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules 
+  * `region`: URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. 
 
-    * `description`: An optional description of this resource. Provide this property when you create the resource. 
+  * `google_reference_id`: 
 
-    * `priority`: integer An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority. 
+  * `mtu`: integer Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440. 
 
-    * `match`: object A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. 
+  * `private_interconnect_info`: object Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED. 
 
-      * `expr`: object User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing evaluateThreatIntelligence require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing evaluatePreconfiguredExpr('sourceiplist-*') require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies. 
+    * `tag8021q`: integer 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region. 
 
-        * `expression`: Textual representation of an expression in Common Expression Language syntax. 
-
-        * `title`: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. 
-
-        * `description`: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. 
-
-        * `location`: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. 
-
-      * `versioned_expr`: Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. 
-      Possible values:
-        * SRC_IPS_V1
-
-      * `config`: object The configuration options available when specifying versionedExpr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified. 
-
-        * `src_ip_ranges`: CIDR IP address range. Maximum number of srcIpRanges allowed is 10. 
-
-    * `action`: The Action to perform when the rule is matched. The following are the valid actions:  allow: allow access to target. deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502. rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set. redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this. 
-
-    * `preview`: boolean If set to true, the specified action is not enforced. 
-
-    * `rate_limit_options`: object Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions. 
-
-      * `rate_limit_threshold`: object Threshold at which to begin ratelimiting. 
-
-        * `count`: integer Number of HTTP(S) requests for calculating the threshold. 
-
-        * `interval_sec`: integer Interval over which the threshold is computed. 
-
-      * `conform_action`: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only. 
-
-      * `exceed_action`: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502, and redirect, where the redirect parameters come from exceedRedirectOptions below. The redirect action is only supported in Global Security Policies of type CLOUD_ARMOR. 
-
-      * `exceed_redirect_options`: object Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR. 
-
-        * `type`: Type of the redirect action. 
-        Possible values:
-          * VALUE_1
-
-        * `target`: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA. 
-
-      * `enforce_on_key`: Determines the key to enforce the rateLimitThreshold on. Possible values are:  ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. IP: The source IP address of the request is the key. Each IP has this limit enforced separately. HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.  SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.  REGION_CODE: The country/region from which the request originates. 
-      Possible values:
-        * ALL
-        * A
-        * IP
-        * IP
-        * IP
-        * HTTP_HEADER
-        * HTTP
-        * 128
-        * ALL
-        * XFF_IP
-        * IP
-        * IP
-        * X
-        * HTTP
-        * IP
-        * IP
-        * IP
-        * HTTP_COOKIE
-        * HTTP
-        * 128
-        * ALL
-        * HTTP_PATH
-        * URL
-        * HTTP
-        * 128
-        * SNI
-        * TLS
-        * HTTPS
-        * 128
-        * ALL
-        * HTTP
-        * REGION_CODE
-
-      * `enforce_on_key_name`: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value. 
-
-      * `enforce_on_key_configs`: object If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforceOnKeyConfigs. If enforceOnKeyConfigs is specified, enforceOnKey must not be specified. 
-
-        * `enforce_on_key_type`: Determines the key to enforce the rateLimitThreshold on. Possible values are:  ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. IP: The source IP address of the request is the key. Each IP has this limit enforced separately. HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.  SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.  REGION_CODE: The country/region from which the request originates. 
-        Possible values:
-          * ALL
-          * A
-          * IP
-          * IP
-          * IP
-          * HTTP_HEADER
-          * HTTP
-          * 128
-          * ALL
-          * XFF_IP
-          * IP
-          * IP
-          * X
-          * HTTP
-          * IP
-          * IP
-          * IP
-          * HTTP_COOKIE
-          * HTTP
-          * 128
-          * ALL
-          * HTTP_PATH
-          * URL
-          * HTTP
-          * 128
-          * SNI
-          * TLS
-          * HTTPS
-          * 128
-          * ALL
-          * HTTP
-          * REGION_CODE
-
-        * `enforce_on_key_name`: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value. 
-
-      * `ban_threshold`: object Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'. 
-
-        * `count`: integer Number of HTTP(S) requests for calculating the threshold. 
-
-        * `interval_sec`: integer Interval over which the threshold is computed. 
-
-      * `ban_duration_sec`: integer Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold. 
-
-    * `header_action`: object Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR. 
-
-      * `request_headers_to_adds`: object The list of request headers to add or overwrite if they're already present. 
-
-        * `header_name`: The name of the header to set. 
-
-        * `header_value`: The value to set the named header to. 
-
-    * `redirect_options`: object Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR. 
-
-      * `type`: Type of the redirect action. 
-      Possible values:
-        * VALUE_1
-
-      * `target`: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA. 
-
-    * `preconfigured_waf_config`: object Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. 
-
-      * `exclusions`: object A list of exclusions to apply during preconfigured WAF evaluation. 
-
-        * `target_rule_set`: Target WAF rule set to apply the preconfigured WAF exclusion. 
-
-        * `target_rule_ids`: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set. 
-
-        * `request_headers_to_exclude`: object A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation. 
-
-          * `val`: The value of the field. 
-
-          * `op`: The match operator for the field. 
-          Possible values:
-            * VALUE_1
-
-        * `request_cookies_to_exclude`: object A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation. 
-
-          * `val`: The value of the field. 
-
-          * `op`: The match operator for the field. 
-          Possible values:
-            * VALUE_1
-
-        * `request_query_params_to_exclude`: object A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. 
-
-          * `val`: The value of the field. 
-
-          * `op`: The match operator for the field. 
-          Possible values:
-            * VALUE_1
-
-        * `request_uris_to_exclude`: object A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. 
-
-          * `val`: The value of the field. 
-
-          * `op`: The match operator for the field. 
-          Possible values:
-            * VALUE_1
-
-  * `adaptive_protection_config`: object 
-
-    * `layer7_ddos_defense_config`: object If set to true, enables Cloud Armor Machine Learning. 
-
-      * `enable`: boolean If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR. 
-
-      * `rule_visibility`: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR. 
-      Possible values:
-        * STANDARD
-        * PREMIUM
-        * CLOUD_ARMOR
-
-      * `threshold_configs`: object Configuration options for layer7 adaptive protection for various customizable thresholds. 
-
-        * `name`: The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy. 
-
-        * `auto_deploy_load_threshold`: number 
-
-        * `auto_deploy_confidence_threshold`: number 
-
-        * `auto_deploy_impacted_baseline_threshold`: number 
-
-        * `auto_deploy_expiration_sec`: integer 
-
-  * `ddos_protection_config`: object 
-
-    * `ddos_protection`: 
-    Possible values:
-      * VALUE_1
-
-  * `advanced_options_config`: object 
-
-    * `json_parsing`: 
-    Possible values:
-      * VALUE_1
-
-    * `json_custom_config`: object Custom configuration to apply the JSON parsing. Only applicable when jsonParsing is set to STANDARD. 
-
-      * `content_types`: A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded. 
-
-    * `log_level`: 
-    Possible values:
-      * VALUE_1
-
-  * `recaptcha_options_config`: object 
-
-    * `redirect_site_key`: An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR. 
-
-  * `fingerprint`: string (bytes format) Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make get() request to the security policy. A base64-encoded string. 
-
-  * `self_link`: Server-defined URL for the resource. 
-
-  * `type`: The type indicates the intended use of the security policy.  CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.  CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.  This field can be set only at resource creation time. 
+  * `operational_status`: The current status of whether or not this interconnect attachment is functional, which can take one of the following values: OS_ACTIVE: The attachment has been turned up and is ready to use. OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
   Possible values:
-    * CLOUD_ARMOR
-    * HTTP
-    * CLOUD_ARMOR_EDGE
-    * HTTP
-    * CDN
-    * CLOUD_ARMOR_INTERNAL_SERVICE
-    * HTTP
-    * CLOUD_ARMOR_NETWORK
+    * OS_ACTIVE
+    * OS_UNPROVISIONED
+
+  * `cloud_router_ip_address`: IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment. 
+
+  * `customer_router_ip_address`: IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment. 
+
+  * `type`: The type of interconnect attachment this is, which can take one of the following values: DEDICATED: an attachment to a Dedicated Interconnect. PARTNER: an attachment to a Partner Interconnect, created by the customer. PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
+  Possible values:
+    * DEDICATED
+    * PARTNER
+    * PARTNER_PROVIDER
+
+  * `pairing_key`: [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain" 
+
+  * `admin_enabled`: boolean Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER. 
+
+  * `vlan_tag8021q`: integer The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time. 
+
+  * `edge_availability_domain`: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: AVAILABILITY_DOMAIN_ANY AVAILABILITY_DOMAIN_1 AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY. 
+  Possible values:
+    * PARTNER
+    * AVAILABILITY_DOMAIN_ANY
+    * AVAILABILITY_DOMAIN_1
+    * AVAILABILITY_DOMAIN_2
+    * AVAILABILITY_DOMAIN_ANY
+
+  * `candidate_subnets`: Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space. 
+
+  * `bandwidth`: Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: BPS_50M: 50 Mbit/s BPS_100M: 100 Mbit/s BPS_200M: 200 Mbit/s BPS_300M: 300 Mbit/s BPS_400M: 400 Mbit/s BPS_500M: 500 Mbit/s BPS_1G: 1 Gbit/s BPS_2G: 2 Gbit/s BPS_5G: 5 Gbit/s BPS_10G: 10 Gbit/s BPS_20G: 20 Gbit/s BPS_50G: 50 Gbit/s 
+  Possible values:
+    * DEDICATED
+    * PARTNER
+    * PARTNER
+    * PARTNER_PROVIDER
+    * DEDICATED
+    * BPS_50M
+    * 50
+    * BPS_100M
+    * 100
+    * BPS_200M
+    * 200
+    * BPS_300M
+    * 300
+    * BPS_400M
+    * 400
+    * BPS_500M
+    * 500
+    * BPS_1G
+    * 1
+    * BPS_2G
+    * 2
+    * BPS_5G
+    * 5
+    * BPS_10G
+    * 10
+    * BPS_20G
+    * 20
+    * BPS_50G
+    * 50
+
+  * `partner_metadata`: object Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED. 
+
+    * `partner_name`: Plain text name of the Partner providing this attachment. This value may be validated to match approved Partner values. 
+
+    * `interconnect_name`: Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner's portal. For instance "Chicago 1". This value may be validated to match approved Partner values. 
+
+    * `portal_url`: URL of the Partner's portal for this Attachment. Partners may customise this to be a deep link to the specific resource on the Partner portal. This value may be validated to match approved Partner values. 
 
   * `labels`: map (key: string, value: string) Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty. 
 
     * `string`: 
 
-  * `label_fingerprint`: string (bytes format) A fingerprint for the labels being applied to this security policy, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the security policy. A base64-encoded string. 
+  * `label_fingerprint`: string (bytes format) A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment. A base64-encoded string. 
 
-  * `region`: URL of the region where the regional security policy resides. This field is not applicable to global security policies. 
+  * `state`: The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: ACTIVE: The attachment has been turned up and is ready to use. UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
+  Possible values:
+    * ACTIVE
+    * UNPROVISIONED
+    * DEDICATED
+    * PRIVATE
+    * PARTNER
+    * PARTNER_PROVIDER
+    * PENDING_PARTNER
+    * PARTNER_REQUEST_RECEIVED
+    * PENDING_CUSTOMER
+    * PARTNER
+    * PARTNER_PROVIDER
+    * ACTIVE
+    * UNPROVISIONED
+    * PENDING_PARTNER
+    * A
+    * PARTNER
+    * PARTNER_REQUEST_RECEIVED
+    * A
+    * PARTNER
+    * PARTNER_PROVIDER
+    * PENDING_CUSTOMER
+    * A
+    * PARTNER
+    * PARTNER_PROVIDER
+    * DEFUNCT
+
+  * `partner_asn`: string (int64 format) Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED. 
+
+  * `encryption`: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN attachment must be created with this option. 
+  Possible values:
+    * VLAN
+    * PARTNER
+    * DEDICATED
+    * NONE
+    * VLAN
+    * VLAN
+    * IPSEC
+    * VLAN
+    * HA
+    * VPN
+    * VPN
+    * VLAN
+    * HA
+    * VPN
+    * VLAN
+
+  * `ipsec_internal_addresses`: A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. 
+
+  * `dataplane_version`: integer Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1. 
+
+  * `satisfies_pzs`: boolean Reserved for future use. 
+
+  * `stack_type`: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations. 
+  Possible values:
+    * IPV4_ONLY
+
+  * `cloud_router_ipv6_address`: IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment. 
+
+  * `customer_router_ipv6_address`: IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment. 
+
+  * `candidate_ipv6_subnets`: This field is not available. 
+
+  * `cloud_router_ipv6_interface_id`: This field is not available. 
+
+  * `customer_router_ipv6_interface_id`: This field is not available. 
+
+  * `subnet_length`: integer Length of the IPv4 subnet mask. Allowed values:  29 (default)  30  The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
+
+  * `remote_service`: If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field. 
+
+  * `configuration_constraints`: object Constraints for this attachment, if any. The attachment does not work if these constraints are not met. 
+
+    * `bgp_md5`: Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachmentConfigurationConstraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested. 
+    Possible values:
+      * BGP
+      * BGP
+      * MD5
+      * MD5_OPTIONAL
+      * MD5_REQUIRED
+      * MD5_UNSUPPORTED
+
+    * `bgp_peer_asn_ranges`: object interconnectAttachments.list of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend. 
+
+      * `min`: integer (uint32 format) 
+
+      * `max`: integer (uint32 format) 
 
 
 ## GCP Permissions
