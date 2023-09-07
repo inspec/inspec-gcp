@@ -541,3 +541,5 @@ dlp:
 
 region_security_policy:
   securitypolicy : "value_securitypolicy"
+custom_job:
+  name : "value_name"
