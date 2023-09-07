@@ -8,7 +8,7 @@ A `google_vertex_ai_datasets` is used to test a Google Dataset resource
 
 ## Examples
 ```
-    describe google_vertex_ai_dataset(parent: ' ') do
+    describe google_vertex_ai_dataset(parent: ' ', region: ' ') do
     it { should exist }
   end
 ```
