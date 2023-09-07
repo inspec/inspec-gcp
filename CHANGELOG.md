@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.15 -->
+<!-- latest_release 1.11.16 -->
+## [v1.11.16](https://github.com/inspec/inspec-gcp/tree/v1.11.16) (2023-09-07)
+
+#### Merged Pull Requests
+- CHEF-5991-GlobalNetworkEndpointGroup Resource [#462](https://github.com/inspec/inspec-gcp/pull/462) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.15](https://github.com/inspec/inspec-gcp/tree/v1.11.15) (2023-09-07)
 
 #### Merged Pull Requests
 - Fixed vertex ai uri handleing-current version had no support for base… [#466](https://github.com/inspec/inspec-gcp/pull/466) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.14](https://github.com/inspec/inspec-gcp/tree/v1.11.14) (2023-08-29)
 

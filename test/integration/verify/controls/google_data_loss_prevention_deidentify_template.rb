@@ -56,7 +56,7 @@ control 'google_data_loss_prevention_deidentify_template-1.0' do
     its('display_name') { should cmp dlp['deidentify_templates'][:name] }
   end
 
-  describe google_data_loss_prevention_deidentify_template(parent: "projects/#{gcp_project_id}/locations/#{dlp['deidentify_templates'][location]}", name: 'nonexistent') do
+  describe google_data_loss_prevention_deidentify_template(parent: "projects/#{gcp_project_id}/locations/#{dlp['deidentify_templates'][:location]}", name: 'nonexistent') do
     it { should_not exist }
   end
 end
