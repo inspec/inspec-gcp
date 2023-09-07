@@ -29,7 +29,7 @@ control 'google_vertex_ai_datasets-1.0' do
   impact 1.0
   title 'google_vertex_ai_datasets resource test'
 
-      describe google_vertex_ai_datasets(parent: dataset['parent'], region: dataset['location']) do
+      describe google_vertex_ai_dataset(parent: dataset['parent'], region: dataset['region']) do
       it { should exist }
     end
 end

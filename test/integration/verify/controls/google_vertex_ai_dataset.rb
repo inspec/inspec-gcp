@@ -29,7 +29,7 @@ control 'google_vertex_ai_dataset-1.0' do
   impact 1.0
   title 'google_vertex_ai_dataset resource test'
 
-        describe google_vertex_ai_dataset(name: dataset['name'], region: dataset['location']) do
+        describe google_vertex_ai_dataset(name: dataset['name'], region: dataset['region']) do
        it { should exist }
      end
 end
