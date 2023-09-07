@@ -8,9 +8,9 @@ A `google_compute_public_delegated_prefixes` is used to test a Google PublicDele
 
 ## Examples
 ```
-describe google_compute_public_delegated_prefixes(project: 'chef-gcp-inspec', region: 'us-east1-b') do
-  it { should exist }
-end
+    describe google_compute_public_delegated_prefix(project: 'chef-gcp-inspec', region: ' ') do
+    it { should exist }
+  end
 ```
 
 ## Properties

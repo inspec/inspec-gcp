@@ -14,15 +14,16 @@
 
 title 'Test GCP google_compute_public_delegated_prefix resource.'
 
-gcp_project_id = attribute(:gcp_project_id, default: 'gcp_project_id', description: 'The GCP project identifier.')
-public_delegated_prefix = attribute('public_delegated_prefix', default: {
+gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+
+  public_delegated_prefix = input('public_delegated_prefix', value: {
   "name": "test"
-}, description: 'PublicDelegatedPrefix resource in the given region')
+}, description: 'public_delegated_prefix description')
 control 'google_compute_public_delegated_prefix-1.0' do
   impact 1.0
   title 'google_compute_public_delegated_prefix resource test'
 
-  describe google_compute_public_delegated_prefix(project: gcp_project_id, region: 'us-east1-b', name: public_delegated_prefix['name']) do
-    it { should exist }
-  end
+        describe google_compute_public_delegated_prefix(project: gcp_project_id, region: public_delegated_prefix['region'], publicDelegatedPrefix: public_delegated_prefix['publicDelegatedPrefix']) do
+       it { should exist }
+     end
 end
