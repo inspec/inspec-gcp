@@ -14,11 +14,15 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/compute/property/regionsecuritypolicy_configuration_constraints'
-require 'google/compute/property/regionsecuritypolicy_configuration_constraints_bgp_peer_asn_ranges'
+require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config'
+require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config'
+require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs'
+require 'google/compute/property/regionsecuritypolicy_advanced_options_config'
+require 'google/compute/property/regionsecuritypolicy_advanced_options_config_json_custom_config'
+require 'google/compute/property/regionsecuritypolicy_ddos_protection_config'
 require 'google/compute/property/regionsecuritypolicy_labels'
-require 'google/compute/property/regionsecuritypolicy_partner_metadata'
-require 'google/compute/property/regionsecuritypolicy_private_interconnect_info'
+require 'google/compute/property/regionsecuritypolicy_recaptcha_options_config'
+require 'google/compute/property/regionsecuritypolicy_rules'
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionSecurityPolicy < GcpResourceBase
@@ -28,45 +32,21 @@ class ComputeRegionSecurityPolicy < GcpResourceBase
 
   attr_reader :params
   attr_reader :kind
-  attr_reader :description
-  attr_reader :self_link
   attr_reader :id
   attr_reader :creation_timestamp
   attr_reader :name
-  attr_reader :interconnect
-  attr_reader :router
-  attr_reader :region
-  attr_reader :google_reference_id
-  attr_reader :mtu
-  attr_reader :private_interconnect_info
-  attr_reader :operational_status
-  attr_reader :cloud_router_ip_address
-  attr_reader :customer_router_ip_address
+  attr_reader :description
+  attr_reader :rules
+  attr_reader :adaptive_protection_config
+  attr_reader :ddos_protection_config
+  attr_reader :advanced_options_config
+  attr_reader :recaptcha_options_config
+  attr_reader :fingerprint
+  attr_reader :self_link
   attr_reader :type
-  attr_reader :pairing_key
-  attr_reader :admin_enabled
-  attr_reader :vlan_tag8021q
-  attr_reader :edge_availability_domain
-  attr_reader :candidate_subnets
-  attr_reader :bandwidth
-  attr_reader :partner_metadata
   attr_reader :labels
   attr_reader :label_fingerprint
-  attr_reader :state
-  attr_reader :partner_asn
-  attr_reader :encryption
-  attr_reader :ipsec_internal_addresses
-  attr_reader :dataplane_version
-  attr_reader :satisfies_pzs
-  attr_reader :stack_type
-  attr_reader :cloud_router_ipv6_address
-  attr_reader :customer_router_ipv6_address
-  attr_reader :candidate_ipv6_subnets
-  attr_reader :cloud_router_ipv6_interface_id
-  attr_reader :customer_router_ipv6_interface_id
-  attr_reader :subnet_length
-  attr_reader :remote_service
-  attr_reader :configuration_constraints
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -77,45 +57,21 @@ class ComputeRegionSecurityPolicy < GcpResourceBase
 
   def parse
     @kind = @fetched['kind']
-    @description = @fetched['description']
-    @self_link = @fetched['selfLink']
     @id = @fetched['id']
     @creation_timestamp = @fetched['creationTimestamp']
     @name = @fetched['name']
-    @interconnect = @fetched['interconnect']
-    @router = @fetched['router']
-    @region = @fetched['region']
-    @google_reference_id = @fetched['googleReferenceId']
-    @mtu = @fetched['mtu']
-    @private_interconnect_info = GoogleInSpec::Compute::Property::RegionSecurityPolicyPrivateInterconnectInfo.new(@fetched['privateInterconnectInfo'], to_s)
-    @operational_status = @fetched['operationalStatus']
-    @cloud_router_ip_address = @fetched['cloudRouterIpAddress']
-    @customer_router_ip_address = @fetched['customerRouterIpAddress']
+    @description = @fetched['description']
+    @rules = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(@fetched['rules'], to_s)
+    @adaptive_protection_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(@fetched['adaptiveProtectionConfig'], to_s)
+    @ddos_protection_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(@fetched['ddosProtectionConfig'], to_s)
+    @advanced_options_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(@fetched['advancedOptionsConfig'], to_s)
+    @recaptcha_options_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(@fetched['recaptchaOptionsConfig'], to_s)
+    @fingerprint = @fetched['fingerprint']
+    @self_link = @fetched['selfLink']
     @type = @fetched['type']
-    @pairing_key = @fetched['pairingKey']
-    @admin_enabled = @fetched['adminEnabled']
-    @vlan_tag8021q = @fetched['vlanTag8021q']
-    @edge_availability_domain = @fetched['edgeAvailabilityDomain']
-    @candidate_subnets = @fetched['candidateSubnets']
-    @bandwidth = @fetched['bandwidth']
-    @partner_metadata = GoogleInSpec::Compute::Property::RegionSecurityPolicyPartnerMetadata.new(@fetched['partnerMetadata'], to_s)
     @labels = GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(@fetched['labels'], to_s)
     @label_fingerprint = @fetched['labelFingerprint']
-    @state = @fetched['state']
-    @partner_asn = @fetched['partnerAsn']
-    @encryption = @fetched['encryption']
-    @ipsec_internal_addresses = @fetched['ipsecInternalAddresses']
-    @dataplane_version = @fetched['dataplaneVersion']
-    @satisfies_pzs = @fetched['satisfiesPzs']
-    @stack_type = @fetched['stackType']
-    @cloud_router_ipv6_address = @fetched['cloudRouterIpv6Address']
-    @customer_router_ipv6_address = @fetched['customerRouterIpv6Address']
-    @candidate_ipv6_subnets = @fetched['candidateIpv6Subnets']
-    @cloud_router_ipv6_interface_id = @fetched['cloudRouterIpv6InterfaceId']
-    @customer_router_ipv6_interface_id = @fetched['customerRouterIpv6InterfaceId']
-    @subnet_length = @fetched['subnetLength']
-    @remote_service = @fetched['remoteService']
-    @configuration_constraints = GoogleInSpec::Compute::Property::RegionSecurityPolicyConfigurationConstraints.new(@fetched['configurationConstraints'], to_s)
+    @region = @fetched['region']
   end
 
   def exists?
@@ -133,6 +89,6 @@ class ComputeRegionSecurityPolicy < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/interconnectAttachments/{{interconnect_attachment}}/{{name}}'
+    'projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/{{name}}'
   end
 end
