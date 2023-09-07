@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/publicdelegatedprefix_public_delegated_sub_prefixs'
 
 # A provider to manage Compute Engine resources.
 class ComputePublicDelegatedPrefix < GcpResourceBase
@@ -22,15 +23,19 @@ class ComputePublicDelegatedPrefix < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
+  attr_reader :kind
   attr_reader :id
+  attr_reader :creation_timestamp
   attr_reader :name
+  attr_reader :description
+  attr_reader :self_link
+  attr_reader :region
   attr_reader :ip_cidr_range
+  attr_reader :status
   attr_reader :parent_prefix
+  attr_reader :public_delegated_sub_prefixs
   attr_reader :is_live_migration
   attr_reader :fingerprint
-  attr_reader :status
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -40,20 +45,19 @@ class ComputePublicDelegatedPrefix < GcpResourceBase
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
+    @kind = @fetched['kind']
     @id = @fetched['id']
+    @creation_timestamp = @fetched['creationTimestamp']
     @name = @fetched['name']
+    @description = @fetched['description']
+    @self_link = @fetched['selfLink']
+    @region = @fetched['region']
     @ip_cidr_range = @fetched['ipCidrRange']
+    @status = @fetched['status']
     @parent_prefix = @fetched['parentPrefix']
+    @public_delegated_sub_prefixs = GoogleInSpec::Compute::Property::PublicDelegatedPrefixPublicDelegatedSubPrefixsArray.parse(@fetched['publicDelegatedSubPrefixs'], to_s)
     @is_live_migration = @fetched['isLiveMigration']
     @fingerprint = @fetched['fingerprint']
-    @status = @fetched['status']
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
   end
 
   def exists?
@@ -71,6 +75,6 @@ class ComputePublicDelegatedPrefix < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}'
+    'projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{public_delegated_prefix}}/{{name}}'
   end
 end
