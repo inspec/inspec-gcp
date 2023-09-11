@@ -340,6 +340,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md)                             | No Plural Resource                                                                                                             |
 | [google_storage_object_acl](docs/resources/google_storage_object_acl.md)                                             | No Plural Resource                                                                                                             |
 | [google_user](docs/resources/google_user.md)                                                                         | [google_users](docs/resources/google_users.md)                                                                                 |
+| [google_vertex_ai_dataset](docs/resources/google_vertex_ai_dataset.md)                                                                         | [google_vertex_ai_datasets](docs/resources/google_vertex_ai_datasets.md)                                                                                 |
 ## Examples
 
 ### Check SSH is Disabled for INGRESS across all GCP Projects
