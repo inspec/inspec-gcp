@@ -5,7 +5,7 @@ ssl_policy:
   custom_feature: 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
   custom_feature2: 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
 
-topic: 
+topic:
   name: 'inspec-gcp-topic'
 
 subscription:
@@ -232,7 +232,7 @@ standardappversion:
   runtime: nodejs10
   entrypoint: "node ./app.js"
   port: "8080"
-  
+
 ml_model:
   name: ml_model
   region: us-central1
@@ -306,6 +306,11 @@ network_endpoint_group:
   name: inspec-gcp-endpoint-group
   default_port: 90
 
+global_network_endpoint_group:
+  name: inspec-gcp-global-endpoint-group
+  network_endpoint_type: INTERNET_IP_PORT
+  default_port: 90
+
 node_template:
   name: inspec-node-template
   label_key: key
@@ -338,7 +343,7 @@ spannerinstance:
 spannerdatabase:
   name: spdatabase
   instance: spinstance
-  ddl: "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)" 
+  ddl: "CREATE TABLE test (test STRING(MAX),) PRIMARY KEY (test)"
 
 scheduler_job:
   # region must match where the appengine instance is deployed
@@ -437,7 +442,7 @@ logging_metric:
 compute_image:
   name: inspec-image
   source: https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz
- 
+
 security_policy:
   name: sec-policy
   action: deny(403)
@@ -492,7 +497,7 @@ sql_database_flag:
   applies_to: MYSQL_5_6
   allowed_string_values: ON
   requires_restart: true
-  
+
 sql_connect:
   region: us-central1
   database_version: POSTGRES_13
@@ -536,6 +541,10 @@ dlp:
   job_trigger_name: "name1"
   job_trigger_display_name: "dp"
   job_trigger_description: "description"
+  deidentify_templates:
+    name: "dlp-template-inspec"
+    location: "europe-west2"
+    type: "Infotype"
 
 
 
