@@ -25,7 +25,7 @@ control 'google_vertex_ai_custom_jobs-1.0' do
   impact 1.0
   title 'google_vertex_ai_custom_jobs resource test'
 
-      describe google_vertex_ai_custom_job(parent: custom_job['parent'], region: custom_job['region']) do
+      describe google_vertex_ai_custom_jobs(parent: custom_job['parent'], region: custom_job['region']) do
       it { should exist }
     end
 end
