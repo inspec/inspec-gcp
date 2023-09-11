@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.16 -->
+<!-- latest_release 1.11.17 -->
+## [v1.11.17](https://github.com/inspec/inspec-gcp/tree/v1.11.17) (2023-09-08)
+
+#### Merged Pull Requests
+- CHEF-6191-Fixed Linting Naming Issues [#473](https://github.com/inspec/inspec-gcp/pull/473) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.16](https://github.com/inspec/inspec-gcp/tree/v1.11.16) (2023-09-07)
 
 #### Merged Pull Requests
 - CHEF-5991-GlobalNetworkEndpointGroup Resource [#462](https://github.com/inspec/inspec-gcp/pull/462) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.15](https://github.com/inspec/inspec-gcp/tree/v1.11.15) (2023-09-07)
 
