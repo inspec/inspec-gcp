@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.17 -->
+<!-- latest_release 1.11.18 -->
+## [v1.11.18](https://github.com/inspec/inspec-gcp/tree/v1.11.18) (2023-09-11)
+
+#### Merged Pull Requests
+- CHEF-5552-MAGIC-MODULE-vertex_ai-Dataset - Resource Implementation [#467](https://github.com/inspec/inspec-gcp/pull/467) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.17](https://github.com/inspec/inspec-gcp/tree/v1.11.17) (2023-09-08)
 
 #### Merged Pull Requests
 - CHEF-6191-Fixed Linting Naming Issues [#473](https://github.com/inspec/inspec-gcp/pull/473) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.16](https://github.com/inspec/inspec-gcp/tree/v1.11.16) (2023-09-07)
 
