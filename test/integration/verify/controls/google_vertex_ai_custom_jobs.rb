@@ -18,6 +18,7 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   custom_job = input('custom_job', value: {
   "name": "value_name",
+  "job_id": "job_id",
   "region": "value_region",
   "parent": "value_parent"
 }, description: 'custom_job description')
@@ -25,7 +26,8 @@ control 'google_vertex_ai_custom_jobs-1.0' do
   impact 1.0
   title 'google_vertex_ai_custom_jobs resource test'
 
-      describe google_vertex_ai_custom_jobs(parent: custom_job['parent'], region: custom_job['region']) do
+  describe google_vertex_ai_custom_jobs(name: "projects/#{gcp_project_id}/locations/#{custom_job['region']}", region: custom_job['region']) do
       it { should exist }
-    end
+      its ('display_names') { should include custom_job['name']}
+  end
 end
