@@ -306,6 +306,11 @@ network_endpoint_group:
   name: inspec-gcp-endpoint-group
   default_port: 90
 
+global_network_endpoint_group:
+  name: inspec-gcp-global-endpoint-group
+  network_endpoint_type: INTERNET_IP_PORT
+  default_port: 90
+
 node_template:
   name: inspec-node-template
   label_key: key
@@ -545,3 +550,15 @@ dlp:
 
 region_security_policy:
   securitypolicy : "value_securitypolicy"
+
+endpoint:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
+  display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
