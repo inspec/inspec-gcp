@@ -18,6 +18,7 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   training_pipeline = input('training_pipeline', value: {
   "name": "value_name",
+  "job_id": "job_id",
   "region": "value_region",
   "parent": "value_parent"
 }, description: 'training_pipeline description')
@@ -25,10 +26,10 @@ control 'google_vertex_ai_training_pipeline-1.0' do
   impact 1.0
   title 'google_vertex_ai_training_pipeline resource test'
 
-        describe google_vertex_ai_training_pipeline(name: "projects/#{gcp_project_id}/locations/#{training_pipeline['region']}/trainingPipelines/#{training_pipeline['name']}", region: training_pipeline['region']) do
-       it { should exist }
-     end
-     describe google_vertex_ai_training_pipeline(name: "does_not_exit", region: training_pipeline['region']) do
-       it { should_not exist }
-     end
+    describe google_vertex_ai_training_pipeline(name: "projects/#{gcp_project_id}/locations/#{training_pipeline['region']}/trainingPipelines/#{training_pipeline['job_id']}", region: training_pipeline['region']) do
+      it { should exist }
+    end
+    describe google_vertex_ai_training_pipeline(name: "does_not_exit", region: training_pipeline['region']) do
+      it { should_not exist }
+    end
 end
