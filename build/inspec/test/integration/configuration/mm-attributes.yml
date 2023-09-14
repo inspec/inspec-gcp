@@ -562,3 +562,7 @@ endpoint:
   display_name : "value_displayname"
   etag : "value_etag"
   create_time : "value_createtime"
+training_pipeline:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"

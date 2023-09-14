@@ -1359,7 +1359,6 @@ resource "google_healthcare_dataset" "default" {
   time_zone = "UTC"
 }
 
-
 resource "google_service_directory_namespace" "example" {
   provider     = google-beta
   namespace_id = "example-namespace-${local.name_suffix}"
@@ -1412,4 +1411,3 @@ resource "google_service_directory_endpoint" "example" {
   address = "1.2.3.4"
   port    = 5353
 }
-
