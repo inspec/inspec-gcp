@@ -553,5 +553,24 @@ region_security_policy:
 
 training_pipeline:
   name : "value_name"
+  job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
+
+schedule:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  started_run_count : "value_startedruncount"
+  cron : "value_cron"
+  last_pause_time : "value_lastpausetime"
+  create_time : "value_createtime"
+  start_time : "value_starttime"
+  max_run_count : "value_maxruncount"
+  next_run_time : "value_nextruntime"
+  update_time : "value_updatetime"
+  last_resume_time : "value_lastresumetime"
+  max_concurrent_run_count : "value_maxconcurrentruncount"
+  state : "value_state"
+  display_name : "value_displayname"
+  end_time : "value_endtime"
