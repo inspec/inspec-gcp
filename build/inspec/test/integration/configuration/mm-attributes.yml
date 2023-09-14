@@ -553,5 +553,17 @@ region_security_policy:
 
 training_pipeline:
   name : "value_name"
+  job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
+
+tensorboard:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  blob_storage_path_prefix : "value_blobstoragepathprefix"
+  etag : "value_etag"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  description : "value_description"
