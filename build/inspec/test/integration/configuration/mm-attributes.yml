@@ -638,3 +638,15 @@ nas_job:
   display_name : "value_displayname"
   start_time : "value_starttime"
   update_time : "value_updatetime"
+
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
+
+featurestore:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  state : "value_state"
+  create_time : "value_createtime"
+  etag : "value_etag"
+  update_time : "value_updatetime"
