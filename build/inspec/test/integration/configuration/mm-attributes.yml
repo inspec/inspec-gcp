@@ -553,5 +553,14 @@ region_security_policy:
 
 training_pipeline:
   name : "value_name"
+  job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
+
+metadata_store:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  description : "value_description"
+  create_time : "value_createtime"
+  update_time : "value_updatetime"
