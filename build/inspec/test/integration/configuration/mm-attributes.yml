@@ -555,3 +555,9 @@ custom_job:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
+  job_id: "job_id"
+  
+training_pipeline:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
