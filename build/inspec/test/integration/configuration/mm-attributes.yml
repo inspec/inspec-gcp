@@ -547,9 +547,17 @@ dlp:
     type: "Infotype"
 
 
-
-region_security_policy:
-  securitypolicy : "value_securitypolicy"
+batch_prediction_job:
+  name : "value_name"
+  region : "value_region"
+  create_time : "value_createtime"
+  model_version_id : "1"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
 
 model:
   name : "value_name"
@@ -569,3 +577,14 @@ model:
   display_name : "value_displayname"
   version_create_time : "value_versioncreatetime"
   version_description : "value_versiondescription"
+
+custom_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  job_id: "job_id"
+  
+training_pipeline:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"

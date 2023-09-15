@@ -1346,23 +1346,3 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
-
-
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
-
-
-resource "google_ml_engine_model" "default" {
-  name        = "default-${local.name_suffix}"
-  description = "My model"
-  regions     = ["us-central1"]
-}
-
