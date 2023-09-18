@@ -546,7 +546,6 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
-
 endpoint:
   name : "value_name"
   region : "value_region"
@@ -558,6 +557,7 @@ endpoint:
   display_name : "value_displayname"
   etag : "value_etag"
   create_time : "value_createtime"
+
 batch_prediction_job:
   name : "value_name"
   region : "value_region"
