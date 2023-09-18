@@ -546,30 +546,12 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
-
-batch_prediction_job:
-  name : "value_name"
-  region : "value_region"
-  create_time : "value_createtime"
-  model_version_id : "1"
-  end_time : "value_endtime"
-  start_time : "value_starttime"
-  update_time : "value_updatetime"
-  state : "value_state"
-  model : "value_model"
-  display_name : "value_displayname"
-
-custom_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  job_id: "job_id"
-  
 training_pipeline:
   name : "value_name"
   job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
+
 
 nas_job:
   name : "value_name"
@@ -581,3 +563,44 @@ nas_job:
   display_name : "value_displayname"
   start_time : "value_starttime"
   update_time : "value_updatetime"
+
+batch_prediction_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  create_time : "value_createtime"
+  model_version_id : "value_modelversionid"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
+  service_account : "value_serviceaccount"
+
+custom_job:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
+
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
+
+endpoint:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
+  display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
+
+nas_jobs_nas_trial_detail:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  parameters : "value_parameters"
