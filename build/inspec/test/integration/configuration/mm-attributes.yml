@@ -588,3 +588,14 @@ schedule:
   state : "value_state"
   display_name : "value_displayname"
   end_time : "value_endtime"
+
+nas_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  end_time : "value_endtime"
+  state : "value_state"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
