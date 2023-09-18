@@ -546,6 +546,47 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
+training_pipeline:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
+
+
+nas_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  end_time : "value_endtime"
+  state : "value_state"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+
+batch_prediction_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  create_time : "value_createtime"
+  model_version_id : "value_modelversionid"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
+  service_account : "value_serviceaccount"
+
+custom_job:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
+
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
+
 endpoint:
   name : "value_name"
   region : "value_region"
@@ -558,37 +599,14 @@ endpoint:
   etag : "value_etag"
   create_time : "value_createtime"
 
-batch_prediction_job:
+index_endpoint:
   name : "value_name"
   region : "value_region"
-  create_time : "value_createtime"
-  model_version_id : "1"
-  end_time : "value_endtime"
-  start_time : "value_starttime"
-  update_time : "value_updatetime"
-  state : "value_state"
-  model : "value_model"
+  parent : "value_parent"
   display_name : "value_displayname"
-
-custom_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  job_id: "job_id"
-  
-training_pipeline:
-  name : "value_name"
-  job_id: "job_id"
-  region : "value_region"
-  parent : "value_parent"
-
-nas_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  end_time : "value_endtime"
-  state : "value_state"
   create_time : "value_createtime"
-  display_name : "value_displayname"
-  start_time : "value_starttime"
+  network : "value_network"
   update_time : "value_updatetime"
+  public_endpoint_domain_name : "value_publicendpointdomainname"
+  etag : "value_etag"
+  description : "value_description"
