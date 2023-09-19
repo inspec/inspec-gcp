@@ -1346,35 +1346,13 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
 
-
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
-
-
-resource "google_cloud_scheduler_job" "job" {
-  name             = "test-job-${local.name_suffix}"
-  description      = "test http job"
-  schedule         = "*/8 * * * *"
-  time_zone        = "America/New_York"
-  attempt_deadline = "320s"
-
-  retry_config {
-    retry_count = 1
+resource "google_vertex_ai_tensorboard" "tensorboard" {
+  display_name = "terraform-${local.name_suffix}"
+  description  = "sample description"
+  labels       = {
+    "key1" : "value1",
+    "key2" : "value2"
   }
-
-  http_target {
-    http_method = "POST"
-    uri         = "https://example.com/"
-    body        = base64encode("{\"foo\":\"bar\"}")
-  }
+  region       = "us-central1"
 }
-

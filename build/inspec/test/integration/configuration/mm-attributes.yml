@@ -546,6 +546,17 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
+endpoint:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
+  display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
 
 batch_prediction_job:
   name : "value_name"
@@ -571,6 +582,7 @@ training_pipeline:
   region : "value_region"
   parent : "value_parent"
 
+
 schedule:
   name : "value_name"
   region : "value_region"
@@ -588,6 +600,18 @@ schedule:
   state : "value_state"
   display_name : "value_displayname"
   end_time : "value_endtime"
+
+tensorboard:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  blob_storage_path_prefix : "value_blobstoragepathprefix"
+  etag : "value_etag"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  description : "value_description"
+
 
 nas_job:
   name : "value_name"
