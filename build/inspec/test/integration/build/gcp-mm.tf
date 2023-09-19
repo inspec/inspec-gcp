@@ -1346,19 +1346,6 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
-
-
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
-
 
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
@@ -1369,4 +1356,3 @@ resource "google_vertex_ai_tensorboard" "tensorboard" {
   }
   region       = "us-central1"
 }
-
