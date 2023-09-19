@@ -582,6 +582,17 @@ training_pipeline:
   region : "value_region"
   parent : "value_parent"
 
+tensorboard:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  blob_storage_path_prefix : "value_blobstoragepathprefix"
+  etag : "value_etag"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  description : "value_description"
+
 nas_job:
   name : "value_name"
   region : "value_region"
