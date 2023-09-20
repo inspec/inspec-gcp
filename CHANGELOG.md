@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.26 -->
+<!-- latest_release 1.11.27 -->
+## [v1.11.27](https://github.com/inspec/inspec-gcp/tree/v1.11.27) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5558-MAGIC-MODULE-vertex_ai-Featurestore - Resource Implementation [#483](https://github.com/inspec/inspec-gcp/pull/483) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.26](https://github.com/inspec/inspec-gcp/tree/v1.11.26) (2023-09-20)
 
 #### Merged Pull Requests
 - CHEF-5575-MAGIC-MODULE-vertex_ai-PipelineJob - Resource Implementation [#484](https://github.com/inspec/inspec-gcp/pull/484) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.25](https://github.com/inspec/inspec-gcp/tree/v1.11.25) (2023-09-19)
 
