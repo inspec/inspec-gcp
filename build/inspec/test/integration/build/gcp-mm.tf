@@ -1347,6 +1347,8 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
 }
 
 
+
+
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
   description  = "sample description"
@@ -1356,3 +1358,11 @@ resource "google_vertex_ai_tensorboard" "tensorboard" {
   }
   region       = "us-central1"
 }
+
+
+resource "google_ml_engine_model" "default" {
+  name        = "default-${local.name_suffix}"
+  description = "My model"
+  regions     = ["us-central1"]
+}
+
