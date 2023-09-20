@@ -345,10 +345,11 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_custom_job](docs/resources/google_vertex_ai_custom_job.md)                                         | [google_vertex_ai_custom_jobs](docs/resources/google_vertex_ai_custom_jobs.md)                                                 |
 | [google_vertex_ai_endpoint](docs/resources/google_vertex_ai_endpoint.md)                                             | [google_vertex_ai_endpoints](docs/resources/google_vertex_ai_endpoints.md)                                                     |
 | [google_vertex_ai_nas_job](docs/resources/google_vertex_ai_nas_job.md)                                               | [google_vertex_ai_nas_jobs](docs/resources/google_vertex_ai_nas_jobs.md)                                                       |
-| [google_vertex_ai_pipeline_job](docs/resources/google_vertex_ai_pipeline_job.md)                                               | [google_vertex_ai_pipeline_jobs](docs/resources/google_vertex_ai_pipeline_jobs.md)                                   |
-| [google_vertex_ai_schedule](docs/resources/google_vertex_ai_schedule.md)                                               | [google_vertex_ai_schedules](docs/resources/google_vertex_ai_schedules.md)                                   |
-| [google_vertex_ai_tensorboard](docs/resources/google_vertex_ai_tensorboard.md)                                               | [google_vertex_ai_tensorboards](docs/resources/google_vertex_ai_tensorboards.md)                                   |
-| [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                                               | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
+| [google_vertex_ai_pipeline_job](docs/resources/google_vertex_ai_pipeline_job.md)                                     | [google_vertex_ai_pipeline_jobs](docs/resources/google_vertex_ai_pipeline_jobs.md)                                   |
+| [google_vertex_ai_schedule](docs/resources/google_vertex_ai_schedule.md)                                             | [google_vertex_ai_schedules](docs/resources/google_vertex_ai_schedules.md)                                   |
+| [google_vertex_ai_tensorboard](docs/resources/google_vertex_ai_tensorboard.md)                                       | [google_vertex_ai_tensorboards](docs/resources/google_vertex_ai_tensorboards.md)                                   |
+| [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
+| [google_vertex_ai_featurestore](docs/resources/google_vertex_ai_featurestore.md)                           | [google_vertex_ai_featurestores](docs/resources/google_vertex_ai_featurestores.md)             |
 ## Examples
 
 ### Check SSH is Disabled for INGRESS across all GCP Projects
