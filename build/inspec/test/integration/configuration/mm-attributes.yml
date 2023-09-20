@@ -546,6 +546,21 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
+pipeline_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  end_time : "value_endtime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  create_time : "value_createtime"
+  schedule_name : "value_schedulename"
+  start_time : "value_starttime"
+  service_account : "value_serviceaccount"
+  display_name : "value_displayname"
+  template_uri : "value_templateuri"
+  network : "value_network"
+
 endpoint:
   name : "value_name"
   region : "value_region"
