@@ -1,11 +1,46 @@
 # Change Log
 
-<!-- latest_release 1.11.18 -->
+<!-- latest_release 1.11.25 -->
+## [v1.11.25](https://github.com/inspec/inspec-gcp/tree/v1.11.25) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5577-MAGIC-MODULE-vertex_ai-Schedule - Resource Implementation [#487](https://github.com/inspec/inspec-gcp/pull/487) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.24](https://github.com/inspec/inspec-gcp/tree/v1.11.24) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5581-MAGIC-MODULE-vertex_ai-Tensorboard - Resource Implementation [#489](https://github.com/inspec/inspec-gcp/pull/489) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.23](https://github.com/inspec/inspec-gcp/tree/v1.11.23) (2023-09-18)
+
+#### Merged Pull Requests
+- CHEF-5557-MAGIC-MODULE-vertex_ai-Endpoint - Resource Implementation [#482](https://github.com/inspec/inspec-gcp/pull/482) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.22](https://github.com/inspec/inspec-gcp/tree/v1.11.22) (2023-09-18)
+
+#### Merged Pull Requests
+- CHEF-5573-MAGIC-MODULE-vertex_ai-NasJob - Resource Implementation [#488](https://github.com/inspec/inspec-gcp/pull/488) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.21](https://github.com/inspec/inspec-gcp/tree/v1.11.21) (2023-09-15)
+
+#### Merged Pull Requests
+- CHEF-5549-MAGIC-MODULE-vertex_ai-BatchPredictionJob - Resource Implementation [#477](https://github.com/inspec/inspec-gcp/pull/477) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.20](https://github.com/inspec/inspec-gcp/tree/v1.11.20) (2023-09-15)
+
+#### Merged Pull Requests
+- CHEF-5550-MAGIC-MODULE-vertex_ai-CustomJob - Resource Implementation [#476](https://github.com/inspec/inspec-gcp/pull/476) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.19](https://github.com/inspec/inspec-gcp/tree/v1.11.19) (2023-09-14)
+
+#### Merged Pull Requests
+- CHEF-5585-MAGIC-MODULE-vertex_ai-TrainingPipeline - Resource Implementation [#479](https://github.com/inspec/inspec-gcp/pull/479) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.18](https://github.com/inspec/inspec-gcp/tree/v1.11.18) (2023-09-11)
 
 #### Merged Pull Requests
 - CHEF-5552-MAGIC-MODULE-vertex_ai-Dataset - Resource Implementation [#467](https://github.com/inspec/inspec-gcp/pull/467) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.17](https://github.com/inspec/inspec-gcp/tree/v1.11.17) (2023-09-08)
 
