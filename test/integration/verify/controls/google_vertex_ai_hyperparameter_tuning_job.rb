@@ -17,15 +17,15 @@ title 'Test GCP google_vertex_ai_hyperparameter_tuning_job resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   hyperparameter_tuning_job = input('hyperparameter_tuning_job', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "state": "value_state",
+  "name": "9200900561803673600",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/hyperparameterTuningJobs/",
+  "state": "JOB_STATE_RUNNING",
   "end_time": "value_endtime",
   "update_time": "value_updatetime",
   "start_time": "value_starttime",
   "create_time": "value_createtime",
-  "display_name": "value_displayname"
+  "display_name": "inspec-hyper-test-hyperparameter-tuning-job"
 }, description: 'hyperparameter_tuning_job description')
 control 'google_vertex_ai_hyperparameter_tuning_job-1.0' do
   impact 1.0
