@@ -17,12 +17,13 @@ title 'Test GCP google_vertex_ai_featurestores_entity_type resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   featurestores_entity_type = input('featurestores_entity_type', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "description": "value_description",
-  "create_time": "value_createtime",
-  "etag": "value_etag",
-  "update_time": "value_updatetime"
+    "name": "entity_type_1",
+    "region": "us-central1",
+    "description": "value_description",
+    "create_time": "2023-09-14T07:42:36.438713Z",
+    "etag": "AMEw9yPMYJMlc3n6zzbc0vVMquWBrXyW-qjvfoHwzRQVGwFT3LU75lZIahPMBkYQlHzZ",
+    "update_time": "2023-09-14T07:42:36.438714Z",
+    "featurestore": "feature_store_1"
 }, description: 'featurestores_entity_type description')
 control 'google_vertex_ai_featurestores_entity_type-1.0' do
   impact 1.0
@@ -30,8 +31,11 @@ control 'google_vertex_ai_featurestores_entity_type-1.0' do
 
   describe google_vertex_ai_featurestores_entity_type(name: "projects/#{gcp_project_id}/locations/#{featurestores_entity_type['region']}/featurestores/#{featurestores_entity_type['featurestore']}/entityTypes/#{featurestores_entity_type['name']}", region: featurestores_entity_type['region']) do
   	it { should exist }
-  	its('description') { should cmp featurestores_entity_type['description'] }
-  	its('name') { should cmp featurestores_entity_type['name'] }
+  	its('monitoring_config.snapshot_analysis.disabled') { should cmp true }
+    its('monitoring_config.snapshot_analysis.staleness_days') { should cmp 21 }
+    its('monitoring_config.numerical_threshold_config.value') { should cmp 0.3 }
+    its('monitoring_config.categorical_threshold_config.value') { should cmp 0.3 }
+  	its('name') { should cmp name }
   	its('create_time') { should cmp featurestores_entity_type['create_time'] }
   	its('etag') { should cmp featurestores_entity_type['etag'] }
   	its('update_time') { should cmp featurestores_entity_type['update_time'] }

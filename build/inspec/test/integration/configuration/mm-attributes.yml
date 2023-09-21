@@ -584,8 +584,6 @@ custom_job:
   region : "value_region"
   parent : "value_parent"
 
-region_security_policy:
-  securitypolicy : "value_securitypolicy"
 
 endpoint:
   name : "value_name"
