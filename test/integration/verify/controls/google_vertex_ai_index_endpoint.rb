@@ -17,10 +17,10 @@ title 'Test GCP google_vertex_ai_index_endpoint resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   index_endpoint = input('index_endpoint', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "display_name": "value_displayname",
+  "name": "7761100736749895680",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/index-endpoints/",
+  "display_name": "inspec-index-endpoint",
   "create_time": "value_createtime",
   "network": "value_network",
   "update_time": "value_updatetime",

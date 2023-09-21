@@ -600,10 +600,10 @@ endpoint:
   create_time : "value_createtime"
 
 index_endpoint:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  display_name : "value_displayname"
+  name : "7761100736749895680"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/index-endpoints/"
+  display_name : "inspec-index-endpoint"
   create_time : "value_createtime"
   network : "value_network"
   update_time : "value_updatetime"
