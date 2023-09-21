@@ -1346,48 +1346,8 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
 
 
-resource "google_healthcare_dataset" "default" {
-  name      = "example-dataset-${local.name_suffix}"
-  location  = "us-central1"
-  time_zone = "UTC"
-}
-
-
-resource "google_vertex_ai_featurestore" "featurestore" {
-  name     = "terraform-${local.name_suffix}"
-  labels = {
-    foo = "bar"
-  }
-  region   = "us-central1"
-  online_serving_config {
-    fixed_node_count = 2
-  }
-}
-
-resource "google_vertex_ai_featurestore_entitytype" "entity" {
-  name     = "terraform-${local.name_suffix}"
-  labels = {
-    foo = "bar"
-  }
-  featurestore = google_vertex_ai_featurestore.featurestore.id
-}
-
-resource "google_vertex_ai_featurestore_entitytype_feature" "feature" {
-  name     = "terraform-${local.name_suffix}"
-  labels = {
-    foo = "bar"
-  }
-  entitytype = google_vertex_ai_featurestore_entitytype.entity.id
-
-  value_type = "INT64_ARRAY"
-}
 
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
@@ -1396,7 +1356,14 @@ resource "google_vertex_ai_tensorboard" "tensorboard" {
     "key1" : "value1",
     "key2" : "value2"
   }
-  region = "us-central1"
+  region       = "us-central1"
+}
+
+
+resource "google_ml_engine_model" "default" {
+  name        = "default-${local.name_suffix}"
+  description = "My model"
+  regions     = ["us-central1"]
 }
 
 
