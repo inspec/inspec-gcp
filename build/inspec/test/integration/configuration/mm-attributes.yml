@@ -546,86 +546,11 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
-pipeline_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  end_time : "value_endtime"
-  update_time : "value_updatetime"
-  state : "value_state"
-  create_time : "value_createtime"
-  schedule_name : "value_schedulename"
-  start_time : "value_starttime"
-  service_account : "value_serviceaccount"
-  display_name : "value_displayname"
-  template_uri : "value_templateuri"
-  network : "value_network"
-
-endpoint:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  update_time : "value_updatetime"
-  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
-  description : "value_description"
-  network : "value_network"
-  display_name : "value_displayname"
-  etag : "value_etag"
-  create_time : "value_createtime"
-
-batch_prediction_job:
-  name : "value_name"
-  region : "value_region"
-  create_time : "value_createtime"
-  model_version_id : "1"
-  end_time : "value_endtime"
-  start_time : "value_starttime"
-  update_time : "value_updatetime"
-  state : "value_state"
-  model : "value_model"
-  display_name : "value_displayname"
-
-custom_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  job_id: "job_id"
-  
 training_pipeline:
   name : "value_name"
   job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
-
-
-schedule:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  started_run_count : "value_startedruncount"
-  cron : "value_cron"
-  last_pause_time : "value_lastpausetime"
-  create_time : "value_createtime"
-  start_time : "value_starttime"
-  max_run_count : "value_maxruncount"
-  next_run_time : "value_nextruntime"
-  update_time : "value_updatetime"
-  last_resume_time : "value_lastresumetime"
-  max_concurrent_run_count : "value_maxconcurrentruncount"
-  state : "value_state"
-  display_name : "value_displayname"
-  end_time : "value_endtime"
-
-tensorboard:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  update_time : "value_updatetime"
-  blob_storage_path_prefix : "value_blobstoragepathprefix"
-  etag : "value_etag"
-  create_time : "value_createtime"
-  display_name : "value_displayname"
-  description : "value_description"
 
 
 nas_job:
@@ -639,11 +564,48 @@ nas_job:
   start_time : "value_starttime"
   update_time : "value_updatetime"
 
-featurestore:
+batch_prediction_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  create_time : "value_createtime"
+  model_version_id : "value_modelversionid"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
+  service_account : "value_serviceaccount"
+
+custom_job:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
+
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
+
+endpoint:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
+  display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
+
+hyperparameter_tuning_job:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
   state : "value_state"
-  create_time : "value_createtime"
-  etag : "value_etag"
+  end_time : "value_endtime"
   update_time : "value_updatetime"
+  start_time : "value_starttime"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
