@@ -37,7 +37,7 @@ class VertexAITensorboardsExperiments < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('tensorboardsExperiments')
+    @table = fetch_wrapped_resource('tensorboardExperiments')
   end
 
   def fetch_wrapped_resource(wrap_path)
