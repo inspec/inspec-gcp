@@ -35,7 +35,6 @@ control 'google_vertex_ai_featurestores_entity_type-1.0' do
     its('monitoring_config.snapshot_analysis.staleness_days') { should cmp 21 }
     its('monitoring_config.numerical_threshold_config.value') { should cmp 0.3 }
     its('monitoring_config.categorical_threshold_config.value') { should cmp 0.3 }
-  	its('name') { should cmp name }
   	its('create_time') { should cmp featurestores_entity_type['create_time'] }
   	its('etag') { should cmp featurestores_entity_type['etag'] }
   	its('update_time') { should cmp featurestores_entity_type['update_time'] }

@@ -30,7 +30,6 @@ control 'google_vertex_ai_featurestores_entity_types-1.0' do
   impact 1.0
   title 'google_vertex_ai_featurestores_entity_types resource test'
 
-  # require "pry";binding.pry
   describe google_vertex_ai_featurestores_entity_types(parent: "projects/#{gcp_project_id}/locations/#{featurestores_entity_type['region']}/featurestores/#{featurestores_entity_type['featurestore']}", region: featurestores_entity_type['region']) do
       it { should exist }
   end
