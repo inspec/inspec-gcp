@@ -604,6 +604,7 @@ tensorboards_experiment:
   region : "us-central1"
   parent : "projects/165434197229/locations/us-central1/tensorboards/6346548241290493952/experiments/"
   description : "value_description"
+  tensorboard: "6346548241290493952"
   source : "value_source"
   display_name : "inspec-tensor-experiment"
   create_time : "value_createtime"

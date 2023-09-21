@@ -17,15 +17,16 @@ title 'Test GCP google_vertex_ai_tensorboards_experiments resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   tensorboards_experiment = input('tensorboards_experiment', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "description": "value_description",
-  "source": "value_source",
-  "display_name": "value_displayname",
-  "create_time": "value_createtime",
-  "update_time": "value_updatetime",
-  "etag": "value_etag"
+    "name": "inspec-tensor-experiment",
+    "region": "us-central1",
+    "parent": "projects/165434197229/locations/us-central1/tensorboards/6346548241290493952/experiments/",
+    "description": "value_description",
+    "tensorboard": "6346548241290493952",
+    "source": "value_source",
+    "display_name": "inspec-tensor-experiment",
+    "create_time": "value_createtime",
+    "update_time": "value_updatetime",
+    "etag": "value_etag"
 }, description: 'tensorboards_experiment description')
 control 'google_vertex_ai_tensorboards_experiments-1.0' do
   impact 1.0

@@ -17,12 +17,13 @@ title 'Test GCP google_vertex_ai_tensorboards_experiment resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   tensorboards_experiment = input('tensorboards_experiment', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "inspec-tensor-experiment",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/tensorboards/6346548241290493952/experiments/",
   "description": "value_description",
+  "tensorboard": "6346548241290493952",
   "source": "value_source",
-  "display_name": "value_displayname",
+  "display_name": "inspec-tensor-experiment",
   "create_time": "value_createtime",
   "update_time": "value_updatetime",
   "etag": "value_etag"
