@@ -350,6 +350,8 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_tensorboard](docs/resources/google_vertex_ai_tensorboard.md)                                       | [google_vertex_ai_tensorboards](docs/resources/google_vertex_ai_tensorboards.md)                                   |
 | [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
 | [google_vertex_ai_featurestore](docs/resources/google_vertex_ai_featurestore.md)                           | [google_vertex_ai_featurestores](docs/resources/google_vertex_ai_featurestores.md)             |
+| [google_vertex_ai_featurestores_entity_type](docs/resources/google_vertex_ai_featurestores_entity_type.md)                           | [google_vertex_ai_featurestores_entity_types](docs/resources/google_vertex_ai_featurestores_entity_types.md)             |
+| [google_vertex_ai_featurestore_entity_type_feature](docs/resources/google_vertex_ai_featurestore_entity_type_feature.md)                           | [google_vertex_ai_featurestore_entity_type_features](docs/resources/google_vertex_ai_featurestore_entity_type_features.md)             |
 ## Examples
 
 ### Check SSH is Disabled for INGRESS across all GCP Projects
