@@ -17,7 +17,7 @@ managed_zone:
   dns_name: 'my.domain.com.'
   description: 'A test DNS zone'
   label_key: key
-  label_value: 'labvalue'
+  label_value: 'value'
 
 record_set:
   name: 'backend.my.domain.com.'
@@ -546,7 +546,7 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
-pipeline_job:
+featurestore:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
@@ -554,12 +554,13 @@ pipeline_job:
   update_time : "value_updatetime"
   state : "value_state"
   create_time : "value_createtime"
-  schedule_name : "value_schedulename"
-  start_time : "value_starttime"
-  service_account : "value_serviceaccount"
-  display_name : "value_displayname"
-  template_uri : "value_templateuri"
-  network : "value_network"
+  etag : "value_etag"
+
+training_pipeline:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
 
 endpoint:
   name : "value_name"
@@ -590,12 +591,7 @@ custom_job:
   region : "value_region"
   parent : "value_parent"
   job_id: "job_id"
-  
-training_pipeline:
-  name : "value_name"
-  job_id: "job_id"
-  region : "value_region"
-  parent : "value_parent"
+
 
 
 schedule:
@@ -634,18 +630,15 @@ hyperparameter_tuning_job:
   state : "JOB_STATE_RUNNING"
   end_time : "value_endtime"
   create_time : "value_createtime"
+
+index_endpoint:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
   display_name : "value_displayname"
   start_time : "value_starttime"
   update_time : "value_updatetime"
 
-featurestore:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  state : "value_state"
-  create_time : "value_createtime"
-  etag : "value_etag"
-  update_time : "value_updatetime"
 
 studies_trial:
   name : "1"
@@ -659,3 +652,10 @@ studies_trial:
   custom_job : "value_customjob"
   state : "value_state"
   id : "value_id"
+
+tensorboard_experiment_run:
+  name : "sklearn-2023-09-22-17-16-16-a25b0"
+  tensorboard: "1976367752880848896"
+  experiment: "autologging-experiment-fyc24zb2"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/tensorboards/1976367752880848896/experiments/autologging-experiment-fyc24zb2/runs/"
