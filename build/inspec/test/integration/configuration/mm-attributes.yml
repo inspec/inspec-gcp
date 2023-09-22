@@ -17,7 +17,7 @@ managed_zone:
   dns_name: 'my.domain.com.'
   description: 'A test DNS zone'
   label_key: key
-  label_value: 'value'
+  label_value: 'labvalue'
 
 record_set:
   name: 'backend.my.domain.com.'
