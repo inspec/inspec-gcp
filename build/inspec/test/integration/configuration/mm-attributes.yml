@@ -645,6 +645,8 @@ featurestores_entity_type:
   update_time : "value_updatetime"
 
 tensorboard_experiment_run:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
+  name : "sklearn-2023-09-22-17-16-16-a25b0"
+  tensorboard: "1976367752880848896"
+  experiment: "autologging-experiment-fyc24zb2"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/tensorboards/1976367752880848896/experiments/autologging-experiment-fyc24zb2/runs/"
