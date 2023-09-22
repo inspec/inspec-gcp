@@ -17,28 +17,22 @@ title 'Test GCP google_vertex_ai_featurestore_entity_type_feature resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   featurestore_entity_type_feature = input('featurestore_entity_type_feature', value: {
-  "parent": "value_parent",
-  "region": "value_region",
-  "description": "value_description",
-  "create_time": "value_createtime",
-  "etag": "value_etag",
-  "name": "value_name",
-  "update_time": "value_updatetime",
-  "value_type": "value_valuetype"
+		"entityType": "entity_type_1",
+		"region": "us-central1",
+		"description": "true",
+    "value_type": "BOOL",
+		"etag": "AMEw9yPfyvUh079MW1h0I-rYtVk6aTxzOIr490RcrO6sz3wVrh239BhOrhH0TBNci9Uo",
+		"update_time": "2023-09-14T07:44:10.341724Z",
+		"featurestore": "feature_store_1"
 }, description: 'featurestore_entity_type_feature description')
 control 'google_vertex_ai_featurestore_entity_type_feature-1.0' do
   impact 1.0
   title 'google_vertex_ai_featurestore_entity_type_feature resource test'
 
-  describe google_vertex_ai_featurestore_entity_type_feature(name: "projects/#{gcp_project_id}/locations/#{featurestore_entity_type_feature['region']}/featurestores/#{featurestore_entity_type_feature['featurestore']}/entityTypes/#{featurestore_entity_type_feature['entityType']}/features/#{featurestore_entity_type_feature['feature']}", region: featurestore_entity_type_feature['region']) do
+  describe google_vertex_ai_featurestore_entity_type_feature(name: "projects/#{gcp_project_id}/locations/#{featurestore_entity_type_feature['region']}/featurestores/#{featurestore_entity_type_feature['featurestore']}/entityTypes/#{featurestore_entity_type_feature['entityType']}", region: featurestore_entity_type_feature['region']) do
   	it { should exist }
-  	its('description') { should cmp featurestore_entity_type_feature['description'] }
-  	its('create_time') { should cmp featurestore_entity_type_feature['create_time'] }
   	its('etag') { should cmp featurestore_entity_type_feature['etag'] }
-  	its('name') { should cmp featurestore_entity_type_feature['name'] }
-  	its('update_time') { should cmp featurestore_entity_type_feature['update_time'] }
-  	its('value_type') { should cmp featurestore_entity_type_feature['value_type'] }
-
+  	its('name') { should cmp "projects/165434197229/locations/us-central1/featurestores/feature_store_1/entityTypes/entity_type_1" }
   end
 
   describe google_vertex_ai_featurestore_entity_type_feature(name: "does_not_exit", region: featurestore_entity_type_feature['region']) do

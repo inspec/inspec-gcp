@@ -38,7 +38,7 @@ class VertexAIFeaturestoreEntityTypeFeatures < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('featurestoreEntityTypeFeatures')
+    @table = fetch_wrapped_resource('features')
   end
 
   def fetch_wrapped_resource(wrap_path)
