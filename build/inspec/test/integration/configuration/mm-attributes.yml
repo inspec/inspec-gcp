@@ -17,7 +17,7 @@ managed_zone:
   dns_name: 'my.domain.com.'
   description: 'A test DNS zone'
   label_key: key
-  label_value: 'labvalue'
+  label_value: 'value'
 
 record_set:
   name: 'backend.my.domain.com.'
@@ -546,6 +546,21 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
+pipeline_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  end_time : "value_endtime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  create_time : "value_createtime"
+  schedule_name : "value_schedulename"
+  start_time : "value_starttime"
+  service_account : "value_serviceaccount"
+  display_name : "value_displayname"
+  template_uri : "value_templateuri"
+  network : "value_network"
+
 endpoint:
   name : "value_name"
   region : "value_region"
@@ -612,13 +627,12 @@ tensorboard:
   display_name : "value_displayname"
   description : "value_description"
 
-
-nas_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
+hyperparameter_tuning_job:
+  name : "9200900561803673600"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/hyperparameterTuningJobs/"
+  state : "JOB_STATE_RUNNING"
   end_time : "value_endtime"
-  state : "value_state"
   create_time : "value_createtime"
   display_name : "value_displayname"
   start_time : "value_starttime"
