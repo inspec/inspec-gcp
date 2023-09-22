@@ -556,11 +556,6 @@ featurestore:
   create_time : "value_createtime"
   etag : "value_etag"
 
-training_pipeline:
-  name : "value_name"
-  job_id: "job_id"
-  region : "value_region"
-  parent : "value_parent"
 
 endpoint:
   name : "value_name"
@@ -592,10 +587,9 @@ custom_job:
   parent : "value_parent"
   job_id: "job_id"
 
-
-
-schedule:
+training_pipeline:
   name : "value_name"
+  job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
   started_run_count : "value_startedruncount"
@@ -612,7 +606,7 @@ schedule:
   display_name : "value_displayname"
   end_time : "value_endtime"
 
-tensorboard:
+nas_job:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
@@ -630,11 +624,6 @@ hyperparameter_tuning_job:
   state : "JOB_STATE_RUNNING"
   end_time : "value_endtime"
   create_time : "value_createtime"
-
-index_endpoint:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
   display_name : "value_displayname"
   start_time : "value_starttime"
   update_time : "value_updatetime"
@@ -659,3 +648,16 @@ tensorboard_experiment_run:
   experiment: "autologging-experiment-fyc24zb2"
   region : "us-central1"
   parent : "projects/165434197229/locations/us-central1/tensorboards/1976367752880848896/experiments/autologging-experiment-fyc24zb2/runs/"
+
+
+tensorboards_experiment:
+  name : "inspec-tensor-experiment"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/tensorboards/6346548241290493952/experiments/"
+  description : "value_description"
+  tensorboard: "6346548241290493952"
+  source : "value_source"
+  display_name : "inspec-tensor-experiment"
+  create_time : "value_createtime"
+  update_time : "value_updatetime"
+  etag : "value_etag"

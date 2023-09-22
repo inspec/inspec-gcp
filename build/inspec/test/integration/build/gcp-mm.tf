@@ -1410,10 +1410,8 @@ resource "google_vertex_ai_index_endpoint" "index_endpoint" {
   ]
 }
 
-resource "google_service_networking_connection" "vertex_vpc_connection" {
-  network                 = data.google_compute_network.vertex_network.id
-  service                 = "servicenetworking.googleapis.com"
-  reserved_peering_ranges = [google_compute_global_address.vertex_range.name]
+  address = "1.2.3.4"
+  port    = 5353
 }
 
 resource "google_compute_global_address" "vertex_range" {
