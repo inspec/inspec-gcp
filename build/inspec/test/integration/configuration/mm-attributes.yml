@@ -546,21 +546,6 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
-pipeline_job:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
-  end_time : "value_endtime"
-  update_time : "value_updatetime"
-  state : "value_state"
-  create_time : "value_createtime"
-  schedule_name : "value_schedulename"
-  start_time : "value_starttime"
-  service_account : "value_serviceaccount"
-  display_name : "value_displayname"
-  template_uri : "value_templateuri"
-  network : "value_network"
-
 endpoint:
   name : "value_name"
   region : "value_region"
@@ -647,3 +632,16 @@ featurestore:
   create_time : "value_createtime"
   etag : "value_etag"
   update_time : "value_updatetime"
+
+studies_trial:
+  name : "1"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/studies/2975668570413/trials/"
+  study: "890385007008"
+  start_time : "value_starttime"
+  end_time : "value_endtime"
+  infeasible_reason : "value_infeasiblereason"
+  client_id : "value_clientid"
+  custom_job : "value_customjob"
+  state : "value_state"
+  id : "value_id"
