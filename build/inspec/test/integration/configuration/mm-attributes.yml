@@ -634,9 +634,10 @@ featurestore:
   update_time : "value_updatetime"
 
 studies_trial:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
+  name : "1"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/studies/2975668570413/trials/"
+  study: "890385007008"
   start_time : "value_starttime"
   end_time : "value_endtime"
   infeasible_reason : "value_infeasiblereason"
