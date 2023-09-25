@@ -17,14 +17,15 @@ title 'Test GCP google_vertex_ai_datasets_saved_queries resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   datasets_saved_query = input('datasets_saved_query', value: {
-  "parent": "value_parent",
-  "region": "value_region",
+  "parent": "projects/165434197229/locations/us-central1/datasets/1044994542735982592/savedQueries/",
+  "region": "us-central1",
+  "dataset": "1044994542735982592",
   "update_time": "value_updatetime",
   "problem_type": "value_problemtype",
-  "name": "value_name",
+  "name": "2236927819407949824",
   "create_time": "value_createtime",
   "etag": "value_etag",
-  "display_name": "value_displayname",
+  "display_name": "inspec-annotation-test",
   "annotation_filter": "value_annotationfilter"
 }, description: 'datasets_saved_query description')
 control 'google_vertex_ai_datasets_saved_queries-1.0' do
@@ -32,6 +33,8 @@ control 'google_vertex_ai_datasets_saved_queries-1.0' do
   title 'google_vertex_ai_datasets_saved_queries resource test'
 
       describe google_vertex_ai_datasets_saved_queries(parent: "projects/#{gcp_project_id}/locations/#{datasets_saved_query['region']}/datasets/#{datasets_saved_query['dataset']}", region: datasets_saved_query['region']) do
-      it { should exist }
+        it { should exist }
+        its('names') { should include datasets_saved_query['parent']+ datasets_saved_query['name']}
+        its('display_names'){ should include datasets_saved_query['display_name']}
     end
 end
