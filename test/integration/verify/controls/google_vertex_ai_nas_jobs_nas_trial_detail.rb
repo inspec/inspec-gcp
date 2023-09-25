@@ -17,10 +17,11 @@ title 'Test GCP google_vertex_ai_nas_jobs_nas_trial_detail resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   nas_jobs_nas_trial_detail = input('nas_jobs_nas_trial_detail', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "parameters": "value_parameters"
+    "name": "1",
+    "region": "us-central1",
+    "nasJob": "3217974009958236160",
+    "parent": "projects/ppradhan/locations/us-central1/nasJobs/3217974009958236160/nasTrialDetails/",
+    "parameters": "value_parameters"
 }, description: 'nas_jobs_nas_trial_detail description')
 control 'google_vertex_ai_nas_jobs_nas_trial_detail-1.0' do
   impact 1.0
