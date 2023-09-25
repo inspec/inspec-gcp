@@ -1346,8 +1346,11 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-
-
+resource "google_healthcare_dataset" "default" {
+  name      = "example-dataset-${local.name_suffix}"
+  location  = "us-central1"
+  time_zone = "UTC"
+}
 
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
@@ -1409,22 +1412,3 @@ resource "google_vertex_ai_index_endpoint" "index_endpoint" {
     google_service_networking_connection.vertex_vpc_connection
   ]
 }
-
-  address = "1.2.3.4"
-  port    = 5353
-}
-
-resource "google_compute_global_address" "vertex_range" {
-  name          = "address-name-${local.name_suffix}"
-  purpose       = "VPC_PEERING"
-  address_type  = "INTERNAL"
-  prefix_length = 24
-  network       = data.google_compute_network.vertex_network.id
-}
-
-data "google_compute_network" "vertex_network" {
-  name       = "network-name-${local.name_suffix}"
-}
-
-data "google_project" "project" {}
-

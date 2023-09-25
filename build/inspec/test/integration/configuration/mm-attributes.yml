@@ -546,16 +546,58 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
+<<<<<<< HEAD
+training_pipeline:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
+
+
+nas_job:
+=======
 featurestore:
+>>>>>>> main
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
   end_time : "value_endtime"
+<<<<<<< HEAD
+  state : "value_state"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+
+batch_prediction_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  create_time : "value_createtime"
+  model_version_id : "value_modelversionid"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
+  service_account : "value_serviceaccount"
+
+custom_job:
+  name : "value_name"
+  job_id: "job_id"
+  region : "value_region"
+  parent : "value_parent"
+
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
+=======
   update_time : "value_updatetime"
   state : "value_state"
   create_time : "value_createtime"
   etag : "value_etag"
 
+>>>>>>> main
 
 endpoint:
   name : "value_name"
@@ -569,10 +611,19 @@ endpoint:
   etag : "value_etag"
   create_time : "value_createtime"
 
-batch_prediction_job:
-  name : "value_name"
-  region : "value_region"
+index_endpoint:
+  name : "7761100736749895680"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/index-endpoints/"
+  display_name : "inspec-index-endpoint"
   create_time : "value_createtime"
+<<<<<<< HEAD
+  network : "value_network"
+  update_time : "value_updatetime"
+  public_endpoint_domain_name : "value_publicendpointdomainname"
+  etag : "value_etag"
+  description : "value_description"
+=======
   model_version_id : "1"
   end_time : "value_endtime"
   start_time : "value_starttime"
@@ -661,3 +712,4 @@ tensorboards_experiment:
   create_time : "value_createtime"
   update_time : "value_updatetime"
   etag : "value_etag"
+>>>>>>> main
