@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.35 -->
+<!-- latest_release 1.11.36 -->
+## [v1.11.36](https://github.com/inspec/inspec-gcp/tree/v1.11.36) (2023-09-25)
+
+#### Merged Pull Requests
+- CHEF-5571-MAGIC-MODULE-vertex_ai-Models__evaluation - Resource Implementation [#506](https://github.com/inspec/inspec-gcp/pull/506) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.35](https://github.com/inspec/inspec-gcp/tree/v1.11.35) (2023-09-25)
 
 #### Merged Pull Requests
 - CHEF-5562-MAGIC-MODULE-vertex_ai-IndexEndpoint - Resource Implementation [#497](https://github.com/inspec/inspec-gcp/pull/497) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.34](https://github.com/inspec/inspec-gcp/tree/v1.11.34) (2023-09-22)
 
