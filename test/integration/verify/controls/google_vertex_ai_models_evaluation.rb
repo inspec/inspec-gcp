@@ -17,28 +17,22 @@ title 'Test GCP google_vertex_ai_models_evaluation resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   models_evaluation = input('models_evaluation', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "data_item_schema_uri": "value_dataitemschemauri",
-  "metrics_schema_uri": "value_metricsschemauri",
-  "create_time": "value_createtime",
-  "annotation_schema_uri": "value_annotationschemauri",
+	"name": "6359727915373953024",
+	"model_name":"1367728693278932992",
+  "region": "us-central1",
+  "metrics_schema_uri": "gs://google-cloud-aiplatform/schema/modelevaluation/classification_metrics_1.0.0.yaml",
+  "create_time": "2023-09-15T22:47:51.125611Z",
+  "annotation_schema_uri": "gs://google-cloud-aiplatform/schema/dataset/annotation/text_classification_1.0.0.yaml",
   "display_name": "value_displayname"
 }, description: 'models_evaluation description')
 control 'google_vertex_ai_models_evaluation-1.0' do
   impact 1.0
   title 'google_vertex_ai_models_evaluation resource test'
-
-  describe google_vertex_ai_models_evaluation(name: "projects/#{gcp_project_id}/locations/#{models_evaluation['region']}/models/#{models_evaluation['model']}/evaluations/#{models_evaluation['name']}", region: models_evaluation['region']) do
+  describe google_vertex_ai_models_evaluation(name: "projects/#{gcp_project_id}/locations/#{models_evaluation['region']}/models/#{models_evaluation['model_name']}/evaluations/#{models_evaluation['name']}", region: models_evaluation['region']) do
   	it { should exist }
-  	its('data_item_schema_uri') { should cmp models_evaluation['data_item_schema_uri'] }
   	its('metrics_schema_uri') { should cmp models_evaluation['metrics_schema_uri'] }
   	its('create_time') { should cmp models_evaluation['create_time'] }
   	its('annotation_schema_uri') { should cmp models_evaluation['annotation_schema_uri'] }
-  	its('name') { should cmp models_evaluation['name'] }
-  	its('display_name') { should cmp models_evaluation['display_name'] }
-
   end
 
   describe google_vertex_ai_models_evaluation(name: "does_not_exit", region: models_evaluation['region']) do

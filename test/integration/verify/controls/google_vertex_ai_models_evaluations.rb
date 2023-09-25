@@ -17,9 +17,9 @@ title 'Test GCP google_vertex_ai_models_evaluations resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   models_evaluation = input('models_evaluation', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "6359727915373953024",
+  "model_name":"1367728693278932992",
+  "region": "us-central1",
   "data_item_schema_uri": "value_dataitemschemauri",
   "metrics_schema_uri": "value_metricsschemauri",
   "create_time": "value_createtime",
@@ -30,7 +30,8 @@ control 'google_vertex_ai_models_evaluations-1.0' do
   impact 1.0
   title 'google_vertex_ai_models_evaluations resource test'
 
-      describe google_vertex_ai_models_evaluations(parent: "projects/#{gcp_project_id}/locations/#{models_evaluation['region']}/models/#{models_evaluation['model']}", region: models_evaluation['region']) do
+
+      describe google_vertex_ai_models_evaluations(parent: "projects/#{gcp_project_id}/locations/#{models_evaluation['region']}/models/#{models_evaluation['model_name']}", region: models_evaluation['region']) do
       it { should exist }
     end
 end
