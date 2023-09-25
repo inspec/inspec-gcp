@@ -1,11 +1,71 @@
 # Change Log
 
-<!-- latest_release 1.11.23 -->
+<!-- latest_release 1.11.35 -->
+## [v1.11.35](https://github.com/inspec/inspec-gcp/tree/v1.11.35) (2023-09-25)
+
+#### Merged Pull Requests
+- CHEF-5562-MAGIC-MODULE-vertex_ai-IndexEndpoint - Resource Implementation [#497](https://github.com/inspec/inspec-gcp/pull/497) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.34](https://github.com/inspec/inspec-gcp/tree/v1.11.34) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5582-MAGIC-MODULE-vertex_ai-Tensorboards__experiment - Resource Implementation [#499](https://github.com/inspec/inspec-gcp/pull/499) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.33](https://github.com/inspec/inspec-gcp/tree/v1.11.33) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5583-MAGIC-MODULE-vertex_ai-Tensorboards__experiments__run - Resource Implementation [#513](https://github.com/inspec/inspec-gcp/pull/513) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.32](https://github.com/inspec/inspec-gcp/tree/v1.11.32) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5560-MAGIC-MODULE-vertex_ai-Featurestores__entityTypes__feature - Resource Implementation [#517](https://github.com/inspec/inspec-gcp/pull/517) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.31](https://github.com/inspec/inspec-gcp/tree/v1.11.31) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5561-MAGIC-MODULE-vertex_ai-HyperparameterTuningJob - Resource Implementation [#515](https://github.com/inspec/inspec-gcp/pull/515) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.30](https://github.com/inspec/inspec-gcp/tree/v1.11.30) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5560-MAGIC-MODULE-vertex_ai-Featurestores__entityType - Resource Implementation [#500](https://github.com/inspec/inspec-gcp/pull/500) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.29](https://github.com/inspec/inspec-gcp/tree/v1.11.29) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5559-MAGIC-MODULE-vertex_ai-Featurestores__entityType - Resource Implementation [#496](https://github.com/inspec/inspec-gcp/pull/496) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.28](https://github.com/inspec/inspec-gcp/tree/v1.11.28) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5580-MAGIC-MODULE-vertex_ai-Studies__trial - Resource Implementation [#507](https://github.com/inspec/inspec-gcp/pull/507) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.27](https://github.com/inspec/inspec-gcp/tree/v1.11.27) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5558-MAGIC-MODULE-vertex_ai-Featurestore - Resource Implementation [#483](https://github.com/inspec/inspec-gcp/pull/483) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.26](https://github.com/inspec/inspec-gcp/tree/v1.11.26) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5575-MAGIC-MODULE-vertex_ai-PipelineJob - Resource Implementation [#484](https://github.com/inspec/inspec-gcp/pull/484) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.25](https://github.com/inspec/inspec-gcp/tree/v1.11.25) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5577-MAGIC-MODULE-vertex_ai-Schedule - Resource Implementation [#487](https://github.com/inspec/inspec-gcp/pull/487) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.24](https://github.com/inspec/inspec-gcp/tree/v1.11.24) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5581-MAGIC-MODULE-vertex_ai-Tensorboard - Resource Implementation [#489](https://github.com/inspec/inspec-gcp/pull/489) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.23](https://github.com/inspec/inspec-gcp/tree/v1.11.23) (2023-09-18)
 
 #### Merged Pull Requests
 - CHEF-5557-MAGIC-MODULE-vertex_ai-Endpoint - Resource Implementation [#482](https://github.com/inspec/inspec-gcp/pull/482) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.22](https://github.com/inspec/inspec-gcp/tree/v1.11.22) (2023-09-18)
 
