@@ -17,13 +17,13 @@ title 'Test GCP google_vertex_ai_model_deployment_monitoring_job resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   model_deployment_monitoring_job = input('model_deployment_monitoring_job', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "4965515800912855040",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/modelDeploymentMonitoringJobs/",
   "state": "value_state",
   "analysis_instance_schema_uri": "value_analysisinstanceschemauri",
-  "endpoint": "value_endpoint",
-  "display_name": "value_displayname",
+  "endpoint": "projects/165434197229/locations/us-central1/endpoints/5787303642054787072",
+  "display_name": "churn",
   "schedule_state": "value_schedulestate",
   "predict_instance_schema_uri": "value_predictinstanceschemauri",
   "next_schedule_time": "value_nextscheduletime",
