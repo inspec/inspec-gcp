@@ -1346,8 +1346,11 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-
-
+resource "google_healthcare_dataset" "default" {
+  name      = "example-dataset-${local.name_suffix}"
+  location  = "us-central1"
+  time_zone = "UTC"
+}
 
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
@@ -1396,3 +1399,16 @@ resource "google_vertex_ai_featurestore_entitytype_feature" "feature" {
   value_type = "INT64_ARRAY"
 }
 
+
+resource "google_vertex_ai_index_endpoint" "index_endpoint" {
+  display_name = "sample-endpoint"
+  description  = "A sample vertex endpoint"
+  region       = "us-central1"
+  labels       = {
+    label-one = "value-one"
+  }
+  network      = "projects/${data.google_project.project.number}/global/networks/${data.google_compute_network.vertex_network.name}"
+  depends_on   = [
+    google_service_networking_connection.vertex_vpc_connection
+  ]
+}
