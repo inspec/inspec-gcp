@@ -17,14 +17,15 @@ title 'Test GCP google_vertex_ai_metadata_stores_execution resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   metadata_stores_execution = input('metadata_stores_execution', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "12528100122877440041",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/metadataStores/default/executions/",
+  "metadataStore": "default",
   "create_time": "value_createtime",
   "schema_version": "value_schemaversion",
-  "state": "value_state",
+  "state": "COMPLETE",
   "etag": "value_etag",
-  "display_name": "value_displayname",
+  "display_name": "endpoint-create-20230918054541-20230918054500491",
   "schema_title": "value_schematitle",
   "description": "value_description",
   "update_time": "value_updatetime"
