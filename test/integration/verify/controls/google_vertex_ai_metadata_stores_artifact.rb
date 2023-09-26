@@ -17,11 +17,12 @@ title 'Test GCP google_vertex_ai_metadata_stores_artifact resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   metadata_stores_artifact = input('metadata_stores_artifact', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "2811503570633325756",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/metadataStores/default/artifacts/",
   "schema_version": "value_schemaversion",
-  "display_name": "value_displayname",
+  "display_name": "batchpredictionjob",
+  "metadataStore": "default",
   "etag": "value_etag",
   "update_time": "value_updatetime",
   "state": "value_state",

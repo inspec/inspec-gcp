@@ -600,9 +600,10 @@ endpoint:
   create_time : "value_createtime"
 
 metadata_stores_artifact:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
+  name : "2811503570633325756"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/default/artifacts/"
+  metadataStore: "default"
   schema_version : "value_schemaversion"
   display_name : "value_displayname"
   etag : "value_etag"
