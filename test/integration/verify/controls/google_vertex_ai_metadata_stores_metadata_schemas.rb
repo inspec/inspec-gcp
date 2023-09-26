@@ -17,10 +17,11 @@ title 'Test GCP google_vertex_ai_metadata_stores_metadata_schemas resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   metadata_stores_metadata_schema = input('metadata_stores_metadata_schema', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "schema_type": "value_schematype",
+  "name": "system-dag-execution-v0-0-1",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/metadataStores/default/metadataSchemas/",
+  "metadataStore": "default",
+  "schema_type": "EXECUTION_TYPE",
   "description": "value_description",
   "schema_version": "value_schemaversion",
   "create_time": "value_createtime",
