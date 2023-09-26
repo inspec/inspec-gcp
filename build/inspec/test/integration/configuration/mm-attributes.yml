@@ -558,9 +558,9 @@ training_pipeline:
   parent : "value_parent"
 
 metadata_store:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
+  name : "default"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/"
   description : "value_description"
   create_time : "value_createtime"
   update_time : "value_updatetime"

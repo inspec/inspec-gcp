@@ -17,9 +17,9 @@ title 'Test GCP google_vertex_ai_metadata_store resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   metadata_store = input('metadata_store', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "default",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/metadataStores/",
   "description": "value_description",
   "create_time": "value_createtime",
   "update_time": "value_updatetime"
