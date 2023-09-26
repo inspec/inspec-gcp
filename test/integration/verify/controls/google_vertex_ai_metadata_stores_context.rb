@@ -17,13 +17,14 @@ title 'Test GCP google_vertex_ai_metadata_stores_context resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   metadata_stores_context = input('metadata_stores_context', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "schema_title": "value_schematitle",
+  "name": "autologging-experiment-w0apl7la-autologging-tf-experiment-w0apl7la",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/metadataStores/default/contexts/",
+  "metadataStore": "default",
+  "schema_title": "system.ExperimentRun",
   "etag": "value_etag",
   "description": "value_description",
-  "display_name": "value_displayname",
+  "display_name": "autologging-tf-experiment-w0apl7la",
   "schema_version": "value_schemaversion",
   "create_time": "value_createtime",
   "update_time": "value_updatetime"
