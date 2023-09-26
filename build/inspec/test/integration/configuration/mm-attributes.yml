@@ -600,9 +600,11 @@ endpoint:
   create_time : "value_createtime"
 
 datasets_annotation_spec:
-  name : "value_name"
-  region : "value_region"
-  display_name : "value_displayname"
+  name : "5438527833485869056"
+  region : "us-central1"
+  dataset: "1044994542735982592"
+  parent: "projects/165434197229/locations/us-central1/datasets/1044994542735982592/annotationSpecs/"
+  display_name : "InSpec"
   etag : "value_etag"
   create_time : "value_createtime"
   update_time : "value_updatetime"

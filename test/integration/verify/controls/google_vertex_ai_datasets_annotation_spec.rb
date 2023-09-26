@@ -17,9 +17,11 @@ title 'Test GCP google_vertex_ai_datasets_annotation_spec resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   datasets_annotation_spec = input('datasets_annotation_spec', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "display_name": "value_displayname",
+  "name": "5438527833485869056",
+  "parent": "projects/165434197229/locations/us-central1/datasets/1044994542735982592/annotationSpecs/",
+  "dataset": "1044994542735982592",
+  "region": "us-central1",
+  "display_name": "InSpec",
   "etag": "value_etag",
   "create_time": "value_createtime",
   "update_time": "value_updatetime"
