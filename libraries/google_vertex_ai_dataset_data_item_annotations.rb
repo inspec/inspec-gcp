@@ -37,14 +37,13 @@ class VertexAIDatasetDataItemAnnotations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('datasetDataItemAnnotations')
+    @table = fetch_wrapped_resource('annotations')
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
     result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
     return if result.nil?
-
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
     result.each do |response|

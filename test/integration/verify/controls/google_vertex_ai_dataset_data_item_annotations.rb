@@ -17,9 +17,11 @@ title 'Test GCP google_vertex_ai_dataset_data_item_annotations resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   dataset_data_item_annotation = input('dataset_data_item_annotation', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent"
+  "name": "1746031646898913280",
+  "region": "us-central1",
+  "dataset": "1044994542735982592",
+  "dataItem": "75173735366921",
+  "parent": "projects/165434197229/locations/us-central1/datasets/1044994542735982592/dataItems/75173735366921/annotations/",
 }, description: 'dataset_data_item_annotation description')
 control 'google_vertex_ai_dataset_data_item_annotations-1.0' do
   impact 1.0

@@ -722,6 +722,8 @@ models_evaluation:
   display_name : "value_displayname"
 
 dataset_data_item_annotation:
-  name: "value_name"
-  region: "value_region"
-  parent: "value_parent"
+  name: "1746031646898913280"
+  region: "us-central1"
+  dataset: "1044994542735982592"
+  dataItem: "75173735366921"
+  parent: "projects/165434197229/locations/us-central1/datasets/1044994542735982592/dataItems/75173735366921/annotations/"
