@@ -1381,35 +1381,64 @@ resource "google_service_directory_endpoint" "example" {
     stage  = "prod"
     region = "us-central1"
   }
-
-  address = "1.2.3.4"
-  port    = 5353
-}
-
-
-resource "google_service_directory_namespace" "example" {
-  provider     = google-beta
-  namespace_id = "example-namespace-${local.name_suffix}"
-  location     = "us-central1"
-}
-
-resource "google_service_directory_service" "example" {
-  provider   = google-beta
-  service_id = "example-service-${local.name_suffix}"
-  namespace  = google_service_directory_namespace.example.id
-}
-
-resource "google_service_directory_endpoint" "example" {
-  provider    = google-beta
-  endpoint_id = "example-endpoint-${local.name_suffix}"
-  service     = google_service_directory_service.example.id
-
-  metadata = {
-    stage  = "prod"
-    region = "us-central1"
+resource "google_vertex_ai_tensorboard" "tensorboard" {
+  display_name = "terraform-${local.name_suffix}"
+  description  = "sample description"
+  labels       = {
+    "key1" : "value1",
+    "key2" : "value2"
   }
+  region       = "us-central1"
+}
 
-  address = "1.2.3.4"
-  port    = 5353
+
+resource "google_ml_engine_model" "default" {
+  name        = "default-${local.name_suffix}"
+  description = "My model"
+  regions     = ["us-central1"]
+}
+
+
+resource "google_vertex_ai_featurestore" "featurestore" {
+  name     = "terraform-${local.name_suffix}"
+  labels = {
+    foo = "bar"
+  }
+  region   = "us-central1"
+  online_serving_config {
+    fixed_node_count = 2
+  }
+}
+
+resource "google_vertex_ai_featurestore_entitytype" "entity" {
+  name     = "terraform-${local.name_suffix}"
+  labels = {
+    foo = "bar"
+  }
+  featurestore = google_vertex_ai_featurestore.featurestore.id
+}
+
+resource "google_vertex_ai_featurestore_entitytype_feature" "feature" {
+  name     = "terraform-${local.name_suffix}"
+  labels = {
+    foo = "bar"
+  }
+  entitytype = google_vertex_ai_featurestore_entitytype.entity.id
+
+  value_type = "INT64_ARRAY"
+}
+
+
+resource "google_vertex_ai_index_endpoint" "index_endpoint" {
+  display_name = "sample-endpoint"
+  description  = "A sample vertex endpoint"
+  region       = "us-central1"
+  labels       = {
+    label-one = "value-one"
+  }
+  network      = "projects/${data.google_project.project.number}/global/networks/${data.google_compute_network.vertex_network.name}"
+  depends_on   = [
+    google_service_networking_connection.vertex_vpc_connection
+  ]
 }
 
