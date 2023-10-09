@@ -547,15 +547,186 @@ dlp:
     type: "Infotype"
 
 
+nas_job:
+  name : "value_name"
+  region : "value_region"
+  end_time : "value_endtime"
+  state : "value_state"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
 
-region_security_policy:
-  securitypolicy : "value_securitypolicy"
+featurestore:
+  name : "value_name"
+  region : "value_region"
+  end_time : "value_endtime"
+  state : "value_state"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+
+endpoint:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
+  display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
+
+index_endpoint:
+  name : "7761100736749895680"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/index-endpoints/"
+  create_time : "value_createtime"
+  network : "value_network"
+  public_endpoint_domain_name : "value_publicendpointdomainname"
+  etag : "value_etag"
+  description : "value_description"
+  model_version_id : "1"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
+
+batch_prediction_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  create_time : "value_createtime"
+  model_version_id : "value_modelversionid"
+  end_time : "value_endtime"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+  state : "value_state"
+  model : "value_model"
+  display_name : "value_displayname"
+  service_account : "value_serviceaccount"
+
+custom_job:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  job_id: "job_id"
+
+tensorboard:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  blob_storage_path_prefix : "value_blobstoragepathprefix"
+  etag : "value_etag"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  description : "value_description"
 
 training_pipeline:
   name : "value_name"
   job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
+  started_run_count : "value_startedruncount"
+  cron : "value_cron"
+  last_pause_time : "value_lastpausetime"
+  create_time : "value_createtime"
+  start_time : "value_starttime"
+  max_run_count : "value_maxruncount"
+  next_run_time : "value_nextruntime"
+  update_time : "value_updatetime"
+  last_resume_time : "value_lastresumetime"
+  max_concurrent_run_count : "value_maxconcurrentruncount"
+  state : "value_state"
+  display_name : "value_displayname"
+  end_time : "value_endtime"
+
+
+hyperparameter_tuning_job:
+  name : "9200900561803673600"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/hyperparameterTuningJobs/"
+  state : "JOB_STATE_RUNNING"
+  end_time : "value_endtime"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  start_time : "value_starttime"
+  update_time : "value_updatetime"
+
+
+studies_trial:
+  name : "1"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/studies/2975668570413/trials/"
+  study: "890385007008"
+  start_time : "value_starttime"
+  end_time : "value_endtime"
+  infeasible_reason : "value_infeasiblereason"
+  client_id : "value_clientid"
+  custom_job : "value_customjob"
+  state : "value_state"
+  id : "value_id"
+
+tensorboard_experiment_run:
+  name : "sklearn-2023-09-22-17-16-16-a25b0"
+  tensorboard: "1976367752880848896"
+  experiment: "autologging-experiment-fyc24zb2"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/tensorboards/1976367752880848896/experiments/autologging-experiment-fyc24zb2/runs/"
+
+
+tensorboards_experiment:
+  name : "inspec-tensor-experiment"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/tensorboards/6346548241290493952/experiments/"
+  description : "value_description"
+  tensorboard: "6346548241290493952"
+  source : "value_source"
+  display_name : "inspec-tensor-experiment"
+  create_time : "value_createtime"
+  update_time : "value_updatetime"
+  etag : "value_etag"
+
+model:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  etag : "value_etag"
+  description : "value_description"
+  create_time : "value_createtime"
+  pipeline_job : "value_pipelinejob"
+  version_update_time : "value_versionupdatetime"
+  metadata_artifact : "value_metadataartifact"
+  metadata_schema_uri : "value_metadataschemauri"
+  version_id : "value_versionid"
+  artifact_uri : "value_artifacturi"
+  training_pipeline : "value_trainingpipeline"
+  display_name : "value_displayname"
+  version_create_time : "value_versioncreatetime"
+  version_description : "value_versiondescription"
+
+models_evaluation:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  data_item_schema_uri : "value_dataitemschemauri"
+  metrics_schema_uri : "value_metricsschemauri"
+  create_time : "value_createtime"
+  annotation_schema_uri : "value_annotationschemauri"
+  display_name : "value_displayname"
+
+dataset_data_item_annotation:
+  name: "1746031646898913280"
+  region: "us-central1"
+  dataset: "1044994542735982592"
+  dataItem: "75173735366921"
+  parent: "projects/165434197229/locations/us-central1/datasets/1044994542735982592/dataItems/75173735366921/annotations/"
 
 metadata_store:
   name : "default"
