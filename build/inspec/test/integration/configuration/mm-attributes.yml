@@ -658,6 +658,8 @@ hyperparameter_tuning_job:
   start_time : "value_starttime"
   update_time : "value_updatetime"
 
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
 
 studies_trial:
   name : "1"
@@ -720,6 +722,18 @@ models_evaluation:
   create_time : "value_createtime"
   annotation_schema_uri : "value_annotationschemauri"
   display_name : "value_displayname"
+
+
+metadata_stores_metadata_schema:
+  name : "system-dag-execution-v0-0-1"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/default/metadataSchemas/"
+  metadataStore: "default"
+  schema_type : "EXECUTION_TYPE"
+  description : "value_description"
+  schema_version : "value_schemaversion"
+  create_time : "value_createtime"
+  schema : "value_schema"
 
 dataset_data_item_annotation:
   name: "1746031646898913280"
