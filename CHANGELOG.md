@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.39 -->
+<!-- latest_release 1.11.40 -->
+## [v1.11.40](https://github.com/inspec/inspec-gcp/tree/v1.11.40) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5570-MAGIC-MODULE-vertex_ai-Model - Resource Implementation [#485](https://github.com/inspec/inspec-gcp/pull/485) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.39](https://github.com/inspec/inspec-gcp/tree/v1.11.39) (2023-10-09)
 
 #### Merged Pull Requests
 - CHEF-5574-MAGIC-MODULE-vertex_ai-NasJobs__nasTrialDetail - Resource Implementation [#491](https://github.com/inspec/inspec-gcp/pull/491) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.38](https://github.com/inspec/inspec-gcp/tree/v1.11.38) (2023-10-09)
 
