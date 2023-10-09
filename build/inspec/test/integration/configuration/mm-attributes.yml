@@ -727,3 +727,11 @@ dataset_data_item_annotation:
   dataset: "1044994542735982592"
   dataItem: "75173735366921"
   parent: "projects/165434197229/locations/us-central1/datasets/1044994542735982592/dataItems/75173735366921/annotations/"
+
+metadata_store:
+  name : "default"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/"
+  description : "value_description"
+  create_time : "value_createtime"
+  update_time : "value_updatetime"
