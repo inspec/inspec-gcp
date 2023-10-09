@@ -278,11 +278,10 @@ class GcpApiConnection
   end
 
   def build_uri(base_url, template, var_data)
-    region = var_data[:region]
-    # Replace {{region}} in the base_url with the extracted region for VertexAI
-    base_url_with_region = base_url.gsub('{{region}}', region)
+    is_region_included = base_url.include?('{{region}}')
+    url = is_region_included ? base_url.gsub('{{region}}', var_data[:region]): base_url
     URI.join(
-      "#{base_url_with_region}#{expand_variables(template, var_data)}",
+      "#{url}#{expand_variables(template, var_data)}",
     )
   end
 

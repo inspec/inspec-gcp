@@ -1348,7 +1348,7 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
 
 resource "google_compute_region_security_policy" "default" {
   provider    = google-beta
-  
+
   region      = "us-west2"
   name        = "policyruletest-${local.name_suffix}"
   description = "basic region security policy"
@@ -1357,7 +1357,7 @@ resource "google_compute_region_security_policy" "default" {
 
 resource "google_compute_region_security_policy_rule" "policy_rule" {
   provider = google-beta
-  
+
   region          = "us-west2"
   security_policy = google_compute_region_security_policy.default.name
   description     = "new rule"
@@ -1375,7 +1375,7 @@ resource "google_compute_region_security_policy_rule" "policy_rule" {
 
 resource "google_compute_region_security_policy" "default" {
   provider    = google-beta
-  
+
   region      = "us-west2"
   name        = "policyruletest-${local.name_suffix}"
   description = "basic region security policy"
@@ -1384,7 +1384,7 @@ resource "google_compute_region_security_policy" "default" {
 
 resource "google_compute_region_security_policy_rule" "policy_rule" {
   provider = google-beta
-  
+
   region          = "us-west2"
   security_policy = google_compute_region_security_policy.default.name
   description     = "new rule"
@@ -1399,3 +1399,70 @@ resource "google_compute_region_security_policy_rule" "policy_rule" {
   preview         = true
 }
 
+
+resource "google_healthcare_dataset" "default" {
+  name      = "example-dataset-${local.name_suffix}"
+  location  = "us-central1"
+  time_zone = "UTC"
+}
+
+resource "google_vertex_ai_tensorboard" "tensorboard" {
+  display_name = "terraform-${local.name_suffix}"
+  description  = "sample description"
+  labels       = {
+    "key1" : "value1",
+    "key2" : "value2"
+  }
+  region       = "us-central1"
+}
+
+
+resource "google_ml_engine_model" "default" {
+  name        = "default-${local.name_suffix}"
+  description = "My model"
+  regions     = ["us-central1"]
+}
+
+
+resource "google_vertex_ai_featurestore" "featurestore" {
+  name     = "terraform-${local.name_suffix}"
+  labels = {
+    foo = "bar"
+  }
+  region   = "us-central1"
+  online_serving_config {
+    fixed_node_count = 2
+  }
+}
+
+resource "google_vertex_ai_featurestore_entitytype" "entity" {
+  name     = "terraform-${local.name_suffix}"
+  labels = {
+    foo = "bar"
+  }
+  featurestore = google_vertex_ai_featurestore.featurestore.id
+}
+
+resource "google_vertex_ai_featurestore_entitytype_feature" "feature" {
+  name     = "terraform-${local.name_suffix}"
+  labels = {
+    foo = "bar"
+  }
+  entitytype = google_vertex_ai_featurestore_entitytype.entity.id
+
+  value_type = "INT64_ARRAY"
+}
+
+
+resource "google_vertex_ai_index_endpoint" "index_endpoint" {
+  display_name = "sample-endpoint"
+  description  = "A sample vertex endpoint"
+  region       = "us-central1"
+  labels       = {
+    label-one = "value-one"
+  }
+  network      = "projects/${data.google_project.project.number}/global/networks/${data.google_compute_network.vertex_network.name}"
+  depends_on   = [
+    google_service_networking_connection.vertex_vpc_connection
+  ]
+}
