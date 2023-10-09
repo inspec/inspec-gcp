@@ -1,11 +1,26 @@
 # Change Log
 
-<!-- latest_release 1.11.36 -->
+<!-- latest_release 1.11.39 -->
+## [v1.11.39](https://github.com/inspec/inspec-gcp/tree/v1.11.39) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5574-MAGIC-MODULE-vertex_ai-NasJobs__nasTrialDetail - Resource Implementation [#491](https://github.com/inspec/inspec-gcp/pull/491) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.38](https://github.com/inspec/inspec-gcp/tree/v1.11.38) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5564-MAGIC-MODULE-vertex_ai-MetadataStore - Resource Implementation [#490](https://github.com/inspec/inspec-gcp/pull/490) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.37](https://github.com/inspec/inspec-gcp/tree/v1.11.37) (2023-09-27)
+
+#### Merged Pull Requests
+- CHEF-5555-MAGIC-MODULE-vertex_ai-Datasets__dataItems__annotation - Resource Implementation [#516](https://github.com/inspec/inspec-gcp/pull/516) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.36](https://github.com/inspec/inspec-gcp/tree/v1.11.36) (2023-09-25)
 
 #### Merged Pull Requests
 - CHEF-5571-MAGIC-MODULE-vertex_ai-Models__evaluation - Resource Implementation [#506](https://github.com/inspec/inspec-gcp/pull/506) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.35](https://github.com/inspec/inspec-gcp/tree/v1.11.35) (2023-09-25)
 
