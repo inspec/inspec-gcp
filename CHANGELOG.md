@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.37 -->
+<!-- latest_release 1.11.38 -->
+## [v1.11.38](https://github.com/inspec/inspec-gcp/tree/v1.11.38) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5564-MAGIC-MODULE-vertex_ai-MetadataStore - Resource Implementation [#490](https://github.com/inspec/inspec-gcp/pull/490) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.37](https://github.com/inspec/inspec-gcp/tree/v1.11.37) (2023-09-27)
 
 #### Merged Pull Requests
 - CHEF-5555-MAGIC-MODULE-vertex_ai-Datasets__dataItems__annotation - Resource Implementation [#516](https://github.com/inspec/inspec-gcp/pull/516) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.36](https://github.com/inspec/inspec-gcp/tree/v1.11.36) (2023-09-25)
 
