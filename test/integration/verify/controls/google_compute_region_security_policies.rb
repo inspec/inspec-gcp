@@ -16,14 +16,14 @@ title 'Test GCP google_compute_region_security_policies resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_security_policy = input('security_policy', value: {
+  region_security_policy = input('region_security_policy', value: {
   "securitypolicy": "value_securitypolicy"
 }, description: 'region_security_policy description')
 control 'google_compute_region_security_policies-1.0' do
   impact 1.0
   title 'google_compute_region_security_policies resource test'
 
-      describe google_compute_region_security_policies(project: gcp_project_id, region: region_security_policies['region']) do
+      describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region']) do
       it { should exist }
     end
 end

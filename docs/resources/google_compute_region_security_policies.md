@@ -8,7 +8,7 @@ A `google_compute_region_security_policies` is used to test a Google RegionSecur
 
 ## Examples
 ```
-    describe google_compute_region_security_policies(project: 'chef-gcp-inspec', region: ' ') do
+    describe google_compute_region_security_policy(project: 'chef-gcp-inspec', region: ' ') do
     it { should exist }
   end
 ```
