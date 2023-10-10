@@ -618,7 +618,6 @@ custom_job:
 
 tensorboard:
   name : "value_name"
-  job_id: "job_id"
   region : "value_region"
   parent : "value_parent"
   update_time : "value_updatetime"
@@ -627,7 +626,6 @@ tensorboard:
   create_time : "value_createtime"
   display_name : "value_displayname"
   description : "value_description"
-
 
 training_pipeline:
   name : "value_name"
@@ -719,11 +717,13 @@ models_evaluation:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
-  data_item_schema_uri : "value_dataitemschemauri"
-  metrics_schema_uri : "value_metricsschemauri"
-  create_time : "value_createtime"
-  annotation_schema_uri : "value_annotationschemauri"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
   display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
 
 
 metadata_stores_metadata_schema:
@@ -773,3 +773,19 @@ metadata_stores_execution:
   schema_title : "value_schematitle"
   description : "value_description"
   update_time : "value_updatetime"
+
+model_deployment_monitoring_job:
+  name : "4965515800912855040"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/modelDeploymentMonitoringJobs/"
+  state : "value_state"
+  analysis_instance_schema_uri : "value_analysisinstanceschemauri"
+  endpoint : "projects/165434197229/locations/us-central1/endpoints/5787303642054787072"
+  display_name : "churn"
+  schedule_state : "value_schedulestate"
+  predict_instance_schema_uri : "value_predictinstanceschemauri"
+  next_schedule_time : "value_nextscheduletime"
+  data_item_schema_uri : "value_dataitemschemauri"
+  metrics_schema_uri : "value_metricsschemauri"
+  create_time : "value_createtime"
+  annotation_schema_uri : "value_annotationschemauri"
