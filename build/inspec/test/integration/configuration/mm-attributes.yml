@@ -567,7 +567,6 @@ featurestore:
   start_time : "value_starttime"
   update_time : "value_updatetime"
 
-
 endpoint:
   name : "value_name"
   region : "value_region"
@@ -600,20 +599,33 @@ index_endpoint:
 batch_prediction_job:
   name : "value_name"
   region : "value_region"
+  parent : "value_parent"
   create_time : "value_createtime"
-  model_version_id : "1"
+  model_version_id : "value_modelversionid"
   end_time : "value_endtime"
   start_time : "value_starttime"
   update_time : "value_updatetime"
   state : "value_state"
   model : "value_model"
   display_name : "value_displayname"
+  service_account : "value_serviceaccount"
 
 custom_job:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
   job_id: "job_id"
+
+tensorboard:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  blob_storage_path_prefix : "value_blobstoragepathprefix"
+  etag : "value_etag"
+  create_time : "value_createtime"
+  display_name : "value_displayname"
+  description : "value_description"
 
 training_pipeline:
   name : "value_name"
@@ -646,6 +658,8 @@ hyperparameter_tuning_job:
   start_time : "value_starttime"
   update_time : "value_updatetime"
 
+region_security_policy:
+  securitypolicy : "value_securitypolicy"
 
 studies_trial:
   name : "1"
@@ -680,10 +694,83 @@ tensorboards_experiment:
   update_time : "value_updatetime"
   etag : "value_etag"
 
+model:
+  name : "value_name"
+  region : "value_region"
+  parent : "value_parent"
+  update_time : "value_updatetime"
+  etag : "value_etag"
+  description : "value_description"
+  create_time : "value_createtime"
+  pipeline_job : "value_pipelinejob"
+  version_update_time : "value_versionupdatetime"
+  metadata_artifact : "value_metadataartifact"
+  metadata_schema_uri : "value_metadataschemauri"
+  version_id : "value_versionid"
+  artifact_uri : "value_artifacturi"
+  training_pipeline : "value_trainingpipeline"
+  display_name : "value_displayname"
+  version_create_time : "value_versioncreatetime"
+  version_description : "value_versiondescription"
+
 models_evaluation:
   name : "value_name"
   region : "value_region"
   parent : "value_parent"
+  update_time : "value_updatetime"
+  model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
+  description : "value_description"
+  network : "value_network"
+  display_name : "value_displayname"
+  etag : "value_etag"
+  create_time : "value_createtime"
+
+
+metadata_stores_metadata_schema:
+  name : "system-dag-execution-v0-0-1"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/default/metadataSchemas/"
+  metadataStore: "default"
+  schema_type : "EXECUTION_TYPE"
+  description : "value_description"
+  schema_version : "value_schemaversion"
+  create_time : "value_createtime"
+  schema : "value_schema"
+
+dataset_data_item_annotation:
+  name: "1746031646898913280"
+  region: "us-central1"
+  dataset: "1044994542735982592"
+  dataItem: "75173735366921"
+  parent: "projects/165434197229/locations/us-central1/datasets/1044994542735982592/dataItems/75173735366921/annotations/"
+
+metadata_store:
+  name : "default"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/"
+  description : "value_description"
+  create_time : "value_createtime"
+  update_time : "value_updatetime"
+
+
+nas_jobs_nas_trial_detail:
+  name : "1"
+  region : "us-central1"
+  nasJob: "3217974009958236160"
+  parent : "projects/ppradhan/locations/us-central1/nasJobs/3217974009958236160/nasTrialDetails/"
+  parameters : "value_parameters"
+
+model_deployment_monitoring_job:
+  name : "4965515800912855040"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/modelDeploymentMonitoringJobs/"
+  state : "value_state"
+  analysis_instance_schema_uri : "value_analysisinstanceschemauri"
+  endpoint : "projects/165434197229/locations/us-central1/endpoints/5787303642054787072"
+  display_name : "churn"
+  schedule_state : "value_schedulestate"
+  predict_instance_schema_uri : "value_predictinstanceschemauri"
+  next_schedule_time : "value_nextscheduletime"
   data_item_schema_uri : "value_dataitemschemauri"
   metrics_schema_uri : "value_metricsschemauri"
   update_time : "value_updatetime"
@@ -702,4 +789,3 @@ datasets_annotation_spec:
   etag : "value_etag"
   create_time : "value_createtime"
   annotation_schema_uri : "value_annotationschemauri"
-  display_name : "value_displayname"

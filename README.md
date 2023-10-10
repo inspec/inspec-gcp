@@ -340,6 +340,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_storage_default_object_acl](docs/resources/google_storage_default_object_acl.md)                             | No Plural Resource                                                                                                             |
 | [google_storage_object_acl](docs/resources/google_storage_object_acl.md)                                             | No Plural Resource                                                                                                             |
 | [google_user](docs/resources/google_user.md)                                                                         | [google_users](docs/resources/google_users.md)                                                                                 |
+| [google_vertex_ai_model](docs/resources/google_vertex_ai_model.md)                                                                         | [google_vertex_ai_models](docs/resources/google_vertex_ai_models.md)                                                                                 |
 | [google_vertex_ai_dataset](docs/resources/google_vertex_ai_dataset.md)                                               | [google_vertex_ai_datasets](docs/resources/google_vertex_ai_datasets.md)                                                       |
 | [google_vertex_ai_batch_prediction_job](docs/resources/google_vertex_ai_batch_prediction_job.md)                     | [google_vertex_ai_batch_prediction_jobs](docs/resources/google_vertex_ai_batch_prediction_jobs.md)                             |
 | [google_vertex_ai_custom_job](docs/resources/google_vertex_ai_custom_job.md)                                         | [google_vertex_ai_custom_jobs](docs/resources/google_vertex_ai_custom_jobs.md)                                                 |
@@ -353,6 +354,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_featurestores_entity_type](docs/resources/google_vertex_ai_featurestores_entity_type.md)                           | [google_vertex_ai_featurestores_entity_types](docs/resources/google_vertex_ai_featurestores_entity_types.md)             |
 | [google_vertex_ai_featurestore_entity_type_feature](docs/resources/google_vertex_ai_featurestore_entity_type_feature.md)                           | [google_vertex_ai_featurestore_entity_type_features](docs/resources/google_vertex_ai_featurestore_entity_type_features.md)             |
 | [google_vertex_ai_models_evaluation](docs/resources/google_vertex_ai_models_evaluation.md)                           | [google_vertex_ai_models_evaluations](docs/resources/google_vertex_ai_models_evaluations.md)             |
+| [google_vertex_ai_model_deployment_monitoring_job](docs/resources/google_vertex_ai_model_deployment_monitoring_job.md)                           | [google_vertex_ai_model_deployment_monitoring_jobs](docs/resources/google_vertex_ai_model_deployment_monitoring_jobs.md)             |
 
 ## Examples
 
