@@ -1459,4 +1459,3 @@ resource "google_service_directory_endpoint" "example" {
   address = "1.2.3.4"
   port    = 5353
 }
-

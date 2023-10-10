@@ -760,6 +760,20 @@ nas_jobs_nas_trial_detail:
   parent : "projects/ppradhan/locations/us-central1/nasJobs/3217974009958236160/nasTrialDetails/"
   parameters : "value_parameters"
 
+metadata_stores_execution:
+  name : "12528100122877440041"
+  region : "us-central1"
+  parent : "projects/165434197229/locations/us-central1/metadataStores/default/executions/"
+  metadataStore: "default"
+  create_time : "value_createtime"
+  schema_version : "value_schemaversion"
+  state : "value_state"
+  etag : "value_etag"
+  display_name : "endpoint-create-20230918054541-20230918054500491"
+  schema_title : "value_schematitle"
+  description : "value_description"
+  update_time : "value_updatetime"
+
 model_deployment_monitoring_job:
   name : "4965515800912855040"
   region : "us-central1"
