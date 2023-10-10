@@ -781,7 +781,6 @@ model_deployment_monitoring_job:
   state : "value_state"
   analysis_instance_schema_uri : "value_analysisinstanceschemauri"
   endpoint : "projects/165434197229/locations/us-central1/endpoints/5787303642054787072"
-  display_name : "churn"
   schedule_state : "value_schedulestate"
   predict_instance_schema_uri : "value_predictinstanceschemauri"
   next_schedule_time : "value_nextscheduletime"
@@ -791,6 +790,7 @@ model_deployment_monitoring_job:
   model_deployment_monitoring_job : "value_modeldeploymentmonitoringjob"
   description : "value_description"
   network : "value_network"
+  display_name : "value_displayname"
   etag : "value_etag"
   create_time : "value_createtime"
 
@@ -815,6 +815,22 @@ metadata_stores_context:
   schema_version : "value_schemaversion"
   create_time : "value_createtime"
   update_time : "value_updatetime"
+
+  metadata_stores_artifact:
+    name: "2811503570633325756"
+    region: "us-central1"
+    parent: "projects/165434197229/locations/us-central1/metadataStores/default/artifacts/"
+    metadataStore: "default"
+    schema_version: "value_schemaversion"
+    display_name: "value_displayname"
+    etag: "value_etag"
+    update_time: "value_updatetime"
+    state: "value_state"
+    uri: "value_uri"
+    create_time: "value_createtime"
+    schema_title: "value_schematitle"
+    description: "value_description"
+
 
 datasets_saved_query:
   parent : "projects/165434197229/locations/us-central1/datasets/1044994542735982592/savedQueries/"
