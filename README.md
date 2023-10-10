@@ -354,6 +354,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_featurestores_entity_type](docs/resources/google_vertex_ai_featurestores_entity_type.md)                           | [google_vertex_ai_featurestores_entity_types](docs/resources/google_vertex_ai_featurestores_entity_types.md)             |
 | [google_vertex_ai_featurestore_entity_type_feature](docs/resources/google_vertex_ai_featurestore_entity_type_feature.md)                           | [google_vertex_ai_featurestore_entity_type_features](docs/resources/google_vertex_ai_featurestore_entity_type_features.md)             |
 | [google_vertex_ai_models_evaluation](docs/resources/google_vertex_ai_models_evaluation.md)                           | [google_vertex_ai_models_evaluations](docs/resources/google_vertex_ai_models_evaluations.md)             |
+| [google_vertex_ai_model_deployment_monitoring_job](docs/resources/google_vertex_ai_model_deployment_monitoring_job.md)                           | [google_vertex_ai_model_deployment_monitoring_jobs](docs/resources/google_vertex_ai_model_deployment_monitoring_jobs.md)             |
 
 ## Examples
 
