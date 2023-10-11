@@ -76,17 +76,17 @@ class VertexAIEndpoints < GcpResourceBase
 
   def transformers
     {
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::EndpointEncryptionSpec.new(obj['encryptionSpec'], to_s) },
+      'encryptionSpec' => ->(obj) { return :encryption_spec, obj['encryptionSpec'] },
       'enablePrivateServiceConnect' => ->(obj) { return :enable_private_service_connect, obj['enablePrivateServiceConnect'] },
       'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
       'modelDeploymentMonitoringJob' => ->(obj) { return :model_deployment_monitoring_job, obj['modelDeploymentMonitoringJob'] },
       'description' => ->(obj) { return :description, obj['description'] },
-      'deployedModels' => ->(obj) { return :deployed_models, GoogleInSpec::VertexAI::Property::EndpointDeployedModelsArray.parse(obj['deployedModels'], to_s) },
+      'deployedModels' => ->(obj) { return :deployed_models, obj['deployedModels'] },
       'network' => ->(obj) { return :network, obj['network'] },
       'trafficSplit' => ->(obj) { return :traffic_split, GoogleInSpec::VertexAI::Property::EndpointTrafficSplit.new(obj['trafficSplit'], to_s) },
       'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::EndpointLabels.new(obj['labels'], to_s) },
       'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'predictRequestResponseLoggingConfig' => ->(obj) { return :predict_request_response_logging_config, GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfig.new(obj['predictRequestResponseLoggingConfig'], to_s) },
+      'predictRequestResponseLoggingConfig' => ->(obj) { return :predict_request_response_logging_config, obj['predictRequestResponseLoggingConfig'] },
       'etag' => ->(obj) { return :etag, obj['etag'] },
       'createTime' => ->(obj) { return :create_time, obj['createTime'] },
       'name' => ->(obj) { return :name, obj['name'] },

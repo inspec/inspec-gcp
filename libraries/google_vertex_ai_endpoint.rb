@@ -14,11 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/vertexai/property/endpoint_deployed_models'
-require 'google/vertexai/property/endpoint_encryption_spec'
 require 'google/vertexai/property/endpoint_labels'
-require 'google/vertexai/property/endpoint_predict_request_response_logging_config'
-require 'google/vertexai/property/endpoint_predict_request_response_logging_config_bigquery_destination'
 require 'google/vertexai/property/endpoint_traffic_split'
 
 # A provider to manage Vertex AI resources.
@@ -51,17 +47,17 @@ class VertexAIEndpoint < GcpResourceBase
   end
 
   def parse
-    @encryption_spec = GoogleInSpec::VertexAI::Property::EndpointEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
+    @encryption_spec = @fetched['encryptionSpec']
     @enable_private_service_connect = @fetched['enablePrivateServiceConnect']
     @update_time = @fetched['updateTime']
     @model_deployment_monitoring_job = @fetched['modelDeploymentMonitoringJob']
     @description = @fetched['description']
-    @deployed_models = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsArray.parse(@fetched['deployedModels'], to_s)
+    @deployed_models = @fetched['deployedModels']
     @network = @fetched['network']
     @traffic_split = GoogleInSpec::VertexAI::Property::EndpointTrafficSplit.new(@fetched['trafficSplit'], to_s)
     @labels = GoogleInSpec::VertexAI::Property::EndpointLabels.new(@fetched['labels'], to_s)
     @display_name = @fetched['displayName']
-    @predict_request_response_logging_config = GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfig.new(@fetched['predictRequestResponseLoggingConfig'], to_s)
+    @predict_request_response_logging_config = @fetched['predictRequestResponseLoggingConfig']
     @etag = @fetched['etag']
     @create_time = @fetched['createTime']
     @name = @fetched['name']
