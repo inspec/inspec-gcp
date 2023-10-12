@@ -21,7 +21,6 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "region": "us-central1",
   "parent": "projects/165434197229/locations/us-central1/models/1906524575261261824/evaluations/8892762874796048384/slices/",
   "create_time": "value_createtime",
-  "metrics_schema_uri": "value_metricsschemauri",
   "model": "1906524575261261824",
   "evaluation": "8892762874796048384"
 }, description: 'models_evaluations_slice description')
