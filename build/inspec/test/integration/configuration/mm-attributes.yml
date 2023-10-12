@@ -599,16 +599,14 @@ index_endpoint:
 batch_prediction_job:
   name : "value_name"
   region : "value_region"
-  parent : "value_parent"
   create_time : "value_createtime"
-  model_version_id : "value_modelversionid"
+  model_version_id : "1"
   end_time : "value_endtime"
   start_time : "value_starttime"
   update_time : "value_updatetime"
   state : "value_state"
   model : "value_model"
   display_name : "value_displayname"
-  service_account : "value_serviceaccount"
 
 custom_job:
   name : "value_name"
@@ -843,3 +841,12 @@ datasets_saved_query:
   etag : "value_etag"
   display_name : "inspec-annotation-test"
   annotation_filter : "value_annotationfilter"
+
+models_evaluations_slice:
+  name : "1040489542048845967"
+  region : "us-central1"
+  parent : "value_parent"
+  model: "1906524575261261824"
+  evaluation: "8892762874796048384"
+  create_time : "value_createtime"
+  metrics_schema_uri : "value_metricsschemauri"
