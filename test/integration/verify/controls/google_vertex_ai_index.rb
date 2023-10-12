@@ -17,11 +17,11 @@ title 'Test GCP google_vertex_ai_index resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   index = input('index', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "6386095475518341120",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/indexes/",
   "description": "value_description",
-  "display_name": "value_displayname",
+  "display_name": "test-index",
   "metadata_schema_uri": "value_metadataschemauri",
   "index_update_method": "value_indexupdatemethod",
   "update_time": "value_updatetime",
