@@ -1,11 +1,141 @@
 # Change Log
 
-<!-- latest_release 1.11.23 -->
+<!-- latest_release 1.11.49 -->
+## [v1.11.49](https://github.com/inspec/inspec-gcp/tree/v1.11.49) (2023-10-12)
+
+#### Merged Pull Requests
+- CHEF-5563-MAGIC-MODULE-vertex_ai-Index - Resource Implementation [#521](https://github.com/inspec/inspec-gcp/pull/521) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.48](https://github.com/inspec/inspec-gcp/tree/v1.11.48) (2023-10-12)
+
+#### Merged Pull Requests
+- CHEF-5572-MAGIC-MODULE-vertex_ai-Models__evaluations__slice - Resource Implementation [#508](https://github.com/inspec/inspec-gcp/pull/508) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.47](https://github.com/inspec/inspec-gcp/tree/v1.11.47) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5556-MAGIC-MODULE-vertex_ai-Datasets__savedQuery - Resource Implementation [#495](https://github.com/inspec/inspec-gcp/pull/495) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.46](https://github.com/inspec/inspec-gcp/tree/v1.11.46) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5565-MAGIC-MODULE-vertex_ai-MetadataStores__artifact - Resource Implementation [#501](https://github.com/inspec/inspec-gcp/pull/501) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.45](https://github.com/inspec/inspec-gcp/tree/v1.11.45) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5566-MAGIC-MODULE-vertex_ai-MetadataStores__context - Resource Implementation [#502](https://github.com/inspec/inspec-gcp/pull/502) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.44](https://github.com/inspec/inspec-gcp/tree/v1.11.44) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5567-MAGIC-MODULE-vertex_ai-MetadataStores__execution - Resource Implementation [#503](https://github.com/inspec/inspec-gcp/pull/503) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.43](https://github.com/inspec/inspec-gcp/tree/v1.11.43) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5553-MAGIC-MODULE-vertex_ai-Datasets__annotationSpec - Resource Implementation [#492](https://github.com/inspec/inspec-gcp/pull/492) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.42](https://github.com/inspec/inspec-gcp/tree/v1.11.42) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5569-MAGIC-MODULE-vertex_ai-ModelDeploymentMonitoringJob - Resource Implementation [#505](https://github.com/inspec/inspec-gcp/pull/505) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.41](https://github.com/inspec/inspec-gcp/tree/v1.11.41) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5568-MAGIC-MODULE-vertex_ai-MetadataStores__metadataSchema - Resource Implementation [#504](https://github.com/inspec/inspec-gcp/pull/504) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.40](https://github.com/inspec/inspec-gcp/tree/v1.11.40) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5570-MAGIC-MODULE-vertex_ai-Model - Resource Implementation [#485](https://github.com/inspec/inspec-gcp/pull/485) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.39](https://github.com/inspec/inspec-gcp/tree/v1.11.39) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5574-MAGIC-MODULE-vertex_ai-NasJobs__nasTrialDetail - Resource Implementation [#491](https://github.com/inspec/inspec-gcp/pull/491) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.38](https://github.com/inspec/inspec-gcp/tree/v1.11.38) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5564-MAGIC-MODULE-vertex_ai-MetadataStore - Resource Implementation [#490](https://github.com/inspec/inspec-gcp/pull/490) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.37](https://github.com/inspec/inspec-gcp/tree/v1.11.37) (2023-09-27)
+
+#### Merged Pull Requests
+- CHEF-5555-MAGIC-MODULE-vertex_ai-Datasets__dataItems__annotation - Resource Implementation [#516](https://github.com/inspec/inspec-gcp/pull/516) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.36](https://github.com/inspec/inspec-gcp/tree/v1.11.36) (2023-09-25)
+
+#### Merged Pull Requests
+- CHEF-5571-MAGIC-MODULE-vertex_ai-Models__evaluation - Resource Implementation [#506](https://github.com/inspec/inspec-gcp/pull/506) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.35](https://github.com/inspec/inspec-gcp/tree/v1.11.35) (2023-09-25)
+
+#### Merged Pull Requests
+- CHEF-5562-MAGIC-MODULE-vertex_ai-IndexEndpoint - Resource Implementation [#497](https://github.com/inspec/inspec-gcp/pull/497) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.34](https://github.com/inspec/inspec-gcp/tree/v1.11.34) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5582-MAGIC-MODULE-vertex_ai-Tensorboards__experiment - Resource Implementation [#499](https://github.com/inspec/inspec-gcp/pull/499) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.33](https://github.com/inspec/inspec-gcp/tree/v1.11.33) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5583-MAGIC-MODULE-vertex_ai-Tensorboards__experiments__run - Resource Implementation [#513](https://github.com/inspec/inspec-gcp/pull/513) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.32](https://github.com/inspec/inspec-gcp/tree/v1.11.32) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5560-MAGIC-MODULE-vertex_ai-Featurestores__entityTypes__feature - Resource Implementation [#517](https://github.com/inspec/inspec-gcp/pull/517) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.31](https://github.com/inspec/inspec-gcp/tree/v1.11.31) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5561-MAGIC-MODULE-vertex_ai-HyperparameterTuningJob - Resource Implementation [#515](https://github.com/inspec/inspec-gcp/pull/515) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.30](https://github.com/inspec/inspec-gcp/tree/v1.11.30) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5560-MAGIC-MODULE-vertex_ai-Featurestores__entityType - Resource Implementation [#500](https://github.com/inspec/inspec-gcp/pull/500) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.29](https://github.com/inspec/inspec-gcp/tree/v1.11.29) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5559-MAGIC-MODULE-vertex_ai-Featurestores__entityType - Resource Implementation [#496](https://github.com/inspec/inspec-gcp/pull/496) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.28](https://github.com/inspec/inspec-gcp/tree/v1.11.28) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5580-MAGIC-MODULE-vertex_ai-Studies__trial - Resource Implementation [#507](https://github.com/inspec/inspec-gcp/pull/507) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.27](https://github.com/inspec/inspec-gcp/tree/v1.11.27) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5558-MAGIC-MODULE-vertex_ai-Featurestore - Resource Implementation [#483](https://github.com/inspec/inspec-gcp/pull/483) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.26](https://github.com/inspec/inspec-gcp/tree/v1.11.26) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5575-MAGIC-MODULE-vertex_ai-PipelineJob - Resource Implementation [#484](https://github.com/inspec/inspec-gcp/pull/484) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.25](https://github.com/inspec/inspec-gcp/tree/v1.11.25) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5577-MAGIC-MODULE-vertex_ai-Schedule - Resource Implementation [#487](https://github.com/inspec/inspec-gcp/pull/487) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.24](https://github.com/inspec/inspec-gcp/tree/v1.11.24) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5581-MAGIC-MODULE-vertex_ai-Tensorboard - Resource Implementation [#489](https://github.com/inspec/inspec-gcp/pull/489) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.23](https://github.com/inspec/inspec-gcp/tree/v1.11.23) (2023-09-18)
 
 #### Merged Pull Requests
 - CHEF-5557-MAGIC-MODULE-vertex_ai-Endpoint - Resource Implementation [#482](https://github.com/inspec/inspec-gcp/pull/482) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.22](https://github.com/inspec/inspec-gcp/tree/v1.11.22) (2023-09-18)
 
