@@ -17,11 +17,11 @@ title 'Test GCP google_vertex_ai_studies resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   study = input('study', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
-  "display_name": "value_displayname",
-  "state": "value_state",
+  "name": "2975668570413",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/studies/",
+  "display_name": "ppradhan_study_20230921_205019",
+  "state": "ACTIVE",
   "create_time": "value_createtime",
   "inactive_reason": "value_inactivereason"
 }, description: 'study description')
