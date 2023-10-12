@@ -1513,3 +1513,42 @@ resource "google_compute_image" "image_family_view" {
   family = var.compute_image_family_view_name
 }
 
+resource "google_storage_bucket" "bucket_delete_unique_221_11111" {
+  name     = "vertex-bucket_delete"
+  location = "us-central1"
+  uniform_bucket_level_access = true
+  project = "ppradhan"
+}
+
+# The sample data comes from the following link:
+# https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+resource "google_storage_bucket_object" "data" {
+  name   = "contents/data.json"
+  bucket = google_storage_bucket.bucket_delete_unique_221_11111.name
+  content = <<EOF
+{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+{"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+EOF
+}
+resource "google_vertex_ai_index" "index" {
+  labels = {
+    foo = "bar"
+  }
+  region   = "us-central1"
+  display_name = "test-index"
+  description = "index for test"
+  project = "ppradhan"
+  metadata {
+    contents_delta_uri = "gs://${google_storage_bucket.bucket_delete_unique_221_11111.name}/contents"
+    config {
+      dimensions = 2
+      shard_size = "SHARD_SIZE_LARGE"
+      distance_measure_type = "COSINE_DISTANCE"
+      feature_norm_type = "UNIT_L2_NORM"
+      algorithm_config {
+        brute_force_config {}
+      }
+    }
+  }
+  index_update_method = "STREAM_UPDATE"
+}
