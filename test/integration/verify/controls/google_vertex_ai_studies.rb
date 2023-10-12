@@ -29,7 +29,7 @@ control 'google_vertex_ai_studies-1.0' do
   impact 1.0
   title 'google_vertex_ai_studies resource test'
 
-      describe google_vertex_ai_studies(parent: "projects/#{gcp_project_id}/locations/#{study['region']}/tensorboards/#{study['tensorboard']}/experiments/#{study['experiment']}/runs/#{study['run']}", region: study['region']) do
+      describe google_vertex_ai_studies(parent: "projects/#{gcp_project_id}/locations/#{study['region']}", region: study['region']) do
       it { should exist }
     end
 end

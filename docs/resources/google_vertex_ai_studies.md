@@ -8,7 +8,7 @@ A `google_vertex_ai_studies` is used to test a Google Study resource
 
 ## Examples
 ```
-    describe google_vertex_ai_studies(parent: "projects/#{gcp_project_id}/locations/#{study['region']}/tensorboards/#{study['tensorboard']}/experiments/#{study['experiment']}/runs/#{study['run']}", region: ' value_region') do
+    describe google_vertex_ai_studies(parent: "projects/#{gcp_project_id}/locations/#{study['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
