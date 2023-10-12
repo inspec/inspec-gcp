@@ -35,7 +35,7 @@ class VertexAIDatasetsDataItems < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('datasetsDataItems')
+    @table = fetch_wrapped_resource('dataItems')
   end
 
   def fetch_wrapped_resource(wrap_path)

@@ -18,11 +18,12 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   datasets_data_item = input('datasets_data_item', value: {
   "parent": "value_parent",
-  "region": "value_region",
+  "region": "us-central1",
   "update_time": "value_updatetime",
   "etag": "value_etag",
-  "name": "value_name",
-  "create_time": "value_createtime"
+  "name": "value",
+  "create_time": "value_createtime",
+  "dataset": "871737898477551616"
 }, description: 'datasets_data_item description')
 control 'google_vertex_ai_datasets_data_items-1.0' do
   impact 1.0
