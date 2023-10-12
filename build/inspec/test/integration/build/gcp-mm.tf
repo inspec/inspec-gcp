@@ -1346,6 +1346,9 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
+
+
+
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
   description  = "sample description"
@@ -1407,66 +1410,23 @@ resource "google_vertex_ai_index_endpoint" "index_endpoint" {
   ]
 }
 
-
-resource "google_service_directory_namespace" "example" {
-  provider     = google-beta
-  namespace_id = "example-namespace-${local.name_suffix}"
-  location     = "us-central1"
+resource "google_service_networking_connection" "vertex_vpc_connection" {
+  network                 = data.google_compute_network.vertex_network.id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.vertex_range.name]
 }
 
-resource "google_service_directory_service" "example" {
-  provider   = google-beta
-  service_id = "example-service-${local.name_suffix}"
-  namespace  = google_service_directory_namespace.example.id
+resource "google_compute_global_address" "vertex_range" {
+  name          = "address-name-${local.name_suffix}"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 24
+  network       = data.google_compute_network.vertex_network.id
 }
 
-resource "google_service_directory_endpoint" "example" {
-  provider    = google-beta
-  endpoint_id = "example-endpoint-${local.name_suffix}"
-  service     = google_service_directory_service.example.id
-
-  metadata = {
-    stage  = "prod"
-    region = "us-central1"
-  }
-
-  address = "1.2.3.4"
-  port    = 5353
+data "google_compute_network" "vertex_network" {
+  name       = "network-name-${local.name_suffix}"
 }
 
-
-resource "google_service_directory_namespace" "example" {
-  provider     = google-beta
-  namespace_id = "example-namespace-${local.name_suffix}"
-  location     = "us-central1"
-}
-
-resource "google_service_directory_service" "example" {
-  provider   = google-beta
-  service_id = "example-service-${local.name_suffix}"
-  namespace  = google_service_directory_namespace.example.id
-}
-
-resource "google_service_directory_endpoint" "example" {
-  provider    = google-beta
-  endpoint_id = "example-endpoint-${local.name_suffix}"
-  service     = google_service_directory_service.example.id
-
-  metadata = {
-    stage  = "prod"
-    region = "us-central1"
-  }
-
-  address = "1.2.3.4"
-  port    = 5353
-}
-
-
-
-
-resource "google_ml_engine_model" "default" {
-  name        = "default-${local.name_suffix}"
-  description = "My model"
-  regions     = ["us-central1"]
-}
+data "google_project" "project" {}
 

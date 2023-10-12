@@ -12,7 +12,7 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_vertex_ai_dataset_data_item_annotations resource.'
+title 'Test GCP google_vertex_ai_dataset_data_item_annotation resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
@@ -25,11 +25,21 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "etag": "value_etag",
   "update_time": "value_updatetime"
 }, description: 'dataset_data_item_annotation description')
-control 'google_vertex_ai_dataset_data_item_annotations-1.0' do
+control 'google_vertex_ai_dataset_data_item_annotation-1.0' do
   impact 1.0
-  title 'google_vertex_ai_dataset_data_item_annotations resource test'
+  title 'google_vertex_ai_dataset_data_item_annotation resource test'
 
-      describe google_vertex_ai_dataset_data_item_annotations(parent: "projects/#{gcp_project_id}/locations/#{dataset_data_item_annotation['region']}/datasets/#{dataset_data_item_annotation['dataset']}/dataItems/#{dataset_data_item_annotation['dataItem']}", region: dataset_data_item_annotation['region']) do
-      it { should exist }
-    end
+  describe google_vertex_ai_dataset_data_item_annotation(name: "projects/#{gcp_project_id}/locations/#{dataset_data_item_annotation['region']}/studies/#{dataset_data_item_annotation['study']}", region: dataset_data_item_annotation['region']) do
+  	it { should exist }
+  	its('payload_schema_uri') { should cmp dataset_data_item_annotation['payload_schema_uri'] }
+  	its('create_time') { should cmp dataset_data_item_annotation['create_time'] }
+  	its('etag') { should cmp dataset_data_item_annotation['etag'] }
+  	its('update_time') { should cmp dataset_data_item_annotation['update_time'] }
+  	its('name') { should cmp dataset_data_item_annotation['name'] }
+
+  end
+
+  describe google_vertex_ai_dataset_data_item_annotation(name: "does_not_exit", region: dataset_data_item_annotation['region']) do
+  	it { should_not exist }
+  end
 end
