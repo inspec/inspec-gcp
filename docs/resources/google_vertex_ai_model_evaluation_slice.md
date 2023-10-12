@@ -8,7 +8,7 @@ A `google_vertex_ai_model_evaluation_slice` is used to test a Google ModelEvalua
 
 ## Examples
 ```
-describe google_vertex_ai_models_evaluations_slice(name: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}/slices/#{models_evaluations_slice['slice']}", region: ' value_region') do
+describe google_vertex_ai_model_evaluation_slice(name: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}/slices/#{models_evaluations_slice['slice']}", region: ' value_region') do
 	it { should exist }
 	its('create_time') { should cmp 'value_createtime' }
 	its('name') { should cmp 'value_name' }
@@ -16,7 +16,7 @@ describe google_vertex_ai_models_evaluations_slice(name: "projects/#{gcp_project
 
 end
 
-describe google_vertex_ai_models_evaluations_slice(name: "does_not_exit", region: ' value_region') do
+describe google_vertex_ai_model_evaluation_slice(name: "does_not_exit", region: ' value_region') do
 	it { should_not exist }
 end
 ```

@@ -17,17 +17,19 @@ title 'Test GCP google_vertex_ai_model_evaluation_slice resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   models_evaluations_slice = input('models_evaluations_slice', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "1040489542048845967",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/models/1906524575261261824/evaluations/8892762874796048384/slices/",
   "create_time": "value_createtime",
-  "metrics_schema_uri": "value_metricsschemauri"
+  "metrics_schema_uri": "value_metricsschemauri",
+  "model": "1906524575261261824",
+  "evaluation": "8892762874796048384"
 }, description: 'models_evaluations_slice description')
 control 'google_vertex_ai_model_evaluation_slice-1.0' do
   impact 1.0
   title 'google_vertex_ai_model_evaluation_slice resource test'
 
-  describe google_vertex_ai_models_evaluations_slice(name: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}/slices/#{models_evaluations_slice['slice']}", region: models_evaluations_slice['region']) do
+  describe google_vertex_ai_model_evaluation_slice(name: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}/slices/#{models_evaluations_slice['slice']}", region: models_evaluations_slice['region']) do
   	it { should exist }
   	its('create_time') { should cmp models_evaluations_slice['create_time'] }
   	its('name') { should cmp models_evaluations_slice['name'] }
@@ -35,7 +37,7 @@ control 'google_vertex_ai_model_evaluation_slice-1.0' do
 
   end
 
-  describe google_vertex_ai_models_evaluations_slice(name: "does_not_exit", region: models_evaluations_slice['region']) do
+  describe google_vertex_ai_model_evaluation_slice(name: "does_not_exit", region: models_evaluations_slice['region']) do
   	it { should_not exist }
   end
 end

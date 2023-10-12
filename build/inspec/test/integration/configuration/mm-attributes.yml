@@ -843,8 +843,10 @@ datasets_saved_query:
   annotation_filter : "value_annotationfilter"
 
 models_evaluations_slice:
-  name : "value_name"
-  region : "value_region"
+  name : "1040489542048845967"
+  region : "us-central1"
   parent : "value_parent"
+  model: "1906524575261261824"
+  evaluation: "8892762874796048384"
   create_time : "value_createtime"
   metrics_schema_uri : "value_metricsschemauri"

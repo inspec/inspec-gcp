@@ -8,7 +8,7 @@ A `google_vertex_ai_model_evaluation_slices` is used to test a Google ModelEvalu
 
 ## Examples
 ```
-    describe google_vertex_ai_models_evaluations_slices(parent: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}", region: ' value_region') do
+    describe google_vertex_ai_model_evaluation_slices(parent: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}", region: ' value_region') do
     it { should exist }
   end
 ```
