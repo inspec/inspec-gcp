@@ -1346,9 +1346,6 @@ resource "google_data_loss_prevention_stored_info_type" "basic" {
   }
 }
 
-
-
-
 resource "google_vertex_ai_tensorboard" "tensorboard" {
   display_name = "terraform-${local.name_suffix}"
   description  = "sample description"
@@ -1441,6 +1438,18 @@ resource "google_datastore_index" "default" {
     name = "property_b-${local.name_suffix}"
     direction = "ASCENDING"
   }
+resource "google_service_networking_connection" "vertex_vpc_connection" {
+  network                 = data.google_compute_network.vertex_network.id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.vertex_range.name]
+}
+
+resource "google_compute_global_address" "vertex_range" {
+  name          = "address-name-${local.name_suffix}"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 24
+  network       = data.google_compute_network.vertex_network.id
 }
 
 
@@ -1464,4 +1473,9 @@ resource "google_ml_engine_model" "default" {
   description = "My model"
   regions     = ["us-central1"]
 }
+data "google_compute_network" "vertex_network" {
+  name       = "network-name-${local.name_suffix}"
+}
+
+data "google_project" "project" {}
 

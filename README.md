@@ -358,6 +358,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_models_evaluation](docs/resources/google_vertex_ai_models_evaluation.md)                           | [google_vertex_ai_models_evaluations](docs/resources/google_vertex_ai_models_evaluations.md)             |
 | [google_vertex_ai_models_evaluation_slice](docs/resources/google_vertex_ai_model_evaluation_slice.md)                           | [google_vertex_ai_models_evaluation_slices](docs/resources/google_vertex_ai_model_evaluation_slices.md)             |
 | [google_vertex_ai_model_deployment_monitoring_job](docs/resources/google_vertex_ai_model_deployment_monitoring_job.md)                           | [google_vertex_ai_model_deployment_monitoring_jobs](docs/resources/google_vertex_ai_model_deployment_monitoring_jobs.md)             |
+| [google_vertex_ai_study](docs/resources/google_vertex_ai_study.md)                           | [google_vertex_ai_studies](docs/resources/google_vertex_ai_studies.md)             |
 
 ## Examples
 
