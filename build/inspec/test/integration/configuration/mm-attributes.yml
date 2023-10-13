@@ -871,3 +871,12 @@ index:
     state: "ACTIVE"
     create_time: "value_createtime"
     inactive_reason: "value_inactivereason"
+
+datasets_data_item:
+  parent: "value_parent"
+  region: "us-central1"
+  dataset: "871737898477551616"
+  update_time: "value_updatetime"
+  etag: "value_etag"
+  name: "value_name"
+  create_time: "value_createtime"
