@@ -863,6 +863,15 @@ index:
   create_time : "value_createtime"
   etag : "value_etag"
 
+  study:
+    name: "2975668570413"
+    region: "us-central1"
+    parent: "projects/165434197229/locations/us-central1/studies/"
+    display_name: "ppradhan_study_20230921_205019"
+    state: "ACTIVE"
+    create_time: "value_createtime"
+    inactive_reason: "value_inactivereason"
+
 datasets_data_item:
   parent: "value_parent"
   region: "us-central1"
