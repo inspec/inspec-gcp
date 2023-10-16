@@ -17,9 +17,12 @@ title 'Test GCP google_vertex_ai_tensorboard_experiment_run_time_series_resource
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   tensorboard_experiment_run_time_series_resource = input('tensorboard_experiment_run_time_series_resource', value: {
-  "name": "value_name",
-  "region": "value_region",
-  "parent": "value_parent",
+  "name": "1197045318546358272",
+  "tensorboard": "1143342559305662464",
+  "experiment": "autologging-experiment-a6k29mzk",
+  "region": "us-central1",
+  "parent": "projects/165434197229/locations/us-central1/tensorboards/1143342559305662464/experiments/autologging-experiment-a6k29mzk/runs/autologging-tf-experiment-a6k29mzk/timeSeries/",
+  "run": "autologging-tf-experiment-a6k29mzk",
   "plugin_name": "value_pluginname",
   "plugin_data": "value_plugindata",
   "description": "value_description",

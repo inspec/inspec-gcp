@@ -693,9 +693,12 @@ tensorboards_experiment:
   etag : "value_etag"
 
 tensorboard_experiment_run_time_series_resource:
-  name : "value_name"
-  region : "value_region"
-  parent : "value_parent"
+  name : "1197045318546358272"
+  region : "us-central1"
+  tensorboard: "1143342559305662464"
+  experiment: "autologging-experiment-a6k29mzk"
+  run: "autologging-tf-experiment-a6k29mzk"
+  parent : "projects/165434197229/locations/us-central1/tensorboards/1143342559305662464/experiments/autologging-experiment-a6k29mzk/runs/autologging-tf-experiment-a6k29mzk/timeSeries/"
   plugin_name : "value_pluginname"
   plugin_data : "value_plugindata"
   description : "value_description"
@@ -827,20 +830,20 @@ metadata_stores_context:
   create_time : "value_createtime"
   update_time : "value_updatetime"
 
-  metadata_stores_artifact:
-    name: "2811503570633325756"
-    region: "us-central1"
-    parent: "projects/165434197229/locations/us-central1/metadataStores/default/artifacts/"
-    metadataStore: "default"
-    schema_version: "value_schemaversion"
-    display_name: "value_displayname"
-    etag: "value_etag"
-    update_time: "value_updatetime"
-    state: "value_state"
-    uri: "value_uri"
-    create_time: "value_createtime"
-    schema_title: "value_schematitle"
-    description: "value_description"
+metadata_stores_artifact:
+  name: "2811503570633325756"
+  region: "us-central1"
+  parent: "projects/165434197229/locations/us-central1/metadataStores/default/artifacts/"
+  metadataStore: "default"
+  schema_version: "value_schemaversion"
+  display_name: "value_displayname"
+  etag: "value_etag"
+  update_time: "value_updatetime"
+  state: "value_state"
+  uri: "value_uri"
+  create_time: "value_createtime"
+  schema_title: "value_schematitle"
+  description: "value_description"
 
 
 datasets_saved_query:
@@ -876,14 +879,14 @@ index:
   create_time : "value_createtime"
   etag : "value_etag"
 
-  study:
-    name: "2975668570413"
-    region: "us-central1"
-    parent: "projects/165434197229/locations/us-central1/studies/"
-    display_name: "ppradhan_study_20230921_205019"
-    state: "ACTIVE"
-    create_time: "value_createtime"
-    inactive_reason: "value_inactivereason"
+study:
+  name: "2975668570413"
+  region: "us-central1"
+  parent: "projects/165434197229/locations/us-central1/studies/"
+  display_name: "ppradhan_study_20230921_205019"
+  state: "ACTIVE"
+  create_time: "value_createtime"
+  inactive_reason: "value_inactivereason"
 
 datasets_data_item:
   parent: "value_parent"
