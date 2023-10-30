@@ -23,6 +23,7 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:user_defined_fields, field: :user_defined_fields)
   filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
@@ -45,7 +46,7 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('regionSecurityPolicies')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -78,16 +79,17 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
 
   def transformers
     {
+      'userDefinedFields' => ->(obj) { return :user_defined_fields, obj['userDefinedFields'] },
       'kind' => ->(obj) { return :kind, obj['kind'] },
       'id' => ->(obj) { return :id, obj['id'] },
       'creationTimestamp' => ->(obj) { return :creation_timestamp, obj['creationTimestamp'] },
       'name' => ->(obj) { return :name, obj['name'] },
       'description' => ->(obj) { return :description, obj['description'] },
-      'rules' => ->(obj) { return :rules, GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(obj['rules'], to_s) },
-      'adaptiveProtectionConfig' => ->(obj) { return :adaptive_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(obj['adaptiveProtectionConfig'], to_s) },
-      'ddosProtectionConfig' => ->(obj) { return :ddos_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(obj['ddosProtectionConfig'], to_s) },
-      'advancedOptionsConfig' => ->(obj) { return :advanced_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(obj['advancedOptionsConfig'], to_s) },
-      'recaptchaOptionsConfig' => ->(obj) { return :recaptcha_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(obj['recaptchaOptionsConfig'], to_s) },
+      'rules' => ->(obj) { return :rules, obj['rules'] },
+      'adaptiveProtectionConfig' => ->(obj) { return :adaptive_protection_config, obj['adaptiveProtectionConfig'] },
+      'ddosProtectionConfig' => ->(obj) { return :ddos_protection_config, obj['ddosProtectionConfig'] },
+      'advancedOptionsConfig' => ->(obj) { return :advanced_options_config, obj['advancedOptionsConfig'] },
+      'recaptchaOptionsConfig' => ->(obj) { return :recaptcha_options_config, obj['recaptchaOptionsConfig'] },
       'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
       'selfLink' => ->(obj) { return :self_link, obj['selfLink'] },
       'type' => ->(obj) { return :type, obj['type'] },
@@ -104,6 +106,6 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/securityPolicies/{{securityPolicy}}'
+    'projects/{{project}}/regions/{{region}}/securityPolicies'
   end
 end
