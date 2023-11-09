@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
-require 'google/apis/monitoring_v3'
+require 'google-apis-monitoring_v3'
 
 module Inspec::Resources
   class GoogleProjectAlertPolicyCondition < GcpResourceBase

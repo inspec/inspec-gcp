@@ -2,7 +2,7 @@
 
 require 'gcp_backend'
 require 'time'
-require 'google/apis/cloudkms_v1'
+require 'google-apis-cloudkms_v1'
 
 module Inspec::Resources
   class GoogleKMSKeyRingIAMBindings < GcpResourceBase
