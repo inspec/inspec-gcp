@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'gcp_backend'
 
@@ -12,28 +12,41 @@ module Inspec::Resources
         it { should exist }
       end
     "
-
-    def initialize(opts = {})
-      # Call the parent class constructor
-      super(opts)
-      @crypto_key_url = opts[:crypto_key_url]
-    end
+    attr_reader :params
+    attr_reader :table
 
     # FilterTable setup
     filter_table_config = FilterTable.create
     filter_table_config.add(:iam_binding_roles, field: :iam_binding_role)
-    filter_table_config.connect(self, :fetch_data)
+    filter_table_config.connect(self, :table)
 
-    def fetch_data
+    def initialize(params = {})
+      # Call the parent class constructor
+      super(params.merge({ use_http_transport: true }))
+      @crypto_key_url = params[:crypto_key_url]
+      @params = params
+      @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+      parse unless @fetched.nil?
+    end
+
+    def parse
       iam_binding_rows = []
-      catch_gcp_errors do
-        @iam_bindings = @gcp.gcp_client(Google::Apis::CloudkmsV1::CloudKMSService).get_project_location_key_ring_crypto_key_iam_policy(@crypto_key_url)
-      end
-      return [] if !@iam_bindings || !@iam_bindings.bindings
-      @iam_bindings.bindings.map do |iam_binding|
+      return [] if !@fetched || !@fetched['bindings']
+      @iam_bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+
+      @iam_bindings.map do |iam_binding|
         iam_binding_rows+=[{ iam_binding_role: iam_binding.role }]
       end
       @table = iam_binding_rows
+    end
+    private
+
+    def product_url
+      'https://cloudkms.googleapis.com/v1/'
+    end
+
+    def resource_base_url
+      '{{crypto_key_url}}:getIamPolicy'
     end
   end
 end

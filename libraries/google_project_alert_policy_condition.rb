@@ -1,7 +1,6 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'gcp_backend'
-require 'google-apis-monitoring_v3'
 
 module Inspec::Resources
   class GoogleProjectAlertPolicyCondition < GcpResourceBase
@@ -14,15 +13,13 @@ module Inspec::Resources
       end
     "
 
-    def initialize(opts = {})
+    def initialize(params = {})
       # Call the parent class constructor
-      super(opts)
-      @filter = opts[:filter]
-      @policy = opts[:policy]
-      catch_gcp_errors do
-        @policy_result = @gcp.gcp_client(Google::Apis::MonitoringV3::MonitoringService).get_project_alert_policy(@policy)
-        @condition = condition_for_filter(@filter)
-      end
+      super(params.merge({ use_http_transport: true }))
+      @filter = params[:filter]
+      @policy = params[:name]
+      @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+      @condition = condition_for_filter(@filter)
     end
 
     def exists?
@@ -30,8 +27,9 @@ module Inspec::Resources
     end
 
     def condition_for_filter(filter)
-      return nil if !defined?(@policy_result.conditions) || @policy_result.conditions.nil?
-      @policy_result.conditions.each do |condition|
+      @policy_result = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(@fetched['conditions'],to_s)
+      return nil if !defined?(@policy_result) || @policy_result.nil?
+      @policy_result.each do |condition|
         next if !defined?(condition.condition_threshold.filter) || condition.condition_threshold.filter.nil?
         return condition if condition.condition_threshold.filter == filter
       end
@@ -60,6 +58,15 @@ module Inspec::Resources
 
     def to_s
       "Alert Policy Condition #{@policy} \"#{@filter}\""
+    end
+    private
+
+    def product_url(_ = nil)
+      'https://monitoring.googleapis.com/v3/'
+    end
+
+    def resource_base_url
+      '{{name}}'
     end
   end
 end
