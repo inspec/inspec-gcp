@@ -12,18 +12,23 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_composer_project_location_image_versions resource.'
+title 'Test GCP google_composer_project_location_image_version resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_location_image_version = input('project_location_image_version', value: {
   "parent": "value_parent"
 }, description: 'project_location_image_version description')
-control 'google_composer_project_location_image_versions-1.0' do
+control 'google_composer_project_location_image_version-1.0' do
   impact 1.0
-  title 'google_composer_project_location_image_versions resource test'
+  title 'google_composer_project_location_image_version resource test'
 
-      describe google_composer_project_location_image_versions(parent: project_location_image_version['parent']) do
-      it { should exist }
-    end
+  describe google_composer_project_location_image_version() do
+  	it { should exist }
+
+  end
+
+  describe google_composer_project_location_image_version() do
+  	it { should_not exist }
+  end
 end
