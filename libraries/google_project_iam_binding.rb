@@ -22,15 +22,15 @@ module Inspec::Resources
       @role = params[:role]
       @iam_binding_exists = false
       @members_list=[]
-        # NOTE: this is the same call as for the plural iam_bindings resource because there isn't an easy way to pull out a singular binding
-        @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
-        @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
-        raise Inspec::Exceptions::ResourceFailed, "google_project_iam_binding is missing expected IAM policy 'bindings' property" if !@bindings
-        @bindings.each do |binding|
-          next if binding.role != @role.to_s
-          @iam_binding_exists=true
-          @members_list=binding.members
-        end
+      # NOTE: this is the same call as for the plural iam_bindings resource because there isn't an easy way to pull out a singular binding
+      @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
+      @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+      raise Inspec::Exceptions::ResourceFailed, "google_project_iam_binding is missing expected IAM policy 'bindings' property" if !@bindings
+      @bindings.each do |binding|
+        next if binding.role != @role.to_s
+        @iam_binding_exists=true
+        @members_list=binding.members
+      end
     end
 
     # return the list of users corresponding to the role
@@ -45,6 +45,7 @@ module Inspec::Resources
     def to_s
       "Project IAM Binding #{@role}"
     end
+
     private
 
     def product_url

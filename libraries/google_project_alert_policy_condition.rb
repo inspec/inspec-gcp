@@ -27,7 +27,7 @@ module Inspec::Resources
     end
 
     def condition_for_filter(filter)
-      @policy_result = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(@fetched['conditions'],to_s)
+      @policy_result = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(@fetched['conditions'], to_s)
       return nil if !defined?(@policy_result) || @policy_result.nil?
       @policy_result.each do |condition|
         next if !defined?(condition.condition_threshold.filter) || condition.condition_threshold.filter.nil?
@@ -59,6 +59,7 @@ module Inspec::Resources
     def to_s
       "Alert Policy Condition #{@policy} \"#{@filter}\""
     end
+
     private
 
     def product_url(_ = nil)

@@ -14,25 +14,23 @@ module Inspec::Resources
     "
     attr_reader :params
 
-
     def initialize(params = {})
       # Call the parent class constructor
       super(params.merge({ use_http_transport: true }))
       @project = params[:project]
-        @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
-        @default_types = []
-        @default_exempted_members = {}
-          if defined?(@fetched['auditConfigs']) && @fetched['auditConfigs'].instance_of?(::Array)
-            @audit_logging_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
+      @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
+      @default_types = []
+      @default_exempted_members = {}
+      return unless defined?(@fetched['auditConfigs']) && @fetched['auditConfigs'].instance_of?(::Array)
+      @audit_logging_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
 
-            @audit_logging_configs.each do |service_config|
-            next if service_config.service != 'allServices'
-            service_config.audit_log_configs.each do |config|
-              @default_types+=[config.log_type]
-              @default_exempted_members[config.log_type]=config.exempted_members if defined?(config.exempted_members) && !config.exempted_members.nil?
-            end
-          end
+      @audit_logging_configs.each do |service_config|
+        next if service_config.service != 'allServices'
+        service_config.audit_log_configs.each do |config|
+          @default_types+=[config.log_type]
+          @default_exempted_members[config.log_type]=config.exempted_members if defined?(config.exempted_members) && !config.exempted_members.nil?
         end
+      end
     end
 
     def exists?
@@ -46,13 +44,17 @@ module Inspec::Resources
     def has_default_exempted_members?
       @default_exempted_members.values.any?
     end
+
     def to_s
       "Logging Audit Config For #{@project}"
     end
+
     private
+
     def product_url
       'https://cloudresourcemanager.googleapis.com/v1/'
     end
+
     def resource_base_url
       'projects/{{project}}:getIamPolicy'
     end

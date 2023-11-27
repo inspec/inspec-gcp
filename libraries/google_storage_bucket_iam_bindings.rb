@@ -16,8 +16,6 @@ module Inspec::Resources
     attr_reader :params
     attr_reader :table
 
-
-
     def initialize(params = {})
       # Call the parent class constructor
       super(params.merge({ use_http_transport: true }))
@@ -41,9 +39,11 @@ module Inspec::Resources
       end
       @table = iam_binding_rows
     end
+
     def to_s
       "Bucket IamBinding #{@params[:bucket]} Role: #{@params[:role]}"
     end
+
     private
 
     def product_url

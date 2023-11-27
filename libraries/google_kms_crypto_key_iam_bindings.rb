@@ -39,6 +39,7 @@ module Inspec::Resources
       end
       @table = iam_binding_rows
     end
+
     private
 
     def product_url
