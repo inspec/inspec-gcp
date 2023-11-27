@@ -31,7 +31,7 @@ class ComposerProjectLocationImageVersions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectLocationImageVersions')
+    @table = fetch_wrapped_resource('imageVersions')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -72,7 +72,7 @@ class ComposerProjectLocationImageVersions < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://composer.googleapis.com//V1/'
+    'https://composer.googleapis.com/v1/'
   end
 
   def resource_base_url

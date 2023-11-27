@@ -17,7 +17,7 @@ title 'Test GCP google_composer_project_location_image_versions resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_location_image_version = input('project_location_image_version', value: {
-  "parent": "value_parent"
+  "parent": "projects/ppradhan/locations/us-central1"
 }, description: 'project_location_image_version description')
 control 'google_composer_project_location_image_versions-1.0' do
   impact 1.0
