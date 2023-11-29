@@ -883,3 +883,15 @@ tensorboard_experiment_run_time_series_resource:
 
 project_location_image_version:
   parent : "value_parent"
+organization_environment:
+  name : "value_name"
+  parent : "value_parent"
+  type : "value_type"
+  state : "value_state"
+  api_proxy_type : "value_apiproxytype"
+  forward_proxy_uri : "value_forwardproxyuri"
+  deployment_type : "value_deploymenttype"
+  last_modified_at : "value_lastmodifiedat"
+  display_name : "value_displayname"
+  description : "value_description"
+  created_at : "value_createdat"
