@@ -883,3 +883,8 @@ tensorboard_experiment_run_time_series_resource:
 
 project_location_image_version:
   parent : "value_parent"
+organization_envgroup:
+  name : "value_name"
+  last_modified_at : "value_lastmodifiedat"
+  state : "value_state"
+  created_at : "value_createdat"
