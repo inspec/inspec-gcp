@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.52 -->
+<!-- latest_release 1.11.53 -->
+## [v1.11.53](https://github.com/inspec/inspec-gcp/tree/v1.11.53) (2023-11-29)
+
+#### Merged Pull Requests
+- CHEF-7365-MAGIC-MODULE-composer-Projects__locations__imageVersion - Resource Implementation [#527](https://github.com/inspec/inspec-gcp/pull/527) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.52](https://github.com/inspec/inspec-gcp/tree/v1.11.52) (2023-10-16)
 
 #### Merged Pull Requests
 - CHEF-5584-MAGIC-MODULE-vertex_ai-Tensorboards__experiments__runs__timeSeries_resource - Resource Implementation [#524](https://github.com/inspec/inspec-gcp/pull/524) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.51](https://github.com/inspec/inspec-gcp/tree/v1.11.51) (2023-10-13)
 
