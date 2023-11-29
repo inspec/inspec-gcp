@@ -15,24 +15,34 @@
 title 'Test GCP google_compute_global_network_endpoint_group resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-global_network_endpoint_group = input('global_network_endpoint_group', value: {
+
+  global_network_endpoint_group = input('global_network_endpoint_group', value: {
   "name": "inspec-gcp-global-endpoint-group",
   "network_endpoint_type": "INTERNET_IP_PORT",
   "default_port": 90
-}, description: 'Network endpoint group description')
-
+}, description: 'global_network_endpoint_group description')
 control 'google_compute_global_network_endpoint_group-1.0' do
   impact 1.0
   title 'google_compute_global_network_endpoint_group resource test'
 
+  describe google_compute_global_network_endpoint_group(networkEndpointGroup: global_network_endpoint_group['networkEndpointGroup'], project: gcp_project_id) do
+  	it { should exist }
+  	its('kind') { should cmp global_network_endpoint_group['kind'] }
+  	its('id') { should cmp global_network_endpoint_group['id'] }
+  	its('creation_timestamp') { should cmp global_network_endpoint_group['creation_timestamp'] }
+  	its('self_link') { should cmp global_network_endpoint_group['self_link'] }
+  	its('name') { should cmp global_network_endpoint_group['name'] }
+  	its('description') { should cmp global_network_endpoint_group['description'] }
+  	its('network_endpoint_type') { should cmp global_network_endpoint_group['network_endpoint_type'] }
+  	its('region') { should cmp global_network_endpoint_group['region'] }
+  	its('zone') { should cmp global_network_endpoint_group['zone'] }
+  	its('network') { should cmp global_network_endpoint_group['network'] }
+  	its('subnetwork') { should cmp global_network_endpoint_group['subnetwork'] }
+  	its('psc_target_service') { should cmp global_network_endpoint_group['psc_target_service'] }
 
-  describe google_compute_global_network_endpoint_group(project: gcp_project_id, name: global_network_endpoint_group['name']) do
-    it { should exist }
-    its('default_port') { should cmp global_network_endpoint_group['default_port'] }
-    its('network_endpoint_type'){ should cmp global_network_endpoint_group['network_endpoint_type'] }
   end
 
-  describe google_compute_global_network_endpoint_group(project: gcp_project_id, name: 'nonexistent') do
-    it { should_not exist }
+  describe google_compute_global_network_endpoint_group(networkEndpointGroup: global_network_endpoint_group['networkEndpointGroup'], project: gcp_project_id) do
+  	it { should_not exist }
   end
 end
