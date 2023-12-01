@@ -27,6 +27,12 @@ class DataprocClusters < GcpResourceBase
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:configs, field: :config)
   filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:project_ids, field: :project_id)
+  filter_table_config.add(:virtual_cluster_configs, field: :virtual_cluster_config)
+  filter_table_config.add(:statuses, field: :status)
+  filter_table_config.add(:status_histories, field: :status_history)
+  filter_table_config.add(:cluster_uuids, field: :cluster_uuid)
+  filter_table_config.add(:metrics, field: :metrics)
 
   filter_table_config.connect(self, :table)
 
@@ -70,6 +76,12 @@ class DataprocClusters < GcpResourceBase
       'labels' => ->(obj) { return :labels, obj['labels'] },
       'config' => ->(obj) { return :config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s) },
       'region' => ->(obj) { return :region, obj['region'] },
+      'projectId' => ->(obj) { return :project_id, obj['projectId'] },
+      'virtualClusterConfig' => ->(obj) { return :virtual_cluster_config, obj['virtualClusterConfig'] },
+      'status' => ->(obj) { return :status, obj['status'] },
+      'statusHistory' => ->(obj) { return :status_history, obj['statusHistory'] },
+      'clusterUuid' => ->(obj) { return :cluster_uuid, obj['clusterUuid'] },
+      'metrics' => ->(obj) { return :metrics, obj['metrics'] },
     }
   end
 
