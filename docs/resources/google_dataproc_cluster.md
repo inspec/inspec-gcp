@@ -196,8 +196,6 @@ Properties that can be accessed from the `google_dataproc_cluster` resource:
 
   * `virtual_cluster_config`: Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
 
-  * `additional_properties`:
-
   * `status`: Output only. Cluster status.
 
   * `status_history`: Output only. The previous cluster status.
