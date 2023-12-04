@@ -14,26 +14,23 @@
 
 title 'Test GCP google_apigee_organization_envgroup resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-
-  organization_envgroup = input('organization_envgroup', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "last_modified_at": "value_lastmodifiedat",
-  "state": "value_state",
-  "created_at": "value_createdat"
+organization_envgroup = input('organization_envgroup', value: {
+  "name": "test-env-group",
+  "parent": "organizations/ppradhan/envgroups",
+  "hostname": "34.95.97.227.nip.io",
+  "state": "ACTIVE",
+  "created_at": "1698227493454"
 }, description: 'organization_envgroup description')
 control 'google_apigee_organization_envgroup-1.0' do
   impact 1.0
   title 'google_apigee_organization_envgroup resource test'
 
-  describe google_apigee_organization_envgroup(name: organization_envgroup['name']) do
+  describe google_apigee_organization_envgroup(name: "#{organization_envgroup['parent']}/#{organization_envgroup['name']}") do
   	it { should exist }
   	its('name') { should cmp organization_envgroup['name'] }
-  	its('last_modified_at') { should cmp organization_envgroup['last_modified_at'] }
+    its('hostnames') { should include organization_envgroup['hostname'] }
   	its('state') { should cmp organization_envgroup['state'] }
   	its('created_at') { should cmp organization_envgroup['created_at'] }
-
   end
 
   describe google_apigee_organization_envgroup(name: "does_not_exit") do
