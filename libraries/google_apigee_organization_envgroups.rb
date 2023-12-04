@@ -34,7 +34,7 @@ class ApigeeOrganizationEnvgroups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizationEnvgroups')
+    @table = fetch_wrapped_resource('environmentGroups')
   end
 
   def fetch_wrapped_resource(wrap_path)
