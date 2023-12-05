@@ -97,6 +97,6 @@ class ArtifactregistryProjectLocationRepository < GcpResourceBase
   end
 
   def resource_base_url
-    'v1beta1/{{name}}'
+    '{{name}}'
   end
 end

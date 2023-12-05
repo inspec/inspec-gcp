@@ -45,7 +45,7 @@ class ArtifactregistryProjectLocationRepositorys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectLocationRepositories')
+    @table = fetch_wrapped_resource('repositories')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -104,6 +104,6 @@ class ArtifactregistryProjectLocationRepositorys < GcpResourceBase
   end
 
   def resource_base_url
-    'v1beta1/{{parent}}/repositories'
+    '{{parent}}/repositories'
   end
 end
