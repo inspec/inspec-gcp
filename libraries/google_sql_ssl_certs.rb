@@ -69,13 +69,13 @@ class SQLSslCerts < GcpResourceBase
 
   def transformers
     {
-      'cert' => ->(obj) { return :cert, obj['cert'] },
-      'certSerialNumber' => ->(obj) { return :cert_serial_number, obj['certSerialNumber'] },
-      'commonName' => ->(obj) { return :common_name, obj['commonName'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'expirationTime' => ->(obj) { return :expiration_time, parse_time_string(obj['expirationTime']) },
-      'instance' => ->(obj) { return :instance, obj['instance'] },
-      'sha1Fingerprint' => ->(obj) { return :sha1_fingerprint, obj['sha1Fingerprint'] },
+      'cert' => ->(obj) { [:cert, obj['cert']] },
+      'certSerialNumber' => ->(obj) { [:cert_serial_number, obj['certSerialNumber']] },
+      'commonName' => ->(obj) { [:common_name, obj['commonName']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'expirationTime' => ->(obj) { [:expiration_time, parse_time_string(obj['expirationTime'])] },
+      'instance' => ->(obj) { [:instance, obj['instance']] },
+      'sha1Fingerprint' => ->(obj) { [:sha1_fingerprint, obj['sha1Fingerprint']] },
     }
   end
 

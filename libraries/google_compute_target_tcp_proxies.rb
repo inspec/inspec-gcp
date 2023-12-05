@@ -68,12 +68,12 @@ class ComputeTargetTcpProxys < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'proxyHeader' => ->(obj) { return :proxy_header, obj['proxyHeader'] },
-      'service' => ->(obj) { return :service, obj['service'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'proxyHeader' => ->(obj) { [:proxy_header, obj['proxyHeader']] },
+      'service' => ->(obj) { [:service, obj['service']] },
     }
   end
 

@@ -68,12 +68,12 @@ class VertexAIModelEvaluationSlices < GcpResourceBase
 
   def transformers
     {
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'modelExplanation' => ->(obj) { return :model_explanation, GoogleInSpec::VertexAI::Property::ModelEvaluationSliceModelExplanation.new(obj['modelExplanation'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'metrics' => ->(obj) { return :metrics, obj['metrics'] },
-      'slice' => ->(obj) { return :slice, GoogleInSpec::VertexAI::Property::ModelEvaluationSliceSlice.new(obj['slice'], to_s) },
-      'metricsSchemaUri' => ->(obj) { return :metrics_schema_uri, obj['metricsSchemaUri'] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'modelExplanation' => ->(obj) { [:model_explanation, GoogleInSpec::VertexAI::Property::ModelEvaluationSliceModelExplanation.new(obj['modelExplanation'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'metrics' => ->(obj) { [:metrics, obj['metrics']] },
+      'slice' => ->(obj) { [:slice, GoogleInSpec::VertexAI::Property::ModelEvaluationSliceSlice.new(obj['slice'], to_s)] },
+      'metricsSchemaUri' => ->(obj) { [:metrics_schema_uri, obj['metricsSchemaUri']] },
     }
   end
 

@@ -68,12 +68,12 @@ class LoggingProjectSinks < GcpResourceBase
 
   def transformers
     {
-      'project' => ->(obj) { return :project, obj['project'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'filter' => ->(obj) { return :filter, obj['filter'] },
-      'destination' => ->(obj) { return :destination, obj['destination'] },
-      'writerIdentity' => ->(obj) { return :writer_identity, obj['writerIdentity'] },
-      'includeChildren' => ->(obj) { return :include_children, obj['includeChildren'] },
+      'project' => ->(obj) { [:project, obj['project']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'filter' => ->(obj) { [:filter, obj['filter']] },
+      'destination' => ->(obj) { [:destination, obj['destination']] },
+      'writerIdentity' => ->(obj) { [:writer_identity, obj['writerIdentity']] },
+      'includeChildren' => ->(obj) { [:include_children, obj['includeChildren']] },
     }
   end
 

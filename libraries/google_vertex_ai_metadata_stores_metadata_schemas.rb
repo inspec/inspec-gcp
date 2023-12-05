@@ -67,12 +67,12 @@ class VertexAIMetadataStoresMetadataSchemas < GcpResourceBase
 
   def transformers
     {
-      'schemaType' => ->(obj) { return :schema_type, obj['schemaType'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'schemaVersion' => ->(obj) { return :schema_version, obj['schemaVersion'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'schema' => ->(obj) { return :schema, obj['schema'] },
+      'schemaType' => ->(obj) { [:schema_type, obj['schemaType']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'schemaVersion' => ->(obj) { [:schema_version, obj['schemaVersion']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'schema' => ->(obj) { [:schema, obj['schema']] },
     }
   end
 

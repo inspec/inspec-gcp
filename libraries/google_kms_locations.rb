@@ -66,10 +66,10 @@ class KMSLocations < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'locationId' => ->(obj) { return :location_id, obj['locationId'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'location' => ->(obj) { return :location, obj['location'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'locationId' => ->(obj) { [:location_id, obj['locationId']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'location' => ->(obj) { [:location, obj['location']] },
     }
   end
 

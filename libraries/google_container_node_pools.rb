@@ -75,19 +75,19 @@ class ContainerNodePools < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :node_pool_name, obj['name'] },
-      'config' => ->(obj) { return :config, GoogleInSpec::Container::Property::NodePoolConfig.new(obj['config'], to_s) },
-      'initialNodeCount' => ->(obj) { return :initial_node_count, obj['initialNodeCount'] },
-      'status' => ->(obj) { return :node_pool_status, obj['status'] },
-      'statusMessage' => ->(obj) { return :status_message, obj['statusMessage'] },
-      'version' => ->(obj) { return :version, obj['version'] },
-      'autoscaling' => ->(obj) { return :autoscaling, GoogleInSpec::Container::Property::NodePoolAutoscaling.new(obj['autoscaling'], to_s) },
-      'management' => ->(obj) { return :management, GoogleInSpec::Container::Property::NodePoolManagement.new(obj['management'], to_s) },
-      'maxPodsConstraint' => ->(obj) { return :max_pods_constraint, GoogleInSpec::Container::Property::NodePoolMaxPodsConstraint.new(obj['maxPodsConstraint'], to_s) },
-      'conditions' => ->(obj) { return :conditions, GoogleInSpec::Container::Property::NodePoolConditionsArray.parse(obj['conditions'], to_s) },
-      'podIpv4CidrSize' => ->(obj) { return :pod_ipv4_cidr_size, obj['podIpv4CidrSize'] },
-      'cluster' => ->(obj) { return :cluster, obj['cluster'] },
-      'location' => ->(obj) { return :location, obj['location'] },
+      'name' => ->(obj) { [:node_pool_name, obj['name']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::Container::Property::NodePoolConfig.new(obj['config'], to_s)] },
+      'initialNodeCount' => ->(obj) { [:initial_node_count, obj['initialNodeCount']] },
+      'status' => ->(obj) { [:node_pool_status, obj['status']] },
+      'statusMessage' => ->(obj) { [:status_message, obj['statusMessage']] },
+      'version' => ->(obj) { [:version, obj['version']] },
+      'autoscaling' => ->(obj) { [:autoscaling, GoogleInSpec::Container::Property::NodePoolAutoscaling.new(obj['autoscaling'], to_s)] },
+      'management' => ->(obj) { [:management, GoogleInSpec::Container::Property::NodePoolManagement.new(obj['management'], to_s)] },
+      'maxPodsConstraint' => ->(obj) { [:max_pods_constraint, GoogleInSpec::Container::Property::NodePoolMaxPodsConstraint.new(obj['maxPodsConstraint'], to_s)] },
+      'conditions' => ->(obj) { [:conditions, GoogleInSpec::Container::Property::NodePoolConditionsArray.parse(obj['conditions'], to_s)] },
+      'podIpv4CidrSize' => ->(obj) { [:pod_ipv4_cidr_size, obj['podIpv4CidrSize']] },
+      'cluster' => ->(obj) { [:cluster, obj['cluster']] },
+      'location' => ->(obj) { [:location, obj['location']] },
     }
   end
 

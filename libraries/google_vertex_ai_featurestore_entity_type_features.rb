@@ -71,15 +71,15 @@ class VertexAIFeaturestoreEntityTypeFeatures < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'monitoringStatsAnomalies' => ->(obj) { return :monitoring_stats_anomalies, obj['monitoringStatsAnomalies'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::FeaturestoreEntityTypeFeatureLabels.new(obj['labels'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'disableMonitoring' => ->(obj) { return :disable_monitoring, obj['disableMonitoring'] },
-      'valueType' => ->(obj) { return :value_type, obj['valueType'] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'monitoringStatsAnomalies' => ->(obj) { [:monitoring_stats_anomalies, obj['monitoringStatsAnomalies']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoreEntityTypeFeatureLabels.new(obj['labels'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'disableMonitoring' => ->(obj) { [:disable_monitoring, obj['disableMonitoring']] },
+      'valueType' => ->(obj) { [:value_type, obj['valueType']] },
     }
   end
 

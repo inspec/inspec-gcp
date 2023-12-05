@@ -75,19 +75,19 @@ class VertexAINasJobs < GcpResourceBase
 
   def transformers
     {
-      'nasJobOutput' => ->(obj) { return :nas_job_output, GoogleInSpec::VertexAI::Property::NasJobNasJobOutput.new(obj['nasJobOutput'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'endTime' => ->(obj) { return :end_time, obj['endTime'] },
-      'error' => ->(obj) { return :error, GoogleInSpec::VertexAI::Property::NasJobError.new(obj['error'], to_s) },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'nasJobSpec' => ->(obj) { return :nas_job_spec, GoogleInSpec::VertexAI::Property::NasJobNasJobSpec.new(obj['nasJobSpec'], to_s) },
-      'enableRestrictedImageTraining' => ->(obj) { return :enable_restricted_image_training, obj['enableRestrictedImageTraining'] },
-      'startTime' => ->(obj) { return :start_time, obj['startTime'] },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::NasJobEncryptionSpec.new(obj['encryptionSpec'], to_s) },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::NasJobLabels.new(obj['labels'], to_s) },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
+      'nasJobOutput' => ->(obj) { [:nas_job_output, GoogleInSpec::VertexAI::Property::NasJobNasJobOutput.new(obj['nasJobOutput'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::NasJobError.new(obj['error'], to_s)] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'nasJobSpec' => ->(obj) { [:nas_job_spec, GoogleInSpec::VertexAI::Property::NasJobNasJobSpec.new(obj['nasJobSpec'], to_s)] },
+      'enableRestrictedImageTraining' => ->(obj) { [:enable_restricted_image_training, obj['enableRestrictedImageTraining']] },
+      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::NasJobEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::NasJobLabels.new(obj['labels'], to_s)] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
     }
   end
 

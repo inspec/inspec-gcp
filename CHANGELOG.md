@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.54 -->
+<!-- latest_release 1.11.55 -->
+## [v1.11.55](https://github.com/inspec/inspec-gcp/tree/v1.11.55) (2023-12-05)
+
+#### Merged Pull Requests
+- Chore: Remove redundant `return` statement to fix rubocop 1.58.0 lint offense [#548](https://github.com/inspec/inspec-gcp/pull/548) ([ahasunos](https://github.com/ahasunos))
+<!-- latest_release -->
+
 ## [v1.11.54](https://github.com/inspec/inspec-gcp/tree/v1.11.54) (2023-12-01)
 
 #### Merged Pull Requests
 - CHEF-7355-MAGIC-MODULE-apigee-Organization - Resource Implementation [#541](https://github.com/inspec/inspec-gcp/pull/541) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.53](https://github.com/inspec/inspec-gcp/tree/v1.11.53) (2023-11-29)
 
