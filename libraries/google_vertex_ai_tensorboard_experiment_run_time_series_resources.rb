@@ -72,16 +72,16 @@ class VertexAITensorboardExperimentRunTimeSeriesResources < GcpResourceBase
 
   def transformers
     {
-      'pluginName' => ->(obj) { return :plugin_name, obj['pluginName'] },
-      'pluginData' => ->(obj) { return :plugin_data, obj['pluginData'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'metadata' => ->(obj) { return :metadata, obj['metadata'] },
-      'valueType' => ->(obj) { return :value_type, obj['valueType'] },
+      'pluginName' => ->(obj) { [:plugin_name, obj['pluginName']] },
+      'pluginData' => ->(obj) { [:plugin_data, obj['pluginData']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
+      'valueType' => ->(obj) { [:value_type, obj['valueType']] },
     }
   end
 

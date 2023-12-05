@@ -67,11 +67,11 @@ class ComputeGlobalNetworkEndpointGroups < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'networkEndpointType' => ->(obj) { return :network_endpoint_type, obj['networkEndpointType'] },
-      'defaultPort' => ->(obj) { return :default_port, obj['defaultPort'] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'networkEndpointType' => ->(obj) { [:network_endpoint_type, obj['networkEndpointType']] },
+      'defaultPort' => ->(obj) { [:default_port, obj['defaultPort']] },
     }
   end
 

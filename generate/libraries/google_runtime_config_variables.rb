@@ -66,10 +66,10 @@ class RuntimeConfigVariables < GcpResourceBase
 
   def transformers
     {
-      'value' => ->(obj) { return :value, obj['value'] },
-      'text' => ->(obj) { return :text, obj['text'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'config' => ->(obj) { return :config, obj['config'] },
+      'value' => ->(obj) { [:value, obj['value']] },
+      'text' => ->(obj) { [:text, obj['text']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'config' => ->(obj) { [:config, obj['config']] },
     }
   end
 

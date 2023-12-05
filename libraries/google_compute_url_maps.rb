@@ -74,18 +74,18 @@ class ComputeUrlMaps < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'defaultService' => ->(obj) { return :default_service, obj['defaultService'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'headerAction' => ->(obj) { return :header_action, GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(obj['headerAction'], to_s) },
-      'hostRules' => ->(obj) { return :host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'pathMatchers' => ->(obj) { return :path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s) },
-      'tests' => ->(obj) { return :tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s) },
-      'defaultUrlRedirect' => ->(obj) { return :default_url_redirect, GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(obj['defaultUrlRedirect'], to_s) },
-      'defaultRouteAction' => ->(obj) { return :default_route_action, GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(obj['defaultRouteAction'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'defaultService' => ->(obj) { [:default_service, obj['defaultService']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'headerAction' => ->(obj) { [:header_action, GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(obj['headerAction'], to_s)] },
+      'hostRules' => ->(obj) { [:host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'pathMatchers' => ->(obj) { [:path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s)] },
+      'tests' => ->(obj) { [:tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s)] },
+      'defaultUrlRedirect' => ->(obj) { [:default_url_redirect, GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(obj['defaultUrlRedirect'], to_s)] },
+      'defaultRouteAction' => ->(obj) { [:default_route_action, GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(obj['defaultRouteAction'], to_s)] },
     }
   end
 

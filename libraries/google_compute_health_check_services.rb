@@ -72,16 +72,16 @@ class ComputeHealthCheckServices < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'healthStatusAggregationPolicy' => ->(obj) { return :health_status_aggregation_policy, obj['healthStatusAggregationPolicy'] },
-      'healthChecks' => ->(obj) { return :health_checks, obj['healthChecks'] },
-      'networkEndpointGroups' => ->(obj) { return :network_endpoint_groups, obj['networkEndpointGroups'] },
-      'notificationEndpoints' => ->(obj) { return :notification_endpoints, obj['notificationEndpoints'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'nextPageToken' => ->(obj) { return :next_page_token, obj['nextPageToken'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'healthStatusAggregationPolicy' => ->(obj) { [:health_status_aggregation_policy, obj['healthStatusAggregationPolicy']] },
+      'healthChecks' => ->(obj) { [:health_checks, obj['healthChecks']] },
+      'networkEndpointGroups' => ->(obj) { [:network_endpoint_groups, obj['networkEndpointGroups']] },
+      'notificationEndpoints' => ->(obj) { [:notification_endpoints, obj['notificationEndpoints']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
     }
   end
 

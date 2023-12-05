@@ -74,18 +74,18 @@ class VertexAIStudiesTrials < GcpResourceBase
 
   def transformers
     {
-      'measurements' => ->(obj) { return :measurements, GoogleInSpec::VertexAI::Property::StudiesTrialMeasurementsArray.parse(obj['measurements'], to_s) },
-      'startTime' => ->(obj) { return :start_time, obj['startTime'] },
-      'endTime' => ->(obj) { return :end_time, obj['endTime'] },
-      'parameters' => ->(obj) { return :parameters, GoogleInSpec::VertexAI::Property::StudiesTrialParametersArray.parse(obj['parameters'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'infeasibleReason' => ->(obj) { return :infeasible_reason, obj['infeasibleReason'] },
-      'finalMeasurement' => ->(obj) { return :final_measurement, GoogleInSpec::VertexAI::Property::StudiesTrialFinalMeasurement.new(obj['finalMeasurement'], to_s) },
-      'clientId' => ->(obj) { return :client_id, obj['clientId'] },
-      'customJob' => ->(obj) { return :custom_job, obj['customJob'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'webAccessUris' => ->(obj) { return :web_access_uris, GoogleInSpec::VertexAI::Property::StudiesTrialWebAccessUris.new(obj['webAccessUris'], to_s) },
-      'id' => ->(obj) { return :id, obj['id'] },
+      'measurements' => ->(obj) { [:measurements, GoogleInSpec::VertexAI::Property::StudiesTrialMeasurementsArray.parse(obj['measurements'], to_s)] },
+      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
+      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      'parameters' => ->(obj) { [:parameters, GoogleInSpec::VertexAI::Property::StudiesTrialParametersArray.parse(obj['parameters'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'infeasibleReason' => ->(obj) { [:infeasible_reason, obj['infeasibleReason']] },
+      'finalMeasurement' => ->(obj) { [:final_measurement, GoogleInSpec::VertexAI::Property::StudiesTrialFinalMeasurement.new(obj['finalMeasurement'], to_s)] },
+      'clientId' => ->(obj) { [:client_id, obj['clientId']] },
+      'customJob' => ->(obj) { [:custom_job, obj['customJob']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'webAccessUris' => ->(obj) { [:web_access_uris, GoogleInSpec::VertexAI::Property::StudiesTrialWebAccessUris.new(obj['webAccessUris'], to_s)] },
+      'id' => ->(obj) { [:id, obj['id']] },
     }
   end
 

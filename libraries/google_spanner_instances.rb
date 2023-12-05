@@ -67,11 +67,11 @@ class SpannerInstances < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'config' => ->(obj) { return :config, obj['config'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'nodeCount' => ->(obj) { return :node_count, obj['nodeCount'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'config' => ->(obj) { [:config, obj['config']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'nodeCount' => ->(obj) { [:node_count, obj['nodeCount']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
     }
   end
 

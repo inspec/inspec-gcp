@@ -69,13 +69,13 @@ class VertexAITensorboardExperimentRuns < GcpResourceBase
 
   def transformers
     {
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::TensorboardExperimentRunLabels.new(obj['labels'], to_s) },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardExperimentRunLabels.new(obj['labels'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

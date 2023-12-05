@@ -67,11 +67,11 @@ class ServiceUsageServices < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'disableDependentServices' => ->(obj) { return :disable_dependent_services, obj['disableDependentServices'] },
-      'config' => ->(obj) { return :config, GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(obj['config'], to_s) },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'disableDependentServices' => ->(obj) { [:disable_dependent_services, obj['disableDependentServices']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(obj['config'], to_s)] },
     }
   end
 
