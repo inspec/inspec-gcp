@@ -74,18 +74,18 @@ class VertexAICustomJobs < GcpResourceBase
 
   def transformers
     {
-      'error' => ->(obj) { return :error, GoogleInSpec::VertexAI::Property::CustomJobError.new(obj['error'], to_s) },
-      'webAccessUris' => ->(obj) { return :web_access_uris, GoogleInSpec::VertexAI::Property::CustomJobWebAccessUris.new(obj['webAccessUris'], to_s) },
-      'jobSpec' => ->(obj) { return :job_spec, GoogleInSpec::VertexAI::Property::CustomJobJobSpec.new(obj['jobSpec'], to_s) },
-      'startTime' => ->(obj) { return :start_time, obj['startTime'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::CustomJobLabels.new(obj['labels'], to_s) },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::CustomJobEncryptionSpec.new(obj['encryptionSpec'], to_s) },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'endTime' => ->(obj) { return :end_time, obj['endTime'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::CustomJobError.new(obj['error'], to_s)] },
+      'webAccessUris' => ->(obj) { [:web_access_uris, GoogleInSpec::VertexAI::Property::CustomJobWebAccessUris.new(obj['webAccessUris'], to_s)] },
+      'jobSpec' => ->(obj) { [:job_spec, GoogleInSpec::VertexAI::Property::CustomJobJobSpec.new(obj['jobSpec'], to_s)] },
+      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::CustomJobLabels.new(obj['labels'], to_s)] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::CustomJobEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

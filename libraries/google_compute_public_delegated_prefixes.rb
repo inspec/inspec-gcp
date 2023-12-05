@@ -71,15 +71,15 @@ class ComputePublicDelegatedPrefixs < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'ipCidrRange' => ->(obj) { return :ip_cidr_range, obj['ipCidrRange'] },
-      'parentPrefix' => ->(obj) { return :parent_prefix, obj['parentPrefix'] },
-      'isLiveMigration' => ->(obj) { return :is_live_migration, obj['isLiveMigration'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'status' => ->(obj) { return :status, obj['status'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'ipCidrRange' => ->(obj) { [:ip_cidr_range, obj['ipCidrRange']] },
+      'parentPrefix' => ->(obj) { [:parent_prefix, obj['parentPrefix']] },
+      'isLiveMigration' => ->(obj) { [:is_live_migration, obj['isLiveMigration']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'status' => ->(obj) { [:status, obj['status']] },
     }
   end
 

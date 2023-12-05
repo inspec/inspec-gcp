@@ -69,14 +69,14 @@ class VertexAIDatasetDataItemAnnotations < GcpResourceBase
 
   def transformers
     {
-      'payloadSchemaUri' => ->(obj) { return :payload_schema_uri, obj['payloadSchemaUri'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::DatasetDataItemAnnotationLabels.new(obj['labels'], to_s) },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'payload' => ->(obj) { return :payload, obj['payload'] },
-      'annotationSource' => ->(obj) { return :annotation_source, obj['annotationSource'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'payloadSchemaUri' => ->(obj) { [:payload_schema_uri, obj['payloadSchemaUri']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::DatasetDataItemAnnotationLabels.new(obj['labels'], to_s)] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'payload' => ->(obj) { [:payload, obj['payload']] },
+      'annotationSource' => ->(obj) { [:annotation_source, obj['annotationSource']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

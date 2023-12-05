@@ -71,15 +71,15 @@ class ComputeNetworkEndpointGroups < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'networkEndpointType' => ->(obj) { return :network_endpoint_type, obj['networkEndpointType'] },
-      'size' => ->(obj) { return :size, obj['size'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
-      'defaultPort' => ->(obj) { return :default_port, obj['defaultPort'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'networkEndpointType' => ->(obj) { [:network_endpoint_type, obj['networkEndpointType']] },
+      'size' => ->(obj) { [:size, obj['size']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'subnetwork' => ->(obj) { [:subnetwork, obj['subnetwork']] },
+      'defaultPort' => ->(obj) { [:default_port, obj['defaultPort']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
     }
   end
 

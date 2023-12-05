@@ -71,15 +71,15 @@ class ComputeexternalVpnGateways < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'redundancyType' => ->(obj) { return :redundancy_type, obj['redundancyType'] },
-      'interfaces' => ->(obj) { return :interfaces, GoogleInSpec::Compute::Property::ExternalVpnGatewayInterfacesArray.parse(obj['interfaces'], to_s) },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
-      'nextPageToken' => ->(obj) { return :next_page_token, obj['nextPageToken'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'redundancyType' => ->(obj) { [:redundancy_type, obj['redundancyType']] },
+      'interfaces' => ->(obj) { [:interfaces, GoogleInSpec::Compute::Property::ExternalVpnGatewayInterfacesArray.parse(obj['interfaces'], to_s)] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
+      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

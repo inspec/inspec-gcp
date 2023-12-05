@@ -64,8 +64,8 @@ class SpannerDatabases < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'instance' => ->(obj) { return :instance, obj['instance'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'instance' => ->(obj) { [:instance, obj['instance']] },
     }
   end
 

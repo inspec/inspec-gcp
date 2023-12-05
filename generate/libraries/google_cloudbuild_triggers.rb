@@ -72,16 +72,16 @@ class CloudBuildTriggers < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'substitutions' => ->(obj) { return :substitutions, obj['substitutions'] },
-      'filename' => ->(obj) { return :filename, obj['filename'] },
-      'ignoredFiles' => ->(obj) { return :ignored_files, obj['ignoredFiles'] },
-      'includedFiles' => ->(obj) { return :included_files, obj['includedFiles'] },
-      'triggerTemplate' => ->(obj) { return :trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate'], to_s) },
-      'build' => ->(obj) { return :build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build'], to_s) },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'substitutions' => ->(obj) { [:substitutions, obj['substitutions']] },
+      'filename' => ->(obj) { [:filename, obj['filename']] },
+      'ignoredFiles' => ->(obj) { [:ignored_files, obj['ignoredFiles']] },
+      'includedFiles' => ->(obj) { [:included_files, obj['includedFiles']] },
+      'triggerTemplate' => ->(obj) { [:trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate'], to_s)] },
+      'build' => ->(obj) { [:build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build'], to_s)] },
     }
   end
 

@@ -66,10 +66,10 @@ class DataprocClusters < GcpResourceBase
 
   def transformers
     {
-      'clusterName' => ->(obj) { return :cluster_name, obj['clusterName'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'config' => ->(obj) { return :config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'clusterName' => ->(obj) { [:cluster_name, obj['clusterName']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

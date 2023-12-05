@@ -69,13 +69,13 @@ class DataLossPreventionStoredInfoTypes < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'regex' => ->(obj) { return :regex, GoogleInSpec::DataLossPrevention::Property::StoredInfoTypeRegex.new(obj['regex'], to_s) },
-      'dictionary' => ->(obj) { return :dictionary, GoogleInSpec::DataLossPrevention::Property::StoredInfoTypeDictionary.new(obj['dictionary'], to_s) },
-      'largeCustomDictionary' => ->(obj) { return :large_custom_dictionary, GoogleInSpec::DataLossPrevention::Property::StoredInfoTypeLargeCustomDictionary.new(obj['largeCustomDictionary'], to_s) },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'regex' => ->(obj) { [:regex, GoogleInSpec::DataLossPrevention::Property::StoredInfoTypeRegex.new(obj['regex'], to_s)] },
+      'dictionary' => ->(obj) { [:dictionary, GoogleInSpec::DataLossPrevention::Property::StoredInfoTypeDictionary.new(obj['dictionary'], to_s)] },
+      'largeCustomDictionary' => ->(obj) { [:large_custom_dictionary, GoogleInSpec::DataLossPrevention::Property::StoredInfoTypeLargeCustomDictionary.new(obj['largeCustomDictionary'], to_s)] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
     }
   end
 

@@ -67,11 +67,11 @@ class DLPInspectTemplates < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'inspectConfig' => ->(obj) { return :inspect_config, GoogleInSpec::DLP::Property::InspectTemplateInspectConfig.new(obj['inspectConfig'], to_s) },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'inspectConfig' => ->(obj) { [:inspect_config, GoogleInSpec::DLP::Property::InspectTemplateInspectConfig.new(obj['inspectConfig'], to_s)] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
     }
   end
 

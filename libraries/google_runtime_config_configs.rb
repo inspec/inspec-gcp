@@ -64,8 +64,8 @@ class RuntimeConfigConfigs < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 
