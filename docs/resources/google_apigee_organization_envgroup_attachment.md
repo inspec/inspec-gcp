@@ -4,9 +4,11 @@ platform: gcp
 ---
 
 ## Syntax
+
 A `google_apigee_organization_envgroup_attachment` is used to test a Google OrganizationEnvgroupAttachment resource
 
 ## Examples
+
 ```
 describe google_apigee_organization_envgroup_attachment(name: ' value_name') do
 	it { should exist }
@@ -23,14 +25,15 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_apigee_organization_envgroup_attachment` resource:
 
 
-  * `created_at`: Output only. The time at which the environment group attachment was created as milliseconds since epoch.
+  * `created_at`: The time at which the environment group attachment was created as milliseconds since epoch.
 
-  * `environment`: Required. ID of the attached environment.
+  * `environment`: ID of the attached environment.
 
-  * `environment_group_id`: Output only. ID of the environment group.
+  * `environment_group_id`: ID of the environment group.
 
   * `name`: ID of the environment group attachment.
 
