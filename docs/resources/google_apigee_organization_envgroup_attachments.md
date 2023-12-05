@@ -4,9 +4,11 @@ platform: gcp
 ---
 
 ## Syntax
+
 A `google_apigee_organization_envgroup_attachments` is used to test a Google OrganizationEnvgroupAttachment resource
 
 ## Examples
+
 ```
     describe google_apigee_organization_envgroup_attachments(parent: ' value_parent') do
     it { should exist }
@@ -14,6 +16,7 @@ A `google_apigee_organization_envgroup_attachments` is used to test a Google Org
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_apigee_organization_envgroup_attachments` resource:
 
 See [google_apigee_organization_envgroup_attachment.md](google_apigee_organization_envgroup_attachment.md) for more detailed information
@@ -23,6 +26,7 @@ See [google_apigee_organization_envgroup_attachment.md](google_apigee_organizati
   * `names`: an array of `google_apigee_organization_envgroup_attachment` name
 
 ## Filter Criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
