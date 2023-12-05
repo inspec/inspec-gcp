@@ -74,18 +74,18 @@ class ComputeGlobalForwardingRules < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'IPAddress' => ->(obj) { return :ip_address, obj['IPAddress'] },
-      'IPProtocol' => ->(obj) { return :ip_protocol, obj['IPProtocol'] },
-      'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
-      'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
-      'metadataFilters' => ->(obj) { return :metadata_filters, GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(obj['metadataFilters'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'portRange' => ->(obj) { return :port_range, obj['portRange'] },
-      'target' => ->(obj) { return :target, obj['target'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'IPAddress' => ->(obj) { [:ip_address, obj['IPAddress']] },
+      'IPProtocol' => ->(obj) { [:ip_protocol, obj['IPProtocol']] },
+      'ipVersion' => ->(obj) { [:ip_version, obj['ipVersion']] },
+      'loadBalancingScheme' => ->(obj) { [:load_balancing_scheme, obj['loadBalancingScheme']] },
+      'metadataFilters' => ->(obj) { [:metadata_filters, GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersArray.parse(obj['metadataFilters'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'portRange' => ->(obj) { [:port_range, obj['portRange']] },
+      'target' => ->(obj) { [:target, obj['target']] },
     }
   end
 

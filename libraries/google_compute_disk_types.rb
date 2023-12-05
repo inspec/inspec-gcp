@@ -70,14 +70,14 @@ class ComputeDiskTypes < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'defaultDiskSizeGb' => ->(obj) { return :default_disk_size_gb, obj['defaultDiskSizeGb'] },
-      'deprecated' => ->(obj) { return :deprecated, GoogleInSpec::Compute::Property::DiskTypeDeprecated.new(obj['deprecated'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'validDiskSize' => ->(obj) { return :valid_disk_size, obj['validDiskSize'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'defaultDiskSizeGb' => ->(obj) { [:default_disk_size_gb, obj['defaultDiskSizeGb']] },
+      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::DiskTypeDeprecated.new(obj['deprecated'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'validDiskSize' => ->(obj) { [:valid_disk_size, obj['validDiskSize']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
     }
   end
 

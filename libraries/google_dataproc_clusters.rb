@@ -72,16 +72,16 @@ class DataprocClusters < GcpResourceBase
 
   def transformers
     {
-      'clusterName' => ->(obj) { return :cluster_name, obj['clusterName'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'config' => ->(obj) { return :config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'projectId' => ->(obj) { return :project_id, obj['projectId'] },
-      'virtualClusterConfig' => ->(obj) { return :virtual_cluster_config, obj['virtualClusterConfig'] },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'statusHistory' => ->(obj) { return :status_history, obj['statusHistory'] },
-      'clusterUuid' => ->(obj) { return :cluster_uuid, obj['clusterUuid'] },
-      'metrics' => ->(obj) { return :metrics, obj['metrics'] },
+      'clusterName' => ->(obj) { [:cluster_name, obj['clusterName']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'projectId' => ->(obj) { [:project_id, obj['projectId']] },
+      'virtualClusterConfig' => ->(obj) { [:virtual_cluster_config, obj['virtualClusterConfig']] },
+      'status' => ->(obj) { [:status, obj['status']] },
+      'statusHistory' => ->(obj) { [:status_history, obj['statusHistory']] },
+      'clusterUuid' => ->(obj) { [:cluster_uuid, obj['clusterUuid']] },
+      'metrics' => ->(obj) { [:metrics, obj['metrics']] },
     }
   end
 

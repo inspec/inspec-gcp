@@ -72,16 +72,16 @@ class AccessContextManagerServicePerimeters < GcpResourceBase
 
   def transformers
     {
-      'title' => ->(obj) { return :title, obj['title'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'updateTime' => ->(obj) { return :update_time, parse_time_string(obj['updateTime']) },
-      'perimeterType' => ->(obj) { return :perimeter_type, obj['perimeterType'] },
-      'status' => ->(obj) { return :status, GoogleInSpec::AccessContextManager::Property::ServicePerimeterStatus.new(obj['status'], to_s) },
-      'spec' => ->(obj) { return :spec, GoogleInSpec::AccessContextManager::Property::ServicePerimeterSpec.new(obj['spec'], to_s) },
-      'useExplicitDryRunSpec' => ->(obj) { return :use_explicit_dry_run_spec, obj['useExplicitDryRunSpec'] },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
+      'title' => ->(obj) { [:title, obj['title']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'updateTime' => ->(obj) { [:update_time, parse_time_string(obj['updateTime'])] },
+      'perimeterType' => ->(obj) { [:perimeter_type, obj['perimeterType']] },
+      'status' => ->(obj) { [:status, GoogleInSpec::AccessContextManager::Property::ServicePerimeterStatus.new(obj['status'], to_s)] },
+      'spec' => ->(obj) { [:spec, GoogleInSpec::AccessContextManager::Property::ServicePerimeterSpec.new(obj['spec'], to_s)] },
+      'useExplicitDryRunSpec' => ->(obj) { [:use_explicit_dry_run_spec, obj['useExplicitDryRunSpec']] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
+      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
     }
   end
 

@@ -70,14 +70,14 @@ class ComputeZones < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'deprecated' => ->(obj) { return :deprecated, GoogleInSpec::Compute::Property::ZoneDeprecated.new(obj['deprecated'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :zone_id, obj['id'] },
-      'name' => ->(obj) { return :zone_name, obj['name'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'status' => ->(obj) { return :zone_status, obj['status'] },
-      'availableCpuPlatforms' => ->(obj) { return :available_cpu_platforms, obj['availableCpuPlatforms'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::ZoneDeprecated.new(obj['deprecated'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:zone_id, obj['id']] },
+      'name' => ->(obj) { [:zone_name, obj['name']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'status' => ->(obj) { [:zone_status, obj['status']] },
+      'availableCpuPlatforms' => ->(obj) { [:available_cpu_platforms, obj['availableCpuPlatforms']] },
     }
   end
 

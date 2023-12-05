@@ -71,15 +71,15 @@ class FilestoreInstances < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'tier' => ->(obj) { return :tier, obj['tier'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'fileShares' => ->(obj) { return :file_shares, GoogleInSpec::Filestore::Property::InstanceFileSharesArray.parse(obj['fileShares'], to_s) },
-      'networks' => ->(obj) { return :networks, GoogleInSpec::Filestore::Property::InstanceNetworksArray.parse(obj['networks'], to_s) },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'tier' => ->(obj) { [:tier, obj['tier']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'fileShares' => ->(obj) { [:file_shares, GoogleInSpec::Filestore::Property::InstanceFileSharesArray.parse(obj['fileShares'], to_s)] },
+      'networks' => ->(obj) { [:networks, GoogleInSpec::Filestore::Property::InstanceNetworksArray.parse(obj['networks'], to_s)] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
     }
   end
 

@@ -73,17 +73,17 @@ class ComputeRoutes < GcpResourceBase
 
   def transformers
     {
-      'destRange' => ->(obj) { return :dest_range, obj['destRange'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'priority' => ->(obj) { return :priority, obj['priority'] },
-      'tags' => ->(obj) { return :tags, obj['tags'] },
-      'nextHopGateway' => ->(obj) { return :next_hop_gateway, obj['nextHopGateway'] },
-      'nextHopInstance' => ->(obj) { return :next_hop_instance, obj['nextHopInstance'] },
-      'nextHopIp' => ->(obj) { return :next_hop_ip, obj['nextHopIp'] },
-      'nextHopVpnTunnel' => ->(obj) { return :next_hop_vpn_tunnel, obj['nextHopVpnTunnel'] },
-      'nextHopNetwork' => ->(obj) { return :next_hop_network, obj['nextHopNetwork'] },
+      'destRange' => ->(obj) { [:dest_range, obj['destRange']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'priority' => ->(obj) { [:priority, obj['priority']] },
+      'tags' => ->(obj) { [:tags, obj['tags']] },
+      'nextHopGateway' => ->(obj) { [:next_hop_gateway, obj['nextHopGateway']] },
+      'nextHopInstance' => ->(obj) { [:next_hop_instance, obj['nextHopInstance']] },
+      'nextHopIp' => ->(obj) { [:next_hop_ip, obj['nextHopIp']] },
+      'nextHopVpnTunnel' => ->(obj) { [:next_hop_vpn_tunnel, obj['nextHopVpnTunnel']] },
+      'nextHopNetwork' => ->(obj) { [:next_hop_network, obj['nextHopNetwork']] },
     }
   end
 
