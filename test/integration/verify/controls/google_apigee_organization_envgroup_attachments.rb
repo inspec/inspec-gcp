@@ -14,20 +14,25 @@
 
 title 'Test GCP google_apigee_organization_envgroup_attachments resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-
-  organization_envgroup_attachment = input('organization_envgroup_attachment', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "created_at": "value_createdat",
-  "environment": "value_environment",
-  "environment_group_id": "value_environmentgroupid"
+organization_envgroup_attachment = input('organization_envgroup_attachment', value: {
+  "name": "6741d6ad-1307-4f03-b02a-9fb4562c0ff3",
+  "parent": "organizations/ppradhan/envgroups/test-env-group",
+  "created_at": "1698227493793",
+  "environment": "test-env",
+  "environment_group_id": "test-env-group"
 }, description: 'organization_envgroup_attachment description')
+
 control 'google_apigee_organization_envgroup_attachments-1.0' do
   impact 1.0
   title 'google_apigee_organization_envgroup_attachments resource test'
 
-      describe google_apigee_organization_envgroup_attachments(parent: organization_envgroup_attachment['parent']) do
-      it { should exist }
-    end
+  describe google_apigee_organization_envgroup_attachments(parent: organization_envgroup_attachment['parent']) do
+    it { should exist }
+  end
+
+  describe google_apigee_organization_envgroup_attachments(parent: organization_envgroup_attachment['parent']).where(name: organization_envgroup_attachment['name']) do
+    it { should exist }
+    its("environment_group_ids") { should include organization_envgroup_attachment['environment_group_id'] }
+    its("environments") { should include organization_envgroup_attachment['environment'] }
+  end
 end
