@@ -76,20 +76,20 @@ class ComputeAddresss < GcpResourceBase
 
   def transformers
     {
-      'address' => ->(obj) { return :address, obj['address'] },
-      'addressType' => ->(obj) { return :address_type, obj['addressType'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'purpose' => ->(obj) { return :purpose, obj['purpose'] },
-      'networkTier' => ->(obj) { return :network_tier, obj['networkTier'] },
-      'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
-      'users' => ->(obj) { return :users, obj['users'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'address' => ->(obj) { [:address, obj['address']] },
+      'addressType' => ->(obj) { [:address_type, obj['addressType']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
+      'networkTier' => ->(obj) { [:network_tier, obj['networkTier']] },
+      'subnetwork' => ->(obj) { [:subnetwork, obj['subnetwork']] },
+      'users' => ->(obj) { [:users, obj['users']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
+      'status' => ->(obj) { [:status, obj['status']] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

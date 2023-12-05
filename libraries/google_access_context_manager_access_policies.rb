@@ -67,11 +67,11 @@ class AccessContextManagerAccessPolicys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'updateTime' => ->(obj) { return :update_time, parse_time_string(obj['updateTime']) },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
-      'title' => ->(obj) { return :title, obj['title'] },
+      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'updateTime' => ->(obj) { [:update_time, parse_time_string(obj['updateTime'])] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
+      'title' => ->(obj) { [:title, obj['title']] },
     }
   end
 

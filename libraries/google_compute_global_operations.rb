@@ -76,20 +76,20 @@ class ComputeGlobalOperations < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
-      'clientOperationId' => ->(obj) { return :client_operation_id, obj['clientOperationId'] },
-      'operationType' => ->(obj) { return :operation_type, obj['operationType'] },
-      'user' => ->(obj) { return :user, obj['user'] },
-      'progress' => ->(obj) { return :progress, obj['progress'] },
-      'insertTime' => ->(obj) { return :insert_time, parse_time_string(obj['insertTime']) },
-      'startTime' => ->(obj) { return :start_time, parse_time_string(obj['startTime']) },
-      'endTime' => ->(obj) { return :end_time, parse_time_string(obj['endTime']) },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'statusMessage' => ->(obj) { return :status_message, obj['statusMessage'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
+      'clientOperationId' => ->(obj) { [:client_operation_id, obj['clientOperationId']] },
+      'operationType' => ->(obj) { [:operation_type, obj['operationType']] },
+      'user' => ->(obj) { [:user, obj['user']] },
+      'progress' => ->(obj) { [:progress, obj['progress']] },
+      'insertTime' => ->(obj) { [:insert_time, parse_time_string(obj['insertTime'])] },
+      'startTime' => ->(obj) { [:start_time, parse_time_string(obj['startTime'])] },
+      'endTime' => ->(obj) { [:end_time, parse_time_string(obj['endTime'])] },
+      'status' => ->(obj) { [:status, obj['status']] },
+      'statusMessage' => ->(obj) { [:status_message, obj['statusMessage']] },
     }
   end
 

@@ -72,16 +72,16 @@ class ComputeRegionInstanceGroups < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
-      'size' => ->(obj) { return :size, obj['size'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'namedPorts' => ->(obj) { return :named_ports, GoogleInSpec::Compute::Property::RegionInstanceGroupNamedPortsArray.parse(obj['namedPorts'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
+      'size' => ->(obj) { [:size, obj['size']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'namedPorts' => ->(obj) { [:named_ports, GoogleInSpec::Compute::Property::RegionInstanceGroupNamedPortsArray.parse(obj['namedPorts'], to_s)] },
     }
   end
 

@@ -72,16 +72,16 @@ class VertexAIDatasetsSavedQuerys < GcpResourceBase
 
   def transformers
     {
-      'annotationSpecCount' => ->(obj) { return :annotation_spec_count, obj['annotationSpecCount'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'supportAutomlTraining' => ->(obj) { return :support_automl_training, obj['supportAutomlTraining'] },
-      'metadata' => ->(obj) { return :metadata, obj['metadata'] },
-      'problemType' => ->(obj) { return :problem_type, obj['problemType'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'annotationFilter' => ->(obj) { return :annotation_filter, obj['annotationFilter'] },
+      'annotationSpecCount' => ->(obj) { [:annotation_spec_count, obj['annotationSpecCount']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'supportAutomlTraining' => ->(obj) { [:support_automl_training, obj['supportAutomlTraining']] },
+      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
+      'problemType' => ->(obj) { [:problem_type, obj['problemType']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'annotationFilter' => ->(obj) { [:annotation_filter, obj['annotationFilter']] },
     }
   end
 

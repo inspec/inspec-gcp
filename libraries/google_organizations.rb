@@ -67,11 +67,11 @@ class ResourceManagerOrganizations < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'lifecycleState' => ->(obj) { return :lifecycle_state, obj['lifecycleState'] },
-      'creationTime' => ->(obj) { return :creation_time, parse_time_string(obj['creationTime']) },
-      'owner' => ->(obj) { return :owner, GoogleInSpec::ResourceManager::Property::OrganizationOwner.new(obj['owner'], to_s) },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'lifecycleState' => ->(obj) { [:lifecycle_state, obj['lifecycleState']] },
+      'creationTime' => ->(obj) { [:creation_time, parse_time_string(obj['creationTime'])] },
+      'owner' => ->(obj) { [:owner, GoogleInSpec::ResourceManager::Property::OrganizationOwner.new(obj['owner'], to_s)] },
     }
   end
 

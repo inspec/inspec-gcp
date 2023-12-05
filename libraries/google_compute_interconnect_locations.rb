@@ -71,15 +71,15 @@ class ComputeInterconnectLocations < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'availabilityZone' => ->(obj) { return :availability_zone, obj['availabilityZone'] },
-      'clientOperationId' => ->(obj) { return :client_operation_id, obj['clientOperationId'] },
-      'facilityProvider' => ->(obj) { return :facility_provider, obj['facilityProvider'] },
-      'facilityProviderFacilityId' => ->(obj) { return :facility_provider_facility_id, obj['facilityProviderFacilityId'] },
-      'status' => ->(obj) { return :status, obj['status'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'availabilityZone' => ->(obj) { [:availability_zone, obj['availabilityZone']] },
+      'clientOperationId' => ->(obj) { [:client_operation_id, obj['clientOperationId']] },
+      'facilityProvider' => ->(obj) { [:facility_provider, obj['facilityProvider']] },
+      'facilityProviderFacilityId' => ->(obj) { [:facility_provider_facility_id, obj['facilityProviderFacilityId']] },
+      'status' => ->(obj) { [:status, obj['status']] },
     }
   end
 

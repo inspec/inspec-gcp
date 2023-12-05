@@ -68,12 +68,12 @@ class VertexAIDatasetsDataItems < GcpResourceBase
 
   def transformers
     {
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'payload' => ->(obj) { return :payload, obj['payload'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::DatasetsDataItemLabels.new(obj['labels'], to_s) },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'payload' => ->(obj) { [:payload, obj['payload']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::DatasetsDataItemLabels.new(obj['labels'], to_s)] },
     }
   end
 
