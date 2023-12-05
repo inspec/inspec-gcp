@@ -89,7 +89,7 @@ class ComposerProjectLocationEnvironment < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://composer.googleapis.com//V1/'
+    'https://composer.googleapis.com/v1/'
   end
 
   def resource_base_url
