@@ -67,11 +67,11 @@ class ApigeeOrganizationEnvgroups < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'lastModifiedAt' => ->(obj) { return :last_modified_at, obj['lastModifiedAt'] },
-      'hostnames' => ->(obj) { return :hostnames, obj['hostnames'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'createdAt' => ->(obj) { return :created_at, obj['createdAt'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'lastModifiedAt' => ->(obj) { [:last_modified_at, obj['lastModifiedAt']] },
+      'hostnames' => ->(obj) { [:hostnames, obj['hostnames']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createdAt' => ->(obj) { [:created_at, obj['createdAt']] },
     }
   end
 
