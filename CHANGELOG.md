@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.55 -->
+<!-- latest_release 1.11.56 -->
+## [v1.11.56](https://github.com/inspec/inspec-gcp/tree/v1.11.56) (2023-12-06)
+
+#### Merged Pull Requests
+- CHEF-7369 Updated dataproc_cluster resource [#545](https://github.com/inspec/inspec-gcp/pull/545) ([Nik08](https://github.com/Nik08))
+<!-- latest_release -->
+
 ## [v1.11.55](https://github.com/inspec/inspec-gcp/tree/v1.11.55) (2023-12-05)
 
 #### Merged Pull Requests
 - Chore: Remove redundant `return` statement to fix rubocop 1.58.0 lint offense [#548](https://github.com/inspec/inspec-gcp/pull/548) ([ahasunos](https://github.com/ahasunos))
-<!-- latest_release -->
 
 ## [v1.11.54](https://github.com/inspec/inspec-gcp/tree/v1.11.54) (2023-12-01)
 
