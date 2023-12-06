@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.56 -->
+<!-- latest_release 1.11.57 -->
+## [v1.11.57](https://github.com/inspec/inspec-gcp/tree/v1.11.57) (2023-12-06)
+
+#### Merged Pull Requests
+- chore: uncomment terraform scripts [#549](https://github.com/inspec/inspec-gcp/pull/549) ([ahasunos](https://github.com/ahasunos))
+<!-- latest_release -->
+
 ## [v1.11.56](https://github.com/inspec/inspec-gcp/tree/v1.11.56) (2023-12-06)
 
 #### Merged Pull Requests
 - CHEF-7369 Updated dataproc_cluster resource [#545](https://github.com/inspec/inspec-gcp/pull/545) ([Nik08](https://github.com/Nik08))
-<!-- latest_release -->
 
 ## [v1.11.55](https://github.com/inspec/inspec-gcp/tree/v1.11.55) (2023-12-05)
 
