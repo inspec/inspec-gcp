@@ -15,10 +15,11 @@
 title 'Test GCP google_artifactregistry_project_location_repository resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project identifier.')
 
-  project_location_repository = input('project_location_repository', value: {
-  "name": "value_name",
-  "parent": "value_parent"
+project_location_repository = input('project_location_repository', value: {
+  "name": "projects/#{gcp_project_id}/locations/#{gcp_location}/repositories/test-repository",
+  "parent": "projects/#{gcp_project_id}/locations/#{gcp_location}"
 }, description: 'project_location_repository description')
 control 'google_artifactregistry_project_location_repository-1.0' do
   impact 1.0
@@ -26,7 +27,6 @@ control 'google_artifactregistry_project_location_repository-1.0' do
 
   describe google_artifactregistry_project_location_repository(name: project_location_repository['name']) do
   	it { should exist }
-
   end
 
   describe google_artifactregistry_project_location_repository(name: "does_not_exit") do
