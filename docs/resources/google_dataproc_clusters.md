@@ -26,6 +26,12 @@ See [google_dataproc_cluster.md](google_dataproc_cluster.md) for more detailed i
   * `labels`: an array of `google_dataproc_cluster` labels
   * `configs`: an array of `google_dataproc_cluster` config
   * `regions`: an array of `google_dataproc_cluster` region
+  * `project_ids`: an array of `google_dataproc_cluster` project_id
+  * `virtual_cluster_configs`: an array of `google_dataproc_cluster` virtual_cluster_config
+  * `statuses`: an array of `google_dataproc_cluster` status
+  * `status_histories`: an array of `google_dataproc_cluster` status_history
+  * `cluster_uuids`: an array of `google_dataproc_cluster` cluster_uuid
+  * `metrics`: an array of `google_dataproc_cluster` metrics
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
