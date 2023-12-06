@@ -72,16 +72,16 @@ class ComputeSslPolicys < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'profile' => ->(obj) { return :profile, obj['profile'] },
-      'minTlsVersion' => ->(obj) { return :min_tls_version, obj['minTlsVersion'] },
-      'enabledFeatures' => ->(obj) { return :enabled_features, obj['enabledFeatures'] },
-      'customFeatures' => ->(obj) { return :custom_features, obj['customFeatures'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'warnings' => ->(obj) { return :warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj['warnings'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'profile' => ->(obj) { [:profile, obj['profile']] },
+      'minTlsVersion' => ->(obj) { [:min_tls_version, obj['minTlsVersion']] },
+      'enabledFeatures' => ->(obj) { [:enabled_features, obj['enabledFeatures']] },
+      'customFeatures' => ->(obj) { [:custom_features, obj['customFeatures']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'warnings' => ->(obj) { [:warnings, GoogleInSpec::Compute::Property::SslPolicyWarningsArray.parse(obj['warnings'], to_s)] },
     }
   end
 

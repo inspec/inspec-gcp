@@ -74,18 +74,18 @@ class ComputeSubnetworks < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'gatewayAddress' => ->(obj) { return :gateway_address, obj['gatewayAddress'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'ipCidrRange' => ->(obj) { return :ip_cidr_range, obj['ipCidrRange'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'secondaryIpRanges' => ->(obj) { return :secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s) },
-      'privateIpGoogleAccess' => ->(obj) { return :private_ip_google_access, obj['privateIpGoogleAccess'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj['logConfig'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'gatewayAddress' => ->(obj) { [:gateway_address, obj['gatewayAddress']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'ipCidrRange' => ->(obj) { [:ip_cidr_range, obj['ipCidrRange']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'secondaryIpRanges' => ->(obj) { [:secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s)] },
+      'privateIpGoogleAccess' => ->(obj) { [:private_ip_google_access, obj['privateIpGoogleAccess']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj['logConfig'], to_s)] },
     }
   end
 

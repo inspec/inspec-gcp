@@ -67,11 +67,11 @@ class LoggingFolderExclusions < GcpResourceBase
 
   def transformers
     {
-      'folder' => ->(obj) { return :folder, obj['folder'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'filter' => ->(obj) { return :filter, obj['filter'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
+      'folder' => ->(obj) { [:folder, obj['folder']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'filter' => ->(obj) { [:filter, obj['filter']] },
+      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
     }
   end
 

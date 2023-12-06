@@ -79,21 +79,21 @@ class DNSManagedZones < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'dnsName' => ->(obj) { return :zone_dns_name, obj['dnsName'] },
-      'dnssecConfig' => ->(obj) { return :dnssec_config, GoogleInSpec::DNS::Property::ManagedZoneDnssecConfig.new(obj['dnssecConfig'], to_s) },
-      'id' => ->(obj) { return :zone_id, obj['id'] },
-      'name' => ->(obj) { return :zone_name, obj['name'] },
-      'nameServers' => ->(obj) { return :name_servers, obj['nameServers'] },
-      'nameServerSet' => ->(obj) { return :name_server_set, obj['nameServerSet'] },
-      'creationTime' => ->(obj) { return :creation_time, parse_time_string(obj['creationTime']) },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'visibility' => ->(obj) { return :visibility, obj['visibility'] },
-      'privateVisibilityConfig' => ->(obj) { return :private_visibility_config, GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfig.new(obj['privateVisibilityConfig'], to_s) },
-      'forwardingConfig' => ->(obj) { return :forwarding_config, GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(obj['forwardingConfig'], to_s) },
-      'peeringConfig' => ->(obj) { return :peering_config, GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(obj['peeringConfig'], to_s) },
-      'reverseLookupConfig' => ->(obj) { return :reverse_lookup, obj['reverseLookupConfig'] },
-      'serviceDirectoryConfig' => ->(obj) { return :service_directory_config, GoogleInSpec::DNS::Property::ManagedZoneServiceDirectoryConfig.new(obj['serviceDirectoryConfig'], to_s) },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'dnsName' => ->(obj) { [:zone_dns_name, obj['dnsName']] },
+      'dnssecConfig' => ->(obj) { [:dnssec_config, GoogleInSpec::DNS::Property::ManagedZoneDnssecConfig.new(obj['dnssecConfig'], to_s)] },
+      'id' => ->(obj) { [:zone_id, obj['id']] },
+      'name' => ->(obj) { [:zone_name, obj['name']] },
+      'nameServers' => ->(obj) { [:name_servers, obj['nameServers']] },
+      'nameServerSet' => ->(obj) { [:name_server_set, obj['nameServerSet']] },
+      'creationTime' => ->(obj) { [:creation_time, parse_time_string(obj['creationTime'])] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'visibility' => ->(obj) { [:visibility, obj['visibility']] },
+      'privateVisibilityConfig' => ->(obj) { [:private_visibility_config, GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfig.new(obj['privateVisibilityConfig'], to_s)] },
+      'forwardingConfig' => ->(obj) { [:forwarding_config, GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(obj['forwardingConfig'], to_s)] },
+      'peeringConfig' => ->(obj) { [:peering_config, GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(obj['peeringConfig'], to_s)] },
+      'reverseLookupConfig' => ->(obj) { [:reverse_lookup, obj['reverseLookupConfig']] },
+      'serviceDirectoryConfig' => ->(obj) { [:service_directory_config, GoogleInSpec::DNS::Property::ManagedZoneServiceDirectoryConfig.new(obj['serviceDirectoryConfig'], to_s)] },
     }
   end
 

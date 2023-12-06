@@ -67,11 +67,11 @@ class LoggingProjectExclusions < GcpResourceBase
 
   def transformers
     {
-      'project' => ->(obj) { return :project, obj['project'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'filter' => ->(obj) { return :filter, obj['filter'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
+      'project' => ->(obj) { [:project, obj['project']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'filter' => ->(obj) { [:filter, obj['filter']] },
+      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
     }
   end
 

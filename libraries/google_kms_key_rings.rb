@@ -67,9 +67,9 @@ class KMSKeyRings < GcpResourceBase
 
   def transformers
     {
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'name' => ->(obj) { return :key_ring_url, obj['name'] },
-      'location' => ->(obj) { return :location, obj['location'] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'name' => ->(obj) { [:key_ring_url, obj['name']] },
+      'location' => ->(obj) { [:location, obj['location']] },
     }
   end
 

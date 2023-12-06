@@ -71,15 +71,15 @@ class VertexAIFeaturestores < GcpResourceBase
 
   def transformers
     {
-      'state' => ->(obj) { return :state, obj['state'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'onlineStorageTtlDays' => ->(obj) { return :online_storage_ttl_days, obj['onlineStorageTtlDays'] },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::FeaturestoreEncryptionSpec.new(obj['encryptionSpec'], to_s) },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::FeaturestoreLabels.new(obj['labels'], to_s) },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'onlineServingConfig' => ->(obj) { return :online_serving_config, GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfig.new(obj['onlineServingConfig'], to_s) },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'onlineStorageTtlDays' => ->(obj) { [:online_storage_ttl_days, obj['onlineStorageTtlDays']] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::FeaturestoreEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoreLabels.new(obj['labels'], to_s)] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'onlineServingConfig' => ->(obj) { [:online_serving_config, GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfig.new(obj['onlineServingConfig'], to_s)] },
     }
   end
 
