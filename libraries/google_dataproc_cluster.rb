@@ -42,6 +42,12 @@ class DataprocCluster < GcpResourceBase
   attr_reader :labels
   attr_reader :config
   attr_reader :region
+  attr_reader :project_id
+  attr_reader :virtual_cluster_config
+  attr_reader :status
+  attr_reader :status_history
+  attr_reader :cluster_uuid
+  attr_reader :metrics
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -55,6 +61,12 @@ class DataprocCluster < GcpResourceBase
     @labels = @fetched['labels']
     @config = GoogleInSpec::Dataproc::Property::ClusterConfig.new(@fetched['config'], to_s)
     @region = @fetched['region']
+    @project_id = @fetched['projectId']
+    @virtual_cluster_config = @fetched['virtualClusterConfig']
+    @status = @fetched['status']
+    @status_history = @fetched['statusHistory']
+    @cluster_uuid = @fetched['clusterUuid']
+    @metrics = @fetched['metrics']
   end
 
   def exists?
