@@ -18,7 +18,7 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 gcp_location = input(:gcp_location, value: 'gcp_location', description: 'The GCP project identifier.')
 
 project_location_repository = input('project_location_repository', value: {
-  "name": "projects/#{gcp_project_id}/locations/#{gcp_location}/repositories/test-repository",
+  "name": "projects/#{gcp_project_id}/locations/#{gcp_location}/repositories/test-repository-1",
   "parent": "projects/#{gcp_project_id}/locations/#{gcp_location}"
 }, description: 'project_location_repository description')
 control 'google_artifactregistry_project_location_repository-1.0' do

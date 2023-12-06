@@ -216,6 +216,10 @@ variable "scheduler_job" {
   type = any
 }
 
+variable "project_location_repository" {
+  type = any
+}
+
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1551,4 +1555,11 @@ resource "google_vertex_ai_index" "index" {
     }
   }
   index_update_method = "STREAM_UPDATE"
+}
+
+resource "google_artifact_registry_repository" "example" {
+  project = var.project_location_repository.project_id
+  repository_id = var.project_location_repository.display_name
+  location      = var.project_location_repository.location
+  format        = var.project_location_repository.format
 }

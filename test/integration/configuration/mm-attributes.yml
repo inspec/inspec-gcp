@@ -557,3 +557,11 @@ dlp:
     name: "dlp-template-inspec"
     location: "europe-west2"
     type: "Infotype"
+
+project_location_repository:
+  name : "projects/ppradhan/locations/us-central1/repositories/test-repository-1"
+  parent : "projects/ppradhan/locations/us-central1"
+  display_name: "test-repository-1"
+  location: "us-central1"
+  format: "DOCKER"
+  project_id: "ppradhan"

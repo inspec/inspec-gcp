@@ -896,6 +896,3 @@ vpn_gateway:
   self_link : "value_selflink"
   label_fingerprint : "value_labelfingerprint"
   stack_type : "value_stacktype"
-project_location_repository:
-  name : "value_name"
-  parent : "value_parent"
