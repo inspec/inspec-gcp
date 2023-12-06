@@ -10,6 +10,12 @@ A `google_composer_project_location_environments` is used to test a Google Proje
 ```
     describe google_composer_project_location_environments(parent: ' value_parent') do
     it { should exist }
+    its('name') { should include('value_name') }
+    its('uuid') { should include('value_uuid') }
+    its('state') { should include('value_state') }
+    its('create_time') { should include('value_createtime') }
+    its('update_time') { should include('value_updatetime') }
+    its('satisfies_pzs') { should include('value_satisfies_pzs') }
   end
 ```
 

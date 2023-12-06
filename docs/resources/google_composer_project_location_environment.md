@@ -15,7 +15,10 @@ describe google_composer_project_location_environment(name: ' value_name') do
 	its('state') { should cmp 'value_state' }
 	its('create_time') { should cmp 'value_createtime' }
 	its('update_time') { should cmp 'value_updatetime' }
-
+  its('satisfies_pzs') { should cmp 'value_satisfies_pzs' }
+  its('config.gke_cluster') { should cmp 'value_gke_cluster' }
+  its('labels.additional_properties') { should cmp label_hash }
+  its('storage_config.bucket') { should cmp 'value_bucket_id' }
 end
 
 describe google_composer_project_location_environment(name: "does_not_exit") do
@@ -43,15 +46,15 @@ Properties that can be accessed from the `google_composer_project_location_envir
 
       * `airflow_config_overrides`: Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `pypi_packages`: Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `env_variables`: Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `python_version`: Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 
@@ -248,7 +251,7 @@ Properties that can be accessed from the `google_composer_project_location_envir
 
   * `labels`: Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `satisfies_pzs`: Output only. Reserved for future use.
 
