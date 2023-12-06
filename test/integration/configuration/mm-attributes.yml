@@ -562,3 +562,11 @@ cloud_composer_v1:
   name : "example-composer-env"
   region : "us-central1"
   image_version : "composer-1.20.12-airflow-2.4.3"
+
+organization_envgroup:
+  project: "organizations/ppradhan"
+  name : "test-env-group"
+  hostnames: ["34.95.97.227.nip.io"]
+  parent : "organizations/ppradhan/envgroups"
+  state : "ACTIVE"
+  created_at : "1698227493454"

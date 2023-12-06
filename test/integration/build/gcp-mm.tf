@@ -220,6 +220,10 @@ variable "cloud_composer_v1" {
   type = any
 }
 
+variable "organization_envgroup" {
+  type = any
+}
+
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -1564,4 +1568,10 @@ resource "google_composer_v1_environment" "test" {
       image_version = var.cloud_composer_v1["image_version"]
     }
   }
+}
+
+resource "google_apigee_envgroup" "env_grp" {
+  name      = var.organization_envgroup.name
+  hostnames  = var.organization_envgroup.hostnames
+  org_id    = var.organization_envgroup.project
 }
