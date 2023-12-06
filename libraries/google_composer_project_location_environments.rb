@@ -71,15 +71,15 @@ class ComposerProjectLocationEnvironments < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'config' => ->(obj) { return :config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(obj['config'], to_s) },
-      'uuid' => ->(obj) { return :uuid, obj['uuid'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(obj['labels'], to_s) },
-      'satisfiesPzs' => ->(obj) { return :satisfies_pzs, obj['satisfiesPzs'] },
-      'storageConfig' => ->(obj) { return :storage_config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(obj['storageConfig'], to_s) },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(obj['config'], to_s)] },
+      'uuid' => ->(obj) { [:uuid, obj['uuid']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(obj['labels'], to_s)] },
+      'satisfiesPzs' => ->(obj) { [:satisfies_pzs, obj['satisfiesPzs']] },
+      'storageConfig' => ->(obj) { [:storage_config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(obj['storageConfig'], to_s)] },
     }
   end
 
