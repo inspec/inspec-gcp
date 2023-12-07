@@ -557,3 +557,8 @@ dlp:
     name: "dlp-template-inspec"
     location: "europe-west2"
     type: "Infotype"
+
+cloud_composer_v1:
+  name : "example-composer-env"
+  region : "us-central1"
+  image_version : "composer-1.20.12-airflow-2.4.3"
