@@ -216,7 +216,7 @@ variable "scheduler_job" {
   type = any
 }
 
-variable "cloud_composer" {
+variable "cloud_composer_v1" {
   type = any
 }
 
