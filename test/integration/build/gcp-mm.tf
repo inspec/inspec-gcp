@@ -216,6 +216,10 @@ variable "scheduler_job" {
   type = any
 }
 
+variable "project_location_repository" {
+  type = any
+}
+
 variable "cloud_composer_v1" {
   type = any
 }
@@ -1558,6 +1562,13 @@ resource "google_vertex_ai_index" "index" {
     }
   }
   index_update_method = "STREAM_UPDATE"
+}
+
+resource "google_artifact_registry_repository" "example" {
+  project = var.project_location_repository.project_id
+  repository_id = var.project_location_repository.display_name
+  location      = var.project_location_repository.location
+  format        = var.project_location_repository.format
 }
 
 resource "google_composer_v1_environment" "test" {
