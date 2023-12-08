@@ -75,19 +75,19 @@ class ComputeRegionInstanceGroupManagers < GcpResourceBase
 
   def transformers
     {
-      'baseInstanceName' => ->(obj) { return :base_instance_name, obj['baseInstanceName'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'currentActions' => ->(obj) { return :current_actions, GoogleInSpec::Compute::Property::RegionInstanceGroupManagerCurrentActions.new(obj['currentActions'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :instance_group_manager_id, obj['id'] },
-      'instanceGroup' => ->(obj) { return :instance_group, obj['instanceGroup'] },
-      'instanceTemplate' => ->(obj) { return :instance_template, obj['instanceTemplate'] },
-      'name' => ->(obj) { return :instance_group_manager_name, obj['name'] },
-      'namedPorts' => ->(obj) { return :named_ports, GoogleInSpec::Compute::Property::RegionInstanceGroupManagerNamedPortsArray.parse(obj['namedPorts'], to_s) },
-      'targetPools' => ->(obj) { return :target_pools, obj['targetPools'] },
-      'targetSize' => ->(obj) { return :target_size, obj['targetSize'] },
-      'autoHealingPolicies' => ->(obj) { return :auto_healing_policies, GoogleInSpec::Compute::Property::RegionInstanceGroupManagerAutoHealingPoliciesArray.parse(obj['autoHealingPolicies'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'baseInstanceName' => ->(obj) { [:base_instance_name, obj['baseInstanceName']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'currentActions' => ->(obj) { [:current_actions, GoogleInSpec::Compute::Property::RegionInstanceGroupManagerCurrentActions.new(obj['currentActions'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:instance_group_manager_id, obj['id']] },
+      'instanceGroup' => ->(obj) { [:instance_group, obj['instanceGroup']] },
+      'instanceTemplate' => ->(obj) { [:instance_template, obj['instanceTemplate']] },
+      'name' => ->(obj) { [:instance_group_manager_name, obj['name']] },
+      'namedPorts' => ->(obj) { [:named_ports, GoogleInSpec::Compute::Property::RegionInstanceGroupManagerNamedPortsArray.parse(obj['namedPorts'], to_s)] },
+      'targetPools' => ->(obj) { [:target_pools, obj['targetPools']] },
+      'targetSize' => ->(obj) { [:target_size, obj['targetSize']] },
+      'autoHealingPolicies' => ->(obj) { [:auto_healing_policies, GoogleInSpec::Compute::Property::RegionInstanceGroupManagerAutoHealingPoliciesArray.parse(obj['autoHealingPolicies'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

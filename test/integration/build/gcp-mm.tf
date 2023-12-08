@@ -216,6 +216,13 @@ variable "scheduler_job" {
   type = any
 }
 
+variable "cloud_composer_v1" {
+  type = any
+}
+
+variable "apigee_organization_envgroup_attachment" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1551,4 +1558,19 @@ resource "google_vertex_ai_index" "index" {
     }
   }
   index_update_method = "STREAM_UPDATE"
+}
+
+resource "google_composer_v1_environment" "test" {
+  name   = var.cloud_composer_v1["name"]
+  region = var.cloud_composer_v1["region"]
+  config {
+    software_config {
+      image_version = var.cloud_composer_v1["image_version"]
+    }
+  }
+}
+
+resource "google_apigee_envgroup_attachment" "engroup_attachment" {
+  envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
+  environment  = var.apigee_organization_envgroup_attachment.environment
 }

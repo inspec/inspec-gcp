@@ -197,6 +197,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_access_context_manager_access_level](docs/resources/google_access_context_manager_access_level.md)           | [google_access_context_manager_access_levels](docs/resources/google_access_context_manager_access_levels.md)                   |
 | [google_access_context_manager_access_policy](docs/resources/google_access_context_manager_access_policy.md)         | [google_access_context_manager_access_policies](docs/resources/google_access_context_manager_access_policies.md)               |
 | [google_access_context_manager_service_perimeter](docs/resources/google_access_context_manager_service_perimeter.md) | [google_access_context_manager_service_perimeters](docs/resources/google_access_context_manager_service_perimeters.md)         |
+| [google_apigee_organization_envgroup_attachment](docs/resources/google_apigee_organization_envgroup_attachment.md)   | [google_apigee_organization_envgroup_attachments](docs/resources/google_apigee_organization_envgroup_attachments.md)           |
 | [google_appengine_standard_app_version](docs/resources/google_appengine_standard_app_version.md)                     | [google_appengine_standard_app_versions](docs/resources/google_appengine_standard_app_versions.md)                             |
 | [google_bigquery_dataset](docs/resources/google_bigquery_dataset.md)                                                 | [google_bigquery_datasets](docs/resources/google_bigquery_datasets.md)                                                         |
 | [google_bigquery_table](docs/resources/google_bigquery_table.md)                                                     | [google_bigquery_tables](docs/resources/google_bigquery_tables.md)                                                             |
@@ -373,6 +374,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_tensorboard_experiment_run](docs/resources/google_vertex_ai_tensorboard_experiment_run.md)                                       | [google_vertex_ai_tensorboard_experiment_runs](docs/resources/google_vertex_ai_tensorboard_experiment_runs.md)                                   |
 | [google_vertex_ai_tensorboard_experiment_run_time_series_resource](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resource.md)                                       | [google_vertex_ai_tensorboard_experiment_run_time_series_resources](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resources.md)                                   |
 | [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
+| [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environment.md)             |
 
 ## Examples
 

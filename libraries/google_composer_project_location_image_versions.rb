@@ -64,8 +64,8 @@ class ComposerProjectLocationImageVersions < GcpResourceBase
 
   def transformers
     {
-      'imageVersions' => ->(obj) { return :image_versions, obj['imageVersions'] },
-      'nextPageToken' => ->(obj) { return :next_page_token, obj['nextPageToken'] },
+      'imageVersions' => ->(obj) { [:image_versions, obj['imageVersions']] },
+      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
     }
   end
 

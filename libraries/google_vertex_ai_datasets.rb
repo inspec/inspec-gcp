@@ -75,19 +75,19 @@ class VertexAIDatasets < GcpResourceBase
 
   def transformers
     {
-      'savedQueries' => ->(obj) { return :saved_queries, GoogleInSpec::VertexAI::Property::DatasetSavedQueriesArray.parse(obj['savedQueries'], to_s) },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::DatasetEncryptionSpec.new(obj['encryptionSpec'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'metadata' => ->(obj) { return :metadata, obj['metadata'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::DatasetLabels.new(obj['labels'], to_s) },
-      'metadataSchemaUri' => ->(obj) { return :metadata_schema_uri, obj['metadataSchemaUri'] },
-      'metadataArtifact' => ->(obj) { return :metadata_artifact, obj['metadataArtifact'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'dataItemCount' => ->(obj) { return :data_item_count, obj['dataItemCount'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
+      'savedQueries' => ->(obj) { [:saved_queries, GoogleInSpec::VertexAI::Property::DatasetSavedQueriesArray.parse(obj['savedQueries'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::DatasetEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::DatasetLabels.new(obj['labels'], to_s)] },
+      'metadataSchemaUri' => ->(obj) { [:metadata_schema_uri, obj['metadataSchemaUri']] },
+      'metadataArtifact' => ->(obj) { [:metadata_artifact, obj['metadataArtifact']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'dataItemCount' => ->(obj) { [:data_item_count, obj['dataItemCount']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
     }
   end
 

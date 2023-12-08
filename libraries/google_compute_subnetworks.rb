@@ -76,20 +76,20 @@ class ComputeSubnetworks < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'gatewayAddress' => ->(obj) { return :gateway_address, obj['gatewayAddress'] },
-      'id' => ->(obj) { return :subnetwork_id, obj['id'] },
-      'ipCidrRange' => ->(obj) { return :ip_cidr_range, obj['ipCidrRange'] },
-      'name' => ->(obj) { return :subnetwork_name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'purpose' => ->(obj) { return :purpose, obj['purpose'] },
-      'role' => ->(obj) { return :role, obj['role'] },
-      'secondaryIpRanges' => ->(obj) { return :secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s) },
-      'privateIpGoogleAccess' => ->(obj) { return :private_ip_google_access, obj['privateIpGoogleAccess'] },
-      'privateIpv6GoogleAccess' => ->(obj) { return :private_ipv6_google_access, obj['privateIpv6GoogleAccess'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj['logConfig'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'gatewayAddress' => ->(obj) { [:gateway_address, obj['gatewayAddress']] },
+      'id' => ->(obj) { [:subnetwork_id, obj['id']] },
+      'ipCidrRange' => ->(obj) { [:ip_cidr_range, obj['ipCidrRange']] },
+      'name' => ->(obj) { [:subnetwork_name, obj['name']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
+      'role' => ->(obj) { [:role, obj['role']] },
+      'secondaryIpRanges' => ->(obj) { [:secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s)] },
+      'privateIpGoogleAccess' => ->(obj) { [:private_ip_google_access, obj['privateIpGoogleAccess']] },
+      'privateIpv6GoogleAccess' => ->(obj) { [:private_ipv6_google_access, obj['privateIpv6GoogleAccess']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj['logConfig'], to_s)] },
     }
   end
 

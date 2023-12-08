@@ -67,11 +67,11 @@ class SQLOperations < GcpResourceBase
 
   def transformers
     {
-      'user' => ->(obj) { return :user, obj['user'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'operationType' => ->(obj) { return :operation_type, obj['operationType'] },
-      'instance' => ->(obj) { return :instance, obj['instance'] },
+      'user' => ->(obj) { [:user, obj['user']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'status' => ->(obj) { [:status, obj['status']] },
+      'operationType' => ->(obj) { [:operation_type, obj['operationType']] },
+      'instance' => ->(obj) { [:instance, obj['instance']] },
     }
   end
 
