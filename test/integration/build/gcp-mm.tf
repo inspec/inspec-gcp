@@ -220,6 +220,9 @@ variable "project_location_repository" {
   type = any
 }
 
+variable "cloud_composer_v1" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1562,4 +1565,14 @@ resource "google_artifact_registry_repository" "example" {
   repository_id = var.project_location_repository.display_name
   location      = var.project_location_repository.location
   format        = var.project_location_repository.format
+}
+
+resource "google_composer_v1_environment" "test" {
+  name   = var.cloud_composer_v1["name"]
+  region = var.cloud_composer_v1["region"]
+ config {
+    software_config {
+      image_version = var.cloud_composer_v1["image_version"]
+    }
+  }
 }

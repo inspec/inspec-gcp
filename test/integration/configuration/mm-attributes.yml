@@ -565,3 +565,8 @@ project_location_repository:
   location: "us-central1"
   format: "DOCKER"
   project_id: "ppradhan"
+
+cloud_composer_v1:
+  name : "example-composer-env"
+  region : "us-central1"
+  image_version : "composer-1.20.12-airflow-2.4.3"
