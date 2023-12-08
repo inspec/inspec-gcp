@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.59 -->
+<!-- latest_release 1.11.60 -->
+## [v1.11.60](https://github.com/inspec/inspec-gcp/tree/v1.11.60) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7354-MAGIC-MODULE-artifactregistry-Projects__locations__repository - Resource Implementation [#544](https://github.com/inspec/inspec-gcp/pull/544) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.59](https://github.com/inspec/inspec-gcp/tree/v1.11.59) (2023-12-08)
 
 #### Merged Pull Requests
 - Removed worng dir [#551](https://github.com/inspec/inspec-gcp/pull/551) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.58](https://github.com/inspec/inspec-gcp/tree/v1.11.58) (2023-12-08)
 
