@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.57 -->
+<!-- latest_release 1.11.58 -->
+## [v1.11.58](https://github.com/inspec/inspec-gcp/tree/v1.11.58) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7364-MAGIC-MODULE-composer-Projects__locations__environment - Resource Implementation [#546](https://github.com/inspec/inspec-gcp/pull/546) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.57](https://github.com/inspec/inspec-gcp/tree/v1.11.57) (2023-12-06)
 
 #### Merged Pull Requests
 - chore: uncomment terraform scripts [#549](https://github.com/inspec/inspec-gcp/pull/549) ([ahasunos](https://github.com/ahasunos))
-<!-- latest_release -->
 
 ## [v1.11.56](https://github.com/inspec/inspec-gcp/tree/v1.11.56) (2023-12-06)
 
