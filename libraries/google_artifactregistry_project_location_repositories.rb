@@ -78,22 +78,22 @@ class ArtifactregistryProjectLocationRepositorys < GcpResourceBase
 
   def transformers
     {
-      'mavenConfig' => ->(obj) { return :maven_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryMavenConfig.new(obj['mavenConfig'], to_s) },
-      'dockerConfig' => ->(obj) { return :docker_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryDockerConfig.new(obj['dockerConfig'], to_s) },
-      'virtualRepositoryConfig' => ->(obj) { return :virtual_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryVirtualRepositoryConfig.new(obj['virtualRepositoryConfig'], to_s) },
-      'remoteRepositoryConfig' => ->(obj) { return :remote_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfig.new(obj['remoteRepositoryConfig'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'format' => ->(obj) { return :format, obj['format'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryLabels.new(obj['labels'], to_s) },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'kmsKeyName' => ->(obj) { return :kms_key_name, obj['kmsKeyName'] },
-      'mode' => ->(obj) { return :mode, obj['mode'] },
-      'cleanupPolicies' => ->(obj) { return :cleanup_policies, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryCleanupPolicies.new(obj['cleanupPolicies'], to_s) },
-      'sizeBytes' => ->(obj) { return :size_bytes, obj['sizeBytes'] },
-      'satisfiesPzs' => ->(obj) { return :satisfies_pzs, obj['satisfiesPzs'] },
-      'cleanupPolicyDryRun' => ->(obj) { return :cleanup_policy_dry_run, obj['cleanupPolicyDryRun'] },
+      'mavenConfig' => ->(obj) { [:maven_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryMavenConfig.new(obj['mavenConfig'], to_s)] },
+      'dockerConfig' => ->(obj) { [:docker_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryDockerConfig.new(obj['dockerConfig'], to_s)] },
+      'virtualRepositoryConfig' => ->(obj) { [:virtual_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryVirtualRepositoryConfig.new(obj['virtualRepositoryConfig'], to_s)] },
+      'remoteRepositoryConfig' => ->(obj) { [:remote_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfig.new(obj['remoteRepositoryConfig'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'format' => ->(obj) { [:format, obj['format']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryLabels.new(obj['labels'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'kmsKeyName' => ->(obj) { [:kms_key_name, obj['kmsKeyName']] },
+      'mode' => ->(obj) { [:mode, obj['mode']] },
+      'cleanupPolicies' => ->(obj) { [:cleanup_policies, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryCleanupPolicies.new(obj['cleanupPolicies'], to_s)] },
+      'sizeBytes' => ->(obj) { [:size_bytes, obj['sizeBytes']] },
+      'satisfiesPzs' => ->(obj) { [:satisfies_pzs, obj['satisfiesPzs']] },
+      'cleanupPolicyDryRun' => ->(obj) { [:cleanup_policy_dry_run, obj['cleanupPolicyDryRun']] },
     }
   end
 
