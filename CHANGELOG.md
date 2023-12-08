@@ -1,11 +1,26 @@
 # Change Log
 
-<!-- latest_release 1.11.55 -->
+<!-- latest_release 1.11.58 -->
+## [v1.11.58](https://github.com/inspec/inspec-gcp/tree/v1.11.58) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7364-MAGIC-MODULE-composer-Projects__locations__environment - Resource Implementation [#546](https://github.com/inspec/inspec-gcp/pull/546) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.57](https://github.com/inspec/inspec-gcp/tree/v1.11.57) (2023-12-06)
+
+#### Merged Pull Requests
+- chore: uncomment terraform scripts [#549](https://github.com/inspec/inspec-gcp/pull/549) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.56](https://github.com/inspec/inspec-gcp/tree/v1.11.56) (2023-12-06)
+
+#### Merged Pull Requests
+- CHEF-7369 Updated dataproc_cluster resource [#545](https://github.com/inspec/inspec-gcp/pull/545) ([Nik08](https://github.com/Nik08))
+
 ## [v1.11.55](https://github.com/inspec/inspec-gcp/tree/v1.11.55) (2023-12-05)
 
 #### Merged Pull Requests
 - Chore: Remove redundant `return` statement to fix rubocop 1.58.0 lint offense [#548](https://github.com/inspec/inspec-gcp/pull/548) ([ahasunos](https://github.com/ahasunos))
-<!-- latest_release -->
 
 ## [v1.11.54](https://github.com/inspec/inspec-gcp/tree/v1.11.54) (2023-12-01)
 

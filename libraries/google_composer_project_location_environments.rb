@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -14,32 +14,31 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocClusters < GcpResourceBase
-  name 'google_dataproc_clusters'
-  desc 'Cluster plural resource'
+class ComposerProjectLocationEnvironments < GcpResourceBase
+  name 'google_composer_project_location_environments'
+  desc 'ProjectLocationEnvironment plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:cluster_names, field: :cluster_name)
-  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:names, field: :name)
   filter_table_config.add(:configs, field: :config)
-  filter_table_config.add(:regions, field: :region)
-  filter_table_config.add(:project_ids, field: :project_id)
-  filter_table_config.add(:virtual_cluster_configs, field: :virtual_cluster_config)
-  filter_table_config.add(:statuses, field: :status)
-  filter_table_config.add(:status_histories, field: :status_history)
-  filter_table_config.add(:cluster_uuids, field: :cluster_uuid)
-  filter_table_config.add(:metrics, field: :metrics)
+  filter_table_config.add(:uuids, field: :uuid)
+  filter_table_config.add(:states, field: :state)
+  filter_table_config.add(:create_times, field: :create_time)
+  filter_table_config.add(:update_times, field: :update_time)
+  filter_table_config.add(:labels, field: :labels)
+  filter_table_config.add(:satisfies_pzs, field: :satisfies_pzs)
+  filter_table_config.add(:storage_configs, field: :storage_config)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('clusters')
+    @table = fetch_wrapped_resource('environments')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -72,30 +71,25 @@ class DataprocClusters < GcpResourceBase
 
   def transformers
     {
-      'clusterName' => ->(obj) { [:cluster_name, obj['clusterName']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'config' => ->(obj) { [:config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s)] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'projectId' => ->(obj) { [:project_id, obj['projectId']] },
-      'virtualClusterConfig' => ->(obj) { [:virtual_cluster_config, obj['virtualClusterConfig']] },
-      'status' => ->(obj) { [:status, obj['status']] },
-      'statusHistory' => ->(obj) { [:status_history, obj['statusHistory']] },
-      'clusterUuid' => ->(obj) { [:cluster_uuid, obj['clusterUuid']] },
-      'metrics' => ->(obj) { [:metrics, obj['metrics']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(obj['config'], to_s)] },
+      'uuid' => ->(obj) { [:uuid, obj['uuid']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(obj['labels'], to_s)] },
+      'satisfiesPzs' => ->(obj) { [:satisfies_pzs, obj['satisfiesPzs']] },
+      'storageConfig' => ->(obj) { [:storage_config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(obj['storageConfig'], to_s)] },
     }
   end
 
   private
 
-  def product_url(beta = false)
-    if beta
-      'https://dataproc.googleapis.com/v1beta2/'
-    else
-      'https://dataproc.googleapis.com/v1/'
-    end
+  def product_url(_ = nil)
+    'https://composer.googleapis.com/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/clusters'
+    '{{parent}}/environments'
   end
 end
