@@ -578,3 +578,7 @@ organization_envgroup:
   parent : "organizations/ppradhan/envgroups"
   state : "ACTIVE"
   created_at : "1698227493454"
+
+apigee_organization_envgroup_attachment:
+  envgroup_id: "organizations/ppradhan/envgroups/test-env-group"
+  environment: "test-env"

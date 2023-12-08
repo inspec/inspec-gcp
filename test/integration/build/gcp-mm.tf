@@ -224,6 +224,10 @@ variable "cloud_composer_v1" {
   type = any
 }
 
+variable "apigee_organization_envgroup_attachment" {
+  type = any
+}
+
 variable "organization_envgroup" {
   type = any
 }
@@ -1574,7 +1578,7 @@ resource "google_artifact_registry_repository" "example" {
 resource "google_composer_v1_environment" "test" {
   name   = var.cloud_composer_v1["name"]
   region = var.cloud_composer_v1["region"]
- config {
+  config {
     software_config {
       image_version = var.cloud_composer_v1["image_version"]
     }
@@ -1585,4 +1589,8 @@ resource "google_apigee_envgroup" "env_grp" {
   name      = var.organization_envgroup.name
   hostnames  = var.organization_envgroup.hostnames
   org_id    = var.organization_envgroup.project
+}
+resource "google_apigee_envgroup_attachment" "engroup_attachment" {
+  envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
+  environment  = var.apigee_organization_envgroup_attachment.environment
 }
