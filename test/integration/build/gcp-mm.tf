@@ -220,7 +220,7 @@ variable "cloud_composer_v1" {
   type = any
 }
 
-variable "organization_envgroup_attachment" {
+variable "apigee_organization_envgroup_attachment" {
   type = any
 }
 
@@ -1571,6 +1571,6 @@ resource "google_composer_v1_environment" "test" {
 }
 
 resource "google_apigee_envgroup_attachment" "engroup_attachment" {
-  envgroup_id  = var.organization_envgroup_attachment.envgroup_id
-  environment  = var.organization_envgroup_attachment.environment
+  envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
+  environment  = var.apigee_organization_envgroup_attachment.environment
 }
