@@ -66,10 +66,10 @@ class ApigeeOrganizationEnvgroupAttachments < GcpResourceBase
 
   def transformers
     {
-      'createdAt' => ->(obj) { return :created_at, obj['createdAt'] },
-      'environment' => ->(obj) { return :environment, obj['environment'] },
-      'environmentGroupId' => ->(obj) { return :environment_group_id, obj['environmentGroupId'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'createdAt' => ->(obj) { [:created_at, obj['createdAt']] },
+      'environment' => ->(obj) { [:environment, obj['environment']] },
+      'environmentGroupId' => ->(obj) { [:environment_group_id, obj['environmentGroupId']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 
