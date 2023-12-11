@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bundle'
 gem 'faraday', '>= 0.16.2'
-gem 'google-api-client'
+gem 'google-apis-core'
 gem 'google-cloud'
 gem 'googleauth'
 gem 'inifile'
