@@ -74,18 +74,18 @@ class ComputeVpnGateways < GcpResourceBase
 
   def transformers
     {
-      'kind' => ->(obj) { return :kind, obj['kind'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, obj['creationTimestamp'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'selfLink' => ->(obj) { return :self_link, obj['selfLink'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::Compute::Property::VpnGatewayLabels.new(obj['labels'], to_s) },
-      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
-      'vpnInterfaces' => ->(obj) { return :vpn_interfaces, GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(obj['vpnInterfaces'], to_s) },
-      'stackType' => ->(obj) { return :stack_type, obj['stackType'] },
+      'kind' => ->(obj) { [:kind, obj['kind']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Compute::Property::VpnGatewayLabels.new(obj['labels'], to_s)] },
+      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
+      'vpnInterfaces' => ->(obj) { [:vpn_interfaces, GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(obj['vpnInterfaces'], to_s)] },
+      'stackType' => ->(obj) { [:stack_type, obj['stackType']] },
     }
   end
 
