@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.62 -->
+<!-- latest_release 1.11.63 -->
+## [v1.11.63](https://github.com/inspec/inspec-gcp/tree/v1.11.63) (2023-12-12)
+
+#### Merged Pull Requests
+- CHEF-7384: MAGIC-MODULE-compute-ServiceAttachment - Resource Implementation [#535](https://github.com/inspec/inspec-gcp/pull/535) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.62](https://github.com/inspec/inspec-gcp/tree/v1.11.62) (2023-12-08)
 
 #### Merged Pull Requests
 - CHEF-7357-MAGIC-MODULE-apigee-Organizations__envgroups__attachment - Resource Implementation [#540](https://github.com/inspec/inspec-gcp/pull/540) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.61](https://github.com/inspec/inspec-gcp/tree/v1.11.61) (2023-12-08)
 
