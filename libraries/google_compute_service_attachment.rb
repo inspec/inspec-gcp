@@ -79,7 +79,7 @@ class ComputeServiceAttachment < GcpResourceBase
   end
 
   def to_s
-    "ServiceAttachment #{@params[:serviceAttachment]}"
+    "ServiceAttachment #{@params[:service_attachment]}"
   end
 
   private
