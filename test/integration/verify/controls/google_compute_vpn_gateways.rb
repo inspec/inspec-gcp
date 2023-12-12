@@ -17,18 +17,18 @@ title 'Test GCP google_compute_vpn_gateways resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   vpn_gateway = input('vpn_gateway', value: {
-  "project": "value_project",
-  "region": "value_region",
-  "vpn_gateway": "value_vpngateway",
+  "project": "ppradhan",
+  "region": "us-central1",
+  "vpn_gateway": "2245103640699591658",
   "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "id": "2245103640699591658",
+  "creation_timestamp": "2023-12-12T05:49:57.914-08:00",
+  "name": "inspec-vpn-gateway",
   "description": "value_description",
-  "network": "value_network",
+  "network": "https://www.googleapis.com/compute/v1/projects/ppradhan/global/networks/network1",
   "self_link": "value_selflink",
   "label_fingerprint": "value_labelfingerprint",
-  "stack_type": "value_stacktype"
+  "stack_type": "IPV4_ONLY"
 }, description: 'vpn_gateway description')
 control 'google_compute_vpn_gateways-1.0' do
   impact 1.0
