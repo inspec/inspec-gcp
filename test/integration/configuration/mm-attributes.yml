@@ -558,6 +558,56 @@ dlp:
     location: "europe-west2"
     type: "Infotype"
 
+project_location_repository:
+  name : "projects/ppradhan/locations/us-central1/repositories/test-repository-1"
+  parent : "projects/ppradhan/locations/us-central1"
+  display_name: "test-repository-1"
+  location: "us-central1"
+  format: "DOCKER"
+  project_id: "ppradhan"
+
+cloud_composer_v1:
+  name : "example-composer-env"
+  region : "us-central1"
+  image_version : "composer-1.20.12-airflow-2.4.3"
+
+compute_service_attachment_conf:
+  compute_service_attachment_name: "my-psc-ilb"
+  description: "my-psc-ilb is a private service connection for the internal load balancer"
+  region: "us-central1"
+  enable_proxy_protocol: true
+  connection_preference: "ACCEPT_AUTOMATIC"
+  psc_ilb_consumer_address_name: "my-psc-ilb-consumer-address"
+  subnetwork_id: "default"
+  address_type: "INTERNAL"
+  psc_ilb_consumer_name: "my-psc-ilb-consumer-forwarding-rule"
+  network_id: "default"
+  psc_ilb_target_service_name: "producer-forwarding-rule"
+  load_balancing_scheme: "INTERNAL"
+  all_ports: true
+  producer_service_backend_name: "producer-backend-service"
+  producer_service_health_check_name: "producer-health-check"
+  producer_service_health_check_port: "80"
+  psc_ilb_network_name: "psc-ilb-network"
+  auto_create_subnetworks: false
+  psc_ilb_producer_subnetwork_name: "psc-ilb-producer-subnetwork"
+  subnetwork_ip_cidr_range: "10.0.0.0/16"
+  psc_ilb_nat_name: "psc-ilb-nat"
+  purpose: "PRIVATE_SERVICE_CONNECT"
+  nat_ip_cidr_range: "10.1.0.0/16"
+
+organization_envgroup:
+  project: "organizations/ppradhan"
+  name : "test-env-group"
+  hostnames: ["34.95.97.227.nip.io"]
+  parent : "organizations/ppradhan/envgroups"
+  state : "ACTIVE"
+  created_at : "1698227493454"
+
+apigee_organization_envgroup_attachment:
+  envgroup_id: "organizations/ppradhan/envgroups/test-env-group"
+  environment: "test-env"
+
 vpn_gateway:
   project : "ppradhan"
   region : "us-central1"

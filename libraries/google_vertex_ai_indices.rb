@@ -73,18 +73,18 @@ class VertexAIIndexs < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'metadata' => ->(obj) { return :metadata, obj['metadata'] },
-      'indexStats' => ->(obj) { return :index_stats, obj['indexStats'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'deployedIndexes' => ->(obj) { return :deployed_indexes, obj['deployedIndexes'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'metadataSchemaUri' => ->(obj) { return :metadata_schema_uri, obj['metadataSchemaUri'] },
-      'indexUpdateMethod' => ->(obj) { return :index_update_method, obj['indexUpdateMethod'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::IndexLabels.new(obj['labels'], to_s) },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
+      'indexStats' => ->(obj) { [:index_stats, obj['indexStats']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'deployedIndexes' => ->(obj) { [:deployed_indexes, obj['deployedIndexes']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'metadataSchemaUri' => ->(obj) { [:metadata_schema_uri, obj['metadataSchemaUri']] },
+      'indexUpdateMethod' => ->(obj) { [:index_update_method, obj['indexUpdateMethod']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::IndexLabels.new(obj['labels'], to_s)] },
     }
   end
 

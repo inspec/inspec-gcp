@@ -70,14 +70,14 @@ class ComputeRegions < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'deprecated' => ->(obj) { return :deprecated, GoogleInSpec::Compute::Property::RegionDeprecated.new(obj['deprecated'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :region_id, obj['id'] },
-      'name' => ->(obj) { return :region_name, obj['name'] },
-      'quotas' => ->(obj) { return :quotas, GoogleInSpec::Compute::Property::RegionQuotasArray.parse(obj['quotas'], to_s) },
-      'status' => ->(obj) { return :region_status, obj['status'] },
-      'zones' => ->(obj) { return :zones, obj['zones'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::RegionDeprecated.new(obj['deprecated'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:region_id, obj['id']] },
+      'name' => ->(obj) { [:region_name, obj['name']] },
+      'quotas' => ->(obj) { [:quotas, GoogleInSpec::Compute::Property::RegionQuotasArray.parse(obj['quotas'], to_s)] },
+      'status' => ->(obj) { [:region_status, obj['status']] },
+      'zones' => ->(obj) { [:zones, obj['zones']] },
     }
   end
 

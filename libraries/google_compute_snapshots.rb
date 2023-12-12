@@ -76,20 +76,20 @@ class ComputeSnapshots < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'diskSizeGb' => ->(obj) { return :disk_size_gb, obj['diskSizeGb'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'storageBytes' => ->(obj) { return :storage_bytes, obj['storageBytes'] },
-      'storageLocations' => ->(obj) { return :storage_locations, obj['storageLocations'] },
-      'licenses' => ->(obj) { return :licenses, obj['licenses'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'labelFingerprint' => ->(obj) { return :label_fingerprint, obj['labelFingerprint'] },
-      'sourceDisk' => ->(obj) { return :source_disk, obj['sourceDisk'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
-      'snapshotEncryptionKey' => ->(obj) { return :snapshot_encryption_key, GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(obj['snapshotEncryptionKey'], to_s) },
-      'sourceDiskEncryptionKey' => ->(obj) { return :source_disk_encryption_key, GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(obj['sourceDiskEncryptionKey'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'diskSizeGb' => ->(obj) { [:disk_size_gb, obj['diskSizeGb']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'storageBytes' => ->(obj) { [:storage_bytes, obj['storageBytes']] },
+      'storageLocations' => ->(obj) { [:storage_locations, obj['storageLocations']] },
+      'licenses' => ->(obj) { [:licenses, obj['licenses']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
+      'sourceDisk' => ->(obj) { [:source_disk, obj['sourceDisk']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
+      'snapshotEncryptionKey' => ->(obj) { [:snapshot_encryption_key, GoogleInSpec::Compute::Property::SnapshotSnapshotEncryptionKey.new(obj['snapshotEncryptionKey'], to_s)] },
+      'sourceDiskEncryptionKey' => ->(obj) { [:source_disk_encryption_key, GoogleInSpec::Compute::Property::SnapshotSourceDiskEncryptionKey.new(obj['sourceDiskEncryptionKey'], to_s)] },
     }
   end
 

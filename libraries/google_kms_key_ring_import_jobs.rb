@@ -74,18 +74,18 @@ class KMSKeyRingImportJobs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'importMethod' => ->(obj) { return :import_method, obj['importMethod'] },
-      'protectionLevel' => ->(obj) { return :protection_level, obj['protectionLevel'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'generateTime' => ->(obj) { return :generate_time, parse_time_string(obj['generateTime']) },
-      'expireTime' => ->(obj) { return :expire_time, parse_time_string(obj['expireTime']) },
-      'expireEventTime' => ->(obj) { return :expire_event_time, parse_time_string(obj['expireEventTime']) },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'publicKey' => ->(obj) { return :public_key, GoogleInSpec::KMS::Property::KeyRingImportJobPublicKey.new(obj['publicKey'], to_s) },
-      'attestation' => ->(obj) { return :attestation, GoogleInSpec::KMS::Property::KeyRingImportJobAttestation.new(obj['attestation'], to_s) },
-      'keyRing' => ->(obj) { return :key_ring, obj['keyRing'] },
-      'importJobId' => ->(obj) { return :import_job_id, obj['importJobId'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'importMethod' => ->(obj) { [:import_method, obj['importMethod']] },
+      'protectionLevel' => ->(obj) { [:protection_level, obj['protectionLevel']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'generateTime' => ->(obj) { [:generate_time, parse_time_string(obj['generateTime'])] },
+      'expireTime' => ->(obj) { [:expire_time, parse_time_string(obj['expireTime'])] },
+      'expireEventTime' => ->(obj) { [:expire_event_time, parse_time_string(obj['expireEventTime'])] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'publicKey' => ->(obj) { [:public_key, GoogleInSpec::KMS::Property::KeyRingImportJobPublicKey.new(obj['publicKey'], to_s)] },
+      'attestation' => ->(obj) { [:attestation, GoogleInSpec::KMS::Property::KeyRingImportJobAttestation.new(obj['attestation'], to_s)] },
+      'keyRing' => ->(obj) { [:key_ring, obj['keyRing']] },
+      'importJobId' => ->(obj) { [:import_job_id, obj['importJobId']] },
     }
   end
 

@@ -70,14 +70,14 @@ class BigQueryDatasets < GcpResourceBase
 
   def transformers
     {
-      'datasetReference' => ->(obj) { return :dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj['datasetReference'], to_s) },
-      'defaultPartitionExpirationMs' => ->(obj) { return :default_partition_expiration_ms, obj['defaultPartitionExpirationMs'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'friendlyName' => ->(obj) { return :friendly_name, obj['friendlyName'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'location' => ->(obj) { return :location, obj['location'] },
-      'defaultEncryptionConfiguration' => ->(obj) { return :default_encryption_configuration, GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(obj['defaultEncryptionConfiguration'], to_s) },
+      'datasetReference' => ->(obj) { [:dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj['datasetReference'], to_s)] },
+      'defaultPartitionExpirationMs' => ->(obj) { [:default_partition_expiration_ms, obj['defaultPartitionExpirationMs']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'friendlyName' => ->(obj) { [:friendly_name, obj['friendlyName']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'location' => ->(obj) { [:location, obj['location']] },
+      'defaultEncryptionConfiguration' => ->(obj) { [:default_encryption_configuration, GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(obj['defaultEncryptionConfiguration'], to_s)] },
     }
   end
 

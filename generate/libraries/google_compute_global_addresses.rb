@@ -73,17 +73,17 @@ class ComputeGlobalAddresss < GcpResourceBase
 
   def transformers
     {
-      'address' => ->(obj) { return :address, obj['address'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'ipVersion' => ->(obj) { return :ip_version, obj['ipVersion'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'prefixLength' => ->(obj) { return :prefix_length, obj['prefixLength'] },
-      'addressType' => ->(obj) { return :address_type, obj['addressType'] },
-      'purpose' => ->(obj) { return :purpose, obj['purpose'] },
-      'network' => ->(obj) { return :network, obj['network'] },
+      'address' => ->(obj) { [:address, obj['address']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'ipVersion' => ->(obj) { [:ip_version, obj['ipVersion']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'prefixLength' => ->(obj) { [:prefix_length, obj['prefixLength']] },
+      'addressType' => ->(obj) { [:address_type, obj['addressType']] },
+      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
+      'network' => ->(obj) { [:network, obj['network']] },
     }
   end
 

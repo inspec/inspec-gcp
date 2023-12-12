@@ -69,13 +69,13 @@ class SQLFlags < GcpResourceBase
 
   def transformers
     {
-      'allowedStringValues' => ->(obj) { return :allowed_string_values, obj['allowedStringValues'] },
-      'appliesTo' => ->(obj) { return :applies_to, obj['appliesTo'] },
-      'maxValue' => ->(obj) { return :max_value, obj['maxValue'] },
-      'minValue' => ->(obj) { return :min_value, obj['minValue'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'requiresRestart' => ->(obj) { return :requires_restart, obj['requiresRestart'] },
-      'type' => ->(obj) { return :type, obj['type'] },
+      'allowedStringValues' => ->(obj) { [:allowed_string_values, obj['allowedStringValues']] },
+      'appliesTo' => ->(obj) { [:applies_to, obj['appliesTo']] },
+      'maxValue' => ->(obj) { [:max_value, obj['maxValue']] },
+      'minValue' => ->(obj) { [:min_value, obj['minValue']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'requiresRestart' => ->(obj) { [:requires_restart, obj['requiresRestart']] },
+      'type' => ->(obj) { [:type, obj['type']] },
     }
   end
 

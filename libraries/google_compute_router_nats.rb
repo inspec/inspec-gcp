@@ -77,21 +77,21 @@ class ComputeRouterNats < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'natIpAllocateOption' => ->(obj) { return :nat_ip_allocate_option, obj['natIpAllocateOption'] },
-      'natIps' => ->(obj) { return :nat_ips, obj['natIps'] },
-      'drainNatIps' => ->(obj) { return :drain_nat_ips, obj['drainNatIps'] },
-      'sourceSubnetworkIpRangesToNat' => ->(obj) { return :source_subnetwork_ip_ranges_to_nat, obj['sourceSubnetworkIpRangesToNat'] },
-      'subnetworks' => ->(obj) { return :subnetwork, GoogleInSpec::Compute::Property::RouterNatSubnetworkArray.parse(obj['subnetworks'], to_s) },
-      'minPortsPerVm' => ->(obj) { return :min_ports_per_vm, obj['minPortsPerVm'] },
-      'udpIdleTimeoutSec' => ->(obj) { return :udp_idle_timeout_sec, obj['udpIdleTimeoutSec'] },
-      'icmpIdleTimeoutSec' => ->(obj) { return :icmp_idle_timeout_sec, obj['icmpIdleTimeoutSec'] },
-      'tcpEstablishedIdleTimeoutSec' => ->(obj) { return :tcp_established_idle_timeout_sec, obj['tcpEstablishedIdleTimeoutSec'] },
-      'tcpTransitoryIdleTimeoutSec' => ->(obj) { return :tcp_transitory_idle_timeout_sec, obj['tcpTransitoryIdleTimeoutSec'] },
-      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::RouterNatLogConfig.new(obj['logConfig'], to_s) },
-      'enableEndpointIndependentMapping' => ->(obj) { return :enable_endpoint_independent_mapping, obj['enableEndpointIndependentMapping'] },
-      'router' => ->(obj) { return :router, obj['router'] },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'natIpAllocateOption' => ->(obj) { [:nat_ip_allocate_option, obj['natIpAllocateOption']] },
+      'natIps' => ->(obj) { [:nat_ips, obj['natIps']] },
+      'drainNatIps' => ->(obj) { [:drain_nat_ips, obj['drainNatIps']] },
+      'sourceSubnetworkIpRangesToNat' => ->(obj) { [:source_subnetwork_ip_ranges_to_nat, obj['sourceSubnetworkIpRangesToNat']] },
+      'subnetworks' => ->(obj) { [:subnetwork, GoogleInSpec::Compute::Property::RouterNatSubnetworkArray.parse(obj['subnetworks'], to_s)] },
+      'minPortsPerVm' => ->(obj) { [:min_ports_per_vm, obj['minPortsPerVm']] },
+      'udpIdleTimeoutSec' => ->(obj) { [:udp_idle_timeout_sec, obj['udpIdleTimeoutSec']] },
+      'icmpIdleTimeoutSec' => ->(obj) { [:icmp_idle_timeout_sec, obj['icmpIdleTimeoutSec']] },
+      'tcpEstablishedIdleTimeoutSec' => ->(obj) { [:tcp_established_idle_timeout_sec, obj['tcpEstablishedIdleTimeoutSec']] },
+      'tcpTransitoryIdleTimeoutSec' => ->(obj) { [:tcp_transitory_idle_timeout_sec, obj['tcpTransitoryIdleTimeoutSec']] },
+      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::RouterNatLogConfig.new(obj['logConfig'], to_s)] },
+      'enableEndpointIndependentMapping' => ->(obj) { [:enable_endpoint_independent_mapping, obj['enableEndpointIndependentMapping']] },
+      'router' => ->(obj) { [:router, obj['router']] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

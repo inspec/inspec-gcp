@@ -76,20 +76,20 @@ class MemcacheInstances < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'memcacheNodes' => ->(obj) { return :memcache_nodes, GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(obj['memcacheNodes'], to_s) },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'discoveryEndpoint' => ->(obj) { return :discovery_endpoint, obj['discoveryEndpoint'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'memcacheFullVersion' => ->(obj) { return :memcache_full_version, obj['memcacheFullVersion'] },
-      'zones' => ->(obj) { return :zones, obj['zones'] },
-      'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
-      'nodeCount' => ->(obj) { return :node_count, obj['nodeCount'] },
-      'memcacheVersion' => ->(obj) { return :memcache_version, obj['memcacheVersion'] },
-      'nodeConfig' => ->(obj) { return :node_config, GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(obj['nodeConfig'], to_s) },
-      'parameters' => ->(obj) { return :parameters, GoogleInSpec::Memcache::Property::InstanceParameters.new(obj['parameters'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'memcacheNodes' => ->(obj) { [:memcache_nodes, GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(obj['memcacheNodes'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'discoveryEndpoint' => ->(obj) { [:discovery_endpoint, obj['discoveryEndpoint']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'memcacheFullVersion' => ->(obj) { [:memcache_full_version, obj['memcacheFullVersion']] },
+      'zones' => ->(obj) { [:zones, obj['zones']] },
+      'authorizedNetwork' => ->(obj) { [:authorized_network, obj['authorizedNetwork']] },
+      'nodeCount' => ->(obj) { [:node_count, obj['nodeCount']] },
+      'memcacheVersion' => ->(obj) { [:memcache_version, obj['memcacheVersion']] },
+      'nodeConfig' => ->(obj) { [:node_config, GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(obj['nodeConfig'], to_s)] },
+      'parameters' => ->(obj) { [:parameters, GoogleInSpec::Memcache::Property::InstanceParameters.new(obj['parameters'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 
