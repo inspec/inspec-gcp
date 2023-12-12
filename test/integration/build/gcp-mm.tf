@@ -215,7 +215,9 @@ variable "spannerdatabase" {
 variable "scheduler_job" {
   type = any
 }
-
+variable "vpn_gateway" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1551,4 +1553,15 @@ resource "google_vertex_ai_index" "index" {
     }
   }
   index_update_method = "STREAM_UPDATE"
+}
+resource "google_compute_ha_vpn_gateway" "ha_vpn_gateway" {
+  project = var.vpn_gateway.project
+  region  = var.vpn_gateway.region
+  name    = var.vpn_gateway.name
+  network = google_compute_network.network1.id
+}
+resource "google_compute_network" "network1" {
+  project = var.vpn_gateway.project
+  name                    = "network1"
+  auto_create_subnetworks = false
 }
