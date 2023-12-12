@@ -376,6 +376,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_tensorboard_experiment_run_time_series_resource](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resource.md)                                       | [google_vertex_ai_tensorboard_experiment_run_time_series_resources](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resources.md)                                   |
 | [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
 | [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environment.md)             |
+| [google_compute_service_attachment](docs/resources/google_compute_service_attachment.md)                           | [google_compute_service_attachments](docs/resources/google_compute_service_attachments.md)             |
 
 ## Examples
 
