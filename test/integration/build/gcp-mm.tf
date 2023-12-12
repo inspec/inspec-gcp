@@ -216,6 +216,10 @@ variable "scheduler_job" {
   type = any
 }
 
+variable "project_location_repository" {
+  type = any
+}
+
 variable "cloud_composer_v1" {
   type = any
 }
@@ -224,6 +228,14 @@ variable "compute_service_attachment_conf" {
   type = any
 }
 
+
+variable "apigee_organization_envgroup_attachment" {
+  type = any
+}
+
+variable "organization_envgroup" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1561,10 +1573,17 @@ resource "google_vertex_ai_index" "index" {
   index_update_method = "STREAM_UPDATE"
 }
 
+resource "google_artifact_registry_repository" "example" {
+  project = var.project_location_repository.project_id
+  repository_id = var.project_location_repository.display_name
+  location      = var.project_location_repository.location
+  format        = var.project_location_repository.format
+}
+
 resource "google_composer_v1_environment" "test" {
   name   = var.cloud_composer_v1["name"]
   region = var.cloud_composer_v1["region"]
- config {
+  config {
     software_config {
       image_version = var.cloud_composer_v1["image_version"]
     }
@@ -1648,4 +1667,14 @@ resource "google_compute_subnetwork" "psc_ilb_nat" {
   network       = google_compute_network.psc_ilb_network.id
   purpose       =  var.compute_service_attachment_conf["purpose"]
   ip_cidr_range = var.compute_service_attachment_conf["nat_ip_cidr_range"]
+}
+
+resource "google_apigee_envgroup" "env_grp" {
+  name      = var.organization_envgroup.name
+  hostnames  = var.organization_envgroup.hostnames
+  org_id    = var.organization_envgroup.project
+}
+resource "google_apigee_envgroup_attachment" "engroup_attachment" {
+  envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
+  environment  = var.apigee_organization_envgroup_attachment.environment
 }
