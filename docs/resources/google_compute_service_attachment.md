@@ -8,7 +8,7 @@ A `google_compute_service_attachment` is used to test a Google ServiceAttachment
 
 ## Examples
 ```
-describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', serviceAttachment: ' ') do
+describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', service_attachment: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -24,7 +24,7 @@ describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: '
 
 end
 
-describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', serviceAttachment: ' ') do
+describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', service_attachment: ' ') do
 	it { should_not exist }
 end
 ```
@@ -88,11 +88,11 @@ Properties that can be accessed from the `google_compute_service_attachment` res
 
     * `connection_limit`: The value of the limit to set.
 
-  * `psc_service_attachment_id`: 
+  * `psc_service_attachment_id`:
 
-    * `high`: 
+    * `high`:
 
-    * `low`: 
+    * `low`:
 
   * `fingerprint`: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
 
