@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.64 -->
+<!-- latest_release 1.11.65 -->
+## [v1.11.65](https://github.com/inspec/inspec-gcp/tree/v1.11.65) (2023-12-13)
+
+#### Merged Pull Requests
+- CHEF-7382-MAGIC-MODULE-compute-VpnGateway - Resource Implementation [#534](https://github.com/inspec/inspec-gcp/pull/534) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.64](https://github.com/inspec/inspec-gcp/tree/v1.11.64) (2023-12-12)
 
 #### Merged Pull Requests
 - chore: correct typo in README for resource reference [#558](https://github.com/inspec/inspec-gcp/pull/558) ([ahasunos](https://github.com/ahasunos))
-<!-- latest_release -->
 
 ## [v1.11.63](https://github.com/inspec/inspec-gcp/tree/v1.11.63) (2023-12-12)
 
