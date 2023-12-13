@@ -607,3 +607,17 @@ organization_envgroup:
 apigee_organization_envgroup_attachment:
   envgroup_id: "organizations/ppradhan/envgroups/test-env-group"
   environment: "test-env"
+
+vpn_gateway:
+  project : "ppradhan"
+  region : "us-central1"
+  vpn_gateway : "4406948336461056012"
+  kind : "value_kind"
+  id : "value_id"
+  creation_timestamp : "value_creationtimestamp"
+  name : "inspec-vpn-gateway"
+  description : "Inspec Test HA VPN Gateway"
+  network : "gcp-inspec-network"
+  self_link : "value_selflink"
+  label_fingerprint : "value_labelfingerprint"
+  stack_type : "IPV4_ONLY"
