@@ -237,7 +237,11 @@ class GcpApiConnection
       fetch_auth,
       request_type,
     )
-    result = JSON.parse(get_request.send.body)
+    response = get_request.send
+    result = JSON.parse(response.body)
+    if response.is_a?(Net::HTTPNotFound) || response.is_a?(Net::HTTPForbidden)
+      raise_resource_failed result, %w{error errors}, 'message'
+    end
     next_page_token = result['nextPageToken']
     return [result] if next_page_token.nil?
 
@@ -249,6 +253,9 @@ class GcpApiConnection
       if response.is_a?(Net::HTTPBadRequest)
     raise "Bad response: #{response}" \
       unless response.is_a?(Net::HTTPResponse)
+    if response.is_a?(Net::HTTPNotFound) || response.is_a?(Net::HTTPForbidden)
+      raise_resource_failed JSON.parse(response.body), %w{error errors}, 'message'
+    end
     return if response.is_a?(Net::HTTPNotFound)
     return if response.is_a?(Net::HTTPNoContent)
     result = JSON.parse(response.body)
@@ -275,6 +282,11 @@ class GcpApiConnection
   def raise_error(errors, msg_field)
     raise IOError, ['Operation failed:',
                     errors.map { |e| e[msg_field] }.join(', ')].join(' ')
+  end
+
+  def raise_resource_failed(response, err_path, msg_field)
+    errors = self.class.navigate(response, err_path)
+    raise Inspec::Exceptions::ResourceFailed, errors.first[msg_field]
   end
 
   def build_uri(base_url, template, var_data)
