@@ -22,7 +22,7 @@ class GcpResourceBase < Inspec.resource(1)
 
     # Magic Modules generated resources use an alternate transport method
     # In the future this will be moved into the train-gcp plugin itself
-    @connection = GcpApiConnection.new if opts[:use_http_transport]
+    @connection = GcpApiConnection.new(self) if opts[:use_http_transport]
   end
 
   def failed_resource?
@@ -194,7 +194,10 @@ class GcpResourceProbe
 end
 
 class GcpApiConnection
-  def initialize
+  attr_reader :resource
+
+  def initialize(resource)
+    @resource = resource
     config_name = Inspec::Config.cached.unpack_train_credentials[:host]
     ENV['CLOUDSDK_ACTIVE_CONFIG_NAME'] = config_name
     @google_application_credentials = config_name.blank? && ENV['GOOGLE_APPLICATION_CREDENTIALS']
@@ -237,11 +240,7 @@ class GcpApiConnection
       fetch_auth,
       request_type,
     )
-    response = get_request.send
-    result = JSON.parse(response.body)
-    if response.is_a?(Net::HTTPNotFound) || response.is_a?(Net::HTTPForbidden)
-      raise_resource_failed result, %w{error errors}, 'message'
-    end
+    result = return_if_object(get_request.send)
     next_page_token = result['nextPageToken']
     return [result] if next_page_token.nil?
 
@@ -249,20 +248,24 @@ class GcpApiConnection
   end
 
   def return_if_object(response)
-    raise "Bad response: #{response.body}" \
-      if response.is_a?(Net::HTTPBadRequest)
-    raise "Bad response: #{response}" \
-      unless response.is_a?(Net::HTTPResponse)
-    if response.is_a?(Net::HTTPNotFound) || response.is_a?(Net::HTTPForbidden)
-      raise_resource_failed JSON.parse(response.body), %w{error errors}, 'message'
+    unless response.is_a?(Net::HTTPSuccess)
+      if response.is_a?(Net::HTTPResponse)
+        body = response.body
+      else
+        body = response
+      end
+      result = parser(body)
+      raise_if_errors result, %w{error errors}, 'message'
     end
-    return if response.is_a?(Net::HTTPNotFound)
-    return if response.is_a?(Net::HTTPNoContent)
-    result = JSON.parse(response.body)
-    raise_if_errors result, %w{error errors}, 'message'
-    raise "Bad response: #{response}" unless response.is_a?(Net::HTTPOK)
+    result = parser(response.body)
     fetch_id result
     result
+  end
+
+  def parser(json)
+    JSON.parse(json)
+  rescue JSON::ParserError => e
+    raise StandardError, "Bad response: #{json}" \
   end
 
   def fetch_id(result)
@@ -276,17 +279,14 @@ class GcpApiConnection
 
   def raise_if_errors(response, err_path, msg_field)
     errors = self.class.navigate(response, err_path)
+    resource.fail_resource errors
+    resource.failed_resource = true
     raise_error(errors, msg_field) unless errors.nil?
   end
 
   def raise_error(errors, msg_field)
     raise IOError, ['Operation failed:',
                     errors.map { |e| e[msg_field] }.join(', ')].join(' ')
-  end
-
-  def raise_resource_failed(response, err_path, msg_field)
-    errors = self.class.navigate(response, err_path)
-    raise Inspec::Exceptions::ResourceFailed, errors.first[msg_field]
   end
 
   def build_uri(base_url, template, var_data)
