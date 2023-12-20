@@ -264,7 +264,7 @@ class GcpApiConnection
 
   def parser(json)
     JSON.parse(json)
-  rescue JSON::ParserError => e
+  rescue JSON::ParserError
     raise StandardError, "Bad response: #{json}" \
   end
 
