@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.66 -->
+<!-- latest_release 1.11.67 -->
+## [v1.11.67](https://github.com/inspec/inspec-gcp/tree/v1.11.67) (2023-12-21)
+
+#### Merged Pull Requests
+- Update inspec version pinning in Gemfile [#563](https://github.com/inspec/inspec-gcp/pull/563) ([ahasunos](https://github.com/ahasunos))
+<!-- latest_release -->
+
 ## [v1.11.66](https://github.com/inspec/inspec-gcp/tree/v1.11.66) (2023-12-15)
 
 #### Merged Pull Requests
 - CHEF - Removed the wrong dir from inspec-gcp. [#561](https://github.com/inspec/inspec-gcp/pull/561) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.65](https://github.com/inspec/inspec-gcp/tree/v1.11.65) (2023-12-13)
 
