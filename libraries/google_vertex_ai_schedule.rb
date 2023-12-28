@@ -32,7 +32,7 @@ require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_
 require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_input_artifacts'
 require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_parameter_values'
 require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_parameters'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_template_metadata'
+require 'google/vertexai/property/scpjrpj_template_metadata'
 require 'google/vertexai/property/schedule_last_scheduled_run_response'
 
 # A provider to manage Vertex AI resources.
