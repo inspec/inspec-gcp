@@ -69,13 +69,13 @@ class MLEngineModels < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'defaultVersion' => ->(obj) { return :default_version, GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(obj['defaultVersion'], to_s) },
-      'regions' => ->(obj) { return :regions, obj['regions'] },
-      'onlinePredictionLogging' => ->(obj) { return :online_prediction_logging, obj['onlinePredictionLogging'] },
-      'onlinePredictionConsoleLogging' => ->(obj) { return :online_prediction_console_logging, obj['onlinePredictionConsoleLogging'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'defaultVersion' => ->(obj) { [:default_version, GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(obj['defaultVersion'], to_s)] },
+      'regions' => ->(obj) { [:regions, obj['regions']] },
+      'onlinePredictionLogging' => ->(obj) { [:online_prediction_logging, obj['onlinePredictionLogging']] },
+      'onlinePredictionConsoleLogging' => ->(obj) { [:online_prediction_console_logging, obj['onlinePredictionConsoleLogging']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
     }
   end
 

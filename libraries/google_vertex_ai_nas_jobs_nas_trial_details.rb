@@ -65,10 +65,10 @@ class VertexAINasJobsNasTrialDetails < GcpResourceBase
 
   def transformers
     {
-      'parameters' => ->(obj) { return :parameters, obj['parameters'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'searchTrial' => ->(obj) { return :search_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailSearchTrial.new(obj['searchTrial'], to_s) },
-      'trainTrial' => ->(obj) { return :train_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailTrainTrial.new(obj['trainTrial'], to_s) },
+      'parameters' => ->(obj) { [:parameters, obj['parameters']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'searchTrial' => ->(obj) { [:search_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailSearchTrial.new(obj['searchTrial'], to_s)] },
+      'trainTrial' => ->(obj) { [:train_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailTrainTrial.new(obj['trainTrial'], to_s)] },
     }
   end
 

@@ -74,18 +74,18 @@ class DLPJobs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'type' => ->(obj) { return :type, obj['type'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'startTime' => ->(obj) { return :start_time, obj['startTime'] },
-      'endTime' => ->(obj) { return :end_time, obj['endTime'] },
-      'jobTriggerName' => ->(obj) { return :job_trigger_name, obj['jobTriggerName'] },
-      'errors' => ->(obj) { return :errors, GoogleInSpec::DLP::Property::JobErrorsArray.parse(obj['errors'], to_s) },
-      'actDet' => ->(obj) { return :act_det, GoogleInSpec::DLP::Property::JobActDetArray.parse(obj['actDet'], to_s) },
-      'riskDetails' => ->(obj) { return :risk_details, obj['riskDetails'] },
-      'inspectDetails' => ->(obj) { return :inspect_details, obj['inspectDetails'] },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'type' => ->(obj) { [:type, obj['type']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
+      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      'jobTriggerName' => ->(obj) { [:job_trigger_name, obj['jobTriggerName']] },
+      'errors' => ->(obj) { [:errors, GoogleInSpec::DLP::Property::JobErrorsArray.parse(obj['errors'], to_s)] },
+      'actDet' => ->(obj) { [:act_det, GoogleInSpec::DLP::Property::JobActDetArray.parse(obj['actDet'], to_s)] },
+      'riskDetails' => ->(obj) { [:risk_details, obj['riskDetails']] },
+      'inspectDetails' => ->(obj) { [:inspect_details, obj['inspectDetails']] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
     }
   end
 

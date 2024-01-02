@@ -52,5 +52,7 @@ control 'google_dataproc_clusters-1.0' do
   describe google_dataproc_clusters(project: gcp_project_id, region: gcp_location) do
     its('count') { should be >= 1 }
     its('cluster_names') { should include dataproc_cluster['name'] }
+    its('project_ids') { should include gcp_project_id }
+    its('cluster_uuids') { should include "test-uuid-67ff7c8e-558a-45ad-97c7" }
   end
 end

@@ -66,10 +66,10 @@ class AppEngineStandardAppVersions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'id' => ->(obj) { return :version_id, obj['id'] },
-      'runtime' => ->(obj) { return :runtime, obj['runtime'] },
-      'threadsafe' => ->(obj) { return :threadsafe, obj['threadsafe'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'id' => ->(obj) { [:version_id, obj['id']] },
+      'runtime' => ->(obj) { [:runtime, obj['runtime']] },
+      'threadsafe' => ->(obj) { [:threadsafe, obj['threadsafe']] },
     }
   end
 

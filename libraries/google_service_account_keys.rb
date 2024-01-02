@@ -72,16 +72,16 @@ class IAMServiceAccountKeys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :key_name, obj['name'] },
-      'privateKeyType' => ->(obj) { return :private_key_type, obj['privateKeyType'] },
-      'keyAlgorithm' => ->(obj) { return :key_algorithm, obj['keyAlgorithm'] },
-      'privateKeyData' => ->(obj) { return :private_key_data, obj['privateKeyData'] },
-      'publicKeyData' => ->(obj) { return :public_key_data, obj['publicKeyData'] },
-      'validAfterTime' => ->(obj) { return :valid_after_time, parse_time_string(obj['validAfterTime']) },
-      'validBeforeTime' => ->(obj) { return :valid_before_time, parse_time_string(obj['validBeforeTime']) },
-      'keyType' => ->(obj) { return :key_type, obj['keyType'] },
-      'serviceAccount' => ->(obj) { return :service_account, obj['serviceAccount'] },
-      'path' => ->(obj) { return :path, obj['path'] },
+      'name' => ->(obj) { [:key_name, obj['name']] },
+      'privateKeyType' => ->(obj) { [:private_key_type, obj['privateKeyType']] },
+      'keyAlgorithm' => ->(obj) { [:key_algorithm, obj['keyAlgorithm']] },
+      'privateKeyData' => ->(obj) { [:private_key_data, obj['privateKeyData']] },
+      'publicKeyData' => ->(obj) { [:public_key_data, obj['publicKeyData']] },
+      'validAfterTime' => ->(obj) { [:valid_after_time, parse_time_string(obj['validAfterTime'])] },
+      'validBeforeTime' => ->(obj) { [:valid_before_time, parse_time_string(obj['validBeforeTime'])] },
+      'keyType' => ->(obj) { [:key_type, obj['keyType']] },
+      'serviceAccount' => ->(obj) { [:service_account, obj['serviceAccount']] },
+      'path' => ->(obj) { [:path, obj['path']] },
     }
   end
 

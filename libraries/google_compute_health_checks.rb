@@ -78,22 +78,22 @@ class ComputeHealthChecks < GcpResourceBase
 
   def transformers
     {
-      'checkIntervalSec' => ->(obj) { return :check_interval_sec, obj['checkIntervalSec'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'healthyThreshold' => ->(obj) { return :healthy_threshold, obj['healthyThreshold'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
-      'unhealthyThreshold' => ->(obj) { return :unhealthy_threshold, obj['unhealthyThreshold'] },
-      'type' => ->(obj) { return :type, obj['type'] },
-      'httpHealthCheck' => ->(obj) { return :http_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(obj['httpHealthCheck'], to_s) },
-      'httpsHealthCheck' => ->(obj) { return :https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck'], to_s) },
-      'tcpHealthCheck' => ->(obj) { return :tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s) },
-      'sslHealthCheck' => ->(obj) { return :ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s) },
-      'http2HealthCheck' => ->(obj) { return :http2_health_check, GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(obj['http2HealthCheck'], to_s) },
-      'grpcHealthCheck' => ->(obj) { return :grpc_health_check, GoogleInSpec::Compute::Property::HealthCheckGrpcHealthCheck.new(obj['grpcHealthCheck'], to_s) },
-      'logConfig' => ->(obj) { return :log_config, GoogleInSpec::Compute::Property::HealthCheckLogConfig.new(obj['logConfig'], to_s) },
+      'checkIntervalSec' => ->(obj) { [:check_interval_sec, obj['checkIntervalSec']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'healthyThreshold' => ->(obj) { [:healthy_threshold, obj['healthyThreshold']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'timeoutSec' => ->(obj) { [:timeout_sec, obj['timeoutSec']] },
+      'unhealthyThreshold' => ->(obj) { [:unhealthy_threshold, obj['unhealthyThreshold']] },
+      'type' => ->(obj) { [:type, obj['type']] },
+      'httpHealthCheck' => ->(obj) { [:http_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpHealthCheck.new(obj['httpHealthCheck'], to_s)] },
+      'httpsHealthCheck' => ->(obj) { [:https_health_check, GoogleInSpec::Compute::Property::HealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck'], to_s)] },
+      'tcpHealthCheck' => ->(obj) { [:tcp_health_check, GoogleInSpec::Compute::Property::HealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s)] },
+      'sslHealthCheck' => ->(obj) { [:ssl_health_check, GoogleInSpec::Compute::Property::HealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s)] },
+      'http2HealthCheck' => ->(obj) { [:http2_health_check, GoogleInSpec::Compute::Property::HealthCheckHttp2HealthCheck.new(obj['http2HealthCheck'], to_s)] },
+      'grpcHealthCheck' => ->(obj) { [:grpc_health_check, GoogleInSpec::Compute::Property::HealthCheckGrpcHealthCheck.new(obj['grpcHealthCheck'], to_s)] },
+      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::HealthCheckLogConfig.new(obj['logConfig'], to_s)] },
     }
   end
 

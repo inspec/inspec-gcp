@@ -78,22 +78,22 @@ class ComputeFirewalls < GcpResourceBase
 
   def transformers
     {
-      'allowed' => ->(obj) { return :allowed, GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(obj['allowed'], to_s) },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'denied' => ->(obj) { return :denied, GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(obj['denied'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'destinationRanges' => ->(obj) { return :destination_ranges, obj['destinationRanges'] },
-      'direction' => ->(obj) { return :direction, obj['direction'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'priority' => ->(obj) { return :priority, obj['priority'] },
-      'sourceRanges' => ->(obj) { return :source_ranges, obj['sourceRanges'] },
-      'sourceServiceAccounts' => ->(obj) { return :source_service_accounts, obj['sourceServiceAccounts'] },
-      'sourceTags' => ->(obj) { return :source_tags, obj['sourceTags'] },
-      'targetServiceAccounts' => ->(obj) { return :target_service_accounts, obj['targetServiceAccounts'] },
-      'targetTags' => ->(obj) { return :target_tags, obj['targetTags'] },
+      'allowed' => ->(obj) { [:allowed, GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(obj['allowed'], to_s)] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'denied' => ->(obj) { [:denied, GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(obj['denied'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'destinationRanges' => ->(obj) { [:destination_ranges, obj['destinationRanges']] },
+      'direction' => ->(obj) { [:direction, obj['direction']] },
+      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'priority' => ->(obj) { [:priority, obj['priority']] },
+      'sourceRanges' => ->(obj) { [:source_ranges, obj['sourceRanges']] },
+      'sourceServiceAccounts' => ->(obj) { [:source_service_accounts, obj['sourceServiceAccounts']] },
+      'sourceTags' => ->(obj) { [:source_tags, obj['sourceTags']] },
+      'targetServiceAccounts' => ->(obj) { [:target_service_accounts, obj['targetServiceAccounts']] },
+      'targetTags' => ->(obj) { [:target_tags, obj['targetTags']] },
     }
   end
 

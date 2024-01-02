@@ -73,17 +73,17 @@ class ComputeHttpHealthChecks < GcpResourceBase
 
   def transformers
     {
-      'checkIntervalSec' => ->(obj) { return :check_interval_sec, obj['checkIntervalSec'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'healthyThreshold' => ->(obj) { return :healthy_threshold, obj['healthyThreshold'] },
-      'host' => ->(obj) { return :host, obj['host'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'port' => ->(obj) { return :port, obj['port'] },
-      'requestPath' => ->(obj) { return :request_path, obj['requestPath'] },
-      'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
-      'unhealthyThreshold' => ->(obj) { return :unhealthy_threshold, obj['unhealthyThreshold'] },
+      'checkIntervalSec' => ->(obj) { [:check_interval_sec, obj['checkIntervalSec']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'healthyThreshold' => ->(obj) { [:healthy_threshold, obj['healthyThreshold']] },
+      'host' => ->(obj) { [:host, obj['host']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'port' => ->(obj) { [:port, obj['port']] },
+      'requestPath' => ->(obj) { [:request_path, obj['requestPath']] },
+      'timeoutSec' => ->(obj) { [:timeout_sec, obj['timeoutSec']] },
+      'unhealthyThreshold' => ->(obj) { [:unhealthy_threshold, obj['unhealthyThreshold']] },
     }
   end
 

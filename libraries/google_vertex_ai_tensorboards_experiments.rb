@@ -70,14 +70,14 @@ class VertexAITensorboardsExperiments < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'source' => ->(obj) { return :source, obj['source'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::TensorboardsExperimentLabels.new(obj['labels'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'source' => ->(obj) { [:source, obj['source']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardsExperimentLabels.new(obj['labels'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
     }
   end
 

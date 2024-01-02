@@ -73,18 +73,18 @@ class VertexAIMetadataStoresArtifacts < GcpResourceBase
 
   def transformers
     {
-      'schemaVersion' => ->(obj) { return :schema_version, obj['schemaVersion'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'metadata' => ->(obj) { return :metadata, GoogleInSpec::VertexAI::Property::MetadataStoresArtifactMetadata.new(obj['metadata'], to_s) },
-      'uri' => ->(obj) { return :uri, obj['uri'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'schemaTitle' => ->(obj) { return :schema_title, obj['schemaTitle'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::MetadataStoresArtifactLabels.new(obj['labels'], to_s) },
+      'schemaVersion' => ->(obj) { [:schema_version, obj['schemaVersion']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'metadata' => ->(obj) { [:metadata, GoogleInSpec::VertexAI::Property::MetadataStoresArtifactMetadata.new(obj['metadata'], to_s)] },
+      'uri' => ->(obj) { [:uri, obj['uri']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'schemaTitle' => ->(obj) { [:schema_title, obj['schemaTitle']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::MetadataStoresArtifactLabels.new(obj['labels'], to_s)] },
     }
   end
 

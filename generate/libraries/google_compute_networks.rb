@@ -70,14 +70,14 @@ class ComputeNetworks < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'gatewayIPv4' => ->(obj) { return :gateway_ipv4, obj['gatewayIPv4'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'subnetworks' => ->(obj) { return :subnetworks, obj['subnetworks'] },
-      'autoCreateSubnetworks' => ->(obj) { return :auto_create_subnetworks, obj['autoCreateSubnetworks'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'routingConfig' => ->(obj) { return :routing_config, GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(obj['routingConfig'], to_s) },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'gatewayIPv4' => ->(obj) { [:gateway_ipv4, obj['gatewayIPv4']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'subnetworks' => ->(obj) { [:subnetworks, obj['subnetworks']] },
+      'autoCreateSubnetworks' => ->(obj) { [:auto_create_subnetworks, obj['autoCreateSubnetworks']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'routingConfig' => ->(obj) { [:routing_config, GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(obj['routingConfig'], to_s)] },
     }
   end
 

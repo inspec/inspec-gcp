@@ -66,10 +66,10 @@ class PubsubTopics < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
-      'kmsKeyName' => ->(obj) { return :kms_key_name, obj['kmsKeyName'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'messageStoragePolicy' => ->(obj) { return :message_storage_policy, GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(obj['messageStoragePolicy'], to_s) },
+      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
+      'kmsKeyName' => ->(obj) { [:kms_key_name, obj['kmsKeyName']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'messageStoragePolicy' => ->(obj) { [:message_storage_policy, GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(obj['messageStoragePolicy'], to_s)] },
     }
   end
 

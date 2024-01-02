@@ -71,13 +71,13 @@ class LoggingMetrics < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :metric_name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'filter' => ->(obj) { return :metric_filter, obj['filter'] },
-      'metricDescriptor' => ->(obj) { return :metric_descriptor, GoogleInSpec::Logging::Property::MetricMetricDescriptor.new(obj['metricDescriptor'], to_s) },
-      'labelExtractors' => ->(obj) { return :label_extractors, obj['labelExtractors'] },
-      'valueExtractor' => ->(obj) { return :value_extractor, obj['valueExtractor'] },
-      'bucketOptions' => ->(obj) { return :bucket_options, GoogleInSpec::Logging::Property::MetricBucketOptions.new(obj['bucketOptions'], to_s) },
+      'name' => ->(obj) { [:metric_name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'filter' => ->(obj) { [:metric_filter, obj['filter']] },
+      'metricDescriptor' => ->(obj) { [:metric_descriptor, GoogleInSpec::Logging::Property::MetricMetricDescriptor.new(obj['metricDescriptor'], to_s)] },
+      'labelExtractors' => ->(obj) { [:label_extractors, obj['labelExtractors']] },
+      'valueExtractor' => ->(obj) { [:value_extractor, obj['valueExtractor']] },
+      'bucketOptions' => ->(obj) { [:bucket_options, GoogleInSpec::Logging::Property::MetricBucketOptions.new(obj['bucketOptions'], to_s)] },
     }
   end
 

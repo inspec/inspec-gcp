@@ -72,16 +72,16 @@ class AppEngineStandardAppVersions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'id' => ->(obj) { return :version_id, obj['id'] },
-      'runtime' => ->(obj) { return :runtime, obj['runtime'] },
-      'threadsafe' => ->(obj) { return :threadsafe, obj['threadsafe'] },
-      'vpcAccessConnector' => ->(obj) { return :vpc_access_connector, GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(obj['vpcAccessConnector'], to_s) },
-      'inboundServices' => ->(obj) { return :inbound_services, obj['inboundServices'] },
-      'instanceClass' => ->(obj) { return :instance_class, obj['instanceClass'] },
-      'automaticScaling' => ->(obj) { return :automatic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(obj['automaticScaling'], to_s) },
-      'basicScaling' => ->(obj) { return :basic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(obj['basicScaling'], to_s) },
-      'manualScaling' => ->(obj) { return :manual_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(obj['manualScaling'], to_s) },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'id' => ->(obj) { [:version_id, obj['id']] },
+      'runtime' => ->(obj) { [:runtime, obj['runtime']] },
+      'threadsafe' => ->(obj) { [:threadsafe, obj['threadsafe']] },
+      'vpcAccessConnector' => ->(obj) { [:vpc_access_connector, GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(obj['vpcAccessConnector'], to_s)] },
+      'inboundServices' => ->(obj) { [:inbound_services, obj['inboundServices']] },
+      'instanceClass' => ->(obj) { [:instance_class, obj['instanceClass']] },
+      'automaticScaling' => ->(obj) { [:automatic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(obj['automaticScaling'], to_s)] },
+      'basicScaling' => ->(obj) { [:basic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(obj['basicScaling'], to_s)] },
+      'manualScaling' => ->(obj) { [:manual_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(obj['manualScaling'], to_s)] },
     }
   end
 
