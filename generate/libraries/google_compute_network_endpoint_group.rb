@@ -87,8 +87,8 @@ class ComputeNetworkEndpointGroup < GcpResourceBase
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
-      name: name,
-      arr: arr,
+      name:,
+      arr:,
       type: 'google_compute_network_endpoint_group',
       identifiers: @params,
       number: test_number,

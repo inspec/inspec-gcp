@@ -133,8 +133,8 @@ class ComputeInstance < GcpResourceBase
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
-      name: name,
-      arr: arr,
+      name:,
+      arr:,
       type: 'google_compute_instance',
       identifiers: @params,
       number: test_number,

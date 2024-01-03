@@ -72,8 +72,8 @@ class AppEngineStandardAppVersion < GcpResourceBase
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
-      name: name,
-      arr: arr,
+      name:,
+      arr:,
       type: 'google_appengine_standard_app_version',
       identifiers: @params,
       number: test_number,

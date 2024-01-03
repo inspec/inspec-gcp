@@ -42,7 +42,7 @@ module Inspec::Resources
           forwarding_rule_network = forwarding_rule.network.split('/').last if !forwarding_rule.network.nil?
           forwarding_rule_rows+=[{ forwarding_rule_id: forwarding_rule.id,
                         forwarding_rule_name: forwarding_rule.name,
-                        forwarding_rule_network: forwarding_rule_network,
+                        forwarding_rule_network:,
                         forwarding_rule_load_balancing_scheme: forwarding_rule.load_balancing_scheme }]
         end
         next_page = @forwarding_rules.next_page_token

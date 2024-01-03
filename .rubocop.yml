@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.1
   Exclude:
   - Gemfile
   - generate/Gemfile
@@ -61,7 +61,7 @@ Style/Not:
   Enabled: false
 Naming/FileName:
   Enabled: true
-  Regex: !ruby/regexp '/^.{3,200}$/'
+  Regex: !ruby/regexp '/^.{3, 99}$/'
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 Style/TrailingCommaInHashLiteral:

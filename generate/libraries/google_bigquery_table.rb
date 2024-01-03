@@ -144,8 +144,8 @@ class BigQueryTable < GcpResourceBase
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
-      name: name,
-      arr: arr,
+      name:,
+      arr:,
       type: 'google_bigquery_table',
       identifiers: @params,
       number: test_number,

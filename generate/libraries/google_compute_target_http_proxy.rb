@@ -75,8 +75,8 @@ class ComputeTargetHttpProxy < GcpResourceBase
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
-      name: name,
-      arr: arr,
+      name:,
+      arr:,
       type: 'google_compute_target_http_proxy',
       identifiers: @params,
       number: test_number,

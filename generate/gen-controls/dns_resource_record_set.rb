@@ -46,7 +46,7 @@ control 'google_dns_resource_record_set-1.0' do
   managed_zones = google_dns_managed_zones(project: project_name).zone_names
   managed_zones.each do |managed_zone|
     plural_identifiers.each do |plural_identifier|
-      next_identifiers.push(plural_identifier.merge({ managed_zone: managed_zone }))
+      next_identifiers.push(plural_identifier.merge({ managed_zone: }))
     end
   end
   plural_identifiers = next_identifiers

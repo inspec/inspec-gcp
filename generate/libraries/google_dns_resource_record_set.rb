@@ -87,8 +87,8 @@ class DNSResourceRecordSet < GcpResourceBase
       v.call(method(k.to_sym).call, k)
     end
     template_vars = {
-      name: name,
-      arr: arr,
+      name:,
+      arr:,
       type: 'google_dns_resource_record_set',
       identifiers: @params,
       number: test_number,
