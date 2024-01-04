@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Source Repositories resources.
 class SourceRepoRepository < GcpResourceBase
-  name 'google_sourcerepo_repository'
-  desc 'Repository'
-  supports platform: 'gcp'
+  name "google_sourcerepo_repository"
+  desc "Repository"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -29,15 +29,15 @@ class SourceRepoRepository < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = @fetched['name']
-    @url = @fetched['url']
-    @size = @fetched['size']
+    @name = @fetched["name"]
+    @url = @fetched["url"]
+    @size = @fetched["size"]
   end
 
   # Handles parsing RFC3339 time string
@@ -55,14 +55,14 @@ class SourceRepoRepository < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'url' => ->(x, _) { x.nil? ? [] : ["its('url') { should cmp #{x.inspect} }"] },
-      'size' => ->(x, _) { x.nil? ? [] : ["its('size') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "url" => ->(x, _) { x.nil? ? [] : ["its('url') { should cmp #{x.inspect} }"] },
+      "size" => ->(x, _) { x.nil? ? [] : ["its('size') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Repository'
+    name = "Repository"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -71,11 +71,11 @@ class SourceRepoRepository < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_sourcerepo_repository',
+      type: "google_sourcerepo_repository",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -83,10 +83,10 @@ class SourceRepoRepository < GcpResourceBase
   private
 
   def product_url
-    'https://sourcerepo.googleapis.com/v1/'
+    "https://sourcerepo.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/repos/{{name}}'
+    "projects/{{project}}/repos/{{name}}"
   end
 end

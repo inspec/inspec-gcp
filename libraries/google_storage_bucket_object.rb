@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Storage resources.
 class StorageBucketObject < GcpResourceBase
-  name 'google_storage_bucket_object'
-  desc 'BucketObject'
-  supports platform: 'gcp'
+  name "google_storage_bucket_object"
+  desc "BucketObject"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :bucket
@@ -43,28 +43,28 @@ class StorageBucketObject < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @bucket = @fetched['bucket']
-    @object = @fetched['object']
-    @content_type = @fetched['contentType']
-    @crc32c = @fetched['crc32c']
-    @etag = @fetched['etag']
-    @generation = @fetched['generation']
-    @id = @fetched['id']
-    @md5_hash = @fetched['md5Hash']
-    @media_link = @fetched['mediaLink']
-    @metageneration = @fetched['metageneration']
-    @name = @fetched['name']
-    @size = @fetched['size']
-    @storage_class = @fetched['storageClass']
-    @time_created = parse_time_string(@fetched['timeCreated'])
-    @time_deleted = parse_time_string(@fetched['timeDeleted'])
-    @time_storage_class_updated = parse_time_string(@fetched['timeStorageClassUpdated'])
-    @time_updated = parse_time_string(@fetched['updated'])
+    @bucket = @fetched["bucket"]
+    @object = @fetched["object"]
+    @content_type = @fetched["contentType"]
+    @crc32c = @fetched["crc32c"]
+    @etag = @fetched["etag"]
+    @generation = @fetched["generation"]
+    @id = @fetched["id"]
+    @md5_hash = @fetched["md5Hash"]
+    @media_link = @fetched["mediaLink"]
+    @metageneration = @fetched["metageneration"]
+    @name = @fetched["name"]
+    @size = @fetched["size"]
+    @storage_class = @fetched["storageClass"]
+    @time_created = parse_time_string(@fetched["timeCreated"])
+    @time_deleted = parse_time_string(@fetched["timeDeleted"])
+    @time_storage_class_updated = parse_time_string(@fetched["timeStorageClassUpdated"])
+    @time_updated = parse_time_string(@fetched["updated"])
   end
 
   # Handles parsing RFC3339 time string
@@ -89,10 +89,10 @@ class StorageBucketObject < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://storage.googleapis.com/storage/v1/'
+    "https://storage.googleapis.com/storage/v1/"
   end
 
   def resource_base_url
-    'b/{{bucket}}/o/{{object}}'
+    "b/{{bucket}}/o/{{object}}"
   end
 end

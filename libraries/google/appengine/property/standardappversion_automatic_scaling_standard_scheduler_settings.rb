@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @target_cpu_utilization = args['targetCpuUtilization']
-          @target_throughput_utilization = args['targetThroughputUtilization']
-          @min_instances = args['minInstances']
-          @max_instances = args['maxInstances']
+          @target_cpu_utilization = args["targetCpuUtilization"]
+          @target_throughput_utilization = args["targetThroughputUtilization"]
+          @min_instances = args["minInstances"]
+          @max_instances = args["maxInstances"]
         end
 
         def to_s

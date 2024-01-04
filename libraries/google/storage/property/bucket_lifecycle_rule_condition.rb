@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @age_days = args['age']
-          @created_before = parse_time_string(args['createdBefore'])
-          @is_live = args['isLive']
-          @matches_storage_class = args['matchesStorageClass']
-          @num_newer_versions = args['numNewerVersions']
+          @age_days = args["age"]
+          @created_before = parse_time_string(args["createdBefore"])
+          @is_live = args["isLive"]
+          @matches_storage_class = args["matchesStorageClass"]
+          @num_newer_versions = args["numNewerVersions"]
         end
 
         def to_s

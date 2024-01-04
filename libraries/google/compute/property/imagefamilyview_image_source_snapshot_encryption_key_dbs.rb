@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @content = args['content']
-          @file_type = args['fileType']
+          @content = args["content"]
+          @file_type = args["fileType"]
         end
 
         def to_s

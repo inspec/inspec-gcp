@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Vertex AI resources.
 class VertexAITensorboardExperimentRunTimeSeriesResource < GcpResourceBase
-  name 'google_vertex_ai_tensorboard_experiment_run_time_series_resource'
-  desc 'TensorboardExperimentRunTimeSeriesResource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_tensorboard_experiment_run_time_series_resource"
+  desc "TensorboardExperimentRunTimeSeriesResource"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :plugin_name
@@ -36,21 +36,21 @@ class VertexAITensorboardExperimentRunTimeSeriesResource < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @plugin_name = @fetched['pluginName']
-    @plugin_data = @fetched['pluginData']
-    @description = @fetched['description']
-    @etag = @fetched['etag']
-    @display_name = @fetched['displayName']
-    @update_time = @fetched['updateTime']
-    @create_time = @fetched['createTime']
-    @name = @fetched['name']
-    @metadata = @fetched['metadata']
-    @value_type = @fetched['valueType']
+    @plugin_name = @fetched["pluginName"]
+    @plugin_data = @fetched["pluginData"]
+    @description = @fetched["description"]
+    @etag = @fetched["etag"]
+    @display_name = @fetched["displayName"]
+    @update_time = @fetched["updateTime"]
+    @create_time = @fetched["createTime"]
+    @name = @fetched["name"]
+    @metadata = @fetched["metadata"]
+    @value_type = @fetched["valueType"]
   end
 
   def exists?
@@ -64,10 +64,10 @@ class VertexAITensorboardExperimentRunTimeSeriesResource < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

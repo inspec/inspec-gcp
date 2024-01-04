@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @successful_forecast_point_count = args['successfulForecastPointCount']
-          @incomplete_count = args['incompleteCount']
-          @failed_count = args['failedCount']
-          @successful_count = args['successfulCount']
+          @successful_forecast_point_count = args["successfulForecastPointCount"]
+          @incomplete_count = args["incompleteCount"]
+          @failed_count = args["failedCount"]
+          @successful_count = args["successfulCount"]
         end
 
         def to_s

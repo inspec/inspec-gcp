@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/nodepool_management_upgrade_options'
+require "google/container/property/nodepool_management_upgrade_options"
 module GoogleInSpec
   module Container
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @auto_upgrade = args['autoUpgrade']
-          @auto_repair = args['autoRepair']
-          @upgrade_options = GoogleInSpec::Container::Property::NodePoolManagementUpgradeOptions.new(args['upgradeOptions'], to_s)
+          @auto_upgrade = args["autoUpgrade"]
+          @auto_repair = args["autoRepair"]
+          @upgrade_options = GoogleInSpec::Container::Property::NodePoolManagementUpgradeOptions.new(args["upgradeOptions"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_field'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_table'
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_field"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_table"
 module GoogleInSpec
   module DLP
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @table = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryBigQueryFieldTable.new(args['table'], to_s)
-          @field = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryBigQueryFieldField.new(args['field'], to_s)
+          @table = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryBigQueryFieldTable.new(args["table"], to_s)
+          @field = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryBigQueryFieldField.new(args["field"], to_s)
         end
 
         def to_s

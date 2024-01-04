@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,40 +13,40 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/composer/property/projectlocationenvironment_config'
-require 'google/composer/property/projectlocationenvironment_config_database_config'
-require 'google/composer/property/projectlocationenvironment_config_encryption_config'
-require 'google/composer/property/projectlocationenvironment_config_maintenance_window'
-require 'google/composer/property/projectlocationenvironment_config_master_authorized_networks_config'
-require 'google/composer/property/projectlocationenvironment_config_master_authorized_networks_config_cidr_blocks'
-require 'google/composer/property/projectlocationenvironment_config_node_config'
-require 'google/composer/property/projectlocationenvironment_config_node_config_ip_allocation_policy'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config_networking_config'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config_private_cluster_config'
-require 'google/composer/property/projectlocationenvironment_config_recovery_config'
-require 'google/composer/property/projectlocationenvironment_config_recovery_config_scheduled_snapshots_config'
-require 'google/composer/property/projectlocationenvironment_config_software_config'
-require 'google/composer/property/projectlocationenvironment_config_software_config_airflow_config_overrides'
-require 'google/composer/property/projectlocationenvironment_config_software_config_env_variables'
-require 'google/composer/property/projectlocationenvironment_config_software_config_pypi_packages'
-require 'google/composer/property/projectlocationenvironment_config_web_server_config'
-require 'google/composer/property/projectlocationenvironment_config_web_server_network_access_control'
-require 'google/composer/property/projectlocationenvironment_config_web_server_network_access_control_allowed_ip_ranges'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_scheduler'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_triggerer'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_web_server'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_worker'
-require 'google/composer/property/projectlocationenvironment_labels'
-require 'google/composer/property/projectlocationenvironment_storage_config'
+require "gcp_backend"
+require "google/composer/property/projectlocationenvironment_config"
+require "google/composer/property/projectlocationenvironment_config_database_config"
+require "google/composer/property/projectlocationenvironment_config_encryption_config"
+require "google/composer/property/projectlocationenvironment_config_maintenance_window"
+require "google/composer/property/projectlocationenvironment_config_master_authorized_networks_config"
+require "google/composer/property/projectlocationenvironment_config_master_authorized_networks_config_cidr_blocks"
+require "google/composer/property/projectlocationenvironment_config_node_config"
+require "google/composer/property/projectlocationenvironment_config_node_config_ip_allocation_policy"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config_networking_config"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config_private_cluster_config"
+require "google/composer/property/projectlocationenvironment_config_recovery_config"
+require "google/composer/property/projectlocationenvironment_config_recovery_config_scheduled_snapshots_config"
+require "google/composer/property/projectlocationenvironment_config_software_config"
+require "google/composer/property/projectlocationenvironment_config_software_config_airflow_config_overrides"
+require "google/composer/property/projectlocationenvironment_config_software_config_env_variables"
+require "google/composer/property/projectlocationenvironment_config_software_config_pypi_packages"
+require "google/composer/property/projectlocationenvironment_config_web_server_config"
+require "google/composer/property/projectlocationenvironment_config_web_server_network_access_control"
+require "google/composer/property/projectlocationenvironment_config_web_server_network_access_control_allowed_ip_ranges"
+require "google/composer/property/projectlocationenvironment_config_workloads_config"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_scheduler"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_triggerer"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_web_server"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_worker"
+require "google/composer/property/projectlocationenvironment_labels"
+require "google/composer/property/projectlocationenvironment_storage_config"
 
 # A provider to manage composer resources.
 class ComposerProjectLocationEnvironment < GcpResourceBase
-  name 'google_composer_project_location_environment'
-  desc 'ProjectLocationEnvironment'
-  supports platform: 'gcp'
+  name "google_composer_project_location_environment"
+  desc "ProjectLocationEnvironment"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -62,20 +62,20 @@ class ComposerProjectLocationEnvironment < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(@fetched['config'], to_s)
-    @uuid = @fetched['uuid']
-    @state = @fetched['state']
-    @create_time = @fetched['createTime']
-    @update_time = @fetched['updateTime']
-    @labels = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(@fetched['labels'], to_s)
-    @satisfies_pzs = @fetched['satisfiesPzs']
-    @storage_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(@fetched['storageConfig'], to_s)
+    @name = @fetched["name"]
+    @config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(@fetched["config"], to_s)
+    @uuid = @fetched["uuid"]
+    @state = @fetched["state"]
+    @create_time = @fetched["createTime"]
+    @update_time = @fetched["updateTime"]
+    @labels = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(@fetched["labels"], to_s)
+    @satisfies_pzs = @fetched["satisfiesPzs"]
+    @storage_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(@fetched["storageConfig"], to_s)
   end
 
   def exists?
@@ -89,10 +89,10 @@ class ComposerProjectLocationEnvironment < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://composer.googleapis.com/v1/'
+    "https://composer.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

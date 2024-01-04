@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/storage/property/bucket_lifecycle_rule'
+require "google/storage/property/bucket_lifecycle_rule"
 module GoogleInSpec
   module Storage
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @rule = GoogleInSpec::Storage::Property::BucketLifecycleRuleArray.parse(args['rule'], to_s)
+          @rule = GoogleInSpec::Storage::Property::BucketLifecycleRuleArray.parse(args["rule"], to_s)
         end
 
         def to_s

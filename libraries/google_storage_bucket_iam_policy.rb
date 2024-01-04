@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/iam/property/iam_policy_audit_configs'
-require 'google/iam/property/iam_policy_bindings'
+require "gcp_backend"
+require "google/iam/property/iam_policy_audit_configs"
+require "google/iam/property/iam_policy_bindings"
 
 # A provider to manage Cloud Storage IAM Policy resources.
 class BucketIamPolicy < GcpResourceBase
-  name 'google_storage_bucket_iam_policy'
-  desc 'Bucket Iam Policy'
-  supports platform: 'gcp'
+  name "google_storage_bucket_iam_policy"
+  desc "Bucket Iam Policy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :bindings
@@ -30,13 +30,13 @@ class BucketIamPolicy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
-    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched['auditConfigs'], to_s)
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched["bindings"], to_s)
+    @audit_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsArray.parse(@fetched["auditConfigs"], to_s)
   end
 
   def exists?
@@ -58,10 +58,10 @@ class BucketIamPolicy < GcpResourceBase
   private
 
   def product_url
-    'https://storage.googleapis.com/storage/v1/'
+    "https://storage.googleapis.com/storage/v1/"
   end
 
   def resource_base_url
-    'b/{{bucket}}/iam'
+    "b/{{bucket}}/iam"
   end
 end

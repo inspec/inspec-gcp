@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class MemcacheInstances < GcpResourceBase
-  name 'google_memcache_instances'
-  desc 'Instance plural resource'
-  supports platform: 'gcp'
+  name "google_memcache_instances"
+  desc "Instance plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -43,12 +43,12 @@ class MemcacheInstances < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('resources')
+    @table = fetch_wrapped_resource("resources")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -76,20 +76,20 @@ class MemcacheInstances < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'memcacheNodes' => ->(obj) { [:memcache_nodes, GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(obj['memcacheNodes'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'discoveryEndpoint' => ->(obj) { [:discovery_endpoint, obj['discoveryEndpoint']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'memcacheFullVersion' => ->(obj) { [:memcache_full_version, obj['memcacheFullVersion']] },
-      'zones' => ->(obj) { [:zones, obj['zones']] },
-      'authorizedNetwork' => ->(obj) { [:authorized_network, obj['authorizedNetwork']] },
-      'nodeCount' => ->(obj) { [:node_count, obj['nodeCount']] },
-      'memcacheVersion' => ->(obj) { [:memcache_version, obj['memcacheVersion']] },
-      'nodeConfig' => ->(obj) { [:node_config, GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(obj['nodeConfig'], to_s)] },
-      'parameters' => ->(obj) { [:parameters, GoogleInSpec::Memcache::Property::InstanceParameters.new(obj['parameters'], to_s)] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "memcacheNodes" => ->(obj) { [:memcache_nodes, GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(obj["memcacheNodes"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "discoveryEndpoint" => ->(obj) { [:discovery_endpoint, obj["discoveryEndpoint"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "memcacheFullVersion" => ->(obj) { [:memcache_full_version, obj["memcacheFullVersion"]] },
+      "zones" => ->(obj) { [:zones, obj["zones"]] },
+      "authorizedNetwork" => ->(obj) { [:authorized_network, obj["authorizedNetwork"]] },
+      "nodeCount" => ->(obj) { [:node_count, obj["nodeCount"]] },
+      "memcacheVersion" => ->(obj) { [:memcache_version, obj["memcacheVersion"]] },
+      "nodeConfig" => ->(obj) { [:node_config, GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(obj["nodeConfig"], to_s)] },
+      "parameters" => ->(obj) { [:parameters, GoogleInSpec::Memcache::Property::InstanceParameters.new(obj["parameters"], to_s)] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -101,10 +101,10 @@ class MemcacheInstances < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://memcache.googleapis.com/v1beta2/'
+    "https://memcache.googleapis.com/v1beta2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/instances'
+    "projects/{{project}}/locations/{{region}}/instances"
   end
 end

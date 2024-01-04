@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBucketIamBindings < GcpResourceBase
-    name 'google_storage_bucket_iam_bindings'
-    desc 'Verifies settings for GCP storage bucket IAM bindings in bulk'
+    name "google_storage_bucket_iam_bindings"
+    desc "Verifies settings for GCP storage bucket IAM bindings in bulk"
 
     example "
       describe google_storage_bucket_iam_bindings(bucket: 'bucket-buvsjjcndqz') do

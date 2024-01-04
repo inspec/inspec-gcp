@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/studiestrial_final_measurement'
-require 'google/vertexai/property/studiestrial_final_measurement_metrics'
-require 'google/vertexai/property/studiestrial_measurements'
-require 'google/vertexai/property/studiestrial_parameters'
-require 'google/vertexai/property/studiestrial_web_access_uris'
+require "gcp_backend"
+require "google/vertexai/property/studiestrial_final_measurement"
+require "google/vertexai/property/studiestrial_final_measurement_metrics"
+require "google/vertexai/property/studiestrial_measurements"
+require "google/vertexai/property/studiestrial_parameters"
+require "google/vertexai/property/studiestrial_web_access_uris"
 
 # A provider to manage Vertex AI resources.
 class VertexAIStudiesTrial < GcpResourceBase
-  name 'google_vertex_ai_studies_trial'
-  desc 'StudiesTrial'
-  supports platform: 'gcp'
+  name "google_vertex_ai_studies_trial"
+  desc "StudiesTrial"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :measurements
@@ -43,23 +43,23 @@ class VertexAIStudiesTrial < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @measurements = GoogleInSpec::VertexAI::Property::StudiesTrialMeasurementsArray.parse(@fetched['measurements'], to_s)
-    @start_time = @fetched['startTime']
-    @end_time = @fetched['endTime']
-    @parameters = GoogleInSpec::VertexAI::Property::StudiesTrialParametersArray.parse(@fetched['parameters'], to_s)
-    @name = @fetched['name']
-    @infeasible_reason = @fetched['infeasibleReason']
-    @final_measurement = GoogleInSpec::VertexAI::Property::StudiesTrialFinalMeasurement.new(@fetched['finalMeasurement'], to_s)
-    @client_id = @fetched['clientId']
-    @custom_job = @fetched['customJob']
-    @state = @fetched['state']
-    @web_access_uris = GoogleInSpec::VertexAI::Property::StudiesTrialWebAccessUris.new(@fetched['webAccessUris'], to_s)
-    @id = @fetched['id']
+    @measurements = GoogleInSpec::VertexAI::Property::StudiesTrialMeasurementsArray.parse(@fetched["measurements"], to_s)
+    @start_time = @fetched["startTime"]
+    @end_time = @fetched["endTime"]
+    @parameters = GoogleInSpec::VertexAI::Property::StudiesTrialParametersArray.parse(@fetched["parameters"], to_s)
+    @name = @fetched["name"]
+    @infeasible_reason = @fetched["infeasibleReason"]
+    @final_measurement = GoogleInSpec::VertexAI::Property::StudiesTrialFinalMeasurement.new(@fetched["finalMeasurement"], to_s)
+    @client_id = @fetched["clientId"]
+    @custom_job = @fetched["customJob"]
+    @state = @fetched["state"]
+    @web_access_uris = GoogleInSpec::VertexAI::Property::StudiesTrialWebAccessUris.new(@fetched["webAccessUris"], to_s)
+    @id = @fetched["id"]
   end
 
   def exists?
@@ -73,10 +73,10 @@ class VertexAIStudiesTrial < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

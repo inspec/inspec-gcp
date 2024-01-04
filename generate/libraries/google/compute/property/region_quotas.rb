@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -31,10 +31,10 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @metric = arguments['metric']
-          @limit = arguments['limit']
-          @usage = arguments['usage']
-          @owner = arguments['owner']
+          @metric = arguments["metric"]
+          @limit = arguments["limit"]
+          @usage = arguments["usage"]
+          @owner = arguments["owner"]
         end
 
         def to_s
@@ -44,10 +44,10 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'metric' => ->(x, path) { x.nil? ? [] : ["its('#{path}.metric') { should cmp #{x.inspect} }"] },
-            'limit' => ->(x, path) { x.nil? ? [] : ["its('#{path}.limit') { should cmp #{x.inspect} }"] },
-            'usage' => ->(x, path) { x.nil? ? [] : ["its('#{path}.usage') { should cmp #{x.inspect} }"] },
-            'owner' => ->(x, path) { x.nil? ? [] : ["its('#{path}.owner') { should cmp #{x.inspect} }"] },
+            "metric" => ->(x, path) { x.nil? ? [] : ["its('#{path}.metric') { should cmp #{x.inspect} }"] },
+            "limit" => ->(x, path) { x.nil? ? [] : ["its('#{path}.limit') { should cmp #{x.inspect} }"] },
+            "usage" => ->(x, path) { x.nil? ? [] : ["its('#{path}.usage') { should cmp #{x.inspect} }"] },
+            "owner" => ->(x, path) { x.nil? ? [] : ["its('#{path}.owner') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

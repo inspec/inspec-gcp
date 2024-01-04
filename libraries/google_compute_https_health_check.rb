@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeHttpsHealthCheck < GcpResourceBase
-  name 'google_compute_https_health_check'
-  desc 'HttpsHealthCheck'
-  supports platform: 'gcp'
+  name "google_compute_https_health_check"
+  desc "HttpsHealthCheck"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :check_interval_sec
@@ -37,22 +37,22 @@ class ComputeHttpsHealthCheck < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @check_interval_sec = @fetched['checkIntervalSec']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @healthy_threshold = @fetched['healthyThreshold']
-    @host = @fetched['host']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @port = @fetched['port']
-    @request_path = @fetched['requestPath']
-    @timeout_sec = @fetched['timeoutSec']
-    @unhealthy_threshold = @fetched['unhealthyThreshold']
+    @check_interval_sec = @fetched["checkIntervalSec"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @healthy_threshold = @fetched["healthyThreshold"]
+    @host = @fetched["host"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @port = @fetched["port"]
+    @request_path = @fetched["requestPath"]
+    @timeout_sec = @fetched["timeoutSec"]
+    @unhealthy_threshold = @fetched["unhealthyThreshold"]
   end
 
   # Handles parsing RFC3339 time string
@@ -72,13 +72,13 @@ class ComputeHttpsHealthCheck < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/httpsHealthChecks/{{name}}'
+    "projects/{{project}}/global/httpsHealthChecks/{{name}}"
   end
 end

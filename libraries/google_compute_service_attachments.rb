@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeServiceAttachments < GcpResourceBase
-  name 'google_compute_service_attachments'
-  desc 'ServiceAttachment plural resource'
-  supports platform: 'gcp'
+  name "google_compute_service_attachments"
+  desc "ServiceAttachment plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -48,12 +48,12 @@ class ComputeServiceAttachments < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -81,35 +81,35 @@ class ComputeServiceAttachments < GcpResourceBase
 
   def transformers
     {
-      'kind' => ->(obj) { [:kind, obj['kind']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'producerForwardingRule' => ->(obj) { [:producer_forwarding_rule, obj['producerForwardingRule']] },
-      'targetService' => ->(obj) { [:target_service, obj['targetService']] },
-      'connectionPreference' => ->(obj) { [:connection_preference, obj['connectionPreference']] },
-      'connectedEndpoints' => ->(obj) { [:connected_endpoints, GoogleInSpec::Compute::Property::ServiceAttachmentConnectedEndpointsArray.parse(obj['connectedEndpoints'], to_s)] },
-      'natSubnets' => ->(obj) { [:nat_subnets, obj['natSubnets']] },
-      'enableProxyProtocol' => ->(obj) { [:enable_proxy_protocol, obj['enableProxyProtocol']] },
-      'consumerRejectLists' => ->(obj) { [:consumer_reject_lists, obj['consumerRejectLists']] },
-      'consumerAcceptLists' => ->(obj) { [:consumer_accept_lists, GoogleInSpec::Compute::Property::ServiceAttachmentConsumerAcceptListsArray.parse(obj['consumerAcceptLists'], to_s)] },
-      'pscServiceAttachmentId' => ->(obj) { [:psc_service_attachment_id, GoogleInSpec::Compute::Property::ServiceAttachmentPscServiceAttachmentId.new(obj['pscServiceAttachmentId'], to_s)] },
-      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
-      'domainNames' => ->(obj) { [:domain_names, obj['domainNames']] },
-      'reconcileConnections' => ->(obj) { [:reconcile_connections, obj['reconcileConnections']] },
+      "kind" => ->(obj) { [:kind, obj["kind"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, obj["creationTimestamp"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "selfLink" => ->(obj) { [:self_link, obj["selfLink"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
+      "producerForwardingRule" => ->(obj) { [:producer_forwarding_rule, obj["producerForwardingRule"]] },
+      "targetService" => ->(obj) { [:target_service, obj["targetService"]] },
+      "connectionPreference" => ->(obj) { [:connection_preference, obj["connectionPreference"]] },
+      "connectedEndpoints" => ->(obj) { [:connected_endpoints, GoogleInSpec::Compute::Property::ServiceAttachmentConnectedEndpointsArray.parse(obj["connectedEndpoints"], to_s)] },
+      "natSubnets" => ->(obj) { [:nat_subnets, obj["natSubnets"]] },
+      "enableProxyProtocol" => ->(obj) { [:enable_proxy_protocol, obj["enableProxyProtocol"]] },
+      "consumerRejectLists" => ->(obj) { [:consumer_reject_lists, obj["consumerRejectLists"]] },
+      "consumerAcceptLists" => ->(obj) { [:consumer_accept_lists, GoogleInSpec::Compute::Property::ServiceAttachmentConsumerAcceptListsArray.parse(obj["consumerAcceptLists"], to_s)] },
+      "pscServiceAttachmentId" => ->(obj) { [:psc_service_attachment_id, GoogleInSpec::Compute::Property::ServiceAttachmentPscServiceAttachmentId.new(obj["pscServiceAttachmentId"], to_s)] },
+      "fingerprint" => ->(obj) { [:fingerprint, obj["fingerprint"]] },
+      "domainNames" => ->(obj) { [:domain_names, obj["domainNames"]] },
+      "reconcileConnections" => ->(obj) { [:reconcile_connections, obj["reconcileConnections"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/serviceAttachments'
+    "projects/{{project}}/regions/{{region}}/serviceAttachments"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/nodegroup_autoscaling_policy'
+require "gcp_backend"
+require "google/compute/property/nodegroup_autoscaling_policy"
 
 # A provider to manage Compute Engine resources.
 class ComputeNodeGroup < GcpResourceBase
-  name 'google_compute_node_group'
-  desc 'NodeGroup'
-  supports platform: 'gcp'
+  name "google_compute_node_group"
+  desc "NodeGroup"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -35,19 +35,19 @@ class ComputeNodeGroup < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @name = @fetched['name']
-    @node_template = @fetched['nodeTemplate']
-    @size = @fetched['size']
-    @maintenance_policy = @fetched['maintenancePolicy']
-    @autoscaling_policy = GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(@fetched['autoscalingPolicy'], to_s)
-    @zone = @fetched['zone']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @name = @fetched["name"]
+    @node_template = @fetched["nodeTemplate"]
+    @size = @fetched["size"]
+    @maintenance_policy = @fetched["maintenancePolicy"]
+    @autoscaling_policy = GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(@fetched["autoscalingPolicy"], to_s)
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -67,13 +67,13 @@ class ComputeNodeGroup < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
   end
 end

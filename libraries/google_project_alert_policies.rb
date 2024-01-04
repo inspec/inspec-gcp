@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class MonitoringAlertPolicys < GcpResourceBase
-  name 'google_project_alert_policies'
-  desc 'AlertPolicy plural resource'
-  supports platform: 'gcp'
+  name "google_project_alert_policies"
+  desc "AlertPolicy plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class MonitoringAlertPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('alertPolicies')
+    @table = fetch_wrapped_resource("alertPolicies")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,25 +71,25 @@ class MonitoringAlertPolicys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:policy_names, obj['name']] },
-      'displayName' => ->(obj) { [:policy_display_names, obj['displayName']] },
-      'combiner' => ->(obj) { [:combiner, obj['combiner']] },
-      'creationRecord' => ->(obj) { [:creation_record, GoogleInSpec::Monitoring::Property::AlertPolicyCreationRecord.new(obj['creationRecord'], to_s)] },
-      'enabled' => ->(obj) { [:policy_enabled_state, obj['enabled']] },
-      'conditions' => ->(obj) { [:conditions, GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(obj['conditions'], to_s)] },
-      'notificationChannels' => ->(obj) { [:notification_channels, obj['notificationChannels']] },
-      'userLabels' => ->(obj) { [:user_labels, obj['userLabels']] },
-      'documentation' => ->(obj) { [:documentation, GoogleInSpec::Monitoring::Property::AlertPolicyDocumentation.new(obj['documentation'], to_s)] },
+      "name" => ->(obj) { [:policy_names, obj["name"]] },
+      "displayName" => ->(obj) { [:policy_display_names, obj["displayName"]] },
+      "combiner" => ->(obj) { [:combiner, obj["combiner"]] },
+      "creationRecord" => ->(obj) { [:creation_record, GoogleInSpec::Monitoring::Property::AlertPolicyCreationRecord.new(obj["creationRecord"], to_s)] },
+      "enabled" => ->(obj) { [:policy_enabled_state, obj["enabled"]] },
+      "conditions" => ->(obj) { [:conditions, GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(obj["conditions"], to_s)] },
+      "notificationChannels" => ->(obj) { [:notification_channels, obj["notificationChannels"]] },
+      "userLabels" => ->(obj) { [:user_labels, obj["userLabels"]] },
+      "documentation" => ->(obj) { [:documentation, GoogleInSpec::Monitoring::Property::AlertPolicyDocumentation.new(obj["documentation"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://monitoring.googleapis.com/'
+    "https://monitoring.googleapis.com/"
   end
 
   def resource_base_url
-    'v3/projects/{{project}}/alertPolicies'
+    "v3/projects/{{project}}/alertPolicies"
   end
 end

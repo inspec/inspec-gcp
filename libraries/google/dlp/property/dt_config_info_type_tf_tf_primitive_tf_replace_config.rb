@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_date_value'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_time_value'
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_date_value"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_time_value"
 module GoogleInSpec
   module DLP
     module Property
@@ -25,7 +25,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @new_value = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfReplaceConfigNewValue.new(args['newValue'], to_s)
+          @new_value = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfReplaceConfigNewValue.new(args["newValue"], to_s)
         end
 
         def to_s

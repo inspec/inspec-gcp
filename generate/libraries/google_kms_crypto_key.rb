@@ -1,13 +1,13 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'time'
-require 'google/apis/cloudkms_v1'
+
+require "gcp_backend"
+require "time"
+require "google/apis/cloudkms_v1"
 
 module Inspec::Resources
   class GoogleKMSCryptoKey < GcpResourceBase
-    name 'google_kms_crypto_key'
-    desc 'Verifies settings for a KMS key ring'
+    name "google_kms_crypto_key"
+    desc "Verifies settings for a KMS key ring"
 
     example "
       describe google_kms_crypto_key(project: 'chef-inspec-gcp',   location: 'us-east1',  key_ring_name: 'key-ring', name: 'crypto-key') do
@@ -26,8 +26,8 @@ module Inspec::Resources
     end
 
     def crypto_key_name
-      return '' if !defined?(name) || name.nil?
-      name.split('/').last
+      return "" if !defined?(name) || name.nil?
+      name.split("/").last
     end
 
     def create_time_date
@@ -37,7 +37,7 @@ module Inspec::Resources
 
     # this is added for completeness as crypto key IAM bindings use the crypto_key_url as an identifier
     def crypto_key_url
-      return '' if !defined?(name) || name.nil?
+      return "" if !defined?(name) || name.nil?
       name
     end
 
@@ -54,16 +54,16 @@ module Inspec::Resources
     def rotation_period_seconds
       return 0 if !defined?(rotation_period) || rotation_period.nil?
       result = nil
-      conversion = { 's'=>1, 'm'=>60, 'h'=>60*60, 'd'=>24*60*60 }
+      conversion = { "s"=>1, "m"=>60, "h"=>60*60, "d"=>24*60*60 }
       conversion.each do |time_unit, multiplier|
         next if /#{time_unit}/.match(rotation_period).nil?
-        result=rotation_period.gsub(time_unit, '').to_i*multiplier
+        result=rotation_period.gsub(time_unit, "").to_i*multiplier
       end
       result
     end
 
     def primary_name
-      return '' if !defined?(primary.name) || primary.name.nil?
+      return "" if !defined?(primary.name) || primary.name.nil?
       primary.name
     end
 

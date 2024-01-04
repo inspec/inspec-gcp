@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @failed_main_jobs = args['failedMainJobs']
-          @main_job = args['mainJob']
-          @pre_caching_check_job = args['preCachingCheckJob']
-          @failed_pre_caching_check_jobs = args['failedPreCachingCheckJobs']
+          @failed_main_jobs = args["failedMainJobs"]
+          @main_job = args["mainJob"]
+          @pre_caching_check_job = args["preCachingCheckJob"]
+          @failed_pre_caching_check_jobs = args["failedPreCachingCheckJobs"]
         end
 
         def to_s

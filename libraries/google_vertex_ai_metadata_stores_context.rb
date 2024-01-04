@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/metadatastorescontext_labels'
-require 'google/vertexai/property/metadatastorescontext_metadata'
+require "gcp_backend"
+require "google/vertexai/property/metadatastorescontext_labels"
+require "google/vertexai/property/metadatastorescontext_metadata"
 
 # A provider to manage Vertex AI resources.
 class VertexAIMetadataStoresContext < GcpResourceBase
-  name 'google_vertex_ai_metadata_stores_context'
-  desc 'MetadataStoresContext'
-  supports platform: 'gcp'
+  name "google_vertex_ai_metadata_stores_context"
+  desc "MetadataStoresContext"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -39,22 +39,22 @@ class VertexAIMetadataStoresContext < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @schema_title = @fetched['schemaTitle']
-    @etag = @fetched['etag']
-    @description = @fetched['description']
-    @display_name = @fetched['displayName']
-    @schema_version = @fetched['schemaVersion']
-    @create_time = @fetched['createTime']
-    @labels = GoogleInSpec::VertexAI::Property::MetadataStoresContextLabels.new(@fetched['labels'], to_s)
-    @metadata = GoogleInSpec::VertexAI::Property::MetadataStoresContextMetadata.new(@fetched['metadata'], to_s)
-    @update_time = @fetched['updateTime']
-    @parent_contexts = @fetched['parentContexts']
+    @name = @fetched["name"]
+    @schema_title = @fetched["schemaTitle"]
+    @etag = @fetched["etag"]
+    @description = @fetched["description"]
+    @display_name = @fetched["displayName"]
+    @schema_version = @fetched["schemaVersion"]
+    @create_time = @fetched["createTime"]
+    @labels = GoogleInSpec::VertexAI::Property::MetadataStoresContextLabels.new(@fetched["labels"], to_s)
+    @metadata = GoogleInSpec::VertexAI::Property::MetadataStoresContextMetadata.new(@fetched["metadata"], to_s)
+    @update_time = @fetched["updateTime"]
+    @parent_contexts = @fetched["parentContexts"]
   end
 
   def exists?
@@ -68,10 +68,10 @@ class VertexAIMetadataStoresContext < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

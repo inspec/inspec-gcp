@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class AccessContextManagerAccessLevels < GcpResourceBase
-  name 'google_access_context_manager_access_levels'
-  desc 'AccessLevel plural resource'
-  supports platform: 'gcp'
+  name "google_access_context_manager_access_levels"
+  desc "AccessLevel plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,12 +35,12 @@ class AccessContextManagerAccessLevels < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('accessLevels')
+    @table = fetch_wrapped_resource("accessLevels")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -68,22 +68,22 @@ class AccessContextManagerAccessLevels < GcpResourceBase
 
   def transformers
     {
-      'title' => ->(obj) { [:title, obj['title']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'basic' => ->(obj) { [:basic, GoogleInSpec::AccessContextManager::Property::AccessLevelBasic.new(obj['basic'], to_s)] },
-      'custom' => ->(obj) { [:custom, GoogleInSpec::AccessContextManager::Property::AccessLevelCustom.new(obj['custom'], to_s)] },
-      'parent' => ->(obj) { [:parent, name_from_self_link(obj['parent'])] },
-      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
+      "title" => ->(obj) { [:title, obj["title"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "basic" => ->(obj) { [:basic, GoogleInSpec::AccessContextManager::Property::AccessLevelBasic.new(obj["basic"], to_s)] },
+      "custom" => ->(obj) { [:custom, GoogleInSpec::AccessContextManager::Property::AccessLevelCustom.new(obj["custom"], to_s)] },
+      "parent" => ->(obj) { [:parent, name_from_self_link(obj["parent"])] },
+      "name" => ->(obj) { [:name, name_from_self_link(obj["name"])] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://accesscontextmanager.googleapis.com/v1/'
+    "https://accesscontextmanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'accessPolicies/{{parent}}/accessLevels'
+    "accessPolicies/{{parent}}/accessLevels"
   end
 end

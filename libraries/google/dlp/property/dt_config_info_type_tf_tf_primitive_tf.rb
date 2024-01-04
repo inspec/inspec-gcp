@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,26 +13,26 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_character_mask_config'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_character_mask_config_characters_to_ignore'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_context'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key_kms_wrapped'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key_transient'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key_unwrapped'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_surrogate_info_type'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_context'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_kms_wrapped'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_transient'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_unwrapped'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_surrogate_info_type'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_date_value'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_time_value'
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_character_mask_config"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_character_mask_config_characters_to_ignore"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_context"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key_kms_wrapped"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key_transient"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_crypto_key_unwrapped"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_deterministic_config_surrogate_info_type"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_context"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_kms_wrapped"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_transient"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_unwrapped"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_surrogate_info_type"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_date_value"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_replace_config_new_value_time_value"
 module GoogleInSpec
   module DLP
     module Property
@@ -50,11 +50,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @replace_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfReplaceConfig.new(args['replaceConfig'], to_s)
-          @replace_with_info_type_config = args['replaceWithInfoTypeConfig']
-          @character_mask_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCharacterMaskConfig.new(args['characterMaskConfig'], to_s)
-          @crypto_deterministic_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoDeterministicConfig.new(args['cryptoDeterministicConfig'], to_s)
-          @crypto_replace_ffx_fpe_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfig.new(args['cryptoReplaceFfxFpeConfig'], to_s)
+          @replace_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfReplaceConfig.new(args["replaceConfig"], to_s)
+          @replace_with_info_type_config = args["replaceWithInfoTypeConfig"]
+          @character_mask_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCharacterMaskConfig.new(args["characterMaskConfig"], to_s)
+          @crypto_deterministic_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoDeterministicConfig.new(args["cryptoDeterministicConfig"], to_s)
+          @crypto_replace_ffx_fpe_config = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfig.new(args["cryptoReplaceFfxFpeConfig"], to_s)
         end
 
         def to_s

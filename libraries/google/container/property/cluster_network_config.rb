@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_intra_node_visibility = args['enableIntraNodeVisibility']
-          @network = args['network']
-          @subnetwork = args['subnetwork']
-          @default_snat_status = args['defaultSnatStatus']
+          @enable_intra_node_visibility = args["enableIntraNodeVisibility"]
+          @network = args["network"]
+          @subnetwork = args["subnetwork"]
+          @default_snat_status = args["defaultSnatStatus"]
         end
 
         def to_s

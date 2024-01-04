@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -33,11 +33,11 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @description = arguments['description']
-          @fields = arguments['fields']
-          @mode = arguments['mode']
-          @name = arguments['name']
-          @type = arguments['type']
+          @description = arguments["description"]
+          @fields = arguments["fields"]
+          @mode = arguments["mode"]
+          @name = arguments["name"]
+          @type = arguments["type"]
         end
 
         def to_s
@@ -47,11 +47,11 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'description' => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
-            'fields' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.fields') { should include #{single.inspect} }" } },
-            'mode' => ->(x, path) { x.nil? ? [] : ["its('#{path}.mode') { should cmp #{x.inspect} }"] },
-            'name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
-            'type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
+            "description" => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
+            "fields" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.fields') { should include #{single.inspect} }" } },
+            "mode" => ->(x, path) { x.nil? ? [] : ["its('#{path}.mode') { should cmp #{x.inspect} }"] },
+            "name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
+            "type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

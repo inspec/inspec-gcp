@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/region_deprecated'
-require 'google/compute/property/region_quotas'
+require "gcp_backend"
+require "google/compute/property/region_deprecated"
+require "google/compute/property/region_quotas"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegion < GcpResourceBase
-  name 'google_compute_region'
-  desc 'Region'
-  supports platform: 'gcp'
+  name "google_compute_region"
+  desc "Region"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -36,19 +36,19 @@ class ComputeRegion < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::RegionDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @quotas = GoogleInSpec::Compute::Property::RegionQuotasArray.parse(@fetched['quotas'], to_s)
-    @status = @fetched['status']
-    @zones = @fetched['zones']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @deprecated = GoogleInSpec::Compute::Property::RegionDeprecated.new(@fetched["deprecated"], to_s)
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @quotas = GoogleInSpec::Compute::Property::RegionQuotasArray.parse(@fetched["quotas"], to_s)
+    @status = @fetched["status"]
+    @zones = @fetched["zones"]
   end
 
   # Handles parsing RFC3339 time string
@@ -68,25 +68,25 @@ class ComputeRegion < GcpResourceBase
   #   https://www.googleapis.com/compute/v1/projects/spaterson-project/zones/asia-east1-a
   def zone_names
     return [] if !exists?
-    @zones.map { |zone| zone.split('/').last }
+    @zones.map { |zone| zone.split("/").last }
   end
 
   def up?
     return false if !exists?
-    @status == 'UP'
+    @status == "UP"
   end
 
   private
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{name}}'
+    "projects/{{project}}/regions/{{name}}"
   end
 end

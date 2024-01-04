@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,39 +13,39 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/container/property/cluster_addons_config'
-require 'google/container/property/cluster_addons_config_gce_persistent_disk_csi_driver_config'
-require 'google/container/property/cluster_addons_config_horizontal_pod_autoscaling'
-require 'google/container/property/cluster_addons_config_http_load_balancing'
-require 'google/container/property/cluster_addons_config_kubernetes_dashboard'
-require 'google/container/property/cluster_addons_config_network_policy_config'
-require 'google/container/property/cluster_binary_authorization'
-require 'google/container/property/cluster_conditions'
-require 'google/container/property/cluster_database_encryption'
-require 'google/container/property/cluster_default_max_pods_constraint'
-require 'google/container/property/cluster_ip_allocation_policy'
-require 'google/container/property/cluster_legacy_abac'
-require 'google/container/property/cluster_master_auth'
-require 'google/container/property/cluster_master_auth_client_certificate_config'
-require 'google/container/property/cluster_master_authorized_networks_config'
-require 'google/container/property/cluster_master_authorized_networks_config_cidr_blocks'
-require 'google/container/property/cluster_network_config'
-require 'google/container/property/cluster_network_policy'
-require 'google/container/property/cluster_node_config'
-require 'google/container/property/cluster_node_config_accelerators'
-require 'google/container/property/cluster_node_config_shielded_instance_config'
-require 'google/container/property/cluster_node_config_taints'
-require 'google/container/property/cluster_node_pools'
-require 'google/container/property/cluster_private_cluster_config'
-require 'google/container/property/cluster_release_channel'
-require 'google/container/property/cluster_shielded_nodes'
+require "gcp_backend"
+require "google/container/property/cluster_addons_config"
+require "google/container/property/cluster_addons_config_gce_persistent_disk_csi_driver_config"
+require "google/container/property/cluster_addons_config_horizontal_pod_autoscaling"
+require "google/container/property/cluster_addons_config_http_load_balancing"
+require "google/container/property/cluster_addons_config_kubernetes_dashboard"
+require "google/container/property/cluster_addons_config_network_policy_config"
+require "google/container/property/cluster_binary_authorization"
+require "google/container/property/cluster_conditions"
+require "google/container/property/cluster_database_encryption"
+require "google/container/property/cluster_default_max_pods_constraint"
+require "google/container/property/cluster_ip_allocation_policy"
+require "google/container/property/cluster_legacy_abac"
+require "google/container/property/cluster_master_auth"
+require "google/container/property/cluster_master_auth_client_certificate_config"
+require "google/container/property/cluster_master_authorized_networks_config"
+require "google/container/property/cluster_master_authorized_networks_config_cidr_blocks"
+require "google/container/property/cluster_network_config"
+require "google/container/property/cluster_network_policy"
+require "google/container/property/cluster_node_config"
+require "google/container/property/cluster_node_config_accelerators"
+require "google/container/property/cluster_node_config_shielded_instance_config"
+require "google/container/property/cluster_node_config_taints"
+require "google/container/property/cluster_node_pools"
+require "google/container/property/cluster_private_cluster_config"
+require "google/container/property/cluster_release_channel"
+require "google/container/property/cluster_shielded_nodes"
 
 # A provider to manage Google Kubernetes Engine resources.
 class ContainerCluster < GcpResourceBase
-  name 'google_container_cluster'
-  desc 'Cluster'
-  supports platform: 'gcp'
+  name "google_container_cluster"
+  desc "Cluster"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -94,53 +94,53 @@ class ContainerCluster < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @initial_node_count = @fetched['initialNodeCount']
-    @node_config = GoogleInSpec::Container::Property::ClusterNodeConfig.new(@fetched['nodeConfig'], to_s)
-    @master_auth = GoogleInSpec::Container::Property::ClusterMasterAuth.new(@fetched['masterAuth'], to_s)
-    @logging_service = @fetched['loggingService']
-    @monitoring_service = @fetched['monitoringService']
-    @network = @fetched['network']
-    @database_encryption = GoogleInSpec::Container::Property::ClusterDatabaseEncryption.new(@fetched['databaseEncryption'], to_s)
-    @private_cluster_config = GoogleInSpec::Container::Property::ClusterPrivateClusterConfig.new(@fetched['privateClusterConfig'], to_s)
-    @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
-    @enable_tpu = @fetched['enableTpu']
-    @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
-    @addons_config = GoogleInSpec::Container::Property::ClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
-    @subnetwork = @fetched['subnetwork']
-    @locations = @fetched['locations']
-    @resource_labels = @fetched['resourceLabels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @legacy_abac = GoogleInSpec::Container::Property::ClusterLegacyAbac.new(@fetched['legacyAbac'], to_s)
-    @network_policy = GoogleInSpec::Container::Property::ClusterNetworkPolicy.new(@fetched['networkPolicy'], to_s)
-    @default_max_pods_constraint = GoogleInSpec::Container::Property::ClusterDefaultMaxPodsConstraint.new(@fetched['defaultMaxPodsConstraint'], to_s)
-    @ip_allocation_policy = GoogleInSpec::Container::Property::ClusterIpAllocationPolicy.new(@fetched['ipAllocationPolicy'], to_s)
-    @endpoint = @fetched['endpoint']
-    @initial_cluster_version = @fetched['initialClusterVersion']
-    @current_master_version = @fetched['currentMasterVersion']
-    @current_node_version = @fetched['currentNodeVersion']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @status = @fetched['status']
-    @status_message = @fetched['statusMessage']
-    @node_ipv4_cidr_size = @fetched['nodeIpv4CidrSize']
-    @services_ipv4_cidr = @fetched['servicesIpv4Cidr']
-    @current_node_count = @fetched['currentNodeCount']
-    @expire_time = parse_time_string(@fetched['expireTime'])
-    @conditions = GoogleInSpec::Container::Property::ClusterConditionsArray.parse(@fetched['conditions'], to_s)
-    @master_authorized_networks_config = GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
-    @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched['nodePools'], to_s)
-    @binary_authorization = GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(@fetched['binaryAuthorization'], to_s)
-    @release_channel = GoogleInSpec::Container::Property::ClusterReleaseChannel.new(@fetched['releaseChannel'], to_s)
-    @shielded_nodes = GoogleInSpec::Container::Property::ClusterShieldedNodes.new(@fetched['shieldedNodes'], to_s)
-    @network_config = GoogleInSpec::Container::Property::ClusterNetworkConfig.new(@fetched['networkConfig'], to_s)
-    @enable_kubernetes_alpha = @fetched['enableKubernetesAlpha']
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @initial_node_count = @fetched["initialNodeCount"]
+    @node_config = GoogleInSpec::Container::Property::ClusterNodeConfig.new(@fetched["nodeConfig"], to_s)
+    @master_auth = GoogleInSpec::Container::Property::ClusterMasterAuth.new(@fetched["masterAuth"], to_s)
+    @logging_service = @fetched["loggingService"]
+    @monitoring_service = @fetched["monitoringService"]
+    @network = @fetched["network"]
+    @database_encryption = GoogleInSpec::Container::Property::ClusterDatabaseEncryption.new(@fetched["databaseEncryption"], to_s)
+    @private_cluster_config = GoogleInSpec::Container::Property::ClusterPrivateClusterConfig.new(@fetched["privateClusterConfig"], to_s)
+    @cluster_ipv4_cidr = @fetched["clusterIpv4Cidr"]
+    @enable_tpu = @fetched["enableTpu"]
+    @tpu_ipv4_cidr_block = @fetched["tpuIpv4CidrBlock"]
+    @addons_config = GoogleInSpec::Container::Property::ClusterAddonsConfig.new(@fetched["addonsConfig"], to_s)
+    @subnetwork = @fetched["subnetwork"]
+    @locations = @fetched["locations"]
+    @resource_labels = @fetched["resourceLabels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @legacy_abac = GoogleInSpec::Container::Property::ClusterLegacyAbac.new(@fetched["legacyAbac"], to_s)
+    @network_policy = GoogleInSpec::Container::Property::ClusterNetworkPolicy.new(@fetched["networkPolicy"], to_s)
+    @default_max_pods_constraint = GoogleInSpec::Container::Property::ClusterDefaultMaxPodsConstraint.new(@fetched["defaultMaxPodsConstraint"], to_s)
+    @ip_allocation_policy = GoogleInSpec::Container::Property::ClusterIpAllocationPolicy.new(@fetched["ipAllocationPolicy"], to_s)
+    @endpoint = @fetched["endpoint"]
+    @initial_cluster_version = @fetched["initialClusterVersion"]
+    @current_master_version = @fetched["currentMasterVersion"]
+    @current_node_version = @fetched["currentNodeVersion"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @status = @fetched["status"]
+    @status_message = @fetched["statusMessage"]
+    @node_ipv4_cidr_size = @fetched["nodeIpv4CidrSize"]
+    @services_ipv4_cidr = @fetched["servicesIpv4Cidr"]
+    @current_node_count = @fetched["currentNodeCount"]
+    @expire_time = parse_time_string(@fetched["expireTime"])
+    @conditions = GoogleInSpec::Container::Property::ClusterConditionsArray.parse(@fetched["conditions"], to_s)
+    @master_authorized_networks_config = GoogleInSpec::Container::Property::ClusterMasterAuthorizedNetworksConfig.new(@fetched["masterAuthorizedNetworksConfig"], to_s)
+    @node_pools = GoogleInSpec::Container::Property::ClusterNodePoolsArray.parse(@fetched["nodePools"], to_s)
+    @binary_authorization = GoogleInSpec::Container::Property::ClusterBinaryAuthorization.new(@fetched["binaryAuthorization"], to_s)
+    @release_channel = GoogleInSpec::Container::Property::ClusterReleaseChannel.new(@fetched["releaseChannel"], to_s)
+    @shielded_nodes = GoogleInSpec::Container::Property::ClusterShieldedNodes.new(@fetched["shieldedNodes"], to_s)
+    @network_config = GoogleInSpec::Container::Property::ClusterNetworkConfig.new(@fetched["networkConfig"], to_s)
+    @enable_kubernetes_alpha = @fetched["enableKubernetesAlpha"]
+    @location = @fetched["location"]
   end
 
   # Handles parsing RFC3339 time string
@@ -204,7 +204,7 @@ class ContainerCluster < GcpResourceBase
   def has_master_auth_client_key?
     return false if !defined?(@master_auth.client_key)
     return false if @master_auth.client_key.nil?
-    return false if @master_auth.client_key==''
+    return false if @master_auth.client_key==""
     true
   end
 
@@ -229,10 +229,10 @@ class ContainerCluster < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://container.googleapis.com/v1/'
+    "https://container.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/clusters/{{name}}'
+    "projects/{{project}}/locations/{{location}}/clusters/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeRegionBackendServices < GcpResourceBase
-  name 'google_compute_region_backend_services'
-  desc 'RegionBackendService plural resource'
-  supports platform: 'gcp'
+  name "google_compute_region_backend_services"
+  desc "RegionBackendService plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class ComputeRegionBackendServices < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -73,17 +73,17 @@ class ComputeRegionBackendServices < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'healthChecks' => ->(obj) { [:health_checks, obj['healthChecks']] },
-      'backends' => ->(obj) { [:backends, GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(obj['backends'], to_s)] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
-      'protocol' => ->(obj) { [:protocol, obj['protocol']] },
-      'sessionAffinity' => ->(obj) { [:session_affinity, obj['sessionAffinity']] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'timeoutSec' => ->(obj) { [:timeout_sec, obj['timeoutSec']] },
-      'connectionDraining' => ->(obj) { [:connection_draining, GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(obj['connectionDraining'], to_s)] },
-      'loadBalancingScheme' => ->(obj) { [:load_balancing_scheme, obj['loadBalancingScheme']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "healthChecks" => ->(obj) { [:health_checks, obj["healthChecks"]] },
+      "backends" => ->(obj) { [:backends, GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(obj["backends"], to_s)] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "fingerprint" => ->(obj) { [:fingerprint, obj["fingerprint"]] },
+      "protocol" => ->(obj) { [:protocol, obj["protocol"]] },
+      "sessionAffinity" => ->(obj) { [:session_affinity, obj["sessionAffinity"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
+      "timeoutSec" => ->(obj) { [:timeout_sec, obj["timeoutSec"]] },
+      "connectionDraining" => ->(obj) { [:connection_draining, GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(obj["connectionDraining"], to_s)] },
+      "loadBalancingScheme" => ->(obj) { [:load_balancing_scheme, obj["loadBalancingScheme"]] },
     }
   end
 
@@ -110,10 +110,10 @@ class ComputeRegionBackendServices < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/backendServices'
+    "projects/{{project}}/regions/{{region}}/backendServices"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_info_types'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_text'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_redaction_color'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_selected_info_types'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_info_type_tf'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_info_type_tf_tf'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_info_types"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_text"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_redaction_color"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_selected_info_types"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_info_type_tf"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_info_type_tf_tf"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup"
 module GoogleInSpec
   module DLP
     module Property
@@ -38,10 +38,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @tf_error_handling = args['tfErrorHandling']
-          @info_type_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConInfoTypeTf.new(args['infoTypeTf'], to_s)
-          @rec_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTf.new(args['recTf'], to_s)
-          @image_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTf.new(args['ImageTf'], to_s)
+          @tf_error_handling = args["tfErrorHandling"]
+          @info_type_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConInfoTypeTf.new(args["infoTypeTf"], to_s)
+          @rec_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTf.new(args["recTf"], to_s)
+          @image_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTf.new(args["ImageTf"], to_s)
         end
 
         def to_s

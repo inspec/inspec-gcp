@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/zone_deprecated'
+require "gcp_backend"
+require "google/compute/property/zone_deprecated"
 
 # A provider to manage Compute Engine resources.
 class ComputeZone < GcpResourceBase
-  name 'google_compute_zone'
-  desc 'Zone'
-  supports platform: 'gcp'
+  name "google_compute_zone"
+  desc "Zone"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -35,19 +35,19 @@ class ComputeZone < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::ZoneDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @region = @fetched['region']
-    @status = @fetched['status']
-    @available_cpu_platforms = @fetched['availableCpuPlatforms']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @deprecated = GoogleInSpec::Compute::Property::ZoneDeprecated.new(@fetched["deprecated"], to_s)
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @region = @fetched["region"]
+    @status = @fetched["status"]
+    @available_cpu_platforms = @fetched["availableCpuPlatforms"]
   end
 
   # Handles parsing RFC3339 time string
@@ -65,24 +65,24 @@ class ComputeZone < GcpResourceBase
 
   # helper method for retrieving a region name
   def region_name
-    @region&.split('/')&.last
+    @region&.split("/")&.last
   end
 
   def up?
-    @status == 'UP'
+    @status == "UP"
   end
 
   private
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{name}}'
+    "projects/{{project}}/zones/{{name}}"
   end
 end

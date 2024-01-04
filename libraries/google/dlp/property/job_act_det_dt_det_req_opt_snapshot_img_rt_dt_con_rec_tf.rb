@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup"
 module GoogleInSpec
   module DLP
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @field_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfFieldTfArray.parse(args['fieldTf'], to_s)
-          @rec_sup = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupArray.parse(args['recSup'], to_s)
+          @field_tf = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfFieldTfArray.parse(args["fieldTf"], to_s)
+          @rec_sup = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupArray.parse(args["recSup"], to_s)
         end
 
         def to_s

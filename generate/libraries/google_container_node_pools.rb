@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleContainerNodePools < GcpResourceBase
-    name 'google_container_node_pools'
-    desc 'Verifies settings for GCP container node pools in bulk'
+    name "google_container_node_pools"
+    desc "Verifies settings for GCP container node pools in bulk"
 
     example "
       describe google_container_node_pools(project: 'chef-inspec-gcp', node_pool: 'europe-west2-a', cluster_name: 'inspec-gcp-cluster')

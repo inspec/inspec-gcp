@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIModels < GcpResourceBase
-  name 'google_vertex_ai_models'
-  desc 'Model plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_models"
+  desc "Model plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -58,12 +58,12 @@ class VertexAIModels < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('models')
+    @table = fetch_wrapped_resource("models")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -91,45 +91,45 @@ class VertexAIModels < GcpResourceBase
 
   def transformers
     {
-      'modelSourceInfo' => ->(obj) { [:model_source_info, GoogleInSpec::VertexAI::Property::ModelModelSourceInfo.new(obj['modelSourceInfo'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'deployedModels' => ->(obj) { [:deployed_models, GoogleInSpec::VertexAI::Property::ModelDeployedModelsArray.parse(obj['deployedModels'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'explanationSpec' => ->(obj) { [:explanation_spec, GoogleInSpec::VertexAI::Property::ModelExplanationSpec.new(obj['explanationSpec'], to_s)] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::ModelEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'pipelineJob' => ->(obj) { [:pipeline_job, obj['pipelineJob']] },
-      'predictSchemata' => ->(obj) { [:predict_schemata, GoogleInSpec::VertexAI::Property::ModelPredictSchemata.new(obj['predictSchemata'], to_s)] },
-      'versionUpdateTime' => ->(obj) { [:version_update_time, obj['versionUpdateTime']] },
-      'supportedExportFormats' => ->(obj) { [:supported_export_formats, GoogleInSpec::VertexAI::Property::ModelSupportedExportFormatsArray.parse(obj['supportedExportFormats'], to_s)] },
-      'originalModelInfo' => ->(obj) { [:original_model_info, GoogleInSpec::VertexAI::Property::ModelOriginalModelInfo.new(obj['originalModelInfo'], to_s)] },
-      'metadataArtifact' => ->(obj) { [:metadata_artifact, obj['metadataArtifact']] },
-      'supportedInputStorageFormats' => ->(obj) { [:supported_input_storage_formats, obj['supportedInputStorageFormats']] },
-      'metadataSchemaUri' => ->(obj) { [:metadata_schema_uri, obj['metadataSchemaUri']] },
-      'containerSpec' => ->(obj) { [:container_spec, GoogleInSpec::VertexAI::Property::ModelContainerSpec.new(obj['containerSpec'], to_s)] },
-      'versionId' => ->(obj) { [:version_id, obj['versionId']] },
-      'artifactUri' => ->(obj) { [:artifact_uri, obj['artifactUri']] },
-      'trainingPipeline' => ->(obj) { [:training_pipeline, obj['trainingPipeline']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'supportedDeploymentResourcesTypes' => ->(obj) { [:supported_deployment_resources_types, obj['supportedDeploymentResourcesTypes']] },
-      'supportedOutputStorageFormats' => ->(obj) { [:supported_output_storage_formats, obj['supportedOutputStorageFormats']] },
-      'versionAliases' => ->(obj) { [:version_aliases, obj['versionAliases']] },
-      'versionCreateTime' => ->(obj) { [:version_create_time, obj['versionCreateTime']] },
-      'versionDescription' => ->(obj) { [:version_description, obj['versionDescription']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::ModelLabels.new(obj['labels'], to_s)] },
+      "modelSourceInfo" => ->(obj) { [:model_source_info, GoogleInSpec::VertexAI::Property::ModelModelSourceInfo.new(obj["modelSourceInfo"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "metadata" => ->(obj) { [:metadata, obj["metadata"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "deployedModels" => ->(obj) { [:deployed_models, GoogleInSpec::VertexAI::Property::ModelDeployedModelsArray.parse(obj["deployedModels"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "explanationSpec" => ->(obj) { [:explanation_spec, GoogleInSpec::VertexAI::Property::ModelExplanationSpec.new(obj["explanationSpec"], to_s)] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::ModelEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "pipelineJob" => ->(obj) { [:pipeline_job, obj["pipelineJob"]] },
+      "predictSchemata" => ->(obj) { [:predict_schemata, GoogleInSpec::VertexAI::Property::ModelPredictSchemata.new(obj["predictSchemata"], to_s)] },
+      "versionUpdateTime" => ->(obj) { [:version_update_time, obj["versionUpdateTime"]] },
+      "supportedExportFormats" => ->(obj) { [:supported_export_formats, GoogleInSpec::VertexAI::Property::ModelSupportedExportFormatsArray.parse(obj["supportedExportFormats"], to_s)] },
+      "originalModelInfo" => ->(obj) { [:original_model_info, GoogleInSpec::VertexAI::Property::ModelOriginalModelInfo.new(obj["originalModelInfo"], to_s)] },
+      "metadataArtifact" => ->(obj) { [:metadata_artifact, obj["metadataArtifact"]] },
+      "supportedInputStorageFormats" => ->(obj) { [:supported_input_storage_formats, obj["supportedInputStorageFormats"]] },
+      "metadataSchemaUri" => ->(obj) { [:metadata_schema_uri, obj["metadataSchemaUri"]] },
+      "containerSpec" => ->(obj) { [:container_spec, GoogleInSpec::VertexAI::Property::ModelContainerSpec.new(obj["containerSpec"], to_s)] },
+      "versionId" => ->(obj) { [:version_id, obj["versionId"]] },
+      "artifactUri" => ->(obj) { [:artifact_uri, obj["artifactUri"]] },
+      "trainingPipeline" => ->(obj) { [:training_pipeline, obj["trainingPipeline"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "supportedDeploymentResourcesTypes" => ->(obj) { [:supported_deployment_resources_types, obj["supportedDeploymentResourcesTypes"]] },
+      "supportedOutputStorageFormats" => ->(obj) { [:supported_output_storage_formats, obj["supportedOutputStorageFormats"]] },
+      "versionAliases" => ->(obj) { [:version_aliases, obj["versionAliases"]] },
+      "versionCreateTime" => ->(obj) { [:version_create_time, obj["versionCreateTime"]] },
+      "versionDescription" => ->(obj) { [:version_description, obj["versionDescription"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::ModelLabels.new(obj["labels"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/models'
+    "{{parent}}/models"
   end
 end

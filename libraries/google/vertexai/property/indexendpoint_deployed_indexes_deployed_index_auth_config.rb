@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/indexendpoint_deployed_indexes_deployed_index_auth_config_auth_provider'
+require "google/vertexai/property/indexendpoint_deployed_indexes_deployed_index_auth_config_auth_provider"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @auth_provider = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesDeployedIndexAuthConfigAuthProvider.new(args['authProvider'], to_s)
+          @auth_provider = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesDeployedIndexAuthConfigAuthProvider.new(args["authProvider"], to_s)
         end
 
         def to_s

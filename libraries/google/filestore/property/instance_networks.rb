@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @network = args['network']
-          @modes = args['modes']
-          @reserved_ip_range = args['reservedIpRange']
-          @ip_addresses = args['ipAddresses']
+          @network = args["network"]
+          @modes = args["modes"]
+          @reserved_ip_range = args["reservedIpRange"]
+          @ip_addresses = args["ipAddresses"]
         end
 
         def to_s

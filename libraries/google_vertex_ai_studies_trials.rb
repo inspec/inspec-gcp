@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIStudiesTrials < GcpResourceBase
-  name 'google_vertex_ai_studies_trials'
-  desc 'StudiesTrial plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_studies_trials"
+  desc "StudiesTrial plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,12 +41,12 @@ class VertexAIStudiesTrials < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('trials')
+    @table = fetch_wrapped_resource("trials")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -74,28 +74,28 @@ class VertexAIStudiesTrials < GcpResourceBase
 
   def transformers
     {
-      'measurements' => ->(obj) { [:measurements, GoogleInSpec::VertexAI::Property::StudiesTrialMeasurementsArray.parse(obj['measurements'], to_s)] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'parameters' => ->(obj) { [:parameters, GoogleInSpec::VertexAI::Property::StudiesTrialParametersArray.parse(obj['parameters'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'infeasibleReason' => ->(obj) { [:infeasible_reason, obj['infeasibleReason']] },
-      'finalMeasurement' => ->(obj) { [:final_measurement, GoogleInSpec::VertexAI::Property::StudiesTrialFinalMeasurement.new(obj['finalMeasurement'], to_s)] },
-      'clientId' => ->(obj) { [:client_id, obj['clientId']] },
-      'customJob' => ->(obj) { [:custom_job, obj['customJob']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'webAccessUris' => ->(obj) { [:web_access_uris, GoogleInSpec::VertexAI::Property::StudiesTrialWebAccessUris.new(obj['webAccessUris'], to_s)] },
-      'id' => ->(obj) { [:id, obj['id']] },
+      "measurements" => ->(obj) { [:measurements, GoogleInSpec::VertexAI::Property::StudiesTrialMeasurementsArray.parse(obj["measurements"], to_s)] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "parameters" => ->(obj) { [:parameters, GoogleInSpec::VertexAI::Property::StudiesTrialParametersArray.parse(obj["parameters"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "infeasibleReason" => ->(obj) { [:infeasible_reason, obj["infeasibleReason"]] },
+      "finalMeasurement" => ->(obj) { [:final_measurement, GoogleInSpec::VertexAI::Property::StudiesTrialFinalMeasurement.new(obj["finalMeasurement"], to_s)] },
+      "clientId" => ->(obj) { [:client_id, obj["clientId"]] },
+      "customJob" => ->(obj) { [:custom_job, obj["customJob"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "webAccessUris" => ->(obj) { [:web_access_uris, GoogleInSpec::VertexAI::Property::StudiesTrialWebAccessUris.new(obj["webAccessUris"], to_s)] },
+      "id" => ->(obj) { [:id, obj["id"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/trials'
+    "{{parent}}/trials"
   end
 end

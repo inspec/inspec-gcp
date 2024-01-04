@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_labels'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_metadata'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_labels'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_metadata'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details'
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_labels"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_metadata"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_labels"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_metadata"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -33,9 +33,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @task_details = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsArray.parse(args['taskDetails'], to_s)
-          @pipeline_run_context = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineRunContext.new(args['pipelineRunContext'], to_s)
-          @pipeline_context = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineContext.new(args['pipelineContext'], to_s)
+          @task_details = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsArray.parse(args["taskDetails"], to_s)
+          @pipeline_run_context = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineRunContext.new(args["pipelineRunContext"], to_s)
+          @pipeline_context = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineContext.new(args["pipelineContext"], to_s)
         end
 
         def to_s

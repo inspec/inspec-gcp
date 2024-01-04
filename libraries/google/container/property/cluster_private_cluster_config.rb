@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_private_nodes = args['enablePrivateNodes']
-          @enable_private_endpoint = args['enablePrivateEndpoint']
-          @master_ipv4_cidr_block = args['masterIpv4CidrBlock']
-          @private_endpoint = args['privateEndpoint']
-          @public_endpoint = args['publicEndpoint']
+          @enable_private_nodes = args["enablePrivateNodes"]
+          @enable_private_endpoint = args["enablePrivateEndpoint"]
+          @master_ipv4_cidr_block = args["masterIpv4CidrBlock"]
+          @private_endpoint = args["privateEndpoint"]
+          @public_endpoint = args["publicEndpoint"]
         end
 
         def to_s

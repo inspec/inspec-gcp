@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/bigquery/property/dataset_access'
-require 'google/bigquery/property/dataset_dataset_reference'
-require 'google/bigquery/property/dataset_default_encryption_configuration'
+require "gcp_backend"
+require "google/bigquery/property/dataset_access"
+require "google/bigquery/property/dataset_dataset_reference"
+require "google/bigquery/property/dataset_default_encryption_configuration"
 
 # A provider to manage BigQuery resources.
 class BigQueryDataset < GcpResourceBase
-  name 'google_bigquery_dataset'
-  desc 'Dataset'
-  supports platform: 'gcp'
+  name "google_bigquery_dataset"
+  desc "Dataset"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :access
@@ -42,24 +42,24 @@ class BigQueryDataset < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched['access'], to_s)
-    @creation_time = @fetched['creationTime']
-    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'], to_s)
-    @default_table_expiration_ms = @fetched['defaultTableExpirationMs']
-    @default_partition_expiration_ms = @fetched['defaultPartitionExpirationMs']
-    @description = @fetched['description']
-    @etag = @fetched['etag']
-    @friendly_name = @fetched['friendlyName']
-    @id = @fetched['id']
-    @labels = @fetched['labels']
-    @last_modified_time = @fetched['lastModifiedTime']
-    @location = @fetched['location']
-    @default_encryption_configuration = GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(@fetched['defaultEncryptionConfiguration'], to_s)
+    @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched["access"], to_s)
+    @creation_time = @fetched["creationTime"]
+    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched["datasetReference"], to_s)
+    @default_table_expiration_ms = @fetched["defaultTableExpirationMs"]
+    @default_partition_expiration_ms = @fetched["defaultPartitionExpirationMs"]
+    @description = @fetched["description"]
+    @etag = @fetched["etag"]
+    @friendly_name = @fetched["friendlyName"]
+    @id = @fetched["id"]
+    @labels = @fetched["labels"]
+    @last_modified_time = @fetched["lastModifiedTime"]
+    @location = @fetched["location"]
+    @default_encryption_configuration = GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(@fetched["defaultEncryptionConfiguration"], to_s)
   end
 
   def exists?
@@ -77,10 +77,10 @@ class BigQueryDataset < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://bigquery.googleapis.com/bigquery/v2/'
+    "https://bigquery.googleapis.com/bigquery/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/datasets/{{name}}'
+    "projects/{{project}}/datasets/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud DNS resources.
 class DNSResourceRecordSet < GcpResourceBase
-  name 'google_dns_resource_record_set'
-  desc 'ResourceRecordSet'
-  supports platform: 'gcp'
+  name "google_dns_resource_record_set"
+  desc "ResourceRecordSet"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -31,7 +31,7 @@ class DNSResourceRecordSet < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     @fetched = unwrap(fetched, params)
     parse unless @fetched.nil?
   end
@@ -41,7 +41,7 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def collection_item
-    'rrsets'
+    "rrsets"
   end
 
   def unwrap(fetched, params)
@@ -49,11 +49,11 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def parse
-    @name = @fetched['name']
-    @type = @fetched['type']
-    @ttl = @fetched['ttl']
-    @target = @fetched['rrdatas']
-    @managed_zone = @fetched['managed_zone']
+    @name = @fetched["name"]
+    @type = @fetched["type"]
+    @ttl = @fetched["ttl"]
+    @target = @fetched["rrdatas"]
+    @managed_zone = @fetched["managed_zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -71,16 +71,16 @@ class DNSResourceRecordSet < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'type' => ->(x, _) { x.nil? ? [] : ["its('type') { should cmp #{x.inspect} }"] },
-      'ttl' => ->(x, _) { x.nil? ? [] : ["its('ttl') { should cmp #{x.inspect} }"] },
-      'target' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('target') { should include #{single.inspect} }" } },
-      'managed_zone' => ->(x, _) { x.nil? ? [] : ["its('managed_zone') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "type" => ->(x, _) { x.nil? ? [] : ["its('type') { should cmp #{x.inspect} }"] },
+      "ttl" => ->(x, _) { x.nil? ? [] : ["its('ttl') { should cmp #{x.inspect} }"] },
+      "target" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('target') { should include #{single.inspect} }" } },
+      "managed_zone" => ->(x, _) { x.nil? ? [] : ["its('managed_zone') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'ResourceRecordSet'
+    name = "ResourceRecordSet"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -89,11 +89,11 @@ class DNSResourceRecordSet < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_dns_resource_record_set',
+      type: "google_dns_resource_record_set",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -101,10 +101,10 @@ class DNSResourceRecordSet < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/dns/v1/'
+    "https://www.googleapis.com/dns/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}'
+    "projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}"
   end
 end

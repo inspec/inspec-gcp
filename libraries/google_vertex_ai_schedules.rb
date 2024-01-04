@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAISchedules < GcpResourceBase
-  name 'google_vertex_ai_schedules'
-  desc 'Schedule plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_schedules"
+  desc "Schedule plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -47,12 +47,12 @@ class VertexAISchedules < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('schedules')
+    @table = fetch_wrapped_resource("schedules")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -80,34 +80,34 @@ class VertexAISchedules < GcpResourceBase
 
   def transformers
     {
-      'startedRunCount' => ->(obj) { [:started_run_count, obj['startedRunCount']] },
-      'allowQueueing' => ->(obj) { [:allow_queueing, obj['allowQueueing']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'cron' => ->(obj) { [:cron, obj['cron']] },
-      'lastPauseTime' => ->(obj) { [:last_pause_time, obj['lastPauseTime']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'maxRunCount' => ->(obj) { [:max_run_count, obj['maxRunCount']] },
-      'nextRunTime' => ->(obj) { [:next_run_time, obj['nextRunTime']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'lastScheduledRunResponse' => ->(obj) { [:last_scheduled_run_response, GoogleInSpec::VertexAI::Property::ScheduleLastScheduledRunResponse.new(obj['lastScheduledRunResponse'], to_s)] },
-      'lastResumeTime' => ->(obj) { [:last_resume_time, obj['lastResumeTime']] },
-      'maxConcurrentRunCount' => ->(obj) { [:max_concurrent_run_count, obj['maxConcurrentRunCount']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createPipelineJobRequest' => ->(obj) { [:create_pipeline_job_request, GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequest.new(obj['createPipelineJobRequest'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'catchUp' => ->(obj) { [:catch_up, obj['catchUp']] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      "startedRunCount" => ->(obj) { [:started_run_count, obj["startedRunCount"]] },
+      "allowQueueing" => ->(obj) { [:allow_queueing, obj["allowQueueing"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "cron" => ->(obj) { [:cron, obj["cron"]] },
+      "lastPauseTime" => ->(obj) { [:last_pause_time, obj["lastPauseTime"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "maxRunCount" => ->(obj) { [:max_run_count, obj["maxRunCount"]] },
+      "nextRunTime" => ->(obj) { [:next_run_time, obj["nextRunTime"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "lastScheduledRunResponse" => ->(obj) { [:last_scheduled_run_response, GoogleInSpec::VertexAI::Property::ScheduleLastScheduledRunResponse.new(obj["lastScheduledRunResponse"], to_s)] },
+      "lastResumeTime" => ->(obj) { [:last_resume_time, obj["lastResumeTime"]] },
+      "maxConcurrentRunCount" => ->(obj) { [:max_concurrent_run_count, obj["maxConcurrentRunCount"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createPipelineJobRequest" => ->(obj) { [:create_pipeline_job_request, GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequest.new(obj["createPipelineJobRequest"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "catchUp" => ->(obj) { [:catch_up, obj["catchUp"]] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/schedules'
+    "{{parent}}/schedules"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_errors_details_status_details'
+require "google/dlp/property/job_errors_details_status_details"
 module GoogleInSpec
   module DLP
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @code = args['code']
-          @message = args['message']
-          @details = GoogleInSpec::DLP::Property::JobErrorsDetailsStatusDetailsArray.parse(args['details'], to_s)
+          @code = args["code"]
+          @message = args["message"]
+          @details = GoogleInSpec::DLP::Property::JobErrorsDetailsStatusDetailsArray.parse(args["details"], to_s)
         end
 
         def to_s

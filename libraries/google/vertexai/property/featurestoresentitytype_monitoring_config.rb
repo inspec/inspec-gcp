@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_categorical_threshold_config'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_import_features_analysis'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_numerical_threshold_config'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_snapshot_analysis'
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_categorical_threshold_config"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_import_features_analysis"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_numerical_threshold_config"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_snapshot_analysis"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -32,10 +32,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @import_features_analysis = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigImportFeaturesAnalysis.new(args['importFeaturesAnalysis'], to_s)
-          @numerical_threshold_config = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigNumericalThresholdConfig.new(args['numericalThresholdConfig'], to_s)
-          @categorical_threshold_config = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigCategoricalThresholdConfig.new(args['categoricalThresholdConfig'], to_s)
-          @snapshot_analysis = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigSnapshotAnalysis.new(args['snapshotAnalysis'], to_s)
+          @import_features_analysis = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigImportFeaturesAnalysis.new(args["importFeaturesAnalysis"], to_s)
+          @numerical_threshold_config = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigNumericalThresholdConfig.new(args["numericalThresholdConfig"], to_s)
+          @categorical_threshold_config = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigCategoricalThresholdConfig.new(args["categoricalThresholdConfig"], to_s)
+          @snapshot_analysis = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfigSnapshotAnalysis.new(args["snapshotAnalysis"], to_s)
         end
 
         def to_s

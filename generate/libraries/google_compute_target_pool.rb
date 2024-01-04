@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeTargetPool < GcpResourceBase
-  name 'google_compute_target_pool'
-  desc 'TargetPool'
-  supports platform: 'gcp'
+  name "google_compute_target_pool"
+  desc "TargetPool"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :backup_pool
@@ -36,22 +36,22 @@ class ComputeTargetPool < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @backup_pool = @fetched['backupPool']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @failover_ratio = @fetched['failoverRatio']
-    @health_check = @fetched['healthCheck']
-    @id = @fetched['id']
-    @instances = @fetched['instances']
-    @name = @fetched['name']
-    @session_affinity = @fetched['sessionAffinity']
-    @region = @fetched['region']
+    @backup_pool = @fetched["backupPool"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @failover_ratio = @fetched["failoverRatio"]
+    @health_check = @fetched["healthCheck"]
+    @id = @fetched["id"]
+    @instances = @fetched["instances"]
+    @name = @fetched["name"]
+    @session_affinity = @fetched["sessionAffinity"]
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -69,21 +69,21 @@ class ComputeTargetPool < GcpResourceBase
 
   def un_parse
     {
-      'backup_pool' => ->(x, _) { x.nil? ? [] : ["its('backup_pool') { should cmp #{x.inspect} }"] },
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'failover_ratio' => ->(x, _) { x.nil? ? [] : ["its('failover_ratio') { should cmp #{x.inspect} }"] },
-      'health_check' => ->(x, _) { x.nil? ? [] : ["its('health_check') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'instances' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('instances') { should include #{single.inspect} }" } },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'session_affinity' => ->(x, _) { x.nil? ? [] : ["its('session_affinity') { should cmp #{x.inspect} }"] },
-      'region' => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
+      "backup_pool" => ->(x, _) { x.nil? ? [] : ["its('backup_pool') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "failover_ratio" => ->(x, _) { x.nil? ? [] : ["its('failover_ratio') { should cmp #{x.inspect} }"] },
+      "health_check" => ->(x, _) { x.nil? ? [] : ["its('health_check') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "instances" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('instances') { should include #{single.inspect} }" } },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "session_affinity" => ->(x, _) { x.nil? ? [] : ["its('session_affinity') { should cmp #{x.inspect} }"] },
+      "region" => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'TargetPool'
+    name = "TargetPool"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -92,11 +92,11 @@ class ComputeTargetPool < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_compute_target_pool',
+      type: "google_compute_target_pool",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -110,10 +110,10 @@ class ComputeTargetPool < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/targetPools/{{name}}'
+    "projects/{{project}}/regions/{{region}}/targetPools/{{name}}"
   end
 end

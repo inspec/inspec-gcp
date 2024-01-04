@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAITrainingPipelines < GcpResourceBase
-  name 'google_vertex_ai_training_pipelines'
-  desc 'TrainingPipeline plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_training_pipelines"
+  desc "TrainingPipeline plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -46,12 +46,12 @@ class VertexAITrainingPipelines < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('trainingPipelines')
+    @table = fetch_wrapped_resource("trainingPipelines")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -79,33 +79,33 @@ class VertexAITrainingPipelines < GcpResourceBase
 
   def transformers
     {
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::TrainingPipelineError.new(obj['error'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'inputDataConfig' => ->(obj) { [:input_data_config, GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfig.new(obj['inputDataConfig'], to_s)] },
-      'parentModel' => ->(obj) { [:parent_model, obj['parentModel']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TrainingPipelineLabels.new(obj['labels'], to_s)] },
-      'trainingTaskDefinition' => ->(obj) { [:training_task_definition, obj['trainingTaskDefinition']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'trainingTaskMetadata' => ->(obj) { [:training_task_metadata, obj['trainingTaskMetadata']] },
-      'trainingTaskInputs' => ->(obj) { [:training_task_inputs, obj['trainingTaskInputs']] },
-      'modelId' => ->(obj) { [:model_id, obj['modelId']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::TrainingPipelineEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'modelToUpload' => ->(obj) { [:model_to_upload, GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUpload.new(obj['modelToUpload'], to_s)] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "error" => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::TrainingPipelineError.new(obj["error"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "inputDataConfig" => ->(obj) { [:input_data_config, GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfig.new(obj["inputDataConfig"], to_s)] },
+      "parentModel" => ->(obj) { [:parent_model, obj["parentModel"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TrainingPipelineLabels.new(obj["labels"], to_s)] },
+      "trainingTaskDefinition" => ->(obj) { [:training_task_definition, obj["trainingTaskDefinition"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "trainingTaskMetadata" => ->(obj) { [:training_task_metadata, obj["trainingTaskMetadata"]] },
+      "trainingTaskInputs" => ->(obj) { [:training_task_inputs, obj["trainingTaskInputs"]] },
+      "modelId" => ->(obj) { [:model_id, obj["modelId"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::TrainingPipelineEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "modelToUpload" => ->(obj) { [:model_to_upload, GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUpload.new(obj["modelToUpload"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/trainingPipelines'
+    "{{parent}}/trainingPipelines"
   end
 end

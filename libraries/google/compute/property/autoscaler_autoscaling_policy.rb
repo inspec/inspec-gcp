@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
-require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
-require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas'
-require 'google/compute/property/autoscaler_autoscaling_policy_scaling_schedules'
+require "google/compute/property/autoscaler_autoscaling_policy_cpu_utilization"
+require "google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations"
+require "google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_down_control"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_in_control"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas"
+require "google/compute/property/autoscaler_autoscaling_policy_scaling_schedules"
 module GoogleInSpec
   module Compute
     module Property
@@ -48,16 +48,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @min_num_replicas = args['minNumReplicas']
-          @max_num_replicas = args['maxNumReplicas']
-          @cool_down_period_sec = args['coolDownPeriodSec']
-          @mode = args['mode']
-          @scale_down_control = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleDownControl.new(args['scaleDownControl'], to_s)
-          @scale_in_control = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleInControl.new(args['scaleInControl'], to_s)
-          @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCpuUtilization.new(args['cpuUtilization'], to_s)
-          @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray.parse(args['customMetricUtilizations'], to_s)
-          @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyLoadBalancingUtilization.new(args['loadBalancingUtilization'], to_s)
-          @scaling_schedules = args['scalingSchedules']
+          @min_num_replicas = args["minNumReplicas"]
+          @max_num_replicas = args["maxNumReplicas"]
+          @cool_down_period_sec = args["coolDownPeriodSec"]
+          @mode = args["mode"]
+          @scale_down_control = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleDownControl.new(args["scaleDownControl"], to_s)
+          @scale_in_control = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleInControl.new(args["scaleInControl"], to_s)
+          @cpu_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCpuUtilization.new(args["cpuUtilization"], to_s)
+          @custom_metric_utilizations = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyCustomMetricUtilizationsArray.parse(args["customMetricUtilizations"], to_s)
+          @load_balancing_utilization = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyLoadBalancingUtilization.new(args["loadBalancingUtilization"], to_s)
+          @scaling_schedules = args["scalingSchedules"]
         end
 
         def to_s

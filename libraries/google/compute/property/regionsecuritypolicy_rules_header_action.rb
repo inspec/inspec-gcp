@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_header_action_request_headers_to_adds'
+require "google/compute/property/regionsecuritypolicy_rules_header_action_request_headers_to_adds"
 module GoogleInSpec
   module Compute
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @request_headers_to_adds = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesHeaderActionRequestHeadersToAddsArray.parse(args['requestHeadersToAdds'], to_s)
+          @request_headers_to_adds = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesHeaderActionRequestHeadersToAddsArray.parse(args["requestHeadersToAdds"], to_s)
         end
 
         def to_s

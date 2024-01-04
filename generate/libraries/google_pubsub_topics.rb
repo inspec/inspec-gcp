@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class PubsubTopics < GcpResourceBase
-  name 'google_pubsub_topics'
-  desc 'Topic plural resource'
-  supports platform: 'gcp'
+  name "google_pubsub_topics"
+  desc "Topic plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,12 +33,12 @@ class PubsubTopics < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('topics')
+    @table = fetch_wrapped_resource("topics")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -66,10 +66,10 @@ class PubsubTopics < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
-      'kmsKeyName' => ->(obj) { [:kms_key_name, obj['kmsKeyName']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'messageStoragePolicy' => ->(obj) { [:message_storage_policy, GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(obj['messageStoragePolicy'], to_s)] },
+      "name" => ->(obj) { [:name, name_from_self_link(obj["name"])] },
+      "kmsKeyName" => ->(obj) { [:kms_key_name, obj["kmsKeyName"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "messageStoragePolicy" => ->(obj) { [:message_storage_policy, GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(obj["messageStoragePolicy"], to_s)] },
     }
   end
 
@@ -96,10 +96,10 @@ class PubsubTopics < GcpResourceBase
   private
 
   def product_url
-    'https://pubsub.googleapis.com/v1/'
+    "https://pubsub.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/topics'
+    "projects/{{project}}/topics"
   end
 end

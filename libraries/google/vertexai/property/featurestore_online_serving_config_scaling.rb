@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_node_count = args['maxNodeCount']
-          @min_node_count = args['minNodeCount']
-          @cpu_utilization_target = args['cpuUtilizationTarget']
+          @max_node_count = args["maxNodeCount"]
+          @min_node_count = args["minNodeCount"]
+          @cpu_utilization_target = args["cpuUtilizationTarget"]
         end
 
         def to_s

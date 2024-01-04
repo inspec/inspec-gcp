@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_pipeline_task_status_error'
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_pipeline_task_status_error"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @update_time = args['updateTime']
-          @error = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsPipelineTaskStatusError.new(args['error'], to_s)
-          @state = args['state']
+          @update_time = args["updateTime"]
+          @error = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsPipelineTaskStatusError.new(args["error"], to_s)
+          @state = args["state"]
         end
 
         def to_s

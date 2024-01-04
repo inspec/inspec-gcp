@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeZones < GcpResourceBase
-    name 'google_compute_zones'
-    desc 'Verifies settings for GCP compute zones in bulk'
+    name "google_compute_zones"
+    desc "Verifies settings for GCP compute zones in bulk"
 
     example "
       describe google_compute_zones(project: 'chef-inspec-gcp') do

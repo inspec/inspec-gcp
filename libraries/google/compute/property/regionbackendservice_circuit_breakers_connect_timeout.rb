@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @seconds = args['seconds']
-          @nanos = args['nanos']
+          @seconds = args["seconds"]
+          @nanos = args["nanos"]
         end
 
         def to_s

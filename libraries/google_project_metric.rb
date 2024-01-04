@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,19 +13,19 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/logging/property/metric_bucket_options'
-require 'google/logging/property/metric_bucket_options_explicit_buckets'
-require 'google/logging/property/metric_bucket_options_exponential_buckets'
-require 'google/logging/property/metric_bucket_options_linear_buckets'
-require 'google/logging/property/metric_metric_descriptor'
-require 'google/logging/property/metric_metric_descriptor_labels'
+require "gcp_backend"
+require "google/logging/property/metric_bucket_options"
+require "google/logging/property/metric_bucket_options_explicit_buckets"
+require "google/logging/property/metric_bucket_options_exponential_buckets"
+require "google/logging/property/metric_bucket_options_linear_buckets"
+require "google/logging/property/metric_metric_descriptor"
+require "google/logging/property/metric_metric_descriptor_labels"
 
 # A provider to manage Cloud (Stackdriver) Logging resources.
 class LoggingMetric < GcpResourceBase
-  name 'google_project_metric'
-  desc 'Metric'
-  supports platform: 'gcp'
+  name "google_project_metric"
+  desc "Metric"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -39,18 +39,18 @@ class LoggingMetric < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @filter = @fetched['filter']
-    @metric_descriptor = GoogleInSpec::Logging::Property::MetricMetricDescriptor.new(@fetched['metricDescriptor'], to_s)
-    @label_extractors = @fetched['labelExtractors']
-    @value_extractor = @fetched['valueExtractor']
-    @bucket_options = GoogleInSpec::Logging::Property::MetricBucketOptions.new(@fetched['bucketOptions'], to_s)
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @filter = @fetched["filter"]
+    @metric_descriptor = GoogleInSpec::Logging::Property::MetricMetricDescriptor.new(@fetched["metricDescriptor"], to_s)
+    @label_extractors = @fetched["labelExtractors"]
+    @value_extractor = @fetched["valueExtractor"]
+    @bucket_options = GoogleInSpec::Logging::Property::MetricBucketOptions.new(@fetched["bucketOptions"], to_s)
   end
 
   def exists?
@@ -64,10 +64,10 @@ class LoggingMetric < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/metrics/{{%name}}'
+    "projects/{{project}}/metrics/{{%name}}"
   end
 end

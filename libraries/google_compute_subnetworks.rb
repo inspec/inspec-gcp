@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeSubnetworks < GcpResourceBase
-  name 'google_compute_subnetworks'
-  desc 'Subnetwork plural resource'
-  supports platform: 'gcp'
+  name "google_compute_subnetworks"
+  desc "Subnetwork plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -43,12 +43,12 @@ class ComputeSubnetworks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -76,20 +76,20 @@ class ComputeSubnetworks < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'gatewayAddress' => ->(obj) { [:gateway_address, obj['gatewayAddress']] },
-      'id' => ->(obj) { [:subnetwork_id, obj['id']] },
-      'ipCidrRange' => ->(obj) { [:ip_cidr_range, obj['ipCidrRange']] },
-      'name' => ->(obj) { [:subnetwork_name, obj['name']] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
-      'role' => ->(obj) { [:role, obj['role']] },
-      'secondaryIpRanges' => ->(obj) { [:secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj['secondaryIpRanges'], to_s)] },
-      'privateIpGoogleAccess' => ->(obj) { [:private_ip_google_access, obj['privateIpGoogleAccess']] },
-      'privateIpv6GoogleAccess' => ->(obj) { [:private_ipv6_google_access, obj['privateIpv6GoogleAccess']] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj['logConfig'], to_s)] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "gatewayAddress" => ->(obj) { [:gateway_address, obj["gatewayAddress"]] },
+      "id" => ->(obj) { [:subnetwork_id, obj["id"]] },
+      "ipCidrRange" => ->(obj) { [:ip_cidr_range, obj["ipCidrRange"]] },
+      "name" => ->(obj) { [:subnetwork_name, obj["name"]] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "purpose" => ->(obj) { [:purpose, obj["purpose"]] },
+      "role" => ->(obj) { [:role, obj["role"]] },
+      "secondaryIpRanges" => ->(obj) { [:secondary_ip_ranges, GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(obj["secondaryIpRanges"], to_s)] },
+      "privateIpGoogleAccess" => ->(obj) { [:private_ip_google_access, obj["privateIpGoogleAccess"]] },
+      "privateIpv6GoogleAccess" => ->(obj) { [:private_ipv6_google_access, obj["privateIpv6GoogleAccess"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
+      "logConfig" => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(obj["logConfig"], to_s)] },
     }
   end
 
@@ -102,13 +102,13 @@ class ComputeSubnetworks < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/subnetworks'
+    "projects/{{project}}/regions/{{region}}/subnetworks"
   end
 end

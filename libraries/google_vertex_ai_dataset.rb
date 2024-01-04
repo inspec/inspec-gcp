@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/dataset_encryption_spec'
-require 'google/vertexai/property/dataset_labels'
-require 'google/vertexai/property/dataset_saved_queries'
+require "gcp_backend"
+require "google/vertexai/property/dataset_encryption_spec"
+require "google/vertexai/property/dataset_labels"
+require "google/vertexai/property/dataset_saved_queries"
 
 # A provider to manage Vertex AI resources.
 class VertexAIDataset < GcpResourceBase
-  name 'google_vertex_ai_dataset'
-  desc 'Dataset'
-  supports platform: 'gcp'
+  name "google_vertex_ai_dataset"
+  desc "Dataset"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :saved_queries
@@ -42,24 +42,24 @@ class VertexAIDataset < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @saved_queries = GoogleInSpec::VertexAI::Property::DatasetSavedQueriesArray.parse(@fetched['savedQueries'], to_s)
-    @create_time = @fetched['createTime']
-    @encryption_spec = GoogleInSpec::VertexAI::Property::DatasetEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @name = @fetched['name']
-    @metadata = @fetched['metadata']
-    @etag = @fetched['etag']
-    @description = @fetched['description']
-    @labels = GoogleInSpec::VertexAI::Property::DatasetLabels.new(@fetched['labels'], to_s)
-    @metadata_schema_uri = @fetched['metadataSchemaUri']
-    @metadata_artifact = @fetched['metadataArtifact']
-    @update_time = @fetched['updateTime']
-    @data_item_count = @fetched['dataItemCount']
-    @display_name = @fetched['displayName']
+    @saved_queries = GoogleInSpec::VertexAI::Property::DatasetSavedQueriesArray.parse(@fetched["savedQueries"], to_s)
+    @create_time = @fetched["createTime"]
+    @encryption_spec = GoogleInSpec::VertexAI::Property::DatasetEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @name = @fetched["name"]
+    @metadata = @fetched["metadata"]
+    @etag = @fetched["etag"]
+    @description = @fetched["description"]
+    @labels = GoogleInSpec::VertexAI::Property::DatasetLabels.new(@fetched["labels"], to_s)
+    @metadata_schema_uri = @fetched["metadataSchemaUri"]
+    @metadata_artifact = @fetched["metadataArtifact"]
+    @update_time = @fetched["updateTime"]
+    @data_item_count = @fetched["dataItemCount"]
+    @display_name = @fetched["displayName"]
   end
 
   def exists?
@@ -73,10 +73,10 @@ class VertexAIDataset < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

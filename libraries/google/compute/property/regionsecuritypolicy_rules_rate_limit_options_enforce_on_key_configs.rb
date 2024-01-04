@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enforce_on_key_type = args['enforceOnKeyType']
-          @enforce_on_key_name = args['enforceOnKeyName']
+          @enforce_on_key_type = args["enforceOnKeyType"]
+          @enforce_on_key_name = args["enforceOnKeyName"]
         end
 
         def to_s

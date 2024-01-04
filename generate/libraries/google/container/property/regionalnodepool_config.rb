@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/regionalnodepool_config_accelerators'
-require 'google/container/property/regionalnodepool_config_taints'
+require "google/container/property/regionalnodepool_config_accelerators"
+require "google/container/property/regionalnodepool_config_taints"
 module GoogleInSpec
   module Container
     module Property
@@ -53,20 +53,20 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @machine_type = arguments['machineType']
-          @disk_size_gb = arguments['diskSizeGb']
-          @oauth_scopes = arguments['oauthScopes']
-          @service_account = arguments['serviceAccount']
-          @metadata = arguments['metadata']
-          @image_type = arguments['imageType']
-          @labels = arguments['labels']
-          @local_ssd_count = arguments['localSsdCount']
-          @tags = arguments['tags']
-          @preemptible = arguments['preemptible']
-          @accelerators = GoogleInSpec::Container::Property::RegionalNodePoolConfigAcceleratorsArray.parse(arguments['accelerators'], to_s)
-          @disk_type = arguments['diskType']
-          @min_cpu_platform = arguments['minCpuPlatform']
-          @taints = GoogleInSpec::Container::Property::RegionalNodePoolConfigTaintsArray.parse(arguments['taints'], to_s)
+          @machine_type = arguments["machineType"]
+          @disk_size_gb = arguments["diskSizeGb"]
+          @oauth_scopes = arguments["oauthScopes"]
+          @service_account = arguments["serviceAccount"]
+          @metadata = arguments["metadata"]
+          @image_type = arguments["imageType"]
+          @labels = arguments["labels"]
+          @local_ssd_count = arguments["localSsdCount"]
+          @tags = arguments["tags"]
+          @preemptible = arguments["preemptible"]
+          @accelerators = GoogleInSpec::Container::Property::RegionalNodePoolConfigAcceleratorsArray.parse(arguments["accelerators"], to_s)
+          @disk_type = arguments["diskType"]
+          @min_cpu_platform = arguments["minCpuPlatform"]
+          @taints = GoogleInSpec::Container::Property::RegionalNodePoolConfigTaintsArray.parse(arguments["taints"], to_s)
         end
 
         def to_s
@@ -76,20 +76,20 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'machine_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.machine_type') { should cmp #{x.inspect} }"] },
-            'disk_size_gb' => ->(x, path) { x.nil? ? [] : ["its('#{path}.disk_size_gb') { should cmp #{x.inspect} }"] },
-            'oauth_scopes' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.oauth_scopes') { should include #{single.inspect} }" } },
-            'service_account' => ->(x, path) { x.nil? ? [] : ["its('#{path}.service_account') { should cmp #{x.inspect} }"] },
-            'metadata' => ->(x, path) { x.nil? ? [] : x.map { |k, v| "its('#{path}.metadata') { should include(#{k.inspect} => #{v.inspect}) }" } },
-            'image_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.image_type') { should cmp #{x.inspect} }"] },
-            'labels' => ->(x, path) { x.nil? ? [] : x.map { |k, v| "its('#{path}.labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-            'local_ssd_count' => ->(x, path) { x.nil? ? [] : ["its('#{path}.local_ssd_count') { should cmp #{x.inspect} }"] },
-            'tags' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.tags') { should include #{single.inspect} }" } },
-            'preemptible' => ->(x, path) { x.nil? ? [] : ["its('#{path}.preemptible') { should cmp #{x.inspect} }"] },
-            'accelerators' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.accelerators') { should include '#{single.to_json}' }" } },
-            'disk_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.disk_type') { should cmp #{x.inspect} }"] },
-            'min_cpu_platform' => ->(x, path) { x.nil? ? [] : ["its('#{path}.min_cpu_platform') { should cmp #{x.inspect} }"] },
-            'taints' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.taints') { should include '#{single.to_json}' }" } },
+            "machine_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.machine_type') { should cmp #{x.inspect} }"] },
+            "disk_size_gb" => ->(x, path) { x.nil? ? [] : ["its('#{path}.disk_size_gb') { should cmp #{x.inspect} }"] },
+            "oauth_scopes" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.oauth_scopes') { should include #{single.inspect} }" } },
+            "service_account" => ->(x, path) { x.nil? ? [] : ["its('#{path}.service_account') { should cmp #{x.inspect} }"] },
+            "metadata" => ->(x, path) { x.nil? ? [] : x.map { |k, v| "its('#{path}.metadata') { should include(#{k.inspect} => #{v.inspect}) }" } },
+            "image_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.image_type') { should cmp #{x.inspect} }"] },
+            "labels" => ->(x, path) { x.nil? ? [] : x.map { |k, v| "its('#{path}.labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+            "local_ssd_count" => ->(x, path) { x.nil? ? [] : ["its('#{path}.local_ssd_count') { should cmp #{x.inspect} }"] },
+            "tags" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.tags') { should include #{single.inspect} }" } },
+            "preemptible" => ->(x, path) { x.nil? ? [] : ["its('#{path}.preemptible') { should cmp #{x.inspect} }"] },
+            "accelerators" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.accelerators') { should include '#{single.to_json}' }" } },
+            "disk_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.disk_type') { should cmp #{x.inspect} }"] },
+            "min_cpu_platform" => ->(x, path) { x.nil? ? [] : ["its('#{path}.min_cpu_platform') { should cmp #{x.inspect} }"] },
+            "taints" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.taints') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

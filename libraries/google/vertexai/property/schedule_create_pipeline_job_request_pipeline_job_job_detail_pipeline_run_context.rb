@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_labels'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_metadata'
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_labels"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_metadata"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -44,17 +44,17 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @schema_title = args['schemaTitle']
-          @etag = args['etag']
-          @description = args['description']
-          @display_name = args['displayName']
-          @schema_version = args['schemaVersion']
-          @create_time = args['createTime']
-          @labels = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineRunContextLabels.new(args['labels'], to_s)
-          @metadata = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineRunContextMetadata.new(args['metadata'], to_s)
-          @update_time = args['updateTime']
-          @parent_contexts = args['parentContexts']
+          @name = args["name"]
+          @schema_title = args["schemaTitle"]
+          @etag = args["etag"]
+          @description = args["description"]
+          @display_name = args["displayName"]
+          @schema_version = args["schemaVersion"]
+          @create_time = args["createTime"]
+          @labels = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineRunContextLabels.new(args["labels"], to_s)
+          @metadata = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailPipelineRunContextMetadata.new(args["metadata"], to_s)
+          @update_time = args["updateTime"]
+          @parent_contexts = args["parentContexts"]
         end
 
         def to_s

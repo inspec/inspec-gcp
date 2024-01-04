@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_attribution_score_drift_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_default_drift_threshold'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_drift_thresholds'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_attribution_score_drift_thresholds"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_default_drift_threshold"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_drift_thresholds"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -29,9 +29,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @attribution_score_drift_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfigAttributionScoreDriftThresholds.new(args['attributionScoreDriftThresholds'], to_s)
-          @drift_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfigDriftThresholds.new(args['driftThresholds'], to_s)
-          @default_drift_threshold = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfigDefaultDriftThreshold.new(args['defaultDriftThreshold'], to_s)
+          @attribution_score_drift_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfigAttributionScoreDriftThresholds.new(args["attributionScoreDriftThresholds"], to_s)
+          @drift_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfigDriftThresholds.new(args["driftThresholds"], to_s)
+          @default_drift_threshold = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfigDefaultDriftThreshold.new(args["defaultDriftThreshold"], to_s)
         end
 
         def to_s

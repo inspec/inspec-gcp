@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_recovery_config_scheduled_snapshots_config'
+require "google/composer/property/projectlocationenvironment_config_recovery_config_scheduled_snapshots_config"
 module GoogleInSpec
   module Composer
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @scheduled_snapshots_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.new(args['scheduledSnapshotsConfig'], to_s)
+          @scheduled_snapshots_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.new(args["scheduledSnapshotsConfig"], to_s)
         end
 
         def to_s

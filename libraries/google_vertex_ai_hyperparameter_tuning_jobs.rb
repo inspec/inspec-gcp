@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIHyperparameterTuningJobs < GcpResourceBase
-  name 'google_vertex_ai_hyperparameter_tuning_jobs'
-  desc 'HyperparameterTuningJob plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_hyperparameter_tuning_jobs"
+  desc "HyperparameterTuningJob plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -45,12 +45,12 @@ class VertexAIHyperparameterTuningJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('hyperparameterTuningJobs')
+    @table = fetch_wrapped_resource("hyperparameterTuningJobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -78,32 +78,32 @@ class VertexAIHyperparameterTuningJobs < GcpResourceBase
 
   def transformers
     {
-      'studySpec' => ->(obj) { [:study_spec, obj['studySpec']] },
-      'trials' => ->(obj) { [:trials, obj['trials']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'maxFailedTrialCount' => ->(obj) { [:max_failed_trial_count, obj['maxFailedTrialCount']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, obj['encryptionSpec']] },
-      'error' => ->(obj) { [:error, obj['error']] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::HyperparameterTuningJobLabels.new(obj['labels'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'parallelTrialCount' => ->(obj) { [:parallel_trial_count, obj['parallelTrialCount']] },
-      'trialJobSpec' => ->(obj) { [:trial_job_spec, obj['trialJobSpec']] },
-      'maxTrialCount' => ->(obj) { [:max_trial_count, obj['maxTrialCount']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'name' => ->(obj) { [:name, obj['name']] },
+      "studySpec" => ->(obj) { [:study_spec, obj["studySpec"]] },
+      "trials" => ->(obj) { [:trials, obj["trials"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "maxFailedTrialCount" => ->(obj) { [:max_failed_trial_count, obj["maxFailedTrialCount"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, obj["encryptionSpec"]] },
+      "error" => ->(obj) { [:error, obj["error"]] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::HyperparameterTuningJobLabels.new(obj["labels"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "parallelTrialCount" => ->(obj) { [:parallel_trial_count, obj["parallelTrialCount"]] },
+      "trialJobSpec" => ->(obj) { [:trial_job_spec, obj["trialJobSpec"]] },
+      "maxTrialCount" => ->(obj) { [:max_trial_count, obj["maxTrialCount"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/hyperparameterTuningJobs'
+    "{{parent}}/hyperparameterTuningJobs"
   end
 end

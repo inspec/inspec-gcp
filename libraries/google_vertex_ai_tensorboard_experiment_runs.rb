@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAITensorboardExperimentRuns < GcpResourceBase
-  name 'google_vertex_ai_tensorboard_experiment_runs'
-  desc 'TensorboardExperimentRun plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_tensorboard_experiment_runs"
+  desc "TensorboardExperimentRun plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -36,12 +36,12 @@ class VertexAITensorboardExperimentRuns < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('tensorboardRuns')
+    @table = fetch_wrapped_resource("tensorboardRuns")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -69,23 +69,23 @@ class VertexAITensorboardExperimentRuns < GcpResourceBase
 
   def transformers
     {
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardExperimentRunLabels.new(obj['labels'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'name' => ->(obj) { [:name, obj['name']] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardExperimentRunLabels.new(obj["labels"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/runs'
+    "{{parent}}/runs"
   end
 end

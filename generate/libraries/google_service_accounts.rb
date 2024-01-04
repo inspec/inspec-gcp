@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleServiceAccounts < GcpResourceBase
-    name 'google_service_accounts'
-    desc 'Verifies settings for GCP compute service accounts in bulk'
+    name "google_service_accounts"
+    desc "Verifies settings for GCP compute service accounts in bulk"
 
     example "
       describe google_service_accounts(project: 'chef-inspec-gcp') do

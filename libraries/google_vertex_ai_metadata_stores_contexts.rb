@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIMetadataStoresContexts < GcpResourceBase
-  name 'google_vertex_ai_metadata_stores_contexts'
-  desc 'MetadataStoresContext plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_metadata_stores_contexts"
+  desc "MetadataStoresContext plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class VertexAIMetadataStoresContexts < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('contexts')
+    @table = fetch_wrapped_resource("contexts")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
@@ -72,27 +72,27 @@ class VertexAIMetadataStoresContexts < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'schemaTitle' => ->(obj) { [:schema_title, obj['schemaTitle']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'schemaVersion' => ->(obj) { [:schema_version, obj['schemaVersion']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::MetadataStoresContextLabels.new(obj['labels'], to_s)] },
-      'metadata' => ->(obj) { [:metadata, GoogleInSpec::VertexAI::Property::MetadataStoresContextMetadata.new(obj['metadata'], to_s)] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'parentContexts' => ->(obj) { [:parent_contexts, obj['parentContexts']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "schemaTitle" => ->(obj) { [:schema_title, obj["schemaTitle"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "schemaVersion" => ->(obj) { [:schema_version, obj["schemaVersion"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::MetadataStoresContextLabels.new(obj["labels"], to_s)] },
+      "metadata" => ->(obj) { [:metadata, GoogleInSpec::VertexAI::Property::MetadataStoresContextMetadata.new(obj["metadata"], to_s)] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "parentContexts" => ->(obj) { [:parent_contexts, obj["parentContexts"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/contexts'
+    "{{parent}}/contexts"
   end
 end

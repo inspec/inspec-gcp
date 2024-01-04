@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Memorystore resources.
 class RedisInstance < GcpResourceBase
-  name 'google_redis_instance'
-  desc 'Instance'
-  supports platform: 'gcp'
+  name "google_redis_instance"
+  desc "Instance"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :alternative_location_id
@@ -42,28 +42,28 @@ class RedisInstance < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @alternative_location_id = @fetched['alternativeLocationId']
-    @authorized_network = @fetched['authorizedNetwork']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @current_location_id = @fetched['currentLocationId']
-    @display_name = @fetched['displayName']
-    @host = @fetched['host']
-    @labels = @fetched['labels']
-    @redis_configs = @fetched['redisConfigs']
-    @location_id = @fetched['locationId']
-    @name = @fetched['name']
-    @memory_size_gb = @fetched['memorySizeGb']
-    @port = @fetched['port']
-    @redis_version = @fetched['redisVersion']
-    @reserved_ip_range = @fetched['reservedIpRange']
-    @tier = @fetched['tier']
-    @region = @fetched['region']
+    @alternative_location_id = @fetched["alternativeLocationId"]
+    @authorized_network = @fetched["authorizedNetwork"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @current_location_id = @fetched["currentLocationId"]
+    @display_name = @fetched["displayName"]
+    @host = @fetched["host"]
+    @labels = @fetched["labels"]
+    @redis_configs = @fetched["redisConfigs"]
+    @location_id = @fetched["locationId"]
+    @name = @fetched["name"]
+    @memory_size_gb = @fetched["memorySizeGb"]
+    @port = @fetched["port"]
+    @redis_version = @fetched["redisVersion"]
+    @reserved_ip_range = @fetched["reservedIpRange"]
+    @tier = @fetched["tier"]
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -81,27 +81,27 @@ class RedisInstance < GcpResourceBase
 
   def un_parse
     {
-      'alternative_location_id' => ->(x, _) { x.nil? ? [] : ["its('alternative_location_id') { should cmp #{x.inspect} }"] },
-      'authorized_network' => ->(x, _) { x.nil? ? [] : ["its('authorized_network') { should cmp #{x.inspect} }"] },
-      'create_time' => ->(x, _) { x.nil? ? [] : ["its('create_time.to_s') { should cmp '#{x.inspect}' }"] },
-      'current_location_id' => ->(x, _) { x.nil? ? [] : ["its('current_location_id') { should cmp #{x.inspect} }"] },
-      'display_name' => ->(x, _) { x.nil? ? [] : ["its('display_name') { should cmp #{x.inspect} }"] },
-      'host' => ->(x, _) { x.nil? ? [] : ["its('host') { should cmp #{x.inspect} }"] },
-      'labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'redis_configs' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('redis_configs') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'location_id' => ->(x, _) { x.nil? ? [] : ["its('location_id') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'memory_size_gb' => ->(x, _) { x.nil? ? [] : ["its('memory_size_gb') { should cmp #{x.inspect} }"] },
-      'port' => ->(x, _) { x.nil? ? [] : ["its('port') { should cmp #{x.inspect} }"] },
-      'redis_version' => ->(x, _) { x.nil? ? [] : ["its('redis_version') { should cmp #{x.inspect} }"] },
-      'reserved_ip_range' => ->(x, _) { x.nil? ? [] : ["its('reserved_ip_range') { should cmp #{x.inspect} }"] },
-      'tier' => ->(x, _) { x.nil? ? [] : ["its('tier') { should cmp #{x.inspect} }"] },
-      'region' => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
+      "alternative_location_id" => ->(x, _) { x.nil? ? [] : ["its('alternative_location_id') { should cmp #{x.inspect} }"] },
+      "authorized_network" => ->(x, _) { x.nil? ? [] : ["its('authorized_network') { should cmp #{x.inspect} }"] },
+      "create_time" => ->(x, _) { x.nil? ? [] : ["its('create_time.to_s') { should cmp '#{x.inspect}' }"] },
+      "current_location_id" => ->(x, _) { x.nil? ? [] : ["its('current_location_id') { should cmp #{x.inspect} }"] },
+      "display_name" => ->(x, _) { x.nil? ? [] : ["its('display_name') { should cmp #{x.inspect} }"] },
+      "host" => ->(x, _) { x.nil? ? [] : ["its('host') { should cmp #{x.inspect} }"] },
+      "labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "redis_configs" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('redis_configs') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "location_id" => ->(x, _) { x.nil? ? [] : ["its('location_id') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "memory_size_gb" => ->(x, _) { x.nil? ? [] : ["its('memory_size_gb') { should cmp #{x.inspect} }"] },
+      "port" => ->(x, _) { x.nil? ? [] : ["its('port') { should cmp #{x.inspect} }"] },
+      "redis_version" => ->(x, _) { x.nil? ? [] : ["its('redis_version') { should cmp #{x.inspect} }"] },
+      "reserved_ip_range" => ->(x, _) { x.nil? ? [] : ["its('reserved_ip_range') { should cmp #{x.inspect} }"] },
+      "tier" => ->(x, _) { x.nil? ? [] : ["its('tier') { should cmp #{x.inspect} }"] },
+      "region" => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Instance'
+    name = "Instance"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -110,11 +110,11 @@ class RedisInstance < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_redis_instance',
+      type: "google_redis_instance",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -122,10 +122,10 @@ class RedisInstance < GcpResourceBase
   private
 
   def product_url
-    'https://redis.googleapis.com/v1/'
+    "https://redis.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/instances/{{name}}'
+    "projects/{{project}}/locations/{{region}}/instances/{{name}}"
   end
 end

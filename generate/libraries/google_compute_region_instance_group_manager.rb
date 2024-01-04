@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeRegionInstanceGroupManager < GcpResourceBase
-    name 'google_compute_region_instance_group_manager'
-    desc 'Verifies settings for a compute instance group manager'
+    name "google_compute_region_instance_group_manager"
+    desc "Verifies settings for a compute instance group manager"
 
     example "
       describe google_compute_region_instance_group_manager(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-test') do

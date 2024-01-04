@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBucket < GcpResourceBase
-    name 'google_storage_bucket'
-    desc 'Verifies settings for a bucket'
+    name "google_storage_bucket"
+    desc "Verifies settings for a bucket"
 
     example "
       describe google_storage_bucket(name: 'inspec-test-bucket') do

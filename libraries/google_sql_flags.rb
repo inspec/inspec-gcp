@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class SQLFlags < GcpResourceBase
-  name 'google_sql_flags'
-  desc 'Flag plural resource'
-  supports platform: 'gcp'
+  name "google_sql_flags"
+  desc "Flag plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -36,12 +36,12 @@ class SQLFlags < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -69,23 +69,23 @@ class SQLFlags < GcpResourceBase
 
   def transformers
     {
-      'allowedStringValues' => ->(obj) { [:allowed_string_values, obj['allowedStringValues']] },
-      'appliesTo' => ->(obj) { [:applies_to, obj['appliesTo']] },
-      'maxValue' => ->(obj) { [:max_value, obj['maxValue']] },
-      'minValue' => ->(obj) { [:min_value, obj['minValue']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'requiresRestart' => ->(obj) { [:requires_restart, obj['requiresRestart']] },
-      'type' => ->(obj) { [:type, obj['type']] },
+      "allowedStringValues" => ->(obj) { [:allowed_string_values, obj["allowedStringValues"]] },
+      "appliesTo" => ->(obj) { [:applies_to, obj["appliesTo"]] },
+      "maxValue" => ->(obj) { [:max_value, obj["maxValue"]] },
+      "minValue" => ->(obj) { [:min_value, obj["minValue"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "requiresRestart" => ->(obj) { [:requires_restart, obj["requiresRestart"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://sqladmin.googleapis.com/sql/v1beta4/'
+    "https://sqladmin.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'flags'
+    "flags"
   end
 end

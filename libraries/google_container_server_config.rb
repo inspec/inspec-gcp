@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/container/property/serverconfig_channels'
+require "gcp_backend"
+require "google/container/property/serverconfig_channels"
 
 # A provider to manage Google Kubernetes Engine resources.
 class ContainerServerConfig < GcpResourceBase
-  name 'google_container_server_config'
-  desc 'ServerConfig'
-  supports platform: 'gcp'
+  name "google_container_server_config"
+  desc "ServerConfig"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :default_cluster_version
@@ -34,18 +34,18 @@ class ContainerServerConfig < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @default_cluster_version = @fetched['defaultClusterVersion']
-    @default_image_type = @fetched['defaultImageType']
-    @valid_image_types = @fetched['validImageTypes']
-    @valid_node_versions = @fetched['validNodeVersions']
-    @valid_master_versions = @fetched['validMasterVersions']
-    @channels = GoogleInSpec::Container::Property::ServerConfigChannelsArray.parse(@fetched['channels'], to_s)
-    @location = @fetched['location']
+    @default_cluster_version = @fetched["defaultClusterVersion"]
+    @default_image_type = @fetched["defaultImageType"]
+    @valid_image_types = @fetched["validImageTypes"]
+    @valid_node_versions = @fetched["validNodeVersions"]
+    @valid_master_versions = @fetched["validMasterVersions"]
+    @channels = GoogleInSpec::Container::Property::ServerConfigChannelsArray.parse(@fetched["channels"], to_s)
+    @location = @fetched["location"]
   end
 
   def exists?
@@ -59,10 +59,10 @@ class ContainerServerConfig < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://container.googleapis.com/v1/'
+    "https://container.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/serverConfig/'
+    "projects/{{project}}/locations/{{location}}/serverConfig/"
   end
 end

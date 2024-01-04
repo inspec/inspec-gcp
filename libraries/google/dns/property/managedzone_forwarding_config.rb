@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dns/property/managedzone_forwarding_config_target_name_servers'
+require "google/dns/property/managedzone_forwarding_config_target_name_servers"
 module GoogleInSpec
   module DNS
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @target_name_servers = GoogleInSpec::DNS::Property::ManagedZoneForwardingConfigTargetNameServersArray.parse(args['targetNameServers'], to_s)
+          @target_name_servers = GoogleInSpec::DNS::Property::ManagedZoneForwardingConfigTargetNameServersArray.parse(args["targetNameServers"], to_s)
         end
 
         def to_s

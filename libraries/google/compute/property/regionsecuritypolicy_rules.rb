@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,19 +13,19 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_header_action'
-require 'google/compute/property/regionsecuritypolicy_rules_header_action_request_headers_to_adds'
-require 'google/compute/property/regionsecuritypolicy_rules_match'
-require 'google/compute/property/regionsecuritypolicy_rules_match_config'
-require 'google/compute/property/regionsecuritypolicy_rules_match_expr'
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config'
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_ban_threshold'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_enforce_on_key_configs'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_redirect_options'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_rate_limit_threshold'
-require 'google/compute/property/regionsecuritypolicy_rules_redirect_options'
+require "google/compute/property/regionsecuritypolicy_rules_header_action"
+require "google/compute/property/regionsecuritypolicy_rules_header_action_request_headers_to_adds"
+require "google/compute/property/regionsecuritypolicy_rules_match"
+require "google/compute/property/regionsecuritypolicy_rules_match_config"
+require "google/compute/property/regionsecuritypolicy_rules_match_expr"
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config"
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_ban_threshold"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_enforce_on_key_configs"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_redirect_options"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_rate_limit_threshold"
+require "google/compute/property/regionsecuritypolicy_rules_redirect_options"
 module GoogleInSpec
   module Compute
     module Property
@@ -53,16 +53,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kind = args['kind']
-          @description = args['description']
-          @priority = args['priority']
-          @match = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatch.new(args['match'], to_s)
-          @action = args['action']
-          @preview = args['preview']
-          @rate_limit_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptions.new(args['rateLimitOptions'], to_s)
-          @header_action = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesHeaderAction.new(args['headerAction'], to_s)
-          @redirect_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRedirectOptions.new(args['redirectOptions'], to_s)
-          @preconfigured_waf_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfig.new(args['preconfiguredWafConfig'], to_s)
+          @kind = args["kind"]
+          @description = args["description"]
+          @priority = args["priority"]
+          @match = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatch.new(args["match"], to_s)
+          @action = args["action"]
+          @preview = args["preview"]
+          @rate_limit_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptions.new(args["rateLimitOptions"], to_s)
+          @header_action = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesHeaderAction.new(args["headerAction"], to_s)
+          @redirect_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRedirectOptions.new(args["redirectOptions"], to_s)
+          @preconfigured_waf_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfig.new(args["preconfiguredWafConfig"], to_s)
         end
 
         def to_s

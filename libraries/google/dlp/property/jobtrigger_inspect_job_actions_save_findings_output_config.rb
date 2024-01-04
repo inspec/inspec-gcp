@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_actions_save_findings_output_config_table'
+require "google/dlp/property/jobtrigger_inspect_job_actions_save_findings_output_config_table"
 module GoogleInSpec
   module DLP
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @table = GoogleInSpec::DLP::Property::JobTriggerInspectJobActionsSaveFindingsOutputConfigTable.new(args['table'], to_s)
-          @output_schema = args['outputSchema']
+          @table = GoogleInSpec::DLP::Property::JobTriggerInspectJobActionsSaveFindingsOutputConfigTable.new(args["table"], to_s)
+          @output_schema = args["outputSchema"]
         end
 
         def to_s

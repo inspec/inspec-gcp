@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @start_time = args['startTime']
-          @end_time = args['endTime']
-          @recurrence = args['recurrence']
+          @start_time = args["startTime"]
+          @end_time = args["endTime"]
+          @recurrence = args["recurrence"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @provider = arguments['provider']
-          @enabled = arguments['enabled']
+          @provider = arguments["provider"]
+          @enabled = arguments["enabled"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'provider' => ->(x, path) { x.nil? ? [] : ["its('#{path}.provider') { should cmp #{x.inspect} }"] },
-            'enabled' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
+            "provider" => ->(x, path) { x.nil? ? [] : ["its('#{path}.provider') { should cmp #{x.inspect} }"] },
+            "enabled" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

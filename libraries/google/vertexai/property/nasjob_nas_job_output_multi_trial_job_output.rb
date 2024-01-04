@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_search_trials'
-require 'google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_train_trials'
+require "google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_search_trials"
+require "google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_train_trials"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @search_trials = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputSearchTrialsArray.parse(args['searchTrials'], to_s)
-          @train_trials = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputTrainTrialsArray.parse(args['trainTrials'], to_s)
+          @search_trials = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputSearchTrialsArray.parse(args["searchTrials"], to_s)
+          @train_trials = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputTrainTrialsArray.parse(args["trainTrials"], to_s)
         end
 
         def to_s

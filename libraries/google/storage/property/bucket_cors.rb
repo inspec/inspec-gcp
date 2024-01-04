@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_age_seconds = args['maxAgeSeconds']
-          @method = args['method']
-          @origin = args['origin']
-          @response_header = args['responseHeader']
+          @max_age_seconds = args["maxAgeSeconds"]
+          @method = args["method"]
+          @origin = args["origin"]
+          @response_header = args["responseHeader"]
         end
 
         def to_s

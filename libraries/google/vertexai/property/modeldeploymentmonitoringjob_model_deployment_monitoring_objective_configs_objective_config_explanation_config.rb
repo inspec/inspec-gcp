@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -27,8 +27,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @explanation_baseline = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfigExplanationBaseline.new(args['explanationBaseline'], to_s)
-          @enable_feature_attributes = args['enableFeatureAttributes']
+          @explanation_baseline = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfigExplanationBaseline.new(args["explanationBaseline"], to_s)
+          @enable_feature_attributes = args["enableFeatureAttributes"]
         end
 
         def to_s

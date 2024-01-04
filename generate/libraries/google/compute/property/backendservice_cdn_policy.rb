@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/backendservice_cdn_policy_cache_key_policy'
+require "google/compute/property/backendservice_cdn_policy_cache_key_policy"
 module GoogleInSpec
   module Compute
     module Property
@@ -28,8 +28,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(arguments['cacheKeyPolicy'], to_s)
-          @signed_url_cache_max_age_sec = arguments['signedUrlCacheMaxAgeSec']
+          @cache_key_policy = GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.new(arguments["cacheKeyPolicy"], to_s)
+          @signed_url_cache_max_age_sec = arguments["signedUrlCacheMaxAgeSec"]
         end
 
         def to_s
@@ -39,8 +39,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'cache_key_policy' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.un_parse(x, "#{path}.cache_key_policy") },
-            'signed_url_cache_max_age_sec' => ->(x, path) { x.nil? ? [] : ["its('#{path}.signed_url_cache_max_age_sec') { should cmp #{x.inspect} }"] },
+            "cache_key_policy" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Compute::Property::BackendServiceCdnPolicyCacheKeyPolicy.un_parse(x, "#{path}.cache_key_policy") },
+            "signed_url_cache_max_age_sec" => ->(x, path) { x.nil? ? [] : ["its('#{path}.signed_url_cache_max_age_sec') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

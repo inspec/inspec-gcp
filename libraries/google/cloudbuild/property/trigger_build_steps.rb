@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_steps_volumes'
+require "google/cloudbuild/property/trigger_build_steps_volumes"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -43,17 +43,17 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @args = args['args']
-          @env = args['env']
-          @id = args['id']
-          @entrypoint = args['entrypoint']
-          @dir = args['dir']
-          @secret_env = args['secretEnv']
-          @timeout = args['timeout']
-          @timing = args['timing']
-          @volumes = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsVolumesArray.parse(args['volumes'], to_s)
-          @wait_for = args['waitFor']
+          @name = args["name"]
+          @args = args["args"]
+          @env = args["env"]
+          @id = args["id"]
+          @entrypoint = args["entrypoint"]
+          @dir = args["dir"]
+          @secret_env = args["secretEnv"]
+          @timeout = args["timeout"]
+          @timing = args["timing"]
+          @volumes = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsVolumesArray.parse(args["volumes"], to_s)
+          @wait_for = args["waitFor"]
         end
 
         def to_s

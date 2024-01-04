@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,17 +13,17 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/accesscontextmanager/property/accesslevel_basic'
-require 'google/accesscontextmanager/property/accesslevel_basic_conditions'
-require 'google/accesscontextmanager/property/accesslevel_custom'
-require 'google/accesscontextmanager/property/accesslevel_custom_expr'
+require "gcp_backend"
+require "google/accesscontextmanager/property/accesslevel_basic"
+require "google/accesscontextmanager/property/accesslevel_basic_conditions"
+require "google/accesscontextmanager/property/accesslevel_custom"
+require "google/accesscontextmanager/property/accesslevel_custom_expr"
 
 # A provider to manage Access Context Manager (VPC Service Controls) resources.
 class AccessContextManagerAccessLevel < GcpResourceBase
-  name 'google_access_context_manager_access_level'
-  desc 'AccessLevel'
-  supports platform: 'gcp'
+  name "google_access_context_manager_access_level"
+  desc "AccessLevel"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :title
@@ -36,17 +36,17 @@ class AccessContextManagerAccessLevel < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @title = @fetched['title']
-    @description = @fetched['description']
-    @basic = GoogleInSpec::AccessContextManager::Property::AccessLevelBasic.new(@fetched['basic'], to_s)
-    @custom = GoogleInSpec::AccessContextManager::Property::AccessLevelCustom.new(@fetched['custom'], to_s)
-    @parent = name_from_self_link(@fetched['parent'])
-    @name = name_from_self_link(@fetched['name'])
+    @title = @fetched["title"]
+    @description = @fetched["description"]
+    @basic = GoogleInSpec::AccessContextManager::Property::AccessLevelBasic.new(@fetched["basic"], to_s)
+    @custom = GoogleInSpec::AccessContextManager::Property::AccessLevelCustom.new(@fetched["custom"], to_s)
+    @parent = name_from_self_link(@fetched["parent"])
+    @name = name_from_self_link(@fetched["name"])
   end
 
   def exists?
@@ -60,10 +60,10 @@ class AccessContextManagerAccessLevel < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://accesscontextmanager.googleapis.com/v1/'
+    "https://accesscontextmanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'accessPolicies/{{parent}}/accessLevels/{{name}}'
+    "accessPolicies/{{parent}}/accessLevels/{{name}}"
   end
 end

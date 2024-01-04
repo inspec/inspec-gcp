@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
+require "google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_example_gcs_source_gcs_source"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @gcs_source = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersExamplesExampleGcsSourceGcsSource.new(args['gcsSource'], to_s)
-          @data_format = args['dataFormat']
+          @gcs_source = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersExamplesExampleGcsSourceGcsSource.new(args["gcsSource"], to_s)
+          @data_format = args["dataFormat"]
         end
 
         def to_s

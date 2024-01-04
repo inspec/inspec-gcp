@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeHealthCheckServices < GcpResourceBase
-  name 'google_compute_health_check_services'
-  desc 'HealthCheckService plural resource'
-  supports platform: 'gcp'
+  name "google_compute_health_check_services"
+  desc "HealthCheckService plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,12 +39,12 @@ class ComputeHealthCheckServices < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -72,16 +72,16 @@ class ComputeHealthCheckServices < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'healthStatusAggregationPolicy' => ->(obj) { [:health_status_aggregation_policy, obj['healthStatusAggregationPolicy']] },
-      'healthChecks' => ->(obj) { [:health_checks, obj['healthChecks']] },
-      'networkEndpointGroups' => ->(obj) { [:network_endpoint_groups, obj['networkEndpointGroups']] },
-      'notificationEndpoints' => ->(obj) { [:notification_endpoints, obj['notificationEndpoints']] },
-      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
-      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "healthStatusAggregationPolicy" => ->(obj) { [:health_status_aggregation_policy, obj["healthStatusAggregationPolicy"]] },
+      "healthChecks" => ->(obj) { [:health_checks, obj["healthChecks"]] },
+      "networkEndpointGroups" => ->(obj) { [:network_endpoint_groups, obj["networkEndpointGroups"]] },
+      "notificationEndpoints" => ->(obj) { [:notification_endpoints, obj["notificationEndpoints"]] },
+      "fingerprint" => ->(obj) { [:fingerprint, obj["fingerprint"]] },
+      "nextPageToken" => ->(obj) { [:next_page_token, obj["nextPageToken"]] },
     }
   end
 
@@ -93,10 +93,10 @@ class ComputeHealthCheckServices < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/healthCheckServices'
+    "projects/{{project}}/regions/{{region}}/healthCheckServices"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/accesscontextmanager/property/accesslevel_basic_conditions_device_policy_os_constraints'
+require "google/accesscontextmanager/property/accesslevel_basic_conditions_device_policy_os_constraints"
 module GoogleInSpec
   module AccessContextManager
     module Property
@@ -33,12 +33,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @require_screen_lock = args['requireScreenlock']
-          @allowed_encryption_statuses = args['allowedEncryptionStatuses']
-          @allowed_device_management_levels = args['allowedDeviceManagementLevels']
-          @os_constraints = GoogleInSpec::AccessContextManager::Property::AccessLevelBasicConditionsDevicePolicyOsConstraintsArray.parse(args['osConstraints'], to_s)
-          @require_admin_approval = args['requireAdminApproval']
-          @require_corp_owned = args['requireCorpOwned']
+          @require_screen_lock = args["requireScreenlock"]
+          @allowed_encryption_statuses = args["allowedEncryptionStatuses"]
+          @allowed_device_management_levels = args["allowedDeviceManagementLevels"]
+          @os_constraints = GoogleInSpec::AccessContextManager::Property::AccessLevelBasicConditionsDevicePolicyOsConstraintsArray.parse(args["osConstraints"], to_s)
+          @require_admin_approval = args["requireAdminApproval"]
+          @require_corp_owned = args["requireCorpOwned"]
         end
 
         def to_s

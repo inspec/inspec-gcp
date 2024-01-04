@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @instance_template_name = arguments['instanceTemplateName']
-          @instance_group_manager_name = arguments['instanceGroupManagerName']
+          @instance_template_name = arguments["instanceTemplateName"]
+          @instance_group_manager_name = arguments["instanceGroupManagerName"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'instance_template_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.instance_template_name') { should cmp #{x.inspect} }"] },
-            'instance_group_manager_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.instance_group_manager_name') { should cmp #{x.inspect} }"] },
+            "instance_template_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.instance_template_name') { should cmp #{x.inspect} }"] },
+            "instance_group_manager_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.instance_group_manager_name') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

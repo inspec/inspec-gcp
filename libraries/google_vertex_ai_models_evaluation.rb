@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/modelsevaluation_explanation_specs'
-require 'google/vertexai/property/modelsevaluation_model_explanation'
-require 'google/vertexai/property/modelsevaluation_model_explanation_mean_attributions'
+require "gcp_backend"
+require "google/vertexai/property/modelsevaluation_explanation_specs"
+require "google/vertexai/property/modelsevaluation_model_explanation"
+require "google/vertexai/property/modelsevaluation_model_explanation_mean_attributions"
 
 # A provider to manage Vertex AI resources.
 class VertexAIModelsEvaluation < GcpResourceBase
-  name 'google_vertex_ai_models_evaluation'
-  desc 'ModelsEvaluation'
-  supports platform: 'gcp'
+  name "google_vertex_ai_models_evaluation"
+  desc "ModelsEvaluation"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :data_item_schema_uri
@@ -40,22 +40,22 @@ class VertexAIModelsEvaluation < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @data_item_schema_uri = @fetched['dataItemSchemaUri']
-    @metadata = @fetched['metadata']
-    @metrics_schema_uri = @fetched['metricsSchemaUri']
-    @create_time = @fetched['createTime']
-    @annotation_schema_uri = @fetched['annotationSchemaUri']
-    @metrics = @fetched['metrics']
-    @explanation_specs = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsArray.parse(@fetched['explanationSpecs'], to_s)
-    @slice_dimensions = @fetched['sliceDimensions']
-    @model_explanation = GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanation.new(@fetched['modelExplanation'], to_s)
-    @name = @fetched['name']
-    @display_name = @fetched['displayName']
+    @data_item_schema_uri = @fetched["dataItemSchemaUri"]
+    @metadata = @fetched["metadata"]
+    @metrics_schema_uri = @fetched["metricsSchemaUri"]
+    @create_time = @fetched["createTime"]
+    @annotation_schema_uri = @fetched["annotationSchemaUri"]
+    @metrics = @fetched["metrics"]
+    @explanation_specs = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsArray.parse(@fetched["explanationSpecs"], to_s)
+    @slice_dimensions = @fetched["sliceDimensions"]
+    @model_explanation = GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanation.new(@fetched["modelExplanation"], to_s)
+    @name = @fetched["name"]
+    @display_name = @fetched["displayName"]
   end
 
   def exists?
@@ -69,10 +69,10 @@ class VertexAIModelsEvaluation < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

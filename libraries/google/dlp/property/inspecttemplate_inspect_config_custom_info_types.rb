@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types_dictionary'
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types_dictionary_cloud_storage_path'
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types_dictionary_word_list'
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types_info_type'
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types_regex'
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types_stored_type'
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types_dictionary"
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types_dictionary_cloud_storage_path"
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types_dictionary_word_list"
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types_info_type"
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types_regex"
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types_stored_type"
 module GoogleInSpec
   module DLP
     module Property
@@ -38,12 +38,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @info_type = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesInfoType.new(args['infoType'], to_s)
-          @likelihood = args['likelihood']
-          @exclusion_type = args['exclusionType']
-          @regex = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesRegex.new(args['regex'], to_s)
-          @dictionary = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesDictionary.new(args['dictionary'], to_s)
-          @stored_type = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesStoredType.new(args['storedType'], to_s)
+          @info_type = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesInfoType.new(args["infoType"], to_s)
+          @likelihood = args["likelihood"]
+          @exclusion_type = args["exclusionType"]
+          @regex = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesRegex.new(args["regex"], to_s)
+          @dictionary = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesDictionary.new(args["dictionary"], to_s)
+          @stored_type = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesStoredType.new(args["storedType"], to_s)
         end
 
         def to_s

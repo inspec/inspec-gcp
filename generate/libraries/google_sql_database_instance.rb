@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/sqladmin_v1beta4'
+
+require "gcp_backend"
+require "google/apis/sqladmin_v1beta4"
 
 module Inspec::Resources
   class GoogleCloudSqlDatabaseInstance < GcpResourceBase
-    name 'google_sql_database_instance'
-    desc 'Verifies settings for a GCP Cloud SQL Database instance'
+    name "google_sql_database_instance"
+    desc "Verifies settings for a GCP Cloud SQL Database instance"
 
     example "
       describe google_sql_database_instance(project: 'chef-inspec-gcp',  database: 'my-database') do
@@ -31,7 +31,7 @@ module Inspec::Resources
     def has_ip_configuration_require_ssl?
       return false if !defined?(@database.settings.ip_configuration.require_ssl)
       return false if @database.settings.ip_configuration.require_ssl.nil?
-      return true if @database.settings.ip_configuration.require_ssl.to_s.casecmp('true').zero?
+      return true if @database.settings.ip_configuration.require_ssl.to_s.casecmp("true") == 0
       false
     end
 
@@ -41,7 +41,7 @@ module Inspec::Resources
     end
 
     def primary_ip_address
-      return '' if !defined?(@database.ip_addresses[0].ip_address) || @database.ip_addresses[0].ip_address.nil?
+      return "" if !defined?(@database.ip_addresses[0].ip_address) || @database.ip_addresses[0].ip_address.nil?
       @database.ip_addresses[0].ip_address
     end
 

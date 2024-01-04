@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/redis/property/instance_server_ca_certs'
+require "gcp_backend"
+require "google/redis/property/instance_server_ca_certs"
 
 # A provider to manage Memorystore (Redis) resources.
 class RedisInstance < GcpResourceBase
-  name 'google_redis_instance'
-  desc 'Instance'
-  supports platform: 'gcp'
+  name "google_redis_instance"
+  desc "Instance"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :alternative_location_id
@@ -48,32 +48,32 @@ class RedisInstance < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @alternative_location_id = @fetched['alternativeLocationId']
-    @auth_enabled = @fetched['authEnabled']
-    @authorized_network = @fetched['authorizedNetwork']
-    @connect_mode = @fetched['connectMode']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @current_location_id = @fetched['currentLocationId']
-    @display_name = @fetched['displayName']
-    @host = @fetched['host']
-    @labels = @fetched['labels']
-    @redis_configs = @fetched['redisConfigs']
-    @location_id = @fetched['locationId']
-    @name = @fetched['name']
-    @memory_size_gb = @fetched['memorySizeGb']
-    @port = @fetched['port']
-    @persistence_iam_identity = @fetched['persistenceIamIdentity']
-    @redis_version = @fetched['redisVersion']
-    @reserved_ip_range = @fetched['reservedIpRange']
-    @tier = @fetched['tier']
-    @transit_encryption_mode = @fetched['transitEncryptionMode']
-    @server_ca_certs = GoogleInSpec::Redis::Property::InstanceServerCaCertsArray.parse(@fetched['serverCaCerts'], to_s)
-    @region = @fetched['region']
+    @alternative_location_id = @fetched["alternativeLocationId"]
+    @auth_enabled = @fetched["authEnabled"]
+    @authorized_network = @fetched["authorizedNetwork"]
+    @connect_mode = @fetched["connectMode"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @current_location_id = @fetched["currentLocationId"]
+    @display_name = @fetched["displayName"]
+    @host = @fetched["host"]
+    @labels = @fetched["labels"]
+    @redis_configs = @fetched["redisConfigs"]
+    @location_id = @fetched["locationId"]
+    @name = @fetched["name"]
+    @memory_size_gb = @fetched["memorySizeGb"]
+    @port = @fetched["port"]
+    @persistence_iam_identity = @fetched["persistenceIamIdentity"]
+    @redis_version = @fetched["redisVersion"]
+    @reserved_ip_range = @fetched["reservedIpRange"]
+    @tier = @fetched["tier"]
+    @transit_encryption_mode = @fetched["transitEncryptionMode"]
+    @server_ca_certs = GoogleInSpec::Redis::Property::InstanceServerCaCertsArray.parse(@fetched["serverCaCerts"], to_s)
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -93,13 +93,13 @@ class RedisInstance < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://redis.googleapis.com/v1beta1/'
+      "https://redis.googleapis.com/v1beta1/"
     else
-      'https://redis.googleapis.com/v1/'
+      "https://redis.googleapis.com/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/instances/{{name}}'
+    "projects/{{project}}/locations/{{region}}/instances/{{name}}"
   end
 end

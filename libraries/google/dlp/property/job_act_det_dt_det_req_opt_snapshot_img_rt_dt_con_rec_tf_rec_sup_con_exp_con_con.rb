@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_field'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_date_val'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_time_val'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_field"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_date_val"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_time_val"
 module GoogleInSpec
   module DLP
     module Property
@@ -30,9 +30,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @field = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConField.new(args['field'], to_s)
-          @operator = args['operator']
-          @new_val = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConNewVal.new(args['newVal'], to_s)
+          @field = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConField.new(args["field"], to_s)
+          @operator = args["operator"]
+          @new_val = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConNewVal.new(args["newVal"], to_s)
         end
 
         def to_s

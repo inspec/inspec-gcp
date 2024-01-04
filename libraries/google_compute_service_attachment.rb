@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/serviceattachment_connected_endpoints'
-require 'google/compute/property/serviceattachment_consumer_accept_lists'
-require 'google/compute/property/serviceattachment_psc_service_attachment_id'
+require "gcp_backend"
+require "google/compute/property/serviceattachment_connected_endpoints"
+require "google/compute/property/serviceattachment_consumer_accept_lists"
+require "google/compute/property/serviceattachment_psc_service_attachment_id"
 
 # A provider to manage Compute Engine resources.
 class ComputeServiceAttachment < GcpResourceBase
-  name 'google_compute_service_attachment'
-  desc 'ServiceAttachment'
-  supports platform: 'gcp'
+  name "google_compute_service_attachment"
+  desc "ServiceAttachment"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :kind
@@ -48,30 +48,30 @@ class ComputeServiceAttachment < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @kind = @fetched['kind']
-    @id = @fetched['id']
-    @creation_timestamp = @fetched['creationTimestamp']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @self_link = @fetched['selfLink']
-    @region = @fetched['region']
-    @producer_forwarding_rule = @fetched['producerForwardingRule']
-    @target_service = @fetched['targetService']
-    @connection_preference = @fetched['connectionPreference']
-    @connected_endpoints = GoogleInSpec::Compute::Property::ServiceAttachmentConnectedEndpointsArray.parse(@fetched['connectedEndpoints'], to_s)
-    @nat_subnets = @fetched['natSubnets']
-    @enable_proxy_protocol = @fetched['enableProxyProtocol']
-    @consumer_reject_lists = @fetched['consumerRejectLists']
-    @consumer_accept_lists = GoogleInSpec::Compute::Property::ServiceAttachmentConsumerAcceptListsArray.parse(@fetched['consumerAcceptLists'], to_s)
-    @psc_service_attachment_id = GoogleInSpec::Compute::Property::ServiceAttachmentPscServiceAttachmentId.new(@fetched['pscServiceAttachmentId'], to_s)
-    @fingerprint = @fetched['fingerprint']
-    @domain_names = @fetched['domainNames']
-    @reconcile_connections = @fetched['reconcileConnections']
+    @kind = @fetched["kind"]
+    @id = @fetched["id"]
+    @creation_timestamp = @fetched["creationTimestamp"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @self_link = @fetched["selfLink"]
+    @region = @fetched["region"]
+    @producer_forwarding_rule = @fetched["producerForwardingRule"]
+    @target_service = @fetched["targetService"]
+    @connection_preference = @fetched["connectionPreference"]
+    @connected_endpoints = GoogleInSpec::Compute::Property::ServiceAttachmentConnectedEndpointsArray.parse(@fetched["connectedEndpoints"], to_s)
+    @nat_subnets = @fetched["natSubnets"]
+    @enable_proxy_protocol = @fetched["enableProxyProtocol"]
+    @consumer_reject_lists = @fetched["consumerRejectLists"]
+    @consumer_accept_lists = GoogleInSpec::Compute::Property::ServiceAttachmentConsumerAcceptListsArray.parse(@fetched["consumerAcceptLists"], to_s)
+    @psc_service_attachment_id = GoogleInSpec::Compute::Property::ServiceAttachmentPscServiceAttachmentId.new(@fetched["pscServiceAttachmentId"], to_s)
+    @fingerprint = @fetched["fingerprint"]
+    @domain_names = @fetched["domainNames"]
+    @reconcile_connections = @fetched["reconcileConnections"]
   end
 
   def exists?
@@ -85,10 +85,10 @@ class ComputeServiceAttachment < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/serviceAttachments/{{service_attachment}}'
+    "projects/{{project}}/regions/{{region}}/serviceAttachments/{{service_attachment}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,21 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/customjob_encryption_spec'
-require 'google/vertexai/property/customjob_error'
-require 'google/vertexai/property/customjob_job_spec'
-require 'google/vertexai/property/customjob_job_spec_base_output_directory'
-require 'google/vertexai/property/customjob_job_spec_scheduling'
-require 'google/vertexai/property/customjob_job_spec_worker_pool_specs'
-require 'google/vertexai/property/customjob_labels'
-require 'google/vertexai/property/customjob_web_access_uris'
+require "gcp_backend"
+require "google/vertexai/property/customjob_encryption_spec"
+require "google/vertexai/property/customjob_error"
+require "google/vertexai/property/customjob_job_spec"
+require "google/vertexai/property/customjob_job_spec_base_output_directory"
+require "google/vertexai/property/customjob_job_spec_scheduling"
+require "google/vertexai/property/customjob_job_spec_worker_pool_specs"
+require "google/vertexai/property/customjob_labels"
+require "google/vertexai/property/customjob_web_access_uris"
 
 # A provider to manage Vertex AI resources.
 class VertexAICustomJob < GcpResourceBase
-  name 'google_vertex_ai_custom_job'
-  desc 'CustomJob'
-  supports platform: 'gcp'
+  name "google_vertex_ai_custom_job"
+  desc "CustomJob"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :error
@@ -46,23 +46,23 @@ class VertexAICustomJob < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @error = GoogleInSpec::VertexAI::Property::CustomJobError.new(@fetched['error'], to_s)
-    @web_access_uris = GoogleInSpec::VertexAI::Property::CustomJobWebAccessUris.new(@fetched['webAccessUris'], to_s)
-    @job_spec = GoogleInSpec::VertexAI::Property::CustomJobJobSpec.new(@fetched['jobSpec'], to_s)
-    @start_time = @fetched['startTime']
-    @labels = GoogleInSpec::VertexAI::Property::CustomJobLabels.new(@fetched['labels'], to_s)
-    @encryption_spec = GoogleInSpec::VertexAI::Property::CustomJobEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @create_time = @fetched['createTime']
-    @update_time = @fetched['updateTime']
-    @end_time = @fetched['endTime']
-    @state = @fetched['state']
-    @display_name = @fetched['displayName']
-    @name = @fetched['name']
+    @error = GoogleInSpec::VertexAI::Property::CustomJobError.new(@fetched["error"], to_s)
+    @web_access_uris = GoogleInSpec::VertexAI::Property::CustomJobWebAccessUris.new(@fetched["webAccessUris"], to_s)
+    @job_spec = GoogleInSpec::VertexAI::Property::CustomJobJobSpec.new(@fetched["jobSpec"], to_s)
+    @start_time = @fetched["startTime"]
+    @labels = GoogleInSpec::VertexAI::Property::CustomJobLabels.new(@fetched["labels"], to_s)
+    @encryption_spec = GoogleInSpec::VertexAI::Property::CustomJobEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @create_time = @fetched["createTime"]
+    @update_time = @fetched["updateTime"]
+    @end_time = @fetched["endTime"]
+    @state = @fetched["state"]
+    @display_name = @fetched["displayName"]
+    @name = @fetched["name"]
   end
 
   def exists?
@@ -76,10 +76,10 @@ class VertexAICustomJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

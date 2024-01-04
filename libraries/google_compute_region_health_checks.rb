@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeRegionHealthChecks < GcpResourceBase
-  name 'google_compute_region_health_checks'
-  desc 'RegionHealthCheck plural resource'
-  supports platform: 'gcp'
+  name "google_compute_region_health_checks"
+  desc "RegionHealthCheck plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -46,12 +46,12 @@ class ComputeRegionHealthChecks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -79,23 +79,23 @@ class ComputeRegionHealthChecks < GcpResourceBase
 
   def transformers
     {
-      'checkIntervalSec' => ->(obj) { [:check_interval_sec, obj['checkIntervalSec']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'healthyThreshold' => ->(obj) { [:healthy_threshold, obj['healthyThreshold']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'unhealthyThreshold' => ->(obj) { [:unhealthy_threshold, obj['unhealthyThreshold']] },
-      'timeoutSec' => ->(obj) { [:timeout_sec, obj['timeoutSec']] },
-      'type' => ->(obj) { [:type, obj['type']] },
-      'httpHealthCheck' => ->(obj) { [:http_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckHttpHealthCheck.new(obj['httpHealthCheck'], to_s)] },
-      'httpsHealthCheck' => ->(obj) { [:https_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckHttpsHealthCheck.new(obj['httpsHealthCheck'], to_s)] },
-      'tcpHealthCheck' => ->(obj) { [:tcp_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckTcpHealthCheck.new(obj['tcpHealthCheck'], to_s)] },
-      'sslHealthCheck' => ->(obj) { [:ssl_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckSslHealthCheck.new(obj['sslHealthCheck'], to_s)] },
-      'http2HealthCheck' => ->(obj) { [:http2_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckHttp2HealthCheck.new(obj['http2HealthCheck'], to_s)] },
-      'grpcHealthCheck' => ->(obj) { [:grpc_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckGrpcHealthCheck.new(obj['grpcHealthCheck'], to_s)] },
-      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::RegionHealthCheckLogConfig.new(obj['logConfig'], to_s)] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "checkIntervalSec" => ->(obj) { [:check_interval_sec, obj["checkIntervalSec"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "healthyThreshold" => ->(obj) { [:healthy_threshold, obj["healthyThreshold"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "unhealthyThreshold" => ->(obj) { [:unhealthy_threshold, obj["unhealthyThreshold"]] },
+      "timeoutSec" => ->(obj) { [:timeout_sec, obj["timeoutSec"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
+      "httpHealthCheck" => ->(obj) { [:http_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckHttpHealthCheck.new(obj["httpHealthCheck"], to_s)] },
+      "httpsHealthCheck" => ->(obj) { [:https_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckHttpsHealthCheck.new(obj["httpsHealthCheck"], to_s)] },
+      "tcpHealthCheck" => ->(obj) { [:tcp_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckTcpHealthCheck.new(obj["tcpHealthCheck"], to_s)] },
+      "sslHealthCheck" => ->(obj) { [:ssl_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckSslHealthCheck.new(obj["sslHealthCheck"], to_s)] },
+      "http2HealthCheck" => ->(obj) { [:http2_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckHttp2HealthCheck.new(obj["http2HealthCheck"], to_s)] },
+      "grpcHealthCheck" => ->(obj) { [:grpc_health_check, GoogleInSpec::Compute::Property::RegionHealthCheckGrpcHealthCheck.new(obj["grpcHealthCheck"], to_s)] },
+      "logConfig" => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::RegionHealthCheckLogConfig.new(obj["logConfig"], to_s)] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -107,10 +107,10 @@ class ComputeRegionHealthChecks < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/healthChecks'
+    "projects/{{project}}/regions/{{region}}/healthChecks"
   end
 end

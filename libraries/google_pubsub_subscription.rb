@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/pubsub/property/subscription_dead_letter_policy'
-require 'google/pubsub/property/subscription_expiration_policy'
-require 'google/pubsub/property/subscription_push_config'
-require 'google/pubsub/property/subscription_push_config_oidc_token'
-require 'google/pubsub/property/subscription_retry_policy'
+require "gcp_backend"
+require "google/pubsub/property/subscription_dead_letter_policy"
+require "google/pubsub/property/subscription_expiration_policy"
+require "google/pubsub/property/subscription_push_config"
+require "google/pubsub/property/subscription_push_config_oidc_token"
+require "google/pubsub/property/subscription_retry_policy"
 
 # A provider to manage Cloud Pub/Sub resources.
 class PubsubSubscription < GcpResourceBase
-  name 'google_pubsub_subscription'
-  desc 'Subscription'
-  supports platform: 'gcp'
+  name "google_pubsub_subscription"
+  desc "Subscription"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -43,23 +43,23 @@ class PubsubSubscription < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = name_from_self_link(@fetched['name'])
-    @topic = @fetched['topic']
-    @labels = @fetched['labels']
-    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched['pushConfig'], to_s)
-    @ack_deadline_seconds = @fetched['ackDeadlineSeconds']
-    @message_retention_duration = @fetched['messageRetentionDuration']
-    @retain_acked_messages = @fetched['retainAckedMessages']
-    @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched['expirationPolicy'], to_s)
-    @filter = @fetched['filter']
-    @dead_letter_policy = GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(@fetched['deadLetterPolicy'], to_s)
-    @retry_policy = GoogleInSpec::Pubsub::Property::SubscriptionRetryPolicy.new(@fetched['retryPolicy'], to_s)
-    @enable_message_ordering = @fetched['enableMessageOrdering']
+    @name = name_from_self_link(@fetched["name"])
+    @topic = @fetched["topic"]
+    @labels = @fetched["labels"]
+    @push_config = GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(@fetched["pushConfig"], to_s)
+    @ack_deadline_seconds = @fetched["ackDeadlineSeconds"]
+    @message_retention_duration = @fetched["messageRetentionDuration"]
+    @retain_acked_messages = @fetched["retainAckedMessages"]
+    @expiration_policy = GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(@fetched["expirationPolicy"], to_s)
+    @filter = @fetched["filter"]
+    @dead_letter_policy = GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(@fetched["deadLetterPolicy"], to_s)
+    @retry_policy = GoogleInSpec::Pubsub::Property::SubscriptionRetryPolicy.new(@fetched["retryPolicy"], to_s)
+    @enable_message_ordering = @fetched["enableMessageOrdering"]
   end
 
   def exists?
@@ -73,10 +73,10 @@ class PubsubSubscription < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://pubsub.googleapis.com/v1/'
+    "https://pubsub.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/subscriptions/{{name}}'
+    "projects/{{project}}/subscriptions/{{name}}"
   end
 end

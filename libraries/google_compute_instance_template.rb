@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,20 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/instancetemplate_properties'
-require 'google/compute/property/instancetemplate_properties_disks'
-require 'google/compute/property/instancetemplate_properties_guest_accelerators'
-require 'google/compute/property/instancetemplate_properties_network_interfaces'
-require 'google/compute/property/instancetemplate_properties_scheduling'
-require 'google/compute/property/instancetemplate_properties_service_accounts'
-require 'google/compute/property/instancetemplate_properties_tags'
+require "gcp_backend"
+require "google/compute/property/instancetemplate_properties"
+require "google/compute/property/instancetemplate_properties_disks"
+require "google/compute/property/instancetemplate_properties_guest_accelerators"
+require "google/compute/property/instancetemplate_properties_network_interfaces"
+require "google/compute/property/instancetemplate_properties_scheduling"
+require "google/compute/property/instancetemplate_properties_service_accounts"
+require "google/compute/property/instancetemplate_properties_tags"
 
 # A provider to manage Compute Engine resources.
 class ComputeInstanceTemplate < GcpResourceBase
-  name 'google_compute_instance_template'
-  desc 'InstanceTemplate'
-  supports platform: 'gcp'
+  name "google_compute_instance_template"
+  desc "InstanceTemplate"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -38,16 +38,16 @@ class ComputeInstanceTemplate < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @properties = GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(@fetched['properties'], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @properties = GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(@fetched["properties"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -67,13 +67,13 @@ class ComputeInstanceTemplate < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/instanceTemplates/{{name}}'
+    "projects/{{project}}/global/instanceTemplates/{{name}}"
   end
 end

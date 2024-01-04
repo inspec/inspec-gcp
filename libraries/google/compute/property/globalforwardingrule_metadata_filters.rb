@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/globalforwardingrule_metadata_filters_filter_labels'
+require "google/compute/property/globalforwardingrule_metadata_filters_filter_labels"
 module GoogleInSpec
   module Compute
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @filter_match_criteria = args['filterMatchCriteria']
-          @filter_labels = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersFilterLabelsArray.parse(args['filterLabels'], to_s)
+          @filter_match_criteria = args["filterMatchCriteria"]
+          @filter_labels = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersFilterLabelsArray.parse(args["filterLabels"], to_s)
         end
 
         def to_s

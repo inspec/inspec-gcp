@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,23 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_attribution_score_drift_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_default_drift_threshold'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_drift_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_bigquery_source'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_gcs_source'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy_random_sample_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_attribution_score_skew_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_default_skew_threshold'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_skew_thresholds'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_attribution_score_drift_thresholds"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_default_drift_threshold"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_drift_thresholds"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_bigquery_source"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_gcs_source"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy_random_sample_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_attribution_score_skew_thresholds"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_default_skew_threshold"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_skew_thresholds"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -45,10 +45,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @explanation_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfig.new(args['explanationConfig'], to_s)
-          @training_dataset = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDataset.new(args['trainingDataset'], to_s)
-          @training_prediction_skew_detection_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfig.new(args['trainingPredictionSkewDetectionConfig'], to_s)
-          @prediction_drift_detection_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfig.new(args['predictionDriftDetectionConfig'], to_s)
+          @explanation_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfig.new(args["explanationConfig"], to_s)
+          @training_dataset = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDataset.new(args["trainingDataset"], to_s)
+          @training_prediction_skew_detection_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfig.new(args["trainingPredictionSkewDetectionConfig"], to_s)
+          @prediction_drift_detection_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigPredictionDriftDetectionConfig.new(args["predictionDriftDetectionConfig"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIIndexEndpoints < GcpResourceBase
-  name 'google_vertex_ai_index_endpoints'
-  desc 'IndexEndpoint plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_index_endpoints"
+  desc "IndexEndpoint plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -42,12 +42,12 @@ class VertexAIIndexEndpoints < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('indexEndpoints')
+    @table = fetch_wrapped_resource("indexEndpoints")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -75,29 +75,29 @@ class VertexAIIndexEndpoints < GcpResourceBase
 
   def transformers
     {
-      'deployedIndexes' => ->(obj) { [:deployed_indexes, GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesArray.parse(obj['deployedIndexes'], to_s)] },
-      'privateServiceConnectConfig' => ->(obj) { [:private_service_connect_config, GoogleInSpec::VertexAI::Property::IndexEndpointPrivateServiceConnectConfig.new(obj['privateServiceConnectConfig'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'publicEndpointEnabled' => ->(obj) { [:public_endpoint_enabled, obj['publicEndpointEnabled']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::IndexEndpointLabels.new(obj['labels'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'publicEndpointDomainName' => ->(obj) { [:public_endpoint_domain_name, obj['publicEndpointDomainName']] },
-      'enablePrivateServiceConnect' => ->(obj) { [:enable_private_service_connect, obj['enablePrivateServiceConnect']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'description' => ->(obj) { [:description, obj['description']] },
+      "deployedIndexes" => ->(obj) { [:deployed_indexes, GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesArray.parse(obj["deployedIndexes"], to_s)] },
+      "privateServiceConnectConfig" => ->(obj) { [:private_service_connect_config, GoogleInSpec::VertexAI::Property::IndexEndpointPrivateServiceConnectConfig.new(obj["privateServiceConnectConfig"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "publicEndpointEnabled" => ->(obj) { [:public_endpoint_enabled, obj["publicEndpointEnabled"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::IndexEndpointLabels.new(obj["labels"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "publicEndpointDomainName" => ->(obj) { [:public_endpoint_domain_name, obj["publicEndpointDomainName"]] },
+      "enablePrivateServiceConnect" => ->(obj) { [:enable_private_service_connect, obj["enablePrivateServiceConnect"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/indexEndpoints'
+    "{{parent}}/indexEndpoints"
   end
 end

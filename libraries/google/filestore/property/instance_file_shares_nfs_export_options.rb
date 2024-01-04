@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_ranges = args['ipRanges']
-          @access_mode = args['accessMode']
-          @squash_mode = args['squashMode']
-          @anon_uid = args['anonUid']
-          @anon_gid = args['anonGid']
+          @ip_ranges = args["ipRanges"]
+          @access_mode = args["accessMode"]
+          @squash_mode = args["squashMode"]
+          @anon_uid = args["anonUid"]
+          @anon_gid = args["anonGid"]
         end
 
         def to_s

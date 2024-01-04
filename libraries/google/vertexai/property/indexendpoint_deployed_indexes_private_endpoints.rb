@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @service_attachment = args['serviceAttachment']
-          @match_grpc_address = args['matchGrpcAddress']
+          @service_attachment = args["serviceAttachment"]
+          @match_grpc_address = args["matchGrpcAddress"]
         end
 
         def to_s

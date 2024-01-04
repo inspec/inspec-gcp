@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/network_peerings'
-require 'google/compute/property/network_routing_config'
+require "gcp_backend"
+require "google/compute/property/network_peerings"
+require "google/compute/property/network_routing_config"
 
 # A provider to manage Compute Engine resources.
 class ComputeNetwork < GcpResourceBase
-  name 'google_compute_network'
-  desc 'Network'
-  supports platform: 'gcp'
+  name "google_compute_network"
+  desc "Network"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :description
@@ -38,21 +38,21 @@ class ComputeNetwork < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @description = @fetched['description']
-    @gateway_ipv4 = @fetched['gatewayIPv4']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @subnetworks = @fetched['subnetworks']
-    @auto_create_subnetworks = @fetched['autoCreateSubnetworks']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @routing_config = GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(@fetched['routingConfig'], to_s)
-    @peerings = GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(@fetched['peerings'], to_s)
-    @mtu = @fetched['mtu']
+    @description = @fetched["description"]
+    @gateway_ipv4 = @fetched["gatewayIPv4"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @subnetworks = @fetched["subnetworks"]
+    @auto_create_subnetworks = @fetched["autoCreateSubnetworks"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @routing_config = GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(@fetched["routingConfig"], to_s)
+    @peerings = GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(@fetched["peerings"], to_s)
+    @mtu = @fetched["mtu"]
   end
 
   # Handles parsing RFC3339 time string
@@ -85,13 +85,13 @@ class ComputeNetwork < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/networks/{{name}}'
+    "projects/{{project}}/global/networks/{{name}}"
   end
 end

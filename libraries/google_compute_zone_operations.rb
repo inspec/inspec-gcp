@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeZoneOperations < GcpResourceBase
-  name 'google_compute_zone_operations'
-  desc 'ZoneOperation plural resource'
-  supports platform: 'gcp'
+  name "google_compute_zone_operations"
+  desc "ZoneOperation plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -42,12 +42,12 @@ class ComputeZoneOperations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -75,19 +75,19 @@ class ComputeZoneOperations < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'statusMessage' => ->(obj) { [:status_message, obj['statusMessage']] },
-      'targetId' => ->(obj) { [:target_id, obj['targetId']] },
-      'status' => ->(obj) { [:status, obj['status']] },
-      'user' => ->(obj) { [:user, obj['user']] },
-      'insertTime' => ->(obj) { [:insert_time, obj['insertTime']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'progress' => ->(obj) { [:progress, obj['progress']] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "statusMessage" => ->(obj) { [:status_message, obj["statusMessage"]] },
+      "targetId" => ->(obj) { [:target_id, obj["targetId"]] },
+      "status" => ->(obj) { [:status, obj["status"]] },
+      "user" => ->(obj) { [:user, obj["user"]] },
+      "insertTime" => ->(obj) { [:insert_time, obj["insertTime"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "progress" => ->(obj) { [:progress, obj["progress"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -99,10 +99,10 @@ class ComputeZoneOperations < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/operations'
+    "projects/{{project}}/zones/{{zone}}/operations"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,32 +13,32 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/urlmap_default_route_action'
-require 'google/compute/property/urlmap_default_route_action_cors_policy'
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy'
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_abort'
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_delay'
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_delay_fixed_delay'
-require 'google/compute/property/urlmap_default_route_action_request_mirror_policy'
-require 'google/compute/property/urlmap_default_route_action_retry_policy'
-require 'google/compute/property/urlmap_default_route_action_retry_policy_per_try_timeout'
-require 'google/compute/property/urlmap_default_route_action_timeout'
-require 'google/compute/property/urlmap_default_route_action_url_rewrite'
-require 'google/compute/property/urlmap_default_route_action_weighted_backend_services'
-require 'google/compute/property/urlmap_default_url_redirect'
-require 'google/compute/property/urlmap_header_action'
-require 'google/compute/property/urlmap_header_action_request_headers_to_add'
-require 'google/compute/property/urlmap_header_action_response_headers_to_add'
-require 'google/compute/property/urlmap_host_rules'
-require 'google/compute/property/urlmap_path_matchers'
-require 'google/compute/property/urlmap_tests'
+require "gcp_backend"
+require "google/compute/property/urlmap_default_route_action"
+require "google/compute/property/urlmap_default_route_action_cors_policy"
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy"
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy_abort"
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy_delay"
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy_delay_fixed_delay"
+require "google/compute/property/urlmap_default_route_action_request_mirror_policy"
+require "google/compute/property/urlmap_default_route_action_retry_policy"
+require "google/compute/property/urlmap_default_route_action_retry_policy_per_try_timeout"
+require "google/compute/property/urlmap_default_route_action_timeout"
+require "google/compute/property/urlmap_default_route_action_url_rewrite"
+require "google/compute/property/urlmap_default_route_action_weighted_backend_services"
+require "google/compute/property/urlmap_default_url_redirect"
+require "google/compute/property/urlmap_header_action"
+require "google/compute/property/urlmap_header_action_request_headers_to_add"
+require "google/compute/property/urlmap_header_action_response_headers_to_add"
+require "google/compute/property/urlmap_host_rules"
+require "google/compute/property/urlmap_path_matchers"
+require "google/compute/property/urlmap_tests"
 
 # A provider to manage Compute Engine resources.
 class ComputeUrlMap < GcpResourceBase
-  name 'google_compute_url_map'
-  desc 'UrlMap'
-  supports platform: 'gcp'
+  name "google_compute_url_map"
+  desc "UrlMap"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -57,23 +57,23 @@ class ComputeUrlMap < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @default_service = @fetched['defaultService']
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @fingerprint = @fetched['fingerprint']
-    @header_action = GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(@fetched['headerAction'], to_s)
-    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched['hostRules'], to_s)
-    @name = @fetched['name']
-    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched['pathMatchers'], to_s)
-    @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched['tests'], to_s)
-    @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(@fetched['defaultUrlRedirect'], to_s)
-    @default_route_action = GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(@fetched['defaultRouteAction'], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @default_service = @fetched["defaultService"]
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @fingerprint = @fetched["fingerprint"]
+    @header_action = GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(@fetched["headerAction"], to_s)
+    @host_rules = GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(@fetched["hostRules"], to_s)
+    @name = @fetched["name"]
+    @path_matchers = GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(@fetched["pathMatchers"], to_s)
+    @tests = GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(@fetched["tests"], to_s)
+    @default_url_redirect = GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(@fetched["defaultUrlRedirect"], to_s)
+    @default_route_action = GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(@fetched["defaultRouteAction"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -93,13 +93,13 @@ class ComputeUrlMap < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/urlMaps/{{name}}'
+    "projects/{{project}}/global/urlMaps/{{name}}"
   end
 end

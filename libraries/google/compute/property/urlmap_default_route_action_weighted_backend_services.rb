@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action'
-require 'google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_request_headers_to_add'
-require 'google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_response_headers_to_add'
+require "google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action"
+require "google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_request_headers_to_add"
+require "google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_response_headers_to_add"
 module GoogleInSpec
   module Compute
     module Property
@@ -29,9 +29,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @backend_service = args['backendService']
-          @weight = args['weight']
-          @header_action = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionWeightedBackendServicesHeaderAction.new(args['headerAction'], to_s)
+          @backend_service = args["backendService"]
+          @weight = args["weight"]
+          @header_action = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionWeightedBackendServicesHeaderAction.new(args["headerAction"], to_s)
         end
 
         def to_s

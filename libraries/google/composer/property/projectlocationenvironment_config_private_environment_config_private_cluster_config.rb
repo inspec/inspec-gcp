@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_private_endpoint = args['enablePrivateEndpoint']
-          @master_ipv4_cidr_block = args['masterIpv4CidrBlock']
-          @master_ipv4_reserved_range = args['masterIpv4ReservedRange']
+          @enable_private_endpoint = args["enablePrivateEndpoint"]
+          @master_ipv4_cidr_block = args["masterIpv4CidrBlock"]
+          @master_ipv4_reserved_range = args["masterIpv4ReservedRange"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,20 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/cloudscheduler/property/job_app_engine_http_target'
-require 'google/cloudscheduler/property/job_app_engine_http_target_app_engine_routing'
-require 'google/cloudscheduler/property/job_http_target'
-require 'google/cloudscheduler/property/job_http_target_oauth_token'
-require 'google/cloudscheduler/property/job_http_target_oidc_token'
-require 'google/cloudscheduler/property/job_pubsub_target'
-require 'google/cloudscheduler/property/job_retry_config'
+require "gcp_backend"
+require "google/cloudscheduler/property/job_app_engine_http_target"
+require "google/cloudscheduler/property/job_app_engine_http_target_app_engine_routing"
+require "google/cloudscheduler/property/job_http_target"
+require "google/cloudscheduler/property/job_http_target_oauth_token"
+require "google/cloudscheduler/property/job_http_target_oidc_token"
+require "google/cloudscheduler/property/job_pubsub_target"
+require "google/cloudscheduler/property/job_retry_config"
 
 # A provider to manage Cloud Scheduler resources.
 class CloudSchedulerJob < GcpResourceBase
-  name 'google_cloud_scheduler_job'
-  desc 'Job'
-  supports platform: 'gcp'
+  name "google_cloud_scheduler_job"
+  desc "Job"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -44,22 +44,22 @@ class CloudSchedulerJob < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @schedule = @fetched['schedule']
-    @time_zone = @fetched['timeZone']
-    @state = @fetched['state']
-    @attempt_deadline = @fetched['attemptDeadline']
-    @retry_config = GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(@fetched['retryConfig'], to_s)
-    @pubsub_target = GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(@fetched['pubsubTarget'], to_s)
-    @app_engine_http_target = GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(@fetched['appEngineHttpTarget'], to_s)
-    @http_target = GoogleInSpec::CloudScheduler::Property::JobHttpTarget.new(@fetched['httpTarget'], to_s)
-    @region = @fetched['region']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @schedule = @fetched["schedule"]
+    @time_zone = @fetched["timeZone"]
+    @state = @fetched["state"]
+    @attempt_deadline = @fetched["attemptDeadline"]
+    @retry_config = GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(@fetched["retryConfig"], to_s)
+    @pubsub_target = GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(@fetched["pubsubTarget"], to_s)
+    @app_engine_http_target = GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(@fetched["appEngineHttpTarget"], to_s)
+    @http_target = GoogleInSpec::CloudScheduler::Property::JobHttpTarget.new(@fetched["httpTarget"], to_s)
+    @region = @fetched["region"]
   end
 
   def exists?
@@ -73,10 +73,10 @@ class CloudSchedulerJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudscheduler.googleapis.com/v1/'
+    "https://cloudscheduler.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/jobs/{{name}}'
+    "projects/{{project}}/locations/{{region}}/jobs/{{name}}"
   end
 end

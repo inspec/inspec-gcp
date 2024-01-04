@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -42,17 +42,17 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @balancing_mode = args['balancingMode']
-          @capacity_scaler = args['capacityScaler']
-          @description = args['description']
-          @group = args['group']
-          @max_connections = args['maxConnections']
-          @max_connections_per_instance = args['maxConnectionsPerInstance']
-          @max_connections_per_endpoint = args['maxConnectionsPerEndpoint']
-          @max_rate = args['maxRate']
-          @max_rate_per_instance = args['maxRatePerInstance']
-          @max_rate_per_endpoint = args['maxRatePerEndpoint']
-          @max_utilization = args['maxUtilization']
+          @balancing_mode = args["balancingMode"]
+          @capacity_scaler = args["capacityScaler"]
+          @description = args["description"]
+          @group = args["group"]
+          @max_connections = args["maxConnections"]
+          @max_connections_per_instance = args["maxConnectionsPerInstance"]
+          @max_connections_per_endpoint = args["maxConnectionsPerEndpoint"]
+          @max_rate = args["maxRate"]
+          @max_rate_per_instance = args["maxRatePerInstance"]
+          @max_rate_per_endpoint = args["maxRatePerEndpoint"]
+          @max_utilization = args["maxUtilization"]
         end
 
         def to_s

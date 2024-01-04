@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud IAM resources.
 class IAMServiceAccountKey < GcpResourceBase
-  name 'google_service_account_key'
-  desc 'ServiceAccountKey'
-  supports platform: 'gcp'
+  name "google_service_account_key"
+  desc "ServiceAccountKey"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -36,21 +36,21 @@ class IAMServiceAccountKey < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @private_key_type = @fetched['privateKeyType']
-    @key_algorithm = @fetched['keyAlgorithm']
-    @private_key_data = @fetched['privateKeyData']
-    @public_key_data = @fetched['publicKeyData']
-    @valid_after_time = parse_time_string(@fetched['validAfterTime'])
-    @valid_before_time = parse_time_string(@fetched['validBeforeTime'])
-    @key_type = @fetched['keyType']
-    @service_account = @fetched['serviceAccount']
-    @path = @fetched['path']
+    @name = @fetched["name"]
+    @private_key_type = @fetched["privateKeyType"]
+    @key_algorithm = @fetched["keyAlgorithm"]
+    @private_key_data = @fetched["privateKeyData"]
+    @public_key_data = @fetched["publicKeyData"]
+    @valid_after_time = parse_time_string(@fetched["validAfterTime"])
+    @valid_before_time = parse_time_string(@fetched["validBeforeTime"])
+    @key_type = @fetched["keyType"]
+    @service_account = @fetched["serviceAccount"]
+    @path = @fetched["path"]
   end
 
   # Handles parsing RFC3339 time string
@@ -69,10 +69,10 @@ class IAMServiceAccountKey < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://iam.googleapis.com/v1/'
+    "https://iam.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/serviceAccounts/{{service_account}}/keys/{{name}}'
+    "projects/{{project}}/serviceAccounts/{{service_account}}/keys/{{name}}"
   end
 end

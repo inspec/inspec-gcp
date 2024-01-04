@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options'
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options_column_families'
-require 'google/bigquery/property/table_external_data_configuration_csv_options'
-require 'google/bigquery/property/table_external_data_configuration_google_sheets_options'
-require 'google/bigquery/property/table_external_data_configuration_schema'
-require 'google/bigquery/property/table_external_data_configuration_schema_fields'
+require "google/bigquery/property/table_external_data_configuration_bigtable_options"
+require "google/bigquery/property/table_external_data_configuration_bigtable_options_column_families"
+require "google/bigquery/property/table_external_data_configuration_csv_options"
+require "google/bigquery/property/table_external_data_configuration_google_sheets_options"
+require "google/bigquery/property/table_external_data_configuration_schema"
+require "google/bigquery/property/table_external_data_configuration_schema_fields"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -46,16 +46,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @autodetect = args['autodetect']
-          @compression = args['compression']
-          @ignore_unknown_values = args['ignoreUnknownValues']
-          @max_bad_records = args['maxBadRecords']
-          @source_format = args['sourceFormat']
-          @source_uris = args['sourceUris']
-          @schema = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationSchema.new(args['schema'], to_s)
-          @google_sheets_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationGoogleSheetsOptions.new(args['googleSheetsOptions'], to_s)
-          @csv_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationCsvOptions.new(args['csvOptions'], to_s)
-          @bigtable_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptions.new(args['bigtableOptions'], to_s)
+          @autodetect = args["autodetect"]
+          @compression = args["compression"]
+          @ignore_unknown_values = args["ignoreUnknownValues"]
+          @max_bad_records = args["maxBadRecords"]
+          @source_format = args["sourceFormat"]
+          @source_uris = args["sourceUris"]
+          @schema = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationSchema.new(args["schema"], to_s)
+          @google_sheets_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationGoogleSheetsOptions.new(args["googleSheetsOptions"], to_s)
+          @csv_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationCsvOptions.new(args["csvOptions"], to_s)
+          @bigtable_options = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptions.new(args["bigtableOptions"], to_s)
         end
 
         def to_s

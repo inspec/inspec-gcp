@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @port = args['port']
-          @port_name = args['portName']
-          @port_specification = args['portSpecification']
-          @grpc_service_name = args['grpcServiceName']
+          @port = args["port"]
+          @port_name = args["portName"]
+          @port_specification = args["portSpecification"]
+          @grpc_service_name = args["grpcServiceName"]
         end
 
         def to_s

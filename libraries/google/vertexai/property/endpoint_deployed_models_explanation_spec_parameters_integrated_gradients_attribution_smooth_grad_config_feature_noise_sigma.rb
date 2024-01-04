@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require "google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @noise_sigma = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigmaNoiseSigmaArray.parse(args['noiseSigma'], to_s)
+          @noise_sigma = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigmaNoiseSigmaArray.parse(args["noiseSigma"], to_s)
         end
 
         def to_s

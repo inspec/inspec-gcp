@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_artifacts_objects'
-require 'google/cloudbuild/property/trigger_build_artifacts_objects_timing'
+require "google/cloudbuild/property/trigger_build_artifacts_objects"
+require "google/cloudbuild/property/trigger_build_artifacts_objects_timing"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @images = args['images']
-          @objects = GoogleInSpec::CloudBuild::Property::TriggerBuildArtifactsObjects.new(args['objects'], to_s)
+          @images = args["images"]
+          @objects = GoogleInSpec::CloudBuild::Property::TriggerBuildArtifactsObjects.new(args["objects"], to_s)
         end
 
         def to_s

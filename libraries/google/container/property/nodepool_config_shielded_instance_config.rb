@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_secure_boot = args['enableSecureBoot']
-          @enable_integrity_monitoring = args['enableIntegrityMonitoring']
+          @enable_secure_boot = args["enableSecureBoot"]
+          @enable_integrity_monitoring = args["enableIntegrityMonitoring"]
         end
 
         def to_s

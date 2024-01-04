@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/projectinfo_common_instance_metadata_items'
+require "google/compute/property/projectinfo_common_instance_metadata_items"
 module GoogleInSpec
   module Compute
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @items = GoogleInSpec::Compute::Property::ProjectInfoCommonInstanceMetadataItemsArray.parse(args['items'], to_s)
+          @items = GoogleInSpec::Compute::Property::ProjectInfoCommonInstanceMetadataItemsArray.parse(args["items"], to_s)
         end
 
         def to_s

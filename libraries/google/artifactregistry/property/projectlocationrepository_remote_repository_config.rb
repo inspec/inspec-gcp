@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_apt_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_apt_repository_public_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_docker_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_maven_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_npm_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_python_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_upstream_credentials'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_upstream_credentials_username_password_credentials'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_yum_repository'
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_yum_repository_public_repository'
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_apt_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_apt_repository_public_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_docker_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_maven_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_npm_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_python_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_upstream_credentials"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_upstream_credentials_username_password_credentials"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_yum_repository"
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_yum_repository_public_repository"
 module GoogleInSpec
   module Artifactregistry
     module Property
@@ -46,14 +46,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @docker_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigDockerRepository.new(args['dockerRepository'], to_s)
-          @maven_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigMavenRepository.new(args['mavenRepository'], to_s)
-          @npm_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigNpmRepository.new(args['npmRepository'], to_s)
-          @python_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigPythonRepository.new(args['pythonRepository'], to_s)
-          @apt_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigAptRepository.new(args['aptRepository'], to_s)
-          @yum_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigYumRepository.new(args['yumRepository'], to_s)
-          @description = args['description']
-          @upstream_credentials = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigUpstreamCredentials.new(args['upstreamCredentials'], to_s)
+          @docker_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigDockerRepository.new(args["dockerRepository"], to_s)
+          @maven_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigMavenRepository.new(args["mavenRepository"], to_s)
+          @npm_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigNpmRepository.new(args["npmRepository"], to_s)
+          @python_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigPythonRepository.new(args["pythonRepository"], to_s)
+          @apt_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigAptRepository.new(args["aptRepository"], to_s)
+          @yum_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigYumRepository.new(args["yumRepository"], to_s)
+          @description = args["description"]
+          @upstream_credentials = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigUpstreamCredentials.new(args["upstreamCredentials"], to_s)
         end
 
         def to_s

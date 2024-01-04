@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/appengine/property/standardappversion_automatic_scaling'
-require 'google/appengine/property/standardappversion_automatic_scaling_standard_scheduler_settings'
-require 'google/appengine/property/standardappversion_basic_scaling'
-require 'google/appengine/property/standardappversion_manual_scaling'
-require 'google/appengine/property/standardappversion_vpc_access_connector'
+require "gcp_backend"
+require "google/appengine/property/standardappversion_automatic_scaling"
+require "google/appengine/property/standardappversion_automatic_scaling_standard_scheduler_settings"
+require "google/appengine/property/standardappversion_basic_scaling"
+require "google/appengine/property/standardappversion_manual_scaling"
+require "google/appengine/property/standardappversion_vpc_access_connector"
 
 # A provider to manage App Engine resources.
 class AppEngineStandardAppVersion < GcpResourceBase
-  name 'google_appengine_standard_app_version'
-  desc 'StandardAppVersion'
-  supports platform: 'gcp'
+  name "google_appengine_standard_app_version"
+  desc "StandardAppVersion"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -41,21 +41,21 @@ class AppEngineStandardAppVersion < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @version_id = @fetched['id']
-    @runtime = @fetched['runtime']
-    @threadsafe = @fetched['threadsafe']
-    @vpc_access_connector = GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(@fetched['vpcAccessConnector'], to_s)
-    @inbound_services = @fetched['inboundServices']
-    @instance_class = @fetched['instanceClass']
-    @automatic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(@fetched['automaticScaling'], to_s)
-    @basic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(@fetched['basicScaling'], to_s)
-    @manual_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(@fetched['manualScaling'], to_s)
+    @name = @fetched["name"]
+    @version_id = @fetched["id"]
+    @runtime = @fetched["runtime"]
+    @threadsafe = @fetched["threadsafe"]
+    @vpc_access_connector = GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(@fetched["vpcAccessConnector"], to_s)
+    @inbound_services = @fetched["inboundServices"]
+    @instance_class = @fetched["instanceClass"]
+    @automatic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(@fetched["automaticScaling"], to_s)
+    @basic_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(@fetched["basicScaling"], to_s)
+    @manual_scaling = GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(@fetched["manualScaling"], to_s)
   end
 
   def exists?
@@ -69,10 +69,10 @@ class AppEngineStandardAppVersion < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://appengine.googleapis.com/v1/'
+    "https://appengine.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'apps/{{project}}/services/{{service}}/versions/{{version_id}}?view=FULL'
+    "apps/{{project}}/services/{{service}}/versions/{{version_id}}?view=FULL"
   end
 end

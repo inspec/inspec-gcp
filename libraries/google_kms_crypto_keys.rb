@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class KMSCryptoKeys < GcpResourceBase
-  name 'google_kms_crypto_keys'
-  desc 'CryptoKey plural resource'
-  supports platform: 'gcp'
+  name "google_kms_crypto_keys"
+  desc "CryptoKey plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class KMSCryptoKeys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('cryptoKeys')
+    @table = fetch_wrapped_resource("cryptoKeys")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,15 +71,15 @@ class KMSCryptoKeys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:crypto_key_name, name_from_self_link(obj['name'])] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
-      'rotationPeriod' => ->(obj) { [:rotation_period, obj['rotationPeriod']] },
-      'versionTemplate' => ->(obj) { [:version_template, GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(obj['versionTemplate'], to_s)] },
-      'nextRotationTime' => ->(obj) { [:next_rotation_time, parse_time_string(obj['nextRotationTime'])] },
-      'keyRing' => ->(obj) { [:key_ring, obj['keyRing']] },
-      'skipInitialVersionCreation' => ->(obj) { [:skip_initial_version_creation, obj['skipInitialVersionCreation']] },
+      "name" => ->(obj) { [:crypto_key_name, name_from_self_link(obj["name"])] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "purpose" => ->(obj) { [:purpose, obj["purpose"]] },
+      "rotationPeriod" => ->(obj) { [:rotation_period, obj["rotationPeriod"]] },
+      "versionTemplate" => ->(obj) { [:version_template, GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(obj["versionTemplate"], to_s)] },
+      "nextRotationTime" => ->(obj) { [:next_rotation_time, parse_time_string(obj["nextRotationTime"])] },
+      "keyRing" => ->(obj) { [:key_ring, obj["keyRing"]] },
+      "skipInitialVersionCreation" => ->(obj) { [:skip_initial_version_creation, obj["skipInitialVersionCreation"]] },
     }
   end
 
@@ -91,10 +91,10 @@ class KMSCryptoKeys < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}/cryptoKeys'
+    "projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}/cryptoKeys"
   end
 end

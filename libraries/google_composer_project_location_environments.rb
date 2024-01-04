@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComposerProjectLocationEnvironments < GcpResourceBase
-  name 'google_composer_project_location_environments'
-  desc 'ProjectLocationEnvironment plural resource'
-  supports platform: 'gcp'
+  name "google_composer_project_location_environments"
+  desc "ProjectLocationEnvironment plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class ComposerProjectLocationEnvironments < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('environments')
+    @table = fetch_wrapped_resource("environments")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,25 +71,25 @@ class ComposerProjectLocationEnvironments < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'config' => ->(obj) { [:config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(obj['config'], to_s)] },
-      'uuid' => ->(obj) { [:uuid, obj['uuid']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(obj['labels'], to_s)] },
-      'satisfiesPzs' => ->(obj) { [:satisfies_pzs, obj['satisfiesPzs']] },
-      'storageConfig' => ->(obj) { [:storage_config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(obj['storageConfig'], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "config" => ->(obj) { [:config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfig.new(obj["config"], to_s)] },
+      "uuid" => ->(obj) { [:uuid, obj["uuid"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentLabels.new(obj["labels"], to_s)] },
+      "satisfiesPzs" => ->(obj) { [:satisfies_pzs, obj["satisfiesPzs"]] },
+      "storageConfig" => ->(obj) { [:storage_config, GoogleInSpec::Composer::Property::ProjectLocationEnvironmentStorageConfig.new(obj["storageConfig"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://composer.googleapis.com/v1/'
+    "https://composer.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/environments'
+    "{{parent}}/environments"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/resourcemanager/property/organization_owner'
+require "gcp_backend"
+require "google/resourcemanager/property/organization_owner"
 
 # A provider to manage Resource Manager resources.
 class ResourceManagerOrganization < GcpResourceBase
-  name 'google_organization'
-  desc 'Organization'
-  supports platform: 'gcp'
+  name "google_organization"
+  desc "Organization"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -32,16 +32,16 @@ class ResourceManagerOrganization < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @display_name = @fetched['displayName']
-    @lifecycle_state = @fetched['lifecycleState']
-    @creation_time = parse_time_string(@fetched['creationTime'])
-    @owner = GoogleInSpec::ResourceManager::Property::OrganizationOwner.new(@fetched['owner'], to_s)
+    @name = @fetched["name"]
+    @display_name = @fetched["displayName"]
+    @lifecycle_state = @fetched["lifecycleState"]
+    @creation_time = parse_time_string(@fetched["creationTime"])
+    @owner = GoogleInSpec::ResourceManager::Property::OrganizationOwner.new(@fetched["owner"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -60,10 +60,10 @@ class ResourceManagerOrganization < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudresourcemanager.googleapis.com/v1/'
+    "https://cloudresourcemanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

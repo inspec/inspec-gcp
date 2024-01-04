@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_advanced_options_config_json_custom_config'
+require "google/compute/property/regionsecuritypolicy_advanced_options_config_json_custom_config"
 module GoogleInSpec
   module Compute
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @json_parsing = args['jsonParsing']
-          @json_custom_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.new(args['jsonCustomConfig'], to_s)
-          @log_level = args['logLevel']
+          @json_parsing = args["jsonParsing"]
+          @json_custom_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.new(args["jsonCustomConfig"], to_s)
+          @log_level = args["logLevel"]
         end
 
         def to_s

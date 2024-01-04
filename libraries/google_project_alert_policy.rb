@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/monitoring/property/alertpolicy_conditions'
-require 'google/monitoring/property/alertpolicy_creation_record'
-require 'google/monitoring/property/alertpolicy_documentation'
+require "gcp_backend"
+require "google/monitoring/property/alertpolicy_conditions"
+require "google/monitoring/property/alertpolicy_creation_record"
+require "google/monitoring/property/alertpolicy_documentation"
 
 # A provider to manage Cloud (Stackdriver) Monitoring resources.
 class MonitoringAlertPolicy < GcpResourceBase
-  name 'google_project_alert_policy'
-  desc 'AlertPolicy'
-  supports platform: 'gcp'
+  name "google_project_alert_policy"
+  desc "AlertPolicy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -38,20 +38,20 @@ class MonitoringAlertPolicy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @display_name = @fetched['displayName']
-    @combiner = @fetched['combiner']
-    @creation_record = GoogleInSpec::Monitoring::Property::AlertPolicyCreationRecord.new(@fetched['creationRecord'], to_s)
-    @enabled = @fetched['enabled']
-    @conditions = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(@fetched['conditions'], to_s)
-    @notification_channels = @fetched['notificationChannels']
-    @user_labels = @fetched['userLabels']
-    @documentation = GoogleInSpec::Monitoring::Property::AlertPolicyDocumentation.new(@fetched['documentation'], to_s)
+    @name = @fetched["name"]
+    @display_name = @fetched["displayName"]
+    @combiner = @fetched["combiner"]
+    @creation_record = GoogleInSpec::Monitoring::Property::AlertPolicyCreationRecord.new(@fetched["creationRecord"], to_s)
+    @enabled = @fetched["enabled"]
+    @conditions = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(@fetched["conditions"], to_s)
+    @notification_channels = @fetched["notificationChannels"]
+    @user_labels = @fetched["userLabels"]
+    @documentation = GoogleInSpec::Monitoring::Property::AlertPolicyDocumentation.new(@fetched["documentation"], to_s)
   end
 
   def exists?
@@ -69,10 +69,10 @@ class MonitoringAlertPolicy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://monitoring.googleapis.com/'
+    "https://monitoring.googleapis.com/"
   end
 
   def resource_base_url
-    'v3/projects/{{project}}/alertPolicies/{{name}}'
+    "v3/projects/{{project}}/alertPolicies/{{name}}"
   end
 end

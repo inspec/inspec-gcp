@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeInstanceGroups < GcpResourceBase
-  name 'google_compute_instance_groups'
-  desc 'InstanceGroup plural resource'
-  supports platform: 'gcp'
+  name "google_compute_instance_groups"
+  desc "InstanceGroup plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class ComputeInstanceGroups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,15 +71,15 @@ class ComputeInstanceGroups < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:instance_group_id, obj['id']] },
-      'name' => ->(obj) { [:instance_group_name, obj['name']] },
-      'namedPorts' => ->(obj) { [:named_ports, GoogleInSpec::Compute::Property::InstanceGroupNamedPortsArray.parse(obj['namedPorts'], to_s)] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'subnetwork' => ->(obj) { [:subnetwork, obj['subnetwork']] },
-      'zone' => ->(obj) { [:zone, obj['zone']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:instance_group_id, obj["id"]] },
+      "name" => ->(obj) { [:instance_group_name, obj["name"]] },
+      "namedPorts" => ->(obj) { [:named_ports, GoogleInSpec::Compute::Property::InstanceGroupNamedPortsArray.parse(obj["namedPorts"], to_s)] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
+      "subnetwork" => ->(obj) { [:subnetwork, obj["subnetwork"]] },
+      "zone" => ->(obj) { [:zone, obj["zone"]] },
     }
   end
 
@@ -92,13 +92,13 @@ class ComputeInstanceGroups < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/instanceGroups'
+    "projects/{{project}}/zones/{{zone}}/instanceGroups"
   end
 end

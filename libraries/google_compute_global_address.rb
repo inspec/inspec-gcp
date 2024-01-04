@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeGlobalAddress < GcpResourceBase
-  name 'google_compute_global_address'
-  desc 'GlobalAddress'
-  supports platform: 'gcp'
+  name "google_compute_global_address"
+  desc "GlobalAddress"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :address
@@ -39,24 +39,24 @@ class ComputeGlobalAddress < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @address = @fetched['address']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @labels = @fetched['labels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @ip_version = @fetched['ipVersion']
-    @region = @fetched['region']
-    @prefix_length = @fetched['prefixLength']
-    @address_type = @fetched['addressType']
-    @purpose = @fetched['purpose']
-    @network = @fetched['network']
+    @address = @fetched["address"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @labels = @fetched["labels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @ip_version = @fetched["ipVersion"]
+    @region = @fetched["region"]
+    @prefix_length = @fetched["prefixLength"]
+    @address_type = @fetched["addressType"]
+    @purpose = @fetched["purpose"]
+    @network = @fetched["network"]
   end
 
   # Handles parsing RFC3339 time string
@@ -76,13 +76,13 @@ class ComputeGlobalAddress < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/addresses/{{name}}'
+    "projects/{{project}}/global/addresses/{{name}}"
   end
 end

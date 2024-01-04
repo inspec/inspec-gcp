@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modelsevaluation_model_explanation_mean_attributions'
+require "google/vertexai/property/modelsevaluation_model_explanation_mean_attributions"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @mean_attributions = GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanationMeanAttributionsArray.parse(args['meanAttributions'], to_s)
+          @mean_attributions = GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanationMeanAttributionsArray.parse(args["meanAttributions"], to_s)
         end
 
         def to_s

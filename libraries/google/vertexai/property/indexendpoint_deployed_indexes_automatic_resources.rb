@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_replica_count = args['maxReplicaCount']
-          @min_replica_count = args['minReplicaCount']
+          @max_replica_count = args["maxReplicaCount"]
+          @min_replica_count = args["minReplicaCount"]
         end
 
         def to_s

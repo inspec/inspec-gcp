@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeVpnTunnel < GcpResourceBase
-  name 'google_compute_vpn_tunnel'
-  desc 'VpnTunnel'
-  supports platform: 'gcp'
+  name "google_compute_vpn_tunnel"
+  desc "VpnTunnel"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :id
@@ -46,31 +46,31 @@ class ComputeVpnTunnel < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @id = @fetched['id']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @target_vpn_gateway = @fetched['targetVpnGateway']
-    @vpn_gateway = @fetched['vpnGateway']
-    @vpn_gateway_interface = @fetched['vpnGatewayInterface']
-    @peer_external_gateway = @fetched['peerExternalGateway']
-    @peer_external_gateway_interface = @fetched['peerExternalGatewayInterface']
-    @peer_gcp_gateway = @fetched['peerGcpGateway']
-    @router = @fetched['router']
-    @peer_ip = @fetched['peerIp']
-    @shared_secret = @fetched['sharedSecret']
-    @shared_secret_hash = @fetched['sharedSecretHash']
-    @ike_version = @fetched['ikeVersion']
-    @local_traffic_selector = @fetched['localTrafficSelector']
-    @remote_traffic_selector = @fetched['remoteTrafficSelector']
-    @labels = @fetched['labels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @region = @fetched['region']
+    @id = @fetched["id"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @target_vpn_gateway = @fetched["targetVpnGateway"]
+    @vpn_gateway = @fetched["vpnGateway"]
+    @vpn_gateway_interface = @fetched["vpnGatewayInterface"]
+    @peer_external_gateway = @fetched["peerExternalGateway"]
+    @peer_external_gateway_interface = @fetched["peerExternalGatewayInterface"]
+    @peer_gcp_gateway = @fetched["peerGcpGateway"]
+    @router = @fetched["router"]
+    @peer_ip = @fetched["peerIp"]
+    @shared_secret = @fetched["sharedSecret"]
+    @shared_secret_hash = @fetched["sharedSecretHash"]
+    @ike_version = @fetched["ikeVersion"]
+    @local_traffic_selector = @fetched["localTrafficSelector"]
+    @remote_traffic_selector = @fetched["remoteTrafficSelector"]
+    @labels = @fetched["labels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -90,13 +90,13 @@ class ComputeVpnTunnel < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}'
+    "projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}"
   end
 end

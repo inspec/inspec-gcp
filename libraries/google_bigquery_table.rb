@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,28 +13,28 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/bigquery/property/table_encryption_configuration'
-require 'google/bigquery/property/table_external_data_configuration'
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options'
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options_column_families'
-require 'google/bigquery/property/table_external_data_configuration_csv_options'
-require 'google/bigquery/property/table_external_data_configuration_google_sheets_options'
-require 'google/bigquery/property/table_external_data_configuration_schema'
-require 'google/bigquery/property/table_external_data_configuration_schema_fields'
-require 'google/bigquery/property/table_schema'
-require 'google/bigquery/property/table_schema_fields'
-require 'google/bigquery/property/table_streaming_buffer'
-require 'google/bigquery/property/table_table_reference'
-require 'google/bigquery/property/table_time_partitioning'
-require 'google/bigquery/property/table_view'
-require 'google/bigquery/property/table_view_user_defined_function_resources'
+require "gcp_backend"
+require "google/bigquery/property/table_encryption_configuration"
+require "google/bigquery/property/table_external_data_configuration"
+require "google/bigquery/property/table_external_data_configuration_bigtable_options"
+require "google/bigquery/property/table_external_data_configuration_bigtable_options_column_families"
+require "google/bigquery/property/table_external_data_configuration_csv_options"
+require "google/bigquery/property/table_external_data_configuration_google_sheets_options"
+require "google/bigquery/property/table_external_data_configuration_schema"
+require "google/bigquery/property/table_external_data_configuration_schema_fields"
+require "google/bigquery/property/table_schema"
+require "google/bigquery/property/table_schema_fields"
+require "google/bigquery/property/table_streaming_buffer"
+require "google/bigquery/property/table_table_reference"
+require "google/bigquery/property/table_time_partitioning"
+require "google/bigquery/property/table_view"
+require "google/bigquery/property/table_view_user_defined_function_resources"
 
 # A provider to manage BigQuery resources.
 class BigQueryTable < GcpResourceBase
-  name 'google_bigquery_table'
-  desc 'Table'
-  supports platform: 'gcp'
+  name "google_bigquery_table"
+  desc "Table"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :table_reference
@@ -64,34 +64,34 @@ class BigQueryTable < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @table_reference = GoogleInSpec::BigQuery::Property::TableTableReference.new(@fetched['tableReference'], to_s)
-    @clustering = @fetched['clustering']
-    @creation_time = @fetched['creationTime']
-    @description = @fetched['description']
-    @friendly_name = @fetched['friendlyName']
-    @id = @fetched['id']
-    @labels = @fetched['labels']
-    @last_modified_time = @fetched['lastModifiedTime']
-    @location = @fetched['location']
-    @name = @fetched['name']
-    @num_bytes = @fetched['numBytes']
-    @num_long_term_bytes = @fetched['numLongTermBytes']
-    @num_rows = @fetched['numRows']
-    @require_partition_filter = @fetched['requirePartitionFilter']
-    @type = @fetched['type']
-    @view = GoogleInSpec::BigQuery::Property::TableView.new(@fetched['view'], to_s)
-    @time_partitioning = GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(@fetched['timePartitioning'], to_s)
-    @streaming_buffer = GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(@fetched['streamingBuffer'], to_s)
-    @schema = GoogleInSpec::BigQuery::Property::TableSchema.new(@fetched['schema'], to_s)
-    @encryption_configuration = GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(@fetched['encryptionConfiguration'], to_s)
-    @expiration_time = @fetched['expirationTime']
-    @external_data_configuration = GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(@fetched['externalDataConfiguration'], to_s)
-    @dataset = @fetched['dataset']
+    @table_reference = GoogleInSpec::BigQuery::Property::TableTableReference.new(@fetched["tableReference"], to_s)
+    @clustering = @fetched["clustering"]
+    @creation_time = @fetched["creationTime"]
+    @description = @fetched["description"]
+    @friendly_name = @fetched["friendlyName"]
+    @id = @fetched["id"]
+    @labels = @fetched["labels"]
+    @last_modified_time = @fetched["lastModifiedTime"]
+    @location = @fetched["location"]
+    @name = @fetched["name"]
+    @num_bytes = @fetched["numBytes"]
+    @num_long_term_bytes = @fetched["numLongTermBytes"]
+    @num_rows = @fetched["numRows"]
+    @require_partition_filter = @fetched["requirePartitionFilter"]
+    @type = @fetched["type"]
+    @view = GoogleInSpec::BigQuery::Property::TableView.new(@fetched["view"], to_s)
+    @time_partitioning = GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(@fetched["timePartitioning"], to_s)
+    @streaming_buffer = GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(@fetched["streamingBuffer"], to_s)
+    @schema = GoogleInSpec::BigQuery::Property::TableSchema.new(@fetched["schema"], to_s)
+    @encryption_configuration = GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(@fetched["encryptionConfiguration"], to_s)
+    @expiration_time = @fetched["expirationTime"]
+    @external_data_configuration = GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(@fetched["externalDataConfiguration"], to_s)
+    @dataset = @fetched["dataset"]
   end
 
   def exists?
@@ -105,10 +105,10 @@ class BigQueryTable < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://bigquery.googleapis.com/bigquery/v2/'
+    "https://bigquery.googleapis.com/bigquery/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/datasets/{{dataset}}/tables/{{name}}'
+    "projects/{{project}}/datasets/{{dataset}}/tables/{{name}}"
   end
 end

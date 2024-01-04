@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/dlp/property/dt_config'
-require 'google/dlp/property/dt_config_info_type_tf'
-require 'google/dlp/property/dt_config_info_type_tf_tf'
+require "gcp_backend"
+require "google/dlp/property/dt_config"
+require "google/dlp/property/dt_config_info_type_tf"
+require "google/dlp/property/dt_config_info_type_tf_tf"
 
 # A provider to manage Dlp resources.
 class DLPDT < GcpResourceBase
-  name 'google_dlp_dt'
-  desc 'DT'
-  supports platform: 'gcp'
+  name "google_dlp_dt"
+  desc "DT"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -34,16 +34,16 @@ class DLPDT < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @display_name = @fetched['displayName']
-    @config = GoogleInSpec::DLP::Property::DTConfig.new(@fetched['config'], to_s)
-    @parent = @fetched['parent']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @display_name = @fetched["displayName"]
+    @config = GoogleInSpec::DLP::Property::DTConfig.new(@fetched["config"], to_s)
+    @parent = @fetched["parent"]
   end
 
   def exists?
@@ -57,10 +57,10 @@ class DLPDT < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://dlp.googleapis.com/v2/'
+    "https://dlp.googleapis.com/v2/"
   end
 
   def resource_base_url
-    '{{parent}}/deidentifyTemplates/{{name}}'
+    "{{parent}}/deidentifyTemplates/{{name}}"
   end
 end

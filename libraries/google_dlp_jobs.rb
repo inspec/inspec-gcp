@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class DLPJobs < GcpResourceBase
-  name 'google_dlp_jobs'
-  desc 'Job plural resource'
-  supports platform: 'gcp'
+  name "google_dlp_jobs"
+  desc "Job plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,12 +41,12 @@ class DLPJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('jobs')
+    @table = fetch_wrapped_resource("jobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -74,28 +74,28 @@ class DLPJobs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'type' => ->(obj) { [:type, obj['type']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'jobTriggerName' => ->(obj) { [:job_trigger_name, obj['jobTriggerName']] },
-      'errors' => ->(obj) { [:errors, GoogleInSpec::DLP::Property::JobErrorsArray.parse(obj['errors'], to_s)] },
-      'actDet' => ->(obj) { [:act_det, GoogleInSpec::DLP::Property::JobActDetArray.parse(obj['actDet'], to_s)] },
-      'riskDetails' => ->(obj) { [:risk_details, obj['riskDetails']] },
-      'inspectDetails' => ->(obj) { [:inspect_details, obj['inspectDetails']] },
-      'parent' => ->(obj) { [:parent, obj['parent']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "jobTriggerName" => ->(obj) { [:job_trigger_name, obj["jobTriggerName"]] },
+      "errors" => ->(obj) { [:errors, GoogleInSpec::DLP::Property::JobErrorsArray.parse(obj["errors"], to_s)] },
+      "actDet" => ->(obj) { [:act_det, GoogleInSpec::DLP::Property::JobActDetArray.parse(obj["actDet"], to_s)] },
+      "riskDetails" => ->(obj) { [:risk_details, obj["riskDetails"]] },
+      "inspectDetails" => ->(obj) { [:inspect_details, obj["inspectDetails"]] },
+      "parent" => ->(obj) { [:parent, obj["parent"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://dlp.googleapis.com/v2/'
+    "https://dlp.googleapis.com/v2/"
   end
 
   def resource_base_url
-    '{{parent}}/dlpJobs'
+    "{{parent}}/dlpJobs"
   end
 end

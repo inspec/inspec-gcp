@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,21 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/container/property/regionalnodepool_autoscaling'
-require 'google/container/property/regionalnodepool_conditions'
-require 'google/container/property/regionalnodepool_config'
-require 'google/container/property/regionalnodepool_config_accelerators'
-require 'google/container/property/regionalnodepool_config_taints'
-require 'google/container/property/regionalnodepool_management'
-require 'google/container/property/regionalnodepool_management_upgrade_options'
-require 'google/container/property/regionalnodepool_max_pods_constraint'
+require "gcp_backend"
+require "google/container/property/regionalnodepool_autoscaling"
+require "google/container/property/regionalnodepool_conditions"
+require "google/container/property/regionalnodepool_config"
+require "google/container/property/regionalnodepool_config_accelerators"
+require "google/container/property/regionalnodepool_config_taints"
+require "google/container/property/regionalnodepool_management"
+require "google/container/property/regionalnodepool_management_upgrade_options"
+require "google/container/property/regionalnodepool_max_pods_constraint"
 
 # A provider to manage Google Kubernetes Engine resources.
 class ContainerRegionalNodePool < GcpResourceBase
-  name 'google_container_regional_node_pool'
-  desc 'RegionalNodePool'
-  supports platform: 'gcp'
+  name "google_container_regional_node_pool"
+  desc "RegionalNodePool"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -47,25 +47,25 @@ class ContainerRegionalNodePool < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = @fetched['name']
-    @config = GoogleInSpec::Container::Property::RegionalNodePoolConfig.new(@fetched['config'], to_s)
-    @initial_node_count = @fetched['initialNodeCount']
-    @status = @fetched['status']
-    @status_message = @fetched['statusMessage']
-    @version = @fetched['version']
-    @autoscaling = GoogleInSpec::Container::Property::RegionalNodePoolAutoscaling.new(@fetched['autoscaling'], to_s)
-    @management = GoogleInSpec::Container::Property::RegionalNodePoolManagement.new(@fetched['management'], to_s)
-    @max_pods_constraint = GoogleInSpec::Container::Property::RegionalNodePoolMaxPodsConstraint.new(@fetched['maxPodsConstraint'], to_s)
-    @conditions = GoogleInSpec::Container::Property::RegionalNodePoolConditionsArray.parse(@fetched['conditions'], to_s)
-    @pod_ipv4_cidr_size = @fetched['podIpv4CidrSize']
-    @cluster = @fetched['cluster']
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @config = GoogleInSpec::Container::Property::RegionalNodePoolConfig.new(@fetched["config"], to_s)
+    @initial_node_count = @fetched["initialNodeCount"]
+    @status = @fetched["status"]
+    @status_message = @fetched["statusMessage"]
+    @version = @fetched["version"]
+    @autoscaling = GoogleInSpec::Container::Property::RegionalNodePoolAutoscaling.new(@fetched["autoscaling"], to_s)
+    @management = GoogleInSpec::Container::Property::RegionalNodePoolManagement.new(@fetched["management"], to_s)
+    @max_pods_constraint = GoogleInSpec::Container::Property::RegionalNodePoolMaxPodsConstraint.new(@fetched["maxPodsConstraint"], to_s)
+    @conditions = GoogleInSpec::Container::Property::RegionalNodePoolConditionsArray.parse(@fetched["conditions"], to_s)
+    @pod_ipv4_cidr_size = @fetched["podIpv4CidrSize"]
+    @cluster = @fetched["cluster"]
+    @location = @fetched["location"]
   end
 
   # Handles parsing RFC3339 time string
@@ -83,24 +83,24 @@ class ContainerRegionalNodePool < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'config' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolConfig.un_parse(x, 'config') },
-      'initial_node_count' => ->(x, _) { x.nil? ? [] : ["its('initial_node_count') { should cmp #{x.inspect} }"] },
-      'status' => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
-      'status_message' => ->(x, _) { x.nil? ? [] : ["its('status_message') { should cmp #{x.inspect} }"] },
-      'version' => ->(x, _) { x.nil? ? [] : ["its('version') { should cmp #{x.inspect} }"] },
-      'autoscaling' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolAutoscaling.un_parse(x, 'autoscaling') },
-      'management' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolManagement.un_parse(x, 'management') },
-      'max_pods_constraint' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolMaxPodsConstraint.un_parse(x, 'max_pods_constraint') },
-      'conditions' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('conditions') { should include '#{single.to_json}' }" } },
-      'pod_ipv4_cidr_size' => ->(x, _) { x.nil? ? [] : ["its('pod_ipv4_cidr_size') { should cmp #{x.inspect} }"] },
-      'cluster' => ->(x, _) { x.nil? ? [] : ["its('cluster') { should cmp #{x.inspect} }"] },
-      'location' => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "config" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolConfig.un_parse(x, "config") },
+      "initial_node_count" => ->(x, _) { x.nil? ? [] : ["its('initial_node_count') { should cmp #{x.inspect} }"] },
+      "status" => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
+      "status_message" => ->(x, _) { x.nil? ? [] : ["its('status_message') { should cmp #{x.inspect} }"] },
+      "version" => ->(x, _) { x.nil? ? [] : ["its('version') { should cmp #{x.inspect} }"] },
+      "autoscaling" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolAutoscaling.un_parse(x, "autoscaling") },
+      "management" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolManagement.un_parse(x, "management") },
+      "max_pods_constraint" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalNodePoolMaxPodsConstraint.un_parse(x, "max_pods_constraint") },
+      "conditions" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('conditions') { should include '#{single.to_json}' }" } },
+      "pod_ipv4_cidr_size" => ->(x, _) { x.nil? ? [] : ["its('pod_ipv4_cidr_size') { should cmp #{x.inspect} }"] },
+      "cluster" => ->(x, _) { x.nil? ? [] : ["its('cluster') { should cmp #{x.inspect} }"] },
+      "location" => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'RegionalNodePool'
+    name = "RegionalNodePool"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -109,11 +109,11 @@ class ContainerRegionalNodePool < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_container_regional_node_pool',
+      type: "google_container_regional_node_pool",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -121,10 +121,10 @@ class ContainerRegionalNodePool < GcpResourceBase
   private
 
   def product_url
-    'https://container.googleapis.com/v1/'
+    "https://container.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}'
+    "projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}"
   end
 end

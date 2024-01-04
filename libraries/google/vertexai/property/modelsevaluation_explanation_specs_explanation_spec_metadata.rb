@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_metadata_inputs'
-require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_metadata_outputs'
+require "google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_metadata_inputs"
+require "google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_metadata_outputs"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -30,10 +30,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @feature_attributions_schema_uri = args['featureAttributionsSchemaUri']
-          @latent_space_source = args['latentSpaceSource']
-          @outputs = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecMetadataOutputs.new(args['outputs'], to_s)
-          @inputs = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecMetadataInputs.new(args['inputs'], to_s)
+          @feature_attributions_schema_uri = args["featureAttributionsSchemaUri"]
+          @latent_space_source = args["latentSpaceSource"]
+          @outputs = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecMetadataOutputs.new(args["outputs"], to_s)
+          @inputs = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecMetadataInputs.new(args["inputs"], to_s)
         end
 
         def to_s

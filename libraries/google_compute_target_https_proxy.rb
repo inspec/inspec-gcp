@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeTargetHttpsProxy < GcpResourceBase
-  name 'google_compute_target_https_proxy'
-  desc 'TargetHttpsProxy'
-  supports platform: 'gcp'
+  name "google_compute_target_https_proxy"
+  desc "TargetHttpsProxy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -34,19 +34,19 @@ class ComputeTargetHttpsProxy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @quic_override = @fetched['quicOverride']
-    @ssl_certificates = @fetched['sslCertificates']
-    @ssl_policy = @fetched['sslPolicy']
-    @url_map = @fetched['urlMap']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @quic_override = @fetched["quicOverride"]
+    @ssl_certificates = @fetched["sslCertificates"]
+    @ssl_policy = @fetched["sslPolicy"]
+    @url_map = @fetched["urlMap"]
   end
 
   # Handles parsing RFC3339 time string
@@ -66,13 +66,13 @@ class ComputeTargetHttpsProxy < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/targetHttpsProxies/{{name}}'
+    "projects/{{project}}/global/targetHttpsProxies/{{name}}"
   end
 end

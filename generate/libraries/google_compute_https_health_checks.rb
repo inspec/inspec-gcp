@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeHttpsHealthChecks < GcpResourceBase
-  name 'google_compute_https_health_checks'
-  desc 'HttpsHealthCheck plural resource'
-  supports platform: 'gcp'
+  name "google_compute_https_health_checks"
+  desc "HttpsHealthCheck plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class ComputeHttpsHealthChecks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -73,17 +73,17 @@ class ComputeHttpsHealthChecks < GcpResourceBase
 
   def transformers
     {
-      'checkIntervalSec' => ->(obj) { [:check_interval_sec, obj['checkIntervalSec']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'healthyThreshold' => ->(obj) { [:healthy_threshold, obj['healthyThreshold']] },
-      'host' => ->(obj) { [:host, obj['host']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'port' => ->(obj) { [:port, obj['port']] },
-      'requestPath' => ->(obj) { [:request_path, obj['requestPath']] },
-      'timeoutSec' => ->(obj) { [:timeout_sec, obj['timeoutSec']] },
-      'unhealthyThreshold' => ->(obj) { [:unhealthy_threshold, obj['unhealthyThreshold']] },
+      "checkIntervalSec" => ->(obj) { [:check_interval_sec, obj["checkIntervalSec"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "healthyThreshold" => ->(obj) { [:healthy_threshold, obj["healthyThreshold"]] },
+      "host" => ->(obj) { [:host, obj["host"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "port" => ->(obj) { [:port, obj["port"]] },
+      "requestPath" => ->(obj) { [:request_path, obj["requestPath"]] },
+      "timeoutSec" => ->(obj) { [:timeout_sec, obj["timeoutSec"]] },
+      "unhealthyThreshold" => ->(obj) { [:unhealthy_threshold, obj["unhealthyThreshold"]] },
     }
   end
 
@@ -110,10 +110,10 @@ class ComputeHttpsHealthChecks < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/httpsHealthChecks'
+    "projects/{{project}}/global/httpsHealthChecks"
   end
 end

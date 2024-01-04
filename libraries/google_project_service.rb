@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/serviceusage/property/service_config'
-require 'google/serviceusage/property/service_config_apis'
+require "gcp_backend"
+require "google/serviceusage/property/service_config"
+require "google/serviceusage/property/service_config_apis"
 
 # A provider to manage Service Usage resources.
 class ServiceUsageService < GcpResourceBase
-  name 'google_project_service'
-  desc 'Service'
-  supports platform: 'gcp'
+  name "google_project_service"
+  desc "Service"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -33,16 +33,16 @@ class ServiceUsageService < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @parent = @fetched['parent']
-    @state = @fetched['state']
-    @disable_dependent_services = @fetched['disableDependentServices']
-    @config = GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(@fetched['config'], to_s)
+    @name = @fetched["name"]
+    @parent = @fetched["parent"]
+    @state = @fetched["state"]
+    @disable_dependent_services = @fetched["disableDependentServices"]
+    @config = GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(@fetched["config"], to_s)
   end
 
   def exists?
@@ -57,13 +57,13 @@ class ServiceUsageService < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://serviceusage.googleapis.com/v1beta1/'
+      "https://serviceusage.googleapis.com/v1beta1/"
     else
-      'https://serviceusage.googleapis.com/v1/'
+      "https://serviceusage.googleapis.com/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/services/{{name}}'
+    "projects/{{project}}/services/{{name}}"
   end
 end

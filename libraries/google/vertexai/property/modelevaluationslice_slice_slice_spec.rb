@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modelevaluationslice_slice_slice_spec_configs'
+require "google/vertexai/property/modelevaluationslice_slice_slice_spec_configs"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @configs = GoogleInSpec::VertexAI::Property::ModelEvaluationSliceSliceSliceSpecConfigs.new(args['configs'], to_s)
+          @configs = GoogleInSpec::VertexAI::Property::ModelEvaluationSliceSliceSliceSpecConfigs.new(args["configs"], to_s)
         end
 
         def to_s

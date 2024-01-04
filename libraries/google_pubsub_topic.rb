@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/pubsub/property/topic_message_storage_policy'
+require "gcp_backend"
+require "google/pubsub/property/topic_message_storage_policy"
 
 # A provider to manage Cloud Pub/Sub resources.
 class PubsubTopic < GcpResourceBase
-  name 'google_pubsub_topic'
-  desc 'Topic'
-  supports platform: 'gcp'
+  name "google_pubsub_topic"
+  desc "Topic"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -31,15 +31,15 @@ class PubsubTopic < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = name_from_self_link(@fetched['name'])
-    @kms_key_name = @fetched['kmsKeyName']
-    @labels = @fetched['labels']
-    @message_storage_policy = GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(@fetched['messageStoragePolicy'], to_s)
+    @name = name_from_self_link(@fetched["name"])
+    @kms_key_name = @fetched["kmsKeyName"]
+    @labels = @fetched["labels"]
+    @message_storage_policy = GoogleInSpec::Pubsub::Property::TopicMessageStoragePolicy.new(@fetched["messageStoragePolicy"], to_s)
   end
 
   def exists?
@@ -53,10 +53,10 @@ class PubsubTopic < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://pubsub.googleapis.com/v1/'
+    "https://pubsub.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/topics/{{name}}'
+    "projects/{{project}}/topics/{{name}}"
   end
 end

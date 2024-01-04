@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @year = args['year']
-          @month = args['month']
-          @day = args['day']
+          @year = args["year"]
+          @month = args["month"]
+          @day = args["day"]
         end
 
         def to_s

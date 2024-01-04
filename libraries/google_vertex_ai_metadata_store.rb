@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/metadatastore_encryption_spec'
-require 'google/vertexai/property/metadatastore_state'
+require "gcp_backend"
+require "google/vertexai/property/metadatastore_encryption_spec"
+require "google/vertexai/property/metadatastore_state"
 
 # A provider to manage Vertex AI resources.
 class VertexAIMetadataStore < GcpResourceBase
-  name 'google_vertex_ai_metadata_store'
-  desc 'MetadataStore'
-  supports platform: 'gcp'
+  name "google_vertex_ai_metadata_store"
+  desc "MetadataStore"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :description
@@ -34,17 +34,17 @@ class VertexAIMetadataStore < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @description = @fetched['description']
-    @create_time = @fetched['createTime']
-    @update_time = @fetched['updateTime']
-    @encryption_spec = GoogleInSpec::VertexAI::Property::MetadataStoreEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @state = GoogleInSpec::VertexAI::Property::MetadataStoreState.new(@fetched['state'], to_s)
-    @name = @fetched['name']
+    @description = @fetched["description"]
+    @create_time = @fetched["createTime"]
+    @update_time = @fetched["updateTime"]
+    @encryption_spec = GoogleInSpec::VertexAI::Property::MetadataStoreEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @state = GoogleInSpec::VertexAI::Property::MetadataStoreState.new(@fetched["state"], to_s)
+    @name = @fetched["name"]
   end
 
   def exists?
@@ -58,10 +58,10 @@ class VertexAIMetadataStore < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

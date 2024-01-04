@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Vertex AI resources.
 class VertexAIDatasetsAnnotationSpec < GcpResourceBase
-  name 'google_vertex_ai_datasets_annotation_spec'
-  desc 'DatasetsAnnotationSpec'
-  supports platform: 'gcp'
+  name "google_vertex_ai_datasets_annotation_spec"
+  desc "DatasetsAnnotationSpec"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :display_name
@@ -31,16 +31,16 @@ class VertexAIDatasetsAnnotationSpec < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @display_name = @fetched['displayName']
-    @name = @fetched['name']
-    @etag = @fetched['etag']
-    @create_time = @fetched['createTime']
-    @update_time = @fetched['updateTime']
+    @display_name = @fetched["displayName"]
+    @name = @fetched["name"]
+    @etag = @fetched["etag"]
+    @create_time = @fetched["createTime"]
+    @update_time = @fetched["updateTime"]
   end
 
   def exists?
@@ -54,10 +54,10 @@ class VertexAIDatasetsAnnotationSpec < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

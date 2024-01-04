@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeGlobalOperations < GcpResourceBase
-  name 'google_compute_global_operations'
-  desc 'GlobalOperation plural resource'
-  supports platform: 'gcp'
+  name "google_compute_global_operations"
+  desc "GlobalOperation plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -43,12 +43,12 @@ class ComputeGlobalOperations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -76,20 +76,20 @@ class ComputeGlobalOperations < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'zone' => ->(obj) { [:zone, obj['zone']] },
-      'clientOperationId' => ->(obj) { [:client_operation_id, obj['clientOperationId']] },
-      'operationType' => ->(obj) { [:operation_type, obj['operationType']] },
-      'user' => ->(obj) { [:user, obj['user']] },
-      'progress' => ->(obj) { [:progress, obj['progress']] },
-      'insertTime' => ->(obj) { [:insert_time, parse_time_string(obj['insertTime'])] },
-      'startTime' => ->(obj) { [:start_time, parse_time_string(obj['startTime'])] },
-      'endTime' => ->(obj) { [:end_time, parse_time_string(obj['endTime'])] },
-      'status' => ->(obj) { [:status, obj['status']] },
-      'statusMessage' => ->(obj) { [:status_message, obj['statusMessage']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "zone" => ->(obj) { [:zone, obj["zone"]] },
+      "clientOperationId" => ->(obj) { [:client_operation_id, obj["clientOperationId"]] },
+      "operationType" => ->(obj) { [:operation_type, obj["operationType"]] },
+      "user" => ->(obj) { [:user, obj["user"]] },
+      "progress" => ->(obj) { [:progress, obj["progress"]] },
+      "insertTime" => ->(obj) { [:insert_time, parse_time_string(obj["insertTime"])] },
+      "startTime" => ->(obj) { [:start_time, parse_time_string(obj["startTime"])] },
+      "endTime" => ->(obj) { [:end_time, parse_time_string(obj["endTime"])] },
+      "status" => ->(obj) { [:status, obj["status"]] },
+      "statusMessage" => ->(obj) { [:status_message, obj["statusMessage"]] },
     }
   end
 
@@ -101,10 +101,10 @@ class ComputeGlobalOperations < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/operations'
+    "projects/{{project}}/global/operations"
   end
 end

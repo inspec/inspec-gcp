@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeNetworkEndpointGroup < GcpResourceBase
-  name 'google_compute_network_endpoint_group'
-  desc 'NetworkEndpointGroup'
-  supports platform: 'gcp'
+  name "google_compute_network_endpoint_group"
+  desc "NetworkEndpointGroup"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :id
@@ -35,20 +35,20 @@ class ComputeNetworkEndpointGroup < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @network_endpoint_type = @fetched['networkEndpointType']
-    @size = @fetched['size']
-    @network = @fetched['network']
-    @subnetwork = @fetched['subnetwork']
-    @default_port = @fetched['defaultPort']
-    @zone = @fetched['zone']
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @network_endpoint_type = @fetched["networkEndpointType"]
+    @size = @fetched["size"]
+    @network = @fetched["network"]
+    @subnetwork = @fetched["subnetwork"]
+    @default_port = @fetched["defaultPort"]
+    @zone = @fetched["zone"]
   end
 
   def exists?
@@ -63,13 +63,13 @@ class ComputeNetworkEndpointGroup < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}"
   end
 end

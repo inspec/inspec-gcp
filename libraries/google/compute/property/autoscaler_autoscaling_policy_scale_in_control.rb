@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas'
+require "google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas"
 module GoogleInSpec
   module Compute
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_scaled_in_replicas = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.new(args['maxScaledInReplicas'], to_s)
-          @time_window_sec = args['timeWindowSec']
+          @max_scaled_in_replicas = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.new(args["maxScaledInReplicas"], to_s)
+          @time_window_sec = args["timeWindowSec"]
         end
 
         def to_s

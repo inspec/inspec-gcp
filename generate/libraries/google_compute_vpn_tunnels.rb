@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeVpnTunnels < GcpResourceBase
-    name 'google_compute_vpn_tunnels'
-    desc 'Verifies settings for GCP compute vpn_tunnels in bulk'
+    name "google_compute_vpn_tunnels"
+    desc "Verifies settings for GCP compute vpn_tunnels in bulk"
 
     example "
       describe google_compute_vpn_tunnels(project: 'chef-inspec-gcp', region: 'europe-west2') do

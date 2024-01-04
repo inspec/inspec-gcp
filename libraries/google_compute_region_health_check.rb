@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,20 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/regionhealthcheck_grpc_health_check'
-require 'google/compute/property/regionhealthcheck_http2_health_check'
-require 'google/compute/property/regionhealthcheck_http_health_check'
-require 'google/compute/property/regionhealthcheck_https_health_check'
-require 'google/compute/property/regionhealthcheck_log_config'
-require 'google/compute/property/regionhealthcheck_ssl_health_check'
-require 'google/compute/property/regionhealthcheck_tcp_health_check'
+require "gcp_backend"
+require "google/compute/property/regionhealthcheck_grpc_health_check"
+require "google/compute/property/regionhealthcheck_http2_health_check"
+require "google/compute/property/regionhealthcheck_http_health_check"
+require "google/compute/property/regionhealthcheck_https_health_check"
+require "google/compute/property/regionhealthcheck_log_config"
+require "google/compute/property/regionhealthcheck_ssl_health_check"
+require "google/compute/property/regionhealthcheck_tcp_health_check"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionHealthCheck < GcpResourceBase
-  name 'google_compute_region_health_check'
-  desc 'RegionHealthCheck'
-  supports platform: 'gcp'
+  name "google_compute_region_health_check"
+  desc "RegionHealthCheck"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :check_interval_sec
@@ -50,28 +50,28 @@ class ComputeRegionHealthCheck < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @check_interval_sec = @fetched['checkIntervalSec']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @healthy_threshold = @fetched['healthyThreshold']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @unhealthy_threshold = @fetched['unhealthyThreshold']
-    @timeout_sec = @fetched['timeoutSec']
-    @type = @fetched['type']
-    @http_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckHttpHealthCheck.new(@fetched['httpHealthCheck'], to_s)
-    @https_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckHttpsHealthCheck.new(@fetched['httpsHealthCheck'], to_s)
-    @tcp_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckTcpHealthCheck.new(@fetched['tcpHealthCheck'], to_s)
-    @ssl_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckSslHealthCheck.new(@fetched['sslHealthCheck'], to_s)
-    @http2_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckHttp2HealthCheck.new(@fetched['http2HealthCheck'], to_s)
-    @grpc_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckGrpcHealthCheck.new(@fetched['grpcHealthCheck'], to_s)
-    @log_config = GoogleInSpec::Compute::Property::RegionHealthCheckLogConfig.new(@fetched['logConfig'], to_s)
-    @region = @fetched['region']
+    @check_interval_sec = @fetched["checkIntervalSec"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @healthy_threshold = @fetched["healthyThreshold"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @unhealthy_threshold = @fetched["unhealthyThreshold"]
+    @timeout_sec = @fetched["timeoutSec"]
+    @type = @fetched["type"]
+    @http_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckHttpHealthCheck.new(@fetched["httpHealthCheck"], to_s)
+    @https_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckHttpsHealthCheck.new(@fetched["httpsHealthCheck"], to_s)
+    @tcp_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckTcpHealthCheck.new(@fetched["tcpHealthCheck"], to_s)
+    @ssl_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckSslHealthCheck.new(@fetched["sslHealthCheck"], to_s)
+    @http2_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckHttp2HealthCheck.new(@fetched["http2HealthCheck"], to_s)
+    @grpc_health_check = GoogleInSpec::Compute::Property::RegionHealthCheckGrpcHealthCheck.new(@fetched["grpcHealthCheck"], to_s)
+    @log_config = GoogleInSpec::Compute::Property::RegionHealthCheckLogConfig.new(@fetched["logConfig"], to_s)
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -90,10 +90,10 @@ class ComputeRegionHealthCheck < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/healthChecks/{{name}}'
+    "projects/{{project}}/regions/{{region}}/healthChecks/{{name}}"
   end
 end

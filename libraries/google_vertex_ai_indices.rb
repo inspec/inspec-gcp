@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIIndexs < GcpResourceBase
-  name 'google_vertex_ai_indices'
-  desc 'Index plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_indices"
+  desc "Index plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,12 +41,12 @@ class VertexAIIndexs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('indexes')
+    @table = fetch_wrapped_resource("indexes")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
@@ -73,28 +73,28 @@ class VertexAIIndexs < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { [:description, obj['description']] },
-      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
-      'indexStats' => ->(obj) { [:index_stats, obj['indexStats']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'deployedIndexes' => ->(obj) { [:deployed_indexes, obj['deployedIndexes']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'metadataSchemaUri' => ->(obj) { [:metadata_schema_uri, obj['metadataSchemaUri']] },
-      'indexUpdateMethod' => ->(obj) { [:index_update_method, obj['indexUpdateMethod']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::IndexLabels.new(obj['labels'], to_s)] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "metadata" => ->(obj) { [:metadata, obj["metadata"]] },
+      "indexStats" => ->(obj) { [:index_stats, obj["indexStats"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "deployedIndexes" => ->(obj) { [:deployed_indexes, obj["deployedIndexes"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "metadataSchemaUri" => ->(obj) { [:metadata_schema_uri, obj["metadataSchemaUri"]] },
+      "indexUpdateMethod" => ->(obj) { [:index_update_method, obj["indexUpdateMethod"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::IndexLabels.new(obj["labels"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/indexes'
+    "{{parent}}/indexes"
   end
 end

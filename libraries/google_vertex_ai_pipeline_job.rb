@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,30 +13,30 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/pipelinejob_encryption_spec'
-require 'google/vertexai/property/pipelinejob_error'
-require 'google/vertexai/property/pipelinejob_job_detail'
-require 'google/vertexai/property/pipelinejob_job_detail_pipeline_context'
-require 'google/vertexai/property/pipelinejob_job_detail_pipeline_context_labels'
-require 'google/vertexai/property/pipelinejob_job_detail_pipeline_context_metadata'
-require 'google/vertexai/property/pipelinejob_job_detail_pipeline_run_context'
-require 'google/vertexai/property/pipelinejob_job_detail_pipeline_run_context_labels'
-require 'google/vertexai/property/pipelinejob_job_detail_pipeline_run_context_metadata'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details'
-require 'google/vertexai/property/pipelinejob_labels'
-require 'google/vertexai/property/pipelinejob_pipeline_spec'
-require 'google/vertexai/property/pipelinejob_runtime_config'
-require 'google/vertexai/property/pipelinejob_runtime_config_input_artifacts'
-require 'google/vertexai/property/pipelinejob_runtime_config_parameter_values'
-require 'google/vertexai/property/pipelinejob_runtime_config_parameters'
-require 'google/vertexai/property/pipelinejob_template_metadata'
+require "gcp_backend"
+require "google/vertexai/property/pipelinejob_encryption_spec"
+require "google/vertexai/property/pipelinejob_error"
+require "google/vertexai/property/pipelinejob_job_detail"
+require "google/vertexai/property/pipelinejob_job_detail_pipeline_context"
+require "google/vertexai/property/pipelinejob_job_detail_pipeline_context_labels"
+require "google/vertexai/property/pipelinejob_job_detail_pipeline_context_metadata"
+require "google/vertexai/property/pipelinejob_job_detail_pipeline_run_context"
+require "google/vertexai/property/pipelinejob_job_detail_pipeline_run_context_labels"
+require "google/vertexai/property/pipelinejob_job_detail_pipeline_run_context_metadata"
+require "google/vertexai/property/pipelinejob_job_detail_task_details"
+require "google/vertexai/property/pipelinejob_labels"
+require "google/vertexai/property/pipelinejob_pipeline_spec"
+require "google/vertexai/property/pipelinejob_runtime_config"
+require "google/vertexai/property/pipelinejob_runtime_config_input_artifacts"
+require "google/vertexai/property/pipelinejob_runtime_config_parameter_values"
+require "google/vertexai/property/pipelinejob_runtime_config_parameters"
+require "google/vertexai/property/pipelinejob_template_metadata"
 
 # A provider to manage Vertex AI resources.
 class VertexAIPipelineJob < GcpResourceBase
-  name 'google_vertex_ai_pipeline_job'
-  desc 'PipelineJob'
-  supports platform: 'gcp'
+  name "google_vertex_ai_pipeline_job"
+  desc "PipelineJob"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :encryption_spec
@@ -62,30 +62,30 @@ class VertexAIPipelineJob < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @encryption_spec = GoogleInSpec::VertexAI::Property::PipelineJobEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @end_time = @fetched['endTime']
-    @error = GoogleInSpec::VertexAI::Property::PipelineJobError.new(@fetched['error'], to_s)
-    @update_time = @fetched['updateTime']
-    @job_detail = GoogleInSpec::VertexAI::Property::PipelineJobJobDetail.new(@fetched['jobDetail'], to_s)
-    @template_metadata = GoogleInSpec::VertexAI::Property::PipelineJobTemplateMetadata.new(@fetched['templateMetadata'], to_s)
-    @state = @fetched['state']
-    @create_time = @fetched['createTime']
-    @name = @fetched['name']
-    @schedule_name = @fetched['scheduleName']
-    @reserved_ip_ranges = @fetched['reservedIpRanges']
-    @start_time = @fetched['startTime']
-    @service_account = @fetched['serviceAccount']
-    @display_name = @fetched['displayName']
-    @template_uri = @fetched['templateUri']
-    @pipeline_spec = GoogleInSpec::VertexAI::Property::PipelineJobPipelineSpec.new(@fetched['pipelineSpec'], to_s)
-    @network = @fetched['network']
-    @labels = GoogleInSpec::VertexAI::Property::PipelineJobLabels.new(@fetched['labels'], to_s)
-    @runtime_config = GoogleInSpec::VertexAI::Property::PipelineJobRuntimeConfig.new(@fetched['runtimeConfig'], to_s)
+    @encryption_spec = GoogleInSpec::VertexAI::Property::PipelineJobEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @end_time = @fetched["endTime"]
+    @error = GoogleInSpec::VertexAI::Property::PipelineJobError.new(@fetched["error"], to_s)
+    @update_time = @fetched["updateTime"]
+    @job_detail = GoogleInSpec::VertexAI::Property::PipelineJobJobDetail.new(@fetched["jobDetail"], to_s)
+    @template_metadata = GoogleInSpec::VertexAI::Property::PipelineJobTemplateMetadata.new(@fetched["templateMetadata"], to_s)
+    @state = @fetched["state"]
+    @create_time = @fetched["createTime"]
+    @name = @fetched["name"]
+    @schedule_name = @fetched["scheduleName"]
+    @reserved_ip_ranges = @fetched["reservedIpRanges"]
+    @start_time = @fetched["startTime"]
+    @service_account = @fetched["serviceAccount"]
+    @display_name = @fetched["displayName"]
+    @template_uri = @fetched["templateUri"]
+    @pipeline_spec = GoogleInSpec::VertexAI::Property::PipelineJobPipelineSpec.new(@fetched["pipelineSpec"], to_s)
+    @network = @fetched["network"]
+    @labels = GoogleInSpec::VertexAI::Property::PipelineJobLabels.new(@fetched["labels"], to_s)
+    @runtime_config = GoogleInSpec::VertexAI::Property::PipelineJobRuntimeConfig.new(@fetched["runtimeConfig"], to_s)
   end
 
   def exists?
@@ -99,10 +99,10 @@ class VertexAIPipelineJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

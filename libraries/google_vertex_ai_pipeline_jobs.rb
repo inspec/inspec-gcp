@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIPipelineJobs < GcpResourceBase
-  name 'google_vertex_ai_pipeline_jobs'
-  desc 'PipelineJob plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_pipeline_jobs"
+  desc "PipelineJob plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -48,12 +48,12 @@ class VertexAIPipelineJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('pipelineJobs')
+    @table = fetch_wrapped_resource("pipelineJobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -81,35 +81,35 @@ class VertexAIPipelineJobs < GcpResourceBase
 
   def transformers
     {
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::PipelineJobEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::PipelineJobError.new(obj['error'], to_s)] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'jobDetail' => ->(obj) { [:job_detail, GoogleInSpec::VertexAI::Property::PipelineJobJobDetail.new(obj['jobDetail'], to_s)] },
-      'templateMetadata' => ->(obj) { [:template_metadata, GoogleInSpec::VertexAI::Property::PipelineJobTemplateMetadata.new(obj['templateMetadata'], to_s)] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'scheduleName' => ->(obj) { [:schedule_name, obj['scheduleName']] },
-      'reservedIpRanges' => ->(obj) { [:reserved_ip_ranges, obj['reservedIpRanges']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'serviceAccount' => ->(obj) { [:service_account, obj['serviceAccount']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'templateUri' => ->(obj) { [:template_uri, obj['templateUri']] },
-      'pipelineSpec' => ->(obj) { [:pipeline_spec, GoogleInSpec::VertexAI::Property::PipelineJobPipelineSpec.new(obj['pipelineSpec'], to_s)] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::PipelineJobLabels.new(obj['labels'], to_s)] },
-      'runtimeConfig' => ->(obj) { [:runtime_config, GoogleInSpec::VertexAI::Property::PipelineJobRuntimeConfig.new(obj['runtimeConfig'], to_s)] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::PipelineJobEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "error" => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::PipelineJobError.new(obj["error"], to_s)] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "jobDetail" => ->(obj) { [:job_detail, GoogleInSpec::VertexAI::Property::PipelineJobJobDetail.new(obj["jobDetail"], to_s)] },
+      "templateMetadata" => ->(obj) { [:template_metadata, GoogleInSpec::VertexAI::Property::PipelineJobTemplateMetadata.new(obj["templateMetadata"], to_s)] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "scheduleName" => ->(obj) { [:schedule_name, obj["scheduleName"]] },
+      "reservedIpRanges" => ->(obj) { [:reserved_ip_ranges, obj["reservedIpRanges"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "serviceAccount" => ->(obj) { [:service_account, obj["serviceAccount"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "templateUri" => ->(obj) { [:template_uri, obj["templateUri"]] },
+      "pipelineSpec" => ->(obj) { [:pipeline_spec, GoogleInSpec::VertexAI::Property::PipelineJobPipelineSpec.new(obj["pipelineSpec"], to_s)] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::PipelineJobLabels.new(obj["labels"], to_s)] },
+      "runtimeConfig" => ->(obj) { [:runtime_config, GoogleInSpec::VertexAI::Property::PipelineJobRuntimeConfig.new(obj["runtimeConfig"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/pipelineJobs'
+    "{{parent}}/pipelineJobs"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_latest_monitoring_pipeline_metadata_status'
+require "google/vertexai/property/modeldeploymentmonitoringjob_latest_monitoring_pipeline_metadata_status"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @status = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataStatus.new(args['status'], to_s)
-          @run_time = args['runTime']
+          @status = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataStatus.new(args["status"], to_s)
+          @run_time = args["runTime"]
         end
 
         def to_s

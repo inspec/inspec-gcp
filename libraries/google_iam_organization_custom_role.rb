@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud IAM resources.
 class IAMOrganizationCustomRole < GcpResourceBase
-  name 'google_iam_organization_custom_role'
-  desc 'OrganizationCustomRole'
-  supports platform: 'gcp'
+  name "google_iam_organization_custom_role"
+  desc "OrganizationCustomRole"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -32,17 +32,17 @@ class IAMOrganizationCustomRole < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @title = @fetched['title']
-    @description = @fetched['description']
-    @included_permissions = @fetched['includedPermissions']
-    @stage = @fetched['stage']
-    @deleted = @fetched['deleted']
+    @name = @fetched["name"]
+    @title = @fetched["title"]
+    @description = @fetched["description"]
+    @included_permissions = @fetched["includedPermissions"]
+    @stage = @fetched["stage"]
+    @deleted = @fetched["deleted"]
   end
 
   def exists?
@@ -56,10 +56,10 @@ class IAMOrganizationCustomRole < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://iam.googleapis.com/v1/'
+    "https://iam.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'organizations/{{org_id}}/roles/{{name}}'
+    "organizations/{{org_id}}/roles/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIModelsEvaluations < GcpResourceBase
-  name 'google_vertex_ai_models_evaluations'
-  desc 'ModelsEvaluation plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_models_evaluations"
+  desc "ModelsEvaluation plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class VertexAIModelsEvaluations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('modelEvaluations')
+    @table = fetch_wrapped_resource("modelEvaluations")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -73,27 +73,27 @@ class VertexAIModelsEvaluations < GcpResourceBase
 
   def transformers
     {
-      'dataItemSchemaUri' => ->(obj) { [:data_item_schema_uri, obj['dataItemSchemaUri']] },
-      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
-      'metricsSchemaUri' => ->(obj) { [:metrics_schema_uri, obj['metricsSchemaUri']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'annotationSchemaUri' => ->(obj) { [:annotation_schema_uri, obj['annotationSchemaUri']] },
-      'metrics' => ->(obj) { [:metrics, obj['metrics']] },
-      'explanationSpecs' => ->(obj) { [:explanation_specs, GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsArray.parse(obj['explanationSpecs'], to_s)] },
-      'sliceDimensions' => ->(obj) { [:slice_dimensions, obj['sliceDimensions']] },
-      'modelExplanation' => ->(obj) { [:model_explanation, GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanation.new(obj['modelExplanation'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      "dataItemSchemaUri" => ->(obj) { [:data_item_schema_uri, obj["dataItemSchemaUri"]] },
+      "metadata" => ->(obj) { [:metadata, obj["metadata"]] },
+      "metricsSchemaUri" => ->(obj) { [:metrics_schema_uri, obj["metricsSchemaUri"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "annotationSchemaUri" => ->(obj) { [:annotation_schema_uri, obj["annotationSchemaUri"]] },
+      "metrics" => ->(obj) { [:metrics, obj["metrics"]] },
+      "explanationSpecs" => ->(obj) { [:explanation_specs, GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsArray.parse(obj["explanationSpecs"], to_s)] },
+      "sliceDimensions" => ->(obj) { [:slice_dimensions, obj["sliceDimensions"]] },
+      "modelExplanation" => ->(obj) { [:model_explanation, GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanation.new(obj["modelExplanation"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/evaluations'
+    "{{parent}}/evaluations"
   end
 end

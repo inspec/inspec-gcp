@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/regionalcluster_master_auth_client_certificate_config'
+require "google/container/property/regionalcluster_master_auth_client_certificate_config"
 module GoogleInSpec
   module Container
     module Property
@@ -36,12 +36,12 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @username = arguments['username']
-          @password = arguments['password']
-          @client_certificate_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthClientCertificateConfig.new(arguments['clientCertificateConfig'], to_s)
-          @cluster_ca_certificate = arguments['clusterCaCertificate']
-          @client_certificate = arguments['clientCertificate']
-          @client_key = arguments['clientKey']
+          @username = arguments["username"]
+          @password = arguments["password"]
+          @client_certificate_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthClientCertificateConfig.new(arguments["clientCertificateConfig"], to_s)
+          @cluster_ca_certificate = arguments["clusterCaCertificate"]
+          @client_certificate = arguments["clientCertificate"]
+          @client_key = arguments["clientKey"]
         end
 
         def to_s
@@ -51,12 +51,12 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'username' => ->(x, path) { x.nil? ? [] : ["its('#{path}.username') { should cmp #{x.inspect} }"] },
-            'password' => ->(x, path) { x.nil? ? [] : ["its('#{path}.password') { should cmp #{x.inspect} }"] },
-            'client_certificate_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterMasterAuthClientCertificateConfig.un_parse(x, "#{path}.client_certificate_config") },
-            'cluster_ca_certificate' => ->(x, path) { x.nil? ? [] : ["its('#{path}.cluster_ca_certificate') { should cmp #{x.inspect} }"] },
-            'client_certificate' => ->(x, path) { x.nil? ? [] : ["its('#{path}.client_certificate') { should cmp #{x.inspect} }"] },
-            'client_key' => ->(x, path) { x.nil? ? [] : ["its('#{path}.client_key') { should cmp #{x.inspect} }"] },
+            "username" => ->(x, path) { x.nil? ? [] : ["its('#{path}.username') { should cmp #{x.inspect} }"] },
+            "password" => ->(x, path) { x.nil? ? [] : ["its('#{path}.password') { should cmp #{x.inspect} }"] },
+            "client_certificate_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterMasterAuthClientCertificateConfig.un_parse(x, "#{path}.client_certificate_config") },
+            "cluster_ca_certificate" => ->(x, path) { x.nil? ? [] : ["its('#{path}.cluster_ca_certificate') { should cmp #{x.inspect} }"] },
+            "client_certificate" => ->(x, path) { x.nil? ? [] : ["its('#{path}.client_certificate') { should cmp #{x.inspect} }"] },
+            "client_key" => ->(x, path) { x.nil? ? [] : ["its('#{path}.client_key') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

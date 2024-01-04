@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,23 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/imagefamilyview_image'
-require 'google/compute/property/imagefamilyview_image_deprecated'
-require 'google/compute/property/imagefamilyview_image_image_encryption_key'
-require 'google/compute/property/imagefamilyview_image_raw_disk'
-require 'google/compute/property/imagefamilyview_image_source_disk_encryption_key'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbs'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbxs'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_keks'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_pk'
+require "gcp_backend"
+require "google/compute/property/imagefamilyview_image"
+require "google/compute/property/imagefamilyview_image_deprecated"
+require "google/compute/property/imagefamilyview_image_image_encryption_key"
+require "google/compute/property/imagefamilyview_image_raw_disk"
+require "google/compute/property/imagefamilyview_image_source_disk_encryption_key"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbs"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbxs"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_keks"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_pk"
 
 # A provider to manage Compute Engine resources.
 class ComputeImageFamilyView < GcpResourceBase
-  name 'google_compute_image_family_view'
-  desc 'ImageFamilyView'
-  supports platform: 'gcp'
+  name "google_compute_image_family_view"
+  desc "ImageFamilyView"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :image
@@ -37,12 +37,12 @@ class ComputeImageFamilyView < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @image = GoogleInSpec::Compute::Property::ImageFamilyViewImage.new(@fetched['image'], to_s)
+    @image = GoogleInSpec::Compute::Property::ImageFamilyViewImage.new(@fetched["image"], to_s)
   end
 
   def exists?
@@ -56,10 +56,10 @@ class ComputeImageFamilyView < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/imageFamilyViews/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/imageFamilyViews/{{name}}"
   end
 end

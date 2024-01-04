@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/acceleratortype_deprecated'
+require "gcp_backend"
+require "google/compute/property/acceleratortype_deprecated"
 
 # A provider to manage Compute Engine resources.
 class ComputeAcceleratorType < GcpResourceBase
-  name 'google_compute_accelerator_type'
-  desc 'AcceleratorType'
-  supports platform: 'gcp'
+  name "google_compute_accelerator_type"
+  desc "AcceleratorType"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -33,17 +33,17 @@ class ComputeAcceleratorType < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @zone = @fetched['zone']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @deprecated = GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(@fetched["deprecated"], to_s)
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -62,10 +62,10 @@ class ComputeAcceleratorType < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/acceleratorTypes/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/acceleratorTypes/{{name}}"
   end
 end

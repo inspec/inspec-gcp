@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @message_format = args['messageFormat']
-          @service_account_email = args['serviceAccountEmail']
+          @message_format = args["messageFormat"]
+          @service_account_email = args["serviceAccountEmail"]
         end
 
         def to_s

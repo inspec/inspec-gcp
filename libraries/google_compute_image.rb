@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/image_deprecated'
-require 'google/compute/property/image_guest_os_features'
-require 'google/compute/property/image_image_encryption_key'
-require 'google/compute/property/image_raw_disk'
-require 'google/compute/property/image_source_disk_encryption_key'
+require "gcp_backend"
+require "google/compute/property/image_deprecated"
+require "google/compute/property/image_guest_os_features"
+require "google/compute/property/image_image_encryption_key"
+require "google/compute/property/image_raw_disk"
+require "google/compute/property/image_source_disk_encryption_key"
 
 # A provider to manage Compute Engine resources.
 class ComputeImage < GcpResourceBase
-  name 'google_compute_image'
-  desc 'Image'
-  supports platform: 'gcp'
+  name "google_compute_image"
+  desc "Image"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :archive_size_bytes
@@ -53,36 +53,36 @@ class ComputeImage < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     if @fetched.nil?
-      @fetched = @connection.fetch(product_url(params[:beta]), 'projects/{{project}}/global/images/family/{{name}}', params, 'Get')
+      @fetched = @connection.fetch(product_url(params[:beta]), "projects/{{project}}/global/images/family/{{name}}", params, "Get")
     end
     parse unless @fetched.nil?
   end
 
   def parse
-    @archive_size_bytes = @fetched['archiveSizeBytes']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::ImageDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
-    @disk_size_gb = @fetched['diskSizeGb']
-    @family = @fetched['family']
-    @guest_os_features = GoogleInSpec::Compute::Property::ImageGuestOsFeaturesArray.parse(@fetched['guestOsFeatures'], to_s)
-    @id = @fetched['id']
-    @image_encryption_key = GoogleInSpec::Compute::Property::ImageImageEncryptionKey.new(@fetched['imageEncryptionKey'], to_s)
-    @labels = @fetched['labels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @licenses = @fetched['licenses']
-    @name = @fetched['name']
-    @raw_disk = GoogleInSpec::Compute::Property::ImageRawDisk.new(@fetched['rawDisk'], to_s)
-    @source_disk = @fetched['sourceDisk']
-    @source_disk_encryption_key = GoogleInSpec::Compute::Property::ImageSourceDiskEncryptionKey.new(@fetched['sourceDiskEncryptionKey'], to_s)
-    @source_disk_id = @fetched['sourceDiskId']
-    @source_image = @fetched['sourceImage']
-    @source_snapshot = @fetched['sourceSnapshot']
-    @source_type = @fetched['sourceType']
-    @self_link = @fetched['selfLink']
-    @status = @fetched['status']
+    @archive_size_bytes = @fetched["archiveSizeBytes"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @deprecated = GoogleInSpec::Compute::Property::ImageDeprecated.new(@fetched["deprecated"], to_s)
+    @description = @fetched["description"]
+    @disk_size_gb = @fetched["diskSizeGb"]
+    @family = @fetched["family"]
+    @guest_os_features = GoogleInSpec::Compute::Property::ImageGuestOsFeaturesArray.parse(@fetched["guestOsFeatures"], to_s)
+    @id = @fetched["id"]
+    @image_encryption_key = GoogleInSpec::Compute::Property::ImageImageEncryptionKey.new(@fetched["imageEncryptionKey"], to_s)
+    @labels = @fetched["labels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @licenses = @fetched["licenses"]
+    @name = @fetched["name"]
+    @raw_disk = GoogleInSpec::Compute::Property::ImageRawDisk.new(@fetched["rawDisk"], to_s)
+    @source_disk = @fetched["sourceDisk"]
+    @source_disk_encryption_key = GoogleInSpec::Compute::Property::ImageSourceDiskEncryptionKey.new(@fetched["sourceDiskEncryptionKey"], to_s)
+    @source_disk_id = @fetched["sourceDiskId"]
+    @source_image = @fetched["sourceImage"]
+    @source_snapshot = @fetched["sourceSnapshot"]
+    @source_type = @fetched["sourceType"]
+    @self_link = @fetched["selfLink"]
+    @status = @fetched["status"]
   end
 
   # Handles parsing RFC3339 time string
@@ -102,13 +102,13 @@ class ComputeImage < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/images/{{name}}'
+    "projects/{{project}}/global/images/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @email = arguments['email']
-          @scopes = arguments['scopes']
+          @email = arguments["email"]
+          @scopes = arguments["scopes"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'email' => ->(x, path) { x.nil? ? [] : ["its('#{path}.email') { should cmp #{x.inspect} }"] },
-            'scopes' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.scopes') { should include #{single.inspect} }" } },
+            "email" => ->(x, path) { x.nil? ? [] : ["its('#{path}.email') { should cmp #{x.inspect} }"] },
+            "scopes" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.scopes') { should include #{single.inspect} }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ResourceManagerOrganizations < GcpResourceBase
-  name 'google_organizations'
-  desc 'Organization plural resource'
-  supports platform: 'gcp'
+  name "google_organizations"
+  desc "Organization plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class ResourceManagerOrganizations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizations')
+    @table = fetch_wrapped_resource("organizations")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Post')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Post")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,11 +67,11 @@ class ResourceManagerOrganizations < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'lifecycleState' => ->(obj) { [:lifecycle_state, obj['lifecycleState']] },
-      'creationTime' => ->(obj) { [:creation_time, parse_time_string(obj['creationTime'])] },
-      'owner' => ->(obj) { [:owner, GoogleInSpec::ResourceManager::Property::OrganizationOwner.new(obj['owner'], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "lifecycleState" => ->(obj) { [:lifecycle_state, obj["lifecycleState"]] },
+      "creationTime" => ->(obj) { [:creation_time, parse_time_string(obj["creationTime"])] },
+      "owner" => ->(obj) { [:owner, GoogleInSpec::ResourceManager::Property::OrganizationOwner.new(obj["owner"], to_s)] },
     }
   end
 
@@ -83,10 +83,10 @@ class ResourceManagerOrganizations < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudresourcemanager.googleapis.com/v1/'
+    "https://cloudresourcemanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'organizations:search'
+    "organizations:search"
   end
 end

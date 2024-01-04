@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @raw_key = args['rawKey']
-          @rsa_encrypted_key = args['rsaEncryptedKey']
-          @sha256 = args['sha256']
+          @raw_key = args["rawKey"]
+          @rsa_encrypted_key = args["rsaEncryptedKey"]
+          @sha256 = args["sha256"]
         end
 
         def to_s

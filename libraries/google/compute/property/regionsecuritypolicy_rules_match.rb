@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_match_config'
-require 'google/compute/property/regionsecuritypolicy_rules_match_expr'
+require "google/compute/property/regionsecuritypolicy_rules_match_config"
+require "google/compute/property/regionsecuritypolicy_rules_match_expr"
 module GoogleInSpec
   module Compute
     module Property
@@ -28,9 +28,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @expr = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchExpr.new(args['expr'], to_s)
-          @versioned_expr = args['versionedExpr']
-          @config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfig.new(args['config'], to_s)
+          @expr = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchExpr.new(args["expr"], to_s)
+          @versioned_expr = args["versionedExpr"]
+          @config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfig.new(args["config"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,19 +13,19 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/featurestoresentitytype_labels'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_categorical_threshold_config'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_import_features_analysis'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_numerical_threshold_config'
-require 'google/vertexai/property/featurestoresentitytype_monitoring_config_snapshot_analysis'
+require "gcp_backend"
+require "google/vertexai/property/featurestoresentitytype_labels"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_categorical_threshold_config"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_import_features_analysis"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_numerical_threshold_config"
+require "google/vertexai/property/featurestoresentitytype_monitoring_config_snapshot_analysis"
 
 # A provider to manage Vertex AI resources.
 class VertexAIFeaturestoresEntityType < GcpResourceBase
-  name 'google_vertex_ai_featurestores_entity_type'
-  desc 'FeaturestoresEntityType'
-  supports platform: 'gcp'
+  name "google_vertex_ai_featurestores_entity_type"
+  desc "FeaturestoresEntityType"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :labels
@@ -40,19 +40,19 @@ class VertexAIFeaturestoresEntityType < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @labels = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeLabels.new(@fetched['labels'], to_s)
-    @description = @fetched['description']
-    @name = @fetched['name']
-    @create_time = @fetched['createTime']
-    @monitoring_config = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfig.new(@fetched['monitoringConfig'], to_s)
-    @etag = @fetched['etag']
-    @update_time = @fetched['updateTime']
-    @offline_storage_ttl_days = @fetched['offlineStorageTtlDays']
+    @labels = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeLabels.new(@fetched["labels"], to_s)
+    @description = @fetched["description"]
+    @name = @fetched["name"]
+    @create_time = @fetched["createTime"]
+    @monitoring_config = GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfig.new(@fetched["monitoringConfig"], to_s)
+    @etag = @fetched["etag"]
+    @update_time = @fetched["updateTime"]
+    @offline_storage_ttl_days = @fetched["offlineStorageTtlDays"]
   end
 
   def exists?
@@ -66,10 +66,10 @@ class VertexAIFeaturestoresEntityType < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

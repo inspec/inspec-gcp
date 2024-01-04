@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Access Context Manager (VPC Service Controls) resources.
 class AccessContextManagerAccessPolicy < GcpResourceBase
-  name 'google_access_context_manager_access_policy'
-  desc 'AccessPolicy'
-  supports platform: 'gcp'
+  name "google_access_context_manager_access_policy"
+  desc "AccessPolicy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -31,16 +31,16 @@ class AccessContextManagerAccessPolicy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = name_from_self_link(@fetched['name'])
-    @create_time = parse_time_string(@fetched['createTime'])
-    @update_time = parse_time_string(@fetched['updateTime'])
-    @parent = @fetched['parent']
-    @title = @fetched['title']
+    @name = name_from_self_link(@fetched["name"])
+    @create_time = parse_time_string(@fetched["createTime"])
+    @update_time = parse_time_string(@fetched["updateTime"])
+    @parent = @fetched["parent"]
+    @title = @fetched["title"]
   end
 
   # Handles parsing RFC3339 time string
@@ -59,10 +59,10 @@ class AccessContextManagerAccessPolicy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://accesscontextmanager.googleapis.com/v1/'
+    "https://accesscontextmanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'accessPolicies/{{name}}'
+    "accessPolicies/{{name}}"
   end
 end

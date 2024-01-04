@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/router_bgp_advertised_ip_ranges'
+require "google/compute/property/router_bgp_advertised_ip_ranges"
 module GoogleInSpec
   module Compute
     module Property
@@ -29,10 +29,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @asn = args['asn']
-          @advertise_mode = args['advertiseMode']
-          @advertised_groups = args['advertisedGroups']
-          @advertised_ip_ranges = GoogleInSpec::Compute::Property::RouterBgpAdvertisedIpRangesArray.parse(args['advertisedIpRanges'], to_s)
+          @asn = args["asn"]
+          @advertise_mode = args["advertiseMode"]
+          @advertised_groups = args["advertisedGroups"]
+          @advertised_ip_ranges = GoogleInSpec::Compute::Property::RouterBgpAdvertisedIpRangesArray.parse(args["advertisedIpRanges"], to_s)
         end
 
         def to_s

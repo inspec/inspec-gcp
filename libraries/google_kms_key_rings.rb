@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class KMSKeyRings < GcpResourceBase
-  name 'google_kms_key_rings'
-  desc 'KeyRing plural resource'
-  supports platform: 'gcp'
+  name "google_kms_key_rings"
+  desc "KeyRing plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,12 +33,12 @@ class KMSKeyRings < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('keyRings')
+    @table = fetch_wrapped_resource("keyRings")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -51,7 +51,7 @@ class KMSKeyRings < GcpResourceBase
           name, value = transform(key, hash)
           hash_with_symbols[name] = value
         end
-        hash_with_symbols[:key_ring_name] = name_from_self_link(hash['name'])
+        hash_with_symbols[:key_ring_name] = name_from_self_link(hash["name"])
         converted.push(hash_with_symbols)
       end
     end
@@ -67,9 +67,9 @@ class KMSKeyRings < GcpResourceBase
 
   def transformers
     {
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'name' => ->(obj) { [:key_ring_url, obj['name']] },
-      'location' => ->(obj) { [:location, obj['location']] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "name" => ->(obj) { [:key_ring_url, obj["name"]] },
+      "location" => ->(obj) { [:location, obj["location"]] },
     }
   end
 
@@ -81,10 +81,10 @@ class KMSKeyRings < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/keyRings'
+    "projects/{{project}}/locations/{{location}}/keyRings"
   end
 end

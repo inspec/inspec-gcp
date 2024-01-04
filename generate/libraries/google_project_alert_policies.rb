@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/monitoring_v3'
+
+require "gcp_backend"
+require "google/apis/monitoring_v3"
 
 module Inspec::Resources
   class GoogleProjectAlertPolicies < GcpResourceBase
-    name 'google_project_alert_policies'
-    desc 'Verifies settings for GCP project alert policies in bulk'
+    name "google_project_alert_policies"
+    desc "Verifies settings for GCP project alert policies in bulk"
 
     example "
       describe google_project_alert_policies(project: 'chef-inspec-gcp') do

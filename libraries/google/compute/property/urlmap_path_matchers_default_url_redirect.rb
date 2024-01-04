@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -32,12 +32,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @host_redirect = args['hostRedirect']
-          @https_redirect = args['httpsRedirect']
-          @path_redirect = args['pathRedirect']
-          @prefix_redirect = args['prefixRedirect']
-          @redirect_response_code = args['redirectResponseCode']
-          @strip_query = args['stripQuery']
+          @host_redirect = args["hostRedirect"]
+          @https_redirect = args["httpsRedirect"]
+          @path_redirect = args["pathRedirect"]
+          @prefix_redirect = args["prefixRedirect"]
+          @redirect_response_code = args["redirectResponseCode"]
+          @strip_query = args["stripQuery"]
         end
 
         def to_s

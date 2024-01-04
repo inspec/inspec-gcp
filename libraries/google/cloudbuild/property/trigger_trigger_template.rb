@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -34,13 +34,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @project_id = args['projectId']
-          @repo_name = args['repoName']
-          @dir = args['dir']
-          @invert_regex = args['invertRegex']
-          @branch_name = args['branchName']
-          @tag_name = args['tagName']
-          @commit_sha = args['commitSha']
+          @project_id = args["projectId"]
+          @repo_name = args["repoName"]
+          @dir = args["dir"]
+          @invert_regex = args["invertRegex"]
+          @branch_name = args["branchName"]
+          @tag_name = args["tagName"]
+          @commit_sha = args["commitSha"]
         end
 
         def to_s

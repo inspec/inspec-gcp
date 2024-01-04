@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIDatasetsSavedQuerys < GcpResourceBase
-  name 'google_vertex_ai_datasets_saved_queries'
-  desc 'DatasetsSavedQuery plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_datasets_saved_queries"
+  desc "DatasetsSavedQuery plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,12 +39,12 @@ class VertexAIDatasetsSavedQuerys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('savedQueries')
+    @table = fetch_wrapped_resource("savedQueries")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -72,26 +72,26 @@ class VertexAIDatasetsSavedQuerys < GcpResourceBase
 
   def transformers
     {
-      'annotationSpecCount' => ->(obj) { [:annotation_spec_count, obj['annotationSpecCount']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'supportAutomlTraining' => ->(obj) { [:support_automl_training, obj['supportAutomlTraining']] },
-      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
-      'problemType' => ->(obj) { [:problem_type, obj['problemType']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'annotationFilter' => ->(obj) { [:annotation_filter, obj['annotationFilter']] },
+      "annotationSpecCount" => ->(obj) { [:annotation_spec_count, obj["annotationSpecCount"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "supportAutomlTraining" => ->(obj) { [:support_automl_training, obj["supportAutomlTraining"]] },
+      "metadata" => ->(obj) { [:metadata, obj["metadata"]] },
+      "problemType" => ->(obj) { [:problem_type, obj["problemType"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "annotationFilter" => ->(obj) { [:annotation_filter, obj["annotationFilter"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/savedQueries'
+    "{{parent}}/savedQueries"
   end
 end

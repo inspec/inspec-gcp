@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,23 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_encryption_spec'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_error'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_labels'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_metadata'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_labels'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_metadata'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_labels'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_pipeline_spec'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_input_artifacts'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_parameter_values'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_parameters'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_template_metadata'
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_encryption_spec"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_error"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_labels"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_context_metadata"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_labels"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_pipeline_run_context_metadata"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_labels"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_pipeline_spec"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_input_artifacts"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_parameter_values"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_runtime_config_parameters"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_template_metadata"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -75,25 +75,25 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @encryption_spec = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec.new(args['encryptionSpec'], to_s)
-          @end_time = args['endTime']
-          @error = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobError.new(args['error'], to_s)
-          @update_time = args['updateTime']
-          @job_detail = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetail.new(args['jobDetail'], to_s)
-          @template_metadata = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata.new(args['templateMetadata'], to_s)
-          @state = args['state']
-          @create_time = args['createTime']
-          @name = args['name']
-          @schedule_name = args['scheduleName']
-          @reserved_ip_ranges = args['reservedIpRanges']
-          @start_time = args['startTime']
-          @service_account = args['serviceAccount']
-          @display_name = args['displayName']
-          @template_uri = args['templateUri']
-          @pipeline_spec = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobPipelineSpec.new(args['pipelineSpec'], to_s)
-          @network = args['network']
-          @labels = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobLabels.new(args['labels'], to_s)
-          @runtime_config = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig.new(args['runtimeConfig'], to_s)
+          @encryption_spec = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec.new(args["encryptionSpec"], to_s)
+          @end_time = args["endTime"]
+          @error = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobError.new(args["error"], to_s)
+          @update_time = args["updateTime"]
+          @job_detail = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetail.new(args["jobDetail"], to_s)
+          @template_metadata = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata.new(args["templateMetadata"], to_s)
+          @state = args["state"]
+          @create_time = args["createTime"]
+          @name = args["name"]
+          @schedule_name = args["scheduleName"]
+          @reserved_ip_ranges = args["reservedIpRanges"]
+          @start_time = args["startTime"]
+          @service_account = args["serviceAccount"]
+          @display_name = args["displayName"]
+          @template_uri = args["templateUri"]
+          @pipeline_spec = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobPipelineSpec.new(args["pipelineSpec"], to_s)
+          @network = args["network"]
+          @labels = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobLabels.new(args["labels"], to_s)
+          @runtime_config = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig.new(args["runtimeConfig"], to_s)
         end
 
         def to_s

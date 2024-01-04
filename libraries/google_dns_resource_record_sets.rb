@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class DNSResourceRecordSets < GcpResourceBase
-  name 'google_dns_resource_record_sets'
-  desc 'ResourceRecordSet plural resource'
-  supports platform: 'gcp'
+  name "google_dns_resource_record_sets"
+  desc "ResourceRecordSet plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class DNSResourceRecordSets < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('rrsets')
+    @table = fetch_wrapped_resource("rrsets")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,11 +67,11 @@ class DNSResourceRecordSets < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'type' => ->(obj) { [:type, obj['type']] },
-      'ttl' => ->(obj) { [:ttl, obj['ttl']] },
-      'rrdatas' => ->(obj) { [:target, obj['rrdatas']] },
-      'managed_zone' => ->(obj) { [:managed_zone, obj['managed_zone']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
+      "ttl" => ->(obj) { [:ttl, obj["ttl"]] },
+      "rrdatas" => ->(obj) { [:target, obj["rrdatas"]] },
+      "managed_zone" => ->(obj) { [:managed_zone, obj["managed_zone"]] },
     }
   end
 
@@ -79,13 +79,13 @@ class DNSResourceRecordSets < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://dns.googleapis.com/dns/v1beta2/'
+      "https://dns.googleapis.com/dns/v1beta2/"
     else
-      'https://dns.googleapis.com/dns/v1/'
+      "https://dns.googleapis.com/dns/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets'
+    "projects/{{project}}/managedZones/{{managed_zone}}/rrsets"
   end
 end

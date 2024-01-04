@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_steps'
+require "google/cloudbuild/property/trigger_build_steps"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -30,9 +30,9 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @tags = arguments['tags']
-          @images = arguments['images']
-          @steps = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsArray.parse(arguments['steps'], to_s)
+          @tags = arguments["tags"]
+          @images = arguments["images"]
+          @steps = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsArray.parse(arguments["steps"], to_s)
         end
 
         def to_s
@@ -42,9 +42,9 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'tags' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.tags') { should include #{single.inspect} }" } },
-            'images' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.images') { should include #{single.inspect} }" } },
-            'steps' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.steps') { should include '#{single.to_json}' }" } },
+            "tags" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.tags') { should include #{single.inspect} }" } },
+            "images" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.images') { should include #{single.inspect} }" } },
+            "steps" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.steps') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

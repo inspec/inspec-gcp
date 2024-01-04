@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/disktype_deprecated'
+require "gcp_backend"
+require "google/compute/property/disktype_deprecated"
 
 # A provider to manage Compute Engine resources.
 class ComputeDiskType < GcpResourceBase
-  name 'google_compute_disk_type'
-  desc 'DiskType'
-  supports platform: 'gcp'
+  name "google_compute_disk_type"
+  desc "DiskType"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -35,19 +35,19 @@ class ComputeDiskType < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @default_disk_size_gb = @fetched['defaultDiskSizeGb']
-    @deprecated = GoogleInSpec::Compute::Property::DiskTypeDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @valid_disk_size = @fetched['validDiskSize']
-    @zone = @fetched['zone']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @default_disk_size_gb = @fetched["defaultDiskSizeGb"]
+    @deprecated = GoogleInSpec::Compute::Property::DiskTypeDeprecated.new(@fetched["deprecated"], to_s)
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @valid_disk_size = @fetched["validDiskSize"]
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -66,10 +66,10 @@ class ComputeDiskType < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/diskTypes/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/diskTypes/{{name}}"
   end
 end

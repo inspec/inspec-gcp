@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleServiceAccount < GcpResourceBase
-    name 'google_service_account'
-    desc 'Verifies settings for a project IAM Service Account'
+    name "google_service_account"
+    desc "Verifies settings for a project IAM Service Account"
 
     example "
       describe google_service_account(name: 'projects/spaterson-project/serviceAccounts/sample-account@spaterson-project.iam.gserviceaccount.com') do
@@ -33,7 +33,7 @@ module Inspec::Resources
     # returned by default when listing keys.
     def user_managed_keys
       raise Inspec::Exceptions::ResourceFailed, "Service Account #{@display_name} does not exist!" if not exists?
-      @gcp.gcp_iam_client.list_project_service_account_keys(@service_account.name, key_types: ['USER_MANAGED'])
+      @gcp.gcp_iam_client.list_project_service_account_keys(@service_account.name, key_types: ["USER_MANAGED"])
     end
 
     def has_user_managed_keys?

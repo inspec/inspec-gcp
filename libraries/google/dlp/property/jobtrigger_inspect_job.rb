@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_actions'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options_table_reference'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set_regex_file_set'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_kind'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_partition_id'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config_timestamp_field'
+require "google/dlp/property/jobtrigger_inspect_job_actions"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options_table_reference"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set_regex_file_set"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_kind"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_partition_id"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config_timestamp_field"
 module GoogleInSpec
   module DLP
     module Property
@@ -38,9 +38,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @inspect_template_name = args['inspectTemplateName']
-          @storage_config = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfig.new(args['storageConfig'], to_s)
-          @actions = GoogleInSpec::DLP::Property::JobTriggerInspectJobActionsArray.parse(args['actions'], to_s)
+          @inspect_template_name = args["inspectTemplateName"]
+          @storage_config = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfig.new(args["storageConfig"], to_s)
+          @actions = GoogleInSpec::DLP::Property::JobTriggerInspectJobActionsArray.parse(args["actions"], to_s)
         end
 
         def to_s

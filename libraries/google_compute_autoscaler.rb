@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,22 +13,22 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/autoscaler_autoscaling_policy'
-require 'google/compute/property/autoscaler_autoscaling_policy_cpu_utilization'
-require 'google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations'
-require 'google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control'
-require 'google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas'
-require 'google/compute/property/autoscaler_autoscaling_policy_scaling_schedules'
+require "gcp_backend"
+require "google/compute/property/autoscaler_autoscaling_policy"
+require "google/compute/property/autoscaler_autoscaling_policy_cpu_utilization"
+require "google/compute/property/autoscaler_autoscaling_policy_custom_metric_utilizations"
+require "google/compute/property/autoscaler_autoscaling_policy_load_balancing_utilization"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_down_control"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_in_control"
+require "google/compute/property/autoscaler_autoscaling_policy_scale_in_control_max_scaled_in_replicas"
+require "google/compute/property/autoscaler_autoscaling_policy_scaling_schedules"
 
 # A provider to manage Compute Engine resources.
 class ComputeAutoscaler < GcpResourceBase
-  name 'google_compute_autoscaler'
-  desc 'Autoscaler'
-  supports platform: 'gcp'
+  name "google_compute_autoscaler"
+  desc "Autoscaler"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :id
@@ -42,18 +42,18 @@ class ComputeAutoscaler < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @id = @fetched['id']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @autoscaling_policy = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(@fetched['autoscalingPolicy'], to_s)
-    @target = @fetched['target']
-    @zone = @fetched['zone']
+    @id = @fetched["id"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @autoscaling_policy = GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(@fetched["autoscalingPolicy"], to_s)
+    @target = @fetched["target"]
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -73,13 +73,13 @@ class ComputeAutoscaler < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}"
   end
 end

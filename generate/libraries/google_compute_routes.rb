@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeRoutes < GcpResourceBase
-  name 'google_compute_routes'
-  desc 'Route plural resource'
-  supports platform: 'gcp'
+  name "google_compute_routes"
+  desc "Route plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class ComputeRoutes < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -73,17 +73,17 @@ class ComputeRoutes < GcpResourceBase
 
   def transformers
     {
-      'destRange' => ->(obj) { [:dest_range, obj['destRange']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'priority' => ->(obj) { [:priority, obj['priority']] },
-      'tags' => ->(obj) { [:tags, obj['tags']] },
-      'nextHopGateway' => ->(obj) { [:next_hop_gateway, obj['nextHopGateway']] },
-      'nextHopInstance' => ->(obj) { [:next_hop_instance, obj['nextHopInstance']] },
-      'nextHopIp' => ->(obj) { [:next_hop_ip, obj['nextHopIp']] },
-      'nextHopVpnTunnel' => ->(obj) { [:next_hop_vpn_tunnel, obj['nextHopVpnTunnel']] },
-      'nextHopNetwork' => ->(obj) { [:next_hop_network, obj['nextHopNetwork']] },
+      "destRange" => ->(obj) { [:dest_range, obj["destRange"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "priority" => ->(obj) { [:priority, obj["priority"]] },
+      "tags" => ->(obj) { [:tags, obj["tags"]] },
+      "nextHopGateway" => ->(obj) { [:next_hop_gateway, obj["nextHopGateway"]] },
+      "nextHopInstance" => ->(obj) { [:next_hop_instance, obj["nextHopInstance"]] },
+      "nextHopIp" => ->(obj) { [:next_hop_ip, obj["nextHopIp"]] },
+      "nextHopVpnTunnel" => ->(obj) { [:next_hop_vpn_tunnel, obj["nextHopVpnTunnel"]] },
+      "nextHopNetwork" => ->(obj) { [:next_hop_network, obj["nextHopNetwork"]] },
     }
   end
 
@@ -110,10 +110,10 @@ class ComputeRoutes < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/routes'
+    "projects/{{project}}/global/routes"
   end
 end

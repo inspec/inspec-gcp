@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_executor_detail_container_detail'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_executor_detail_custom_job_detail'
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_executor_detail_container_detail"
+require "google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_executor_detail_custom_job_detail"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @container_detail = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsExecutorDetailContainerDetail.new(args['containerDetail'], to_s)
-          @custom_job_detail = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsExecutorDetailCustomJobDetail.new(args['customJobDetail'], to_s)
+          @container_detail = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsExecutorDetailContainerDetail.new(args["containerDetail"], to_s)
+          @custom_job_detail = GoogleInSpec::VertexAI::Property::ScheduleCreatePipelineJobRequestPipelineJobJobDetailTaskDetailsExecutorDetailCustomJobDetail.new(args["customJobDetail"], to_s)
         end
 
         def to_s

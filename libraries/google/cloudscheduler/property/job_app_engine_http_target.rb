@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudscheduler/property/job_app_engine_http_target_app_engine_routing'
+require "google/cloudscheduler/property/job_app_engine_http_target_app_engine_routing"
 module GoogleInSpec
   module CloudScheduler
     module Property
@@ -31,11 +31,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @http_method = args['httpMethod']
-          @app_engine_routing = GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTargetAppEngineRouting.new(args['appEngineRouting'], to_s)
-          @relative_uri = args['relativeUri']
-          @body = args['body']
-          @headers = args['headers']
+          @http_method = args["httpMethod"]
+          @app_engine_routing = GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTargetAppEngineRouting.new(args["appEngineRouting"], to_s)
+          @relative_uri = args["relativeUri"]
+          @body = args["body"]
+          @headers = args["headers"]
         end
 
         def to_s

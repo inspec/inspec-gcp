@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_external_data_configuration_schema_fields'
+require "google/bigquery/property/table_external_data_configuration_schema_fields"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @fields = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationSchemaFieldsArray.parse(args['fields'], to_s)
+          @fields = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationSchemaFieldsArray.parse(args["fields"], to_s)
         end
 
         def to_s

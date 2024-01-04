@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/serviceusage/property/service_config_apis'
+require "google/serviceusage/property/service_config_apis"
 module GoogleInSpec
   module ServiceUsage
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @title = args['title']
-          @apis = GoogleInSpec::ServiceUsage::Property::ServiceConfigApisArray.parse(args['apis'], to_s)
+          @name = args["name"]
+          @title = args["title"]
+          @apis = GoogleInSpec::ServiceUsage::Property::ServiceConfigApisArray.parse(args["apis"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Vertex AI resources.
 class VertexAIStudy < GcpResourceBase
-  name 'google_vertex_ai_study'
-  desc 'Study'
-  supports platform: 'gcp'
+  name "google_vertex_ai_study"
+  desc "Study"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :study_spec
@@ -32,17 +32,17 @@ class VertexAIStudy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @study_spec = @fetched['studySpec']
-    @name = @fetched['name']
-    @display_name = @fetched['displayName']
-    @state = @fetched['state']
-    @create_time = @fetched['createTime']
-    @inactive_reason = @fetched['inactiveReason']
+    @study_spec = @fetched["studySpec"]
+    @name = @fetched["name"]
+    @display_name = @fetched["displayName"]
+    @state = @fetched["state"]
+    @create_time = @fetched["createTime"]
+    @inactive_reason = @fetched["inactiveReason"]
   end
 
   def exists?
@@ -56,10 +56,10 @@ class VertexAIStudy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

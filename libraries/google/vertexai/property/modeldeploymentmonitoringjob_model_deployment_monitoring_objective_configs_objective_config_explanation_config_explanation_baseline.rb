@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -28,9 +28,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @prediction_format = args['predictionFormat']
-          @gcs = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfigExplanationBaselineGcs.new(args['gcs'], to_s)
-          @bigquery = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfigExplanationBaselineBigquery.new(args['bigquery'], to_s)
+          @prediction_format = args["predictionFormat"]
+          @gcs = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfigExplanationBaselineGcs.new(args["gcs"], to_s)
+          @bigquery = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigExplanationConfigExplanationBaselineBigquery.new(args["bigquery"], to_s)
         end
 
         def to_s

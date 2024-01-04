@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/iam/property/iam_policy_bindings'
+require "gcp_backend"
+require "google/iam/property/iam_policy_bindings"
 
 # A provider to manage Compute Engine IAM Binding resources.
 class SubnetworkIamBinding < GcpResourceBase
-  name 'google_compute_subnetwork_iam_binding'
-  desc 'Subnetwork Iam Binding'
-  supports platform: 'gcp'
+  name "google_compute_subnetwork_iam_binding"
+  desc "Subnetwork Iam Binding"
+  supports platform: "gcp"
 
   attr_reader :params
 
@@ -30,12 +30,12 @@ class SubnetworkIamBinding < GcpResourceBase
     super(params.merge({ use_http_transport: true }))
     raise "Expected 'role' to be defined for iam_binding resource" unless params.key?(:role)
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched["bindings"], to_s)
     @bindings.each do |binding|
       next if binding.role != params[:role]
       if params[:condition]
@@ -75,10 +75,10 @@ class SubnetworkIamBinding < GcpResourceBase
   private
 
   def product_url
-    'https://compute.googleapis.com/compute/beta/'
+    "https://compute.googleapis.com/compute/beta/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/subnetworks/{{name}}/getIamPolicy'
+    "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}/getIamPolicy"
   end
 end

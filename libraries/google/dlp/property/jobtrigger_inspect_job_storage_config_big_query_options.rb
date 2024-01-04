@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options_table_reference'
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options_table_reference"
 module GoogleInSpec
   module DLP
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @table_reference = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.new(args['tableReference'], to_s)
+          @table_reference = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.new(args["tableReference"], to_s)
         end
 
         def to_s

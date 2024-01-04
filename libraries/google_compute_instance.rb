@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,20 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/instance_disks'
-require 'google/compute/property/instance_guest_accelerators'
-require 'google/compute/property/instance_network_interfaces'
-require 'google/compute/property/instance_scheduling'
-require 'google/compute/property/instance_service_accounts'
-require 'google/compute/property/instance_shielded_instance_config'
-require 'google/compute/property/instance_tags'
+require "gcp_backend"
+require "google/compute/property/instance_disks"
+require "google/compute/property/instance_guest_accelerators"
+require "google/compute/property/instance_network_interfaces"
+require "google/compute/property/instance_scheduling"
+require "google/compute/property/instance_service_accounts"
+require "google/compute/property/instance_shielded_instance_config"
+require "google/compute/property/instance_tags"
 
 # A provider to manage Compute Engine resources.
 class ComputeInstance < GcpResourceBase
-  name 'google_compute_instance'
-  desc 'Instance'
-  supports platform: 'gcp'
+  name "google_compute_instance"
+  desc "Instance"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :can_ip_forward
@@ -55,33 +55,33 @@ class ComputeInstance < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @can_ip_forward = @fetched['canIpForward']
-    @cpu_platform = @fetched['cpuPlatform']
-    @creation_timestamp = @fetched['creationTimestamp']
-    @deletion_protection = @fetched['deletionProtection']
-    @disks = GoogleInSpec::Compute::Property::InstanceDisksArray.parse(@fetched['disks'], to_s)
-    @guest_accelerators = GoogleInSpec::Compute::Property::InstanceGuestAcceleratorsArray.parse(@fetched['guestAccelerators'], to_s)
-    @hostname = @fetched['hostname']
-    @id = @fetched['id']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @labels = @fetched['labels']
-    @metadata = @fetched['metadata']
-    @machine_type = @fetched['machineType']
-    @min_cpu_platform = @fetched['minCpuPlatform']
-    @name = @fetched['name']
-    @network_interfaces = GoogleInSpec::Compute::Property::InstanceNetworkInterfacesArray.parse(@fetched['networkInterfaces'], to_s)
-    @scheduling = GoogleInSpec::Compute::Property::InstanceScheduling.new(@fetched['scheduling'], to_s)
-    @service_accounts = GoogleInSpec::Compute::Property::InstanceServiceAccountsArray.parse(@fetched['serviceAccounts'], to_s)
-    @shielded_instance_config = GoogleInSpec::Compute::Property::InstanceShieldedInstanceConfig.new(@fetched['shieldedInstanceConfig'], to_s)
-    @status = @fetched['status']
-    @status_message = @fetched['statusMessage']
-    @tags = GoogleInSpec::Compute::Property::InstanceTags.new(@fetched['tags'], to_s)
-    @zone = @fetched['zone']
+    @can_ip_forward = @fetched["canIpForward"]
+    @cpu_platform = @fetched["cpuPlatform"]
+    @creation_timestamp = @fetched["creationTimestamp"]
+    @deletion_protection = @fetched["deletionProtection"]
+    @disks = GoogleInSpec::Compute::Property::InstanceDisksArray.parse(@fetched["disks"], to_s)
+    @guest_accelerators = GoogleInSpec::Compute::Property::InstanceGuestAcceleratorsArray.parse(@fetched["guestAccelerators"], to_s)
+    @hostname = @fetched["hostname"]
+    @id = @fetched["id"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @labels = @fetched["labels"]
+    @metadata = @fetched["metadata"]
+    @machine_type = @fetched["machineType"]
+    @min_cpu_platform = @fetched["minCpuPlatform"]
+    @name = @fetched["name"]
+    @network_interfaces = GoogleInSpec::Compute::Property::InstanceNetworkInterfacesArray.parse(@fetched["networkInterfaces"], to_s)
+    @scheduling = GoogleInSpec::Compute::Property::InstanceScheduling.new(@fetched["scheduling"], to_s)
+    @service_accounts = GoogleInSpec::Compute::Property::InstanceServiceAccountsArray.parse(@fetched["serviceAccounts"], to_s)
+    @shielded_instance_config = GoogleInSpec::Compute::Property::InstanceShieldedInstanceConfig.new(@fetched["shieldedInstanceConfig"], to_s)
+    @status = @fetched["status"]
+    @status_message = @fetched["statusMessage"]
+    @tags = GoogleInSpec::Compute::Property::InstanceTags.new(@fetched["tags"], to_s)
+    @zone = @fetched["zone"]
   end
 
   def exists?
@@ -128,7 +128,7 @@ class ComputeInstance < GcpResourceBase
   end
 
   def second_disks_device_name
-    return '' if @disks[1].nil? || !defined?(@disks[1].device_name) || @disks[1].device_name.nil?
+    return "" if @disks[1].nil? || !defined?(@disks[1].device_name) || @disks[1].device_name.nil?
     disks[1].device_name
   end
 
@@ -142,19 +142,19 @@ class ComputeInstance < GcpResourceBase
 
   # helper method for retrieving a disk source basename
   def disks_source_name(index = 0)
-    return '' if @disks[index].nil? || !defined?(@disks[index].source) || @disks[index].source.nil?
-    @disks[index].source.split('/').last
+    return "" if @disks[index].nil? || !defined?(@disks[index].source) || @disks[index].source.nil?
+    @disks[index].source.split("/").last
   end
 
   # helper method for retrieving a disk license string
   def disks_license(disk_index = 0, license_index = 0)
-    return '' if @disks[disk_index].nil? || !defined?(@disks[disk_index].licenses[license_index]) || @disks[disk_index].licenses[license_index].nil?
+    return "" if @disks[disk_index].nil? || !defined?(@disks[disk_index].licenses[license_index]) || @disks[disk_index].licenses[license_index].nil?
     @disks[disk_index].licenses[license_index].downcase
   end
 
   def machine_size
-    return '' if !defined?(@machine_type) || @machine_type.nil?
-    @machine_type.split('/').last
+    return "" if !defined?(@machine_type) || @machine_type.nil?
+    @machine_type.split("/").last
   end
 
   # helper for returning label keys to perform checks
@@ -176,19 +176,19 @@ class ComputeInstance < GcpResourceBase
 
   def metadata_keys
     return [] if !defined?(@metadata) || @metadata.nil?
-    @metadata['items']&.map { |m| m['key'] }
+    @metadata["items"]&.map { |m| m["key"] }
   end
 
   def metadata_values
     return [] if !defined?(@metadata) || @metadata.nil?
-    @metadata['items']&.map { |m| m['value'] }
+    @metadata["items"]&.map { |m| m["value"] }
   end
 
   def metadata_value_by_key(metadata_key)
     return [] if !defined?(@metadata) || @metadata.nil?
-    @metadata['items']&.each do |item|
-      if item['key'] == metadata_key
-        return item['value']
+    @metadata["items"]&.each do |item|
+      if item["key"] == metadata_key
+        return item["value"]
       end
     end
     []
@@ -201,19 +201,19 @@ class ComputeInstance < GcpResourceBase
   end
 
   def block_project_ssh_keys
-    return false if !defined?(@metadata['items']) || @metadata['items'].nil?
-    @metadata['items'].each do |element|
-      return true if element['key']=='block-project-ssh-keys' and element['value'].casecmp('true').zero?
-      return true if element['key']=='block-project-ssh-keys' and element['value']=='1'
+    return false if !defined?(@metadata["items"]) || @metadata["items"].nil?
+    @metadata["items"].each do |element|
+      return true if element["key"]=="block-project-ssh-keys" and element["value"].casecmp("true") == 0
+      return true if element["key"]=="block-project-ssh-keys" and element["value"]=="1"
     end
     false
   end
 
   def has_serial_port_disabled?
-    return false if !defined?(@metadata['items']) || @metadata['items'].nil?
-    @metadata['items'].each do |element|
-      return false if element['key']=='serial-port-enable' and element['value'].casecmp('true').zero?
-      return false if element['key']=='serial-port-enable' and element['value']=='1'
+    return false if !defined?(@metadata["items"]) || @metadata["items"].nil?
+    @metadata["items"].each do |element|
+      return false if element["key"]=="serial-port-enable" and element["value"].casecmp("true") == 0
+      return false if element["key"]=="serial-port-enable" and element["value"]=="1"
     end
     true
   end
@@ -233,13 +233,13 @@ class ComputeInstance < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/instances/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/instances/{{name}}"
   end
 end

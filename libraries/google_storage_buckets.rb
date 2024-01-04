@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class StorageBuckets < GcpResourceBase
-  name 'google_storage_buckets'
-  desc 'Bucket plural resource'
-  supports platform: 'gcp'
+  name "google_storage_buckets"
+  desc "Bucket plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -51,12 +51,12 @@ class StorageBuckets < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -84,28 +84,28 @@ class StorageBuckets < GcpResourceBase
 
   def transformers
     {
-      'acl' => ->(obj) { [:acl, GoogleInSpec::Storage::Property::BucketAclArray.parse(obj['acl'], to_s)] },
-      'cors' => ->(obj) { [:cors, GoogleInSpec::Storage::Property::BucketCorsArray.parse(obj['cors'], to_s)] },
-      'defaultEventBasedHold' => ->(obj) { [:default_event_based_hold, obj['defaultEventBasedHold']] },
-      'defaultObjectAcl' => ->(obj) { [:default_object_acl, GoogleInSpec::Storage::Property::BucketDefaultObjectAclArray.parse(obj['defaultObjectAcl'], to_s)] },
-      'id' => ->(obj) { [:bucket_id, obj['id']] },
-      'lifecycle' => ->(obj) { [:lifecycle, GoogleInSpec::Storage::Property::BucketLifecycle.new(obj['lifecycle'], to_s)] },
-      'location' => ->(obj) { [:bucket_location, obj['location']] },
-      'logging' => ->(obj) { [:logging, GoogleInSpec::Storage::Property::BucketLogging.new(obj['logging'], to_s)] },
-      'metageneration' => ->(obj) { [:metageneration, obj['metageneration']] },
-      'name' => ->(obj) { [:bucket_name, obj['name']] },
-      'owner' => ->(obj) { [:owner, GoogleInSpec::Storage::Property::BucketOwner.new(obj['owner'], to_s)] },
-      'projectNumber' => ->(obj) { [:bucket_project_number, obj['projectNumber']] },
-      'storageClass' => ->(obj) { [:storage_class, obj['storageClass']] },
-      'timeCreated' => ->(obj) { [:time_created, parse_time_string(obj['timeCreated'])] },
-      'updated' => ->(obj) { [:updated, parse_time_string(obj['updated'])] },
-      'versioning' => ->(obj) { [:versioning, GoogleInSpec::Storage::Property::BucketVersioning.new(obj['versioning'], to_s)] },
-      'website' => ->(obj) { [:website, GoogleInSpec::Storage::Property::BucketWebsite.new(obj['website'], to_s)] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'encryption' => ->(obj) { [:encryption, GoogleInSpec::Storage::Property::BucketEncryption.new(obj['encryption'], to_s)] },
-      'retentionPolicy' => ->(obj) { [:retention_policy, GoogleInSpec::Storage::Property::BucketRetentionPolicy.new(obj['retentionPolicy'], to_s)] },
-      'project' => ->(obj) { [:project, obj['project']] },
-      'predefinedDefaultObjectAcl' => ->(obj) { [:predefined_default_object_acl, obj['predefinedDefaultObjectAcl']] },
+      "acl" => ->(obj) { [:acl, GoogleInSpec::Storage::Property::BucketAclArray.parse(obj["acl"], to_s)] },
+      "cors" => ->(obj) { [:cors, GoogleInSpec::Storage::Property::BucketCorsArray.parse(obj["cors"], to_s)] },
+      "defaultEventBasedHold" => ->(obj) { [:default_event_based_hold, obj["defaultEventBasedHold"]] },
+      "defaultObjectAcl" => ->(obj) { [:default_object_acl, GoogleInSpec::Storage::Property::BucketDefaultObjectAclArray.parse(obj["defaultObjectAcl"], to_s)] },
+      "id" => ->(obj) { [:bucket_id, obj["id"]] },
+      "lifecycle" => ->(obj) { [:lifecycle, GoogleInSpec::Storage::Property::BucketLifecycle.new(obj["lifecycle"], to_s)] },
+      "location" => ->(obj) { [:bucket_location, obj["location"]] },
+      "logging" => ->(obj) { [:logging, GoogleInSpec::Storage::Property::BucketLogging.new(obj["logging"], to_s)] },
+      "metageneration" => ->(obj) { [:metageneration, obj["metageneration"]] },
+      "name" => ->(obj) { [:bucket_name, obj["name"]] },
+      "owner" => ->(obj) { [:owner, GoogleInSpec::Storage::Property::BucketOwner.new(obj["owner"], to_s)] },
+      "projectNumber" => ->(obj) { [:bucket_project_number, obj["projectNumber"]] },
+      "storageClass" => ->(obj) { [:storage_class, obj["storageClass"]] },
+      "timeCreated" => ->(obj) { [:time_created, parse_time_string(obj["timeCreated"])] },
+      "updated" => ->(obj) { [:updated, parse_time_string(obj["updated"])] },
+      "versioning" => ->(obj) { [:versioning, GoogleInSpec::Storage::Property::BucketVersioning.new(obj["versioning"], to_s)] },
+      "website" => ->(obj) { [:website, GoogleInSpec::Storage::Property::BucketWebsite.new(obj["website"], to_s)] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "encryption" => ->(obj) { [:encryption, GoogleInSpec::Storage::Property::BucketEncryption.new(obj["encryption"], to_s)] },
+      "retentionPolicy" => ->(obj) { [:retention_policy, GoogleInSpec::Storage::Property::BucketRetentionPolicy.new(obj["retentionPolicy"], to_s)] },
+      "project" => ->(obj) { [:project, obj["project"]] },
+      "predefinedDefaultObjectAcl" => ->(obj) { [:predefined_default_object_acl, obj["predefinedDefaultObjectAcl"]] },
     }
   end
 
@@ -117,10 +117,10 @@ class StorageBuckets < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://storage.googleapis.com/storage/v1/'
+    "https://storage.googleapis.com/storage/v1/"
   end
 
   def resource_base_url
-    'b?project={{project}}&projection=full'
+    "b?project={{project}}&projection=full"
   end
 end

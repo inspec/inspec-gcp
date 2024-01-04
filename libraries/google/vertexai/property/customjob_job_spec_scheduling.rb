@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @disable_retries = args['disableRetries']
-          @timeout = args['timeout']
-          @restart_job_on_worker_restart = args['restartJobOnWorkerRestart']
+          @disable_retries = args["disableRetries"]
+          @timeout = args["timeout"]
+          @restart_job_on_worker_restart = args["restartJobOnWorkerRestart"]
         end
 
         def to_s

@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeOrganizations < GcpResourceBase
-    name 'google_organizations'
-    desc 'Verifies settings for GCP organizations in bulk'
+    name "google_organizations"
+    desc "Verifies settings for GCP organizations in bulk"
 
     example "
       describe google_organizations do

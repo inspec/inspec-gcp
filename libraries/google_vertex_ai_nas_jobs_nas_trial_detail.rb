@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,19 +13,19 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/nasjobsnastrialdetail_search_trial'
-require 'google/vertexai/property/nasjobsnastrialdetail_search_trial_final_measurement'
-require 'google/vertexai/property/nasjobsnastrialdetail_search_trial_final_measurement_metrics'
-require 'google/vertexai/property/nasjobsnastrialdetail_train_trial'
-require 'google/vertexai/property/nasjobsnastrialdetail_train_trial_final_measurement'
-require 'google/vertexai/property/nasjobsnastrialdetail_train_trial_final_measurement_metrics'
+require "gcp_backend"
+require "google/vertexai/property/nasjobsnastrialdetail_search_trial"
+require "google/vertexai/property/nasjobsnastrialdetail_search_trial_final_measurement"
+require "google/vertexai/property/nasjobsnastrialdetail_search_trial_final_measurement_metrics"
+require "google/vertexai/property/nasjobsnastrialdetail_train_trial"
+require "google/vertexai/property/nasjobsnastrialdetail_train_trial_final_measurement"
+require "google/vertexai/property/nasjobsnastrialdetail_train_trial_final_measurement_metrics"
 
 # A provider to manage Vertex AI resources.
 class VertexAINasJobsNasTrialDetail < GcpResourceBase
-  name 'google_vertex_ai_nas_jobs_nas_trial_detail'
-  desc 'NasJobsNasTrialDetail'
-  supports platform: 'gcp'
+  name "google_vertex_ai_nas_jobs_nas_trial_detail"
+  desc "NasJobsNasTrialDetail"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :parameters
@@ -36,15 +36,15 @@ class VertexAINasJobsNasTrialDetail < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @parameters = @fetched['parameters']
-    @name = @fetched['name']
-    @search_trial = GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailSearchTrial.new(@fetched['searchTrial'], to_s)
-    @train_trial = GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailTrainTrial.new(@fetched['trainTrial'], to_s)
+    @parameters = @fetched["parameters"]
+    @name = @fetched["name"]
+    @search_trial = GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailSearchTrial.new(@fetched["searchTrial"], to_s)
+    @train_trial = GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailTrainTrial.new(@fetched["trainTrial"], to_s)
   end
 
   def exists?
@@ -58,10 +58,10 @@ class VertexAINasJobsNasTrialDetail < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,55 +13,55 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/trainingpipeline_encryption_spec'
-require 'google/vertexai/property/trainingpipeline_error'
-require 'google/vertexai/property/trainingpipeline_input_data_config'
-require 'google/vertexai/property/trainingpipeline_input_data_config_bigquery_destination'
-require 'google/vertexai/property/trainingpipeline_input_data_config_filter_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_fraction_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_gcs_destination'
-require 'google/vertexai/property/trainingpipeline_input_data_config_predefined_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_stratified_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_timestamp_split'
-require 'google/vertexai/property/trainingpipeline_labels'
-require 'google/vertexai/property/trainingpipeline_model_to_upload'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_container_spec'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_container_spec_env'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_container_spec_ports'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_deployed_models'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_encryption_spec'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_metadata'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_metadata_inputs'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_metadata_outputs'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_presets'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_sampled_shapley_attribution'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_blur_baseline_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_labels'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_model_source_info'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_original_model_info'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_predict_schemata'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_supported_export_formats'
+require "gcp_backend"
+require "google/vertexai/property/trainingpipeline_encryption_spec"
+require "google/vertexai/property/trainingpipeline_error"
+require "google/vertexai/property/trainingpipeline_input_data_config"
+require "google/vertexai/property/trainingpipeline_input_data_config_bigquery_destination"
+require "google/vertexai/property/trainingpipeline_input_data_config_filter_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_fraction_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_gcs_destination"
+require "google/vertexai/property/trainingpipeline_input_data_config_predefined_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_stratified_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_timestamp_split"
+require "google/vertexai/property/trainingpipeline_labels"
+require "google/vertexai/property/trainingpipeline_model_to_upload"
+require "google/vertexai/property/trainingpipeline_model_to_upload_container_spec"
+require "google/vertexai/property/trainingpipeline_model_to_upload_container_spec_env"
+require "google/vertexai/property/trainingpipeline_model_to_upload_container_spec_ports"
+require "google/vertexai/property/trainingpipeline_model_to_upload_deployed_models"
+require "google/vertexai/property/trainingpipeline_model_to_upload_encryption_spec"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_metadata"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_metadata_inputs"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_metadata_outputs"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source_gcs_source"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_presets"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_sampled_shapley_attribution"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_blur_baseline_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_labels"
+require "google/vertexai/property/trainingpipeline_model_to_upload_model_source_info"
+require "google/vertexai/property/trainingpipeline_model_to_upload_original_model_info"
+require "google/vertexai/property/trainingpipeline_model_to_upload_predict_schemata"
+require "google/vertexai/property/trainingpipeline_model_to_upload_supported_export_formats"
 
 # A provider to manage Vertex AI resources.
 class VertexAITrainingPipeline < GcpResourceBase
-  name 'google_vertex_ai_training_pipeline'
-  desc 'TrainingPipeline'
-  supports platform: 'gcp'
+  name "google_vertex_ai_training_pipeline"
+  desc "TrainingPipeline"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :end_time
@@ -85,28 +85,28 @@ class VertexAITrainingPipeline < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @end_time = @fetched['endTime']
-    @error = GoogleInSpec::VertexAI::Property::TrainingPipelineError.new(@fetched['error'], to_s)
-    @display_name = @fetched['displayName']
-    @name = @fetched['name']
-    @input_data_config = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfig.new(@fetched['inputDataConfig'], to_s)
-    @parent_model = @fetched['parentModel']
-    @update_time = @fetched['updateTime']
-    @state = @fetched['state']
-    @labels = GoogleInSpec::VertexAI::Property::TrainingPipelineLabels.new(@fetched['labels'], to_s)
-    @training_task_definition = @fetched['trainingTaskDefinition']
-    @start_time = @fetched['startTime']
-    @create_time = @fetched['createTime']
-    @training_task_metadata = @fetched['trainingTaskMetadata']
-    @training_task_inputs = @fetched['trainingTaskInputs']
-    @model_id = @fetched['modelId']
-    @encryption_spec = GoogleInSpec::VertexAI::Property::TrainingPipelineEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @model_to_upload = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUpload.new(@fetched['modelToUpload'], to_s)
+    @end_time = @fetched["endTime"]
+    @error = GoogleInSpec::VertexAI::Property::TrainingPipelineError.new(@fetched["error"], to_s)
+    @display_name = @fetched["displayName"]
+    @name = @fetched["name"]
+    @input_data_config = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfig.new(@fetched["inputDataConfig"], to_s)
+    @parent_model = @fetched["parentModel"]
+    @update_time = @fetched["updateTime"]
+    @state = @fetched["state"]
+    @labels = GoogleInSpec::VertexAI::Property::TrainingPipelineLabels.new(@fetched["labels"], to_s)
+    @training_task_definition = @fetched["trainingTaskDefinition"]
+    @start_time = @fetched["startTime"]
+    @create_time = @fetched["createTime"]
+    @training_task_metadata = @fetched["trainingTaskMetadata"]
+    @training_task_inputs = @fetched["trainingTaskInputs"]
+    @model_id = @fetched["modelId"]
+    @encryption_spec = GoogleInSpec::VertexAI::Property::TrainingPipelineEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @model_to_upload = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUpload.new(@fetched["modelToUpload"], to_s)
   end
 
   def exists?
@@ -120,10 +120,10 @@ class VertexAITrainingPipeline < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

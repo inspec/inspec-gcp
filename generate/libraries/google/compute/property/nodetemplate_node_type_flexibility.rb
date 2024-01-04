@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -29,9 +29,9 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @cpus = arguments['cpus']
-          @memory = arguments['memory']
-          @local_ssd = arguments['localSsd']
+          @cpus = arguments["cpus"]
+          @memory = arguments["memory"]
+          @local_ssd = arguments["localSsd"]
         end
 
         def to_s
@@ -41,9 +41,9 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'cpus' => ->(x, path) { x.nil? ? [] : ["its('#{path}.cpus') { should cmp #{x.inspect} }"] },
-            'memory' => ->(x, path) { x.nil? ? [] : ["its('#{path}.memory') { should cmp #{x.inspect} }"] },
-            'local_ssd' => ->(x, path) { x.nil? ? [] : ["its('#{path}.local_ssd') { should cmp #{x.inspect} }"] },
+            "cpus" => ->(x, path) { x.nil? ? [] : ["its('#{path}.cpus') { should cmp #{x.inspect} }"] },
+            "memory" => ->(x, path) { x.nil? ? [] : ["its('#{path}.memory') { should cmp #{x.inspect} }"] },
+            "local_ssd" => ->(x, path) { x.nil? ? [] : ["its('#{path}.local_ssd') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

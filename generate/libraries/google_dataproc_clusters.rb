@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class DataprocClusters < GcpResourceBase
-  name 'google_dataproc_clusters'
-  desc 'Cluster plural resource'
-  supports platform: 'gcp'
+  name "google_dataproc_clusters"
+  desc "Cluster plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,12 +33,12 @@ class DataprocClusters < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('clusters')
+    @table = fetch_wrapped_resource("clusters")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -66,10 +66,10 @@ class DataprocClusters < GcpResourceBase
 
   def transformers
     {
-      'clusterName' => ->(obj) { [:cluster_name, obj['clusterName']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'config' => ->(obj) { [:config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj['config'], to_s)] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "clusterName" => ->(obj) { [:cluster_name, obj["clusterName"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "config" => ->(obj) { [:config, GoogleInSpec::Dataproc::Property::ClusterConfig.new(obj["config"], to_s)] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -96,10 +96,10 @@ class DataprocClusters < GcpResourceBase
   private
 
   def product_url
-    'https://dataproc.googleapis.com/v1/'
+    "https://dataproc.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/clusters'
+    "projects/{{project}}/regions/{{region}}/clusters"
   end
 end

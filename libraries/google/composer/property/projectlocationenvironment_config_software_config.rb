@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_software_config_airflow_config_overrides'
-require 'google/composer/property/projectlocationenvironment_config_software_config_env_variables'
-require 'google/composer/property/projectlocationenvironment_config_software_config_pypi_packages'
+require "google/composer/property/projectlocationenvironment_config_software_config_airflow_config_overrides"
+require "google/composer/property/projectlocationenvironment_config_software_config_env_variables"
+require "google/composer/property/projectlocationenvironment_config_software_config_pypi_packages"
 module GoogleInSpec
   module Composer
     module Property
@@ -35,12 +35,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @image_version = args['imageVersion']
-          @airflow_config_overrides = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfigAirflowConfigOverrides.new(args['airflowConfigOverrides'], to_s)
-          @pypi_packages = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfigPypiPackages.new(args['pypiPackages'], to_s)
-          @env_variables = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfigEnvVariables.new(args['envVariables'], to_s)
-          @python_version = args['pythonVersion']
-          @scheduler_count = args['schedulerCount']
+          @image_version = args["imageVersion"]
+          @airflow_config_overrides = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfigAirflowConfigOverrides.new(args["airflowConfigOverrides"], to_s)
+          @pypi_packages = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfigPypiPackages.new(args["pypiPackages"], to_s)
+          @env_variables = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfigEnvVariables.new(args["envVariables"], to_s)
+          @python_version = args["pythonVersion"]
+          @scheduler_count = args["schedulerCount"]
         end
 
         def to_s

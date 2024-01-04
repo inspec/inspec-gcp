@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_input_config_bigquery_source'
-require 'google/vertexai/property/batchpredictionjob_input_config_gcs_source'
+require "google/vertexai/property/batchpredictionjob_input_config_bigquery_source"
+require "google/vertexai/property/batchpredictionjob_input_config_gcs_source"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -28,9 +28,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @instances_format = args['instancesFormat']
-          @bigquery_source = GoogleInSpec::VertexAI::Property::BatchPredictionJobInputConfigBigquerySource.new(args['bigquerySource'], to_s)
-          @gcs_source = GoogleInSpec::VertexAI::Property::BatchPredictionJobInputConfigGcsSource.new(args['gcsSource'], to_s)
+          @instances_format = args["instancesFormat"]
+          @bigquery_source = GoogleInSpec::VertexAI::Property::BatchPredictionJobInputConfigBigquerySource.new(args["bigquerySource"], to_s)
+          @gcs_source = GoogleInSpec::VertexAI::Property::BatchPredictionJobInputConfigGcsSource.new(args["gcsSource"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/cluster_node_config_accelerators'
-require 'google/container/property/cluster_node_config_shielded_instance_config'
-require 'google/container/property/cluster_node_config_taints'
+require "google/container/property/cluster_node_config_accelerators"
+require "google/container/property/cluster_node_config_shielded_instance_config"
+require "google/container/property/cluster_node_config_taints"
 module GoogleInSpec
   module Container
     module Property
@@ -53,21 +53,21 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @machine_type = args['machineType']
-          @disk_size_gb = args['diskSizeGb']
-          @oauth_scopes = args['oauthScopes']
-          @service_account = args['serviceAccount']
-          @metadata = args['metadata']
-          @image_type = args['imageType']
-          @labels = args['labels']
-          @local_ssd_count = args['localSsdCount']
-          @tags = args['tags']
-          @preemptible = args['preemptible']
-          @accelerators = GoogleInSpec::Container::Property::ClusterNodeConfigAcceleratorsArray.parse(args['accelerators'], to_s)
-          @disk_type = args['diskType']
-          @min_cpu_platform = args['minCpuPlatform']
-          @taints = GoogleInSpec::Container::Property::ClusterNodeConfigTaintsArray.parse(args['taints'], to_s)
-          @shielded_instance_config = GoogleInSpec::Container::Property::ClusterNodeConfigShieldedInstanceConfig.new(args['shieldedInstanceConfig'], to_s)
+          @machine_type = args["machineType"]
+          @disk_size_gb = args["diskSizeGb"]
+          @oauth_scopes = args["oauthScopes"]
+          @service_account = args["serviceAccount"]
+          @metadata = args["metadata"]
+          @image_type = args["imageType"]
+          @labels = args["labels"]
+          @local_ssd_count = args["localSsdCount"]
+          @tags = args["tags"]
+          @preemptible = args["preemptible"]
+          @accelerators = GoogleInSpec::Container::Property::ClusterNodeConfigAcceleratorsArray.parse(args["accelerators"], to_s)
+          @disk_type = args["diskType"]
+          @min_cpu_platform = args["minCpuPlatform"]
+          @taints = GoogleInSpec::Container::Property::ClusterNodeConfigTaintsArray.parse(args["taints"], to_s)
+          @shielded_instance_config = GoogleInSpec::Container::Property::ClusterNodeConfigShieldedInstanceConfig.new(args["shieldedInstanceConfig"], to_s)
         end
 
         def to_s

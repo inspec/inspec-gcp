@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,22 +13,22 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config'
-require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config'
-require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs'
-require 'google/compute/property/regionsecuritypolicy_advanced_options_config'
-require 'google/compute/property/regionsecuritypolicy_advanced_options_config_json_custom_config'
-require 'google/compute/property/regionsecuritypolicy_ddos_protection_config'
-require 'google/compute/property/regionsecuritypolicy_labels'
-require 'google/compute/property/regionsecuritypolicy_recaptcha_options_config'
-require 'google/compute/property/regionsecuritypolicy_rules'
+require "gcp_backend"
+require "google/compute/property/regionsecuritypolicy_adaptive_protection_config"
+require "google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config"
+require "google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs"
+require "google/compute/property/regionsecuritypolicy_advanced_options_config"
+require "google/compute/property/regionsecuritypolicy_advanced_options_config_json_custom_config"
+require "google/compute/property/regionsecuritypolicy_ddos_protection_config"
+require "google/compute/property/regionsecuritypolicy_labels"
+require "google/compute/property/regionsecuritypolicy_recaptcha_options_config"
+require "google/compute/property/regionsecuritypolicy_rules"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionSecurityPolicy < GcpResourceBase
-  name 'google_compute_region_security_policy'
-  desc 'RegionSecurityPolicy'
-  supports platform: 'gcp'
+  name "google_compute_region_security_policy"
+  desc "RegionSecurityPolicy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :kind
@@ -51,27 +51,27 @@ class ComputeRegionSecurityPolicy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @kind = @fetched['kind']
-    @id = @fetched['id']
-    @creation_timestamp = @fetched['creationTimestamp']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @rules = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(@fetched['rules'], to_s)
-    @adaptive_protection_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(@fetched['adaptiveProtectionConfig'], to_s)
-    @ddos_protection_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(@fetched['ddosProtectionConfig'], to_s)
-    @advanced_options_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(@fetched['advancedOptionsConfig'], to_s)
-    @recaptcha_options_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(@fetched['recaptchaOptionsConfig'], to_s)
-    @fingerprint = @fetched['fingerprint']
-    @self_link = @fetched['selfLink']
-    @type = @fetched['type']
-    @labels = GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(@fetched['labels'], to_s)
-    @label_fingerprint = @fetched['labelFingerprint']
-    @region = @fetched['region']
+    @kind = @fetched["kind"]
+    @id = @fetched["id"]
+    @creation_timestamp = @fetched["creationTimestamp"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @rules = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(@fetched["rules"], to_s)
+    @adaptive_protection_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(@fetched["adaptiveProtectionConfig"], to_s)
+    @ddos_protection_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(@fetched["ddosProtectionConfig"], to_s)
+    @advanced_options_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(@fetched["advancedOptionsConfig"], to_s)
+    @recaptcha_options_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(@fetched["recaptchaOptionsConfig"], to_s)
+    @fingerprint = @fetched["fingerprint"]
+    @self_link = @fetched["selfLink"]
+    @type = @fetched["type"]
+    @labels = GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(@fetched["labels"], to_s)
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @region = @fetched["region"]
   end
 
   def exists?
@@ -85,10 +85,10 @@ class ComputeRegionSecurityPolicy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/{{name}}'
+    "projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/{{name}}"
   end
 end

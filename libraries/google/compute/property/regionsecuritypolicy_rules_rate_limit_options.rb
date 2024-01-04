@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_ban_threshold'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_enforce_on_key_configs'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_redirect_options'
-require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_rate_limit_threshold'
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_ban_threshold"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_enforce_on_key_configs"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_redirect_options"
+require "google/compute/property/regionsecuritypolicy_rules_rate_limit_options_rate_limit_threshold"
 module GoogleInSpec
   module Compute
     module Property
@@ -42,15 +42,15 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @rate_limit_threshold = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsRateLimitThreshold.new(args['rateLimitThreshold'], to_s)
-          @conform_action = args['conformAction']
-          @exceed_action = args['exceedAction']
-          @exceed_redirect_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsExceedRedirectOptions.new(args['exceedRedirectOptions'], to_s)
-          @enforce_on_key = args['enforceOnKey']
-          @enforce_on_key_name = args['enforceOnKeyName']
-          @enforce_on_key_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsEnforceOnKeyConfigsArray.parse(args['enforceOnKeyConfigs'], to_s)
-          @ban_threshold = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsBanThreshold.new(args['banThreshold'], to_s)
-          @ban_duration_sec = args['banDurationSec']
+          @rate_limit_threshold = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsRateLimitThreshold.new(args["rateLimitThreshold"], to_s)
+          @conform_action = args["conformAction"]
+          @exceed_action = args["exceedAction"]
+          @exceed_redirect_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsExceedRedirectOptions.new(args["exceedRedirectOptions"], to_s)
+          @enforce_on_key = args["enforceOnKey"]
+          @enforce_on_key_name = args["enforceOnKeyName"]
+          @enforce_on_key_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsEnforceOnKeyConfigsArray.parse(args["enforceOnKeyConfigs"], to_s)
+          @ban_threshold = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsBanThreshold.new(args["banThreshold"], to_s)
+          @ban_duration_sec = args["banDurationSec"]
         end
 
         def to_s

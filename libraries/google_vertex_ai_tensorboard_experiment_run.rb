@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/tensorboardexperimentrun_labels'
+require "gcp_backend"
+require "google/vertexai/property/tensorboardexperimentrun_labels"
 
 # A provider to manage Vertex AI resources.
 class VertexAITensorboardExperimentRun < GcpResourceBase
-  name 'google_vertex_ai_tensorboard_experiment_run'
-  desc 'TensorboardExperimentRun'
-  supports platform: 'gcp'
+  name "google_vertex_ai_tensorboard_experiment_run"
+  desc "TensorboardExperimentRun"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :display_name
@@ -34,18 +34,18 @@ class VertexAITensorboardExperimentRun < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @display_name = @fetched['displayName']
-    @update_time = @fetched['updateTime']
-    @description = @fetched['description']
-    @etag = @fetched['etag']
-    @labels = GoogleInSpec::VertexAI::Property::TensorboardExperimentRunLabels.new(@fetched['labels'], to_s)
-    @create_time = @fetched['createTime']
-    @name = @fetched['name']
+    @display_name = @fetched["displayName"]
+    @update_time = @fetched["updateTime"]
+    @description = @fetched["description"]
+    @etag = @fetched["etag"]
+    @labels = GoogleInSpec::VertexAI::Property::TensorboardExperimentRunLabels.new(@fetched["labels"], to_s)
+    @create_time = @fetched["createTime"]
+    @name = @fetched["name"]
   end
 
   def exists?
@@ -59,10 +59,10 @@ class VertexAITensorboardExperimentRun < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

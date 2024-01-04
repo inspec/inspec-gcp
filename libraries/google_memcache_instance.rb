@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/memcache/property/instance_memcache_nodes'
-require 'google/memcache/property/instance_node_config'
-require 'google/memcache/property/instance_parameters'
+require "gcp_backend"
+require "google/memcache/property/instance_memcache_nodes"
+require "google/memcache/property/instance_node_config"
+require "google/memcache/property/instance_parameters"
 
 # A provider to manage Memcache resources.
 class MemcacheInstance < GcpResourceBase
-  name 'google_memcache_instance'
-  desc 'Instance'
-  supports platform: 'gcp'
+  name "google_memcache_instance"
+  desc "Instance"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -43,25 +43,25 @@ class MemcacheInstance < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @display_name = @fetched['displayName']
-    @memcache_nodes = GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(@fetched['memcacheNodes'], to_s)
-    @create_time = parse_time_string(@fetched['createTime'])
-    @discovery_endpoint = @fetched['discoveryEndpoint']
-    @labels = @fetched['labels']
-    @memcache_full_version = @fetched['memcacheFullVersion']
-    @zones = @fetched['zones']
-    @authorized_network = @fetched['authorizedNetwork']
-    @node_count = @fetched['nodeCount']
-    @memcache_version = @fetched['memcacheVersion']
-    @node_config = GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(@fetched['nodeConfig'], to_s)
-    @parameters = GoogleInSpec::Memcache::Property::InstanceParameters.new(@fetched['parameters'], to_s)
-    @region = @fetched['region']
+    @name = @fetched["name"]
+    @display_name = @fetched["displayName"]
+    @memcache_nodes = GoogleInSpec::Memcache::Property::InstanceMemcacheNodesArray.parse(@fetched["memcacheNodes"], to_s)
+    @create_time = parse_time_string(@fetched["createTime"])
+    @discovery_endpoint = @fetched["discoveryEndpoint"]
+    @labels = @fetched["labels"]
+    @memcache_full_version = @fetched["memcacheFullVersion"]
+    @zones = @fetched["zones"]
+    @authorized_network = @fetched["authorizedNetwork"]
+    @node_count = @fetched["nodeCount"]
+    @memcache_version = @fetched["memcacheVersion"]
+    @node_config = GoogleInSpec::Memcache::Property::InstanceNodeConfig.new(@fetched["nodeConfig"], to_s)
+    @parameters = GoogleInSpec::Memcache::Property::InstanceParameters.new(@fetched["parameters"], to_s)
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -80,10 +80,10 @@ class MemcacheInstance < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://memcache.googleapis.com/v1beta2/'
+    "https://memcache.googleapis.com/v1beta2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/instances/{{name}}'
+    "projects/{{project}}/locations/{{region}}/instances/{{name}}"
   end
 end

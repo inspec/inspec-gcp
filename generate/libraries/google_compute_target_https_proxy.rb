@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeTargetHttpsProxy < GcpResourceBase
-  name 'google_compute_target_https_proxy'
-  desc 'TargetHttpsProxy'
-  supports platform: 'gcp'
+  name "google_compute_target_https_proxy"
+  desc "TargetHttpsProxy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -34,20 +34,20 @@ class ComputeTargetHttpsProxy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @quic_override = @fetched['quicOverride']
-    @ssl_certificates = @fetched['sslCertificates']
-    @ssl_policy = @fetched['sslPolicy']
-    @url_map = @fetched['urlMap']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @quic_override = @fetched["quicOverride"]
+    @ssl_certificates = @fetched["sslCertificates"]
+    @ssl_policy = @fetched["sslPolicy"]
+    @url_map = @fetched["urlMap"]
   end
 
   # Handles parsing RFC3339 time string
@@ -65,19 +65,19 @@ class ComputeTargetHttpsProxy < GcpResourceBase
 
   def un_parse
     {
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'quic_override' => ->(x, _) { x.nil? ? [] : ["its('quic_override') { should cmp #{x.inspect} }"] },
-      'ssl_certificates' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('ssl_certificates') { should include #{single.inspect} }" } },
-      'ssl_policy' => ->(x, _) { x.nil? ? [] : ["its('ssl_policy') { should cmp #{x.inspect} }"] },
-      'url_map' => ->(x, _) { x.nil? ? [] : ["its('url_map') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "quic_override" => ->(x, _) { x.nil? ? [] : ["its('quic_override') { should cmp #{x.inspect} }"] },
+      "ssl_certificates" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('ssl_certificates') { should include #{single.inspect} }" } },
+      "ssl_policy" => ->(x, _) { x.nil? ? [] : ["its('ssl_policy') { should cmp #{x.inspect} }"] },
+      "url_map" => ->(x, _) { x.nil? ? [] : ["its('url_map') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'TargetHttpsProxy'
+    name = "TargetHttpsProxy"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -86,11 +86,11 @@ class ComputeTargetHttpsProxy < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_compute_target_https_proxy',
+      type: "google_compute_target_https_proxy",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -98,10 +98,10 @@ class ComputeTargetHttpsProxy < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/targetHttpsProxies/{{name}}'
+    "projects/{{project}}/global/targetHttpsProxies/{{name}}"
   end
 end

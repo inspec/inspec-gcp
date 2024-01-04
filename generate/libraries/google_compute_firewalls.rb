@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeFirewalls < GcpResourceBase
-  name 'google_compute_firewalls'
-  desc 'Firewall plural resource'
-  supports platform: 'gcp'
+  name "google_compute_firewalls"
+  desc "Firewall plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -45,12 +45,12 @@ class ComputeFirewalls < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -78,22 +78,22 @@ class ComputeFirewalls < GcpResourceBase
 
   def transformers
     {
-      'allowed' => ->(obj) { [:allowed, GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(obj['allowed'], to_s)] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'denied' => ->(obj) { [:denied, GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(obj['denied'], to_s)] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'destinationRanges' => ->(obj) { [:destination_ranges, obj['destinationRanges']] },
-      'direction' => ->(obj) { [:direction, obj['direction']] },
-      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'priority' => ->(obj) { [:priority, obj['priority']] },
-      'sourceRanges' => ->(obj) { [:source_ranges, obj['sourceRanges']] },
-      'sourceServiceAccounts' => ->(obj) { [:source_service_accounts, obj['sourceServiceAccounts']] },
-      'sourceTags' => ->(obj) { [:source_tags, obj['sourceTags']] },
-      'targetServiceAccounts' => ->(obj) { [:target_service_accounts, obj['targetServiceAccounts']] },
-      'targetTags' => ->(obj) { [:target_tags, obj['targetTags']] },
+      "allowed" => ->(obj) { [:allowed, GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(obj["allowed"], to_s)] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "denied" => ->(obj) { [:denied, GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(obj["denied"], to_s)] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "destinationRanges" => ->(obj) { [:destination_ranges, obj["destinationRanges"]] },
+      "direction" => ->(obj) { [:direction, obj["direction"]] },
+      "disabled" => ->(obj) { [:disabled, obj["disabled"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "priority" => ->(obj) { [:priority, obj["priority"]] },
+      "sourceRanges" => ->(obj) { [:source_ranges, obj["sourceRanges"]] },
+      "sourceServiceAccounts" => ->(obj) { [:source_service_accounts, obj["sourceServiceAccounts"]] },
+      "sourceTags" => ->(obj) { [:source_tags, obj["sourceTags"]] },
+      "targetServiceAccounts" => ->(obj) { [:target_service_accounts, obj["targetServiceAccounts"]] },
+      "targetTags" => ->(obj) { [:target_tags, obj["targetTags"]] },
     }
   end
 
@@ -120,10 +120,10 @@ class ComputeFirewalls < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/firewalls'
+    "projects/{{project}}/global/firewalls"
   end
 end

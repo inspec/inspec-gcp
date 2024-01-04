@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_path_matchers_default_route_action_retry_policy_per_try_timeout'
+require "google/compute/property/urlmap_path_matchers_default_route_action_retry_policy_per_try_timeout"
 module GoogleInSpec
   module Compute
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @retry_conditions = args['retryConditions']
-          @num_retries = args['numRetries']
-          @per_try_timeout = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionRetryPolicyPerTryTimeout.new(args['perTryTimeout'], to_s)
+          @retry_conditions = args["retryConditions"]
+          @num_retries = args["numRetries"]
+          @per_try_timeout = GoogleInSpec::Compute::Property::UrlMapPathMatchersDefaultRouteActionRetryPolicyPerTryTimeout.new(args["perTryTimeout"], to_s)
         end
 
         def to_s

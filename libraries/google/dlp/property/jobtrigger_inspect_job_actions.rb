@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_actions_save_findings'
-require 'google/dlp/property/jobtrigger_inspect_job_actions_save_findings_output_config'
-require 'google/dlp/property/jobtrigger_inspect_job_actions_save_findings_output_config_table'
+require "google/dlp/property/jobtrigger_inspect_job_actions_save_findings"
+require "google/dlp/property/jobtrigger_inspect_job_actions_save_findings_output_config"
+require "google/dlp/property/jobtrigger_inspect_job_actions_save_findings_output_config_table"
 module GoogleInSpec
   module DLP
     module Property
@@ -25,7 +25,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @save_findings = GoogleInSpec::DLP::Property::JobTriggerInspectJobActionsSaveFindings.new(args['saveFindings'], to_s)
+          @save_findings = GoogleInSpec::DLP::Property::JobTriggerInspectJobActionsSaveFindings.new(args["saveFindings"], to_s)
         end
 
         def to_s

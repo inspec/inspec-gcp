@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud (Stackdriver) Logging resources.
 class LoggingProjectExclusion < GcpResourceBase
-  name 'google_logging_project_exclusion'
-  desc 'ProjectExclusion'
-  supports platform: 'gcp'
+  name "google_logging_project_exclusion"
+  desc "ProjectExclusion"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :project
@@ -31,16 +31,16 @@ class LoggingProjectExclusion < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @project = @fetched['project']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @filter = @fetched['filter']
-    @disabled = @fetched['disabled']
+    @project = @fetched["project"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @filter = @fetched["filter"]
+    @disabled = @fetched["disabled"]
   end
 
   def exists?
@@ -54,10 +54,10 @@ class LoggingProjectExclusion < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/exclusions/{{name}}'
+    "projects/{{project}}/exclusions/{{name}}"
   end
 end

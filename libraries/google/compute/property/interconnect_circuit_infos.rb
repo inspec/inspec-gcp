@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @google_circuit_id = args['googleCircuitId']
-          @google_demarc_id = args['googleDemarcId']
-          @customer_demarc_id = args['customerDemarcId']
+          @google_circuit_id = args["googleCircuitId"]
+          @google_demarc_id = args["googleDemarcId"]
+          @customer_demarc_id = args["customerDemarcId"]
         end
 
         def to_s

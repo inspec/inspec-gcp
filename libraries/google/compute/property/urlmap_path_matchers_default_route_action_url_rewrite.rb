@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @path_prefix_rewrite = args['pathPrefixRewrite']
-          @host_rewrite = args['hostRewrite']
+          @path_prefix_rewrite = args["pathPrefixRewrite"]
+          @host_rewrite = args["hostRewrite"]
         end
 
         def to_s

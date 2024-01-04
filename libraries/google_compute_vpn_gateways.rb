@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeVpnGateways < GcpResourceBase
-  name 'google_compute_vpn_gateways'
-  desc 'VpnGateway plural resource'
-  supports platform: 'gcp'
+  name "google_compute_vpn_gateways"
+  desc "VpnGateway plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,12 +41,12 @@ class ComputeVpnGateways < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -74,28 +74,28 @@ class ComputeVpnGateways < GcpResourceBase
 
   def transformers
     {
-      'kind' => ->(obj) { [:kind, obj['kind']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Compute::Property::VpnGatewayLabels.new(obj['labels'], to_s)] },
-      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
-      'vpnInterfaces' => ->(obj) { [:vpn_interfaces, GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(obj['vpnInterfaces'], to_s)] },
-      'stackType' => ->(obj) { [:stack_type, obj['stackType']] },
+      "kind" => ->(obj) { [:kind, obj["kind"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, obj["creationTimestamp"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "selfLink" => ->(obj) { [:self_link, obj["selfLink"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::Compute::Property::VpnGatewayLabels.new(obj["labels"], to_s)] },
+      "labelFingerprint" => ->(obj) { [:label_fingerprint, obj["labelFingerprint"]] },
+      "vpnInterfaces" => ->(obj) { [:vpn_interfaces, GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(obj["vpnInterfaces"], to_s)] },
+      "stackType" => ->(obj) { [:stack_type, obj["stackType"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/vpnGateways'
+    "projects/{{project}}/regions/{{region}}/vpnGateways"
   end
 end

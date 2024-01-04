@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,26 +13,26 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_bigquery_tables'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_encryption_spec'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_error'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_labels'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_latest_monitoring_pipeline_metadata'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_latest_monitoring_pipeline_metadata_status'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_logging_sampling_strategy'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_logging_sampling_strategy_random_sample_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_schedule_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_monitoring_alert_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_monitoring_alert_config_email_alert_config'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_stats_anomalies_base_directory'
+require "gcp_backend"
+require "google/vertexai/property/modeldeploymentmonitoringjob_bigquery_tables"
+require "google/vertexai/property/modeldeploymentmonitoringjob_encryption_spec"
+require "google/vertexai/property/modeldeploymentmonitoringjob_error"
+require "google/vertexai/property/modeldeploymentmonitoringjob_labels"
+require "google/vertexai/property/modeldeploymentmonitoringjob_latest_monitoring_pipeline_metadata"
+require "google/vertexai/property/modeldeploymentmonitoringjob_latest_monitoring_pipeline_metadata_status"
+require "google/vertexai/property/modeldeploymentmonitoringjob_logging_sampling_strategy"
+require "google/vertexai/property/modeldeploymentmonitoringjob_logging_sampling_strategy_random_sample_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_schedule_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_monitoring_alert_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_monitoring_alert_config_email_alert_config"
+require "google/vertexai/property/modeldeploymentmonitoringjob_stats_anomalies_base_directory"
 
 # A provider to manage Vertex AI resources.
 class VertexAIModelDeploymentMonitoringJob < GcpResourceBase
-  name 'google_vertex_ai_model_deployment_monitoring_job'
-  desc 'ModelDeploymentMonitoringJob'
-  supports platform: 'gcp'
+  name "google_vertex_ai_model_deployment_monitoring_job"
+  desc "ModelDeploymentMonitoringJob"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :model_deployment_monitoring_objective_configs
@@ -62,34 +62,34 @@ class VertexAIModelDeploymentMonitoringJob < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @model_deployment_monitoring_objective_configs = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsArray.parse(@fetched['modelDeploymentMonitoringObjectiveConfigs'], to_s)
-    @labels = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLabels.new(@fetched['labels'], to_s)
-    @state = @fetched['state']
-    @analysis_instance_schema_uri = @fetched['analysisInstanceSchemaUri']
-    @enable_monitoring_pipeline_logs = @fetched['enableMonitoringPipelineLogs']
-    @endpoint = @fetched['endpoint']
-    @logging_sampling_strategy = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLoggingSamplingStrategy.new(@fetched['loggingSamplingStrategy'], to_s)
-    @bigquery_tables = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobBigqueryTablesArray.parse(@fetched['bigqueryTables'], to_s)
-    @display_name = @fetched['displayName']
-    @schedule_state = @fetched['scheduleState']
-    @error = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobError.new(@fetched['error'], to_s)
-    @model_monitoring_alert_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelMonitoringAlertConfig.new(@fetched['modelMonitoringAlertConfig'], to_s)
-    @latest_monitoring_pipeline_metadata = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata.new(@fetched['latestMonitoringPipelineMetadata'], to_s)
-    @sample_predict_instance = @fetched['samplePredictInstance']
-    @predict_instance_schema_uri = @fetched['predictInstanceSchemaUri']
-    @next_schedule_time = @fetched['nextScheduleTime']
-    @create_time = @fetched['createTime']
-    @log_ttl = @fetched['logTtl']
-    @stats_anomalies_base_directory = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobStatsAnomaliesBaseDirectory.new(@fetched['statsAnomaliesBaseDirectory'], to_s)
-    @update_time = @fetched['updateTime']
-    @model_deployment_monitoring_schedule_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringScheduleConfig.new(@fetched['modelDeploymentMonitoringScheduleConfig'], to_s)
-    @encryption_spec = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @name = @fetched['name']
+    @model_deployment_monitoring_objective_configs = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsArray.parse(@fetched["modelDeploymentMonitoringObjectiveConfigs"], to_s)
+    @labels = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLabels.new(@fetched["labels"], to_s)
+    @state = @fetched["state"]
+    @analysis_instance_schema_uri = @fetched["analysisInstanceSchemaUri"]
+    @enable_monitoring_pipeline_logs = @fetched["enableMonitoringPipelineLogs"]
+    @endpoint = @fetched["endpoint"]
+    @logging_sampling_strategy = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLoggingSamplingStrategy.new(@fetched["loggingSamplingStrategy"], to_s)
+    @bigquery_tables = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobBigqueryTablesArray.parse(@fetched["bigqueryTables"], to_s)
+    @display_name = @fetched["displayName"]
+    @schedule_state = @fetched["scheduleState"]
+    @error = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobError.new(@fetched["error"], to_s)
+    @model_monitoring_alert_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelMonitoringAlertConfig.new(@fetched["modelMonitoringAlertConfig"], to_s)
+    @latest_monitoring_pipeline_metadata = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata.new(@fetched["latestMonitoringPipelineMetadata"], to_s)
+    @sample_predict_instance = @fetched["samplePredictInstance"]
+    @predict_instance_schema_uri = @fetched["predictInstanceSchemaUri"]
+    @next_schedule_time = @fetched["nextScheduleTime"]
+    @create_time = @fetched["createTime"]
+    @log_ttl = @fetched["logTtl"]
+    @stats_anomalies_base_directory = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobStatsAnomaliesBaseDirectory.new(@fetched["statsAnomaliesBaseDirectory"], to_s)
+    @update_time = @fetched["updateTime"]
+    @model_deployment_monitoring_schedule_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringScheduleConfig.new(@fetched["modelDeploymentMonitoringScheduleConfig"], to_s)
+    @encryption_spec = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @name = @fetched["name"]
   end
 
   def exists?
@@ -103,10 +103,10 @@ class VertexAIModelDeploymentMonitoringJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

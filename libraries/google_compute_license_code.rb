@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/licensecode_license_alias'
+require "gcp_backend"
+require "google/compute/property/licensecode_license_alias"
 
 # A provider to manage Compute Engine resources.
 class ComputeLicenseCode < GcpResourceBase
-  name 'google_compute_license_code'
-  desc 'LicenseCode'
-  supports platform: 'gcp'
+  name "google_compute_license_code"
+  desc "LicenseCode"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -34,18 +34,18 @@ class ComputeLicenseCode < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @transferable = @fetched['transferable']
-    @state = @fetched['state']
-    @license_alias = GoogleInSpec::Compute::Property::LicenseCodeLicenseAliasArray.parse(@fetched['licenseAlias'], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @transferable = @fetched["transferable"]
+    @state = @fetched["state"]
+    @license_alias = GoogleInSpec::Compute::Property::LicenseCodeLicenseAliasArray.parse(@fetched["licenseAlias"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -64,10 +64,10 @@ class ComputeLicenseCode < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/licenseCodes/{{name}}'
+    "projects/{{project}}/global/licenseCodes/{{name}}"
   end
 end

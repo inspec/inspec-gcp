@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class DLPDTs < GcpResourceBase
-  name 'google_dlp_dts'
-  desc 'DT plural resource'
-  supports platform: 'gcp'
+  name "google_dlp_dts"
+  desc "DT plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class DLPDTs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('dTs')
+    @table = fetch_wrapped_resource("dTs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,21 +67,21 @@ class DLPDTs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'config' => ->(obj) { [:config, GoogleInSpec::DLP::Property::DTConfig.new(obj['config'], to_s)] },
-      'parent' => ->(obj) { [:parent, obj['parent']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "config" => ->(obj) { [:config, GoogleInSpec::DLP::Property::DTConfig.new(obj["config"], to_s)] },
+      "parent" => ->(obj) { [:parent, obj["parent"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://dlp.googleapis.com/v2/'
+    "https://dlp.googleapis.com/v2/"
   end
 
   def resource_base_url
-    '{{parent}}/deidentifyTemplates'
+    "{{parent}}/deidentifyTemplates"
   end
 end

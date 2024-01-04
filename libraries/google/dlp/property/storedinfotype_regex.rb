@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @pattern = args['pattern']
-          @group_indexes = args['groupIndexes']
+          @pattern = args["pattern"]
+          @group_indexes = args["groupIndexes"]
         end
 
         def to_s

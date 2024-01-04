@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeHealthCheckService < GcpResourceBase
-  name 'google_compute_health_check_service'
-  desc 'HealthCheckService'
-  supports platform: 'gcp'
+  name "google_compute_health_check_service"
+  desc "HealthCheckService"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -36,21 +36,21 @@ class ComputeHealthCheckService < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @health_status_aggregation_policy = @fetched['healthStatusAggregationPolicy']
-    @health_checks = @fetched['healthChecks']
-    @network_endpoint_groups = @fetched['networkEndpointGroups']
-    @notification_endpoints = @fetched['notificationEndpoints']
-    @fingerprint = @fetched['fingerprint']
-    @next_page_token = @fetched['nextPageToken']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @health_status_aggregation_policy = @fetched["healthStatusAggregationPolicy"]
+    @health_checks = @fetched["healthChecks"]
+    @network_endpoint_groups = @fetched["networkEndpointGroups"]
+    @notification_endpoints = @fetched["notificationEndpoints"]
+    @fingerprint = @fetched["fingerprint"]
+    @next_page_token = @fetched["nextPageToken"]
   end
 
   # Handles parsing RFC3339 time string
@@ -69,10 +69,10 @@ class ComputeHealthCheckService < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/healthCheckServices/{{name}}'
+    "projects/{{project}}/regions/{{region}}/healthCheckServices/{{name}}"
   end
 end

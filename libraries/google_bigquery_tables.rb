@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class BigQueryTables < GcpResourceBase
-  name 'google_bigquery_tables'
-  desc 'Table plural resource'
-  supports platform: 'gcp'
+  name "google_bigquery_tables"
+  desc "Table plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -50,12 +50,12 @@ class BigQueryTables < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('tables')
+    @table = fetch_wrapped_resource("tables")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -83,37 +83,37 @@ class BigQueryTables < GcpResourceBase
 
   def transformers
     {
-      'tableReference' => ->(obj) { [:table_reference, GoogleInSpec::BigQuery::Property::TableTableReference.new(obj['tableReference'], to_s)] },
-      'clustering' => ->(obj) { [:clustering, obj['clustering']] },
-      'creationTime' => ->(obj) { [:creation_time, obj['creationTime']] },
-      'friendlyName' => ->(obj) { [:friendly_name, obj['friendlyName']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'lastModifiedTime' => ->(obj) { [:last_modified_time, obj['lastModifiedTime']] },
-      'location' => ->(obj) { [:location, obj['location']] },
-      'numBytes' => ->(obj) { [:num_bytes, obj['numBytes']] },
-      'numLongTermBytes' => ->(obj) { [:num_long_term_bytes, obj['numLongTermBytes']] },
-      'numRows' => ->(obj) { [:num_rows, obj['numRows']] },
-      'requirePartitionFilter' => ->(obj) { [:require_partition_filter, obj['requirePartitionFilter']] },
-      'type' => ->(obj) { [:type, obj['type']] },
-      'view' => ->(obj) { [:view, GoogleInSpec::BigQuery::Property::TableView.new(obj['view'], to_s)] },
-      'timePartitioning' => ->(obj) { [:time_partitioning, GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(obj['timePartitioning'], to_s)] },
-      'streamingBuffer' => ->(obj) { [:streaming_buffer, GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(obj['streamingBuffer'], to_s)] },
-      'schema' => ->(obj) { [:schema, GoogleInSpec::BigQuery::Property::TableSchema.new(obj['schema'], to_s)] },
-      'encryptionConfiguration' => ->(obj) { [:encryption_configuration, GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(obj['encryptionConfiguration'], to_s)] },
-      'expirationTime' => ->(obj) { [:expiration_time, obj['expirationTime']] },
-      'externalDataConfiguration' => ->(obj) { [:external_data_configuration, GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(obj['externalDataConfiguration'], to_s)] },
-      'dataset' => ->(obj) { [:dataset, obj['dataset']] },
+      "tableReference" => ->(obj) { [:table_reference, GoogleInSpec::BigQuery::Property::TableTableReference.new(obj["tableReference"], to_s)] },
+      "clustering" => ->(obj) { [:clustering, obj["clustering"]] },
+      "creationTime" => ->(obj) { [:creation_time, obj["creationTime"]] },
+      "friendlyName" => ->(obj) { [:friendly_name, obj["friendlyName"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "lastModifiedTime" => ->(obj) { [:last_modified_time, obj["lastModifiedTime"]] },
+      "location" => ->(obj) { [:location, obj["location"]] },
+      "numBytes" => ->(obj) { [:num_bytes, obj["numBytes"]] },
+      "numLongTermBytes" => ->(obj) { [:num_long_term_bytes, obj["numLongTermBytes"]] },
+      "numRows" => ->(obj) { [:num_rows, obj["numRows"]] },
+      "requirePartitionFilter" => ->(obj) { [:require_partition_filter, obj["requirePartitionFilter"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
+      "view" => ->(obj) { [:view, GoogleInSpec::BigQuery::Property::TableView.new(obj["view"], to_s)] },
+      "timePartitioning" => ->(obj) { [:time_partitioning, GoogleInSpec::BigQuery::Property::TableTimePartitioning.new(obj["timePartitioning"], to_s)] },
+      "streamingBuffer" => ->(obj) { [:streaming_buffer, GoogleInSpec::BigQuery::Property::TableStreamingBuffer.new(obj["streamingBuffer"], to_s)] },
+      "schema" => ->(obj) { [:schema, GoogleInSpec::BigQuery::Property::TableSchema.new(obj["schema"], to_s)] },
+      "encryptionConfiguration" => ->(obj) { [:encryption_configuration, GoogleInSpec::BigQuery::Property::TableEncryptionConfiguration.new(obj["encryptionConfiguration"], to_s)] },
+      "expirationTime" => ->(obj) { [:expiration_time, obj["expirationTime"]] },
+      "externalDataConfiguration" => ->(obj) { [:external_data_configuration, GoogleInSpec::BigQuery::Property::TableExternalDataConfiguration.new(obj["externalDataConfiguration"], to_s)] },
+      "dataset" => ->(obj) { [:dataset, obj["dataset"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigquery.googleapis.com/bigquery/v2/'
+    "https://bigquery.googleapis.com/bigquery/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/datasets/{{dataset}}/tables'
+    "projects/{{project}}/datasets/{{dataset}}/tables"
   end
 end

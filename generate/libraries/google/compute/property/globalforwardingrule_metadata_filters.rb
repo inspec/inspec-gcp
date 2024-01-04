@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/globalforwardingrule_metadata_filters_filter_labels'
+require "google/compute/property/globalforwardingrule_metadata_filters_filter_labels"
 module GoogleInSpec
   module Compute
     module Property
@@ -28,8 +28,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @filter_match_criteria = arguments['filterMatchCriteria']
-          @filter_labels = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersFilterLabelsArray.parse(arguments['filterLabels'], to_s)
+          @filter_match_criteria = arguments["filterMatchCriteria"]
+          @filter_labels = GoogleInSpec::Compute::Property::GlobalForwardingRuleMetadataFiltersFilterLabelsArray.parse(arguments["filterLabels"], to_s)
         end
 
         def to_s
@@ -39,8 +39,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'filter_match_criteria' => ->(x, path) { x.nil? ? [] : ["its('#{path}.filter_match_criteria') { should cmp #{x.inspect} }"] },
-            'filter_labels' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.filter_labels') { should include '#{single.to_json}' }" } },
+            "filter_match_criteria" => ->(x, path) { x.nil? ? [] : ["its('#{path}.filter_match_criteria') { should cmp #{x.inspect} }"] },
+            "filter_labels" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.filter_labels') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

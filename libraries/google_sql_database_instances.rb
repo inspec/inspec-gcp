@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class SQLDatabaseInstances < GcpResourceBase
-  name 'google_sql_database_instances'
-  desc 'DatabaseInstance plural resource'
-  supports platform: 'gcp'
+  name "google_sql_database_instances"
+  desc "DatabaseInstance plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -48,12 +48,12 @@ class SQLDatabaseInstances < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -81,35 +81,35 @@ class SQLDatabaseInstances < GcpResourceBase
 
   def transformers
     {
-      'backendType' => ->(obj) { [:backend_type, obj['backendType']] },
-      'kind' => ->(obj) { [:kind, obj['kind']] },
-      'connectionName' => ->(obj) { [:connection_name, obj['connectionName']] },
-      'databaseVersion' => ->(obj) { [:instance_version, obj['databaseVersion']] },
-      'failoverReplica' => ->(obj) { [:failover_replica, GoogleInSpec::SQL::Property::DatabaseInstanceFailoverReplica.new(obj['failoverReplica'], to_s)] },
-      'instanceType' => ->(obj) { [:instance_type, obj['instanceType']] },
-      'ipAddresses' => ->(obj) { [:ip_addresses, GoogleInSpec::SQL::Property::DatabaseInstanceIpAddressesArray.parse(obj['ipAddresses'], to_s)] },
-      'ipv6Address' => ->(obj) { [:ipv6_address, obj['ipv6Address']] },
-      'masterInstanceName' => ->(obj) { [:master_instance_name, obj['masterInstanceName']] },
-      'maxDiskSize' => ->(obj) { [:max_disk_size, obj['maxDiskSize']] },
-      'name' => ->(obj) { [:instance_name, obj['name']] },
-      'region' => ->(obj) { [:instance_region, obj['region']] },
-      'replicaConfiguration' => ->(obj) { [:replica_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceReplicaConfiguration.new(obj['replicaConfiguration'], to_s)] },
-      'settings' => ->(obj) { [:settings, GoogleInSpec::SQL::Property::DatabaseInstanceSettings.new(obj['settings'], to_s)] },
-      'gceZone' => ->(obj) { [:instance_zone, obj['gceZone']] },
-      'state' => ->(obj) { [:instance_state, obj['state']] },
-      'diskEncryptionConfiguration' => ->(obj) { [:disk_encryption_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(obj['diskEncryptionConfiguration'], to_s)] },
-      'diskEncryptionStatus' => ->(obj) { [:disk_encryption_status, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(obj['diskEncryptionStatus'], to_s)] },
-      'serverCaCert' => ->(obj) { [:server_ca_cert, GoogleInSpec::SQL::Property::DatabaseInstanceServerCaCert.new(obj['serverCaCert'], to_s)] },
+      "backendType" => ->(obj) { [:backend_type, obj["backendType"]] },
+      "kind" => ->(obj) { [:kind, obj["kind"]] },
+      "connectionName" => ->(obj) { [:connection_name, obj["connectionName"]] },
+      "databaseVersion" => ->(obj) { [:instance_version, obj["databaseVersion"]] },
+      "failoverReplica" => ->(obj) { [:failover_replica, GoogleInSpec::SQL::Property::DatabaseInstanceFailoverReplica.new(obj["failoverReplica"], to_s)] },
+      "instanceType" => ->(obj) { [:instance_type, obj["instanceType"]] },
+      "ipAddresses" => ->(obj) { [:ip_addresses, GoogleInSpec::SQL::Property::DatabaseInstanceIpAddressesArray.parse(obj["ipAddresses"], to_s)] },
+      "ipv6Address" => ->(obj) { [:ipv6_address, obj["ipv6Address"]] },
+      "masterInstanceName" => ->(obj) { [:master_instance_name, obj["masterInstanceName"]] },
+      "maxDiskSize" => ->(obj) { [:max_disk_size, obj["maxDiskSize"]] },
+      "name" => ->(obj) { [:instance_name, obj["name"]] },
+      "region" => ->(obj) { [:instance_region, obj["region"]] },
+      "replicaConfiguration" => ->(obj) { [:replica_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceReplicaConfiguration.new(obj["replicaConfiguration"], to_s)] },
+      "settings" => ->(obj) { [:settings, GoogleInSpec::SQL::Property::DatabaseInstanceSettings.new(obj["settings"], to_s)] },
+      "gceZone" => ->(obj) { [:instance_zone, obj["gceZone"]] },
+      "state" => ->(obj) { [:instance_state, obj["state"]] },
+      "diskEncryptionConfiguration" => ->(obj) { [:disk_encryption_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(obj["diskEncryptionConfiguration"], to_s)] },
+      "diskEncryptionStatus" => ->(obj) { [:disk_encryption_status, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(obj["diskEncryptionStatus"], to_s)] },
+      "serverCaCert" => ->(obj) { [:server_ca_cert, GoogleInSpec::SQL::Property::DatabaseInstanceServerCaCert.new(obj["serverCaCert"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://sqladmin.googleapis.com/v1/'
+    "https://sqladmin.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances'
+    "projects/{{project}}/instances"
   end
 end

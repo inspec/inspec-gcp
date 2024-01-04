@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -45,17 +45,17 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @balancing_mode = arguments['balancingMode']
-          @capacity_scaler = arguments['capacityScaler']
-          @description = arguments['description']
-          @group = arguments['group']
-          @max_connections = arguments['maxConnections']
-          @max_connections_per_instance = arguments['maxConnectionsPerInstance']
-          @max_connections_per_endpoint = arguments['maxConnectionsPerEndpoint']
-          @max_rate = arguments['maxRate']
-          @max_rate_per_instance = arguments['maxRatePerInstance']
-          @max_rate_per_endpoint = arguments['maxRatePerEndpoint']
-          @max_utilization = arguments['maxUtilization']
+          @balancing_mode = arguments["balancingMode"]
+          @capacity_scaler = arguments["capacityScaler"]
+          @description = arguments["description"]
+          @group = arguments["group"]
+          @max_connections = arguments["maxConnections"]
+          @max_connections_per_instance = arguments["maxConnectionsPerInstance"]
+          @max_connections_per_endpoint = arguments["maxConnectionsPerEndpoint"]
+          @max_rate = arguments["maxRate"]
+          @max_rate_per_instance = arguments["maxRatePerInstance"]
+          @max_rate_per_endpoint = arguments["maxRatePerEndpoint"]
+          @max_utilization = arguments["maxUtilization"]
         end
 
         def to_s
@@ -65,17 +65,17 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'balancing_mode' => ->(x, path) { x.nil? ? [] : ["its('#{path}.balancing_mode') { should cmp #{x.inspect} }"] },
-            'capacity_scaler' => ->(x, path) { x.nil? ? [] : ["its('#{path}.capacity_scaler') { should cmp #{x.inspect} }"] },
-            'description' => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
-            'group' => ->(x, path) { x.nil? ? [] : ["its('#{path}.group') { should cmp #{x.inspect} }"] },
-            'max_connections' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_connections') { should cmp #{x.inspect} }"] },
-            'max_connections_per_instance' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_connections_per_instance') { should cmp #{x.inspect} }"] },
-            'max_connections_per_endpoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_connections_per_endpoint') { should cmp #{x.inspect} }"] },
-            'max_rate' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_rate') { should cmp #{x.inspect} }"] },
-            'max_rate_per_instance' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_rate_per_instance') { should cmp #{x.inspect} }"] },
-            'max_rate_per_endpoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_rate_per_endpoint') { should cmp #{x.inspect} }"] },
-            'max_utilization' => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_utilization') { should cmp #{x.inspect} }"] },
+            "balancing_mode" => ->(x, path) { x.nil? ? [] : ["its('#{path}.balancing_mode') { should cmp #{x.inspect} }"] },
+            "capacity_scaler" => ->(x, path) { x.nil? ? [] : ["its('#{path}.capacity_scaler') { should cmp #{x.inspect} }"] },
+            "description" => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
+            "group" => ->(x, path) { x.nil? ? [] : ["its('#{path}.group') { should cmp #{x.inspect} }"] },
+            "max_connections" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_connections') { should cmp #{x.inspect} }"] },
+            "max_connections_per_instance" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_connections_per_instance') { should cmp #{x.inspect} }"] },
+            "max_connections_per_endpoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_connections_per_endpoint') { should cmp #{x.inspect} }"] },
+            "max_rate" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_rate') { should cmp #{x.inspect} }"] },
+            "max_rate_per_instance" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_rate_per_instance') { should cmp #{x.inspect} }"] },
+            "max_rate_per_endpoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_rate_per_endpoint') { should cmp #{x.inspect} }"] },
+            "max_utilization" => ->(x, path) { x.nil? ? [] : ["its('#{path}.max_utilization') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

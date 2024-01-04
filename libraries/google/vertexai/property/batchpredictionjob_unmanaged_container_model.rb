@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_unmanaged_container_model_container_spec'
-require 'google/vertexai/property/batchpredictionjob_unmanaged_container_model_container_spec_env'
-require 'google/vertexai/property/batchpredictionjob_unmanaged_container_model_container_spec_ports'
-require 'google/vertexai/property/batchpredictionjob_unmanaged_container_model_predict_schemata'
+require "google/vertexai/property/batchpredictionjob_unmanaged_container_model_container_spec"
+require "google/vertexai/property/batchpredictionjob_unmanaged_container_model_container_spec_env"
+require "google/vertexai/property/batchpredictionjob_unmanaged_container_model_container_spec_ports"
+require "google/vertexai/property/batchpredictionjob_unmanaged_container_model_predict_schemata"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -30,9 +30,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @artifact_uri = args['artifactUri']
-          @predict_schemata = GoogleInSpec::VertexAI::Property::BatchPredictionJobUnmanagedContainerModelPredictSchemata.new(args['predictSchemata'], to_s)
-          @container_spec = GoogleInSpec::VertexAI::Property::BatchPredictionJobUnmanagedContainerModelContainerSpec.new(args['containerSpec'], to_s)
+          @artifact_uri = args["artifactUri"]
+          @predict_schemata = GoogleInSpec::VertexAI::Property::BatchPredictionJobUnmanagedContainerModelPredictSchemata.new(args["predictSchemata"], to_s)
+          @container_spec = GoogleInSpec::VertexAI::Property::BatchPredictionJobUnmanagedContainerModelContainerSpec.new(args["containerSpec"], to_s)
         end
 
         def to_s

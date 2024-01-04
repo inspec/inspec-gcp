@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/monitoring/property/alertpolicy_conditions_condition_absent_aggregations'
-require 'google/monitoring/property/alertpolicy_conditions_condition_absent_trigger'
+require "google/monitoring/property/alertpolicy_conditions_condition_absent_aggregations"
+require "google/monitoring/property/alertpolicy_conditions_condition_absent_trigger"
 module GoogleInSpec
   module Monitoring
     module Property
@@ -30,10 +30,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @aggregations = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionAbsentAggregationsArray.parse(args['aggregations'], to_s)
-          @trigger = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionAbsentTrigger.new(args['trigger'], to_s)
-          @duration = args['duration']
-          @filter = args['filter']
+          @aggregations = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionAbsentAggregationsArray.parse(args["aggregations"], to_s)
+          @trigger = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionAbsentTrigger.new(args["trigger"], to_s)
+          @duration = args["duration"]
+          @filter = args["filter"]
         end
 
         def to_s

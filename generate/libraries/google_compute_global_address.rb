@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeGlobalAddress < GcpResourceBase
-  name 'google_compute_global_address'
-  desc 'GlobalAddress'
-  supports platform: 'gcp'
+  name "google_compute_global_address"
+  desc "GlobalAddress"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :address
@@ -37,23 +37,23 @@ class ComputeGlobalAddress < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @address = @fetched['address']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @ip_version = @fetched['ipVersion']
-    @region = @fetched['region']
-    @prefix_length = @fetched['prefixLength']
-    @address_type = @fetched['addressType']
-    @purpose = @fetched['purpose']
-    @network = @fetched['network']
+    @address = @fetched["address"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @ip_version = @fetched["ipVersion"]
+    @region = @fetched["region"]
+    @prefix_length = @fetched["prefixLength"]
+    @address_type = @fetched["addressType"]
+    @purpose = @fetched["purpose"]
+    @network = @fetched["network"]
   end
 
   # Handles parsing RFC3339 time string
@@ -71,22 +71,22 @@ class ComputeGlobalAddress < GcpResourceBase
 
   def un_parse
     {
-      'address' => ->(x, _) { x.nil? ? [] : ["its('address') { should cmp #{x.inspect} }"] },
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'ip_version' => ->(x, _) { x.nil? ? [] : ["its('ip_version') { should cmp #{x.inspect} }"] },
-      'region' => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
-      'prefix_length' => ->(x, _) { x.nil? ? [] : ["its('prefix_length') { should cmp #{x.inspect} }"] },
-      'address_type' => ->(x, _) { x.nil? ? [] : ["its('address_type') { should cmp #{x.inspect} }"] },
-      'purpose' => ->(x, _) { x.nil? ? [] : ["its('purpose') { should cmp #{x.inspect} }"] },
-      'network' => ->(x, _) { x.nil? ? [] : ["its('network') { should cmp #{x.inspect} }"] },
+      "address" => ->(x, _) { x.nil? ? [] : ["its('address') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "ip_version" => ->(x, _) { x.nil? ? [] : ["its('ip_version') { should cmp #{x.inspect} }"] },
+      "region" => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
+      "prefix_length" => ->(x, _) { x.nil? ? [] : ["its('prefix_length') { should cmp #{x.inspect} }"] },
+      "address_type" => ->(x, _) { x.nil? ? [] : ["its('address_type') { should cmp #{x.inspect} }"] },
+      "purpose" => ->(x, _) { x.nil? ? [] : ["its('purpose') { should cmp #{x.inspect} }"] },
+      "network" => ->(x, _) { x.nil? ? [] : ["its('network') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'GlobalAddress'
+    name = "GlobalAddress"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -95,11 +95,11 @@ class ComputeGlobalAddress < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_compute_global_address',
+      type: "google_compute_global_address",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -107,10 +107,10 @@ class ComputeGlobalAddress < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/addresses/{{name}}'
+    "projects/{{project}}/global/addresses/{{name}}"
   end
 end

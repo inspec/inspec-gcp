@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_abort'
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_delay'
-require 'google/compute/property/urlmap_default_route_action_fault_injection_policy_delay_fixed_delay'
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy_abort"
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy_delay"
+require "google/compute/property/urlmap_default_route_action_fault_injection_policy_delay_fixed_delay"
 module GoogleInSpec
   module Compute
     module Property
@@ -27,8 +27,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @delay = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionFaultInjectionPolicyDelay.new(args['delay'], to_s)
-          @abort = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionFaultInjectionPolicyAbort.new(args['abort'], to_s)
+          @delay = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionFaultInjectionPolicyDelay.new(args["delay"], to_s)
+          @abort = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionFaultInjectionPolicyAbort.new(args["abort"], to_s)
         end
 
         def to_s

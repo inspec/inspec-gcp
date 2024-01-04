@@ -1,13 +1,13 @@
-# frozen_string_literal: true
+
 
 # GCP Inspec Backend Classes
 #
 # Based on the Azure Inspec classes by Russell Seymour
 #
 
-require 'json'
-require 'net/http'
-require 'googleauth'
+require "json"
+require "net/http"
+require "googleauth"
 
 # Base class for GCP resources - depends on train GCP transport for connection
 #
@@ -35,7 +35,7 @@ class GcpResourceBase < Inspec.resource(1)
     # create custom messages as needed
   rescue Google::Apis::ClientError => e
     error = JSON.parse(e.body)
-    fail_resource error['error']['message']
+    fail_resource error["error"]["message"]
     @failed_resource = true
     nil
   end
@@ -46,7 +46,7 @@ class GcpResourceBase < Inspec.resource(1)
   end
 
   def name_from_self_link(property)
-    property&.split('/')&.last
+    property&.split("/")&.last
   end
 end
 # end
@@ -68,11 +68,11 @@ class GcpResourceDynamicMethods
     when /Google::Apis::.*/
       # iterate around the instance variables
       data.instance_variables.each do |var|
-        create_method(object, var.to_s.delete('@'), data.instance_variable_get(var))
+        create_method(object, var.to_s.delete("@"), data.instance_variable_get(var))
       end
       # When the data is a Hash object iterate around each of the key value pairs and
       # craete a method for each one.
-    when 'Hash'
+    when "Hash"
       data.each do |key, value|
         create_method(object, key, value)
       end
@@ -90,12 +90,12 @@ class GcpResourceDynamicMethods
     # Create the necessary method based on the var that has been passed
     # Test the value for its type so that the method can be setup correctly
     case value.class.to_s
-    when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum'
+    when "String", "Integer", "TrueClass", "FalseClass", "Fixnum"
       object.define_singleton_method name do
         value
       end
-    when 'Hash'
-      value.count.zero? ? return_value = value : return_value = GcpResourceProbe.new(value)
+    when "Hash"
+      value.count == 0 ? return_value = value : return_value = GcpResourceProbe.new(value)
       object.define_singleton_method name do
         return_value
       end
@@ -107,7 +107,7 @@ class GcpResourceDynamicMethods
         end
         GcpResourceProbe.new(value)
       end
-    when 'Array'
+    when "Array"
       # Some things are just string or integer arrays
       # Check this by seeing if the first element is a string / integer / boolean or
       # a hashtable
@@ -115,7 +115,7 @@ class GcpResourceDynamicMethods
       # the quickest test
       # p value[0].class.to_s
       case value[0].class.to_s
-      when 'String', 'Integer', 'TrueClass', 'FalseClass', 'Fixnum'
+      when "String", "Integer", "TrueClass", "FalseClass", "Fixnum"
         probes = value
       else
         probes = []
@@ -182,7 +182,7 @@ class GcpResourceProbe
   #
   # @return string
   def camel_case(data)
-    camel_case_data = data.split('_').inject([]) { |buffer, e| buffer.push(buffer.empty? ? e : e.capitalize) }.join
+    camel_case_data = data.split("_").inject([]) { |buffer, e| buffer.push(buffer.empty? ? e : e.capitalize) }.join
 
     # Ensure that gb (as in gigabytes) is uppercased
     camel_case_data.gsub(/[gb]/, &:upcase)
@@ -191,14 +191,14 @@ end
 
 class GcpApiConnection
   def initialize
-    @google_application_credentials = ENV['GOOGLE_APPLICATION_CREDENTIALS']
+    @google_application_credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
   end
 
   def fetch_auth
     unless @service_account_file.nil?
       return Network::Authorization.new.for!(
         [
-          'https://www.googleapis.com/auth/cloud-platform',
+          "https://www.googleapis.com/auth/cloud-platform",
         ],
       ).from_google_credentials_json!(
         @google_application_credentials,
@@ -207,7 +207,7 @@ class GcpApiConnection
     Network::Authorization.new.from_application_default!
   end
 
-  def fetch(base_url, template, var_data, request_type = 'Get')
+  def fetch(base_url, template, var_data, request_type = "Get")
     get_request = Network::Base.new(
       build_uri(base_url, template, var_data),
       fetch_auth,
@@ -216,14 +216,14 @@ class GcpApiConnection
     return_if_object get_request.send
   end
 
-  def fetch_all(base_url, template, var_data, request_type = 'Get')
+  def fetch_all(base_url, template, var_data, request_type = "Get")
     next_page(build_uri(base_url, template, var_data), request_type)
   end
 
   def next_page(uri, request_type, token = nil)
     next_hash = {}
-    next_hash['pageToken'] = token unless token.nil?
-    current_params = Hash[URI.decode_www_form(uri.query || '')].merge(next_hash)
+    next_hash["pageToken"] = token unless token.nil?
+    current_params = Hash[URI.decode_www_form(uri.query || "")].merge(next_hash)
     uri.query = URI.encode_www_form(current_params)
     get_request = Network::Base.new(
       uri,
@@ -231,7 +231,7 @@ class GcpApiConnection
       request_type,
     )
     result = JSON.parse(get_request.send.body)
-    next_page_token = result['nextPageToken']
+    next_page_token = result["nextPageToken"]
     return [result] if next_page_token.nil?
 
     [result] + next_page(uri, request_type, next_page_token)
@@ -245,7 +245,7 @@ class GcpApiConnection
     return if response.is_a?(Net::HTTPNotFound)
     return if response.is_a?(Net::HTTPNoContent)
     result = JSON.parse(response.body)
-    raise_if_errors result, %w{error errors}, 'message'
+    raise_if_errors result, %w{error errors}, "message"
     raise "Bad response: #{response}" unless response.is_a?(Net::HTTPOK)
     result
   end
@@ -256,8 +256,8 @@ class GcpApiConnection
   end
 
   def raise_error(errors, msg_field)
-    raise IOError, ['Operation failed:',
-                    errors.map { |e| e[msg_field] }.join(', ')].join(' ')
+    raise IOError, ["Operation failed:",
+                    errors.map { |e| e[msg_field] }.join(", ")].join(" ")
   end
 
   def build_uri(base_url, template, var_data)
@@ -279,7 +279,7 @@ class GcpApiConnection
 
   def extract_variables(template)
     template.scan(/{{[^}]*}}/).map { |v| v.gsub(/{{([^}]*)}}/, '\1') }
-            .map(&:to_sym)
+      .map(&:to_sym)
   end
 
   def expand_variables(template, var_data)
@@ -308,11 +308,11 @@ module Network
 
     def send
       request = @cred.authorize(builder.new(@link))
-      request['User-Agent'] = generate_user_agent
+      request["User-Agent"] = generate_user_agent
       response = transport(request).request(request)
-      unless ENV['GOOGLE_HTTP_VERBOSE'].nil?
+      unless ENV["GOOGLE_HTTP_VERBOSE"].nil?
         puts ["network(#{request}: [#{response.code}]",
-              response.body.split("\n").map(&:strip).join(' ')].join(' ')
+              response.body.split("\n").map(&:strip).join(" ")].join(" ")
       end
       response
     end
@@ -320,19 +320,19 @@ module Network
     def transport(request)
       uri = request.uri
       puts "network(#{request}: #{uri})" \
-        unless ENV['GOOGLE_HTTP_VERBOSE'].nil?
+        unless ENV["GOOGLE_HTTP_VERBOSE"].nil?
       transport = Net::HTTP.new(uri.host, uri.port)
       transport.use_ssl = uri.is_a?(URI::HTTPS)
       transport.verify_mode = OpenSSL::SSL::VERIFY_PEER
       transport.set_debug_output $stderr \
-        unless ENV['GOOGLE_HTTP_DEBUG'].nil?
+        unless ENV["GOOGLE_HTTP_DEBUG"].nil?
       transport
     end
 
     private
 
     def generate_user_agent
-      'inspec-google/1.0.0'
+      "inspec-google/1.0.0"
     end
   end
 
@@ -344,7 +344,7 @@ module Network
     end
 
     def authorize(obj)
-      raise ArgumentError, 'A from_* method needs to be called before' \
+      raise ArgumentError, "A from_* method needs to be called before" \
         unless @authorization
 
       if obj.class <= URI::HTTPS || obj.class <= URI::HTTP
@@ -363,7 +363,7 @@ module Network
     end
 
     def from_google_credentials_json!(credentials_file)
-      raise 'Missing argument for scopes' if @scopes.empty?
+      raise "Missing argument for scopes" if @scopes.empty?
       @authorization = ::Google::Auth::DefaultCredentials.make_creds(
         json_key_io: File.open(credentials_file),
         scope: @scopes,
@@ -389,8 +389,8 @@ module Network
       req.extend TokenProperty
       auth = {}
       @authorization.apply!(auth)
-      req['Authorization'] = auth[:authorization]
-      req.token = auth[:authorization].split(' ')[1]
+      req["Authorization"] = auth[:authorization]
+      req.token = auth[:authorization].split(" ")[1]
       req
     end
   end

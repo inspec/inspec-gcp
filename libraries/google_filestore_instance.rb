@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/filestore/property/instance_file_shares'
-require 'google/filestore/property/instance_networks'
+require "gcp_backend"
+require "google/filestore/property/instance_file_shares"
+require "google/filestore/property/instance_networks"
 
 # A provider to manage Filestore resources.
 class FilestoreInstance < GcpResourceBase
-  name 'google_filestore_instance'
-  desc 'Instance'
-  supports platform: 'gcp'
+  name "google_filestore_instance"
+  desc "Instance"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -37,20 +37,20 @@ class FilestoreInstance < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @tier = @fetched['tier']
-    @labels = @fetched['labels']
-    @file_shares = GoogleInSpec::Filestore::Property::InstanceFileSharesArray.parse(@fetched['fileShares'], to_s)
-    @networks = GoogleInSpec::Filestore::Property::InstanceNetworksArray.parse(@fetched['networks'], to_s)
-    @etag = @fetched['etag']
-    @zone = @fetched['zone']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @tier = @fetched["tier"]
+    @labels = @fetched["labels"]
+    @file_shares = GoogleInSpec::Filestore::Property::InstanceFileSharesArray.parse(@fetched["fileShares"], to_s)
+    @networks = GoogleInSpec::Filestore::Property::InstanceNetworksArray.parse(@fetched["networks"], to_s)
+    @etag = @fetched["etag"]
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -70,13 +70,13 @@ class FilestoreInstance < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://file.googleapis.com/v1beta1/'
+      "https://file.googleapis.com/v1beta1/"
     else
-      'https://file.googleapis.com/v1/'
+      "https://file.googleapis.com/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{zone}}/instances/{{name}}'
+    "projects/{{project}}/locations/{{zone}}/instances/{{name}}"
   end
 end

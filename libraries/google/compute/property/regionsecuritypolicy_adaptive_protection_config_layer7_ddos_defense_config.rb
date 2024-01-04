@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs'
+require "google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs"
 module GoogleInSpec
   module Compute
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable = args['enable']
-          @rule_visibility = args['ruleVisibility']
-          @threshold_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigsArray.parse(args['thresholdConfigs'], to_s)
+          @enable = args["enable"]
+          @rule_visibility = args["ruleVisibility"]
+          @threshold_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigsArray.parse(args["thresholdConfigs"], to_s)
         end
 
         def to_s

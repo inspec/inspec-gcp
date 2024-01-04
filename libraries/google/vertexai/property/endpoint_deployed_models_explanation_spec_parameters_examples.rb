@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_example_gcs_source'
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_presets'
+require "google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_example_gcs_source"
+require "google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_example_gcs_source_gcs_source"
+require "google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_examples_presets"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -31,10 +31,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @presets = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersExamplesPresets.new(args['presets'], to_s)
-          @neighbor_count = args['neighborCount']
-          @example_gcs_source = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersExamplesExampleGcsSource.new(args['exampleGcsSource'], to_s)
-          @nearest_neighbor_search_config = args['nearestNeighborSearchConfig']
+          @presets = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersExamplesPresets.new(args["presets"], to_s)
+          @neighbor_count = args["neighborCount"]
+          @example_gcs_source = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersExamplesExampleGcsSource.new(args["exampleGcsSource"], to_s)
+          @nearest_neighbor_search_config = args["nearestNeighborSearchConfig"]
         end
 
         def to_s

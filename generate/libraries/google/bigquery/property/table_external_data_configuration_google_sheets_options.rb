@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -25,7 +25,7 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @skip_leading_rows = arguments['skipLeadingRows']
+          @skip_leading_rows = arguments["skipLeadingRows"]
         end
 
         def to_s
@@ -35,7 +35,7 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'skip_leading_rows' => ->(x, path) { x.nil? ? [] : ["its('#{path}.skip_leading_rows') { should cmp #{x.inspect} }"] },
+            "skip_leading_rows" => ->(x, path) { x.nil? ? [] : ["its('#{path}.skip_leading_rows') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

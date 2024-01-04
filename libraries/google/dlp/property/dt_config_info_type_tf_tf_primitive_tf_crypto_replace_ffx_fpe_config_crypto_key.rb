@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_kms_wrapped'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_transient'
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_unwrapped'
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_kms_wrapped"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_transient"
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_crypto_replace_ffx_fpe_config_crypto_key_unwrapped"
 module GoogleInSpec
   module DLP
     module Property
@@ -29,9 +29,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @transient = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfigCryptoKeyTransient.new(args['transient'], to_s)
-          @unwrapped = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped.new(args['unwrapped'], to_s)
-          @kms_wrapped = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped.new(args['kmsWrapped'], to_s)
+          @transient = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfigCryptoKeyTransient.new(args["transient"], to_s)
+          @unwrapped = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped.new(args["unwrapped"], to_s)
+          @kms_wrapped = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped.new(args["kmsWrapped"], to_s)
         end
 
         def to_s

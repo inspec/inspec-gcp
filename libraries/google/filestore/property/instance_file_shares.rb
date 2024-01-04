@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/filestore/property/instance_file_shares_nfs_export_options'
+require "google/filestore/property/instance_file_shares_nfs_export_options"
 module GoogleInSpec
   module Filestore
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @capacity_gb = args['capacityGb']
-          @nfs_export_options = GoogleInSpec::Filestore::Property::InstanceFileSharesNfsExportOptionsArray.parse(args['nfsExportOptions'], to_s)
+          @name = args["name"]
+          @capacity_gb = args["capacityGb"]
+          @nfs_export_options = GoogleInSpec::Filestore::Property::InstanceFileSharesNfsExportOptionsArray.parse(args["nfsExportOptions"], to_s)
         end
 
         def to_s

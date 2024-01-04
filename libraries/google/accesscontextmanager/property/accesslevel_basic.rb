@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/accesscontextmanager/property/accesslevel_basic_conditions'
+require "google/accesscontextmanager/property/accesslevel_basic_conditions"
 module GoogleInSpec
   module AccessContextManager
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @combining_function = args['combiningFunction']
-          @conditions = GoogleInSpec::AccessContextManager::Property::AccessLevelBasicConditionsArray.parse(args['conditions'], to_s)
+          @combining_function = args["combiningFunction"]
+          @conditions = GoogleInSpec::AccessContextManager::Property::AccessLevelBasicConditionsArray.parse(args["conditions"], to_s)
         end
 
         def to_s

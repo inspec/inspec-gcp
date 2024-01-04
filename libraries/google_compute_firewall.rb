@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/firewall_allowed'
-require 'google/compute/property/firewall_denied'
-require 'google/compute/property/firewall_log_config'
+require "gcp_backend"
+require "google/compute/property/firewall_allowed"
+require "google/compute/property/firewall_denied"
+require "google/compute/property/firewall_log_config"
 
 # A provider to manage Compute Engine resources.
 class ComputeFirewall < GcpResourceBase
-  name 'google_compute_firewall'
-  desc 'Firewall'
-  supports platform: 'gcp'
+  name "google_compute_firewall"
+  desc "Firewall"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :allowed
@@ -47,29 +47,29 @@ class ComputeFirewall < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @allowed = GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(@fetched['allowed'], to_s)
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @denied = GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(@fetched['denied'], to_s)
-    @description = @fetched['description']
-    @destination_ranges = @fetched['destinationRanges']
-    @direction = @fetched['direction']
-    @disabled = @fetched['disabled']
-    @log_config = GoogleInSpec::Compute::Property::FirewallLogConfig.new(@fetched['logConfig'], to_s)
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @network = @fetched['network']
-    @priority = @fetched['priority']
-    @source_ranges = @fetched['sourceRanges']
-    @source_service_accounts = @fetched['sourceServiceAccounts']
-    @source_tags = @fetched['sourceTags']
-    @target_service_accounts = @fetched['targetServiceAccounts']
-    @target_tags = @fetched['targetTags']
-    @action = @allowed.nil? ? 'deny' : 'allow'
+    @allowed = GoogleInSpec::Compute::Property::FirewallAllowedArray.parse(@fetched["allowed"], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @denied = GoogleInSpec::Compute::Property::FirewallDeniedArray.parse(@fetched["denied"], to_s)
+    @description = @fetched["description"]
+    @destination_ranges = @fetched["destinationRanges"]
+    @direction = @fetched["direction"]
+    @disabled = @fetched["disabled"]
+    @log_config = GoogleInSpec::Compute::Property::FirewallLogConfig.new(@fetched["logConfig"], to_s)
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @network = @fetched["network"]
+    @priority = @fetched["priority"]
+    @source_ranges = @fetched["sourceRanges"]
+    @source_service_accounts = @fetched["sourceServiceAccounts"]
+    @source_tags = @fetched["sourceTags"]
+    @target_service_accounts = @fetched["targetServiceAccounts"]
+    @target_tags = @fetched["targetTags"]
+    @action = @allowed.nil? ? "deny" : "allow"
   end
 
   # Handles parsing RFC3339 time string
@@ -87,116 +87,116 @@ class ComputeFirewall < GcpResourceBase
 
   # Check whether the firewall rule allows HTTP access (tcp ingress on port 80)
   def allowed_http?
-    port_protocol_allowed('80')
+    port_protocol_allowed("80")
   end
 
   def denied_http?
-    port_protocol_denied('80')
+    port_protocol_denied("80")
   end
 
   # Check whether the firewall rule allows SSH access (tcp ingress on port 22)
   def allowed_ssh?
-    port_protocol_allowed('22')
+    port_protocol_allowed("22")
   end
 
   def denied_ssh?
-    port_protocol_denied('22')
+    port_protocol_denied("22")
   end
 
   def allowed_https?
-    port_protocol_allowed('443')
+    port_protocol_allowed("443")
   end
 
   def denied_https?
-    port_protocol_denied('443')
+    port_protocol_denied("443")
   end
 
   def allowed_rdp?
-    port_protocol_allowed('3389')
+    port_protocol_allowed("3389")
   end
 
   def denied_rdp?
-    port_protocol_denied('3389')
+    port_protocol_denied("3389")
   end
 
   def allowed_dns?
-    port_protocol_allowed('53') || port_protocol_allowed('53', 'udp')
+    port_protocol_allowed("53") || port_protocol_allowed("53", "udp")
   end
 
   def allowed_cifs?
-    port_protocol_allowed('445', 'udp')
+    port_protocol_allowed("445", "udp")
   end
 
   def allowed_ftp?
-    port_protocol_allowed('20') || port_protocol_allowed('21')
+    port_protocol_allowed("20") || port_protocol_allowed("21")
   end
 
   def allowed_hdfs_name_node_service?
-    port_protocol_allowed('8020')
+    port_protocol_allowed("8020")
   end
 
   def allowed_name_node_webui_service?
-    port_protocol_allowed('50070') || port_protocol_allowed('50470')
+    port_protocol_allowed("50070") || port_protocol_allowed("50470")
   end
 
   def allowed_kibana?
-    port_protocol_allowed('5601')
+    port_protocol_allowed("5601")
   end
 
   def allowed_mysql?
-    port_protocol_allowed('4333') || port_protocol_allowed('3306')
+    port_protocol_allowed("4333") || port_protocol_allowed("3306")
   end
 
   def allowed_net_bios?
-    port_protocol_allowed('137', 'udp') || port_protocol_allowed('138', 'udp')
+    port_protocol_allowed("137", "udp") || port_protocol_allowed("138", "udp")
   end
 
   def allowed_oracle?
-    port_protocol_allowed('1521')
+    port_protocol_allowed("1521")
   end
 
   def allowed_postgre_sql?
-    port_protocol_allowed('5432')
+    port_protocol_allowed("5432")
   end
 
   def allowed_rpc?
-    port_protocol_allowed('135')
+    port_protocol_allowed("135")
   end
 
   def allowed_sql_server?
-    port_protocol_allowed('1434') || port_protocol_allowed('1433')
+    port_protocol_allowed("1434") || port_protocol_allowed("1433")
   end
 
   def allowed_smtp?
-    port_protocol_allowed('25')
+    port_protocol_allowed("25")
   end
 
   def allowed_windows_smb?
-    port_protocol_allowed('445')
+    port_protocol_allowed("445")
   end
 
   def allowed_vnc_server?
-    port_protocol_allowed('5900')
+    port_protocol_allowed("5900")
   end
 
   def allowed_vnc_client?
-    port_protocol_allowed('5500')
+    port_protocol_allowed("5500")
   end
 
   def allowed_telnet?
-    port_protocol_allowed('23')
+    port_protocol_allowed("23")
   end
 
   def allowed_oracle_auto_data_warehouse?
-    port_protocol_allowed('1522')
+    port_protocol_allowed("1522")
   end
 
   def allowed_salt_master?
-    port_protocol_allowed('4505') || port_protocol_allowed('4506')
+    port_protocol_allowed("4505") || port_protocol_allowed("4506")
   end
 
   def allowed_docker?
-    port_protocol_allowed('2375') || port_protocol_allowed('2376')
+    port_protocol_allowed("2375") || port_protocol_allowed("2376")
   end
 
   def allow_port_protocol?(port, protocol)
@@ -318,7 +318,7 @@ class ComputeFirewall < GcpResourceBase
     #             end
     # direction affects what the property is e.g. INGRESS->source_ranges, EGRESS->destination_ranges
     ranges = nil
-    if direction == 'INGRESS'
+    if direction == "INGRESS"
       return false if !defined?(source_ranges) || source_ranges.nil?
       ranges = source_ranges
     else
@@ -334,7 +334,7 @@ class ComputeFirewall < GcpResourceBase
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'direction'" if !defined?(direction) || direction.nil?
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'denied'" if !defined?(denied) || denied.nil?
     ranges = nil
-    if direction == 'INGRESS'
+    if direction == "INGRESS"
       return false if !defined?(source_ranges) || source_ranges.nil?
       ranges = source_ranges
     else
@@ -351,7 +351,7 @@ class ComputeFirewall < GcpResourceBase
     # however in the case of 'denied' the logic of allowed is inverted
     # first consider the special case of 'all' where no ports/protocols are listed explicitly
     # and applies to all protocols
-    if property.count == 1 and property[0].ip_protocol == 'all'
+    if property.count == 1 and property[0].ip_protocol == "all"
       return true if allowed_flag # an allowed rule that will match all ports/protocols
       return false # i.e. this is a deny all rule and will block all ports/protocols
     end
@@ -384,7 +384,7 @@ class ComputeFirewall < GcpResourceBase
   end
 
   # NOTE: that port_list only accepts individual ports to match, not ranges
-  def port_protocol_allowed(single_port, protocol = 'tcp')
+  def port_protocol_allowed(single_port, protocol = "tcp")
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall is missing expected property 'allowed' or 'denied'" if !defined?(allowed) || !defined?(denied)
     raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall 'allowed' and 'denied' cannot both be nil" if allowed.nil? && denied.nil?
     allowed_flag = denied.nil?
@@ -392,20 +392,20 @@ class ComputeFirewall < GcpResourceBase
     match_rule_protocol(denied, single_port, protocol, allowed_flag)
   end
 
-  def port_protocol_denied(single_port, protocol = 'tcp')
+  def port_protocol_denied(single_port, protocol = "tcp")
     port_protocol_allowed(single_port, protocol)
   end
 
   def single_port_matches(rule_port, single_port)
     # if '-' in there it means we should check each provided port for existence in a range
-    if !rule_port.include? '-'
+    if !rule_port.include? "-"
       # simplest case, only one port string specified
       return true if rule_port == single_port
       # if not, no match
     else
       # the rule_port here is a range such as "4000-5000", protect against any non-integer input by checking for nil values
-      upper_limit = rule_port.split('-')[1].to_i
-      lower_limit = rule_port.split('-')[0].to_i
+      upper_limit = rule_port.split("-")[1].to_i
+      lower_limit = rule_port.split("-")[0].to_i
       raise Inspec::Exceptions::ResourceFailed, "google_compute_firewall unexpected port range specified: '#{rule_port}'" if upper_limit.nil? || lower_limit.nil?
       return true if single_port.to_i.between?(lower_limit, upper_limit)
       # if not, no match
@@ -422,13 +422,13 @@ class ComputeFirewall < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/firewalls/{{name}}'
+    "projects/{{project}}/global/firewalls/{{name}}"
   end
 end

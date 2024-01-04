@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Key Management Service resources.
 class KMSKeyRing < GcpResourceBase
-  name 'google_kms_key_ring'
-  desc 'KeyRing'
-  supports platform: 'gcp'
+  name "google_kms_key_ring"
+  desc "KeyRing"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :create_time
@@ -29,14 +29,14 @@ class KMSKeyRing < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @create_time = parse_time_string(@fetched['createTime'])
-    @key_ring_url = @fetched['name']
-    @location = @fetched['location']
+    @create_time = parse_time_string(@fetched["createTime"])
+    @key_ring_url = @fetched["name"]
+    @location = @fetched["location"]
   end
 
   # Handles parsing RFC3339 time string
@@ -59,10 +59,10 @@ class KMSKeyRing < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/keyRings/{{name}}'
+    "projects/{{project}}/locations/{{location}}/keyRings/{{name}}"
   end
 end

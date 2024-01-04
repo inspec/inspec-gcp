@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_artifacts_objects_timing'
+require "google/cloudbuild/property/trigger_build_artifacts_objects_timing"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @location = args['location']
-          @paths = args['paths']
-          @timing = GoogleInSpec::CloudBuild::Property::TriggerBuildArtifactsObjectsTiming.new(args['timing'], to_s)
+          @location = args["location"]
+          @paths = args["paths"]
+          @timing = GoogleInSpec::CloudBuild::Property::TriggerBuildArtifactsObjectsTiming.new(args["timing"], to_s)
         end
 
         def to_s

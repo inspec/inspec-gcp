@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -40,16 +40,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ca_certificate = args['caCertificate']
-          @client_certificate = args['clientCertificate']
-          @client_key = args['clientKey']
-          @connect_retry_interval = args['connectRetryInterval']
-          @dump_file_path = args['dumpFilePath']
-          @master_heartbeat_period = args['masterHeartbeatPeriod']
-          @password = args['password']
-          @ssl_cipher = args['sslCipher']
-          @username = args['username']
-          @verify_server_certificate = args['verifyServerCertificate']
+          @ca_certificate = args["caCertificate"]
+          @client_certificate = args["clientCertificate"]
+          @client_key = args["clientKey"]
+          @connect_retry_interval = args["connectRetryInterval"]
+          @dump_file_path = args["dumpFilePath"]
+          @master_heartbeat_period = args["masterHeartbeatPeriod"]
+          @password = args["password"]
+          @ssl_cipher = args["sslCipher"]
+          @username = args["username"]
+          @verify_server_certificate = args["verifyServerCertificate"]
         end
 
         def to_s

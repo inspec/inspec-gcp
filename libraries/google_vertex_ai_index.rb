@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/index_labels'
+require "gcp_backend"
+require "google/vertexai/property/index_labels"
 
 # A provider to manage Vertex AI resources.
 class VertexAIIndex < GcpResourceBase
-  name 'google_vertex_ai_index'
-  desc 'Index'
-  supports platform: 'gcp'
+  name "google_vertex_ai_index"
+  desc "Index"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :description
@@ -39,23 +39,23 @@ class VertexAIIndex < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @description = @fetched['description']
-    @metadata = @fetched['metadata']
-    @index_stats = @fetched['indexStats']
-    @name = @fetched['name']
-    @deployed_indexes = @fetched['deployedIndexes']
-    @display_name = @fetched['displayName']
-    @metadata_schema_uri = @fetched['metadataSchemaUri']
-    @index_update_method = @fetched['indexUpdateMethod']
-    @update_time = @fetched['updateTime']
-    @create_time = @fetched['createTime']
-    @etag = @fetched['etag']
-    @labels = GoogleInSpec::VertexAI::Property::IndexLabels.new(@fetched['labels'], to_s)
+    @description = @fetched["description"]
+    @metadata = @fetched["metadata"]
+    @index_stats = @fetched["indexStats"]
+    @name = @fetched["name"]
+    @deployed_indexes = @fetched["deployedIndexes"]
+    @display_name = @fetched["displayName"]
+    @metadata_schema_uri = @fetched["metadataSchemaUri"]
+    @index_update_method = @fetched["indexUpdateMethod"]
+    @update_time = @fetched["updateTime"]
+    @create_time = @fetched["createTime"]
+    @etag = @fetched["etag"]
+    @labels = GoogleInSpec::VertexAI::Property::IndexLabels.new(@fetched["labels"], to_s)
   end
 
   def exists?
@@ -69,10 +69,10 @@ class VertexAIIndex < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

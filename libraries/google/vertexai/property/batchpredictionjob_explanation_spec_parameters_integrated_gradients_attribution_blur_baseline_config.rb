@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -22,7 +22,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_blur_sigma = args['maxBlurSigma']
+          @max_blur_sigma = args["maxBlurSigma"]
         end
 
         def to_s

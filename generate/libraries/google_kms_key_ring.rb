@@ -1,13 +1,13 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'time'
-require 'google/apis/cloudkms_v1'
+
+require "gcp_backend"
+require "time"
+require "google/apis/cloudkms_v1"
 
 module Inspec::Resources
   class GoogleKMSKeyRing < GcpResourceBase
-    name 'google_kms_key_ring'
-    desc 'Verifies settings for a KMS key ring'
+    name "google_kms_key_ring"
+    desc "Verifies settings for a KMS key ring"
 
     example "
       describe google_kms_key_ring(project: 'chef-inspec-gcp',  location: 'us-east1', name: 'key-ring-name') do
@@ -26,8 +26,8 @@ module Inspec::Resources
     end
 
     def key_ring_name
-      return '' if !defined?(name) || name.nil?
-      name.split('/').last
+      return "" if !defined?(name) || name.nil?
+      name.split("/").last
     end
 
     def create_time_date
@@ -37,7 +37,7 @@ module Inspec::Resources
 
     # this is added for completeness as key ring IAM bindings use the key_ring_url as an identifier
     def key_ring_url
-      return '' if !defined?(name) || name.nil?
+      return "" if !defined?(name) || name.nil?
       name
     end
 

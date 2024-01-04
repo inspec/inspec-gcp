@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @boot_disk_type = args['bootDiskType']
-          @boot_disk_size_gb = args['bootDiskSizeGb']
+          @boot_disk_type = args["bootDiskType"]
+          @boot_disk_size_gb = args["bootDiskSizeGb"]
         end
 
         def to_s

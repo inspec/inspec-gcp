@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/instance_disks_initialize_params_source_image_encryption_key'
+require "google/compute/property/instance_disks_initialize_params_source_image_encryption_key"
 module GoogleInSpec
   module Compute
     module Property
@@ -31,11 +31,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @disk_name = args['diskName']
-          @disk_size_gb = args['diskSizeGb']
-          @disk_type = args['diskType']
-          @source_image = args['sourceImage']
-          @source_image_encryption_key = GoogleInSpec::Compute::Property::InstanceDisksInitializeParamsSourceImageEncryptionKey.new(args['sourceImageEncryptionKey'], to_s)
+          @disk_name = args["diskName"]
+          @disk_size_gb = args["diskSizeGb"]
+          @disk_type = args["diskType"]
+          @source_image = args["sourceImage"]
+          @source_image_encryption_key = GoogleInSpec::Compute::Property::InstanceDisksInitializeParamsSourceImageEncryptionKey.new(args["sourceImageEncryptionKey"], to_s)
         end
 
         def to_s

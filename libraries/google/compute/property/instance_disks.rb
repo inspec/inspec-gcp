@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/instance_disks_disk_encryption_key'
-require 'google/compute/property/instance_disks_initialize_params'
-require 'google/compute/property/instance_disks_initialize_params_source_image_encryption_key'
+require "google/compute/property/instance_disks_disk_encryption_key"
+require "google/compute/property/instance_disks_initialize_params"
+require "google/compute/property/instance_disks_initialize_params_source_image_encryption_key"
 module GoogleInSpec
   module Compute
     module Property
@@ -45,17 +45,17 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @auto_delete = args['autoDelete']
-          @boot = args['boot']
-          @device_name = args['deviceName']
-          @disk_encryption_key = GoogleInSpec::Compute::Property::InstanceDisksDiskEncryptionKey.new(args['diskEncryptionKey'], to_s)
-          @index = args['index']
-          @initialize_params = GoogleInSpec::Compute::Property::InstanceDisksInitializeParams.new(args['initializeParams'], to_s)
-          @interface = args['interface']
-          @mode = args['mode']
-          @source = args['source']
-          @type = args['type']
-          @licenses = args['licenses']
+          @auto_delete = args["autoDelete"]
+          @boot = args["boot"]
+          @device_name = args["deviceName"]
+          @disk_encryption_key = GoogleInSpec::Compute::Property::InstanceDisksDiskEncryptionKey.new(args["diskEncryptionKey"], to_s)
+          @index = args["index"]
+          @initialize_params = GoogleInSpec::Compute::Property::InstanceDisksInitializeParams.new(args["initializeParams"], to_s)
+          @interface = args["interface"]
+          @mode = args["mode"]
+          @source = args["source"]
+          @type = args["type"]
+          @licenses = args["licenses"]
         end
 
         def to_s

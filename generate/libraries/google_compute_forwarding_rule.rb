@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeForwardingRule < GcpResourceBase
-    name 'google_compute_forwarding_rule'
-    desc 'Verifies settings for a compute forwarding_rule'
+    name "google_compute_forwarding_rule"
+    desc "Verifies settings for a compute forwarding_rule"
 
     example "
       describe google_compute_forwarding_rule(project: 'chef-inspec-gcp', region: 'europe-west2', name: 'gcp-inspec-forwarding-rule') do

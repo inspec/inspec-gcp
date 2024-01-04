@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,21 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/cluster_config_encryption_config'
-require 'google/dataproc/property/cluster_config_gce_cluster_config'
-require 'google/dataproc/property/cluster_config_initialization_actions'
-require 'google/dataproc/property/cluster_config_master_config'
-require 'google/dataproc/property/cluster_config_master_config_disk_config'
-require 'google/dataproc/property/cluster_config_master_config_managed_group_config'
-require 'google/dataproc/property/cluster_config_secondary_worker_config'
-require 'google/dataproc/property/cluster_config_secondary_worker_config_disk_config'
-require 'google/dataproc/property/cluster_config_secondary_worker_config_managed_group_config'
-require 'google/dataproc/property/cluster_config_security_config'
-require 'google/dataproc/property/cluster_config_security_config_kerberos_config'
-require 'google/dataproc/property/cluster_config_software_config'
-require 'google/dataproc/property/cluster_config_worker_config'
-require 'google/dataproc/property/cluster_config_worker_config_disk_config'
-require 'google/dataproc/property/cluster_config_worker_config_managed_group_config'
+require "google/dataproc/property/cluster_config_encryption_config"
+require "google/dataproc/property/cluster_config_gce_cluster_config"
+require "google/dataproc/property/cluster_config_initialization_actions"
+require "google/dataproc/property/cluster_config_master_config"
+require "google/dataproc/property/cluster_config_master_config_disk_config"
+require "google/dataproc/property/cluster_config_master_config_managed_group_config"
+require "google/dataproc/property/cluster_config_secondary_worker_config"
+require "google/dataproc/property/cluster_config_secondary_worker_config_disk_config"
+require "google/dataproc/property/cluster_config_secondary_worker_config_managed_group_config"
+require "google/dataproc/property/cluster_config_security_config"
+require "google/dataproc/property/cluster_config_security_config_kerberos_config"
+require "google/dataproc/property/cluster_config_software_config"
+require "google/dataproc/property/cluster_config_worker_config"
+require "google/dataproc/property/cluster_config_worker_config_disk_config"
+require "google/dataproc/property/cluster_config_worker_config_managed_group_config"
 module GoogleInSpec
   module Dataproc
     module Property
@@ -53,15 +53,15 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @config_bucket = args['configBucket']
-          @gce_cluster_config = GoogleInSpec::Dataproc::Property::ClusterConfigGceClusterConfig.new(args['gceClusterConfig'], to_s)
-          @master_config = GoogleInSpec::Dataproc::Property::ClusterConfigMasterConfig.new(args['masterConfig'], to_s)
-          @worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigWorkerConfig.new(args['workerConfig'], to_s)
-          @secondary_worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecondaryWorkerConfig.new(args['secondaryWorkerConfig'], to_s)
-          @software_config = GoogleInSpec::Dataproc::Property::ClusterConfigSoftwareConfig.new(args['softwareConfig'], to_s)
-          @initialization_actions = GoogleInSpec::Dataproc::Property::ClusterConfigInitializationActionsArray.parse(args['initializationActions'], to_s)
-          @encryption_config = GoogleInSpec::Dataproc::Property::ClusterConfigEncryptionConfig.new(args['encryptionConfig'], to_s)
-          @security_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfig.new(args['securityConfig'], to_s)
+          @config_bucket = args["configBucket"]
+          @gce_cluster_config = GoogleInSpec::Dataproc::Property::ClusterConfigGceClusterConfig.new(args["gceClusterConfig"], to_s)
+          @master_config = GoogleInSpec::Dataproc::Property::ClusterConfigMasterConfig.new(args["masterConfig"], to_s)
+          @worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigWorkerConfig.new(args["workerConfig"], to_s)
+          @secondary_worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecondaryWorkerConfig.new(args["secondaryWorkerConfig"], to_s)
+          @software_config = GoogleInSpec::Dataproc::Property::ClusterConfigSoftwareConfig.new(args["softwareConfig"], to_s)
+          @initialization_actions = GoogleInSpec::Dataproc::Property::ClusterConfigInitializationActionsArray.parse(args["initializationActions"], to_s)
+          @encryption_config = GoogleInSpec::Dataproc::Property::ClusterConfigEncryptionConfig.new(args["encryptionConfig"], to_s)
+          @security_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfig.new(args["securityConfig"], to_s)
         end
 
         def to_s

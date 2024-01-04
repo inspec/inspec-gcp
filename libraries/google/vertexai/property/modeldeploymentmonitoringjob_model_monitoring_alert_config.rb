@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_monitoring_alert_config_email_alert_config'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_monitoring_alert_config_email_alert_config"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @email_alert_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelMonitoringAlertConfigEmailAlertConfig.new(args['emailAlertConfig'], to_s)
-          @enable_logging = args['enableLogging']
+          @email_alert_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelMonitoringAlertConfigEmailAlertConfig.new(args["emailAlertConfig"], to_s)
+          @enable_logging = args["enableLogging"]
         end
 
         def to_s

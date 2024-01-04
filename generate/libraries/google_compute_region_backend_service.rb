@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/regionbackendservice_backends'
-require 'google/compute/property/regionbackendservice_connection_draining'
+require "gcp_backend"
+require "google/compute/property/regionbackendservice_backends"
+require "google/compute/property/regionbackendservice_connection_draining"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionBackendService < GcpResourceBase
-  name 'google_compute_region_backend_service'
-  desc 'RegionBackendService'
-  supports platform: 'gcp'
+  name "google_compute_region_backend_service"
+  desc "RegionBackendService"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -39,23 +39,23 @@ class ComputeRegionBackendService < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = @fetched['name']
-    @health_checks = @fetched['healthChecks']
-    @backends = GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(@fetched['backends'], to_s)
-    @description = @fetched['description']
-    @fingerprint = @fetched['fingerprint']
-    @protocol = @fetched['protocol']
-    @session_affinity = @fetched['sessionAffinity']
-    @region = @fetched['region']
-    @timeout_sec = @fetched['timeoutSec']
-    @connection_draining = GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(@fetched['connectionDraining'], to_s)
-    @load_balancing_scheme = @fetched['loadBalancingScheme']
+    @name = @fetched["name"]
+    @health_checks = @fetched["healthChecks"]
+    @backends = GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(@fetched["backends"], to_s)
+    @description = @fetched["description"]
+    @fingerprint = @fetched["fingerprint"]
+    @protocol = @fetched["protocol"]
+    @session_affinity = @fetched["sessionAffinity"]
+    @region = @fetched["region"]
+    @timeout_sec = @fetched["timeoutSec"]
+    @connection_draining = GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(@fetched["connectionDraining"], to_s)
+    @load_balancing_scheme = @fetched["loadBalancingScheme"]
   end
 
   # Handles parsing RFC3339 time string
@@ -73,22 +73,22 @@ class ComputeRegionBackendService < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'health_checks' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('health_checks') { should include #{single.inspect} }" } },
-      'backends' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('backends') { should include '#{single.to_json}' }" } },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'fingerprint' => ->(x, _) { x.nil? ? [] : ["its('fingerprint') { should cmp #{x.inspect} }"] },
-      'protocol' => ->(x, _) { x.nil? ? [] : ["its('protocol') { should cmp #{x.inspect} }"] },
-      'session_affinity' => ->(x, _) { x.nil? ? [] : ["its('session_affinity') { should cmp #{x.inspect} }"] },
-      'region' => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
-      'timeout_sec' => ->(x, _) { x.nil? ? [] : ["its('timeout_sec') { should cmp #{x.inspect} }"] },
-      'connection_draining' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.un_parse(x, 'connection_draining') },
-      'load_balancing_scheme' => ->(x, _) { x.nil? ? [] : ["its('load_balancing_scheme') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "health_checks" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('health_checks') { should include #{single.inspect} }" } },
+      "backends" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('backends') { should include '#{single.to_json}' }" } },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "fingerprint" => ->(x, _) { x.nil? ? [] : ["its('fingerprint') { should cmp #{x.inspect} }"] },
+      "protocol" => ->(x, _) { x.nil? ? [] : ["its('protocol') { should cmp #{x.inspect} }"] },
+      "session_affinity" => ->(x, _) { x.nil? ? [] : ["its('session_affinity') { should cmp #{x.inspect} }"] },
+      "region" => ->(x, _) { x.nil? ? [] : ["its('region') { should cmp #{x.inspect} }"] },
+      "timeout_sec" => ->(x, _) { x.nil? ? [] : ["its('timeout_sec') { should cmp #{x.inspect} }"] },
+      "connection_draining" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.un_parse(x, "connection_draining") },
+      "load_balancing_scheme" => ->(x, _) { x.nil? ? [] : ["its('load_balancing_scheme') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'RegionBackendService'
+    name = "RegionBackendService"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -97,11 +97,11 @@ class ComputeRegionBackendService < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_compute_region_backend_service',
+      type: "google_compute_region_backend_service",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -109,10 +109,10 @@ class ComputeRegionBackendService < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/backendServices/{{name}}'
+    "projects/{{project}}/regions/{{region}}/backendServices/{{name}}"
   end
 end

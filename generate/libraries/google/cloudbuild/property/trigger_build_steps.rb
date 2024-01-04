@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_steps_volumes'
+require "google/cloudbuild/property/trigger_build_steps_volumes"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -46,17 +46,17 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @name = arguments['name']
-          @args = arguments['args']
-          @env = arguments['env']
-          @id = arguments['id']
-          @entrypoint = arguments['entrypoint']
-          @dir = arguments['dir']
-          @secret_env = arguments['secretEnv']
-          @timeout = arguments['timeout']
-          @timing = arguments['timing']
-          @volumes = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsVolumesArray.parse(arguments['volumes'], to_s)
-          @wait_for = arguments['waitFor']
+          @name = arguments["name"]
+          @args = arguments["args"]
+          @env = arguments["env"]
+          @id = arguments["id"]
+          @entrypoint = arguments["entrypoint"]
+          @dir = arguments["dir"]
+          @secret_env = arguments["secretEnv"]
+          @timeout = arguments["timeout"]
+          @timing = arguments["timing"]
+          @volumes = GoogleInSpec::CloudBuild::Property::TriggerBuildStepsVolumesArray.parse(arguments["volumes"], to_s)
+          @wait_for = arguments["waitFor"]
         end
 
         def to_s
@@ -66,17 +66,17 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
-            'args' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.args') { should include #{single.inspect} }" } },
-            'env' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.env') { should include #{single.inspect} }" } },
-            'id' => ->(x, path) { x.nil? ? [] : ["its('#{path}.id') { should cmp #{x.inspect} }"] },
-            'entrypoint' => ->(x, path) { x.nil? ? [] : ["its('#{path}.entrypoint') { should cmp #{x.inspect} }"] },
-            'dir' => ->(x, path) { x.nil? ? [] : ["its('#{path}.dir') { should cmp #{x.inspect} }"] },
-            'secret_env' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.secret_env') { should include #{single.inspect} }" } },
-            'timeout' => ->(x, path) { x.nil? ? [] : ["its('#{path}.timeout') { should cmp #{x.inspect} }"] },
-            'timing' => ->(x, path) { x.nil? ? [] : ["its('#{path}.timing') { should cmp #{x.inspect} }"] },
-            'volumes' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.volumes') { should include '#{single.to_json}' }" } },
-            'wait_for' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.wait_for') { should include #{single.inspect} }" } },
+            "name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.name') { should cmp #{x.inspect} }"] },
+            "args" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.args') { should include #{single.inspect} }" } },
+            "env" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.env') { should include #{single.inspect} }" } },
+            "id" => ->(x, path) { x.nil? ? [] : ["its('#{path}.id') { should cmp #{x.inspect} }"] },
+            "entrypoint" => ->(x, path) { x.nil? ? [] : ["its('#{path}.entrypoint') { should cmp #{x.inspect} }"] },
+            "dir" => ->(x, path) { x.nil? ? [] : ["its('#{path}.dir') { should cmp #{x.inspect} }"] },
+            "secret_env" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.secret_env') { should include #{single.inspect} }" } },
+            "timeout" => ->(x, path) { x.nil? ? [] : ["its('#{path}.timeout') { should cmp #{x.inspect} }"] },
+            "timing" => ->(x, path) { x.nil? ? [] : ["its('#{path}.timing') { should cmp #{x.inspect} }"] },
+            "volumes" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.volumes') { should include '#{single.to_json}' }" } },
+            "wait_for" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.wait_for') { should include #{single.inspect} }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

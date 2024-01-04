@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_address = args['ipAddress']
-          @time_to_retire = parse_time_string(args['timeToRetire'])
-          @type = args['type']
+          @ip_address = args["ipAddress"]
+          @time_to_retire = parse_time_string(args["timeToRetire"])
+          @type = args["type"]
         end
 
         def to_s

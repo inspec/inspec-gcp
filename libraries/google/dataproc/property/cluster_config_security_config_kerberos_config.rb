@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -46,19 +46,19 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_kerberos = args['enableKerberos']
-          @rootprincipal_password_uri = args['rootprincipalPasswordUri']
-          @kms_key_uri = args['kmsKeyUri']
-          @keystore_uri = args['keystoreUri']
-          @truststore_uri = args['truststoreUri']
-          @key_password_uri = args['keyPasswordUri']
-          @truststore_password_uri = args['truststorePasswordUri']
-          @cross_realm_trust_realm = args['crossRealmTrustRealm']
-          @cross_realm_trust_admin_server = args['crossRealmTrustAdminServer']
-          @cross_realm_trust_shared_password_uri = args['crossRealmTrustSharedPasswordUri']
-          @kdc_db_key_uri = args['kdcDbKeyUri']
-          @tgt_lifetime_hours = args['tgtLifetimeHours']
-          @realm = args['realm']
+          @enable_kerberos = args["enableKerberos"]
+          @rootprincipal_password_uri = args["rootprincipalPasswordUri"]
+          @kms_key_uri = args["kmsKeyUri"]
+          @keystore_uri = args["keystoreUri"]
+          @truststore_uri = args["truststoreUri"]
+          @key_password_uri = args["keyPasswordUri"]
+          @truststore_password_uri = args["truststorePasswordUri"]
+          @cross_realm_trust_realm = args["crossRealmTrustRealm"]
+          @cross_realm_trust_admin_server = args["crossRealmTrustAdminServer"]
+          @cross_realm_trust_shared_password_uri = args["crossRealmTrustSharedPasswordUri"]
+          @kdc_db_key_uri = args["kdcDbKeyUri"]
+          @tgt_lifetime_hours = args["tgtLifetimeHours"]
+          @realm = args["realm"]
         end
 
         def to_s

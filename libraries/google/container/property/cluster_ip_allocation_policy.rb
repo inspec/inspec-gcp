@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -38,15 +38,15 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @use_ip_aliases = args['useIpAliases']
-          @create_subnetwork = args['createSubnetwork']
-          @subnetwork_name = args['subnetworkName']
-          @cluster_secondary_range_name = args['clusterSecondaryRangeName']
-          @services_secondary_range_name = args['servicesSecondaryRangeName']
-          @cluster_ipv4_cidr_block = args['clusterIpv4CidrBlock']
-          @node_ipv4_cidr_block = args['nodeIpv4CidrBlock']
-          @services_ipv4_cidr_block = args['servicesIpv4CidrBlock']
-          @tpu_ipv4_cidr_block = args['tpuIpv4CidrBlock']
+          @use_ip_aliases = args["useIpAliases"]
+          @create_subnetwork = args["createSubnetwork"]
+          @subnetwork_name = args["subnetworkName"]
+          @cluster_secondary_range_name = args["clusterSecondaryRangeName"]
+          @services_secondary_range_name = args["servicesSecondaryRangeName"]
+          @cluster_ipv4_cidr_block = args["clusterIpv4CidrBlock"]
+          @node_ipv4_cidr_block = args["nodeIpv4CidrBlock"]
+          @services_ipv4_cidr_block = args["servicesIpv4CidrBlock"]
+          @tpu_ipv4_cidr_block = args["tpuIpv4CidrBlock"]
         end
 
         def to_s

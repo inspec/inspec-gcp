@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/regioninstancegroup_named_ports'
+require "gcp_backend"
+require "google/compute/property/regioninstancegroup_named_ports"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionInstanceGroup < GcpResourceBase
-  name 'google_compute_region_instance_group'
-  desc 'RegionInstanceGroup'
-  supports platform: 'gcp'
+  name "google_compute_region_instance_group"
+  desc "RegionInstanceGroup"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -37,21 +37,21 @@ class ComputeRegionInstanceGroup < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @fingerprint = @fetched['fingerprint']
-    @network = @fetched['network']
-    @zone = @fetched['zone']
-    @size = @fetched['size']
-    @region = @fetched['region']
-    @named_ports = GoogleInSpec::Compute::Property::RegionInstanceGroupNamedPortsArray.parse(@fetched['namedPorts'], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @fingerprint = @fetched["fingerprint"]
+    @network = @fetched["network"]
+    @zone = @fetched["zone"]
+    @size = @fetched["size"]
+    @region = @fetched["region"]
+    @named_ports = GoogleInSpec::Compute::Property::RegionInstanceGroupNamedPortsArray.parse(@fetched["namedPorts"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -70,10 +70,10 @@ class ComputeRegionInstanceGroup < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/instanceGroups/{{name}}'
+    "projects/{{project}}/regions/{{region}}/instanceGroups/{{name}}"
   end
 end

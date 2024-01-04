@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class KMSKeyRingImportJobs < GcpResourceBase
-  name 'google_kms_key_ring_import_jobs'
-  desc 'KeyRingImportJob plural resource'
-  supports platform: 'gcp'
+  name "google_kms_key_ring_import_jobs"
+  desc "KeyRingImportJob plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,12 +41,12 @@ class KMSKeyRingImportJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('keyRingImportJobs')
+    @table = fetch_wrapped_resource("keyRingImportJobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -74,18 +74,18 @@ class KMSKeyRingImportJobs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'importMethod' => ->(obj) { [:import_method, obj['importMethod']] },
-      'protectionLevel' => ->(obj) { [:protection_level, obj['protectionLevel']] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'generateTime' => ->(obj) { [:generate_time, parse_time_string(obj['generateTime'])] },
-      'expireTime' => ->(obj) { [:expire_time, parse_time_string(obj['expireTime'])] },
-      'expireEventTime' => ->(obj) { [:expire_event_time, parse_time_string(obj['expireEventTime'])] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'publicKey' => ->(obj) { [:public_key, GoogleInSpec::KMS::Property::KeyRingImportJobPublicKey.new(obj['publicKey'], to_s)] },
-      'attestation' => ->(obj) { [:attestation, GoogleInSpec::KMS::Property::KeyRingImportJobAttestation.new(obj['attestation'], to_s)] },
-      'keyRing' => ->(obj) { [:key_ring, obj['keyRing']] },
-      'importJobId' => ->(obj) { [:import_job_id, obj['importJobId']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "importMethod" => ->(obj) { [:import_method, obj["importMethod"]] },
+      "protectionLevel" => ->(obj) { [:protection_level, obj["protectionLevel"]] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "generateTime" => ->(obj) { [:generate_time, parse_time_string(obj["generateTime"])] },
+      "expireTime" => ->(obj) { [:expire_time, parse_time_string(obj["expireTime"])] },
+      "expireEventTime" => ->(obj) { [:expire_event_time, parse_time_string(obj["expireEventTime"])] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "publicKey" => ->(obj) { [:public_key, GoogleInSpec::KMS::Property::KeyRingImportJobPublicKey.new(obj["publicKey"], to_s)] },
+      "attestation" => ->(obj) { [:attestation, GoogleInSpec::KMS::Property::KeyRingImportJobAttestation.new(obj["attestation"], to_s)] },
+      "keyRing" => ->(obj) { [:key_ring, obj["keyRing"]] },
+      "importJobId" => ->(obj) { [:import_job_id, obj["importJobId"]] },
     }
   end
 
@@ -97,10 +97,10 @@ class KMSKeyRingImportJobs < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{key_ring}}/importJobs'
+    "{{key_ring}}/importJobs"
   end
 end

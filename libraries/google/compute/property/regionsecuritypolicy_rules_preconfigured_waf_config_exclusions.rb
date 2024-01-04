@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_cookies_to_exclude'
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_headers_to_exclude'
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_query_params_to_exclude'
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_uris_to_exclude'
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_cookies_to_exclude"
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_headers_to_exclude"
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_query_params_to_exclude"
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions_request_uris_to_exclude"
 module GoogleInSpec
   module Compute
     module Property
@@ -36,12 +36,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @target_rule_set = args['targetRuleSet']
-          @target_rule_ids = args['targetRuleIds']
-          @request_headers_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestHeadersToExcludeArray.parse(args['requestHeadersToExclude'], to_s)
-          @request_cookies_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestCookiesToExcludeArray.parse(args['requestCookiesToExclude'], to_s)
-          @request_query_params_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestQueryParamsToExcludeArray.parse(args['requestQueryParamsToExclude'], to_s)
-          @request_uris_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestUrisToExcludeArray.parse(args['requestUrisToExclude'], to_s)
+          @target_rule_set = args["targetRuleSet"]
+          @target_rule_ids = args["targetRuleIds"]
+          @request_headers_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestHeadersToExcludeArray.parse(args["requestHeadersToExclude"], to_s)
+          @request_cookies_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestCookiesToExcludeArray.parse(args["requestCookiesToExclude"], to_s)
+          @request_query_params_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestQueryParamsToExcludeArray.parse(args["requestQueryParamsToExclude"], to_s)
+          @request_uris_to_exclude = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsRequestUrisToExcludeArray.parse(args["requestUrisToExclude"], to_s)
         end
 
         def to_s

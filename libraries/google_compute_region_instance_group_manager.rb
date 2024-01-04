@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/regioninstancegroupmanager_auto_healing_policies'
-require 'google/compute/property/regioninstancegroupmanager_current_actions'
-require 'google/compute/property/regioninstancegroupmanager_named_ports'
+require "gcp_backend"
+require "google/compute/property/regioninstancegroupmanager_auto_healing_policies"
+require "google/compute/property/regioninstancegroupmanager_current_actions"
+require "google/compute/property/regioninstancegroupmanager_named_ports"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionInstanceGroupManager < GcpResourceBase
-  name 'google_compute_region_instance_group_manager'
-  desc 'RegionInstanceGroupManager'
-  supports platform: 'gcp'
+  name "google_compute_region_instance_group_manager"
+  desc "RegionInstanceGroupManager"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :base_instance_name
@@ -42,24 +42,24 @@ class ComputeRegionInstanceGroupManager < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @base_instance_name = @fetched['baseInstanceName']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @current_actions = GoogleInSpec::Compute::Property::RegionInstanceGroupManagerCurrentActions.new(@fetched['currentActions'], to_s)
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @instance_group = @fetched['instanceGroup']
-    @instance_template = @fetched['instanceTemplate']
-    @name = @fetched['name']
-    @named_ports = GoogleInSpec::Compute::Property::RegionInstanceGroupManagerNamedPortsArray.parse(@fetched['namedPorts'], to_s)
-    @target_pools = @fetched['targetPools']
-    @target_size = @fetched['targetSize']
-    @auto_healing_policies = GoogleInSpec::Compute::Property::RegionInstanceGroupManagerAutoHealingPoliciesArray.parse(@fetched['autoHealingPolicies'], to_s)
-    @region = @fetched['region']
+    @base_instance_name = @fetched["baseInstanceName"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @current_actions = GoogleInSpec::Compute::Property::RegionInstanceGroupManagerCurrentActions.new(@fetched["currentActions"], to_s)
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @instance_group = @fetched["instanceGroup"]
+    @instance_template = @fetched["instanceTemplate"]
+    @name = @fetched["name"]
+    @named_ports = GoogleInSpec::Compute::Property::RegionInstanceGroupManagerNamedPortsArray.parse(@fetched["namedPorts"], to_s)
+    @target_pools = @fetched["targetPools"]
+    @target_size = @fetched["targetSize"]
+    @auto_healing_policies = GoogleInSpec::Compute::Property::RegionInstanceGroupManagerAutoHealingPoliciesArray.parse(@fetched["autoHealingPolicies"], to_s)
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -99,13 +99,13 @@ class ComputeRegionInstanceGroupManager < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{name}}'
+    "projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{name}}"
   end
 end

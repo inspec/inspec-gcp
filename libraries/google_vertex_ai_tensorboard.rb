@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/tensorboard_encryption_spec'
-require 'google/vertexai/property/tensorboard_labels'
+require "gcp_backend"
+require "google/vertexai/property/tensorboard_encryption_spec"
+require "google/vertexai/property/tensorboard_labels"
 
 # A provider to manage Vertex AI resources.
 class VertexAITensorboard < GcpResourceBase
-  name 'google_vertex_ai_tensorboard'
-  desc 'Tensorboard'
-  supports platform: 'gcp'
+  name "google_vertex_ai_tensorboard"
+  desc "Tensorboard"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -39,22 +39,22 @@ class VertexAITensorboard < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @is_default = @fetched['isDefault']
-    @update_time = @fetched['updateTime']
-    @labels = GoogleInSpec::VertexAI::Property::TensorboardLabels.new(@fetched['labels'], to_s)
-    @blob_storage_path_prefix = @fetched['blobStoragePathPrefix']
-    @etag = @fetched['etag']
-    @create_time = @fetched['createTime']
-    @run_count = @fetched['runCount']
-    @encryption_spec = GoogleInSpec::VertexAI::Property::TensorboardEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @display_name = @fetched['displayName']
-    @description = @fetched['description']
+    @name = @fetched["name"]
+    @is_default = @fetched["isDefault"]
+    @update_time = @fetched["updateTime"]
+    @labels = GoogleInSpec::VertexAI::Property::TensorboardLabels.new(@fetched["labels"], to_s)
+    @blob_storage_path_prefix = @fetched["blobStoragePathPrefix"]
+    @etag = @fetched["etag"]
+    @create_time = @fetched["createTime"]
+    @run_count = @fetched["runCount"]
+    @encryption_spec = GoogleInSpec::VertexAI::Property::TensorboardEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @display_name = @fetched["displayName"]
+    @description = @fetched["description"]
   end
 
   def exists?
@@ -68,10 +68,10 @@ class VertexAITensorboard < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

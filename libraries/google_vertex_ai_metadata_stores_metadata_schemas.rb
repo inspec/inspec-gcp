@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIMetadataStoresMetadataSchemas < GcpResourceBase
-  name 'google_vertex_ai_metadata_stores_metadata_schemas'
-  desc 'MetadataStoresMetadataSchema plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_metadata_stores_metadata_schemas"
+  desc "MetadataStoresMetadataSchema plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,12 +35,12 @@ class VertexAIMetadataStoresMetadataSchemas < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('metadataSchemas')
+    @table = fetch_wrapped_resource("metadataSchemas")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
@@ -67,22 +67,22 @@ class VertexAIMetadataStoresMetadataSchemas < GcpResourceBase
 
   def transformers
     {
-      'schemaType' => ->(obj) { [:schema_type, obj['schemaType']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'schemaVersion' => ->(obj) { [:schema_version, obj['schemaVersion']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'schema' => ->(obj) { [:schema, obj['schema']] },
+      "schemaType" => ->(obj) { [:schema_type, obj["schemaType"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "schemaVersion" => ->(obj) { [:schema_version, obj["schemaVersion"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "schema" => ->(obj) { [:schema, obj["schema"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/metadataSchemas'
+    "{{parent}}/metadataSchemas"
   end
 end

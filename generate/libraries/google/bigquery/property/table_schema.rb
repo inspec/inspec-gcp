@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_schema_fields'
+require "google/bigquery/property/table_schema_fields"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -26,7 +26,7 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @fields = GoogleInSpec::BigQuery::Property::TableSchemaFieldsArray.parse(arguments['fields'], to_s)
+          @fields = GoogleInSpec::BigQuery::Property::TableSchemaFieldsArray.parse(arguments["fields"], to_s)
         end
 
         def to_s
@@ -36,7 +36,7 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'fields' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.fields') { should include '#{single.to_json}' }" } },
+            "fields" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.fields') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

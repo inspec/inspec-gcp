@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ServiceUsageServices < GcpResourceBase
-  name 'google_project_services'
-  desc 'Service plural resource'
-  supports platform: 'gcp'
+  name "google_project_services"
+  desc "Service plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class ServiceUsageServices < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('services')
+    @table = fetch_wrapped_resource("services")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,11 +67,11 @@ class ServiceUsageServices < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'parent' => ->(obj) { [:parent, obj['parent']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'disableDependentServices' => ->(obj) { [:disable_dependent_services, obj['disableDependentServices']] },
-      'config' => ->(obj) { [:config, GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(obj['config'], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "parent" => ->(obj) { [:parent, obj["parent"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "disableDependentServices" => ->(obj) { [:disable_dependent_services, obj["disableDependentServices"]] },
+      "config" => ->(obj) { [:config, GoogleInSpec::ServiceUsage::Property::ServiceConfig.new(obj["config"], to_s)] },
     }
   end
 
@@ -79,13 +79,13 @@ class ServiceUsageServices < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://serviceusage.googleapis.com/v1beta1/'
+      "https://serviceusage.googleapis.com/v1beta1/"
     else
-      'https://serviceusage.googleapis.com/v1/'
+      "https://serviceusage.googleapis.com/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/services'
+    "projects/{{project}}/services"
   end
 end

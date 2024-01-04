@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud SQL resources.
 class SQLSslCert < GcpResourceBase
-  name 'google_sql_ssl_cert'
-  desc 'SslCert'
-  supports platform: 'gcp'
+  name "google_sql_ssl_cert"
+  desc "SslCert"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :cert
@@ -33,18 +33,18 @@ class SQLSslCert < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @cert = @fetched['cert']
-    @cert_serial_number = @fetched['certSerialNumber']
-    @common_name = @fetched['commonName']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @expiration_time = parse_time_string(@fetched['expirationTime'])
-    @instance = @fetched['instance']
-    @sha1_fingerprint = @fetched['sha1Fingerprint']
+    @cert = @fetched["cert"]
+    @cert_serial_number = @fetched["certSerialNumber"]
+    @common_name = @fetched["commonName"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @expiration_time = parse_time_string(@fetched["expirationTime"])
+    @instance = @fetched["instance"]
+    @sha1_fingerprint = @fetched["sha1Fingerprint"]
   end
 
   # Handles parsing RFC3339 time string
@@ -63,10 +63,10 @@ class SQLSslCert < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://sqladmin.googleapis.com/sql/v1beta4/'
+    "https://sqladmin.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{instance}}/sslCerts/{{sha1_fingerprint}}'
+    "projects/{{project}}/instances/{{instance}}/sslCerts/{{sha1_fingerprint}}"
   end
 end

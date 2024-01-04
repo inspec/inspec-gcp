@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @training_fraction = args['trainingFraction']
-          @test_fraction = args['testFraction']
-          @key = args['key']
-          @validation_fraction = args['validationFraction']
+          @training_fraction = args["trainingFraction"]
+          @test_fraction = args["testFraction"]
+          @key = args["key"]
+          @validation_fraction = args["validationFraction"]
         end
 
         def to_s

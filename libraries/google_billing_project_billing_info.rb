@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Billing resources.
 class BillingProjectBillingInfo < GcpResourceBase
-  name 'google_billing_project_billing_info'
-  desc 'ProjectBillingInfo'
-  supports platform: 'gcp'
+  name "google_billing_project_billing_info"
+  desc "ProjectBillingInfo"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :project_id
@@ -29,14 +29,14 @@ class BillingProjectBillingInfo < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @project_id = @fetched['projectId']
-    @billing_account_name = @fetched['billingAccountName']
-    @billing_enabled = @fetched['billingEnabled']
+    @project_id = @fetched["projectId"]
+    @billing_account_name = @fetched["billingAccountName"]
+    @billing_enabled = @fetched["billingEnabled"]
   end
 
   def exists?
@@ -50,10 +50,10 @@ class BillingProjectBillingInfo < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudbilling.googleapis.com/v1/'
+    "https://cloudbilling.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project_id}}/billingInfo'
+    "projects/{{project_id}}/billingInfo"
   end
 end

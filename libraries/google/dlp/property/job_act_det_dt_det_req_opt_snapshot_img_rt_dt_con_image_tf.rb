@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_info_types'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_text'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_redaction_color'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_selected_info_types'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_info_types"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_all_text"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_redaction_color"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_image_tf_selected_info_types"
 module GoogleInSpec
   module DLP
     module Property
@@ -32,10 +32,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @redaction_color = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfRedactionColor.new(args['redactionColor'], to_s)
-          @selected_info_types = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfSelectedInfoTypesArray.parse(args['selectedInfoTypes'], to_s)
-          @all_info_types = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfAllInfoTypesArray.parse(args['allInfoTypes'], to_s)
-          @all_text = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfAllText.new(args['allText'], to_s)
+          @redaction_color = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfRedactionColor.new(args["redactionColor"], to_s)
+          @selected_info_types = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfSelectedInfoTypesArray.parse(args["selectedInfoTypes"], to_s)
+          @all_info_types = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfAllInfoTypesArray.parse(args["allInfoTypes"], to_s)
+          @all_text = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConImageTfAllText.new(args["allText"], to_s)
         end
 
         def to_s

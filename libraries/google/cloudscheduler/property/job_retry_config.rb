@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @retry_count = args['retryCount']
-          @max_retry_duration = args['maxRetryDuration']
-          @min_backoff_duration = args['minBackoffDuration']
-          @max_backoff_duration = args['maxBackoffDuration']
-          @max_doublings = args['maxDoublings']
+          @retry_count = args["retryCount"]
+          @max_retry_duration = args["maxRetryDuration"]
+          @min_backoff_duration = args["minBackoffDuration"]
+          @max_backoff_duration = args["maxBackoffDuration"]
+          @max_doublings = args["maxDoublings"]
         end
 
         def to_s

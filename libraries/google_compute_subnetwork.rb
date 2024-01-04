@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/subnetwork_log_config'
-require 'google/compute/property/subnetwork_secondary_ip_ranges'
+require "gcp_backend"
+require "google/compute/property/subnetwork_log_config"
+require "google/compute/property/subnetwork_secondary_ip_ranges"
 
 # A provider to manage Compute Engine resources.
 class ComputeSubnetwork < GcpResourceBase
-  name 'google_compute_subnetwork'
-  desc 'Subnetwork'
-  supports platform: 'gcp'
+  name "google_compute_subnetwork"
+  desc "Subnetwork"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -42,25 +42,25 @@ class ComputeSubnetwork < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @gateway_address = @fetched['gatewayAddress']
-    @id = @fetched['id']
-    @ip_cidr_range = @fetched['ipCidrRange']
-    @name = @fetched['name']
-    @network = @fetched['network']
-    @purpose = @fetched['purpose']
-    @role = @fetched['role']
-    @secondary_ip_ranges = GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(@fetched['secondaryIpRanges'], to_s)
-    @private_ip_google_access = @fetched['privateIpGoogleAccess']
-    @private_ipv6_google_access = @fetched['privateIpv6GoogleAccess']
-    @region = @fetched['region']
-    @log_config = GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(@fetched['logConfig'], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @gateway_address = @fetched["gatewayAddress"]
+    @id = @fetched["id"]
+    @ip_cidr_range = @fetched["ipCidrRange"]
+    @name = @fetched["name"]
+    @network = @fetched["network"]
+    @purpose = @fetched["purpose"]
+    @role = @fetched["role"]
+    @secondary_ip_ranges = GoogleInSpec::Compute::Property::SubnetworkSecondaryIpRangesArray.parse(@fetched["secondaryIpRanges"], to_s)
+    @private_ip_google_access = @fetched["privateIpGoogleAccess"]
+    @private_ipv6_google_access = @fetched["privateIpv6GoogleAccess"]
+    @region = @fetched["region"]
+    @log_config = GoogleInSpec::Compute::Property::SubnetworkLogConfig.new(@fetched["logConfig"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -84,13 +84,13 @@ class ComputeSubnetwork < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/subnetworks/{{name}}'
+    "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAITensorboards < GcpResourceBase
-  name 'google_vertex_ai_tensorboards'
-  desc 'Tensorboard plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_tensorboards"
+  desc "Tensorboard plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class VertexAITensorboards < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('tensorboards')
+    @table = fetch_wrapped_resource("tensorboards")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -73,27 +73,27 @@ class VertexAITensorboards < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'isDefault' => ->(obj) { [:is_default, obj['isDefault']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardLabels.new(obj['labels'], to_s)] },
-      'blobStoragePathPrefix' => ->(obj) { [:blob_storage_path_prefix, obj['blobStoragePathPrefix']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'runCount' => ->(obj) { [:run_count, obj['runCount']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::TensorboardEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'description' => ->(obj) { [:description, obj['description']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "isDefault" => ->(obj) { [:is_default, obj["isDefault"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardLabels.new(obj["labels"], to_s)] },
+      "blobStoragePathPrefix" => ->(obj) { [:blob_storage_path_prefix, obj["blobStoragePathPrefix"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "runCount" => ->(obj) { [:run_count, obj["runCount"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::TensorboardEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/tensorboards'
+    "{{parent}}/tensorboards"
   end
 end

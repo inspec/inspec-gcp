@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_dedicated_resources_machine_spec'
+require "google/vertexai/property/batchpredictionjob_dedicated_resources_machine_spec"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @starting_replica_count = args['startingReplicaCount']
-          @max_replica_count = args['maxReplicaCount']
-          @machine_spec = GoogleInSpec::VertexAI::Property::BatchPredictionJobDedicatedResourcesMachineSpec.new(args['machineSpec'], to_s)
+          @starting_replica_count = args["startingReplicaCount"]
+          @max_replica_count = args["maxReplicaCount"]
+          @machine_spec = GoogleInSpec::VertexAI::Property::BatchPredictionJobDedicatedResourcesMachineSpec.new(args["machineSpec"], to_s)
         end
 
         def to_s

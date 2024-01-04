@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -22,7 +22,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @allowed_persistence_regions = args['allowedPersistenceRegions']
+          @allowed_persistence_regions = args["allowedPersistenceRegions"]
         end
 
         def to_s

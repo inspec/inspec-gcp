@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_cloud_storage_path'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_word_list'
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_cloud_storage_path"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_word_list"
 module GoogleInSpec
   module DLP
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @word_list = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRuleDictionaryWordList.new(args['wordList'], to_s)
-          @cloud_storage_path = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePath.new(args['cloudStoragePath'], to_s)
+          @word_list = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRuleDictionaryWordList.new(args["wordList"], to_s)
+          @cloud_storage_path = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePath.new(args["cloudStoragePath"], to_s)
         end
 
         def to_s

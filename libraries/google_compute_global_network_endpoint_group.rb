@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
-  name 'google_compute_global_network_endpoint_group'
-  desc 'GlobalNetworkEndpointGroup'
-  supports platform: 'gcp'
+  name "google_compute_global_network_endpoint_group"
+  desc "GlobalNetworkEndpointGroup"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :id
@@ -31,16 +31,16 @@ class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @network_endpoint_type = @fetched['networkEndpointType']
-    @default_port = @fetched['defaultPort']
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @network_endpoint_type = @fetched["networkEndpointType"]
+    @default_port = @fetched["defaultPort"]
   end
 
   def exists?
@@ -54,10 +54,10 @@ class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/networkEndpointGroups/{{name}}'
+    "projects/{{project}}/global/networkEndpointGroups/{{name}}"
   end
 end

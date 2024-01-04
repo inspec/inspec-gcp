@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_field'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_table'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_cloud_storage_file_set'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_output_path'
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_field"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_table"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_cloud_storage_file_set"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_output_path"
 module GoogleInSpec
   module DLP
     module Property
@@ -31,9 +31,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @output_path = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryOutputPath.new(args['outputPath'], to_s)
-          @cloud_storage_file_set = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.new(args['cloudStorageFileSet'], to_s)
-          @big_query_field = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryBigQueryField.new(args['bigQueryField'], to_s)
+          @output_path = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryOutputPath.new(args["outputPath"], to_s)
+          @cloud_storage_file_set = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.new(args["cloudStorageFileSet"], to_s)
+          @big_query_field = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionaryBigQueryField.new(args["bigQueryField"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class SQLDatabases < GcpResourceBase
-  name 'google_sql_databases'
-  desc 'Database plural resource'
-  supports platform: 'gcp'
+  name "google_sql_databases"
+  desc "Database plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,12 +33,12 @@ class SQLDatabases < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -66,20 +66,20 @@ class SQLDatabases < GcpResourceBase
 
   def transformers
     {
-      'charset' => ->(obj) { [:charset, obj['charset']] },
-      'collation' => ->(obj) { [:collation, obj['collation']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'instance' => ->(obj) { [:instance, obj['instance']] },
+      "charset" => ->(obj) { [:charset, obj["charset"]] },
+      "collation" => ->(obj) { [:collation, obj["collation"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "instance" => ->(obj) { [:instance, obj["instance"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://sqladmin.googleapis.com/sql/v1beta4/'
+    "https://sqladmin.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{instance}}/databases'
+    "projects/{{project}}/instances/{{instance}}/databases"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class IAMServiceAccountKeys < GcpResourceBase
-  name 'google_service_account_keys'
-  desc 'ServiceAccountKey plural resource'
-  supports platform: 'gcp'
+  name "google_service_account_keys"
+  desc "ServiceAccountKey plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,12 +39,12 @@ class IAMServiceAccountKeys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('keys')
+    @table = fetch_wrapped_resource("keys")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -72,16 +72,16 @@ class IAMServiceAccountKeys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:key_name, obj['name']] },
-      'privateKeyType' => ->(obj) { [:private_key_type, obj['privateKeyType']] },
-      'keyAlgorithm' => ->(obj) { [:key_algorithm, obj['keyAlgorithm']] },
-      'privateKeyData' => ->(obj) { [:private_key_data, obj['privateKeyData']] },
-      'publicKeyData' => ->(obj) { [:public_key_data, obj['publicKeyData']] },
-      'validAfterTime' => ->(obj) { [:valid_after_time, parse_time_string(obj['validAfterTime'])] },
-      'validBeforeTime' => ->(obj) { [:valid_before_time, parse_time_string(obj['validBeforeTime'])] },
-      'keyType' => ->(obj) { [:key_type, obj['keyType']] },
-      'serviceAccount' => ->(obj) { [:service_account, obj['serviceAccount']] },
-      'path' => ->(obj) { [:path, obj['path']] },
+      "name" => ->(obj) { [:key_name, obj["name"]] },
+      "privateKeyType" => ->(obj) { [:private_key_type, obj["privateKeyType"]] },
+      "keyAlgorithm" => ->(obj) { [:key_algorithm, obj["keyAlgorithm"]] },
+      "privateKeyData" => ->(obj) { [:private_key_data, obj["privateKeyData"]] },
+      "publicKeyData" => ->(obj) { [:public_key_data, obj["publicKeyData"]] },
+      "validAfterTime" => ->(obj) { [:valid_after_time, parse_time_string(obj["validAfterTime"])] },
+      "validBeforeTime" => ->(obj) { [:valid_before_time, parse_time_string(obj["validBeforeTime"])] },
+      "keyType" => ->(obj) { [:key_type, obj["keyType"]] },
+      "serviceAccount" => ->(obj) { [:service_account, obj["serviceAccount"]] },
+      "path" => ->(obj) { [:path, obj["path"]] },
     }
   end
 
@@ -93,10 +93,10 @@ class IAMServiceAccountKeys < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://iam.googleapis.com/v1/'
+    "https://iam.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/serviceAccounts/{{service_account}}/keys'
+    "projects/{{project}}/serviceAccounts/{{service_account}}/keys"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @disable_connection_drain_on_failover = args['disableConnectionDrainOnFailover']
-          @drop_traffic_if_unhealthy = args['dropTrafficIfUnhealthy']
-          @failover_ratio = args['failoverRatio']
+          @disable_connection_drain_on_failover = args["disableConnectionDrainOnFailover"]
+          @drop_traffic_if_unhealthy = args["dropTrafficIfUnhealthy"]
+          @failover_ratio = args["failoverRatio"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class BigQueryDatasets < GcpResourceBase
-  name 'google_bigquery_datasets'
-  desc 'Dataset plural resource'
-  supports platform: 'gcp'
+  name "google_bigquery_datasets"
+  desc "Dataset plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -37,12 +37,12 @@ class BigQueryDatasets < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('datasets')
+    @table = fetch_wrapped_resource("datasets")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -70,14 +70,14 @@ class BigQueryDatasets < GcpResourceBase
 
   def transformers
     {
-      'datasetReference' => ->(obj) { [:dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj['datasetReference'], to_s)] },
-      'defaultPartitionExpirationMs' => ->(obj) { [:default_partition_expiration_ms, obj['defaultPartitionExpirationMs']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'friendlyName' => ->(obj) { [:friendly_name, obj['friendlyName']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'location' => ->(obj) { [:location, obj['location']] },
-      'defaultEncryptionConfiguration' => ->(obj) { [:default_encryption_configuration, GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(obj['defaultEncryptionConfiguration'], to_s)] },
+      "datasetReference" => ->(obj) { [:dataset_reference, GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(obj["datasetReference"], to_s)] },
+      "defaultPartitionExpirationMs" => ->(obj) { [:default_partition_expiration_ms, obj["defaultPartitionExpirationMs"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "friendlyName" => ->(obj) { [:friendly_name, obj["friendlyName"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "location" => ->(obj) { [:location, obj["location"]] },
+      "defaultEncryptionConfiguration" => ->(obj) { [:default_encryption_configuration, GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(obj["defaultEncryptionConfiguration"], to_s)] },
     }
   end
 
@@ -94,7 +94,7 @@ class BigQueryDatasets < GcpResourceBase
       combo = item.merge(@params)
       item_identifiers = {}
       params.each do |param|
-        if param == 'name'
+        if param == "name"
           item_identifiers[param.to_sym] = item[:dataset_reference].dataset_id
         else
           item_identifiers[param.to_sym] = combo[param.to_sym]
@@ -108,10 +108,10 @@ class BigQueryDatasets < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/bigquery/v2/'
+    "https://www.googleapis.com/bigquery/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/datasets'
+    "projects/{{project}}/datasets"
   end
 end

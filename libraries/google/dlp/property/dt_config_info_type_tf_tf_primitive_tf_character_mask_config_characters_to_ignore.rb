@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @characters_to_skip = args['charactersToSkip']
-          @common_characters_to_ignore = args['commonCharactersToIgnore']
+          @characters_to_skip = args["charactersToSkip"]
+          @common_characters_to_ignore = args["commonCharactersToIgnore"]
         end
 
         def to_s

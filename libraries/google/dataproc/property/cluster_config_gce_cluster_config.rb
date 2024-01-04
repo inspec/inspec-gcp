@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -34,13 +34,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @zone_uri = args['zoneUri']
-          @network_uri = args['networkUri']
-          @subnetwork_uri = args['subnetworkUri']
-          @internal_ip_only = args['internalIpOnly']
-          @service_account_scopes = args['serviceAccountScopes']
-          @tags = args['tags']
-          @metadata = args['metadata']
+          @zone_uri = args["zoneUri"]
+          @network_uri = args["networkUri"]
+          @subnetwork_uri = args["subnetworkUri"]
+          @internal_ip_only = args["internalIpOnly"]
+          @service_account_scopes = args["serviceAccountScopes"]
+          @tags = args["tags"]
+          @metadata = args["metadata"]
         end
 
         def to_s

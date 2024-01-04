@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,19 +13,19 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/endpoint_deployed_models'
-require 'google/vertexai/property/endpoint_encryption_spec'
-require 'google/vertexai/property/endpoint_labels'
-require 'google/vertexai/property/endpoint_predict_request_response_logging_config'
-require 'google/vertexai/property/endpoint_predict_request_response_logging_config_bigquery_destination'
-require 'google/vertexai/property/endpoint_traffic_split'
+require "gcp_backend"
+require "google/vertexai/property/endpoint_deployed_models"
+require "google/vertexai/property/endpoint_encryption_spec"
+require "google/vertexai/property/endpoint_labels"
+require "google/vertexai/property/endpoint_predict_request_response_logging_config"
+require "google/vertexai/property/endpoint_predict_request_response_logging_config_bigquery_destination"
+require "google/vertexai/property/endpoint_traffic_split"
 
 # A provider to manage Vertex AI resources.
 class VertexAIEndpoint < GcpResourceBase
-  name 'google_vertex_ai_endpoint'
-  desc 'Endpoint'
-  supports platform: 'gcp'
+  name "google_vertex_ai_endpoint"
+  desc "Endpoint"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :encryption_spec
@@ -46,25 +46,25 @@ class VertexAIEndpoint < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @encryption_spec = GoogleInSpec::VertexAI::Property::EndpointEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @enable_private_service_connect = @fetched['enablePrivateServiceConnect']
-    @update_time = @fetched['updateTime']
-    @model_deployment_monitoring_job = @fetched['modelDeploymentMonitoringJob']
-    @description = @fetched['description']
-    @deployed_models = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsArray.parse(@fetched['deployedModels'], to_s)
-    @network = @fetched['network']
-    @traffic_split = GoogleInSpec::VertexAI::Property::EndpointTrafficSplit.new(@fetched['trafficSplit'], to_s)
-    @labels = GoogleInSpec::VertexAI::Property::EndpointLabels.new(@fetched['labels'], to_s)
-    @display_name = @fetched['displayName']
-    @predict_request_response_logging_config = GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfig.new(@fetched['predictRequestResponseLoggingConfig'], to_s)
-    @etag = @fetched['etag']
-    @create_time = @fetched['createTime']
-    @name = @fetched['name']
+    @encryption_spec = GoogleInSpec::VertexAI::Property::EndpointEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @enable_private_service_connect = @fetched["enablePrivateServiceConnect"]
+    @update_time = @fetched["updateTime"]
+    @model_deployment_monitoring_job = @fetched["modelDeploymentMonitoringJob"]
+    @description = @fetched["description"]
+    @deployed_models = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsArray.parse(@fetched["deployedModels"], to_s)
+    @network = @fetched["network"]
+    @traffic_split = GoogleInSpec::VertexAI::Property::EndpointTrafficSplit.new(@fetched["trafficSplit"], to_s)
+    @labels = GoogleInSpec::VertexAI::Property::EndpointLabels.new(@fetched["labels"], to_s)
+    @display_name = @fetched["displayName"]
+    @predict_request_response_logging_config = GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfig.new(@fetched["predictRequestResponseLoggingConfig"], to_s)
+    @etag = @fetched["etag"]
+    @create_time = @fetched["createTime"]
+    @name = @fetched["name"]
   end
 
   def exists?
@@ -78,10 +78,10 @@ class VertexAIEndpoint < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeAddresss < GcpResourceBase
-  name 'google_compute_addresses'
-  desc 'Address plural resource'
-  supports platform: 'gcp'
+  name "google_compute_addresses"
+  desc "Address plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -43,12 +43,12 @@ class ComputeAddresss < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -76,20 +76,20 @@ class ComputeAddresss < GcpResourceBase
 
   def transformers
     {
-      'address' => ->(obj) { [:address, obj['address']] },
-      'addressType' => ->(obj) { [:address_type, obj['addressType']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
-      'networkTier' => ->(obj) { [:network_tier, obj['networkTier']] },
-      'subnetwork' => ->(obj) { [:subnetwork, obj['subnetwork']] },
-      'users' => ->(obj) { [:users, obj['users']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
-      'status' => ->(obj) { [:status, obj['status']] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "address" => ->(obj) { [:address, obj["address"]] },
+      "addressType" => ->(obj) { [:address_type, obj["addressType"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "purpose" => ->(obj) { [:purpose, obj["purpose"]] },
+      "networkTier" => ->(obj) { [:network_tier, obj["networkTier"]] },
+      "subnetwork" => ->(obj) { [:subnetwork, obj["subnetwork"]] },
+      "users" => ->(obj) { [:users, obj["users"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "labelFingerprint" => ->(obj) { [:label_fingerprint, obj["labelFingerprint"]] },
+      "status" => ->(obj) { [:status, obj["status"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -102,13 +102,13 @@ class ComputeAddresss < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{location}}/addresses'
+    "projects/{{project}}/regions/{{location}}/addresses"
   end
 end

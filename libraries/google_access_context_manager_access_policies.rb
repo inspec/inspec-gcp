@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class AccessContextManagerAccessPolicys < GcpResourceBase
-  name 'google_access_context_manager_access_policies'
-  desc 'AccessPolicy plural resource'
-  supports platform: 'gcp'
+  name "google_access_context_manager_access_policies"
+  desc "AccessPolicy plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class AccessContextManagerAccessPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('accessPolicies')
+    @table = fetch_wrapped_resource("accessPolicies")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,11 +67,11 @@ class AccessContextManagerAccessPolicys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'updateTime' => ->(obj) { [:update_time, parse_time_string(obj['updateTime'])] },
-      'parent' => ->(obj) { [:parent, obj['parent']] },
-      'title' => ->(obj) { [:title, obj['title']] },
+      "name" => ->(obj) { [:name, name_from_self_link(obj["name"])] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "updateTime" => ->(obj) { [:update_time, parse_time_string(obj["updateTime"])] },
+      "parent" => ->(obj) { [:parent, obj["parent"]] },
+      "title" => ->(obj) { [:title, obj["title"]] },
     }
   end
 
@@ -83,10 +83,10 @@ class AccessContextManagerAccessPolicys < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://accesscontextmanager.googleapis.com/v1/'
+    "https://accesscontextmanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'accessPolicies?parent=organizations/{{org_id}}'
+    "accessPolicies?parent=organizations/{{org_id}}"
   end
 end

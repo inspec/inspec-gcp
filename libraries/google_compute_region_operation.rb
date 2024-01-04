@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegionOperation < GcpResourceBase
-  name 'google_compute_region_operation'
-  desc 'RegionOperation'
-  supports platform: 'gcp'
+  name "google_compute_region_operation"
+  desc "RegionOperation"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -38,23 +38,23 @@ class ComputeRegionOperation < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @target_id = @fetched['targetId']
-    @status = @fetched['status']
-    @user = @fetched['user']
-    @insert_time = @fetched['insertTime']
-    @start_time = @fetched['startTime']
-    @end_time = @fetched['endTime']
-    @progress = @fetched['progress']
-    @zone = @fetched['zone']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @target_id = @fetched["targetId"]
+    @status = @fetched["status"]
+    @user = @fetched["user"]
+    @insert_time = @fetched["insertTime"]
+    @start_time = @fetched["startTime"]
+    @end_time = @fetched["endTime"]
+    @progress = @fetched["progress"]
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -73,10 +73,10 @@ class ComputeRegionOperation < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/operations/{{name}}'
+    "projects/{{project}}/regions/{{region}}/operations/{{name}}"
   end
 end

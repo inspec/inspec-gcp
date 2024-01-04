@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/kms/property/cryptokey_version_template'
+require "gcp_backend"
+require "google/kms/property/cryptokey_version_template"
 
 # A provider to manage Cloud Key Management Service resources.
 class KMSCryptoKey < GcpResourceBase
-  name 'google_kms_crypto_key'
-  desc 'CryptoKey'
-  supports platform: 'gcp'
+  name "google_kms_crypto_key"
+  desc "CryptoKey"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :crypto_key_name
@@ -36,20 +36,20 @@ class KMSCryptoKey < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @crypto_key_name = name_from_self_link(@fetched['name'])
-    @create_time = parse_time_string(@fetched['createTime'])
-    @labels = @fetched['labels']
-    @purpose = @fetched['purpose']
-    @rotation_period = @fetched['rotationPeriod']
-    @version_template = GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(@fetched['versionTemplate'], to_s)
-    @next_rotation_time = parse_time_string(@fetched['nextRotationTime'])
-    @key_ring = @fetched['keyRing']
-    @skip_initial_version_creation = @fetched['skipInitialVersionCreation']
+    @crypto_key_name = name_from_self_link(@fetched["name"])
+    @create_time = parse_time_string(@fetched["createTime"])
+    @labels = @fetched["labels"]
+    @purpose = @fetched["purpose"]
+    @rotation_period = @fetched["rotationPeriod"]
+    @version_template = GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(@fetched["versionTemplate"], to_s)
+    @next_rotation_time = parse_time_string(@fetched["nextRotationTime"])
+    @key_ring = @fetched["keyRing"]
+    @skip_initial_version_creation = @fetched["skipInitialVersionCreation"]
   end
 
   # Handles parsing RFC3339 time string
@@ -67,16 +67,16 @@ class KMSCryptoKey < GcpResourceBase
 
   def primary_state
     return if @fetched.nil? || @fetched.empty?
-    @fetched.dig('primary', 'state')
+    @fetched.dig("primary", "state")
   end
 
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}/cryptoKeys/{{name}}'
+    "projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}/cryptoKeys/{{name}}"
   end
 end

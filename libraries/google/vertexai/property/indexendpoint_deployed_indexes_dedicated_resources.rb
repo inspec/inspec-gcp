@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/indexendpoint_deployed_indexes_dedicated_resources_autoscaling_metric_specs'
-require 'google/vertexai/property/indexendpoint_deployed_indexes_dedicated_resources_machine_spec'
+require "google/vertexai/property/indexendpoint_deployed_indexes_dedicated_resources_autoscaling_metric_specs"
+require "google/vertexai/property/indexendpoint_deployed_indexes_dedicated_resources_machine_spec"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -30,10 +30,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @machine_spec = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesDedicatedResourcesMachineSpec.new(args['machineSpec'], to_s)
-          @max_replica_count = args['maxReplicaCount']
-          @autoscaling_metric_specs = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesDedicatedResourcesAutoscalingMetricSpecsArray.parse(args['autoscalingMetricSpecs'], to_s)
-          @min_replica_count = args['minReplicaCount']
+          @machine_spec = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesDedicatedResourcesMachineSpec.new(args["machineSpec"], to_s)
+          @max_replica_count = args["maxReplicaCount"]
+          @autoscaling_metric_specs = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesDedicatedResourcesAutoscalingMetricSpecsArray.parse(args["autoscalingMetricSpecs"], to_s)
+          @min_replica_count = args["minReplicaCount"]
         end
 
         def to_s

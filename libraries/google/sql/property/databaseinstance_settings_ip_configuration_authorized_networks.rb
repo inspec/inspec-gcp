@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @expiration_time = parse_time_string(args['expirationTime'])
-          @name = args['name']
-          @value = args['value']
+          @expiration_time = parse_time_string(args["expirationTime"])
+          @name = args["name"]
+          @value = args["value"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @source_ip_ranges_to_nat = args['sourceIpRangesToNat']
-          @secondary_ip_range_names = args['secondaryIpRangeNames']
+          @name = args["name"]
+          @source_ip_ranges_to_nat = args["sourceIpRangesToNat"]
+          @secondary_ip_range_names = args["secondaryIpRangeNames"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/nodetemplate_node_type_flexibility'
-require 'google/compute/property/nodetemplate_server_binding'
+require "gcp_backend"
+require "google/compute/property/nodetemplate_node_type_flexibility"
+require "google/compute/property/nodetemplate_server_binding"
 
 # A provider to manage Compute Engine resources.
 class ComputeNodeTemplate < GcpResourceBase
-  name 'google_compute_node_template'
-  desc 'NodeTemplate'
-  supports platform: 'gcp'
+  name "google_compute_node_template"
+  desc "NodeTemplate"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -37,20 +37,20 @@ class ComputeNodeTemplate < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @name = @fetched['name']
-    @node_affinity_labels = @fetched['nodeAffinityLabels']
-    @node_type = @fetched['nodeType']
-    @node_type_flexibility = GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(@fetched['nodeTypeFlexibility'], to_s)
-    @server_binding = GoogleInSpec::Compute::Property::NodeTemplateServerBinding.new(@fetched['serverBinding'], to_s)
-    @cpu_overcommit_type = @fetched['cpuOvercommitType']
-    @region = @fetched['region']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @name = @fetched["name"]
+    @node_affinity_labels = @fetched["nodeAffinityLabels"]
+    @node_type = @fetched["nodeType"]
+    @node_type_flexibility = GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(@fetched["nodeTypeFlexibility"], to_s)
+    @server_binding = GoogleInSpec::Compute::Property::NodeTemplateServerBinding.new(@fetched["serverBinding"], to_s)
+    @cpu_overcommit_type = @fetched["cpuOvercommitType"]
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -70,13 +70,13 @@ class ComputeNodeTemplate < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}'
+    "projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}"
   end
 end

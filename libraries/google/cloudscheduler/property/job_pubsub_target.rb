@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @topic_name = args['topicName']
-          @data = args['data']
-          @attributes = args['attributes']
+          @topic_name = args["topicName"]
+          @data = args["data"]
+          @attributes = args["attributes"]
         end
 
         def to_s

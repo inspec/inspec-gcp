@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_python_package_spec_env'
+require "google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_python_package_spec_env"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -31,11 +31,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @package_uris = args['packageUris']
-          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpecEnvArray.parse(args['env'], to_s)
-          @executor_image_uri = args['executorImageUri']
-          @args = args['args']
-          @python_module = args['pythonModule']
+          @package_uris = args["packageUris"]
+          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpecEnvArray.parse(args["env"], to_s)
+          @executor_image_uri = args["executorImageUri"]
+          @args = args["args"]
+          @python_module = args["pythonModule"]
         end
 
         def to_s

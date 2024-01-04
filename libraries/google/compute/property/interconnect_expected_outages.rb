@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -36,14 +36,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @description = args['description']
-          @source = args['source']
-          @state = args['state']
-          @issue_type = args['issueType']
-          @affected_circuits = args['affectedCircuits']
-          @start_time = parse_time_string(args['startTime'])
-          @end_time = parse_time_string(args['endTime'])
+          @name = args["name"]
+          @description = args["description"]
+          @source = args["source"]
+          @state = args["state"]
+          @issue_type = args["issueType"]
+          @affected_circuits = args["affectedCircuits"]
+          @start_time = parse_time_string(args["startTime"])
+          @end_time = parse_time_string(args["endTime"])
         end
 
         def to_s

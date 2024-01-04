@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @auto_deploy_load_threshold = args['autoDeployLoadThreshold']
-          @auto_deploy_confidence_threshold = args['autoDeployConfidenceThreshold']
-          @auto_deploy_impacted_baseline_threshold = args['autoDeployImpactedBaselineThreshold']
-          @auto_deploy_expiration_sec = args['autoDeployExpirationSec']
+          @name = args["name"]
+          @auto_deploy_load_threshold = args["autoDeployLoadThreshold"]
+          @auto_deploy_confidence_threshold = args["autoDeployConfidenceThreshold"]
+          @auto_deploy_impacted_baseline_threshold = args["autoDeployImpactedBaselineThreshold"]
+          @auto_deploy_expiration_sec = args["autoDeployExpirationSec"]
         end
 
         def to_s

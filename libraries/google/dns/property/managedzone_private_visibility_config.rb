@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dns/property/managedzone_private_visibility_config_networks'
+require "google/dns/property/managedzone_private_visibility_config_networks"
 module GoogleInSpec
   module DNS
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @networks = GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfigNetworksArray.parse(args['networks'], to_s)
+          @networks = GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfigNetworksArray.parse(args["networks"], to_s)
         end
 
         def to_s

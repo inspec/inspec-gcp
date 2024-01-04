@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -36,14 +36,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @allow_origins = args['allowOrigins']
-          @allow_origin_regexes = args['allowOriginRegexes']
-          @allow_methods = args['allowMethods']
-          @allow_headers = args['allowHeaders']
-          @expose_headers = args['exposeHeaders']
-          @max_age = args['maxAge']
-          @allow_credentials = args['allowCredentials']
-          @disabled = args['disabled']
+          @allow_origins = args["allowOrigins"]
+          @allow_origin_regexes = args["allowOriginRegexes"]
+          @allow_methods = args["allowMethods"]
+          @allow_headers = args["allowHeaders"]
+          @expose_headers = args["exposeHeaders"]
+          @max_age = args["maxAge"]
+          @allow_credentials = args["allowCredentials"]
+          @disabled = args["disabled"]
         end
 
         def to_s

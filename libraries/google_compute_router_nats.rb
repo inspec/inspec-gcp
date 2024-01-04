@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeRouterNats < GcpResourceBase
-  name 'google_compute_router_nats'
-  desc 'RouterNat plural resource'
-  supports platform: 'gcp'
+  name "google_compute_router_nats"
+  desc "RouterNat plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -44,12 +44,12 @@ class ComputeRouterNats < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('nats')
+    @table = fetch_wrapped_resource("nats")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -77,21 +77,21 @@ class ComputeRouterNats < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'natIpAllocateOption' => ->(obj) { [:nat_ip_allocate_option, obj['natIpAllocateOption']] },
-      'natIps' => ->(obj) { [:nat_ips, obj['natIps']] },
-      'drainNatIps' => ->(obj) { [:drain_nat_ips, obj['drainNatIps']] },
-      'sourceSubnetworkIpRangesToNat' => ->(obj) { [:source_subnetwork_ip_ranges_to_nat, obj['sourceSubnetworkIpRangesToNat']] },
-      'subnetworks' => ->(obj) { [:subnetwork, GoogleInSpec::Compute::Property::RouterNatSubnetworkArray.parse(obj['subnetworks'], to_s)] },
-      'minPortsPerVm' => ->(obj) { [:min_ports_per_vm, obj['minPortsPerVm']] },
-      'udpIdleTimeoutSec' => ->(obj) { [:udp_idle_timeout_sec, obj['udpIdleTimeoutSec']] },
-      'icmpIdleTimeoutSec' => ->(obj) { [:icmp_idle_timeout_sec, obj['icmpIdleTimeoutSec']] },
-      'tcpEstablishedIdleTimeoutSec' => ->(obj) { [:tcp_established_idle_timeout_sec, obj['tcpEstablishedIdleTimeoutSec']] },
-      'tcpTransitoryIdleTimeoutSec' => ->(obj) { [:tcp_transitory_idle_timeout_sec, obj['tcpTransitoryIdleTimeoutSec']] },
-      'logConfig' => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::RouterNatLogConfig.new(obj['logConfig'], to_s)] },
-      'enableEndpointIndependentMapping' => ->(obj) { [:enable_endpoint_independent_mapping, obj['enableEndpointIndependentMapping']] },
-      'router' => ->(obj) { [:router, obj['router']] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "natIpAllocateOption" => ->(obj) { [:nat_ip_allocate_option, obj["natIpAllocateOption"]] },
+      "natIps" => ->(obj) { [:nat_ips, obj["natIps"]] },
+      "drainNatIps" => ->(obj) { [:drain_nat_ips, obj["drainNatIps"]] },
+      "sourceSubnetworkIpRangesToNat" => ->(obj) { [:source_subnetwork_ip_ranges_to_nat, obj["sourceSubnetworkIpRangesToNat"]] },
+      "subnetworks" => ->(obj) { [:subnetwork, GoogleInSpec::Compute::Property::RouterNatSubnetworkArray.parse(obj["subnetworks"], to_s)] },
+      "minPortsPerVm" => ->(obj) { [:min_ports_per_vm, obj["minPortsPerVm"]] },
+      "udpIdleTimeoutSec" => ->(obj) { [:udp_idle_timeout_sec, obj["udpIdleTimeoutSec"]] },
+      "icmpIdleTimeoutSec" => ->(obj) { [:icmp_idle_timeout_sec, obj["icmpIdleTimeoutSec"]] },
+      "tcpEstablishedIdleTimeoutSec" => ->(obj) { [:tcp_established_idle_timeout_sec, obj["tcpEstablishedIdleTimeoutSec"]] },
+      "tcpTransitoryIdleTimeoutSec" => ->(obj) { [:tcp_transitory_idle_timeout_sec, obj["tcpTransitoryIdleTimeoutSec"]] },
+      "logConfig" => ->(obj) { [:log_config, GoogleInSpec::Compute::Property::RouterNatLogConfig.new(obj["logConfig"], to_s)] },
+      "enableEndpointIndependentMapping" => ->(obj) { [:enable_endpoint_independent_mapping, obj["enableEndpointIndependentMapping"]] },
+      "router" => ->(obj) { [:router, obj["router"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -99,13 +99,13 @@ class ComputeRouterNats < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/routers/{{router}}'
+    "projects/{{project}}/regions/{{region}}/routers/{{router}}"
   end
 end

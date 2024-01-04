@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleKMSCryptoKeyIAMBinding < GcpResourceBase
-    name 'google_kms_crypto_key_iam_binding'
-    desc 'Verifies settings for a single KMS Crypto Key IAM binding'
+    name "google_kms_crypto_key_iam_binding"
+    desc "Verifies settings for a single KMS Crypto Key IAM binding"
 
     example "
       describe google_kms_crypto_key_iam_binding(crypto_key_url: 'projects/project/locations/europe-west2/keyRings/key-ring/cryptoKeys/key-name',  role: 'roles/owner') do

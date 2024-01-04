@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_view_user_defined_function_resources'
+require "google/bigquery/property/table_view_user_defined_function_resources"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @use_legacy_sql = args['useLegacySql']
-          @user_defined_function_resources = GoogleInSpec::BigQuery::Property::TableViewUserDefinedFunctionResourcesArray.parse(args['userDefinedFunctionResources'], to_s)
+          @use_legacy_sql = args["useLegacySql"]
+          @user_defined_function_resources = GoogleInSpec::BigQuery::Property::TableViewUserDefinedFunctionResourcesArray.parse(args["userDefinedFunctionResources"], to_s)
         end
 
         def to_s

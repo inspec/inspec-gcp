@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleCloudSqlUsers < GcpResourceBase
-    name 'google_sql_users'
-    desc 'Verifies settings for GCP Cloud SQL Database users in bulk'
+    name "google_sql_users"
+    desc "Verifies settings for GCP Cloud SQL Database users in bulk"
 
     example "
       describe google_sql_users(project: 'chef-inspec-gcp', database: 'database') do

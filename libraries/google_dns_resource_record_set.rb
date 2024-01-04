@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud DNS resources.
 class DNSResourceRecordSet < GcpResourceBase
-  name 'google_dns_resource_record_set'
-  desc 'ResourceRecordSet'
-  supports platform: 'gcp'
+  name "google_dns_resource_record_set"
+  desc "ResourceRecordSet"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -31,7 +31,7 @@ class DNSResourceRecordSet < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     @fetched = unwrap(fetched, params)
     parse unless @fetched.nil?
   end
@@ -41,7 +41,7 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def collection_item
-    'rrsets'
+    "rrsets"
   end
 
   def unwrap(fetched, params)
@@ -49,11 +49,11 @@ class DNSResourceRecordSet < GcpResourceBase
   end
 
   def parse
-    @name = @fetched['name']
-    @type = @fetched['type']
-    @ttl = @fetched['ttl']
-    @target = @fetched['rrdatas']
-    @managed_zone = @fetched['managed_zone']
+    @name = @fetched["name"]
+    @type = @fetched["type"]
+    @ttl = @fetched["ttl"]
+    @target = @fetched["rrdatas"]
+    @managed_zone = @fetched["managed_zone"]
   end
 
   def exists?
@@ -68,13 +68,13 @@ class DNSResourceRecordSet < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://dns.googleapis.com/dns/v1beta2/'
+      "https://dns.googleapis.com/dns/v1beta2/"
     else
-      'https://dns.googleapis.com/dns/v1/'
+      "https://dns.googleapis.com/dns/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}'
+    "projects/{{project}}/managedZones/{{managed_zone}}/rrsets?name={{name}}&type={{type}}"
   end
 end

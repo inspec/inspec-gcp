@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # Copyright 2017 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/iam/property/iam_policy_audit_configs_audit_log_configs'
+require "google/iam/property/iam_policy_audit_configs_audit_log_configs"
 module GoogleInSpec
   module Iam
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @service = args['service']
-          @audit_log_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsAuditLogConfigsArray.parse(args['auditLogConfigs'], to_s)
+          @service = args["service"]
+          @audit_log_configs = GoogleInSpec::Iam::Property::IamPolicyAuditConfigsAuditLogConfigsArray.parse(args["auditLogConfigs"], to_s)
         end
 
         def to_s

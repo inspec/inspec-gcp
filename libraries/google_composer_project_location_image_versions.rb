@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComposerProjectLocationImageVersions < GcpResourceBase
-  name 'google_composer_project_location_image_versions'
-  desc 'ProjectLocationImageVersion plural resource'
-  supports platform: 'gcp'
+  name "google_composer_project_location_image_versions"
+  desc "ProjectLocationImageVersion plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -31,12 +31,12 @@ class ComposerProjectLocationImageVersions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('imageVersions')
+    @table = fetch_wrapped_resource("imageVersions")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -64,18 +64,18 @@ class ComposerProjectLocationImageVersions < GcpResourceBase
 
   def transformers
     {
-      'imageVersions' => ->(obj) { [:image_versions, obj['imageVersions']] },
-      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
+      "imageVersions" => ->(obj) { [:image_versions, obj["imageVersions"]] },
+      "nextPageToken" => ->(obj) { [:next_page_token, obj["nextPageToken"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://composer.googleapis.com/v1/'
+    "https://composer.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/imageVersions'
+    "{{parent}}/imageVersions"
   end
 end

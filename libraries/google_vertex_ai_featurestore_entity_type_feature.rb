@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/featurestoreentitytypefeature_labels'
+require "gcp_backend"
+require "google/vertexai/property/featurestoreentitytypefeature_labels"
 
 # A provider to manage Vertex AI resources.
 class VertexAIFeaturestoreEntityTypeFeature < GcpResourceBase
-  name 'google_vertex_ai_featurestore_entity_type_feature'
-  desc 'FeaturestoreEntityTypeFeature'
-  supports platform: 'gcp'
+  name "google_vertex_ai_featurestore_entity_type_feature"
+  desc "FeaturestoreEntityTypeFeature"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :description
@@ -36,20 +36,20 @@ class VertexAIFeaturestoreEntityTypeFeature < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @description = @fetched['description']
-    @create_time = @fetched['createTime']
-    @monitoring_stats_anomalies = @fetched['monitoringStatsAnomalies']
-    @etag = @fetched['etag']
-    @labels = GoogleInSpec::VertexAI::Property::FeaturestoreEntityTypeFeatureLabels.new(@fetched['labels'], to_s)
-    @name = @fetched['name']
-    @update_time = @fetched['updateTime']
-    @disable_monitoring = @fetched['disableMonitoring']
-    @value_type = @fetched['valueType']
+    @description = @fetched["description"]
+    @create_time = @fetched["createTime"]
+    @monitoring_stats_anomalies = @fetched["monitoringStatsAnomalies"]
+    @etag = @fetched["etag"]
+    @labels = GoogleInSpec::VertexAI::Property::FeaturestoreEntityTypeFeatureLabels.new(@fetched["labels"], to_s)
+    @name = @fetched["name"]
+    @update_time = @fetched["updateTime"]
+    @disable_monitoring = @fetched["disableMonitoring"]
+    @value_type = @fetched["valueType"]
   end
 
   def exists?
@@ -63,10 +63,10 @@ class VertexAIFeaturestoreEntityTypeFeature < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

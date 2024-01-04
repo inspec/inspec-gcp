@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ArtifactregistryProjectLocationRepositorys < GcpResourceBase
-  name 'google_artifactregistry_project_location_repositories'
-  desc 'ProjectLocationRepository plural resource'
-  supports platform: 'gcp'
+  name "google_artifactregistry_project_location_repositories"
+  desc "ProjectLocationRepository plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -45,12 +45,12 @@ class ArtifactregistryProjectLocationRepositorys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('repositories')
+    @table = fetch_wrapped_resource("repositories")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -78,32 +78,32 @@ class ArtifactregistryProjectLocationRepositorys < GcpResourceBase
 
   def transformers
     {
-      'mavenConfig' => ->(obj) { [:maven_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryMavenConfig.new(obj['mavenConfig'], to_s)] },
-      'dockerConfig' => ->(obj) { [:docker_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryDockerConfig.new(obj['dockerConfig'], to_s)] },
-      'virtualRepositoryConfig' => ->(obj) { [:virtual_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryVirtualRepositoryConfig.new(obj['virtualRepositoryConfig'], to_s)] },
-      'remoteRepositoryConfig' => ->(obj) { [:remote_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfig.new(obj['remoteRepositoryConfig'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'format' => ->(obj) { [:format, obj['format']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryLabels.new(obj['labels'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'kmsKeyName' => ->(obj) { [:kms_key_name, obj['kmsKeyName']] },
-      'mode' => ->(obj) { [:mode, obj['mode']] },
-      'cleanupPolicies' => ->(obj) { [:cleanup_policies, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryCleanupPolicies.new(obj['cleanupPolicies'], to_s)] },
-      'sizeBytes' => ->(obj) { [:size_bytes, obj['sizeBytes']] },
-      'satisfiesPzs' => ->(obj) { [:satisfies_pzs, obj['satisfiesPzs']] },
-      'cleanupPolicyDryRun' => ->(obj) { [:cleanup_policy_dry_run, obj['cleanupPolicyDryRun']] },
+      "mavenConfig" => ->(obj) { [:maven_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryMavenConfig.new(obj["mavenConfig"], to_s)] },
+      "dockerConfig" => ->(obj) { [:docker_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryDockerConfig.new(obj["dockerConfig"], to_s)] },
+      "virtualRepositoryConfig" => ->(obj) { [:virtual_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryVirtualRepositoryConfig.new(obj["virtualRepositoryConfig"], to_s)] },
+      "remoteRepositoryConfig" => ->(obj) { [:remote_repository_config, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfig.new(obj["remoteRepositoryConfig"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "format" => ->(obj) { [:format, obj["format"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryLabels.new(obj["labels"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "kmsKeyName" => ->(obj) { [:kms_key_name, obj["kmsKeyName"]] },
+      "mode" => ->(obj) { [:mode, obj["mode"]] },
+      "cleanupPolicies" => ->(obj) { [:cleanup_policies, GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryCleanupPolicies.new(obj["cleanupPolicies"], to_s)] },
+      "sizeBytes" => ->(obj) { [:size_bytes, obj["sizeBytes"]] },
+      "satisfiesPzs" => ->(obj) { [:satisfies_pzs, obj["satisfiesPzs"]] },
+      "cleanupPolicyDryRun" => ->(obj) { [:cleanup_policy_dry_run, obj["cleanupPolicyDryRun"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://artifactregistry.googleapis.com/v1beta1/'
+    "https://artifactregistry.googleapis.com/v1beta1/"
   end
 
   def resource_base_url
-    '{{parent}}/repositories'
+    "{{parent}}/repositories"
   end
 end

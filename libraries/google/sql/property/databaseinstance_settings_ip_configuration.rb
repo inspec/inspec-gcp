@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/sql/property/databaseinstance_settings_ip_configuration_authorized_networks'
+require "google/sql/property/databaseinstance_settings_ip_configuration_authorized_networks"
 module GoogleInSpec
   module SQL
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ipv4_enabled = args['ipv4Enabled']
-          @authorized_networks = GoogleInSpec::SQL::Property::DatabaseInstanceSettingsIpConfigurationAuthorizedNetworksArray.parse(args['authorizedNetworks'], to_s)
-          @require_ssl = args['requireSsl']
+          @ipv4_enabled = args["ipv4Enabled"]
+          @authorized_networks = GoogleInSpec::SQL::Property::DatabaseInstanceSettingsIpConfigurationAuthorizedNetworksArray.parse(args["authorizedNetworks"], to_s)
+          @require_ssl = args["requireSsl"]
         end
 
         def to_s

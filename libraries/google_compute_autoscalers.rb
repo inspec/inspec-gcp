@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeAutoscalers < GcpResourceBase
-  name 'google_compute_autoscalers'
-  desc 'Autoscaler plural resource'
-  supports platform: 'gcp'
+  name "google_compute_autoscalers"
+  desc "Autoscaler plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -36,12 +36,12 @@ class ComputeAutoscalers < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -69,13 +69,13 @@ class ComputeAutoscalers < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { [:id, obj['id']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'autoscalingPolicy' => ->(obj) { [:autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s)] },
-      'target' => ->(obj) { [:target, obj['target']] },
-      'zone' => ->(obj) { [:zone, obj['zone']] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "autoscalingPolicy" => ->(obj) { [:autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(obj["autoscalingPolicy"], to_s)] },
+      "target" => ->(obj) { [:target, obj["target"]] },
+      "zone" => ->(obj) { [:zone, obj["zone"]] },
     }
   end
 
@@ -88,13 +88,13 @@ class ComputeAutoscalers < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/autoscalers'
+    "projects/{{project}}/zones/{{zone}}/autoscalers"
   end
 end

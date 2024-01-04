@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAINasJobsNasTrialDetails < GcpResourceBase
-  name 'google_vertex_ai_nas_jobs_nas_trial_details'
-  desc 'NasJobsNasTrialDetail plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_nas_jobs_nas_trial_details"
+  desc "NasJobsNasTrialDetail plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,12 +33,12 @@ class VertexAINasJobsNasTrialDetails < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('nasTrialDetails')
+    @table = fetch_wrapped_resource("nasTrialDetails")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
     converted = []
@@ -65,20 +65,20 @@ class VertexAINasJobsNasTrialDetails < GcpResourceBase
 
   def transformers
     {
-      'parameters' => ->(obj) { [:parameters, obj['parameters']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'searchTrial' => ->(obj) { [:search_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailSearchTrial.new(obj['searchTrial'], to_s)] },
-      'trainTrial' => ->(obj) { [:train_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailTrainTrial.new(obj['trainTrial'], to_s)] },
+      "parameters" => ->(obj) { [:parameters, obj["parameters"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "searchTrial" => ->(obj) { [:search_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailSearchTrial.new(obj["searchTrial"], to_s)] },
+      "trainTrial" => ->(obj) { [:train_trial, GoogleInSpec::VertexAI::Property::NasJobsNasTrialDetailTrainTrial.new(obj["trainTrial"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/nasTrialDetails'
+    "{{parent}}/nasTrialDetails"
   end
 end

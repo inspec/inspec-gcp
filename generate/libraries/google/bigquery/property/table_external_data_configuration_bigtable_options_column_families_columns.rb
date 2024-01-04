@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -33,11 +33,11 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @encoding = arguments['encoding']
-          @field_name = arguments['fieldName']
-          @only_read_latest = arguments['onlyReadLatest']
-          @qualifier_string = arguments['qualifierString']
-          @type = arguments['type']
+          @encoding = arguments["encoding"]
+          @field_name = arguments["fieldName"]
+          @only_read_latest = arguments["onlyReadLatest"]
+          @qualifier_string = arguments["qualifierString"]
+          @type = arguments["type"]
         end
 
         def to_s
@@ -47,11 +47,11 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'encoding' => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
-            'field_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.field_name') { should cmp #{x.inspect} }"] },
-            'only_read_latest' => ->(x, path) { x.nil? ? [] : ["its('#{path}.only_read_latest') { should cmp #{x.inspect} }"] },
-            'qualifier_string' => ->(x, path) { x.nil? ? [] : ["its('#{path}.qualifier_string') { should cmp #{x.inspect} }"] },
-            'type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
+            "encoding" => ->(x, path) { x.nil? ? [] : ["its('#{path}.encoding') { should cmp #{x.inspect} }"] },
+            "field_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.field_name') { should cmp #{x.inspect} }"] },
+            "only_read_latest" => ->(x, path) { x.nil? ? [] : ["its('#{path}.only_read_latest') { should cmp #{x.inspect} }"] },
+            "qualifier_string" => ->(x, path) { x.nil? ? [] : ["its('#{path}.qualifier_string') { should cmp #{x.inspect} }"] },
+            "type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

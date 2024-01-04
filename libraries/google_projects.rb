@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ResourceManagerProjects < GcpResourceBase
-  name 'google_projects'
-  desc 'Project plural resource'
-  supports platform: 'gcp'
+  name "google_projects"
+  desc "Project plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -36,12 +36,12 @@ class ResourceManagerProjects < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projects')
+    @table = fetch_wrapped_resource("projects")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -69,13 +69,13 @@ class ResourceManagerProjects < GcpResourceBase
 
   def transformers
     {
-      'projectNumber' => ->(obj) { [:project_number, obj['projectNumber']] },
-      'lifecycleState' => ->(obj) { [:lifecycle_state, obj['lifecycleState']] },
-      'name' => ->(obj) { [:project_name, obj['name']] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'parent' => ->(obj) { [:parent, GoogleInSpec::ResourceManager::Property::ProjectParent.new(obj['parent'], to_s)] },
-      'projectId' => ->(obj) { [:project_id, obj['projectId']] },
+      "projectNumber" => ->(obj) { [:project_number, obj["projectNumber"]] },
+      "lifecycleState" => ->(obj) { [:lifecycle_state, obj["lifecycleState"]] },
+      "name" => ->(obj) { [:project_name, obj["name"]] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "parent" => ->(obj) { [:parent, GoogleInSpec::ResourceManager::Property::ProjectParent.new(obj["parent"], to_s)] },
+      "projectId" => ->(obj) { [:project_id, obj["projectId"]] },
     }
   end
 
@@ -87,10 +87,10 @@ class ResourceManagerProjects < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudresourcemanager.googleapis.com/v1/'
+    "https://cloudresourcemanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects'
+    "projects"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class IAMCustomRoles < GcpResourceBase
-  name 'google_project_iam_custom_roles'
-  desc 'CustomRole plural resource'
-  supports platform: 'gcp'
+  name "google_project_iam_custom_roles"
+  desc "CustomRole plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,12 +35,12 @@ class IAMCustomRoles < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('roles')
+    @table = fetch_wrapped_resource("roles")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -68,22 +68,22 @@ class IAMCustomRoles < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'title' => ->(obj) { [:title, obj['title']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'includedPermissions' => ->(obj) { [:included_permissions, obj['includedPermissions']] },
-      'stage' => ->(obj) { [:stage, obj['stage']] },
-      'deleted' => ->(obj) { [:deleted, obj['deleted']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "title" => ->(obj) { [:title, obj["title"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "includedPermissions" => ->(obj) { [:included_permissions, obj["includedPermissions"]] },
+      "stage" => ->(obj) { [:stage, obj["stage"]] },
+      "deleted" => ->(obj) { [:deleted, obj["deleted"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://iam.googleapis.com/v1/'
+    "https://iam.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/roles?view=FULL'
+    "projects/{{project}}/roles?view=FULL"
   end
 end

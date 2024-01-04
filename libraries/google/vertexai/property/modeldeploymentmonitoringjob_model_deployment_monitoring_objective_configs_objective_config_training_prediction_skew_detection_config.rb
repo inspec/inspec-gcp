@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_attribution_score_skew_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_default_skew_threshold'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_skew_thresholds'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_attribution_score_skew_thresholds"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_default_skew_threshold"
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_skew_thresholds"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -29,9 +29,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @skew_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfigSkewThresholds.new(args['skewThresholds'], to_s)
-          @default_skew_threshold = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfigDefaultSkewThreshold.new(args['defaultSkewThreshold'], to_s)
-          @attribution_score_skew_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfigAttributionScoreSkewThresholds.new(args['attributionScoreSkewThresholds'], to_s)
+          @skew_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfigSkewThresholds.new(args["skewThresholds"], to_s)
+          @default_skew_threshold = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfigDefaultSkewThreshold.new(args["defaultSkewThreshold"], to_s)
+          @attribution_score_skew_thresholds = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingPredictionSkewDetectionConfigAttributionScoreSkewThresholds.new(args["attributionScoreSkewThresholds"], to_s)
         end
 
         def to_s

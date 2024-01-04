@@ -1,13 +1,13 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'time'
-require 'google/apis/cloudkms_v1'
+
+require "gcp_backend"
+require "time"
+require "google/apis/cloudkms_v1"
 
 module Inspec::Resources
   class GoogleKMSKeyRingIAMBindings < GcpResourceBase
-    name 'google_kms_key_ring_iam_bindings'
-    desc 'Verifies settings for GCP KMS key ring IAM bindings in bulk'
+    name "google_kms_key_ring_iam_bindings"
+    desc "Verifies settings for GCP KMS key ring IAM bindings in bulk"
 
     example "
       describe google_kms_key_ring_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring') do

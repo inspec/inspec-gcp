@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,17 +13,17 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/featurestore_encryption_spec'
-require 'google/vertexai/property/featurestore_labels'
-require 'google/vertexai/property/featurestore_online_serving_config'
-require 'google/vertexai/property/featurestore_online_serving_config_scaling'
+require "gcp_backend"
+require "google/vertexai/property/featurestore_encryption_spec"
+require "google/vertexai/property/featurestore_labels"
+require "google/vertexai/property/featurestore_online_serving_config"
+require "google/vertexai/property/featurestore_online_serving_config_scaling"
 
 # A provider to manage Vertex AI resources.
 class VertexAIFeaturestore < GcpResourceBase
-  name 'google_vertex_ai_featurestore'
-  desc 'Featurestore'
-  supports platform: 'gcp'
+  name "google_vertex_ai_featurestore"
+  desc "Featurestore"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :state
@@ -39,20 +39,20 @@ class VertexAIFeaturestore < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @state = @fetched['state']
-    @create_time = @fetched['createTime']
-    @etag = @fetched['etag']
-    @online_storage_ttl_days = @fetched['onlineStorageTtlDays']
-    @encryption_spec = GoogleInSpec::VertexAI::Property::FeaturestoreEncryptionSpec.new(@fetched['encryptionSpec'], to_s)
-    @labels = GoogleInSpec::VertexAI::Property::FeaturestoreLabels.new(@fetched['labels'], to_s)
-    @update_time = @fetched['updateTime']
-    @name = @fetched['name']
-    @online_serving_config = GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfig.new(@fetched['onlineServingConfig'], to_s)
+    @state = @fetched["state"]
+    @create_time = @fetched["createTime"]
+    @etag = @fetched["etag"]
+    @online_storage_ttl_days = @fetched["onlineStorageTtlDays"]
+    @encryption_spec = GoogleInSpec::VertexAI::Property::FeaturestoreEncryptionSpec.new(@fetched["encryptionSpec"], to_s)
+    @labels = GoogleInSpec::VertexAI::Property::FeaturestoreLabels.new(@fetched["labels"], to_s)
+    @update_time = @fetched["updateTime"]
+    @name = @fetched["name"]
+    @online_serving_config = GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfig.new(@fetched["onlineServingConfig"], to_s)
   end
 
   def exists?
@@ -66,10 +66,10 @@ class VertexAIFeaturestore < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

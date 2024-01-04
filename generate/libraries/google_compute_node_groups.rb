@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeNodeGroups < GcpResourceBase
-  name 'google_compute_node_groups'
-  desc 'NodeGroup plural resource'
-  supports platform: 'gcp'
+  name "google_compute_node_groups"
+  desc "NodeGroup plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,12 +35,12 @@ class ComputeNodeGroups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -68,12 +68,12 @@ class ComputeNodeGroups < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'nodeTemplate' => ->(obj) { [:node_template, obj['nodeTemplate']] },
-      'size' => ->(obj) { [:size, obj['size']] },
-      'zone' => ->(obj) { [:zone, obj['zone']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "nodeTemplate" => ->(obj) { [:node_template, obj["nodeTemplate"]] },
+      "size" => ->(obj) { [:size, obj["size"]] },
+      "zone" => ->(obj) { [:zone, obj["zone"]] },
     }
   end
 
@@ -100,10 +100,10 @@ class ComputeNodeGroups < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/nodeGroups'
+    "projects/{{project}}/zones/{{zone}}/nodeGroups"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @raw_key = arguments['rawKey']
-          @sha256 = arguments['sha256']
+          @raw_key = arguments["rawKey"]
+          @sha256 = arguments["sha256"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'raw_key' => ->(x, path) { x.nil? ? [] : ["its('#{path}.raw_key') { should cmp #{x.inspect} }"] },
-            'sha256' => ->(x, path) { x.nil? ? [] : ["its('#{path}.sha256') { should cmp #{x.inspect} }"] },
+            "raw_key" => ->(x, path) { x.nil? ? [] : ["its('#{path}.raw_key') { should cmp #{x.inspect} }"] },
+            "sha256" => ->(x, path) { x.nil? ? [] : ["its('#{path}.sha256') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

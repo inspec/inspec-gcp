@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/hyperparametertuningjob_labels'
+require "gcp_backend"
+require "google/vertexai/property/hyperparametertuningjob_labels"
 
 # A provider to manage Vertex AI resources.
 class VertexAIHyperparameterTuningJob < GcpResourceBase
-  name 'google_vertex_ai_hyperparameter_tuning_job'
-  desc 'HyperparameterTuningJob'
-  supports platform: 'gcp'
+  name "google_vertex_ai_hyperparameter_tuning_job"
+  desc "HyperparameterTuningJob"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :study_spec
@@ -43,27 +43,27 @@ class VertexAIHyperparameterTuningJob < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @study_spec = @fetched['studySpec']
-    @trials = @fetched['trials']
-    @state = @fetched['state']
-    @max_failed_trial_count = @fetched['maxFailedTrialCount']
-    @encryption_spec = @fetched['encryptionSpec']
-    @error = @fetched['error']
-    @end_time = @fetched['endTime']
-    @update_time = @fetched['updateTime']
-    @start_time = @fetched['startTime']
-    @labels = GoogleInSpec::VertexAI::Property::HyperparameterTuningJobLabels.new(@fetched['labels'], to_s)
-    @create_time = @fetched['createTime']
-    @parallel_trial_count = @fetched['parallelTrialCount']
-    @trial_job_spec = @fetched['trialJobSpec']
-    @max_trial_count = @fetched['maxTrialCount']
-    @display_name = @fetched['displayName']
-    @name = @fetched['name']
+    @study_spec = @fetched["studySpec"]
+    @trials = @fetched["trials"]
+    @state = @fetched["state"]
+    @max_failed_trial_count = @fetched["maxFailedTrialCount"]
+    @encryption_spec = @fetched["encryptionSpec"]
+    @error = @fetched["error"]
+    @end_time = @fetched["endTime"]
+    @update_time = @fetched["updateTime"]
+    @start_time = @fetched["startTime"]
+    @labels = GoogleInSpec::VertexAI::Property::HyperparameterTuningJobLabels.new(@fetched["labels"], to_s)
+    @create_time = @fetched["createTime"]
+    @parallel_trial_count = @fetched["parallelTrialCount"]
+    @trial_job_spec = @fetched["trialJobSpec"]
+    @max_trial_count = @fetched["maxTrialCount"]
+    @display_name = @fetched["displayName"]
+    @name = @fetched["name"]
   end
 
   def exists?
@@ -77,10 +77,10 @@ class VertexAIHyperparameterTuningJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

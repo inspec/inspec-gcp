@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ResourceManagerFolders < GcpResourceBase
-  name 'google_resourcemanager_folders'
-  desc 'Folder plural resource'
-  supports platform: 'gcp'
+  name "google_resourcemanager_folders"
+  desc "Folder plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class ResourceManagerFolders < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('folders')
+    @table = fetch_wrapped_resource("folders")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,11 +67,11 @@ class ResourceManagerFolders < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'lifecycleState' => ->(obj) { [:lifecycle_state, obj['lifecycleState']] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'parent' => ->(obj) { [:parent, obj['parent']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "lifecycleState" => ->(obj) { [:lifecycle_state, obj["lifecycleState"]] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "parent" => ->(obj) { [:parent, obj["parent"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
     }
   end
 
@@ -83,10 +83,10 @@ class ResourceManagerFolders < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudresourcemanager.googleapis.com/v2/'
+    "https://cloudresourcemanager.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'folders?parent={{parent}}'
+    "folders?parent={{parent}}"
   end
 end

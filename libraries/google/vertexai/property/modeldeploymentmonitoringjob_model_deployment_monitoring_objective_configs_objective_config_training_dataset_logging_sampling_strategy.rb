@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy_random_sample_config'
+require "google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy_random_sample_config"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @random_sample_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDatasetLoggingSamplingStrategyRandomSampleConfig.new(args['randomSampleConfig'], to_s)
+          @random_sample_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDatasetLoggingSamplingStrategyRandomSampleConfig.new(args["randomSampleConfig"], to_s)
         end
 
         def to_s

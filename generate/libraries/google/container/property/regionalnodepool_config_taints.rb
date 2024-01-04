@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -29,9 +29,9 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @key = arguments['key']
-          @value = arguments['value']
-          @effect = arguments['effect']
+          @key = arguments["key"]
+          @value = arguments["value"]
+          @effect = arguments["effect"]
         end
 
         def to_s
@@ -41,9 +41,9 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'key' => ->(x, path) { x.nil? ? [] : ["its('#{path}.key') { should cmp #{x.inspect} }"] },
-            'value' => ->(x, path) { x.nil? ? [] : ["its('#{path}.value') { should cmp #{x.inspect} }"] },
-            'effect' => ->(x, path) { x.nil? ? [] : ["its('#{path}.effect') { should cmp #{x.inspect} }"] },
+            "key" => ->(x, path) { x.nil? ? [] : ["its('#{path}.key') { should cmp #{x.inspect} }"] },
+            "value" => ->(x, path) { x.nil? ? [] : ["its('#{path}.value') { should cmp #{x.inspect} }"] },
+            "effect" => ->(x, path) { x.nil? ? [] : ["its('#{path}.effect') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

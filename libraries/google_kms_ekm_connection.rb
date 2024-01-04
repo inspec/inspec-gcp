@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/kms/property/ekmconnection_service_resolvers'
-require 'google/kms/property/ekmconnection_service_resolvers_server_certificates'
+require "gcp_backend"
+require "google/kms/property/ekmconnection_service_resolvers"
+require "google/kms/property/ekmconnection_service_resolvers_server_certificates"
 
 # A provider to manage Cloud Key Management Service resources.
 class KMSEkmConnection < GcpResourceBase
-  name 'google_kms_ekm_connection'
-  desc 'EkmConnection'
-  supports platform: 'gcp'
+  name "google_kms_ekm_connection"
+  desc "EkmConnection"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -32,15 +32,15 @@ class KMSEkmConnection < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @service_resolvers = GoogleInSpec::KMS::Property::EkmConnectionServiceResolvers.new(@fetched['serviceResolvers'], to_s)
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @service_resolvers = GoogleInSpec::KMS::Property::EkmConnectionServiceResolvers.new(@fetched["serviceResolvers"], to_s)
+    @location = @fetched["location"]
   end
 
   # Handles parsing RFC3339 time string
@@ -59,10 +59,10 @@ class KMSEkmConnection < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}'
+    "projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}"
   end
 end

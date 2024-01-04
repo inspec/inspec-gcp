@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @bigquery_output_dataset = args['bigqueryOutputDataset']
-          @gcs_output_directory = args['gcsOutputDirectory']
-          @bigquery_output_table = args['bigqueryOutputTable']
+          @bigquery_output_dataset = args["bigqueryOutputDataset"]
+          @gcs_output_directory = args["gcsOutputDirectory"]
+          @bigquery_output_table = args["bigqueryOutputTable"]
         end
 
         def to_s

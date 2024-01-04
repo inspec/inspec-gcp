@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @mode = args['mode']
-          @min_nodes = args['minNodes']
-          @max_nodes = args['maxNodes']
+          @mode = args["mode"]
+          @min_nodes = args["minNodes"]
+          @max_nodes = args["maxNodes"]
         end
 
         def to_s

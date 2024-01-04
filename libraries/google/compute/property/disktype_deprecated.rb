@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @deleted = parse_time_string(args['deleted'])
-          @deprecated = parse_time_string(args['deprecated'])
-          @obsolete = parse_time_string(args['obsolete'])
-          @replacement = args['replacement']
-          @state = args['state']
+          @deleted = parse_time_string(args["deleted"])
+          @deprecated = parse_time_string(args["deprecated"])
+          @obsolete = parse_time_string(args["obsolete"])
+          @replacement = args["replacement"]
+          @state = args["state"]
         end
 
         def to_s

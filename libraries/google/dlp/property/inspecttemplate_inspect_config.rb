@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_custom_info_types'
-require 'google/dlp/property/inspecttemplate_inspect_config_info_types'
-require 'google/dlp/property/inspecttemplate_inspect_config_limits'
-require 'google/dlp/property/inspecttemplate_inspect_config_limits_max_findings_per_info_type'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set'
+require "google/dlp/property/inspecttemplate_inspect_config_custom_info_types"
+require "google/dlp/property/inspecttemplate_inspect_config_info_types"
+require "google/dlp/property/inspecttemplate_inspect_config_limits"
+require "google/dlp/property/inspecttemplate_inspect_config_limits_max_findings_per_info_type"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set"
 module GoogleInSpec
   module DLP
     module Property
@@ -41,14 +41,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @exclude_info_types = args['excludeInfoTypes']
-          @include_quote = args['includeQuote']
-          @min_likelihood = args['minLikelihood']
-          @limits = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigLimits.new(args['limits'], to_s)
-          @info_types = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigInfoTypesArray.parse(args['infoTypes'], to_s)
-          @content_options = args['contentOptions']
-          @rule_set = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetArray.parse(args['ruleSet'], to_s)
-          @custom_info_types = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesArray.parse(args['customInfoTypes'], to_s)
+          @exclude_info_types = args["excludeInfoTypes"]
+          @include_quote = args["includeQuote"]
+          @min_likelihood = args["minLikelihood"]
+          @limits = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigLimits.new(args["limits"], to_s)
+          @info_types = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigInfoTypesArray.parse(args["infoTypes"], to_s)
+          @content_options = args["contentOptions"]
+          @rule_set = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetArray.parse(args["ruleSet"], to_s)
+          @custom_info_types = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigCustomInfoTypesArray.parse(args["customInfoTypes"], to_s)
         end
 
         def to_s

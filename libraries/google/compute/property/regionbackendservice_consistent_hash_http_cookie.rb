@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionbackendservice_consistent_hash_http_cookie_ttl'
+require "google/compute/property/regionbackendservice_consistent_hash_http_cookie_ttl"
 module GoogleInSpec
   module Compute
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ttl = GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHashHttpCookieTtl.new(args['ttl'], to_s)
-          @name = args['name']
-          @path = args['path']
+          @ttl = GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHashHttpCookieTtl.new(args["ttl"], to_s)
+          @name = args["name"]
+          @path = args["path"]
         end
 
         def to_s

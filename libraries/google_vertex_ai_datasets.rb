@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIDatasets < GcpResourceBase
-  name 'google_vertex_ai_datasets'
-  desc 'Dataset plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_datasets"
+  desc "Dataset plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -42,12 +42,12 @@ class VertexAIDatasets < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('datasets')
+    @table = fetch_wrapped_resource("datasets")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -75,29 +75,29 @@ class VertexAIDatasets < GcpResourceBase
 
   def transformers
     {
-      'savedQueries' => ->(obj) { [:saved_queries, GoogleInSpec::VertexAI::Property::DatasetSavedQueriesArray.parse(obj['savedQueries'], to_s)] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::DatasetEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::DatasetLabels.new(obj['labels'], to_s)] },
-      'metadataSchemaUri' => ->(obj) { [:metadata_schema_uri, obj['metadataSchemaUri']] },
-      'metadataArtifact' => ->(obj) { [:metadata_artifact, obj['metadataArtifact']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'dataItemCount' => ->(obj) { [:data_item_count, obj['dataItemCount']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      "savedQueries" => ->(obj) { [:saved_queries, GoogleInSpec::VertexAI::Property::DatasetSavedQueriesArray.parse(obj["savedQueries"], to_s)] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::DatasetEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "metadata" => ->(obj) { [:metadata, obj["metadata"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::DatasetLabels.new(obj["labels"], to_s)] },
+      "metadataSchemaUri" => ->(obj) { [:metadata_schema_uri, obj["metadataSchemaUri"]] },
+      "metadataArtifact" => ->(obj) { [:metadata_artifact, obj["metadataArtifact"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "dataItemCount" => ->(obj) { [:data_item_count, obj["dataItemCount"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/datasets'
+    "{{parent}}/datasets"
   end
 end

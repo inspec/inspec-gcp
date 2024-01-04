@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/resourcemanager/property/project_parent'
+require "gcp_backend"
+require "google/resourcemanager/property/project_parent"
 
 # A provider to manage Resource Manager resources.
 class ResourceManagerProject < GcpResourceBase
-  name 'google_project'
-  desc 'Project'
-  supports platform: 'gcp'
+  name "google_project"
+  desc "Project"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :number
@@ -34,18 +34,18 @@ class ResourceManagerProject < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @number = @fetched['projectNumber']
-    @lifecycle_state = @fetched['lifecycleState']
-    @name = @fetched['name']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @labels = @fetched['labels']
-    @parent = GoogleInSpec::ResourceManager::Property::ProjectParent.new(@fetched['parent'], to_s)
-    @project_id = @fetched['projectId']
+    @number = @fetched["projectNumber"]
+    @lifecycle_state = @fetched["lifecycleState"]
+    @name = @fetched["name"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @labels = @fetched["labels"]
+    @parent = GoogleInSpec::ResourceManager::Property::ProjectParent.new(@fetched["parent"], to_s)
+    @project_id = @fetched["projectId"]
   end
 
   # Handles parsing RFC3339 time string
@@ -77,10 +77,10 @@ class ResourceManagerProject < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudresourcemanager.googleapis.com/v1/'
+    "https://cloudresourcemanager.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}'
+    "projects/{{project}}"
   end
 end

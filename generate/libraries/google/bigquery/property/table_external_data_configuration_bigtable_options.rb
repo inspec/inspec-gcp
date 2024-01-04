@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options_column_families'
+require "google/bigquery/property/table_external_data_configuration_bigtable_options_column_families"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -30,9 +30,9 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @ignore_unspecified_column_families = arguments['ignoreUnspecifiedColumnFamilies']
-          @read_rowkey_as_string = arguments['readRowkeyAsString']
-          @column_families = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesArray.parse(arguments['columnFamilies'], to_s)
+          @ignore_unspecified_column_families = arguments["ignoreUnspecifiedColumnFamilies"]
+          @read_rowkey_as_string = arguments["readRowkeyAsString"]
+          @column_families = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesArray.parse(arguments["columnFamilies"], to_s)
         end
 
         def to_s
@@ -42,9 +42,9 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'ignore_unspecified_column_families' => ->(x, path) { x.nil? ? [] : ["its('#{path}.ignore_unspecified_column_families') { should cmp #{x.inspect} }"] },
-            'read_rowkey_as_string' => ->(x, path) { x.nil? ? [] : ["its('#{path}.read_rowkey_as_string') { should cmp #{x.inspect} }"] },
-            'column_families' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.column_families') { should include '#{single.to_json}' }" } },
+            "ignore_unspecified_column_families" => ->(x, path) { x.nil? ? [] : ["its('#{path}.ignore_unspecified_column_families') { should cmp #{x.inspect} }"] },
+            "read_rowkey_as_string" => ->(x, path) { x.nil? ? [] : ["its('#{path}.read_rowkey_as_string') { should cmp #{x.inspect} }"] },
+            "column_families" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.column_families') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

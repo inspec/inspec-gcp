@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/dns_v2beta1'
+
+require "gcp_backend"
+require "google/apis/dns_v2beta1"
 
 module Inspec::Resources
   class GoogleDnsManagedZones < GcpResourceBase
-    name 'google_dns_managed_zones'
-    desc 'Verifies settings for GCP DNS managed zones in bulk'
+    name "google_dns_managed_zones"
+    desc "Verifies settings for GCP DNS managed zones in bulk"
 
     example "
       describe google_dns_managed_zones(project: 'chef-inspec-gcp') do
@@ -38,7 +38,7 @@ module Inspec::Resources
         return [] if !@managed_zones || !@managed_zones.managed_zones
         @managed_zones.managed_zones.map do |zone|
           dns_enabled=false
-          if defined?(zone.dnssec_config.state) && (zone.dnssec_config.state == 'on')
+          if defined?(zone.dnssec_config.state) && (zone.dnssec_config.state == "on")
             dns_enabled=true
           end
           managed_zones+=[{ zone_id: zone.id,

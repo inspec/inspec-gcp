@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_external_data_configuration_bigtable_options_column_families'
+require "google/bigquery/property/table_external_data_configuration_bigtable_options_column_families"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ignore_unspecified_column_families = args['ignoreUnspecifiedColumnFamilies']
-          @read_rowkey_as_string = args['readRowkeyAsString']
-          @column_families = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesArray.parse(args['columnFamilies'], to_s)
+          @ignore_unspecified_column_families = args["ignoreUnspecifiedColumnFamilies"]
+          @read_rowkey_as_string = args["readRowkeyAsString"]
+          @column_families = GoogleInSpec::BigQuery::Property::TableExternalDataConfigurationBigtableOptionsColumnFamiliesArray.parse(args["columnFamilies"], to_s)
         end
 
         def to_s

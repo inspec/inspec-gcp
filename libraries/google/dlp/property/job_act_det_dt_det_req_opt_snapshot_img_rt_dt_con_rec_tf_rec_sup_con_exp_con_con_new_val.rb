@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_date_val'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_time_val'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_date_val"
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_rec_sup_con_exp_con_con_new_val_time_val"
 module GoogleInSpec
   module DLP
     module Property
@@ -38,14 +38,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @integer_val = args['integerVal']
-          @float_val = args['floatVal']
-          @string_val = args['stringVal']
-          @boolean_val = args['booleanVal']
-          @timestamp_val = args['timestampVal']
-          @time_val = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConNewValTimeVal.new(args['timeVal'], to_s)
-          @date_val = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConNewValDateVal.new(args['dateVal'], to_s)
-          @day_of_week_val = args['dayOfWeekVal']
+          @integer_val = args["integerVal"]
+          @float_val = args["floatVal"]
+          @string_val = args["stringVal"]
+          @boolean_val = args["booleanVal"]
+          @timestamp_val = args["timestampVal"]
+          @time_val = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConNewValTimeVal.new(args["timeVal"], to_s)
+          @date_val = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConRecTfRecSupConExpConConNewValDateVal.new(args["dateVal"], to_s)
+          @day_of_week_val = args["dayOfWeekVal"]
         end
 
         def to_s

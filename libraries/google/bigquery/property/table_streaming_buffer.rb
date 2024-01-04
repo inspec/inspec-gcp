@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @estimated_bytes = args['estimatedBytes']
-          @estimated_rows = args['estimatedRows']
-          @oldest_entry_time = args['oldestEntryTime']
+          @estimated_bytes = args["estimatedBytes"]
+          @estimated_rows = args["estimatedRows"]
+          @oldest_entry_time = args["oldestEntryTime"]
         end
 
         def to_s

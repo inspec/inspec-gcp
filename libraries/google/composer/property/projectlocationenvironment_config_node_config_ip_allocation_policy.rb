@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @use_ip_aliases = args['useIpAliases']
-          @cluster_secondary_range_name = args['clusterSecondaryRangeName']
-          @cluster_ipv4_cidr_block = args['clusterIpv4CidrBlock']
-          @services_secondary_range_name = args['servicesSecondaryRangeName']
-          @services_ipv4_cidr_block = args['servicesIpv4CidrBlock']
+          @use_ip_aliases = args["useIpAliases"]
+          @cluster_secondary_range_name = args["clusterSecondaryRangeName"]
+          @cluster_ipv4_cidr_block = args["clusterIpv4CidrBlock"]
+          @services_secondary_range_name = args["servicesSecondaryRangeName"]
+          @services_ipv4_cidr_block = args["servicesIpv4CidrBlock"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class StorageBucketObjects < GcpResourceBase
-  name 'google_storage_bucket_objects'
-  desc 'BucketObject plural resource'
-  supports platform: 'gcp'
+  name "google_storage_bucket_objects"
+  desc "BucketObject plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -46,12 +46,12 @@ class StorageBucketObjects < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -79,23 +79,23 @@ class StorageBucketObjects < GcpResourceBase
 
   def transformers
     {
-      'bucket' => ->(obj) { [:object_bucket, obj['bucket']] },
-      'object' => ->(obj) { [:object, obj['object']] },
-      'contentType' => ->(obj) { [:content_type, obj['contentType']] },
-      'crc32c' => ->(obj) { [:crc32c, obj['crc32c']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'generation' => ->(obj) { [:generation, obj['generation']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'md5Hash' => ->(obj) { [:md5_hash, obj['md5Hash']] },
-      'mediaLink' => ->(obj) { [:media_link, obj['mediaLink']] },
-      'metageneration' => ->(obj) { [:metageneration, obj['metageneration']] },
-      'name' => ->(obj) { [:object_name, obj['name']] },
-      'size' => ->(obj) { [:size, obj['size']] },
-      'storageClass' => ->(obj) { [:storage_class, obj['storageClass']] },
-      'timeCreated' => ->(obj) { [:object_created_times, parse_time_string(obj['timeCreated'])] },
-      'timeDeleted' => ->(obj) { [:time_deleted, parse_time_string(obj['timeDeleted'])] },
-      'timeStorageClassUpdated' => ->(obj) { [:time_storage_class_updated, parse_time_string(obj['timeStorageClassUpdated'])] },
-      'updated' => ->(obj) { [:time_updated, parse_time_string(obj['updated'])] },
+      "bucket" => ->(obj) { [:object_bucket, obj["bucket"]] },
+      "object" => ->(obj) { [:object, obj["object"]] },
+      "contentType" => ->(obj) { [:content_type, obj["contentType"]] },
+      "crc32c" => ->(obj) { [:crc32c, obj["crc32c"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "generation" => ->(obj) { [:generation, obj["generation"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "md5Hash" => ->(obj) { [:md5_hash, obj["md5Hash"]] },
+      "mediaLink" => ->(obj) { [:media_link, obj["mediaLink"]] },
+      "metageneration" => ->(obj) { [:metageneration, obj["metageneration"]] },
+      "name" => ->(obj) { [:object_name, obj["name"]] },
+      "size" => ->(obj) { [:size, obj["size"]] },
+      "storageClass" => ->(obj) { [:storage_class, obj["storageClass"]] },
+      "timeCreated" => ->(obj) { [:object_created_times, parse_time_string(obj["timeCreated"])] },
+      "timeDeleted" => ->(obj) { [:time_deleted, parse_time_string(obj["timeDeleted"])] },
+      "timeStorageClassUpdated" => ->(obj) { [:time_storage_class_updated, parse_time_string(obj["timeStorageClassUpdated"])] },
+      "updated" => ->(obj) { [:time_updated, parse_time_string(obj["updated"])] },
     }
   end
 
@@ -107,10 +107,10 @@ class StorageBucketObjects < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://storage.googleapis.com/storage/v1/'
+    "https://storage.googleapis.com/storage/v1/"
   end
 
   def resource_base_url
-    'b/{{bucket}}/o'
+    "b/{{bucket}}/o"
   end
 end

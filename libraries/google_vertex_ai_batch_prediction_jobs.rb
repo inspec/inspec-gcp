@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIBatchPredictionJobs < GcpResourceBase
-  name 'google_vertex_ai_batch_prediction_jobs'
-  desc 'BatchPredictionJob plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_batch_prediction_jobs"
+  desc "BatchPredictionJob plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -56,12 +56,12 @@ class VertexAIBatchPredictionJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('batchPredictionJobs')
+    @table = fetch_wrapped_resource("batchPredictionJobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -89,43 +89,43 @@ class VertexAIBatchPredictionJobs < GcpResourceBase
 
   def transformers
     {
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'modelParameters' => ->(obj) { [:model_parameters, obj['modelParameters']] },
-      'instanceConfig' => ->(obj) { [:instance_config, GoogleInSpec::VertexAI::Property::BatchPredictionJobInstanceConfig.new(obj['instanceConfig'], to_s)] },
-      'modelVersionId' => ->(obj) { [:model_version_id, obj['modelVersionId']] },
-      'dedicatedResources' => ->(obj) { [:dedicated_resources, GoogleInSpec::VertexAI::Property::BatchPredictionJobDedicatedResources.new(obj['dedicatedResources'], to_s)] },
-      'outputInfo' => ->(obj) { [:output_info, GoogleInSpec::VertexAI::Property::BatchPredictionJobOutputInfo.new(obj['outputInfo'], to_s)] },
-      'disableContainerLogging' => ->(obj) { [:disable_container_logging, obj['disableContainerLogging']] },
-      'explanationSpec' => ->(obj) { [:explanation_spec, GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpec.new(obj['explanationSpec'], to_s)] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'generateExplanation' => ->(obj) { [:generate_explanation, obj['generateExplanation']] },
-      'resourcesConsumed' => ->(obj) { [:resources_consumed, GoogleInSpec::VertexAI::Property::BatchPredictionJobResourcesConsumed.new(obj['resourcesConsumed'], to_s)] },
-      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::BatchPredictionJobError.new(obj['error'], to_s)] },
-      'inputConfig' => ->(obj) { [:input_config, GoogleInSpec::VertexAI::Property::BatchPredictionJobInputConfig.new(obj['inputConfig'], to_s)] },
-      'unmanagedContainerModel' => ->(obj) { [:unmanaged_container_model, GoogleInSpec::VertexAI::Property::BatchPredictionJobUnmanagedContainerModel.new(obj['unmanagedContainerModel'], to_s)] },
-      'completionStats' => ->(obj) { [:completion_stats, GoogleInSpec::VertexAI::Property::BatchPredictionJobCompletionStats.new(obj['completionStats'], to_s)] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'manualBatchTuningParameters' => ->(obj) { [:manual_batch_tuning_parameters, GoogleInSpec::VertexAI::Property::BatchPredictionJobManualBatchTuningParameters.new(obj['manualBatchTuningParameters'], to_s)] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::BatchPredictionJobLabels.new(obj['labels'], to_s)] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::BatchPredictionJobEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'partialFailures' => ->(obj) { [:partial_failures, GoogleInSpec::VertexAI::Property::BatchPredictionJobPartialFailuresArray.parse(obj['partialFailures'], to_s)] },
-      'model' => ->(obj) { [:model, obj['model']] },
-      'outputConfig' => ->(obj) { [:output_config, GoogleInSpec::VertexAI::Property::BatchPredictionJobOutputConfig.new(obj['outputConfig'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'serviceAccount' => ->(obj) { [:service_account, obj['serviceAccount']] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "modelParameters" => ->(obj) { [:model_parameters, obj["modelParameters"]] },
+      "instanceConfig" => ->(obj) { [:instance_config, GoogleInSpec::VertexAI::Property::BatchPredictionJobInstanceConfig.new(obj["instanceConfig"], to_s)] },
+      "modelVersionId" => ->(obj) { [:model_version_id, obj["modelVersionId"]] },
+      "dedicatedResources" => ->(obj) { [:dedicated_resources, GoogleInSpec::VertexAI::Property::BatchPredictionJobDedicatedResources.new(obj["dedicatedResources"], to_s)] },
+      "outputInfo" => ->(obj) { [:output_info, GoogleInSpec::VertexAI::Property::BatchPredictionJobOutputInfo.new(obj["outputInfo"], to_s)] },
+      "disableContainerLogging" => ->(obj) { [:disable_container_logging, obj["disableContainerLogging"]] },
+      "explanationSpec" => ->(obj) { [:explanation_spec, GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpec.new(obj["explanationSpec"], to_s)] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "generateExplanation" => ->(obj) { [:generate_explanation, obj["generateExplanation"]] },
+      "resourcesConsumed" => ->(obj) { [:resources_consumed, GoogleInSpec::VertexAI::Property::BatchPredictionJobResourcesConsumed.new(obj["resourcesConsumed"], to_s)] },
+      "error" => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::BatchPredictionJobError.new(obj["error"], to_s)] },
+      "inputConfig" => ->(obj) { [:input_config, GoogleInSpec::VertexAI::Property::BatchPredictionJobInputConfig.new(obj["inputConfig"], to_s)] },
+      "unmanagedContainerModel" => ->(obj) { [:unmanaged_container_model, GoogleInSpec::VertexAI::Property::BatchPredictionJobUnmanagedContainerModel.new(obj["unmanagedContainerModel"], to_s)] },
+      "completionStats" => ->(obj) { [:completion_stats, GoogleInSpec::VertexAI::Property::BatchPredictionJobCompletionStats.new(obj["completionStats"], to_s)] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "manualBatchTuningParameters" => ->(obj) { [:manual_batch_tuning_parameters, GoogleInSpec::VertexAI::Property::BatchPredictionJobManualBatchTuningParameters.new(obj["manualBatchTuningParameters"], to_s)] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::BatchPredictionJobLabels.new(obj["labels"], to_s)] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::BatchPredictionJobEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "partialFailures" => ->(obj) { [:partial_failures, GoogleInSpec::VertexAI::Property::BatchPredictionJobPartialFailuresArray.parse(obj["partialFailures"], to_s)] },
+      "model" => ->(obj) { [:model, obj["model"]] },
+      "outputConfig" => ->(obj) { [:output_config, GoogleInSpec::VertexAI::Property::BatchPredictionJobOutputConfig.new(obj["outputConfig"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "serviceAccount" => ->(obj) { [:service_account, obj["serviceAccount"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/batchPredictionJobs'
+    "{{parent}}/batchPredictionJobs"
   end
 end

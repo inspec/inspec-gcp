@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @include_host = args['includeHost']
-          @include_protocol = args['includeProtocol']
-          @include_query_string = args['includeQueryString']
-          @query_string_blacklist = args['queryStringBlacklist']
-          @query_string_whitelist = args['queryStringWhitelist']
+          @include_host = args["includeHost"]
+          @include_protocol = args["includeProtocol"]
+          @include_query_string = args["includeQueryString"]
+          @query_string_blacklist = args["queryStringBlacklist"]
+          @query_string_whitelist = args["queryStringWhitelist"]
         end
 
         def to_s

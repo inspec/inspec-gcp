@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/iam/property/iam_policy_bindings'
+require "gcp_backend"
+require "google/iam/property/iam_policy_bindings"
 
 # A provider to manage Cloud Key Management Service IAM Binding resources.
 class KeyRingIamBinding < GcpResourceBase
-  name 'google_kms_key_ring_iam_binding'
-  desc 'KeyRing Iam Binding'
-  supports platform: 'gcp'
+  name "google_kms_key_ring_iam_binding"
+  desc "KeyRing Iam Binding"
+  supports platform: "gcp"
 
   attr_reader :params
 
@@ -30,12 +30,12 @@ class KeyRingIamBinding < GcpResourceBase
     super(params.merge({ use_http_transport: true }))
     raise "Expected 'role' to be defined for iam_binding resource" unless params.key?(:role)
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched["bindings"], to_s)
     @bindings.each do |binding|
       next if binding.role != params[:role]
       if params[:condition]
@@ -75,10 +75,10 @@ class KeyRingIamBinding < GcpResourceBase
   private
 
   def product_url
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}:getIamPolicy'
+    "projects/{{project}}/locations/{{location}}/keyRings/{{key_ring_name}}:getIamPolicy"
   end
 end

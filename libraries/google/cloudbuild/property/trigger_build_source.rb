@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_source_repo_source'
-require 'google/cloudbuild/property/trigger_build_source_storage_source'
+require "google/cloudbuild/property/trigger_build_source_repo_source"
+require "google/cloudbuild/property/trigger_build_source_storage_source"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @storage_source = GoogleInSpec::CloudBuild::Property::TriggerBuildSourceStorageSource.new(args['storageSource'], to_s)
-          @repo_source = GoogleInSpec::CloudBuild::Property::TriggerBuildSourceRepoSource.new(args['repoSource'], to_s)
+          @storage_source = GoogleInSpec::CloudBuild::Property::TriggerBuildSourceStorageSource.new(args["storageSource"], to_s)
+          @repo_source = GoogleInSpec::CloudBuild::Property::TriggerBuildSourceRepoSource.new(args["repoSource"], to_s)
         end
 
         def to_s

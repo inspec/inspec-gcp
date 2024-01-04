@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_info_type_tf_tf_info_types_sensitivity_score'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_info_type_tf_tf_info_types_sensitivity_score"
 module GoogleInSpec
   module DLP
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @version = args['version']
-          @sensitivity_score = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConInfoTypeTfTfInfoTypesSensitivityScore.new(args['sensitivityScore'], to_s)
+          @name = args["name"]
+          @version = args["version"]
+          @sensitivity_score = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotImgRtDtConInfoTypeTfTfInfoTypesSensitivityScore.new(args["sensitivityScore"], to_s)
         end
 
         def to_s

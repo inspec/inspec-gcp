@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleStorageBucketAcl < GcpResourceBase
-    name 'google_storage_bucket_acl'
-    desc 'Verifies settings for a storage bucket ACL'
+    name "google_storage_bucket_acl"
+    desc "Verifies settings for a storage bucket ACL"
 
     example "
       describe google_storage_bucket_acl(bucket: 'bucket-buvsjjcndqz',  entity: 'user-object-viewer@spaterson-project.iam.gserviceaccount.com') do

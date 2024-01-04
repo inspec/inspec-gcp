@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/endpoint_predict_request_response_logging_config_bigquery_destination'
+require "google/vertexai/property/endpoint_predict_request_response_logging_config_bigquery_destination"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @sampling_rate = args['samplingRate']
-          @enabled = args['enabled']
-          @bigquery_destination = GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfigBigqueryDestination.new(args['bigqueryDestination'], to_s)
+          @sampling_rate = args["samplingRate"]
+          @enabled = args["enabled"]
+          @bigquery_destination = GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfigBigqueryDestination.new(args["bigqueryDestination"], to_s)
         end
 
         def to_s

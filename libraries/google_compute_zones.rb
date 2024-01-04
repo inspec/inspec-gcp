@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeZones < GcpResourceBase
-  name 'google_compute_zones'
-  desc 'Zone plural resource'
-  supports platform: 'gcp'
+  name "google_compute_zones"
+  desc "Zone plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -37,12 +37,12 @@ class ComputeZones < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -70,14 +70,14 @@ class ComputeZones < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::ZoneDeprecated.new(obj['deprecated'], to_s)] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:zone_id, obj['id']] },
-      'name' => ->(obj) { [:zone_name, obj['name']] },
-      'region' => ->(obj) { [:region, obj['region']] },
-      'status' => ->(obj) { [:zone_status, obj['status']] },
-      'availableCpuPlatforms' => ->(obj) { [:available_cpu_platforms, obj['availableCpuPlatforms']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "deprecated" => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::ZoneDeprecated.new(obj["deprecated"], to_s)] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:zone_id, obj["id"]] },
+      "name" => ->(obj) { [:zone_name, obj["name"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
+      "status" => ->(obj) { [:zone_status, obj["status"]] },
+      "availableCpuPlatforms" => ->(obj) { [:available_cpu_platforms, obj["availableCpuPlatforms"]] },
     }
   end
 
@@ -90,13 +90,13 @@ class ComputeZones < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/zones'
+    "projects/{{project}}/zones"
   end
 end

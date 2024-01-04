@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/table_view_user_defined_function_resources'
+require "google/bigquery/property/table_view_user_defined_function_resources"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -28,8 +28,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @use_legacy_sql = arguments['useLegacySql']
-          @user_defined_function_resources = GoogleInSpec::BigQuery::Property::TableViewUserDefinedFunctionResourcesArray.parse(arguments['userDefinedFunctionResources'], to_s)
+          @use_legacy_sql = arguments["useLegacySql"]
+          @user_defined_function_resources = GoogleInSpec::BigQuery::Property::TableViewUserDefinedFunctionResourcesArray.parse(arguments["userDefinedFunctionResources"], to_s)
         end
 
         def to_s
@@ -39,8 +39,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'use_legacy_sql' => ->(x, path) { x.nil? ? [] : ["its('#{path}.use_legacy_sql') { should cmp #{x.inspect} }"] },
-            'user_defined_function_resources' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.user_defined_function_resources') { should include '#{single.to_json}' }" } },
+            "use_legacy_sql" => ->(x, path) { x.nil? ? [] : ["its('#{path}.use_legacy_sql') { should cmp #{x.inspect} }"] },
+            "user_defined_function_resources" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.user_defined_function_resources') { should include '#{single.to_json}' }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

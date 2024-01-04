@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/backendservice_circuit_breakers_connect_timeout'
+require "google/compute/property/backendservice_circuit_breakers_connect_timeout"
 module GoogleInSpec
   module Compute
     module Property
@@ -33,12 +33,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @connect_timeout = GoogleInSpec::Compute::Property::BackendServiceCircuitBreakersConnectTimeout.new(args['connectTimeout'], to_s)
-          @max_requests_per_connection = args['maxRequestsPerConnection']
-          @max_connections = args['maxConnections']
-          @max_pending_requests = args['maxPendingRequests']
-          @max_requests = args['maxRequests']
-          @max_retries = args['maxRetries']
+          @connect_timeout = GoogleInSpec::Compute::Property::BackendServiceCircuitBreakersConnectTimeout.new(args["connectTimeout"], to_s)
+          @max_requests_per_connection = args["maxRequestsPerConnection"]
+          @max_connections = args["maxConnections"]
+          @max_pending_requests = args["maxPendingRequests"]
+          @max_requests = args["maxRequests"]
+          @max_retries = args["maxRetries"]
         end
 
         def to_s

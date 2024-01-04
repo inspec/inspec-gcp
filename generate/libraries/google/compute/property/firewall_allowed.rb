@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @ip_protocol = arguments['IPProtocol']
-          @ports = arguments['ports']
+          @ip_protocol = arguments["IPProtocol"]
+          @ports = arguments["ports"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'ip_protocol' => ->(x, path) { x.nil? ? [] : ["its('#{path}.ip_protocol') { should cmp #{x.inspect} }"] },
-            'ports' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.ports') { should include #{single.inspect} }" } },
+            "ip_protocol" => ->(x, path) { x.nil? ? [] : ["its('#{path}.ip_protocol') { should cmp #{x.inspect} }"] },
+            "ports" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.ports') { should include #{single.inspect} }" } },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

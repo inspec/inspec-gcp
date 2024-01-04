@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Spanner resources.
 class SpannerDatabase < GcpResourceBase
-  name 'google_spanner_database'
-  desc 'Database'
-  supports platform: 'gcp'
+  name "google_spanner_database"
+  desc "Database"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -28,13 +28,13 @@ class SpannerDatabase < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @instance = @fetched['instance']
+    @name = @fetched["name"]
+    @instance = @fetched["instance"]
   end
 
   def exists?
@@ -48,10 +48,10 @@ class SpannerDatabase < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://spanner.googleapis.com/v1/'
+    "https://spanner.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{instance}}/databases/{{name}}'
+    "projects/{{project}}/instances/{{instance}}/databases/{{name}}"
   end
 end

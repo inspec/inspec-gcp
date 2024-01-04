@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/sql/property/databaseinstance_replica_configuration_mysql_replica_configuration'
+require "google/sql/property/databaseinstance_replica_configuration_mysql_replica_configuration"
 module GoogleInSpec
   module SQL
     module Property
@@ -29,10 +29,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @failover_target = args['failoverTarget']
-          @mysql_replica_configuration = GoogleInSpec::SQL::Property::DatabaseInstanceReplicaConfigurationMysqlReplicaConfiguration.new(args['mysqlReplicaConfiguration'], to_s)
-          @replica_names = args['replicaNames']
-          @service_account_email_address = args['serviceAccountEmailAddress']
+          @failover_target = args["failoverTarget"]
+          @mysql_replica_configuration = GoogleInSpec::SQL::Property::DatabaseInstanceReplicaConfigurationMysqlReplicaConfiguration.new(args["mysqlReplicaConfiguration"], to_s)
+          @replica_names = args["replicaNames"]
+          @service_account_email_address = args["serviceAccountEmailAddress"]
         end
 
         def to_s

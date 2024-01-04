@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Runtime Configurator resources.
 class RuntimeConfigVariable < GcpResourceBase
-  name 'google_runtime_config_variable'
-  desc 'Variable'
-  supports platform: 'gcp'
+  name "google_runtime_config_variable"
+  desc "Variable"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :value
@@ -30,15 +30,15 @@ class RuntimeConfigVariable < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @value = @fetched['value']
-    @text = @fetched['text']
-    @name = @fetched['name']
-    @config = @fetched['config']
+    @value = @fetched["value"]
+    @text = @fetched["text"]
+    @name = @fetched["name"]
+    @config = @fetched["config"]
   end
 
   def exists?
@@ -52,10 +52,10 @@ class RuntimeConfigVariable < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://runtimeconfig.googleapis.com/v1beta1/'
+    "https://runtimeconfig.googleapis.com/v1beta1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/configs/{{config}}/variables/{{name}}'
+    "projects/{{project}}/configs/{{config}}/variables/{{name}}"
   end
 end

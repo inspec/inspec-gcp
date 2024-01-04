@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/region_deprecated'
-require 'google/compute/property/region_quotas'
+require "gcp_backend"
+require "google/compute/property/region_deprecated"
+require "google/compute/property/region_quotas"
 
 # A provider to manage Compute Engine resources.
 class ComputeRegion < GcpResourceBase
-  name 'google_compute_region'
-  desc 'Region'
-  supports platform: 'gcp'
+  name "google_compute_region"
+  desc "Region"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -36,20 +36,20 @@ class ComputeRegion < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::RegionDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @quotas = GoogleInSpec::Compute::Property::RegionQuotasArray.parse(@fetched['quotas'], to_s)
-    @status = @fetched['status']
-    @zones = @fetched['zones']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @deprecated = GoogleInSpec::Compute::Property::RegionDeprecated.new(@fetched["deprecated"], to_s)
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @quotas = GoogleInSpec::Compute::Property::RegionQuotasArray.parse(@fetched["quotas"], to_s)
+    @status = @fetched["status"]
+    @zones = @fetched["zones"]
   end
 
   # Handles parsing RFC3339 time string
@@ -67,19 +67,19 @@ class ComputeRegion < GcpResourceBase
 
   def un_parse
     {
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'deprecated' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::RegionDeprecated.un_parse(x, 'deprecated') },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'quotas' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('quotas') { should include '#{single.to_json}' }" } },
-      'status' => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
-      'zones' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('zones') { should include #{single.inspect} }" } },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "deprecated" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Compute::Property::RegionDeprecated.un_parse(x, "deprecated") },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "quotas" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('quotas') { should include '#{single.to_json}' }" } },
+      "status" => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
+      "zones" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('zones') { should include #{single.inspect} }" } },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Region'
+    name = "Region"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -88,11 +88,11 @@ class ComputeRegion < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_compute_region',
+      type: "google_compute_region",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -101,21 +101,21 @@ class ComputeRegion < GcpResourceBase
   #   https://www.googleapis.com/compute/v1/projects/spaterson-project/zones/asia-east1-a
   def zone_names
     return [] if !exists?
-    @zones.map { |zone| zone.split('/').last }
+    @zones.map { |zone| zone.split("/").last }
   end
 
   def up?
     return false if !exists?
-    @status == 'UP'
+    @status == "UP"
   end
 
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{name}}'
+    "projects/{{project}}/regions/{{name}}"
   end
 end

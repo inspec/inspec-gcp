@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @display_name = arguments['displayName']
-          @cidr_block = arguments['cidrBlock']
+          @display_name = arguments["displayName"]
+          @cidr_block = arguments["cidrBlock"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'display_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.display_name') { should cmp #{x.inspect} }"] },
-            'cidr_block' => ->(x, path) { x.nil? ? [] : ["its('#{path}.cidr_block') { should cmp #{x.inspect} }"] },
+            "display_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.display_name') { should cmp #{x.inspect} }"] },
+            "cidr_block" => ->(x, path) { x.nil? ? [] : ["its('#{path}.cidr_block') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

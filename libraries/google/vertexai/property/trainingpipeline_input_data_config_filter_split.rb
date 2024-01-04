@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @validation_filter = args['validationFilter']
-          @test_filter = args['testFilter']
-          @training_filter = args['trainingFilter']
+          @validation_filter = args["validationFilter"]
+          @test_filter = args["testFilter"]
+          @training_filter = args["trainingFilter"]
         end
 
         def to_s

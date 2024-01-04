@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require "google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config"
+require "google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config"
+require "google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma"
+require "google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -30,9 +30,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @step_count = args['stepCount']
-          @smooth_grad_config = GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig.new(args['smoothGradConfig'], to_s)
-          @blur_baseline_config = GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionBlurBaselineConfig.new(args['blurBaselineConfig'], to_s)
+          @step_count = args["stepCount"]
+          @smooth_grad_config = GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig.new(args["smoothGradConfig"], to_s)
+          @blur_baseline_config = GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionBlurBaselineConfig.new(args["blurBaselineConfig"], to_s)
         end
 
         def to_s

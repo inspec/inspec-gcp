@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Vertex AI resources.
 class VertexAIMetadataStoresMetadataSchema < GcpResourceBase
-  name 'google_vertex_ai_metadata_stores_metadata_schema'
-  desc 'MetadataStoresMetadataSchema'
-  supports platform: 'gcp'
+  name "google_vertex_ai_metadata_stores_metadata_schema"
+  desc "MetadataStoresMetadataSchema"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :schema_type
@@ -32,17 +32,17 @@ class VertexAIMetadataStoresMetadataSchema < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @schema_type = @fetched['schemaType']
-    @description = @fetched['description']
-    @schema_version = @fetched['schemaVersion']
-    @name = @fetched['name']
-    @create_time = @fetched['createTime']
-    @schema = @fetched['schema']
+    @schema_type = @fetched["schemaType"]
+    @description = @fetched["description"]
+    @schema_version = @fetched["schemaVersion"]
+    @name = @fetched["name"]
+    @create_time = @fetched["createTime"]
+    @schema = @fetched["schema"]
   end
 
   def exists?
@@ -56,10 +56,10 @@ class VertexAIMetadataStoresMetadataSchema < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

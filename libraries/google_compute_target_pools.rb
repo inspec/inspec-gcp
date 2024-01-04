@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeTargetPools < GcpResourceBase
-  name 'google_compute_target_pools'
-  desc 'TargetPool plural resource'
-  supports platform: 'gcp'
+  name "google_compute_target_pools"
+  desc "TargetPool plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,12 +39,12 @@ class ComputeTargetPools < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -72,16 +72,16 @@ class ComputeTargetPools < GcpResourceBase
 
   def transformers
     {
-      'backupPool' => ->(obj) { [:backup_pool, obj['backupPool']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'failoverRatio' => ->(obj) { [:failover_ratio, obj['failoverRatio']] },
-      'healthCheck' => ->(obj) { [:health_check, obj['healthCheck']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'instances' => ->(obj) { [:instances, obj['instances']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'sessionAffinity' => ->(obj) { [:session_affinity, obj['sessionAffinity']] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "backupPool" => ->(obj) { [:backup_pool, obj["backupPool"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "failoverRatio" => ->(obj) { [:failover_ratio, obj["failoverRatio"]] },
+      "healthCheck" => ->(obj) { [:health_check, obj["healthCheck"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "instances" => ->(obj) { [:instances, obj["instances"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "sessionAffinity" => ->(obj) { [:session_affinity, obj["sessionAffinity"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -94,13 +94,13 @@ class ComputeTargetPools < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/targetPools'
+    "projects/{{project}}/regions/{{region}}/targetPools"
   end
 end

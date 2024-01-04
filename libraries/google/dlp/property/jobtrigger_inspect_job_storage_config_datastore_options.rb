@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_kind'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_partition_id'
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_kind"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_partition_id"
 module GoogleInSpec
   module DLP
     module Property
@@ -26,8 +26,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @partition_id = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.new(args['partitionId'], to_s)
-          @kind = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigDatastoreOptionsKind.new(args['kind'], to_s)
+          @partition_id = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.new(args["partitionId"], to_s)
+          @kind = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigDatastoreOptionsKind.new(args["kind"], to_s)
         end
 
         def to_s

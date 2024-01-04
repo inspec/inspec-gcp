@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @utilization_target = args['utilizationTarget']
-          @predictive_method = args['predictiveMethod']
+          @utilization_target = args["utilizationTarget"]
+          @predictive_method = args["predictiveMethod"]
         end
 
         def to_s

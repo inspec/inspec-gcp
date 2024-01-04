@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleServiceAccountKeys < GcpResourceBase
-    name 'google_service_account_keys'
-    desc 'Verifies settings for GCP service account keys in bulk'
+    name "google_service_account_keys"
+    desc "Verifies settings for GCP service account keys in bulk"
 
     example "
       describe google_service_account_keys(service_account: 'projects/sample-project/serviceAccounts/sample-account@sample-project.iam.gserviceaccount.com') do

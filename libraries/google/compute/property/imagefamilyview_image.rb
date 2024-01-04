@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/imagefamilyview_image_deprecated'
-require 'google/compute/property/imagefamilyview_image_image_encryption_key'
-require 'google/compute/property/imagefamilyview_image_raw_disk'
-require 'google/compute/property/imagefamilyview_image_source_disk_encryption_key'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbs'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbxs'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_keks'
-require 'google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_pk'
+require "google/compute/property/imagefamilyview_image_deprecated"
+require "google/compute/property/imagefamilyview_image_image_encryption_key"
+require "google/compute/property/imagefamilyview_image_raw_disk"
+require "google/compute/property/imagefamilyview_image_source_disk_encryption_key"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbs"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_dbxs"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_keks"
+require "google/compute/property/imagefamilyview_image_source_snapshot_encryption_key_pk"
 module GoogleInSpec
   module Compute
     module Property
@@ -65,24 +65,24 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @creation_timestamp = parse_time_string(args['creationTimestamp'])
-          @description = args['description']
-          @id = args['id']
-          @name = args['name']
-          @source_type = args['sourceType']
-          @deprecated = GoogleInSpec::Compute::Property::ImageFamilyViewImageDeprecated.new(args['deprecated'], to_s)
-          @raw_disk = GoogleInSpec::Compute::Property::ImageFamilyViewImageRawDisk.new(args['rawDisk'], to_s)
-          @status = args['status']
-          @archive_size_bytes = args['archiveSizeBytes']
-          @disk_size_gb = args['diskSizeGb']
-          @source_disk = args['sourceDisk']
-          @source_disk_id = args['sourceDiskId']
-          @licenses = args['licenses']
-          @storage_locations = args['storageLocations']
-          @family = args['family']
-          @image_encryption_key = GoogleInSpec::Compute::Property::ImageFamilyViewImageImageEncryptionKey.new(args['imageEncryptionKey'], to_s)
-          @source_disk_encryption_key = GoogleInSpec::Compute::Property::ImageFamilyViewImageSourceDiskEncryptionKey.new(args['sourceDiskEncryptionKey'], to_s)
-          @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::ImageFamilyViewImageSourceSnapshotEncryptionKey.new(args['sourceSnapshotEncryptionKey'], to_s)
+          @creation_timestamp = parse_time_string(args["creationTimestamp"])
+          @description = args["description"]
+          @id = args["id"]
+          @name = args["name"]
+          @source_type = args["sourceType"]
+          @deprecated = GoogleInSpec::Compute::Property::ImageFamilyViewImageDeprecated.new(args["deprecated"], to_s)
+          @raw_disk = GoogleInSpec::Compute::Property::ImageFamilyViewImageRawDisk.new(args["rawDisk"], to_s)
+          @status = args["status"]
+          @archive_size_bytes = args["archiveSizeBytes"]
+          @disk_size_gb = args["diskSizeGb"]
+          @source_disk = args["sourceDisk"]
+          @source_disk_id = args["sourceDiskId"]
+          @licenses = args["licenses"]
+          @storage_locations = args["storageLocations"]
+          @family = args["family"]
+          @image_encryption_key = GoogleInSpec::Compute::Property::ImageFamilyViewImageImageEncryptionKey.new(args["imageEncryptionKey"], to_s)
+          @source_disk_encryption_key = GoogleInSpec::Compute::Property::ImageFamilyViewImageSourceDiskEncryptionKey.new(args["sourceDiskEncryptionKey"], to_s)
+          @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::ImageFamilyViewImageSourceSnapshotEncryptionKey.new(args["sourceSnapshotEncryptionKey"], to_s)
         end
 
         def to_s

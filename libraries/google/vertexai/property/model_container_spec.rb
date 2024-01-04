@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/model_container_spec_env'
-require 'google/vertexai/property/model_container_spec_ports'
+require "google/vertexai/property/model_container_spec_env"
+require "google/vertexai/property/model_container_spec_ports"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -36,13 +36,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @predict_route = args['predictRoute']
-          @image_uri = args['imageUri']
-          @env = GoogleInSpec::VertexAI::Property::ModelContainerSpecEnvArray.parse(args['env'], to_s)
-          @args = args['args']
-          @command = args['command']
-          @ports = GoogleInSpec::VertexAI::Property::ModelContainerSpecPortsArray.parse(args['ports'], to_s)
-          @health_route = args['healthRoute']
+          @predict_route = args["predictRoute"]
+          @image_uri = args["imageUri"]
+          @env = GoogleInSpec::VertexAI::Property::ModelContainerSpecEnvArray.parse(args["env"], to_s)
+          @args = args["args"]
+          @command = args["command"]
+          @ports = GoogleInSpec::VertexAI::Property::ModelContainerSpecPortsArray.parse(args["ports"], to_s)
+          @health_route = args["healthRoute"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @encoding = args['encoding']
-          @field_name = args['fieldName']
-          @only_read_latest = args['onlyReadLatest']
-          @qualifier_string = args['qualifierString']
-          @type = args['type']
+          @encoding = args["encoding"]
+          @field_name = args["fieldName"]
+          @only_read_latest = args["onlyReadLatest"]
+          @qualifier_string = args["qualifierString"]
+          @type = args["type"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/appengine/property/standardappversion_automatic_scaling_standard_scheduler_settings'
+require "google/appengine/property/standardappversion_automatic_scaling_standard_scheduler_settings"
 module GoogleInSpec
   module AppEngine
     module Property
@@ -33,12 +33,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_concurrent_requests = args['maxConcurrentRequests']
-          @max_idle_instances = args['maxIdleInstances']
-          @max_pending_latency = args['maxPendingLatency']
-          @min_idle_instances = args['minIdleInstances']
-          @min_pending_latency = args['minPendingLatency']
-          @standard_scheduler_settings = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScalingStandardSchedulerSettings.new(args['standardSchedulerSettings'], to_s)
+          @max_concurrent_requests = args["maxConcurrentRequests"]
+          @max_idle_instances = args["maxIdleInstances"]
+          @max_pending_latency = args["maxPendingLatency"]
+          @min_idle_instances = args["minIdleInstances"]
+          @min_pending_latency = args["minPendingLatency"]
+          @standard_scheduler_settings = GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScalingStandardSchedulerSettings.new(args["standardSchedulerSettings"], to_s)
         end
 
         def to_s

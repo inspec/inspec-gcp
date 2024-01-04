@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud IAM resources.
 class IAMServiceAccount < GcpResourceBase
-  name 'google_service_account'
-  desc 'ServiceAccount'
-  supports platform: 'gcp'
+  name "google_service_account"
+  desc "ServiceAccount"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -32,17 +32,17 @@ class IAMServiceAccount < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @project_id = @fetched['projectId']
-    @unique_id = @fetched['uniqueId']
-    @email = @fetched['email']
-    @display_name = @fetched['displayName']
-    @oauth2_client_id = @fetched['oauth2ClientId']
+    @name = @fetched["name"]
+    @project_id = @fetched["projectId"]
+    @unique_id = @fetched["uniqueId"]
+    @email = @fetched["email"]
+    @display_name = @fetched["displayName"]
+    @oauth2_client_id = @fetched["oauth2ClientId"]
   end
 
   def exists?
@@ -56,10 +56,10 @@ class IAMServiceAccount < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://iam.googleapis.com/v1/'
+    "https://iam.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/serviceAccounts/{{name}}'
+    "projects/{{project}}/serviceAccounts/{{name}}"
   end
 end

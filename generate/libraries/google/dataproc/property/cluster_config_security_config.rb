@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/cluster_config_security_config_kerberos_config'
+require "google/dataproc/property/cluster_config_security_config_kerberos_config"
 module GoogleInSpec
   module Dataproc
     module Property
@@ -26,7 +26,7 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @kerberos_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfigKerberosConfig.new(arguments['kerberosConfig'], to_s)
+          @kerberos_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfigKerberosConfig.new(arguments["kerberosConfig"], to_s)
         end
 
         def to_s
@@ -36,7 +36,7 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'kerberos_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfigKerberosConfig.un_parse(x, "#{path}.kerberos_config") },
+            "kerberos_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfigKerberosConfig.un_parse(x, "#{path}.kerberos_config") },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

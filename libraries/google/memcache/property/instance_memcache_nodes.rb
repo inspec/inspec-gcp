@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -30,11 +30,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @node_id = args['nodeId']
-          @zone = args['zone']
-          @port = args['port']
-          @host = args['host']
-          @state = args['state']
+          @node_id = args["nodeId"]
+          @zone = args["zone"]
+          @port = args["port"]
+          @host = args["host"]
+          @state = args["state"]
         end
 
         def to_s

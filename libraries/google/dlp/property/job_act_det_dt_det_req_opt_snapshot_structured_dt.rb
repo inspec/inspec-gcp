@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_structured_dt_deidentify_config'
+require "google/dlp/property/job_act_det_dt_det_req_opt_snapshot_structured_dt_deidentify_config"
 module GoogleInSpec
   module DLP
     module Property
@@ -33,12 +33,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @display_name = args['displayName']
-          @description = args['description']
-          @create_time = args['createTime']
-          @update_time = args['updateTime']
-          @deidentify_config = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotStructuredDtDeidentifyConfig.new(args['deidentifyConfig'], to_s)
+          @name = args["name"]
+          @display_name = args["displayName"]
+          @description = args["description"]
+          @create_time = args["createTime"]
+          @update_time = args["updateTime"]
+          @deidentify_config = GoogleInSpec::DLP::Property::JobActDetDtDetReqOptSnapshotStructuredDtDeidentifyConfig.new(args["deidentifyConfig"], to_s)
         end
 
         def to_s

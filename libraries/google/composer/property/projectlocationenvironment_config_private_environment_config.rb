@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config_networking_config'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config_private_cluster_config'
+require "google/composer/property/projectlocationenvironment_config_private_environment_config_networking_config"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config_private_cluster_config"
 module GoogleInSpec
   module Composer
     module Property
@@ -42,16 +42,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable_private_environment = args['enablePrivateEnvironment']
-          @private_cluster_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigPrivateEnvironmentConfigPrivateClusterConfig.new(args['privateClusterConfig'], to_s)
-          @web_server_ipv4_cidr_block = args['webServerIpv4CidrBlock']
-          @cloud_sql_ipv4_cidr_block = args['cloudSqlIpv4CidrBlock']
-          @web_server_ipv4_reserved_range = args['webServerIpv4ReservedRange']
-          @cloud_composer_network_ipv4_cidr_block = args['cloudComposerNetworkIpv4CidrBlock']
-          @cloud_composer_network_ipv4_reserved_range = args['cloudComposerNetworkIpv4ReservedRange']
-          @enable_privately_used_public_ips = args['enablePrivatelyUsedPublicIps']
-          @cloud_composer_connection_subnetwork = args['cloudComposerConnectionSubnetwork']
-          @networking_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigPrivateEnvironmentConfigNetworkingConfig.new(args['networkingConfig'], to_s)
+          @enable_private_environment = args["enablePrivateEnvironment"]
+          @private_cluster_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigPrivateEnvironmentConfigPrivateClusterConfig.new(args["privateClusterConfig"], to_s)
+          @web_server_ipv4_cidr_block = args["webServerIpv4CidrBlock"]
+          @cloud_sql_ipv4_cidr_block = args["cloudSqlIpv4CidrBlock"]
+          @web_server_ipv4_reserved_range = args["webServerIpv4ReservedRange"]
+          @cloud_composer_network_ipv4_cidr_block = args["cloudComposerNetworkIpv4CidrBlock"]
+          @cloud_composer_network_ipv4_reserved_range = args["cloudComposerNetworkIpv4ReservedRange"]
+          @enable_privately_used_public_ips = args["enablePrivatelyUsedPublicIps"]
+          @cloud_composer_connection_subnetwork = args["cloudComposerConnectionSubnetwork"]
+          @networking_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigPrivateEnvironmentConfigNetworkingConfig.new(args["networkingConfig"], to_s)
         end
 
         def to_s

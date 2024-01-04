@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Stackdriver Logging resources.
 class LoggingOrganizationLogSink < GcpResourceBase
-  name 'google_logging_organization_log_sink'
-  desc 'OrganizationLogSink'
-  supports platform: 'gcp'
+  name "google_logging_organization_log_sink"
+  desc "OrganizationLogSink"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :organization
@@ -32,18 +32,18 @@ class LoggingOrganizationLogSink < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @organization = @fetched['organization']
-    @name = @fetched['name']
-    @filter = @fetched['filter']
-    @destination = @fetched['destination']
-    @writer_identity = @fetched['writerIdentity']
-    @include_children = @fetched['includeChildren']
+    @organization = @fetched["organization"]
+    @name = @fetched["name"]
+    @filter = @fetched["filter"]
+    @destination = @fetched["destination"]
+    @writer_identity = @fetched["writerIdentity"]
+    @include_children = @fetched["includeChildren"]
   end
 
   # Handles parsing RFC3339 time string
@@ -61,17 +61,17 @@ class LoggingOrganizationLogSink < GcpResourceBase
 
   def un_parse
     {
-      'organization' => ->(x, _) { x.nil? ? [] : ["its('organization') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'filter' => ->(x, _) { x.nil? ? [] : ["its('filter') { should cmp #{x.inspect} }"] },
-      'destination' => ->(x, _) { x.nil? ? [] : ["its('destination') { should cmp #{x.inspect} }"] },
-      'writer_identity' => ->(x, _) { x.nil? ? [] : ["its('writer_identity') { should cmp #{x.inspect} }"] },
-      'include_children' => ->(x, _) { x.nil? ? [] : ["its('include_children') { should cmp #{x.inspect} }"] },
+      "organization" => ->(x, _) { x.nil? ? [] : ["its('organization') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "filter" => ->(x, _) { x.nil? ? [] : ["its('filter') { should cmp #{x.inspect} }"] },
+      "destination" => ->(x, _) { x.nil? ? [] : ["its('destination') { should cmp #{x.inspect} }"] },
+      "writer_identity" => ->(x, _) { x.nil? ? [] : ["its('writer_identity') { should cmp #{x.inspect} }"] },
+      "include_children" => ->(x, _) { x.nil? ? [] : ["its('include_children') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'OrganizationLogSink'
+    name = "OrganizationLogSink"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -80,11 +80,11 @@ class LoggingOrganizationLogSink < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_logging_organization_log_sink',
+      type: "google_logging_organization_log_sink",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -92,10 +92,10 @@ class LoggingOrganizationLogSink < GcpResourceBase
   private
 
   def product_url
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'organizations/{{organization}}/sinks/{{name}}'
+    "organizations/{{organization}}/sinks/{{name}}"
   end
 end

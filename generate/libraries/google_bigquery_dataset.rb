@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/bigquery/property/dataset_access'
-require 'google/bigquery/property/dataset_dataset_reference'
-require 'google/bigquery/property/dataset_default_encryption_configuration'
+require "gcp_backend"
+require "google/bigquery/property/dataset_access"
+require "google/bigquery/property/dataset_dataset_reference"
+require "google/bigquery/property/dataset_default_encryption_configuration"
 
 # A provider to manage BigQuery resources.
 class BigQueryDataset < GcpResourceBase
-  name 'google_bigquery_dataset'
-  desc 'Dataset'
-  supports platform: 'gcp'
+  name "google_bigquery_dataset"
+  desc "Dataset"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :access
@@ -42,25 +42,25 @@ class BigQueryDataset < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched['access'], to_s)
-    @creation_time = @fetched['creationTime']
-    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched['datasetReference'], to_s)
-    @default_table_expiration_ms = @fetched['defaultTableExpirationMs']
-    @default_partition_expiration_ms = @fetched['defaultPartitionExpirationMs']
-    @description = @fetched['description']
-    @etag = @fetched['etag']
-    @friendly_name = @fetched['friendlyName']
-    @id = @fetched['id']
-    @labels = @fetched['labels']
-    @last_modified_time = @fetched['lastModifiedTime']
-    @location = @fetched['location']
-    @default_encryption_configuration = GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(@fetched['defaultEncryptionConfiguration'], to_s)
+    @access = GoogleInSpec::BigQuery::Property::DatasetAccessArray.parse(@fetched["access"], to_s)
+    @creation_time = @fetched["creationTime"]
+    @dataset_reference = GoogleInSpec::BigQuery::Property::DatasetDatasetReference.new(@fetched["datasetReference"], to_s)
+    @default_table_expiration_ms = @fetched["defaultTableExpirationMs"]
+    @default_partition_expiration_ms = @fetched["defaultPartitionExpirationMs"]
+    @description = @fetched["description"]
+    @etag = @fetched["etag"]
+    @friendly_name = @fetched["friendlyName"]
+    @id = @fetched["id"]
+    @labels = @fetched["labels"]
+    @last_modified_time = @fetched["lastModifiedTime"]
+    @location = @fetched["location"]
+    @default_encryption_configuration = GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.new(@fetched["defaultEncryptionConfiguration"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -78,24 +78,24 @@ class BigQueryDataset < GcpResourceBase
 
   def un_parse
     {
-      'access' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('access') { should include '#{single.to_json}' }" } },
-      'creation_time' => ->(x, _) { x.nil? ? [] : ["its('creation_time') { should cmp #{x.inspect} }"] },
-      'dataset_reference' => ->(x, _) { x.nil? ? [] : GoogleInSpec::BigQuery::Property::DatasetDatasetReference.un_parse(x, 'dataset_reference') },
-      'default_table_expiration_ms' => ->(x, _) { x.nil? ? [] : ["its('default_table_expiration_ms') { should cmp #{x.inspect} }"] },
-      'default_partition_expiration_ms' => ->(x, _) { x.nil? ? [] : ["its('default_partition_expiration_ms') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'etag' => ->(x, _) { x.nil? ? [] : ["its('etag') { should cmp #{x.inspect} }"] },
-      'friendly_name' => ->(x, _) { x.nil? ? [] : ["its('friendly_name') { should cmp #{x.inspect} }"] },
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'last_modified_time' => ->(x, _) { x.nil? ? [] : ["its('last_modified_time') { should cmp #{x.inspect} }"] },
-      'location' => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
-      'default_encryption_configuration' => ->(x, _) { x.nil? ? [] : GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.un_parse(x, 'default_encryption_configuration') },
+      "access" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('access') { should include '#{single.to_json}' }" } },
+      "creation_time" => ->(x, _) { x.nil? ? [] : ["its('creation_time') { should cmp #{x.inspect} }"] },
+      "dataset_reference" => ->(x, _) { x.nil? ? [] : GoogleInSpec::BigQuery::Property::DatasetDatasetReference.un_parse(x, "dataset_reference") },
+      "default_table_expiration_ms" => ->(x, _) { x.nil? ? [] : ["its('default_table_expiration_ms') { should cmp #{x.inspect} }"] },
+      "default_partition_expiration_ms" => ->(x, _) { x.nil? ? [] : ["its('default_partition_expiration_ms') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "etag" => ->(x, _) { x.nil? ? [] : ["its('etag') { should cmp #{x.inspect} }"] },
+      "friendly_name" => ->(x, _) { x.nil? ? [] : ["its('friendly_name') { should cmp #{x.inspect} }"] },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "last_modified_time" => ->(x, _) { x.nil? ? [] : ["its('last_modified_time') { should cmp #{x.inspect} }"] },
+      "location" => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
+      "default_encryption_configuration" => ->(x, _) { x.nil? ? [] : GoogleInSpec::BigQuery::Property::DatasetDefaultEncryptionConfiguration.un_parse(x, "default_encryption_configuration") },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Dataset'
+    name = "Dataset"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -104,11 +104,11 @@ class BigQueryDataset < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_bigquery_dataset',
+      type: "google_bigquery_dataset",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -120,10 +120,10 @@ class BigQueryDataset < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/bigquery/v2/'
+    "https://www.googleapis.com/bigquery/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/datasets/{{name}}'
+    "projects/{{project}}/datasets/{{name}}"
   end
 end

@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/container_v1beta1'
+
+require "gcp_backend"
+require "google/apis/container_v1beta1"
 
 module Inspec::Resources
   class GoogleContainerCluster < GcpResourceBase
-    name 'google_container_cluster'
-    desc 'Verifies settings for a google container cluster'
+    name "google_container_cluster"
+    desc "Verifies settings for a google container cluster"
 
     example "
       describe google_container_cluster(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: 'cluster-name') do
@@ -81,7 +81,7 @@ module Inspec::Resources
     def has_master_auth_client_key?
       return false if !defined?(@cluster.master_auth.client_key)
       return false if @cluster.master_auth.client_key.nil?
-      return false if @cluster.master_auth.client_key==''
+      return false if @cluster.master_auth.client_key==""
       true
     end
 

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -36,14 +36,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @abandoning = args['abandoning']
-          @creating = args['creating']
-          @creating_without_retries = args['creatingWithoutRetries']
-          @deleting = args['deleting']
-          @none = args['none']
-          @recreating = args['recreating']
-          @refreshing = args['refreshing']
-          @restarting = args['restarting']
+          @abandoning = args["abandoning"]
+          @creating = args["creating"]
+          @creating_without_retries = args["creatingWithoutRetries"]
+          @deleting = args["deleting"]
+          @none = args["none"]
+          @recreating = args["recreating"]
+          @refreshing = args["refreshing"]
+          @restarting = args["restarting"]
         end
 
         def to_s

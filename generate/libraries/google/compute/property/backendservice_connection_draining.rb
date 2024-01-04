@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -25,7 +25,7 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @draining_timeout_sec = arguments['drainingTimeoutSec']
+          @draining_timeout_sec = arguments["drainingTimeoutSec"]
         end
 
         def to_s
@@ -35,7 +35,7 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'draining_timeout_sec' => ->(x, path) { x.nil? ? [] : ["its('#{path}.draining_timeout_sec') { should cmp #{x.inspect} }"] },
+            "draining_timeout_sec" => ->(x, path) { x.nil? ? [] : ["its('#{path}.draining_timeout_sec') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

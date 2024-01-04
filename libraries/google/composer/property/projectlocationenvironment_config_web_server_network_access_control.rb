@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_web_server_network_access_control_allowed_ip_ranges'
+require "google/composer/property/projectlocationenvironment_config_web_server_network_access_control_allowed_ip_ranges"
 module GoogleInSpec
   module Composer
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @allowed_ip_ranges = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangesArray.parse(args['allowedIpRanges'], to_s)
+          @allowed_ip_ranges = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangesArray.parse(args["allowedIpRanges"], to_s)
         end
 
         def to_s

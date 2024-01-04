@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @accelerator_type = args['acceleratorType']
-          @machine_type = args['machineType']
-          @accelerator_count = args['acceleratorCount']
+          @accelerator_type = args["acceleratorType"]
+          @machine_type = args["machineType"]
+          @accelerator_count = args["acceleratorCount"]
         end
 
         def to_s

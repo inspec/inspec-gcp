@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/accesscontextmanager/property/accesslevel_basic_conditions_device_policy'
-require 'google/accesscontextmanager/property/accesslevel_basic_conditions_device_policy_os_constraints'
+require "google/accesscontextmanager/property/accesslevel_basic_conditions_device_policy"
+require "google/accesscontextmanager/property/accesslevel_basic_conditions_device_policy_os_constraints"
 module GoogleInSpec
   module AccessContextManager
     module Property
@@ -34,12 +34,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_subnetworks = args['ipSubnetworks']
-          @required_access_levels = args['requiredAccessLevels']
-          @members = args['members']
-          @negate = args['negate']
-          @device_policy = GoogleInSpec::AccessContextManager::Property::AccessLevelBasicConditionsDevicePolicy.new(args['devicePolicy'], to_s)
-          @regions = args['regions']
+          @ip_subnetworks = args["ipSubnetworks"]
+          @required_access_levels = args["requiredAccessLevels"]
+          @members = args["members"]
+          @negate = args["negate"]
+          @device_policy = GoogleInSpec::AccessContextManager::Property::AccessLevelBasicConditionsDevicePolicy.new(args["devicePolicy"], to_s)
+          @regions = args["regions"]
         end
 
         def to_s

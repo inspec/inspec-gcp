@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeRegions < GcpResourceBase
-  name 'google_compute_regions'
-  desc 'Region plural resource'
-  supports platform: 'gcp'
+  name "google_compute_regions"
+  desc "Region plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -37,12 +37,12 @@ class ComputeRegions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -70,14 +70,14 @@ class ComputeRegions < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::RegionDeprecated.new(obj['deprecated'], to_s)] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:region_id, obj['id']] },
-      'name' => ->(obj) { [:region_name, obj['name']] },
-      'quotas' => ->(obj) { [:quotas, GoogleInSpec::Compute::Property::RegionQuotasArray.parse(obj['quotas'], to_s)] },
-      'status' => ->(obj) { [:region_status, obj['status']] },
-      'zones' => ->(obj) { [:zones, obj['zones']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "deprecated" => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::RegionDeprecated.new(obj["deprecated"], to_s)] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:region_id, obj["id"]] },
+      "name" => ->(obj) { [:region_name, obj["name"]] },
+      "quotas" => ->(obj) { [:quotas, GoogleInSpec::Compute::Property::RegionQuotasArray.parse(obj["quotas"], to_s)] },
+      "status" => ->(obj) { [:region_status, obj["status"]] },
+      "zones" => ->(obj) { [:zones, obj["zones"]] },
     }
   end
 
@@ -104,10 +104,10 @@ class ComputeRegions < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions'
+    "projects/{{project}}/regions"
   end
 end

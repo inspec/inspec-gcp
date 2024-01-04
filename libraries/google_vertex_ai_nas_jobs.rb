@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAINasJobs < GcpResourceBase
-  name 'google_vertex_ai_nas_jobs'
-  desc 'NasJob plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_nas_jobs"
+  desc "NasJob plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -42,12 +42,12 @@ class VertexAINasJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('nasJobs')
+    @table = fetch_wrapped_resource("nasJobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -75,29 +75,29 @@ class VertexAINasJobs < GcpResourceBase
 
   def transformers
     {
-      'nasJobOutput' => ->(obj) { [:nas_job_output, GoogleInSpec::VertexAI::Property::NasJobNasJobOutput.new(obj['nasJobOutput'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
-      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::NasJobError.new(obj['error'], to_s)] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'nasJobSpec' => ->(obj) { [:nas_job_spec, GoogleInSpec::VertexAI::Property::NasJobNasJobSpec.new(obj['nasJobSpec'], to_s)] },
-      'enableRestrictedImageTraining' => ->(obj) { [:enable_restricted_image_training, obj['enableRestrictedImageTraining']] },
-      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::NasJobEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::NasJobLabels.new(obj['labels'], to_s)] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      "nasJobOutput" => ->(obj) { [:nas_job_output, GoogleInSpec::VertexAI::Property::NasJobNasJobOutput.new(obj["nasJobOutput"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "endTime" => ->(obj) { [:end_time, obj["endTime"]] },
+      "error" => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::NasJobError.new(obj["error"], to_s)] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "nasJobSpec" => ->(obj) { [:nas_job_spec, GoogleInSpec::VertexAI::Property::NasJobNasJobSpec.new(obj["nasJobSpec"], to_s)] },
+      "enableRestrictedImageTraining" => ->(obj) { [:enable_restricted_image_training, obj["enableRestrictedImageTraining"]] },
+      "startTime" => ->(obj) { [:start_time, obj["startTime"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::NasJobEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::NasJobLabels.new(obj["labels"], to_s)] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/nasJobs'
+    "{{parent}}/nasJobs"
   end
 end

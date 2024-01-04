@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class SQLUsers < GcpResourceBase
-  name 'google_sql_users'
-  desc 'User plural resource'
-  supports platform: 'gcp'
+  name "google_sql_users"
+  desc "User plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -33,12 +33,12 @@ class SQLUsers < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -66,20 +66,20 @@ class SQLUsers < GcpResourceBase
 
   def transformers
     {
-      'host' => ->(obj) { [:user_host, obj['host']] },
-      'name' => ->(obj) { [:user_name, obj['name']] },
-      'instance' => ->(obj) { [:user_instance, obj['instance']] },
-      'password' => ->(obj) { [:password, obj['password']] },
+      "host" => ->(obj) { [:user_host, obj["host"]] },
+      "name" => ->(obj) { [:user_name, obj["name"]] },
+      "instance" => ->(obj) { [:user_instance, obj["instance"]] },
+      "password" => ->(obj) { [:password, obj["password"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/sql/v1beta4/'
+    "https://www.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{database}}/users'
+    "projects/{{project}}/instances/{{database}}/users"
   end
 end

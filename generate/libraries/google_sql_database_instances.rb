@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleCloudSqlDatabaseInstances < GcpResourceBase
-    name 'google_sql_database_instances'
-    desc 'Verifies settings for GCP Cloud SQL Database instances in bulk'
+    name "google_sql_database_instances"
+    desc "Verifies settings for GCP Cloud SQL Database instances in bulk"
 
     example "
       describe google_sql_database_instances(project: 'chef-inspec-gcp') do

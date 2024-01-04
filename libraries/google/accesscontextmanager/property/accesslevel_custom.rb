@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/accesscontextmanager/property/accesslevel_custom_expr'
+require "google/accesscontextmanager/property/accesslevel_custom_expr"
 module GoogleInSpec
   module AccessContextManager
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @expr = GoogleInSpec::AccessContextManager::Property::AccessLevelCustomExpr.new(args['expr'], to_s)
+          @expr = GoogleInSpec::AccessContextManager::Property::AccessLevelCustomExpr.new(args["expr"], to_s)
         end
 
         def to_s

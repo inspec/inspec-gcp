@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/featurestore_online_serving_config_scaling'
+require "google/vertexai/property/featurestore_online_serving_config_scaling"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @fixed_node_count = args['fixedNodeCount']
-          @scaling = GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfigScaling.new(args['scaling'], to_s)
+          @fixed_node_count = args["fixedNodeCount"]
+          @scaling = GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfigScaling.new(args["scaling"], to_s)
         end
 
         def to_s

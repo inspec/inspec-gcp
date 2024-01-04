@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/indexendpoint_deployed_indexes'
-require 'google/vertexai/property/indexendpoint_labels'
-require 'google/vertexai/property/indexendpoint_private_service_connect_config'
+require "gcp_backend"
+require "google/vertexai/property/indexendpoint_deployed_indexes"
+require "google/vertexai/property/indexendpoint_labels"
+require "google/vertexai/property/indexendpoint_private_service_connect_config"
 
 # A provider to manage Vertex AI resources.
 class VertexAIIndexEndpoint < GcpResourceBase
-  name 'google_vertex_ai_index_endpoint'
-  desc 'IndexEndpoint'
-  supports platform: 'gcp'
+  name "google_vertex_ai_index_endpoint"
+  desc "IndexEndpoint"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :deployed_indexes
@@ -42,24 +42,24 @@ class VertexAIIndexEndpoint < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @deployed_indexes = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesArray.parse(@fetched['deployedIndexes'], to_s)
-    @private_service_connect_config = GoogleInSpec::VertexAI::Property::IndexEndpointPrivateServiceConnectConfig.new(@fetched['privateServiceConnectConfig'], to_s)
-    @display_name = @fetched['displayName']
-    @public_endpoint_enabled = @fetched['publicEndpointEnabled']
-    @labels = GoogleInSpec::VertexAI::Property::IndexEndpointLabels.new(@fetched['labels'], to_s)
-    @create_time = @fetched['createTime']
-    @name = @fetched['name']
-    @network = @fetched['network']
-    @update_time = @fetched['updateTime']
-    @public_endpoint_domain_name = @fetched['publicEndpointDomainName']
-    @enable_private_service_connect = @fetched['enablePrivateServiceConnect']
-    @etag = @fetched['etag']
-    @description = @fetched['description']
+    @deployed_indexes = GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesArray.parse(@fetched["deployedIndexes"], to_s)
+    @private_service_connect_config = GoogleInSpec::VertexAI::Property::IndexEndpointPrivateServiceConnectConfig.new(@fetched["privateServiceConnectConfig"], to_s)
+    @display_name = @fetched["displayName"]
+    @public_endpoint_enabled = @fetched["publicEndpointEnabled"]
+    @labels = GoogleInSpec::VertexAI::Property::IndexEndpointLabels.new(@fetched["labels"], to_s)
+    @create_time = @fetched["createTime"]
+    @name = @fetched["name"]
+    @network = @fetched["network"]
+    @update_time = @fetched["updateTime"]
+    @public_endpoint_domain_name = @fetched["publicEndpointDomainName"]
+    @enable_private_service_connect = @fetched["enablePrivateServiceConnect"]
+    @etag = @fetched["etag"]
+    @description = @fetched["description"]
   end
 
   def exists?
@@ -73,10 +73,10 @@ class VertexAIIndexEndpoint < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

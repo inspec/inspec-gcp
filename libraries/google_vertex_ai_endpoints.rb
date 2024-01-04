@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIEndpoints < GcpResourceBase
-  name 'google_vertex_ai_endpoints'
-  desc 'Endpoint plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_endpoints"
+  desc "Endpoint plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -43,12 +43,12 @@ class VertexAIEndpoints < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('endpoints')
+    @table = fetch_wrapped_resource("endpoints")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -76,30 +76,30 @@ class VertexAIEndpoints < GcpResourceBase
 
   def transformers
     {
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::EndpointEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'enablePrivateServiceConnect' => ->(obj) { [:enable_private_service_connect, obj['enablePrivateServiceConnect']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'modelDeploymentMonitoringJob' => ->(obj) { [:model_deployment_monitoring_job, obj['modelDeploymentMonitoringJob']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'deployedModels' => ->(obj) { [:deployed_models, GoogleInSpec::VertexAI::Property::EndpointDeployedModelsArray.parse(obj['deployedModels'], to_s)] },
-      'network' => ->(obj) { [:network, obj['network']] },
-      'trafficSplit' => ->(obj) { [:traffic_split, GoogleInSpec::VertexAI::Property::EndpointTrafficSplit.new(obj['trafficSplit'], to_s)] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::EndpointLabels.new(obj['labels'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'predictRequestResponseLoggingConfig' => ->(obj) { [:predict_request_response_logging_config, GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfig.new(obj['predictRequestResponseLoggingConfig'], to_s)] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'name' => ->(obj) { [:name, obj['name']] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::EndpointEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "enablePrivateServiceConnect" => ->(obj) { [:enable_private_service_connect, obj["enablePrivateServiceConnect"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "modelDeploymentMonitoringJob" => ->(obj) { [:model_deployment_monitoring_job, obj["modelDeploymentMonitoringJob"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "deployedModels" => ->(obj) { [:deployed_models, GoogleInSpec::VertexAI::Property::EndpointDeployedModelsArray.parse(obj["deployedModels"], to_s)] },
+      "network" => ->(obj) { [:network, obj["network"]] },
+      "trafficSplit" => ->(obj) { [:traffic_split, GoogleInSpec::VertexAI::Property::EndpointTrafficSplit.new(obj["trafficSplit"], to_s)] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::EndpointLabels.new(obj["labels"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "predictRequestResponseLoggingConfig" => ->(obj) { [:predict_request_response_logging_config, GoogleInSpec::VertexAI::Property::EndpointPredictRequestResponseLoggingConfig.new(obj["predictRequestResponseLoggingConfig"], to_s)] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/endpoints'
+    "{{parent}}/endpoints"
   end
 end

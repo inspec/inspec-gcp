@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_github_pull_request'
-require 'google/cloudbuild/property/trigger_github_push'
+require "google/cloudbuild/property/trigger_github_pull_request"
+require "google/cloudbuild/property/trigger_github_push"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -30,10 +30,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @owner = args['owner']
-          @name = args['name']
-          @pull_request = GoogleInSpec::CloudBuild::Property::TriggerGithubPullRequest.new(args['pullRequest'], to_s)
-          @push = GoogleInSpec::CloudBuild::Property::TriggerGithubPush.new(args['push'], to_s)
+          @owner = args["owner"]
+          @name = args["name"]
+          @pull_request = GoogleInSpec::CloudBuild::Property::TriggerGithubPullRequest.new(args["pullRequest"], to_s)
+          @push = GoogleInSpec::CloudBuild::Property::TriggerGithubPush.new(args["push"], to_s)
         end
 
         def to_s

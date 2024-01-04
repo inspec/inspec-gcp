@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,31 +13,31 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/container/property/regionalcluster_addons_config'
-require 'google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling'
-require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
-require 'google/container/property/regionalcluster_addons_config_kubernetes_dashboard'
-require 'google/container/property/regionalcluster_addons_config_network_policy_config'
-require 'google/container/property/regionalcluster_conditions'
-require 'google/container/property/regionalcluster_default_max_pods_constraint'
-require 'google/container/property/regionalcluster_ip_allocation_policy'
-require 'google/container/property/regionalcluster_legacy_abac'
-require 'google/container/property/regionalcluster_master_auth'
-require 'google/container/property/regionalcluster_master_auth_client_certificate_config'
-require 'google/container/property/regionalcluster_master_authorized_networks_config'
-require 'google/container/property/regionalcluster_master_authorized_networks_config_cidr_blocks'
-require 'google/container/property/regionalcluster_network_policy'
-require 'google/container/property/regionalcluster_node_config'
-require 'google/container/property/regionalcluster_node_config_accelerators'
-require 'google/container/property/regionalcluster_node_config_taints'
-require 'google/container/property/regionalcluster_private_cluster_config'
+require "gcp_backend"
+require "google/container/property/regionalcluster_addons_config"
+require "google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling"
+require "google/container/property/regionalcluster_addons_config_http_load_balancing"
+require "google/container/property/regionalcluster_addons_config_kubernetes_dashboard"
+require "google/container/property/regionalcluster_addons_config_network_policy_config"
+require "google/container/property/regionalcluster_conditions"
+require "google/container/property/regionalcluster_default_max_pods_constraint"
+require "google/container/property/regionalcluster_ip_allocation_policy"
+require "google/container/property/regionalcluster_legacy_abac"
+require "google/container/property/regionalcluster_master_auth"
+require "google/container/property/regionalcluster_master_auth_client_certificate_config"
+require "google/container/property/regionalcluster_master_authorized_networks_config"
+require "google/container/property/regionalcluster_master_authorized_networks_config_cidr_blocks"
+require "google/container/property/regionalcluster_network_policy"
+require "google/container/property/regionalcluster_node_config"
+require "google/container/property/regionalcluster_node_config_accelerators"
+require "google/container/property/regionalcluster_node_config_taints"
+require "google/container/property/regionalcluster_private_cluster_config"
 
 # A provider to manage Google Kubernetes Engine resources.
 class ContainerRegionalCluster < GcpResourceBase
-  name 'google_container_regional_cluster'
-  desc 'RegionalCluster'
-  supports platform: 'gcp'
+  name "google_container_regional_cluster"
+  desc "RegionalCluster"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -79,47 +79,47 @@ class ContainerRegionalCluster < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @initial_node_count = @fetched['initialNodeCount']
-    @node_config = GoogleInSpec::Container::Property::RegionalClusterNodeConfig.new(@fetched['nodeConfig'], to_s)
-    @master_auth = GoogleInSpec::Container::Property::RegionalClusterMasterAuth.new(@fetched['masterAuth'], to_s)
-    @logging_service = @fetched['loggingService']
-    @monitoring_service = @fetched['monitoringService']
-    @network = @fetched['network']
-    @private_cluster_config = GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(@fetched['privateClusterConfig'], to_s)
-    @cluster_ipv4_cidr = @fetched['clusterIpv4Cidr']
-    @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched['addonsConfig'], to_s)
-    @subnetwork = @fetched['subnetwork']
-    @locations = @fetched['locations']
-    @resource_labels = @fetched['resourceLabels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @legacy_abac = GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.new(@fetched['legacyAbac'], to_s)
-    @network_policy = GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.new(@fetched['networkPolicy'], to_s)
-    @default_max_pods_constraint = GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.new(@fetched['defaultMaxPodsConstraint'], to_s)
-    @ip_allocation_policy = GoogleInSpec::Container::Property::RegionalClusterIpAllocationPolicy.new(@fetched['ipAllocationPolicy'], to_s)
-    @endpoint = @fetched['endpoint']
-    @initial_cluster_version = @fetched['initialClusterVersion']
-    @current_master_version = @fetched['currentMasterVersion']
-    @current_node_version = @fetched['currentNodeVersion']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @status = @fetched['status']
-    @status_message = @fetched['statusMessage']
-    @node_ipv4_cidr_size = @fetched['nodeIpv4CidrSize']
-    @services_ipv4_cidr = @fetched['servicesIpv4Cidr']
-    @current_node_count = @fetched['currentNodeCount']
-    @expire_time = parse_time_string(@fetched['expireTime'])
-    @enable_tpu = @fetched['enableTpu']
-    @tpu_ipv4_cidr_block = @fetched['tpuIpv4CidrBlock']
-    @conditions = GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(@fetched['conditions'], to_s)
-    @master_authorized_networks_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.new(@fetched['masterAuthorizedNetworksConfig'], to_s)
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @initial_node_count = @fetched["initialNodeCount"]
+    @node_config = GoogleInSpec::Container::Property::RegionalClusterNodeConfig.new(@fetched["nodeConfig"], to_s)
+    @master_auth = GoogleInSpec::Container::Property::RegionalClusterMasterAuth.new(@fetched["masterAuth"], to_s)
+    @logging_service = @fetched["loggingService"]
+    @monitoring_service = @fetched["monitoringService"]
+    @network = @fetched["network"]
+    @private_cluster_config = GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.new(@fetched["privateClusterConfig"], to_s)
+    @cluster_ipv4_cidr = @fetched["clusterIpv4Cidr"]
+    @addons_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.new(@fetched["addonsConfig"], to_s)
+    @subnetwork = @fetched["subnetwork"]
+    @locations = @fetched["locations"]
+    @resource_labels = @fetched["resourceLabels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @legacy_abac = GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.new(@fetched["legacyAbac"], to_s)
+    @network_policy = GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.new(@fetched["networkPolicy"], to_s)
+    @default_max_pods_constraint = GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.new(@fetched["defaultMaxPodsConstraint"], to_s)
+    @ip_allocation_policy = GoogleInSpec::Container::Property::RegionalClusterIpAllocationPolicy.new(@fetched["ipAllocationPolicy"], to_s)
+    @endpoint = @fetched["endpoint"]
+    @initial_cluster_version = @fetched["initialClusterVersion"]
+    @current_master_version = @fetched["currentMasterVersion"]
+    @current_node_version = @fetched["currentNodeVersion"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @status = @fetched["status"]
+    @status_message = @fetched["statusMessage"]
+    @node_ipv4_cidr_size = @fetched["nodeIpv4CidrSize"]
+    @services_ipv4_cidr = @fetched["servicesIpv4Cidr"]
+    @current_node_count = @fetched["currentNodeCount"]
+    @expire_time = parse_time_string(@fetched["expireTime"])
+    @enable_tpu = @fetched["enableTpu"]
+    @tpu_ipv4_cidr_block = @fetched["tpuIpv4CidrBlock"]
+    @conditions = GoogleInSpec::Container::Property::RegionalClusterConditionsArray.parse(@fetched["conditions"], to_s)
+    @master_authorized_networks_config = GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.new(@fetched["masterAuthorizedNetworksConfig"], to_s)
+    @location = @fetched["location"]
   end
 
   # Handles parsing RFC3339 time string
@@ -137,46 +137,46 @@ class ContainerRegionalCluster < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'initial_node_count' => ->(x, _) { x.nil? ? [] : ["its('initial_node_count') { should cmp #{x.inspect} }"] },
-      'node_config' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterNodeConfig.un_parse(x, 'node_config') },
-      'master_auth' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterMasterAuth.un_parse(x, 'master_auth') },
-      'logging_service' => ->(x, _) { x.nil? ? [] : ["its('logging_service') { should cmp #{x.inspect} }"] },
-      'monitoring_service' => ->(x, _) { x.nil? ? [] : ["its('monitoring_service') { should cmp #{x.inspect} }"] },
-      'network' => ->(x, _) { x.nil? ? [] : ["its('network') { should cmp #{x.inspect} }"] },
-      'private_cluster_config' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.un_parse(x, 'private_cluster_config') },
-      'cluster_ipv4_cidr' => ->(x, _) { x.nil? ? [] : ["its('cluster_ipv4_cidr') { should cmp #{x.inspect} }"] },
-      'addons_config' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.un_parse(x, 'addons_config') },
-      'subnetwork' => ->(x, _) { x.nil? ? [] : ["its('subnetwork') { should cmp #{x.inspect} }"] },
-      'locations' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('locations') { should include #{single.inspect} }" } },
-      'resource_labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('resource_labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'label_fingerprint' => ->(x, _) { x.nil? ? [] : ["its('label_fingerprint') { should cmp #{x.inspect} }"] },
-      'legacy_abac' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.un_parse(x, 'legacy_abac') },
-      'network_policy' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.un_parse(x, 'network_policy') },
-      'default_max_pods_constraint' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.un_parse(x, 'default_max_pods_constraint') },
-      'ip_allocation_policy' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterIpAllocationPolicy.un_parse(x, 'ip_allocation_policy') },
-      'endpoint' => ->(x, _) { x.nil? ? [] : ["its('endpoint') { should cmp #{x.inspect} }"] },
-      'initial_cluster_version' => ->(x, _) { x.nil? ? [] : ["its('initial_cluster_version') { should cmp #{x.inspect} }"] },
-      'current_master_version' => ->(x, _) { x.nil? ? [] : ["its('current_master_version') { should cmp #{x.inspect} }"] },
-      'current_node_version' => ->(x, _) { x.nil? ? [] : ["its('current_node_version') { should cmp #{x.inspect} }"] },
-      'create_time' => ->(x, _) { x.nil? ? [] : ["its('create_time.to_s') { should cmp '#{x.inspect}' }"] },
-      'status' => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
-      'status_message' => ->(x, _) { x.nil? ? [] : ["its('status_message') { should cmp #{x.inspect} }"] },
-      'node_ipv4_cidr_size' => ->(x, _) { x.nil? ? [] : ["its('node_ipv4_cidr_size') { should cmp #{x.inspect} }"] },
-      'services_ipv4_cidr' => ->(x, _) { x.nil? ? [] : ["its('services_ipv4_cidr') { should cmp #{x.inspect} }"] },
-      'current_node_count' => ->(x, _) { x.nil? ? [] : ["its('current_node_count') { should cmp #{x.inspect} }"] },
-      'expire_time' => ->(x, _) { x.nil? ? [] : ["its('expire_time.to_s') { should cmp '#{x.inspect}' }"] },
-      'enable_tpu' => ->(x, _) { x.nil? ? [] : ["its('enable_tpu') { should cmp #{x.inspect} }"] },
-      'tpu_ipv4_cidr_block' => ->(x, _) { x.nil? ? [] : ["its('tpu_ipv4_cidr_block') { should cmp #{x.inspect} }"] },
-      'conditions' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('conditions') { should include '#{single.to_json}' }" } },
-      'master_authorized_networks_config' => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.un_parse(x, 'master_authorized_networks_config') },
-      'location' => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "initial_node_count" => ->(x, _) { x.nil? ? [] : ["its('initial_node_count') { should cmp #{x.inspect} }"] },
+      "node_config" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterNodeConfig.un_parse(x, "node_config") },
+      "master_auth" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterMasterAuth.un_parse(x, "master_auth") },
+      "logging_service" => ->(x, _) { x.nil? ? [] : ["its('logging_service') { should cmp #{x.inspect} }"] },
+      "monitoring_service" => ->(x, _) { x.nil? ? [] : ["its('monitoring_service') { should cmp #{x.inspect} }"] },
+      "network" => ->(x, _) { x.nil? ? [] : ["its('network') { should cmp #{x.inspect} }"] },
+      "private_cluster_config" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterPrivateClusterConfig.un_parse(x, "private_cluster_config") },
+      "cluster_ipv4_cidr" => ->(x, _) { x.nil? ? [] : ["its('cluster_ipv4_cidr') { should cmp #{x.inspect} }"] },
+      "addons_config" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfig.un_parse(x, "addons_config") },
+      "subnetwork" => ->(x, _) { x.nil? ? [] : ["its('subnetwork') { should cmp #{x.inspect} }"] },
+      "locations" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('locations') { should include #{single.inspect} }" } },
+      "resource_labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('resource_labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "label_fingerprint" => ->(x, _) { x.nil? ? [] : ["its('label_fingerprint') { should cmp #{x.inspect} }"] },
+      "legacy_abac" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterLegacyAbac.un_parse(x, "legacy_abac") },
+      "network_policy" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterNetworkPolicy.un_parse(x, "network_policy") },
+      "default_max_pods_constraint" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterDefaultMaxPodsConstraint.un_parse(x, "default_max_pods_constraint") },
+      "ip_allocation_policy" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterIpAllocationPolicy.un_parse(x, "ip_allocation_policy") },
+      "endpoint" => ->(x, _) { x.nil? ? [] : ["its('endpoint') { should cmp #{x.inspect} }"] },
+      "initial_cluster_version" => ->(x, _) { x.nil? ? [] : ["its('initial_cluster_version') { should cmp #{x.inspect} }"] },
+      "current_master_version" => ->(x, _) { x.nil? ? [] : ["its('current_master_version') { should cmp #{x.inspect} }"] },
+      "current_node_version" => ->(x, _) { x.nil? ? [] : ["its('current_node_version') { should cmp #{x.inspect} }"] },
+      "create_time" => ->(x, _) { x.nil? ? [] : ["its('create_time.to_s') { should cmp '#{x.inspect}' }"] },
+      "status" => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
+      "status_message" => ->(x, _) { x.nil? ? [] : ["its('status_message') { should cmp #{x.inspect} }"] },
+      "node_ipv4_cidr_size" => ->(x, _) { x.nil? ? [] : ["its('node_ipv4_cidr_size') { should cmp #{x.inspect} }"] },
+      "services_ipv4_cidr" => ->(x, _) { x.nil? ? [] : ["its('services_ipv4_cidr') { should cmp #{x.inspect} }"] },
+      "current_node_count" => ->(x, _) { x.nil? ? [] : ["its('current_node_count') { should cmp #{x.inspect} }"] },
+      "expire_time" => ->(x, _) { x.nil? ? [] : ["its('expire_time.to_s') { should cmp '#{x.inspect}' }"] },
+      "enable_tpu" => ->(x, _) { x.nil? ? [] : ["its('enable_tpu') { should cmp #{x.inspect} }"] },
+      "tpu_ipv4_cidr_block" => ->(x, _) { x.nil? ? [] : ["its('tpu_ipv4_cidr_block') { should cmp #{x.inspect} }"] },
+      "conditions" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('conditions') { should include '#{single.to_json}' }" } },
+      "master_authorized_networks_config" => ->(x, _) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterMasterAuthorizedNetworksConfig.un_parse(x, "master_authorized_networks_config") },
+      "location" => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'RegionalCluster'
+    name = "RegionalCluster"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -185,11 +185,11 @@ class ContainerRegionalCluster < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_container_regional_cluster',
+      type: "google_container_regional_cluster",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -197,10 +197,10 @@ class ContainerRegionalCluster < GcpResourceBase
   private
 
   def product_url
-    'https://container.googleapis.com/v1/'
+    "https://container.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/clusters/{{name}}'
+    "projects/{{project}}/locations/{{location}}/clusters/{{name}}"
   end
 end

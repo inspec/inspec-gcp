@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,30 +13,30 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_database_config'
-require 'google/composer/property/projectlocationenvironment_config_encryption_config'
-require 'google/composer/property/projectlocationenvironment_config_maintenance_window'
-require 'google/composer/property/projectlocationenvironment_config_master_authorized_networks_config'
-require 'google/composer/property/projectlocationenvironment_config_master_authorized_networks_config_cidr_blocks'
-require 'google/composer/property/projectlocationenvironment_config_node_config'
-require 'google/composer/property/projectlocationenvironment_config_node_config_ip_allocation_policy'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config_networking_config'
-require 'google/composer/property/projectlocationenvironment_config_private_environment_config_private_cluster_config'
-require 'google/composer/property/projectlocationenvironment_config_recovery_config'
-require 'google/composer/property/projectlocationenvironment_config_recovery_config_scheduled_snapshots_config'
-require 'google/composer/property/projectlocationenvironment_config_software_config'
-require 'google/composer/property/projectlocationenvironment_config_software_config_airflow_config_overrides'
-require 'google/composer/property/projectlocationenvironment_config_software_config_env_variables'
-require 'google/composer/property/projectlocationenvironment_config_software_config_pypi_packages'
-require 'google/composer/property/projectlocationenvironment_config_web_server_config'
-require 'google/composer/property/projectlocationenvironment_config_web_server_network_access_control'
-require 'google/composer/property/projectlocationenvironment_config_web_server_network_access_control_allowed_ip_ranges'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_scheduler'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_triggerer'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_web_server'
-require 'google/composer/property/projectlocationenvironment_config_workloads_config_worker'
+require "google/composer/property/projectlocationenvironment_config_database_config"
+require "google/composer/property/projectlocationenvironment_config_encryption_config"
+require "google/composer/property/projectlocationenvironment_config_maintenance_window"
+require "google/composer/property/projectlocationenvironment_config_master_authorized_networks_config"
+require "google/composer/property/projectlocationenvironment_config_master_authorized_networks_config_cidr_blocks"
+require "google/composer/property/projectlocationenvironment_config_node_config"
+require "google/composer/property/projectlocationenvironment_config_node_config_ip_allocation_policy"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config_networking_config"
+require "google/composer/property/projectlocationenvironment_config_private_environment_config_private_cluster_config"
+require "google/composer/property/projectlocationenvironment_config_recovery_config"
+require "google/composer/property/projectlocationenvironment_config_recovery_config_scheduled_snapshots_config"
+require "google/composer/property/projectlocationenvironment_config_software_config"
+require "google/composer/property/projectlocationenvironment_config_software_config_airflow_config_overrides"
+require "google/composer/property/projectlocationenvironment_config_software_config_env_variables"
+require "google/composer/property/projectlocationenvironment_config_software_config_pypi_packages"
+require "google/composer/property/projectlocationenvironment_config_web_server_config"
+require "google/composer/property/projectlocationenvironment_config_web_server_network_access_control"
+require "google/composer/property/projectlocationenvironment_config_web_server_network_access_control_allowed_ip_ranges"
+require "google/composer/property/projectlocationenvironment_config_workloads_config"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_scheduler"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_triggerer"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_web_server"
+require "google/composer/property/projectlocationenvironment_config_workloads_config_worker"
 module GoogleInSpec
   module Composer
     module Property
@@ -80,24 +80,24 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @gke_cluster = args['gkeCluster']
-          @dag_gcs_prefix = args['dagGcsPrefix']
-          @node_count = args['nodeCount']
-          @software_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfig.new(args['softwareConfig'], to_s)
-          @node_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigNodeConfig.new(args['nodeConfig'], to_s)
-          @private_environment_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigPrivateEnvironmentConfig.new(args['privateEnvironmentConfig'], to_s)
-          @web_server_network_access_control = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWebServerNetworkAccessControl.new(args['webServerNetworkAccessControl'], to_s)
-          @database_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigDatabaseConfig.new(args['databaseConfig'], to_s)
-          @web_server_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWebServerConfig.new(args['webServerConfig'], to_s)
-          @encryption_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigEncryptionConfig.new(args['encryptionConfig'], to_s)
-          @maintenance_window = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigMaintenanceWindow.new(args['maintenanceWindow'], to_s)
-          @workloads_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWorkloadsConfig.new(args['workloadsConfig'], to_s)
-          @environment_size = args['environmentSize']
-          @airflow_uri = args['airflowUri']
-          @airflow_byoid_uri = args['airflowByoidUri']
-          @master_authorized_networks_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigMasterAuthorizedNetworksConfig.new(args['masterAuthorizedNetworksConfig'], to_s)
-          @recovery_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigRecoveryConfig.new(args['recoveryConfig'], to_s)
-          @resilience_mode = args['resilienceMode']
+          @gke_cluster = args["gkeCluster"]
+          @dag_gcs_prefix = args["dagGcsPrefix"]
+          @node_count = args["nodeCount"]
+          @software_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigSoftwareConfig.new(args["softwareConfig"], to_s)
+          @node_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigNodeConfig.new(args["nodeConfig"], to_s)
+          @private_environment_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigPrivateEnvironmentConfig.new(args["privateEnvironmentConfig"], to_s)
+          @web_server_network_access_control = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWebServerNetworkAccessControl.new(args["webServerNetworkAccessControl"], to_s)
+          @database_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigDatabaseConfig.new(args["databaseConfig"], to_s)
+          @web_server_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWebServerConfig.new(args["webServerConfig"], to_s)
+          @encryption_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigEncryptionConfig.new(args["encryptionConfig"], to_s)
+          @maintenance_window = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigMaintenanceWindow.new(args["maintenanceWindow"], to_s)
+          @workloads_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigWorkloadsConfig.new(args["workloadsConfig"], to_s)
+          @environment_size = args["environmentSize"]
+          @airflow_uri = args["airflowUri"]
+          @airflow_byoid_uri = args["airflowByoidUri"]
+          @master_authorized_networks_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigMasterAuthorizedNetworksConfig.new(args["masterAuthorizedNetworksConfig"], to_s)
+          @recovery_config = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigRecoveryConfig.new(args["recoveryConfig"], to_s)
+          @resilience_mode = args["resilienceMode"]
         end
 
         def to_s

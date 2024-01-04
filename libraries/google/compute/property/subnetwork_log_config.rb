@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -32,12 +32,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enable = args['enable']
-          @aggregation_interval = args['aggregationInterval']
-          @flow_sampling = args['flowSampling']
-          @metadata = args['metadata']
-          @metadata_fields = args['metadataFields']
-          @filter_expr = args['filterExpr']
+          @enable = args["enable"]
+          @aggregation_interval = args["aggregationInterval"]
+          @flow_sampling = args["flowSampling"]
+          @metadata = args["metadata"]
+          @metadata_fields = args["metadataFields"]
+          @filter_expr = args["filterExpr"]
         end
 
         def to_s

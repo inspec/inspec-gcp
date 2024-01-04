@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIFeaturestores < GcpResourceBase
-  name 'google_vertex_ai_featurestores'
-  desc 'Featurestore plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_featurestores"
+  desc "Featurestore plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class VertexAIFeaturestores < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('featurestores')
+    @table = fetch_wrapped_resource("featurestores")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,25 +71,25 @@ class VertexAIFeaturestores < GcpResourceBase
 
   def transformers
     {
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'onlineStorageTtlDays' => ->(obj) { [:online_storage_ttl_days, obj['onlineStorageTtlDays']] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::FeaturestoreEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoreLabels.new(obj['labels'], to_s)] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'onlineServingConfig' => ->(obj) { [:online_serving_config, GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfig.new(obj['onlineServingConfig'], to_s)] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "onlineStorageTtlDays" => ->(obj) { [:online_storage_ttl_days, obj["onlineStorageTtlDays"]] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::FeaturestoreEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoreLabels.new(obj["labels"], to_s)] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "onlineServingConfig" => ->(obj) { [:online_serving_config, GoogleInSpec::VertexAI::Property::FeaturestoreOnlineServingConfig.new(obj["onlineServingConfig"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/featurestores'
+    "{{parent}}/featurestores"
   end
 end

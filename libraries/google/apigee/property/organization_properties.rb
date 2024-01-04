@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/apigee/property/organization_properties_property'
+require "google/apigee/property/organization_properties_property"
 module GoogleInSpec
   module Apigee
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @property = GoogleInSpec::Apigee::Property::OrganizationPropertiesPropertyArray.parse(args['property'], to_s)
+          @property = GoogleInSpec::Apigee::Property::OrganizationPropertiesPropertyArray.parse(args["property"], to_s)
         end
 
         def to_s

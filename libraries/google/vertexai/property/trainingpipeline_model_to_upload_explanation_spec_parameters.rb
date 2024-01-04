@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,21 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_presets'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_sampled_shapley_attribution'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_blur_baseline_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source_gcs_source"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_presets"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_sampled_shapley_attribution"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_blur_baseline_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma"
+require "google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -47,12 +47,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @output_indices = args['outputIndices']
-          @examples = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersExamples.new(args['examples'], to_s)
-          @xrai_attribution = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersXraiAttribution.new(args['xraiAttribution'], to_s)
-          @top_k = args['topK']
-          @integrated_gradients_attribution = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersIntegratedGradientsAttribution.new(args['integratedGradientsAttribution'], to_s)
-          @sampled_shapley_attribution = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersSampledShapleyAttribution.new(args['sampledShapleyAttribution'], to_s)
+          @output_indices = args["outputIndices"]
+          @examples = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersExamples.new(args["examples"], to_s)
+          @xrai_attribution = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersXraiAttribution.new(args["xraiAttribution"], to_s)
+          @top_k = args["topK"]
+          @integrated_gradients_attribution = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersIntegratedGradientsAttribution.new(args["integratedGradientsAttribution"], to_s)
+          @sampled_shapley_attribution = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersSampledShapleyAttribution.new(args["sampledShapleyAttribution"], to_s)
         end
 
         def to_s

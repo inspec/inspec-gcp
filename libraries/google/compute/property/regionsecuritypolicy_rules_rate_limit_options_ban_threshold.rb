@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @count = args['count']
-          @interval_sec = args['intervalSec']
+          @count = args["count"]
+          @interval_sec = args["intervalSec"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class LoggingOrganizationLogSinks < GcpResourceBase
-  name 'google_logging_organization_log_sinks'
-  desc 'OrganizationLogSink plural resource'
-  supports platform: 'gcp'
+  name "google_logging_organization_log_sinks"
+  desc "OrganizationLogSink plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,12 +35,12 @@ class LoggingOrganizationLogSinks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('sinks')
+    @table = fetch_wrapped_resource("sinks")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -68,22 +68,22 @@ class LoggingOrganizationLogSinks < GcpResourceBase
 
   def transformers
     {
-      'organization' => ->(obj) { [:organization, obj['organization']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'filter' => ->(obj) { [:filter, obj['filter']] },
-      'destination' => ->(obj) { [:destination, obj['destination']] },
-      'writerIdentity' => ->(obj) { [:writer_identity, obj['writerIdentity']] },
-      'includeChildren' => ->(obj) { [:include_children, obj['includeChildren']] },
+      "organization" => ->(obj) { [:organization, obj["organization"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "filter" => ->(obj) { [:filter, obj["filter"]] },
+      "destination" => ->(obj) { [:destination, obj["destination"]] },
+      "writerIdentity" => ->(obj) { [:writer_identity, obj["writerIdentity"]] },
+      "includeChildren" => ->(obj) { [:include_children, obj["includeChildren"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'organizations/{{organization}}/sinks'
+    "organizations/{{organization}}/sinks"
   end
 end

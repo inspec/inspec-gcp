@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,22 +13,22 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/apigee/property/organization_addons_config'
-require 'google/apigee/property/organization_addons_config_advanced_api_ops_config'
-require 'google/apigee/property/organization_addons_config_analytics_config'
-require 'google/apigee/property/organization_addons_config_api_security_config'
-require 'google/apigee/property/organization_addons_config_connectors_platform_config'
-require 'google/apigee/property/organization_addons_config_integration_config'
-require 'google/apigee/property/organization_addons_config_monetization_config'
-require 'google/apigee/property/organization_properties'
-require 'google/apigee/property/organization_properties_property'
+require "gcp_backend"
+require "google/apigee/property/organization_addons_config"
+require "google/apigee/property/organization_addons_config_advanced_api_ops_config"
+require "google/apigee/property/organization_addons_config_analytics_config"
+require "google/apigee/property/organization_addons_config_api_security_config"
+require "google/apigee/property/organization_addons_config_connectors_platform_config"
+require "google/apigee/property/organization_addons_config_integration_config"
+require "google/apigee/property/organization_addons_config_monetization_config"
+require "google/apigee/property/organization_properties"
+require "google/apigee/property/organization_properties_property"
 
 # A provider to manage Apigee resources.
 class ApigeeOrganization < GcpResourceBase
-  name 'google_apigee_organization'
-  desc 'Organization'
-  supports platform: 'gcp'
+  name "google_apigee_organization"
+  desc "Organization"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :api_consumer_data_encryption_key_name
@@ -63,39 +63,39 @@ class ApigeeOrganization < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @api_consumer_data_encryption_key_name = @fetched['apiConsumerDataEncryptionKeyName']
-    @runtime_database_encryption_key_name = @fetched['runtimeDatabaseEncryptionKeyName']
-    @environments = @fetched['environments']
-    @runtime_type = @fetched['runtimeType']
-    @type = @fetched['type']
-    @portal_disabled = @fetched['portalDisabled']
-    @authorized_network = @fetched['authorizedNetwork']
-    @project_id = @fetched['projectId']
-    @description = @fetched['description']
-    @ca_certificate = @fetched['caCertificate']
-    @subscription_type = @fetched['subscriptionType']
-    @addons_config = GoogleInSpec::Apigee::Property::OrganizationAddonsConfig.new(@fetched['addonsConfig'], to_s)
-    @customer_name = @fetched['customerName']
-    @created_at = @fetched['createdAt']
-    @last_modified_at = @fetched['lastModifiedAt']
-    @subscription_plan = @fetched['subscriptionPlan']
-    @properties = GoogleInSpec::Apigee::Property::OrganizationProperties.new(@fetched['properties'], to_s)
-    @state = @fetched['state']
-    @name = @fetched['name']
-    @disable_vpc_peering = @fetched['disableVpcPeering']
-    @control_plane_encryption_key_name = @fetched['controlPlaneEncryptionKeyName']
-    @analytics_region = @fetched['analyticsRegion']
-    @api_consumer_data_location = @fetched['apiConsumerDataLocation']
-    @display_name = @fetched['displayName']
-    @apigee_project_id = @fetched['apigeeProjectId']
-    @expires_at = @fetched['expiresAt']
-    @attributes = @fetched['attributes']
-    @billing_type = @fetched['billingType']
+    @api_consumer_data_encryption_key_name = @fetched["apiConsumerDataEncryptionKeyName"]
+    @runtime_database_encryption_key_name = @fetched["runtimeDatabaseEncryptionKeyName"]
+    @environments = @fetched["environments"]
+    @runtime_type = @fetched["runtimeType"]
+    @type = @fetched["type"]
+    @portal_disabled = @fetched["portalDisabled"]
+    @authorized_network = @fetched["authorizedNetwork"]
+    @project_id = @fetched["projectId"]
+    @description = @fetched["description"]
+    @ca_certificate = @fetched["caCertificate"]
+    @subscription_type = @fetched["subscriptionType"]
+    @addons_config = GoogleInSpec::Apigee::Property::OrganizationAddonsConfig.new(@fetched["addonsConfig"], to_s)
+    @customer_name = @fetched["customerName"]
+    @created_at = @fetched["createdAt"]
+    @last_modified_at = @fetched["lastModifiedAt"]
+    @subscription_plan = @fetched["subscriptionPlan"]
+    @properties = GoogleInSpec::Apigee::Property::OrganizationProperties.new(@fetched["properties"], to_s)
+    @state = @fetched["state"]
+    @name = @fetched["name"]
+    @disable_vpc_peering = @fetched["disableVpcPeering"]
+    @control_plane_encryption_key_name = @fetched["controlPlaneEncryptionKeyName"]
+    @analytics_region = @fetched["analyticsRegion"]
+    @api_consumer_data_location = @fetched["apiConsumerDataLocation"]
+    @display_name = @fetched["displayName"]
+    @apigee_project_id = @fetched["apigeeProjectId"]
+    @expires_at = @fetched["expiresAt"]
+    @attributes = @fetched["attributes"]
+    @billing_type = @fetched["billingType"]
   end
 
   def exists?
@@ -109,10 +109,10 @@ class ApigeeOrganization < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://apigee.googleapis.com/v1/'
+    "https://apigee.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

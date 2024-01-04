@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Key Management Service resources.
 class KMSLocation < GcpResourceBase
-  name 'google_kms_location'
-  desc 'Location'
-  supports platform: 'gcp'
+  name "google_kms_location"
+  desc "Location"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -30,15 +30,15 @@ class KMSLocation < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @location_id = @fetched['locationId']
-    @display_name = @fetched['displayName']
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @location_id = @fetched["locationId"]
+    @display_name = @fetched["displayName"]
+    @location = @fetched["location"]
   end
 
   def exists?
@@ -52,10 +52,10 @@ class KMSLocation < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudkms.googleapis.com/v1/'
+    "https://cloudkms.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{name}}'
+    "projects/{{project}}/locations/{{name}}"
   end
 end

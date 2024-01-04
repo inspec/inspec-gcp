@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @per_series_aligner = args['perSeriesAligner']
-          @group_by_fields = args['groupByFields']
-          @alignment_period = args['alignmentPeriod']
-          @cross_series_reducer = args['crossSeriesReducer']
+          @per_series_aligner = args["perSeriesAligner"]
+          @group_by_fields = args["groupByFields"]
+          @alignment_period = args["alignmentPeriod"]
+          @cross_series_reducer = args["crossSeriesReducer"]
         end
 
         def to_s

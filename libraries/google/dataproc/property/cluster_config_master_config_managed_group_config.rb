@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @instance_template_name = args['instanceTemplateName']
-          @instance_group_manager_name = args['instanceGroupManagerName']
+          @instance_template_name = args["instanceTemplateName"]
+          @instance_group_manager_name = args["instanceGroupManagerName"]
         end
 
         def to_s

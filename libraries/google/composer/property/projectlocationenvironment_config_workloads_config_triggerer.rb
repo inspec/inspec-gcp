@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @count = args['count']
-          @cpu = args['cpu']
-          @memory_gb = args['memoryGb']
+          @count = args["count"]
+          @cpu = args["cpu"]
+          @memory_gb = args["memoryGb"]
         end
 
         def to_s

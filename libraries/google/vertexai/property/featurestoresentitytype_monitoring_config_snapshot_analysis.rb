@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @monitoring_interval_days = args['monitoringIntervalDays']
-          @staleness_days = args['stalenessDays']
-          @disabled = args['disabled']
+          @monitoring_interval_days = args["monitoringIntervalDays"]
+          @staleness_days = args["stalenessDays"]
+          @disabled = args["disabled"]
         end
 
         def to_s

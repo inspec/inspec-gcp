@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/projectinfo_common_instance_metadata'
-require 'google/compute/property/projectinfo_common_instance_metadata_items'
-require 'google/compute/property/projectinfo_quotas'
+require "gcp_backend"
+require "google/compute/property/projectinfo_common_instance_metadata"
+require "google/compute/property/projectinfo_common_instance_metadata_items"
+require "google/compute/property/projectinfo_quotas"
 
 # A provider to manage Compute Engine resources.
 class ComputeProjectInfo < GcpResourceBase
-  name 'google_compute_project_info'
-  desc 'ProjectInfo'
-  supports platform: 'gcp'
+  name "google_compute_project_info"
+  desc "ProjectInfo"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -37,19 +37,19 @@ class ComputeProjectInfo < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @common_instance_metadata = GoogleInSpec::Compute::Property::ProjectInfoCommonInstanceMetadata.new(@fetched['commonInstanceMetadata'], to_s)
-    @enabled_features = @fetched['enabledFeatures']
-    @default_service_account = @fetched['defaultServiceAccount']
-    @xpn_project_status = @fetched['xpnProjectStatus']
-    @default_network_tier = @fetched['defaultNetworkTier']
-    @quotas = GoogleInSpec::Compute::Property::ProjectInfoQuotasArray.parse(@fetched['quotas'], to_s)
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
+    @name = @fetched["name"]
+    @common_instance_metadata = GoogleInSpec::Compute::Property::ProjectInfoCommonInstanceMetadata.new(@fetched["commonInstanceMetadata"], to_s)
+    @enabled_features = @fetched["enabledFeatures"]
+    @default_service_account = @fetched["defaultServiceAccount"]
+    @xpn_project_status = @fetched["xpnProjectStatus"]
+    @default_network_tier = @fetched["defaultNetworkTier"]
+    @quotas = GoogleInSpec::Compute::Property::ProjectInfoQuotasArray.parse(@fetched["quotas"], to_s)
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
   end
 
   # Handles parsing RFC3339 time string
@@ -67,7 +67,7 @@ class ComputeProjectInfo < GcpResourceBase
 
   def has_enabled_oslogin?
     @common_instance_metadata&.items&.each do |element|
-      return true if element.key=='enable-oslogin' and element.value.casecmp('true').zero?
+      return true if element.key=="enable-oslogin" and element.value.casecmp("true") == 0
     end
     false
   end
@@ -76,13 +76,13 @@ class ComputeProjectInfo < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}'
+    "projects/{{project}}"
   end
 end

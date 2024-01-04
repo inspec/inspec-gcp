@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeInterconnectLocations < GcpResourceBase
-  name 'google_compute_interconnect_locations'
-  desc 'InterconnectLocation plural resource'
-  supports platform: 'gcp'
+  name "google_compute_interconnect_locations"
+  desc "InterconnectLocation plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class ComputeInterconnectLocations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,15 +71,15 @@ class ComputeInterconnectLocations < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'availabilityZone' => ->(obj) { [:availability_zone, obj['availabilityZone']] },
-      'clientOperationId' => ->(obj) { [:client_operation_id, obj['clientOperationId']] },
-      'facilityProvider' => ->(obj) { [:facility_provider, obj['facilityProvider']] },
-      'facilityProviderFacilityId' => ->(obj) { [:facility_provider_facility_id, obj['facilityProviderFacilityId']] },
-      'status' => ->(obj) { [:status, obj['status']] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "availabilityZone" => ->(obj) { [:availability_zone, obj["availabilityZone"]] },
+      "clientOperationId" => ->(obj) { [:client_operation_id, obj["clientOperationId"]] },
+      "facilityProvider" => ->(obj) { [:facility_provider, obj["facilityProvider"]] },
+      "facilityProviderFacilityId" => ->(obj) { [:facility_provider_facility_id, obj["facilityProviderFacilityId"]] },
+      "status" => ->(obj) { [:status, obj["status"]] },
     }
   end
 
@@ -91,10 +91,10 @@ class ComputeInterconnectLocations < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/interconnectLocations'
+    "projects/{{project}}/global/interconnectLocations"
   end
 end

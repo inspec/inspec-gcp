@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @main_page_suffix = args['mainPageSuffix']
-          @not_found_page = args['notFoundPage']
+          @main_page_suffix = args["mainPageSuffix"]
+          @not_found_page = args["notFoundPage"]
         end
 
         def to_s

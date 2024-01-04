@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config_timestamp_field'
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config_timestamp_field"
 module GoogleInSpec
   module DLP
     module Property
@@ -29,10 +29,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @start_time = args['startTime']
-          @end_time = args['endTime']
-          @enable_auto_population_of_timespan_config = args['enableAutoPopulationOfTimespanConfig']
-          @timestamp_field = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigTimespanConfigTimestampField.new(args['timestampField'], to_s)
+          @start_time = args["startTime"]
+          @end_time = args["endTime"]
+          @enable_auto_population_of_timespan_config = args["enableAutoPopulationOfTimespanConfig"]
+          @timestamp_field = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigTimespanConfigTimestampField.new(args["timestampField"], to_s)
         end
 
         def to_s

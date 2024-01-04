@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/instancetemplate_properties_disks_disk_encryption_key'
-require 'google/compute/property/instancetemplate_properties_disks_initialize_params'
-require 'google/compute/property/instancetemplate_properties_disks_initialize_params_source_image_encryption_key'
+require "google/compute/property/instancetemplate_properties_disks_disk_encryption_key"
+require "google/compute/property/instancetemplate_properties_disks_initialize_params"
+require "google/compute/property/instancetemplate_properties_disks_initialize_params_source_image_encryption_key"
 module GoogleInSpec
   module Compute
     module Property
@@ -46,16 +46,16 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @auto_delete = arguments['autoDelete']
-          @boot = arguments['boot']
-          @device_name = arguments['deviceName']
-          @disk_encryption_key = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksDiskEncryptionKey.new(arguments['diskEncryptionKey'], to_s)
-          @index = arguments['index']
-          @initialize_params = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParams.new(arguments['initializeParams'], to_s)
-          @interface = arguments['interface']
-          @mode = arguments['mode']
-          @source = arguments['source']
-          @type = arguments['type']
+          @auto_delete = arguments["autoDelete"]
+          @boot = arguments["boot"]
+          @device_name = arguments["deviceName"]
+          @disk_encryption_key = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksDiskEncryptionKey.new(arguments["diskEncryptionKey"], to_s)
+          @index = arguments["index"]
+          @initialize_params = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParams.new(arguments["initializeParams"], to_s)
+          @interface = arguments["interface"]
+          @mode = arguments["mode"]
+          @source = arguments["source"]
+          @type = arguments["type"]
         end
 
         def to_s
@@ -65,16 +65,16 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'auto_delete' => ->(x, path) { x.nil? ? [] : ["its('#{path}.auto_delete') { should cmp #{x.inspect} }"] },
-            'boot' => ->(x, path) { x.nil? ? [] : ["its('#{path}.boot') { should cmp #{x.inspect} }"] },
-            'device_name' => ->(x, path) { x.nil? ? [] : ["its('#{path}.device_name') { should cmp #{x.inspect} }"] },
-            'disk_encryption_key' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksDiskEncryptionKey.un_parse(x, "#{path}.disk_encryption_key") },
-            'index' => ->(x, path) { x.nil? ? [] : ["its('#{path}.index') { should cmp #{x.inspect} }"] },
-            'initialize_params' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParams.un_parse(x, "#{path}.initialize_params") },
-            'interface' => ->(x, path) { x.nil? ? [] : ["its('#{path}.interface') { should cmp #{x.inspect} }"] },
-            'mode' => ->(x, path) { x.nil? ? [] : ["its('#{path}.mode') { should cmp #{x.inspect} }"] },
-            'source' => ->(x, path) { x.nil? ? [] : ["its('#{path}.source') { should cmp #{x.inspect} }"] },
-            'type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
+            "auto_delete" => ->(x, path) { x.nil? ? [] : ["its('#{path}.auto_delete') { should cmp #{x.inspect} }"] },
+            "boot" => ->(x, path) { x.nil? ? [] : ["its('#{path}.boot') { should cmp #{x.inspect} }"] },
+            "device_name" => ->(x, path) { x.nil? ? [] : ["its('#{path}.device_name') { should cmp #{x.inspect} }"] },
+            "disk_encryption_key" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksDiskEncryptionKey.un_parse(x, "#{path}.disk_encryption_key") },
+            "index" => ->(x, path) { x.nil? ? [] : ["its('#{path}.index') { should cmp #{x.inspect} }"] },
+            "initialize_params" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParams.un_parse(x, "#{path}.initialize_params") },
+            "interface" => ->(x, path) { x.nil? ? [] : ["its('#{path}.interface') { should cmp #{x.inspect} }"] },
+            "mode" => ->(x, path) { x.nil? ? [] : ["its('#{path}.mode') { should cmp #{x.inspect} }"] },
+            "source" => ->(x, path) { x.nil? ? [] : ["its('#{path}.source') { should cmp #{x.inspect} }"] },
+            "type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

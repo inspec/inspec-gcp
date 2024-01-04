@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class LoggingMetrics < GcpResourceBase
-  name 'google_project_metrics'
-  desc 'Metric plural resource'
-  supports platform: 'gcp'
+  name "google_project_metrics"
+  desc "Metric plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -37,12 +37,12 @@ class LoggingMetrics < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('metrics')
+    @table = fetch_wrapped_resource("metrics")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -55,7 +55,7 @@ class LoggingMetrics < GcpResourceBase
           name, value = transform(key, hash)
           hash_with_symbols[name] = value
         end
-        hash_with_symbols[:metric_type] = hash.dig('metricDescriptor', 'type')
+        hash_with_symbols[:metric_type] = hash.dig("metricDescriptor", "type")
         converted.push(hash_with_symbols)
       end
     end
@@ -71,23 +71,23 @@ class LoggingMetrics < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:metric_name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'filter' => ->(obj) { [:metric_filter, obj['filter']] },
-      'metricDescriptor' => ->(obj) { [:metric_descriptor, GoogleInSpec::Logging::Property::MetricMetricDescriptor.new(obj['metricDescriptor'], to_s)] },
-      'labelExtractors' => ->(obj) { [:label_extractors, obj['labelExtractors']] },
-      'valueExtractor' => ->(obj) { [:value_extractor, obj['valueExtractor']] },
-      'bucketOptions' => ->(obj) { [:bucket_options, GoogleInSpec::Logging::Property::MetricBucketOptions.new(obj['bucketOptions'], to_s)] },
+      "name" => ->(obj) { [:metric_name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "filter" => ->(obj) { [:metric_filter, obj["filter"]] },
+      "metricDescriptor" => ->(obj) { [:metric_descriptor, GoogleInSpec::Logging::Property::MetricMetricDescriptor.new(obj["metricDescriptor"], to_s)] },
+      "labelExtractors" => ->(obj) { [:label_extractors, obj["labelExtractors"]] },
+      "valueExtractor" => ->(obj) { [:value_extractor, obj["valueExtractor"]] },
+      "bucketOptions" => ->(obj) { [:bucket_options, GoogleInSpec::Logging::Property::MetricBucketOptions.new(obj["bucketOptions"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/metrics'
+    "projects/{{project}}/metrics"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -31,10 +31,10 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @enabled = arguments['enabled']
-          @oauth2_client_id = arguments['oauth2ClientId']
-          @oauth2_client_secret = arguments['oauth2ClientSecret']
-          @oauth2_client_secret_sha256 = arguments['oauth2ClientSecretSha256']
+          @enabled = arguments["enabled"]
+          @oauth2_client_id = arguments["oauth2ClientId"]
+          @oauth2_client_secret = arguments["oauth2ClientSecret"]
+          @oauth2_client_secret_sha256 = arguments["oauth2ClientSecretSha256"]
         end
 
         def to_s
@@ -44,10 +44,10 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'enabled' => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
-            'oauth2_client_id' => ->(x, path) { x.nil? ? [] : ["its('#{path}.oauth2_client_id') { should cmp #{x.inspect} }"] },
-            'oauth2_client_secret' => ->(x, path) { x.nil? ? [] : ["its('#{path}.oauth2_client_secret') { should cmp #{x.inspect} }"] },
-            'oauth2_client_secret_sha256' => ->(x, path) { x.nil? ? [] : ["its('#{path}.oauth2_client_secret_sha256') { should cmp #{x.inspect} }"] },
+            "enabled" => ->(x, path) { x.nil? ? [] : ["its('#{path}.enabled') { should cmp #{x.inspect} }"] },
+            "oauth2_client_id" => ->(x, path) { x.nil? ? [] : ["its('#{path}.oauth2_client_id') { should cmp #{x.inspect} }"] },
+            "oauth2_client_secret" => ->(x, path) { x.nil? ? [] : ["its('#{path}.oauth2_client_secret') { should cmp #{x.inspect} }"] },
+            "oauth2_client_secret_sha256" => ->(x, path) { x.nil? ? [] : ["its('#{path}.oauth2_client_secret_sha256') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

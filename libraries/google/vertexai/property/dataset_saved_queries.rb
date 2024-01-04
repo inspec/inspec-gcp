@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -40,16 +40,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @annotation_spec_count = args['annotationSpecCount']
-          @update_time = args['updateTime']
-          @support_automl_training = args['supportAutomlTraining']
-          @metadata = args['metadata']
-          @problem_type = args['problemType']
-          @name = args['name']
-          @create_time = args['createTime']
-          @etag = args['etag']
-          @display_name = args['displayName']
-          @annotation_filter = args['annotationFilter']
+          @annotation_spec_count = args["annotationSpecCount"]
+          @update_time = args["updateTime"]
+          @support_automl_training = args["supportAutomlTraining"]
+          @metadata = args["metadata"]
+          @problem_type = args["problemType"]
+          @name = args["name"]
+          @create_time = args["createTime"]
+          @etag = args["etag"]
+          @display_name = args["displayName"]
+          @annotation_filter = args["annotationFilter"]
         end
 
         def to_s

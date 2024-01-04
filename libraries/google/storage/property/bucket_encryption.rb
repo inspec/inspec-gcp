@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -22,7 +22,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @default_kms_key_name = args['defaultKmsKeyName']
+          @default_kms_key_name = args["defaultKmsKeyName"]
         end
 
         def to_s

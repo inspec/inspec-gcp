@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudbuild/property/trigger_build_options_volumes'
+require "google/cloudbuild/property/trigger_build_options_volumes"
 module GoogleInSpec
   module CloudBuild
     module Property
@@ -45,18 +45,18 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @source_provenance_hash = args['sourceProvenanceHash']
-          @requested_verify_option = args['requestedVerifyOption']
-          @machine_type = args['machineType']
-          @disk_size_gb = args['diskSizeGb']
-          @substitution_option = args['substitutionOption']
-          @dynamic_substitutions = args['dynamicSubstitutions']
-          @log_streaming_option = args['logStreamingOption']
-          @worker_pool = args['workerPool']
-          @logging = args['logging']
-          @env = args['env']
-          @secret_env = args['secretEnv']
-          @volumes = GoogleInSpec::CloudBuild::Property::TriggerBuildOptionsVolumesArray.parse(args['volumes'], to_s)
+          @source_provenance_hash = args["sourceProvenanceHash"]
+          @requested_verify_option = args["requestedVerifyOption"]
+          @machine_type = args["machineType"]
+          @disk_size_gb = args["diskSizeGb"]
+          @substitution_option = args["substitutionOption"]
+          @dynamic_substitutions = args["dynamicSubstitutions"]
+          @log_streaming_option = args["logStreamingOption"]
+          @worker_pool = args["workerPool"]
+          @logging = args["logging"]
+          @env = args["env"]
+          @secret_env = args["secretEnv"]
+          @volumes = GoogleInSpec::CloudBuild::Property::TriggerBuildOptionsVolumesArray.parse(args["volumes"], to_s)
         end
 
         def to_s

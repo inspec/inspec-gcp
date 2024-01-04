@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @source = args['source']
-          @sha1_checksum = args['sha1Checksum']
-          @container_type = args['containerType']
+          @source = args["source"]
+          @sha1_checksum = args["sha1Checksum"]
+          @container_type = args["containerType"]
         end
 
         def to_s

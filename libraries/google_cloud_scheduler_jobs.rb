@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class CloudSchedulerJobs < GcpResourceBase
-  name 'google_cloud_scheduler_jobs'
-  desc 'Job plural resource'
-  supports platform: 'gcp'
+  name "google_cloud_scheduler_jobs"
+  desc "Job plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -40,12 +40,12 @@ class CloudSchedulerJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('jobs')
+    @table = fetch_wrapped_resource("jobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -73,27 +73,27 @@ class CloudSchedulerJobs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'schedule' => ->(obj) { [:schedule, obj['schedule']] },
-      'timeZone' => ->(obj) { [:time_zone, obj['timeZone']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'attemptDeadline' => ->(obj) { [:attempt_deadline, obj['attemptDeadline']] },
-      'retryConfig' => ->(obj) { [:retry_config, GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(obj['retryConfig'], to_s)] },
-      'pubsubTarget' => ->(obj) { [:pubsub_target, GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(obj['pubsubTarget'], to_s)] },
-      'appEngineHttpTarget' => ->(obj) { [:app_engine_http_target, GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(obj['appEngineHttpTarget'], to_s)] },
-      'httpTarget' => ->(obj) { [:http_target, GoogleInSpec::CloudScheduler::Property::JobHttpTarget.new(obj['httpTarget'], to_s)] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "schedule" => ->(obj) { [:schedule, obj["schedule"]] },
+      "timeZone" => ->(obj) { [:time_zone, obj["timeZone"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "attemptDeadline" => ->(obj) { [:attempt_deadline, obj["attemptDeadline"]] },
+      "retryConfig" => ->(obj) { [:retry_config, GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(obj["retryConfig"], to_s)] },
+      "pubsubTarget" => ->(obj) { [:pubsub_target, GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(obj["pubsubTarget"], to_s)] },
+      "appEngineHttpTarget" => ->(obj) { [:app_engine_http_target, GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(obj["appEngineHttpTarget"], to_s)] },
+      "httpTarget" => ->(obj) { [:http_target, GoogleInSpec::CloudScheduler::Property::JobHttpTarget.new(obj["httpTarget"], to_s)] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://cloudscheduler.googleapis.com/v1/'
+    "https://cloudscheduler.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/jobs'
+    "projects/{{project}}/locations/{{region}}/jobs"
   end
 end

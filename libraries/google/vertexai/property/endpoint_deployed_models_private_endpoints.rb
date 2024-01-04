@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @health_http_uri = args['healthHttpUri']
-          @explain_http_uri = args['explainHttpUri']
-          @predict_http_uri = args['predictHttpUri']
-          @service_attachment = args['serviceAttachment']
+          @health_http_uri = args["healthHttpUri"]
+          @explain_http_uri = args["explainHttpUri"]
+          @predict_http_uri = args["predictHttpUri"]
+          @service_attachment = args["serviceAttachment"]
         end
 
         def to_s

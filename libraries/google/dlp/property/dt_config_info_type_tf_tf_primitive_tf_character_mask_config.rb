@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_character_mask_config_characters_to_ignore'
+require "google/dlp/property/dt_config_info_type_tf_tf_primitive_tf_character_mask_config_characters_to_ignore"
 module GoogleInSpec
   module DLP
     module Property
@@ -29,10 +29,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @masking_character = args['maskingCharacter']
-          @number_to_mask = args['numberToMask']
-          @reverse_order = args['reverseOrder']
-          @characters_to_ignore = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCharacterMaskConfigCharactersToIgnoreArray.parse(args['charactersToIgnore'], to_s)
+          @masking_character = args["maskingCharacter"]
+          @number_to_mask = args["numberToMask"]
+          @reverse_order = args["reverseOrder"]
+          @characters_to_ignore = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfPrimitiveTfCharacterMaskConfigCharactersToIgnoreArray.parse(args["charactersToIgnore"], to_s)
         end
 
         def to_s

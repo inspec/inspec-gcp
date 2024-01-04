@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleProjectIAMBindings < GcpResourceBase
-    name 'google_project_iam_bindings'
-    desc 'Verifies settings for GCP project iam_bindings in bulk'
+    name "google_project_iam_bindings"
+    desc "Verifies settings for GCP project iam_bindings in bulk"
 
     example "
       describe google_project_iam_bindings(project: 'chef-inspec-gcp') do

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,28 +13,28 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/cloudbuild/property/trigger_build'
-require 'google/cloudbuild/property/trigger_build_artifacts'
-require 'google/cloudbuild/property/trigger_build_artifacts_objects'
-require 'google/cloudbuild/property/trigger_build_artifacts_objects_timing'
-require 'google/cloudbuild/property/trigger_build_options'
-require 'google/cloudbuild/property/trigger_build_options_volumes'
-require 'google/cloudbuild/property/trigger_build_secrets'
-require 'google/cloudbuild/property/trigger_build_source'
-require 'google/cloudbuild/property/trigger_build_source_repo_source'
-require 'google/cloudbuild/property/trigger_build_source_storage_source'
-require 'google/cloudbuild/property/trigger_build_steps'
-require 'google/cloudbuild/property/trigger_github'
-require 'google/cloudbuild/property/trigger_github_pull_request'
-require 'google/cloudbuild/property/trigger_github_push'
-require 'google/cloudbuild/property/trigger_trigger_template'
+require "gcp_backend"
+require "google/cloudbuild/property/trigger_build"
+require "google/cloudbuild/property/trigger_build_artifacts"
+require "google/cloudbuild/property/trigger_build_artifacts_objects"
+require "google/cloudbuild/property/trigger_build_artifacts_objects_timing"
+require "google/cloudbuild/property/trigger_build_options"
+require "google/cloudbuild/property/trigger_build_options_volumes"
+require "google/cloudbuild/property/trigger_build_secrets"
+require "google/cloudbuild/property/trigger_build_source"
+require "google/cloudbuild/property/trigger_build_source_repo_source"
+require "google/cloudbuild/property/trigger_build_source_storage_source"
+require "google/cloudbuild/property/trigger_build_steps"
+require "google/cloudbuild/property/trigger_github"
+require "google/cloudbuild/property/trigger_github_pull_request"
+require "google/cloudbuild/property/trigger_github_push"
+require "google/cloudbuild/property/trigger_trigger_template"
 
 # A provider to manage Cloud Build resources.
 class CloudBuildTrigger < GcpResourceBase
-  name 'google_cloudbuild_trigger'
-  desc 'Trigger'
-  supports platform: 'gcp'
+  name "google_cloudbuild_trigger"
+  desc "Trigger"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :id
@@ -54,24 +54,24 @@ class CloudBuildTrigger < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @tags = @fetched['tags']
-    @disabled = @fetched['disabled']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @substitutions = @fetched['substitutions']
-    @filename = @fetched['filename']
-    @ignored_files = @fetched['ignoredFiles']
-    @included_files = @fetched['includedFiles']
-    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched['triggerTemplate'], to_s)
-    @github = GoogleInSpec::CloudBuild::Property::TriggerGithub.new(@fetched['github'], to_s)
-    @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched['build'], to_s)
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @tags = @fetched["tags"]
+    @disabled = @fetched["disabled"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @substitutions = @fetched["substitutions"]
+    @filename = @fetched["filename"]
+    @ignored_files = @fetched["ignoredFiles"]
+    @included_files = @fetched["includedFiles"]
+    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched["triggerTemplate"], to_s)
+    @github = GoogleInSpec::CloudBuild::Property::TriggerGithub.new(@fetched["github"], to_s)
+    @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched["build"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -90,10 +90,10 @@ class CloudBuildTrigger < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudbuild.googleapis.com/v1/'
+    "https://cloudbuild.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/triggers/{{id}}'
+    "projects/{{project}}/triggers/{{id}}"
   end
 end

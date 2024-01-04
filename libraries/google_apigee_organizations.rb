@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ApigeeOrganizations < GcpResourceBase
-  name 'google_apigee_organizations'
-  desc 'Organization plural resource'
-  supports platform: 'gcp'
+  name "google_apigee_organizations"
+  desc "Organization plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -57,12 +57,12 @@ class ApigeeOrganizations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizations')
+    @table = fetch_wrapped_resource("organizations")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -90,44 +90,44 @@ class ApigeeOrganizations < GcpResourceBase
 
   def transformers
     {
-      'apiConsumerDataEncryptionKeyName' => ->(obj) { [:api_consumer_data_encryption_key_name, obj['apiConsumerDataEncryptionKeyName']] },
-      'runtimeDatabaseEncryptionKeyName' => ->(obj) { [:runtime_database_encryption_key_name, obj['runtimeDatabaseEncryptionKeyName']] },
-      'environments' => ->(obj) { [:environments, obj['environments']] },
-      'runtimeType' => ->(obj) { [:runtime_type, obj['runtimeType']] },
-      'type' => ->(obj) { [:type, obj['type']] },
-      'portalDisabled' => ->(obj) { [:portal_disabled, obj['portalDisabled']] },
-      'authorizedNetwork' => ->(obj) { [:authorized_network, obj['authorizedNetwork']] },
-      'projectId' => ->(obj) { [:project_id, obj['projectId']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'caCertificate' => ->(obj) { [:ca_certificate, obj['caCertificate']] },
-      'subscriptionType' => ->(obj) { [:subscription_type, obj['subscriptionType']] },
-      'addonsConfig' => ->(obj) { [:addons_config, GoogleInSpec::Apigee::Property::OrganizationAddonsConfig.new(obj['addonsConfig'], to_s)] },
-      'customerName' => ->(obj) { [:customer_name, obj['customerName']] },
-      'createdAt' => ->(obj) { [:created_at, obj['createdAt']] },
-      'lastModifiedAt' => ->(obj) { [:last_modified_at, obj['lastModifiedAt']] },
-      'subscriptionPlan' => ->(obj) { [:subscription_plan, obj['subscriptionPlan']] },
-      'properties' => ->(obj) { [:properties, GoogleInSpec::Apigee::Property::OrganizationProperties.new(obj['properties'], to_s)] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'disableVpcPeering' => ->(obj) { [:disable_vpc_peering, obj['disableVpcPeering']] },
-      'controlPlaneEncryptionKeyName' => ->(obj) { [:control_plane_encryption_key_name, obj['controlPlaneEncryptionKeyName']] },
-      'analyticsRegion' => ->(obj) { [:analytics_region, obj['analyticsRegion']] },
-      'apiConsumerDataLocation' => ->(obj) { [:api_consumer_data_location, obj['apiConsumerDataLocation']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'apigeeProjectId' => ->(obj) { [:apigee_project_id, obj['apigeeProjectId']] },
-      'expiresAt' => ->(obj) { [:expires_at, obj['expiresAt']] },
-      'attributes' => ->(obj) { [:attributes, obj['attributes']] },
-      'billingType' => ->(obj) { [:billing_type, obj['billingType']] },
+      "apiConsumerDataEncryptionKeyName" => ->(obj) { [:api_consumer_data_encryption_key_name, obj["apiConsumerDataEncryptionKeyName"]] },
+      "runtimeDatabaseEncryptionKeyName" => ->(obj) { [:runtime_database_encryption_key_name, obj["runtimeDatabaseEncryptionKeyName"]] },
+      "environments" => ->(obj) { [:environments, obj["environments"]] },
+      "runtimeType" => ->(obj) { [:runtime_type, obj["runtimeType"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
+      "portalDisabled" => ->(obj) { [:portal_disabled, obj["portalDisabled"]] },
+      "authorizedNetwork" => ->(obj) { [:authorized_network, obj["authorizedNetwork"]] },
+      "projectId" => ->(obj) { [:project_id, obj["projectId"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "caCertificate" => ->(obj) { [:ca_certificate, obj["caCertificate"]] },
+      "subscriptionType" => ->(obj) { [:subscription_type, obj["subscriptionType"]] },
+      "addonsConfig" => ->(obj) { [:addons_config, GoogleInSpec::Apigee::Property::OrganizationAddonsConfig.new(obj["addonsConfig"], to_s)] },
+      "customerName" => ->(obj) { [:customer_name, obj["customerName"]] },
+      "createdAt" => ->(obj) { [:created_at, obj["createdAt"]] },
+      "lastModifiedAt" => ->(obj) { [:last_modified_at, obj["lastModifiedAt"]] },
+      "subscriptionPlan" => ->(obj) { [:subscription_plan, obj["subscriptionPlan"]] },
+      "properties" => ->(obj) { [:properties, GoogleInSpec::Apigee::Property::OrganizationProperties.new(obj["properties"], to_s)] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "disableVpcPeering" => ->(obj) { [:disable_vpc_peering, obj["disableVpcPeering"]] },
+      "controlPlaneEncryptionKeyName" => ->(obj) { [:control_plane_encryption_key_name, obj["controlPlaneEncryptionKeyName"]] },
+      "analyticsRegion" => ->(obj) { [:analytics_region, obj["analyticsRegion"]] },
+      "apiConsumerDataLocation" => ->(obj) { [:api_consumer_data_location, obj["apiConsumerDataLocation"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "apigeeProjectId" => ->(obj) { [:apigee_project_id, obj["apigeeProjectId"]] },
+      "expiresAt" => ->(obj) { [:expires_at, obj["expiresAt"]] },
+      "attributes" => ->(obj) { [:attributes, obj["attributes"]] },
+      "billingType" => ->(obj) { [:billing_type, obj["billingType"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://apigee.googleapis.com/v1/'
+    "https://apigee.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}'
+    "{{parent}}"
   end
 end

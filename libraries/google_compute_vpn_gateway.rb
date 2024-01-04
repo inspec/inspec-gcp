@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/vpngateway_labels'
-require 'google/compute/property/vpngateway_vpn_interfaces'
+require "gcp_backend"
+require "google/compute/property/vpngateway_labels"
+require "google/compute/property/vpngateway_vpn_interfaces"
 
 # A provider to manage Compute Engine resources.
 class ComputeVpnGateway < GcpResourceBase
-  name 'google_compute_vpn_gateway'
-  desc 'VpnGateway'
-  supports platform: 'gcp'
+  name "google_compute_vpn_gateway"
+  desc "VpnGateway"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :kind
@@ -40,23 +40,23 @@ class ComputeVpnGateway < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @kind = @fetched['kind']
-    @id = @fetched['id']
-    @creation_timestamp = @fetched['creationTimestamp']
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @region = @fetched['region']
-    @network = @fetched['network']
-    @self_link = @fetched['selfLink']
-    @labels = GoogleInSpec::Compute::Property::VpnGatewayLabels.new(@fetched['labels'], to_s)
-    @label_fingerprint = @fetched['labelFingerprint']
-    @vpn_interfaces = GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(@fetched['vpnInterfaces'], to_s)
-    @stack_type = @fetched['stackType']
+    @kind = @fetched["kind"]
+    @id = @fetched["id"]
+    @creation_timestamp = @fetched["creationTimestamp"]
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @region = @fetched["region"]
+    @network = @fetched["network"]
+    @self_link = @fetched["selfLink"]
+    @labels = GoogleInSpec::Compute::Property::VpnGatewayLabels.new(@fetched["labels"], to_s)
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @vpn_interfaces = GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(@fetched["vpnInterfaces"], to_s)
+    @stack_type = @fetched["stackType"]
   end
 
   def exists?
@@ -70,10 +70,10 @@ class ComputeVpnGateway < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/vpnGateways/{{vpn_gateway}}'
+    "projects/{{project}}/regions/{{region}}/vpnGateways/{{vpn_gateway}}"
   end
 end

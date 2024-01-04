@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_request_headers_to_add'
-require 'google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_response_headers_to_add'
+require "google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_request_headers_to_add"
+require "google/compute/property/urlmap_default_route_action_weighted_backend_services_header_action_response_headers_to_add"
 module GoogleInSpec
   module Compute
     module Property
@@ -30,10 +30,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @request_headers_to_remove = args['requestHeadersToRemove']
-          @request_headers_to_add = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddArray.parse(args['requestHeadersToAdd'], to_s)
-          @response_headers_to_remove = args['responseHeadersToRemove']
-          @response_headers_to_add = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddArray.parse(args['responseHeadersToAdd'], to_s)
+          @request_headers_to_remove = args["requestHeadersToRemove"]
+          @request_headers_to_add = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddArray.parse(args["requestHeadersToAdd"], to_s)
+          @response_headers_to_remove = args["responseHeadersToRemove"]
+          @response_headers_to_add = GoogleInSpec::Compute::Property::UrlMapDefaultRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddArray.parse(args["responseHeadersToAdd"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeBackendBuckets < GcpResourceBase
-  name 'google_compute_backend_buckets'
-  desc 'BackendBucket plural resource'
-  supports platform: 'gcp'
+  name "google_compute_backend_buckets"
+  desc "BackendBucket plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -36,12 +36,12 @@ class ComputeBackendBuckets < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -69,13 +69,13 @@ class ComputeBackendBuckets < GcpResourceBase
 
   def transformers
     {
-      'bucketName' => ->(obj) { [:bucket_name, obj['bucketName']] },
-      'cdnPolicy' => ->(obj) { [:cdn_policy, GoogleInSpec::Compute::Property::BackendBucketCdnPolicy.new(obj['cdnPolicy'], to_s)] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'enableCdn' => ->(obj) { [:enable_cdn, obj['enableCdn']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
+      "bucketName" => ->(obj) { [:bucket_name, obj["bucketName"]] },
+      "cdnPolicy" => ->(obj) { [:cdn_policy, GoogleInSpec::Compute::Property::BackendBucketCdnPolicy.new(obj["cdnPolicy"], to_s)] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "enableCdn" => ->(obj) { [:enable_cdn, obj["enableCdn"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
     }
   end
 
@@ -102,10 +102,10 @@ class ComputeBackendBuckets < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/backendBuckets'
+    "projects/{{project}}/global/backendBuckets"
   end
 end

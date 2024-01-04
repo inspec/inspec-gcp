@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -29,9 +29,9 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @event_type = arguments['eventType']
-          @resource = arguments['resource']
-          @service = arguments['service']
+          @event_type = arguments["eventType"]
+          @resource = arguments["resource"]
+          @service = arguments["service"]
         end
 
         def to_s
@@ -41,9 +41,9 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'event_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.event_type') { should cmp #{x.inspect} }"] },
-            'resource' => ->(x, path) { x.nil? ? [] : ["its('#{path}.resource') { should cmp #{x.inspect} }"] },
-            'service' => ->(x, path) { x.nil? ? [] : ["its('#{path}.service') { should cmp #{x.inspect} }"] },
+            "event_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.event_type') { should cmp #{x.inspect} }"] },
+            "resource" => ->(x, path) { x.nil? ? [] : ["its('#{path}.resource') { should cmp #{x.inspect} }"] },
+            "service" => ->(x, path) { x.nil? ? [] : ["its('#{path}.service') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

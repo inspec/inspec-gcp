@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class RedisInstances < GcpResourceBase
-  name 'google_redis_instances'
-  desc 'Instance plural resource'
-  supports platform: 'gcp'
+  name "google_redis_instances"
+  desc "Instance plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -50,12 +50,12 @@ class RedisInstances < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('instances')
+    @table = fetch_wrapped_resource("instances")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -83,27 +83,27 @@ class RedisInstances < GcpResourceBase
 
   def transformers
     {
-      'alternativeLocationId' => ->(obj) { [:alternative_location_id, obj['alternativeLocationId']] },
-      'authEnabled' => ->(obj) { [:auth_enabled, obj['authEnabled']] },
-      'authorizedNetwork' => ->(obj) { [:authorized_network, obj['authorizedNetwork']] },
-      'connectMode' => ->(obj) { [:connect_mode, obj['connectMode']] },
-      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
-      'currentLocationId' => ->(obj) { [:current_location_id, obj['currentLocationId']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'host' => ->(obj) { [:host, obj['host']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'redisConfigs' => ->(obj) { [:redis_configs, obj['redisConfigs']] },
-      'locationId' => ->(obj) { [:location_id, obj['locationId']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'memorySizeGb' => ->(obj) { [:memory_size_gb, obj['memorySizeGb']] },
-      'port' => ->(obj) { [:port, obj['port']] },
-      'persistenceIamIdentity' => ->(obj) { [:persistence_iam_identity, obj['persistenceIamIdentity']] },
-      'redisVersion' => ->(obj) { [:redis_version, obj['redisVersion']] },
-      'reservedIpRange' => ->(obj) { [:reserved_ip_range, obj['reservedIpRange']] },
-      'tier' => ->(obj) { [:tier, obj['tier']] },
-      'transitEncryptionMode' => ->(obj) { [:transit_encryption_mode, obj['transitEncryptionMode']] },
-      'serverCaCerts' => ->(obj) { [:server_ca_certs, GoogleInSpec::Redis::Property::InstanceServerCaCertsArray.parse(obj['serverCaCerts'], to_s)] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "alternativeLocationId" => ->(obj) { [:alternative_location_id, obj["alternativeLocationId"]] },
+      "authEnabled" => ->(obj) { [:auth_enabled, obj["authEnabled"]] },
+      "authorizedNetwork" => ->(obj) { [:authorized_network, obj["authorizedNetwork"]] },
+      "connectMode" => ->(obj) { [:connect_mode, obj["connectMode"]] },
+      "createTime" => ->(obj) { [:create_time, parse_time_string(obj["createTime"])] },
+      "currentLocationId" => ->(obj) { [:current_location_id, obj["currentLocationId"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "host" => ->(obj) { [:host, obj["host"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "redisConfigs" => ->(obj) { [:redis_configs, obj["redisConfigs"]] },
+      "locationId" => ->(obj) { [:location_id, obj["locationId"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "memorySizeGb" => ->(obj) { [:memory_size_gb, obj["memorySizeGb"]] },
+      "port" => ->(obj) { [:port, obj["port"]] },
+      "persistenceIamIdentity" => ->(obj) { [:persistence_iam_identity, obj["persistenceIamIdentity"]] },
+      "redisVersion" => ->(obj) { [:redis_version, obj["redisVersion"]] },
+      "reservedIpRange" => ->(obj) { [:reserved_ip_range, obj["reservedIpRange"]] },
+      "tier" => ->(obj) { [:tier, obj["tier"]] },
+      "transitEncryptionMode" => ->(obj) { [:transit_encryption_mode, obj["transitEncryptionMode"]] },
+      "serverCaCerts" => ->(obj) { [:server_ca_certs, GoogleInSpec::Redis::Property::InstanceServerCaCertsArray.parse(obj["serverCaCerts"], to_s)] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -116,13 +116,13 @@ class RedisInstances < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://redis.googleapis.com/v1beta1/'
+      "https://redis.googleapis.com/v1beta1/"
     else
-      'https://redis.googleapis.com/v1/'
+      "https://redis.googleapis.com/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{region}}/instances'
+    "projects/{{project}}/locations/{{region}}/instances"
   end
 end

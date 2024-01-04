@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @executable_file = args['executableFile']
-          @execution_timeout = args['executionTimeout']
+          @executable_file = args["executableFile"]
+          @execution_timeout = args["executionTimeout"]
         end
 
         def to_s

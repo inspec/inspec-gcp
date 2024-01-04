@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class LoggingProjectExclusions < GcpResourceBase
-  name 'google_logging_project_exclusions'
-  desc 'ProjectExclusion plural resource'
-  supports platform: 'gcp'
+  name "google_logging_project_exclusions"
+  desc "ProjectExclusion plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class LoggingProjectExclusions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('exclusions')
+    @table = fetch_wrapped_resource("exclusions")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,21 +67,21 @@ class LoggingProjectExclusions < GcpResourceBase
 
   def transformers
     {
-      'project' => ->(obj) { [:project, obj['project']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'filter' => ->(obj) { [:filter, obj['filter']] },
-      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
+      "project" => ->(obj) { [:project, obj["project"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "filter" => ->(obj) { [:filter, obj["filter"]] },
+      "disabled" => ->(obj) { [:disabled, obj["disabled"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'projects/{{project}}/exclusions'
+    "projects/{{project}}/exclusions"
   end
 end

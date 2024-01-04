@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud SQL resources.
 class SQLUser < GcpResourceBase
-  name 'google_sql_user'
-  desc 'User'
-  supports platform: 'gcp'
+  name "google_sql_user"
+  desc "User"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :host
@@ -30,7 +30,7 @@ class SQLUser < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     @fetched = unwrap(fetched, params)
     parse unless @fetched.nil?
   end
@@ -40,7 +40,7 @@ class SQLUser < GcpResourceBase
   end
 
   def collection_item
-    'items'
+    "items"
   end
 
   def unwrap(fetched, params)
@@ -48,10 +48,10 @@ class SQLUser < GcpResourceBase
   end
 
   def parse
-    @host = @fetched['host']
-    @name = @fetched['name']
-    @instance = @fetched['instance']
-    @password = @fetched['password']
+    @host = @fetched["host"]
+    @name = @fetched["name"]
+    @instance = @fetched["instance"]
+    @password = @fetched["password"]
   end
 
   def exists?
@@ -65,10 +65,10 @@ class SQLUser < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/sql/v1beta4/'
+    "https://www.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{database}}/users'
+    "projects/{{project}}/instances/{{database}}/users"
   end
 end

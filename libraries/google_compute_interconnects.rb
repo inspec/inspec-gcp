@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeInterconnects < GcpResourceBase
-  name 'google_compute_interconnects'
-  desc 'Interconnect plural resource'
-  supports platform: 'gcp'
+  name "google_compute_interconnects"
+  desc "Interconnect plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -50,12 +50,12 @@ class ComputeInterconnects < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -83,27 +83,27 @@ class ComputeInterconnects < GcpResourceBase
 
   def transformers
     {
-      'adminEnabled' => ->(obj) { [:admin_enabled, obj['adminEnabled']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'location' => ->(obj) { [:location, obj['location']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'nocContactEmail' => ->(obj) { [:noc_contact_email, obj['nocContactEmail']] },
-      'peerIpAddress' => ->(obj) { [:peer_ip_address, obj['peerIpAddress']] },
-      'googleIpAddress' => ->(obj) { [:google_ip_address, obj['googleIpAddress']] },
-      'clientOperationId' => ->(obj) { [:client_operation_id, obj['clientOperationId']] },
-      'googleReferenceId' => ->(obj) { [:google_reference_id, obj['googleReferenceId']] },
-      'provisionedLinkCount' => ->(obj) { [:provisioned_link_count, obj['provisionedLinkCount']] },
-      'customerName' => ->(obj) { [:customer_name, obj['customerName']] },
-      'requestedLinkCount' => ->(obj) { [:requested_link_count, obj['requestedLinkCount']] },
-      'operationalStatus' => ->(obj) { [:operational_status, obj['operationalStatus']] },
-      'linkType' => ->(obj) { [:link_type, obj['linkType']] },
-      'interconnectType' => ->(obj) { [:interconnect_type, obj['interconnectType']] },
-      'interconnectAttachments' => ->(obj) { [:interconnect_attachments, obj['interconnectAttachments']] },
-      'expectedOutages' => ->(obj) { [:expected_outages, GoogleInSpec::Compute::Property::InterconnectExpectedOutagesArray.parse(obj['expectedOutages'], to_s)] },
-      'circuitInfos' => ->(obj) { [:circuit_infos, GoogleInSpec::Compute::Property::InterconnectCircuitInfosArray.parse(obj['circuitInfos'], to_s)] },
-      'satisfiesPzs' => ->(obj) { [:satisfies_pzs, obj['satisfiesPzs']] },
+      "adminEnabled" => ->(obj) { [:admin_enabled, obj["adminEnabled"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "location" => ->(obj) { [:location, obj["location"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "nocContactEmail" => ->(obj) { [:noc_contact_email, obj["nocContactEmail"]] },
+      "peerIpAddress" => ->(obj) { [:peer_ip_address, obj["peerIpAddress"]] },
+      "googleIpAddress" => ->(obj) { [:google_ip_address, obj["googleIpAddress"]] },
+      "clientOperationId" => ->(obj) { [:client_operation_id, obj["clientOperationId"]] },
+      "googleReferenceId" => ->(obj) { [:google_reference_id, obj["googleReferenceId"]] },
+      "provisionedLinkCount" => ->(obj) { [:provisioned_link_count, obj["provisionedLinkCount"]] },
+      "customerName" => ->(obj) { [:customer_name, obj["customerName"]] },
+      "requestedLinkCount" => ->(obj) { [:requested_link_count, obj["requestedLinkCount"]] },
+      "operationalStatus" => ->(obj) { [:operational_status, obj["operationalStatus"]] },
+      "linkType" => ->(obj) { [:link_type, obj["linkType"]] },
+      "interconnectType" => ->(obj) { [:interconnect_type, obj["interconnectType"]] },
+      "interconnectAttachments" => ->(obj) { [:interconnect_attachments, obj["interconnectAttachments"]] },
+      "expectedOutages" => ->(obj) { [:expected_outages, GoogleInSpec::Compute::Property::InterconnectExpectedOutagesArray.parse(obj["expectedOutages"], to_s)] },
+      "circuitInfos" => ->(obj) { [:circuit_infos, GoogleInSpec::Compute::Property::InterconnectCircuitInfosArray.parse(obj["circuitInfos"], to_s)] },
+      "satisfiesPzs" => ->(obj) { [:satisfies_pzs, obj["satisfiesPzs"]] },
     }
   end
 
@@ -115,10 +115,10 @@ class ComputeInterconnects < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/interconnects'
+    "projects/{{project}}/global/interconnects"
   end
 end

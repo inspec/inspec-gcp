@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_train_trials_final_measurement'
-require 'google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_train_trials_final_measurement_metrics'
+require "google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_train_trials_final_measurement"
+require "google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_train_trials_final_measurement_metrics"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -32,11 +32,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @id = args['id']
-          @state = args['state']
-          @final_measurement = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputTrainTrialsFinalMeasurement.new(args['finalMeasurement'], to_s)
-          @start_time = args['startTime']
-          @end_time = args['endTime']
+          @id = args["id"]
+          @state = args["state"]
+          @final_measurement = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputTrainTrialsFinalMeasurement.new(args["finalMeasurement"], to_s)
+          @start_time = args["startTime"]
+          @end_time = args["endTime"]
         end
 
         def to_s

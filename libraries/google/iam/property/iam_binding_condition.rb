@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # Copyright 2017 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @title = args['title']
-          @description = args['description']
-          @expression = args['expression']
+          @title = args["title"]
+          @description = args["description"]
+          @expression = args["expression"]
         end
 
         def to_s

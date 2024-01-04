@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/dlp/property/job_act_det'
-require 'google/dlp/property/job_errors'
+require "gcp_backend"
+require "google/dlp/property/job_act_det"
+require "google/dlp/property/job_errors"
 
 # A provider to manage Dlp resources.
 class DLPJob < GcpResourceBase
-  name 'google_dlp_job'
-  desc 'Job'
-  supports platform: 'gcp'
+  name "google_dlp_job"
+  desc "Job"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -40,23 +40,23 @@ class DLPJob < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @type = @fetched['type']
-    @state = @fetched['state']
-    @create_time = @fetched['createTime']
-    @start_time = @fetched['startTime']
-    @end_time = @fetched['endTime']
-    @job_trigger_name = @fetched['jobTriggerName']
-    @errors = GoogleInSpec::DLP::Property::JobErrorsArray.parse(@fetched['errors'], to_s)
-    @act_det = GoogleInSpec::DLP::Property::JobActDetArray.parse(@fetched['actDet'], to_s)
-    @risk_details = @fetched['riskDetails']
-    @inspect_details = @fetched['inspectDetails']
-    @parent = @fetched['parent']
+    @name = @fetched["name"]
+    @type = @fetched["type"]
+    @state = @fetched["state"]
+    @create_time = @fetched["createTime"]
+    @start_time = @fetched["startTime"]
+    @end_time = @fetched["endTime"]
+    @job_trigger_name = @fetched["jobTriggerName"]
+    @errors = GoogleInSpec::DLP::Property::JobErrorsArray.parse(@fetched["errors"], to_s)
+    @act_det = GoogleInSpec::DLP::Property::JobActDetArray.parse(@fetched["actDet"], to_s)
+    @risk_details = @fetched["riskDetails"]
+    @inspect_details = @fetched["inspectDetails"]
+    @parent = @fetched["parent"]
   end
 
   def exists?
@@ -70,10 +70,10 @@ class DLPJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://dlp.googleapis.com/v2/'
+    "https://dlp.googleapis.com/v2/"
   end
 
   def resource_base_url
-    '{{parent}}/dlpJobs/{{name}}'
+    "{{parent}}/dlpJobs/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeNodeGroup < GcpResourceBase
-  name 'google_compute_node_group'
-  desc 'NodeGroup'
-  supports platform: 'gcp'
+  name "google_compute_node_group"
+  desc "NodeGroup"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -32,18 +32,18 @@ class ComputeNodeGroup < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @name = @fetched['name']
-    @node_template = @fetched['nodeTemplate']
-    @size = @fetched['size']
-    @zone = @fetched['zone']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @name = @fetched["name"]
+    @node_template = @fetched["nodeTemplate"]
+    @size = @fetched["size"]
+    @zone = @fetched["zone"]
   end
 
   # Handles parsing RFC3339 time string
@@ -61,17 +61,17 @@ class ComputeNodeGroup < GcpResourceBase
 
   def un_parse
     {
-      'creation_timestamp' => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'node_template' => ->(x, _) { x.nil? ? [] : ["its('node_template') { should cmp #{x.inspect} }"] },
-      'size' => ->(x, _) { x.nil? ? [] : ["its('size') { should cmp #{x.inspect} }"] },
-      'zone' => ->(x, _) { x.nil? ? [] : ["its('zone') { should cmp #{x.inspect} }"] },
+      "creation_timestamp" => ->(x, _) { x.nil? ? [] : ["its('creation_timestamp.to_s') { should cmp '#{x.inspect}' }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "node_template" => ->(x, _) { x.nil? ? [] : ["its('node_template') { should cmp #{x.inspect} }"] },
+      "size" => ->(x, _) { x.nil? ? [] : ["its('size') { should cmp #{x.inspect} }"] },
+      "zone" => ->(x, _) { x.nil? ? [] : ["its('zone') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'NodeGroup'
+    name = "NodeGroup"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -80,11 +80,11 @@ class ComputeNodeGroup < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_compute_node_group',
+      type: "google_compute_node_group",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -92,10 +92,10 @@ class ComputeNodeGroup < GcpResourceBase
   private
 
   def product_url
-    'https://www.googleapis.com/compute/v1/'
+    "https://www.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}'
+    "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
   end
 end

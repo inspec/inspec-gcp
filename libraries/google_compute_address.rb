@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeAddress < GcpResourceBase
-  name 'google_compute_address'
-  desc 'Address'
-  supports platform: 'gcp'
+  name "google_compute_address"
+  desc "Address"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :address
@@ -40,25 +40,25 @@ class ComputeAddress < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @address = @fetched['address']
-    @address_type = @fetched['addressType']
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
-    @purpose = @fetched['purpose']
-    @network_tier = @fetched['networkTier']
-    @subnetwork = @fetched['subnetwork']
-    @users = @fetched['users']
-    @labels = @fetched['labels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @status = @fetched['status']
-    @region = @fetched['region']
+    @address = @fetched["address"]
+    @address_type = @fetched["addressType"]
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
+    @purpose = @fetched["purpose"]
+    @network_tier = @fetched["networkTier"]
+    @subnetwork = @fetched["subnetwork"]
+    @users = @fetched["users"]
+    @labels = @fetched["labels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @status = @fetched["status"]
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -86,20 +86,20 @@ class ComputeAddress < GcpResourceBase
 
   # Return the first user resource base name
   def user_resource_name
-    @users.first.split('/').last
+    @users.first.split("/").last
   end
 
   private
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{location}}/addresses/{{name}}'
+    "projects/{{project}}/regions/{{location}}/addresses/{{name}}"
   end
 end

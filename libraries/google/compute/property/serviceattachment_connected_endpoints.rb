@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @status = args['status']
-          @psc_connection_id = args['pscConnectionId']
-          @endpoint = args['endpoint']
-          @consumer_network = args['consumerNetwork']
+          @status = args["status"]
+          @psc_connection_id = args["pscConnectionId"]
+          @endpoint = args["endpoint"]
+          @consumer_network = args["consumerNetwork"]
         end
 
         def to_s

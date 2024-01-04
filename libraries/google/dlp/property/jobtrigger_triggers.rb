@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_triggers_schedule'
+require "google/dlp/property/jobtrigger_triggers_schedule"
 module GoogleInSpec
   module DLP
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @schedule = GoogleInSpec::DLP::Property::JobTriggerTriggersSchedule.new(args['schedule'], to_s)
+          @schedule = GoogleInSpec::DLP::Property::JobTriggerTriggersSchedule.new(args["schedule"], to_s)
         end
 
         def to_s

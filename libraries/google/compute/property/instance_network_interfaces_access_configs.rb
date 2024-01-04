@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -32,12 +32,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @nat_ip = args['natIP']
-          @type = args['type']
-          @set_public_ptr = args['setPublicPtr']
-          @public_ptr_domain_name = args['publicPtrDomainName']
-          @network_tier = args['networkTier']
+          @name = args["name"]
+          @nat_ip = args["natIP"]
+          @type = args["type"]
+          @set_public_ptr = args["setPublicPtr"]
+          @public_ptr_domain_name = args["publicPtrDomainName"]
+          @network_tier = args["networkTier"]
         end
 
         def to_s

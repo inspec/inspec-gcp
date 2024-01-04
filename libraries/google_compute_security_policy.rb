@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/securitypolicy_rules'
+require "gcp_backend"
+require "google/compute/property/securitypolicy_rules"
 
 # A provider to manage Compute Engine resources.
 class ComputeSecurityPolicy < GcpResourceBase
-  name 'google_compute_security_policy'
-  desc 'SecurityPolicy'
-  supports platform: 'gcp'
+  name "google_compute_security_policy"
+  desc "SecurityPolicy"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -30,14 +30,14 @@ class ComputeSecurityPolicy < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @id = @fetched['id']
-    @rules = GoogleInSpec::Compute::Property::SecurityPolicyRulesArray.parse(@fetched['rules'], to_s)
+    @name = @fetched["name"]
+    @id = @fetched["id"]
+    @rules = GoogleInSpec::Compute::Property::SecurityPolicyRulesArray.parse(@fetched["rules"], to_s)
   end
 
   def exists?
@@ -52,13 +52,13 @@ class ComputeSecurityPolicy < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/securityPolicies/{{name}}'
+    "projects/{{project}}/global/securityPolicies/{{name}}"
   end
 end

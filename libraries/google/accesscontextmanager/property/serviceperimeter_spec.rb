@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/accesscontextmanager/property/serviceperimeter_spec_vpc_accessible_services'
+require "google/accesscontextmanager/property/serviceperimeter_spec_vpc_accessible_services"
 module GoogleInSpec
   module AccessContextManager
     module Property
@@ -29,10 +29,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @resources = args['resources']
-          @access_levels = args['accessLevels']
-          @restricted_services = args['restrictedServices']
-          @vpc_accessible_services = GoogleInSpec::AccessContextManager::Property::ServicePerimeterSpecVPCAccessibleServices.new(args['vpcAccessibleServices'], to_s)
+          @resources = args["resources"]
+          @access_levels = args["accessLevels"]
+          @restricted_services = args["restrictedServices"]
+          @vpc_accessible_services = GoogleInSpec::AccessContextManager::Property::ServicePerimeterSpecVPCAccessibleServices.new(args["vpcAccessibleServices"], to_s)
         end
 
         def to_s

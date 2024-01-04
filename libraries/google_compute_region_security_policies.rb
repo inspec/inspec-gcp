@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeRegionSecurityPolicys < GcpResourceBase
-  name 'google_compute_region_security_policies'
-  desc 'RegionSecurityPolicy plural resource'
-  supports platform: 'gcp'
+  name "google_compute_region_security_policies"
+  desc "RegionSecurityPolicy plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -45,12 +45,12 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -78,32 +78,32 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
 
   def transformers
     {
-      'kind' => ->(obj) { [:kind, obj['kind']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'rules' => ->(obj) { [:rules, GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(obj['rules'], to_s)] },
-      'adaptiveProtectionConfig' => ->(obj) { [:adaptive_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(obj['adaptiveProtectionConfig'], to_s)] },
-      'ddosProtectionConfig' => ->(obj) { [:ddos_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(obj['ddosProtectionConfig'], to_s)] },
-      'advancedOptionsConfig' => ->(obj) { [:advanced_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(obj['advancedOptionsConfig'], to_s)] },
-      'recaptchaOptionsConfig' => ->(obj) { [:recaptcha_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(obj['recaptchaOptionsConfig'], to_s)] },
-      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
-      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
-      'type' => ->(obj) { [:type, obj['type']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(obj['labels'], to_s)] },
-      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "kind" => ->(obj) { [:kind, obj["kind"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, obj["creationTimestamp"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "rules" => ->(obj) { [:rules, GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(obj["rules"], to_s)] },
+      "adaptiveProtectionConfig" => ->(obj) { [:adaptive_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(obj["adaptiveProtectionConfig"], to_s)] },
+      "ddosProtectionConfig" => ->(obj) { [:ddos_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(obj["ddosProtectionConfig"], to_s)] },
+      "advancedOptionsConfig" => ->(obj) { [:advanced_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(obj["advancedOptionsConfig"], to_s)] },
+      "recaptchaOptionsConfig" => ->(obj) { [:recaptcha_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(obj["recaptchaOptionsConfig"], to_s)] },
+      "fingerprint" => ->(obj) { [:fingerprint, obj["fingerprint"]] },
+      "selfLink" => ->(obj) { [:self_link, obj["selfLink"]] },
+      "type" => ->(obj) { [:type, obj["type"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(obj["labels"], to_s)] },
+      "labelFingerprint" => ->(obj) { [:label_fingerprint, obj["labelFingerprint"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/securityPolicies/{{securityPolicy}}'
+    "projects/{{project}}/regions/{{region}}/securityPolicies/{{securityPolicy}}"
   end
 end

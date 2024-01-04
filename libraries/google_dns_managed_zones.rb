@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class DNSManagedZones < GcpResourceBase
-  name 'google_dns_managed_zones'
-  desc 'ManagedZone plural resource'
-  supports platform: 'gcp'
+  name "google_dns_managed_zones"
+  desc "ManagedZone plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -45,12 +45,12 @@ class DNSManagedZones < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('managedZones')
+    @table = fetch_wrapped_resource("managedZones")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -63,7 +63,7 @@ class DNSManagedZones < GcpResourceBase
           name, value = transform(key, hash)
           hash_with_symbols[name] = value
         end
-        hash_with_symbols[:dnssec_config_state] = hash.dig('dnssecConfig', 'state')&.downcase == 'on'
+        hash_with_symbols[:dnssec_config_state] = hash.dig("dnssecConfig", "state")&.downcase == "on"
         converted.push(hash_with_symbols)
       end
     end
@@ -79,21 +79,21 @@ class DNSManagedZones < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { [:description, obj['description']] },
-      'dnsName' => ->(obj) { [:zone_dns_name, obj['dnsName']] },
-      'dnssecConfig' => ->(obj) { [:dnssec_config, GoogleInSpec::DNS::Property::ManagedZoneDnssecConfig.new(obj['dnssecConfig'], to_s)] },
-      'id' => ->(obj) { [:zone_id, obj['id']] },
-      'name' => ->(obj) { [:zone_name, obj['name']] },
-      'nameServers' => ->(obj) { [:name_servers, obj['nameServers']] },
-      'nameServerSet' => ->(obj) { [:name_server_set, obj['nameServerSet']] },
-      'creationTime' => ->(obj) { [:creation_time, parse_time_string(obj['creationTime'])] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'visibility' => ->(obj) { [:visibility, obj['visibility']] },
-      'privateVisibilityConfig' => ->(obj) { [:private_visibility_config, GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfig.new(obj['privateVisibilityConfig'], to_s)] },
-      'forwardingConfig' => ->(obj) { [:forwarding_config, GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(obj['forwardingConfig'], to_s)] },
-      'peeringConfig' => ->(obj) { [:peering_config, GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(obj['peeringConfig'], to_s)] },
-      'reverseLookupConfig' => ->(obj) { [:reverse_lookup, obj['reverseLookupConfig']] },
-      'serviceDirectoryConfig' => ->(obj) { [:service_directory_config, GoogleInSpec::DNS::Property::ManagedZoneServiceDirectoryConfig.new(obj['serviceDirectoryConfig'], to_s)] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "dnsName" => ->(obj) { [:zone_dns_name, obj["dnsName"]] },
+      "dnssecConfig" => ->(obj) { [:dnssec_config, GoogleInSpec::DNS::Property::ManagedZoneDnssecConfig.new(obj["dnssecConfig"], to_s)] },
+      "id" => ->(obj) { [:zone_id, obj["id"]] },
+      "name" => ->(obj) { [:zone_name, obj["name"]] },
+      "nameServers" => ->(obj) { [:name_servers, obj["nameServers"]] },
+      "nameServerSet" => ->(obj) { [:name_server_set, obj["nameServerSet"]] },
+      "creationTime" => ->(obj) { [:creation_time, parse_time_string(obj["creationTime"])] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "visibility" => ->(obj) { [:visibility, obj["visibility"]] },
+      "privateVisibilityConfig" => ->(obj) { [:private_visibility_config, GoogleInSpec::DNS::Property::ManagedZonePrivateVisibilityConfig.new(obj["privateVisibilityConfig"], to_s)] },
+      "forwardingConfig" => ->(obj) { [:forwarding_config, GoogleInSpec::DNS::Property::ManagedZoneForwardingConfig.new(obj["forwardingConfig"], to_s)] },
+      "peeringConfig" => ->(obj) { [:peering_config, GoogleInSpec::DNS::Property::ManagedZonePeeringConfig.new(obj["peeringConfig"], to_s)] },
+      "reverseLookupConfig" => ->(obj) { [:reverse_lookup, obj["reverseLookupConfig"]] },
+      "serviceDirectoryConfig" => ->(obj) { [:service_directory_config, GoogleInSpec::DNS::Property::ManagedZoneServiceDirectoryConfig.new(obj["serviceDirectoryConfig"], to_s)] },
     }
   end
 
@@ -106,13 +106,13 @@ class DNSManagedZones < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://dns.googleapis.com/dns/v1beta2/'
+      "https://dns.googleapis.com/dns/v1beta2/"
     else
-      'https://dns.googleapis.com/dns/v1/'
+      "https://dns.googleapis.com/dns/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/managedZones'
+    "projects/{{project}}/managedZones"
   end
 end

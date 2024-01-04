@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/monitoring_v3'
+
+require "gcp_backend"
+require "google/apis/monitoring_v3"
 
 module Inspec::Resources
   class GoogleProjectAlertPolicyCondition < GcpResourceBase
-    name 'google_project_alert_policy_condition'
-    desc 'Verifies settings for a single GCP project alert policy condition by policy name and filter name'
+    name "google_project_alert_policy_condition"
+    desc "Verifies settings for a single GCP project alert policy condition by policy name and filter name"
 
     example "
       describe google_project_alert_policy_condition(policy: 'projects/my-project/alertPolicies/9271751234503117449', filter 'project=\"my-project\"') do

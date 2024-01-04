@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_node_config_ip_allocation_policy'
+require "google/composer/property/projectlocationenvironment_config_node_config_ip_allocation_policy"
 module GoogleInSpec
   module Composer
     module Property
@@ -41,16 +41,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @location = args['location']
-          @machine_type = args['machineType']
-          @network = args['network']
-          @subnetwork = args['subnetwork']
-          @disk_size_gb = args['diskSizeGb']
-          @oauth_scopes = args['oauthScopes']
-          @service_account = args['serviceAccount']
-          @tags = args['tags']
-          @ip_allocation_policy = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigNodeConfigIpAllocationPolicy.new(args['ipAllocationPolicy'], to_s)
-          @enable_ip_masq_agent = args['enableIpMasqAgent']
+          @location = args["location"]
+          @machine_type = args["machineType"]
+          @network = args["network"]
+          @subnetwork = args["subnetwork"]
+          @disk_size_gb = args["diskSizeGb"]
+          @oauth_scopes = args["oauthScopes"]
+          @service_account = args["serviceAccount"]
+          @tags = args["tags"]
+          @ip_allocation_policy = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigNodeConfigIpAllocationPolicy.new(args["ipAllocationPolicy"], to_s)
+          @enable_ip_masq_agent = args["enableIpMasqAgent"]
         end
 
         def to_s

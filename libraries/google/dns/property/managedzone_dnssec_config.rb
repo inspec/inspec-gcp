@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dns/property/managedzone_dnssec_config_default_key_specs'
+require "google/dns/property/managedzone_dnssec_config_default_key_specs"
 module GoogleInSpec
   module DNS
     module Property
@@ -29,10 +29,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kind = args['kind']
-          @non_existence = args['nonExistence']
-          @state = args['state']
-          @default_key_specs = GoogleInSpec::DNS::Property::ManagedZoneDnssecConfigDefaultKeySpecsArray.parse(args['defaultKeySpecs'], to_s)
+          @kind = args["kind"]
+          @non_existence = args["nonExistence"]
+          @state = args["state"]
+          @default_key_specs = GoogleInSpec::DNS::Property::ManagedZoneDnssecConfigDefaultKeySpecsArray.parse(args["defaultKeySpecs"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeUrlMaps < GcpResourceBase
-  name 'google_compute_url_maps'
-  desc 'UrlMap plural resource'
-  supports platform: 'gcp'
+  name "google_compute_url_maps"
+  desc "UrlMap plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -41,12 +41,12 @@ class ComputeUrlMaps < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -74,18 +74,18 @@ class ComputeUrlMaps < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'defaultService' => ->(obj) { [:default_service, obj['defaultService']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'id' => ->(obj) { [:id, obj['id']] },
-      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
-      'headerAction' => ->(obj) { [:header_action, GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(obj['headerAction'], to_s)] },
-      'hostRules' => ->(obj) { [:host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj['hostRules'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'pathMatchers' => ->(obj) { [:path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj['pathMatchers'], to_s)] },
-      'tests' => ->(obj) { [:tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj['tests'], to_s)] },
-      'defaultUrlRedirect' => ->(obj) { [:default_url_redirect, GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(obj['defaultUrlRedirect'], to_s)] },
-      'defaultRouteAction' => ->(obj) { [:default_route_action, GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(obj['defaultRouteAction'], to_s)] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "defaultService" => ->(obj) { [:default_service, obj["defaultService"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "fingerprint" => ->(obj) { [:fingerprint, obj["fingerprint"]] },
+      "headerAction" => ->(obj) { [:header_action, GoogleInSpec::Compute::Property::UrlMapHeaderAction.new(obj["headerAction"], to_s)] },
+      "hostRules" => ->(obj) { [:host_rules, GoogleInSpec::Compute::Property::UrlMapHostRulesArray.parse(obj["hostRules"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "pathMatchers" => ->(obj) { [:path_matchers, GoogleInSpec::Compute::Property::UrlMapPathMatchersArray.parse(obj["pathMatchers"], to_s)] },
+      "tests" => ->(obj) { [:tests, GoogleInSpec::Compute::Property::UrlMapTestsArray.parse(obj["tests"], to_s)] },
+      "defaultUrlRedirect" => ->(obj) { [:default_url_redirect, GoogleInSpec::Compute::Property::UrlMapDefaultUrlRedirect.new(obj["defaultUrlRedirect"], to_s)] },
+      "defaultRouteAction" => ->(obj) { [:default_route_action, GoogleInSpec::Compute::Property::UrlMapDefaultRouteAction.new(obj["defaultRouteAction"], to_s)] },
     }
   end
 
@@ -98,13 +98,13 @@ class ComputeUrlMaps < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/urlMaps'
+    "projects/{{project}}/global/urlMaps"
   end
 end

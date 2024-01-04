@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/dt_config_info_type_tf_tf'
+require "google/dlp/property/dt_config_info_type_tf_tf"
 module GoogleInSpec
   module DLP
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @tf = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfArray.parse(args['tf'], to_s)
+          @tf = GoogleInSpec::DLP::Property::DTConfigInfoTypeTfTfArray.parse(args["tf"], to_s)
         end
 
         def to_s

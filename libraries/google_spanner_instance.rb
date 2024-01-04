@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud Spanner resources.
 class SpannerInstance < GcpResourceBase
-  name 'google_spanner_instance'
-  desc 'Instance'
-  supports platform: 'gcp'
+  name "google_spanner_instance"
+  desc "Instance"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -31,16 +31,16 @@ class SpannerInstance < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @config = @fetched['config']
-    @display_name = @fetched['displayName']
-    @node_count = @fetched['nodeCount']
-    @labels = @fetched['labels']
+    @name = @fetched["name"]
+    @config = @fetched["config"]
+    @display_name = @fetched["displayName"]
+    @node_count = @fetched["nodeCount"]
+    @labels = @fetched["labels"]
   end
 
   def exists?
@@ -54,10 +54,10 @@ class SpannerInstance < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://spanner.googleapis.com/v1/'
+    "https://spanner.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{name}}'
+    "projects/{{project}}/instances/{{name}}"
   end
 end

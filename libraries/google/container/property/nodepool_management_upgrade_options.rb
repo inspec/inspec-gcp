@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -24,8 +24,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @auto_upgrade_start_time = parse_time_string(args['autoUpgradeStartTime'])
-          @description = args['description']
+          @auto_upgrade_start_time = parse_time_string(args["autoUpgradeStartTime"])
+          @description = args["description"]
         end
 
         def to_s

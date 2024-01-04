@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/logging/property/metric_bucket_options_explicit_buckets'
-require 'google/logging/property/metric_bucket_options_exponential_buckets'
-require 'google/logging/property/metric_bucket_options_linear_buckets'
+require "google/logging/property/metric_bucket_options_explicit_buckets"
+require "google/logging/property/metric_bucket_options_exponential_buckets"
+require "google/logging/property/metric_bucket_options_linear_buckets"
 module GoogleInSpec
   module Logging
     module Property
@@ -29,9 +29,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @linear_buckets = GoogleInSpec::Logging::Property::MetricBucketOptionsLinearBuckets.new(args['linearBuckets'], to_s)
-          @exponential_buckets = GoogleInSpec::Logging::Property::MetricBucketOptionsExponentialBuckets.new(args['exponentialBuckets'], to_s)
-          @explicit_buckets = GoogleInSpec::Logging::Property::MetricBucketOptionsExplicitBuckets.new(args['explicitBuckets'], to_s)
+          @linear_buckets = GoogleInSpec::Logging::Property::MetricBucketOptionsLinearBuckets.new(args["linearBuckets"], to_s)
+          @exponential_buckets = GoogleInSpec::Logging::Property::MetricBucketOptionsExponentialBuckets.new(args["exponentialBuckets"], to_s)
+          @explicit_buckets = GoogleInSpec::Logging::Property::MetricBucketOptionsExplicitBuckets.new(args["explicitBuckets"], to_s)
         end
 
         def to_s

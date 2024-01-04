@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Cloud SQL resources.
 class SQLOperation < GcpResourceBase
-  name 'google_sql_operation'
-  desc 'Operation'
-  supports platform: 'gcp'
+  name "google_sql_operation"
+  desc "Operation"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :user
@@ -31,16 +31,16 @@ class SQLOperation < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @user = @fetched['user']
-    @name = @fetched['name']
-    @status = @fetched['status']
-    @operation_type = @fetched['operationType']
-    @instance = @fetched['instance']
+    @user = @fetched["user"]
+    @name = @fetched["name"]
+    @status = @fetched["status"]
+    @operation_type = @fetched["operationType"]
+    @instance = @fetched["instance"]
   end
 
   def exists?
@@ -54,10 +54,10 @@ class SQLOperation < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://sqladmin.googleapis.com/sql/v1beta4/'
+    "https://sqladmin.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'projects/{{project}}/operations/{{operation}}'
+    "projects/{{project}}/operations/{{operation}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/customjob_job_spec_base_output_directory'
-require 'google/vertexai/property/customjob_job_spec_scheduling'
-require 'google/vertexai/property/customjob_job_spec_worker_pool_specs'
+require "google/vertexai/property/customjob_job_spec_base_output_directory"
+require "google/vertexai/property/customjob_job_spec_scheduling"
+require "google/vertexai/property/customjob_job_spec_worker_pool_specs"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -45,17 +45,17 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @worker_pool_specs = GoogleInSpec::VertexAI::Property::CustomJobJobSpecWorkerPoolSpecsArray.parse(args['workerPoolSpecs'], to_s)
-          @enable_web_access = args['enableWebAccess']
-          @tensorboard = args['tensorboard']
-          @experiment = args['experiment']
-          @experiment_run = args['experimentRun']
-          @scheduling = GoogleInSpec::VertexAI::Property::CustomJobJobSpecScheduling.new(args['scheduling'], to_s)
-          @enable_dashboard_access = args['enableDashboardAccess']
-          @service_account = args['serviceAccount']
-          @base_output_directory = GoogleInSpec::VertexAI::Property::CustomJobJobSpecBaseOutputDirectory.new(args['baseOutputDirectory'], to_s)
-          @reserved_ip_ranges = args['reservedIpRanges']
-          @network = args['network']
+          @worker_pool_specs = GoogleInSpec::VertexAI::Property::CustomJobJobSpecWorkerPoolSpecsArray.parse(args["workerPoolSpecs"], to_s)
+          @enable_web_access = args["enableWebAccess"]
+          @tensorboard = args["tensorboard"]
+          @experiment = args["experiment"]
+          @experiment_run = args["experimentRun"]
+          @scheduling = GoogleInSpec::VertexAI::Property::CustomJobJobSpecScheduling.new(args["scheduling"], to_s)
+          @enable_dashboard_access = args["enableDashboardAccess"]
+          @service_account = args["serviceAccount"]
+          @base_output_directory = GoogleInSpec::VertexAI::Property::CustomJobJobSpecBaseOutputDirectory.new(args["baseOutputDirectory"], to_s)
+          @reserved_ip_ranges = args["reservedIpRanges"]
+          @network = args["network"]
         end
 
         def to_s

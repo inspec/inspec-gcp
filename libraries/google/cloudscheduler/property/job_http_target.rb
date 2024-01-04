@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/cloudscheduler/property/job_http_target_oauth_token'
-require 'google/cloudscheduler/property/job_http_target_oidc_token'
+require "google/cloudscheduler/property/job_http_target_oauth_token"
+require "google/cloudscheduler/property/job_http_target_oidc_token"
 module GoogleInSpec
   module CloudScheduler
     module Property
@@ -34,12 +34,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @uri = args['uri']
-          @http_method = args['httpMethod']
-          @body = args['body']
-          @headers = args['headers']
-          @oauth_token = GoogleInSpec::CloudScheduler::Property::JobHttpTargetOauthToken.new(args['oauthToken'], to_s)
-          @oidc_token = GoogleInSpec::CloudScheduler::Property::JobHttpTargetOidcToken.new(args['oidcToken'], to_s)
+          @uri = args["uri"]
+          @http_method = args["httpMethod"]
+          @body = args["body"]
+          @headers = args["headers"]
+          @oauth_token = GoogleInSpec::CloudScheduler::Property::JobHttpTargetOauthToken.new(args["oauthToken"], to_s)
+          @oidc_token = GoogleInSpec::CloudScheduler::Property::JobHttpTargetOidcToken.new(args["oidcToken"], to_s)
         end
 
         def to_s

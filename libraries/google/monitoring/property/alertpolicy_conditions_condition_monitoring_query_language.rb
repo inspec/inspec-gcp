@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/monitoring/property/alertpolicy_conditions_condition_monitoring_query_language_trigger'
+require "google/monitoring/property/alertpolicy_conditions_condition_monitoring_query_language_trigger"
 module GoogleInSpec
   module Monitoring
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @query = args['query']
-          @duration = args['duration']
-          @trigger = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionMonitoringQueryLanguageTrigger.new(args['trigger'], to_s)
+          @query = args["query"]
+          @duration = args["duration"]
+          @trigger = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionMonitoringQueryLanguageTrigger.new(args["trigger"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @accelerator_count = arguments['acceleratorCount']
-          @accelerator_type = arguments['acceleratorType']
+          @accelerator_count = arguments["acceleratorCount"]
+          @accelerator_type = arguments["acceleratorType"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'accelerator_count' => ->(x, path) { x.nil? ? [] : ["its('#{path}.accelerator_count') { should cmp #{x.inspect} }"] },
-            'accelerator_type' => ->(x, path) { x.nil? ? [] : ["its('#{path}.accelerator_type') { should cmp #{x.inspect} }"] },
+            "accelerator_count" => ->(x, path) { x.nil? ? [] : ["its('#{path}.accelerator_count') { should cmp #{x.inspect} }"] },
+            "accelerator_type" => ->(x, path) { x.nil? ? [] : ["its('#{path}.accelerator_type') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

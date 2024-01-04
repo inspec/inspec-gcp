@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -34,13 +34,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @output_display_name = args['outputDisplayName']
-          @baseline_output_value = args['baselineOutputValue']
-          @output_name = args['outputName']
-          @feature_attributions = args['featureAttributions']
-          @output_index = args['outputIndex']
-          @instance_output_value = args['instanceOutputValue']
-          @approximation_error = args['approximationError']
+          @output_display_name = args["outputDisplayName"]
+          @baseline_output_value = args["baselineOutputValue"]
+          @output_name = args["outputName"]
+          @feature_attributions = args["featureAttributions"]
+          @output_index = args["outputIndex"]
+          @instance_output_value = args["instanceOutputValue"]
+          @approximation_error = args["approximationError"]
         end
 
         def to_s

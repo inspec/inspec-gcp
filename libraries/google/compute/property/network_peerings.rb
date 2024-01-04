@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -34,13 +34,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @name = args['name']
-          @state = args['state']
-          @state_details = args['stateDetails']
-          @network = args['network']
-          @export_custom_routes = args['exportCustomRoutes']
-          @import_custom_routes = args['importCustomRoutes']
-          @peer_mtu = args['peerMtu']
+          @name = args["name"]
+          @state = args["state"]
+          @state_details = args["stateDetails"]
+          @network = args["network"]
+          @export_custom_routes = args["exportCustomRoutes"]
+          @import_custom_routes = args["importCustomRoutes"]
+          @peer_mtu = args["peerMtu"]
         end
 
         def to_s

@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'google/apis/admin_directory_v1'
+
+require "gcp_backend"
+require "google/apis/admin_directory_v1"
 
 module Inspec::Resources
   class GoogleUser < GcpResourceBase
-    name 'google_user'
-    desc 'Verifies settings for a GCP user'
+    name "google_user"
+    desc "Verifies settings for a GCP user"
 
     example "
       describe google_user(user_key: '110491234567894702010') do

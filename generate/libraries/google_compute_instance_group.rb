@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleComputeInstanceGroup < GcpResourceBase
-    name 'google_compute_instance_group'
-    desc 'Verifies settings for a compute instance group'
+    name "google_compute_instance_group"
+    desc "Verifies settings for a compute instance group"
 
     example "
       describe google_compute_instance_group(project: 'chef-inspec-gcp', zone: 'europe-west2-a', name: 'gcp-inspec-test') do

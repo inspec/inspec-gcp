@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/compute/property/externalvpngateway_interfaces'
+require "gcp_backend"
+require "google/compute/property/externalvpngateway_interfaces"
 
 # A provider to manage Compute Engine resources.
 class ComputeexternalVpnGateway < GcpResourceBase
-  name 'google_compute_external_vpn_gateway'
-  desc 'externalVpnGateway'
-  supports platform: 'gcp'
+  name "google_compute_external_vpn_gateway"
+  desc "externalVpnGateway"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -36,20 +36,20 @@ class ComputeexternalVpnGateway < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @redundancy_type = @fetched['redundancyType']
-    @interfaces = GoogleInSpec::Compute::Property::ExternalVpnGatewayInterfacesArray.parse(@fetched['interfaces'], to_s)
-    @labels = @fetched['labels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @next_page_token = @fetched['nextPageToken']
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @name = @fetched['name']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @redundancy_type = @fetched["redundancyType"]
+    @interfaces = GoogleInSpec::Compute::Property::ExternalVpnGatewayInterfacesArray.parse(@fetched["interfaces"], to_s)
+    @labels = @fetched["labels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @next_page_token = @fetched["nextPageToken"]
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @name = @fetched["name"]
   end
 
   # Handles parsing RFC3339 time string
@@ -68,10 +68,10 @@ class ComputeexternalVpnGateway < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://compute.googleapis.com/compute/v1/'
+    "https://compute.googleapis.com/compute/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/global/externalVpnGateways/{{name}}'
+    "projects/{{project}}/global/externalVpnGateways/{{name}}"
   end
 end

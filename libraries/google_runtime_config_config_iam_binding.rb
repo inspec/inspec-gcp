@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/iam/property/iam_policy_bindings'
+require "gcp_backend"
+require "google/iam/property/iam_policy_bindings"
 
 # A provider to manage Runtime Configurator IAM Binding resources.
 class ConfigIamBinding < GcpResourceBase
-  name 'google_runtime_config_config_iam_binding'
-  desc 'Config Iam Binding'
-  supports platform: 'gcp'
+  name "google_runtime_config_config_iam_binding"
+  desc "Config Iam Binding"
+  supports platform: "gcp"
 
   attr_reader :params
 
@@ -30,12 +30,12 @@ class ConfigIamBinding < GcpResourceBase
     super(params.merge({ use_http_transport: true }))
     raise "Expected 'role' to be defined for iam_binding resource" unless params.key?(:role)
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+    @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched["bindings"], to_s)
     @bindings.each do |binding|
       next if binding.role != params[:role]
       if params[:condition]
@@ -75,10 +75,10 @@ class ConfigIamBinding < GcpResourceBase
   private
 
   def product_url
-    'https://runtimeconfig.googleapis.com/v1beta1/'
+    "https://runtimeconfig.googleapis.com/v1beta1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/configs/{{name}}:getIamPolicy'
+    "projects/{{project}}/configs/{{name}}:getIamPolicy"
   end
 end

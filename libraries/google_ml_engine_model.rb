@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/mlengine/property/model_default_version'
+require "gcp_backend"
+require "google/mlengine/property/model_default_version"
 
 # A provider to manage ML Engine resources.
 class MLEngineModel < GcpResourceBase
-  name 'google_ml_engine_model'
-  desc 'Model'
-  supports platform: 'gcp'
+  name "google_ml_engine_model"
+  desc "Model"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -34,18 +34,18 @@ class MLEngineModel < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @default_version = GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(@fetched['defaultVersion'], to_s)
-    @regions = @fetched['regions']
-    @online_prediction_logging = @fetched['onlinePredictionLogging']
-    @online_prediction_console_logging = @fetched['onlinePredictionConsoleLogging']
-    @labels = @fetched['labels']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @default_version = GoogleInSpec::MLEngine::Property::ModelDefaultVersion.new(@fetched["defaultVersion"], to_s)
+    @regions = @fetched["regions"]
+    @online_prediction_logging = @fetched["onlinePredictionLogging"]
+    @online_prediction_console_logging = @fetched["onlinePredictionConsoleLogging"]
+    @labels = @fetched["labels"]
   end
 
   def exists?
@@ -59,10 +59,10 @@ class MLEngineModel < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://ml.googleapis.com/v1/'
+    "https://ml.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/models/{{name}}'
+    "projects/{{project}}/models/{{name}}"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,23 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/dlp/property/storedinfotype_dictionary'
-require 'google/dlp/property/storedinfotype_dictionary_cloud_storage_path'
-require 'google/dlp/property/storedinfotype_dictionary_word_list'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_field'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_table'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_cloud_storage_file_set'
-require 'google/dlp/property/storedinfotype_large_custom_dictionary_output_path'
-require 'google/dlp/property/storedinfotype_regex'
+require "gcp_backend"
+require "google/dlp/property/storedinfotype_dictionary"
+require "google/dlp/property/storedinfotype_dictionary_cloud_storage_path"
+require "google/dlp/property/storedinfotype_dictionary_word_list"
+require "google/dlp/property/storedinfotype_large_custom_dictionary"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_field"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_big_query_field_table"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_cloud_storage_file_set"
+require "google/dlp/property/storedinfotype_large_custom_dictionary_output_path"
+require "google/dlp/property/storedinfotype_regex"
 
 # A provider to manage Dlp resources.
 class DLPStoredInfoType < GcpResourceBase
-  name 'google_dlp_stored_info_type'
-  desc 'StoredInfoType'
-  supports platform: 'gcp'
+  name "google_dlp_stored_info_type"
+  desc "StoredInfoType"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -43,18 +43,18 @@ class DLPStoredInfoType < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @display_name = @fetched['displayName']
-    @regex = GoogleInSpec::DLP::Property::StoredInfoTypeRegex.new(@fetched['regex'], to_s)
-    @dictionary = GoogleInSpec::DLP::Property::StoredInfoTypeDictionary.new(@fetched['dictionary'], to_s)
-    @large_custom_dictionary = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionary.new(@fetched['largeCustomDictionary'], to_s)
-    @parent = @fetched['parent']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @display_name = @fetched["displayName"]
+    @regex = GoogleInSpec::DLP::Property::StoredInfoTypeRegex.new(@fetched["regex"], to_s)
+    @dictionary = GoogleInSpec::DLP::Property::StoredInfoTypeDictionary.new(@fetched["dictionary"], to_s)
+    @large_custom_dictionary = GoogleInSpec::DLP::Property::StoredInfoTypeLargeCustomDictionary.new(@fetched["largeCustomDictionary"], to_s)
+    @parent = @fetched["parent"]
   end
 
   def exists?
@@ -68,10 +68,10 @@ class DLPStoredInfoType < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://dlp.googleapis.com/v2/'
+    "https://dlp.googleapis.com/v2/"
   end
 
   def resource_base_url
-    '{{parent}}/storedInfoTypes/{{name}}'
+    "{{parent}}/storedInfoTypes/{{name}}"
   end
 end

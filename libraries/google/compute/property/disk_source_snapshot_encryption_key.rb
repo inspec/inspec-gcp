@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -28,10 +28,10 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @raw_key = args['rawKey']
-          @kms_key_name = args['kmsKeyName']
-          @sha256 = args['sha256']
-          @kms_key_service_account = args['kmsKeyServiceAccount']
+          @raw_key = args["rawKey"]
+          @kms_key_name = args["kmsKeyName"]
+          @sha256 = args["sha256"]
+          @kms_key_service_account = args["kmsKeyServiceAccount"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -38,15 +38,15 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @raw_der = args['rawDer']
-          @parsed = args['parsed']
-          @issuer = args['issuer']
-          @subject = args['subject']
-          @subject_alternative_dns_names = args['subjectAlternativeDnsNames']
-          @not_before_time = parse_time_string(args['notBeforeTime'])
-          @not_after_time = parse_time_string(args['notAfterTime'])
-          @serial_number = args['serialNumber']
-          @sha256_fingerprint = args['sha256Fingerprint']
+          @raw_der = args["rawDer"]
+          @parsed = args["parsed"]
+          @issuer = args["issuer"]
+          @subject = args["subject"]
+          @subject_alternative_dns_names = args["subjectAlternativeDnsNames"]
+          @not_before_time = parse_time_string(args["notBeforeTime"])
+          @not_after_time = parse_time_string(args["notAfterTime"])
+          @serial_number = args["serialNumber"]
+          @sha256_fingerprint = args["sha256Fingerprint"]
         end
 
         def to_s

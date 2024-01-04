@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_hotword_regex'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_likelihood_adjustment'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_proximity'
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_hotword_regex"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_likelihood_adjustment"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_proximity"
 module GoogleInSpec
   module DLP
     module Property
@@ -29,9 +29,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @hotword_regex = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRuleHotwordRegex.new(args['hotwordRegex'], to_s)
-          @proximity = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRuleProximity.new(args['proximity'], to_s)
-          @likelihood_adjustment = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustment.new(args['likelihoodAdjustment'], to_s)
+          @hotword_regex = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRuleHotwordRegex.new(args["hotwordRegex"], to_s)
+          @proximity = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRuleProximity.new(args["proximity"], to_s)
+          @likelihood_adjustment = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustment.new(args["likelihoodAdjustment"], to_s)
         end
 
         def to_s

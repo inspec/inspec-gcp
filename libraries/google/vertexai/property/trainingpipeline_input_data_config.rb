@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/trainingpipeline_input_data_config_bigquery_destination'
-require 'google/vertexai/property/trainingpipeline_input_data_config_filter_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_fraction_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_gcs_destination'
-require 'google/vertexai/property/trainingpipeline_input_data_config_predefined_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_stratified_split'
-require 'google/vertexai/property/trainingpipeline_input_data_config_timestamp_split'
+require "google/vertexai/property/trainingpipeline_input_data_config_bigquery_destination"
+require "google/vertexai/property/trainingpipeline_input_data_config_filter_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_fraction_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_gcs_destination"
+require "google/vertexai/property/trainingpipeline_input_data_config_predefined_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_stratified_split"
+require "google/vertexai/property/trainingpipeline_input_data_config_timestamp_split"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -51,18 +51,18 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @fraction_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigFractionSplit.new(args['fractionSplit'], to_s)
-          @persist_ml_use_assignment = args['persistMlUseAssignment']
-          @saved_query_id = args['savedQueryId']
-          @annotations_filter = args['annotationsFilter']
-          @gcs_destination = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigGcsDestination.new(args['gcsDestination'], to_s)
-          @bigquery_destination = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigBigqueryDestination.new(args['bigqueryDestination'], to_s)
-          @stratified_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigStratifiedSplit.new(args['stratifiedSplit'], to_s)
-          @annotation_schema_uri = args['annotationSchemaUri']
-          @predefined_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigPredefinedSplit.new(args['predefinedSplit'], to_s)
-          @filter_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigFilterSplit.new(args['filterSplit'], to_s)
-          @timestamp_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigTimestampSplit.new(args['timestampSplit'], to_s)
-          @dataset_id = args['datasetId']
+          @fraction_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigFractionSplit.new(args["fractionSplit"], to_s)
+          @persist_ml_use_assignment = args["persistMlUseAssignment"]
+          @saved_query_id = args["savedQueryId"]
+          @annotations_filter = args["annotationsFilter"]
+          @gcs_destination = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigGcsDestination.new(args["gcsDestination"], to_s)
+          @bigquery_destination = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigBigqueryDestination.new(args["bigqueryDestination"], to_s)
+          @stratified_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigStratifiedSplit.new(args["stratifiedSplit"], to_s)
+          @annotation_schema_uri = args["annotationSchemaUri"]
+          @predefined_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigPredefinedSplit.new(args["predefinedSplit"], to_s)
+          @filter_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigFilterSplit.new(args["filterSplit"], to_s)
+          @timestamp_split = GoogleInSpec::VertexAI::Property::TrainingPipelineInputDataConfigTimestampSplit.new(args["timestampSplit"], to_s)
+          @dataset_id = args["datasetId"]
         end
 
         def to_s

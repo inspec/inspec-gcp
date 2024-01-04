@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set_regex_file_set'
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set_regex_file_set"
 module GoogleInSpec
   module DLP
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @url = args['url']
-          @regex_file_set = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.new(args['regexFileSet'], to_s)
+          @url = args["url"]
+          @regex_file_set = GoogleInSpec::DLP::Property::JobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.new(args["regexFileSet"], to_s)
         end
 
         def to_s

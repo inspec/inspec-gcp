@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_exclude_info_types_info_types'
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_exclude_info_types_info_types"
 module GoogleInSpec
   module DLP
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @info_types = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypesInfoTypesArray.parse(args['infoTypes'], to_s)
+          @info_types = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypesInfoTypesArray.parse(args["infoTypes"], to_s)
         end
 
         def to_s

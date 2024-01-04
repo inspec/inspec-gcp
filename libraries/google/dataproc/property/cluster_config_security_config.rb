@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/cluster_config_security_config_kerberos_config'
+require "google/dataproc/property/cluster_config_security_config_kerberos_config"
 module GoogleInSpec
   module Dataproc
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kerberos_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfigKerberosConfig.new(args['kerberosConfig'], to_s)
+          @kerberos_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfigKerberosConfig.new(args["kerberosConfig"], to_s)
         end
 
         def to_s

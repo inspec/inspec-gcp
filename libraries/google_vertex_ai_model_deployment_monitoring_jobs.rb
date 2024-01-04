@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIModelDeploymentMonitoringJobs < GcpResourceBase
-  name 'google_vertex_ai_model_deployment_monitoring_jobs'
-  desc 'ModelDeploymentMonitoringJob plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_model_deployment_monitoring_jobs"
+  desc "ModelDeploymentMonitoringJob plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -52,12 +52,12 @@ class VertexAIModelDeploymentMonitoringJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('modelDeploymentMonitoringJobs')
+    @table = fetch_wrapped_resource("modelDeploymentMonitoringJobs")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -85,39 +85,39 @@ class VertexAIModelDeploymentMonitoringJobs < GcpResourceBase
 
   def transformers
     {
-      'modelDeploymentMonitoringObjectiveConfigs' => ->(obj) { [:model_deployment_monitoring_objective_configs, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsArray.parse(obj['modelDeploymentMonitoringObjectiveConfigs'], to_s)] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLabels.new(obj['labels'], to_s)] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'analysisInstanceSchemaUri' => ->(obj) { [:analysis_instance_schema_uri, obj['analysisInstanceSchemaUri']] },
-      'enableMonitoringPipelineLogs' => ->(obj) { [:enable_monitoring_pipeline_logs, obj['enableMonitoringPipelineLogs']] },
-      'endpoint' => ->(obj) { [:endpoint, obj['endpoint']] },
-      'loggingSamplingStrategy' => ->(obj) { [:logging_sampling_strategy, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLoggingSamplingStrategy.new(obj['loggingSamplingStrategy'], to_s)] },
-      'bigqueryTables' => ->(obj) { [:bigquery_tables, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobBigqueryTablesArray.parse(obj['bigqueryTables'], to_s)] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'scheduleState' => ->(obj) { [:schedule_state, obj['scheduleState']] },
-      'error' => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobError.new(obj['error'], to_s)] },
-      'modelMonitoringAlertConfig' => ->(obj) { [:model_monitoring_alert_config, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelMonitoringAlertConfig.new(obj['modelMonitoringAlertConfig'], to_s)] },
-      'latestMonitoringPipelineMetadata' => ->(obj) { [:latest_monitoring_pipeline_metadata, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata.new(obj['latestMonitoringPipelineMetadata'], to_s)] },
-      'samplePredictInstance' => ->(obj) { [:sample_predict_instance, obj['samplePredictInstance']] },
-      'predictInstanceSchemaUri' => ->(obj) { [:predict_instance_schema_uri, obj['predictInstanceSchemaUri']] },
-      'nextScheduleTime' => ->(obj) { [:next_schedule_time, obj['nextScheduleTime']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'logTtl' => ->(obj) { [:log_ttl, obj['logTtl']] },
-      'statsAnomaliesBaseDirectory' => ->(obj) { [:stats_anomalies_base_directory, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobStatsAnomaliesBaseDirectory.new(obj['statsAnomaliesBaseDirectory'], to_s)] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'modelDeploymentMonitoringScheduleConfig' => ->(obj) { [:model_deployment_monitoring_schedule_config, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringScheduleConfig.new(obj['modelDeploymentMonitoringScheduleConfig'], to_s)] },
-      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
+      "modelDeploymentMonitoringObjectiveConfigs" => ->(obj) { [:model_deployment_monitoring_objective_configs, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsArray.parse(obj["modelDeploymentMonitoringObjectiveConfigs"], to_s)] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLabels.new(obj["labels"], to_s)] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "analysisInstanceSchemaUri" => ->(obj) { [:analysis_instance_schema_uri, obj["analysisInstanceSchemaUri"]] },
+      "enableMonitoringPipelineLogs" => ->(obj) { [:enable_monitoring_pipeline_logs, obj["enableMonitoringPipelineLogs"]] },
+      "endpoint" => ->(obj) { [:endpoint, obj["endpoint"]] },
+      "loggingSamplingStrategy" => ->(obj) { [:logging_sampling_strategy, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLoggingSamplingStrategy.new(obj["loggingSamplingStrategy"], to_s)] },
+      "bigqueryTables" => ->(obj) { [:bigquery_tables, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobBigqueryTablesArray.parse(obj["bigqueryTables"], to_s)] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "scheduleState" => ->(obj) { [:schedule_state, obj["scheduleState"]] },
+      "error" => ->(obj) { [:error, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobError.new(obj["error"], to_s)] },
+      "modelMonitoringAlertConfig" => ->(obj) { [:model_monitoring_alert_config, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelMonitoringAlertConfig.new(obj["modelMonitoringAlertConfig"], to_s)] },
+      "latestMonitoringPipelineMetadata" => ->(obj) { [:latest_monitoring_pipeline_metadata, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata.new(obj["latestMonitoringPipelineMetadata"], to_s)] },
+      "samplePredictInstance" => ->(obj) { [:sample_predict_instance, obj["samplePredictInstance"]] },
+      "predictInstanceSchemaUri" => ->(obj) { [:predict_instance_schema_uri, obj["predictInstanceSchemaUri"]] },
+      "nextScheduleTime" => ->(obj) { [:next_schedule_time, obj["nextScheduleTime"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "logTtl" => ->(obj) { [:log_ttl, obj["logTtl"]] },
+      "statsAnomaliesBaseDirectory" => ->(obj) { [:stats_anomalies_base_directory, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobStatsAnomaliesBaseDirectory.new(obj["statsAnomaliesBaseDirectory"], to_s)] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "modelDeploymentMonitoringScheduleConfig" => ->(obj) { [:model_deployment_monitoring_schedule_config, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringScheduleConfig.new(obj["modelDeploymentMonitoringScheduleConfig"], to_s)] },
+      "encryptionSpec" => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobEncryptionSpec.new(obj["encryptionSpec"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/modelDeploymentMonitoringJobs'
+    "{{parent}}/modelDeploymentMonitoringJobs"
   end
 end

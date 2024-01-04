@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,21 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/cluster_config_encryption_config'
-require 'google/dataproc/property/cluster_config_gce_cluster_config'
-require 'google/dataproc/property/cluster_config_initialization_actions'
-require 'google/dataproc/property/cluster_config_master_config'
-require 'google/dataproc/property/cluster_config_master_config_disk_config'
-require 'google/dataproc/property/cluster_config_master_config_managed_group_config'
-require 'google/dataproc/property/cluster_config_secondary_worker_config'
-require 'google/dataproc/property/cluster_config_secondary_worker_config_disk_config'
-require 'google/dataproc/property/cluster_config_secondary_worker_config_managed_group_config'
-require 'google/dataproc/property/cluster_config_security_config'
-require 'google/dataproc/property/cluster_config_security_config_kerberos_config'
-require 'google/dataproc/property/cluster_config_software_config'
-require 'google/dataproc/property/cluster_config_worker_config'
-require 'google/dataproc/property/cluster_config_worker_config_disk_config'
-require 'google/dataproc/property/cluster_config_worker_config_managed_group_config'
+require "google/dataproc/property/cluster_config_encryption_config"
+require "google/dataproc/property/cluster_config_gce_cluster_config"
+require "google/dataproc/property/cluster_config_initialization_actions"
+require "google/dataproc/property/cluster_config_master_config"
+require "google/dataproc/property/cluster_config_master_config_disk_config"
+require "google/dataproc/property/cluster_config_master_config_managed_group_config"
+require "google/dataproc/property/cluster_config_secondary_worker_config"
+require "google/dataproc/property/cluster_config_secondary_worker_config_disk_config"
+require "google/dataproc/property/cluster_config_secondary_worker_config_managed_group_config"
+require "google/dataproc/property/cluster_config_security_config"
+require "google/dataproc/property/cluster_config_security_config_kerberos_config"
+require "google/dataproc/property/cluster_config_software_config"
+require "google/dataproc/property/cluster_config_worker_config"
+require "google/dataproc/property/cluster_config_worker_config_disk_config"
+require "google/dataproc/property/cluster_config_worker_config_managed_group_config"
 module GoogleInSpec
   module Dataproc
     module Property
@@ -56,15 +56,15 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @config_bucket = arguments['configBucket']
-          @gce_cluster_config = GoogleInSpec::Dataproc::Property::ClusterConfigGceClusterConfig.new(arguments['gceClusterConfig'], to_s)
-          @master_config = GoogleInSpec::Dataproc::Property::ClusterConfigMasterConfig.new(arguments['masterConfig'], to_s)
-          @worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigWorkerConfig.new(arguments['workerConfig'], to_s)
-          @secondary_worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecondaryWorkerConfig.new(arguments['secondaryWorkerConfig'], to_s)
-          @software_config = GoogleInSpec::Dataproc::Property::ClusterConfigSoftwareConfig.new(arguments['softwareConfig'], to_s)
-          @initialization_actions = GoogleInSpec::Dataproc::Property::ClusterConfigInitializationActionsArray.parse(arguments['initializationActions'], to_s)
-          @encryption_config = GoogleInSpec::Dataproc::Property::ClusterConfigEncryptionConfig.new(arguments['encryptionConfig'], to_s)
-          @security_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfig.new(arguments['securityConfig'], to_s)
+          @config_bucket = arguments["configBucket"]
+          @gce_cluster_config = GoogleInSpec::Dataproc::Property::ClusterConfigGceClusterConfig.new(arguments["gceClusterConfig"], to_s)
+          @master_config = GoogleInSpec::Dataproc::Property::ClusterConfigMasterConfig.new(arguments["masterConfig"], to_s)
+          @worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigWorkerConfig.new(arguments["workerConfig"], to_s)
+          @secondary_worker_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecondaryWorkerConfig.new(arguments["secondaryWorkerConfig"], to_s)
+          @software_config = GoogleInSpec::Dataproc::Property::ClusterConfigSoftwareConfig.new(arguments["softwareConfig"], to_s)
+          @initialization_actions = GoogleInSpec::Dataproc::Property::ClusterConfigInitializationActionsArray.parse(arguments["initializationActions"], to_s)
+          @encryption_config = GoogleInSpec::Dataproc::Property::ClusterConfigEncryptionConfig.new(arguments["encryptionConfig"], to_s)
+          @security_config = GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfig.new(arguments["securityConfig"], to_s)
         end
 
         def to_s
@@ -74,15 +74,15 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'config_bucket' => ->(x, path) { x.nil? ? [] : ["its('#{path}.config_bucket') { should cmp #{x.inspect} }"] },
-            'gce_cluster_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigGceClusterConfig.un_parse(x, "#{path}.gce_cluster_config") },
-            'master_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigMasterConfig.un_parse(x, "#{path}.master_config") },
-            'worker_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigWorkerConfig.un_parse(x, "#{path}.worker_config") },
-            'secondary_worker_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSecondaryWorkerConfig.un_parse(x, "#{path}.secondary_worker_config") },
-            'software_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSoftwareConfig.un_parse(x, "#{path}.software_config") },
-            'initialization_actions' => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.initialization_actions') { should include '#{single.to_json}' }" } },
-            'encryption_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigEncryptionConfig.un_parse(x, "#{path}.encryption_config") },
-            'security_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfig.un_parse(x, "#{path}.security_config") },
+            "config_bucket" => ->(x, path) { x.nil? ? [] : ["its('#{path}.config_bucket') { should cmp #{x.inspect} }"] },
+            "gce_cluster_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigGceClusterConfig.un_parse(x, "#{path}.gce_cluster_config") },
+            "master_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigMasterConfig.un_parse(x, "#{path}.master_config") },
+            "worker_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigWorkerConfig.un_parse(x, "#{path}.worker_config") },
+            "secondary_worker_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSecondaryWorkerConfig.un_parse(x, "#{path}.secondary_worker_config") },
+            "software_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSoftwareConfig.un_parse(x, "#{path}.software_config") },
+            "initialization_actions" => ->(x, path) { x.nil? ? [] : x.map { |single| "its('#{path}.initialization_actions') { should include '#{single.to_json}' }" } },
+            "encryption_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigEncryptionConfig.un_parse(x, "#{path}.encryption_config") },
+            "security_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Dataproc::Property::ClusterConfigSecurityConfig.un_parse(x, "#{path}.security_config") },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

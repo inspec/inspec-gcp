@@ -1,11 +1,11 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
+
+require "gcp_backend"
 
 module Inspec::Resources
   class GoogleProjectLoggingAuditConfig < GcpResourceBase
-    name 'google_project_logging_audit_config'
-    desc 'Verifies settings for a GCP project logging audit configuration'
+    name "google_project_logging_audit_config"
+    desc "Verifies settings for a GCP project logging audit configuration"
 
     example "
       describe google_project_logging_audit_config(project: 'chef-inspec-gcp') do
@@ -23,7 +23,7 @@ module Inspec::Resources
         @default_exempted_members = {}
         if defined?(@audit_logging_configs.audit_configs) && @audit_logging_configs.audit_configs.instance_of?(::Array)
           @audit_logging_configs.audit_configs.each do |service_config|
-            next if service_config.service != 'allServices'
+            next if service_config.service != "allServices"
             service_config.audit_log_configs.each do |config|
               @default_types+=[config.log_type]
               @default_exempted_members[config.log_type]=config.exempted_members if defined?(config.exempted_members) && !config.exempted_members.nil?

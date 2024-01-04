@@ -1,12 +1,12 @@
-# frozen_string_literal: true
 
-require 'gcp_backend'
-require 'time'
+
+require "gcp_backend"
+require "time"
 
 module Inspec::Resources
   class GoogleStorageBucketObject < GcpResourceBase
-    name 'google_storage_bucket_object'
-    desc 'Verifies settings for a storage bucket object'
+    name "google_storage_bucket_object"
+    desc "Verifies settings for a storage bucket object"
 
     example "
       describe google_storage_bucket_object(bucket: 'bucket-buvsjjcndqz',  object: 'bucket-object-pmxbiikq') do

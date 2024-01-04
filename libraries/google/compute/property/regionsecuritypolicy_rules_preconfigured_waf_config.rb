@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions'
+require "google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions"
 module GoogleInSpec
   module Compute
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @exclusions = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsArray.parse(args['exclusions'], to_s)
+          @exclusions = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfigExclusionsArray.parse(args["exclusions"], to_s)
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @auto_upgrade_start_time = parse_time_string(arguments['autoUpgradeStartTime'])
-          @description = arguments['description']
+          @auto_upgrade_start_time = parse_time_string(arguments["autoUpgradeStartTime"])
+          @description = arguments["description"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'auto_upgrade_start_time' => ->(x, path) { x.nil? ? [] : ["its('#{path}.auto_upgrade_start_time.to_s') { should cmp '#{x.inspect}' }"] },
-            'description' => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
+            "auto_upgrade_start_time" => ->(x, path) { x.nil? ? [] : ["its('#{path}.auto_upgrade_start_time.to_s') { should cmp '#{x.inspect}' }"] },
+            "description" => ->(x, path) { x.nil? ? [] : ["its('#{path}.description') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

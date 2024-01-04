@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling'
-require 'google/container/property/regionalcluster_addons_config_http_load_balancing'
-require 'google/container/property/regionalcluster_addons_config_kubernetes_dashboard'
-require 'google/container/property/regionalcluster_addons_config_network_policy_config'
+require "google/container/property/regionalcluster_addons_config_horizontal_pod_autoscaling"
+require "google/container/property/regionalcluster_addons_config_http_load_balancing"
+require "google/container/property/regionalcluster_addons_config_kubernetes_dashboard"
+require "google/container/property/regionalcluster_addons_config_network_policy_config"
 module GoogleInSpec
   module Container
     module Property
@@ -35,10 +35,10 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @http_load_balancing = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.new(arguments['httpLoadBalancing'], to_s)
-          @horizontal_pod_autoscaling = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.new(arguments['horizontalPodAutoscaling'], to_s)
-          @kubernetes_dashboard = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigKubernetesDashboard.new(arguments['kubernetesDashboard'], to_s)
-          @network_policy_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigNetworkPolicyConfig.new(arguments['networkPolicyConfig'], to_s)
+          @http_load_balancing = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.new(arguments["httpLoadBalancing"], to_s)
+          @horizontal_pod_autoscaling = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.new(arguments["horizontalPodAutoscaling"], to_s)
+          @kubernetes_dashboard = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigKubernetesDashboard.new(arguments["kubernetesDashboard"], to_s)
+          @network_policy_config = GoogleInSpec::Container::Property::RegionalClusterAddonsConfigNetworkPolicyConfig.new(arguments["networkPolicyConfig"], to_s)
         end
 
         def to_s
@@ -48,10 +48,10 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'http_load_balancing' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.un_parse(x, "#{path}.http_load_balancing") },
-            'horizontal_pod_autoscaling' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.un_parse(x, "#{path}.horizontal_pod_autoscaling") },
-            'kubernetes_dashboard' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigKubernetesDashboard.un_parse(x, "#{path}.kubernetes_dashboard") },
-            'network_policy_config' => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigNetworkPolicyConfig.un_parse(x, "#{path}.network_policy_config") },
+            "http_load_balancing" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHttpLoadBalancing.un_parse(x, "#{path}.http_load_balancing") },
+            "horizontal_pod_autoscaling" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigHorizontalPodAutoscaling.un_parse(x, "#{path}.horizontal_pod_autoscaling") },
+            "kubernetes_dashboard" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigKubernetesDashboard.un_parse(x, "#{path}.kubernetes_dashboard") },
+            "network_policy_config" => ->(x, path) { x.nil? ? [] : GoogleInSpec::Container::Property::RegionalClusterAddonsConfigNetworkPolicyConfig.un_parse(x, "#{path}.network_policy_config") },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

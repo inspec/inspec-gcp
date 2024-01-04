@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -27,8 +27,8 @@ module GoogleInSpec
           @arguments = arguments
           return if arguments.nil?
           @parent_identifier = parent_identifier
-          @executable_file = arguments['executableFile']
-          @execution_timeout = arguments['executionTimeout']
+          @executable_file = arguments["executableFile"]
+          @execution_timeout = arguments["executionTimeout"]
         end
 
         def to_s
@@ -38,8 +38,8 @@ module GoogleInSpec
         def self.un_parse(item, current_path)
           return if item.nil?
           way_to_parse = {
-            'executable_file' => ->(x, path) { x.nil? ? [] : ["its('#{path}.executable_file') { should cmp #{x.inspect} }"] },
-            'execution_timeout' => ->(x, path) { x.nil? ? [] : ["its('#{path}.execution_timeout') { should cmp #{x.inspect} }"] },
+            "executable_file" => ->(x, path) { x.nil? ? [] : ["its('#{path}.executable_file') { should cmp #{x.inspect} }"] },
+            "execution_timeout" => ->(x, path) { x.nil? ? [] : ["its('#{path}.execution_timeout') { should cmp #{x.inspect} }"] },
           }
           way_to_parse.map do |k, v|
             v.call(item.method(k).call, current_path)

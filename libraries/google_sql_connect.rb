@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/sql/property/connect_ip_addresses'
-require 'google/sql/property/connect_server_ca_cert'
+require "gcp_backend"
+require "google/sql/property/connect_ip_addresses"
+require "google/sql/property/connect_server_ca_cert"
 
 # A provider to manage Cloud SQL resources.
 class SQLConnect < GcpResourceBase
-  name 'google_sql_connect'
-  desc 'Connect'
-  supports platform: 'gcp'
+  name "google_sql_connect"
+  desc "Connect"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :region
@@ -34,17 +34,17 @@ class SQLConnect < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @region = @fetched['region']
-    @ip_addresses = GoogleInSpec::SQL::Property::ConnectIpAddressesArray.parse(@fetched['ipAddresses'], to_s)
-    @database_version = @fetched['databaseVersion']
-    @backend_type = @fetched['backendType']
-    @server_ca_cert = GoogleInSpec::SQL::Property::ConnectServerCaCert.new(@fetched['serverCaCert'], to_s)
-    @instance = @fetched['instance']
+    @region = @fetched["region"]
+    @ip_addresses = GoogleInSpec::SQL::Property::ConnectIpAddressesArray.parse(@fetched["ipAddresses"], to_s)
+    @database_version = @fetched["databaseVersion"]
+    @backend_type = @fetched["backendType"]
+    @server_ca_cert = GoogleInSpec::SQL::Property::ConnectServerCaCert.new(@fetched["serverCaCert"], to_s)
+    @instance = @fetched["instance"]
   end
 
   def exists?
@@ -58,10 +58,10 @@ class SQLConnect < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://sqladmin.googleapis.com/sql/v1beta4/'
+    "https://sqladmin.googleapis.com/sql/v1beta4/"
   end
 
   def resource_base_url
-    'projects/{{project}}/instances/{{instance}}/connectSettings'
+    "projects/{{project}}/instances/{{instance}}/connectSettings"
   end
 end

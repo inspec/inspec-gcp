@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/artifactregistry/property/projectlocationrepository_virtual_repository_config_upstream_policies'
+require "google/artifactregistry/property/projectlocationrepository_virtual_repository_config_upstream_policies"
 module GoogleInSpec
   module Artifactregistry
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @upstream_policies = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryVirtualRepositoryConfigUpstreamPoliciesArray.parse(args['upstreamPolicies'], to_s)
+          @upstream_policies = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryVirtualRepositoryConfigUpstreamPoliciesArray.parse(args["upstreamPolicies"], to_s)
         end
 
         def to_s

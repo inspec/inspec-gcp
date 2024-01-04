@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeNetworks < GcpResourceBase
-  name 'google_compute_networks'
-  desc 'Network plural resource'
-  supports platform: 'gcp'
+  name "google_compute_networks"
+  desc "Network plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,12 +39,12 @@ class ComputeNetworks < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -72,16 +72,16 @@ class ComputeNetworks < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { [:description, obj['description']] },
-      'gatewayIPv4' => ->(obj) { [:gateway_ipv4, obj['gatewayIPv4']] },
-      'id' => ->(obj) { [:network_id, obj['id']] },
-      'name' => ->(obj) { [:network_name, obj['name']] },
-      'subnetworks' => ->(obj) { [:subnetworks, obj['subnetworks']] },
-      'autoCreateSubnetworks' => ->(obj) { [:auto_create_subnetworks, obj['autoCreateSubnetworks']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'routingConfig' => ->(obj) { [:routing_config, GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(obj['routingConfig'], to_s)] },
-      'peerings' => ->(obj) { [:peerings, GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(obj['peerings'], to_s)] },
-      'mtu' => ->(obj) { [:mtu, obj['mtu']] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "gatewayIPv4" => ->(obj) { [:gateway_ipv4, obj["gatewayIPv4"]] },
+      "id" => ->(obj) { [:network_id, obj["id"]] },
+      "name" => ->(obj) { [:network_name, obj["name"]] },
+      "subnetworks" => ->(obj) { [:subnetworks, obj["subnetworks"]] },
+      "autoCreateSubnetworks" => ->(obj) { [:auto_create_subnetworks, obj["autoCreateSubnetworks"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "routingConfig" => ->(obj) { [:routing_config, GoogleInSpec::Compute::Property::NetworkRoutingConfig.new(obj["routingConfig"], to_s)] },
+      "peerings" => ->(obj) { [:peerings, GoogleInSpec::Compute::Property::NetworkPeeringsArray.parse(obj["peerings"], to_s)] },
+      "mtu" => ->(obj) { [:mtu, obj["mtu"]] },
     }
   end
 
@@ -94,13 +94,13 @@ class ComputeNetworks < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/global/networks'
+    "projects/{{project}}/global/networks"
   end
 end

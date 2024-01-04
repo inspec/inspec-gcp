@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_execution_labels'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_execution_metadata'
+require "google/vertexai/property/pipelinejob_job_detail_task_details_execution_labels"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_execution_metadata"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -44,17 +44,17 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @labels = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecutionLabels.new(args['labels'], to_s)
-          @create_time = args['createTime']
-          @schema_version = args['schemaVersion']
-          @state = args['state']
-          @name = args['name']
-          @etag = args['etag']
-          @display_name = args['displayName']
-          @metadata = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecutionMetadata.new(args['metadata'], to_s)
-          @schema_title = args['schemaTitle']
-          @description = args['description']
-          @update_time = args['updateTime']
+          @labels = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecutionLabels.new(args["labels"], to_s)
+          @create_time = args["createTime"]
+          @schema_version = args["schemaVersion"]
+          @state = args["state"]
+          @name = args["name"]
+          @etag = args["etag"]
+          @display_name = args["displayName"]
+          @metadata = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecutionMetadata.new(args["metadata"], to_s)
+          @schema_title = args["schemaTitle"]
+          @description = args["description"]
+          @update_time = args["updateTime"]
         end
 
         def to_s

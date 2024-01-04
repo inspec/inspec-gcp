@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,15 +13,15 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/monitoring/property/alertpolicy_conditions_condition_absent'
-require 'google/monitoring/property/alertpolicy_conditions_condition_absent_aggregations'
-require 'google/monitoring/property/alertpolicy_conditions_condition_absent_trigger'
-require 'google/monitoring/property/alertpolicy_conditions_condition_monitoring_query_language'
-require 'google/monitoring/property/alertpolicy_conditions_condition_monitoring_query_language_trigger'
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold'
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold_aggregations'
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold_denominator_aggregations'
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold_trigger'
+require "google/monitoring/property/alertpolicy_conditions_condition_absent"
+require "google/monitoring/property/alertpolicy_conditions_condition_absent_aggregations"
+require "google/monitoring/property/alertpolicy_conditions_condition_absent_trigger"
+require "google/monitoring/property/alertpolicy_conditions_condition_monitoring_query_language"
+require "google/monitoring/property/alertpolicy_conditions_condition_monitoring_query_language_trigger"
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold"
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold_aggregations"
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold_denominator_aggregations"
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold_trigger"
 module GoogleInSpec
   module Monitoring
     module Property
@@ -39,11 +39,11 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @condition_absent = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionAbsent.new(args['conditionAbsent'], to_s)
-          @name = args['name']
-          @condition_monitoring_query_language = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionMonitoringQueryLanguage.new(args['conditionMonitoringQueryLanguage'], to_s)
-          @condition_threshold = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThreshold.new(args['conditionThreshold'], to_s)
-          @display_name = args['displayName']
+          @condition_absent = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionAbsent.new(args["conditionAbsent"], to_s)
+          @name = args["name"]
+          @condition_monitoring_query_language = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionMonitoringQueryLanguage.new(args["conditionMonitoringQueryLanguage"], to_s)
+          @condition_threshold = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThreshold.new(args["conditionThreshold"], to_s)
+          @display_name = args["displayName"]
         end
 
         def to_s

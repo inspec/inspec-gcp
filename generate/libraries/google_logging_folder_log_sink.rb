@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Stackdriver Logging resources.
 class LoggingFolderLogSink < GcpResourceBase
-  name 'google_logging_folder_log_sink'
-  desc 'FolderLogSink'
-  supports platform: 'gcp'
+  name "google_logging_folder_log_sink"
+  desc "FolderLogSink"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :folder
@@ -32,18 +32,18 @@ class LoggingFolderLogSink < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @folder = @fetched['folder']
-    @name = @fetched['name']
-    @filter = @fetched['filter']
-    @destination = @fetched['destination']
-    @writer_identity = @fetched['writerIdentity']
-    @include_children = @fetched['includeChildren']
+    @folder = @fetched["folder"]
+    @name = @fetched["name"]
+    @filter = @fetched["filter"]
+    @destination = @fetched["destination"]
+    @writer_identity = @fetched["writerIdentity"]
+    @include_children = @fetched["includeChildren"]
   end
 
   # Handles parsing RFC3339 time string
@@ -61,17 +61,17 @@ class LoggingFolderLogSink < GcpResourceBase
 
   def un_parse
     {
-      'folder' => ->(x, _) { x.nil? ? [] : ["its('folder') { should cmp #{x.inspect} }"] },
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'filter' => ->(x, _) { x.nil? ? [] : ["its('filter') { should cmp #{x.inspect} }"] },
-      'destination' => ->(x, _) { x.nil? ? [] : ["its('destination') { should cmp #{x.inspect} }"] },
-      'writer_identity' => ->(x, _) { x.nil? ? [] : ["its('writer_identity') { should cmp #{x.inspect} }"] },
-      'include_children' => ->(x, _) { x.nil? ? [] : ["its('include_children') { should cmp #{x.inspect} }"] },
+      "folder" => ->(x, _) { x.nil? ? [] : ["its('folder') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "filter" => ->(x, _) { x.nil? ? [] : ["its('filter') { should cmp #{x.inspect} }"] },
+      "destination" => ->(x, _) { x.nil? ? [] : ["its('destination') { should cmp #{x.inspect} }"] },
+      "writer_identity" => ->(x, _) { x.nil? ? [] : ["its('writer_identity') { should cmp #{x.inspect} }"] },
+      "include_children" => ->(x, _) { x.nil? ? [] : ["its('include_children') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'FolderLogSink'
+    name = "FolderLogSink"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -80,11 +80,11 @@ class LoggingFolderLogSink < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_logging_folder_log_sink',
+      type: "google_logging_folder_log_sink",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -92,10 +92,10 @@ class LoggingFolderLogSink < GcpResourceBase
   private
 
   def product_url
-    'https://logging.googleapis.com/v2/'
+    "https://logging.googleapis.com/v2/"
   end
 
   def resource_base_url
-    'folders/{{folder}}/sinks/{{name}}'
+    "folders/{{folder}}/sinks/{{name}}"
   end
 end

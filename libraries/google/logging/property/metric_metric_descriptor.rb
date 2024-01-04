@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/logging/property/metric_metric_descriptor_labels'
+require "google/logging/property/metric_metric_descriptor_labels"
 module GoogleInSpec
   module Logging
     module Property
@@ -33,12 +33,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @unit = args['unit']
-          @value_type = args['valueType']
-          @metric_kind = args['metricKind']
-          @labels = GoogleInSpec::Logging::Property::MetricMetricDescriptorLabelsArray.parse(args['labels'], to_s)
-          @display_name = args['displayName']
-          @type = args['type']
+          @unit = args["unit"]
+          @value_type = args["valueType"]
+          @metric_kind = args["metricKind"]
+          @labels = GoogleInSpec::Logging::Property::MetricMetricDescriptorLabelsArray.parse(args["labels"], to_s)
+          @display_name = args["displayName"]
+          @type = args["type"]
         end
 
         def to_s

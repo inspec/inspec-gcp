@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/cloudfunctions/property/cloudfunction_event_trigger'
-require 'google/cloudfunctions/property/cloudfunction_https_trigger'
-require 'google/cloudfunctions/property/cloudfunction_source_repository'
+require "gcp_backend"
+require "google/cloudfunctions/property/cloudfunction_event_trigger"
+require "google/cloudfunctions/property/cloudfunction_https_trigger"
+require "google/cloudfunctions/property/cloudfunction_source_repository"
 
 # A provider to manage Cloud Functions resources.
 class CloudFunctionsCloudFunction < GcpResourceBase
-  name 'google_cloudfunctions_cloud_function'
-  desc 'CloudFunction'
-  supports platform: 'gcp'
+  name "google_cloudfunctions_cloud_function"
+  desc "CloudFunction"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -47,30 +47,30 @@ class CloudFunctionsCloudFunction < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @status = @fetched['status']
-    @entry_point = @fetched['entryPoint']
-    @runtime = @fetched['runtime']
-    @timeout = @fetched['timeout']
-    @available_memory_mb = @fetched['availableMemoryMb']
-    @service_account_email = @fetched['serviceAccountEmail']
-    @update_time = @fetched['updateTime']
-    @version_id = @fetched['versionId']
-    @labels = @fetched['labels']
-    @environment_variables = @fetched['environmentVariables']
-    @source_archive_url = @fetched['sourceArchiveUrl']
-    @source_upload_url = @fetched['sourceUploadUrl']
-    @source_repository = GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(@fetched['sourceRepository'], to_s)
-    @https_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(@fetched['httpsTrigger'], to_s)
-    @event_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(@fetched['eventTrigger'], to_s)
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @status = @fetched["status"]
+    @entry_point = @fetched["entryPoint"]
+    @runtime = @fetched["runtime"]
+    @timeout = @fetched["timeout"]
+    @available_memory_mb = @fetched["availableMemoryMb"]
+    @service_account_email = @fetched["serviceAccountEmail"]
+    @update_time = @fetched["updateTime"]
+    @version_id = @fetched["versionId"]
+    @labels = @fetched["labels"]
+    @environment_variables = @fetched["environmentVariables"]
+    @source_archive_url = @fetched["sourceArchiveUrl"]
+    @source_upload_url = @fetched["sourceUploadUrl"]
+    @source_repository = GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(@fetched["sourceRepository"], to_s)
+    @https_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(@fetched["httpsTrigger"], to_s)
+    @event_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(@fetched["eventTrigger"], to_s)
+    @location = @fetched["location"]
   end
 
   # Handles parsing RFC3339 time string
@@ -88,29 +88,29 @@ class CloudFunctionsCloudFunction < GcpResourceBase
 
   def un_parse
     {
-      'name' => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'status' => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
-      'entry_point' => ->(x, _) { x.nil? ? [] : ["its('entry_point') { should cmp #{x.inspect} }"] },
-      'runtime' => ->(x, _) { x.nil? ? [] : ["its('runtime') { should cmp #{x.inspect} }"] },
-      'timeout' => ->(x, _) { x.nil? ? [] : ["its('timeout') { should cmp #{x.inspect} }"] },
-      'available_memory_mb' => ->(x, _) { x.nil? ? [] : ["its('available_memory_mb') { should cmp #{x.inspect} }"] },
-      'service_account_email' => ->(x, _) { x.nil? ? [] : ["its('service_account_email') { should cmp #{x.inspect} }"] },
-      'update_time' => ->(x, _) { x.nil? ? [] : ["its('update_time') { should cmp #{x.inspect} }"] },
-      'version_id' => ->(x, _) { x.nil? ? [] : ["its('version_id') { should cmp #{x.inspect} }"] },
-      'labels' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'environment_variables' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('environment_variables') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'source_archive_url' => ->(x, _) { x.nil? ? [] : ["its('source_archive_url') { should cmp #{x.inspect} }"] },
-      'source_upload_url' => ->(x, _) { x.nil? ? [] : ["its('source_upload_url') { should cmp #{x.inspect} }"] },
-      'source_repository' => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.un_parse(x, 'source_repository') },
-      'https_trigger' => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.un_parse(x, 'https_trigger') },
-      'event_trigger' => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.un_parse(x, 'event_trigger') },
-      'location' => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
+      "name" => ->(x, _) { x.nil? ? [] : ["its('name') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "status" => ->(x, _) { x.nil? ? [] : ["its('status') { should cmp #{x.inspect} }"] },
+      "entry_point" => ->(x, _) { x.nil? ? [] : ["its('entry_point') { should cmp #{x.inspect} }"] },
+      "runtime" => ->(x, _) { x.nil? ? [] : ["its('runtime') { should cmp #{x.inspect} }"] },
+      "timeout" => ->(x, _) { x.nil? ? [] : ["its('timeout') { should cmp #{x.inspect} }"] },
+      "available_memory_mb" => ->(x, _) { x.nil? ? [] : ["its('available_memory_mb') { should cmp #{x.inspect} }"] },
+      "service_account_email" => ->(x, _) { x.nil? ? [] : ["its('service_account_email') { should cmp #{x.inspect} }"] },
+      "update_time" => ->(x, _) { x.nil? ? [] : ["its('update_time') { should cmp #{x.inspect} }"] },
+      "version_id" => ->(x, _) { x.nil? ? [] : ["its('version_id') { should cmp #{x.inspect} }"] },
+      "labels" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('labels') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "environment_variables" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('environment_variables') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "source_archive_url" => ->(x, _) { x.nil? ? [] : ["its('source_archive_url') { should cmp #{x.inspect} }"] },
+      "source_upload_url" => ->(x, _) { x.nil? ? [] : ["its('source_upload_url') { should cmp #{x.inspect} }"] },
+      "source_repository" => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.un_parse(x, "source_repository") },
+      "https_trigger" => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.un_parse(x, "https_trigger") },
+      "event_trigger" => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.un_parse(x, "event_trigger") },
+      "location" => ->(x, _) { x.nil? ? [] : ["its('location') { should cmp #{x.inspect} }"] },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'CloudFunction'
+    name = "CloudFunction"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -119,11 +119,11 @@ class CloudFunctionsCloudFunction < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_cloudfunctions_cloud_function',
+      type: "google_cloudfunctions_cloud_function",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -131,10 +131,10 @@ class CloudFunctionsCloudFunction < GcpResourceBase
   private
 
   def product_url
-    'https://cloudfunctions.googleapis.com/v1/'
+    "https://cloudfunctions.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/functions/{{name}}'
+    "projects/{{project}}/locations/{{location}}/functions/{{name}}"
   end
 end

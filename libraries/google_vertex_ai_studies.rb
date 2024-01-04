@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIStudys < GcpResourceBase
-  name 'google_vertex_ai_studies'
-  desc 'Study plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_studies"
+  desc "Study plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -35,12 +35,12 @@ class VertexAIStudys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('studies')
+    @table = fetch_wrapped_resource("studies")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -68,22 +68,22 @@ class VertexAIStudys < GcpResourceBase
 
   def transformers
     {
-      'studySpec' => ->(obj) { [:study_spec, obj['studySpec']] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'inactiveReason' => ->(obj) { [:inactive_reason, obj['inactiveReason']] },
+      "studySpec" => ->(obj) { [:study_spec, obj["studySpec"]] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "displayName" => ->(obj) { [:display_name, obj["displayName"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "inactiveReason" => ->(obj) { [:inactive_reason, obj["inactiveReason"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/studies'
+    "{{parent}}/studies"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_limits_max_findings_per_info_type_info_type'
+require "google/dlp/property/inspecttemplate_inspect_config_limits_max_findings_per_info_type_info_type"
 module GoogleInSpec
   module DLP
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @info_type = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.new(args['infoType'], to_s)
-          @max_findings = args['maxFindings']
+          @info_type = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.new(args["infoType"], to_s)
+          @max_findings = args["maxFindings"]
         end
 
         def to_s

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class VertexAIFeaturestoreEntityTypeFeatures < GcpResourceBase
-  name 'google_vertex_ai_featurestore_entity_type_features'
-  desc 'FeaturestoreEntityTypeFeature plural resource'
-  supports platform: 'gcp'
+  name "google_vertex_ai_featurestore_entity_type_features"
+  desc "FeaturestoreEntityTypeFeature plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -38,12 +38,12 @@ class VertexAIFeaturestoreEntityTypeFeatures < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('features')
+    @table = fetch_wrapped_resource("features")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -71,25 +71,25 @@ class VertexAIFeaturestoreEntityTypeFeatures < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { [:description, obj['description']] },
-      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'monitoringStatsAnomalies' => ->(obj) { [:monitoring_stats_anomalies, obj['monitoringStatsAnomalies']] },
-      'etag' => ->(obj) { [:etag, obj['etag']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoreEntityTypeFeatureLabels.new(obj['labels'], to_s)] },
-      'name' => ->(obj) { [:name, obj['name']] },
-      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'disableMonitoring' => ->(obj) { [:disable_monitoring, obj['disableMonitoring']] },
-      'valueType' => ->(obj) { [:value_type, obj['valueType']] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "createTime" => ->(obj) { [:create_time, obj["createTime"]] },
+      "monitoringStatsAnomalies" => ->(obj) { [:monitoring_stats_anomalies, obj["monitoringStatsAnomalies"]] },
+      "etag" => ->(obj) { [:etag, obj["etag"]] },
+      "labels" => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoreEntityTypeFeatureLabels.new(obj["labels"], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "updateTime" => ->(obj) { [:update_time, obj["updateTime"]] },
+      "disableMonitoring" => ->(obj) { [:disable_monitoring, obj["disableMonitoring"]] },
+      "valueType" => ->(obj) { [:value_type, obj["valueType"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/features'
+    "{{parent}}/features"
   end
 end

@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Apigee resources.
 class ApigeeOrganizationEnvgroup < GcpResourceBase
-  name 'google_apigee_organization_envgroup'
-  desc 'OrganizationEnvgroup'
-  supports platform: 'gcp'
+  name "google_apigee_organization_envgroup"
+  desc "OrganizationEnvgroup"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -31,16 +31,16 @@ class ApigeeOrganizationEnvgroup < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @last_modified_at = @fetched['lastModifiedAt']
-    @hostnames = @fetched['hostnames']
-    @state = @fetched['state']
-    @created_at = @fetched['createdAt']
+    @name = @fetched["name"]
+    @last_modified_at = @fetched["lastModifiedAt"]
+    @hostnames = @fetched["hostnames"]
+    @state = @fetched["state"]
+    @created_at = @fetched["createdAt"]
   end
 
   def exists?
@@ -54,10 +54,10 @@ class ApigeeOrganizationEnvgroup < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://apigee.googleapis.com/v1/'
+    "https://apigee.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

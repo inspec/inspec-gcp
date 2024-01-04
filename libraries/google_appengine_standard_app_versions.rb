@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class AppEngineStandardAppVersions < GcpResourceBase
-  name 'google_appengine_standard_app_versions'
-  desc 'StandardAppVersion plural resource'
-  supports platform: 'gcp'
+  name "google_appengine_standard_app_versions"
+  desc "StandardAppVersion plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -39,12 +39,12 @@ class AppEngineStandardAppVersions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('versions')
+    @table = fetch_wrapped_resource("versions")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -72,26 +72,26 @@ class AppEngineStandardAppVersions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'id' => ->(obj) { [:version_id, obj['id']] },
-      'runtime' => ->(obj) { [:runtime, obj['runtime']] },
-      'threadsafe' => ->(obj) { [:threadsafe, obj['threadsafe']] },
-      'vpcAccessConnector' => ->(obj) { [:vpc_access_connector, GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(obj['vpcAccessConnector'], to_s)] },
-      'inboundServices' => ->(obj) { [:inbound_services, obj['inboundServices']] },
-      'instanceClass' => ->(obj) { [:instance_class, obj['instanceClass']] },
-      'automaticScaling' => ->(obj) { [:automatic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(obj['automaticScaling'], to_s)] },
-      'basicScaling' => ->(obj) { [:basic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(obj['basicScaling'], to_s)] },
-      'manualScaling' => ->(obj) { [:manual_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(obj['manualScaling'], to_s)] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "id" => ->(obj) { [:version_id, obj["id"]] },
+      "runtime" => ->(obj) { [:runtime, obj["runtime"]] },
+      "threadsafe" => ->(obj) { [:threadsafe, obj["threadsafe"]] },
+      "vpcAccessConnector" => ->(obj) { [:vpc_access_connector, GoogleInSpec::AppEngine::Property::StandardAppVersionVPCAccessConnector.new(obj["vpcAccessConnector"], to_s)] },
+      "inboundServices" => ->(obj) { [:inbound_services, obj["inboundServices"]] },
+      "instanceClass" => ->(obj) { [:instance_class, obj["instanceClass"]] },
+      "automaticScaling" => ->(obj) { [:automatic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionAutomaticScaling.new(obj["automaticScaling"], to_s)] },
+      "basicScaling" => ->(obj) { [:basic_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionBasicScaling.new(obj["basicScaling"], to_s)] },
+      "manualScaling" => ->(obj) { [:manual_scaling, GoogleInSpec::AppEngine::Property::StandardAppVersionManualScaling.new(obj["manualScaling"], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://appengine.googleapis.com/v1/'
+    "https://appengine.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'apps/{{project}}/services/{{service}}/versions'
+    "apps/{{project}}/services/{{service}}/versions"
   end
 end

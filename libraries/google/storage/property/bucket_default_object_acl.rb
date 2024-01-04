@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/storage/property/bucket_default_object_acl_project_team'
+require "google/storage/property/bucket_default_object_acl_project_team"
 module GoogleInSpec
   module Storage
     module Property
@@ -41,16 +41,16 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @bucket = args['bucket']
-          @domain = args['domain']
-          @email = args['email']
-          @entity = args['entity']
-          @entity_id = args['entityId']
-          @generation = args['generation']
-          @id = args['id']
-          @object = args['object']
-          @project_team = GoogleInSpec::Storage::Property::BucketDefaultObjectAclProjectTeam.new(args['projectTeam'], to_s)
-          @role = args['role']
+          @bucket = args["bucket"]
+          @domain = args["domain"]
+          @email = args["email"]
+          @entity = args["entity"]
+          @entity_id = args["entityId"]
+          @generation = args["generation"]
+          @id = args["id"]
+          @object = args["object"]
+          @project_team = GoogleInSpec::Storage::Property::BucketDefaultObjectAclProjectTeam.new(args["projectTeam"], to_s)
+          @role = args["role"]
         end
 
         def to_s

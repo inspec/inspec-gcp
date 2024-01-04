@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/container/property/cluster_master_auth_client_certificate_config'
+require "google/container/property/cluster_master_auth_client_certificate_config"
 module GoogleInSpec
   module Container
     module Property
@@ -33,12 +33,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @username = args['username']
-          @password = args['password']
-          @client_certificate_config = GoogleInSpec::Container::Property::ClusterMasterAuthClientCertificateConfig.new(args['clientCertificateConfig'], to_s)
-          @cluster_ca_certificate = args['clusterCaCertificate']
-          @client_certificate = args['clientCertificate']
-          @client_key = args['clientKey']
+          @username = args["username"]
+          @password = args["password"]
+          @client_certificate_config = GoogleInSpec::Container::Property::ClusterMasterAuthClientCertificateConfig.new(args["clientCertificateConfig"], to_s)
+          @cluster_ca_certificate = args["clusterCaCertificate"]
+          @client_certificate = args["clientCertificate"]
+          @client_key = args["clientKey"]
         end
 
         def to_s

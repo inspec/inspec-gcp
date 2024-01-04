@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/cloudfunctions/property/cloudfunction_event_trigger'
-require 'google/cloudfunctions/property/cloudfunction_https_trigger'
-require 'google/cloudfunctions/property/cloudfunction_source_repository'
+require "gcp_backend"
+require "google/cloudfunctions/property/cloudfunction_event_trigger"
+require "google/cloudfunctions/property/cloudfunction_https_trigger"
+require "google/cloudfunctions/property/cloudfunction_source_repository"
 
 # A provider to manage Cloud Functions resources.
 class CloudFunctionsCloudFunction < GcpResourceBase
-  name 'google_cloudfunctions_cloud_function'
-  desc 'CloudFunction'
-  supports platform: 'gcp'
+  name "google_cloudfunctions_cloud_function"
+  desc "CloudFunction"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -47,29 +47,29 @@ class CloudFunctionsCloudFunction < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @status = @fetched['status']
-    @entry_point = @fetched['entryPoint']
-    @runtime = @fetched['runtime']
-    @timeout = @fetched['timeout']
-    @available_memory_mb = @fetched['availableMemoryMb']
-    @service_account_email = @fetched['serviceAccountEmail']
-    @update_time = @fetched['updateTime']
-    @version_id = @fetched['versionId']
-    @labels = @fetched['labels']
-    @environment_variables = @fetched['environmentVariables']
-    @source_archive_url = @fetched['sourceArchiveUrl']
-    @source_upload_url = @fetched['sourceUploadUrl']
-    @source_repository = GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(@fetched['sourceRepository'], to_s)
-    @https_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(@fetched['httpsTrigger'], to_s)
-    @event_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(@fetched['eventTrigger'], to_s)
-    @location = @fetched['location']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @status = @fetched["status"]
+    @entry_point = @fetched["entryPoint"]
+    @runtime = @fetched["runtime"]
+    @timeout = @fetched["timeout"]
+    @available_memory_mb = @fetched["availableMemoryMb"]
+    @service_account_email = @fetched["serviceAccountEmail"]
+    @update_time = @fetched["updateTime"]
+    @version_id = @fetched["versionId"]
+    @labels = @fetched["labels"]
+    @environment_variables = @fetched["environmentVariables"]
+    @source_archive_url = @fetched["sourceArchiveUrl"]
+    @source_upload_url = @fetched["sourceUploadUrl"]
+    @source_repository = GoogleInSpec::CloudFunctions::Property::CloudFunctionSourceRepository.new(@fetched["sourceRepository"], to_s)
+    @https_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionHttpsTrigger.new(@fetched["httpsTrigger"], to_s)
+    @event_trigger = GoogleInSpec::CloudFunctions::Property::CloudFunctionEventTrigger.new(@fetched["eventTrigger"], to_s)
+    @location = @fetched["location"]
   end
 
   def exists?
@@ -83,10 +83,10 @@ class CloudFunctionsCloudFunction < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://cloudfunctions.googleapis.com/v1/'
+    "https://cloudfunctions.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/locations/{{location}}/functions/{{name}}'
+    "projects/{{project}}/locations/{{location}}/functions/{{name}}"
   end
 end

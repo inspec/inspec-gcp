@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_yum_repository_public_repository'
+require "google/artifactregistry/property/projectlocationrepository_remote_repository_config_yum_repository_public_repository"
 module GoogleInSpec
   module Artifactregistry
     module Property
@@ -23,7 +23,7 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @public_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.new(args['publicRepository'], to_s)
+          @public_repository = GoogleInSpec::Artifactregistry::Property::ProjectLocationRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.new(args["publicRepository"], to_s)
         end
 
         def to_s

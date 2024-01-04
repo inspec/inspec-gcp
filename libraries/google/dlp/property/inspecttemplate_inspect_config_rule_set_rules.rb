@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,17 +13,17 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_cloud_storage_path'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_word_list'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_exclude_info_types'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_exclude_info_types_info_types'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_regex'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_hotword_regex'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_likelihood_adjustment'
-require 'google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_proximity'
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_cloud_storage_path"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_dictionary_word_list"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_exclude_info_types"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_exclude_info_types_info_types"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_exclusion_rule_regex"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_hotword_regex"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_likelihood_adjustment"
+require "google/dlp/property/inspecttemplate_inspect_config_rule_set_rules_hotword_rule_proximity"
 module GoogleInSpec
   module DLP
     module Property
@@ -35,8 +35,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @hotword_rule = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRule.new(args['hotwordRule'], to_s)
-          @exclusion_rule = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRule.new(args['exclusionRule'], to_s)
+          @hotword_rule = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesHotwordRule.new(args["hotwordRule"], to_s)
+          @exclusion_rule = GoogleInSpec::DLP::Property::InspectTemplateInspectConfigRuleSetRulesExclusionRule.new(args["exclusionRule"], to_s)
         end
 
         def to_s

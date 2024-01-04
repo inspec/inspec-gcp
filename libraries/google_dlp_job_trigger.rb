@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,27 +13,27 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/dlp/property/jobtrigger_inspect_job'
-require 'google/dlp/property/jobtrigger_inspect_job_actions'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options_table_reference'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set_regex_file_set'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_kind'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_partition_id'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config'
-require 'google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config_timestamp_field'
-require 'google/dlp/property/jobtrigger_triggers'
+require "gcp_backend"
+require "google/dlp/property/jobtrigger_inspect_job"
+require "google/dlp/property/jobtrigger_inspect_job_actions"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_big_query_options_table_reference"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_cloud_storage_options_file_set_regex_file_set"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_kind"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_datastore_options_partition_id"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config"
+require "google/dlp/property/jobtrigger_inspect_job_storage_config_timespan_config_timestamp_field"
+require "google/dlp/property/jobtrigger_triggers"
 
 # A provider to manage Dlp resources.
 class DLPJobTrigger < GcpResourceBase
-  name 'google_dlp_job_trigger'
-  desc 'JobTrigger'
-  supports platform: 'gcp'
+  name "google_dlp_job_trigger"
+  desc "JobTrigger"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :name
@@ -48,19 +48,19 @@ class DLPJobTrigger < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @name = @fetched['name']
-    @description = @fetched['description']
-    @display_name = @fetched['displayName']
-    @last_run_time = parse_time_string(@fetched['lastRunTime'])
-    @status = @fetched['status']
-    @triggers = GoogleInSpec::DLP::Property::JobTriggerTriggersArray.parse(@fetched['triggers'], to_s)
-    @inspect_job = GoogleInSpec::DLP::Property::JobTriggerInspectJob.new(@fetched['inspectJob'], to_s)
-    @parent = @fetched['parent']
+    @name = @fetched["name"]
+    @description = @fetched["description"]
+    @display_name = @fetched["displayName"]
+    @last_run_time = parse_time_string(@fetched["lastRunTime"])
+    @status = @fetched["status"]
+    @triggers = GoogleInSpec::DLP::Property::JobTriggerTriggersArray.parse(@fetched["triggers"], to_s)
+    @inspect_job = GoogleInSpec::DLP::Property::JobTriggerInspectJob.new(@fetched["inspectJob"], to_s)
+    @parent = @fetched["parent"]
   end
 
   # Handles parsing RFC3339 time string
@@ -79,10 +79,10 @@ class DLPJobTrigger < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://dlp.googleapis.com/v2/'
+    "https://dlp.googleapis.com/v2/"
   end
 
   def resource_base_url
-    '{{parent}}/jobTriggers/{{name}}'
+    "{{parent}}/jobTriggers/{{name}}"
   end
 end

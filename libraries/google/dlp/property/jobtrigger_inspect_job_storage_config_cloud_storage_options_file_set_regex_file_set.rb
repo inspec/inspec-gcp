@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @bucket_name = args['bucketName']
-          @include_regex = args['includeRegex']
-          @exclude_regex = args['excludeRegex']
+          @bucket_name = args["bucketName"]
+          @include_regex = args["includeRegex"]
+          @exclude_regex = args["excludeRegex"]
         end
 
         def to_s

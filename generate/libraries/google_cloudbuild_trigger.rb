@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/cloudbuild/property/trigger_build'
-require 'google/cloudbuild/property/trigger_build_steps'
-require 'google/cloudbuild/property/trigger_trigger_template'
+require "gcp_backend"
+require "google/cloudbuild/property/trigger_build"
+require "google/cloudbuild/property/trigger_build_steps"
+require "google/cloudbuild/property/trigger_trigger_template"
 
 # A provider to manage Cloud Build resources.
 class CloudBuildTrigger < GcpResourceBase
-  name 'google_cloudbuild_trigger'
-  desc 'Trigger'
-  supports platform: 'gcp'
+  name "google_cloudbuild_trigger"
+  desc "Trigger"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :id
@@ -39,22 +39,22 @@ class CloudBuildTrigger < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url, resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url, resource_base_url, params, "Get")
     parse unless @fetched.nil?
     @params = params
   end
 
   def parse
-    @id = @fetched['id']
-    @description = @fetched['description']
-    @disabled = @fetched['disabled']
-    @create_time = parse_time_string(@fetched['createTime'])
-    @substitutions = @fetched['substitutions']
-    @filename = @fetched['filename']
-    @ignored_files = @fetched['ignoredFiles']
-    @included_files = @fetched['includedFiles']
-    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched['triggerTemplate'], to_s)
-    @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched['build'], to_s)
+    @id = @fetched["id"]
+    @description = @fetched["description"]
+    @disabled = @fetched["disabled"]
+    @create_time = parse_time_string(@fetched["createTime"])
+    @substitutions = @fetched["substitutions"]
+    @filename = @fetched["filename"]
+    @ignored_files = @fetched["ignoredFiles"]
+    @included_files = @fetched["includedFiles"]
+    @trigger_template = GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(@fetched["triggerTemplate"], to_s)
+    @build = GoogleInSpec::CloudBuild::Property::TriggerBuild.new(@fetched["build"], to_s)
   end
 
   # Handles parsing RFC3339 time string
@@ -72,21 +72,21 @@ class CloudBuildTrigger < GcpResourceBase
 
   def un_parse
     {
-      'id' => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
-      'description' => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
-      'disabled' => ->(x, _) { x.nil? ? [] : ["its('disabled') { should cmp #{x.inspect} }"] },
-      'create_time' => ->(x, _) { x.nil? ? [] : ["its('create_time.to_s') { should cmp '#{x.inspect}' }"] },
-      'substitutions' => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('substitutions') { should include(#{k.inspect} => #{v.inspect}) }" } },
-      'filename' => ->(x, _) { x.nil? ? [] : ["its('filename') { should cmp #{x.inspect} }"] },
-      'ignored_files' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('ignored_files') { should include #{single.inspect} }" } },
-      'included_files' => ->(x, _) { x.nil? ? [] : x.map { |single| "its('included_files') { should include #{single.inspect} }" } },
-      'trigger_template' => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.un_parse(x, 'trigger_template') },
-      'build' => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudBuild::Property::TriggerBuild.un_parse(x, 'build') },
+      "id" => ->(x, _) { x.nil? ? [] : ["its('id') { should cmp #{x.inspect} }"] },
+      "description" => ->(x, _) { x.nil? ? [] : ["its('description') { should cmp #{x.inspect} }"] },
+      "disabled" => ->(x, _) { x.nil? ? [] : ["its('disabled') { should cmp #{x.inspect} }"] },
+      "create_time" => ->(x, _) { x.nil? ? [] : ["its('create_time.to_s') { should cmp '#{x.inspect}' }"] },
+      "substitutions" => ->(x, _) { x.nil? ? [] : x.map { |k, v| "its('substitutions') { should include(#{k.inspect} => #{v.inspect}) }" } },
+      "filename" => ->(x, _) { x.nil? ? [] : ["its('filename') { should cmp #{x.inspect} }"] },
+      "ignored_files" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('ignored_files') { should include #{single.inspect} }" } },
+      "included_files" => ->(x, _) { x.nil? ? [] : x.map { |single| "its('included_files') { should include #{single.inspect} }" } },
+      "trigger_template" => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.un_parse(x, "trigger_template") },
+      "build" => ->(x, _) { x.nil? ? [] : GoogleInSpec::CloudBuild::Property::TriggerBuild.un_parse(x, "build") },
     }
   end
 
   def dump(path, template_path, test_number, ignored_fields)
-    name = 'Trigger'
+    name = "Trigger"
 
     arr = un_parse.map do |k, v|
       next if ignored_fields.include?(k)
@@ -95,11 +95,11 @@ class CloudBuildTrigger < GcpResourceBase
     template_vars = {
       name:,
       arr:,
-      type: 'google_cloudbuild_trigger',
+      type: "google_cloudbuild_trigger",
       identifiers: @params,
       number: test_number,
     }
-    File.open("#{path}/#{name}_#{test_number}.rb", 'w') do |file|
+    File.open("#{path}/#{name}_#{test_number}.rb", "w") do |file|
       file.write(ERB.new(File.read(template_path)).result_with_hash(template_vars))
     end
   end
@@ -107,10 +107,10 @@ class CloudBuildTrigger < GcpResourceBase
   private
 
   def product_url
-    'https://cloudbuild.googleapis.com/v1/'
+    "https://cloudbuild.googleapis.com/v1/"
   end
 
   def resource_base_url
-    'projects/{{project}}/triggers/{{id}}'
+    "projects/{{project}}/triggers/{{id}}"
   end
 end

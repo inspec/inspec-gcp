@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_search_trials_final_measurement_metrics'
+require "google/vertexai/property/nasjob_nas_job_output_multi_trial_job_output_search_trials_final_measurement_metrics"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -27,9 +27,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @metrics = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputSearchTrialsFinalMeasurementMetricsArray.parse(args['metrics'], to_s)
-          @elapsed_duration = args['elapsedDuration']
-          @step_count = args['stepCount']
+          @metrics = GoogleInSpec::VertexAI::Property::NasJobNasJobOutputMultiTrialJobOutputSearchTrialsFinalMeasurementMetricsArray.parse(args["metrics"], to_s)
+          @elapsed_duration = args["elapsedDuration"]
+          @step_count = args["stepCount"]
         end
 
         def to_s

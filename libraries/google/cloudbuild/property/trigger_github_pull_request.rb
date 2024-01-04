@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -26,9 +26,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @branch = args['branch']
-          @comment_control = args['commentControl']
-          @invert_regex = args['invertRegex']
+          @branch = args["branch"]
+          @comment_control = args["commentControl"]
+          @invert_regex = args["invertRegex"]
         end
 
         def to_s

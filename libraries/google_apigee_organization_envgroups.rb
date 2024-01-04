@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ApigeeOrganizationEnvgroups < GcpResourceBase
-  name 'google_apigee_organization_envgroups'
-  desc 'OrganizationEnvgroup plural resource'
-  supports platform: 'gcp'
+  name "google_apigee_organization_envgroups"
+  desc "OrganizationEnvgroup plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -34,12 +34,12 @@ class ApigeeOrganizationEnvgroups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('environmentGroups')
+    @table = fetch_wrapped_resource("environmentGroups")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -67,21 +67,21 @@ class ApigeeOrganizationEnvgroups < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { [:name, obj['name']] },
-      'lastModifiedAt' => ->(obj) { [:last_modified_at, obj['lastModifiedAt']] },
-      'hostnames' => ->(obj) { [:hostnames, obj['hostnames']] },
-      'state' => ->(obj) { [:state, obj['state']] },
-      'createdAt' => ->(obj) { [:created_at, obj['createdAt']] },
+      "name" => ->(obj) { [:name, obj["name"]] },
+      "lastModifiedAt" => ->(obj) { [:last_modified_at, obj["lastModifiedAt"]] },
+      "hostnames" => ->(obj) { [:hostnames, obj["hostnames"]] },
+      "state" => ->(obj) { [:state, obj["state"]] },
+      "createdAt" => ->(obj) { [:created_at, obj["createdAt"]] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://apigee.googleapis.com/v1/'
+    "https://apigee.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{parent}}/envgroups'
+    "{{parent}}/envgroups"
   end
 end

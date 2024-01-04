@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionbackendservice_consistent_hash_http_cookie'
-require 'google/compute/property/regionbackendservice_consistent_hash_http_cookie_ttl'
+require "google/compute/property/regionbackendservice_consistent_hash_http_cookie"
+require "google/compute/property/regionbackendservice_consistent_hash_http_cookie_ttl"
 module GoogleInSpec
   module Compute
     module Property
@@ -28,9 +28,9 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @http_cookie = GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHashHttpCookie.new(args['httpCookie'], to_s)
-          @http_header_name = args['httpHeaderName']
-          @minimum_ring_size = args['minimumRingSize']
+          @http_cookie = GoogleInSpec::Compute::Property::RegionBackendServiceConsistentHashHttpCookie.new(args["httpCookie"], to_s)
+          @http_header_name = args["httpHeaderName"]
+          @minimum_ring_size = args["minimumRingSize"]
         end
 
         def to_s

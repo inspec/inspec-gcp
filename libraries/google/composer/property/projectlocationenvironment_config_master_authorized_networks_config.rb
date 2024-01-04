@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/composer/property/projectlocationenvironment_config_master_authorized_networks_config_cidr_blocks'
+require "google/composer/property/projectlocationenvironment_config_master_authorized_networks_config_cidr_blocks"
 module GoogleInSpec
   module Composer
     module Property
@@ -25,8 +25,8 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enabled = args['enabled']
-          @cidr_blocks = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlocksArray.parse(args['cidrBlocks'], to_s)
+          @enabled = args["enabled"]
+          @cidr_blocks = GoogleInSpec::Composer::Property::ProjectLocationEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlocksArray.parse(args["cidrBlocks"], to_s)
         end
 
         def to_s

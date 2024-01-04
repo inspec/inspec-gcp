@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigquery/property/dataset_access_view'
+require "google/bigquery/property/dataset_access_view"
 module GoogleInSpec
   module BigQuery
     module Property
@@ -35,13 +35,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @domain = args['domain']
-          @group_by_email = args['groupByEmail']
-          @role = args['role']
-          @special_group = args['specialGroup']
-          @user_by_email = args['userByEmail']
-          @iam_member = args['iamMember']
-          @view = GoogleInSpec::BigQuery::Property::DatasetAccessView.new(args['view'], to_s)
+          @domain = args["domain"]
+          @group_by_email = args["groupByEmail"]
+          @role = args["role"]
+          @special_group = args["specialGroup"]
+          @user_by_email = args["userByEmail"]
+          @iam_member = args["iamMember"]
+          @view = GoogleInSpec::BigQuery::Property::DatasetAccessView.new(args["view"], to_s)
         end
 
         def to_s

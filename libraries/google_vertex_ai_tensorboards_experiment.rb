@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/tensorboardsexperiment_labels'
+require "gcp_backend"
+require "google/vertexai/property/tensorboardsexperiment_labels"
 
 # A provider to manage Vertex AI resources.
 class VertexAITensorboardsExperiment < GcpResourceBase
-  name 'google_vertex_ai_tensorboards_experiment'
-  desc 'TensorboardsExperiment'
-  supports platform: 'gcp'
+  name "google_vertex_ai_tensorboards_experiment"
+  desc "TensorboardsExperiment"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :description
@@ -35,19 +35,19 @@ class VertexAITensorboardsExperiment < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @description = @fetched['description']
-    @source = @fetched['source']
-    @display_name = @fetched['displayName']
-    @create_time = @fetched['createTime']
-    @update_time = @fetched['updateTime']
-    @labels = GoogleInSpec::VertexAI::Property::TensorboardsExperimentLabels.new(@fetched['labels'], to_s)
-    @name = @fetched['name']
-    @etag = @fetched['etag']
+    @description = @fetched["description"]
+    @source = @fetched["source"]
+    @display_name = @fetched["displayName"]
+    @create_time = @fetched["createTime"]
+    @update_time = @fetched["updateTime"]
+    @labels = GoogleInSpec::VertexAI::Property::TensorboardsExperimentLabels.new(@fetched["labels"], to_s)
+    @name = @fetched["name"]
+    @etag = @fetched["etag"]
   end
 
   def exists?
@@ -61,10 +61,10 @@ class VertexAITensorboardsExperiment < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

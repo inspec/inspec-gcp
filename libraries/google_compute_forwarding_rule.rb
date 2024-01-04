@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 
 # A provider to manage Compute Engine resources.
 class ComputeForwardingRule < GcpResourceBase
-  name 'google_compute_forwarding_rule'
-  desc 'ForwardingRule'
-  supports platform: 'gcp'
+  name "google_compute_forwarding_rule"
+  desc "ForwardingRule"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :creation_timestamp
@@ -48,33 +48,33 @@ class ComputeForwardingRule < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @is_mirroring_collector = @fetched['isMirroringCollector']
-    @description = @fetched['description']
-    @id = @fetched['id']
-    @ip_address = @fetched['IPAddress']
-    @ip_protocol = @fetched['IPProtocol']
-    @backend_service = @fetched['backendService']
-    @load_balancing_scheme = @fetched['loadBalancingScheme']
-    @name = @fetched['name']
-    @network = name_from_self_link(@fetched['network'])
-    @port_range = @fetched['portRange']
-    @ports = @fetched['ports']
-    @subnetwork = @fetched['subnetwork']
-    @target = @fetched['target']
-    @allow_global_access = @fetched['allowGlobalAccess']
-    @labels = @fetched['labels']
-    @label_fingerprint = @fetched['labelFingerprint']
-    @all_ports = @fetched['allPorts']
-    @network_tier = @fetched['networkTier']
-    @service_label = @fetched['serviceLabel']
-    @service_name = @fetched['serviceName']
-    @region = @fetched['region']
+    @creation_timestamp = parse_time_string(@fetched["creationTimestamp"])
+    @is_mirroring_collector = @fetched["isMirroringCollector"]
+    @description = @fetched["description"]
+    @id = @fetched["id"]
+    @ip_address = @fetched["IPAddress"]
+    @ip_protocol = @fetched["IPProtocol"]
+    @backend_service = @fetched["backendService"]
+    @load_balancing_scheme = @fetched["loadBalancingScheme"]
+    @name = @fetched["name"]
+    @network = name_from_self_link(@fetched["network"])
+    @port_range = @fetched["portRange"]
+    @ports = @fetched["ports"]
+    @subnetwork = @fetched["subnetwork"]
+    @target = @fetched["target"]
+    @allow_global_access = @fetched["allowGlobalAccess"]
+    @labels = @fetched["labels"]
+    @label_fingerprint = @fetched["labelFingerprint"]
+    @all_ports = @fetched["allPorts"]
+    @network_tier = @fetched["networkTier"]
+    @service_label = @fetched["serviceLabel"]
+    @service_name = @fetched["serviceName"]
+    @region = @fetched["region"]
   end
 
   # Handles parsing RFC3339 time string
@@ -94,13 +94,13 @@ class ComputeForwardingRule < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}'
+    "projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}"
   end
 end

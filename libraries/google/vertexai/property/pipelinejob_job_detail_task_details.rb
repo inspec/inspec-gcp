@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,16 +13,16 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_error'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_execution'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_execution_labels'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_execution_metadata'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_executor_detail'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_executor_detail_container_detail'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_executor_detail_custom_job_detail'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_inputs'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_outputs'
-require 'google/vertexai/property/pipelinejob_job_detail_task_details_pipeline_task_status'
+require "google/vertexai/property/pipelinejob_job_detail_task_details_error"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_execution"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_execution_labels"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_execution_metadata"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_executor_detail"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_executor_detail_container_detail"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_executor_detail_custom_job_detail"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_inputs"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_outputs"
+require "google/vertexai/property/pipelinejob_job_detail_task_details_pipeline_task_status"
 module GoogleInSpec
   module VertexAI
     module Property
@@ -56,19 +56,19 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @inputs = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsInputs.new(args['inputs'], to_s)
-          @pipeline_task_status = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsPipelineTaskStatusArray.parse(args['pipelineTaskStatus'], to_s)
-          @end_time = args['endTime']
-          @outputs = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsOutputs.new(args['outputs'], to_s)
-          @create_time = args['createTime']
-          @start_time = args['startTime']
-          @execution = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecution.new(args['execution'], to_s)
-          @task_name = args['taskName']
-          @parent_task_id = args['parentTaskId']
-          @state = args['state']
-          @task_id = args['taskId']
-          @executor_detail = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecutorDetail.new(args['executorDetail'], to_s)
-          @error = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsError.new(args['error'], to_s)
+          @inputs = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsInputs.new(args["inputs"], to_s)
+          @pipeline_task_status = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsPipelineTaskStatusArray.parse(args["pipelineTaskStatus"], to_s)
+          @end_time = args["endTime"]
+          @outputs = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsOutputs.new(args["outputs"], to_s)
+          @create_time = args["createTime"]
+          @start_time = args["startTime"]
+          @execution = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecution.new(args["execution"], to_s)
+          @task_name = args["taskName"]
+          @parent_task_id = args["parentTaskId"]
+          @state = args["state"]
+          @task_id = args["taskId"]
+          @executor_detail = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsExecutorDetail.new(args["executorDetail"], to_s)
+          @error = GoogleInSpec::VertexAI::Property::PipelineJobJobDetailTaskDetailsError.new(args["error"], to_s)
         end
 
         def to_s

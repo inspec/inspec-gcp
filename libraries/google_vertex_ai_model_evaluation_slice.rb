@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,18 +13,18 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
-require 'google/vertexai/property/modelevaluationslice_model_explanation'
-require 'google/vertexai/property/modelevaluationslice_model_explanation_mean_attributions'
-require 'google/vertexai/property/modelevaluationslice_slice'
-require 'google/vertexai/property/modelevaluationslice_slice_slice_spec'
-require 'google/vertexai/property/modelevaluationslice_slice_slice_spec_configs'
+require "gcp_backend"
+require "google/vertexai/property/modelevaluationslice_model_explanation"
+require "google/vertexai/property/modelevaluationslice_model_explanation_mean_attributions"
+require "google/vertexai/property/modelevaluationslice_slice"
+require "google/vertexai/property/modelevaluationslice_slice_slice_spec"
+require "google/vertexai/property/modelevaluationslice_slice_slice_spec_configs"
 
 # A provider to manage Vertex AI resources.
 class VertexAIModelEvaluationSlice < GcpResourceBase
-  name 'google_vertex_ai_model_evaluation_slice'
-  desc 'ModelEvaluationSlice'
-  supports platform: 'gcp'
+  name "google_vertex_ai_model_evaluation_slice"
+  desc "ModelEvaluationSlice"
+  supports platform: "gcp"
 
   attr_reader :params
   attr_reader :create_time
@@ -37,17 +37,17 @@ class VertexAIModelEvaluationSlice < GcpResourceBase
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, 'Get')
+    @fetched = @connection.fetch(product_url(params[:beta]), resource_base_url, params, "Get")
     parse unless @fetched.nil?
   end
 
   def parse
-    @create_time = @fetched['createTime']
-    @model_explanation = GoogleInSpec::VertexAI::Property::ModelEvaluationSliceModelExplanation.new(@fetched['modelExplanation'], to_s)
-    @name = @fetched['name']
-    @metrics = @fetched['metrics']
-    @slice = GoogleInSpec::VertexAI::Property::ModelEvaluationSliceSlice.new(@fetched['slice'], to_s)
-    @metrics_schema_uri = @fetched['metricsSchemaUri']
+    @create_time = @fetched["createTime"]
+    @model_explanation = GoogleInSpec::VertexAI::Property::ModelEvaluationSliceModelExplanation.new(@fetched["modelExplanation"], to_s)
+    @name = @fetched["name"]
+    @metrics = @fetched["metrics"]
+    @slice = GoogleInSpec::VertexAI::Property::ModelEvaluationSliceSlice.new(@fetched["slice"], to_s)
+    @metrics_schema_uri = @fetched["metricsSchemaUri"]
   end
 
   def exists?
@@ -61,10 +61,10 @@ class VertexAIModelEvaluationSlice < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://{{region}}-aiplatform.googleapis.com/v1/'
+    "https://{{region}}-aiplatform.googleapis.com/v1/"
   end
 
   def resource_base_url
-    '{{name}}'
+    "{{name}}"
   end
 end

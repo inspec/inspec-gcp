@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold_aggregations'
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold_denominator_aggregations'
-require 'google/monitoring/property/alertpolicy_conditions_condition_threshold_trigger'
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold_aggregations"
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold_denominator_aggregations"
+require "google/monitoring/property/alertpolicy_conditions_condition_threshold_trigger"
 module GoogleInSpec
   module Monitoring
     module Property
@@ -39,14 +39,14 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @threshold_value = args['thresholdValue']
-          @denominator_filter = args['denominatorFilter']
-          @denominator_aggregations = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThresholdDenominatorAggregationsArray.parse(args['denominatorAggregations'], to_s)
-          @duration = args['duration']
-          @comparison = args['comparison']
-          @trigger = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThresholdTrigger.new(args['trigger'], to_s)
-          @aggregations = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThresholdAggregationsArray.parse(args['aggregations'], to_s)
-          @filter = args['filter']
+          @threshold_value = args["thresholdValue"]
+          @denominator_filter = args["denominatorFilter"]
+          @denominator_aggregations = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThresholdDenominatorAggregationsArray.parse(args["denominatorAggregations"], to_s)
+          @duration = args["duration"]
+          @comparison = args["comparison"]
+          @trigger = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThresholdTrigger.new(args["trigger"], to_s)
+          @aggregations = GoogleInSpec::Monitoring::Property::AlertPolicyConditionsConditionThresholdAggregationsArray.parse(args["aggregations"], to_s)
+          @filter = args["filter"]
         end
 
         def to_s

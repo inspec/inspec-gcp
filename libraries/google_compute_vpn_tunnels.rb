@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+
 
 # ----------------------------------------------------------------------------
 #
@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'gcp_backend'
+require "gcp_backend"
 class ComputeVpnTunnels < GcpResourceBase
-  name 'google_compute_vpn_tunnels'
-  desc 'VpnTunnel plural resource'
-  supports platform: 'gcp'
+  name "google_compute_vpn_tunnels"
+  desc "VpnTunnel plural resource"
+  supports platform: "gcp"
 
   attr_reader :table
 
@@ -49,12 +49,12 @@ class ComputeVpnTunnels < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource("items")
   end
 
   def fetch_wrapped_resource(wrap_path)
     # fetch_resource returns an array of responses (to handle pagination)
-    result = @connection.fetch_all(product_url, resource_base_url, @params, 'Get')
+    result = @connection.fetch_all(product_url, resource_base_url, @params, "Get")
     return if result.nil?
 
     # Conversion of string -> object hash to symbol -> object hash that InSpec needs
@@ -82,26 +82,26 @@ class ComputeVpnTunnels < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { [:id, obj['id']] },
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'name' => ->(obj) { [:vpn_tunnel_name, obj['name']] },
-      'description' => ->(obj) { [:description, obj['description']] },
-      'targetVpnGateway' => ->(obj) { [:target_vpn_gateway, obj['targetVpnGateway']] },
-      'vpnGateway' => ->(obj) { [:vpn_gateway, obj['vpnGateway']] },
-      'vpnGatewayInterface' => ->(obj) { [:vpn_gateway_interface, obj['vpnGatewayInterface']] },
-      'peerExternalGateway' => ->(obj) { [:peer_external_gateway, obj['peerExternalGateway']] },
-      'peerExternalGatewayInterface' => ->(obj) { [:peer_external_gateway_interface, obj['peerExternalGatewayInterface']] },
-      'peerGcpGateway' => ->(obj) { [:peer_gcp_gateway, obj['peerGcpGateway']] },
-      'router' => ->(obj) { [:router, obj['router']] },
-      'peerIp' => ->(obj) { [:peer_ip, obj['peerIp']] },
-      'sharedSecret' => ->(obj) { [:shared_secret, obj['sharedSecret']] },
-      'sharedSecretHash' => ->(obj) { [:shared_secret_hash, obj['sharedSecretHash']] },
-      'ikeVersion' => ->(obj) { [:ike_version, obj['ikeVersion']] },
-      'localTrafficSelector' => ->(obj) { [:local_traffic_selector, obj['localTrafficSelector']] },
-      'remoteTrafficSelector' => ->(obj) { [:remote_traffic_selector, obj['remoteTrafficSelector']] },
-      'labels' => ->(obj) { [:labels, obj['labels']] },
-      'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
-      'region' => ->(obj) { [:region, obj['region']] },
+      "id" => ->(obj) { [:id, obj["id"]] },
+      "creationTimestamp" => ->(obj) { [:creation_timestamp, parse_time_string(obj["creationTimestamp"])] },
+      "name" => ->(obj) { [:vpn_tunnel_name, obj["name"]] },
+      "description" => ->(obj) { [:description, obj["description"]] },
+      "targetVpnGateway" => ->(obj) { [:target_vpn_gateway, obj["targetVpnGateway"]] },
+      "vpnGateway" => ->(obj) { [:vpn_gateway, obj["vpnGateway"]] },
+      "vpnGatewayInterface" => ->(obj) { [:vpn_gateway_interface, obj["vpnGatewayInterface"]] },
+      "peerExternalGateway" => ->(obj) { [:peer_external_gateway, obj["peerExternalGateway"]] },
+      "peerExternalGatewayInterface" => ->(obj) { [:peer_external_gateway_interface, obj["peerExternalGatewayInterface"]] },
+      "peerGcpGateway" => ->(obj) { [:peer_gcp_gateway, obj["peerGcpGateway"]] },
+      "router" => ->(obj) { [:router, obj["router"]] },
+      "peerIp" => ->(obj) { [:peer_ip, obj["peerIp"]] },
+      "sharedSecret" => ->(obj) { [:shared_secret, obj["sharedSecret"]] },
+      "sharedSecretHash" => ->(obj) { [:shared_secret_hash, obj["sharedSecretHash"]] },
+      "ikeVersion" => ->(obj) { [:ike_version, obj["ikeVersion"]] },
+      "localTrafficSelector" => ->(obj) { [:local_traffic_selector, obj["localTrafficSelector"]] },
+      "remoteTrafficSelector" => ->(obj) { [:remote_traffic_selector, obj["remoteTrafficSelector"]] },
+      "labels" => ->(obj) { [:labels, obj["labels"]] },
+      "labelFingerprint" => ->(obj) { [:label_fingerprint, obj["labelFingerprint"]] },
+      "region" => ->(obj) { [:region, obj["region"]] },
     }
   end
 
@@ -114,13 +114,13 @@ class ComputeVpnTunnels < GcpResourceBase
 
   def product_url(beta = false)
     if beta
-      'https://compute.googleapis.com/compute/beta/'
+      "https://compute.googleapis.com/compute/beta/"
     else
-      'https://compute.googleapis.com/compute/v1/'
+      "https://compute.googleapis.com/compute/v1/"
     end
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/vpnTunnels'
+    "projects/{{project}}/regions/{{region}}/vpnTunnels"
   end
 end
