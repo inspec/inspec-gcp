@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_attribution_score_skew_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_default_skew_threshold'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_prediction_skew_detection_config_skew_thresholds'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtpsdcass_thresholds'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtpsdcds_threshold'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtpsdcs_thresholds'
 module GoogleInSpec
   module VertexAI
     module Property

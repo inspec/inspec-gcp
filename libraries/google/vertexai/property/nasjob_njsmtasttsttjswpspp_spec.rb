@@ -13,21 +13,33 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/nasjob_njsmtasttsttjswpspps_env'
 module GoogleInSpec
   module VertexAI
     module Property
-      class BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigma
-        attr_reader :noise_sigma
+      class NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsPythonPackageSpec
+        attr_reader :package_uris
+
+        attr_reader :env
+
+        attr_reader :executor_image_uri
+
+        attr_reader :args
+
+        attr_reader :python_module
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @noise_sigma = GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigmaNoiseSigmaArray.parse(args['noiseSigma'], to_s)
+          @package_uris = args['packageUris']
+          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsPythonPackageSpecEnvArray.parse(args['env'], to_s)
+          @executor_image_uri = args['executorImageUri']
+          @args = args['args']
+          @python_module = args['pythonModule']
         end
 
         def to_s
-          "#{@parent_identifier} BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigma"
+          "#{@parent_identifier} NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsPythonPackageSpec"
         end
       end
     end

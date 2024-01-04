@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/modelsevaluation_esespxasgcfn_sigma'
+require 'google/vertexai/property/modelsevaluation_esespxasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property
-      class ModelsEvaluationExplanationSpecsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig
+      class ModelsEvaluationExplanationSpecsExplanationSpecParametersXraiAttributionSmoothGradConfig
         attr_reader :feature_noise_sigma
 
         attr_reader :noise_sigma
@@ -28,13 +28,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @feature_noise_sigma = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigma.new(args['featureNoiseSigma'], to_s)
+          @feature_noise_sigma = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigma.new(args['featureNoiseSigma'], to_s)
           @noise_sigma = args['noiseSigma']
           @noisy_sample_count = args['noisySampleCount']
         end
 
         def to_s
-          "#{@parent_identifier} ModelsEvaluationExplanationSpecsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig"
+          "#{@parent_identifier} ModelsEvaluationExplanationSpecsExplanationSpecParametersXraiAttributionSmoothGradConfig"
         end
       end
     end
