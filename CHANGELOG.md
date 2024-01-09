@@ -1,11 +1,26 @@
 # Change Log
 
-<!-- latest_release 1.11.65 -->
+<!-- latest_release 1.11.68 -->
+## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
+
+#### Merged Pull Requests
+- Reverted version pinning [#567](https://github.com/inspec/inspec-gcp/pull/567) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
+## [v1.11.67](https://github.com/inspec/inspec-gcp/tree/v1.11.67) (2023-12-21)
+
+#### Merged Pull Requests
+- Update inspec version pinning in Gemfile [#563](https://github.com/inspec/inspec-gcp/pull/563) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.66](https://github.com/inspec/inspec-gcp/tree/v1.11.66) (2023-12-15)
+
+#### Merged Pull Requests
+- CHEF - Removed the wrong dir from inspec-gcp. [#561](https://github.com/inspec/inspec-gcp/pull/561) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.65](https://github.com/inspec/inspec-gcp/tree/v1.11.65) (2023-12-13)
 
 #### Merged Pull Requests
 - CHEF-7382-MAGIC-MODULE-compute-VpnGateway - Resource Implementation [#534](https://github.com/inspec/inspec-gcp/pull/534) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.64](https://github.com/inspec/inspec-gcp/tree/v1.11.64) (2023-12-12)
 
