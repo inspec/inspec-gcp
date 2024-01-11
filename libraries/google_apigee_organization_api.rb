@@ -64,6 +64,6 @@ class ApigeeOrganizationApi < GcpResourceBase
   end
 
   def resource_base_url
-    '{{name}}'
+    '{{parent}}/apis/{{name}}'
   end
 end

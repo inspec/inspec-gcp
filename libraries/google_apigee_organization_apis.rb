@@ -36,7 +36,7 @@ class ApigeeOrganizationApis < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizationApis')
+    @table = fetch_wrapped_resource('proxies')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -69,13 +69,13 @@ class ApigeeOrganizationApis < GcpResourceBase
 
   def transformers
     {
-      'revision' => ->(obj) { return :revision, obj['revision'] },
-      'latestRevisionId' => ->(obj) { return :latest_revision_id, obj['latestRevisionId'] },
-      'metaData' => ->(obj) { return :meta_data, GoogleInSpec::Apigee::Property::OrganizationApiMetaData.new(obj['metaData'], to_s) },
-      'apiProxyType' => ->(obj) { return :api_proxy_type, obj['apiProxyType'] },
-      'readOnly' => ->(obj) { return :read_only, obj['readOnly'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::Apigee::Property::OrganizationApiLabels.new(obj['labels'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'revision' => ->(obj) { [:revision, obj['revision']] },
+      'latestRevisionId' => ->(obj) { [:latest_revision_id, obj['latestRevisionId']] },
+      'metaData' => ->(obj) { [:meta_data, GoogleInSpec::Apigee::Property::OrganizationApiMetaData.new(obj['metaData'], to_s)] },
+      'apiProxyType' => ->(obj) { [:api_proxy_type, obj['apiProxyType']] },
+      'readOnly' => ->(obj) { [:read_only, obj['readOnly']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Apigee::Property::OrganizationApiLabels.new(obj['labels'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

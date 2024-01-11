@@ -17,24 +17,23 @@ title 'Test GCP google_apigee_organization_api resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   organization_api = input('organization_api', value: {
-  "name": "value_name",
-  "parent": "value_parent",
+  "name": "firstproxy",
+  "parent": "organizations/ppradhan",
   "latest_revision_id": "value_latestrevisionid",
-  "api_proxy_type": "value_apiproxytype"
+  "api_proxy_type": "PROGRAMMABLE"
 }, description: 'organization_api description')
 control 'google_apigee_organization_api-1.0' do
   impact 1.0
   title 'google_apigee_organization_api resource test'
 
-  describe google_apigee_organization_api(name: organization_api['name']) do
+  describe google_apigee_organization_api(parent: organization_api['parent'],name: organization_api['name']) do
   	it { should exist }
   	its('latest_revision_id') { should cmp organization_api['latest_revision_id'] }
   	its('api_proxy_type') { should cmp organization_api['api_proxy_type'] }
   	its('name') { should cmp organization_api['name'] }
-
   end
 
-  describe google_apigee_organization_api(name: "does_not_exit") do
+  describe google_apigee_organization_api(parent: organization_api['parent'],name: "does_not_exit") do
   	it { should_not exist }
   end
 end

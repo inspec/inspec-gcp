@@ -8,7 +8,7 @@ A `google_apigee_organization_api` is used to test a Google OrganizationApi reso
 
 ## Examples
 ```
-describe google_apigee_organization_api(name: ' value_name') do
+describe google_apigee_organization_api(parent: ' value_parent', name: ' value_name') do
 	it { should exist }
 	its('latest_revision_id') { should cmp 'value_latestrevisionid' }
 	its('api_proxy_type') { should cmp 'value_apiproxytype' }
@@ -16,7 +16,7 @@ describe google_apigee_organization_api(name: ' value_name') do
 
 end
 
-describe google_apigee_organization_api(name: "does_not_exit") do
+describe google_apigee_organization_api(parent: ' value_parent', name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
@@ -47,7 +47,7 @@ Properties that can be accessed from the `google_apigee_organization_api` resour
 
   * `labels`: User labels applied to this API Proxy.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `name`: Output only. Name of the API proxy.
 
