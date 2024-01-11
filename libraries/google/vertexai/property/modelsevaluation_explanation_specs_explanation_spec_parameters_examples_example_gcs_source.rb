@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
+require 'google/vertexai/property/modelsevaluation_esespeegsg_source'
 module GoogleInSpec
   module VertexAI
     module Property

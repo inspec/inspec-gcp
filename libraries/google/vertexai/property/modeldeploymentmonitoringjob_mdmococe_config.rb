@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_bigquery'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_explanation_config_explanation_baseline_gcs'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococece_baseline'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococeceb_bigquery'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococeceb_gcs'
 module GoogleInSpec
   module VertexAI
     module Property

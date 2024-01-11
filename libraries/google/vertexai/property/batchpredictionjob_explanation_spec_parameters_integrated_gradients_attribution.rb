@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/batchpredictionjob_espigabb_config'
+require 'google/vertexai/property/batchpredictionjob_espigasg_config'
+require 'google/vertexai/property/batchpredictionjob_espigasgcfn_sigma'
+require 'google/vertexai/property/batchpredictionjob_espigasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property

@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_bigquery_source'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_gcs_source'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy_random_sample_config'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtdb_source'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtdg_source'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtdls_strategy'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococtdlssrs_config'
 module GoogleInSpec
   module VertexAI
     module Property

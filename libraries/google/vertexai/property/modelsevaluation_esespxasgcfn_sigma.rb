@@ -13,30 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_train_trial_spec_train_trial_job_spec_worker_pool_specs_container_spec_env'
+require 'google/vertexai/property/modelsevaluation_esespxasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property
-      class NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsContainerSpec
-        attr_reader :env
-
-        attr_reader :args
-
-        attr_reader :command
-
-        attr_reader :image_uri
+      class ModelsEvaluationExplanationSpecsExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigma
+        attr_reader :noise_sigma
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsContainerSpecEnvArray.parse(args['env'], to_s)
-          @args = args['args']
-          @command = args['command']
-          @image_uri = args['imageUri']
+          @noise_sigma = GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigmaNoiseSigmaArray.parse(args['noiseSigma'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsContainerSpec"
+          "#{@parent_identifier} ModelsEvaluationExplanationSpecsExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigma"
         end
       end
     end

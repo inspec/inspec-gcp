@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_executor_detail_container_detail'
-require 'google/vertexai/property/schedule_create_pipeline_job_request_pipeline_job_job_detail_task_details_executor_detail_custom_job_detail'
+require 'google/vertexai/property/schedule_cpjrpjjdtdedc_detail'
+require 'google/vertexai/property/schedule_cpjrpjjdtdedcj_detail'
 module GoogleInSpec
   module VertexAI
     module Property
