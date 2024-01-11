@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_train_trial_spec_train_trial_job_spec_base_output_directory'
+require 'google/vertexai/property/nasjob_njsmtasttsttjsbo_directory'
 require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_train_trial_spec_train_trial_job_spec_scheduling'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_train_trial_spec_train_trial_job_spec_worker_pool_specs'
+require 'google/vertexai/property/nasjob_njsmtasttsttjswp_specs'
 module GoogleInSpec
   module VertexAI
     module Property

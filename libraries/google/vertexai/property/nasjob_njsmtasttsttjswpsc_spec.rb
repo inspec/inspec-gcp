@@ -13,33 +13,30 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_python_package_spec_env'
+require 'google/vertexai/property/nasjob_njsmtasttsttjswpscs_env'
 module GoogleInSpec
   module VertexAI
     module Property
-      class NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpec
-        attr_reader :package_uris
-
+      class NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsContainerSpec
         attr_reader :env
-
-        attr_reader :executor_image_uri
 
         attr_reader :args
 
-        attr_reader :python_module
+        attr_reader :command
+
+        attr_reader :image_uri
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @package_uris = args['packageUris']
-          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpecEnvArray.parse(args['env'], to_s)
-          @executor_image_uri = args['executorImageUri']
+          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsContainerSpecEnvArray.parse(args['env'], to_s)
           @args = args['args']
-          @python_module = args['pythonModule']
+          @command = args['command']
+          @image_uri = args['imageUri']
         end
 
         def to_s
-          "#{@parent_identifier} NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpec"
+          "#{@parent_identifier} NasJobNasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecTrainTrialJobSpecWorkerPoolSpecsContainerSpec"
         end
       end
     end

@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/batchpredictionjob_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/trainingpipeline_mtuespigasgcfn_sigma'
+require 'google/vertexai/property/trainingpipeline_mtuespigasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property
-      class BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig
+      class TrainingPipelineModelToUploadExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig
         attr_reader :feature_noise_sigma
 
         attr_reader :noise_sigma
@@ -28,13 +28,13 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @feature_noise_sigma = GoogleInSpec::VertexAI::Property::BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigma.new(args['featureNoiseSigma'], to_s)
+          @feature_noise_sigma = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigma.new(args['featureNoiseSigma'], to_s)
           @noise_sigma = args['noiseSigma']
           @noisy_sample_count = args['noisySampleCount']
         end
 
         def to_s
-          "#{@parent_identifier} BatchPredictionJobExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig"
+          "#{@parent_identifier} TrainingPipelineModelToUploadExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig"
         end
       end
     end

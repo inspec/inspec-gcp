@@ -13,9 +13,9 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_attribution_score_drift_thresholds'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_default_drift_threshold'
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_prediction_drift_detection_config_drift_thresholds'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococpddcasd_thresholds'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococpddcdd_threshold'
+require 'google/vertexai/property/modeldeploymentmonitoringjob_mdmococpddcd_thresholds'
 module GoogleInSpec
   module VertexAI
     module Property

@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_container_spec'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_container_spec_env'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_disk_spec'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_machine_spec'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_nfs_mounts'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_python_package_spec'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs_python_package_spec_env'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpsc_spec'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpscs_env'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpsd_spec'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpsm_spec'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpsn_mounts'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpspp_spec'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpspps_env'
 module GoogleInSpec
   module VertexAI
     module Property
