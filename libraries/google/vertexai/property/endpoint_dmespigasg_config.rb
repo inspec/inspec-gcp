@@ -13,21 +13,28 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/endpoint_dmespigasgcfn_sigma'
+require 'google/vertexai/property/endpoint_dmespigasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property
-      class TrainingPipelineModelToUploadExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigma
+      class EndpointDeployedModelsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig
+        attr_reader :feature_noise_sigma
+
         attr_reader :noise_sigma
+
+        attr_reader :noisy_sample_count
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @noise_sigma = GoogleInSpec::VertexAI::Property::TrainingPipelineModelToUploadExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigmaNoiseSigmaArray.parse(args['noiseSigma'], to_s)
+          @feature_noise_sigma = GoogleInSpec::VertexAI::Property::EndpointDeployedModelsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfigFeatureNoiseSigma.new(args['featureNoiseSigma'], to_s)
+          @noise_sigma = args['noiseSigma']
+          @noisy_sample_count = args['noisySampleCount']
         end
 
         def to_s
-          "#{@parent_identifier} TrainingPipelineModelToUploadExplanationSpecParametersXraiAttributionSmoothGradConfigFeatureNoiseSigma"
+          "#{@parent_identifier} EndpointDeployedModelsExplanationSpecParametersIntegratedGradientsAttributionSmoothGradConfig"
         end
       end
     end

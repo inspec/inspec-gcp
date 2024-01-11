@@ -13,21 +13,33 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/modeldeploymentmonitoringjob_model_deployment_monitoring_objective_configs_objective_config_training_dataset_logging_sampling_strategy_random_sample_config'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswpspps_env'
 module GoogleInSpec
   module VertexAI
     module Property
-      class ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDatasetLoggingSamplingStrategy
-        attr_reader :random_sample_config
+      class NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpec
+        attr_reader :package_uris
+
+        attr_reader :env
+
+        attr_reader :executor_image_uri
+
+        attr_reader :args
+
+        attr_reader :python_module
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @random_sample_config = GoogleInSpec::VertexAI::Property::ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDatasetLoggingSamplingStrategyRandomSampleConfig.new(args['randomSampleConfig'], to_s)
+          @package_uris = args['packageUris']
+          @env = GoogleInSpec::VertexAI::Property::NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpecEnvArray.parse(args['env'], to_s)
+          @executor_image_uri = args['executorImageUri']
+          @args = args['args']
+          @python_module = args['pythonModule']
         end
 
         def to_s
-          "#{@parent_identifier} ModelDeploymentMonitoringJobModelDeploymentMonitoringObjectiveConfigsObjectiveConfigTrainingDatasetLoggingSamplingStrategy"
+          "#{@parent_identifier} NasJobNasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecSearchTrialJobSpecWorkerPoolSpecsPythonPackageSpec"
         end
       end
     end
