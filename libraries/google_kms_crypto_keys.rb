@@ -71,15 +71,15 @@ class KMSCryptoKeys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :crypto_key_name, name_from_self_link(obj['name']) },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'purpose' => ->(obj) { return :purpose, obj['purpose'] },
-      'rotationPeriod' => ->(obj) { return :rotation_period, obj['rotationPeriod'] },
-      'versionTemplate' => ->(obj) { return :version_template, GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(obj['versionTemplate'], to_s) },
-      'nextRotationTime' => ->(obj) { return :next_rotation_time, parse_time_string(obj['nextRotationTime']) },
-      'keyRing' => ->(obj) { return :key_ring, obj['keyRing'] },
-      'skipInitialVersionCreation' => ->(obj) { return :skip_initial_version_creation, obj['skipInitialVersionCreation'] },
+      'name' => ->(obj) { [:crypto_key_name, name_from_self_link(obj['name'])] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'purpose' => ->(obj) { [:purpose, obj['purpose']] },
+      'rotationPeriod' => ->(obj) { [:rotation_period, obj['rotationPeriod']] },
+      'versionTemplate' => ->(obj) { [:version_template, GoogleInSpec::KMS::Property::CryptoKeyVersionTemplate.new(obj['versionTemplate'], to_s)] },
+      'nextRotationTime' => ->(obj) { [:next_rotation_time, parse_time_string(obj['nextRotationTime'])] },
+      'keyRing' => ->(obj) { [:key_ring, obj['keyRing']] },
+      'skipInitialVersionCreation' => ->(obj) { [:skip_initial_version_creation, obj['skipInitialVersionCreation']] },
     }
   end
 

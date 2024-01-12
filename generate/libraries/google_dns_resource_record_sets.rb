@@ -67,11 +67,11 @@ class DNSResourceRecordSets < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'type' => ->(obj) { return :type, obj['type'] },
-      'ttl' => ->(obj) { return :ttl, obj['ttl'] },
-      'rrdatas' => ->(obj) { return :target, obj['rrdatas'] },
-      'managed_zone' => ->(obj) { return :managed_zone, obj['managed_zone'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'type' => ->(obj) { [:type, obj['type']] },
+      'ttl' => ->(obj) { [:ttl, obj['ttl']] },
+      'rrdatas' => ->(obj) { [:target, obj['rrdatas']] },
+      'managed_zone' => ->(obj) { [:managed_zone, obj['managed_zone']] },
     }
   end
 

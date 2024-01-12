@@ -78,22 +78,22 @@ class VertexAIHyperparameterTuningJobs < GcpResourceBase
 
   def transformers
     {
-      'studySpec' => ->(obj) { return :study_spec, obj['studySpec'] },
-      'trials' => ->(obj) { return :trials, obj['trials'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'maxFailedTrialCount' => ->(obj) { return :max_failed_trial_count, obj['maxFailedTrialCount'] },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, obj['encryptionSpec'] },
-      'error' => ->(obj) { return :error, obj['error'] },
-      'endTime' => ->(obj) { return :end_time, obj['endTime'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'startTime' => ->(obj) { return :start_time, obj['startTime'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::HyperparameterTuningJobLabels.new(obj['labels'], to_s) },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'parallelTrialCount' => ->(obj) { return :parallel_trial_count, obj['parallelTrialCount'] },
-      'trialJobSpec' => ->(obj) { return :trial_job_spec, obj['trialJobSpec'] },
-      'maxTrialCount' => ->(obj) { return :max_trial_count, obj['maxTrialCount'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'studySpec' => ->(obj) { [:study_spec, obj['studySpec']] },
+      'trials' => ->(obj) { [:trials, obj['trials']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'maxFailedTrialCount' => ->(obj) { [:max_failed_trial_count, obj['maxFailedTrialCount']] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, obj['encryptionSpec']] },
+      'error' => ->(obj) { [:error, obj['error']] },
+      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::HyperparameterTuningJobLabels.new(obj['labels'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'parallelTrialCount' => ->(obj) { [:parallel_trial_count, obj['parallelTrialCount']] },
+      'trialJobSpec' => ->(obj) { [:trial_job_spec, obj['trialJobSpec']] },
+      'maxTrialCount' => ->(obj) { [:max_trial_count, obj['maxTrialCount']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

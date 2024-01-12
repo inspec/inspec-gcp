@@ -1,11 +1,91 @@
 # Change Log
 
-<!-- latest_release 1.11.53 -->
+<!-- latest_release 1.11.69 -->
+## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
+
+#### Merged Pull Requests
+- Refactor Long to Short Name Conversion [#565](https://github.com/inspec/inspec-gcp/pull/565) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
+
+#### Merged Pull Requests
+- Reverted version pinning [#567](https://github.com/inspec/inspec-gcp/pull/567) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.67](https://github.com/inspec/inspec-gcp/tree/v1.11.67) (2023-12-21)
+
+#### Merged Pull Requests
+- Update inspec version pinning in Gemfile [#563](https://github.com/inspec/inspec-gcp/pull/563) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.66](https://github.com/inspec/inspec-gcp/tree/v1.11.66) (2023-12-15)
+
+#### Merged Pull Requests
+- CHEF - Removed the wrong dir from inspec-gcp. [#561](https://github.com/inspec/inspec-gcp/pull/561) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.65](https://github.com/inspec/inspec-gcp/tree/v1.11.65) (2023-12-13)
+
+#### Merged Pull Requests
+- CHEF-7382-MAGIC-MODULE-compute-VpnGateway - Resource Implementation [#534](https://github.com/inspec/inspec-gcp/pull/534) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.64](https://github.com/inspec/inspec-gcp/tree/v1.11.64) (2023-12-12)
+
+#### Merged Pull Requests
+- chore: correct typo in README for resource reference [#558](https://github.com/inspec/inspec-gcp/pull/558) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.63](https://github.com/inspec/inspec-gcp/tree/v1.11.63) (2023-12-12)
+
+#### Merged Pull Requests
+- CHEF-7384: MAGIC-MODULE-compute-ServiceAttachment - Resource Implementation [#535](https://github.com/inspec/inspec-gcp/pull/535) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.62](https://github.com/inspec/inspec-gcp/tree/v1.11.62) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7357-MAGIC-MODULE-apigee-Organizations__envgroups__attachment - Resource Implementation [#540](https://github.com/inspec/inspec-gcp/pull/540) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.61](https://github.com/inspec/inspec-gcp/tree/v1.11.61) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7356-MAGIC-MODULE-apigee-Organizations__envgroup - Resource Implementation [#539](https://github.com/inspec/inspec-gcp/pull/539) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.60](https://github.com/inspec/inspec-gcp/tree/v1.11.60) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7354-MAGIC-MODULE-artifactregistry-Projects__locations__repository - Resource Implementation [#544](https://github.com/inspec/inspec-gcp/pull/544) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.59](https://github.com/inspec/inspec-gcp/tree/v1.11.59) (2023-12-08)
+
+#### Merged Pull Requests
+- Removed worng dir [#551](https://github.com/inspec/inspec-gcp/pull/551) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.58](https://github.com/inspec/inspec-gcp/tree/v1.11.58) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7364-MAGIC-MODULE-composer-Projects__locations__environment - Resource Implementation [#546](https://github.com/inspec/inspec-gcp/pull/546) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.57](https://github.com/inspec/inspec-gcp/tree/v1.11.57) (2023-12-06)
+
+#### Merged Pull Requests
+- chore: uncomment terraform scripts [#549](https://github.com/inspec/inspec-gcp/pull/549) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.56](https://github.com/inspec/inspec-gcp/tree/v1.11.56) (2023-12-06)
+
+#### Merged Pull Requests
+- CHEF-7369 Updated dataproc_cluster resource [#545](https://github.com/inspec/inspec-gcp/pull/545) ([Nik08](https://github.com/Nik08))
+
+## [v1.11.55](https://github.com/inspec/inspec-gcp/tree/v1.11.55) (2023-12-05)
+
+#### Merged Pull Requests
+- Chore: Remove redundant `return` statement to fix rubocop 1.58.0 lint offense [#548](https://github.com/inspec/inspec-gcp/pull/548) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.54](https://github.com/inspec/inspec-gcp/tree/v1.11.54) (2023-12-01)
+
+#### Merged Pull Requests
+- CHEF-7355-MAGIC-MODULE-apigee-Organization - Resource Implementation [#541](https://github.com/inspec/inspec-gcp/pull/541) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.53](https://github.com/inspec/inspec-gcp/tree/v1.11.53) (2023-11-29)
 
 #### Merged Pull Requests
 - CHEF-7365-MAGIC-MODULE-composer-Projects__locations__imageVersion - Resource Implementation [#527](https://github.com/inspec/inspec-gcp/pull/527) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.52](https://github.com/inspec/inspec-gcp/tree/v1.11.52) (2023-10-16)
 

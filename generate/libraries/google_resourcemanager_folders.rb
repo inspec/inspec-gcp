@@ -67,11 +67,11 @@ class ResourceManagerFolders < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'lifecycleState' => ->(obj) { return :lifecycle_state, obj['lifecycleState'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'lifecycleState' => ->(obj) { [:lifecycle_state, obj['lifecycleState']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
     }
   end
 

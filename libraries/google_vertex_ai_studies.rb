@@ -68,12 +68,12 @@ class VertexAIStudys < GcpResourceBase
 
   def transformers
     {
-      'studySpec' => ->(obj) { return :study_spec, obj['studySpec'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'inactiveReason' => ->(obj) { return :inactive_reason, obj['inactiveReason'] },
+      'studySpec' => ->(obj) { [:study_spec, obj['studySpec']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'inactiveReason' => ->(obj) { [:inactive_reason, obj['inactiveReason']] },
     }
   end
 

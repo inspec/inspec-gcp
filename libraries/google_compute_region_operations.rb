@@ -74,18 +74,18 @@ class ComputeRegionOperations < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'targetId' => ->(obj) { return :target_id, obj['targetId'] },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'user' => ->(obj) { return :user, obj['user'] },
-      'insertTime' => ->(obj) { return :insert_time, obj['insertTime'] },
-      'startTime' => ->(obj) { return :start_time, obj['startTime'] },
-      'endTime' => ->(obj) { return :end_time, obj['endTime'] },
-      'progress' => ->(obj) { return :progress, obj['progress'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'targetId' => ->(obj) { [:target_id, obj['targetId']] },
+      'status' => ->(obj) { [:status, obj['status']] },
+      'user' => ->(obj) { [:user, obj['user']] },
+      'insertTime' => ->(obj) { [:insert_time, obj['insertTime']] },
+      'startTime' => ->(obj) { [:start_time, obj['startTime']] },
+      'endTime' => ->(obj) { [:end_time, obj['endTime']] },
+      'progress' => ->(obj) { [:progress, obj['progress']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
     }
   end
 

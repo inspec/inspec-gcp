@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
+require 'google/vertexai/property/trainingpipeline_mtuespeegsg_source'
 module GoogleInSpec
   module VertexAI
     module Property

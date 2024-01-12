@@ -66,10 +66,10 @@ class SQLDatabases < GcpResourceBase
 
   def transformers
     {
-      'charset' => ->(obj) { return :charset, obj['charset'] },
-      'collation' => ->(obj) { return :collation, obj['collation'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'instance' => ->(obj) { return :instance, obj['instance'] },
+      'charset' => ->(obj) { [:charset, obj['charset']] },
+      'collation' => ->(obj) { [:collation, obj['collation']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'instance' => ->(obj) { [:instance, obj['instance']] },
     }
   end
 

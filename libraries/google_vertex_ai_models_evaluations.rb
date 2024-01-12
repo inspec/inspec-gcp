@@ -73,17 +73,17 @@ class VertexAIModelsEvaluations < GcpResourceBase
 
   def transformers
     {
-      'dataItemSchemaUri' => ->(obj) { return :data_item_schema_uri, obj['dataItemSchemaUri'] },
-      'metadata' => ->(obj) { return :metadata, obj['metadata'] },
-      'metricsSchemaUri' => ->(obj) { return :metrics_schema_uri, obj['metricsSchemaUri'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'annotationSchemaUri' => ->(obj) { return :annotation_schema_uri, obj['annotationSchemaUri'] },
-      'metrics' => ->(obj) { return :metrics, obj['metrics'] },
-      'explanationSpecs' => ->(obj) { return :explanation_specs, GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsArray.parse(obj['explanationSpecs'], to_s) },
-      'sliceDimensions' => ->(obj) { return :slice_dimensions, obj['sliceDimensions'] },
-      'modelExplanation' => ->(obj) { return :model_explanation, GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanation.new(obj['modelExplanation'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
+      'dataItemSchemaUri' => ->(obj) { [:data_item_schema_uri, obj['dataItemSchemaUri']] },
+      'metadata' => ->(obj) { [:metadata, obj['metadata']] },
+      'metricsSchemaUri' => ->(obj) { [:metrics_schema_uri, obj['metricsSchemaUri']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'annotationSchemaUri' => ->(obj) { [:annotation_schema_uri, obj['annotationSchemaUri']] },
+      'metrics' => ->(obj) { [:metrics, obj['metrics']] },
+      'explanationSpecs' => ->(obj) { [:explanation_specs, GoogleInSpec::VertexAI::Property::ModelsEvaluationExplanationSpecsArray.parse(obj['explanationSpecs'], to_s)] },
+      'sliceDimensions' => ->(obj) { [:slice_dimensions, obj['sliceDimensions']] },
+      'modelExplanation' => ->(obj) { [:model_explanation, GoogleInSpec::VertexAI::Property::ModelsEvaluationModelExplanation.new(obj['modelExplanation'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
     }
   end
 

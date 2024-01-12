@@ -69,13 +69,13 @@ class ComputeNodeTemplates < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'nodeAffinityLabels' => ->(obj) { return :node_affinity_labels, obj['nodeAffinityLabels'] },
-      'nodeType' => ->(obj) { return :node_type, obj['nodeType'] },
-      'nodeTypeFlexibility' => ->(obj) { return :node_type_flexibility, GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(obj['nodeTypeFlexibility'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'nodeAffinityLabels' => ->(obj) { [:node_affinity_labels, obj['nodeAffinityLabels']] },
+      'nodeType' => ->(obj) { [:node_type, obj['nodeType']] },
+      'nodeTypeFlexibility' => ->(obj) { [:node_type_flexibility, GoogleInSpec::Compute::Property::NodeTemplateNodeTypeFlexibility.new(obj['nodeTypeFlexibility'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_base_output_directory'
+require 'google/vertexai/property/nasjob_njsmtasstsstjsbo_directory'
 require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_scheduling'
-require 'google/vertexai/property/nasjob_nas_job_spec_multi_trial_algorithm_spec_search_trial_spec_search_trial_job_spec_worker_pool_specs'
+require 'google/vertexai/property/nasjob_njsmtasstsstjswp_specs'
 module GoogleInSpec
   module VertexAI
     module Property

@@ -70,14 +70,14 @@ class ComputeTargetHttpsProxys < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'quicOverride' => ->(obj) { return :quic_override, obj['quicOverride'] },
-      'sslCertificates' => ->(obj) { return :ssl_certificates, obj['sslCertificates'] },
-      'sslPolicy' => ->(obj) { return :ssl_policy, obj['sslPolicy'] },
-      'urlMap' => ->(obj) { return :url_map, obj['urlMap'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'quicOverride' => ->(obj) { [:quic_override, obj['quicOverride']] },
+      'sslCertificates' => ->(obj) { [:ssl_certificates, obj['sslCertificates']] },
+      'sslPolicy' => ->(obj) { [:ssl_policy, obj['sslPolicy']] },
+      'urlMap' => ->(obj) { [:url_map, obj['urlMap']] },
     }
   end
 

@@ -66,10 +66,10 @@ class SQLUsers < GcpResourceBase
 
   def transformers
     {
-      'host' => ->(obj) { return :user_host, obj['host'] },
-      'name' => ->(obj) { return :user_name, obj['name'] },
-      'instance' => ->(obj) { return :user_instance, obj['instance'] },
-      'password' => ->(obj) { return :password, obj['password'] },
+      'host' => ->(obj) { [:user_host, obj['host']] },
+      'name' => ->(obj) { [:user_name, obj['name']] },
+      'instance' => ->(obj) { [:user_instance, obj['instance']] },
+      'password' => ->(obj) { [:password, obj['password']] },
     }
   end
 
