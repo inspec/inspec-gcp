@@ -70,14 +70,14 @@ class DLPJobTriggers < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'lastRunTime' => ->(obj) { return :last_run_time, parse_time_string(obj['lastRunTime']) },
-      'status' => ->(obj) { return :status, obj['status'] },
-      'triggers' => ->(obj) { return :triggers, GoogleInSpec::DLP::Property::JobTriggerTriggersArray.parse(obj['triggers'], to_s) },
-      'inspectJob' => ->(obj) { return :inspect_job, GoogleInSpec::DLP::Property::JobTriggerInspectJob.new(obj['inspectJob'], to_s) },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'lastRunTime' => ->(obj) { [:last_run_time, parse_time_string(obj['lastRunTime'])] },
+      'status' => ->(obj) { [:status, obj['status']] },
+      'triggers' => ->(obj) { [:triggers, GoogleInSpec::DLP::Property::JobTriggerTriggersArray.parse(obj['triggers'], to_s)] },
+      'inspectJob' => ->(obj) { [:inspect_job, GoogleInSpec::DLP::Property::JobTriggerInspectJob.new(obj['inspectJob'], to_s)] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
     }
   end
 

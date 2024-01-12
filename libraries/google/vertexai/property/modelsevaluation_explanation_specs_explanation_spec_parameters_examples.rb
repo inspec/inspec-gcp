@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_parameters_examples_example_gcs_source'
-require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_parameters_examples_example_gcs_source_gcs_source'
+require 'google/vertexai/property/modelsevaluation_esespeegsg_source'
 require 'google/vertexai/property/modelsevaluation_explanation_specs_explanation_spec_parameters_examples_presets'
 module GoogleInSpec
   module VertexAI

@@ -67,11 +67,11 @@ class ComputeInstanceTemplates < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'properties' => ->(obj) { return :properties, GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(obj['properties'], to_s) },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'properties' => ->(obj) { [:properties, GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(obj['properties'], to_s)] },
     }
   end
 

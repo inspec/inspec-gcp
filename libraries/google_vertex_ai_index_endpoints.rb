@@ -75,19 +75,19 @@ class VertexAIIndexEndpoints < GcpResourceBase
 
   def transformers
     {
-      'deployedIndexes' => ->(obj) { return :deployed_indexes, GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesArray.parse(obj['deployedIndexes'], to_s) },
-      'privateServiceConnectConfig' => ->(obj) { return :private_service_connect_config, GoogleInSpec::VertexAI::Property::IndexEndpointPrivateServiceConnectConfig.new(obj['privateServiceConnectConfig'], to_s) },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'publicEndpointEnabled' => ->(obj) { return :public_endpoint_enabled, obj['publicEndpointEnabled'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::IndexEndpointLabels.new(obj['labels'], to_s) },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'publicEndpointDomainName' => ->(obj) { return :public_endpoint_domain_name, obj['publicEndpointDomainName'] },
-      'enablePrivateServiceConnect' => ->(obj) { return :enable_private_service_connect, obj['enablePrivateServiceConnect'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'description' => ->(obj) { return :description, obj['description'] },
+      'deployedIndexes' => ->(obj) { [:deployed_indexes, GoogleInSpec::VertexAI::Property::IndexEndpointDeployedIndexesArray.parse(obj['deployedIndexes'], to_s)] },
+      'privateServiceConnectConfig' => ->(obj) { [:private_service_connect_config, GoogleInSpec::VertexAI::Property::IndexEndpointPrivateServiceConnectConfig.new(obj['privateServiceConnectConfig'], to_s)] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'publicEndpointEnabled' => ->(obj) { [:public_endpoint_enabled, obj['publicEndpointEnabled']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::IndexEndpointLabels.new(obj['labels'], to_s)] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'publicEndpointDomainName' => ->(obj) { [:public_endpoint_domain_name, obj['publicEndpointDomainName']] },
+      'enablePrivateServiceConnect' => ->(obj) { [:enable_private_service_connect, obj['enablePrivateServiceConnect']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'description' => ->(obj) { [:description, obj['description']] },
     }
   end
 

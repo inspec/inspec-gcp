@@ -69,13 +69,13 @@ class ComputeRouters < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'bgp' => ->(obj) { return :bgp, GoogleInSpec::Compute::Property::RouterBgp.new(obj['bgp'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'bgp' => ->(obj) { [:bgp, GoogleInSpec::Compute::Property::RouterBgp.new(obj['bgp'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

@@ -57,6 +57,8 @@ control 'google_dataproc_cluster-1.0' do
     its('config.master_config.machine_type_uri') { should match dataproc_cluster['config']['master_config']['machine_type'] }
     its('config.worker_config.machine_type_uri') { should match dataproc_cluster['config']['worker_config']['machine_type'] }
     its('config.software_config.properties') { should include(dataproc_cluster['config']['software_config']['prop_key'] => dataproc_cluster['config']['software_config']['prop_value']) }
+    its('project_id') { should eq gcp_project_id }
+    its('cluster_uuid') { should eq "test-uuid-67ff7c8e-558a-45ad-97c7" }
   end
 
   describe google_dataproc_cluster(project: gcp_project_id, region: gcp_location, cluster_name: 'nonexistent') do

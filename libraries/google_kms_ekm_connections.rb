@@ -66,10 +66,10 @@ class KMSEkmConnections < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'serviceResolvers' => ->(obj) { return :service_resolvers, GoogleInSpec::KMS::Property::EkmConnectionServiceResolvers.new(obj['serviceResolvers'], to_s) },
-      'location' => ->(obj) { return :location, obj['location'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'serviceResolvers' => ->(obj) { [:service_resolvers, GoogleInSpec::KMS::Property::EkmConnectionServiceResolvers.new(obj['serviceResolvers'], to_s)] },
+      'location' => ->(obj) { [:location, obj['location']] },
     }
   end
 

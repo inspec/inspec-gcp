@@ -67,11 +67,11 @@ class DLPDTs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'config' => ->(obj) { return :config, GoogleInSpec::DLP::Property::DTConfig.new(obj['config'], to_s) },
-      'parent' => ->(obj) { return :parent, obj['parent'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'config' => ->(obj) { [:config, GoogleInSpec::DLP::Property::DTConfig.new(obj['config'], to_s)] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
     }
   end
 
