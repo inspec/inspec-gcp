@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class ServiceNetworkingservice_connections < GcpResourceBase
+class ServiceNetworkingServiceConnections < GcpResourceBase
   name 'google_service_networking_service_connections'
   desc 'service_connection plural resource'
   supports platform: 'gcp'
