@@ -17,7 +17,7 @@ title 'Test GCP google_compute_region_network_endpoint_group resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   region_network_endpoint_group = input('region_network_endpoint_group', value: {
-  "network_endpoint_group": "value_networkendpointgroup",
+  "network_endpoint_group": "apigee-us-west1-xw8iaictllv4",
   "project": "value_project",
   "kind": "value_kind",
   "id": "value_id",
@@ -26,7 +26,7 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "name": "value_name",
   "description": "value_description",
   "network_endpoint_type": "value_networkendpointtype",
-  "region": "value_region",
+  "region": "us-west1",
   "zone": "value_zone",
   "network": "value_network",
   "subnetwork": "value_subnetwork",
@@ -36,7 +36,7 @@ control 'google_compute_region_network_endpoint_group-1.0' do
   impact 1.0
   title 'google_compute_region_network_endpoint_group resource test'
 
-  describe google_compute_region_network_endpoint_group(networkEndpointGroup: region_network_endpoint_group['networkEndpointGroup'], project: gcp_project_id, region: region_network_endpoint_group['region']) do
+  describe google_compute_region_network_endpoint_group(network_endpoint_group: region_network_endpoint_group['network_endpoint_group'], project: gcp_project_id, region: region_network_endpoint_group['region']) do
   	it { should exist }
   	its('kind') { should cmp region_network_endpoint_group['kind'] }
   	its('id') { should cmp region_network_endpoint_group['id'] }
@@ -53,7 +53,7 @@ control 'google_compute_region_network_endpoint_group-1.0' do
 
   end
 
-  describe google_compute_region_network_endpoint_group(networkEndpointGroup: region_network_endpoint_group['networkEndpointGroup'], project: gcp_project_id, region: region_network_endpoint_group['region']) do
+  describe google_compute_region_network_endpoint_group(network_endpoint_group: region_network_endpoint_group['network_endpoint_group'], project: gcp_project_id, region: region_network_endpoint_group['region']) do
   	it { should_not exist }
   end
 end

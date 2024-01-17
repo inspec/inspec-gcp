@@ -8,7 +8,7 @@ A `google_compute_region_network_endpoint_group` is used to test a Google Region
 
 ## Examples
 ```
-describe google_compute_region_network_endpoint_group(networkEndpointGroup: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_region_network_endpoint_group(network_endpoint_group: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -25,7 +25,7 @@ describe google_compute_region_network_endpoint_group(networkEndpointGroup: ' ',
 
 end
 
-describe google_compute_region_network_endpoint_group(networkEndpointGroup: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_region_network_endpoint_group(network_endpoint_group: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
@@ -70,7 +70,7 @@ Properties that can be accessed from the `google_compute_region_network_endpoint
 
   * `annotations`: Metadata defined as annotations on the network endpoint group.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `cloud_run`: Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
 

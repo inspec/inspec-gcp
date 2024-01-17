@@ -48,7 +48,7 @@ class ComputeRegionNetworkEndpointGroups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('regionNetworkEndpointGroups')
+    @table = fetch_wrapped_resource('items')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -81,25 +81,25 @@ class ComputeRegionNetworkEndpointGroups < GcpResourceBase
 
   def transformers
     {
-      'kind' => ->(obj) { return :kind, obj['kind'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, obj['creationTimestamp'] },
-      'selfLink' => ->(obj) { return :self_link, obj['selfLink'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'networkEndpointType' => ->(obj) { return :network_endpoint_type, obj['networkEndpointType'] },
-      'size' => ->(obj) { return :size, obj['size'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
-      'network' => ->(obj) { return :network, obj['network'] },
-      'subnetwork' => ->(obj) { return :subnetwork, obj['subnetwork'] },
-      'defaultPort' => ->(obj) { return :default_port, obj['defaultPort'] },
-      'annotations' => ->(obj) { return :annotations, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupAnnotations.new(obj['annotations'], to_s) },
-      'cloudRun' => ->(obj) { return :cloud_run, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupCloudRun.new(obj['cloudRun'], to_s) },
-      'appEngine' => ->(obj) { return :app_engine, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupAppEngine.new(obj['appEngine'], to_s) },
-      'cloudFunction' => ->(obj) { return :cloud_function, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupCloudFunction.new(obj['cloudFunction'], to_s) },
-      'pscTargetService' => ->(obj) { return :psc_target_service, obj['pscTargetService'] },
-      'pscData' => ->(obj) { return :psc_data, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupPscData.new(obj['pscData'], to_s) },
+      'kind' => ->(obj) { [:kind, obj['kind']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
+      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'networkEndpointType' => ->(obj) { [:network_endpoint_type, obj['networkEndpointType']] },
+      'size' => ->(obj) { [:size, obj['size']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'subnetwork' => ->(obj) { [:subnetwork, obj['subnetwork']] },
+      'defaultPort' => ->(obj) { [:default_port, obj['defaultPort']] },
+      'annotations' => ->(obj) { [:annotations, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupAnnotations.new(obj['annotations'], to_s)] },
+      'cloudRun' => ->(obj) { [:cloud_run, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupCloudRun.new(obj['cloudRun'], to_s)] },
+      'appEngine' => ->(obj) { [:app_engine, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupAppEngine.new(obj['appEngine'], to_s)] },
+      'cloudFunction' => ->(obj) { [:cloud_function, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupCloudFunction.new(obj['cloudFunction'], to_s)] },
+      'pscTargetService' => ->(obj) { [:psc_target_service, obj['pscTargetService']] },
+      'pscData' => ->(obj) { [:psc_data, GoogleInSpec::Compute::Property::RegionNetworkEndpointGroupPscData.new(obj['pscData'], to_s)] },
     }
   end
 
