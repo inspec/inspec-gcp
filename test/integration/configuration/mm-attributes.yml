@@ -627,3 +627,4 @@ organization_api_revision:
   parent: "organizations/ppradhan/apis/helloworld"
   content_type: "Application"
   revision: 1
+  api: "helloworld"

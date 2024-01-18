@@ -18,9 +18,11 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
 organization_api_revision = input('organization_api_revision', value: {
   "parent": "organizations/ppradhan/apis/helloworld",
+  "name": "organizations/{organization}/apis/{api}/revisions/{revision}",
   "content_type": "Application",
   "data": "value_data",
   "revision": 1,
+  "api": "helloworld"
 }, description: 'organization_api_revision description')
 
 control 'google_apigee_organization_api_revisions-1.0' do
@@ -30,5 +32,13 @@ control 'google_apigee_organization_api_revisions-1.0' do
   describe google_apigee_organization_api_revisions(parent: organization_api_revision['parent']) do
       it { should exist }
       its('revisions') { should include "1" }
+  end
+
+  google_apigee_organization_api_revisions(parent: organization_api_revision['parent']).revisions.each do |rev|
+    describe google_apigee_organization_api_revision(name: "organizations/#{gcp_project_id}/apis/#{api}/revisions/#{rev}") do
+      it { should exist }
+      its('type') { should cmp organization_api_revision['content_type'] }
+      its('revision') { should cmp organization_api_revision['revision'] }
+    end
   end
 end
