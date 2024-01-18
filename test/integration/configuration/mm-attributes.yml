@@ -622,6 +622,12 @@ vpn_gateway:
   label_fingerprint : "value_labelfingerprint"
   stack_type : "IPV4_ONLY"
 
+region_network_endpoint_group:
+  name: "inspec"
+  region: "us-central1"
+  network_endpoint_type: "PRIVATE_SERVICE_CONNECT"
+  target_service: "us-central1-logging.googleapis.com"
+
 apigee_organization_apis:
   name : "firstproxy",
   parent : "organizations/ppradhan",
