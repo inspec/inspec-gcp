@@ -22,9 +22,16 @@ class ApigeeOrganizationApiRevision < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :extensions
-  attr_reader :content_type
-  attr_reader :data
+  attr_reader :description
+  attr_reader :created_at
+  attr_reader :configuration_version
+  attr_reader :policies
+  attr_reader :entity_meta_data_as_properties
+  attr_reader :type
+  attr_reader :proxies
+  attr_reader :revision
+  attr_reader :name
+  attr_reader :last_modified_at
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -34,9 +41,16 @@ class ApigeeOrganizationApiRevision < GcpResourceBase
   end
 
   def parse
-    @extensions = @fetched['extensions']
-    @content_type = @fetched['contentType']
-    @data = @fetched['data']
+    @policies = @fetched['policies']
+    @configuration_version = @fetched['configurationVersion']
+    @created_at = @fetched['createdAt']
+    @description = @fetched['description']
+    @entity_meta_data_as_properties = @fetched['entityMetaDataAsProperties']
+    @last_modified_at = @fetched['lastModifiedAt']
+    @name = @fetched['name']
+    @revision = @fetched['revision']
+    @proxies = @fetched['proxies']
+    @type = @fetched['type']
   end
 
   def exists?

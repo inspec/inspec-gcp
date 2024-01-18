@@ -58,7 +58,6 @@ class ComputeRegions < GcpResourceBase
         converted.push(hash_with_symbols)
       end
     end
-
     converted
   end
 
