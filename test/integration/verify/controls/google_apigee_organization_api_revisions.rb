@@ -12,20 +12,23 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_apigee_organization_api_revisions resource.'
-
+# title 'Test GCP google_apigee_organization_api_revisions resource.'
+#
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  organization_api_revision = input('organization_api_revision', value: {
-  "name": "value_name",
-  "content_type": "value_contenttype",
-  "data": "value_data"
+organization_api_revision = input('organization_api_revision', value: {
+  "parent": "organizations/ppradhan/apis/helloworld",
+  "content_type": "Application",
+  "data": "value_data",
+  "revision": 1,
 }, description: 'organization_api_revision description')
+
 control 'google_apigee_organization_api_revisions-1.0' do
   impact 1.0
   title 'google_apigee_organization_api_revisions resource test'
 
-      describe google_apigee_organization_api_revisions() do
+  describe google_apigee_organization_api_revisions(parent: organization_api_revision['parent']) do
       it { should exist }
-    end
+      its('revisions') { should include "1" }
+  end
 end

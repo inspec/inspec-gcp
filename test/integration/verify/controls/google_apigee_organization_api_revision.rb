@@ -16,23 +16,24 @@ title 'Test GCP google_apigee_organization_api_revision resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  organization_api_revision = input('organization_api_revision', value: {
-  "name": "value_name",
-  "content_type": "value_contenttype",
-  "data": "value_data"
+organization_api_revision = input('organization_api_revision', value: {
+  "name": "organizations/{organization}/apis/{api}/revisions/{revision}",
+  "content_type": "Application",
+  "data": "value_data",
+  "revision": 1,
 }, description: 'organization_api_revision description')
 control 'google_apigee_organization_api_revision-1.0' do
   impact 1.0
   title 'google_apigee_organization_api_revision resource test'
 
   describe google_apigee_organization_api_revision(name: organization_api_revision['name']) do
-  	it { should exist }
-  	its('content_type') { should cmp organization_api_revision['content_type'] }
-  	its('data') { should cmp organization_api_revision['data'] }
-
+    it { should exist }
+    its('type') { should cmp organization_api_revision['content_type'] }
+    its('revision') { should cmp organization_api_revision['revision'] }
   end
 
   describe google_apigee_organization_api_revision(name: "does_not_exit") do
-  	it { should_not exist }
+    it { should_not exist }
   end
 end
+

@@ -621,3 +621,9 @@ vpn_gateway:
   self_link : "value_selflink"
   label_fingerprint : "value_labelfingerprint"
   stack_type : "IPV4_ONLY"
+
+organization_api_revision:
+  name: "organizations/ppradhan/apis/helloworld/revisions/1"
+  parent: "organizations/ppradhan/apis/helloworld"
+  content_type: "Application"
+  revision: 1
