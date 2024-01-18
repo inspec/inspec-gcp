@@ -627,3 +627,8 @@ region_network_endpoint_group:
   region: "us-central1"
   network_endpoint_type: "PRIVATE_SERVICE_CONNECT"
   target_service: "us-central1-logging.googleapis.com"
+
+apigee_organization_apis:
+  name : "firstproxy",
+  parent : "organizations/ppradhan",
+  api_proxy_type : "PROGRAMMABLE"

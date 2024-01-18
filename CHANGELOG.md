@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.70 -->
+<!-- latest_release 1.11.71 -->
+## [v1.11.71](https://github.com/inspec/inspec-gcp/tree/v1.11.71) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-8912- MAGIC-MODULE-apigee-Organizations__api - Resource Implementation [#542](https://github.com/inspec/inspec-gcp/pull/542) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.70](https://github.com/inspec/inspec-gcp/tree/v1.11.70) (2024-01-18)
 
 #### Merged Pull Requests
 - CHEF-3309-InSpec GCP Http error fixes [#568](https://github.com/inspec/inspec-gcp/pull/568) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
 
