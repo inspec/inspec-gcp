@@ -426,6 +426,23 @@ control 'gcp-projects-zones-vm-label-loop-1.0' do
   end
 end
 ```
+This example verifies there are sufficient privileges to list all regions.
+
+```
+next unless google_compute_regions(project: gcp_project_id).resource_failed?
+google_compute_regions(project: gcp_project_id).region_names.each do |region_name|
+  describe google_compute_region(project: gcp_project_id,  region: region_name) do
+    it { should be_up }
+  end
+end
+
+if google_compute_regions(project: gcp_project_id).resource_failed?
+  puts google_compute_regions(project: gcp_project_id).resource_exception_message
+  puts google_compute_regions(project: gcp_project_id,name: region_name).pretty_inspect
+end
+```
+
+
 
 This example assumes there are sufficient privileges to list all GCP projects.
 

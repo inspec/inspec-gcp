@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.69 -->
+<!-- latest_release 1.11.70 -->
+## [v1.11.70](https://github.com/inspec/inspec-gcp/tree/v1.11.70) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-3309-InSpec GCP Http error fixes [#568](https://github.com/inspec/inspec-gcp/pull/568) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
 
 #### Merged Pull Requests
 - Refactor Long to Short Name Conversion [#565](https://github.com/inspec/inspec-gcp/pull/565) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
 
