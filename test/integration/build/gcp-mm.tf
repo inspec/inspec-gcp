@@ -224,6 +224,11 @@ variable "cloud_composer_v1" {
   type = any
 }
 
+variable "compute_service_attachment_conf" {
+  type = any
+}
+
+
 variable "apigee_organization_envgroup_attachment" {
   type = any
 }
@@ -231,7 +236,12 @@ variable "apigee_organization_envgroup_attachment" {
 variable "organization_envgroup" {
   type = any
 }
-
+variable "vpn_gateway" {
+  type = any
+}
+variable "region_network_endpoint_group" {
+  type = any
+}
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -1567,6 +1577,17 @@ resource "google_vertex_ai_index" "index" {
   }
   index_update_method = "STREAM_UPDATE"
 }
+resource "google_compute_ha_vpn_gateway" "ha_vpn_gateway" {
+  project = var.vpn_gateway.project
+  region  = var.vpn_gateway.region
+  name    = var.vpn_gateway.name
+  network = google_compute_network.network1.id
+}
+resource "google_compute_network" "network1" {
+  project = var.vpn_gateway.project
+  name                    = "network1"
+  auto_create_subnetworks = false
+}
 
 resource "google_artifact_registry_repository" "example" {
   project = var.project_location_repository.project_id
@@ -1585,6 +1606,85 @@ resource "google_composer_v1_environment" "test" {
   }
 }
 
+resource "google_compute_service_attachment" "psc_ilb_service_attachment" {
+  name        = var.compute_service_attachment_conf["compute_service_attachment_name"]
+  region      = var.compute_service_attachment_conf["region"]
+  description = var.compute_service_attachment_conf["description"]
+
+  enable_proxy_protocol    = var.compute_service_attachment_conf["enable_proxy_protocol"]
+  connection_preference    = var.compute_service_attachment_conf["connection_preference"]
+  nat_subnets              = [google_compute_subnetwork.psc_ilb_nat.id]
+  target_service           = google_compute_forwarding_rule.psc_ilb_target_service.id
+}
+
+resource "google_compute_address" "psc_ilb_consumer_address" {
+  name   = var.compute_service_attachment_conf["psc_ilb_consumer_address_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  subnetwork   = var.compute_service_attachment_conf["subnetwork_id"]
+  address_type = var.compute_service_attachment_conf["address_type"]
+}
+
+resource "google_compute_forwarding_rule" "psc_ilb_consumer" {
+  name   = var.compute_service_attachment_conf["psc_ilb_consumer_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  target                = google_compute_service_attachment.psc_ilb_service_attachment.id
+  load_balancing_scheme = "" # need to override EXTERNAL default when target is a service attachment
+  network               = var.compute_service_attachment_conf["network_id"]
+  ip_address            = google_compute_address.psc_ilb_consumer_address.id
+}
+
+resource "google_compute_forwarding_rule" "psc_ilb_target_service" {
+  name   = var.compute_service_attachment_conf["psc_ilb_target_service_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  load_balancing_scheme = var.compute_service_attachment_conf["load_balancing_scheme"]
+  backend_service       = google_compute_region_backend_service.producer_service_backend.id
+  all_ports             = var.compute_service_attachment_conf["all_ports"]
+  network               = google_compute_network.psc_ilb_network.name
+  subnetwork            = google_compute_subnetwork.psc_ilb_producer_subnetwork.name
+}
+
+resource "google_compute_region_backend_service" "producer_service_backend" {
+  name   = var.compute_service_attachment_conf["producer_service_backend_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  health_checks = [google_compute_health_check.producer_service_health_check.id]
+}
+
+resource "google_compute_health_check" "producer_service_health_check" {
+  name = var.compute_service_attachment_conf["producer_service_health_check_name"]
+
+  check_interval_sec = 1
+  timeout_sec        = 1
+  tcp_health_check {
+    port = var.compute_service_attachment_conf["producer_service_health_check_port"]
+  }
+}
+
+resource "google_compute_network" "psc_ilb_network" {
+  name = var.compute_service_attachment_conf["psc_ilb_network_name"]
+  auto_create_subnetworks = var.compute_service_attachment_conf["auto_create_subnetworks"]
+}
+
+resource "google_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+  name   = var.compute_service_attachment_conf["psc_ilb_producer_subnetwork_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  network       = google_compute_network.psc_ilb_network.id
+  ip_cidr_range = var.compute_service_attachment_conf["subnetwork_ip_cidr_range"]
+}
+
+resource "google_compute_subnetwork" "psc_ilb_nat" {
+  name   = var.compute_service_attachment_conf["psc_ilb_nat_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  network       = google_compute_network.psc_ilb_network.id
+  purpose       =  var.compute_service_attachment_conf["purpose"]
+  ip_cidr_range = var.compute_service_attachment_conf["nat_ip_cidr_range"]
+}
+
 resource "google_apigee_envgroup" "env_grp" {
   name      = var.organization_envgroup.name
   hostnames  = var.organization_envgroup.hostnames
@@ -1593,4 +1693,10 @@ resource "google_apigee_envgroup" "env_grp" {
 resource "google_apigee_envgroup_attachment" "engroup_attachment" {
   envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
   environment  = var.apigee_organization_envgroup_attachment.environment
+}
+resource "google_compute_region_network_endpoint_group" "region_network_endpoint_group" {
+  name                  = var.region_network_endpoint_group.name
+  network_endpoint_type = var.region_network_endpoint_group.network_endpoint_type
+  region                = var.region_network_endpoint_group.region
+  psc_target_service    = var.region_network_endpoint_group.target_service
 }

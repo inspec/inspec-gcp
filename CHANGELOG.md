@@ -1,11 +1,61 @@
 # Change Log
 
-<!-- latest_release 1.11.62 -->
+<!-- latest_release 1.11.72 -->
+## [v1.11.72](https://github.com/inspec/inspec-gcp/tree/v1.11.72) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-7386-compute-RegionNetworkEndpointGroup - Resource Implementation [#537](https://github.com/inspec/inspec-gcp/pull/537) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.71](https://github.com/inspec/inspec-gcp/tree/v1.11.71) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-8912- MAGIC-MODULE-apigee-Organizations__api - Resource Implementation [#542](https://github.com/inspec/inspec-gcp/pull/542) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.70](https://github.com/inspec/inspec-gcp/tree/v1.11.70) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-3309-InSpec GCP Http error fixes [#568](https://github.com/inspec/inspec-gcp/pull/568) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
+
+#### Merged Pull Requests
+- Refactor Long to Short Name Conversion [#565](https://github.com/inspec/inspec-gcp/pull/565) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
+
+#### Merged Pull Requests
+- Reverted version pinning [#567](https://github.com/inspec/inspec-gcp/pull/567) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.67](https://github.com/inspec/inspec-gcp/tree/v1.11.67) (2023-12-21)
+
+#### Merged Pull Requests
+- Update inspec version pinning in Gemfile [#563](https://github.com/inspec/inspec-gcp/pull/563) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.66](https://github.com/inspec/inspec-gcp/tree/v1.11.66) (2023-12-15)
+
+#### Merged Pull Requests
+- CHEF - Removed the wrong dir from inspec-gcp. [#561](https://github.com/inspec/inspec-gcp/pull/561) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.65](https://github.com/inspec/inspec-gcp/tree/v1.11.65) (2023-12-13)
+
+#### Merged Pull Requests
+- CHEF-7382-MAGIC-MODULE-compute-VpnGateway - Resource Implementation [#534](https://github.com/inspec/inspec-gcp/pull/534) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.64](https://github.com/inspec/inspec-gcp/tree/v1.11.64) (2023-12-12)
+
+#### Merged Pull Requests
+- chore: correct typo in README for resource reference [#558](https://github.com/inspec/inspec-gcp/pull/558) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.63](https://github.com/inspec/inspec-gcp/tree/v1.11.63) (2023-12-12)
+
+#### Merged Pull Requests
+- CHEF-7384: MAGIC-MODULE-compute-ServiceAttachment - Resource Implementation [#535](https://github.com/inspec/inspec-gcp/pull/535) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.62](https://github.com/inspec/inspec-gcp/tree/v1.11.62) (2023-12-08)
 
 #### Merged Pull Requests
 - CHEF-7357-MAGIC-MODULE-apigee-Organizations__envgroups__attachment - Resource Implementation [#540](https://github.com/inspec/inspec-gcp/pull/540) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.61](https://github.com/inspec/inspec-gcp/tree/v1.11.61) (2023-12-08)
 
