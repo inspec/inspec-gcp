@@ -240,6 +240,10 @@ variable "vpn_gateway" {
   type = any
 }
 
+variable "secrets_manager_v1" {
+  type = any
+}
+
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -1691,4 +1695,12 @@ resource "google_apigee_envgroup" "env_grp" {
 resource "google_apigee_envgroup_attachment" "engroup_attachment" {
   envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
   environment  = var.apigee_organization_envgroup_attachment.environment
+}
+
+resource "google_secret_manager_secret" "test-secret" {
+  secret_id = var.secret_manager_secret["secret_id"]
+
+  replication {
+    auto {}
+  }
 }

@@ -621,3 +621,6 @@ vpn_gateway:
   self_link : "value_selflink"
   label_fingerprint : "value_labelfingerprint"
   stack_type : "IPV4_ONLY"
+
+secrets_manager_v1:
+  secret_id: "inspec-gcp-secret"
