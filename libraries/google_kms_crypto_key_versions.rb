@@ -78,22 +78,22 @@ class KMSCryptoKeyVersions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'generateTime' => ->(obj) { return :generate_time, parse_time_string(obj['generateTime']) },
-      'destroyTime' => ->(obj) { return :destroy_time, parse_time_string(obj['destroyTime']) },
-      'destroyEventTime' => ->(obj) { return :destroy_event_time, parse_time_string(obj['destroyEventTime']) },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'protectionLevel' => ->(obj) { return :protection_level, obj['protectionLevel'] },
-      'algorithm' => ->(obj) { return :algorithm, obj['algorithm'] },
-      'attestation' => ->(obj) { return :attestation, GoogleInSpec::KMS::Property::CryptoKeyVersionAttestation.new(obj['attestation'], to_s) },
-      'importJob' => ->(obj) { return :import_job, obj['importJob'] },
-      'importTime' => ->(obj) { return :import_time, parse_time_string(obj['importTime']) },
-      'importFailureReason' => ->(obj) { return :import_failure_reason, obj['importFailureReason'] },
-      'externalProtectionLevelOptions' => ->(obj) { return :external_protection_level_options, GoogleInSpec::KMS::Property::CryptoKeyVersionExternalProtectionLevelOptions.new(obj['externalProtectionLevelOptions'], to_s) },
-      'reimportEligible' => ->(obj) { return :reimport_eligible, obj['reimportEligible'] },
-      'keyRing' => ->(obj) { return :key_ring, obj['keyRing'] },
-      'cryptoKey' => ->(obj) { return :crypto_key, obj['cryptoKey'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'generateTime' => ->(obj) { [:generate_time, parse_time_string(obj['generateTime'])] },
+      'destroyTime' => ->(obj) { [:destroy_time, parse_time_string(obj['destroyTime'])] },
+      'destroyEventTime' => ->(obj) { [:destroy_event_time, parse_time_string(obj['destroyEventTime'])] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'protectionLevel' => ->(obj) { [:protection_level, obj['protectionLevel']] },
+      'algorithm' => ->(obj) { [:algorithm, obj['algorithm']] },
+      'attestation' => ->(obj) { [:attestation, GoogleInSpec::KMS::Property::CryptoKeyVersionAttestation.new(obj['attestation'], to_s)] },
+      'importJob' => ->(obj) { [:import_job, obj['importJob']] },
+      'importTime' => ->(obj) { [:import_time, parse_time_string(obj['importTime'])] },
+      'importFailureReason' => ->(obj) { [:import_failure_reason, obj['importFailureReason']] },
+      'externalProtectionLevelOptions' => ->(obj) { [:external_protection_level_options, GoogleInSpec::KMS::Property::CryptoKeyVersionExternalProtectionLevelOptions.new(obj['externalProtectionLevelOptions'], to_s)] },
+      'reimportEligible' => ->(obj) { [:reimport_eligible, obj['reimportEligible']] },
+      'keyRing' => ->(obj) { [:key_ring, obj['keyRing']] },
+      'cryptoKey' => ->(obj) { [:crypto_key, obj['cryptoKey']] },
     }
   end
 

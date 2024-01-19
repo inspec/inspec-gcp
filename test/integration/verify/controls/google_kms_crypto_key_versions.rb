@@ -14,12 +14,12 @@
 
 title 'Test GCP google_kms_crypto_key_versions resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = input(:gcp_location, value: 'gcp_location', description: 'GCP location')
-gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value: 'gcp_kms_key_ring_policy_name', description: 'Key ring name')
-gcp_kms_crypto_key_name_policy = input(:gcp_kms_crypto_key_name_policy, value: 'gcp_kms_crypto_key_name_policy', description: 'Key name')
-gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 'gcp_enable_privileged_resources', description: 'If we are running tests with escalated permissions(required for this test)')
-gcp_organization_id = input(:gcp_organization_id, value: gcp_organization_id, description: 'The identifier of the organization')
+gcp_project_id = input(:gcp_project_id, value: 'ppradhan', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'us-central1', description: 'GCP location')
+gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value: 'gcp-inspec-kms-key-ring-aytsuncucfsfrvochsuubyovf', description: 'Key ring name')
+gcp_kms_crypto_key = input(:gcp_kms_crypto_key, value: 'gcp-inspec-kms-crypto-key-policy-rbgvmohbidtgdzfatbzwckttd', description: 'Key name')
+gcp_kms_crypto_key_version = input(:gcp_kms_crypto_key_version, value: '1', description: 'Version name')
+
 control 'google_kms_crypto_key_versions-1.0' do
   impact 1.0
   title 'google_kms_crypto_key_versions resource test'

@@ -14,26 +14,25 @@
 
 title 'Test GCP google_kms_crypto_key_version resource.'
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-gcp_location = input(:gcp_location, value: 'gcp_location', description: 'GCP location')
-gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value: 'gcp_kms_key_ring_policy_name', description: 'Key ring name')
-gcp_kms_crypto_key_name_policy = input(:gcp_kms_crypto_key_name_policy, value: 'gcp_kms_crypto_key_name_policy', description: 'Key name')
-gcp_enable_privileged_resources = input(:gcp_enable_privileged_resources, value: 'gcp_enable_privileged_resources', description: 'If we are running tests with escalated permissions(required for this test)')
-gcp_organization_id = input(:gcp_organization_id, value: gcp_organization_id, description: 'The identifier of the organization')
+gcp_project_id = input(:gcp_project_id, value: 'ppradhan', description: 'The GCP project identifier.')
+gcp_location = input(:gcp_location, value: 'us-central1', description: 'GCP location')
+gcp_kms_key_ring_policy_name = input(:gcp_kms_key_ring_policy_name, value: 'gcp-inspec-kms-key-ring-aytsuncucfsfrvochsuubyovf', description: 'Key ring name')
+gcp_kms_crypto_key = input(:gcp_kms_crypto_key, value: 'gcp-inspec-kms-crypto-key-policy-rbgvmohbidtgdzfatbzwckttd', description: 'Key name')
+gcp_kms_crypto_key_version = input(:gcp_kms_crypto_key_version, value: '1', description: 'Version name')
 control 'google_kms_crypto_key_version-1.0' do
   impact 1.0
   title 'google_kms_crypto_key_version resource test'
 
-  describe google_kms_crypto_key_version(project: gcp_project_id, location: gcp_location, key_ring: gcp_kms_key_ring_policy_name, crypto_key: gcp_kms_crypto_key, name: gcp_kms_crypto_key_name_policy) do
+  describe google_kms_crypto_key_version(project: gcp_project_id, location: gcp_location, key_ring: gcp_kms_key_ring_policy_name, crypto_key: gcp_kms_crypto_key, name: gcp_kms_crypto_key_version) do
     it { should exist }
-    its('crypto_key_name') { should cmp gcp_kms_crypto_key_name_policy }
+    its('crypto_key_name') { should cmp gcp_kms_crypto_key }
     its('primary_state') { should eq "ENABLED" }
     its('purpose') { should eq "ENCRYPT_DECRYPT" }
     its('next_rotation_time') { should be > Time.now - 100000 }
     its('create_time') { should be > Time.now - 365*60*60*24*10 }
   end
 
-  describe google_kms_crypto_key_version(project: gcp_project_id, location: gcp_location, key_ring: gcp_kms_key_ring_policy_name, crypto_key: gcp_kms_crypto_key, name: "nonexistent") do
+  describe google_kms_crypto_key_version(project: gcp_project_id, location: gcp_location, key_ring: gcp_kms_key_ring_policy_name, crypto_key: gcp_kms_crypto_key, name: gcp_kms_crypto_key_version) do
     it { should_not exist }
   end
 end
