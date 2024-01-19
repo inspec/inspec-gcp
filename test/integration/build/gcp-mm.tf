@@ -239,7 +239,9 @@ variable "organization_envgroup" {
 variable "vpn_gateway" {
   type = any
 }
-
+variable "region_network_endpoint_group" {
+  type = any
+}
 variable "secrets_manager_v1" {
   type = any
 }
@@ -1695,6 +1697,12 @@ resource "google_apigee_envgroup" "env_grp" {
 resource "google_apigee_envgroup_attachment" "engroup_attachment" {
   envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
   environment  = var.apigee_organization_envgroup_attachment.environment
+}
+resource "google_compute_region_network_endpoint_group" "region_network_endpoint_group" {
+  name                  = var.region_network_endpoint_group.name
+  network_endpoint_type = var.region_network_endpoint_group.network_endpoint_type
+  region                = var.region_network_endpoint_group.region
+  psc_target_service    = var.region_network_endpoint_group.target_service
 }
 
 resource "google_secret_manager_secret" "test-secret" {
