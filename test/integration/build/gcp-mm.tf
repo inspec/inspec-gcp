@@ -1706,7 +1706,7 @@ resource "google_compute_region_network_endpoint_group" "region_network_endpoint
 }
 
 resource "google_secret_manager_secret" "test-secret" {
-  secret_id = var.secret_manager_secret["secret_id"]
+  secret_id = var.secrets_manager_v1["secret_id"]
 
   replication {
     auto {}
