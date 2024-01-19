@@ -16,10 +16,11 @@ title 'Test GCP google_secret_manager_secret resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_secret = input('project_secret', value: {
-  "name": "value_name",
-  "parent": "value_parent"
+project_secret = input('project_secret', value: {
+  "name": "projects/ppradhan/secrets/inspec-gcp-secret",
+  "parent": "projects/ppradhan",
 }, description: 'project_secret description')
+
 control 'google_secret_manager_secret-1.0' do
   impact 1.0
   title 'google_secret_manager_secret resource test'
