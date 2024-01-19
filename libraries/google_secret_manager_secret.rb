@@ -71,6 +71,6 @@ class SecretManagerSecret < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/secrets/{{secret_id}}'
+    '{{name}}'
   end
 end

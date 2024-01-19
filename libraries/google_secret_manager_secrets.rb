@@ -90,6 +90,6 @@ class SecretManagerSecrets < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/secrets'
+    '{{parent}}/secrets'
   end
 end
