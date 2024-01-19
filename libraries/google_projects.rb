@@ -69,13 +69,13 @@ class ResourceManagerProjects < GcpResourceBase
 
   def transformers
     {
-      'projectNumber' => ->(obj) { return :project_number, obj['projectNumber'] },
-      'lifecycleState' => ->(obj) { return :lifecycle_state, obj['lifecycleState'] },
-      'name' => ->(obj) { return :project_name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'parent' => ->(obj) { return :parent, GoogleInSpec::ResourceManager::Property::ProjectParent.new(obj['parent'], to_s) },
-      'projectId' => ->(obj) { return :project_id, obj['projectId'] },
+      'projectNumber' => ->(obj) { [:project_number, obj['projectNumber']] },
+      'lifecycleState' => ->(obj) { [:lifecycle_state, obj['lifecycleState']] },
+      'name' => ->(obj) { [:project_name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'parent' => ->(obj) { [:parent, GoogleInSpec::ResourceManager::Property::ProjectParent.new(obj['parent'], to_s)] },
+      'projectId' => ->(obj) { [:project_id, obj['projectId']] },
     }
   end
 

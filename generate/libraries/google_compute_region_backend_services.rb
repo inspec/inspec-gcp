@@ -73,17 +73,17 @@ class ComputeRegionBackendServices < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'healthChecks' => ->(obj) { return :health_checks, obj['healthChecks'] },
-      'backends' => ->(obj) { return :backends, GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(obj['backends'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'fingerprint' => ->(obj) { return :fingerprint, obj['fingerprint'] },
-      'protocol' => ->(obj) { return :protocol, obj['protocol'] },
-      'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
-      'region' => ->(obj) { return :region, obj['region'] },
-      'timeoutSec' => ->(obj) { return :timeout_sec, obj['timeoutSec'] },
-      'connectionDraining' => ->(obj) { return :connection_draining, GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(obj['connectionDraining'], to_s) },
-      'loadBalancingScheme' => ->(obj) { return :load_balancing_scheme, obj['loadBalancingScheme'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'healthChecks' => ->(obj) { [:health_checks, obj['healthChecks']] },
+      'backends' => ->(obj) { [:backends, GoogleInSpec::Compute::Property::RegionBackendServiceBackendsArray.parse(obj['backends'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
+      'protocol' => ->(obj) { [:protocol, obj['protocol']] },
+      'sessionAffinity' => ->(obj) { [:session_affinity, obj['sessionAffinity']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'timeoutSec' => ->(obj) { [:timeout_sec, obj['timeoutSec']] },
+      'connectionDraining' => ->(obj) { [:connection_draining, GoogleInSpec::Compute::Property::RegionBackendServiceConnectionDraining.new(obj['connectionDraining'], to_s)] },
+      'loadBalancingScheme' => ->(obj) { [:load_balancing_scheme, obj['loadBalancingScheme']] },
     }
   end
 

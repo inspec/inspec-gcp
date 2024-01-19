@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -24,6 +24,7 @@ class SQLDatabaseInstances < GcpResourceBase
   filter_table_config = FilterTable.create
 
   filter_table_config.add(:backend_types, field: :backend_type)
+  filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:connection_names, field: :connection_name)
   filter_table_config.add(:instance_versions, field: :instance_version)
   filter_table_config.add(:failover_replicas, field: :failover_replica)
@@ -80,31 +81,32 @@ class SQLDatabaseInstances < GcpResourceBase
 
   def transformers
     {
-      'backendType' => ->(obj) { return :backend_type, obj['backendType'] },
-      'connectionName' => ->(obj) { return :connection_name, obj['connectionName'] },
-      'databaseVersion' => ->(obj) { return :instance_version, obj['databaseVersion'] },
-      'failoverReplica' => ->(obj) { return :failover_replica, GoogleInSpec::SQL::Property::DatabaseInstanceFailoverReplica.new(obj['failoverReplica'], to_s) },
-      'instanceType' => ->(obj) { return :instance_type, obj['instanceType'] },
-      'ipAddresses' => ->(obj) { return :ip_addresses, GoogleInSpec::SQL::Property::DatabaseInstanceIpAddressesArray.parse(obj['ipAddresses'], to_s) },
-      'ipv6Address' => ->(obj) { return :ipv6_address, obj['ipv6Address'] },
-      'masterInstanceName' => ->(obj) { return :master_instance_name, obj['masterInstanceName'] },
-      'maxDiskSize' => ->(obj) { return :max_disk_size, obj['maxDiskSize'] },
-      'name' => ->(obj) { return :instance_name, obj['name'] },
-      'region' => ->(obj) { return :instance_region, obj['region'] },
-      'replicaConfiguration' => ->(obj) { return :replica_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceReplicaConfiguration.new(obj['replicaConfiguration'], to_s) },
-      'settings' => ->(obj) { return :settings, GoogleInSpec::SQL::Property::DatabaseInstanceSettings.new(obj['settings'], to_s) },
-      'gceZone' => ->(obj) { return :instance_zone, obj['gceZone'] },
-      'state' => ->(obj) { return :instance_state, obj['state'] },
-      'diskEncryptionConfiguration' => ->(obj) { return :disk_encryption_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(obj['diskEncryptionConfiguration'], to_s) },
-      'diskEncryptionStatus' => ->(obj) { return :disk_encryption_status, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(obj['diskEncryptionStatus'], to_s) },
-      'serverCaCert' => ->(obj) { return :server_ca_cert, GoogleInSpec::SQL::Property::DatabaseInstanceServerCaCert.new(obj['serverCaCert'], to_s) },
+      'backendType' => ->(obj) { [:backend_type, obj['backendType']] },
+      'kind' => ->(obj) { [:kind, obj['kind']] },
+      'connectionName' => ->(obj) { [:connection_name, obj['connectionName']] },
+      'databaseVersion' => ->(obj) { [:instance_version, obj['databaseVersion']] },
+      'failoverReplica' => ->(obj) { [:failover_replica, GoogleInSpec::SQL::Property::DatabaseInstanceFailoverReplica.new(obj['failoverReplica'], to_s)] },
+      'instanceType' => ->(obj) { [:instance_type, obj['instanceType']] },
+      'ipAddresses' => ->(obj) { [:ip_addresses, GoogleInSpec::SQL::Property::DatabaseInstanceIpAddressesArray.parse(obj['ipAddresses'], to_s)] },
+      'ipv6Address' => ->(obj) { [:ipv6_address, obj['ipv6Address']] },
+      'masterInstanceName' => ->(obj) { [:master_instance_name, obj['masterInstanceName']] },
+      'maxDiskSize' => ->(obj) { [:max_disk_size, obj['maxDiskSize']] },
+      'name' => ->(obj) { [:instance_name, obj['name']] },
+      'region' => ->(obj) { [:instance_region, obj['region']] },
+      'replicaConfiguration' => ->(obj) { [:replica_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceReplicaConfiguration.new(obj['replicaConfiguration'], to_s)] },
+      'settings' => ->(obj) { [:settings, GoogleInSpec::SQL::Property::DatabaseInstanceSettings.new(obj['settings'], to_s)] },
+      'gceZone' => ->(obj) { [:instance_zone, obj['gceZone']] },
+      'state' => ->(obj) { [:instance_state, obj['state']] },
+      'diskEncryptionConfiguration' => ->(obj) { [:disk_encryption_configuration, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionConfiguration.new(obj['diskEncryptionConfiguration'], to_s)] },
+      'diskEncryptionStatus' => ->(obj) { [:disk_encryption_status, GoogleInSpec::SQL::Property::DatabaseInstanceDiskEncryptionStatus.new(obj['diskEncryptionStatus'], to_s)] },
+      'serverCaCert' => ->(obj) { [:server_ca_cert, GoogleInSpec::SQL::Property::DatabaseInstanceServerCaCert.new(obj['serverCaCert'], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://www.googleapis.com/sql/v1beta4/'
+    'https://sqladmin.googleapis.com/v1/'
   end
 
   def resource_base_url

@@ -75,19 +75,19 @@ class CloudBuildTriggers < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'tags' => ->(obj) { return :tags, obj['tags'] },
-      'disabled' => ->(obj) { return :disabled, obj['disabled'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'substitutions' => ->(obj) { return :substitutions, obj['substitutions'] },
-      'filename' => ->(obj) { return :filename, obj['filename'] },
-      'ignoredFiles' => ->(obj) { return :ignored_files, obj['ignoredFiles'] },
-      'includedFiles' => ->(obj) { return :included_files, obj['includedFiles'] },
-      'triggerTemplate' => ->(obj) { return :trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate'], to_s) },
-      'github' => ->(obj) { return :github, GoogleInSpec::CloudBuild::Property::TriggerGithub.new(obj['github'], to_s) },
-      'build' => ->(obj) { return :build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build'], to_s) },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'tags' => ->(obj) { [:tags, obj['tags']] },
+      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'substitutions' => ->(obj) { [:substitutions, obj['substitutions']] },
+      'filename' => ->(obj) { [:filename, obj['filename']] },
+      'ignoredFiles' => ->(obj) { [:ignored_files, obj['ignoredFiles']] },
+      'includedFiles' => ->(obj) { [:included_files, obj['includedFiles']] },
+      'triggerTemplate' => ->(obj) { [:trigger_template, GoogleInSpec::CloudBuild::Property::TriggerTriggerTemplate.new(obj['triggerTemplate'], to_s)] },
+      'github' => ->(obj) { [:github, GoogleInSpec::CloudBuild::Property::TriggerGithub.new(obj['github'], to_s)] },
+      'build' => ->(obj) { [:build, GoogleInSpec::CloudBuild::Property::TriggerBuild.new(obj['build'], to_s)] },
     }
   end
 

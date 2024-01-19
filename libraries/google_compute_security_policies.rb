@@ -65,9 +65,9 @@ class ComputeSecurityPolicys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'rules' => ->(obj) { return :rules, GoogleInSpec::Compute::Property::SecurityPolicyRulesArray.parse(obj['rules'], to_s) },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'rules' => ->(obj) { [:rules, GoogleInSpec::Compute::Property::SecurityPolicyRulesArray.parse(obj['rules'], to_s)] },
     }
   end
 

@@ -68,12 +68,12 @@ class IAMServiceAccounts < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :service_account_name, obj['name'] },
-      'projectId' => ->(obj) { return :project_id, obj['projectId'] },
-      'uniqueId' => ->(obj) { return :service_account_id, obj['uniqueId'] },
-      'email' => ->(obj) { return :service_account_email, obj['email'] },
-      'displayName' => ->(obj) { return :service_account_display_name, obj['displayName'] },
-      'oauth2ClientId' => ->(obj) { return :oauth2_client_id, obj['oauth2ClientId'] },
+      'name' => ->(obj) { [:service_account_name, obj['name']] },
+      'projectId' => ->(obj) { [:project_id, obj['projectId']] },
+      'uniqueId' => ->(obj) { [:service_account_id, obj['uniqueId']] },
+      'email' => ->(obj) { [:service_account_email, obj['email']] },
+      'displayName' => ->(obj) { [:service_account_display_name, obj['displayName']] },
+      'oauth2ClientId' => ->(obj) { [:oauth2_client_id, obj['oauth2ClientId']] },
     }
   end
 

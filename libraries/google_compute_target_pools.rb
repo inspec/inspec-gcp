@@ -72,16 +72,16 @@ class ComputeTargetPools < GcpResourceBase
 
   def transformers
     {
-      'backupPool' => ->(obj) { return :backup_pool, obj['backupPool'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'failoverRatio' => ->(obj) { return :failover_ratio, obj['failoverRatio'] },
-      'healthCheck' => ->(obj) { return :health_check, obj['healthCheck'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'instances' => ->(obj) { return :instances, obj['instances'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'sessionAffinity' => ->(obj) { return :session_affinity, obj['sessionAffinity'] },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'backupPool' => ->(obj) { [:backup_pool, obj['backupPool']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'failoverRatio' => ->(obj) { [:failover_ratio, obj['failoverRatio']] },
+      'healthCheck' => ->(obj) { [:health_check, obj['healthCheck']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'instances' => ->(obj) { [:instances, obj['instances']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'sessionAffinity' => ->(obj) { [:session_affinity, obj['sessionAffinity']] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

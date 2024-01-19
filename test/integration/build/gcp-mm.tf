@@ -184,6 +184,9 @@ variable "redis" {
 variable "network_endpoint_group" {
   type = any
 }
+variable "global_network_endpoint_group" {
+  type = any
+}
 
 variable "node_template" {
   type = any
@@ -213,7 +216,32 @@ variable "scheduler_job" {
   type = any
 }
 
+variable "project_location_repository" {
+  type = any
+}
 
+variable "cloud_composer_v1" {
+  type = any
+}
+
+variable "compute_service_attachment_conf" {
+  type = any
+}
+
+
+variable "apigee_organization_envgroup_attachment" {
+  type = any
+}
+
+variable "organization_envgroup" {
+  type = any
+}
+variable "vpn_gateway" {
+  type = any
+}
+variable "region_network_endpoint_group" {
+  type = any
+}
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -873,6 +901,13 @@ resource "google_compute_network_endpoint_group" "inspec-endpoint-group" {
   zone         = var.gcp_zone
 }
 
+resource "google_compute_global_network_endpoint_group" "inspec-global-endpoint-group" {
+  project      = var.gcp_project_id
+  name         = var.global_network_endpoint_group["name"]
+  default_port = var.global_network_endpoint_group["default_port"]
+  network_endpoint_type = var.global_network_endpoint_group["network_endpoint_type"]
+}
+
 data "google_compute_node_types" "zone-node-type" {
   project = var.gcp_project_id
   zone    = var.gcp_zone
@@ -1368,4 +1403,300 @@ resource "google_sql_ssl_cert" "client_cert" {
   project = var.gcp_project_id
   common_name = var.sql_connect["common_name"]
   instance    = var.gcp_db_instance_name
+}
+
+
+resource "google_data_loss_prevention_stored_info_type" "basic" {
+  parent = "projects/my-project-name"
+  description = "Description"
+  display_name = "Displayname"
+
+  regex {
+    pattern = "patient"
+    group_indexes = [2]
+  }
+}
+
+resource "google_data_loss_prevention_inspect_template" "basic" {
+  parent = "projects/my-project-name"
+  description = "My description"
+  display_name = "display_name"
+
+  inspect_config {
+    info_types {
+      name = "EMAIL_ADDRESS"
+    }
+    info_types {
+      name = "PERSON_NAME"
+    }
+    info_types {
+      name = "LAST_NAME"
+    }
+    info_types {
+      name = "DOMAIN_NAME"
+    }
+    info_types {
+      name = "PHONE_NUMBER"
+    }
+    info_types {
+      name = "FIRST_NAME"
+    }
+
+    min_likelihood = "UNLIKELY"
+    rule_set {
+      info_types {
+        name = "EMAIL_ADDRESS"
+      }
+      rules {
+        exclusion_rule {
+          regex {
+            pattern = ".+@example.com"
+          }
+          matching_type = "MATCHING_TYPE_FULL_MATCH"
+        }
+      }
+    }
+    rule_set {
+      info_types {
+        name = "EMAIL_ADDRESS"
+      }
+      info_types {
+        name = "DOMAIN_NAME"
+      }
+      info_types {
+        name = "PHONE_NUMBER"
+      }
+      info_types {
+        name = "PERSON_NAME"
+      }
+      info_types {
+        name = "FIRST_NAME"
+      }
+      rules {
+        exclusion_rule {
+          dictionary {
+            word_list {
+              words = ["TEST"]
+            }
+          }
+          matching_type = "MATCHING_TYPE_PARTIAL_MATCH"
+        }
+      }
+    }
+
+    rule_set {
+      info_types {
+        name = "PERSON_NAME"
+      }
+      rules {
+        hotword_rule {
+          hotword_regex {
+            pattern = "patient"
+          }
+          proximity {
+            window_before = 50
+          }
+          likelihood_adjustment {
+            fixed_likelihood = "VERY_LIKELY"
+          }
+        }
+      }
+    }
+
+    limits {
+      max_findings_per_item    = 10
+      max_findings_per_request = 50
+      max_findings_per_info_type {
+        max_findings = "75"
+        info_type {
+          name = "PERSON_NAME"
+        }
+      }
+      max_findings_per_info_type {
+        max_findings = "80"
+        info_type {
+          name = "LAST_NAME"
+        }
+      }
+    }
+  }
+}
+variable "compute_image_family_view_name" {
+  default = "test"
+}
+variable "compute_image_family_image_name" {
+  default = "image-1"
+}
+variable "compute_image_family_source_disk" {
+  default = "projects/ppradhan/zones/us-central1-a/disks/inspec-image-1"
+}
+
+resource "google_compute_image" "image_family_view" {
+  project = var.gcp_project_id
+  name    = var.compute_image_family_image_name
+  source_disk = var.compute_image_family_source_disk
+  family = var.compute_image_family_view_name
+}
+
+resource "google_storage_bucket" "bucket_delete_unique_221_11111" {
+  name     = "vertex-bucket_delete"
+  location = "us-central1"
+  uniform_bucket_level_access = true
+  project = "ppradhan"
+}
+
+# The sample data comes from the following link:
+# https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+resource "google_storage_bucket_object" "data" {
+  name   = "contents/data.json"
+  bucket = google_storage_bucket.bucket_delete_unique_221_11111.name
+  content = <<EOF
+{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+{"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+EOF
+}
+resource "google_vertex_ai_index" "index" {
+  labels = {
+    foo = "bar"
+  }
+  region   = "us-central1"
+  display_name = "test-index"
+  description = "index for test"
+  project = "ppradhan"
+  metadata {
+    contents_delta_uri = "gs://${google_storage_bucket.bucket_delete_unique_221_11111.name}/contents"
+    config {
+      dimensions = 2
+      shard_size = "SHARD_SIZE_LARGE"
+      distance_measure_type = "COSINE_DISTANCE"
+      feature_norm_type = "UNIT_L2_NORM"
+      algorithm_config {
+        brute_force_config {}
+      }
+    }
+  }
+  index_update_method = "STREAM_UPDATE"
+}
+resource "google_compute_ha_vpn_gateway" "ha_vpn_gateway" {
+  project = var.vpn_gateway.project
+  region  = var.vpn_gateway.region
+  name    = var.vpn_gateway.name
+  network = google_compute_network.network1.id
+}
+resource "google_compute_network" "network1" {
+  project = var.vpn_gateway.project
+  name                    = "network1"
+  auto_create_subnetworks = false
+}
+
+resource "google_artifact_registry_repository" "example" {
+  project = var.project_location_repository.project_id
+  repository_id = var.project_location_repository.display_name
+  location      = var.project_location_repository.location
+  format        = var.project_location_repository.format
+}
+
+resource "google_composer_v1_environment" "test" {
+  name   = var.cloud_composer_v1["name"]
+  region = var.cloud_composer_v1["region"]
+  config {
+    software_config {
+      image_version = var.cloud_composer_v1["image_version"]
+    }
+  }
+}
+
+resource "google_compute_service_attachment" "psc_ilb_service_attachment" {
+  name        = var.compute_service_attachment_conf["compute_service_attachment_name"]
+  region      = var.compute_service_attachment_conf["region"]
+  description = var.compute_service_attachment_conf["description"]
+
+  enable_proxy_protocol    = var.compute_service_attachment_conf["enable_proxy_protocol"]
+  connection_preference    = var.compute_service_attachment_conf["connection_preference"]
+  nat_subnets              = [google_compute_subnetwork.psc_ilb_nat.id]
+  target_service           = google_compute_forwarding_rule.psc_ilb_target_service.id
+}
+
+resource "google_compute_address" "psc_ilb_consumer_address" {
+  name   = var.compute_service_attachment_conf["psc_ilb_consumer_address_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  subnetwork   = var.compute_service_attachment_conf["subnetwork_id"]
+  address_type = var.compute_service_attachment_conf["address_type"]
+}
+
+resource "google_compute_forwarding_rule" "psc_ilb_consumer" {
+  name   = var.compute_service_attachment_conf["psc_ilb_consumer_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  target                = google_compute_service_attachment.psc_ilb_service_attachment.id
+  load_balancing_scheme = "" # need to override EXTERNAL default when target is a service attachment
+  network               = var.compute_service_attachment_conf["network_id"]
+  ip_address            = google_compute_address.psc_ilb_consumer_address.id
+}
+
+resource "google_compute_forwarding_rule" "psc_ilb_target_service" {
+  name   = var.compute_service_attachment_conf["psc_ilb_target_service_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  load_balancing_scheme = var.compute_service_attachment_conf["load_balancing_scheme"]
+  backend_service       = google_compute_region_backend_service.producer_service_backend.id
+  all_ports             = var.compute_service_attachment_conf["all_ports"]
+  network               = google_compute_network.psc_ilb_network.name
+  subnetwork            = google_compute_subnetwork.psc_ilb_producer_subnetwork.name
+}
+
+resource "google_compute_region_backend_service" "producer_service_backend" {
+  name   = var.compute_service_attachment_conf["producer_service_backend_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  health_checks = [google_compute_health_check.producer_service_health_check.id]
+}
+
+resource "google_compute_health_check" "producer_service_health_check" {
+  name = var.compute_service_attachment_conf["producer_service_health_check_name"]
+
+  check_interval_sec = 1
+  timeout_sec        = 1
+  tcp_health_check {
+    port = var.compute_service_attachment_conf["producer_service_health_check_port"]
+  }
+}
+
+resource "google_compute_network" "psc_ilb_network" {
+  name = var.compute_service_attachment_conf["psc_ilb_network_name"]
+  auto_create_subnetworks = var.compute_service_attachment_conf["auto_create_subnetworks"]
+}
+
+resource "google_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+  name   = var.compute_service_attachment_conf["psc_ilb_producer_subnetwork_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  network       = google_compute_network.psc_ilb_network.id
+  ip_cidr_range = var.compute_service_attachment_conf["subnetwork_ip_cidr_range"]
+}
+
+resource "google_compute_subnetwork" "psc_ilb_nat" {
+  name   = var.compute_service_attachment_conf["psc_ilb_nat_name"]
+  region = var.compute_service_attachment_conf["region"]
+
+  network       = google_compute_network.psc_ilb_network.id
+  purpose       =  var.compute_service_attachment_conf["purpose"]
+  ip_cidr_range = var.compute_service_attachment_conf["nat_ip_cidr_range"]
+}
+
+resource "google_apigee_envgroup" "env_grp" {
+  name      = var.organization_envgroup.name
+  hostnames  = var.organization_envgroup.hostnames
+  org_id    = var.organization_envgroup.project
+}
+resource "google_apigee_envgroup_attachment" "engroup_attachment" {
+  envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
+  environment  = var.apigee_organization_envgroup_attachment.environment
+}
+resource "google_compute_region_network_endpoint_group" "region_network_endpoint_group" {
+  name                  = var.region_network_endpoint_group.name
+  network_endpoint_type = var.region_network_endpoint_group.network_endpoint_type
+  region                = var.region_network_endpoint_group.region
+  psc_target_service    = var.region_network_endpoint_group.target_service
 }

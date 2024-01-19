@@ -78,22 +78,22 @@ class RedisInstances < GcpResourceBase
 
   def transformers
     {
-      'alternativeLocationId' => ->(obj) { return :alternative_location_id, obj['alternativeLocationId'] },
-      'authorizedNetwork' => ->(obj) { return :authorized_network, obj['authorizedNetwork'] },
-      'createTime' => ->(obj) { return :create_time, parse_time_string(obj['createTime']) },
-      'currentLocationId' => ->(obj) { return :current_location_id, obj['currentLocationId'] },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'host' => ->(obj) { return :host, obj['host'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'redisConfigs' => ->(obj) { return :redis_configs, obj['redisConfigs'] },
-      'locationId' => ->(obj) { return :location_id, obj['locationId'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'memorySizeGb' => ->(obj) { return :memory_size_gb, obj['memorySizeGb'] },
-      'port' => ->(obj) { return :port, obj['port'] },
-      'redisVersion' => ->(obj) { return :redis_version, obj['redisVersion'] },
-      'reservedIpRange' => ->(obj) { return :reserved_ip_range, obj['reservedIpRange'] },
-      'tier' => ->(obj) { return :tier, obj['tier'] },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'alternativeLocationId' => ->(obj) { [:alternative_location_id, obj['alternativeLocationId']] },
+      'authorizedNetwork' => ->(obj) { [:authorized_network, obj['authorizedNetwork']] },
+      'createTime' => ->(obj) { [:create_time, parse_time_string(obj['createTime'])] },
+      'currentLocationId' => ->(obj) { [:current_location_id, obj['currentLocationId']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'host' => ->(obj) { [:host, obj['host']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'redisConfigs' => ->(obj) { [:redis_configs, obj['redisConfigs']] },
+      'locationId' => ->(obj) { [:location_id, obj['locationId']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'memorySizeGb' => ->(obj) { [:memory_size_gb, obj['memorySizeGb']] },
+      'port' => ->(obj) { [:port, obj['port']] },
+      'redisVersion' => ->(obj) { [:redis_version, obj['redisVersion']] },
+      'reservedIpRange' => ->(obj) { [:reserved_ip_range, obj['reservedIpRange']] },
+      'tier' => ->(obj) { [:tier, obj['tier']] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

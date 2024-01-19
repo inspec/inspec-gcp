@@ -1,11 +1,386 @@
 # Change Log
 
-<!-- latest_release 1.10.37 -->
+<!-- latest_release 1.11.72 -->
+## [v1.11.72](https://github.com/inspec/inspec-gcp/tree/v1.11.72) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-7386-compute-RegionNetworkEndpointGroup - Resource Implementation [#537](https://github.com/inspec/inspec-gcp/pull/537) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.71](https://github.com/inspec/inspec-gcp/tree/v1.11.71) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-8912- MAGIC-MODULE-apigee-Organizations__api - Resource Implementation [#542](https://github.com/inspec/inspec-gcp/pull/542) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.70](https://github.com/inspec/inspec-gcp/tree/v1.11.70) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-3309-InSpec GCP Http error fixes [#568](https://github.com/inspec/inspec-gcp/pull/568) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
+
+#### Merged Pull Requests
+- Refactor Long to Short Name Conversion [#565](https://github.com/inspec/inspec-gcp/pull/565) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
+
+#### Merged Pull Requests
+- Reverted version pinning [#567](https://github.com/inspec/inspec-gcp/pull/567) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.67](https://github.com/inspec/inspec-gcp/tree/v1.11.67) (2023-12-21)
+
+#### Merged Pull Requests
+- Update inspec version pinning in Gemfile [#563](https://github.com/inspec/inspec-gcp/pull/563) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.66](https://github.com/inspec/inspec-gcp/tree/v1.11.66) (2023-12-15)
+
+#### Merged Pull Requests
+- CHEF - Removed the wrong dir from inspec-gcp. [#561](https://github.com/inspec/inspec-gcp/pull/561) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.65](https://github.com/inspec/inspec-gcp/tree/v1.11.65) (2023-12-13)
+
+#### Merged Pull Requests
+- CHEF-7382-MAGIC-MODULE-compute-VpnGateway - Resource Implementation [#534](https://github.com/inspec/inspec-gcp/pull/534) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.64](https://github.com/inspec/inspec-gcp/tree/v1.11.64) (2023-12-12)
+
+#### Merged Pull Requests
+- chore: correct typo in README for resource reference [#558](https://github.com/inspec/inspec-gcp/pull/558) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.63](https://github.com/inspec/inspec-gcp/tree/v1.11.63) (2023-12-12)
+
+#### Merged Pull Requests
+- CHEF-7384: MAGIC-MODULE-compute-ServiceAttachment - Resource Implementation [#535](https://github.com/inspec/inspec-gcp/pull/535) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.62](https://github.com/inspec/inspec-gcp/tree/v1.11.62) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7357-MAGIC-MODULE-apigee-Organizations__envgroups__attachment - Resource Implementation [#540](https://github.com/inspec/inspec-gcp/pull/540) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.61](https://github.com/inspec/inspec-gcp/tree/v1.11.61) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7356-MAGIC-MODULE-apigee-Organizations__envgroup - Resource Implementation [#539](https://github.com/inspec/inspec-gcp/pull/539) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.60](https://github.com/inspec/inspec-gcp/tree/v1.11.60) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7354-MAGIC-MODULE-artifactregistry-Projects__locations__repository - Resource Implementation [#544](https://github.com/inspec/inspec-gcp/pull/544) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.59](https://github.com/inspec/inspec-gcp/tree/v1.11.59) (2023-12-08)
+
+#### Merged Pull Requests
+- Removed worng dir [#551](https://github.com/inspec/inspec-gcp/pull/551) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.58](https://github.com/inspec/inspec-gcp/tree/v1.11.58) (2023-12-08)
+
+#### Merged Pull Requests
+- CHEF-7364-MAGIC-MODULE-composer-Projects__locations__environment - Resource Implementation [#546](https://github.com/inspec/inspec-gcp/pull/546) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.57](https://github.com/inspec/inspec-gcp/tree/v1.11.57) (2023-12-06)
+
+#### Merged Pull Requests
+- chore: uncomment terraform scripts [#549](https://github.com/inspec/inspec-gcp/pull/549) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.56](https://github.com/inspec/inspec-gcp/tree/v1.11.56) (2023-12-06)
+
+#### Merged Pull Requests
+- CHEF-7369 Updated dataproc_cluster resource [#545](https://github.com/inspec/inspec-gcp/pull/545) ([Nik08](https://github.com/Nik08))
+
+## [v1.11.55](https://github.com/inspec/inspec-gcp/tree/v1.11.55) (2023-12-05)
+
+#### Merged Pull Requests
+- Chore: Remove redundant `return` statement to fix rubocop 1.58.0 lint offense [#548](https://github.com/inspec/inspec-gcp/pull/548) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.54](https://github.com/inspec/inspec-gcp/tree/v1.11.54) (2023-12-01)
+
+#### Merged Pull Requests
+- CHEF-7355-MAGIC-MODULE-apigee-Organization - Resource Implementation [#541](https://github.com/inspec/inspec-gcp/pull/541) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.53](https://github.com/inspec/inspec-gcp/tree/v1.11.53) (2023-11-29)
+
+#### Merged Pull Requests
+- CHEF-7365-MAGIC-MODULE-composer-Projects__locations__imageVersion - Resource Implementation [#527](https://github.com/inspec/inspec-gcp/pull/527) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.52](https://github.com/inspec/inspec-gcp/tree/v1.11.52) (2023-10-16)
+
+#### Merged Pull Requests
+- CHEF-5584-MAGIC-MODULE-vertex_ai-Tensorboards__experiments__runs__timeSeries_resource - Resource Implementation [#524](https://github.com/inspec/inspec-gcp/pull/524) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.51](https://github.com/inspec/inspec-gcp/tree/v1.11.51) (2023-10-13)
+
+#### Merged Pull Requests
+- CHEF-5554-MAGIC-MODULE-vertex_ai-Datasets__dataItem - Resource Implementation [#494](https://github.com/inspec/inspec-gcp/pull/494) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.50](https://github.com/inspec/inspec-gcp/tree/v1.11.50) (2023-10-13)
+
+#### Merged Pull Requests
+- CHEF-5579-MAGIC-MODULE-vertex_ai-Study - Resource Implementation [#522](https://github.com/inspec/inspec-gcp/pull/522) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.49](https://github.com/inspec/inspec-gcp/tree/v1.11.49) (2023-10-12)
+
+#### Merged Pull Requests
+- CHEF-5563-MAGIC-MODULE-vertex_ai-Index - Resource Implementation [#521](https://github.com/inspec/inspec-gcp/pull/521) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.48](https://github.com/inspec/inspec-gcp/tree/v1.11.48) (2023-10-12)
+
+#### Merged Pull Requests
+- CHEF-5572-MAGIC-MODULE-vertex_ai-Models__evaluations__slice - Resource Implementation [#508](https://github.com/inspec/inspec-gcp/pull/508) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.47](https://github.com/inspec/inspec-gcp/tree/v1.11.47) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5556-MAGIC-MODULE-vertex_ai-Datasets__savedQuery - Resource Implementation [#495](https://github.com/inspec/inspec-gcp/pull/495) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.46](https://github.com/inspec/inspec-gcp/tree/v1.11.46) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5565-MAGIC-MODULE-vertex_ai-MetadataStores__artifact - Resource Implementation [#501](https://github.com/inspec/inspec-gcp/pull/501) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.45](https://github.com/inspec/inspec-gcp/tree/v1.11.45) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5566-MAGIC-MODULE-vertex_ai-MetadataStores__context - Resource Implementation [#502](https://github.com/inspec/inspec-gcp/pull/502) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.44](https://github.com/inspec/inspec-gcp/tree/v1.11.44) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5567-MAGIC-MODULE-vertex_ai-MetadataStores__execution - Resource Implementation [#503](https://github.com/inspec/inspec-gcp/pull/503) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.43](https://github.com/inspec/inspec-gcp/tree/v1.11.43) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5553-MAGIC-MODULE-vertex_ai-Datasets__annotationSpec - Resource Implementation [#492](https://github.com/inspec/inspec-gcp/pull/492) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.42](https://github.com/inspec/inspec-gcp/tree/v1.11.42) (2023-10-10)
+
+#### Merged Pull Requests
+- CHEF-5569-MAGIC-MODULE-vertex_ai-ModelDeploymentMonitoringJob - Resource Implementation [#505](https://github.com/inspec/inspec-gcp/pull/505) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.41](https://github.com/inspec/inspec-gcp/tree/v1.11.41) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5568-MAGIC-MODULE-vertex_ai-MetadataStores__metadataSchema - Resource Implementation [#504](https://github.com/inspec/inspec-gcp/pull/504) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.40](https://github.com/inspec/inspec-gcp/tree/v1.11.40) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5570-MAGIC-MODULE-vertex_ai-Model - Resource Implementation [#485](https://github.com/inspec/inspec-gcp/pull/485) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.39](https://github.com/inspec/inspec-gcp/tree/v1.11.39) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5574-MAGIC-MODULE-vertex_ai-NasJobs__nasTrialDetail - Resource Implementation [#491](https://github.com/inspec/inspec-gcp/pull/491) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.38](https://github.com/inspec/inspec-gcp/tree/v1.11.38) (2023-10-09)
+
+#### Merged Pull Requests
+- CHEF-5564-MAGIC-MODULE-vertex_ai-MetadataStore - Resource Implementation [#490](https://github.com/inspec/inspec-gcp/pull/490) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.37](https://github.com/inspec/inspec-gcp/tree/v1.11.37) (2023-09-27)
+
+#### Merged Pull Requests
+- CHEF-5555-MAGIC-MODULE-vertex_ai-Datasets__dataItems__annotation - Resource Implementation [#516](https://github.com/inspec/inspec-gcp/pull/516) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.36](https://github.com/inspec/inspec-gcp/tree/v1.11.36) (2023-09-25)
+
+#### Merged Pull Requests
+- CHEF-5571-MAGIC-MODULE-vertex_ai-Models__evaluation - Resource Implementation [#506](https://github.com/inspec/inspec-gcp/pull/506) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.35](https://github.com/inspec/inspec-gcp/tree/v1.11.35) (2023-09-25)
+
+#### Merged Pull Requests
+- CHEF-5562-MAGIC-MODULE-vertex_ai-IndexEndpoint - Resource Implementation [#497](https://github.com/inspec/inspec-gcp/pull/497) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.34](https://github.com/inspec/inspec-gcp/tree/v1.11.34) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5582-MAGIC-MODULE-vertex_ai-Tensorboards__experiment - Resource Implementation [#499](https://github.com/inspec/inspec-gcp/pull/499) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.33](https://github.com/inspec/inspec-gcp/tree/v1.11.33) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5583-MAGIC-MODULE-vertex_ai-Tensorboards__experiments__run - Resource Implementation [#513](https://github.com/inspec/inspec-gcp/pull/513) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.32](https://github.com/inspec/inspec-gcp/tree/v1.11.32) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5560-MAGIC-MODULE-vertex_ai-Featurestores__entityTypes__feature - Resource Implementation [#517](https://github.com/inspec/inspec-gcp/pull/517) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.31](https://github.com/inspec/inspec-gcp/tree/v1.11.31) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5561-MAGIC-MODULE-vertex_ai-HyperparameterTuningJob - Resource Implementation [#515](https://github.com/inspec/inspec-gcp/pull/515) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.30](https://github.com/inspec/inspec-gcp/tree/v1.11.30) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5560-MAGIC-MODULE-vertex_ai-Featurestores__entityType - Resource Implementation [#500](https://github.com/inspec/inspec-gcp/pull/500) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.29](https://github.com/inspec/inspec-gcp/tree/v1.11.29) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5559-MAGIC-MODULE-vertex_ai-Featurestores__entityType - Resource Implementation [#496](https://github.com/inspec/inspec-gcp/pull/496) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.28](https://github.com/inspec/inspec-gcp/tree/v1.11.28) (2023-09-22)
+
+#### Merged Pull Requests
+- CHEF-5580-MAGIC-MODULE-vertex_ai-Studies__trial - Resource Implementation [#507](https://github.com/inspec/inspec-gcp/pull/507) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.27](https://github.com/inspec/inspec-gcp/tree/v1.11.27) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5558-MAGIC-MODULE-vertex_ai-Featurestore - Resource Implementation [#483](https://github.com/inspec/inspec-gcp/pull/483) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.26](https://github.com/inspec/inspec-gcp/tree/v1.11.26) (2023-09-20)
+
+#### Merged Pull Requests
+- CHEF-5575-MAGIC-MODULE-vertex_ai-PipelineJob - Resource Implementation [#484](https://github.com/inspec/inspec-gcp/pull/484) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.25](https://github.com/inspec/inspec-gcp/tree/v1.11.25) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5577-MAGIC-MODULE-vertex_ai-Schedule - Resource Implementation [#487](https://github.com/inspec/inspec-gcp/pull/487) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.24](https://github.com/inspec/inspec-gcp/tree/v1.11.24) (2023-09-19)
+
+#### Merged Pull Requests
+- CHEF-5581-MAGIC-MODULE-vertex_ai-Tensorboard - Resource Implementation [#489](https://github.com/inspec/inspec-gcp/pull/489) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.23](https://github.com/inspec/inspec-gcp/tree/v1.11.23) (2023-09-18)
+
+#### Merged Pull Requests
+- CHEF-5557-MAGIC-MODULE-vertex_ai-Endpoint - Resource Implementation [#482](https://github.com/inspec/inspec-gcp/pull/482) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.22](https://github.com/inspec/inspec-gcp/tree/v1.11.22) (2023-09-18)
+
+#### Merged Pull Requests
+- CHEF-5573-MAGIC-MODULE-vertex_ai-NasJob - Resource Implementation [#488](https://github.com/inspec/inspec-gcp/pull/488) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.21](https://github.com/inspec/inspec-gcp/tree/v1.11.21) (2023-09-15)
+
+#### Merged Pull Requests
+- CHEF-5549-MAGIC-MODULE-vertex_ai-BatchPredictionJob - Resource Implementation [#477](https://github.com/inspec/inspec-gcp/pull/477) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.20](https://github.com/inspec/inspec-gcp/tree/v1.11.20) (2023-09-15)
+
+#### Merged Pull Requests
+- CHEF-5550-MAGIC-MODULE-vertex_ai-CustomJob - Resource Implementation [#476](https://github.com/inspec/inspec-gcp/pull/476) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.19](https://github.com/inspec/inspec-gcp/tree/v1.11.19) (2023-09-14)
+
+#### Merged Pull Requests
+- CHEF-5585-MAGIC-MODULE-vertex_ai-TrainingPipeline - Resource Implementation [#479](https://github.com/inspec/inspec-gcp/pull/479) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.18](https://github.com/inspec/inspec-gcp/tree/v1.11.18) (2023-09-11)
+
+#### Merged Pull Requests
+- CHEF-5552-MAGIC-MODULE-vertex_ai-Dataset - Resource Implementation [#467](https://github.com/inspec/inspec-gcp/pull/467) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.17](https://github.com/inspec/inspec-gcp/tree/v1.11.17) (2023-09-08)
+
+#### Merged Pull Requests
+- CHEF-6191-Fixed Linting Naming Issues [#473](https://github.com/inspec/inspec-gcp/pull/473) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.16](https://github.com/inspec/inspec-gcp/tree/v1.11.16) (2023-09-07)
+
+#### Merged Pull Requests
+- CHEF-5991-GlobalNetworkEndpointGroup Resource [#462](https://github.com/inspec/inspec-gcp/pull/462) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.15](https://github.com/inspec/inspec-gcp/tree/v1.11.15) (2023-09-07)
+
+#### Merged Pull Requests
+- Fixed vertex ai uri handleing-current version had no support for base… [#466](https://github.com/inspec/inspec-gcp/pull/466) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.14](https://github.com/inspec/inspec-gcp/tree/v1.11.14) (2023-08-29)
+
+#### Merged Pull Requests
+- CHEF-5883-ImageFamilyView Resource-GCP Compute [#449](https://github.com/inspec/inspec-gcp/pull/449) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.13](https://github.com/inspec/inspec-gcp/tree/v1.11.13) (2023-08-29)
+
+#### Merged Pull Requests
+- CHEF-4076-DeidentifyTemplate [#461](https://github.com/inspec/inspec-gcp/pull/461) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.12](https://github.com/inspec/inspec-gcp/tree/v1.11.12) (2023-08-29)
+
+#### Merged Pull Requests
+- CHEF-4076 Resource added for DeIdentify Template  [#447](https://github.com/inspec/inspec-gcp/pull/447) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.11](https://github.com/inspec/inspec-gcp/tree/v1.11.11) (2023-08-29)
+
+#### Merged Pull Requests
+- Removed unused files [#460](https://github.com/inspec/inspec-gcp/pull/460) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.10](https://github.com/inspec/inspec-gcp/tree/v1.11.10) (2023-08-29)
+
+#### Merged Pull Requests
+- Removed the support for expeditor changes for ruby run time 2.7 [#459](https://github.com/inspec/inspec-gcp/pull/459) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.9](https://github.com/inspec/inspec-gcp/tree/v1.11.9) (2023-08-28)
+
+#### Merged Pull Requests
+- No Change [#454](https://github.com/inspec/inspec-gcp/pull/454) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.8](https://github.com/inspec/inspec-gcp/tree/v1.11.8) (2023-08-24)
+
+#### Merged Pull Requests
+- Naming linting fix [#448](https://github.com/inspec/inspec-gcp/pull/448) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.7](https://github.com/inspec/inspec-gcp/tree/v1.11.7) (2023-08-17)
+
+#### Merged Pull Requests
+-  CHEF-4075 Resource added for Dlp stored info types [#446](https://github.com/inspec/inspec-gcp/pull/446) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.6](https://github.com/inspec/inspec-gcp/tree/v1.11.6) (2023-08-16)
+
+#### Merged Pull Requests
+- CHEF-4074 dlp inspect template resource [#445](https://github.com/inspec/inspec-gcp/pull/445) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.5](https://github.com/inspec/inspec-gcp/tree/v1.11.5) (2023-08-16)
+
+#### Merged Pull Requests
+- CHEF-4073 DLP-job-trigger-resource [#443](https://github.com/inspec/inspec-gcp/pull/443) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.4](https://github.com/inspec/inspec-gcp/tree/v1.11.4) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-4077  DLP job resources [#441](https://github.com/inspec/inspec-gcp/pull/441) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.3](https://github.com/inspec/inspec-gcp/tree/v1.11.3) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-1604 api updated from beta4 to v1 [#440](https://github.com/inspec/inspec-gcp/pull/440) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.2](https://github.com/inspec/inspec-gcp/tree/v1.11.2) (2023-07-27)
+
+#### Merged Pull Requests
+- CHEF-4288 wrong atrribute workloadMetadataConfig fixed [#442](https://github.com/inspec/inspec-gcp/pull/442) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.1](https://github.com/inspec/inspec-gcp/tree/v1.11.1) (2023-06-12)
+
+#### Merged Pull Requests
+- Fix blog post link [#436](https://github.com/inspec/inspec-gcp/pull/436) ([futtetennista](https://github.com/futtetennista))
+
+## [v1.11.0](https://github.com/inspec/inspec-gcp/tree/v1.11.0) (2023-05-03)
+
+#### Merged Pull Requests
+- RESOURCE-599 State added in Cloud Scheduler files generated from MM [#439](https://github.com/inspec/inspec-gcp/pull/439) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.10.39](https://github.com/inspec/inspec-gcp/tree/v1.10.39) (2023-01-31)
+
+#### Merged Pull Requests
+- RESOURCE-564 Update the Readme.md file in inspec-gcp [#434](https://github.com/inspec/inspec-gcp/pull/434) ([soumyo13](https://github.com/soumyo13))
+
+## [v1.10.38](https://github.com/inspec/inspec-gcp/tree/v1.10.38) (2023-01-31)
+
+#### Merged Pull Requests
+- RESOURCE-586  Fix the build lint issue in inspec-gcp [#435](https://github.com/inspec/inspec-gcp/pull/435) ([soumyo13](https://github.com/soumyo13))
+
 ## [v1.10.37](https://github.com/inspec/inspec-gcp/tree/v1.10.37) (2022-07-29)
 
 #### Merged Pull Requests
 - RESOURCE-466-magic-moment-gcp-cloud-kms-key-rings-import-jobs [#426](https://github.com/inspec/inspec-gcp/pull/426) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.10.36](https://github.com/inspec/inspec-gcp/tree/v1.10.36) (2022-07-27)
 
