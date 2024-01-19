@@ -15,6 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/container/property/cluster_addons_config'
+require 'google/container/property/cluster_fleet'
 require 'google/container/property/cluster_addons_config_gce_persistent_disk_csi_driver_config'
 require 'google/container/property/cluster_addons_config_horizontal_pod_autoscaling'
 require 'google/container/property/cluster_addons_config_http_load_balancing'
