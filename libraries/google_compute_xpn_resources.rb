@@ -22,10 +22,8 @@ class ComputeProjectXpnResources < GcpResourceBase
   attr_reader :table
 
   filter_table_config = FilterTable.create
-
-  filter_table_config.add(:types, field: :type)
   filter_table_config.add(:ids, field: :id)
-
+  filter_table_config.add(:types, field: :type)
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})

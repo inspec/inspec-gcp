@@ -10,6 +10,8 @@ A `google_compute_xpn_resources` is used to test a Google Project resource
 ```
   describe google_compute_xpn_resources(project: 'chef-gcp-inspec') do
     it { should exist }
+    its('ids') { should include xpn_resources['id']}
+    its('types') { should include xpn_resources['type']}
   end
 ```
 

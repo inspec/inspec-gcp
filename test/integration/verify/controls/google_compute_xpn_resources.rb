@@ -16,6 +16,10 @@ title 'Test GCP google_compute_xpn_resources resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
+xpn_resources = input('xpn_resources', value: {
+  "id": "skilled-circle-407309",
+  "type": "PROJECT"
+}, description: 'xpn_resources description')
 
 control 'google_compute_xpn_resources-1.0' do
   impact 1.0
@@ -23,5 +27,7 @@ control 'google_compute_xpn_resources-1.0' do
 
     describe google_compute_xpn_resources(project: gcp_project_id) do
       it { should exist }
+      its('ids') { should include xpn_resources['id']}
+      its('types') { should include xpn_resources['type']}
     end
 end
