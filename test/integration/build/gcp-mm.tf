@@ -242,6 +242,10 @@ variable "vpn_gateway" {
 variable "region_network_endpoint_group" {
   type = any
 }
+variable "secrets_manager_v1" {
+  type = any
+}
+
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -1699,6 +1703,14 @@ resource "google_compute_region_network_endpoint_group" "region_network_endpoint
   network_endpoint_type = var.region_network_endpoint_group.network_endpoint_type
   region                = var.region_network_endpoint_group.region
   psc_target_service    = var.region_network_endpoint_group.target_service
+}
+
+resource "google_secret_manager_secret" "test-secret" {
+  secret_id = var.secrets_manager_v1["secret_id"]
+
+  replication {
+    auto {}
+  }
 }
 
 variable "crypto_key_version" {
