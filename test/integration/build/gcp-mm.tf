@@ -239,6 +239,12 @@ variable "organization_envgroup" {
 variable "vpn_gateway" {
   type = any
 }
+variable "region_network_endpoint_group" {
+  type = any
+}
+variable "secrets_manager_v1" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1691,4 +1697,37 @@ resource "google_apigee_envgroup" "env_grp" {
 resource "google_apigee_envgroup_attachment" "engroup_attachment" {
   envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
   environment  = var.apigee_organization_envgroup_attachment.environment
+}
+resource "google_compute_region_network_endpoint_group" "region_network_endpoint_group" {
+  name                  = var.region_network_endpoint_group.name
+  network_endpoint_type = var.region_network_endpoint_group.network_endpoint_type
+  region                = var.region_network_endpoint_group.region
+  psc_target_service    = var.region_network_endpoint_group.target_service
+}
+
+resource "google_secret_manager_secret" "test-secret" {
+  secret_id = var.secrets_manager_v1["secret_id"]
+
+  replication {
+    auto {}
+  }
+}
+
+variable "crypto_key_version" {
+  type = any
+}
+
+resource "google_kms_key_ring" "keyring" {
+  name     = var.crypto_key_version.key_ring
+  location = var.crypto_key_version.region
+}
+
+resource "google_kms_crypto_key" "cryptokey" {
+  name            = var.crypto_key_version.crypto_key
+  key_ring        = google_kms_key_ring.keyring.id
+  rotation_period = "100000s"
+}
+
+resource "google_kms_crypto_key_version" "example-key" {
+  crypto_key = google_kms_crypto_key.cryptokey.id
 }

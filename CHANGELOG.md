@@ -1,11 +1,36 @@
 # Change Log
 
-<!-- latest_release 1.11.69 -->
+<!-- latest_release 1.11.74 -->
+## [v1.11.74](https://github.com/inspec/inspec-gcp/tree/v1.11.74) (2024-01-22)
+
+#### Merged Pull Requests
+- CHEF-7362-Inspec-gcp-cloud-kms-key-rings-crypto-keys-crypto-key-versions [#428](https://github.com/inspec/inspec-gcp/pull/428) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.73](https://github.com/inspec/inspec-gcp/tree/v1.11.73) (2024-01-19)
+
+#### Merged Pull Requests
+- CHEF-7375: SecretManager - Project Secrets  [#569](https://github.com/inspec/inspec-gcp/pull/569) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.72](https://github.com/inspec/inspec-gcp/tree/v1.11.72) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-7386-compute-RegionNetworkEndpointGroup - Resource Implementation [#537](https://github.com/inspec/inspec-gcp/pull/537) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.71](https://github.com/inspec/inspec-gcp/tree/v1.11.71) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-8912- MAGIC-MODULE-apigee-Organizations__api - Resource Implementation [#542](https://github.com/inspec/inspec-gcp/pull/542) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.70](https://github.com/inspec/inspec-gcp/tree/v1.11.70) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-3309-InSpec GCP Http error fixes [#568](https://github.com/inspec/inspec-gcp/pull/568) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
 ## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
 
 #### Merged Pull Requests
 - Refactor Long to Short Name Conversion [#565](https://github.com/inspec/inspec-gcp/pull/565) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
 

@@ -280,6 +280,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_kms_crypto_key](docs/resources/google_kms_crypto_key.md)                                                     | [google_kms_crypto_keys](docs/resources/google_kms_crypto_keys.md)                                                             |
 | [google_kms_crypto_key_iam_binding](docs/resources/google_kms_crypto_key_iam_binding.md)                             | [google_kms_crypto_key_iam_bindings](docs/resources/google_kms_crypto_key_iam_bindings.md)                                     |
 | [google_kms_crypto_key_iam_policy](docs/resources/google_kms_crypto_key_iam_policy.md)                               | No Plural Resource                                                                                                             |
+| [google_kms_crypto_key_version](docs/resources/google_kms_crypto_key_version.md)                             | [google_kms_crypto_key_versions](docs/resources/google_kms_crypto_key_versions.md)                                     |
 | [google_kms_ekm_connection](docs/resources/google_kms_ekm_connection.md)                                             | [google_kms_ekm_connections](docs/resources/google_kms_ekm_connections.md)                                                     |
 | [google_kms_key_ring](docs/resources/google_kms_key_ring.md)                                                         | [google_kms_key_rings](docs/resources/google_kms_key_rings.md)                                                                 |
 | [google_kms_key_ring_iam_binding](docs/resources/google_kms_key_ring_iam_binding.md)                                 | [google_kms_key_ring_iam_bindings](docs/resources/google_kms_key_ring_iam_bindings.md)                                         |
@@ -377,6 +378,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
 | [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environments.md)             |
 | [google_compute_service_attachment](docs/resources/google_compute_service_attachment.md)                           | [google_compute_service_attachments](docs/resources/google_compute_service_attachments.md)             |
+| [google_secret_manager_secret](docs/resources/google_secret_manager_secret.md)                           | [google_secret_manager_secrets](docs/resources/google_secret_manager_secrets.md)             |
 
 ## Examples
 
@@ -426,6 +428,23 @@ control 'gcp-projects-zones-vm-label-loop-1.0' do
   end
 end
 ```
+This example verifies there are sufficient privileges to list all regions.
+
+```
+next unless google_compute_regions(project: gcp_project_id).resource_failed?
+google_compute_regions(project: gcp_project_id).region_names.each do |region_name|
+  describe google_compute_region(project: gcp_project_id,  region: region_name) do
+    it { should be_up }
+  end
+end
+
+if google_compute_regions(project: gcp_project_id).resource_failed?
+  puts google_compute_regions(project: gcp_project_id).resource_exception_message
+  puts google_compute_regions(project: gcp_project_id,name: region_name).pretty_inspect
+end
+```
+
+
 
 This example assumes there are sufficient privileges to list all GCP projects.
 
