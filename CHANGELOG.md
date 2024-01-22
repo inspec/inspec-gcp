@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.73 -->
+<!-- latest_release 1.11.74 -->
+## [v1.11.74](https://github.com/inspec/inspec-gcp/tree/v1.11.74) (2024-01-22)
+
+#### Merged Pull Requests
+- CHEF-7362-Inspec-gcp-cloud-kms-key-rings-crypto-keys-crypto-key-versions [#428](https://github.com/inspec/inspec-gcp/pull/428) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.73](https://github.com/inspec/inspec-gcp/tree/v1.11.73) (2024-01-19)
 
 #### Merged Pull Requests
 - CHEF-7375: SecretManager - Project Secrets  [#569](https://github.com/inspec/inspec-gcp/pull/569) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.72](https://github.com/inspec/inspec-gcp/tree/v1.11.72) (2024-01-18)
 
