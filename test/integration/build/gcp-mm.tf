@@ -1712,3 +1712,22 @@ resource "google_secret_manager_secret" "test-secret" {
     auto {}
   }
 }
+
+variable "crypto_key_version" {
+  type = any
+}
+
+resource "google_kms_key_ring" "keyring" {
+  name     = var.crypto_key_version.key_ring
+  location = var.crypto_key_version.region
+}
+
+resource "google_kms_crypto_key" "cryptokey" {
+  name            = var.crypto_key_version.crypto_key
+  key_ring        = google_kms_key_ring.keyring.id
+  rotation_period = "100000s"
+}
+
+resource "google_kms_crypto_key_version" "example-key" {
+  crypto_key = google_kms_crypto_key.cryptokey.id
+}
