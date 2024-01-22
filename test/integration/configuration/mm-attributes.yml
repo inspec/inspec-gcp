@@ -635,3 +635,8 @@ apigee_organization_apis:
 
 secrets_manager_v1:
   secret_id: "inspec-gcp-secret"
+
+crypto_key_version:
+  key_ring: "gcp-inspec-kms-key-ring"
+  crypto_key: "gcp-inspec-kms-crypto-key-policy"
+  region: "us-central-1"
