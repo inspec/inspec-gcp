@@ -273,13 +273,9 @@ class GcpApiConnection
   end
 
   def fetch_id(result)
-    return if result.is_a(Array)
-    @resource_id = if result.key?('id')
-                     result['id']
-                   else
-                     result['name']
-                   end
+    @resource_id = result['id'] || result['name'] if result.is_a?(Hash)
   end
+
   attr_reader :resource_id
 
   def raise_if_errors(response, msg_field)
