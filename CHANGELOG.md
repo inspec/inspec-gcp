@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.75 -->
+<!-- latest_release 1.11.76 -->
+## [v1.11.76](https://github.com/inspec/inspec-gcp/tree/v1.11.76) (2024-01-23)
+
+#### Merged Pull Requests
+- CHEF-7383-ComputeXPN Resource [#574](https://github.com/inspec/inspec-gcp/pull/574) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.75](https://github.com/inspec/inspec-gcp/tree/v1.11.75) (2024-01-22)
 
 #### Merged Pull Requests
 - Fix Http Error logics  [#572](https://github.com/inspec/inspec-gcp/pull/572) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.74](https://github.com/inspec/inspec-gcp/tree/v1.11.74) (2024-01-22)
 
