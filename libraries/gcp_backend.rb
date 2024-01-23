@@ -223,11 +223,7 @@ class GcpApiConnection
       request_type,
       body,
     )
-    validate_response get_request.send
-  end
-
-  def validate_response(response)
-    response.is_a?(Net::HTTPNotFound) || response.is_a?(Net::HTTPNoContent) ? nil : return_if_object(response)
+    return_if_object get_request.send
   end
 
   def fetch_all(base_url, template, var_data, request_type = 'Get')
@@ -259,7 +255,7 @@ class GcpApiConnection
         body = response
       end
       result = parser(body)
-      raise_if_errors result, 'message'
+      raise_if_errors result, %w{error errors}, 'message'
     end
     result = parser(response.body)
     fetch_id result
@@ -281,12 +277,8 @@ class GcpApiConnection
   end
   attr_reader :resource_id
 
-  def raise_if_errors(response, msg_field)
-    errors = if response['error']['message']&.nil?
-               self.class.navigate(response, %w{error errors})
-             else
-               self.class.navigate(response, %w{error message})
-             end
+  def raise_if_errors(response, err_path, msg_field)
+    errors = self.class.navigate(response, err_path)
     resource.fail_resource errors
     resource.failed_resource = true
     raise_error(errors, msg_field) unless errors.nil?
