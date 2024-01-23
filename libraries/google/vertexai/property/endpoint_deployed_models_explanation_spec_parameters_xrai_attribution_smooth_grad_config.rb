@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/endpoint_deployed_models_explanation_spec_parameters_xrai_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/endpoint_dmespxasgcfn_sigma'
+require 'google/vertexai/property/endpoint_dmespxasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property

@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/artifactregistry/property/projectlocationrepository_remote_repository_config_upstream_credentials_username_password_credentials'
+require 'google/artifactregistry/property/projectlocationrepository_rrcucup_credentials'
 module GoogleInSpec
   module Artifactregistry
     module Property

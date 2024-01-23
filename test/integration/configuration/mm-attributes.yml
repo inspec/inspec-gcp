@@ -622,6 +622,25 @@ vpn_gateway:
   label_fingerprint : "value_labelfingerprint"
   stack_type : "IPV4_ONLY"
 
+region_network_endpoint_group:
+  name: "inspec"
+  region: "us-central1"
+  network_endpoint_type: "PRIVATE_SERVICE_CONNECT"
+  target_service: "us-central1-logging.googleapis.com"
+
+apigee_organization_apis:
+  name : "firstproxy",
+  parent : "organizations/ppradhan",
+  api_proxy_type : "PROGRAMMABLE"
+
+secrets_manager_v1:
+  secret_id: "inspec-gcp-secret"
+
+crypto_key_version:
+  key_ring: "gcp-inspec-kms-key-ring"
+  crypto_key: "gcp-inspec-kms-crypto-key-policy"
+  region: "us-central-1"
+
 organization_api_revision:
   name: "organizations/ppradhan/apis/helloworld/revisions/1"
   parent: "organizations/ppradhan/apis/helloworld"
