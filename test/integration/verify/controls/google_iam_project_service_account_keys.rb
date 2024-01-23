@@ -16,16 +16,8 @@ title 'Test GCP google_iam_project_service_account_keys resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_service_account_key = input('project_service_account_key', value: {
-  "name": "value_name",
-  "private_key_type": "value_privatekeytype",
-  "key_algorithm": "value_keyalgorithm",
-  "private_key_data": "value_privatekeydata",
-  "public_key_data": "value_publickeydata",
-  "valid_after_time": "value_validaftertime",
-  "valid_before_time": "value_validbeforetime",
-  "key_origin": "value_keyorigin",
-  "key_type": "value_keytype"
+project_service_account_key = input('project_service_account_key', value: {
+  "name": "projects/ppradhan/serviceAccounts/myaccount@ppradhan.iam.gserviceaccount.com",
 }, description: 'project_service_account_key description')
 control 'google_iam_project_service_account_keys-1.0' do
   impact 1.0

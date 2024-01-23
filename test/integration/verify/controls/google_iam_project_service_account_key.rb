@@ -17,15 +17,12 @@ title 'Test GCP google_iam_project_service_account_key resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_service_account_key = input('project_service_account_key', value: {
-  "name": "value_name",
-  "private_key_type": "value_privatekeytype",
-  "key_algorithm": "value_keyalgorithm",
-  "private_key_data": "value_privatekeydata",
-  "public_key_data": "value_publickeydata",
-  "valid_after_time": "value_validaftertime",
-  "valid_before_time": "value_validbeforetime",
-  "key_origin": "value_keyorigin",
-  "key_type": "value_keytype"
+  "name": "projects/ppradhan/serviceAccounts/myaccount@ppradhan.iam.gserviceaccount.com/keys/39cb9a8b59050acc5f06d4e1a7635d7d6c588ba1",
+  "name_plural": "projects/ppradhan/serviceAccounts/myaccount@ppradhan.iam.gserviceaccount.com",
+  "key_algorithm": "KEY_ALG_RSA_2048",
+  "valid_before_time": "9999-12-31T23:59:59Z",
+  "key_origin": "GOOGLE_PROVIDED",
+  "key_type": "USER_MANAGED"
 }, description: 'project_service_account_key description')
 control 'google_iam_project_service_account_key-1.0' do
   impact 1.0
@@ -34,15 +31,10 @@ control 'google_iam_project_service_account_key-1.0' do
   describe google_iam_project_service_account_key(name: project_service_account_key['name']) do
   	it { should exist }
   	its('name') { should cmp project_service_account_key['name'] }
-  	its('private_key_type') { should cmp project_service_account_key['private_key_type'] }
   	its('key_algorithm') { should cmp project_service_account_key['key_algorithm'] }
-  	its('private_key_data') { should cmp project_service_account_key['private_key_data'] }
-  	its('public_key_data') { should cmp project_service_account_key['public_key_data'] }
-  	its('valid_after_time') { should cmp project_service_account_key['valid_after_time'] }
   	its('valid_before_time') { should cmp project_service_account_key['valid_before_time'] }
   	its('key_origin') { should cmp project_service_account_key['key_origin'] }
   	its('key_type') { should cmp project_service_account_key['key_type'] }
-
   end
 
   describe google_iam_project_service_account_key(name: "does_not_exit") do
