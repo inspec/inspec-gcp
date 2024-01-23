@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.74 -->
+<!-- latest_release 1.11.75 -->
+## [v1.11.75](https://github.com/inspec/inspec-gcp/tree/v1.11.75) (2024-01-22)
+
+#### Merged Pull Requests
+- Fix Http Error logics  [#572](https://github.com/inspec/inspec-gcp/pull/572) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.74](https://github.com/inspec/inspec-gcp/tree/v1.11.74) (2024-01-22)
 
 #### Merged Pull Requests
 - CHEF-7362-Inspec-gcp-cloud-kms-key-rings-crypto-keys-crypto-key-versions [#428](https://github.com/inspec/inspec-gcp/pull/428) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.73](https://github.com/inspec/inspec-gcp/tree/v1.11.73) (2024-01-19)
 
