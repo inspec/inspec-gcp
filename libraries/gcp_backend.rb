@@ -273,6 +273,7 @@ class GcpApiConnection
   end
 
   def fetch_id(result)
+    return if result.is_a(Array)
     @resource_id = if result.key?('id')
                      result['id']
                    else
