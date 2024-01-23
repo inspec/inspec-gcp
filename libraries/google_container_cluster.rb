@@ -15,6 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/container/property/cluster_addons_config'
+require 'google/container/property/cluster_fleet'
 require 'google/container/property/cluster_addons_config_gce_persistent_disk_csi_driver_config'
 require 'google/container/property/cluster_addons_config_horizontal_pod_autoscaling'
 require 'google/container/property/cluster_addons_config_http_load_balancing'
@@ -90,6 +91,7 @@ class ContainerCluster < GcpResourceBase
   attr_reader :network_config
   attr_reader :enable_kubernetes_alpha
   attr_reader :location
+  attr_reader :fleet
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -139,6 +141,7 @@ class ContainerCluster < GcpResourceBase
     @release_channel = GoogleInSpec::Container::Property::ClusterReleaseChannel.new(@fetched['releaseChannel'], to_s)
     @shielded_nodes = GoogleInSpec::Container::Property::ClusterShieldedNodes.new(@fetched['shieldedNodes'], to_s)
     @network_config = GoogleInSpec::Container::Property::ClusterNetworkConfig.new(@fetched['networkConfig'], to_s)
+    @fleet = GoogleInSpec::Container::Property::ClusterFleet.new(@fetched['clusterFleet'], to_s)
     @enable_kubernetes_alpha = @fetched['enableKubernetesAlpha']
     @location = @fetched['location']
   end
