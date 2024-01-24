@@ -272,6 +272,7 @@ class GcpApiConnection
     raise StandardError, "Bad response: #{json}" \
   end
 
+  # @param result object on which look for id or name property
   def fetch_id(result)
     @resource_id = result['id'] || result['name'] if result.is_a?(Hash)
   end
