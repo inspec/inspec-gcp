@@ -632,3 +632,11 @@ apigee_organization_apis:
   name : "firstproxy",
   parent : "organizations/ppradhan",
   api_proxy_type : "PROGRAMMABLE"
+
+secrets_manager_v1:
+  secret_id: "inspec-gcp-secret"
+
+crypto_key_version:
+  key_ring: "gcp-inspec-kms-key-ring"
+  crypto_key: "gcp-inspec-kms-crypto-key-policy"
+  region: "us-central-1"

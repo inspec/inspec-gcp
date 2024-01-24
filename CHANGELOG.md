@@ -1,11 +1,36 @@
 # Change Log
 
-<!-- latest_release 1.11.72 -->
+<!-- latest_release 1.11.77 -->
+## [v1.11.77](https://github.com/inspec/inspec-gcp/tree/v1.11.77) (2024-01-23)
+
+#### Merged Pull Requests
+- CHEF-7353 Kubernetes Engine response attribute update [#571](https://github.com/inspec/inspec-gcp/pull/571) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.76](https://github.com/inspec/inspec-gcp/tree/v1.11.76) (2024-01-23)
+
+#### Merged Pull Requests
+- CHEF-7383-ComputeXPN Resource [#574](https://github.com/inspec/inspec-gcp/pull/574) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.75](https://github.com/inspec/inspec-gcp/tree/v1.11.75) (2024-01-22)
+
+#### Merged Pull Requests
+- Fix Http Error logics  [#572](https://github.com/inspec/inspec-gcp/pull/572) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.74](https://github.com/inspec/inspec-gcp/tree/v1.11.74) (2024-01-22)
+
+#### Merged Pull Requests
+- CHEF-7362-Inspec-gcp-cloud-kms-key-rings-crypto-keys-crypto-key-versions [#428](https://github.com/inspec/inspec-gcp/pull/428) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.73](https://github.com/inspec/inspec-gcp/tree/v1.11.73) (2024-01-19)
+
+#### Merged Pull Requests
+- CHEF-7375: SecretManager - Project Secrets  [#569](https://github.com/inspec/inspec-gcp/pull/569) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
 ## [v1.11.72](https://github.com/inspec/inspec-gcp/tree/v1.11.72) (2024-01-18)
 
 #### Merged Pull Requests
 - CHEF-7386-compute-RegionNetworkEndpointGroup - Resource Implementation [#537](https://github.com/inspec/inspec-gcp/pull/537) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.71](https://github.com/inspec/inspec-gcp/tree/v1.11.71) (2024-01-18)
 
