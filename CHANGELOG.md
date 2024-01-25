@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.77 -->
+<!-- latest_release 1.11.78 -->
+## [v1.11.78](https://github.com/inspec/inspec-gcp/tree/v1.11.78) (2024-01-25)
+
+#### Merged Pull Requests
+- CHEF-7374: Add missing properties to google_service_account_key resource [#576](https://github.com/inspec/inspec-gcp/pull/576) ([ahasunos](https://github.com/ahasunos))
+<!-- latest_release -->
+
 ## [v1.11.77](https://github.com/inspec/inspec-gcp/tree/v1.11.77) (2024-01-23)
 
 #### Merged Pull Requests
 - CHEF-7353 Kubernetes Engine response attribute update [#571](https://github.com/inspec/inspec-gcp/pull/571) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.76](https://github.com/inspec/inspec-gcp/tree/v1.11.76) (2024-01-23)
 
