@@ -138,6 +138,11 @@ Properties that can be accessed from the `google_container_cluster` resource:
 
     * `client_key`: Base64-encoded private key used by clients to authenticate to the cluster endpoint.
 
+  * `fleet`: The fleet configuration for the cluster.
+    * `project`: The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+    * `membership`: The full resource name of the registered fleet membership of the cluster, in the format //gkehub.googleapis.com/projects/*/locations/*/memberships/*.
+    * `pre_registered`: Whether the cluster has been registered through the fleet API.
+
   * `logging_service`: The logging service the cluster should use to write logs. Currently available options:  logging.googleapis.com - the Google Cloud Logging service. none - no logs will be exported from the cluster.  if left as an empty string,logging.googleapis.com will be used.
   Possible values:
     * logging.googleapis.com

@@ -30,6 +30,9 @@ control 'google_container_cluster-1.0' do
     its('locations.sort'){ should cmp [ gcp_kube_cluster_zone, gcp_kube_cluster_zone_extra1, gcp_kube_cluster_zone_extra2 ].sort }
     its('private_cluster_config.enable_private_endpoint') { should eq true}
     its('master_auth.username') { should eq gcp_kube_cluster_master_user }
+    its('fleet.project') { should eq nil }
+    its('fleet.membership') { should eq nil }
+    its('fleet.to_s') { should include "ClusterFleet" }
   end
 
   describe google_container_cluster(project: gcp_project_id, location: gcp_kube_cluster_zone, name: 'nonexistent') do
