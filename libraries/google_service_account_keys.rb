@@ -36,7 +36,6 @@ class IAMServiceAccountKeys < GcpResourceBase
   filter_table_config.add(:key_origins, field: :key_origin)
   filter_table_config.add(:disableds, field: :disabled)
 
-
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
