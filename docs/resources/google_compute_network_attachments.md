@@ -8,7 +8,7 @@ A `google_compute_network_attachments` is used to test a Google NetworkAttachmen
 
 ## Examples
 ```
-    describe google_compute_v1_network_attachments(project: 'chef-gcp-inspec', region: ' value_region') do
+    describe google_compute_network_attachments(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```

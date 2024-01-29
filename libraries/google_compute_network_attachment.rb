@@ -79,6 +79,6 @@ class ComputeNetworkAttachment < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/networkAttachments/{{network_attachment}}'
+    'projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}'
   end
 end

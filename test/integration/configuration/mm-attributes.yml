@@ -640,3 +640,8 @@ crypto_key_version:
   key_ring: "gcp-inspec-kms-key-ring"
   crypto_key: "gcp-inspec-kms-crypto-key-policy"
   region: "us-central-1"
+
+network_attachments:
+  name: "inspec-test"
+  region: "us-central1"
+  network: "inspec-network"

@@ -17,25 +17,25 @@ title 'Test GCP google_compute_network_attachments resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   network_attachment = input('network_attachment', value: {
-  "network_attachment": "value_networkattachment",
-  "project": "value_project",
-  "region": "value_region",
+  "network_attachment": "inspec-test",
+  "project": "ppradhan",
+  "region": "us-central1",
   "kind": "value_kind",
   "id": "value_id",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "inspec-test",
   "description": "value_description",
   "self_link": "value_selflink",
   "self_link_with_id": "value_selflinkwithid",
   "connection_preference": "value_connectionpreference",
   "fingerprint": "value_fingerprint",
-  "network": "value_network"
+  "network": "inspec-network"
 }, description: 'network_attachment description')
 control 'google_compute_network_attachments-1.0' do
   impact 1.0
   title 'google_compute_network_attachments resource test'
 
-      describe google_compute_v1_network_attachments(project: gcp_project_id, region: network_attachment['region']) do
+      describe google_compute_network_attachments(project: gcp_project_id, region: network_attachment['region']) do
       it { should exist }
     end
 end

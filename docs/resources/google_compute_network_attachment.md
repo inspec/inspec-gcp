@@ -8,7 +8,7 @@ A `google_compute_network_attachment` is used to test a Google NetworkAttachment
 
 ## Examples
 ```
-describe google_compute_v1_network_attachment(networkAttachment: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_network_attachment(name: 'value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -24,7 +24,7 @@ describe google_compute_v1_network_attachment(networkAttachment: ' ', project: '
 
 end
 
-describe google_compute_v1_network_attachment(networkAttachment: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_network_attachment(name: 'value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
@@ -49,7 +49,7 @@ Properties that can be accessed from the `google_compute_network_attachment` res
 
   * `region`: [Output Only] URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 
-  * `connection_preference`: 
+  * `connection_preference`:
   Possible values:
     * ACCEPT_AUTOMATIC
     * ACCEPT_MANUAL
