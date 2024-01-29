@@ -245,6 +245,9 @@ class GcpApiConnection
       request_type,
     )
     result = return_if_object(get_request.send)
+    if result.is_a?(Array)
+      return result
+    end
     next_page_token = result['nextPageToken']
     return [result] if next_page_token.nil?
 

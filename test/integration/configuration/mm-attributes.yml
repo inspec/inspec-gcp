@@ -640,3 +640,10 @@ crypto_key_version:
   key_ring: "gcp-inspec-kms-key-ring"
   crypto_key: "gcp-inspec-kms-crypto-key-policy"
   region: "us-central-1"
+
+organization_api_revision:
+  name: "organizations/ppradhan/apis/helloworld/revisions/1"
+  parent: "organizations/ppradhan/apis/helloworld"
+  content_type: "Application"
+  revision: 1
+  api: "helloworld"
