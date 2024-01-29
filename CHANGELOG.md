@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.78 -->
+<!-- latest_release 1.11.79 -->
+## [v1.11.79](https://github.com/inspec/inspec-gcp/tree/v1.11.79) (2024-01-25)
+
+#### Merged Pull Requests
+- Handle array responses [#575](https://github.com/inspec/inspec-gcp/pull/575) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.78](https://github.com/inspec/inspec-gcp/tree/v1.11.78) (2024-01-25)
 
 #### Merged Pull Requests
 - CHEF-7374: Add missing properties to google_service_account_key resource [#576](https://github.com/inspec/inspec-gcp/pull/576) ([ahasunos](https://github.com/ahasunos))
-<!-- latest_release -->
 
 ## [v1.11.77](https://github.com/inspec/inspec-gcp/tree/v1.11.77) (2024-01-23)
 
