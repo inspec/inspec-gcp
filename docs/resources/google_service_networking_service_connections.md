@@ -8,7 +8,7 @@ A `google_service_networking_service_connections` is used to test a Google servi
 
 ## Examples
 ```
-    describe google_servicenetworking_service_connections(parent: ' value_parent') do
+    describe google_servicenetworking_service_connections(parent: ' value_parent',network: 'value_network') do
     it { should exist }
   end
 ```

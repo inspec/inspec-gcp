@@ -33,7 +33,7 @@ class ServiceNetworkingServiceConnections < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('connections')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -80,6 +80,6 @@ class ServiceNetworkingServiceConnections < GcpResourceBase
   end
 
   def resource_base_url
-    '{{parent}}/connections'
+    '{{parent}}/connections?network={{network}}'
   end
 end

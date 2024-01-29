@@ -17,13 +17,14 @@ title 'Test GCP google_service_networking_service_connections resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   service_connection = input('service_connection', value: {
-  "parent": "value_parent"
+  "parent": "services/servicenetworking.googleapis.com",
+  "network": "projects/ppradhan/global/networks/inspec-network"
 }, description: 'service_connection description')
 control 'google_service_networking_service_connections-1.0' do
   impact 1.0
   title 'google_service_networking_service_connections resource test'
 
-      describe google_servicenetworking_service_connections(parent: service_connection['parent']) do
+      describe google_servicenetworking_service_connections(parent: service_connection['parent'],service_connection['network']) do
       it { should exist }
     end
 end
