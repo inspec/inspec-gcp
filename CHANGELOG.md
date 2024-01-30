@@ -1,11 +1,71 @@
 # Change Log
 
-<!-- latest_release 1.11.67 -->
+<!-- latest_release 1.11.79 -->
+## [v1.11.79](https://github.com/inspec/inspec-gcp/tree/v1.11.79) (2024-01-25)
+
+#### Merged Pull Requests
+- Handle array responses [#575](https://github.com/inspec/inspec-gcp/pull/575) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
+## [v1.11.78](https://github.com/inspec/inspec-gcp/tree/v1.11.78) (2024-01-25)
+
+#### Merged Pull Requests
+- CHEF-7374: Add missing properties to google_service_account_key resource [#576](https://github.com/inspec/inspec-gcp/pull/576) ([ahasunos](https://github.com/ahasunos))
+
+## [v1.11.77](https://github.com/inspec/inspec-gcp/tree/v1.11.77) (2024-01-23)
+
+#### Merged Pull Requests
+- CHEF-7353 Kubernetes Engine response attribute update [#571](https://github.com/inspec/inspec-gcp/pull/571) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.76](https://github.com/inspec/inspec-gcp/tree/v1.11.76) (2024-01-23)
+
+#### Merged Pull Requests
+- CHEF-7383-ComputeXPN Resource [#574](https://github.com/inspec/inspec-gcp/pull/574) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.75](https://github.com/inspec/inspec-gcp/tree/v1.11.75) (2024-01-22)
+
+#### Merged Pull Requests
+- Fix Http Error logics  [#572](https://github.com/inspec/inspec-gcp/pull/572) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.74](https://github.com/inspec/inspec-gcp/tree/v1.11.74) (2024-01-22)
+
+#### Merged Pull Requests
+- CHEF-7362-Inspec-gcp-cloud-kms-key-rings-crypto-keys-crypto-key-versions [#428](https://github.com/inspec/inspec-gcp/pull/428) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.73](https://github.com/inspec/inspec-gcp/tree/v1.11.73) (2024-01-19)
+
+#### Merged Pull Requests
+- CHEF-7375: SecretManager - Project Secrets  [#569](https://github.com/inspec/inspec-gcp/pull/569) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.72](https://github.com/inspec/inspec-gcp/tree/v1.11.72) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-7386-compute-RegionNetworkEndpointGroup - Resource Implementation [#537](https://github.com/inspec/inspec-gcp/pull/537) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.71](https://github.com/inspec/inspec-gcp/tree/v1.11.71) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-8912- MAGIC-MODULE-apigee-Organizations__api - Resource Implementation [#542](https://github.com/inspec/inspec-gcp/pull/542) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.70](https://github.com/inspec/inspec-gcp/tree/v1.11.70) (2024-01-18)
+
+#### Merged Pull Requests
+- CHEF-3309-InSpec GCP Http error fixes [#568](https://github.com/inspec/inspec-gcp/pull/568) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.69](https://github.com/inspec/inspec-gcp/tree/v1.11.69) (2024-01-11)
+
+#### Merged Pull Requests
+- Refactor Long to Short Name Conversion [#565](https://github.com/inspec/inspec-gcp/pull/565) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.68](https://github.com/inspec/inspec-gcp/tree/v1.11.68) (2024-01-08)
+
+#### Merged Pull Requests
+- Reverted version pinning [#567](https://github.com/inspec/inspec-gcp/pull/567) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
 ## [v1.11.67](https://github.com/inspec/inspec-gcp/tree/v1.11.67) (2023-12-21)
 
 #### Merged Pull Requests
 - Update inspec version pinning in Gemfile [#563](https://github.com/inspec/inspec-gcp/pull/563) ([ahasunos](https://github.com/ahasunos))
-<!-- latest_release -->
 
 ## [v1.11.66](https://github.com/inspec/inspec-gcp/tree/v1.11.66) (2023-12-15)
 

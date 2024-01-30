@@ -13,10 +13,10 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_blur_baseline_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma'
-require 'google/vertexai/property/trainingpipeline_model_to_upload_explanation_spec_parameters_integrated_gradients_attribution_smooth_grad_config_feature_noise_sigma_noise_sigma'
+require 'google/vertexai/property/trainingpipeline_mtuespigabb_config'
+require 'google/vertexai/property/trainingpipeline_mtuespigasg_config'
+require 'google/vertexai/property/trainingpipeline_mtuespigasgcfn_sigma'
+require 'google/vertexai/property/trainingpipeline_mtuespigasgcfnsn_sigma'
 module GoogleInSpec
   module VertexAI
     module Property
