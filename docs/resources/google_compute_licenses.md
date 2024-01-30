@@ -8,7 +8,7 @@ A `google_compute_licenses` is used to test a Google License resource
 
 ## Examples
 ```
-    describe google_compute_v1_licenses(project: 'chef-gcp-inspec', region: ' value_region') do
+  describe google_compute_licenses(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```

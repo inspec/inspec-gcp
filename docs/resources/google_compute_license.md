@@ -8,7 +8,7 @@ A `google_compute_license` is used to test a Google License resource
 
 ## Examples
 ```
-describe google_compute_v1_license(networkAttachment: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_license(license: 'value_license_id', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('name') { should cmp 'value_name' }
@@ -20,7 +20,7 @@ describe google_compute_v1_license(networkAttachment: ' ', project: 'chef-gcp-in
 
 end
 
-describe google_compute_v1_license(networkAttachment: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_license(license: 'value_license_id', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
@@ -47,7 +47,7 @@ Properties that can be accessed from the `google_compute_license` resource:
 
   * `self_link`: [Output Only] Server-defined URL for the resource.
 
-  * `resource_requirements`: 
+  * `resource_requirements`:
 
     * `min_guest_cpu_count`: Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
 

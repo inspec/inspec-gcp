@@ -18,11 +18,11 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   license = input('license', value: {
   "network_attachment": "value_networkattachment",
-  "project": "value_project",
-  "region": "value_region",
-  "kind": "value_kind",
-  "name": "value_name",
-  "id": "value_id",
+  "project": "windows-cloud",
+  "region": "us-central1",
+  "kind": "compute#license",
+  "name": "mirantis-container-runtime",
+  "id": "3607075093511293736",
   "license_code": "value_licensecode",
   "creation_timestamp": "value_creationtimestamp",
   "description": "value_description",
@@ -32,7 +32,7 @@ control 'google_compute_licenses-1.0' do
   impact 1.0
   title 'google_compute_licenses resource test'
 
-      describe google_compute_v1_licenses(project: gcp_project_id, region: license['region']) do
+      describe google_compute_licenses(project: gcp_project_id, region: license['region']) do
       it { should exist }
     end
 end
