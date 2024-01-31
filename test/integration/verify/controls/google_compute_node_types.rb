@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
@@ -16,23 +18,20 @@ title 'Test GCP google_compute_node_types resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  node_type = input('node_type', value: {
-  "node_type": "value_nodetype",
-  "project": "value_project",
-  "zone": "value_zone",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "cpu_platform": "value_cpuplatform",
-  "self_link": "value_selflink"
-}, description: 'node_type description')
+node_type = input('node_type', value: {
+                    "zone": 'us-central1-a',
+  "full_zone": 'https://www.googleapis.com/compute/v1/projects/ppradhan/zones/us-central1-a',
+  "name": 'c2-node-60-240',
+                  }, description: 'node_type description')
+
 control 'google_compute_node_types-1.0' do
   impact 1.0
   title 'google_compute_node_types resource test'
 
-      describe google_compute_v1_node_types(project: gcp_project_id, zone: node_type['zone']) do
-      it { should exist }
-    end
+  describe google_compute_node_types(project: gcp_project_id, zone: node_type['zone']) do
+    it { should exist }
+    its('count') { should be >= 1 }
+    its('names') { should include node_type['name'] }
+    its('zones') { should include node_type['full_zone'] }
+  end
 end

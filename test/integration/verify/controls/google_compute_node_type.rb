@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ----------------------------------------------------------------------------
 #
 #     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
@@ -16,36 +18,32 @@ title 'Test GCP google_compute_node_type resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  node_type = input('node_type', value: {
-  "node_type": "value_nodetype",
-  "project": "value_project",
-  "zone": "value_zone",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "cpu_platform": "value_cpuplatform",
-  "self_link": "value_selflink"
-}, description: 'node_type description')
+node_type = input('node_type', value: {
+                    "node_type": 'c2-node-60-240',
+  "project": 'ppradhan',
+  "zone": 'us-central1-a',
+  "full_zone": 'https://www.googleapis.com/compute/v1/projects/ppradhan/zones/us-central1-a',
+  "kind": 'compute#nodeType',
+  "name": 'c2-node-60-240',
+  "description": '60 CPUs and 240 GB RAM',
+  "cpu_platform": 'Intel Cascade Lake',
+  "self_link": 'https://www.googleapis.com/compute/v1/projects/ppradhan/zones/us-central1-a/nodeTypes/c2-node-60-240',
+                  }, description: 'node_type description')
 control 'google_compute_node_type-1.0' do
   impact 1.0
   title 'google_compute_node_type resource test'
 
-  describe google_compute_v1_node_type(nodeType: node_type['nodeType'], project: gcp_project_id, zone: node_type['zone']) do
-  	it { should exist }
-  	its('kind') { should cmp node_type['kind'] }
-  	its('id') { should cmp node_type['id'] }
-  	its('creation_timestamp') { should cmp node_type['creation_timestamp'] }
-  	its('name') { should cmp node_type['name'] }
-  	its('description') { should cmp node_type['description'] }
-  	its('cpu_platform') { should cmp node_type['cpu_platform'] }
-  	its('zone') { should cmp node_type['zone'] }
-  	its('self_link') { should cmp node_type['self_link'] }
-
+  describe google_compute_node_type(node_type: node_type['node_type'], project: gcp_project_id, zone: node_type['zone']) do
+    it { should exist }
+    its('kind') { should cmp node_type['kind'] }
+    its('name') { should cmp node_type['name'] }
+    its('description') { should cmp node_type['description'] }
+    its('cpu_platform') { should cmp node_type['cpu_platform'] }
+    its('zone') { should cmp node_type['full_zone'] }
+    its('self_link') { should cmp node_type['self_link'] }
   end
 
-  describe google_compute_v1_node_type(nodeType: node_type['nodeType'], project: gcp_project_id, zone: node_type['zone']) do
-  	it { should_not exist }
+  describe google_compute_node_type(node_type: 'n1-standard-1', project: gcp_project_id, zone: 'us-central1-b') do
+    it { should_not exist }
   end
 end
