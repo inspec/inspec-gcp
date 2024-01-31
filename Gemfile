@@ -5,8 +5,8 @@ gem 'faraday', '>= 0.16.2'
 gem 'google-api-client'
 gem 'google-cloud'
 gem 'googleauth'
-# we are pinning to inspec-core-bin below 6.0 to avoid bringing licensing change in the CI
-gem 'inspec-core-bin', '>= 5.22.36', '< 6.0'
+gem 'inifile'
+gem 'inspec-bin', '4.16.0'
 gem 'rubocop', '>= 0.77.0'
 
 group :development do
