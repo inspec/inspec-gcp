@@ -380,6 +380,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environments.md)             |
 | [google_compute_service_attachment](docs/resources/google_compute_service_attachment.md)                           | [google_compute_service_attachments](docs/resources/google_compute_service_attachments.md)             |
 | [google_secret_manager_secret](docs/resources/google_secret_manager_secret.md)                           | [google_secret_manager_secrets](docs/resources/google_secret_manager_secrets.md)             |
+| [google_compute_node_type](docs/resources/google_compute_node_type.md)                           | [google_compute_node_types](docs/resources/google_compute_node_types.md)             |
 
 ## Examples
 
