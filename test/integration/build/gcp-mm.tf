@@ -1731,3 +1731,13 @@ resource "google_kms_crypto_key" "cryptokey" {
 resource "google_kms_crypto_key_version" "example-key" {
   crypto_key = google_kms_crypto_key.cryptokey.id
 }
+
+variable "compute_node_template" {
+  type = any
+}
+
+resource "google_compute_node_template" "tmpl" {
+  name      = var.compute_node_template["name"]
+  region    = var.compute_node_template["region"]
+  node_type = var.compute_node_template["node_type"]
+}

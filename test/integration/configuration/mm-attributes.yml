@@ -640,3 +640,8 @@ crypto_key_version:
   key_ring: "gcp-inspec-kms-key-ring"
   crypto_key: "gcp-inspec-kms-crypto-key-policy"
   region: "us-central-1"
+
+compute_node_template:
+  name: "terraform-test-tmpl"
+  region: "us-central1"
+  node_type: "c2-node-60-240"
