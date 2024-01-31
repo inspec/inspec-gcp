@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.80 -->
+<!-- latest_release 1.11.81 -->
+## [v1.11.81](https://github.com/inspec/inspec-gcp/tree/v1.11.81) (2024-01-31)
+
+#### Merged Pull Requests
+- Revert &quot;CHEF-7191-MAGIC-MODULE-compute_v1-License - Resource Implementation&quot; [#585](https://github.com/inspec/inspec-gcp/pull/585) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.80](https://github.com/inspec/inspec-gcp/tree/v1.11.80) (2024-01-31)
 
 #### Merged Pull Requests
 - CHEF-7191-MAGIC-MODULE-compute_v1-License - Resource Implementation [#579](https://github.com/inspec/inspec-gcp/pull/579) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.79](https://github.com/inspec/inspec-gcp/tree/v1.11.79) (2024-01-25)
 
