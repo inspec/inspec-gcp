@@ -641,6 +641,10 @@ crypto_key_version:
   crypto_key: "gcp-inspec-kms-crypto-key-policy"
   region: "us-central-1"
 
+compute_machine_images:
+  name: "image-1"
+  instance: "inspec-test-instance"
+
 network_attachments:
   name: "inspec-test"
   region: "us-central1"
