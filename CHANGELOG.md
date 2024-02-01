@@ -1,11 +1,26 @@
 # Change Log
 
-<!-- latest_release 1.11.79 -->
+<!-- latest_release 1.11.82 -->
+## [v1.11.82](https://github.com/inspec/inspec-gcp/tree/v1.11.82) (2024-01-31)
+
+#### Merged Pull Requests
+- Fix Verify Pipeline timeout issue [#586](https://github.com/inspec/inspec-gcp/pull/586) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
+## [v1.11.81](https://github.com/inspec/inspec-gcp/tree/v1.11.81) (2024-01-31)
+
+#### Merged Pull Requests
+- Revert &quot;CHEF-7191-MAGIC-MODULE-compute_v1-License - Resource Implementation&quot; [#585](https://github.com/inspec/inspec-gcp/pull/585) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.80](https://github.com/inspec/inspec-gcp/tree/v1.11.80) (2024-01-31)
+
+#### Merged Pull Requests
+- CHEF-7191-MAGIC-MODULE-compute_v1-License - Resource Implementation [#579](https://github.com/inspec/inspec-gcp/pull/579) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.79](https://github.com/inspec/inspec-gcp/tree/v1.11.79) (2024-01-25)
 
 #### Merged Pull Requests
 - Handle array responses [#575](https://github.com/inspec/inspec-gcp/pull/575) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.78](https://github.com/inspec/inspec-gcp/tree/v1.11.78) (2024-01-25)
 
