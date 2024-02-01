@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.82 -->
+<!-- latest_release 1.11.83 -->
+## [v1.11.83](https://github.com/inspec/inspec-gcp/tree/v1.11.83) (2024-02-01)
+
+#### Merged Pull Requests
+- CHEF-7192_1-MAGIC-MODULE-compute_v1-MachineImage - Resource Implementation [#584](https://github.com/inspec/inspec-gcp/pull/584) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.82](https://github.com/inspec/inspec-gcp/tree/v1.11.82) (2024-01-31)
 
 #### Merged Pull Requests
 - Fix Verify Pipeline timeout issue [#586](https://github.com/inspec/inspec-gcp/pull/586) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.81](https://github.com/inspec/inspec-gcp/tree/v1.11.81) (2024-01-31)
 
