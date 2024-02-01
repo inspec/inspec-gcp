@@ -644,3 +644,8 @@ crypto_key_version:
 compute_machine_images:
   name: "image-1"
   instance: "inspec-test-instance"
+
+network_attachments:
+  name: "inspec-test"
+  region: "us-central1"
+  network: "inspec-network"
