@@ -115,6 +115,6 @@ class ComputeMachineImage < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/global/machineImages/{{machine_image}}'
+    'projects/{{project}}/global/machineImages/{{name}}'
   end
 end

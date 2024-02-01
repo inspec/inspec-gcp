@@ -17,12 +17,11 @@ title 'Test GCP google_compute_machine_images resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   machine_image = input('machine_image', value: {
-  "machine_image": "value_machineimage",
-  "project": "value_project",
-  "kind": "value_kind",
-  "id": "value_id",
+  "project": "ppradhan",
+  "kind": "compute#machineImage",
+  "id": "7552526330490377685",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "image-1",
   "description": "value_description",
   "self_link": "value_selflink",
   "source_instance": "value_sourceinstance",
@@ -33,7 +32,7 @@ control 'google_compute_machine_images-1.0' do
   impact 1.0
   title 'google_compute_machine_images resource test'
 
-      describe google_compute_v1_machine_images(project: gcp_project_id) do
+    describe google_compute_machine_images(project: gcp_project_id) do
       it { should exist }
     end
 end

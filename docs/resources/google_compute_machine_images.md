@@ -8,7 +8,7 @@ A `google_compute_machine_images` is used to test a Google MachineImage resource
 
 ## Examples
 ```
-    describe google_compute_v1_machine_images(project: 'chef-gcp-inspec') do
+  describe google_compute_machine_images(project: 'chef-gcp-inspec') do
     it { should exist }
   end
 ```
