@@ -33,7 +33,7 @@ class OrgpolicyOrganizationPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizationPolicies')
+    @table = fetch_wrapped_resource('policies')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -76,10 +76,10 @@ class OrgpolicyOrganizationPolicys < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://orgpolicy.googleapis.com//v1/'
+    'https://orgpolicy.googleapis.com/v2/'
   end
 
   def resource_base_url
-    'v2/{{parent}}/policies'
+    '{{parent}}/policies'
   end
 end

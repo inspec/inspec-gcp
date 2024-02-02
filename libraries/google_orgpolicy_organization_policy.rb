@@ -59,10 +59,10 @@ class OrgpolicyOrganizationPolicy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://orgpolicy.googleapis.com//v1/'
+    'https://orgpolicy.googleapis.com/v2/'
   end
 
   def resource_base_url
-    'v2/{{name}}'
+    '{{parent}}/policies/{{name}}'
   end
 end
