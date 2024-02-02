@@ -33,6 +33,8 @@ class IAMServiceAccountKeys < GcpResourceBase
   filter_table_config.add(:key_types, field: :key_type)
   filter_table_config.add(:service_accounts, field: :service_account)
   filter_table_config.add(:paths, field: :path)
+  filter_table_config.add(:key_origins, field: :key_origin)
+  filter_table_config.add(:disableds, field: :disabled)
 
   filter_table_config.connect(self, :table)
 
@@ -82,6 +84,8 @@ class IAMServiceAccountKeys < GcpResourceBase
       'keyType' => ->(obj) { [:key_type, obj['keyType']] },
       'serviceAccount' => ->(obj) { [:service_account, obj['serviceAccount']] },
       'path' => ->(obj) { [:path, obj['path']] },
+      'keyOrigin' => ->(obj) { [:key_origin, obj['keyOrigin']] },
+      'disabled' => ->(obj) { [:disabled, obj['disabled']] },
     }
   end
 

@@ -22,7 +22,7 @@ class GcpResourceBase < Inspec.resource(1)
 
     # Magic Modules generated resources use an alternate transport method
     # In the future this will be moved into the train-gcp plugin itself
-    @connection = GcpApiConnection.new if opts[:use_http_transport]
+    @connection = GcpApiConnection.new(self) if opts[:use_http_transport]
   end
 
   def failed_resource?
@@ -194,7 +194,10 @@ class GcpResourceProbe
 end
 
 class GcpApiConnection
-  def initialize
+  attr_reader :resource
+
+  def initialize(resource)
+    @resource = resource
     config_name = Inspec::Config.cached.unpack_train_credentials[:host]
     ENV['CLOUDSDK_ACTIVE_CONFIG_NAME'] = config_name
     @google_application_credentials = config_name.blank? && ENV['GOOGLE_APPLICATION_CREDENTIALS']
@@ -220,7 +223,11 @@ class GcpApiConnection
       request_type,
       body,
     )
-    return_if_object get_request.send
+    validate_response get_request.send
+  end
+
+  def validate_response(response)
+    response.is_a?(Net::HTTPNotFound) || response.is_a?(Net::HTTPNoContent) ? nil : return_if_object(response)
   end
 
   def fetch_all(base_url, template, var_data, request_type = 'Get')
@@ -237,7 +244,7 @@ class GcpApiConnection
       fetch_auth,
       request_type,
     )
-    result = JSON.parse(get_request.send.body)
+    result = return_if_object(get_request.send)
     next_page_token = result['nextPageToken']
     return [result] if next_page_token.nil?
 
@@ -245,30 +252,41 @@ class GcpApiConnection
   end
 
   def return_if_object(response)
-    raise "Bad response: #{response.body}" \
-      if response.is_a?(Net::HTTPBadRequest)
-    raise "Bad response: #{response}" \
-      unless response.is_a?(Net::HTTPResponse)
-    return if response.is_a?(Net::HTTPNotFound)
-    return if response.is_a?(Net::HTTPNoContent)
-    result = JSON.parse(response.body)
-    raise_if_errors result, %w{error errors}, 'message'
-    raise "Bad response: #{response}" unless response.is_a?(Net::HTTPOK)
+    unless response.is_a?(Net::HTTPSuccess)
+      if response.is_a?(Net::HTTPResponse)
+        body = response.body
+      else
+        body = response
+      end
+      result = parser(body)
+      raise_if_errors result, 'message'
+    end
+    result = parser(response.body)
     fetch_id result
     result
   end
 
-  def fetch_id(result)
-    @resource_id = if result.key?('id')
-                     result['id']
-                   else
-                     result['name']
-                   end
+  def parser(json)
+    JSON.parse(json)
+  rescue JSON::ParserError
+    raise StandardError, "Bad response: #{json}" \
   end
+
+  # @param result object on which look for id or name property
+  def fetch_id(result)
+    @resource_id = result['id'] || result['name'] if result.is_a?(Hash)
+  end
+
   attr_reader :resource_id
 
-  def raise_if_errors(response, err_path, msg_field)
-    errors = self.class.navigate(response, err_path)
+  def raise_if_errors(response, msg_field)
+    errors = if response['error']['message']&.nil?
+               self.class.navigate(response, %w{error errors})
+             else
+               self.class.navigate(response, %w{error message})
+             end
+    resource.fail_resource errors
+    resource.failed_resource = true
     raise_error(errors, msg_field) unless errors.nil?
   end
 

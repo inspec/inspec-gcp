@@ -233,6 +233,8 @@ The following resources are available in the InSpec GCP Profile
 | [google_compute_interconnect](docs/resources/google_compute_interconnect.md)                                         | [google_compute_interconnects](docs/resources/google_compute_interconnects.md)                                                 |
 | [google_compute_interconnect_location](docs/resources/google_compute_interconnect_location.md)                       | [google_compute_interconnect_locations](docs/resources/google_compute_interconnect_locations.md)                               |
 | [google_compute_license_code](docs/resources/google_compute_license_code.md)                                         | No Plural Resource                                                                                                             |
+| [google_compute_machine_image](docs/resources/google_compute_machine_image.md)                                                   | [google_compute_machine_images](docs/resources/google_compute_machine_images.md)                                                           |
+| [google_compute_network_attachment](docs/resources/google_compute_network_attachment.md)                                                   | [google_compute_network_attachments](docs/resources/google_compute_network_attachments.md)                                                           |
 | [google_compute_network](docs/resources/google_compute_network.md)                                                   | [google_compute_networks](docs/resources/google_compute_networks.md)                                                           |
 | [google_compute_network_endpoint_group](docs/resources/google_compute_network_endpoint_group.md)                     | [google_compute_network_endpoint_groups](docs/resources/google_compute_network_endpoint_groups.md)                             |
 | [google_compute_node_group](docs/resources/google_compute_node_group.md)                                             | [google_compute_node_groups](docs/resources/google_compute_node_groups.md)                                                     |
@@ -262,6 +264,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_compute_target_tcp_proxy](docs/resources/google_compute_target_tcp_proxy.md)                                 | [google_compute_target_tcp_proxies](docs/resources/google_compute_target_tcp_proxies.md)                                       |
 | [google_compute_url_map](docs/resources/google_compute_url_map.md)                                                   | [google_compute_url_maps](docs/resources/google_compute_url_maps.md)                                                           |
 | [google_compute_vpn_tunnel](docs/resources/google_compute_vpn_tunnel.md)                                             | [google_compute_vpn_tunnels](docs/resources/google_compute_vpn_tunnels.md)                                                     |
+| No Singular Resource                                           | [google_compute_xpn_resources](docs/resources/google_compute_xpn_resources.md)                                                     |
 | [google_compute_zone](docs/resources/google_compute_zone.md)                                                         | [google_compute_zones](docs/resources/google_compute_zones.md)                                                                 |
 | [google_compute_zone_operation](docs/resources/google_compute_zone_operation.md)                                     | [google_compute_zone_operations](docs/resources/google_compute_zone_operations.md)                                             |
 | [google_container_cluster](docs/resources/google_container_cluster.md)                                               | [google_container_clusters](docs/resources/google_container_clusters.md)                                                       |
@@ -280,6 +283,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_kms_crypto_key](docs/resources/google_kms_crypto_key.md)                                                     | [google_kms_crypto_keys](docs/resources/google_kms_crypto_keys.md)                                                             |
 | [google_kms_crypto_key_iam_binding](docs/resources/google_kms_crypto_key_iam_binding.md)                             | [google_kms_crypto_key_iam_bindings](docs/resources/google_kms_crypto_key_iam_bindings.md)                                     |
 | [google_kms_crypto_key_iam_policy](docs/resources/google_kms_crypto_key_iam_policy.md)                               | No Plural Resource                                                                                                             |
+| [google_kms_crypto_key_version](docs/resources/google_kms_crypto_key_version.md)                             | [google_kms_crypto_key_versions](docs/resources/google_kms_crypto_key_versions.md)                                     |
 | [google_kms_ekm_connection](docs/resources/google_kms_ekm_connection.md)                                             | [google_kms_ekm_connections](docs/resources/google_kms_ekm_connections.md)                                                     |
 | [google_kms_key_ring](docs/resources/google_kms_key_ring.md)                                                         | [google_kms_key_rings](docs/resources/google_kms_key_rings.md)                                                                 |
 | [google_kms_key_ring_iam_binding](docs/resources/google_kms_key_ring_iam_binding.md)                                 | [google_kms_key_ring_iam_bindings](docs/resources/google_kms_key_ring_iam_bindings.md)                                         |
@@ -321,6 +325,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_runtime_config_config_iam_policy](docs/resources/google_runtime_config_config_iam_policy.md)                 | No Plural Resource                                                                                                             |
 | [google_runtime_config_variable](docs/resources/google_runtime_config_variable.md)                                   | [google_runtime_config_variables](docs/resources/google_runtime_config_variables.md)                                           |
 | [google_service_account](docs/resources/google_service_account.md)                                                   | [google_service_accounts](docs/resources/google_service_accounts.md)                                                           |
+| No Singular Resource                                                    | [google_service_networking_service_connections](docs/resources/google_service_networking_service_connections.md)                                                           |
 | [google_service_account_key](docs/resources/google_service_account_key.md)                                           | [google_service_account_keys](docs/resources/google_service_account_keys.md)                                                   |
 | [google_sourcerepo_repository](docs/resources/google_sourcerepo_repository.md)                                       | [google_sourcerepo_repositories](docs/resources/google_sourcerepo_repositories.md)                                             |
 | [google_spanner_database](docs/resources/google_spanner_database.md)                                                 | [google_spanner_databases](docs/resources/google_spanner_databases.md)                                                         |
@@ -375,7 +380,9 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_tensorboard_experiment_run](docs/resources/google_vertex_ai_tensorboard_experiment_run.md)                                       | [google_vertex_ai_tensorboard_experiment_runs](docs/resources/google_vertex_ai_tensorboard_experiment_runs.md)                                   |
 | [google_vertex_ai_tensorboard_experiment_run_time_series_resource](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resource.md)                                       | [google_vertex_ai_tensorboard_experiment_run_time_series_resources](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resources.md)                                   |
 | [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
-| [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environment.md)             |
+| [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environments.md)             |
+| [google_compute_service_attachment](docs/resources/google_compute_service_attachment.md)                           | [google_compute_service_attachments](docs/resources/google_compute_service_attachments.md)             |
+| [google_secret_manager_secret](docs/resources/google_secret_manager_secret.md)                           | [google_secret_manager_secrets](docs/resources/google_secret_manager_secrets.md)             |
 
 ## Examples
 
@@ -425,6 +432,23 @@ control 'gcp-projects-zones-vm-label-loop-1.0' do
   end
 end
 ```
+This example verifies there are sufficient privileges to list all regions.
+
+```
+next unless google_compute_regions(project: gcp_project_id).resource_failed?
+google_compute_regions(project: gcp_project_id).region_names.each do |region_name|
+  describe google_compute_region(project: gcp_project_id,  region: region_name) do
+    it { should be_up }
+  end
+end
+
+if google_compute_regions(project: gcp_project_id).resource_failed?
+  puts google_compute_regions(project: gcp_project_id).resource_exception_message
+  puts google_compute_regions(project: gcp_project_id,name: region_name).pretty_inspect
+end
+```
+
+
 
 This example assumes there are sufficient privileges to list all GCP projects.
 

@@ -7,7 +7,7 @@ gcp_project_number = input(:gcp_project_number, value: '', description: 'The GCP
 control 'gcp-project' do
 
   impact 1.0
-  title 'Ensure that the project was created and has the correct settings'
+  title 'Ensure that the project was created and has the correct settings '
 
   describe google_project(project: gcp_project_id) do
     it { should exist }

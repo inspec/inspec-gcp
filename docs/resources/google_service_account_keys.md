@@ -19,7 +19,7 @@ end
     describe google_service_account_keys(project: 'sample-project', service_account: 'sample-account@sample-project.iam.gserviceaccount.com') do
       its('count') { should be <= 1000}
     end
-    
+
 ### Test that a service account with expected name is available
 
     describe google_service_account_keys(project: 'sample-project', service_account: 'sample-account@sample-project.iam.gserviceaccount.com') do
@@ -37,9 +37,11 @@ See [google_service_account_key.md](google_service_account_key.md) for more deta
   * `public_key_data`: an array of `google_service_account_key` public_key_data
   * `valid_after_times`: an array of `google_service_account_key` valid_after_time
   * `valid_before_times`: an array of `google_service_account_key` valid_before_time
+  * `key_origins`: an array of `google_service_account_key` key_origin
   * `key_types`: an array of `google_service_account_key` key_type
   * `service_accounts`: an array of `google_service_account_key` service_account
   * `paths`: an array of `google_service_account_key` path
+  * `disableds`: an array of `google_service_account_key` disabled
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
