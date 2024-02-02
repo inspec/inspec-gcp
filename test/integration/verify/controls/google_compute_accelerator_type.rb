@@ -15,13 +15,27 @@
 title 'Test GCP google_compute_accelerator_type resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-accelerator_type = input('accelerator_type', value: null, description: 'The accelerator type')
+
+  accelerator_type = input('accelerator_type', value: {
+  "name": "accelerator_id"
+}, description: 'accelerator_type description')
 control 'google_compute_accelerator_type-1.0' do
   impact 1.0
   title 'google_compute_accelerator_type resource test'
 
-  describe google_compute_accelerator_type(project: gcp_project_id, zone: 'us-east1-b', name: accelerator_type['name']) do
-    it { should exist }
-    it { should be_up }
+  describe google_compute_v1_accelerator_type(acceleratorType: accelerator_type['acceleratorType'], project: gcp_project_id, zone: accelerator_type['zone']) do
+  	it { should exist }
+  	its('kind') { should cmp accelerator_type['kind'] }
+  	its('id') { should cmp accelerator_type['id'] }
+  	its('creation_timestamp') { should cmp accelerator_type['creation_timestamp'] }
+  	its('name') { should cmp accelerator_type['name'] }
+  	its('description') { should cmp accelerator_type['description'] }
+  	its('zone') { should cmp accelerator_type['zone'] }
+  	its('self_link') { should cmp accelerator_type['self_link'] }
+
+  end
+
+  describe google_compute_v1_accelerator_type(acceleratorType: accelerator_type['acceleratorType'], project: gcp_project_id, zone: accelerator_type['zone']) do
+  	it { should_not exist }
   end
 end

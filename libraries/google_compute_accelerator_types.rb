@@ -23,19 +23,22 @@ class ComputeAcceleratorTypes < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
-  filter_table_config.add(:deprecateds, field: :deprecated)
-  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:deprecateds, field: :deprecated)
   filter_table_config.add(:zones, field: :zone)
+  filter_table_config.add(:self_links, field: :self_link)
+  filter_table_config.add(:maximum_cards_per_instances, field: :maximum_cards_per_instance)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('acceleratorTypes')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -68,18 +71,16 @@ class ComputeAcceleratorTypes < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(obj['deprecated'], to_s)] },
-      'description' => ->(obj) { [:description, obj['description']] },
+      'kind' => ->(obj) { [:kind, obj['kind']] },
       'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
       'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'deprecated' => ->(obj) { [:deprecated, GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(obj['deprecated'], to_s)] },
       'zone' => ->(obj) { [:zone, obj['zone']] },
+      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
+      'maximumCardsPerInstance' => ->(obj) { [:maximum_cards_per_instance, obj['maximumCardsPerInstance']] },
     }
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
   end
 
   private

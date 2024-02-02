@@ -8,22 +8,24 @@ A `google_compute_accelerator_types` is used to test a Google AcceleratorType re
 
 ## Examples
 ```
-describe google_compute_accelerator_types(project: 'chef-gcp-inspec', zone: 'us-east1-b') do
-it { should exist }
-it { should be_up }
-end
+    describe google_compute_v1_accelerator_types(project: 'chef-gcp-inspec', zone: ' ') do
+    it { should exist }
+  end
 ```
 
 ## Properties
 Properties that can be accessed from the `google_compute_accelerator_types` resource:
 
 See [google_compute_accelerator_type.md](google_compute_accelerator_type.md) for more detailed information
-  * `creation_timestamps`: an array of `google_compute_accelerator_type` creation_timestamp
-  * `deprecateds`: an array of `google_compute_accelerator_type` deprecated
-  * `descriptions`: an array of `google_compute_accelerator_type` description
+  * `kinds`: an array of `google_compute_accelerator_type` kind
   * `ids`: an array of `google_compute_accelerator_type` id
+  * `creation_timestamps`: an array of `google_compute_accelerator_type` creation_timestamp
   * `names`: an array of `google_compute_accelerator_type` name
+  * `descriptions`: an array of `google_compute_accelerator_type` description
+  * `deprecateds`: an array of `google_compute_accelerator_type` deprecated
   * `zones`: an array of `google_compute_accelerator_type` zone
+  * `self_links`: an array of `google_compute_accelerator_type` self_link
+  * `maximum_cards_per_instances`: an array of `google_compute_accelerator_type` maximum_cards_per_instance
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used

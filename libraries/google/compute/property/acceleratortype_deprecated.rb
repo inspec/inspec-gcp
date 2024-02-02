@@ -19,29 +19,26 @@ module GoogleInSpec
       class AcceleratorTypeDeprecated
         attr_reader :state
 
+        attr_reader :replacement
+
         attr_reader :deprecated
 
         attr_reader :obsolete
 
-        attr_reader :replacement
+        attr_reader :deleted
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @state = parse_time_string(args['state'])
-          @deprecated = parse_time_string(args['deprecated'])
-          @obsolete = parse_time_string(args['obsolete'])
-          @replacement = args['replacement']
           @state = args['state']
+          @replacement = args['replacement']
+          @deprecated = args['deprecated']
+          @obsolete = args['obsolete']
+          @deleted = args['deleted']
         end
 
         def to_s
           "#{@parent_identifier} AcceleratorTypeDeprecated"
-        end
-
-        # Handles parsing RFC3339 time string
-        def parse_time_string(time_string)
-          time_string ? Time.parse(time_string) : nil
         end
       end
     end

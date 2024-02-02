@@ -23,12 +23,15 @@ class ComputeAcceleratorType < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :deprecated
-  attr_reader :description
+  attr_reader :kind
   attr_reader :id
+  attr_reader :creation_timestamp
   attr_reader :name
+  attr_reader :description
+  attr_reader :deprecated
   attr_reader :zone
+  attr_reader :self_link
+  attr_reader :maximum_cards_per_instance
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -38,17 +41,15 @@ class ComputeAcceleratorType < GcpResourceBase
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @deprecated = GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(@fetched['deprecated'], to_s)
-    @description = @fetched['description']
+    @kind = @fetched['kind']
     @id = @fetched['id']
+    @creation_timestamp = @fetched['creationTimestamp']
     @name = @fetched['name']
+    @description = @fetched['description']
+    @deprecated = GoogleInSpec::Compute::Property::AcceleratorTypeDeprecated.new(@fetched['deprecated'], to_s)
     @zone = @fetched['zone']
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
+    @self_link = @fetched['selfLink']
+    @maximum_cards_per_instance = @fetched['maximumCardsPerInstance']
   end
 
   def exists?
@@ -56,7 +57,7 @@ class ComputeAcceleratorType < GcpResourceBase
   end
 
   def to_s
-    "AcceleratorType #{@params[:name]}"
+    "AcceleratorType #{@params[:acceleratorType]}"
   end
 
   private
@@ -66,6 +67,6 @@ class ComputeAcceleratorType < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/acceleratorTypes/{{name}}'
+    'projects/{{project}}/zones/{{zone}}/acceleratorTypes/{{accelerator_type}}'
   end
 end
