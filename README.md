@@ -213,6 +213,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_compute_disk](docs/resources/google_compute_disk.md)                                                         | [google_compute_disks](docs/resources/google_compute_disks.md)                                                                 |
 | [google_compute_disk_type](docs/resources/google_compute_disk_type.md)                                               | [google_compute_disk_types](docs/resources/google_compute_disk_types.md)                                                       |
 | [google_data_loss_prevention_inspect_template](docs/resources/google_data_loss_prevention_inspect_template.md)                                               | [google_data_loss_prevention_inspect_templates](docs/resources/google_data_loss_prevention_inspect_templates.md)                                                       |
+| [google_compute_node_type](docs/resources/google_compute_node_type.md)                           | [google_compute_node_types](docs/resources/google_compute_node_types.md)             |
 | [google_compute_external_vpn_gateway](docs/resources/google_compute_external_vpn_gateway.md)                         | [google_compute_external_vpn_gateways](docs/resources/google_compute_external_vpn_gateways.md)                                 |
 | [google_compute_firewall](docs/resources/google_compute_firewall.md)                                                 | [google_compute_firewalls](docs/resources/google_compute_firewalls.md)                                                         |
 | [google_compute_forwarding_rule](docs/resources/google_compute_forwarding_rule.md)                                   | [google_compute_forwarding_rules](docs/resources/google_compute_forwarding_rules.md)                                           |
@@ -381,7 +382,6 @@ The following resources are available in the InSpec GCP Profile
 | [google_composer_project_location_environment](docs/resources/google_composer_project_location_environment.md)                           | [google_composer_project_location_environments](docs/resources/google_composer_project_location_environments.md)             |
 | [google_compute_service_attachment](docs/resources/google_compute_service_attachment.md)                           | [google_compute_service_attachments](docs/resources/google_compute_service_attachments.md)             |
 | [google_secret_manager_secret](docs/resources/google_secret_manager_secret.md)                           | [google_secret_manager_secrets](docs/resources/google_secret_manager_secrets.md)             |
-| [google_compute_node_type](docs/resources/google_compute_node_type.md)                           | [google_compute_node_types](docs/resources/google_compute_node_types.md)             |
 
 ## Examples
 
