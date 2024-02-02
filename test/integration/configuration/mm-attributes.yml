@@ -649,3 +649,8 @@ compute_node_template:
   name: "terraform-test-tmpl"
   region: "us-central1"
   node_type: "c2-node-60-240"
+
+network_attachments:
+  name: "inspec-test"
+  region: "us-central1"
+  network: "inspec-network"

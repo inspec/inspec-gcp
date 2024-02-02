@@ -248,6 +248,9 @@ variable "secrets_manager_v1" {
 variable "compute_machine_images" {
   type = any
 }
+variable "network_attachments" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1763,4 +1766,11 @@ resource "google_compute_node_template" "tmpl" {
   name      = var.compute_node_template["name"]
   region    = var.compute_node_template["region"]
   node_type = var.compute_node_template["node_type"]
+}
+
+resource "google_compute_network_attachment" "default" {
+    name   = var.network_attachments.name
+    region = var.network_attachments.region
+    subnetworks = [google_compute_subnetwork.default.id]
+    connection_preference = "ACCEPT_AUTOMATIC"
 }
