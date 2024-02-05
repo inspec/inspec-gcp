@@ -17,13 +17,12 @@ title 'Test GCP google_compute_machine_types resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   machine_type = input('machine_type', value: {
-  "machine_type": "value_machinetype",
-  "project": "value_project",
-  "zone": "value_zone",
-  "kind": "value_kind",
-  "id": "value_id",
+  "project": "ppradhan",
+  "zone": "us-central1-a",
+  "kind": "compute#machineType",
+  "id": "1000012",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "a2-highgpu-1g",
   "description": "value_description",
   "maximum_persistent_disks_size_gb": "value_maximumpersistentdiskssizegb",
   "self_link": "value_selflink"
@@ -32,7 +31,7 @@ control 'google_compute_machine_types-1.0' do
   impact 1.0
   title 'google_compute_machine_types resource test'
 
-      describe google_compute_machine_types(project: gcp_project_id, zone: machine_type['zone']) do
+    describe google_compute_machine_types(project: gcp_project_id, zone: machine_type['zone']) do
       it { should exist }
     end
 end

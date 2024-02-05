@@ -8,7 +8,7 @@ A `google_compute_machine_type` is used to test a Google MachineType resource
 
 ## Examples
 ```
-describe google_compute_machine_type(machineType: ' ', project: 'chef-gcp-inspec', zone: ' value_zone') do
+describe google_compute_machine_type(name: 'value_name', project: 'chef-gcp-inspec', zone: ' value_zone') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -21,7 +21,7 @@ describe google_compute_machine_type(machineType: ' ', project: 'chef-gcp-inspec
 
 end
 
-describe google_compute_machine_type(machineType: ' ', project: 'chef-gcp-inspec', zone: ' value_zone') do
+describe google_compute_machine_type(name: 'value_name', project: 'chef-gcp-inspec', zone: ' value_zone') do
 	it { should_not exist }
 end
 ```

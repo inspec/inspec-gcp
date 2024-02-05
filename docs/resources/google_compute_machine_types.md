@@ -8,7 +8,7 @@ A `google_compute_machine_types` is used to test a Google MachineType resource
 
 ## Examples
 ```
-    describe google_compute_machine_types(project: 'chef-gcp-inspec', zone: ' value_zone') do
+  describe google_compute_machine_types(project: 'chef-gcp-inspec', zone: ' value_zone') do
     it { should exist }
   end
 ```
