@@ -245,6 +245,12 @@ variable "region_network_endpoint_group" {
 variable "secrets_manager_v1" {
   type = any
 }
+variable "compute_machine_images" {
+  type = any
+}
+variable "network_attachments" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1730,4 +1736,31 @@ resource "google_kms_crypto_key" "cryptokey" {
 
 resource "google_kms_crypto_key_version" "example-key" {
   crypto_key = google_kms_crypto_key.cryptokey.id
+}
+
+resource "google_compute_instance" "inspec" {
+  name         = var.compute_machine_images.instance
+  machine_type = "e2-medium"
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+}
+
+resource "google_compute_machine_image" "image" {
+  name            = var.compute_machine_images.name
+  source_instance = google_compute_instance.inspec.self_link
+}
+
+resource "google_compute_network_attachment" "default" {
+    name   = var.network_attachments.name
+    region = var.network_attachments.region
+    subnetworks = [google_compute_subnetwork.default.id]
+    connection_preference = "ACCEPT_AUTOMATIC"
 }
