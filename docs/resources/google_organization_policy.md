@@ -5,6 +5,8 @@ platform: gcp
 
 # google\_organization\_policy
 
+**This resource is deprecated. Please use `google_orgpolicy_organization_policy` instead**
+
 Use the `google_organization_policy` InSpec audit resource to test constraints set on a GCP organization.
 
 <br>
