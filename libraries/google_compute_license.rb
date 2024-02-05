@@ -14,6 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/license_resource_requirements'
 
 # A provider to manage Compute Engine resources.
 class ComputeLicense < GcpResourceBase
@@ -22,8 +23,16 @@ class ComputeLicense < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
+  attr_reader :kind
   attr_reader :name
   attr_reader :charges_use_fee
+  attr_reader :id
+  attr_reader :license_code
+  attr_reader :creation_timestamp
+  attr_reader :description
+  attr_reader :transferable
+  attr_reader :self_link
+  attr_reader :resource_requirements
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -33,8 +42,16 @@ class ComputeLicense < GcpResourceBase
   end
 
   def parse
+    @kind = @fetched['kind']
     @name = @fetched['name']
     @charges_use_fee = @fetched['chargesUseFee']
+    @id = @fetched['id']
+    @license_code = @fetched['licenseCode']
+    @creation_timestamp = @fetched['creationTimestamp']
+    @description = @fetched['description']
+    @transferable = @fetched['transferable']
+    @self_link = @fetched['selfLink']
+    @resource_requirements = GoogleInSpec::Compute::Property::LicenseResourceRequirements.new(@fetched['resourceRequirements'], to_s)
   end
 
   def exists?
@@ -52,6 +69,6 @@ class ComputeLicense < GcpResourceBase
   end
 
   def resource_base_url
-    '/projects/{{project}}/global/licenses/{{name}}'
+    'projects/{{project}}/global/licenses/{{name}}'
   end
 end

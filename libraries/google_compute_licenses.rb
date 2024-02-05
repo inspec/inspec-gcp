@@ -23,8 +23,16 @@ class ComputeLicenses < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:charges_use_fees, field: :charges_use_fee)
+  filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:license_codes, field: :license_code)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:transferables, field: :transferable)
+  filter_table_config.add(:self_links, field: :self_link)
+  filter_table_config.add(:resource_requirements, field: :resource_requirements)
 
   filter_table_config.connect(self, :table)
 
@@ -64,8 +72,16 @@ class ComputeLicenses < GcpResourceBase
 
   def transformers
     {
+      'kind' => ->(obj) { [:kind, obj['kind']] },
       'name' => ->(obj) { [:name, obj['name']] },
       'chargesUseFee' => ->(obj) { [:charges_use_fee, obj['chargesUseFee']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'licenseCode' => ->(obj) { [:license_code, obj['licenseCode']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'transferable' => ->(obj) { [:transferable, obj['transferable']] },
+      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
+      'resourceRequirements' => ->(obj) { [:resource_requirements, GoogleInSpec::Compute::Property::LicenseResourceRequirements.new(obj['resourceRequirements'], to_s)] },
     }
   end
 
@@ -76,6 +92,6 @@ class ComputeLicenses < GcpResourceBase
   end
 
   def resource_base_url
-    '/projects/{{project}}/global/licenses'
+    'projects/{{project}}/global/licenses'
   end
 end

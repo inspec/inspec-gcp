@@ -17,11 +17,12 @@ title 'Test GCP google_compute_license resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   license = input('license', value: {
-  "license": "value_license",
-  "project": "value_project",
-  "kind": "value_kind",
-  "name": "value_name",
-  "id": "value_id",
+  "network_attachment": "value_networkattachment",
+  "project": "windows-cloud",
+  "region": "us-central1",
+  "kind": "compute#license",
+  "name": "mirantis-container-runtime",
+  "id": "3607075093511293736",
   "license_code": "value_licensecode",
   "creation_timestamp": "value_creationtimestamp",
   "description": "value_description",
@@ -31,7 +32,7 @@ control 'google_compute_license-1.0' do
   impact 1.0
   title 'google_compute_license resource test'
 
-  describe google_compute_v1_license(name: license['name'], project: gcp_project_id) do
+  describe google_compute_license(name: license['id'], project: gcp_project_id, region: license['region']) do
   	it { should exist }
   	its('kind') { should cmp license['kind'] }
   	its('name') { should cmp license['name'] }
@@ -43,7 +44,7 @@ control 'google_compute_license-1.0' do
 
   end
 
-  describe google_compute_v1_license(name: "does_not_exit", project: gcp_project_id) do
+  describe google_compute_license(name: license['id'], project: gcp_project_id, region: license['region']) do
   	it { should_not exist }
   end
 end
