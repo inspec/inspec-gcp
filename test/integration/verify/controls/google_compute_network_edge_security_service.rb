@@ -18,16 +18,16 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   network_edge_security_service = input('network_edge_security_service', value: {
   "machine_type": "value_machinetype",
-  "project": "value_project",
-  "zone": "value_zone",
-  "kind": "value_kind",
-  "id": "value_id",
+  "project": "ppradhan",
+  "zone": "us-central1-a",
+  "kind": "compute#networkEdgeSecurityService",
+  "id": "6659048510113795180",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "new-network-edge-security-service",
   "description": "value_description",
   "self_link": "value_selflink",
   "self_link_with_id": "value_selflinkwithid",
-  "region": "value_region",
+  "region": "us-central1",
   "fingerprint": "value_fingerprint",
   "security_policy": "value_securitypolicy"
 }, description: 'network_edge_security_service description')
@@ -35,7 +35,7 @@ control 'google_compute_network_edge_security_service-1.0' do
   impact 1.0
   title 'google_compute_network_edge_security_service resource test'
 
-  describe google_compute_v1_network_edge_security_service(networkEdgeSecurityService: network_edge_security_service['networkEdgeSecurityService'], project: gcp_project_id, region: network_edge_security_service['region']) do
+  describe google_compute_network_edge_security_service(name: network_edge_security_service['name'], project: gcp_project_id, region: network_edge_security_service['region']) do
   	it { should exist }
   	its('kind') { should cmp network_edge_security_service['kind'] }
   	its('id') { should cmp network_edge_security_service['id'] }
@@ -50,7 +50,7 @@ control 'google_compute_network_edge_security_service-1.0' do
 
   end
 
-  describe google_compute_v1_network_edge_security_service(networkEdgeSecurityService: network_edge_security_service['networkEdgeSecurityService'], project: gcp_project_id, region: network_edge_security_service['region']) do
+  describe google_compute_network_edge_security_service(name: network_edge_security_service['name'], project: gcp_project_id, region: network_edge_security_service['region']) do
   	it { should_not exist }
   end
 end

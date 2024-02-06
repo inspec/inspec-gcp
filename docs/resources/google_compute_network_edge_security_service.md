@@ -8,7 +8,7 @@ A `google_compute_network_edge_security_service` is used to test a Google Networ
 
 ## Examples
 ```
-describe google_compute_v1_network_edge_security_service(networkEdgeSecurityService: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_network_edge_security_service(name: 'value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -23,7 +23,7 @@ describe google_compute_v1_network_edge_security_service(networkEdgeSecurityServ
 
 end
 
-describe google_compute_v1_network_edge_security_service(networkEdgeSecurityService: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_network_edge_security_service(name: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
