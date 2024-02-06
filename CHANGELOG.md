@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.90 -->
+<!-- latest_release 1.11.91 -->
+## [v1.11.91](https://github.com/inspec/inspec-gcp/tree/v1.11.91) (2024-02-06)
+
+#### Merged Pull Requests
+- CHEF-7342-MAGIC-MODULE-compute_v1-GlobalNetworkEndpointGroup - Resource Implementation [#594](https://github.com/inspec/inspec-gcp/pull/594) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.90](https://github.com/inspec/inspec-gcp/tree/v1.11.90) (2024-02-06)
 
 #### Merged Pull Requests
 - CHEF-7350-MAGIC-MODULE-orgpolicy-Organizations__policy - Resource Implementation [#555](https://github.com/inspec/inspec-gcp/pull/555) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.89](https://github.com/inspec/inspec-gcp/tree/v1.11.89) (2024-02-06)
 
