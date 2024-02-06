@@ -8,9 +8,11 @@ A `google_compute_global_network_endpoint_group` is used to test a Google Global
 
 ## Examples
 ```
-describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec') do
-	it { should exist }
-	its('kind') { should cmp '' }
+
+describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-endpoint-group') do
+  it { should exist }
+  its('default_port') { should cmp '90' }
+  its('kind') { should cmp '' }
 	its('id') { should cmp '' }
 	its('creation_timestamp') { should cmp '' }
 	its('self_link') { should cmp '' }
@@ -22,11 +24,10 @@ describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec'
 	its('network') { should cmp '' }
 	its('subnetwork') { should cmp '' }
 	its('psc_target_service') { should cmp '' }
-
 end
 
-describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec') do
-	it { should_not exist }
+describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec',name: 'nonexistent') do
+  it { should_not exist }
 end
 ```
 

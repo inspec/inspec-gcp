@@ -15,7 +15,7 @@
 title 'Test GCP google_compute_global_network_endpoint_group resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-  global_network_endpoint_group = input('global_network_endpoint_group', value: {
+global_network_endpoint_group = input('global_network_endpoint_group', value: {
   "name": "inspec-gcp-global-endpoint-group",
   "network_endpoint_type": "INTERNET_IP_PORT",
   "default_port": 90
@@ -28,6 +28,7 @@ control 'google_compute_global_network_endpoint_group-1.0' do
   	it { should exist }
   	its('kind') { should cmp global_network_endpoint_group['kind'] }
   	its('id') { should cmp global_network_endpoint_group['id'] }
+		its('default_port') { should cmp global_network_endpoint_group['default_port'] }
   	its('creation_timestamp') { should cmp global_network_endpoint_group['creation_timestamp'] }
   	its('self_link') { should cmp global_network_endpoint_group['self_link'] }
   	its('name') { should cmp global_network_endpoint_group['name'] }
