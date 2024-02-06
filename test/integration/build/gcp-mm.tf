@@ -1758,6 +1758,16 @@ resource "google_compute_machine_image" "image" {
   source_instance = google_compute_instance.inspec.self_link
 }
 
+variable "compute_node_template" {
+  type = any
+}
+
+resource "google_compute_node_template" "tmpl" {
+  name      = var.compute_node_template["name"]
+  region    = var.compute_node_template["region"]
+  node_type = var.compute_node_template["node_type"]
+}
+
 resource "google_compute_network_attachment" "default" {
     name   = var.network_attachments.name
     region = var.network_attachments.region
