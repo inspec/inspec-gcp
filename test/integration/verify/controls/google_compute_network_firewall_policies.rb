@@ -17,13 +17,12 @@ title 'Test GCP google_compute_network_firewall_policies resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   network_firewall_policy = input('network_firewall_policy', value: {
-  "firewall_policy": "value_firewallpolicy",
   "project": "value_project",
-  "kind": "value_kind",
-  "id": "value_id",
+  "kind": "compute#firewallPolicy",
+  "id": "3379931040786965079",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
+  "name": "inspec-test",
+  "description": "",
   "fingerprint": "value_fingerprint",
   "self_link": "value_selflink",
   "self_link_with_id": "value_selflinkwithid",

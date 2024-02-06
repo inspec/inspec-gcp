@@ -8,7 +8,7 @@ A `google_compute_network_firewall_policy` is used to test a Google NetworkFirew
 
 ## Examples
 ```
-describe google_compute_network_firewall_policy(firewallPolicy: ' ', project: 'chef-gcp-inspec') do
+describe google_compute_network_firewall_policy(name: 'value_name', project: 'chef-gcp-inspec') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -25,7 +25,7 @@ describe google_compute_network_firewall_policy(firewallPolicy: ' ', project: 'c
 
 end
 
-describe google_compute_network_firewall_policy(firewallPolicy: ' ', project: 'chef-gcp-inspec') do
+describe google_compute_network_firewall_policy(name: 'value_name', project: 'chef-gcp-inspec') do
 	it { should_not exist }
 end
 ```

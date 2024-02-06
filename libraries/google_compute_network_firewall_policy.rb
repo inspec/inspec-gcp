@@ -80,6 +80,6 @@ class ComputeNetworkFirewallPolicy < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/global/firewallPolicies/{{firewall_policy}}'
+    'projects/{{project}}/global/firewallPolicies/{{name}}'
   end
 end
