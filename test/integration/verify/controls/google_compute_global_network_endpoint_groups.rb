@@ -19,14 +19,13 @@ global_network_endpoint_group = input('global_network_endpoint_group', value: {
   "name": "inspec-gcp-global-endpoint-group",
   "network_endpoint_type": "INTERNET_IP_PORT",
   "default_port": 90
-}, description: 'Network endpoint group description')
-
+}, description: 'global_network_endpoint_group description')
 control 'google_compute_global_network_endpoint_groups-1.0' do
   impact 1.0
   title 'google_compute_global_network_endpoint_groups resource test'
 
-
   describe google_compute_global_network_endpoint_groups(project: gcp_project_id) do
+    it { should exist }
     its('default_ports') { should include global_network_endpoint_group['default_port'] }
     its('names') { should include global_network_endpoint_group['name'] }
     its('network_endpoint_types'){ should include global_network_endpoint_group['network_endpoint_type'] }

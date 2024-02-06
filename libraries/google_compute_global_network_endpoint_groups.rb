@@ -23,11 +23,25 @@ class ComputeGlobalNetworkEndpointGroups < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
+  filter_table_config.add(:self_links, field: :self_link)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:network_endpoint_types, field: :network_endpoint_type)
+  filter_table_config.add(:sizes, field: :size)
+  filter_table_config.add(:regions, field: :region)
+  filter_table_config.add(:zones, field: :zone)
+  filter_table_config.add(:networks, field: :network)
+  filter_table_config.add(:subnetworks, field: :subnetwork)
   filter_table_config.add(:default_ports, field: :default_port)
+  filter_table_config.add(:annotations, field: :annotations)
+  filter_table_config.add(:cloud_runs, field: :cloud_run)
+  filter_table_config.add(:app_engines, field: :app_engine)
+  filter_table_config.add(:cloud_functions, field: :cloud_function)
+  filter_table_config.add(:psc_target_services, field: :psc_target_service)
+  filter_table_config.add(:psc_data, field: :psc_data)
 
   filter_table_config.connect(self, :table)
 
@@ -67,11 +81,25 @@ class ComputeGlobalNetworkEndpointGroups < GcpResourceBase
 
   def transformers
     {
+      'kind' => ->(obj) { [:kind, obj['kind']] },
       'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
+      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
       'name' => ->(obj) { [:name, obj['name']] },
       'description' => ->(obj) { [:description, obj['description']] },
       'networkEndpointType' => ->(obj) { [:network_endpoint_type, obj['networkEndpointType']] },
+      'size' => ->(obj) { [:size, obj['size']] },
+      'region' => ->(obj) { [:region, obj['region']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
+      'network' => ->(obj) { [:network, obj['network']] },
+      'subnetwork' => ->(obj) { [:subnetwork, obj['subnetwork']] },
       'defaultPort' => ->(obj) { [:default_port, obj['defaultPort']] },
+      'annotations' => ->(obj) { [:annotations, GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupAnnotations.new(obj['annotations'], to_s)] },
+      'cloudRun' => ->(obj) { [:cloud_run, GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupCloudRun.new(obj['cloudRun'], to_s)] },
+      'appEngine' => ->(obj) { [:app_engine, GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupAppEngine.new(obj['appEngine'], to_s)] },
+      'cloudFunction' => ->(obj) { [:cloud_function, GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupCloudFunction.new(obj['cloudFunction'], to_s)] },
+      'pscTargetService' => ->(obj) { [:psc_target_service, obj['pscTargetService']] },
+      'pscData' => ->(obj) { [:psc_data, GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupPscData.new(obj['pscData'], to_s)] },
     }
   end
 
