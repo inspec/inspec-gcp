@@ -8,7 +8,7 @@ A `google_compute_global_network_endpoint_group` is used to test a Google Global
 
 ## Examples
 ```
-describe google_compute_global_network_endpoint_group(networkEndpointGroup: ' ', project: 'chef-gcp-inspec') do
+describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec') do
 	it { should exist }
 	its('kind') { should cmp '' }
 	its('id') { should cmp '' }
@@ -25,7 +25,7 @@ describe google_compute_global_network_endpoint_group(networkEndpointGroup: ' ',
 
 end
 
-describe google_compute_global_network_endpoint_group(networkEndpointGroup: ' ', project: 'chef-gcp-inspec') do
+describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec') do
 	it { should_not exist }
 end
 ```
@@ -70,7 +70,7 @@ Properties that can be accessed from the `google_compute_global_network_endpoint
 
   * `annotations`: Metadata defined as annotations on the network endpoint group.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `cloud_run`: Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
 

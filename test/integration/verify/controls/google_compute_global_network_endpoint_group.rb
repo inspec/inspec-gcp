@@ -15,7 +15,6 @@
 title 'Test GCP google_compute_global_network_endpoint_group resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-
   global_network_endpoint_group = input('global_network_endpoint_group', value: {
   "name": "inspec-gcp-global-endpoint-group",
   "network_endpoint_type": "INTERNET_IP_PORT",
@@ -25,7 +24,7 @@ control 'google_compute_global_network_endpoint_group-1.0' do
   impact 1.0
   title 'google_compute_global_network_endpoint_group resource test'
 
-  describe google_compute_global_network_endpoint_group(networkEndpointGroup: global_network_endpoint_group['networkEndpointGroup'], project: gcp_project_id) do
+  describe google_compute_global_network_endpoint_group(project: gcp_project_id, name: global_network_endpoint_group['name']) do
   	it { should exist }
   	its('kind') { should cmp global_network_endpoint_group['kind'] }
   	its('id') { should cmp global_network_endpoint_group['id'] }
@@ -39,10 +38,9 @@ control 'google_compute_global_network_endpoint_group-1.0' do
   	its('network') { should cmp global_network_endpoint_group['network'] }
   	its('subnetwork') { should cmp global_network_endpoint_group['subnetwork'] }
   	its('psc_target_service') { should cmp global_network_endpoint_group['psc_target_service'] }
-
   end
 
-  describe google_compute_global_network_endpoint_group(networkEndpointGroup: global_network_endpoint_group['networkEndpointGroup'], project: gcp_project_id) do
+  describe google_compute_global_network_endpoint_group(project: gcp_project_id, name: 'nonexistent') do
   	it { should_not exist }
   end
 end

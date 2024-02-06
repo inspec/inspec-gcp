@@ -68,6 +68,6 @@ class ComputeNetworkEdgeSecurityService < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{network_edge_security_service}}'
+    'projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}'
   end
 end

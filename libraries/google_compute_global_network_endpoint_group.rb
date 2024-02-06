@@ -81,7 +81,7 @@ class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
   end
 
   def to_s
-    "GlobalNetworkEndpointGroup #{@params[:networkEndpointGroup]}"
+    "GlobalNetworkEndpointGroup #{@params[:name]}"
   end
 
   private
@@ -91,6 +91,6 @@ class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/global/networkEndpointGroups/{{network_endpoint_group}}'
+    'projects/{{project}}/global/networkEndpointGroups/{{name}}'
   end
 end

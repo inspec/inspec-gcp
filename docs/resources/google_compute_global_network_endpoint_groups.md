@@ -8,8 +8,12 @@ A `google_compute_global_network_endpoint_groups` is used to test a Google Globa
 
 ## Examples
 ```
-    describe google_compute_global_network_endpoint_groups(project: 'chef-gcp-inspec') do
+
+  describe google_compute_global_network_endpoint_groups(project: 'chef-gcp-inspec') do
     it { should exist }
+    its('default_ports') { should include '90' }
+    its('names') { should include 'inspec-gcp-global-endpoint-group' }
+    its('network_endpoint_types'){ should include 'INTERNET_IP_PORT' }
   end
 ```
 
