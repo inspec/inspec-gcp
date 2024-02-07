@@ -332,6 +332,7 @@ The following resources are available in the InSpec GCP Profile
 | [google_runtime_config_config_iam_binding](docs/resources/google_runtime_config_config_iam_binding.md)               | No Plural Resource                                                                                                             |
 | [google_runtime_config_config_iam_policy](docs/resources/google_runtime_config_config_iam_policy.md)                 | No Plural Resource                                                                                                             |
 | [google_runtime_config_variable](docs/resources/google_runtime_config_variable.md)                                   | [google_runtime_config_variables](docs/resources/google_runtime_config_variables.md)                                           |
+| [google_secret_manager_secret](docs/resources/google_secret_manager_secret.md)                           | [google_secret_manager_secrets](docs/resources/google_secret_manager_secrets.md)             |
 | [google_service_account](docs/resources/google_service_account.md)                                                   | [google_service_accounts](docs/resources/google_service_accounts.md)                                                           |
 | No Singular Resource                                                    | [google_service_networking_service_connections](docs/resources/google_service_networking_service_connections.md)                                                           |
 | [google_service_account_key](docs/resources/google_service_account_key.md)                                           | [google_service_account_keys](docs/resources/google_service_account_keys.md)                                                   |
@@ -388,7 +389,6 @@ The following resources are available in the InSpec GCP Profile
 | [google_vertex_ai_tensorboard_experiment_run](docs/resources/google_vertex_ai_tensorboard_experiment_run.md)                                       | [google_vertex_ai_tensorboard_experiment_runs](docs/resources/google_vertex_ai_tensorboard_experiment_runs.md)                                   |
 | [google_vertex_ai_tensorboard_experiment_run_time_series_resource](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resource.md)                                       | [google_vertex_ai_tensorboard_experiment_run_time_series_resources](docs/resources/google_vertex_ai_tensorboard_experiment_run_time_series_resources.md)                                   |
 | [google_vertex_ai_training_pipeline](docs/resources/google_vertex_ai_training_pipeline.md)                           | [google_vertex_ai_training_pipelines](docs/resources/google_vertex_ai_training_pipelines.md)             |
-| [google_secret_manager_secret](docs/resources/google_secret_manager_secret.md)                           | [google_secret_manager_secrets](docs/resources/google_secret_manager_secrets.md)             |
 
 ## Examples
 
