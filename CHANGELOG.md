@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.92 -->
+<!-- latest_release 1.11.93 -->
+## [v1.11.93](https://github.com/inspec/inspec-gcp/tree/v1.11.93) (2024-02-07)
+
+#### Merged Pull Requests
+- CHEF-7367-MAGIC-MODULE-Dataflow-v1b3-Projects-Locations-Jobs - Resource Implementation [#595](https://github.com/inspec/inspec-gcp/pull/595) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.92](https://github.com/inspec/inspec-gcp/tree/v1.11.92) (2024-02-06)
 
 #### Merged Pull Requests
 - CHEF-7196_2-MAGIC-MODULE-compute_v1-NetworkFirewallPolicy - Resource Implementation [#593](https://github.com/inspec/inspec-gcp/pull/593) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.91](https://github.com/inspec/inspec-gcp/tree/v1.11.91) (2024-02-06)
 
