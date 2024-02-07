@@ -8,7 +8,7 @@ A `google_dataflow_project_location_jobs` is used to test a Google ProjectLocati
 
 ## Examples
 ```
-    describe google_dataflow_project_location_jobs(location: ' value_location', projectId: ' ') do
+    describe google_dataflow_project_location_jobs(location: 'value_location', project: 'value_project') do
     it { should exist }
   end
 ```

@@ -17,11 +17,10 @@ title 'Test GCP google_dataflow_project_location_job resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_location_job = input('project_location_job', value: {
-  "job_id": "value_jobid",
-  "location": "value_location",
-  "project_id": "value_projectid",
-  "id": "value_id",
-  "name": "value_name",
+  "location": "us-central1",
+  "project_id": "ppradhan",
+  "id": "2024-02-06_06_34_50-7804426594194635797",
+  "name": "inspec-test-job",
   "type": "value_type",
   "steps_location": "value_stepslocation",
   "current_state": "value_currentstate",
@@ -38,7 +37,7 @@ control 'google_dataflow_project_location_job-1.0' do
   impact 1.0
   title 'google_dataflow_project_location_job resource test'
 
-  describe google_dataflow_project_location_job(jobId: project_location_job['jobId'], location: project_location_job['location'], projectId: project_location_job['projectId']) do
+  describe google_dataflow_project_location_job(job: project_location_job['id'], location: project_location_job['location'], projectId: project_location_job['project_id']) do
   	it { should exist }
   	its('id') { should cmp project_location_job['id'] }
   	its('project_id') { should cmp project_location_job['project_id'] }
@@ -58,7 +57,7 @@ control 'google_dataflow_project_location_job-1.0' do
 
   end
 
-  describe google_dataflow_project_location_job(jobId: project_location_job['jobId'], location: project_location_job['location'], projectId: project_location_job['projectId']) do
+  describe google_dataflow_project_location_job(job: project_location_job['id'], location: project_location_job['location'], projectId: project_location_job['project_id']) do
   	it { should_not exist }
   end
 end

@@ -56,7 +56,7 @@ class DataflowProjectLocationJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectLocationJobs')
+    @table = fetch_wrapped_resource('jobs')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -122,10 +122,10 @@ class DataflowProjectLocationJobs < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://dataflow.googleapis.com//v1b3/'
+    'https://dataflow.googleapis.com/v1b3/'
   end
 
   def resource_base_url
-    'projects/{{projectId}}/locations/{{location}}/jobs'
+    'projects/{{project}}/locations/{{location}}/jobs'
   end
 end

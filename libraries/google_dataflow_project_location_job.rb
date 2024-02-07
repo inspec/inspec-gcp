@@ -127,10 +127,10 @@ class DataflowProjectLocationJob < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://dataflow.googleapis.com//v1b3/'
+    'https://dataflow.googleapis.com/v1b3/'
   end
 
   def resource_base_url
-    'projects/{{project_id}}/locations/{{location}}/jobs/{{job_id}}'
+    'projects/{{project}}/locations/{{location}}/jobs/{{job}}'
   end
 end

@@ -8,7 +8,7 @@ A `google_dataflow_project_location_job` is used to test a Google ProjectLocatio
 
 ## Examples
 ```
-describe google_dataflow_project_location_job(jobId: ' ', location: ' value_location', projectId: ' ') do
+describe google_dataflow_project_location_job(job: 'value_job_id', location: 'value_location', project: 'value_project') do
 	it { should exist }
 	its('id') { should cmp 'value_id' }
 	its('project_id') { should cmp 'value_projectid' }
@@ -28,7 +28,7 @@ describe google_dataflow_project_location_job(jobId: ' ', location: ' value_loca
 
 end
 
-describe google_dataflow_project_location_job(jobId: ' ', location: ' value_location', projectId: ' ') do
+describe google_dataflow_project_location_job(job: 'value_job_id', location: 'value_location', projectId: 'value_project') do
 	it { should_not exist }
 end
 ```
@@ -161,7 +161,7 @@ Properties that can be accessed from the `google_dataflow_project_location_job` 
 
       * `metadata`: Metadata to set on the Google Compute Engine VMs.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `autoscaling_settings`: Settings for WorkerPool autoscaling.
 
@@ -311,7 +311,7 @@ Properties that can be accessed from the `google_dataflow_project_location_job` 
 
   * `transform_name_mapping`: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `client_request_id`: The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
 
@@ -321,7 +321,7 @@ Properties that can be accessed from the `google_dataflow_project_location_job` 
 
   * `labels`: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `location`: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
 
@@ -559,7 +559,7 @@ Properties that can be accessed from the `google_dataflow_project_location_job` 
 
     * `user_display_properties`: List of display properties to help UI filter jobs.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
   * `start_time`: The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
 
