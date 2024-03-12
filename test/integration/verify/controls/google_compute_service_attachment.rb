@@ -16,36 +16,42 @@ title 'Test GCP google_compute_service_attachment resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-service_attachment = input('service_attachment', value: {
-  "project": "ppradhan",
-  "region": "us-central1",
-  "service_attachment": "my-psc-ilb",
-  "service_attachment_2": "my-psc-ilb-2",
-  "kind": "compute#serviceAttachment",
-  "name": "my-psc-ilb",
-  "description": "my-psc-ilb is a private service connection for the internal load balancer",
-  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/serviceAttachments/my-psc-ilb",
-  "target_service": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/forwardingRules/producer-forwarding-rule",
-  "connection_preference": "ACCEPT_AUTOMATIC",
+  service_attachment = input('service_attachment', value: {
+  "disk_type": "value_disktype",
+  "project": "value_project",
+  "region": "value_region",
+  "kind": "value_kind",
+  "id": "value_id",
+  "creation_timestamp": "value_creationtimestamp",
+  "name": "value_name",
+  "description": "value_description",
+  "self_link": "value_selflink",
+  "producer_forwarding_rule": "value_producerforwardingrule",
+  "target_service": "value_targetservice",
+  "connection_preference": "value_connectionpreference",
+  "fingerprint": "value_fingerprint"
 }, description: 'service_attachment description')
-
 control 'google_compute_service_attachment-1.0' do
   impact 1.0
   title 'google_compute_service_attachment resource test'
 
-  describe google_compute_service_attachment(project: gcp_project_id, region: service_attachment['region'], service_attachment: service_attachment['service_attachment']) do
+  describe google_compute_service_attachment(project: gcp_project_id, region: service_attachment['region'], serviceAttachment: service_attachment['serviceAttachment']) do
   	it { should exist }
   	its('kind') { should cmp service_attachment['kind'] }
+  	its('id') { should cmp service_attachment['id'] }
+  	its('creation_timestamp') { should cmp service_attachment['creation_timestamp'] }
   	its('name') { should cmp service_attachment['name'] }
   	its('description') { should cmp service_attachment['description'] }
   	its('self_link') { should cmp service_attachment['self_link'] }
-  	its('region') { should include service_attachment['region'] }
+  	its('region') { should cmp service_attachment['region'] }
   	its('producer_forwarding_rule') { should cmp service_attachment['producer_forwarding_rule'] }
   	its('target_service') { should cmp service_attachment['target_service'] }
   	its('connection_preference') { should cmp service_attachment['connection_preference'] }
+  	its('fingerprint') { should cmp service_attachment['fingerprint'] }
+
   end
 
-  describe google_compute_service_attachment(project: gcp_project_id, region: service_attachment['region'], service_attachment: service_attachment['service_attachment_2']) do
+  describe google_compute_service_attachment(project: gcp_project_id, region: service_attachment['region'], serviceAttachment: service_attachment['serviceAttachment']) do
   	it { should_not exist }
   end
 end

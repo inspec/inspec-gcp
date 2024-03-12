@@ -42,13 +42,15 @@ class ComputeServiceAttachments < GcpResourceBase
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:domain_names, field: :domain_names)
   filter_table_config.add(:reconcile_connections, field: :reconcile_connections)
+  filter_table_config.add(:tunneling_configs, field: :tunneling_config)
+  filter_table_config.add(:propagated_connection_limits, field: :propagated_connection_limit)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('serviceAttachments')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -100,6 +102,8 @@ class ComputeServiceAttachments < GcpResourceBase
       'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
       'domainNames' => ->(obj) { [:domain_names, obj['domainNames']] },
       'reconcileConnections' => ->(obj) { [:reconcile_connections, obj['reconcileConnections']] },
+      'tunnelingConfig' => ->(obj) { [:tunneling_config, GoogleInSpec::Compute::Property::ServiceAttachmentTunnelingConfig.new(obj['tunnelingConfig'], to_s)] },
+      'propagatedConnectionLimit' => ->(obj) { [:propagated_connection_limit, obj['propagatedConnectionLimit']] },
     }
   end
 

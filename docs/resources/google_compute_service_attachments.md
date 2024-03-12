@@ -36,6 +36,8 @@ See [google_compute_service_attachment.md](google_compute_service_attachment.md)
   * `fingerprints`: an array of `google_compute_service_attachment` fingerprint
   * `domain_names`: an array of `google_compute_service_attachment` domain_names
   * `reconcile_connections`: an array of `google_compute_service_attachment` reconcile_connections
+  * `tunneling_configs`: an array of `google_compute_service_attachment` tunneling_config
+  * `propagated_connection_limits`: an array of `google_compute_service_attachment` propagated_connection_limit
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
