@@ -8,7 +8,7 @@ A `google_compute_region_disk_types` is used to test a Google RegionDiskType res
 
 ## Examples
 ```
-    describe google_compute_region_disk_types(project: 'chef-gcp-inspec', region: ' value_region') do
+  describe google_compute_region_disk_types(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```

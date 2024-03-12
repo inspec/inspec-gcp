@@ -61,7 +61,7 @@ class ComputeRegionDiskType < GcpResourceBase
   end
 
   def to_s
-    "RegionDiskType #{@params[:diskType]}"
+    "RegionDiskType #{@params[:disk_type]}"
   end
 
   private
