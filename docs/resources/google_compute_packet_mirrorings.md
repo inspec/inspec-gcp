@@ -8,7 +8,7 @@ A `google_compute_packet_mirrorings` is used to test a Google PacketMirroring re
 
 ## Examples
 ```
-    describe google_compute_packet_mirrorings(project: 'chef-gcp-inspec', region: ' value_region') do
+  describe google_compute_packet_mirrorings(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```

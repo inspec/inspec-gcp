@@ -8,7 +8,7 @@ A `google_compute_packet_mirroring` is used to test a Google PacketMirroring res
 
 ## Examples
 ```
-describe google_compute_packet_mirroring(packetMirroring: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_packet_mirroring(name: 'value_name', project: 'chef-gcp-inspec', region: 'value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -22,7 +22,7 @@ describe google_compute_packet_mirroring(packetMirroring: ' ', project: 'chef-gc
 
 end
 
-describe google_compute_packet_mirroring(packetMirroring: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_packet_mirroring(name: 'value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
@@ -47,7 +47,7 @@ Properties that can be accessed from the `google_compute_packet_mirroring` resou
 
   * `region`: [Output Only] URI of the region where the packetMirroring resides.
 
-  * `network`: 
+  * `network`:
 
     * `url`: URL of the network resource.
 
@@ -55,13 +55,13 @@ Properties that can be accessed from the `google_compute_packet_mirroring` resou
 
   * `priority`: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 
-  * `collector_ilb`: 
+  * `collector_ilb`:
 
     * `url`: Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
 
     * `canonical_url`: [Output Only] Unique identifier for the forwarding rule; defined by the server.
 
-  * `mirrored_resources`: 
+  * `mirrored_resources`:
 
     * `subnetworks`: A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in the same region as this packetMirroring. You may specify a maximum of 5 subnetworks.
 
@@ -77,7 +77,7 @@ Properties that can be accessed from the `google_compute_packet_mirroring` resou
 
     * `tags`: A set of mirrored tags. Traffic from/to all VM instances that have one or more of these tags will be mirrored.
 
-  * `filter`: 
+  * `filter`:
 
     * `cidr_ranges`: One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 

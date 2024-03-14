@@ -17,15 +17,14 @@ title 'Test GCP google_compute_packet_mirroring resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   packet_mirroring = input('packet_mirroring', value: {
-  "packet_mirroring": "value_packetmirroring",
-  "project": "value_project",
-  "region": "value_region",
-  "kind": "value_kind",
+  "project": "ppradhan",
+  "region": "us-central1",
+  "kind": "compute#packetMirroring",
   "id": "value_id",
   "creation_timestamp": "value_creationtimestamp",
   "self_link": "value_selflink",
   "self_link_with_id": "value_selflinkwithid",
-  "name": "value_name",
+  "name": "inspec-test-policy",
   "description": "value_description",
   "enable": "value_enable"
 }, description: 'packet_mirroring description')
@@ -33,7 +32,7 @@ control 'google_compute_packet_mirroring-1.0' do
   impact 1.0
   title 'google_compute_packet_mirroring resource test'
 
-  describe google_compute_packet_mirroring(packetMirroring: packet_mirroring['packetMirroring'], project: gcp_project_id, region: packet_mirroring['region']) do
+  describe google_compute_packet_mirroring(name: packet_mirroring['name'], project: gcp_project_id, region: packet_mirroring['region']) do
   	it { should exist }
   	its('kind') { should cmp packet_mirroring['kind'] }
   	its('id') { should cmp packet_mirroring['id'] }
@@ -47,7 +46,7 @@ control 'google_compute_packet_mirroring-1.0' do
 
   end
 
-  describe google_compute_packet_mirroring(packetMirroring: packet_mirroring['packetMirroring'], project: gcp_project_id, region: packet_mirroring['region']) do
+  describe google_compute_packet_mirroring(name: packet_mirroring['name'], project: gcp_project_id, region: packet_mirroring['region']) do
   	it { should_not exist }
   end
 end

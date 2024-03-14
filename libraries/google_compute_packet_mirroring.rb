@@ -72,7 +72,7 @@ class ComputePacketMirroring < GcpResourceBase
   end
 
   def to_s
-    "PacketMirroring #{@params[:packetMirroring]}"
+    "PacketMirroring #{@params[:name]}"
   end
 
   private
@@ -82,6 +82,6 @@ class ComputePacketMirroring < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/packetMirrorings/{{packet_mirroring}}'
+    'projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}'
   end
 end
