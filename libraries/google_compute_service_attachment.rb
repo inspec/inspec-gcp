@@ -17,6 +17,7 @@ require 'gcp_backend'
 require 'google/compute/property/serviceattachment_connected_endpoints'
 require 'google/compute/property/serviceattachment_consumer_accept_lists'
 require 'google/compute/property/serviceattachment_psc_service_attachment_id'
+require 'google/compute/property/serviceattachment_tunneling_config'
 
 # A provider to manage Compute Engine resources.
 class ComputeServiceAttachment < GcpResourceBase
@@ -44,6 +45,8 @@ class ComputeServiceAttachment < GcpResourceBase
   attr_reader :fingerprint
   attr_reader :domain_names
   attr_reader :reconcile_connections
+  attr_reader :tunneling_config
+  attr_reader :propagated_connection_limit
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -72,6 +75,8 @@ class ComputeServiceAttachment < GcpResourceBase
     @fingerprint = @fetched['fingerprint']
     @domain_names = @fetched['domainNames']
     @reconcile_connections = @fetched['reconcileConnections']
+    @tunneling_config = GoogleInSpec::Compute::Property::ServiceAttachmentTunnelingConfig.new(@fetched['tunnelingConfig'], to_s)
+    @propagated_connection_limit = @fetched['propagatedConnectionLimit']
   end
 
   def exists?
@@ -79,7 +84,7 @@ class ComputeServiceAttachment < GcpResourceBase
   end
 
   def to_s
-    "ServiceAttachment #{@params[:service_attachment]}"
+    "ServiceAttachment #{@params[:serviceAttachment]}"
   end
 
   private

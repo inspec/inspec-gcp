@@ -8,7 +8,7 @@ A `google_compute_service_attachment` is used to test a Google ServiceAttachment
 
 ## Examples
 ```
-describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', service_attachment: ' ') do
+describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', serviceAttachment: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -24,7 +24,7 @@ describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: '
 
 end
 
-describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', service_attachment: ' ') do
+describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', serviceAttachment: ' ') do
 	it { should_not exist }
 end
 ```
@@ -74,6 +74,8 @@ Properties that can be accessed from the `google_compute_service_attachment` res
 
     * `consumer_network`: The url of the consumer network.
 
+    * `propagated_connection_count`: The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+
   * `nat_subnets`: An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
 
   * `enable_proxy_protocol`: If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
@@ -88,17 +90,32 @@ Properties that can be accessed from the `google_compute_service_attachment` res
 
     * `connection_limit`: The value of the limit to set.
 
-  * `psc_service_attachment_id`:
+  * `psc_service_attachment_id`: 
 
-    * `high`:
+    * `high`: 
 
-    * `low`:
+    * `low`: 
 
   * `fingerprint`: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
 
   * `domain_names`: If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
 
   * `reconcile_connections`: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
+
+  * `tunneling_config`: Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
+
+    * `routing_mode`: How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+    Possible values:
+      * PACKET_INJECTION
+      * STANDARD_ROUTING
+      * UNSPECIFIED_ROUTING_MODE
+
+    * `encapsulation_profile`: Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+    Possible values:
+      * GENEVE_SECURITY_V1
+      * UNSPECIFIED_ENCAPSULATION_PROFILE
+
+  * `propagated_connection_limit`: The number of consumer Network Connectivity Center spokes that connected Private Service Connect endpoints can be propagated to. This limit lets a service producer indirectly limit how many propagated Private Service Connect connections can be established to the producer's service attachment. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
 
 
 ## GCP Permissions

@@ -25,6 +25,8 @@ module GoogleInSpec
 
         attr_reader :consumer_network
 
+        attr_reader :propagated_connection_count
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -32,6 +34,7 @@ module GoogleInSpec
           @psc_connection_id = args['pscConnectionId']
           @endpoint = args['endpoint']
           @consumer_network = args['consumerNetwork']
+          @propagated_connection_count = args['propagatedConnectionCount']
         end
 
         def to_s
