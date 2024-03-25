@@ -137,6 +137,6 @@ class ComputeInterconnectAttachment < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/interconnectAttachments/{{interconnect_attachment}}'
+    'projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}'
   end
 end

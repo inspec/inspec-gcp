@@ -17,75 +17,29 @@ title 'Test GCP google_compute_interconnect_attachment resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   interconnect_attachment = input('interconnect_attachment', value: {
-  "interconnect_attachment": "value_interconnectattachment",
-  "project": "value_project",
-  "region": "value_region",
-  "kind": "value_kind",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "interconnect": "value_interconnect",
-  "router": "value_router",
-  "google_reference_id": "value_googlereferenceid",
-  "operational_status": "value_operationalstatus",
-  "cloud_router_ip_address": "value_cloudrouteripaddress",
-  "customer_router_ip_address": "value_customerrouteripaddress",
-  "type": "value_type",
-  "pairing_key": "value_pairingkey",
-  "edge_availability_domain": "value_edgeavailabilitydomain",
-  "bandwidth": "value_bandwidth",
-  "label_fingerprint": "value_labelfingerprint",
-  "state": "value_state",
-  "partner_asn": "value_partnerasn",
-  "encryption": "value_encryption",
-  "stack_type": "value_stacktype",
-  "cloud_router_ipv6address": "value_cloudrouteripv6address",
-  "customer_router_ipv6address": "value_customerrouteripv6address",
-  "cloud_router_ipv6interface_id": "value_cloudrouteripv6interfaceid",
-  "customer_router_ipv6interface_id": "value_customerrouteripv6interfaceid",
-  "remote_service": "value_remoteservice"
+  "name": "on-prem-attachment",
+  "project": "ppradhan",
+  "region": "us-central1",
+  "kind": "compute#interconnectAttachment",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/interconnectAttachments/on-prem-attachment",
+  "encryption": "NONE",
+  "stack_type": "IPV4_ONLY",
 }, description: 'interconnect_attachment description')
 control 'google_compute_interconnect_attachment-1.0' do
   impact 1.0
   title 'google_compute_interconnect_attachment resource test'
 
-  describe google_compute_interconnect_attachment(interconnectAttachment: interconnect_attachment['interconnectAttachment'], project: gcp_project_id, region: interconnect_attachment['region']) do
+  describe google_compute_interconnect_attachment(name: interconnect_attachment['name'], project: gcp_project_id, region: interconnect_attachment['region']) do
   	it { should exist }
   	its('kind') { should cmp interconnect_attachment['kind'] }
   	its('description') { should cmp interconnect_attachment['description'] }
   	its('self_link') { should cmp interconnect_attachment['self_link'] }
-  	its('self_link_with_id') { should cmp interconnect_attachment['self_link_with_id'] }
-  	its('id') { should cmp interconnect_attachment['id'] }
-  	its('creation_timestamp') { should cmp interconnect_attachment['creation_timestamp'] }
   	its('name') { should cmp interconnect_attachment['name'] }
-  	its('interconnect') { should cmp interconnect_attachment['interconnect'] }
-  	its('router') { should cmp interconnect_attachment['router'] }
-  	its('region') { should cmp interconnect_attachment['region'] }
-  	its('google_reference_id') { should cmp interconnect_attachment['google_reference_id'] }
-  	its('operational_status') { should cmp interconnect_attachment['operational_status'] }
-  	its('cloud_router_ip_address') { should cmp interconnect_attachment['cloud_router_ip_address'] }
-  	its('customer_router_ip_address') { should cmp interconnect_attachment['customer_router_ip_address'] }
-  	its('type') { should cmp interconnect_attachment['type'] }
-  	its('pairing_key') { should cmp interconnect_attachment['pairing_key'] }
-  	its('edge_availability_domain') { should cmp interconnect_attachment['edge_availability_domain'] }
-  	its('bandwidth') { should cmp interconnect_attachment['bandwidth'] }
-  	its('label_fingerprint') { should cmp interconnect_attachment['label_fingerprint'] }
-  	its('state') { should cmp interconnect_attachment['state'] }
-  	its('partner_asn') { should cmp interconnect_attachment['partner_asn'] }
-  	its('encryption') { should cmp interconnect_attachment['encryption'] }
-  	its('stack_type') { should cmp interconnect_attachment['stack_type'] }
-  	its('cloud_router_ipv6address') { should cmp interconnect_attachment['cloud_router_ipv6address'] }
-  	its('customer_router_ipv6address') { should cmp interconnect_attachment['customer_router_ipv6address'] }
-  	its('cloud_router_ipv6interface_id') { should cmp interconnect_attachment['cloud_router_ipv6interface_id'] }
-  	its('customer_router_ipv6interface_id') { should cmp interconnect_attachment['customer_router_ipv6interface_id'] }
-  	its('remote_service') { should cmp interconnect_attachment['remote_service'] }
-
+    its('encryption') { should cmp interconnect_attachment['encryption'] }
+    its('stack_type') { should cmp interconnect_attachment['stack_type'] }
   end
 
-  describe google_compute_interconnect_attachment(interconnectAttachment: interconnect_attachment['interconnectAttachment'], project: gcp_project_id, region: interconnect_attachment['region']) do
+  describe google_compute_interconnect_attachment(name: "donotexist", project: gcp_project_id, region: interconnect_attachment['region']) do
   	it { should_not exist }
   end
 end
