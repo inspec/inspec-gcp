@@ -12,28 +12,13 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_compute_region_url_maps resource.'
+region_for_url_map = input(:region_for_url_map, value: 'us-central1', description: 'region_url_map region.')
 
-gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-
-  region_url_map = input('region_url_map', value: {
-  "project": "value_project",
-  "region": "value_region",
-  "url_map": "value_urlmap",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "default_service": "value_defaultservice",
-  "fingerprint": "value_fingerprint"
-}, description: 'region_url_map description')
 control 'google_compute_region_url_maps-1.0' do
   impact 1.0
   title 'google_compute_region_url_maps resource test'
 
-      describe google_compute_region_url_maps(project: gcp_project_id, region: region_url_map['region']) do
-      it { should exist }
-    end
+  describe google_compute_region_url_maps(project: gcp_project_id, region: region_for_url_map) do
+    it { should exist }
+  end
 end

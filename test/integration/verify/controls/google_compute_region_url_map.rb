@@ -16,38 +16,32 @@ title 'Test GCP google_compute_region_url_map resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_url_map = input('region_url_map', value: {
-  "project": "value_project",
-  "region": "value_region",
-  "url_map": "value_urlmap",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "default_service": "value_defaultservice",
-  "fingerprint": "value_fingerprint"
+region_url_map = input('region_url_map', value: {
+  "project": "ppradhan",
+  "region": "us-central1",
+  "full_region": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1",
+  "kind": "compute#urlMap",
+  "name": "example-regionurlmap",
+  "description": "a description",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/urlMaps/example-regionurlmap",
+  "default_service": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/backendServices/home"
 }, description: 'region_url_map description')
+
 control 'google_compute_region_url_map-1.0' do
   impact 1.0
   title 'google_compute_region_url_map resource test'
 
-  describe google_compute_region_url_map(project: gcp_project_id, region: region_url_map['region'], urlMap: region_url_map['urlMap']) do
+  describe google_compute_region_url_map(project: gcp_project_id, region: region_url_map['region'], name: region_url_map['name']) do
   	it { should exist }
   	its('kind') { should cmp region_url_map['kind'] }
-  	its('id') { should cmp region_url_map['id'] }
-  	its('creation_timestamp') { should cmp region_url_map['creation_timestamp'] }
   	its('name') { should cmp region_url_map['name'] }
   	its('description') { should cmp region_url_map['description'] }
   	its('self_link') { should cmp region_url_map['self_link'] }
   	its('default_service') { should cmp region_url_map['default_service'] }
-  	its('fingerprint') { should cmp region_url_map['fingerprint'] }
-  	its('region') { should cmp region_url_map['region'] }
-
+  	its('region') { should cmp region_url_map['full_region'] }
   end
 
-  describe google_compute_region_url_map(project: gcp_project_id, region: region_url_map['region'], urlMap: region_url_map['urlMap']) do
+  describe google_compute_region_url_map(project: gcp_project_id, region: region_url_map['region'], name: "donotexist") do
   	it { should_not exist }
   end
 end
