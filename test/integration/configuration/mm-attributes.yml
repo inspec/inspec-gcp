@@ -654,3 +654,11 @@ network_attachments:
   name: "inspec-test"
   region: "us-central1"
   network: "inspec-network"
+
+compute_target_instance:
+  name: "example-target"
+  image_family: "debian-11"
+  image_project: "debian-cloud"
+  zone: "asia-east1-a"
+  machine_type: "e2-medium"
+  target_vm_name: "target-vm"
