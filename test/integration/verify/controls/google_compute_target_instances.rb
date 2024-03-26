@@ -15,29 +15,12 @@
 title 'Test GCP google_compute_target_instances resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
+ti_zone = input(:ti_zone, value: 'asia-east1-a', description: 'target_instance zone.')
 
-  target_instance = input('target_instance', value: {
-  "project": "value_project",
-  "region": "value_region",
-  "url_map": "value_urlmap",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "zone": "value_zone",
-  "nat_policy": "value_natpolicy",
-  "instance": "value_instance",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "network": "value_network",
-  "security_policy": "value_securitypolicy"
-}, description: 'target_instance description')
 control 'google_compute_target_instances-1.0' do
   impact 1.0
   title 'google_compute_target_instances resource test'
-
-      describe google_compute_target_instances(project: gcp_project_id, zone: target_instance['zone']) do
-      it { should exist }
-    end
+  describe google_compute_target_instances(project: gcp_project_id, zone: ti_zone) do
+    it { should exist }
+  end
 end

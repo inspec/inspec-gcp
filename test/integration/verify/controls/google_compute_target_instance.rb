@@ -16,45 +16,34 @@ title 'Test GCP google_compute_target_instance resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  target_instance = input('target_instance', value: {
-  "project": "value_project",
-  "region": "value_region",
+target_instance = input('target_instance', value: {
+  "project": "ppradhan",
+  "region": "asia-east1",
   "url_map": "value_urlmap",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "zone": "value_zone",
-  "nat_policy": "value_natpolicy",
-  "instance": "value_instance",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "network": "value_network",
-  "security_policy": "value_securitypolicy"
+  "kind": "compute#targetInstance",
+  "name": "example-target",
+  "zone": "asia-east1-a",
+  "full_zone": "https://www.googleapis.com/compute/v1/projects/ppradhan/zones/asia-east1-a",
+  "nat_policy": "NO_NAT",
+  "instance": "https://www.googleapis.com/compute/v1/projects/ppradhan/zones/asia-east1-a/instances/target-vm",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/zones/asia-east1-a/targetInstances/example-target",
 }, description: 'target_instance description')
+
 control 'google_compute_target_instance-1.0' do
   impact 1.0
   title 'google_compute_target_instance resource test'
 
-  describe google_compute_target_instance(project: gcp_project_id, targetInstance: target_instance['targetInstance'], zone: target_instance['zone']) do
+  describe google_compute_target_instance(project: gcp_project_id, name: target_instance['name'], zone: target_instance['zone']) do
   	it { should exist }
   	its('kind') { should cmp target_instance['kind'] }
-  	its('id') { should cmp target_instance['id'] }
-  	its('creation_timestamp') { should cmp target_instance['creation_timestamp'] }
   	its('name') { should cmp target_instance['name'] }
-  	its('description') { should cmp target_instance['description'] }
-  	its('zone') { should cmp target_instance['zone'] }
+  	its('zone') { should cmp target_instance['full_zone'] }
   	its('nat_policy') { should cmp target_instance['nat_policy'] }
   	its('instance') { should cmp target_instance['instance'] }
   	its('self_link') { should cmp target_instance['self_link'] }
-  	its('self_link_with_id') { should cmp target_instance['self_link_with_id'] }
-  	its('network') { should cmp target_instance['network'] }
-  	its('security_policy') { should cmp target_instance['security_policy'] }
-
   end
 
-  describe google_compute_target_instance(project: gcp_project_id, targetInstance: target_instance['targetInstance'], zone: target_instance['zone']) do
+  describe google_compute_target_instance(project: gcp_project_id, name: "donotexist", zone: target_instance['zone']) do
   	it { should_not exist }
   end
 end
