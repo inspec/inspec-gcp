@@ -72,6 +72,6 @@ class ComputeTargetInstance < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/targetInstances/{{target_instance}}'
+    'projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}'
   end
 end

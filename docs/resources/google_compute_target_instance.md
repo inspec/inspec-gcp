@@ -8,7 +8,7 @@ A `google_compute_target_instance` is used to test a Google TargetInstance resou
 
 ## Examples
 ```
-describe google_compute_target_instance(project: 'chef-gcp-inspec', targetInstance: ' ', zone: ' value_zone') do
+describe google_compute_target_instance(project: 'chef-gcp-inspec', name: ' ', zone: ' value_zone') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -25,7 +25,7 @@ describe google_compute_target_instance(project: 'chef-gcp-inspec', targetInstan
 
 end
 
-describe google_compute_target_instance(project: 'chef-gcp-inspec', targetInstance: ' ', zone: ' value_zone') do
+describe google_compute_target_instance(project: 'chef-gcp-inspec', name: ' ', zone: ' value_zone') do
 	it { should_not exist }
 end
 ```
@@ -50,7 +50,7 @@ Properties that can be accessed from the `google_compute_target_instance` resour
   Possible values:
     * NO_NAT
 
-  * `instance`: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
+  * `instance`: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 
   * `self_link`: [Output Only] Server-defined URL for the resource.
 
