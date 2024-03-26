@@ -102,6 +102,6 @@ class ComputeRegionUrlMap < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/urlMaps/{{url_map}}'
+    'projects/{{project}}/regions/{{region}}/urlMaps/{{name}}'
   end
 end
