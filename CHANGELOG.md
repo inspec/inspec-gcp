@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.94 -->
+<!-- latest_release 1.11.95 -->
+## [v1.11.95](https://github.com/inspec/inspec-gcp/tree/v1.11.95) (2024-03-28)
+
+#### Merged Pull Requests
+- CHEF-11234: Fix broken CI issue `can&#39;t create Thread: Operation not permitted (ThreadError)` [#611](https://github.com/inspec/inspec-gcp/pull/611) ([ahasunos](https://github.com/ahasunos))
+<!-- latest_release -->
+
 ## [v1.11.94](https://github.com/inspec/inspec-gcp/tree/v1.11.94) (2024-03-14)
 
 #### Merged Pull Requests
 - CHEF-7202_4-MAGIC-MODULE-compute_v1-RegionDiskType - Resource Implementation [#598](https://github.com/inspec/inspec-gcp/pull/598) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.93](https://github.com/inspec/inspec-gcp/tree/v1.11.93) (2024-02-07)
 
