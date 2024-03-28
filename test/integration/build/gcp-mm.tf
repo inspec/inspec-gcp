@@ -1825,3 +1825,24 @@ resource "google_compute_packet_mirroring" "packet_mirroring" {
     tags = ["foo"]
   }
 }
+
+resource "google_compute_interconnect_attachment" "on_prem" {
+  name                     = var.compute_interconnect_attachment.name
+  edge_availability_domain = var.compute_interconnect_attachment.edge_availability_domain
+  type                     = var.compute_interconnect_attachment.type
+  router                   = google_compute_router.foobar.id
+  mtu                      = var.compute_interconnect_attachment.mtu
+}
+
+resource "google_compute_router" "foobar" {
+  name    = var.compute_interconnect_attachment.router_name
+  network = google_compute_network.foobar.name
+  bgp {
+    asn = var.compute_interconnect_attachment.bgp_asn
+  }
+}
+
+resource "google_compute_network" "foobar" {
+  name                    = var.compute_interconnect_attachment.network_name
+  auto_create_subnetworks = false
+}
