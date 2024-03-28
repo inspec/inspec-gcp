@@ -685,3 +685,8 @@ compute_interconnect_attachment:
   mtu: 1500
   network_name: "network-1-ic-attachment"
   bgp_asn: 16550
+
+compute_packet_mirroring:
+  name: inspec-mirroring
+  region: "us-central1"
+  network: "inspec-network"

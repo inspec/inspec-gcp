@@ -1775,6 +1775,57 @@ resource "google_compute_network_attachment" "default" {
     connection_preference = "ACCEPT_AUTOMATIC"
 }
 
+resource "google_compute_network" "inspec-network" {
+  project = var.gcp_project_id
+  name    =  var.compute_packet_mirroring.network
+  auto_create_subnetworks = "false"
+}
+
+resource "google_compute_subnetwork" "inspec-test-subnetwork" {
+  project = var.gcp_project_id
+  ip_cidr_range = "10.2.0.0/29" # i.e. 8 total & 6 usable IPs
+  name =  var.gcp_subnetwork_name
+  region = var.compute_packet_mirroring.region
+  network = google_compute_network.inspec-network.self_link
+}
+
+resource "google_compute_instance_group" "inspec-instance-group" {
+  name        = var.compute_packet_mirroring.name
+  project = var.gcp_project_id
+  description = "InSpec test instance group"
+  zone        = "us-central1-a"
+  network     = google_compute_network.inspec-network.self_link
+}
+resource "google_compute_forwarding_rule" "inspec-ilb" {
+  depends_on = [google_compute_subnetwork.default]
+  name       = var.compute_packet_mirroring.name
+  is_mirroring_collector = true
+  ip_protocol            = "TCP"
+  load_balancing_scheme  = "INTERNAL"
+  backend_service        = google_compute_region_backend_service.default.id
+  all_ports              = true
+  network                = google_compute_network.default.id
+  subnetwork             = google_compute_subnetwork.default.id
+  network_tier           = "PREMIUM"
+}
+
+resource "google_compute_packet_mirroring" "packet_mirroring" {
+  name              = var.compute_packet_mirroring.name
+  region            = "us-central1"  # Change to your desired region
+  description       = "Packet Mirroring for analysis"
+  project = var.gcp_project_id
+
+  network {
+      url = google_compute_network.inspec-network.id
+    }
+  collector_ilb {
+    url = google_compute_instance_group.inspec-instance-group.id
+  }
+  mirrored_resources {
+    tags = ["foo"]
+  }
+}
+
 resource "google_compute_interconnect_attachment" "on_prem" {
   name                     = var.compute_interconnect_attachment.name
   edge_availability_domain = var.compute_interconnect_attachment.edge_availability_domain
