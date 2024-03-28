@@ -1775,6 +1775,32 @@ resource "google_compute_network_attachment" "default" {
     connection_preference = "ACCEPT_AUTOMATIC"
 }
 
+resource "google_compute_target_instance" "default" {
+  name     = var.compute_target_instance.name
+  instance = google_compute_instance.target-vm.id
+}
+
+data "google_compute_image" "vmimage" {
+  family  = var.compute_target_instance.image_family
+  project = var.compute_target_instance.image_project
+}
+
+resource "google_compute_instance" "target-vm" {
+  name         = var.compute_target_instance.target_vm_name
+  machine_type = var.compute_target_instance.machine_type
+  zone         = var.compute_target_instance.zone  # Make sure this matches the provider-level zone
+
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.vmimage.self_link
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+}
+
 resource "google_compute_network" "inspec-network" {
   project = var.gcp_project_id
   name    =  var.compute_packet_mirroring.network
