@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.96 -->
+<!-- latest_release 1.11.97 -->
+## [v1.11.97](https://github.com/inspec/inspec-gcp/tree/v1.11.97) (2024-03-28)
+
+#### Merged Pull Requests
+- CHEF-7218_1-MAGIC-MODULE-compute_v1-InterconnectAttachment - Resource Implementation [#603](https://github.com/inspec/inspec-gcp/pull/603) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.96](https://github.com/inspec/inspec-gcp/tree/v1.11.96) (2024-03-28)
 
 #### Merged Pull Requests
 - CHEF-7198-MAGIC-MODULE-compute_v1-PacketMirroring - Resource Implementation [#601](https://github.com/inspec/inspec-gcp/pull/601) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.95](https://github.com/inspec/inspec-gcp/tree/v1.11.95) (2024-03-28)
 
