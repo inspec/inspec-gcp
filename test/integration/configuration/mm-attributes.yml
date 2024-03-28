@@ -629,8 +629,8 @@ region_network_endpoint_group:
   target_service: "us-central1-logging.googleapis.com"
 
 apigee_organization_apis:
-  name : "firstproxy",
-  parent : "organizations/ppradhan",
+  name : "firstproxy"
+  parent : "organizations/ppradhan"
   api_proxy_type : "PROGRAMMABLE"
 
 secrets_manager_v1:
@@ -652,5 +652,10 @@ compute_node_template:
 
 network_attachments:
   name: "inspec-test"
+  region: "us-central1"
+  network: "inspec-network"
+
+compute_packet_mirroring:
+  name: inspec-mirroring
   region: "us-central1"
   network: "inspec-network"
