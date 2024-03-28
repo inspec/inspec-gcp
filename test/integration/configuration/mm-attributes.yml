@@ -662,3 +662,39 @@ compute_target_instance:
   zone: "asia-east1-a"
   machine_type: "e2-medium"
   target_vm_name: "target-vm"
+
+
+# resource "google_compute_interconnect_attachment" "on_prem" {
+#   name                     = "on-prem-attachment"
+#   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
+#   type                     = "PARTNER"
+#   router                   = google_compute_router.foobar.id
+#   mtu                      = 1500
+# }
+
+# resource "google_compute_router" "foobar" {
+#   name    = "router-1-ic-attachment"
+#   network = google_compute_network.foobar.name
+#   bgp {
+#     asn = 16550
+#   }
+# }
+
+# resource "google_compute_network" "foobar" {
+#   name                    = "network-1-ic-attachment"
+#   auto_create_subnetworks = false
+# }
+
+compute_interconnect_attachment:
+  name: "on-prem-attachment"
+  edge_availability_domain: "AVAILABILITY_DOMAIN_1"
+  type: "PARTNER"
+  router_name: "router-1-ic-attachment"
+  mtu: 1500
+  network_name: "network-1-ic-attachment"
+  bgp_asn: 16550
+
+compute_packet_mirroring:
+  name: inspec-mirroring
+  region: "us-central1"
+  network: "inspec-network"
