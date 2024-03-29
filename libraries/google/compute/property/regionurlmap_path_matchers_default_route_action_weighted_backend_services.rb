@@ -14,8 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'google/compute/property/regionurlmap_path_matchers_default_route_action_weighted_backend_services_header_action'
-require 'google/compute/property/regionurlmap_path_matchers_default_route_action_weighted_backend_services_header_action_request_headers_to_add'
-require 'google/compute/property/regionurlmap_path_matchers_default_route_action_weighted_backend_services_header_action_response_headers_to_add'
+require 'google/compute/property/regionurlmap_pmdrawbsharht_add'
+require 'google/compute/property/regionurlmap_pmdrawbsharht_add'
 module GoogleInSpec
   module Compute
     module Property
