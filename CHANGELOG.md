@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.98 -->
+<!-- latest_release 1.11.99 -->
+## [v1.11.99](https://github.com/inspec/inspec-gcp/tree/v1.11.99) (2024-04-01)
+
+#### Merged Pull Requests
+- CHEF-7217_1-MAGIC-MODULE-compute_v1-RegionUrlMap - Resource Implementation [#609](https://github.com/inspec/inspec-gcp/pull/609) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.98](https://github.com/inspec/inspec-gcp/tree/v1.11.98) (2024-03-28)
 
 #### Merged Pull Requests
 - CHEF-7209-MAGIC-MODULE-compute_v1-TargetInstance - Resource Implementation [#610](https://github.com/inspec/inspec-gcp/pull/610) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.97](https://github.com/inspec/inspec-gcp/tree/v1.11.97) (2024-03-28)
 
