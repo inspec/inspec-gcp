@@ -92,7 +92,7 @@ class ComputeRegionUrlMap < GcpResourceBase
   end
 
   def to_s
-    "RegionUrlMap #{@params[:urlMap]}"
+    "RegionUrlMap #{@params[:name]}"
   end
 
   private
