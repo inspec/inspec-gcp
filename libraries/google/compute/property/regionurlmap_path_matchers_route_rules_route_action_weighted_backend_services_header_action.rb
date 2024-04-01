@@ -14,7 +14,6 @@
 #
 # ----------------------------------------------------------------------------
 require 'google/compute/property/regionurlmap_pmrrrawbsharht_add'
-require 'google/compute/property/regionurlmap_pmrrrawbsharht_add'
 module GoogleInSpec
   module Compute
     module Property
