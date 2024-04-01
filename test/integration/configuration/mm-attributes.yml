@@ -698,3 +698,8 @@ compute_packet_mirroring:
   name: inspec-mirroring
   region: "us-central1"
   network: "inspec-network"
+
+compute_region_url_map:
+  region: us-central1
+  name: example-regionurlmap
+  description: a description
