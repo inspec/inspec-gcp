@@ -15,7 +15,6 @@
 # ----------------------------------------------------------------------------
 require 'google/compute/property/regionsslpolicy_tsptcccscgscc_credentials'
 require 'google/compute/property/regionsslpolicy_tsptcccscgscccf_plugin'
-require 'google/compute/property/regionsslpolicy_tsptcccscgscc_credentials'
 require 'google/compute/property/regionsslpolicy_tsptcccscgsccc_certificates'
 module GoogleInSpec
   module Compute

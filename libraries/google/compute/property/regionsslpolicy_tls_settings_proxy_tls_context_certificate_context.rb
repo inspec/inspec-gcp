@@ -18,7 +18,6 @@ require 'google/compute/property/regionsslpolicy_tls_settings_proxy_tls_context_
 require 'google/compute/property/regionsslpolicy_tls_settings_proxy_tls_context_certificate_context_sds_config_grpc_service_config'
 require 'google/compute/property/regionsslpolicy_tsptcccscgscc_credentials'
 require 'google/compute/property/regionsslpolicy_tsptcccscgscccf_plugin'
-require 'google/compute/property/regionsslpolicy_tsptcccscgscc_credentials'
 require 'google/compute/property/regionsslpolicy_tsptcccscgsccc_certificates'
 module GoogleInSpec
   module Compute
