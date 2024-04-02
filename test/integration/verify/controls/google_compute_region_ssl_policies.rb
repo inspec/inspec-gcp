@@ -16,21 +16,11 @@ title 'Test GCP google_compute_region_ssl_policies resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_ssl_policy = input('region_ssl_policy', value: {
-  "commitment": "value_commitment",
-  "project": "value_project",
-  "region": "value_region",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "name": "value_name",
-  "description": "value_description",
-  "profile": "value_profile",
-  "min_tls_version": "value_mintlsversion",
-  "fingerprint": "value_fingerprint"
+region_ssl_policy = input('region_ssl_policy', value: {
+  "project": "ppradhan",
+  "region": "us-central1",
 }, description: 'region_ssl_policy description')
+
 control 'google_compute_region_ssl_policies-1.0' do
   impact 1.0
   title 'google_compute_region_ssl_policies resource test'

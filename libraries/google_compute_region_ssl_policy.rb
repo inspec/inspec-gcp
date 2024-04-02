@@ -86,7 +86,7 @@ class ComputeRegionSslPolicy < GcpResourceBase
   end
 
   def to_s
-    "RegionSslPolicy #{@params[:sslPolicy]}"
+    "RegionSslPolicy #{@params[:name]}"
   end
 
   private
@@ -96,6 +96,6 @@ class ComputeRegionSslPolicy < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/sslPolicies/{{ssl_policy}}'
+    'projects/{{project}}/regions/{{region}}/sslPolicies/{{name}}'
   end
 end

@@ -1941,3 +1941,9 @@ resource "google_compute_network" "foobar" {
   name                    = var.compute_interconnect_attachment.network_name
   auto_create_subnetworks = false
 }
+
+resource "google_compute_region_ssl_policy" "basic-ssl-policy" {
+  name    = var.compute_region_ssl_policy.name
+  profile = var.compute_region_ssl_policy.profile
+  region  = var.compute_region_ssl_policy.region
+}

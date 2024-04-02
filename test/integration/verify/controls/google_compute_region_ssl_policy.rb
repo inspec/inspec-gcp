@@ -16,42 +16,32 @@ title 'Test GCP google_compute_region_ssl_policy resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_ssl_policy = input('region_ssl_policy', value: {
-  "commitment": "value_commitment",
-  "project": "value_project",
-  "region": "value_region",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "name": "value_name",
-  "description": "value_description",
-  "profile": "value_profile",
-  "min_tls_version": "value_mintlsversion",
-  "fingerprint": "value_fingerprint"
+region_ssl_policy = input('region_ssl_policy', value: {
+  "project": "ppradhan",
+  "region": "us-central1",
+  "full_region": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1",
+  "kind": "compute#sslPolicy",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/sslPolicies/basic-ssl-policy",
+  "name": "basic-ssl-policy",
+  "profile": "MODERN",
+  "min_tls_version": "TLS_1_0",
 }, description: 'region_ssl_policy description')
+
 control 'google_compute_region_ssl_policy-1.0' do
   impact 1.0
   title 'google_compute_region_ssl_policy resource test'
 
-  describe google_compute_region_ssl_policy(project: gcp_project_id, region: region_ssl_policy['region'], sslPolicy: region_ssl_policy['sslPolicy']) do
+  describe google_compute_region_ssl_policy(project: gcp_project_id, region: region_ssl_policy['region'], name: region_ssl_policy['name']) do
   	it { should exist }
   	its('kind') { should cmp region_ssl_policy['kind'] }
-  	its('id') { should cmp region_ssl_policy['id'] }
-  	its('creation_timestamp') { should cmp region_ssl_policy['creation_timestamp'] }
   	its('self_link') { should cmp region_ssl_policy['self_link'] }
-  	its('self_link_with_id') { should cmp region_ssl_policy['self_link_with_id'] }
   	its('name') { should cmp region_ssl_policy['name'] }
-  	its('description') { should cmp region_ssl_policy['description'] }
   	its('profile') { should cmp region_ssl_policy['profile'] }
   	its('min_tls_version') { should cmp region_ssl_policy['min_tls_version'] }
-  	its('fingerprint') { should cmp region_ssl_policy['fingerprint'] }
-  	its('region') { should cmp region_ssl_policy['region'] }
-
+  	its('region') { should cmp region_ssl_policy['full_region'] }
   end
 
-  describe google_compute_region_ssl_policy(project: gcp_project_id, region: region_ssl_policy['region'], sslPolicy: region_ssl_policy['sslPolicy']) do
+  describe google_compute_region_ssl_policy(project: gcp_project_id, region: region_ssl_policy['region'], name: "donotexist") do
   	it { should_not exist }
   end
 end
