@@ -18,12 +18,11 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   target_vpn_gateway = input('target_vpn_gateway', value: {
   "project": "value_project",
-  "region": "value_region",
-  "target_vpn_gateway": "value_targetvpngateway",
-  "kind": "value_kind",
+  "region": "us-central1",
+  "kind": "compute#targetVpnGateway",
   "id": "value_id",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "vpn-1",
   "description": "value_description",
   "network": "value_network",
   "status": "value_status",

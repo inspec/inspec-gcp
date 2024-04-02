@@ -65,7 +65,7 @@ class ComputeTargetVpnGateway < GcpResourceBase
   end
 
   def to_s
-    "TargetVpnGateway #{@params[:targetVpnGateway]}"
+    "TargetVpnGateway #{@params[:name]}"
   end
 
   private
@@ -75,6 +75,6 @@ class ComputeTargetVpnGateway < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/targetVpnGateways/{{target_vpn_gateway}}'
+    'projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}'
   end
 end

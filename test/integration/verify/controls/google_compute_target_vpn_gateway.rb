@@ -18,12 +18,11 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   target_vpn_gateway = input('target_vpn_gateway', value: {
   "project": "value_project",
-  "region": "value_region",
-  "target_vpn_gateway": "value_targetvpngateway",
-  "kind": "value_kind",
+  "region": "us-central1",
+  "kind": "compute#targetVpnGateway",
   "id": "value_id",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "vpn-1",
   "description": "value_description",
   "network": "value_network",
   "status": "value_status",
@@ -34,7 +33,7 @@ control 'google_compute_target_vpn_gateway-1.0' do
   impact 1.0
   title 'google_compute_target_vpn_gateway resource test'
 
-  describe google_compute_target_vpn_gateway(project: gcp_project_id, region: target_vpn_gateway['region'], targetVpnGateway: target_vpn_gateway['targetVpnGateway']) do
+  describe google_compute_target_vpn_gateway(project: gcp_project_id, region: target_vpn_gateway['region'], name: target_vpn_gateway['name']) do
   	it { should exist }
   	its('kind') { should cmp target_vpn_gateway['kind'] }
   	its('id') { should cmp target_vpn_gateway['id'] }
@@ -49,7 +48,7 @@ control 'google_compute_target_vpn_gateway-1.0' do
 
   end
 
-  describe google_compute_target_vpn_gateway(project: gcp_project_id, region: target_vpn_gateway['region'], targetVpnGateway: target_vpn_gateway['targetVpnGateway']) do
+  describe google_compute_target_vpn_gateway(project: gcp_project_id, region: target_vpn_gateway['region'], name: target_vpn_gateway['name']) do
   	it { should_not exist }
   end
 end
