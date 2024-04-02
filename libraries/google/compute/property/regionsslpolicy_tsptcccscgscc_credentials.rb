@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsslpolicy_tls_settings_proxy_tls_context_validation_context_sds_config_grpc_service_config_channel_credentials_certificates'
+require 'google/compute/property/regionsslpolicy_tsptcccscgsccc_certificates'
 module GoogleInSpec
   module Compute
     module Property
-      class RegionSslPolicyTlsSettingsProxyTlsContextValidationContextSdsConfigGrpcServiceConfigChannelCredentials
+      class RegionSslPolicyTlsSettingsProxyTlsContextCertificateContextSdsConfigGrpcServiceConfigChannelCredentials
         attr_reader :channel_credential_type
 
         attr_reader :certificates
@@ -26,11 +26,11 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @channel_credential_type = args['channelCredentialType']
-          @certificates = GoogleInSpec::Compute::Property::RegionSslPolicyTlsSettingsProxyTlsContextValidationContextSdsConfigGrpcServiceConfigChannelCredentialsCertificates.new(args['certificates'], to_s)
+          @certificates = GoogleInSpec::Compute::Property::RegionSslPolicyTlsSettingsProxyTlsContextCertificateContextSdsConfigGrpcServiceConfigChannelCredentialsCertificates.new(args['certificates'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} RegionSslPolicyTlsSettingsProxyTlsContextValidationContextSdsConfigGrpcServiceConfigChannelCredentials"
+          "#{@parent_identifier} RegionSslPolicyTlsSettingsProxyTlsContextCertificateContextSdsConfigGrpcServiceConfigChannelCredentials"
         end
       end
     end
