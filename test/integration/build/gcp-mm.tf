@@ -1775,6 +1775,75 @@ resource "google_compute_network_attachment" "default" {
     connection_preference = "ACCEPT_AUTOMATIC"
 }
 
+resource "google_compute_region_url_map" "regionurlmap" {
+  region = var.compute_region_url_map.region
+
+  name        = var.compute_region_url_map.name
+  description = var.compute_region_url_map.description
+
+  default_service = google_compute_region_backend_service.home.id
+
+  host_rule {
+    hosts        = ["mysite.com"]
+    path_matcher = "allpaths"
+  }
+
+  path_matcher {
+    name            = "allpaths"
+    default_service = google_compute_region_backend_service.home.id
+
+    path_rule {
+      paths   = ["/home"]
+      service = google_compute_region_backend_service.home.id
+    }
+
+    path_rule {
+      paths   = ["/login"]
+      service = google_compute_region_backend_service.login.id
+    }
+  }
+
+  test {
+    service = google_compute_region_backend_service.home.id
+    host    = "hi.com"
+    path    = "/home"
+  }
+}
+
+resource "google_compute_region_backend_service" "login" {
+  region = var.compute_region_url_map.region
+
+  name        = "login"
+  protocol    = "HTTP"
+  load_balancing_scheme = "INTERNAL_MANAGED"
+  timeout_sec = 10
+
+  health_checks = [google_compute_region_health_check.default.id]
+}
+
+resource "google_compute_region_backend_service" "home" {
+  region = var.compute_region_url_map.region
+
+  name        = "home"
+  protocol    = "HTTP"
+  load_balancing_scheme = "INTERNAL_MANAGED"
+  timeout_sec = 10
+
+  health_checks = [google_compute_region_health_check.default.id]
+}
+
+resource "google_compute_region_health_check" "default" {
+  region = var.compute_region_url_map.region
+
+  name               = "health-check"
+  check_interval_sec = 1
+  timeout_sec        = 1
+  http_health_check {
+    port         = 80
+    request_path = "/"
+  }
+}
+
 resource "google_compute_target_instance" "default" {
   name     = var.compute_target_instance.name
   instance = google_compute_instance.target-vm.id
