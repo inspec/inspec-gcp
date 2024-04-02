@@ -21,9 +21,9 @@ region_ssl_policy = input('region_ssl_policy', value: {
   "region": "us-central1",
   "full_region": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1",
   "kind": "compute#sslPolicy",
-  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/sslPolicies/test-gcp-ssl-policy",
-  "name": "test-gcp-ssl-policy",
-  "profile": "COMPATIBLE",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/sslPolicies/basic-ssl-policy",
+  "name": "basic-ssl-policy",
+  "profile": "MODERN",
   "min_tls_version": "TLS_1_0",
 }, description: 'region_ssl_policy description')
 

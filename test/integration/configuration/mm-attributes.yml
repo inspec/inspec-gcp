@@ -698,3 +698,8 @@ compute_packet_mirroring:
   name: inspec-mirroring
   region: "us-central1"
   network: "inspec-network"
+
+compute_region_ssl_policy:
+  name: "basic-ssl-policy"
+  profile: "MODERN"
+  region: "us-central1"
