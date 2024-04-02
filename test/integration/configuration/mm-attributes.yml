@@ -703,3 +703,8 @@ compute_region_url_map:
   region: us-central1
   name: example-regionurlmap
   description: a description
+
+compute_region_ssl_policy:
+  name: "basic-ssl-policy"
+  profile: "MODERN"
+  region: "us-central1"
