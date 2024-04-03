@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.100 -->
+<!-- latest_release 1.11.101 -->
+## [v1.11.101](https://github.com/inspec/inspec-gcp/tree/v1.11.101) (2024-04-03)
+
+#### Merged Pull Requests
+- CHEF-7211-MAGIC-MODULE-compute_v1-TargetVpnGateway - Resource Implementation [#612](https://github.com/inspec/inspec-gcp/pull/612) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.100](https://github.com/inspec/inspec-gcp/tree/v1.11.100) (2024-04-02)
 
 #### Merged Pull Requests
 - CHEF-7214-MAGIC-MODULE-compute_v1-RegionSslPolicy - Resource Implementation [#614](https://github.com/inspec/inspec-gcp/pull/614) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.99](https://github.com/inspec/inspec-gcp/tree/v1.11.99) (2024-04-01)
 

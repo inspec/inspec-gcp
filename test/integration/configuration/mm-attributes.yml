@@ -663,28 +663,6 @@ compute_target_instance:
   machine_type: "e2-medium"
   target_vm_name: "target-vm"
 
-
-# resource "google_compute_interconnect_attachment" "on_prem" {
-#   name                     = "on-prem-attachment"
-#   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
-#   type                     = "PARTNER"
-#   router                   = google_compute_router.foobar.id
-#   mtu                      = 1500
-# }
-
-# resource "google_compute_router" "foobar" {
-#   name    = "router-1-ic-attachment"
-#   network = google_compute_network.foobar.name
-#   bgp {
-#     asn = 16550
-#   }
-# }
-
-# resource "google_compute_network" "foobar" {
-#   name                    = "network-1-ic-attachment"
-#   auto_create_subnetworks = false
-# }
-
 compute_interconnect_attachment:
   name: "on-prem-attachment"
   edge_availability_domain: "AVAILABILITY_DOMAIN_1"
@@ -708,3 +686,10 @@ compute_region_ssl_policy:
   name: "basic-ssl-policy"
   profile: "MODERN"
   region: "us-central1"
+
+compute_target_vpn_gateway:
+  name: "vpn-1"
+  network: "inspec-network"
+  region: "us-central1"
+  static_ip: "vpn-static-ip"
+  tunnel: "tunnel1"
