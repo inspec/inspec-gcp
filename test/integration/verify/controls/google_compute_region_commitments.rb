@@ -16,26 +16,11 @@ title 'Test GCP google_compute_region_commitments resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_commitment = input('region_commitment', value: {
-  "project": "value_project",
-  "region": "value_region",
-  "target_vpn_gateway": "value_targetvpngateway",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "status": "value_status",
-  "status_message": "value_statusmessage",
-  "plan": "value_plan",
-  "start_timestamp": "value_starttimestamp",
-  "end_timestamp": "value_endtimestamp",
-  "type": "value_type",
-  "category": "value_category",
-  "split_source_commitment": "value_splitsourcecommitment"
+region_commitment = input('region_commitment', value: {
+  "project": "ppradhan",
+  "region": "us-central1",
 }, description: 'region_commitment description')
+
 control 'google_compute_region_commitments-1.0' do
   impact 1.0
   title 'google_compute_region_commitments resource test'

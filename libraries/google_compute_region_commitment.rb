@@ -92,7 +92,7 @@ class ComputeRegionCommitment < GcpResourceBase
   end
 
   def to_s
-    "RegionCommitment #{@params[:commitment]}"
+    "RegionCommitment #{@params[:name]}"
   end
 
   private
@@ -102,6 +102,6 @@ class ComputeRegionCommitment < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/commitments/{{commitment}}'
+    'projects/{{project}}/regions/{{region}}/commitments/{{name}}'
   end
 end

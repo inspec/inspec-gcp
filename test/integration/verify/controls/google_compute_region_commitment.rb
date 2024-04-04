@@ -16,25 +16,19 @@ title 'Test GCP google_compute_region_commitment resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_commitment = input('region_commitment', value: {
-  "project": "value_project",
-  "region": "value_region",
+region_commitment = input('region_commitment', value: {
+  "project": "ppradhan",
+  "region": "us-central1",
+  "full_region": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1",
   "target_vpn_gateway": "value_targetvpngateway",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "status": "value_status",
-  "status_message": "value_statusmessage",
-  "plan": "value_plan",
-  "start_timestamp": "value_starttimestamp",
-  "end_timestamp": "value_endtimestamp",
-  "type": "value_type",
-  "category": "value_category",
-  "split_source_commitment": "value_splitsourcecommitment"
+  "kind": "compute#commitment",
+  "name": "my-region-commitment",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/regions/us-central1/commitments/my-region-commitment",
+  "status": "NOT_YET_ACTIVE",
+  "status_message": "The commitment is not yet active (its startTimestamp is in the future). It will not apply to current resource usage.",
+  "plan": "THIRTY_SIX_MONTH",
+  "type": "GENERAL_PURPOSE",
+  "category": "MACHINE",
 }, description: 'region_commitment description')
 control 'google_compute_region_commitment-1.0' do
   impact 1.0
@@ -43,25 +37,17 @@ control 'google_compute_region_commitment-1.0' do
   describe google_compute_region_commitment(name: region_commitment['name'], project: gcp_project_id, region: region_commitment['region']) do
   	it { should exist }
   	its('kind') { should cmp region_commitment['kind'] }
-  	its('id') { should cmp region_commitment['id'] }
-  	its('creation_timestamp') { should cmp region_commitment['creation_timestamp'] }
   	its('name') { should cmp region_commitment['name'] }
-  	its('description') { should cmp region_commitment['description'] }
-  	its('region') { should cmp region_commitment['region'] }
+  	its('region') { should cmp region_commitment['full_region'] }
   	its('self_link') { should cmp region_commitment['self_link'] }
-  	its('self_link_with_id') { should cmp region_commitment['self_link_with_id'] }
   	its('status') { should cmp region_commitment['status'] }
   	its('status_message') { should cmp region_commitment['status_message'] }
   	its('plan') { should cmp region_commitment['plan'] }
-  	its('start_timestamp') { should cmp region_commitment['start_timestamp'] }
-  	its('end_timestamp') { should cmp region_commitment['end_timestamp'] }
   	its('type') { should cmp region_commitment['type'] }
   	its('category') { should cmp region_commitment['category'] }
-  	its('split_source_commitment') { should cmp region_commitment['split_source_commitment'] }
-
   end
 
-  describe google_compute_region_commitment(commitment: region_commitment['commitment'], project: gcp_project_id, region: region_commitment['region']) do
+  describe google_compute_region_commitment(name: "donotexist", project: gcp_project_id, region: region_commitment['region']) do
   	it { should_not exist }
   end
 end
