@@ -29,7 +29,7 @@ describe google_compute_region_commitment(name: ' value_name', project: 'chef-gc
 
 end
 
-describe google_compute_region_commitment(commitment: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_region_commitment(name: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
@@ -169,7 +169,7 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
 
       * `assured_count`: [Output Only] Indicates how many instances are actually usable currently.
 
-      * `source_instance_template`: Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+      * `source_instance_template`: Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
 
     * `aggregate_reservation`: This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
 
@@ -181,7 +181,7 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
 
       * `reserved_resources`: List of reserved resources (CPUs, memory, accelerators).
 
-        * `accelerator`: 
+        * `accelerator`:
 
           * `accelerator_count`: Number of accelerators of specified type.
 
@@ -189,7 +189,7 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
 
       * `in_use_resources`: [Output only] List of resources currently in use.
 
-        * `accelerator`: 
+        * `accelerator`:
 
           * `accelerator_count`: Number of accelerators of specified type.
 
@@ -237,7 +237,7 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
 
     * `resource_policies`: Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `resource_status`: [Output Only] Contains output only fields.
 
@@ -275,7 +275,7 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
 
   * `resource_status`: [Output Only] Contains output only fields.
 
-    * `cancellation_information`: 
+    * `cancellation_information`:
 
       * `cancellation_fee`: Represents an amount of money with its currency type.
 
@@ -305,7 +305,7 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
 
       * `canceled_commitment_last_updated_timestamp`: [Output Only] An optional last update time of canceled_commitment. RFC3339 text format.
 
-  * `existing_reservations`: Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+  * `existing_reservations`: Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
 
 
 ## GCP Permissions
