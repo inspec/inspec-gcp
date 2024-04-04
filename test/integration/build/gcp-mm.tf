@@ -251,6 +251,9 @@ variable "compute_machine_images" {
 variable "network_attachments" {
   type = any
 }
+variable "compute_target_vpn_gateway" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1775,6 +1778,101 @@ resource "google_compute_network_attachment" "default" {
     connection_preference = "ACCEPT_AUTOMATIC"
 }
 
+resource "google_compute_region_url_map" "regionurlmap" {
+  region = var.compute_region_url_map.region
+
+  name        = var.compute_region_url_map.name
+  description = var.compute_region_url_map.description
+
+  default_service = google_compute_region_backend_service.home.id
+
+  host_rule {
+    hosts        = ["mysite.com"]
+    path_matcher = "allpaths"
+  }
+
+  path_matcher {
+    name            = "allpaths"
+    default_service = google_compute_region_backend_service.home.id
+
+    path_rule {
+      paths   = ["/home"]
+      service = google_compute_region_backend_service.home.id
+    }
+
+    path_rule {
+      paths   = ["/login"]
+      service = google_compute_region_backend_service.login.id
+    }
+  }
+
+  test {
+    service = google_compute_region_backend_service.home.id
+    host    = "hi.com"
+    path    = "/home"
+  }
+}
+
+resource "google_compute_region_backend_service" "login" {
+  region = var.compute_region_url_map.region
+
+  name        = "login"
+  protocol    = "HTTP"
+  load_balancing_scheme = "INTERNAL_MANAGED"
+  timeout_sec = 10
+
+  health_checks = [google_compute_region_health_check.default.id]
+}
+
+resource "google_compute_region_backend_service" "home" {
+  region = var.compute_region_url_map.region
+
+  name        = "home"
+  protocol    = "HTTP"
+  load_balancing_scheme = "INTERNAL_MANAGED"
+  timeout_sec = 10
+
+  health_checks = [google_compute_region_health_check.default.id]
+}
+
+resource "google_compute_region_health_check" "default" {
+  region = var.compute_region_url_map.region
+
+  name               = "health-check"
+  check_interval_sec = 1
+  timeout_sec        = 1
+  http_health_check {
+    port         = 80
+    request_path = "/"
+  }
+}
+
+resource "google_compute_target_instance" "default" {
+  name     = var.compute_target_instance.name
+  instance = google_compute_instance.target-vm.id
+}
+
+data "google_compute_image" "vmimage" {
+  family  = var.compute_target_instance.image_family
+  project = var.compute_target_instance.image_project
+}
+
+resource "google_compute_instance" "target-vm" {
+  name         = var.compute_target_instance.target_vm_name
+  machine_type = var.compute_target_instance.machine_type
+  zone         = var.compute_target_instance.zone  # Make sure this matches the provider-level zone
+
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.vmimage.self_link
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+}
+
 resource "google_compute_network" "inspec-network" {
   project = var.gcp_project_id
   name    =  var.compute_packet_mirroring.network
@@ -1824,6 +1922,91 @@ resource "google_compute_packet_mirroring" "packet_mirroring" {
   mirrored_resources {
     tags = ["foo"]
   }
+}
+
+resource "google_compute_interconnect_attachment" "on_prem" {
+  name                     = var.compute_interconnect_attachment.name
+  edge_availability_domain = var.compute_interconnect_attachment.edge_availability_domain
+  type                     = var.compute_interconnect_attachment.type
+  router                   = google_compute_router.foobar.id
+  mtu                      = var.compute_interconnect_attachment.mtu
+}
+
+resource "google_compute_router" "foobar" {
+  name    = var.compute_interconnect_attachment.router_name
+  network = google_compute_network.foobar.name
+  bgp {
+    asn = var.compute_interconnect_attachment.bgp_asn
+  }
+}
+
+resource "google_compute_network" "foobar" {
+  name                    = var.compute_interconnect_attachment.network_name
+  auto_create_subnetworks = false
+}
+
+resource "google_compute_region_ssl_policy" "basic-ssl-policy" {
+  name    = var.compute_region_ssl_policy.name
+  profile = var.compute_region_ssl_policy.profile
+  region  = var.compute_region_ssl_policy.region
+}
+resource "google_compute_vpn_gateway" "target_gateway" {
+  name    = var.compute_target_vpn_gateway.name
+  network = google_compute_network.network1.id
+}
+
+resource "google_compute_network" "inspec-network" {
+  name = var.compute_target_vpn_gateway.network
+}
+
+resource "google_compute_address" "vpn_static_ip" {
+  name = var.compute_target_vpn_gateway.static_ip
+}
+
+resource "google_compute_forwarding_rule" "fr_esp" {
+  name        = "fr-esp"
+  ip_protocol = "ESP"
+  ip_address  = google_compute_address.vpn_static_ip.address
+  target      = google_compute_vpn_gateway.target_gateway.id
+}
+
+resource "google_compute_forwarding_rule" "fr_udp500" {
+  name        = "fr-udp500"
+  ip_protocol = "UDP"
+  port_range  = "500"
+  ip_address  = google_compute_address.vpn_static_ip.address
+  target      = google_compute_vpn_gateway.target_gateway.id
+}
+
+resource "google_compute_forwarding_rule" "fr_udp4500" {
+  name        = "fr-udp4500"
+  ip_protocol = "UDP"
+  port_range  = "4500"
+  ip_address  = google_compute_address.vpn_static_ip.address
+  target      = google_compute_vpn_gateway.target_gateway.id
+}
+
+resource "google_compute_vpn_tunnel" "tunnel1" {
+  name          =  var.compute_target_vpn_gateway.tunnel
+  peer_ip       = "15.0.0.120"
+  shared_secret = "a secret message"
+
+  target_vpn_gateway = google_compute_vpn_gateway.target_gateway.id
+
+  depends_on = [
+    google_compute_forwarding_rule.fr_esp,
+    google_compute_forwarding_rule.fr_udp500,
+    google_compute_forwarding_rule.fr_udp4500,
+  ]
+}
+
+resource "google_compute_route" "route1" {
+  name       = "route1"
+  network    = google_compute_network.network1.name
+  dest_range = "15.0.0.0/24"
+  priority   = 1000
+
+  next_hop_vpn_tunnel = google_compute_vpn_tunnel.tunnel1.id
 }
 
 resource "google_compute_region_commitment" "foobar" {
