@@ -659,3 +659,7 @@ compute_packet_mirroring:
   name: inspec-mirroring
   region: "us-central1"
   network: "inspec-network"
+
+compute_region_commitment:
+  name: "my-region-commitment"
+  plan: "THIRTY_SIX_MONTH"

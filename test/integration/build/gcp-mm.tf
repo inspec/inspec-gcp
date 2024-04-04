@@ -1825,3 +1825,16 @@ resource "google_compute_packet_mirroring" "packet_mirroring" {
     tags = ["foo"]
   }
 }
+
+resource "google_compute_region_commitment" "foobar" {
+  name = var.compute_region_commitment.name
+  plan = var.compute_region_commitment.plan
+  resources {
+      type = "VCPU"
+      amount = "4"
+  }
+  resources {
+      type = "MEMORY"
+      amount = "9"
+  }
+}
