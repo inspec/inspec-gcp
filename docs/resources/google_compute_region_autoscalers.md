@@ -8,7 +8,7 @@ A `google_compute_region_autoscalers` is used to test a Google RegionAutoscaler 
 
 ## Examples
 ```
-    describe google_compute_region_autoscalers(project: 'chef-gcp-inspec', region: ' value_region') do
+  describe google_compute_region_autoscalers(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```

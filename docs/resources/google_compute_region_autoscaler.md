@@ -8,7 +8,7 @@ A `google_compute_region_autoscaler` is used to test a Google RegionAutoscaler r
 
 ## Examples
 ```
-describe google_compute_region_autoscaler(name: ' value_name', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_region_autoscaler(name: 'value_name', project: 'chef-gcp-inspec', region: 'value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -24,7 +24,7 @@ describe google_compute_region_autoscaler(name: ' value_name', project: 'chef-gc
 
 end
 
-describe google_compute_region_autoscaler(autoscaler: ' value_autoscaler', project: 'chef-gcp-inspec', region: ' value_region') do
+describe google_compute_region_autoscaler(name: 'value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should_not exist }
 end
 ```
@@ -59,7 +59,7 @@ Properties that can be accessed from the `google_compute_region_autoscaler` reso
 
         * `percent`: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
 
-        * `calculated`: [Output Only] Absolute value of VM instances calculated based on the specific mode. - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded. 
+        * `calculated`: [Output Only] Absolute value of VM instances calculated based on the specific mode. - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded.
 
       * `time_window_sec`: How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
 
@@ -71,7 +71,7 @@ Properties that can be accessed from the `google_compute_region_autoscaler` reso
 
         * `percent`: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
 
-        * `calculated`: [Output Only] Absolute value of VM instances calculated based on the specific mode. - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded. 
+        * `calculated`: [Output Only] Absolute value of VM instances calculated based on the specific mode. - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded.
 
       * `time_window_sec`: How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
 
@@ -165,7 +165,7 @@ Properties that can be accessed from the `google_compute_region_autoscaler` reso
 
   * `scaling_schedule_status`: [Output Only] Status information of existing scaling schedules.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
 
 ## GCP Permissions

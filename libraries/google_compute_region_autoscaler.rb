@@ -79,7 +79,7 @@ class ComputeRegionAutoscaler < GcpResourceBase
   end
 
   def to_s
-    "RegionAutoscaler #{@params[:autoscaler]}"
+    "RegionAutoscaler #{@params[:name]}"
   end
 
   private
@@ -89,6 +89,6 @@ class ComputeRegionAutoscaler < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/autoscalers/{{autoscaler}}'
+    'projects/{{project}}/regions/{{region}}/autoscalers/{{name}}'
   end
 end

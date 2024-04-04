@@ -17,13 +17,12 @@ title 'Test GCP google_compute_region_autoscaler resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   region_autoscaler = input('region_autoscaler', value: {
-  "autoscaler": "value_autoscaler",
   "project": "value_project",
-  "region": "value_region",
-  "kind": "value_kind",
+  "region": "us-central1",
+  "kind": "compute#autoscaler",
   "id": "value_id",
   "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
+  "name": "inspec-test-group-2",
   "description": "value_description",
   "target": "value_target",
   "zone": "value_zone",
@@ -51,7 +50,7 @@ control 'google_compute_region_autoscaler-1.0' do
 
   end
 
-  describe google_compute_region_autoscaler(autoscaler: region_autoscaler['autoscaler'], project: gcp_project_id, region: region_autoscaler['region']) do
+  describe google_compute_region_autoscaler(name: region_autoscaler['name'], project: gcp_project_id, region: region_autoscaler['region']) do
   	it { should_not exist }
   end
 end
