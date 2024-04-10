@@ -8,7 +8,7 @@ A `google_compute_target_grpc_proxy` is used to test a Google TargetGrpcProxy re
 
 ## Examples
 ```
-describe google_compute_target_grpc_proxy(project: 'chef-gcp-inspec', targetGrpcProxy: ' ') do
+describe google_compute_target_grpc_proxy(project: 'chef-gcp-inspec', name: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -22,7 +22,7 @@ describe google_compute_target_grpc_proxy(project: 'chef-gcp-inspec', targetGrpc
 
 end
 
-describe google_compute_target_grpc_proxy(project: 'chef-gcp-inspec', targetGrpcProxy: ' ') do
+describe google_compute_target_grpc_proxy(project: 'chef-gcp-inspec', name: ' ') do
 	it { should_not exist }
 end
 ```
