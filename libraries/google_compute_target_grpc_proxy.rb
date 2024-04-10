@@ -58,7 +58,7 @@ class ComputeTargetGrpcProxy < GcpResourceBase
   end
 
   def to_s
-    "TargetGrpcProxy #{@params[:targetGrpcProxy]}"
+    "TargetGrpcProxy #{@params[:name]}"
   end
 
   private
@@ -68,6 +68,6 @@ class ComputeTargetGrpcProxy < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/global/targetGrpcProxies/{{target_grpc_proxy}}'
+    'projects/{{project}}/global/targetGrpcProxies/{{name}}'
   end
 end
