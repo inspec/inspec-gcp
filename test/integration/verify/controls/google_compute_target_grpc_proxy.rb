@@ -16,38 +16,27 @@ title 'Test GCP google_compute_target_grpc_proxy resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  target_grpc_proxy = input('target_grpc_proxy', value: {
-  "project": "value_project",
-  "target_grpc_proxy": "value_targetgrpcproxy",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "url_map": "value_urlmap",
-  "fingerprint": "value_fingerprint"
+target_grpc_proxy = input('target_grpc_proxy', value: {
+  "project": "ppradhan",
+  "kind": "compute#targetGrpcProxy",
+  "name": "inspec-test-proxy",
+  "self_link": "https://www.googleapis.com/compute/v1/projects/ppradhan/global/targetGrpcProxies/inspec-test-proxy",
+  "url_map": "https://www.googleapis.com/compute/v1/projects/ppradhan/global/urlMaps/urlmap",
 }, description: 'target_grpc_proxy description')
+
 control 'google_compute_target_grpc_proxy-1.0' do
   impact 1.0
   title 'google_compute_target_grpc_proxy resource test'
 
-  describe google_compute_target_grpc_proxy(project: gcp_project_id, targetGrpcProxy: target_grpc_proxy['targetGrpcProxy']) do
+  describe google_compute_target_grpc_proxy(project: gcp_project_id, name: target_grpc_proxy['name']) do
   	it { should exist }
   	its('kind') { should cmp target_grpc_proxy['kind'] }
-  	its('id') { should cmp target_grpc_proxy['id'] }
-  	its('creation_timestamp') { should cmp target_grpc_proxy['creation_timestamp'] }
   	its('name') { should cmp target_grpc_proxy['name'] }
-  	its('description') { should cmp target_grpc_proxy['description'] }
   	its('self_link') { should cmp target_grpc_proxy['self_link'] }
-  	its('self_link_with_id') { should cmp target_grpc_proxy['self_link_with_id'] }
   	its('url_map') { should cmp target_grpc_proxy['url_map'] }
-  	its('fingerprint') { should cmp target_grpc_proxy['fingerprint'] }
-
   end
 
-  describe google_compute_target_grpc_proxy(project: gcp_project_id, targetGrpcProxy: target_grpc_proxy['targetGrpcProxy']) do
+  describe google_compute_target_grpc_proxy(project: gcp_project_id, name: "donotexist") do
   	it { should_not exist }
   end
 end

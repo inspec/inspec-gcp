@@ -16,24 +16,11 @@ title 'Test GCP google_compute_target_grpc_proxies resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  target_grpc_proxy = input('target_grpc_proxy', value: {
-  "project": "value_project",
-  "target_grpc_proxy": "value_targetgrpcproxy",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "self_link_with_id": "value_selflinkwithid",
-  "url_map": "value_urlmap",
-  "fingerprint": "value_fingerprint"
-}, description: 'target_grpc_proxy description')
 control 'google_compute_target_grpc_proxies-1.0' do
   impact 1.0
   title 'google_compute_target_grpc_proxies resource test'
 
-      describe google_compute_target_grpc_proxies(project: gcp_project_id) do
-      it { should exist }
-    end
+  describe google_compute_target_grpc_proxies(project: gcp_project_id) do
+    it { should exist }
+  end
 end
