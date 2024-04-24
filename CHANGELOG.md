@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.101 -->
+<!-- latest_release 1.11.102 -->
+## [v1.11.102](https://github.com/inspec/inspec-gcp/tree/v1.11.102) (2024-04-24)
+
+#### Merged Pull Requests
+- CHEF-7200_1-MAGIC-MODULE-compute_v1-RegionAutoscaler - Resource Implementation [#615](https://github.com/inspec/inspec-gcp/pull/615) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.101](https://github.com/inspec/inspec-gcp/tree/v1.11.101) (2024-04-03)
 
 #### Merged Pull Requests
 - CHEF-7211-MAGIC-MODULE-compute_v1-TargetVpnGateway - Resource Implementation [#612](https://github.com/inspec/inspec-gcp/pull/612) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.100](https://github.com/inspec/inspec-gcp/tree/v1.11.100) (2024-04-02)
 
