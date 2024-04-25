@@ -85,7 +85,7 @@ class ComputeResourcePolicy < GcpResourceBase
   end
 
   def to_s
-    "ResourcePolicy #{@params[:resourcePolicy]}"
+    "ResourcePolicy #{@params[:name]}"
   end
 
   private
@@ -95,6 +95,6 @@ class ComputeResourcePolicy < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/resourcePolicies/{{resource_policy}}'
+    'projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}'
   end
 end

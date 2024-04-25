@@ -8,7 +8,7 @@ A `google_compute_resource_policies` is used to test a Google ResourcePolicy res
 
 ## Examples
 ```
-    describe google_compute_resource_policies(project: 'chef-gcp-inspec', region: ' value_region') do
+  describe google_compute_resource_policies(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```

@@ -18,15 +18,14 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   resource_policy = input('resource_policy', value: {
   "project": "value_project",
-  "region": "value_region",
-  "resource_policy": "value_resourcepolicy",
-  "kind": "value_kind",
+  "region": "us-central1",
+  "kind": "compute#resourcePolicy",
   "id": "value_id",
   "creation_timestamp": "value_creationtimestamp",
   "self_link": "value_selflink",
   "self_link_with_id": "value_selflinkwithid",
   "description": "value_description",
-  "name": "value_name",
+  "name": "schedule-1",
   "status": "value_status"
 }, description: 'resource_policy description')
 control 'google_compute_resource_policy-1.0' do

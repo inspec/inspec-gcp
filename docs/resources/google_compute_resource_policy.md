@@ -8,7 +8,7 @@ A `google_compute_resource_policy` is used to test a Google ResourcePolicy resou
 
 ## Examples
 ```
-describe google_compute_resource_policy(project: 'chef-gcp-inspec', region: ' value_region', resourcePolicy: ' ') do
+describe google_compute_resource_policy(project: 'chef-gcp-inspec', region: 'value_region', name: 'value_name') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -19,10 +19,9 @@ describe google_compute_resource_policy(project: 'chef-gcp-inspec', region: ' va
 	its('description') { should cmp 'value_description' }
 	its('name') { should cmp 'value_name' }
 	its('status') { should cmp 'value_status' }
-
 end
 
-describe google_compute_resource_policy(project: 'chef-gcp-inspec', region: ' value_region', resourcePolicy: ' ') do
+describe google_compute_resource_policy(project: 'chef-gcp-inspec', region: ' value_region', name: 'value_name') do
 	it { should_not exist }
 end
 ```
@@ -41,13 +40,13 @@ Properties that can be accessed from the `google_compute_resource_policy` resour
 
   * `self_link_with_id`: [Output Only] Server-defined URL for this resource with the resource id.
 
-  * `region`: 
+  * `region`:
 
-  * `description`: 
+  * `description`:
 
   * `name`: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
-  * `vm_maintenance_policy`: 
+  * `vm_maintenance_policy`:
 
     * `maintenance_window`: A maintenance window for VMs. When set, we restrict our maintenance operations to this window.
 
@@ -61,7 +60,7 @@ Properties that can be accessed from the `google_compute_resource_policy` resour
 
     * `concurrency_control_group`: A concurrency control configuration. Defines a group config that, when attached to an instance, recognizes that instance as part of a group of instances where only up the concurrency_limit of instances in that group can undergo simultaneous maintenance. For more information: go/concurrency-control-design-doc
 
-      * `concurrency_limit`: 
+      * `concurrency_limit`:
 
   * `snapshot_schedule_policy`: A snapshot schedule policy specifies when and how frequently snapshots are to be created for the target disk. Also specifies how many and how long these scheduled snapshots should be retained.
 
@@ -106,7 +105,7 @@ Properties that can be accessed from the `google_compute_resource_policy` resour
 
       * `max_retention_days`: Maximum age of the snapshot that is allowed to be kept.
 
-      * `on_policy_switch`: 
+      * `on_policy_switch`:
       Possible values:
         * DO_NOT_RETROACTIVELY_APPLY
         * RETROACTIVELY_APPLY
@@ -122,7 +121,7 @@ Properties that can be accessed from the `google_compute_resource_policy` resour
 
       * `labels`: Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `storage_locations`: Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
 
@@ -191,7 +190,7 @@ Properties that can be accessed from the `google_compute_resource_policy` resour
 
   * `resource_status`: Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
 
-    * `instance_schedule_policy`: 
+    * `instance_schedule_policy`:
 
       * `next_run_start_time`: [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
 
