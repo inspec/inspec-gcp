@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.103 -->
+<!-- latest_release 1.11.104 -->
+## [v1.11.104](https://github.com/inspec/inspec-gcp/tree/v1.11.104) (2024-04-25)
+
+#### Merged Pull Requests
+- CHEF-7208-MAGIC-MODULE-compute_v1-TargetGrpcProxy - Resource Implementation [#616](https://github.com/inspec/inspec-gcp/pull/616) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.103](https://github.com/inspec/inspec-gcp/tree/v1.11.103) (2024-04-25)
 
 #### Merged Pull Requests
 - CHEF-7201-MAGIC-MODULE-compute_v1-RegionCommitment - Resource Implementation [#613](https://github.com/inspec/inspec-gcp/pull/613) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.102](https://github.com/inspec/inspec-gcp/tree/v1.11.102) (2024-04-24)
 
