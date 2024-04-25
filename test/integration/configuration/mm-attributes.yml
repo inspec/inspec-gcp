@@ -694,6 +694,10 @@ compute_target_vpn_gateway:
   static_ip: "vpn-static-ip"
   tunnel: "tunnel1"
 
+compute_region_commitment:
+  name: "my-region-commitment"
+  plan: "THIRTY_SIX_MONTH"
+
 compute_target_grpc_proxy:
   name: "inspec-test-proxy"
   validate_for_proxyless: true
