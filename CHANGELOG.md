@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.102 -->
+<!-- latest_release 1.11.103 -->
+## [v1.11.103](https://github.com/inspec/inspec-gcp/tree/v1.11.103) (2024-04-25)
+
+#### Merged Pull Requests
+- CHEF-7201-MAGIC-MODULE-compute_v1-RegionCommitment - Resource Implementation [#613](https://github.com/inspec/inspec-gcp/pull/613) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.102](https://github.com/inspec/inspec-gcp/tree/v1.11.102) (2024-04-24)
 
 #### Merged Pull Requests
 - CHEF-7200_1-MAGIC-MODULE-compute_v1-RegionAutoscaler - Resource Implementation [#615](https://github.com/inspec/inspec-gcp/pull/615) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.101](https://github.com/inspec/inspec-gcp/tree/v1.11.101) (2024-04-03)
 
