@@ -693,3 +693,7 @@ compute_target_vpn_gateway:
   region: "us-central1"
   static_ip: "vpn-static-ip"
   tunnel: "tunnel1"
+
+compute_region_commitment:
+  name: "my-region-commitment"
+  plan: "THIRTY_SIX_MONTH"

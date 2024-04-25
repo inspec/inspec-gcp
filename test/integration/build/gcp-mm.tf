@@ -2008,3 +2008,16 @@ resource "google_compute_route" "route1" {
 
   next_hop_vpn_tunnel = google_compute_vpn_tunnel.tunnel1.id
 }
+
+resource "google_compute_region_commitment" "foobar" {
+  name = var.compute_region_commitment.name
+  plan = var.compute_region_commitment.plan
+  resources {
+      type = "VCPU"
+      amount = "4"
+  }
+  resources {
+      type = "MEMORY"
+      amount = "9"
+  }
+}
