@@ -1,11 +1,61 @@
 # Change Log
 
-<!-- latest_release 1.11.94 -->
+<!-- latest_release 1.11.104 -->
+## [v1.11.104](https://github.com/inspec/inspec-gcp/tree/v1.11.104) (2024-04-25)
+
+#### Merged Pull Requests
+- CHEF-7208-MAGIC-MODULE-compute_v1-TargetGrpcProxy - Resource Implementation [#616](https://github.com/inspec/inspec-gcp/pull/616) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.103](https://github.com/inspec/inspec-gcp/tree/v1.11.103) (2024-04-25)
+
+#### Merged Pull Requests
+- CHEF-7201-MAGIC-MODULE-compute_v1-RegionCommitment - Resource Implementation [#613](https://github.com/inspec/inspec-gcp/pull/613) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.102](https://github.com/inspec/inspec-gcp/tree/v1.11.102) (2024-04-24)
+
+#### Merged Pull Requests
+- CHEF-7200_1-MAGIC-MODULE-compute_v1-RegionAutoscaler - Resource Implementation [#615](https://github.com/inspec/inspec-gcp/pull/615) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.101](https://github.com/inspec/inspec-gcp/tree/v1.11.101) (2024-04-03)
+
+#### Merged Pull Requests
+- CHEF-7211-MAGIC-MODULE-compute_v1-TargetVpnGateway - Resource Implementation [#612](https://github.com/inspec/inspec-gcp/pull/612) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.100](https://github.com/inspec/inspec-gcp/tree/v1.11.100) (2024-04-02)
+
+#### Merged Pull Requests
+- CHEF-7214-MAGIC-MODULE-compute_v1-RegionSslPolicy - Resource Implementation [#614](https://github.com/inspec/inspec-gcp/pull/614) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.99](https://github.com/inspec/inspec-gcp/tree/v1.11.99) (2024-04-01)
+
+#### Merged Pull Requests
+- CHEF-7217_1-MAGIC-MODULE-compute_v1-RegionUrlMap - Resource Implementation [#609](https://github.com/inspec/inspec-gcp/pull/609) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.98](https://github.com/inspec/inspec-gcp/tree/v1.11.98) (2024-03-28)
+
+#### Merged Pull Requests
+- CHEF-7209-MAGIC-MODULE-compute_v1-TargetInstance - Resource Implementation [#610](https://github.com/inspec/inspec-gcp/pull/610) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.97](https://github.com/inspec/inspec-gcp/tree/v1.11.97) (2024-03-28)
+
+#### Merged Pull Requests
+- CHEF-7218_1-MAGIC-MODULE-compute_v1-InterconnectAttachment - Resource Implementation [#603](https://github.com/inspec/inspec-gcp/pull/603) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.96](https://github.com/inspec/inspec-gcp/tree/v1.11.96) (2024-03-28)
+
+#### Merged Pull Requests
+- CHEF-7198-MAGIC-MODULE-compute_v1-PacketMirroring - Resource Implementation [#601](https://github.com/inspec/inspec-gcp/pull/601) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.95](https://github.com/inspec/inspec-gcp/tree/v1.11.95) (2024-03-28)
+
+#### Merged Pull Requests
+- CHEF-11234: Fix broken CI issue `can&#39;t create Thread: Operation not permitted (ThreadError)` [#611](https://github.com/inspec/inspec-gcp/pull/611) ([ahasunos](https://github.com/ahasunos))
+
 ## [v1.11.94](https://github.com/inspec/inspec-gcp/tree/v1.11.94) (2024-03-14)
 
 #### Merged Pull Requests
 - CHEF-7202_4-MAGIC-MODULE-compute_v1-RegionDiskType - Resource Implementation [#598](https://github.com/inspec/inspec-gcp/pull/598) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.93](https://github.com/inspec/inspec-gcp/tree/v1.11.93) (2024-02-07)
 
