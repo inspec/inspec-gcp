@@ -693,3 +693,18 @@ compute_target_vpn_gateway:
   region: "us-central1"
   static_ip: "vpn-static-ip"
   tunnel: "tunnel1"
+
+compute_region_commitment:
+  name: "my-region-commitment"
+  plan: "THIRTY_SIX_MONTH"
+
+compute_target_grpc_proxy:
+  name: "inspec-test-proxy"
+  validate_for_proxyless: true
+  url_map_name: "urlmap"
+  description: "a description"
+  backend_service_name: "backend"
+  port_name: "grpc"
+  protocol: "GRPC"
+  timeout_sec: 10
+  health_check_name: "healthcheck"
