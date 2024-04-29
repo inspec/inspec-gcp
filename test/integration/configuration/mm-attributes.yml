@@ -654,3 +654,57 @@ network_attachments:
   name: "inspec-test"
   region: "us-central1"
   network: "inspec-network"
+
+compute_target_instance:
+  name: "example-target"
+  image_family: "debian-11"
+  image_project: "debian-cloud"
+  zone: "asia-east1-a"
+  machine_type: "e2-medium"
+  target_vm_name: "target-vm"
+
+compute_interconnect_attachment:
+  name: "on-prem-attachment"
+  edge_availability_domain: "AVAILABILITY_DOMAIN_1"
+  type: "PARTNER"
+  router_name: "router-1-ic-attachment"
+  mtu: 1500
+  network_name: "network-1-ic-attachment"
+  bgp_asn: 16550
+
+compute_packet_mirroring:
+  name: inspec-mirroring
+  region: "us-central1"
+  network: "inspec-network"
+
+compute_region_url_map:
+  region: us-central1
+  name: example-regionurlmap
+  description: a description
+
+compute_region_ssl_policy:
+  name: "basic-ssl-policy"
+  profile: "MODERN"
+  region: "us-central1"
+
+compute_target_vpn_gateway:
+  name: "vpn-1"
+  network: "inspec-network"
+  region: "us-central1"
+  static_ip: "vpn-static-ip"
+  tunnel: "tunnel1"
+
+compute_region_commitment:
+  name: "my-region-commitment"
+  plan: "THIRTY_SIX_MONTH"
+
+compute_target_grpc_proxy:
+  name: "inspec-test-proxy"
+  validate_for_proxyless: true
+  url_map_name: "urlmap"
+  description: "a description"
+  backend_service_name: "backend"
+  port_name: "grpc"
+  protocol: "GRPC"
+  timeout_sec: 10
+  health_check_name: "healthcheck"
