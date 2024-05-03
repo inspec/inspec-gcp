@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.105 -->
+<!-- latest_release 1.11.106 -->
+## [v1.11.106](https://github.com/inspec/inspec-gcp/tree/v1.11.106) (2024-05-03)
+
+#### Merged Pull Requests
+- CHEF-7215__-MAGIC-MODULE-compute_v1-RegionTargetHttpProxy - Resource Implementation [#604](https://github.com/inspec/inspec-gcp/pull/604) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.105](https://github.com/inspec/inspec-gcp/tree/v1.11.105) (2024-05-03)
 
 #### Merged Pull Requests
 - Fix uninitialized constant Parser::AST::Processor::Mixin [#623](https://github.com/inspec/inspec-gcp/pull/623) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.104](https://github.com/inspec/inspec-gcp/tree/v1.11.104) (2024-04-25)
 
