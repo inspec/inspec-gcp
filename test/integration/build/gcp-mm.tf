@@ -2118,8 +2118,8 @@ resource "google_compute_target_ssl_proxy" "default" {
 
 resource "google_compute_ssl_certificate" "default" {
   name        = var.compute_target_ssl_proxy.ssl_certificate_name
-  private_key = file("./private-key.pem") # Path to the private key file. TODO: Decide where to store this file
-  certificate = file("./certificate.pem") # Path to the certificate file. TODO: Decide where to store this file
+  private_key = file("./private-key.pem") # Path to the private key file. Update this to the path of your private key file
+  certificate = file("./certificate.pem") # Path to the certificate file. Update this to the path of your certificate file
 }
 
 resource "google_compute_backend_service" "default" {
