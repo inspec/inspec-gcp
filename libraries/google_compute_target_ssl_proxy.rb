@@ -60,7 +60,7 @@ class ComputeTargetSslProxy < GcpResourceBase
   end
 
   def to_s
-    "TargetSslProxy #{@params[:targetSslProxy]}"
+    "TargetSslProxy #{@params[:name]}"
   end
 
   private
@@ -70,6 +70,6 @@ class ComputeTargetSslProxy < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/global/targetSslProxies/{{target_ssl_proxy}}'
+    'projects/{{project}}/global/targetSslProxies/{{name}}'
   end
 end
