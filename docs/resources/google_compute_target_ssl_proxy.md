@@ -8,7 +8,7 @@ A `google_compute_target_ssl_proxy` is used to test a Google TargetSslProxy reso
 
 ## Examples
 ```
-describe google_compute_target_ssl_proxy(project: 'chef-gcp-inspec', targetSslProxy: ' ') do
+describe google_compute_target_ssl_proxy(project: 'chef-gcp-inspec', name: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
 	its('id') { should cmp 'value_id' }
@@ -20,10 +20,9 @@ describe google_compute_target_ssl_proxy(project: 'chef-gcp-inspec', targetSslPr
 	its('certificate_map') { should cmp 'value_certificatemap' }
 	its('proxy_header') { should cmp 'value_proxyheader' }
 	its('ssl_policy') { should cmp 'value_sslpolicy' }
-
 end
 
-describe google_compute_target_ssl_proxy(project: 'chef-gcp-inspec', targetSslProxy: ' ') do
+describe google_compute_target_ssl_proxy(project: 'chef-gcp-inspec', name: ' ') do
 	it { should_not exist }
 end
 ```
