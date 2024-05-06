@@ -16,26 +16,17 @@ title 'Test GCP google_compute_target_ssl_proxies resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  target_ssl_proxy = input('target_ssl_proxy', value: {
-  "project": "value_project",
-  "region": "value_region",
-  "resource_policy": "value_resourcepolicy",
-  "kind": "value_kind",
-  "id": "value_id",
-  "creation_timestamp": "value_creationtimestamp",
-  "name": "value_name",
-  "description": "value_description",
-  "self_link": "value_selflink",
-  "service": "value_service",
-  "certificate_map": "value_certificatemap",
-  "proxy_header": "value_proxyheader",
-  "ssl_policy": "value_sslpolicy"
+target_ssl_proxy = input('target_ssl_proxy', value: {
+  "name": "test-proxy",
 }, description: 'target_ssl_proxy description')
+
 control 'google_compute_target_ssl_proxies-1.0' do
   impact 1.0
   title 'google_compute_target_ssl_proxies resource test'
 
-      describe google_compute_target_ssl_proxies(project: gcp_project_id) do
-      it { should exist }
-    end
+  describe google_compute_target_ssl_proxies(project: gcp_project_id) do
+    it { should exist }
+    its('names') { should include target_ssl_proxy['name'] }
+    its('names') { should_not include 'nonexistent' }
+  end
 end
