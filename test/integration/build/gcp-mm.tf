@@ -2109,3 +2109,30 @@ resource "google_compute_health_check" "default" {
     grpc_service_name  = "testservice"
   }
 }
+
+resource "google_compute_target_ssl_proxy" "default" {
+  name             = var.compute_target_ssl_proxy.name
+  backend_service  = google_compute_backend_service.default.id
+  ssl_certificates = [google_compute_ssl_certificate.default.id]
+}
+
+resource "google_compute_ssl_certificate" "default" {
+  name        = var.compute_target_ssl_proxy.ssl_certificate_name
+  private_key = file("./private-key.pem") # Path to the private key file. Update this to the path of your private key file
+  certificate = file("./certificate.pem") # Path to the certificate file. Update this to the path of your certificate file
+}
+
+resource "google_compute_backend_service" "default" {
+  name          = var.compute_target_ssl_proxy.backend_service_name
+  protocol      = var.compute_target_ssl_proxy.protocol
+  health_checks = [google_compute_health_check.default.id]
+}
+
+resource "google_compute_health_check" "default" {
+  name               = var.compute_target_ssl_proxy.health_check_name
+  check_interval_sec = 1
+  timeout_sec        = 1
+  tcp_health_check {
+    port = "443"
+  }
+}
