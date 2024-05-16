@@ -15,8 +15,8 @@
 # ----------------------------------------------------------------------------
 require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf_con_exps_con_cond_field'
 require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf_con_exps_con_cond_new_val'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf_con_exps_con_cond_new_val_date_val'
-require 'google/dlp/property/job_act_det_dt_det_req_opt_snapshot_img_rt_dt_con_rec_tf_field_tf_con_exps_con_cond_new_val_time_val'
+require 'google/dlp/property/job_adddrosirdcrtftceccnvd_val'
+require 'google/dlp/property/job_adddrosirdcrtftceccnvt_val'
 module GoogleInSpec
   module DLP
     module Property
