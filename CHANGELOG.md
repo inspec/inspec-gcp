@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.109 -->
+<!-- latest_release 1.11.110 -->
+## [v1.11.110](https://github.com/inspec/inspec-gcp/tree/v1.11.110) (2024-05-20)
+
+#### Merged Pull Requests
+- Deprecate active support blank method [#627](https://github.com/inspec/inspec-gcp/pull/627) ([balasubramanian-s](https://github.com/balasubramanian-s))
+<!-- latest_release -->
+
 ## [v1.11.109](https://github.com/inspec/inspec-gcp/tree/v1.11.109) (2024-05-09)
 
 #### Merged Pull Requests
 - CHEF-7206_1-MAGIC-MODULE-compute_v1-ResourcePolicy - Resource Implementation [#617](https://github.com/inspec/inspec-gcp/pull/617) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.108](https://github.com/inspec/inspec-gcp/tree/v1.11.108) (2024-05-06)
 
