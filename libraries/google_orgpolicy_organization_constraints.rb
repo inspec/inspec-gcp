@@ -23,15 +23,18 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:next_page_tokens, field: :next_page_token)
-  filter_table_config.add(:constraints, field: :constraints)
+  filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:display_names, field: :displayName)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:constraint_defaults, field: :constraintDefault)
+  filter_table_config.add(:list_constraints, field: :listConstraint)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizationConstraints')
+    @table = fetch_wrapped_resource('constraints')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -46,6 +49,8 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
+          # require 'byebug'; byebug
+
           name, value = transform(key, hash)
           hash_with_symbols[name] = value
         end
@@ -64,8 +69,11 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
 
   def transformers
     {
-      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
-      'constraints' => ->(obj) { [:constraints, GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsArray.parse(obj['constraints'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'displayName' => ->(obj) { [:displayName, obj['displayName']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'constraintDefault' => ->(obj) { [:constraintDefault, obj['constraintDefault']] },
+      'listConstraint' => ->(obj) { [:listConstraint, GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsListConstraint.new(obj['listConstraint'], to_s)] },
     }
   end
 
@@ -76,6 +84,6 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/constraints'
+    '{{parent}}/constraints'
   end
 end
