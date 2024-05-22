@@ -68,12 +68,12 @@ class VertexAIMetadataStores < GcpResourceBase
 
   def transformers
     {
-      'description' => ->(obj) { return :description, obj['description'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::MetadataStoreEncryptionSpec.new(obj['encryptionSpec'], to_s) },
-      'state' => ->(obj) { return :state, GoogleInSpec::VertexAI::Property::MetadataStoreState.new(obj['state'], to_s) },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::MetadataStoreEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
+      'state' => ->(obj) { [:state, GoogleInSpec::VertexAI::Property::MetadataStoreState.new(obj['state'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 

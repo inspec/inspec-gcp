@@ -68,12 +68,12 @@ class ComputeSslCertificates < GcpResourceBase
 
   def transformers
     {
-      'certificate' => ->(obj) { return :certificate, obj['certificate'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'privateKey' => ->(obj) { return :private_key, obj['privateKey'] },
+      'certificate' => ->(obj) { [:certificate, obj['certificate']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'privateKey' => ->(obj) { [:private_key, obj['privateKey']] },
     }
   end
 

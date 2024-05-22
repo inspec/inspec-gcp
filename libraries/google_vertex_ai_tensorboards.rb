@@ -73,17 +73,17 @@ class VertexAITensorboards < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'isDefault' => ->(obj) { return :is_default, obj['isDefault'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::TensorboardLabels.new(obj['labels'], to_s) },
-      'blobStoragePathPrefix' => ->(obj) { return :blob_storage_path_prefix, obj['blobStoragePathPrefix'] },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'runCount' => ->(obj) { return :run_count, obj['runCount'] },
-      'encryptionSpec' => ->(obj) { return :encryption_spec, GoogleInSpec::VertexAI::Property::TensorboardEncryptionSpec.new(obj['encryptionSpec'], to_s) },
-      'displayName' => ->(obj) { return :display_name, obj['displayName'] },
-      'description' => ->(obj) { return :description, obj['description'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'isDefault' => ->(obj) { [:is_default, obj['isDefault']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::TensorboardLabels.new(obj['labels'], to_s)] },
+      'blobStoragePathPrefix' => ->(obj) { [:blob_storage_path_prefix, obj['blobStoragePathPrefix']] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'runCount' => ->(obj) { [:run_count, obj['runCount']] },
+      'encryptionSpec' => ->(obj) { [:encryption_spec, GoogleInSpec::VertexAI::Property::TensorboardEncryptionSpec.new(obj['encryptionSpec'], to_s)] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'description' => ->(obj) { [:description, obj['description']] },
     }
   end
 

@@ -71,15 +71,15 @@ class MonitoringAlertPolicys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :policy_names, obj['name'] },
-      'displayName' => ->(obj) { return :policy_display_names, obj['displayName'] },
-      'combiner' => ->(obj) { return :combiner, obj['combiner'] },
-      'creationRecord' => ->(obj) { return :creation_record, GoogleInSpec::Monitoring::Property::AlertPolicyCreationRecord.new(obj['creationRecord'], to_s) },
-      'enabled' => ->(obj) { return :policy_enabled_state, obj['enabled'] },
-      'conditions' => ->(obj) { return :conditions, GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(obj['conditions'], to_s) },
-      'notificationChannels' => ->(obj) { return :notification_channels, obj['notificationChannels'] },
-      'userLabels' => ->(obj) { return :user_labels, obj['userLabels'] },
-      'documentation' => ->(obj) { return :documentation, GoogleInSpec::Monitoring::Property::AlertPolicyDocumentation.new(obj['documentation'], to_s) },
+      'name' => ->(obj) { [:policy_names, obj['name']] },
+      'displayName' => ->(obj) { [:policy_display_names, obj['displayName']] },
+      'combiner' => ->(obj) { [:combiner, obj['combiner']] },
+      'creationRecord' => ->(obj) { [:creation_record, GoogleInSpec::Monitoring::Property::AlertPolicyCreationRecord.new(obj['creationRecord'], to_s)] },
+      'enabled' => ->(obj) { [:policy_enabled_state, obj['enabled']] },
+      'conditions' => ->(obj) { [:conditions, GoogleInSpec::Monitoring::Property::AlertPolicyConditionsArray.parse(obj['conditions'], to_s)] },
+      'notificationChannels' => ->(obj) { [:notification_channels, obj['notificationChannels']] },
+      'userLabels' => ->(obj) { [:user_labels, obj['userLabels']] },
+      'documentation' => ->(obj) { [:documentation, GoogleInSpec::Monitoring::Property::AlertPolicyDocumentation.new(obj['documentation'], to_s)] },
     }
   end
 

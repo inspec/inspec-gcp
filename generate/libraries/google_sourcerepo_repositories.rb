@@ -65,9 +65,9 @@ class SourceRepoRepositorys < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'url' => ->(obj) { return :url, obj['url'] },
-      'size' => ->(obj) { return :size, obj['size'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'url' => ->(obj) { [:url, obj['url']] },
+      'size' => ->(obj) { [:size, obj['size']] },
     }
   end
 

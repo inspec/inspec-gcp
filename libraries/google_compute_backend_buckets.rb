@@ -70,14 +70,14 @@ class ComputeBackendBuckets < GcpResourceBase
 
   def transformers
     {
-      'bucketName' => ->(obj) { return :bucket_name, obj['bucketName'] },
-      'cdnPolicy' => ->(obj) { return :cdn_policy, GoogleInSpec::Compute::Property::BackendBucketCdnPolicy.new(obj['cdnPolicy'], to_s) },
-      'customResponseHeaders' => ->(obj) { return :custom_response_headers, obj['customResponseHeaders'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'enableCdn' => ->(obj) { return :enable_cdn, obj['enableCdn'] },
-      'id' => ->(obj) { return :id, obj['id'] },
-      'name' => ->(obj) { return :name, obj['name'] },
+      'bucketName' => ->(obj) { [:bucket_name, obj['bucketName']] },
+      'cdnPolicy' => ->(obj) { [:cdn_policy, GoogleInSpec::Compute::Property::BackendBucketCdnPolicy.new(obj['cdnPolicy'], to_s)] },
+      'customResponseHeaders' => ->(obj) { [:custom_response_headers, obj['customResponseHeaders']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'enableCdn' => ->(obj) { [:enable_cdn, obj['enableCdn']] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'name' => ->(obj) { [:name, obj['name']] },
     }
   end
 
