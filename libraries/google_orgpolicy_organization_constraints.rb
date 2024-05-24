@@ -14,6 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/orgpolicy/property/organizationconstraint_constraints_google_managed_constraint'
+require 'google/orgpolicy/property/organizationconstraint_constraints_list_constraint'
+require 'google/orgpolicy/property/organizationconstraint_constraints'
 class OrgpolicyOrganizationConstraints < GcpResourceBase
   name 'google_orgpolicy_organization_constraints'
   desc 'OrganizationConstraint plural resource'
@@ -49,8 +52,6 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
       response[wrap_path].each do |hash|
         hash_with_symbols = {}
         hash.each_key do |key|
-          # require 'byebug'; byebug
-
           name, value = transform(key, hash)
           hash_with_symbols[name] = value
         end
@@ -73,7 +74,11 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
       'displayName' => ->(obj) { [:displayName, obj['displayName']] },
       'description' => ->(obj) { [:description, obj['description']] },
       'constraintDefault' => ->(obj) { [:constraintDefault, obj['constraintDefault']] },
-      'listConstraint' => ->(obj) { [:listConstraint, GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsListConstraint.new(obj['listConstraint'], to_s)] },
+      'listConstraint' => lambda { |obj|
+                            unless obj['listConstraint'] == {}
+                              [:listConstraint, GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsListConstraint.new(obj['listConstraint'])]
+                            end
+                          },
     }
   end
 
