@@ -708,3 +708,10 @@ compute_target_grpc_proxy:
   protocol: "GRPC"
   timeout_sec: 10
   health_check_name: "healthcheck"
+
+compute_target_ssl_proxy:
+  name: "test-proxy"
+  ssl_certificate_name: "default-cert"
+  protocol: "SSL"
+  health_check_name: "health-check"
+  backend_service_name: "backend-service"
