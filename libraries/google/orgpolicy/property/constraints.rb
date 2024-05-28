@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationconstraint_constraints_google_managed_constraint'
-require 'google/orgpolicy/property/organizationconstraint_constraints_list_constraint'
+require 'google/orgpolicy/property/google_managed_constraint'
+require 'google/orgpolicy/property/list_constraint'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationConstraintConstraints
+      class Constraints
         attr_reader :display_name
 
         attr_reader :google_managed_constraint
@@ -37,24 +37,24 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @display_name = args['displayName']
-          @google_managed_constraint = GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsGoogleManagedConstraint.new(args['googleManagedConstraint'], to_s)
+          @google_managed_constraint = GoogleInSpec::Orgpolicy::Property::GoogleManagedConstraint.new(args['googleManagedConstraint'], to_s)
           @description = args['description']
           @constraint_default = args['constraintDefault']
           @supports_dry_run = args['supportsDryRun']
           @name = args['name']
-          @list_constraint = GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsListConstraint.new(args['listConstraint'], to_s)
+          @list_constraint = GoogleInSpec::Orgpolicy::Property::ListConstraint.new(args['listConstraint'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationConstraintConstraints"
+          "#{@parent_identifier} Constraints"
         end
       end
 
-      class OrganizationConstraintConstraintsArray
+      class ConstraintsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return OrganizationConstraintConstraints.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| OrganizationConstraintConstraints.new(v, parent_identifier) }
+          return Constraints.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| Constraints.new(v, parent_identifier) }
         end
       end
     end

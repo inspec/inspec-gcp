@@ -14,9 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/orgpolicy/property/organizationconstraint_constraints_google_managed_constraint'
-require 'google/orgpolicy/property/organizationconstraint_constraints_list_constraint'
-require 'google/orgpolicy/property/organizationconstraint_constraints'
+require 'google/orgpolicy/property/list_constraint'
 class OrgpolicyOrganizationConstraints < GcpResourceBase
   name 'google_orgpolicy_organization_constraints'
   desc 'OrganizationConstraint plural resource'
@@ -31,7 +29,7 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:constraint_defaults, field: :constraintDefault)
   filter_table_config.add(:list_constraints, field: :listConstraint)
-
+  filter_table_config.add(:supports_dry_runs, field: :supportsDryRun)
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
@@ -74,11 +72,8 @@ class OrgpolicyOrganizationConstraints < GcpResourceBase
       'displayName' => ->(obj) { [:displayName, obj['displayName']] },
       'description' => ->(obj) { [:description, obj['description']] },
       'constraintDefault' => ->(obj) { [:constraintDefault, obj['constraintDefault']] },
-      'listConstraint' => lambda { |obj|
-                            unless obj['listConstraint'] == {}
-                              [:listConstraint, GoogleInSpec::Orgpolicy::Property::OrganizationConstraintConstraintsListConstraint.new(obj['listConstraint'])]
-                            end
-                          },
+      'supportsDryRun' => ->(obj) { [:supportsDryRun, obj['supportsDryRun']] },
+      'listConstraint' => ->(obj) { [:listConstraint, GoogleInSpec::Orgpolicy::Property::ListConstraint.new(obj['listConstraint'], to_s)] },
     }
   end
 

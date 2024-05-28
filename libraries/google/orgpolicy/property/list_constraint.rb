@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationConstraintConstraintsListConstraint
+      class ListConstraint
         attr_reader :supports_under
 
         attr_reader :supports_in
@@ -29,7 +29,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationConstraintConstraintsListConstraint"
+          "#{@parent_identifier} ListConstraint"
         end
       end
     end

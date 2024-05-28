@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationConstraintConstraintsGoogleManagedConstraint
+      class GoogleManagedConstraint
         attr_reader :action_type
 
         attr_reader :resource_types
@@ -35,7 +35,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationConstraintConstraintsGoogleManagedConstraint"
+          "#{@parent_identifier} GoogleManagedConstraint"
         end
       end
     end

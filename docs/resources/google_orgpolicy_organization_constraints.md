@@ -23,20 +23,6 @@ Properties that can be accessed from the `google_orgpolicy_organization_constrai
 
   * `display_name`: The human readable name. Mutable.
 
-  * `google_managed_constraint`: A Google managed constraint. This represents a subset of fields missing from Constraint proto that are required to describe CustomConstraint
-
-    * `action_type`: Allow or deny type.
-    Possible values:
-      * ACTION_TYPE_UNSPECIFIED
-      * ALLOW
-      * DENY
-
-    * `resource_types`: The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
-
-    * `condition`: Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
-
-    * `method_types`: All the operations being applied for this constraint.
-
   * `description`: Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.
 
   * `constraint_default`: The evaluation behavior of this constraint in the absence of a policy.

@@ -18,10 +18,13 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
 
   organization_constraint = input('organization_constraint', value: {
   "parent": "organizations/827482578277",
-  "name": "organizations/827482578277/constraints/ainotebooks.restrictVpcNetworks",
-  "displayName": "Restrict VPC networks on new Vertex AI Workbench instances",
-  "description": "This list constraint defines the VPC networks a user can select when creating new Vertex AI Workbench instances where this constraint is enforced. By default, a Vertex AI Workbench instance can be created with any VPC networks. The allowed or denied list of networks must be identified in the form: under:organizations/ORGANIZATION_ID, under:folders/FOLDER_ID, under:projects/PROJECT_ID, or projects/PROJECT_ID/global/networks/NETWORK_NAME.",
-  "constraintDefault": "ALLOW",
+  "name": "organizations/827482578277/constraints/ainotebooks.accessMode",
+  "displayName": "Disable Create Default Service Account (Cloud Build)",
+  "description": "This boolean constraint, when enforced, prevents the legacy Cloud Build service account from being created.",
+  "constraintDefault": "DENY",
+  "listConstraint": {
+    "supportsUnder": true
+  }
 }, description: 'organization_constraint description')
 control 'google_orgpolicy_organization_constraints-1.0' do
   impact 1.0
@@ -33,6 +36,6 @@ control 'google_orgpolicy_organization_constraints-1.0' do
       its('display_names') { should include organization_constraint['displayName']}
       its('descriptions') { should include organization_constraint['description']}
       its('constraint_defaults') { should include organization_constraint['constraintDefault']}
-      its('list_constraints') { should include organization_constraint['listConstraint']}
+      its('list_constraints.first.supports_under') { should be true }
     end
 end
