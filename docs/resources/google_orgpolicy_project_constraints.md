@@ -1,25 +1,24 @@
 ---
-title: About the google_orgpolicy_organization_constraints resource
+title: About the google_orgpolicy_project_constraints resource
 platform: gcp
 ---
 
 ## Syntax
-A `google_orgpolicy_organization_constraints` is used to test a Google OrganizationConstraint resource
+A `google_orgpolicy_project_constraints` is used to test a Google Orgpolicy Project Constraint resource
 
 ## Examples
 ```
-  describe google_orgpolicy_organization_constraints(parent: 'value_parent') do
+  describe google_orgpolicy_project_constraints(parent: 'projects/test') do
     it { should exist }
     its('names') { should include 'value_name'}
-    its('display_names') { should include 'value_displayName'}
+    its('display_names') { should include 'value_display_name'}
     its('descriptions') { should include 'value_description'}
-    its('constraint_defaults') { should include 'value_constraint_default'}
-    its('list_constraints') { should include 'value_list_constraint'}
+    its('constraint_defaults') { should include value_constraint_default'}
   end
 ```
 
 ## Properties
-Properties that can be accessed from the `google_orgpolicy_organization_constraints` resource:
+Properties that can be accessed from the `google_orgpolicy_project_constraint` resource:
 
   * `display_names`: The human readable name. Mutable.
 
@@ -40,7 +39,6 @@ Properties that can be accessed from the `google_orgpolicy_organization_constrai
     * `supports_under`: Indicates whether subtrees of the Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the 'folders/123' folder.
 
     * `supports_in`: Indicates whether values grouped into categories can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"in:Python"` would match any value in the 'Python' group.
-
 
 ## Filter Criteria
 This resource supports all of the above properties as filter criteria, which can be used
