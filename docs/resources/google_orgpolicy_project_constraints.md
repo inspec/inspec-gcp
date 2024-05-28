@@ -32,7 +32,7 @@ Properties that can be accessed from the `google_orgpolicy_project_constraint` r
 
   * `supports_dry_runs`: Shows if dry run is supported for this constraint or not.
 
-  * `name`: Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, "/projects/123/constraints/compute.disableSerialPortAccess".
+  * `names`: Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, "/projects/123/constraints/compute.disableSerialPortAccess".
 
   * `list_constraints`: A constraint that allows or disallows a list of string values, which are configured by an Organization Policy administrator with a policy.
 

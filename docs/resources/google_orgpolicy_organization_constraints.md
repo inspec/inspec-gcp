@@ -21,21 +21,21 @@ A `google_orgpolicy_organization_constraints` is used to test a Google Organizat
 ## Properties
 Properties that can be accessed from the `google_orgpolicy_organization_constraints` resource:
 
-  * `display_name`: The human readable name. Mutable.
+  * `display_names`: The human readable name. Mutable.
 
-  * `description`: Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.
+  * `descriptions`: Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.
 
-  * `constraint_default`: The evaluation behavior of this constraint in the absence of a policy.
+  * `constraint_defaults`: The evaluation behavior of this constraint in the absence of a policy.
   Possible values:
     * CONSTRAINT_DEFAULT_UNSPECIFIED
     * ALLOW
     * DENY
 
-  * `supports_dry_run`: Shows if dry run is supported for this constraint or not.
+  * `supports_dry_runs`: Shows if dry run is supported for this constraint or not.
 
-  * `name`: Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, "/projects/123/constraints/compute.disableSerialPortAccess".
+  * `names`: Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, "/projects/123/constraints/compute.disableSerialPortAccess".
 
-  * `list_constraint`: A constraint that allows or disallows a list of string values, which are configured by an Organization Policy administrator with a policy.
+  * `list_constraints`: A constraint that allows or disallows a list of string values, which are configured by an Organization Policy administrator with a policy.
 
     * `supports_under`: Indicates whether subtrees of the Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the 'folders/123' folder.
 
