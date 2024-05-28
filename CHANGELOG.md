@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.110 -->
+<!-- latest_release 1.11.111 -->
+## [v1.11.111](https://github.com/inspec/inspec-gcp/tree/v1.11.111) (2024-05-28)
+
+#### Merged Pull Requests
+- CHEF-7349-MAGIC-MODULE-Orgpolicy_v2-Organizations_constraint - Resource Implementation [#622](https://github.com/inspec/inspec-gcp/pull/622) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.110](https://github.com/inspec/inspec-gcp/tree/v1.11.110) (2024-05-20)
 
 #### Merged Pull Requests
 - Deprecate active support blank method [#627](https://github.com/inspec/inspec-gcp/pull/627) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.109](https://github.com/inspec/inspec-gcp/tree/v1.11.109) (2024-05-09)
 
