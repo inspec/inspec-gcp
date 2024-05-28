@@ -14,6 +14,8 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/orgpolicy/property/projectconstraint_constraints_list_constraint'
+
 class OrgpolicyProjectConstraints < GcpResourceBase
   name 'google_orgpolicy_project_constraints'
   desc 'ProjectConstraint plural resource'
@@ -28,7 +30,7 @@ class OrgpolicyProjectConstraints < GcpResourceBase
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:constraint_defaults, field: :constraintDefault)
   filter_table_config.add(:list_constraints, field: :listConstraint)
-  filter_table_config.add(:supports_dry_runs, field: :supportsDryRun)
+  # filter_table_config.add(:supports_dry_runs, field: :supportsDryRun)
 
   filter_table_config.connect(self, :table)
 
