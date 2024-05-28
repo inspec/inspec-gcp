@@ -23,15 +23,19 @@ class OrgpolicyProjectConstraints < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:next_page_tokens, field: :next_page_token)
-  filter_table_config.add(:constraints, field: :constraints)
+  filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:display_names, field: :displayName)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:constraint_defaults, field: :constraintDefault)
+  filter_table_config.add(:list_constraints, field: :listConstraint)
+  filter_table_config.add(:supports_dry_runs, field: :supportsDryRun)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectConstraints')
+    @table = fetch_wrapped_resource('constraints')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -64,8 +68,12 @@ class OrgpolicyProjectConstraints < GcpResourceBase
 
   def transformers
     {
-      'nextPageToken' => ->(obj) { [:next_page_token, obj['nextPageToken']] },
-      'constraints' => ->(obj) { [:constraints, GoogleInSpec::Orgpolicy::Property::ProjectConstraintConstraintsArray.parse(obj['constraints'], to_s)] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'displayName' => ->(obj) { [:displayName, obj['displayName']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'constraintDefault' => ->(obj) { [:constraintDefault, obj['constraintDefault']] },
+      'supportsDryRun' => ->(obj) { [:supportsDryRun, obj['supportsDryRun']] },
+      'listConstraint' => ->(obj) { [:listConstraint, GoogleInSpec::Orgpolicy::Property::ProjectConstraintConstraintsListConstraint.new(obj['listConstraint'], to_s)] },
     }
   end
 
@@ -76,6 +84,6 @@ class OrgpolicyProjectConstraints < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/constraints'
+    '{{parent}}/constraints'
   end
 end

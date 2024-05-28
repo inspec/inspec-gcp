@@ -16,14 +16,25 @@ title 'Test GCP google_orgpolicy_project_constraints resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_constraint = input('project_constraint', value: {
-  "parent": "value_parent"
-}, description: 'project_constraint description')
+organization_constraint = input('organization_constraint', value: {
+  "parent": "projects/ppradhan",
+  "name": "projects/ppradhan/constraints/ainotebooks.accessMode",
+  "displayName": "Disable Create Default Service Account (Cloud Build)",
+  "description": "This boolean constraint, when enforced, prevents the legacy Cloud Build service account from being created.",
+  "constraintDefault": "DENY",
+  "listConstraint": {
+    "supportsUnder": true
+  }, description: 'project_constraint description')
 control 'google_orgpolicy_project_constraints-1.0' do
   impact 1.0
   title 'google_orgpolicy_project_constraints resource test'
 
-      describe google_orgpolicy_project_constraints(parent: project_constraint['parent']) do
-      it { should exist }
-    end
+  describe google_orgpolicy_project_constraints(parent: organization_constraint['parent']) do
+    it { should exist }
+    its('names') { should include organization_constraint['name']}
+    its('display_names') { should include organization_constraint['displayName']}
+    its('descriptions') { should include organization_constraint['description']}
+    its('constraint_defaults') { should include organization_constraint['constraintDefault']}
+    its('list_constraints.first.supports_under') { should be nil}
+  end
 end
