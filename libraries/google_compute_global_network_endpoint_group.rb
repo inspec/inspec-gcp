@@ -14,6 +14,11 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
+require 'google/compute/property/globalnetworkendpointgroup_annotations'
+require 'google/compute/property/globalnetworkendpointgroup_app_engine'
+require 'google/compute/property/globalnetworkendpointgroup_cloud_function'
+require 'google/compute/property/globalnetworkendpointgroup_cloud_run'
+require 'google/compute/property/globalnetworkendpointgroup_psc_data'
 
 # A provider to manage Compute Engine resources.
 class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
@@ -22,11 +27,25 @@ class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
+  attr_reader :kind
   attr_reader :id
+  attr_reader :creation_timestamp
+  attr_reader :self_link
   attr_reader :name
   attr_reader :description
   attr_reader :network_endpoint_type
+  attr_reader :size
+  attr_reader :region
+  attr_reader :zone
+  attr_reader :network
+  attr_reader :subnetwork
   attr_reader :default_port
+  attr_reader :annotations
+  attr_reader :cloud_run
+  attr_reader :app_engine
+  attr_reader :cloud_function
+  attr_reader :psc_target_service
+  attr_reader :psc_data
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -36,11 +55,25 @@ class ComputeGlobalNetworkEndpointGroup < GcpResourceBase
   end
 
   def parse
+    @kind = @fetched['kind']
     @id = @fetched['id']
+    @creation_timestamp = @fetched['creationTimestamp']
+    @self_link = @fetched['selfLink']
     @name = @fetched['name']
     @description = @fetched['description']
     @network_endpoint_type = @fetched['networkEndpointType']
+    @size = @fetched['size']
+    @region = @fetched['region']
+    @zone = @fetched['zone']
+    @network = @fetched['network']
+    @subnetwork = @fetched['subnetwork']
     @default_port = @fetched['defaultPort']
+    @annotations = GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupAnnotations.new(@fetched['annotations'], to_s)
+    @cloud_run = GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupCloudRun.new(@fetched['cloudRun'], to_s)
+    @app_engine = GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupAppEngine.new(@fetched['appEngine'], to_s)
+    @cloud_function = GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupCloudFunction.new(@fetched['cloudFunction'], to_s)
+    @psc_target_service = @fetched['pscTargetService']
+    @psc_data = GoogleInSpec::Compute::Property::GlobalNetworkEndpointGroupPscData.new(@fetched['pscData'], to_s)
   end
 
   def exists?

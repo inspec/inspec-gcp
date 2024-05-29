@@ -54,9 +54,16 @@ Properties that can be accessed from the `google_service_account_key` resource:
     * USER_MANAGED
     * SYSTEM_MANAGED
 
+  * `key_origin`: The key origin.
+  Possible values:
+    * ORIGIN_UNSPECIFIED
+    * USER_PROVIDED
+    * GOOGLE_PROVIDED
+
   * `service_account`: The name of the serviceAccount.
 
   * `path`: The full name of the file that will hold the service account private key. The management of this file will depend on the value of sync_file parameter.  File path must be absolute.
+  * `disabled`: The key status.
 
 
 ## GCP Permissions
