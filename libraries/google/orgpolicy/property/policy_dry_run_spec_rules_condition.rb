@@ -13,25 +13,29 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec'
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyAlternate
-        attr_reader :launch
+      class PolicyDryRunSpecRulesCondition
+        attr_reader :title
 
-        attr_reader :spec
+        attr_reader :location
+
+        attr_reader :expression
+
+        attr_reader :description
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @launch = args['launch']
-          @spec = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternateSpec.new(args['spec'], to_s)
+          @title = args['title']
+          @location = args['location']
+          @expression = args['expression']
+          @description = args['description']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyAlternate"
+          "#{@parent_identifier} PolicyDryRunSpecRulesCondition"
         end
       end
     end

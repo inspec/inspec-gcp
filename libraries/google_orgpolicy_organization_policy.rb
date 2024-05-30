@@ -14,13 +14,13 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/orgpolicy/property/organizationpolicy_alternate'
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec'
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules'
-require 'google/orgpolicy/property/organizationpolicy_dry_run_spec'
-require 'google/orgpolicy/property/organizationpolicy_dry_run_spec_rules'
-require 'google/orgpolicy/property/organizationpolicy_spec'
-require 'google/orgpolicy/property/organizationpolicy_spec_rules'
+require 'google/orgpolicy/property/policy_alternate'
+require 'google/orgpolicy/property/policy_alternate_spec'
+require 'google/orgpolicy/property/policy_alternate_spec_rules'
+require 'google/orgpolicy/property/policy_dry_run_spec'
+require 'google/orgpolicy/property/policy_dry_run_spec_rules'
+require 'google/orgpolicy/property/policy_spec'
+require 'google/orgpolicy/property/policy_spec_rules'
 
 # A provider to manage orgpolicy resources.
 class OrgpolicyOrganizationPolicy < GcpResourceBase
@@ -42,10 +42,10 @@ class OrgpolicyOrganizationPolicy < GcpResourceBase
   end
 
   def parse
-    @dry_run_spec = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyDryRunSpec.new(@fetched['dryRunSpec'], to_s)
-    @spec = GoogleInSpec::Orgpolicy::Property::OrganizationPolicySpec.new(@fetched['spec'], to_s)
+    @dry_run_spec = GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpec.new(@fetched['dryRunSpec'], to_s)
+    @spec = GoogleInSpec::Orgpolicy::Property::PolicySpec.new(@fetched['spec'], to_s)
     @name = @fetched['name']
-    @alternate = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternate.new(@fetched['alternate'], to_s)
+    @alternate = GoogleInSpec::Orgpolicy::Property::PolicyAlternate.new(@fetched['alternate'], to_s)
   end
 
   def exists?
