@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicySpecRulesValues
+      class PolicyDryRunSpecRulesValues
         attr_reader :denied_values
 
         attr_reader :allowed_values
@@ -29,7 +29,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicySpecRulesValues"
+          "#{@parent_identifier} PolicyDryRunSpecRulesValues"
         end
       end
     end

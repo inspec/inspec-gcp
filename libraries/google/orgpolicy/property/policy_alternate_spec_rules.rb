@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules_condition'
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules_values'
+require 'google/orgpolicy/property/policy_alternate_spec_rules_condition'
+require 'google/orgpolicy/property/policy_alternate_spec_rules_values'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyAlternateSpecRules
+      class PolicyAlternateSpecRules
         attr_reader :condition
 
         attr_reader :deny_all
@@ -32,23 +32,23 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @condition = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternateSpecRulesCondition.new(args['condition'], to_s)
+          @condition = GoogleInSpec::Orgpolicy::Property::PolicyAlternateSpecRulesCondition.new(args['condition'], to_s)
           @deny_all = args['denyAll']
           @allow_all = args['allowAll']
           @enforce = args['enforce']
-          @values = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternateSpecRulesValues.new(args['values'], to_s)
+          @values = GoogleInSpec::Orgpolicy::Property::PolicyAlternateSpecRulesValues.new(args['values'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyAlternateSpecRules"
+          "#{@parent_identifier} PolicyAlternateSpecRules"
         end
       end
 
-      class OrganizationPolicyAlternateSpecRulesArray
+      class PolicyAlternateSpecRulesArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return OrganizationPolicyAlternateSpecRules.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| OrganizationPolicyAlternateSpecRules.new(v, parent_identifier) }
+          return PolicyAlternateSpecRules.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| PolicyAlternateSpecRules.new(v, parent_identifier) }
         end
       end
     end
