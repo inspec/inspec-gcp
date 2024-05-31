@@ -14,13 +14,13 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/orgpolicy/property/projectpolicy_alternate'
-require 'google/orgpolicy/property/projectpolicy_alternate_spec'
-require 'google/orgpolicy/property/projectpolicy_alternate_spec_rules'
-require 'google/orgpolicy/property/projectpolicy_dry_run_spec'
-require 'google/orgpolicy/property/projectpolicy_dry_run_spec_rules'
-require 'google/orgpolicy/property/projectpolicy_spec'
-require 'google/orgpolicy/property/projectpolicy_spec_rules'
+require 'google/orgpolicy/property/policy_alternate'
+require 'google/orgpolicy/property/policy_alternate_spec'
+require 'google/orgpolicy/property/policy_alternate_spec_rules'
+require 'google/orgpolicy/property/policy_dry_run_spec'
+require 'google/orgpolicy/property/policy_dry_run_spec_rules'
+require 'google/orgpolicy/property/policy_spec'
+require 'google/orgpolicy/property/policy_spec_rules'
 
 # A provider to manage orgpolicy resources.
 class OrgpolicyProjectPolicy < GcpResourceBase
@@ -42,10 +42,10 @@ class OrgpolicyProjectPolicy < GcpResourceBase
   end
 
   def parse
-    @dry_run_spec = GoogleInSpec::Orgpolicy::Property::ProjectPolicyDryRunSpec.new(@fetched['dryRunSpec'], to_s)
-    @spec = GoogleInSpec::Orgpolicy::Property::ProjectPolicySpec.new(@fetched['spec'], to_s)
+    @dry_run_spec = GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpec.new(@fetched['dryRunSpec'], to_s)
+    @spec = GoogleInSpec::Orgpolicy::Property::PolicySpec.new(@fetched['spec'], to_s)
     @name = @fetched['name']
-    @alternate = GoogleInSpec::Orgpolicy::Property::ProjectPolicyAlternate.new(@fetched['alternate'], to_s)
+    @alternate = GoogleInSpec::Orgpolicy::Property::PolicyAlternate.new(@fetched['alternate'], to_s)
   end
 
   def exists?
@@ -59,10 +59,10 @@ class OrgpolicyProjectPolicy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'None/v1/'
+    'https://orgpolicy.googleapis.com/v2/'
   end
 
   def resource_base_url
-    'v2/{{name}}'
+    '{{parent}}/policies/{{name}}'
   end
 end
