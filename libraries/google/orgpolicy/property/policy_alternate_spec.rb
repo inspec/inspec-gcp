@@ -13,29 +13,33 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/orgpolicy/property/policy_alternate_spec_rules'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicySpecRulesCondition
-        attr_reader :title
+      class PolicyAlternateSpec
+        attr_reader :update_time
 
-        attr_reader :location
+        attr_reader :rules
 
-        attr_reader :expression
+        attr_reader :etag
 
-        attr_reader :description
+        attr_reader :reset
+
+        attr_reader :inherit_from_parent
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @title = args['title']
-          @location = args['location']
-          @expression = args['expression']
-          @description = args['description']
+          @update_time = args['updateTime']
+          @rules = GoogleInSpec::Orgpolicy::Property::PolicyAlternateSpecRulesArray.parse(args['rules'], to_s)
+          @etag = args['etag']
+          @reset = args['reset']
+          @inherit_from_parent = args['inheritFromParent']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicySpecRulesCondition"
+          "#{@parent_identifier} PolicyAlternateSpec"
         end
       end
     end

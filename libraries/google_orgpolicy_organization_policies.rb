@@ -66,10 +66,10 @@ class OrgpolicyOrganizationPolicys < GcpResourceBase
 
   def transformers
     {
-      'dryRunSpec' => ->(obj) { [:dry_run_spec, GoogleInSpec::Orgpolicy::Property::OrganizationPolicyDryRunSpec.new(obj['dryRunSpec'], to_s)] },
-      'spec' => ->(obj) { [:spec, GoogleInSpec::Orgpolicy::Property::OrganizationPolicySpec.new(obj['spec'], to_s)] },
+      'dryRunSpec' => ->(obj) { [:dry_run_spec, GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpec.new(obj['dryRunSpec'], to_s)] },
+      'spec' => ->(obj) { [:spec, GoogleInSpec::Orgpolicy::Property::PolicySpec.new(obj['spec'], to_s)] },
       'name' => ->(obj) { [:name, obj['name']] },
-      'alternate' => ->(obj) { [:alternate, GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternate.new(obj['alternate'], to_s)] },
+      'alternate' => ->(obj) { [:alternate, GoogleInSpec::Orgpolicy::Property::PolicyAlternate.new(obj['alternate'], to_s)] },
     }
   end
 

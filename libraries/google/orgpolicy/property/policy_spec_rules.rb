@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_dry_run_spec_rules_condition'
-require 'google/orgpolicy/property/organizationpolicy_dry_run_spec_rules_values'
+require 'google/orgpolicy/property/policy_spec_rules_condition'
+require 'google/orgpolicy/property/policy_spec_rules_values'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyDryRunSpecRules
+      class PolicySpecRules
         attr_reader :condition
 
         attr_reader :deny_all
@@ -32,23 +32,23 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @condition = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyDryRunSpecRulesCondition.new(args['condition'], to_s)
+          @condition = GoogleInSpec::Orgpolicy::Property::PolicySpecRulesCondition.new(args['condition'], to_s)
           @deny_all = args['denyAll']
           @allow_all = args['allowAll']
           @enforce = args['enforce']
-          @values = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyDryRunSpecRulesValues.new(args['values'], to_s)
+          @values = GoogleInSpec::Orgpolicy::Property::PolicySpecRulesValues.new(args['values'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyDryRunSpecRules"
+          "#{@parent_identifier} PolicySpecRules"
         end
       end
 
-      class OrganizationPolicyDryRunSpecRulesArray
+      class PolicySpecRulesArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return OrganizationPolicyDryRunSpecRules.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| OrganizationPolicyDryRunSpecRules.new(v, parent_identifier) }
+          return PolicySpecRules.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| PolicySpecRules.new(v, parent_identifier) }
         end
       end
     end

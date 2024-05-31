@@ -13,23 +13,33 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/orgpolicy/property/policy_dry_run_spec_rules'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyAlternateSpecRulesValues
-        attr_reader :denied_values
+      class PolicyDryRunSpec
+        attr_reader :update_time
 
-        attr_reader :allowed_values
+        attr_reader :rules
+
+        attr_reader :etag
+
+        attr_reader :reset
+
+        attr_reader :inherit_from_parent
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @denied_values = args['deniedValues']
-          @allowed_values = args['allowedValues']
+          @update_time = args['updateTime']
+          @rules = GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpecRulesArray.parse(args['rules'], to_s)
+          @etag = args['etag']
+          @reset = args['reset']
+          @inherit_from_parent = args['inheritFromParent']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyAlternateSpecRulesValues"
+          "#{@parent_identifier} PolicyDryRunSpec"
         end
       end
     end
