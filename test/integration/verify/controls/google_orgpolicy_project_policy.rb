@@ -17,19 +17,19 @@ title 'Test GCP google_orgpolicy_project_policy resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_policy = input('project_policy', value: {
-  "name": "value_name",
-  "parent": "value_parent"
+  "parent": "projects/583826338486",
+  "name": "iam.allowServiceAccountCredentialLifetimeExtension"
 }, description: 'project_policy description')
 control 'google_orgpolicy_project_policy-1.0' do
   impact 1.0
   title 'google_orgpolicy_project_policy resource test'
 
-  describe google_orgpolicy_project_policy(name: project_policy['name']) do
+  describe google_orgpolicy_project_policy(parent: project_policy['parent'],name: project_policy['name']) do
   	it { should exist }
-
+    its('name'){ should cmp project_policy['name']}
   end
 
-  describe google_orgpolicy_project_policy(name: "does_not_exit") do
+  describe google_orgpolicy_project_policy(parent: project_policy['parent'],name: "does_not_exit") do
   	it { should_not exist }
   end
 end

@@ -8,8 +8,9 @@ A `google_orgpolicy_project_policies` is used to test a Google ProjectPolicy res
 
 ## Examples
 ```
-    describe google_orgpolicy_project_policies(parent: ' value_parent') do
+  describe google_orgpolicy_project_policies(parent: 'value_parent') do
     it { should exist }
+    its('names'){ should include value_name}
   end
 ```
 
