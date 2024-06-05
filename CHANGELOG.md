@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.113 -->
+<!-- latest_release 1.11.114 -->
+## [v1.11.114](https://github.com/inspec/inspec-gcp/tree/v1.11.114) (2024-06-05)
+
+#### Merged Pull Requests
+- CHEF-7352-MAGIC-MODULE-orgpolicy-Projects__policy - Resource Implementation [#554](https://github.com/inspec/inspec-gcp/pull/554) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.113](https://github.com/inspec/inspec-gcp/tree/v1.11.113) (2024-05-30)
 
 #### Merged Pull Requests
 - Rename orgpolicy properties [#629](https://github.com/inspec/inspec-gcp/pull/629) ([balasubramanian-s](https://github.com/balasubramanian-s))
-<!-- latest_release -->
 
 ## [v1.11.112](https://github.com/inspec/inspec-gcp/tree/v1.11.112) (2024-05-28)
 
