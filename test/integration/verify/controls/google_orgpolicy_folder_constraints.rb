@@ -17,13 +17,25 @@ title 'Test GCP google_orgpolicy_folder_constraints resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   folder_constraint = input('folder_constraint', value: {
-  "parent": "value_parent"
+  "parent": "organizations/827482578277",
+  "name": "organizations/827482578277/constraints/ainotebooks.accessMode",
+  "displayName": "Disable Create Default Service Account (Cloud Build)",
+  "description": "This boolean constraint, when enforced, prevents the legacy Cloud Build service account from being created.",
+  "constraintDefault": "DENY",
+  "listConstraint": {
+    "supportsUnder": true
+  }
 }, description: 'folder_constraint description')
 control 'google_orgpolicy_folder_constraints-1.0' do
   impact 1.0
   title 'google_orgpolicy_folder_constraints resource test'
 
-      describe google_orgpolicy_folder_constraints(parent: folder_constraint['parent']) do
+    describe google_orgpolicy_folder_constraints(parent: folder_constraint['parent']) do
       it { should exist }
+      its('names') { should include folder_constraint['name']}
+      its('display_names') { should include folder_constraint['displayName']}
+      its('descriptions') { should include folder_constraint['description']}
+      its('constraint_defaults') { should include folder_constraint['constraintDefault']}
+      its('list_constraints.first.supports_under') { should be true }
     end
 end
