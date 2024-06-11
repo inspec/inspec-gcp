@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules'
+require 'google/orgpolicy/property/policy_spec_rules'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyAlternateSpec
+      class PolicySpec
         attr_reader :update_time
 
         attr_reader :rules
@@ -32,14 +32,14 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @update_time = args['updateTime']
-          @rules = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternateSpecRulesArray.parse(args['rules'], to_s)
+          @rules = GoogleInSpec::Orgpolicy::Property::PolicySpecRulesArray.parse(args['rules'], to_s)
           @etag = args['etag']
           @reset = args['reset']
           @inherit_from_parent = args['inheritFromParent']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyAlternateSpec"
+          "#{@parent_identifier} PolicySpec"
         end
       end
     end
