@@ -17,20 +17,19 @@ title 'Test GCP google_orgpolicy_folder_policy resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   folder_policy = input('folder_policy', value: {
-  "name": "value_name",
-  "parent": "value_parent"
+  "name": "dataproc.enforceComputeDefaultServiceAccountCheck",
+  "parent": "organizations/827482578277"
 }, description: 'folder_policy description')
 control 'google_orgpolicy_folder_policy-1.0' do
   impact 1.0
   title 'google_orgpolicy_folder_policy resource test'
 
-  describe google_orgpolicy_folder_policy(name: folder_policy['name']) do
+  describe google_orgpolicy_folder_policy(parent: folder_policy['parent'], name: folder_policy['name']) do
   	it { should exist }
-  	its('name') { should cmp folder_policy['name'] }
-
+  	its('name') { should cmp organization_policy['name'] }
   end
 
-  describe google_orgpolicy_folder_policy(name: "does_not_exit") do
+  describe google_orgpolicy_folder_policy(parent: folder_policy['parent'], name: "does_not_exit") do
   	it { should_not exist }
   end
 end

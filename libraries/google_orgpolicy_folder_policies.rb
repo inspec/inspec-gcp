@@ -33,7 +33,7 @@ class OrgpolicyFolderPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('folderPolicies')
+    @table = fetch_wrapped_resource('policies')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -66,20 +66,20 @@ class OrgpolicyFolderPolicys < GcpResourceBase
 
   def transformers
     {
-      'dryRunSpec' => ->(obj) { [:dry_run_spec, GoogleInSpec::Orgpolicy::Property::FolderPolicyDryRunSpec.new(obj['dryRunSpec'], to_s)] },
-      'spec' => ->(obj) { [:spec, GoogleInSpec::Orgpolicy::Property::FolderPolicySpec.new(obj['spec'], to_s)] },
+      'dryRunSpec' => ->(obj) { [:dry_run_spec, GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpec.new(obj['dryRunSpec'], to_s)] },
+      'spec' => ->(obj) { [:spec, GoogleInSpec::Orgpolicy::Property::PolicySpec.new(obj['spec'], to_s)] },
       'name' => ->(obj) { [:name, obj['name']] },
-      'alternate' => ->(obj) { [:alternate, GoogleInSpec::Orgpolicy::Property::FolderPolicyAlternate.new(obj['alternate'], to_s)] },
+      'alternate' => ->(obj) { [:alternate, GoogleInSpec::Orgpolicy::Property::PolicyAlternate.new(obj['alternate'], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://orgpolicy.googleapis.com//v1/'
+    'https://orgpolicy.googleapis.com/v2/'
   end
 
   def resource_base_url
-    'v2/{{parent}}/policies'
+    '{{parent}}/policies'
   end
 end

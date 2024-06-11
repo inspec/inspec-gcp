@@ -8,13 +8,13 @@ A `google_orgpolicy_folder_policy` is used to test a Google FolderPolicy resourc
 
 ## Examples
 ```
-describe google_orgpolicy_folder_policy(name: ' value_name') do
+describe google_orgpolicy_folder_policy(parent: 'value_parent', name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 
 end
 
-describe google_orgpolicy_folder_policy(name: "does_not_exit") do
+describe google_orgpolicy_folder_policy(parent: 'value_parent', name: ' value_name') do
 	it { should_not exist }
 end
 ```

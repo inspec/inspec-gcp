@@ -17,14 +17,14 @@ title 'Test GCP google_orgpolicy_folder_policies resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   folder_policy = input('folder_policy', value: {
-  "name": "value_name",
-  "parent": "value_parent"
+  "name": "dataproc.enforceComputeDefaultServiceAccountCheck",
+  "parent": "organizations/827482578277"
 }, description: 'folder_policy description')
 control 'google_orgpolicy_folder_policies-1.0' do
   impact 1.0
   title 'google_orgpolicy_folder_policies resource test'
 
-      describe google_orgpolicy_folder_policies(parent: folder_policy['parent']) do
+    describe google_orgpolicy_folder_policies(parent: folder_policy['parent']) do
       it { should exist }
     end
 end

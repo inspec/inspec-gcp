@@ -14,13 +14,13 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/orgpolicy/property/folderpolicy_alternate'
-require 'google/orgpolicy/property/folderpolicy_alternate_spec'
-require 'google/orgpolicy/property/folderpolicy_alternate_spec_rules'
-require 'google/orgpolicy/property/folderpolicy_dry_run_spec'
-require 'google/orgpolicy/property/folderpolicy_dry_run_spec_rules'
-require 'google/orgpolicy/property/folderpolicy_spec'
-require 'google/orgpolicy/property/folderpolicy_spec_rules'
+require 'google/orgpolicy/property/policy_alternate'
+require 'google/orgpolicy/property/policy_alternate_spec'
+require 'google/orgpolicy/property/policy_alternate_spec_rules'
+require 'google/orgpolicy/property/policy_dry_run_spec'
+require 'google/orgpolicy/property/policy_dry_run_spec_rules'
+require 'google/orgpolicy/property/policy_spec'
+require 'google/orgpolicy/property/policy_spec_rules'
 
 # A provider to manage orgpolicy resources.
 class OrgpolicyFolderPolicy < GcpResourceBase
@@ -42,10 +42,10 @@ class OrgpolicyFolderPolicy < GcpResourceBase
   end
 
   def parse
-    @dry_run_spec = GoogleInSpec::Orgpolicy::Property::FolderPolicyDryRunSpec.new(@fetched['dryRunSpec'], to_s)
-    @spec = GoogleInSpec::Orgpolicy::Property::FolderPolicySpec.new(@fetched['spec'], to_s)
+    @dry_run_spec = GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpec.new(@fetched['dryRunSpec'], to_s)
+    @spec = GoogleInSpec::Orgpolicy::Property::PolicySpec.new(@fetched['spec'], to_s)
     @name = @fetched['name']
-    @alternate = GoogleInSpec::Orgpolicy::Property::FolderPolicyAlternate.new(@fetched['alternate'], to_s)
+    @alternate = GoogleInSpec::Orgpolicy::Property::PolicyAlternate.new(@fetched['alternate'], to_s)
   end
 
   def exists?
@@ -59,10 +59,10 @@ class OrgpolicyFolderPolicy < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://orgpolicy.googleapis.com//v1/'
+    'https://orgpolicy.googleapis.com/v2/'
   end
 
   def resource_base_url
-    'v2/{{name}}'
+    '{{parent}}/policies/{{name}}'
   end
 end
