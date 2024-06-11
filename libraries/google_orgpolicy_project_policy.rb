@@ -23,9 +23,9 @@ require 'google/orgpolicy/property/policy_spec'
 require 'google/orgpolicy/property/policy_spec_rules'
 
 # A provider to manage orgpolicy resources.
-class OrgpolicyOrganizationPolicy < GcpResourceBase
-  name 'google_orgpolicy_organization_policy'
-  desc 'OrganizationPolicy'
+class OrgpolicyProjectPolicy < GcpResourceBase
+  name 'google_orgpolicy_project_policy'
+  desc 'ProjectPolicy'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -53,7 +53,7 @@ class OrgpolicyOrganizationPolicy < GcpResourceBase
   end
 
   def to_s
-    "OrganizationPolicy #{@params[:name]}"
+    "ProjectPolicy #{@params[:name]}"
   end
 
   private

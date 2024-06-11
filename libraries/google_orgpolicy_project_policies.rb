@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class OrgpolicyOrganizationPolicys < GcpResourceBase
-  name 'google_orgpolicy_organization_policies'
-  desc 'OrganizationPolicy plural resource'
+class OrgpolicyProjectPolicys < GcpResourceBase
+  name 'google_orgpolicy_project_policies'
+  desc 'ProjectPolicy plural resource'
   supports platform: 'gcp'
 
   attr_reader :table

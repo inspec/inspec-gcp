@@ -200,7 +200,8 @@ class GcpApiConnection
     @resource = resource
     config_name = Inspec::Config.cached.unpack_train_credentials[:host]
     ENV['CLOUDSDK_ACTIVE_CONFIG_NAME'] = config_name
-    @google_application_credentials = config_name.blank? && ENV['GOOGLE_APPLICATION_CREDENTIALS']
+    # deprecated active_support blank method
+    @google_application_credentials = config_name.to_s.empty? && ENV['GOOGLE_APPLICATION_CREDENTIALS']
   end
 
   def fetch_auth

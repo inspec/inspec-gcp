@@ -16,26 +16,20 @@
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicySpecRulesCondition
-        attr_reader :title
+      class ListConstraint
+        attr_reader :supports_under
 
-        attr_reader :location
-
-        attr_reader :expression
-
-        attr_reader :description
+        attr_reader :supports_in
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @title = args['title']
-          @location = args['location']
-          @expression = args['expression']
-          @description = args['description']
+          @supports_under = args['supportsUnder']
+          @supports_in = args['supportsIn']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicySpecRulesCondition"
+          "#{@parent_identifier} ListConstraint"
         end
       end
     end

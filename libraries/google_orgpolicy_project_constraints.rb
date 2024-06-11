@@ -14,26 +14,30 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class OrgpolicyOrganizationPolicys < GcpResourceBase
-  name 'google_orgpolicy_organization_policies'
-  desc 'OrganizationPolicy plural resource'
+require 'google/orgpolicy/property/list_constraint'
+
+class OrgpolicyProjectConstraints < GcpResourceBase
+  name 'google_orgpolicy_project_constraints'
+  desc 'ProjectConstraint plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:dry_run_specs, field: :dry_run_spec)
-  filter_table_config.add(:specs, field: :spec)
   filter_table_config.add(:names, field: :name)
-  filter_table_config.add(:alternates, field: :alternate)
+  filter_table_config.add(:display_names, field: :displayName)
+  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:constraint_defaults, field: :constraintDefault)
+  filter_table_config.add(:list_constraints, field: :listConstraint)
+  filter_table_config.add(:supports_dry_runs, field: :supportsDryRun)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('policies')
+    @table = fetch_wrapped_resource('constraints')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -66,10 +70,12 @@ class OrgpolicyOrganizationPolicys < GcpResourceBase
 
   def transformers
     {
-      'dryRunSpec' => ->(obj) { [:dry_run_spec, GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpec.new(obj['dryRunSpec'], to_s)] },
-      'spec' => ->(obj) { [:spec, GoogleInSpec::Orgpolicy::Property::PolicySpec.new(obj['spec'], to_s)] },
       'name' => ->(obj) { [:name, obj['name']] },
-      'alternate' => ->(obj) { [:alternate, GoogleInSpec::Orgpolicy::Property::PolicyAlternate.new(obj['alternate'], to_s)] },
+      'displayName' => ->(obj) { [:displayName, obj['displayName']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'constraintDefault' => ->(obj) { [:constraintDefault, obj['constraintDefault']] },
+      'supportsDryRun' => ->(obj) { [:supportsDryRun, obj['supportsDryRun']] },
+      'listConstraint' => ->(obj) { [:listConstraint, GoogleInSpec::Orgpolicy::Property::ListConstraint.new(obj['listConstraint'], to_s)] },
     }
   end
 
@@ -80,6 +86,6 @@ class OrgpolicyOrganizationPolicys < GcpResourceBase
   end
 
   def resource_base_url
-    '{{parent}}/policies'
+    '{{parent}}/constraints'
   end
 end
