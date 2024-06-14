@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bundle'
 gem 'faraday', '>= 0.16.2'
-gem 'google-api-client'
+# gem 'google-api-client'
 gem 'google-cloud'
 gem 'googleauth'
 # we are pinning to inspec-core-bin below 6.0 to avoid bringing licensing change in the CI
