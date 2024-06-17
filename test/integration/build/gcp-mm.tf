@@ -2136,3 +2136,8 @@ resource "google_compute_health_check" "default" {
     port = "443"
   }
 }
+
+data "google_compute_reservation" "reservation" {
+  name = "gce-reservation"
+  zone = "us-central1-a"
+}

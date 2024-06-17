@@ -100,6 +100,6 @@ class ComputeReservation < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/zones/{{zone}}/reservations/{{reservation}}'
+    'projects/{{project}}/zones/{{zone}}/reservations/{{name}}'
   end
 end
