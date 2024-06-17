@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.115 -->
+<!-- latest_release 1.11.116 -->
+## [v1.11.116](https://github.com/inspec/inspec-gcp/tree/v1.11.116) (2024-06-17)
+
+#### Merged Pull Requests
+- CHEF-7348-ORG-MAGIC-MODULE-orgpolicy-Folders__policy - Resource Implementation [#556](https://github.com/inspec/inspec-gcp/pull/556) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.115](https://github.com/inspec/inspec-gcp/tree/v1.11.115) (2024-06-11)
 
 #### Merged Pull Requests
 - CHEF-7347-V3-MAGIC-MODULE-orgpolicy_v2-Folders__constraint - Resource Implementation [#626](https://github.com/inspec/inspec-gcp/pull/626) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.114](https://github.com/inspec/inspec-gcp/tree/v1.11.114) (2024-06-05)
 
