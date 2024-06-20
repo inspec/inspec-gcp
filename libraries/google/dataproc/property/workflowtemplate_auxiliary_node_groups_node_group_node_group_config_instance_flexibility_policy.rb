@@ -13,8 +13,8 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_auxiliary_node_groups_node_group_node_group_config_instance_flexibility_policy_instance_selection_list'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_auxiliary_node_groups_node_group_node_group_config_instance_flexibility_policy_instance_selection_results'
+require 'google/dataproc/property/workflowtemplate_auxiliary_node_groups_policy_instance_selection_list'
+require 'google/dataproc/property/workflowtemplate_auxiliary_node_groups_policy_instance_selection_results'
 module GoogleInSpec
   module Dataproc
     module Property
