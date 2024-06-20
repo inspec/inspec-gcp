@@ -1,20 +1,24 @@
 ---
-title: About the google_dataproc_project_location_workflow_templates resource
+title: About the google_dataproc_workflow_templates resource
 platform: gcp
 ---
 
 ## Syntax
-A `google_dataproc_project_location_workflow_templates` is used to test a Google ProjectLocationWorkflowTemplate resource
+A `google_dataproc_workflow_templates` is used to test a Google WorkflowTemplates resource
 
 ## Examples
 ```
-    describe google_dataproc_project_location_workflow_templates(parent: ' ') do
+  describe google_dataproc_workflow_templates(parent: 'value_parent') do
     it { should exist }
   end
 ```
+## Parameters
+  * `parent`: The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names.
+  For projects.regions.workflowTemplates,list, the resource name of the region has the following format: projects/{projectId}/regions/{region}
+  For projects.locations.workflowTemplates.list, the resource name of the location has the following format: projects/{projectId}/locations/{location}
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_project_location_workflow_templates` resource:
+Properties that can be accessed from the `google_dataproc_workflow_templates` resource:
 
 See [google_dataproc_project_location_workflow_template.md](google_dataproc_project_location_workflow_template.md) for more detailed information
   * `ids`: an array of `google_dataproc_project_location_workflow_template` id

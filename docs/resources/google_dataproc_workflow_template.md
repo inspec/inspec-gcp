@@ -1,14 +1,14 @@
 ---
-title: About the google_dataproc_project_location_workflow_template resource
+title: About the google_dataproc_workflow_template resource
 platform: gcp
 ---
 
 ## Syntax
-A `google_dataproc_project_location_workflow_template` is used to test a Google ProjectLocationWorkflowTemplate resource
+A `google_dataproc_workflow_template` is used to test a Google WorkflowTemplate resource
 
 ## Examples
 ```
-describe google_dataproc_project_location_workflow_template(name: ' value_name') do
+describe google_dataproc_workflow_template(name: 'value_name') do
 	it { should exist }
 	its('id') { should cmp 'value_id' }
 	its('name') { should cmp 'value_name' }
@@ -18,16 +18,16 @@ describe google_dataproc_project_location_workflow_template(name: ' value_name')
 
 end
 
-describe google_dataproc_project_location_workflow_template(name: "does_not_exit") do
+describe google_dataproc_workflow_template(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_project_location_workflow_template` resource:
+Properties that can be accessed from the `google_dataproc_workflow_template` resource:
 
 
-  * `id`: 
+  * `id`:
 
   * `name`: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
 
@@ -39,7 +39,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
   * `labels`: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `placement`: Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
 
@@ -78,7 +78,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
           * `metadata`: Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 
-            * `additional_properties`: 
+            * `additional_properties`:
 
           * `reservation_affinity`: Reservation Affinity for consuming Zonal reservation.
 
@@ -340,11 +340,11 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
           * `properties`: Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 
-            * `additional_properties`: 
+            * `additional_properties`:
 
           * `optional_components`: Optional. The set of components to activate on the cluster.
 
-        * `initialization_actions`: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi 
+        * `initialization_actions`: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 
           * `executable_file`: Required. Cloud Storage URI of executable file.
 
@@ -398,7 +398,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
             * `user_service_account_mapping`: Required. Map of user to service account.
 
-              * `additional_properties`: 
+              * `additional_properties`:
 
         * `lifecycle_config`: Specifies the cluster auto-delete schedule configuration.
 
@@ -414,7 +414,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
           * `http_ports`: Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
 
-            * `additional_properties`: 
+            * `additional_properties`:
 
           * `enable_http_port_access`: Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
 
@@ -573,13 +573,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
             * `labels`: Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
 
-              * `additional_properties`: 
+              * `additional_properties`:
 
           * `node_group_id`: Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 
       * `labels`: Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
     * `cluster_selector`: A selector that chooses target cluster for jobs based on metadata.
 
@@ -587,7 +587,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `cluster_labels`: Required. The cluster labels. Cluster must have all labels to match.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
   * `jobs`: Required. The Directed Acyclic Graph of Jobs to submit.
 
@@ -609,13 +609,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `spark_job`: A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 
@@ -633,13 +633,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `pyspark_job`: A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
 
@@ -657,13 +657,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `hive_job`: A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
 
@@ -671,17 +671,17 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `query_list`: A list of queries to run on a cluster.
 
-        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 
       * `continue_on_failure`: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
 
       * `script_variables`: Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `properties`: Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `jar_file_uris`: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
 
@@ -691,17 +691,17 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `query_list`: A list of queries to run on a cluster.
 
-        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 
       * `continue_on_failure`: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
 
       * `script_variables`: Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `properties`: Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `jar_file_uris`: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
 
@@ -709,7 +709,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `spark_r_job`: A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 
@@ -723,13 +723,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `spark_sql_job`: A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
 
@@ -737,15 +737,15 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `query_list`: A list of queries to run on a cluster.
 
-        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 
       * `script_variables`: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `properties`: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `jar_file_uris`: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 
@@ -753,7 +753,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `presto_job`: A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
 
@@ -761,7 +761,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `query_list`: A list of queries to run on a cluster.
 
-        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 
       * `continue_on_failure`: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
 
@@ -771,13 +771,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `trino_job`: A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
 
@@ -785,7 +785,7 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `query_list`: A list of queries to run on a cluster.
 
-        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        * `queries`: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 
       * `continue_on_failure`: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
 
@@ -795,13 +795,13 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `flink_job`: A Dataproc job for running Apache Flink applications on YARN.
 
@@ -817,17 +817,17 @@ Properties that can be accessed from the `google_dataproc_project_location_workf
 
       * `properties`: Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `logging_config`: The runtime logging config of the job.
 
         * `driver_log_levels`: The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
     * `labels`: Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `scheduling`: Job scheduling options.
 

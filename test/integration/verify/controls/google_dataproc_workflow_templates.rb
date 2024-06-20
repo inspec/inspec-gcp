@@ -12,25 +12,26 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_dataproc_project_location_workflow_templates resource.'
+title 'Test GCP google_dataproc_workflow_templates resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_location_workflow_template = input('project_location_workflow_template', value: {
-  "project": "value_project",
+  workflow_template = input('workflow_template', value: {
+  "project": "ppradhan",
   "reservation": "value_reservation",
   "zone": "value_zone",
-  "id": "value_id",
-  "name": "value_name",
-  "create_time": "value_createtime",
-  "update_time": "value_updatetime",
+  "id": "template-8b819",
+  "parent": "projects/ppradhan/regions/us-central1",
+  "name": "projects/ppradhan/regions/us-central1/workflowTemplates/template-8b819",
+  "create_time": "2024-06-17T09:08:05.009118Z",
+  "update_time": "2024-06-17T09:08:05.009118Z",
   "dag_timeout": "value_dagtimeout"
-}, description: 'project_location_workflow_template description')
-control 'google_dataproc_project_location_workflow_templates-1.0' do
+}, description: 'workflow_template description')
+control 'google_dataproc_workflow_templates-1.0' do
   impact 1.0
-  title 'google_dataproc_project_location_workflow_templates resource test'
+  title 'google_dataproc_workflow_templates resource test'
 
-      describe google_dataproc_project_location_workflow_templates(parent: project_location_workflow_template['parent']) do
+    describe google_dataproc_workflow_templates(parent: workflow_template['parent']) do
       it { should exist }
     end
 end
