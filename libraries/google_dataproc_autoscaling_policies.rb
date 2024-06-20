@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocProjectRegionAutoscalingPolicys < GcpResourceBase
-  name 'google_dataproc_project_region_autoscaling_policies'
-  desc 'ProjectRegionAutoscalingPolicy plural resource'
+class DataprocAutoscalingPolicys < GcpResourceBase
+  name 'google_dataproc_autoscaling_policies'
+  desc 'AutoscalingPolicy plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -35,7 +35,7 @@ class DataprocProjectRegionAutoscalingPolicys < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectRegionAutoscalingPolicies')
+    @table = fetch_wrapped_resource('policies')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -70,10 +70,10 @@ class DataprocProjectRegionAutoscalingPolicys < GcpResourceBase
     {
       'id' => ->(obj) { [:id, obj['id']] },
       'name' => ->(obj) { [:name, obj['name']] },
-      'basicAlgorithm' => ->(obj) { [:basic_algorithm, GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyBasicAlgorithm.new(obj['basicAlgorithm'], to_s)] },
-      'workerConfig' => ->(obj) { [:worker_config, GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyWorkerConfig.new(obj['workerConfig'], to_s)] },
-      'secondaryWorkerConfig' => ->(obj) { [:secondary_worker_config, GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicySecondaryWorkerConfig.new(obj['secondaryWorkerConfig'], to_s)] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyLabels.new(obj['labels'], to_s)] },
+      'basicAlgorithm' => ->(obj) { [:basic_algorithm, GoogleInSpec::Dataproc::Property::AutoscalingPolicyBasicAlgorithm.new(obj['basicAlgorithm'], to_s)] },
+      'workerConfig' => ->(obj) { [:worker_config, GoogleInSpec::Dataproc::Property::AutoscalingPolicyWorkerConfig.new(obj['workerConfig'], to_s)] },
+      'secondaryWorkerConfig' => ->(obj) { [:secondary_worker_config, GoogleInSpec::Dataproc::Property::AutoscalingPolicySecondaryWorkerConfig.new(obj['secondaryWorkerConfig'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Dataproc::Property::AutoscalingPolicyLabels.new(obj['labels'], to_s)] },
     }
   end
 
@@ -84,6 +84,6 @@ class DataprocProjectRegionAutoscalingPolicys < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/autoscalingPolicies'
+    '{{parent}}/autoscalingPolicies'
   end
 end

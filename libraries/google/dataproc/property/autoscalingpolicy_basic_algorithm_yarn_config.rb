@@ -16,23 +16,29 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectRegionAutoscalingPolicyWorkerConfig
-        attr_reader :min_instances
+      class AutoscalingPolicyBasicAlgorithmYarnConfig
+        attr_reader :graceful_decommission_timeout
 
-        attr_reader :max_instances
+        attr_reader :scale_up_factor
 
-        attr_reader :weight
+        attr_reader :scale_down_factor
+
+        attr_reader :scale_up_min_worker_fraction
+
+        attr_reader :scale_down_min_worker_fraction
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @min_instances = args['minInstances']
-          @max_instances = args['maxInstances']
-          @weight = args['weight']
+          @graceful_decommission_timeout = args['gracefulDecommissionTimeout']
+          @scale_up_factor = args['scaleUpFactor']
+          @scale_down_factor = args['scaleDownFactor']
+          @scale_up_min_worker_fraction = args['scaleUpMinWorkerFraction']
+          @scale_down_min_worker_fraction = args['scaleDownMinWorkerFraction']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectRegionAutoscalingPolicyWorkerConfig"
+          "#{@parent_identifier} AutoscalingPolicyBasicAlgorithmYarnConfig"
         end
       end
     end

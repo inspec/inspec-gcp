@@ -14,17 +14,17 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/dataproc/property/projectregionautoscalingpolicy_basic_algorithm'
-require 'google/dataproc/property/projectregionautoscalingpolicy_basic_algorithm_spark_standalone_config'
-require 'google/dataproc/property/projectregionautoscalingpolicy_basic_algorithm_yarn_config'
-require 'google/dataproc/property/projectregionautoscalingpolicy_labels'
-require 'google/dataproc/property/projectregionautoscalingpolicy_secondary_worker_config'
-require 'google/dataproc/property/projectregionautoscalingpolicy_worker_config'
+require 'google/dataproc/property/autoscalingpolicy_basic_algorithm'
+require 'google/dataproc/property/autoscalingpolicy_basic_algorithm_spark_standalone_config'
+require 'google/dataproc/property/autoscalingpolicy_basic_algorithm_yarn_config'
+require 'google/dataproc/property/autoscalingpolicy_labels'
+require 'google/dataproc/property/autoscalingpolicy_secondary_worker_config'
+require 'google/dataproc/property/autoscalingpolicy_worker_config'
 
 # A provider to manage Dataproc resources.
-class DataprocProjectRegionAutoscalingPolicy < GcpResourceBase
-  name 'google_dataproc_project_region_autoscaling_policy'
-  desc 'ProjectRegionAutoscalingPolicy'
+class DataprocAutoscalingPolicy < GcpResourceBase
+  name 'google_dataproc_autoscaling_policy'
+  desc 'AutoscalingPolicy'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -45,10 +45,10 @@ class DataprocProjectRegionAutoscalingPolicy < GcpResourceBase
   def parse
     @id = @fetched['id']
     @name = @fetched['name']
-    @basic_algorithm = GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyBasicAlgorithm.new(@fetched['basicAlgorithm'], to_s)
-    @worker_config = GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyWorkerConfig.new(@fetched['workerConfig'], to_s)
-    @secondary_worker_config = GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicySecondaryWorkerConfig.new(@fetched['secondaryWorkerConfig'], to_s)
-    @labels = GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyLabels.new(@fetched['labels'], to_s)
+    @basic_algorithm = GoogleInSpec::Dataproc::Property::AutoscalingPolicyBasicAlgorithm.new(@fetched['basicAlgorithm'], to_s)
+    @worker_config = GoogleInSpec::Dataproc::Property::AutoscalingPolicyWorkerConfig.new(@fetched['workerConfig'], to_s)
+    @secondary_worker_config = GoogleInSpec::Dataproc::Property::AutoscalingPolicySecondaryWorkerConfig.new(@fetched['secondaryWorkerConfig'], to_s)
+    @labels = GoogleInSpec::Dataproc::Property::AutoscalingPolicyLabels.new(@fetched['labels'], to_s)
   end
 
   def exists?
@@ -56,7 +56,7 @@ class DataprocProjectRegionAutoscalingPolicy < GcpResourceBase
   end
 
   def to_s
-    "ProjectRegionAutoscalingPolicy #{@params[:]}"
+    "AutoscalingPolicy #{@params[:name]}"
   end
 
   private
@@ -66,6 +66,6 @@ class DataprocProjectRegionAutoscalingPolicy < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end

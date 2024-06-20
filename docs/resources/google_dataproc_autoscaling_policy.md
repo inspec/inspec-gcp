@@ -1,45 +1,30 @@
-+++
+---
+title: "google_dataproc_autoscaling_policy Resource"
+platform: "gcp"
+---
 
-title = "google_dataproc_project_region_autoscaling_policy Resource"
-platform = "gcp"
-draft = false
-gh_repo = "inspec-gcp"
-
-
-[menu.inspec]
-
-title = "google_dataproc_project_region_autoscaling_policy"
-identifier = "inspec/resources/gcp/google_dataproc_project_region_autoscaling_policy Resource"
-parent = "inspec/resources/gcp"
-+++
-
-Use the `google_dataproc_project_region_autoscaling_policy` InSpec audit resource to test the properties of a test a Google ProjectRegionAutoscalingPolicy.
-
-## Installation
-{{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_dataproc_project_region_autoscaling_policy` is used to test a Google ProjectRegionAutoscalingPolicy resource
+A `google_dataproc_autoscaling_policy` is used to test a Google ProjectRegionAutoscalingPolicy resource
 
 ## Examples
 ```
-describe google_dataproc_project_region_autoscaling_policy(name: ' value_name') do
+describe google_dataproc_autoscaling_policy(name: 'value_name') do
 	it { should exist }
 	its('id') { should cmp 'value_id' }
 	its('name') { should cmp 'value_name' }
-
 end
 
-describe google_dataproc_project_region_autoscaling_policy(name: "does_not_exit") do
+describe google_dataproc_autoscaling_policy(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_project_region_autoscaling_policy` resource:
+Properties that can be accessed from the `google_dataproc_autoscaling_policy` resource:
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_project_region_autoscaling_policy` resource:
+Properties that can be accessed from the `google_dataproc_autoscaling_policy` resource:
 
 
   * `id`: Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
@@ -94,7 +79,7 @@ Properties that can be accessed from the `google_dataproc_project_region_autosca
 
   * `labels`: Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
 
 ## GCP Permissions

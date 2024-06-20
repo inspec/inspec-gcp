@@ -12,20 +12,22 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_dataproc_project_region_autoscaling_policies resource.'
+title 'Test GCP google_dataproc_autoscaling_policies resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_region_autoscaling_policy = input('project_region_autoscaling_policy', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "id": "value_id"
-}, description: 'project_region_autoscaling_policy description')
-control 'google_dataproc_project_region_autoscaling_policies-1.0' do
+  autoscaling_policy = input('autoscaling_policy', value: {
+  "name": "projects/ppradhan/regions/us-central1/autoscalingPolicies/inspec-policy-cf1d",
+  "parent": "projects/ppradhan/regions/us-central1",
+  "id": "inspec-policy-cf1d"
+}, description: 'autoscaling_policy description')
+control 'google_dataproc_autoscaling_policies-1.0' do
   impact 1.0
-  title 'google_dataproc_project_region_autoscaling_policies resource test'
+  title 'google_dataproc_autoscaling_policies resource test'
 
-      describe google_dataproc_project_region_autoscaling_policies(parent: project_region_autoscaling_policy['parent']) do
+    describe google_dataproc_autoscaling_policies(parent: autoscaling_policy['parent']) do
       it { should exist }
+      its('ids') { should include autoscaling_policy['id'] }
+      its('names') { should include autoscaling_policy['name'] }
     end
 end

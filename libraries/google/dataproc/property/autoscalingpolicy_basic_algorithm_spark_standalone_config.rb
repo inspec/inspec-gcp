@@ -13,28 +13,35 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/projectregionautoscalingpolicy_basic_algorithm_spark_standalone_config'
-require 'google/dataproc/property/projectregionautoscalingpolicy_basic_algorithm_yarn_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectRegionAutoscalingPolicyBasicAlgorithm
-        attr_reader :yarn_config
+      class AutoscalingPolicyBasicAlgorithmSparkStandaloneConfig
+        attr_reader :graceful_decommission_timeout
 
-        attr_reader :spark_standalone_config
+        attr_reader :scale_up_factor
 
-        attr_reader :cooldown_period
+        attr_reader :scale_down_factor
+
+        attr_reader :scale_up_min_worker_fraction
+
+        attr_reader :scale_down_min_worker_fraction
+
+        attr_reader :remove_only_idle_workers
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @yarn_config = GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyBasicAlgorithmYarnConfig.new(args['yarnConfig'], to_s)
-          @spark_standalone_config = GoogleInSpec::Dataproc::Property::ProjectRegionAutoscalingPolicyBasicAlgorithmSparkStandaloneConfig.new(args['sparkStandaloneConfig'], to_s)
-          @cooldown_period = args['cooldownPeriod']
+          @graceful_decommission_timeout = args['gracefulDecommissionTimeout']
+          @scale_up_factor = args['scaleUpFactor']
+          @scale_down_factor = args['scaleDownFactor']
+          @scale_up_min_worker_fraction = args['scaleUpMinWorkerFraction']
+          @scale_down_min_worker_fraction = args['scaleDownMinWorkerFraction']
+          @remove_only_idle_workers = args['removeOnlyIdleWorkers']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectRegionAutoscalingPolicyBasicAlgorithm"
+          "#{@parent_identifier} AutoscalingPolicyBasicAlgorithmSparkStandaloneConfig"
         end
       end
     end

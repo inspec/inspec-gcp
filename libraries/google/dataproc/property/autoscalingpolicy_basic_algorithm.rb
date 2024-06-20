@@ -13,20 +13,28 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/dataproc/property/autoscalingpolicy_basic_algorithm_spark_standalone_config'
+require 'google/dataproc/property/autoscalingpolicy_basic_algorithm_yarn_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectRegionAutoscalingPolicyLabels
-        attr_reader :additional_properties
+      class AutoscalingPolicyBasicAlgorithm
+        attr_reader :yarn_config
+
+        attr_reader :spark_standalone_config
+
+        attr_reader :cooldown_period
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @additional_properties = args['additionalProperties']
+          @yarn_config = GoogleInSpec::Dataproc::Property::AutoscalingPolicyBasicAlgorithmYarnConfig.new(args['yarnConfig'], to_s)
+          @spark_standalone_config = GoogleInSpec::Dataproc::Property::AutoscalingPolicyBasicAlgorithmSparkStandaloneConfig.new(args['sparkStandaloneConfig'], to_s)
+          @cooldown_period = args['cooldownPeriod']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectRegionAutoscalingPolicyLabels"
+          "#{@parent_identifier} AutoscalingPolicyBasicAlgorithm"
         end
       end
     end

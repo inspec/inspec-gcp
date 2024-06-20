@@ -16,23 +16,17 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectRegionAutoscalingPolicySecondaryWorkerConfig
-        attr_reader :min_instances
-
-        attr_reader :max_instances
-
-        attr_reader :weight
+      class AutoscalingPolicyLabels
+        attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @min_instances = args['minInstances']
-          @max_instances = args['maxInstances']
-          @weight = args['weight']
+          @additional_properties = args['additionalProperties']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectRegionAutoscalingPolicySecondaryWorkerConfig"
+          "#{@parent_identifier} AutoscalingPolicyLabels"
         end
       end
     end
