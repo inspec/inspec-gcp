@@ -33,5 +33,9 @@ control 'google_dataproc_workflow_templates-1.0' do
 
     describe google_dataproc_workflow_templates(parent: workflow_template['parent']) do
       it { should exist }
+      its('ids') { should include project_location_workflow_template['id'] }
+      its('names') { should include project_location_workflow_template['name'] }
+      its('create_times') { should include project_location_workflow_template['create_time'] }
+      its('update_times') { should include project_location_workflow_template['update_time'] }
     end
 end

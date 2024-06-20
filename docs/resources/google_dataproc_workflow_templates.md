@@ -10,6 +10,11 @@ A `google_dataproc_workflow_templates` is used to test a Google WorkflowTemplate
 ```
   describe google_dataproc_workflow_templates(parent: 'value_parent') do
     it { should exist }
+    its('ids') { should include 'value_id' }
+    its('names') { should include 'value_name' }
+    its('create_times') { should include 'value_createtime' }
+    its('update_times') { should include 'value_updatetime' }
+    its('dag_timeouts') { should include 'value_dagtimeout' }
   end
 ```
 ## Parameters
