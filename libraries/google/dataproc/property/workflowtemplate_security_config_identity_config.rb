@@ -13,26 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/workflowtemplate_security_config_identity_config'
 require 'google/dataproc/property/workflowtemplate_security_config_identity_config_user_service_account_mapping'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_security_config_kerberos_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig
-        attr_reader :kerberos_config
-
-        attr_reader :identity_config
+      class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigIdentityConfig
+        attr_reader :user_service_account_mapping
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kerberos_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig.new(args['kerberosConfig'], to_s)
-          @identity_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigSecurityConfigIdentityConfig.new(args['identityConfig'], to_s)
+          @user_service_account_mapping = GoogleInSpec::Dataproc::Property::WorkflowTemplateSecurityConfigIdentityConfigUserServiceAccountMapping.new(args['userServiceAccountMapping'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} WorkflowTemplatePlacementManagedClusterConfigSecurityConfig"
+          "#{@parent_identifier} WorkflowTemplatePlacementManagedClusterConfigSecurityConfigIdentityConfig"
         end
       end
     end

@@ -26,45 +26,45 @@ require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_con
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_gce_cluster_config_node_group_affinity'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_gce_cluster_config_reservation_affinity'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_gce_cluster_config_shielded_instance_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_gke_cluster_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_gke_cluster_config_namespaced_gke_deployment_target'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_gke_cluster_config_node_pool_target'
+require 'google/dataproc/property/workflowtemplate_gke_cluster_config'
+require 'google/dataproc/property/workflowtemplate_gke_cluster_config_namespaced_gke_deployment_target'
+require 'google/dataproc/property/workflowtemplate_gke_cluster_config_node_pool_target'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_initialization_actions'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_lifecycle_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_accelerators'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_disk_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_instance_flexibility_policy'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_instance_flexibility_policy_instance_selection_list'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_instance_flexibility_policy_instance_selection_results'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_instance_references'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_managed_group_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_master_config_startup_config'
+require 'google/dataproc/property/workflowtemplate_master_config'
+require 'google/dataproc/property/workflowtemplate_master_config_accelerators'
+require 'google/dataproc/property/workflowtemplate_master_config_disk_config'
+require 'google/dataproc/property/workflowtemplate_master_config_instance_flexibility_policy'
+require 'google/dataproc/property/workflowtemplate_master_config_instance_flexibility_policy_instance_selection_list'
+require 'google/dataproc/property/workflowtemplate_master_config_instance_flexibility_policy_instance_selection_results'
+require 'google/dataproc/property/workflowtemplate_master_config_instance_references'
+require 'google/dataproc/property/workflowtemplate_master_config_managed_group_config'
+require 'google/dataproc/property/workflowtemplate_master_config_startup_config'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_metastore_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_accelerators'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_disk_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_instance_flexibility_policy'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_instance_flexibility_policy_instance_selection_list'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_instance_flexibility_policy_instance_selection_results'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_instance_references'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_managed_group_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_secondary_worker_config_startup_config'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_accelerators'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_disk_config'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_instance_flexibility_policy'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_instance_flexibility_policy_instance_selection_list'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_instance_flexibility_policy_instance_selection_results'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_instance_references'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_managed_group_config'
+require 'google/dataproc/property/workflowtemplate_secondary_worker_config_startup_config'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_security_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_security_config_identity_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_security_config_identity_config_user_service_account_mapping'
+require 'google/dataproc/property/workflowtemplate_security_config_identity_config'
+require 'google/dataproc/property/workflowtemplate_security_config_identity_config_user_service_account_mapping'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_security_config_kerberos_config'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_software_config'
 require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_software_config_properties'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_accelerators'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_disk_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_instance_flexibility_policy'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_instance_flexibility_policy_instance_selection_list'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_instance_flexibility_policy_instance_selection_results'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_instance_references'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_managed_group_config'
-require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_config_worker_config_startup_config'
+require 'google/dataproc/property/workflowtemplate_worker_config'
+require 'google/dataproc/property/workflowtemplate_worker_config_accelerators'
+require 'google/dataproc/property/workflowtemplate_worker_config_disk_config'
+require 'google/dataproc/property/workflowtemplate_worker_config_instance_flexibility_policy'
+require 'google/dataproc/property/workflowtemplate_worker_config_instance_flexibility_policy_instance_selection_list'
+require 'google/dataproc/property/workflowtemplate_worker_config_instance_flexibility_policy_instance_selection_results'
+require 'google/dataproc/property/workflowtemplate_worker_config_instance_references'
+require 'google/dataproc/property/workflowtemplate_worker_config_managed_group_config'
+require 'google/dataproc/property/workflowtemplate_worker_config_startup_config'
 module GoogleInSpec
   module Dataproc
     module Property
@@ -109,9 +109,9 @@ module GoogleInSpec
           @config_bucket = args['configBucket']
           @temp_bucket = args['tempBucket']
           @gce_cluster_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig.new(args['gceClusterConfig'], to_s)
-          @master_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigMasterConfig.new(args['masterConfig'], to_s)
-          @worker_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigWorkerConfig.new(args['workerConfig'], to_s)
-          @secondary_worker_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig.new(args['secondaryWorkerConfig'], to_s)
+          @master_config = GoogleInSpec::Dataproc::Property::WorkflowTemplateMasterConfig.new(args['masterConfig'], to_s)
+          @worker_config = GoogleInSpec::Dataproc::Property::WorkflowTemplateWorkerConfig.new(args['workerConfig'], to_s)
+          @secondary_worker_config = GoogleInSpec::Dataproc::Property::WorkflowTemplateSecondaryWorkerConfig.new(args['secondaryWorkerConfig'], to_s)
           @software_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig.new(args['softwareConfig'], to_s)
           @initialization_actions = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigInitializationActionsArray.parse(args['initializationActions'], to_s)
           @encryption_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.new(args['encryptionConfig'], to_s)
@@ -120,9 +120,9 @@ module GoogleInSpec
           @lifecycle_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig.new(args['lifecycleConfig'], to_s)
           @endpoint_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigEndpointConfig.new(args['endpointConfig'], to_s)
           @metastore_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.new(args['metastoreConfig'], to_s)
-          @gke_cluster_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.new(args['gkeClusterConfig'], to_s)
+          @gke_cluster_config = GoogleInSpec::Dataproc::Property::WorkflowTemplateGkeClusterConfig.new(args['gkeClusterConfig'], to_s)
           @dataproc_metric_config = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigDataprocMetricConfig.new(args['dataprocMetricConfig'], to_s)
-          @auxiliary_node_groups = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroupsArray.parse(args['auxiliaryNodeGroups'], to_s)
+          @auxiliary_node_groups = GoogleInSpec::Dataproc::Property::WorkflowTemplateAuxiliaryNodeGroupsArray.parse(args['auxiliaryNodeGroups'], to_s)
         end
 
         def to_s

@@ -27,7 +27,7 @@ require 'google/dataproc/property/workflowtemplate_placement_managed_cluster_con
 module GoogleInSpec
   module Dataproc
     module Property
-      class WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroups
+      class WorkflowTemplateAuxiliaryNodeGroups
         attr_reader :node_group
 
         attr_reader :node_group_id
@@ -35,20 +35,20 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @node_group = GoogleInSpec::Dataproc::Property::WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroupsNodeGroup.new(args['nodeGroup'], to_s)
+          @node_group = GoogleInSpec::Dataproc::Property::WorkflowTemplateAuxiliaryNodeGroupsNodeGroup.new(args['nodeGroup'], to_s)
           @node_group_id = args['nodeGroupId']
         end
 
         def to_s
-          "#{@parent_identifier} WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroups"
+          "#{@parent_identifier} WorkflowTemplateAuxiliaryNodeGroups"
         end
       end
 
-      class WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroupsArray
+      class WorkflowTemplateAuxiliaryNodeGroupsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroups.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| WorkflowTemplatePlacementManagedClusterConfigAuxiliaryNodeGroups.new(v, parent_identifier) }
+          return WorkflowTemplateAuxiliaryNodeGroups.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| WorkflowTemplateAuxiliaryNodeGroups.new(v, parent_identifier) }
         end
       end
     end
