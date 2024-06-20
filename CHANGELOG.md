@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.116 -->
+<!-- latest_release 1.11.117 -->
+## [v1.11.117](https://github.com/inspec/inspec-gcp/tree/v1.11.117) (2024-06-20)
+
+#### Merged Pull Requests
+- CHEF-12244-MAGIC-MODULE-Dataproc Workflow Template - Resource Implementation [#631](https://github.com/inspec/inspec-gcp/pull/631) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.116](https://github.com/inspec/inspec-gcp/tree/v1.11.116) (2024-06-17)
 
 #### Merged Pull Requests
 - CHEF-7348-ORG-MAGIC-MODULE-orgpolicy-Folders__policy - Resource Implementation [#556](https://github.com/inspec/inspec-gcp/pull/556) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.115](https://github.com/inspec/inspec-gcp/tree/v1.11.115) (2024-06-11)
 
