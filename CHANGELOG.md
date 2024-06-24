@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.118 -->
+<!-- latest_release 1.11.119 -->
+## [v1.11.119](https://github.com/inspec/inspec-gcp/tree/v1.11.119) (2024-06-24)
+
+#### Merged Pull Requests
+- CHEF-7205-v1-MAGIC-MODULE-compute_v1-Reservation - Resource Implementation [#630](https://github.com/inspec/inspec-gcp/pull/630) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.118](https://github.com/inspec/inspec-gcp/tree/v1.11.118) (2024-06-20)
 
 #### Merged Pull Requests
 - CHEF-12245-MAGIC-MODULE-dataproc_v1-Projects__regions__autoscalingPolicy - Resource Implementation [#632](https://github.com/inspec/inspec-gcp/pull/632) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.117](https://github.com/inspec/inspec-gcp/tree/v1.11.117) (2024-06-20)
 
