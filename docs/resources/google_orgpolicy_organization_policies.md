@@ -8,7 +8,7 @@ A `google_orgpolicy_organization_policies` is used to test a Google Organization
 
 ## Examples
 ```
-    describe google_orgpolicy_organization_policies(parent: ' value_parent') do
+  describe google_orgpolicy_organization_policies(parent: ' value_parent') do
     it { should exist }
   end
 ```
