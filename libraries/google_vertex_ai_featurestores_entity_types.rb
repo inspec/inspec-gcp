@@ -70,14 +70,14 @@ class VertexAIFeaturestoresEntityTypes < GcpResourceBase
 
   def transformers
     {
-      'labels' => ->(obj) { return :labels, GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeLabels.new(obj['labels'], to_s) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'createTime' => ->(obj) { return :create_time, obj['createTime'] },
-      'monitoringConfig' => ->(obj) { return :monitoring_config, GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfig.new(obj['monitoringConfig'], to_s) },
-      'etag' => ->(obj) { return :etag, obj['etag'] },
-      'updateTime' => ->(obj) { return :update_time, obj['updateTime'] },
-      'offlineStorageTtlDays' => ->(obj) { return :offline_storage_ttl_days, obj['offlineStorageTtlDays'] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeLabels.new(obj['labels'], to_s)] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'createTime' => ->(obj) { [:create_time, obj['createTime']] },
+      'monitoringConfig' => ->(obj) { [:monitoring_config, GoogleInSpec::VertexAI::Property::FeaturestoresEntityTypeMonitoringConfig.new(obj['monitoringConfig'], to_s)] },
+      'etag' => ->(obj) { [:etag, obj['etag']] },
+      'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
+      'offlineStorageTtlDays' => ->(obj) { [:offline_storage_ttl_days, obj['offlineStorageTtlDays']] },
     }
   end
 

@@ -68,12 +68,12 @@ class IAMCustomRoles < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'title' => ->(obj) { return :title, obj['title'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'includedPermissions' => ->(obj) { return :included_permissions, obj['includedPermissions'] },
-      'stage' => ->(obj) { return :stage, obj['stage'] },
-      'deleted' => ->(obj) { return :deleted, obj['deleted'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'title' => ->(obj) { [:title, obj['title']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'includedPermissions' => ->(obj) { [:included_permissions, obj['includedPermissions']] },
+      'stage' => ->(obj) { [:stage, obj['stage']] },
+      'deleted' => ->(obj) { [:deleted, obj['deleted']] },
     }
   end
 

@@ -70,14 +70,14 @@ class ComputeNodeGroups < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'nodeTemplate' => ->(obj) { return :node_template, obj['nodeTemplate'] },
-      'size' => ->(obj) { return :size, obj['size'] },
-      'maintenancePolicy' => ->(obj) { return :maintenance_policy, obj['maintenancePolicy'] },
-      'autoscalingPolicy' => ->(obj) { return :autoscaling_policy, GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s) },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'nodeTemplate' => ->(obj) { [:node_template, obj['nodeTemplate']] },
+      'size' => ->(obj) { [:size, obj['size']] },
+      'maintenancePolicy' => ->(obj) { [:maintenance_policy, obj['maintenancePolicy']] },
+      'autoscalingPolicy' => ->(obj) { [:autoscaling_policy, GoogleInSpec::Compute::Property::NodeGroupAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s)] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
     }
   end
 

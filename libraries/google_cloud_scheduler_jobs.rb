@@ -73,17 +73,17 @@ class CloudSchedulerJobs < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'schedule' => ->(obj) { return :schedule, obj['schedule'] },
-      'timeZone' => ->(obj) { return :time_zone, obj['timeZone'] },
-      'state' => ->(obj) { return :state, obj['state'] },
-      'attemptDeadline' => ->(obj) { return :attempt_deadline, obj['attemptDeadline'] },
-      'retryConfig' => ->(obj) { return :retry_config, GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(obj['retryConfig'], to_s) },
-      'pubsubTarget' => ->(obj) { return :pubsub_target, GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(obj['pubsubTarget'], to_s) },
-      'appEngineHttpTarget' => ->(obj) { return :app_engine_http_target, GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(obj['appEngineHttpTarget'], to_s) },
-      'httpTarget' => ->(obj) { return :http_target, GoogleInSpec::CloudScheduler::Property::JobHttpTarget.new(obj['httpTarget'], to_s) },
-      'region' => ->(obj) { return :region, obj['region'] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'schedule' => ->(obj) { [:schedule, obj['schedule']] },
+      'timeZone' => ->(obj) { [:time_zone, obj['timeZone']] },
+      'state' => ->(obj) { [:state, obj['state']] },
+      'attemptDeadline' => ->(obj) { [:attempt_deadline, obj['attemptDeadline']] },
+      'retryConfig' => ->(obj) { [:retry_config, GoogleInSpec::CloudScheduler::Property::JobRetryConfig.new(obj['retryConfig'], to_s)] },
+      'pubsubTarget' => ->(obj) { [:pubsub_target, GoogleInSpec::CloudScheduler::Property::JobPubsubTarget.new(obj['pubsubTarget'], to_s)] },
+      'appEngineHttpTarget' => ->(obj) { [:app_engine_http_target, GoogleInSpec::CloudScheduler::Property::JobAppEngineHttpTarget.new(obj['appEngineHttpTarget'], to_s)] },
+      'httpTarget' => ->(obj) { [:http_target, GoogleInSpec::CloudScheduler::Property::JobHttpTarget.new(obj['httpTarget'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
   end
 

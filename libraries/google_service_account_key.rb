@@ -29,9 +29,11 @@ class IAMServiceAccountKey < GcpResourceBase
   attr_reader :public_key_data
   attr_reader :valid_after_time
   attr_reader :valid_before_time
+  attr_reader :key_origin
   attr_reader :key_type
   attr_reader :service_account
   attr_reader :path
+  attr_reader :disabled
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -48,9 +50,11 @@ class IAMServiceAccountKey < GcpResourceBase
     @public_key_data = @fetched['publicKeyData']
     @valid_after_time = parse_time_string(@fetched['validAfterTime'])
     @valid_before_time = parse_time_string(@fetched['validBeforeTime'])
+    @key_origin = @fetched['keyOrigin']
     @key_type = @fetched['keyType']
     @service_account = @fetched['serviceAccount']
     @path = @fetched['path']
+    @disabled = @fetched['disabled']
   end
 
   # Handles parsing RFC3339 time string

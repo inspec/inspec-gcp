@@ -68,12 +68,12 @@ class AccessContextManagerAccessLevels < GcpResourceBase
 
   def transformers
     {
-      'title' => ->(obj) { return :title, obj['title'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'basic' => ->(obj) { return :basic, GoogleInSpec::AccessContextManager::Property::AccessLevelBasic.new(obj['basic'], to_s) },
-      'custom' => ->(obj) { return :custom, GoogleInSpec::AccessContextManager::Property::AccessLevelCustom.new(obj['custom'], to_s) },
-      'parent' => ->(obj) { return :parent, name_from_self_link(obj['parent']) },
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
+      'title' => ->(obj) { [:title, obj['title']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'basic' => ->(obj) { [:basic, GoogleInSpec::AccessContextManager::Property::AccessLevelBasic.new(obj['basic'], to_s)] },
+      'custom' => ->(obj) { [:custom, GoogleInSpec::AccessContextManager::Property::AccessLevelCustom.new(obj['custom'], to_s)] },
+      'parent' => ->(obj) { [:parent, name_from_self_link(obj['parent'])] },
+      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
     }
   end
 

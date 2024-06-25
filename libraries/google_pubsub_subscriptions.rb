@@ -74,18 +74,18 @@ class PubsubSubscriptions < GcpResourceBase
 
   def transformers
     {
-      'name' => ->(obj) { return :name, name_from_self_link(obj['name']) },
-      'topic' => ->(obj) { return :topic, obj['topic'] },
-      'labels' => ->(obj) { return :labels, obj['labels'] },
-      'pushConfig' => ->(obj) { return :push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig'], to_s) },
-      'ackDeadlineSeconds' => ->(obj) { return :ack_deadline_seconds, obj['ackDeadlineSeconds'] },
-      'messageRetentionDuration' => ->(obj) { return :message_retention_duration, obj['messageRetentionDuration'] },
-      'retainAckedMessages' => ->(obj) { return :retain_acked_messages, obj['retainAckedMessages'] },
-      'expirationPolicy' => ->(obj) { return :expiration_policy, GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(obj['expirationPolicy'], to_s) },
-      'filter' => ->(obj) { return :filter, obj['filter'] },
-      'deadLetterPolicy' => ->(obj) { return :dead_letter_policy, GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(obj['deadLetterPolicy'], to_s) },
-      'retryPolicy' => ->(obj) { return :retry_policy, GoogleInSpec::Pubsub::Property::SubscriptionRetryPolicy.new(obj['retryPolicy'], to_s) },
-      'enableMessageOrdering' => ->(obj) { return :enable_message_ordering, obj['enableMessageOrdering'] },
+      'name' => ->(obj) { [:name, name_from_self_link(obj['name'])] },
+      'topic' => ->(obj) { [:topic, obj['topic']] },
+      'labels' => ->(obj) { [:labels, obj['labels']] },
+      'pushConfig' => ->(obj) { [:push_config, GoogleInSpec::Pubsub::Property::SubscriptionPushConfig.new(obj['pushConfig'], to_s)] },
+      'ackDeadlineSeconds' => ->(obj) { [:ack_deadline_seconds, obj['ackDeadlineSeconds']] },
+      'messageRetentionDuration' => ->(obj) { [:message_retention_duration, obj['messageRetentionDuration']] },
+      'retainAckedMessages' => ->(obj) { [:retain_acked_messages, obj['retainAckedMessages']] },
+      'expirationPolicy' => ->(obj) { [:expiration_policy, GoogleInSpec::Pubsub::Property::SubscriptionExpirationPolicy.new(obj['expirationPolicy'], to_s)] },
+      'filter' => ->(obj) { [:filter, obj['filter']] },
+      'deadLetterPolicy' => ->(obj) { [:dead_letter_policy, GoogleInSpec::Pubsub::Property::SubscriptionDeadLetterPolicy.new(obj['deadLetterPolicy'], to_s)] },
+      'retryPolicy' => ->(obj) { [:retry_policy, GoogleInSpec::Pubsub::Property::SubscriptionRetryPolicy.new(obj['retryPolicy'], to_s)] },
+      'enableMessageOrdering' => ->(obj) { [:enable_message_ordering, obj['enableMessageOrdering']] },
     }
   end
 

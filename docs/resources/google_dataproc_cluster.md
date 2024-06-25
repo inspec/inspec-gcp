@@ -192,6 +192,18 @@ Properties that can be accessed from the `google_dataproc_cluster` resource:
 
   * `region`: The region in which the cluster and associated nodes will be created in.
 
+  * `project_id`: The Google Cloud Platform project ID that the cluster belongs to.
+
+  * `virtual_cluster_config`: Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
+
+  * `status`: Output only. Cluster status.
+
+  * `status_history`: Output only. The previous cluster status.
+
+  * `cluster_uuid`: Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
+
+  * `metrics`: Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+
 
 ## GCP Permissions
 

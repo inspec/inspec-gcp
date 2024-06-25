@@ -69,13 +69,13 @@ class ComputeAutoscalers < GcpResourceBase
 
   def transformers
     {
-      'id' => ->(obj) { return :id, obj['id'] },
-      'creationTimestamp' => ->(obj) { return :creation_timestamp, parse_time_string(obj['creationTimestamp']) },
-      'name' => ->(obj) { return :name, obj['name'] },
-      'description' => ->(obj) { return :description, obj['description'] },
-      'autoscalingPolicy' => ->(obj) { return :autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s) },
-      'target' => ->(obj) { return :target, obj['target'] },
-      'zone' => ->(obj) { return :zone, obj['zone'] },
+      'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
+      'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
+      'autoscalingPolicy' => ->(obj) { [:autoscaling_policy, GoogleInSpec::Compute::Property::AutoscalerAutoscalingPolicy.new(obj['autoscalingPolicy'], to_s)] },
+      'target' => ->(obj) { [:target, obj['target']] },
+      'zone' => ->(obj) { [:zone, obj['zone']] },
     }
   end
 
