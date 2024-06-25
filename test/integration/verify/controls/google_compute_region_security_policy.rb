@@ -23,7 +23,7 @@ control 'google_compute_region_security_policy-1.0' do
   impact 1.0
   title 'google_compute_region_security_policy resource test'
 
-  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], securityPolicy: region_security_policy['securityPolicy']) do
+  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], security_policy: region_security_policy['securityPolicy']) do
   	it { should exist }
   	its('kind') { should cmp region_security_policy['kind'] }
   	its('id') { should cmp region_security_policy['id'] }
@@ -41,7 +41,7 @@ control 'google_compute_region_security_policy-1.0' do
 
   end
 
-  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], securityPolicy: region_security_policy['securityPolicy']) do
+  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], security_policy: region_security_policy['securityPolicy']) do
   	it { should_not exist }
   end
 end
