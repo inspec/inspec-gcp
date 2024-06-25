@@ -13,31 +13,42 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_match_config_dest_ports'
-require 'google/compute/property/regionsecuritypolicy_rules_match_config_layer4_configs'
+require 'google/compute/property/regionsecuritypolicy_rules_network_match_user_defined_fields'
 module GoogleInSpec
   module Compute
     module Property
-      class RegionSecurityPolicyRulesMatchConfig
+      class RegionSecurityPolicyRulesNetworkMatch
+        attr_reader :user_defined_fields
+
         attr_reader :src_ip_ranges
 
         attr_reader :dest_ip_ranges
 
+        attr_reader :ip_protocols
+
+        attr_reader :src_ports
+
         attr_reader :dest_ports
 
-        attr_reader :layer4_configs
+        attr_reader :src_region_codes
+
+        attr_reader :src_asns
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
+          @user_defined_fields = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesNetworkMatchUserDefinedFieldsArray.parse(args['userDefinedFields'], to_s)
           @src_ip_ranges = args['srcIpRanges']
           @dest_ip_ranges = args['destIpRanges']
-          @dest_ports = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfigDestPortsArray.parse(args['destPorts'], to_s)
-          @layer4_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfigLayer4ConfigsArray.parse(args['layer4Configs'], to_s)
+          @ip_protocols = args['ipProtocols']
+          @src_ports = args['srcPorts']
+          @dest_ports = args['destPorts']
+          @src_region_codes = args['srcRegionCodes']
+          @src_asns = args['srcAsns']
         end
 
         def to_s
-          "#{@parent_identifier} RegionSecurityPolicyRulesMatchConfig"
+          "#{@parent_identifier} RegionSecurityPolicyRulesNetworkMatch"
         end
       end
     end

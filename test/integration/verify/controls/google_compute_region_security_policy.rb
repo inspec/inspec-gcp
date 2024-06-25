@@ -16,14 +16,32 @@ title 'Test GCP google_compute_region_security_policy resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  region_security_policy = input('security_policy', value: {
+  region_security_policy = input('region_security_policy', value: {
   "securitypolicy": "value_securitypolicy"
 }, description: 'region_security_policy description')
 control 'google_compute_region_security_policy-1.0' do
   impact 1.0
   title 'google_compute_region_security_policy resource test'
 
-        describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], name: region_security_policy['name']) do
-       it { should exist }
-     end
+  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], securityPolicy: region_security_policy['securityPolicy']) do
+  	it { should exist }
+  	its('kind') { should cmp region_security_policy['kind'] }
+  	its('id') { should cmp region_security_policy['id'] }
+  	its('creation_timestamp') { should cmp region_security_policy['creation_timestamp'] }
+  	its('name') { should cmp region_security_policy['name'] }
+  	its('description') { should cmp region_security_policy['description'] }
+  	its('fingerprint') { should cmp region_security_policy['fingerprint'] }
+  	its('self_link') { should cmp region_security_policy['self_link'] }
+  	its('self_link_with_id') { should cmp region_security_policy['self_link_with_id'] }
+  	its('type') { should cmp region_security_policy['type'] }
+  	its('label_fingerprint') { should cmp region_security_policy['label_fingerprint'] }
+  	its('display_name') { should cmp region_security_policy['display_name'] }
+  	its('parent') { should cmp region_security_policy['parent'] }
+  	its('region') { should cmp region_security_policy['region'] }
+
+  end
+
+  describe google_compute_region_security_policy(project: gcp_project_id, region: region_security_policy['region'], securityPolicy: region_security_policy['securityPolicy']) do
+  	it { should_not exist }
+  end
 end

@@ -24,12 +24,15 @@ module GoogleInSpec
 
         attr_reader :log_level
 
+        attr_reader :user_ip_request_headers
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @json_parsing = args['jsonParsing']
           @json_custom_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.new(args['jsonCustomConfig'], to_s)
           @log_level = args['logLevel']
+          @user_ip_request_headers = args['userIpRequestHeaders']
         end
 
         def to_s

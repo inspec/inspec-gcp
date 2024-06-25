@@ -14,12 +14,18 @@
 #
 # ----------------------------------------------------------------------------
 require 'google/compute/property/regionsecuritypolicy_rules_match_config'
+require 'google/compute/property/regionsecuritypolicy_rules_match_config_dest_ports'
+require 'google/compute/property/regionsecuritypolicy_rules_match_config_layer4_configs'
 require 'google/compute/property/regionsecuritypolicy_rules_match_expr'
+require 'google/compute/property/regionsecuritypolicy_rules_match_expr_options'
+require 'google/compute/property/regionsecuritypolicy_rules_match_expr_options_recaptcha_options'
 module GoogleInSpec
   module Compute
     module Property
       class RegionSecurityPolicyRulesMatch
         attr_reader :expr
+
+        attr_reader :expr_options
 
         attr_reader :versioned_expr
 
@@ -29,6 +35,7 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @expr = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchExpr.new(args['expr'], to_s)
+          @expr_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchExprOptions.new(args['exprOptions'], to_s)
           @versioned_expr = args['versionedExpr']
           @config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfig.new(args['config'], to_s)
         end

@@ -13,31 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_rules_match_config_dest_ports'
-require 'google/compute/property/regionsecuritypolicy_rules_match_config_layer4_configs'
 module GoogleInSpec
   module Compute
     module Property
-      class RegionSecurityPolicyRulesMatchConfig
-        attr_reader :src_ip_ranges
+      class RegionSecurityPolicyRulesMatchExprOptionsRecaptchaOptions
+        attr_reader :action_token_site_keys
 
-        attr_reader :dest_ip_ranges
-
-        attr_reader :dest_ports
-
-        attr_reader :layer4_configs
+        attr_reader :session_token_site_keys
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @src_ip_ranges = args['srcIpRanges']
-          @dest_ip_ranges = args['destIpRanges']
-          @dest_ports = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfigDestPortsArray.parse(args['destPorts'], to_s)
-          @layer4_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatchConfigLayer4ConfigsArray.parse(args['layer4Configs'], to_s)
+          @action_token_site_keys = args['actionTokenSiteKeys']
+          @session_token_site_keys = args['sessionTokenSiteKeys']
         end
 
         def to_s
-          "#{@parent_identifier} RegionSecurityPolicyRulesMatchConfig"
+          "#{@parent_identifier} RegionSecurityPolicyRulesMatchExprOptionsRecaptchaOptions"
         end
       end
     end

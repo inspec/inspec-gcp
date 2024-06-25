@@ -13,6 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs_traffic_granularity_configs'
 module GoogleInSpec
   module Compute
     module Property
@@ -27,6 +28,14 @@ module GoogleInSpec
 
         attr_reader :auto_deploy_expiration_sec
 
+        attr_reader :detection_load_threshold
+
+        attr_reader :detection_absolute_qps
+
+        attr_reader :detection_relative_to_baseline_qps
+
+        attr_reader :traffic_granularity_configs
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
@@ -35,6 +44,10 @@ module GoogleInSpec
           @auto_deploy_confidence_threshold = args['autoDeployConfidenceThreshold']
           @auto_deploy_impacted_baseline_threshold = args['autoDeployImpactedBaselineThreshold']
           @auto_deploy_expiration_sec = args['autoDeployExpirationSec']
+          @detection_load_threshold = args['detectionLoadThreshold']
+          @detection_absolute_qps = args['detectionAbsoluteQps']
+          @detection_relative_to_baseline_qps = args['detectionRelativeToBaselineQps']
+          @traffic_granularity_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigsTrafficGranularityConfigsArray.parse(args['trafficGranularityConfigs'], to_s)
         end
 
         def to_s
