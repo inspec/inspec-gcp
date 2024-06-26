@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocProjectRegionJobs < GcpResourceBase
-  name 'google_dataproc_project_region_jobs'
-  desc 'ProjectRegionJob plural resource'
+class DataprocJobs < GcpResourceBase
+  name 'google_dataproc_jobs'
+  desc 'Job plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -51,7 +51,7 @@ class DataprocProjectRegionJobs < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectRegionJobs')
+    @table = fetch_wrapped_resource('jobs')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -84,28 +84,28 @@ class DataprocProjectRegionJobs < GcpResourceBase
 
   def transformers
     {
-      'reference' => ->(obj) { [:reference, GoogleInSpec::Dataproc::Property::ProjectRegionJobReference.new(obj['reference'], to_s)] },
-      'placement' => ->(obj) { [:placement, GoogleInSpec::Dataproc::Property::ProjectRegionJobPlacement.new(obj['placement'], to_s)] },
-      'hadoopJob' => ->(obj) { [:hadoop_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobHadoopJob.new(obj['hadoopJob'], to_s)] },
-      'sparkJob' => ->(obj) { [:spark_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobSparkJob.new(obj['sparkJob'], to_s)] },
-      'pysparkJob' => ->(obj) { [:pyspark_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobPysparkJob.new(obj['pysparkJob'], to_s)] },
-      'hiveJob' => ->(obj) { [:hive_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobHiveJob.new(obj['hiveJob'], to_s)] },
-      'pigJob' => ->(obj) { [:pig_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobPigJob.new(obj['pigJob'], to_s)] },
-      'sparkRJob' => ->(obj) { [:spark_r_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobSparkRJob.new(obj['sparkRJob'], to_s)] },
-      'sparkSqlJob' => ->(obj) { [:spark_sql_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobSparkSqlJob.new(obj['sparkSqlJob'], to_s)] },
-      'prestoJob' => ->(obj) { [:presto_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobPrestoJob.new(obj['prestoJob'], to_s)] },
-      'trinoJob' => ->(obj) { [:trino_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobTrinoJob.new(obj['trinoJob'], to_s)] },
-      'flinkJob' => ->(obj) { [:flink_job, GoogleInSpec::Dataproc::Property::ProjectRegionJobFlinkJob.new(obj['flinkJob'], to_s)] },
-      'status' => ->(obj) { [:status, GoogleInSpec::Dataproc::Property::ProjectRegionJobStatus.new(obj['status'], to_s)] },
-      'statusHistory' => ->(obj) { [:status_history, GoogleInSpec::Dataproc::Property::ProjectRegionJobStatusHistoryArray.parse(obj['statusHistory'], to_s)] },
-      'yarnApplications' => ->(obj) { [:yarn_applications, GoogleInSpec::Dataproc::Property::ProjectRegionJobYarnApplicationsArray.parse(obj['yarnApplications'], to_s)] },
+      'reference' => ->(obj) { [:reference, GoogleInSpec::Dataproc::Property::JobReference.new(obj['reference'], to_s)] },
+      'placement' => ->(obj) { [:placement, GoogleInSpec::Dataproc::Property::JobPlacement.new(obj['placement'], to_s)] },
+      'hadoopJob' => ->(obj) { [:hadoop_job, GoogleInSpec::Dataproc::Property::JobHadoopJob.new(obj['hadoopJob'], to_s)] },
+      'sparkJob' => ->(obj) { [:spark_job, GoogleInSpec::Dataproc::Property::JobSparkJob.new(obj['sparkJob'], to_s)] },
+      'pysparkJob' => ->(obj) { [:pyspark_job, GoogleInSpec::Dataproc::Property::JobPysparkJob.new(obj['pysparkJob'], to_s)] },
+      'hiveJob' => ->(obj) { [:hive_job, GoogleInSpec::Dataproc::Property::JobHiveJob.new(obj['hiveJob'], to_s)] },
+      'pigJob' => ->(obj) { [:pig_job, GoogleInSpec::Dataproc::Property::JobPigJob.new(obj['pigJob'], to_s)] },
+      'sparkRJob' => ->(obj) { [:spark_r_job, GoogleInSpec::Dataproc::Property::JobSparkRJob.new(obj['sparkRJob'], to_s)] },
+      'sparkSqlJob' => ->(obj) { [:spark_sql_job, GoogleInSpec::Dataproc::Property::JobSparkSqlJob.new(obj['sparkSqlJob'], to_s)] },
+      'prestoJob' => ->(obj) { [:presto_job, GoogleInSpec::Dataproc::Property::JobPrestoJob.new(obj['prestoJob'], to_s)] },
+      'trinoJob' => ->(obj) { [:trino_job, GoogleInSpec::Dataproc::Property::JobTrinoJob.new(obj['trinoJob'], to_s)] },
+      'flinkJob' => ->(obj) { [:flink_job, GoogleInSpec::Dataproc::Property::JobFlinkJob.new(obj['flinkJob'], to_s)] },
+      'status' => ->(obj) { [:status, GoogleInSpec::Dataproc::Property::JobStatus.new(obj['status'], to_s)] },
+      'statusHistory' => ->(obj) { [:status_history, GoogleInSpec::Dataproc::Property::JobStatusHistoryArray.parse(obj['statusHistory'], to_s)] },
+      'yarnApplications' => ->(obj) { [:yarn_applications, GoogleInSpec::Dataproc::Property::JobYarnApplicationsArray.parse(obj['yarnApplications'], to_s)] },
       'driverOutputResourceUri' => ->(obj) { [:driver_output_resource_uri, obj['driverOutputResourceUri']] },
       'driverControlFilesUri' => ->(obj) { [:driver_control_files_uri, obj['driverControlFilesUri']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Dataproc::Property::ProjectRegionJobLabels.new(obj['labels'], to_s)] },
-      'scheduling' => ->(obj) { [:scheduling, GoogleInSpec::Dataproc::Property::ProjectRegionJobScheduling.new(obj['scheduling'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Dataproc::Property::JobLabels.new(obj['labels'], to_s)] },
+      'scheduling' => ->(obj) { [:scheduling, GoogleInSpec::Dataproc::Property::JobScheduling.new(obj['scheduling'], to_s)] },
       'jobUuid' => ->(obj) { [:job_uuid, obj['jobUuid']] },
       'done' => ->(obj) { [:done, obj['done']] },
-      'driverSchedulingConfig' => ->(obj) { [:driver_scheduling_config, GoogleInSpec::Dataproc::Property::ProjectRegionJobDriverSchedulingConfig.new(obj['driverSchedulingConfig'], to_s)] },
+      'driverSchedulingConfig' => ->(obj) { [:driver_scheduling_config, GoogleInSpec::Dataproc::Property::JobDriverSchedulingConfig.new(obj['driverSchedulingConfig'], to_s)] },
     }
   end
 
@@ -116,6 +116,6 @@ class DataprocProjectRegionJobs < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{projectId}}/regions/{{region}}/jobs'
+    'projects/{{project_id}}/regions/{{region}}/jobs'
   end
 end

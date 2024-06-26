@@ -14,66 +14,66 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/dataproc/property/projectregionjob_driver_scheduling_config'
-require 'google/dataproc/property/projectregionjob_flink_job'
-require 'google/dataproc/property/projectregionjob_flink_job_logging_config'
-require 'google/dataproc/property/projectregionjob_flink_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_flink_job_properties'
-require 'google/dataproc/property/projectregionjob_hadoop_job'
-require 'google/dataproc/property/projectregionjob_hadoop_job_logging_config'
-require 'google/dataproc/property/projectregionjob_hadoop_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_hadoop_job_properties'
-require 'google/dataproc/property/projectregionjob_hive_job'
-require 'google/dataproc/property/projectregionjob_hive_job_properties'
-require 'google/dataproc/property/projectregionjob_hive_job_query_list'
-require 'google/dataproc/property/projectregionjob_hive_job_script_variables'
-require 'google/dataproc/property/projectregionjob_labels'
-require 'google/dataproc/property/projectregionjob_pig_job'
-require 'google/dataproc/property/projectregionjob_pig_job_logging_config'
-require 'google/dataproc/property/projectregionjob_pig_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_pig_job_properties'
-require 'google/dataproc/property/projectregionjob_pig_job_query_list'
-require 'google/dataproc/property/projectregionjob_pig_job_script_variables'
-require 'google/dataproc/property/projectregionjob_placement'
-require 'google/dataproc/property/projectregionjob_placement_cluster_labels'
-require 'google/dataproc/property/projectregionjob_presto_job'
-require 'google/dataproc/property/projectregionjob_presto_job_logging_config'
-require 'google/dataproc/property/projectregionjob_presto_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_presto_job_properties'
-require 'google/dataproc/property/projectregionjob_presto_job_query_list'
-require 'google/dataproc/property/projectregionjob_pyspark_job'
-require 'google/dataproc/property/projectregionjob_pyspark_job_logging_config'
-require 'google/dataproc/property/projectregionjob_pyspark_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_pyspark_job_properties'
-require 'google/dataproc/property/projectregionjob_reference'
-require 'google/dataproc/property/projectregionjob_scheduling'
-require 'google/dataproc/property/projectregionjob_spark_job'
-require 'google/dataproc/property/projectregionjob_spark_job_logging_config'
-require 'google/dataproc/property/projectregionjob_spark_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_spark_job_properties'
-require 'google/dataproc/property/projectregionjob_spark_r_job'
-require 'google/dataproc/property/projectregionjob_spark_r_job_logging_config'
-require 'google/dataproc/property/projectregionjob_spark_r_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_spark_r_job_properties'
-require 'google/dataproc/property/projectregionjob_spark_sql_job'
-require 'google/dataproc/property/projectregionjob_spark_sql_job_logging_config'
-require 'google/dataproc/property/projectregionjob_spark_sql_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_spark_sql_job_properties'
-require 'google/dataproc/property/projectregionjob_spark_sql_job_query_list'
-require 'google/dataproc/property/projectregionjob_spark_sql_job_script_variables'
-require 'google/dataproc/property/projectregionjob_status'
-require 'google/dataproc/property/projectregionjob_status_history'
-require 'google/dataproc/property/projectregionjob_trino_job'
-require 'google/dataproc/property/projectregionjob_trino_job_logging_config'
-require 'google/dataproc/property/projectregionjob_trino_job_logging_config_driver_log_levels'
-require 'google/dataproc/property/projectregionjob_trino_job_properties'
-require 'google/dataproc/property/projectregionjob_trino_job_query_list'
-require 'google/dataproc/property/projectregionjob_yarn_applications'
+require 'google/dataproc/property/job_driver_scheduling_config'
+require 'google/dataproc/property/job_flink_job'
+require 'google/dataproc/property/job_flink_job_logging_config'
+require 'google/dataproc/property/job_flink_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_flink_job_properties'
+require 'google/dataproc/property/job_hadoop_job'
+require 'google/dataproc/property/job_hadoop_job_logging_config'
+require 'google/dataproc/property/job_hadoop_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_hadoop_job_properties'
+require 'google/dataproc/property/job_hive_job'
+require 'google/dataproc/property/job_hive_job_properties'
+require 'google/dataproc/property/job_hive_job_query_list'
+require 'google/dataproc/property/job_hive_job_script_variables'
+require 'google/dataproc/property/job_labels'
+require 'google/dataproc/property/job_pig_job'
+require 'google/dataproc/property/job_pig_job_logging_config'
+require 'google/dataproc/property/job_pig_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_pig_job_properties'
+require 'google/dataproc/property/job_pig_job_query_list'
+require 'google/dataproc/property/job_pig_job_script_variables'
+require 'google/dataproc/property/job_placement'
+require 'google/dataproc/property/job_placement_cluster_labels'
+require 'google/dataproc/property/job_presto_job'
+require 'google/dataproc/property/job_presto_job_logging_config'
+require 'google/dataproc/property/job_presto_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_presto_job_properties'
+require 'google/dataproc/property/job_presto_job_query_list'
+require 'google/dataproc/property/job_pyspark_job'
+require 'google/dataproc/property/job_pyspark_job_logging_config'
+require 'google/dataproc/property/job_pyspark_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_pyspark_job_properties'
+require 'google/dataproc/property/job_reference'
+require 'google/dataproc/property/job_scheduling'
+require 'google/dataproc/property/job_spark_job'
+require 'google/dataproc/property/job_spark_job_logging_config'
+require 'google/dataproc/property/job_spark_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_spark_job_properties'
+require 'google/dataproc/property/job_spark_r_job'
+require 'google/dataproc/property/job_spark_r_job_logging_config'
+require 'google/dataproc/property/job_spark_r_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_spark_r_job_properties'
+require 'google/dataproc/property/job_spark_sql_job'
+require 'google/dataproc/property/job_spark_sql_job_logging_config'
+require 'google/dataproc/property/job_spark_sql_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_spark_sql_job_properties'
+require 'google/dataproc/property/job_spark_sql_job_query_list'
+require 'google/dataproc/property/job_spark_sql_job_script_variables'
+require 'google/dataproc/property/job_status'
+require 'google/dataproc/property/job_status_history'
+require 'google/dataproc/property/job_trino_job'
+require 'google/dataproc/property/job_trino_job_logging_config'
+require 'google/dataproc/property/job_trino_job_logging_config_driver_log_levels'
+require 'google/dataproc/property/job_trino_job_properties'
+require 'google/dataproc/property/job_trino_job_query_list'
+require 'google/dataproc/property/job_yarn_applications'
 
 # A provider to manage Dataproc resources.
-class DataprocProjectRegionJob < GcpResourceBase
-  name 'google_dataproc_project_region_job'
-  desc 'ProjectRegionJob'
+class DataprocJob < GcpResourceBase
+  name 'google_dataproc_job'
+  desc 'Job'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -108,28 +108,28 @@ class DataprocProjectRegionJob < GcpResourceBase
   end
 
   def parse
-    @reference = GoogleInSpec::Dataproc::Property::ProjectRegionJobReference.new(@fetched['reference'], to_s)
-    @placement = GoogleInSpec::Dataproc::Property::ProjectRegionJobPlacement.new(@fetched['placement'], to_s)
-    @hadoop_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobHadoopJob.new(@fetched['hadoopJob'], to_s)
-    @spark_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobSparkJob.new(@fetched['sparkJob'], to_s)
-    @pyspark_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobPysparkJob.new(@fetched['pysparkJob'], to_s)
-    @hive_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobHiveJob.new(@fetched['hiveJob'], to_s)
-    @pig_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobPigJob.new(@fetched['pigJob'], to_s)
-    @spark_r_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobSparkRJob.new(@fetched['sparkRJob'], to_s)
-    @spark_sql_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobSparkSqlJob.new(@fetched['sparkSqlJob'], to_s)
-    @presto_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobPrestoJob.new(@fetched['prestoJob'], to_s)
-    @trino_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobTrinoJob.new(@fetched['trinoJob'], to_s)
-    @flink_job = GoogleInSpec::Dataproc::Property::ProjectRegionJobFlinkJob.new(@fetched['flinkJob'], to_s)
-    @status = GoogleInSpec::Dataproc::Property::ProjectRegionJobStatus.new(@fetched['status'], to_s)
-    @status_history = GoogleInSpec::Dataproc::Property::ProjectRegionJobStatusHistoryArray.parse(@fetched['statusHistory'], to_s)
-    @yarn_applications = GoogleInSpec::Dataproc::Property::ProjectRegionJobYarnApplicationsArray.parse(@fetched['yarnApplications'], to_s)
+    @reference = GoogleInSpec::Dataproc::Property::JobReference.new(@fetched['reference'], to_s)
+    @placement = GoogleInSpec::Dataproc::Property::JobPlacement.new(@fetched['placement'], to_s)
+    @hadoop_job = GoogleInSpec::Dataproc::Property::JobHadoopJob.new(@fetched['hadoopJob'], to_s)
+    @spark_job = GoogleInSpec::Dataproc::Property::JobSparkJob.new(@fetched['sparkJob'], to_s)
+    @pyspark_job = GoogleInSpec::Dataproc::Property::JobPysparkJob.new(@fetched['pysparkJob'], to_s)
+    @hive_job = GoogleInSpec::Dataproc::Property::JobHiveJob.new(@fetched['hiveJob'], to_s)
+    @pig_job = GoogleInSpec::Dataproc::Property::JobPigJob.new(@fetched['pigJob'], to_s)
+    @spark_r_job = GoogleInSpec::Dataproc::Property::JobSparkRJob.new(@fetched['sparkRJob'], to_s)
+    @spark_sql_job = GoogleInSpec::Dataproc::Property::JobSparkSqlJob.new(@fetched['sparkSqlJob'], to_s)
+    @presto_job = GoogleInSpec::Dataproc::Property::JobPrestoJob.new(@fetched['prestoJob'], to_s)
+    @trino_job = GoogleInSpec::Dataproc::Property::JobTrinoJob.new(@fetched['trinoJob'], to_s)
+    @flink_job = GoogleInSpec::Dataproc::Property::JobFlinkJob.new(@fetched['flinkJob'], to_s)
+    @status = GoogleInSpec::Dataproc::Property::JobStatus.new(@fetched['status'], to_s)
+    @status_history = GoogleInSpec::Dataproc::Property::JobStatusHistoryArray.parse(@fetched['statusHistory'], to_s)
+    @yarn_applications = GoogleInSpec::Dataproc::Property::JobYarnApplicationsArray.parse(@fetched['yarnApplications'], to_s)
     @driver_output_resource_uri = @fetched['driverOutputResourceUri']
     @driver_control_files_uri = @fetched['driverControlFilesUri']
-    @labels = GoogleInSpec::Dataproc::Property::ProjectRegionJobLabels.new(@fetched['labels'], to_s)
-    @scheduling = GoogleInSpec::Dataproc::Property::ProjectRegionJobScheduling.new(@fetched['scheduling'], to_s)
+    @labels = GoogleInSpec::Dataproc::Property::JobLabels.new(@fetched['labels'], to_s)
+    @scheduling = GoogleInSpec::Dataproc::Property::JobScheduling.new(@fetched['scheduling'], to_s)
     @job_uuid = @fetched['jobUuid']
     @done = @fetched['done']
-    @driver_scheduling_config = GoogleInSpec::Dataproc::Property::ProjectRegionJobDriverSchedulingConfig.new(@fetched['driverSchedulingConfig'], to_s)
+    @driver_scheduling_config = GoogleInSpec::Dataproc::Property::JobDriverSchedulingConfig.new(@fetched['driverSchedulingConfig'], to_s)
   end
 
   def exists?
@@ -137,7 +137,7 @@ class DataprocProjectRegionJob < GcpResourceBase
   end
 
   def to_s
-    "ProjectRegionJob #{@params[:jobId]}"
+    "Job #{@params[:jobId]}"
   end
 
   private

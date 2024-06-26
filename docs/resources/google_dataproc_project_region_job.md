@@ -1,6 +1,6 @@
 +++
 
-title = "google_dataproc_project_region_job Resource"
+title = "google_dataproc_job Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_dataproc_project_region_job"
-identifier = "inspec/resources/gcp/google_dataproc_project_region_job Resource"
+title = "google_dataproc_job"
+identifier = "inspec/resources/gcp/google_dataproc_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_project_region_job` InSpec audit resource to test the properties of a test a Google ProjectRegionJob.
+Use the `google_dataproc_job` InSpec audit resource to test the properties of a test a Google Job.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_dataproc_project_region_job` is used to test a Google ProjectRegionJob resource
+A `google_dataproc_job` is used to test a Google Job resource
 
 ## Examples
 ```
-describe google_dataproc_project_region_job(jobId: ' ', projectId: ' ', region: ' value_region') do
+describe google_dataproc_job(jobId: ' ', projectId: ' ', region: ' value_region') do
 	it { should exist }
 	its('driver_output_resource_uri') { should cmp 'value_driveroutputresourceuri' }
 	its('driver_control_files_uri') { should cmp 'value_drivercontrolfilesuri' }
@@ -31,16 +31,16 @@ describe google_dataproc_project_region_job(jobId: ' ', projectId: ' ', region: 
 
 end
 
-describe google_dataproc_project_region_job(jobId: ' ', projectId: ' ', region: ' value_region') do
+describe google_dataproc_job(jobId: ' ', projectId: ' ', region: ' value_region') do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_project_region_job` resource:
+Properties that can be accessed from the `google_dataproc_job` resource:
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_project_region_job` resource:
+Properties that can be accessed from the `google_dataproc_job` resource:
 
 
   * `reference`: Encapsulates the full scoping used to reference a job.
