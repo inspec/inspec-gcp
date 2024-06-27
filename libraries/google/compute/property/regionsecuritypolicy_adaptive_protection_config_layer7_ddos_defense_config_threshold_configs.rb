@@ -13,7 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs_traffic_granularity_configs'
+require 'google/compute/property/regionsecuritypolicy_apclddctctg_configs'
 module GoogleInSpec
   module Compute
     module Property
