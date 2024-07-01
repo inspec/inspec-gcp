@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.120 -->
+<!-- latest_release 1.11.121 -->
+## [v1.11.121](https://github.com/inspec/inspec-gcp/tree/v1.11.121) (2024-07-01)
+
+#### Merged Pull Requests
+- CHEF-7186-MAGIC-MODULE-compute_v1-RegionSecurityPolicy - Resource Implementation [#634](https://github.com/inspec/inspec-gcp/pull/634) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.120](https://github.com/inspec/inspec-gcp/tree/v1.11.120) (2024-06-27)
 
 #### Merged Pull Requests
 - CHEF-12243-MAGIC-MODULE-Dataproc-Jobs-Resource Implementation [#633](https://github.com/inspec/inspec-gcp/pull/633) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.119](https://github.com/inspec/inspec-gcp/tree/v1.11.119) (2024-06-24)
 
