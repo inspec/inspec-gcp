@@ -254,6 +254,9 @@ variable "network_attachments" {
 variable "compute_target_vpn_gateway" {
   type = any
 }
+variable "bigtable_instance_cluster" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -2155,4 +2158,17 @@ resource "google_compute_region_security_policy" "region-sec-policy-basic" {
   name        = "my-sec-policy-basic"
   description = "basic region security policy"
   type        = "CLOUD_ARMOR"
+}
+resource "google_bigtable_instance" "inspec-test" {
+  name = var.bigtable_instance_cluster.name
+
+  cluster {
+    cluster_id   = var.bigtable_instance_cluster.cluster
+    num_nodes    = 1
+    storage_type = var.bigtable_instance_cluster.storage_type
+  }
+
+  labels = {
+    my-label = var.bigtable_instance_cluster.name
+  }
 }

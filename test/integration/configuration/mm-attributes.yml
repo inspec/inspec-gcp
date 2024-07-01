@@ -629,8 +629,8 @@ region_network_endpoint_group:
   target_service: "us-central1-logging.googleapis.com"
 
 apigee_organization_apis:
-  name : "firstproxy",
-  parent : "organizations/ppradhan",
+  name : "firstproxy"
+  parent : "organizations/ppradhan"
   api_proxy_type : "PROGRAMMABLE"
 
 secrets_manager_v1:
@@ -715,3 +715,8 @@ compute_target_ssl_proxy:
   protocol: "SSL"
   health_check_name: "health-check"
   backend_service_name: "backend-service"
+
+bigtable_instance_cluster:
+  name: "inspec-test"
+  cluster: "inspec-test-c1"
+  storage_type: "SSD"
