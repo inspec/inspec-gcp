@@ -17,12 +17,12 @@ module GoogleInSpec
   module Compute
     module Property
       class RegionSecurityPolicyLabels
-        attr_reader :string
+        attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @string = args['string']
+          @additional_properties = args['additionalProperties']
         end
 
         def to_s

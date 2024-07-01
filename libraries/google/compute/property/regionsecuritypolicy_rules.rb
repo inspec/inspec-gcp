@@ -17,12 +17,19 @@ require 'google/compute/property/regionsecuritypolicy_rules_header_action'
 require 'google/compute/property/regionsecuritypolicy_rules_header_action_request_headers_to_adds'
 require 'google/compute/property/regionsecuritypolicy_rules_match'
 require 'google/compute/property/regionsecuritypolicy_rules_match_config'
+require 'google/compute/property/regionsecuritypolicy_rules_match_config_dest_ports'
+require 'google/compute/property/regionsecuritypolicy_rules_match_config_layer4_configs'
 require 'google/compute/property/regionsecuritypolicy_rules_match_expr'
+require 'google/compute/property/regionsecuritypolicy_rules_match_expr_options'
+require 'google/compute/property/regionsecuritypolicy_rules_match_expr_options_recaptcha_options'
+require 'google/compute/property/regionsecuritypolicy_rules_network_match'
+require 'google/compute/property/regionsecuritypolicy_rules_network_match_user_defined_fields'
 require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config'
 require 'google/compute/property/regionsecuritypolicy_rules_preconfigured_waf_config_exclusions'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_ban_threshold'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_enforce_on_key_configs'
+require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_action_rpc_status'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_redirect_options'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_rate_limit_threshold'
 require 'google/compute/property/regionsecuritypolicy_rules_redirect_options'
@@ -38,15 +45,33 @@ module GoogleInSpec
 
         attr_reader :match
 
+        attr_reader :network_match
+
         attr_reader :action
 
         attr_reader :preview
 
+        attr_reader :direction
+
+        attr_reader :target_resources
+
+        attr_reader :enable_logging
+
+        attr_reader :rule_tuple_count
+
         attr_reader :rate_limit_options
+
+        attr_reader :target_service_accounts
+
+        attr_reader :rule_number
+
+        attr_reader :redirect_target
 
         attr_reader :header_action
 
         attr_reader :redirect_options
+
+        attr_reader :rule_managed_protection_tier
 
         attr_reader :preconfigured_waf_config
 
@@ -57,11 +82,20 @@ module GoogleInSpec
           @description = args['description']
           @priority = args['priority']
           @match = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesMatch.new(args['match'], to_s)
+          @network_match = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesNetworkMatch.new(args['networkMatch'], to_s)
           @action = args['action']
           @preview = args['preview']
+          @direction = args['direction']
+          @target_resources = args['targetResources']
+          @enable_logging = args['enableLogging']
+          @rule_tuple_count = args['ruleTupleCount']
           @rate_limit_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptions.new(args['rateLimitOptions'], to_s)
+          @target_service_accounts = args['targetServiceAccounts']
+          @rule_number = args['ruleNumber']
+          @redirect_target = args['redirectTarget']
           @header_action = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesHeaderAction.new(args['headerAction'], to_s)
           @redirect_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRedirectOptions.new(args['redirectOptions'], to_s)
+          @rule_managed_protection_tier = args['ruleManagedProtectionTier']
           @preconfigured_waf_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesPreconfiguredWafConfig.new(args['preconfiguredWafConfig'], to_s)
         end
 
