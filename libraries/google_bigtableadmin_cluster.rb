@@ -21,9 +21,9 @@ require 'google/bigtableadmin/property/cluster_cluster_config_cluster_autoscalin
 require 'google/bigtableadmin/property/cluster_encryption_config'
 
 # A provider to manage bigtableadmin resources.
-class BigtableadminProjectInstanceCluster < GcpResourceBase
+class BigtableadminCluster < GcpResourceBase
   name 'google_bigtableadmin_cluster'
-  desc 'ProjectInstanceCluster'
+  desc 'Cluster'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -57,7 +57,7 @@ class BigtableadminProjectInstanceCluster < GcpResourceBase
   end
 
   def to_s
-    "ProjectInstanceCluster #{@params[:name]}"
+    "Cluster #{@params[:name]}"
   end
 
   private

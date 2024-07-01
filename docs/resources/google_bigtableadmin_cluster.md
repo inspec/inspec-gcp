@@ -13,13 +13,13 @@ identifier = "inspec/resources/gcp/google_bigtableadmin_cluster Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_cluster` InSpec audit resource to test the properties of a test a Google ProjectInstanceCluster.
+Use the `google_bigtableadmin_cluster` InSpec audit resource to test the properties of a test a Google Cluster.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_bigtableadmin_cluster` is used to test a Google ProjectInstanceCluster resource
+A `google_bigtableadmin_cluster` is used to test a Google Cluster resource
 
 ## Examples
 ```

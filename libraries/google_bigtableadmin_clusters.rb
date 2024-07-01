@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class BigtableadminProjectInstanceClusters < GcpResourceBase
+class BigtableadminClusters < GcpResourceBase
   name 'google_bigtableadmin_clusters'
-  desc 'ProjectInstanceCluster plural resource'
+  desc 'Cluster plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
