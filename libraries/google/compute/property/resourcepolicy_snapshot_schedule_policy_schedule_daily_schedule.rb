@@ -14,22 +14,25 @@
 #
 # ----------------------------------------------------------------------------
 module GoogleInSpec
-  module Orgpolicy
+  module Compute
     module Property
-      class OrganizationPolicyDryRunSpecRulesValues
-        attr_reader :denied_values
+      class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule
+        attr_reader :days_in_cycle
 
-        attr_reader :allowed_values
+        attr_reader :start_time
+
+        attr_reader :duration
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @denied_values = args['deniedValues']
-          @allowed_values = args['allowedValues']
+          @days_in_cycle = args['daysInCycle']
+          @start_time = args['startTime']
+          @duration = args['duration']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyDryRunSpecRulesValues"
+          "#{@parent_identifier} ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule"
         end
       end
     end

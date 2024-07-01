@@ -1,11 +1,41 @@
 # Change Log
 
-<!-- latest_release 1.11.108 -->
+<!-- latest_release 1.11.114 -->
+## [v1.11.114](https://github.com/inspec/inspec-gcp/tree/v1.11.114) (2024-06-05)
+
+#### Merged Pull Requests
+- CHEF-7352-MAGIC-MODULE-orgpolicy-Projects__policy - Resource Implementation [#554](https://github.com/inspec/inspec-gcp/pull/554) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.113](https://github.com/inspec/inspec-gcp/tree/v1.11.113) (2024-05-30)
+
+#### Merged Pull Requests
+- Rename orgpolicy properties [#629](https://github.com/inspec/inspec-gcp/pull/629) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.112](https://github.com/inspec/inspec-gcp/tree/v1.11.112) (2024-05-28)
+
+#### Merged Pull Requests
+- CHEF-7351_1-MAGIC-MODULE-orgpolicy_v2-Projects__constraint - Resource Implementation [#620](https://github.com/inspec/inspec-gcp/pull/620) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.111](https://github.com/inspec/inspec-gcp/tree/v1.11.111) (2024-05-28)
+
+#### Merged Pull Requests
+- CHEF-7349-MAGIC-MODULE-Orgpolicy_v2-Organizations_constraint - Resource Implementation [#622](https://github.com/inspec/inspec-gcp/pull/622) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.110](https://github.com/inspec/inspec-gcp/tree/v1.11.110) (2024-05-20)
+
+#### Merged Pull Requests
+- Deprecate active support blank method [#627](https://github.com/inspec/inspec-gcp/pull/627) ([balasubramanian-s](https://github.com/balasubramanian-s))
+
+## [v1.11.109](https://github.com/inspec/inspec-gcp/tree/v1.11.109) (2024-05-09)
+
+#### Merged Pull Requests
+- CHEF-7206_1-MAGIC-MODULE-compute_v1-ResourcePolicy - Resource Implementation [#617](https://github.com/inspec/inspec-gcp/pull/617) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.108](https://github.com/inspec/inspec-gcp/tree/v1.11.108) (2024-05-06)
 
 #### Merged Pull Requests
 - CHEF-7210-MAGIC-MODULE-compute_v1-TargetSslProxy - Resource Implementation [#618](https://github.com/inspec/inspec-gcp/pull/618) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.107](https://github.com/inspec/inspec-gcp/tree/v1.11.107) (2024-05-06)
 

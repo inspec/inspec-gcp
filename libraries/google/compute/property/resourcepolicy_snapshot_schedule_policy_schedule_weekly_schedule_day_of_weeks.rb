@@ -13,25 +13,34 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec'
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules'
 module GoogleInSpec
-  module Orgpolicy
+  module Compute
     module Property
-      class OrganizationPolicyAlternate
-        attr_reader :launch
+      class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks
+        attr_reader :day
 
-        attr_reader :spec
+        attr_reader :start_time
+
+        attr_reader :duration
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @launch = args['launch']
-          @spec = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternateSpec.new(args['spec'], to_s)
+          @day = args['day']
+          @start_time = args['startTime']
+          @duration = args['duration']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyAlternate"
+          "#{@parent_identifier} ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks"
+        end
+      end
+
+      class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks.new(v, parent_identifier) }
         end
       end
     end

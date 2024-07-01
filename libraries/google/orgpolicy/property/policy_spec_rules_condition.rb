@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyDryRunSpecRulesCondition
+      class PolicySpecRulesCondition
         attr_reader :title
 
         attr_reader :location
@@ -35,7 +35,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyDryRunSpecRulesCondition"
+          "#{@parent_identifier} PolicySpecRulesCondition"
         end
       end
     end

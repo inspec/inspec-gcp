@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_dry_run_spec_rules'
+require 'google/orgpolicy/property/policy_dry_run_spec_rules'
 module GoogleInSpec
   module Orgpolicy
     module Property
-      class OrganizationPolicyDryRunSpec
+      class PolicyDryRunSpec
         attr_reader :update_time
 
         attr_reader :rules
@@ -32,14 +32,14 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @update_time = args['updateTime']
-          @rules = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyDryRunSpecRulesArray.parse(args['rules'], to_s)
+          @rules = GoogleInSpec::Orgpolicy::Property::PolicyDryRunSpecRulesArray.parse(args['rules'], to_s)
           @etag = args['etag']
           @reset = args['reset']
           @inherit_from_parent = args['inheritFromParent']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyDryRunSpec"
+          "#{@parent_identifier} PolicyDryRunSpec"
         end
       end
     end

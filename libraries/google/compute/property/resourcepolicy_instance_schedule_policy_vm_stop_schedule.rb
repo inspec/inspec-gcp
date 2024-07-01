@@ -13,33 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/orgpolicy/property/organizationpolicy_alternate_spec_rules'
 module GoogleInSpec
-  module Orgpolicy
+  module Compute
     module Property
-      class OrganizationPolicyAlternateSpec
-        attr_reader :update_time
-
-        attr_reader :rules
-
-        attr_reader :etag
-
-        attr_reader :reset
-
-        attr_reader :inherit_from_parent
+      class ResourcePolicyInstanceSchedulePolicyVmStopSchedule
+        attr_reader :schedule
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @update_time = args['updateTime']
-          @rules = GoogleInSpec::Orgpolicy::Property::OrganizationPolicyAlternateSpecRulesArray.parse(args['rules'], to_s)
-          @etag = args['etag']
-          @reset = args['reset']
-          @inherit_from_parent = args['inheritFromParent']
+          @schedule = args['schedule']
         end
 
         def to_s
-          "#{@parent_identifier} OrganizationPolicyAlternateSpec"
+          "#{@parent_identifier} ResourcePolicyInstanceSchedulePolicyVmStopSchedule"
         end
       end
     end
