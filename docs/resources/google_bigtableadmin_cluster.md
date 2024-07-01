@@ -1,6 +1,6 @@
 +++
 
-title = "google_bigtableadmin_project_instance_cluster Resource"
+title = "google_bigtableadmin_cluster Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,40 +8,39 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_bigtableadmin_project_instance_cluster"
-identifier = "inspec/resources/gcp/google_bigtableadmin_project_instance_cluster Resource"
+title = "google_bigtableadmin_cluster"
+identifier = "inspec/resources/gcp/google_bigtableadmin_cluster Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_project_instance_cluster` InSpec audit resource to test the properties of a test a Google ProjectInstanceCluster.
+Use the `google_bigtableadmin_cluster` InSpec audit resource to test the properties of a test a Google ProjectInstanceCluster.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_bigtableadmin_project_instance_cluster` is used to test a Google ProjectInstanceCluster resource
+A `google_bigtableadmin_cluster` is used to test a Google ProjectInstanceCluster resource
 
 ## Examples
 ```
-describe google_bigtableadmin_project_instance_cluster(name: ' value_name') do
+describe google_bigtableadmin_cluster(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('location') { should cmp 'value_location' }
 	its('state') { should cmp 'value_state' }
 	its('default_storage_type') { should cmp 'value_defaultstoragetype' }
-
 end
 
-describe google_bigtableadmin_project_instance_cluster(name: "does_not_exit") do
+describe google_bigtableadmin_cluster(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_bigtableadmin_project_instance_cluster` resource:
+Properties that can be accessed from the `google_bigtableadmin_cluster` resource:
 
 ## Properties
-Properties that can be accessed from the `google_bigtableadmin_project_instance_cluster` resource:
+Properties that can be accessed from the `google_bigtableadmin_cluster` resource:
 
 
   * `name`: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.

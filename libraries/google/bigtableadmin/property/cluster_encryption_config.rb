@@ -13,25 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config_autoscaling_limits'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config_autoscaling_targets'
 module GoogleInSpec
   module Bigtableadmin
     module Property
-      class ProjectInstanceClusterClusterConfigClusterAutoscalingConfig
-        attr_reader :autoscaling_limits
-
-        attr_reader :autoscaling_targets
+      class ClusterEncryptionConfig
+        attr_reader :kms_key_name
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @autoscaling_limits = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterClusterConfigClusterAutoscalingConfigAutoscalingLimits.new(args['autoscalingLimits'], to_s)
-          @autoscaling_targets = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterClusterConfigClusterAutoscalingConfigAutoscalingTargets.new(args['autoscalingTargets'], to_s)
+          @kms_key_name = args['kmsKeyName']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectInstanceClusterClusterConfigClusterAutoscalingConfig"
+          "#{@parent_identifier} ClusterEncryptionConfig"
         end
       end
     end

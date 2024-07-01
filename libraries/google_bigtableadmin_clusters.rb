@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 class BigtableadminProjectInstanceClusters < GcpResourceBase
-  name 'google_bigtableadmin_project_instance_clusters'
+  name 'google_bigtableadmin_clusters'
   desc 'ProjectInstanceCluster plural resource'
   supports platform: 'gcp'
 
@@ -36,7 +36,7 @@ class BigtableadminProjectInstanceClusters < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectInstanceClusters')
+    @table = fetch_wrapped_resource('clusters')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -73,19 +73,19 @@ class BigtableadminProjectInstanceClusters < GcpResourceBase
       'location' => ->(obj) { [:location, obj['location']] },
       'state' => ->(obj) { [:state, obj['state']] },
       'serveNodes' => ->(obj) { [:serve_nodes, obj['serveNodes']] },
-      'clusterConfig' => ->(obj) { [:cluster_config, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterClusterConfig.new(obj['clusterConfig'], to_s)] },
+      'clusterConfig' => ->(obj) { [:cluster_config, GoogleInSpec::Bigtableadmin::Property::ClusterClusterConfig.new(obj['clusterConfig'], to_s)] },
       'defaultStorageType' => ->(obj) { [:default_storage_type, obj['defaultStorageType']] },
-      'encryptionConfig' => ->(obj) { [:encryption_config, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterEncryptionConfig.new(obj['encryptionConfig'], to_s)] },
+      'encryptionConfig' => ->(obj) { [:encryption_config, GoogleInSpec::Bigtableadmin::Property::ClusterEncryptionConfig.new(obj['encryptionConfig'], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigtableadmin.googleapis.com//v2/'
+    'https://bigtableadmin.googleapis.com/v2/'
   end
 
   def resource_base_url
-    '{{+parent}}/clusters'
+    '{{parent}}/clusters'
   end
 end

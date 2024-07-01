@@ -16,17 +16,20 @@
 module GoogleInSpec
   module Bigtableadmin
     module Property
-      class ProjectInstanceClusterEncryptionConfig
-        attr_reader :kms_key_name
+      class ClusterClusterConfigClusterAutoscalingConfigAutoscalingLimits
+        attr_reader :min_serve_nodes
+
+        attr_reader :max_serve_nodes
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kms_key_name = args['kmsKeyName']
+          @min_serve_nodes = args['minServeNodes']
+          @max_serve_nodes = args['maxServeNodes']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectInstanceClusterEncryptionConfig"
+          "#{@parent_identifier} ClusterClusterConfigClusterAutoscalingConfigAutoscalingLimits"
         end
       end
     end

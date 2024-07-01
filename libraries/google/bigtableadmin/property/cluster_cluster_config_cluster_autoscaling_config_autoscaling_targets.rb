@@ -13,23 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config_autoscaling_limits'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config_autoscaling_targets'
 module GoogleInSpec
   module Bigtableadmin
     module Property
-      class ProjectInstanceClusterClusterConfig
-        attr_reader :cluster_autoscaling_config
+      class ClusterClusterConfigClusterAutoscalingConfigAutoscalingTargets
+        attr_reader :cpu_utilization_percent
+
+        attr_reader :storage_utilization_gib_per_node
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cluster_autoscaling_config = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterClusterConfigClusterAutoscalingConfig.new(args['clusterAutoscalingConfig'], to_s)
+          @cpu_utilization_percent = args['cpuUtilizationPercent']
+          @storage_utilization_gib_per_node = args['storageUtilizationGibPerNode']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectInstanceClusterClusterConfig"
+          "#{@parent_identifier} ClusterClusterConfigClusterAutoscalingConfigAutoscalingTargets"
         end
       end
     end

@@ -14,15 +14,15 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config_autoscaling_limits'
-require 'google/bigtableadmin/property/projectinstancecluster_cluster_config_cluster_autoscaling_config_autoscaling_targets'
-require 'google/bigtableadmin/property/projectinstancecluster_encryption_config'
+require 'google/bigtableadmin/property/cluster_cluster_config'
+require 'google/bigtableadmin/property/cluster_cluster_config_cluster_autoscaling_config'
+require 'google/bigtableadmin/property/cluster_cluster_config_cluster_autoscaling_config_autoscaling_limits'
+require 'google/bigtableadmin/property/cluster_cluster_config_cluster_autoscaling_config_autoscaling_targets'
+require 'google/bigtableadmin/property/cluster_encryption_config'
 
 # A provider to manage bigtableadmin resources.
 class BigtableadminProjectInstanceCluster < GcpResourceBase
-  name 'google_bigtableadmin_project_instance_cluster'
+  name 'google_bigtableadmin_cluster'
   desc 'ProjectInstanceCluster'
   supports platform: 'gcp'
 
@@ -47,9 +47,9 @@ class BigtableadminProjectInstanceCluster < GcpResourceBase
     @location = @fetched['location']
     @state = @fetched['state']
     @serve_nodes = @fetched['serveNodes']
-    @cluster_config = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterClusterConfig.new(@fetched['clusterConfig'], to_s)
+    @cluster_config = GoogleInSpec::Bigtableadmin::Property::ClusterClusterConfig.new(@fetched['clusterConfig'], to_s)
     @default_storage_type = @fetched['defaultStorageType']
-    @encryption_config = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterEncryptionConfig.new(@fetched['encryptionConfig'], to_s)
+    @encryption_config = GoogleInSpec::Bigtableadmin::Property::ClusterEncryptionConfig.new(@fetched['encryptionConfig'], to_s)
   end
 
   def exists?
@@ -57,16 +57,16 @@ class BigtableadminProjectInstanceCluster < GcpResourceBase
   end
 
   def to_s
-    "ProjectInstanceCluster #{@params[:]}"
+    "ProjectInstanceCluster #{@params[:name]}"
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigtableadmin.googleapis.com//v2/'
+    'https://bigtableadmin.googleapis.com/v2/'
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
