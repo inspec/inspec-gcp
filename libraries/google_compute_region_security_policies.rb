@@ -23,21 +23,28 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
+  filter_table_config.add(:user_defined_fields, field: :user_defined_fields)
   filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:ids, field: :id)
   filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:names, field: :name)
   filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:rules, field: :rules)
+  filter_table_config.add(:cloud_armor_configs, field: :cloud_armor_config)
   filter_table_config.add(:adaptive_protection_configs, field: :adaptive_protection_config)
   filter_table_config.add(:ddos_protection_configs, field: :ddos_protection_config)
   filter_table_config.add(:advanced_options_configs, field: :advanced_options_config)
   filter_table_config.add(:recaptcha_options_configs, field: :recaptcha_options_config)
   filter_table_config.add(:fingerprints, field: :fingerprint)
   filter_table_config.add(:self_links, field: :self_link)
+  filter_table_config.add(:self_link_with_ids, field: :self_link_with_id)
   filter_table_config.add(:types, field: :type)
+  filter_table_config.add(:associations, field: :associations)
   filter_table_config.add(:labels, field: :labels)
   filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
+  filter_table_config.add(:rule_tuple_counts, field: :rule_tuple_count)
+  filter_table_config.add(:display_names, field: :display_name)
+  filter_table_config.add(:parents, field: :parent)
   filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
@@ -78,21 +85,28 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
 
   def transformers
     {
+      'userDefinedFields' => ->(obj) { [:user_defined_fields, GoogleInSpec::Compute::Property::RegionSecurityPolicyUserDefinedFieldsArray.parse(obj['userDefinedFields'], to_s)] },
       'kind' => ->(obj) { [:kind, obj['kind']] },
       'id' => ->(obj) { [:id, obj['id']] },
       'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
       'name' => ->(obj) { [:name, obj['name']] },
       'description' => ->(obj) { [:description, obj['description']] },
       'rules' => ->(obj) { [:rules, GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesArray.parse(obj['rules'], to_s)] },
+      'cloudArmorConfig' => ->(obj) { [:cloud_armor_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyCloudArmorConfig.new(obj['cloudArmorConfig'], to_s)] },
       'adaptiveProtectionConfig' => ->(obj) { [:adaptive_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfig.new(obj['adaptiveProtectionConfig'], to_s)] },
       'ddosProtectionConfig' => ->(obj) { [:ddos_protection_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyDdosProtectionConfig.new(obj['ddosProtectionConfig'], to_s)] },
       'advancedOptionsConfig' => ->(obj) { [:advanced_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyAdvancedOptionsConfig.new(obj['advancedOptionsConfig'], to_s)] },
       'recaptchaOptionsConfig' => ->(obj) { [:recaptcha_options_config, GoogleInSpec::Compute::Property::RegionSecurityPolicyRecaptchaOptionsConfig.new(obj['recaptchaOptionsConfig'], to_s)] },
       'fingerprint' => ->(obj) { [:fingerprint, obj['fingerprint']] },
       'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
+      'selfLinkWithId' => ->(obj) { [:self_link_with_id, obj['selfLinkWithId']] },
       'type' => ->(obj) { [:type, obj['type']] },
+      'associations' => ->(obj) { [:associations, GoogleInSpec::Compute::Property::RegionSecurityPolicyAssociationsArray.parse(obj['associations'], to_s)] },
       'labels' => ->(obj) { [:labels, GoogleInSpec::Compute::Property::RegionSecurityPolicyLabels.new(obj['labels'], to_s)] },
       'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
+      'ruleTupleCount' => ->(obj) { [:rule_tuple_count, obj['ruleTupleCount']] },
+      'displayName' => ->(obj) { [:display_name, obj['displayName']] },
+      'parent' => ->(obj) { [:parent, obj['parent']] },
       'region' => ->(obj) { [:region, obj['region']] },
     }
   end
@@ -104,6 +118,6 @@ class ComputeRegionSecurityPolicys < GcpResourceBase
   end
 
   def resource_base_url
-    'projects/{{project}}/regions/{{region}}/securityPolicies/{{securityPolicy}}'
+    'projects/{{project}}/regions/{{region}}/securityPolicies'
   end
 end

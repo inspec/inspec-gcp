@@ -15,6 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_ban_threshold'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_enforce_on_key_configs'
+require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_action_rpc_status'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_exceed_redirect_options'
 require 'google/compute/property/regionsecuritypolicy_rules_rate_limit_options_rate_limit_threshold'
 module GoogleInSpec
@@ -28,6 +29,8 @@ module GoogleInSpec
         attr_reader :exceed_action
 
         attr_reader :exceed_redirect_options
+
+        attr_reader :exceed_action_rpc_status
 
         attr_reader :enforce_on_key
 
@@ -46,6 +49,7 @@ module GoogleInSpec
           @conform_action = args['conformAction']
           @exceed_action = args['exceedAction']
           @exceed_redirect_options = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsExceedRedirectOptions.new(args['exceedRedirectOptions'], to_s)
+          @exceed_action_rpc_status = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsExceedActionRpcStatus.new(args['exceedActionRpcStatus'], to_s)
           @enforce_on_key = args['enforceOnKey']
           @enforce_on_key_name = args['enforceOnKeyName']
           @enforce_on_key_configs = GoogleInSpec::Compute::Property::RegionSecurityPolicyRulesRateLimitOptionsEnforceOnKeyConfigsArray.parse(args['enforceOnKeyConfigs'], to_s)

@@ -13,6 +13,7 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_auto_deploy_config'
 require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config'
 require 'google/compute/property/regionsecuritypolicy_adaptive_protection_config_layer7_ddos_defense_config_threshold_configs'
 module GoogleInSpec
@@ -21,10 +22,13 @@ module GoogleInSpec
       class RegionSecurityPolicyAdaptiveProtectionConfig
         attr_reader :layer7_ddos_defense_config
 
+        attr_reader :auto_deploy_config
+
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @layer7_ddos_defense_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.new(args['layer7DdosDefenseConfig'], to_s)
+          @auto_deploy_config = GoogleInSpec::Compute::Property::RegionSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.new(args['autoDeployConfig'], to_s)
         end
 
         def to_s
