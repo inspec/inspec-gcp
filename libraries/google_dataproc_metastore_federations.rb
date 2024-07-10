@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocMetastoreProjectLocationFederations < GcpResourceBase
-  name 'google_dataproc_metastore_project_location_federations'
-  desc 'ProjectLocationFederation plural resource'
+class DataprocMetastoreFederations < GcpResourceBase
+  name 'google_dataproc_metastore_federations'
+  desc 'Federation plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -39,7 +39,7 @@ class DataprocMetastoreProjectLocationFederations < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectLocationFederations')
+    @table = fetch_wrapped_resource('federations')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -75,9 +75,9 @@ class DataprocMetastoreProjectLocationFederations < GcpResourceBase
       'name' => ->(obj) { [:name, obj['name']] },
       'createTime' => ->(obj) { [:create_time, obj['createTime']] },
       'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::DataprocMetastore::Property::ProjectLocationFederationLabels.new(obj['labels'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::DataprocMetastore::Property::FederationLabels.new(obj['labels'], to_s)] },
       'version' => ->(obj) { [:version, obj['version']] },
-      'backendMetastores' => ->(obj) { [:backend_metastores, GoogleInSpec::DataprocMetastore::Property::ProjectLocationFederationBackendMetastores.new(obj['backendMetastores'], to_s)] },
+      'backendMetastores' => ->(obj) { [:backend_metastores, GoogleInSpec::DataprocMetastore::Property::FederationBackendMetastores.new(obj['backendMetastores'], to_s)] },
       'endpointUri' => ->(obj) { [:endpoint_uri, obj['endpointUri']] },
       'state' => ->(obj) { [:state, obj['state']] },
       'stateMessage' => ->(obj) { [:state_message, obj['stateMessage']] },
@@ -92,6 +92,6 @@ class DataprocMetastoreProjectLocationFederations < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/federations'
+    '{{parent}}/federations'
   end
 end

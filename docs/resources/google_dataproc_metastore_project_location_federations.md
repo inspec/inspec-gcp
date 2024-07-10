@@ -1,0 +1,66 @@
++++
+
+title = "google_dataproc_metastore_federations Resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+
+[menu.inspec]
+
+title = "google_dataproc_metastore_federations"
+identifier = "inspec/resources/gcp/google_dataproc_metastore_federations Resource"
+parent = "inspec/resources/gcp"
++++
+
+Use the `google_dataproc_metastore_federations` InSpec audit resource to test the properties of a test a Google Federation.
+
+## Installation
+{{% inspec_gcp_install %}}
+
+## Syntax
+A `google_dataproc_metastore_federations` is used to test a Google Federation resource
+
+## Examples
+```
+    describe google_dataproc_metastore_federations(parent: ' value_parent') do
+    it { should exist }
+  end
+```
+
+## Parameters
+Properties that can be accessed from the `google_dataproc_metastore_federations` resource:
+
+See [google_dataproc_metastore_federation.md](google_dataproc_metastore_federation.md) for more detailed information
+* `names`: an array of `google_dataproc_metastore_federation` name
+* `create_times`: an array of `google_dataproc_metastore_federation` create_time
+* `update_times`: an array of `google_dataproc_metastore_federation` update_time
+* `labels`: an array of `google_dataproc_metastore_federation` labels
+* `versions`: an array of `google_dataproc_metastore_federation` version
+* `backend_metastores`: an array of `google_dataproc_metastore_federation` backend_metastores
+* `endpoint_uris`: an array of `google_dataproc_metastore_federation` endpoint_uri
+* `states`: an array of `google_dataproc_metastore_federation` state
+* `state_messages`: an array of `google_dataproc_metastore_federation` state_message
+* `uids`: an array of `google_dataproc_metastore_federation` uid
+## Properties
+Properties that can be accessed from the `google_dataproc_metastore_federations` resource:
+
+See [google_dataproc_metastore_federation.md](google_dataproc_metastore_federation.md) for more detailed information
+* `names`: an array of `google_dataproc_metastore_federation` name
+* `create_times`: an array of `google_dataproc_metastore_federation` create_time
+* `update_times`: an array of `google_dataproc_metastore_federation` update_time
+* `labels`: an array of `google_dataproc_metastore_federation` labels
+* `versions`: an array of `google_dataproc_metastore_federation` version
+* `backend_metastores`: an array of `google_dataproc_metastore_federation` backend_metastores
+* `endpoint_uris`: an array of `google_dataproc_metastore_federation` endpoint_uri
+* `states`: an array of `google_dataproc_metastore_federation` state
+* `state_messages`: an array of `google_dataproc_metastore_federation` state_message
+* `uids`: an array of `google_dataproc_metastore_federation` uid
+
+## Filter Criteria
+This resource supports all of the above properties as filter criteria, which can be used
+with `where` as a block or a method.
+
+## GCP Permissions
+
+Ensure the [Dataproc Metastore API](https://console.cloud.google.com/apis/library/metastore.googleapis.com) is enabled for the current project.

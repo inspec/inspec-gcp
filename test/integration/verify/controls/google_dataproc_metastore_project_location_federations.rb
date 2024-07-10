@@ -12,7 +12,7 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_dataproc_metastore_project_location_federations resource.'
+title 'Test GCP google_dataproc_metastore_federations resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 project_location_federation = input('project_location_federation', value: {
@@ -26,11 +26,11 @@ project_location_federation = input('project_location_federation', value: {
   "state_message": "value_statemessage",
   "uid": "value_uid"
 }, description: 'project_location_federation description')
-control 'google_dataproc_metastore_project_location_federations-1.0' do
+control 'google_dataproc_metastore_federations-1.0' do
   impact 1.0
-  title 'google_dataproc_metastore_project_location_federations resource test'
+  title 'google_dataproc_metastore_federations resource test'
 
-      describe google_dataproc_metastore_project_location_federations(parent: project_location_federation['parent']) do
+      describe google_dataproc_metastore_federations(parent: project_location_federation['parent']) do
       it { should exist }
     end
 end

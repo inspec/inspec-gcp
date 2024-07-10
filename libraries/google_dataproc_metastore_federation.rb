@@ -14,13 +14,13 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/dataprocmetastore/property/projectlocationfederation_backend_metastores'
-require 'google/dataprocmetastore/property/projectlocationfederation_labels'
+require 'google/dataprocmetastore/property/federation_backend_metastores'
+require 'google/dataprocmetastore/property/federation_labels'
 
 # A provider to manage Dataproc metastore resources.
-class DataprocMetastoreProjectLocationFederation < GcpResourceBase
-  name 'google_dataproc_metastore_project_location_federation'
-  desc 'ProjectLocationFederation'
+class DataprocMetastoreFederation < GcpResourceBase
+  name 'google_dataproc_metastore_federation'
+  desc 'Federation'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -46,9 +46,9 @@ class DataprocMetastoreProjectLocationFederation < GcpResourceBase
     @name = @fetched['name']
     @create_time = @fetched['createTime']
     @update_time = @fetched['updateTime']
-    @labels = GoogleInSpec::DataprocMetastore::Property::ProjectLocationFederationLabels.new(@fetched['labels'], to_s)
+    @labels = GoogleInSpec::DataprocMetastore::Property::FederationLabels.new(@fetched['labels'], to_s)
     @version = @fetched['version']
-    @backend_metastores = GoogleInSpec::DataprocMetastore::Property::ProjectLocationFederationBackendMetastores.new(@fetched['backendMetastores'], to_s)
+    @backend_metastores = GoogleInSpec::DataprocMetastore::Property::FederationBackendMetastores.new(@fetched['backendMetastores'], to_s)
     @endpoint_uri = @fetched['endpointUri']
     @state = @fetched['state']
     @state_message = @fetched['stateMessage']
@@ -60,7 +60,7 @@ class DataprocMetastoreProjectLocationFederation < GcpResourceBase
   end
 
   def to_s
-    "ProjectLocationFederation #{@params[:]}"
+    "Federation #{@params[:name]}"
   end
 
   private
@@ -70,6 +70,6 @@ class DataprocMetastoreProjectLocationFederation < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
