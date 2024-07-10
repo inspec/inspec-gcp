@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.121 -->
+<!-- latest_release 1.11.122 -->
+## [v1.11.122](https://github.com/inspec/inspec-gcp/tree/v1.11.122) (2024-07-03)
+
+#### Merged Pull Requests
+- CHEF-12475-v2-MAGIC-MODULE-bigtableadmin_v2-Projects__instances__cluster - Resource Implementation [#636](https://github.com/inspec/inspec-gcp/pull/636) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.121](https://github.com/inspec/inspec-gcp/tree/v1.11.121) (2024-07-01)
 
 #### Merged Pull Requests
 - CHEF-7186-MAGIC-MODULE-compute_v1-RegionSecurityPolicy - Resource Implementation [#634](https://github.com/inspec/inspec-gcp/pull/634) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.120](https://github.com/inspec/inspec-gcp/tree/v1.11.120) (2024-06-27)
 
