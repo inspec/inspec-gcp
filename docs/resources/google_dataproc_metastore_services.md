@@ -23,8 +23,20 @@ A `google_dataproc_metastore_services` is used to test a Google Service resource
 
 ## Examples
 ```
-    describe google_dataproc_metastore_services(parent: ' value_parent') do
+  describe google_dataproc_metastore_services(parent: ' value_parent') do
     it { should exist }
+    its('names') { should include 'value_name' }
+    its('create_times') { should include 'value_createtime' }
+    its('update_times') { should include 'value_updatetime' }
+    its('networks') { should include 'value_network' }
+    its('endpoint_uris') { should include 'value_endpointuri' }
+    its('states') { should include 'value_state' }
+    its('state_messages') { should include 'value_statemessage' }
+    its('artifact_gcs_uris') { should include 'value_artifactgcsuri' }
+    its('tiers') { should include 'value_tier' }
+    its('uids') { should include 'value_uid' }
+    its('release_channels') { should include 'value_releasechannel' }
+    its('database_types') { should include 'value_databasetype' }
   end
 ```
 

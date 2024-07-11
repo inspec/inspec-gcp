@@ -720,3 +720,10 @@ bigtable_instance_cluster:
   name: "inspec-test"
   cluster: "inspec-test-c1"
   storage_type: "SSD"
+
+dataproc_metastore_service:
+  name: "metastore-srv"
+  location: "us-central1"
+  port: 9080
+  tier: "DEVELOPER"
+  hive_config_version: "2.3.6"

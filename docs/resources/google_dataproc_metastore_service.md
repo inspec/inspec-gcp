@@ -23,7 +23,7 @@ A `google_dataproc_metastore_service` is used to test a Google Service resource
 
 ## Examples
 ```
-describe google_dataproc_metastore_service(name: ' value_name') do
+describe google_dataproc_metastore_service(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('create_time') { should cmp 'value_createtime' }
@@ -37,7 +37,6 @@ describe google_dataproc_metastore_service(name: ' value_name') do
 	its('uid') { should cmp 'value_uid' }
 	its('release_channel') { should cmp 'value_releasechannel' }
 	its('database_type') { should cmp 'value_databasetype' }
-
 end
 
 describe google_dataproc_metastore_service(name: "does_not_exit") do
@@ -58,7 +57,7 @@ Properties that can be accessed from the `google_dataproc_metastore_service` res
 
     * `config_overrides`: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `kerberos_config`: Configuration information for a Kerberos principal.
 
@@ -88,7 +87,7 @@ Properties that can be accessed from the `google_dataproc_metastore_service` res
 
   * `labels`: User-defined labels for the metastore service.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `network`: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 

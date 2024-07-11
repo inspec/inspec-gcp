@@ -17,19 +17,19 @@ title 'Test GCP google_dataproc_metastore_service resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_location_service = input('project_location_service', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "create_time": "value_createtime",
-  "update_time": "value_updatetime",
-  "network": "value_network",
-  "endpoint_uri": "value_endpointuri",
-  "state": "value_state",
-  "state_message": "value_statemessage",
-  "artifact_gcs_uri": "value_artifactgcsuri",
-  "tier": "value_tier",
-  "uid": "value_uid",
-  "release_channel": "value_releasechannel",
-  "database_type": "value_databasetype"
+  "name": "projects/ppradhan/locations/us-central1/services/metastore-srv",
+  "parent": "projects/ppradhan/locations/us-central1",
+  "create_time": "2024-07-11T10:37:41.096165514Z",
+  "update_time": "2024-07-11T11:17:30.112145404Z",
+  "network": "projects/ppradhan/global/networks/default",
+  "endpoint_uri": "thrift://10.104.64.28:9080",
+  "state": "ACTIVE",
+  "state_message": "The service is ready to use",
+  "artifact_gcs_uri": "gs://gcs-bucket-metastore-srv-2a1c2d78-1aab-4f1b-b6cd-388796854ab8",
+  "tier": "DEVELOPER",
+  "uid": "2a1c2d78-1aab-4f1b-b6cd-388796854ab8",
+  "release_channel": "STABLE",
+  "database_type": "MYSQL"
 }, description: 'project_location_service description')
 control 'google_dataproc_metastore_service-1.0' do
   impact 1.0
@@ -49,7 +49,6 @@ control 'google_dataproc_metastore_service-1.0' do
   	its('uid') { should cmp project_location_service['uid'] }
   	its('release_channel') { should cmp project_location_service['release_channel'] }
   	its('database_type') { should cmp project_location_service['database_type'] }
-
   end
 
   describe google_dataproc_metastore_service(name: "does_not_exit") do

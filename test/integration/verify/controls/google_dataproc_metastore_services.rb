@@ -17,25 +17,37 @@ title 'Test GCP google_dataproc_metastore_services resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   project_location_service = input('project_location_service', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "create_time": "value_createtime",
-  "update_time": "value_updatetime",
-  "network": "value_network",
-  "endpoint_uri": "value_endpointuri",
-  "state": "value_state",
-  "state_message": "value_statemessage",
-  "artifact_gcs_uri": "value_artifactgcsuri",
-  "tier": "value_tier",
-  "uid": "value_uid",
-  "release_channel": "value_releasechannel",
-  "database_type": "value_databasetype"
+  "name": "projects/ppradhan/locations/us-central1/services/metastore-srv",
+  "parent": "projects/ppradhan/locations/us-central1",
+  "create_time": "2024-07-11T10:37:41.096165514Z",
+  "update_time": "2024-07-11T11:17:30.112145404Z",
+  "network": "projects/ppradhan/global/networks/default",
+  "endpoint_uri": "thrift://10.104.64.28:9080",
+  "state": "ACTIVE",
+  "state_message": "The service is ready to use",
+  "artifact_gcs_uri": "gs://gcs-bucket-metastore-srv-2a1c2d78-1aab-4f1b-b6cd-388796854ab8",
+  "tier": "DEVELOPER",
+  "uid": "2a1c2d78-1aab-4f1b-b6cd-388796854ab8",
+  "release_channel": "STABLE",
+  "database_type": "MYSQL"
 }, description: 'project_location_service description')
 control 'google_dataproc_metastore_services-1.0' do
   impact 1.0
   title 'google_dataproc_metastore_services resource test'
 
-      describe google_dataproc_metastore_services(parent: project_location_service['parent']) do
+    describe google_dataproc_metastore_services(parent: project_location_service['parent']) do
       it { should exist }
+      its('names') { should include project_location_service['name'] }
+      its('create_times') { should include project_location_service['create_time'] }
+      its('update_times') { should include project_location_service['update_time'] }
+      its('networks') { should include project_location_service['network'] }
+      its('endpoint_uris') { should include project_location_service['endpoint_uri'] }
+      its('states') { should include project_location_service['state'] }
+      its('state_messages') { should include project_location_service['state_message'] }
+      its('artifact_gcs_uris') { should include project_location_service['artifact_gcs_uri'] }
+      its('tiers') { should include project_location_service['tier'] }
+      its('uids') { should include project_location_service['uid'] }
+      its('release_channels') { should include project_location_service['release_channel'] }
+      its('database_types') { should include project_location_service['database_type'] }
     end
 end
