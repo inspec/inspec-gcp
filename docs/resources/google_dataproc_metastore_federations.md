@@ -23,7 +23,7 @@ A `google_dataproc_metastore_federations` is used to test a Google Federation re
 
 ## Examples
 ```
-    describe google_dataproc_metastore_federations(parent: ' value_parent') do
+  describe google_dataproc_metastore_federations(parent: ' value_parent') do
     it { should exist }
   end
 ```
