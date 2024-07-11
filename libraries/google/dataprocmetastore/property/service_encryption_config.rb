@@ -16,7 +16,7 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceEncryptionConfig
+      class ServiceEncryptionConfig
         attr_reader :kms_key
 
         def initialize(args = nil, parent_identifier = nil)
@@ -26,7 +26,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceEncryptionConfig"
+          "#{@parent_identifier} ServiceEncryptionConfig"
         end
       end
     end

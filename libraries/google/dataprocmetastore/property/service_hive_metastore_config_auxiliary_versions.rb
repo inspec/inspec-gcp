@@ -13,36 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_scheduled_backup_latest_backup'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceScheduledBackup
-        attr_reader :enabled
-
-        attr_reader :cron_schedule
-
-        attr_reader :time_zone
-
-        attr_reader :next_scheduled_time
-
-        attr_reader :backup_location
-
-        attr_reader :latest_backup
+      class ServiceHiveMetastoreConfigAuxiliaryVersions
+        attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @enabled = args['enabled']
-          @cron_schedule = args['cronSchedule']
-          @time_zone = args['timeZone']
-          @next_scheduled_time = args['nextScheduledTime']
-          @backup_location = args['backupLocation']
-          @latest_backup = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceScheduledBackupLatestBackup.new(args['latestBackup'], to_s)
+          @additional_properties = args['additionalProperties']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceScheduledBackup"
+          "#{@parent_identifier} ServiceHiveMetastoreConfigAuxiliaryVersions"
         end
       end
     end

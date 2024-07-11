@@ -13,27 +13,26 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_hive_metastore_config_kerberos_config_keytab'
+require 'google/dataprocmetastore/property/service_metadata_integration_data_catalog_config'
+require 'google/dataprocmetastore/property/service_metadata_integration_dataplex_config'
+require 'google/dataprocmetastore/property/service_metadata_integration_dataplex_config_lake_resources'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceHiveMetastoreConfigKerberosConfig
-        attr_reader :keytab
+      class ServiceMetadataIntegration
+        attr_reader :data_catalog_config
 
-        attr_reader :principal
-
-        attr_reader :krb5_config_gcs_uri
+        attr_reader :dataplex_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @keytab = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceHiveMetastoreConfigKerberosConfigKeytab.new(args['keytab'], to_s)
-          @principal = args['principal']
-          @krb5_config_gcs_uri = args['krb5ConfigGcsUri']
+          @data_catalog_config = GoogleInSpec::DataprocMetastore::Property::ServiceMetadataIntegrationDataCatalogConfig.new(args['dataCatalogConfig'], to_s)
+          @dataplex_config = GoogleInSpec::DataprocMetastore::Property::ServiceMetadataIntegrationDataplexConfig.new(args['dataplexConfig'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceHiveMetastoreConfigKerberosConfig"
+          "#{@parent_identifier} ServiceMetadataIntegration"
         end
       end
     end

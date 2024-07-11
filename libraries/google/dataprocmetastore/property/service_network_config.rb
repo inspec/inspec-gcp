@@ -13,20 +13,24 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/dataprocmetastore/property/service_network_config_consumers'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceMetadataIntegrationDataplexConfigLakeResources
-        attr_reader :additional_properties
+      class ServiceNetworkConfig
+        attr_reader :consumers
+
+        attr_reader :custom_routes_enabled
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @additional_properties = args['additionalProperties']
+          @consumers = GoogleInSpec::DataprocMetastore::Property::ServiceNetworkConfigConsumersArray.parse(args['consumers'], to_s)
+          @custom_routes_enabled = args['customRoutesEnabled']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceMetadataIntegrationDataplexConfigLakeResources"
+          "#{@parent_identifier} ServiceNetworkConfig"
         end
       end
     end

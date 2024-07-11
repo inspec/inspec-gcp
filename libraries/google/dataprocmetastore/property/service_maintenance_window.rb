@@ -16,26 +16,20 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceScheduledBackupLatestBackup
-        attr_reader :backup_id
+      class ServiceMaintenanceWindow
+        attr_reader :hour_of_day
 
-        attr_reader :start_time
-
-        attr_reader :state
-
-        attr_reader :duration
+        attr_reader :day_of_week
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @backup_id = args['backupId']
-          @start_time = args['startTime']
-          @state = args['state']
-          @duration = args['duration']
+          @hour_of_day = args['hourOfDay']
+          @day_of_week = args['dayOfWeek']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceScheduledBackupLatestBackup"
+          "#{@parent_identifier} ServiceMaintenanceWindow"
         end
       end
     end

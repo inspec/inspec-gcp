@@ -16,20 +16,17 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceMaintenanceWindow
-        attr_reader :hour_of_day
-
-        attr_reader :day_of_week
+      class ServiceMetadataIntegrationDataCatalogConfig
+        attr_reader :enabled
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @hour_of_day = args['hourOfDay']
-          @day_of_week = args['dayOfWeek']
+          @enabled = args['enabled']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceMaintenanceWindow"
+          "#{@parent_identifier} ServiceMetadataIntegrationDataCatalogConfig"
         end
       end
     end

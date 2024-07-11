@@ -13,23 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/dataprocmetastore/property/service_metadata_integration_dataplex_config_lake_resources'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceScalingConfigAutoscalingConfigLimitConfig
-        attr_reader :max_scaling_factor
-
-        attr_reader :min_scaling_factor
+      class ServiceMetadataIntegrationDataplexConfig
+        attr_reader :lake_resources
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_scaling_factor = args['maxScalingFactor']
-          @min_scaling_factor = args['minScalingFactor']
+          @lake_resources = GoogleInSpec::DataprocMetastore::Property::ServiceMetadataIntegrationDataplexConfigLakeResources.new(args['lakeResources'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceScalingConfigAutoscalingConfigLimitConfig"
+          "#{@parent_identifier} ServiceMetadataIntegrationDataplexConfig"
         end
       end
     end

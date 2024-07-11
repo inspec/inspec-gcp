@@ -16,17 +16,26 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceHiveMetastoreConfigAuxiliaryVersions
-        attr_reader :additional_properties
+      class ServiceScheduledBackupLatestBackup
+        attr_reader :backup_id
+
+        attr_reader :start_time
+
+        attr_reader :state
+
+        attr_reader :duration
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @additional_properties = args['additionalProperties']
+          @backup_id = args['backupId']
+          @start_time = args['startTime']
+          @state = args['state']
+          @duration = args['duration']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceHiveMetastoreConfigAuxiliaryVersions"
+          "#{@parent_identifier} ServiceScheduledBackupLatestBackup"
         end
       end
     end

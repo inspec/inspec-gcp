@@ -13,28 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_scaling_config_autoscaling_config'
-require 'google/dataprocmetastore/property/projectlocationservice_scaling_config_autoscaling_config_limit_config'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceScalingConfig
-        attr_reader :instance_size
-
-        attr_reader :scaling_factor
-
-        attr_reader :autoscaling_config
+      class ServiceTelemetryConfig
+        attr_reader :log_format
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @instance_size = args['instanceSize']
-          @scaling_factor = args['scalingFactor']
-          @autoscaling_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceScalingConfigAutoscalingConfig.new(args['autoscalingConfig'], to_s)
+          @log_format = args['logFormat']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceScalingConfig"
+          "#{@parent_identifier} ServiceTelemetryConfig"
         end
       end
     end

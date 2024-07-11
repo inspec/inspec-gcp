@@ -16,7 +16,7 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceLabels
+      class ServiceLabels
         attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
@@ -26,7 +26,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceLabels"
+          "#{@parent_identifier} ServiceLabels"
         end
       end
     end

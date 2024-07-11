@@ -13,24 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_network_config_consumers'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceNetworkConfig
-        attr_reader :consumers
-
-        attr_reader :custom_routes_enabled
+      class ServiceHiveMetastoreConfigKerberosConfigKeytab
+        attr_reader :cloud_secret
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @consumers = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceNetworkConfigConsumersArray.parse(args['consumers'], to_s)
-          @custom_routes_enabled = args['customRoutesEnabled']
+          @cloud_secret = args['cloudSecret']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceNetworkConfig"
+          "#{@parent_identifier} ServiceHiveMetastoreConfigKerberosConfigKeytab"
         end
       end
     end

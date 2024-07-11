@@ -13,21 +13,20 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_metadata_integration_dataplex_config_lake_resources'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceMetadataIntegrationDataplexConfig
-        attr_reader :lake_resources
+      class ServiceHiveMetastoreConfigConfigOverrides
+        attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @lake_resources = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceMetadataIntegrationDataplexConfigLakeResources.new(args['lakeResources'], to_s)
+          @additional_properties = args['additionalProperties']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceMetadataIntegrationDataplexConfig"
+          "#{@parent_identifier} ServiceHiveMetastoreConfigConfigOverrides"
         end
       end
     end

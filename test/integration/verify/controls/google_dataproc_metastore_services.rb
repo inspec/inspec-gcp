@@ -12,7 +12,7 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_dataproc_metastore_project_location_services resource.'
+title 'Test GCP google_dataproc_metastore_services resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
@@ -31,11 +31,11 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "release_channel": "value_releasechannel",
   "database_type": "value_databasetype"
 }, description: 'project_location_service description')
-control 'google_dataproc_metastore_project_location_services-1.0' do
+control 'google_dataproc_metastore_services-1.0' do
   impact 1.0
-  title 'google_dataproc_metastore_project_location_services resource test'
+  title 'google_dataproc_metastore_services resource test'
 
-      describe google_dataproc_metastore_project_location_services(parent: project_location_service['parent']) do
+      describe google_dataproc_metastore_services(parent: project_location_service['parent']) do
       it { should exist }
     end
 end

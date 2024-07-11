@@ -13,14 +13,14 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_hive_metastore_config_auxiliary_versions'
-require 'google/dataprocmetastore/property/projectlocationservice_hive_metastore_config_config_overrides'
-require 'google/dataprocmetastore/property/projectlocationservice_hive_metastore_config_kerberos_config'
-require 'google/dataprocmetastore/property/projectlocationservice_hive_metastore_config_kerberos_config_keytab'
+require 'google/dataprocmetastore/property/service_hive_metastore_config_auxiliary_versions'
+require 'google/dataprocmetastore/property/service_hive_metastore_config_config_overrides'
+require 'google/dataprocmetastore/property/service_hive_metastore_config_kerberos_config'
+require 'google/dataprocmetastore/property/service_hive_metastore_config_kerberos_config_keytab'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceHiveMetastoreConfig
+      class ServiceHiveMetastoreConfig
         attr_reader :version
 
         attr_reader :config_overrides
@@ -35,14 +35,14 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @version = args['version']
-          @config_overrides = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceHiveMetastoreConfigConfigOverrides.new(args['configOverrides'], to_s)
-          @kerberos_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceHiveMetastoreConfigKerberosConfig.new(args['kerberosConfig'], to_s)
+          @config_overrides = GoogleInSpec::DataprocMetastore::Property::ServiceHiveMetastoreConfigConfigOverrides.new(args['configOverrides'], to_s)
+          @kerberos_config = GoogleInSpec::DataprocMetastore::Property::ServiceHiveMetastoreConfigKerberosConfig.new(args['kerberosConfig'], to_s)
           @endpoint_protocol = args['endpointProtocol']
-          @auxiliary_versions = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceHiveMetastoreConfigAuxiliaryVersions.new(args['auxiliaryVersions'], to_s)
+          @auxiliary_versions = GoogleInSpec::DataprocMetastore::Property::ServiceHiveMetastoreConfigAuxiliaryVersions.new(args['auxiliaryVersions'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceHiveMetastoreConfig"
+          "#{@parent_identifier} ServiceHiveMetastoreConfig"
         end
       end
     end

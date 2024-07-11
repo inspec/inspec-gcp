@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocMetastoreProjectLocationServices < GcpResourceBase
-  name 'google_dataproc_metastore_project_location_services'
-  desc 'ProjectLocationService plural resource'
+class DataprocMetastoreServices < GcpResourceBase
+  name 'google_dataproc_metastore_services'
+  desc 'Service plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -86,11 +86,11 @@ class DataprocMetastoreProjectLocationServices < GcpResourceBase
 
   def transformers
     {
-      'hiveMetastoreConfig' => ->(obj) { [:hive_metastore_config, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceHiveMetastoreConfig.new(obj['hiveMetastoreConfig'], to_s)] },
+      'hiveMetastoreConfig' => ->(obj) { [:hive_metastore_config, GoogleInSpec::DataprocMetastore::Property::ServiceHiveMetastoreConfig.new(obj['hiveMetastoreConfig'], to_s)] },
       'name' => ->(obj) { [:name, obj['name']] },
       'createTime' => ->(obj) { [:create_time, obj['createTime']] },
       'updateTime' => ->(obj) { [:update_time, obj['updateTime']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceLabels.new(obj['labels'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::DataprocMetastore::Property::ServiceLabels.new(obj['labels'], to_s)] },
       'network' => ->(obj) { [:network, obj['network']] },
       'endpointUri' => ->(obj) { [:endpoint_uri, obj['endpointUri']] },
       'port' => ->(obj) { [:port, obj['port']] },
@@ -98,17 +98,17 @@ class DataprocMetastoreProjectLocationServices < GcpResourceBase
       'stateMessage' => ->(obj) { [:state_message, obj['stateMessage']] },
       'artifactGcsUri' => ->(obj) { [:artifact_gcs_uri, obj['artifactGcsUri']] },
       'tier' => ->(obj) { [:tier, obj['tier']] },
-      'metadataIntegration' => ->(obj) { [:metadata_integration, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceMetadataIntegration.new(obj['metadataIntegration'], to_s)] },
-      'maintenanceWindow' => ->(obj) { [:maintenance_window, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceMaintenanceWindow.new(obj['maintenanceWindow'], to_s)] },
+      'metadataIntegration' => ->(obj) { [:metadata_integration, GoogleInSpec::DataprocMetastore::Property::ServiceMetadataIntegration.new(obj['metadataIntegration'], to_s)] },
+      'maintenanceWindow' => ->(obj) { [:maintenance_window, GoogleInSpec::DataprocMetastore::Property::ServiceMaintenanceWindow.new(obj['maintenanceWindow'], to_s)] },
       'uid' => ->(obj) { [:uid, obj['uid']] },
-      'metadataManagementActivity' => ->(obj) { [:metadata_management_activity, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceMetadataManagementActivity.new(obj['metadataManagementActivity'], to_s)] },
+      'metadataManagementActivity' => ->(obj) { [:metadata_management_activity, GoogleInSpec::DataprocMetastore::Property::ServiceMetadataManagementActivity.new(obj['metadataManagementActivity'], to_s)] },
       'releaseChannel' => ->(obj) { [:release_channel, obj['releaseChannel']] },
-      'encryptionConfig' => ->(obj) { [:encryption_config, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceEncryptionConfig.new(obj['encryptionConfig'], to_s)] },
-      'networkConfig' => ->(obj) { [:network_config, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceNetworkConfig.new(obj['networkConfig'], to_s)] },
+      'encryptionConfig' => ->(obj) { [:encryption_config, GoogleInSpec::DataprocMetastore::Property::ServiceEncryptionConfig.new(obj['encryptionConfig'], to_s)] },
+      'networkConfig' => ->(obj) { [:network_config, GoogleInSpec::DataprocMetastore::Property::ServiceNetworkConfig.new(obj['networkConfig'], to_s)] },
       'databaseType' => ->(obj) { [:database_type, obj['databaseType']] },
-      'telemetryConfig' => ->(obj) { [:telemetry_config, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceTelemetryConfig.new(obj['telemetryConfig'], to_s)] },
-      'scalingConfig' => ->(obj) { [:scaling_config, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceScalingConfig.new(obj['scalingConfig'], to_s)] },
-      'scheduledBackup' => ->(obj) { [:scheduled_backup, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceScheduledBackup.new(obj['scheduledBackup'], to_s)] },
+      'telemetryConfig' => ->(obj) { [:telemetry_config, GoogleInSpec::DataprocMetastore::Property::ServiceTelemetryConfig.new(obj['telemetryConfig'], to_s)] },
+      'scalingConfig' => ->(obj) { [:scaling_config, GoogleInSpec::DataprocMetastore::Property::ServiceScalingConfig.new(obj['scalingConfig'], to_s)] },
+      'scheduledBackup' => ->(obj) { [:scheduled_backup, GoogleInSpec::DataprocMetastore::Property::ServiceScheduledBackup.new(obj['scheduledBackup'], to_s)] },
       'deletionProtection' => ->(obj) { [:deletion_protection, obj['deletionProtection']] },
     }
   end
@@ -120,6 +120,6 @@ class DataprocMetastoreProjectLocationServices < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/services'
+    '{{parent}}/services'
   end
 end

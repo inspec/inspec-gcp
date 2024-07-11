@@ -1,6 +1,6 @@
 +++
 
-title = "google_dataproc_metastore_project_location_service Resource"
+title = "google_dataproc_metastore_service Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_dataproc_metastore_project_location_service"
-identifier = "inspec/resources/gcp/google_dataproc_metastore_project_location_service Resource"
+title = "google_dataproc_metastore_service"
+identifier = "inspec/resources/gcp/google_dataproc_metastore_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_metastore_project_location_service` InSpec audit resource to test the properties of a test a Google ProjectLocationService.
+Use the `google_dataproc_metastore_service` InSpec audit resource to test the properties of a test a Google Service.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_dataproc_metastore_project_location_service` is used to test a Google ProjectLocationService resource
+A `google_dataproc_metastore_service` is used to test a Google Service resource
 
 ## Examples
 ```
-describe google_dataproc_metastore_project_location_service(name: ' value_name') do
+describe google_dataproc_metastore_service(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('create_time') { should cmp 'value_createtime' }
@@ -40,16 +40,16 @@ describe google_dataproc_metastore_project_location_service(name: ' value_name')
 
 end
 
-describe google_dataproc_metastore_project_location_service(name: "does_not_exit") do
+describe google_dataproc_metastore_service(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_metastore_project_location_service` resource:
+Properties that can be accessed from the `google_dataproc_metastore_service` resource:
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_metastore_project_location_service` resource:
+Properties that can be accessed from the `google_dataproc_metastore_service` resource:
 
 
   * `hive_metastore_config`: Specifies configuration information specific to running Hive metastore software as the metastore service.

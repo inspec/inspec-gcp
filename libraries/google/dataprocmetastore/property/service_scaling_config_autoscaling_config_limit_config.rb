@@ -16,17 +16,20 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceHiveMetastoreConfigKerberosConfigKeytab
-        attr_reader :cloud_secret
+      class ServiceScalingConfigAutoscalingConfigLimitConfig
+        attr_reader :max_scaling_factor
+
+        attr_reader :min_scaling_factor
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cloud_secret = args['cloudSecret']
+          @max_scaling_factor = args['maxScalingFactor']
+          @min_scaling_factor = args['minScalingFactor']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceHiveMetastoreConfigKerberosConfigKeytab"
+          "#{@parent_identifier} ServiceScalingConfigAutoscalingConfigLimitConfig"
         end
       end
     end

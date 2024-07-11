@@ -13,26 +13,36 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservice_metadata_integration_data_catalog_config'
-require 'google/dataprocmetastore/property/projectlocationservice_metadata_integration_dataplex_config'
-require 'google/dataprocmetastore/property/projectlocationservice_metadata_integration_dataplex_config_lake_resources'
+require 'google/dataprocmetastore/property/service_scheduled_backup_latest_backup'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceMetadataIntegration
-        attr_reader :data_catalog_config
+      class ServiceScheduledBackup
+        attr_reader :enabled
 
-        attr_reader :dataplex_config
+        attr_reader :cron_schedule
+
+        attr_reader :time_zone
+
+        attr_reader :next_scheduled_time
+
+        attr_reader :backup_location
+
+        attr_reader :latest_backup
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @data_catalog_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceMetadataIntegrationDataCatalogConfig.new(args['dataCatalogConfig'], to_s)
-          @dataplex_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceMetadataIntegrationDataplexConfig.new(args['dataplexConfig'], to_s)
+          @enabled = args['enabled']
+          @cron_schedule = args['cronSchedule']
+          @time_zone = args['timeZone']
+          @next_scheduled_time = args['nextScheduledTime']
+          @backup_location = args['backupLocation']
+          @latest_backup = GoogleInSpec::DataprocMetastore::Property::ServiceScheduledBackupLatestBackup.new(args['latestBackup'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceMetadataIntegration"
+          "#{@parent_identifier} ServiceScheduledBackup"
         end
       end
     end

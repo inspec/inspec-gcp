@@ -16,31 +16,37 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceNetworkConfigConsumers
-        attr_reader :subnetwork
+      class ServiceMetadataManagementActivityMetadataExports
+        attr_reader :destination_gcs_uri
 
-        attr_reader :endpoint_uri
+        attr_reader :start_time
 
-        attr_reader :endpoint_location
+        attr_reader :end_time
+
+        attr_reader :state
+
+        attr_reader :database_dump_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @subnetwork = args['subnetwork']
-          @endpoint_uri = args['endpointUri']
-          @endpoint_location = args['endpointLocation']
+          @destination_gcs_uri = args['destinationGcsUri']
+          @start_time = args['startTime']
+          @end_time = args['endTime']
+          @state = args['state']
+          @database_dump_type = args['databaseDumpType']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceNetworkConfigConsumers"
+          "#{@parent_identifier} ServiceMetadataManagementActivityMetadataExports"
         end
       end
 
-      class ProjectLocationServiceNetworkConfigConsumersArray
+      class ServiceMetadataManagementActivityMetadataExportsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return ProjectLocationServiceNetworkConfigConsumers.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ProjectLocationServiceNetworkConfigConsumers.new(v, parent_identifier) }
+          return ServiceMetadataManagementActivityMetadataExports.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| ServiceMetadataManagementActivityMetadataExports.new(v, parent_identifier) }
         end
       end
     end

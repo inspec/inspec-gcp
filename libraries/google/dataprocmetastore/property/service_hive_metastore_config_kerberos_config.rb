@@ -13,20 +13,27 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/dataprocmetastore/property/service_hive_metastore_config_kerberos_config_keytab'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceTelemetryConfig
-        attr_reader :log_format
+      class ServiceHiveMetastoreConfigKerberosConfig
+        attr_reader :keytab
+
+        attr_reader :principal
+
+        attr_reader :krb5_config_gcs_uri
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @log_format = args['logFormat']
+          @keytab = GoogleInSpec::DataprocMetastore::Property::ServiceHiveMetastoreConfigKerberosConfigKeytab.new(args['keytab'], to_s)
+          @principal = args['principal']
+          @krb5_config_gcs_uri = args['krb5ConfigGcsUri']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceTelemetryConfig"
+          "#{@parent_identifier} ServiceHiveMetastoreConfigKerberosConfig"
         end
       end
     end
