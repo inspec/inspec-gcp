@@ -257,6 +257,9 @@ variable "compute_target_vpn_gateway" {
 variable "bigtable_instance_cluster" {
   type = any
 }
+variable "dataproc_metastore_service" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -2170,5 +2173,25 @@ resource "google_bigtable_instance" "inspec-test" {
 
   labels = {
     my-label = var.bigtable_instance_cluster.name
+  }
+}
+resource "google_dataproc_metastore_service" "default" {
+    project = var.gcp_project_id
+    service_id = var.dataproc_metastore_service.name
+    location   = var.dataproc_metastore_service.location
+    port       = var.dataproc_metastore_service.port
+    tier       = var.dataproc_metastore_service.tier
+
+  maintenance_window {
+    hour_of_day = 2
+    day_of_week = "SUNDAY"
+  }
+
+  hive_metastore_config {
+    version = var.dataproc_metastore_service.hive_config_version
+  }
+
+  labels = {
+    env = "inspec"
   }
 }
