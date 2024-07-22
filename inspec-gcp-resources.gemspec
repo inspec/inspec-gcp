@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
     'lib/**/*', File::FNM_DOTMATCH
   ).reject { |f| File.directory?(f) }
   spec.require_paths = %w{lib libraries}
-  spec.required_ruby_version = '>= 2.6'
+  spec.required_ruby_version = '>= 3.0'
   # If you rely on any other gems, list them here with any constraints.
   # This is how `inspec plugin install` is able to manage your dependencies.
   # For example, perhaps you are writing a thing that talks to AWS, and you
