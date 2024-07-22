@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 # TODO: Determine if next like is required
+
 # require "inspec/resource"
 
 module InspecPlugins::GcpResources
@@ -8,8 +11,6 @@ module InspecPlugins::GcpResources
   # version 2 of the Plugins API.  The second says we are making a Resource
   # Pack plugin component, so please make available any DSL needed
   # for that.
-    class ResourcePack < Inspec.plugin(2, :resource_pack)
-
-    end
+  class ResourcePack < Inspec.plugin(2, :resource_pack)
   end
 end

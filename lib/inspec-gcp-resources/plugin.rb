@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Plugin Definition file
 # The purpose of this file is to declare to InSpec what plugin_types (capabilities)
 # are included in this plugin, and provide activator that will load them as needed.
@@ -7,7 +9,7 @@
 # fast and light by only loading heavy things when they are needed.
 
 # Presumably this is light
-require "inspec-gcp-resources/version"
+require 'inspec-gcp-resources/version'
 
 # The InspecPlugins namespace is where all plugins should declare themselves.
 # The "Inspec" capitalization is used throughout the InSpec source code; yes, it's
@@ -31,13 +33,12 @@ module InspecPlugins
       # Define a new Resource Pack.
       resource_pack :"inspec-gcp-resources" do
         # This file will load the resources implicitly via the superclass
-        require "inspec-gcp-resources/resource_pack"
+        require 'inspec-gcp-resources/resource_pack'
 
         # Having loaded our functionality, return a class that represents the plugin.
         # Reserved for future use.
         InspecPlugins::GcpResources::ResourcePack
       end
-
     end
   end
 end
