@@ -83,7 +83,7 @@ class DataprocProjectLocationSession < GcpResourceBase
   end
 
   def to_s
-    "ProjectLocationSession #{@params[:]}"
+    "ProjectLocationSession #{@params}"
   end
 
   private
