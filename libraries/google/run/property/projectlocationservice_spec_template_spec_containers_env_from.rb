@@ -14,7 +14,7 @@
 #
 # ----------------------------------------------------------------------------
 require 'google/run/property/projectlocationservice_spec_template_spec_containers_env_from_config_map_ref'
-require 'google/run/property/projectlocationservice_spec_template_spec_containers_env_from_config_map_ref_local_object_reference'
+require 'google/run/property/projectlocationservice_stscefcmrlo_reference'
 require 'google/run/property/projectlocationservice_spec_template_spec_containers_env_from_secret_ref'
 require 'google/run/property/projectlocationservice_spec_template_spec_containers_env_from_secret_ref_local_object_reference'
 module GoogleInSpec

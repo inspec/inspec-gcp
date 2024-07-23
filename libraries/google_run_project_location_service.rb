@@ -68,7 +68,7 @@ class RunProjectLocationService < GcpResourceBase
   end
 
   def to_s
-    "ProjectLocationService #{@params[:]}"
+    "ProjectLocationService #{@params}"
   end
 
   private
