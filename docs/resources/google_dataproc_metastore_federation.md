@@ -23,7 +23,7 @@ A `google_dataproc_metastore_federation` is used to test a Google Federation res
 
 ## Examples
 ```
-describe google_dataproc_metastore_federation(name: ' value_name') do
+describe google_dataproc_metastore_federation(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('create_time') { should cmp 'value_createtime' }
@@ -33,7 +33,6 @@ describe google_dataproc_metastore_federation(name: ' value_name') do
 	its('state') { should cmp 'value_state' }
 	its('state_message') { should cmp 'value_statemessage' }
 	its('uid') { should cmp 'value_uid' }
-
 end
 
 describe google_dataproc_metastore_federation(name: "does_not_exit") do
@@ -56,7 +55,7 @@ Properties that can be accessed from the `google_dataproc_metastore_federation` 
 
   * `labels`: User-defined labels for the metastore federation.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `version`: Immutable. The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
 

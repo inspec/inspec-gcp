@@ -66,7 +66,7 @@ class DataprocMetastoreFederation < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://metastore.googleapis.com/v1beta/'
+    'https://metastore.googleapis.com/v1/'
   end
 
   def resource_base_url

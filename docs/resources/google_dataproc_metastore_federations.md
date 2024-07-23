@@ -23,8 +23,16 @@ A `google_dataproc_metastore_federations` is used to test a Google Federation re
 
 ## Examples
 ```
-  describe google_dataproc_metastore_federations(parent: ' value_parent') do
+  describe google_dataproc_metastore_federations(parent: 'value_parent') do
     it { should exist }
+    its('names') { should include 'value_name' }
+    its('create_times') { should include 'value_createtime' }
+    its('update_times') { should include 'value_updatetime' }
+    its('versions') { should include 'value_version' }
+    its('endpoint_uris') { should include 'value_endpointuri' }
+    its('states') { should include 'value_state' }
+    its('state_messages') { should include 'value_statemessage' }
+    its('uids') { should include 'value_uid' }
   end
 ```
 
