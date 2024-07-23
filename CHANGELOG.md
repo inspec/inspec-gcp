@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.122 -->
+<!-- latest_release 1.11.123 -->
+## [v1.11.123](https://github.com/inspec/inspec-gcp/tree/v1.11.123) (2024-07-11)
+
+#### Merged Pull Requests
+- CHEF-12256-MAGIC-MODULE-Dataproc-metastore-service - Resource Implementation [#639](https://github.com/inspec/inspec-gcp/pull/639) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.122](https://github.com/inspec/inspec-gcp/tree/v1.11.122) (2024-07-03)
 
 #### Merged Pull Requests
 - CHEF-12475-v2-MAGIC-MODULE-bigtableadmin_v2-Projects__instances__cluster - Resource Implementation [#636](https://github.com/inspec/inspec-gcp/pull/636) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.121](https://github.com/inspec/inspec-gcp/tree/v1.11.121) (2024-07-01)
 
