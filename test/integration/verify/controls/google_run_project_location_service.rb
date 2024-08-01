@@ -12,7 +12,7 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_run_project_location_service resource.'
+title 'Test GCP google_run_service resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
@@ -31,18 +31,18 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "release_channel": "value_releasechannel",
   "database_type": "value_databasetype"
 }, description: 'project_location_service description')
-control 'google_run_project_location_service-1.0' do
+control 'google_run_service-1.0' do
   impact 1.0
-  title 'google_run_project_location_service resource test'
+  title 'google_run_service resource test'
 
-  describe google_run_project_location_service(name: project_location_service['name']) do
+  describe google_run_service(name: project_location_service['name']) do
   	it { should exist }
   	its('api_version') { should cmp project_location_service['api_version'] }
   	its('kind') { should cmp project_location_service['kind'] }
 
   end
 
-  describe google_run_project_location_service(name: "does_not_exit") do
+  describe google_run_service(name: "does_not_exit") do
   	it { should_not exist }
   end
 end

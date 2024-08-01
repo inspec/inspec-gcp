@@ -12,7 +12,7 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_run_project_location_services resource.'
+title 'Test GCP google_run_services resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
@@ -31,11 +31,11 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "release_channel": "value_releasechannel",
   "database_type": "value_databasetype"
 }, description: 'project_location_service description')
-control 'google_run_project_location_services-1.0' do
+control 'google_run_services-1.0' do
   impact 1.0
-  title 'google_run_project_location_services resource test'
+  title 'google_run_services resource test'
 
-      describe google_run_project_location_services(parent: project_location_service['parent']) do
+      describe google_run_services(parent: project_location_service['parent']) do
       it { should exist }
     end
 end

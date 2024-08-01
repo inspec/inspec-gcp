@@ -1,6 +1,6 @@
 +++
 
-title = "google_run_project_location_service Resource"
+title = "google_run_service Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,38 +8,38 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_run_project_location_service"
-identifier = "inspec/resources/gcp/google_run_project_location_service Resource"
+title = "google_run_service"
+identifier = "inspec/resources/gcp/google_run_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_run_project_location_service` InSpec audit resource to test the properties of a test a Google ProjectLocationService.
+Use the `google_run_service` InSpec audit resource to test the properties of a test a Google ProjectLocationService.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_run_project_location_service` is used to test a Google ProjectLocationService resource
+A `google_run_service` is used to test a Google ProjectLocationService resource
 
 ## Examples
 ```
-describe google_run_project_location_service(name: ' value_name') do
+describe google_run_service(name: ' value_name') do
 	it { should exist }
 	its('api_version') { should cmp '' }
 	its('kind') { should cmp '' }
 
 end
 
-describe google_run_project_location_service(name: "does_not_exit") do
+describe google_run_service(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_run_project_location_service` resource:
+Properties that can be accessed from the `google_run_service` resource:
 
 ## Properties
-Properties that can be accessed from the `google_run_project_location_service` resource:
+Properties that can be accessed from the `google_run_service` resource:
 
 
   * `api_version`: The API version for this call. It must be "serving.knative.dev/v1".

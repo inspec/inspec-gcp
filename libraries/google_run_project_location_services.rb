@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 class RunProjectLocationServices < GcpResourceBase
-  name 'google_run_project_location_services'
+  name 'google_run_services'
   desc 'ProjectLocationService plural resource'
   supports platform: 'gcp'
 

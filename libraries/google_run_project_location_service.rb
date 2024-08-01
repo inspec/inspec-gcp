@@ -37,7 +37,7 @@ require 'google/run/property/projectlocationservice_status_traffic'
 
 # A provider to manage run resources.
 class RunProjectLocationService < GcpResourceBase
-  name 'google_run_project_location_service'
+  name 'google_run_service'
   desc 'ProjectLocationService'
   supports platform: 'gcp'
 
