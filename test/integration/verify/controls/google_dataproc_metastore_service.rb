@@ -16,7 +16,7 @@ title 'Test GCP google_dataproc_metastore_service resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_location_service = input('project_location_service', value: {
+  service = input('service', value: {
   "name": "projects/ppradhan/locations/us-central1/services/metastore-srv",
   "parent": "projects/ppradhan/locations/us-central1",
   "create_time": "2024-07-11T10:37:41.096165514Z",
@@ -30,25 +30,25 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "uid": "2a1c2d78-1aab-4f1b-b6cd-388796854ab8",
   "release_channel": "STABLE",
   "database_type": "MYSQL"
-}, description: 'project_location_service description')
+}, description: 'service description')
 control 'google_dataproc_metastore_service-1.0' do
   impact 1.0
   title 'google_dataproc_metastore_service resource test'
 
-  describe google_dataproc_metastore_service(name: project_location_service['name']) do
+  describe google_dataproc_metastore_service(name: service['name']) do
   	it { should exist }
-  	its('name') { should cmp project_location_service['name'] }
-  	its('create_time') { should cmp project_location_service['create_time'] }
-  	its('update_time') { should cmp project_location_service['update_time'] }
-  	its('network') { should cmp project_location_service['network'] }
-  	its('endpoint_uri') { should cmp project_location_service['endpoint_uri'] }
-  	its('state') { should cmp project_location_service['state'] }
-  	its('state_message') { should cmp project_location_service['state_message'] }
-  	its('artifact_gcs_uri') { should cmp project_location_service['artifact_gcs_uri'] }
-  	its('tier') { should cmp project_location_service['tier'] }
-  	its('uid') { should cmp project_location_service['uid'] }
-  	its('release_channel') { should cmp project_location_service['release_channel'] }
-  	its('database_type') { should cmp project_location_service['database_type'] }
+  	its('name') { should cmp service['name'] }
+  	its('create_time') { should cmp service['create_time'] }
+  	its('update_time') { should cmp service['update_time'] }
+  	its('network') { should cmp service['network'] }
+  	its('endpoint_uri') { should cmp service['endpoint_uri'] }
+  	its('state') { should cmp service['state'] }
+  	its('state_message') { should cmp service['state_message'] }
+  	its('artifact_gcs_uri') { should cmp service['artifact_gcs_uri'] }
+  	its('tier') { should cmp service['tier'] }
+  	its('uid') { should cmp service['uid'] }
+  	its('release_channel') { should cmp service['release_channel'] }
+  	its('database_type') { should cmp service['database_type'] }
   end
 
   describe google_dataproc_metastore_service(name: "does_not_exit") do
