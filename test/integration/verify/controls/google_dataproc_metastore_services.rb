@@ -16,7 +16,7 @@ title 'Test GCP google_dataproc_metastore_services resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_location_service = input('project_location_service', value: {
+  service = input('service', value: {
   "name": "projects/ppradhan/locations/us-central1/services/metastore-srv",
   "parent": "projects/ppradhan/locations/us-central1",
   "create_time": "2024-07-11T10:37:41.096165514Z",
@@ -30,24 +30,24 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "uid": "2a1c2d78-1aab-4f1b-b6cd-388796854ab8",
   "release_channel": "STABLE",
   "database_type": "MYSQL"
-}, description: 'project_location_service description')
+}, description: 'service description')
 control 'google_dataproc_metastore_services-1.0' do
   impact 1.0
   title 'google_dataproc_metastore_services resource test'
 
-    describe google_dataproc_metastore_services(parent: project_location_service['parent']) do
+    describe google_dataproc_metastore_services(parent: service['parent']) do
       it { should exist }
-      its('names') { should include project_location_service['name'] }
-      its('create_times') { should include project_location_service['create_time'] }
-      its('update_times') { should include project_location_service['update_time'] }
-      its('networks') { should include project_location_service['network'] }
-      its('endpoint_uris') { should include project_location_service['endpoint_uri'] }
-      its('states') { should include project_location_service['state'] }
-      its('state_messages') { should include project_location_service['state_message'] }
-      its('artifact_gcs_uris') { should include project_location_service['artifact_gcs_uri'] }
-      its('tiers') { should include project_location_service['tier'] }
-      its('uids') { should include project_location_service['uid'] }
-      its('release_channels') { should include project_location_service['release_channel'] }
-      its('database_types') { should include project_location_service['database_type'] }
+      its('names') { should include service['name'] }
+      its('create_times') { should include service['create_time'] }
+      its('update_times') { should include service['update_time'] }
+      its('networks') { should include service['network'] }
+      its('endpoint_uris') { should include service['endpoint_uri'] }
+      its('states') { should include service['state'] }
+      its('state_messages') { should include service['state_message'] }
+      its('artifact_gcs_uris') { should include service['artifact_gcs_uri'] }
+      its('tiers') { should include service['tier'] }
+      its('uids') { should include service['uid'] }
+      its('release_channels') { should include service['release_channel'] }
+      its('database_types') { should include service['database_type'] }
     end
 end
