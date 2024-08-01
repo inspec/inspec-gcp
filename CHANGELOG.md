@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.123 -->
+<!-- latest_release 1.11.124 -->
+## [v1.11.124](https://github.com/inspec/inspec-gcp/tree/v1.11.124) (2024-07-23)
+
+#### Merged Pull Requests
+- CHEF-12255 Manual DataProc Metastore fedration resource created [#638](https://github.com/inspec/inspec-gcp/pull/638) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.123](https://github.com/inspec/inspec-gcp/tree/v1.11.123) (2024-07-11)
 
 #### Merged Pull Requests
 - CHEF-12256-MAGIC-MODULE-Dataproc-metastore-service - Resource Implementation [#639](https://github.com/inspec/inspec-gcp/pull/639) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.122](https://github.com/inspec/inspec-gcp/tree/v1.11.122) (2024-07-03)
 
