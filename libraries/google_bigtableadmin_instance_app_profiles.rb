@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class BigtableadminProjectInstanceAppProfiles < GcpResourceBase
-  name 'google_bigtableadmin_project_instance_app_profiles'
-  desc 'ProjectInstanceAppProfile plural resource'
+class BigtableadminInstanceAppProfiles < GcpResourceBase
+  name 'google_bigtableadmin_instance_app_profiles'
+  desc 'InstanceAppProfile plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -37,7 +37,7 @@ class BigtableadminProjectInstanceAppProfiles < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectInstanceAppProfiles')
+    @table = fetch_wrapped_resource('appProfiles')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -73,21 +73,21 @@ class BigtableadminProjectInstanceAppProfiles < GcpResourceBase
       'name' => ->(obj) { [:name, obj['name']] },
       'etag' => ->(obj) { [:etag, obj['etag']] },
       'description' => ->(obj) { [:description, obj['description']] },
-      'multiClusterRoutingUseAny' => ->(obj) { [:multi_cluster_routing_use_any, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileMultiClusterRoutingUseAny.new(obj['multiClusterRoutingUseAny'], to_s)] },
-      'singleClusterRouting' => ->(obj) { [:single_cluster_routing, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileSingleClusterRouting.new(obj['singleClusterRouting'], to_s)] },
+      'multiClusterRoutingUseAny' => ->(obj) { [:multi_cluster_routing_use_any, GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileMultiClusterRoutingUseAny.new(obj['multiClusterRoutingUseAny'], to_s)] },
+      'singleClusterRouting' => ->(obj) { [:single_cluster_routing, GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileSingleClusterRouting.new(obj['singleClusterRouting'], to_s)] },
       'priority' => ->(obj) { [:priority, obj['priority']] },
-      'standardIsolation' => ->(obj) { [:standard_isolation, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileStandardIsolation.new(obj['standardIsolation'], to_s)] },
-      'dataBoostIsolationReadOnly' => ->(obj) { [:data_boost_isolation_read_only, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileDataBoostIsolationReadOnly.new(obj['dataBoostIsolationReadOnly'], to_s)] },
+      'standardIsolation' => ->(obj) { [:standard_isolation, GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileStandardIsolation.new(obj['standardIsolation'], to_s)] },
+      'dataBoostIsolationReadOnly' => ->(obj) { [:data_boost_isolation_read_only, GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileDataBoostIsolationReadOnly.new(obj['dataBoostIsolationReadOnly'], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigtableadmin.googleapis.com//v2/'
+    'https://bigtableadmin.googleapis.com/v2/'
   end
 
   def resource_base_url
-    '{{+parent}}/appProfiles'
+    '{{parent}}/appProfiles'
   end
 end

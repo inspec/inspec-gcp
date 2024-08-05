@@ -14,15 +14,15 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/bigtableadmin/property/projectinstanceappprofile_data_boost_isolation_read_only'
-require 'google/bigtableadmin/property/projectinstanceappprofile_multi_cluster_routing_use_any'
-require 'google/bigtableadmin/property/projectinstanceappprofile_single_cluster_routing'
-require 'google/bigtableadmin/property/projectinstanceappprofile_standard_isolation'
+require 'google/bigtableadmin/property/instanceappprofile_data_boost_isolation_read_only'
+require 'google/bigtableadmin/property/instanceappprofile_multi_cluster_routing_use_any'
+require 'google/bigtableadmin/property/instanceappprofile_single_cluster_routing'
+require 'google/bigtableadmin/property/instanceappprofile_standard_isolation'
 
 # A provider to manage bigtableadmin resources.
-class BigtableadminProjectInstanceAppProfile < GcpResourceBase
-  name 'google_bigtableadmin_project_instance_app_profile'
-  desc 'ProjectInstanceAppProfile'
+class BigtableadminInstanceAppProfile < GcpResourceBase
+  name 'google_bigtableadmin_instance_app_profile'
+  desc 'InstanceAppProfile'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -46,11 +46,11 @@ class BigtableadminProjectInstanceAppProfile < GcpResourceBase
     @name = @fetched['name']
     @etag = @fetched['etag']
     @description = @fetched['description']
-    @multi_cluster_routing_use_any = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileMultiClusterRoutingUseAny.new(@fetched['multiClusterRoutingUseAny'], to_s)
-    @single_cluster_routing = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileSingleClusterRouting.new(@fetched['singleClusterRouting'], to_s)
+    @multi_cluster_routing_use_any = GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileMultiClusterRoutingUseAny.new(@fetched['multiClusterRoutingUseAny'], to_s)
+    @single_cluster_routing = GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileSingleClusterRouting.new(@fetched['singleClusterRouting'], to_s)
     @priority = @fetched['priority']
-    @standard_isolation = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileStandardIsolation.new(@fetched['standardIsolation'], to_s)
-    @data_boost_isolation_read_only = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceAppProfileDataBoostIsolationReadOnly.new(@fetched['dataBoostIsolationReadOnly'], to_s)
+    @standard_isolation = GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileStandardIsolation.new(@fetched['standardIsolation'], to_s)
+    @data_boost_isolation_read_only = GoogleInSpec::Bigtableadmin::Property::InstanceAppProfileDataBoostIsolationReadOnly.new(@fetched['dataBoostIsolationReadOnly'], to_s)
   end
 
   def exists?
@@ -58,16 +58,16 @@ class BigtableadminProjectInstanceAppProfile < GcpResourceBase
   end
 
   def to_s
-    "ProjectInstanceAppProfile #{@params[:]}"
+    "InstanceAppProfile #{@params[:]}"
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigtableadmin.googleapis.com//v2/'
+    'https://bigtableadmin.googleapis.com/v2/'
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end

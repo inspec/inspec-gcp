@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Bigtableadmin
     module Property
-      class ProjectInstanceAppProfileStandardIsolation
+      class InstanceAppProfileStandardIsolation
         attr_reader :priority
 
         def initialize(args = nil, parent_identifier = nil)
@@ -26,7 +26,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ProjectInstanceAppProfileStandardIsolation"
+          "#{@parent_identifier} InstanceAppProfileStandardIsolation"
         end
       end
     end

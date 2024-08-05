@@ -12,22 +12,31 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_bigtableadmin_project_instance_app_profiles resource.'
+title 'Test GCP google_bigtableadmin_instance_app_profile resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_instance_app_profile = input('project_instance_app_profile', value: {
+  instance_app_profile = input('instance_app_profile', value: {
   "name": "value_name",
   "parent": "value_parent",
   "etag": "value_etag",
   "description": "value_description",
   "priority": "value_priority"
-}, description: 'project_instance_app_profile description')
-control 'google_bigtableadmin_project_instance_app_profiles-1.0' do
+}, description: 'instance_app_profile description')
+control 'google_bigtableadmin_instance_app_profile-1.0' do
   impact 1.0
-  title 'google_bigtableadmin_project_instance_app_profiles resource test'
+  title 'google_bigtableadmin_instance_app_profile resource test'
 
-      describe google_bigtableadmin_project_instance_app_profiles(parent: project_instance_app_profile['parent']) do
-      it { should exist }
-    end
+  describe google_bigtableadmin_instance_app_profile(name: instance_app_profile['name']) do
+  	it { should exist }
+  	its('name') { should cmp instance_app_profile['name'] }
+  	its('etag') { should cmp instance_app_profile['etag'] }
+  	its('description') { should cmp instance_app_profile['description'] }
+  	its('priority') { should cmp instance_app_profile['priority'] }
+
+  end
+
+  describe google_bigtableadmin_instance_app_profile(name: "does_not_exit") do
+  	it { should_not exist }
+  end
 end

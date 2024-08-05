@@ -1,6 +1,6 @@
 +++
 
-title = "google_bigtableadmin_project_instance_app_profile Resource"
+title = "google_bigtableadmin_instance_app_profile Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_bigtableadmin_project_instance_app_profile"
-identifier = "inspec/resources/gcp/google_bigtableadmin_project_instance_app_profile Resource"
+title = "google_bigtableadmin_instance_app_profile"
+identifier = "inspec/resources/gcp/google_bigtableadmin_instance_app_profile Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_project_instance_app_profile` InSpec audit resource to test the properties of a test a Google ProjectInstanceAppProfile.
+Use the `google_bigtableadmin_instance_app_profile` InSpec audit resource to test the properties of a test a Google InstanceAppProfile.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_bigtableadmin_project_instance_app_profile` is used to test a Google ProjectInstanceAppProfile resource
+A `google_bigtableadmin_instance_app_profile` is used to test a Google InstanceAppProfile resource
 
 ## Examples
 ```
-describe google_bigtableadmin_project_instance_app_profile(name: ' value_name') do
+describe google_bigtableadmin_instance_app_profile(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('etag') { should cmp 'value_etag' }
@@ -32,16 +32,16 @@ describe google_bigtableadmin_project_instance_app_profile(name: ' value_name') 
 
 end
 
-describe google_bigtableadmin_project_instance_app_profile(name: "does_not_exit") do
+describe google_bigtableadmin_instance_app_profile(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_bigtableadmin_project_instance_app_profile` resource:
+Properties that can be accessed from the `google_bigtableadmin_instance_app_profile` resource:
 
 ## Properties
-Properties that can be accessed from the `google_bigtableadmin_project_instance_app_profile` resource:
+Properties that can be accessed from the `google_bigtableadmin_instance_app_profile` resource:
 
 
   * `name`: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.

@@ -16,20 +16,17 @@
 module GoogleInSpec
   module Bigtableadmin
     module Property
-      class ProjectInstanceAppProfileSingleClusterRouting
-        attr_reader :cluster_id
-
-        attr_reader :allow_transactional_writes
+      class InstanceAppProfileMultiClusterRoutingUseAny
+        attr_reader :cluster_ids
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @cluster_id = args['clusterId']
-          @allow_transactional_writes = args['allowTransactionalWrites']
+          @cluster_ids = args['clusterIds']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectInstanceAppProfileSingleClusterRouting"
+          "#{@parent_identifier} InstanceAppProfileMultiClusterRoutingUseAny"
         end
       end
     end
