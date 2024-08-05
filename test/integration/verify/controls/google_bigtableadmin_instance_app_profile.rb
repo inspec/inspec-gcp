@@ -17,11 +17,11 @@ title 'Test GCP google_bigtableadmin_instance_app_profile resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   instance_app_profile = input('instance_app_profile', value: {
-  "name": "value_name",
-  "parent": "value_parent",
+  "name": "projects/ppradhan/instances/inspec-test/appProfiles/inspec-test-profile",
+  "parent": "projects/ppradhan/instances/inspec-test",
   "etag": "value_etag",
   "description": "value_description",
-  "priority": "value_priority"
+  "priority": "PRIORITY_HIGH"
 }, description: 'instance_app_profile description')
 control 'google_bigtableadmin_instance_app_profile-1.0' do
   impact 1.0

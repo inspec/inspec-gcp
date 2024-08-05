@@ -58,7 +58,7 @@ class BigtableadminInstanceAppProfile < GcpResourceBase
   end
 
   def to_s
-    "InstanceAppProfile #{@params[:]}"
+    "InstanceAppProfile #{@params[:name]}"
   end
 
   private

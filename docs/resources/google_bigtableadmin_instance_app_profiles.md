@@ -23,8 +23,9 @@ A `google_bigtableadmin_instance_app_profiles` is used to test a Google Instance
 
 ## Examples
 ```
-    describe google_bigtableadmin_instance_app_profiles(parent: ' value_parent') do
+  describe google_bigtableadmin_instance_app_profiles(parent: ' value_parent') do
     it { should exist }
+    its('names') { should include 'value_name' }
   end
 ```
 

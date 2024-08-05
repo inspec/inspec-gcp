@@ -23,7 +23,7 @@ A `google_bigtableadmin_instance_app_profile` is used to test a Google InstanceA
 
 ## Examples
 ```
-describe google_bigtableadmin_instance_app_profile(name: ' value_name') do
+describe google_bigtableadmin_instance_app_profile(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('etag') { should cmp 'value_etag' }
