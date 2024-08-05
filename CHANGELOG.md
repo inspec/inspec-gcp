@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.124 -->
+<!-- latest_release 1.11.125 -->
+## [v1.11.125](https://github.com/inspec/inspec-gcp/tree/v1.11.125) (2024-08-05)
+
+#### Merged Pull Requests
+- CHEF-12474-v3-MAGIC-MODULE-bigtableadmin_v2-Projects__instances__appProfile - Resource Implementation [#643](https://github.com/inspec/inspec-gcp/pull/643) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.124](https://github.com/inspec/inspec-gcp/tree/v1.11.124) (2024-07-23)
 
 #### Merged Pull Requests
 - CHEF-12255 Manual DataProc Metastore fedration resource created [#638](https://github.com/inspec/inspec-gcp/pull/638) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.123](https://github.com/inspec/inspec-gcp/tree/v1.11.123) (2024-07-11)
 
