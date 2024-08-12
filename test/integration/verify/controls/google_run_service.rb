@@ -16,8 +16,15 @@ title 'Test GCP google_run_service resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  service = input('service', value: {
-  "name": "maps-android-backend.googleapis.com"
+service = input('service', value: {
+  "name": "projects/ppradhan/locations/us-central1/services/inspec-function-1",
+  "parent": "projects/ppradhan/locations/us-central1",
+  "uri": "https://inspec-function-1-a6zd2ygfca-uc.a.run.app",
+  "generation": "1",
+  "createTime": "2024-07-22T10:31:56.322132Z",
+  "updateTime": "2024-07-22T10:31:56.322132Z",
+  "creator": "service-165434197229@gcf-admin-robot.iam.gserviceaccount.com",
+  "ingress": "INGRESS_TRAFFIC_ALL"
 }, description: 'service description')
 control 'google_run_service-1.0' do
   impact 1.0
@@ -25,7 +32,13 @@ control 'google_run_service-1.0' do
 
   describe google_run_service(name: service['name']) do
   	it { should exist }
-
+    its('name') { should cmp service['name'] }
+    its('uri') { should cmp service['uri'] }
+    its('generation') { should cmp service['generation'] }
+    its('create_time') { should cmp service['createTime'] }
+    its('update_time') { should cmp service['updateTime'] }
+    its('creator') { should cmp service['creator'] }
+    its('ingress') { should cmp service['ingress'] }
   end
 
   describe google_run_service(name: "does_not_exit") do

@@ -23,9 +23,15 @@ A `google_run_service` is used to test a Google Service resource
 
 ## Examples
 ```
-describe google_run_service(name: ' maps-android-backend.googleapis.com') do
-	it { should exist }
-
+describe google_run_service(name: 'value_name') do
+  it { should exist }
+  its('name') { should cmp value_name }
+  its('uri') { should cmp value_uri }
+  its('generation') { should cmp value_generation }
+  its('create_time') { should cmp value_create_time }
+  its('update_time') { should cmp value_update_time }
+  its('creator') { should cmp value_creator }
+  its('ingress') { should cmp value_ingress }
 end
 
 describe google_run_service(name: "does_not_exit") do
@@ -50,11 +56,11 @@ Properties that can be accessed from the `google_run_service` resource:
 
   * `labels`: Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `annotations`: Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes annotations' namespacing, limits, and rules.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `create_time`: Output only. The creation time.
 
@@ -105,11 +111,11 @@ Properties that can be accessed from the `google_run_service` resource:
 
     * `labels`: Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `annotations`: Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `scaling`: Settings for revision-level scaling settings.
 
@@ -167,7 +173,7 @@ Properties that can be accessed from the `google_run_service` resource:
 
         * `limits`: Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 
-          * `additional_properties`: 
+          * `additional_properties`:
 
         * `cpu_idle`: Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 

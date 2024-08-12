@@ -136,6 +136,6 @@ class RunServices < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/services'
+    '{{parent}}/services'
   end
 end

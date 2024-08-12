@@ -119,7 +119,7 @@ class RunService < GcpResourceBase
   end
 
   def to_s
-    "Service #{@params[:]}"
+    "Service #{@params[:name]}"
   end
 
   private
@@ -129,6 +129,6 @@ class RunService < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end

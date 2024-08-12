@@ -23,8 +23,15 @@ A `google_run_services` is used to test a Google Service resource
 
 ## Examples
 ```
-    describe google_run_services(parent: ' ') do
+  describe google_run_services(parent: 'value_parent') do
     it { should exist }
+    its('names') { should include value_name }
+    its('uris') { should include value_uri }
+    its('generations') { should include value_generation }
+    its('create_times') { should include value_create_time }
+    its('update_times') { should include value_update_time }
+    its('creators') { should include value_creator }
+    its('ingresses') { should include value_ingress }
   end
 ```
 
