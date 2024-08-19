@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocProjectLocationSessions < GcpResourceBase
-  name 'google_dataproc_project_location_sessions'
-  desc 'ProjectLocationSession plural resource'
+class DataprocSessions < GcpResourceBase
+  name 'google_dataproc_sessions'
+  desc 'Session plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -44,7 +44,7 @@ class DataprocProjectLocationSessions < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectLocationSessions')
+    @table = fetch_wrapped_resource('sessions')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -80,17 +80,17 @@ class DataprocProjectLocationSessions < GcpResourceBase
       'name' => ->(obj) { [:name, obj['name']] },
       'uuid' => ->(obj) { [:uuid, obj['uuid']] },
       'createTime' => ->(obj) { [:create_time, obj['createTime']] },
-      'jupyterSession' => ->(obj) { [:jupyter_session, GoogleInSpec::Dataproc::Property::ProjectLocationSessionJupyterSession.new(obj['jupyterSession'], to_s)] },
-      'runtimeInfo' => ->(obj) { [:runtime_info, GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeInfo.new(obj['runtimeInfo'], to_s)] },
+      'jupyterSession' => ->(obj) { [:jupyter_session, GoogleInSpec::Dataproc::Property::SessionJupyterSession.new(obj['jupyterSession'], to_s)] },
+      'runtimeInfo' => ->(obj) { [:runtime_info, GoogleInSpec::Dataproc::Property::SessionRuntimeInfo.new(obj['runtimeInfo'], to_s)] },
       'state' => ->(obj) { [:state, obj['state']] },
       'stateMessage' => ->(obj) { [:state_message, obj['stateMessage']] },
       'stateTime' => ->(obj) { [:state_time, obj['stateTime']] },
       'creator' => ->(obj) { [:creator, obj['creator']] },
-      'labels' => ->(obj) { [:labels, GoogleInSpec::Dataproc::Property::ProjectLocationSessionLabels.new(obj['labels'], to_s)] },
-      'runtimeConfig' => ->(obj) { [:runtime_config, GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeConfig.new(obj['runtimeConfig'], to_s)] },
-      'environmentConfig' => ->(obj) { [:environment_config, GoogleInSpec::Dataproc::Property::ProjectLocationSessionEnvironmentConfig.new(obj['environmentConfig'], to_s)] },
+      'labels' => ->(obj) { [:labels, GoogleInSpec::Dataproc::Property::SessionLabels.new(obj['labels'], to_s)] },
+      'runtimeConfig' => ->(obj) { [:runtime_config, GoogleInSpec::Dataproc::Property::SessionRuntimeConfig.new(obj['runtimeConfig'], to_s)] },
+      'environmentConfig' => ->(obj) { [:environment_config, GoogleInSpec::Dataproc::Property::SessionEnvironmentConfig.new(obj['environmentConfig'], to_s)] },
       'user' => ->(obj) { [:user, obj['user']] },
-      'stateHistory' => ->(obj) { [:state_history, GoogleInSpec::Dataproc::Property::ProjectLocationSessionStateHistoryArray.parse(obj['stateHistory'], to_s)] },
+      'stateHistory' => ->(obj) { [:state_history, GoogleInSpec::Dataproc::Property::SessionStateHistoryArray.parse(obj['stateHistory'], to_s)] },
       'sessionTemplate' => ->(obj) { [:session_template, obj['sessionTemplate']] },
     }
   end
@@ -102,6 +102,6 @@ class DataprocProjectLocationSessions < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/sessions'
+    '{{parent}}/sessions'
   end
 end

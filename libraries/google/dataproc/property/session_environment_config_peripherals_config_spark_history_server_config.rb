@@ -16,17 +16,17 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionLabels
-        attr_reader :additional_properties
+      class SessionEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig
+        attr_reader :dataproc_cluster
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @additional_properties = args['additionalProperties']
+          @dataproc_cluster = args['dataprocCluster']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionLabels"
+          "#{@parent_identifier} SessionEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig"
         end
       end
     end

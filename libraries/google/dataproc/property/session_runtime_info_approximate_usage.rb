@@ -16,17 +16,26 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionRuntimeConfigProperties
-        attr_reader :additional_properties
+      class SessionRuntimeInfoApproximateUsage
+        attr_reader :milli_dcu_seconds
+
+        attr_reader :shuffle_storage_gb_seconds
+
+        attr_reader :milli_accelerator_seconds
+
+        attr_reader :accelerator_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @additional_properties = args['additionalProperties']
+          @milli_dcu_seconds = args['milliDcuSeconds']
+          @shuffle_storage_gb_seconds = args['shuffleStorageGbSeconds']
+          @milli_accelerator_seconds = args['milliAcceleratorSeconds']
+          @accelerator_type = args['acceleratorType']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionRuntimeConfigProperties"
+          "#{@parent_identifier} SessionRuntimeInfoApproximateUsage"
         end
       end
     end

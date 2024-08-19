@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionRuntimeInfoEndpoints
+      class SessionRuntimeInfoEndpoints
         attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
@@ -26,7 +26,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionRuntimeInfoEndpoints"
+          "#{@parent_identifier} SessionRuntimeInfoEndpoints"
         end
       end
     end

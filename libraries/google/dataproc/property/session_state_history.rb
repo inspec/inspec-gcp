@@ -16,26 +16,31 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionRuntimeInfoApproximateUsage
-        attr_reader :milli_dcu_seconds
+      class SessionStateHistory
+        attr_reader :state
 
-        attr_reader :shuffle_storage_gb_seconds
+        attr_reader :state_message
 
-        attr_reader :milli_accelerator_seconds
-
-        attr_reader :accelerator_type
+        attr_reader :state_start_time
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @milli_dcu_seconds = args['milliDcuSeconds']
-          @shuffle_storage_gb_seconds = args['shuffleStorageGbSeconds']
-          @milli_accelerator_seconds = args['milliAcceleratorSeconds']
-          @accelerator_type = args['acceleratorType']
+          @state = args['state']
+          @state_message = args['stateMessage']
+          @state_start_time = args['stateStartTime']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionRuntimeInfoApproximateUsage"
+          "#{@parent_identifier} SessionStateHistory"
+        end
+      end
+
+      class SessionStateHistoryArray
+        def self.parse(value, parent_identifier)
+          return if value.nil?
+          return SessionStateHistory.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| SessionStateHistory.new(v, parent_identifier) }
         end
       end
     end

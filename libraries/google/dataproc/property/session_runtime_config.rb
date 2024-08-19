@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/projectlocationsession_runtime_config_properties'
-require 'google/dataproc/property/projectlocationsession_runtime_config_repository_config'
-require 'google/dataproc/property/projectlocationsession_runtime_config_repository_config_pypi_repository_config'
+require 'google/dataproc/property/session_runtime_config_properties'
+require 'google/dataproc/property/session_runtime_config_repository_config'
+require 'google/dataproc/property/session_runtime_config_repository_config_pypi_repository_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionRuntimeConfig
+      class SessionRuntimeConfig
         attr_reader :version
 
         attr_reader :container_image
@@ -33,12 +33,12 @@ module GoogleInSpec
           @parent_identifier = parent_identifier
           @version = args['version']
           @container_image = args['containerImage']
-          @properties = GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeConfigProperties.new(args['properties'], to_s)
-          @repository_config = GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeConfigRepositoryConfig.new(args['repositoryConfig'], to_s)
+          @properties = GoogleInSpec::Dataproc::Property::SessionRuntimeConfigProperties.new(args['properties'], to_s)
+          @repository_config = GoogleInSpec::Dataproc::Property::SessionRuntimeConfigRepositoryConfig.new(args['repositoryConfig'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionRuntimeConfig"
+          "#{@parent_identifier} SessionRuntimeConfig"
         end
       end
     end

@@ -13,11 +13,11 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/projectlocationsession_environment_config_peripherals_config_spark_history_server_config'
+require 'google/dataproc/property/session_environment_config_peripherals_config_spark_history_server_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionEnvironmentConfigPeripheralsConfig
+      class SessionEnvironmentConfigPeripheralsConfig
         attr_reader :metastore_service
 
         attr_reader :spark_history_server_config
@@ -26,11 +26,11 @@ module GoogleInSpec
           return if args.nil?
           @parent_identifier = parent_identifier
           @metastore_service = args['metastoreService']
-          @spark_history_server_config = GoogleInSpec::Dataproc::Property::ProjectLocationSessionEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.new(args['sparkHistoryServerConfig'], to_s)
+          @spark_history_server_config = GoogleInSpec::Dataproc::Property::SessionEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.new(args['sparkHistoryServerConfig'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionEnvironmentConfigPeripheralsConfig"
+          "#{@parent_identifier} SessionEnvironmentConfigPeripheralsConfig"
         end
       end
     end

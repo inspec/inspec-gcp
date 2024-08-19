@@ -13,34 +13,26 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/dataproc/property/session_environment_config_execution_config'
+require 'google/dataproc/property/session_environment_config_peripherals_config'
+require 'google/dataproc/property/session_environment_config_peripherals_config_spark_history_server_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionStateHistory
-        attr_reader :state
+      class SessionEnvironmentConfig
+        attr_reader :execution_config
 
-        attr_reader :state_message
-
-        attr_reader :state_start_time
+        attr_reader :peripherals_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @state = args['state']
-          @state_message = args['stateMessage']
-          @state_start_time = args['stateStartTime']
+          @execution_config = GoogleInSpec::Dataproc::Property::SessionEnvironmentConfigExecutionConfig.new(args['executionConfig'], to_s)
+          @peripherals_config = GoogleInSpec::Dataproc::Property::SessionEnvironmentConfigPeripheralsConfig.new(args['peripheralsConfig'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionStateHistory"
-        end
-      end
-
-      class ProjectLocationSessionStateHistoryArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return ProjectLocationSessionStateHistory.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ProjectLocationSessionStateHistory.new(v, parent_identifier) }
+          "#{@parent_identifier} SessionEnvironmentConfig"
         end
       end
     end

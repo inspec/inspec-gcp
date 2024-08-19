@@ -13,26 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/projectlocationsession_environment_config_execution_config'
-require 'google/dataproc/property/projectlocationsession_environment_config_peripherals_config'
-require 'google/dataproc/property/projectlocationsession_environment_config_peripherals_config_spark_history_server_config'
+require 'google/dataproc/property/session_runtime_config_repository_config_pypi_repository_config'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionEnvironmentConfig
-        attr_reader :execution_config
-
-        attr_reader :peripherals_config
+      class SessionRuntimeConfigRepositoryConfig
+        attr_reader :pypi_repository_config
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @execution_config = GoogleInSpec::Dataproc::Property::ProjectLocationSessionEnvironmentConfigExecutionConfig.new(args['executionConfig'], to_s)
-          @peripherals_config = GoogleInSpec::Dataproc::Property::ProjectLocationSessionEnvironmentConfigPeripheralsConfig.new(args['peripheralsConfig'], to_s)
+          @pypi_repository_config = GoogleInSpec::Dataproc::Property::SessionRuntimeConfigRepositoryConfigPypiRepositoryConfig.new(args['pypiRepositoryConfig'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionEnvironmentConfig"
+          "#{@parent_identifier} SessionRuntimeConfigRepositoryConfig"
         end
       end
     end

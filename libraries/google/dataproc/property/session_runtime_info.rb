@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataproc/property/projectlocationsession_runtime_info_approximate_usage'
-require 'google/dataproc/property/projectlocationsession_runtime_info_current_usage'
-require 'google/dataproc/property/projectlocationsession_runtime_info_endpoints'
+require 'google/dataproc/property/session_runtime_info_approximate_usage'
+require 'google/dataproc/property/session_runtime_info_current_usage'
+require 'google/dataproc/property/session_runtime_info_endpoints'
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionRuntimeInfo
+      class SessionRuntimeInfo
         attr_reader :endpoints
 
         attr_reader :output_uri
@@ -33,15 +33,15 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @endpoints = GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeInfoEndpoints.new(args['endpoints'], to_s)
+          @endpoints = GoogleInSpec::Dataproc::Property::SessionRuntimeInfoEndpoints.new(args['endpoints'], to_s)
           @output_uri = args['outputUri']
           @diagnostic_output_uri = args['diagnosticOutputUri']
-          @approximate_usage = GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeInfoApproximateUsage.new(args['approximateUsage'], to_s)
-          @current_usage = GoogleInSpec::Dataproc::Property::ProjectLocationSessionRuntimeInfoCurrentUsage.new(args['currentUsage'], to_s)
+          @approximate_usage = GoogleInSpec::Dataproc::Property::SessionRuntimeInfoApproximateUsage.new(args['approximateUsage'], to_s)
+          @current_usage = GoogleInSpec::Dataproc::Property::SessionRuntimeInfoCurrentUsage.new(args['currentUsage'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionRuntimeInfo"
+          "#{@parent_identifier} SessionRuntimeInfo"
         end
       end
     end

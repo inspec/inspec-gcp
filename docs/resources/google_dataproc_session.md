@@ -1,6 +1,6 @@
 +++
 
-title = "google_dataproc_project_location_session Resource"
+title = "google_dataproc_session Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_dataproc_project_location_session"
-identifier = "inspec/resources/gcp/google_dataproc_project_location_session Resource"
+title = "google_dataproc_session"
+identifier = "inspec/resources/gcp/google_dataproc_session Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_project_location_session` InSpec audit resource to test the properties of a test a Google ProjectLocationSession.
+Use the `google_dataproc_session` InSpec audit resource to test the properties of a test a Google Session.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_dataproc_project_location_session` is used to test a Google ProjectLocationSession resource
+A `google_dataproc_session` is used to test a Google Session resource
 
 ## Examples
 ```
-describe google_dataproc_project_location_session(name: ' value_name') do
+describe google_dataproc_session(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('uuid') { should cmp 'value_uuid' }
@@ -37,16 +37,16 @@ describe google_dataproc_project_location_session(name: ' value_name') do
 
 end
 
-describe google_dataproc_project_location_session(name: "does_not_exit") do
+describe google_dataproc_session(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_project_location_session` resource:
+Properties that can be accessed from the `google_dataproc_session` resource:
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_project_location_session` resource:
+Properties that can be accessed from the `google_dataproc_session` resource:
 
 
   * `name`: Required. The resource name of the session.

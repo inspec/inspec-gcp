@@ -16,20 +16,38 @@
 module GoogleInSpec
   module Dataproc
     module Property
-      class ProjectLocationSessionJupyterSession
-        attr_reader :kernel
+      class SessionEnvironmentConfigExecutionConfig
+        attr_reader :service_account
 
-        attr_reader :display_name
+        attr_reader :network_uri
+
+        attr_reader :subnetwork_uri
+
+        attr_reader :network_tags
+
+        attr_reader :kms_key
+
+        attr_reader :idle_ttl
+
+        attr_reader :ttl
+
+        attr_reader :staging_bucket
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kernel = args['kernel']
-          @display_name = args['displayName']
+          @service_account = args['serviceAccount']
+          @network_uri = args['networkUri']
+          @subnetwork_uri = args['subnetworkUri']
+          @network_tags = args['networkTags']
+          @kms_key = args['kmsKey']
+          @idle_ttl = args['idleTtl']
+          @ttl = args['ttl']
+          @staging_bucket = args['stagingBucket']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationSessionJupyterSession"
+          "#{@parent_identifier} SessionEnvironmentConfigExecutionConfig"
         end
       end
     end
