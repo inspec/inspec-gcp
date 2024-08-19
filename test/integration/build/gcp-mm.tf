@@ -260,6 +260,9 @@ variable "bigtable_instance_cluster" {
 variable "dataproc_metastore_service" {
   type = any
 }
+variable "dataproc_metastore_federation" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -1724,7 +1727,7 @@ resource "google_secret_manager_secret" "test-secret" {
   secret_id = var.secrets_manager_v1["secret_id"]
 
   replication {
-    auto {}
+    # auto {}
   }
 }
 
@@ -2175,23 +2178,28 @@ resource "google_bigtable_instance" "inspec-test" {
     my-label = var.bigtable_instance_cluster.name
   }
 }
-resource "google_dataproc_metastore_service" "default" {
-    project = var.gcp_project_id
-    service_id = var.dataproc_metastore_service.name
-    location   = var.dataproc_metastore_service.location
-    port       = var.dataproc_metastore_service.port
-    tier       = var.dataproc_metastore_service.tier
 
-  maintenance_window {
-    hour_of_day = 2
-    day_of_week = "SUNDAY"
-  }
+resource "google_dataproc_metastore_service" "inspec-test" {
+  project = var.gcp_project_id
+  service_id = var.dataproc_metastore_service.name
+  location   = var.dataproc_metastore_service.location
+  tier       = var.dataproc_metastore_service.tier
+
 
   hive_metastore_config {
-    version = var.dataproc_metastore_service.hive_config_version
+    version           = var.dataproc_metastore_service.version
+    # endpoint_protocol = "GRPC"
   }
+}
+resource "google_dataproc_metastore_federation" "inspec-federation" {
+  project = var.gcp_project_id
+  location      = var.dataproc_metastore_federation.location
+  federation_id = var.dataproc_metastore_federation.federation_id
+  version       = var.dataproc_metastore_federation.version
 
-  labels = {
-    env = "inspec"
+  backend_metastores {
+    rank           = "1"
+    name           = google_dataproc_metastore_service.inspec-test.id
+    metastore_type = var.dataproc_metastore_service.metastore_type
   }
 }
