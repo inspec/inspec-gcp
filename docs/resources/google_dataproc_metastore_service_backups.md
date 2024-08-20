@@ -23,8 +23,13 @@ A `google_dataproc_metastore_service_backups` is used to test a Google ServiceBa
 
 ## Examples
 ```
-    describe google_dataproc_metastore_service_backups(parent: ' value_parent') do
+  describe google_dataproc_metastore_service_backups(parent: ' value_parent') do
     it { should exist }
+    its('names') { should include 'value_name' }
+    its('create_times') { should include 'value_createtime' }
+    its('end_times') { should include 'value_endtime' }
+    its('states') { should include 'value_state' }
+    its('descriptions') { should include 'value_description' }
   end
 ```
 

@@ -23,14 +23,13 @@ A `google_dataproc_metastore_service_backup` is used to test a Google ServiceBac
 
 ## Examples
 ```
-describe google_dataproc_metastore_service_backup(name: ' value_name') do
+describe google_dataproc_metastore_service_backup(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('create_time') { should cmp 'value_createtime' }
 	its('end_time') { should cmp 'value_endtime' }
 	its('state') { should cmp 'value_state' }
 	its('description') { should cmp 'value_description' }
-
 end
 
 describe google_dataproc_metastore_service_backup(name: "does_not_exit") do
@@ -68,7 +67,7 @@ Properties that can be accessed from the `google_dataproc_metastore_service_back
 
       * `config_overrides`: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 
-        * `additional_properties`: 
+        * `additional_properties`:
 
       * `kerberos_config`: Configuration information for a Kerberos principal.
 
@@ -98,7 +97,7 @@ Properties that can be accessed from the `google_dataproc_metastore_service_back
 
     * `labels`: User-defined labels for the metastore service.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `network`: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 
