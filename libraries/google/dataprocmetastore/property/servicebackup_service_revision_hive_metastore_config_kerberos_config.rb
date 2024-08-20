@@ -13,27 +13,27 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_scaling_config_autoscaling_config_limit_config'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_hive_metastore_config_kerberos_config_keytab'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionScalingConfigAutoscalingConfig
-        attr_reader :autoscaling_factor
+      class ServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfig
+        attr_reader :keytab
 
-        attr_reader :autoscaling_enabled
+        attr_reader :principal
 
-        attr_reader :limit_config
+        attr_reader :krb5_config_gcs_uri
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @autoscaling_factor = args['autoscalingFactor']
-          @autoscaling_enabled = args['autoscalingEnabled']
-          @limit_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionScalingConfigAutoscalingConfigLimitConfig.new(args['limitConfig'], to_s)
+          @keytab = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfigKeytab.new(args['keytab'], to_s)
+          @principal = args['principal']
+          @krb5_config_gcs_uri = args['krb5ConfigGcsUri']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionScalingConfigAutoscalingConfig"
+          "#{@parent_identifier} ServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfig"
         end
       end
     end

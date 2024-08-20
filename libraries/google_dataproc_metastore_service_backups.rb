@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class DataprocMetastoreProjectLocationServiceBackups < GcpResourceBase
-  name 'google_dataproc_metastore_project_location_service_backups'
-  desc 'ProjectLocationServiceBackup plural resource'
+class DataprocMetastoreServiceBackups < GcpResourceBase
+  name 'google_dataproc_metastore_service_backups'
+  desc 'ServiceBackup plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -36,7 +36,7 @@ class DataprocMetastoreProjectLocationServiceBackups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectLocationServiceBackups')
+    @table = fetch_wrapped_resource('backups')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -73,7 +73,7 @@ class DataprocMetastoreProjectLocationServiceBackups < GcpResourceBase
       'createTime' => ->(obj) { [:create_time, obj['createTime']] },
       'endTime' => ->(obj) { [:end_time, obj['endTime']] },
       'state' => ->(obj) { [:state, obj['state']] },
-      'serviceRevision' => ->(obj) { [:service_revision, GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevision.new(obj['serviceRevision'], to_s)] },
+      'serviceRevision' => ->(obj) { [:service_revision, GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevision.new(obj['serviceRevision'], to_s)] },
       'description' => ->(obj) { [:description, obj['description']] },
       'restoringServices' => ->(obj) { [:restoring_services, obj['restoringServices']] },
     }
@@ -86,6 +86,6 @@ class DataprocMetastoreProjectLocationServiceBackups < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/backups'
+    '{{parent}}/backups'
   end
 end

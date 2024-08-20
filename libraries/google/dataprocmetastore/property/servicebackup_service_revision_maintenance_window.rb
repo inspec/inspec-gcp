@@ -13,21 +13,23 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_metadata_integration_dataplex_config_lake_resources'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionMetadataIntegrationDataplexConfig
-        attr_reader :lake_resources
+      class ServiceBackupServiceRevisionMaintenanceWindow
+        attr_reader :hour_of_day
+
+        attr_reader :day_of_week
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @lake_resources = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionMetadataIntegrationDataplexConfigLakeResources.new(args['lakeResources'], to_s)
+          @hour_of_day = args['hourOfDay']
+          @day_of_week = args['dayOfWeek']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionMetadataIntegrationDataplexConfig"
+          "#{@parent_identifier} ServiceBackupServiceRevisionMaintenanceWindow"
         end
       end
     end

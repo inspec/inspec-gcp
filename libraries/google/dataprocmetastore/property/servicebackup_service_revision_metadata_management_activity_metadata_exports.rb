@@ -16,43 +16,37 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityRestores
+      class ServiceBackupServiceRevisionMetadataManagementActivityMetadataExports
+        attr_reader :destination_gcs_uri
+
         attr_reader :start_time
 
         attr_reader :end_time
 
         attr_reader :state
 
-        attr_reader :backup
-
-        attr_reader :type
-
-        attr_reader :details
-
-        attr_reader :backup_location
+        attr_reader :database_dump_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
+          @destination_gcs_uri = args['destinationGcsUri']
           @start_time = args['startTime']
           @end_time = args['endTime']
           @state = args['state']
-          @backup = args['backup']
-          @type = args['type']
-          @details = args['details']
-          @backup_location = args['backupLocation']
+          @database_dump_type = args['databaseDumpType']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityRestores"
+          "#{@parent_identifier} ServiceBackupServiceRevisionMetadataManagementActivityMetadataExports"
         end
       end
 
-      class ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityRestoresArray
+      class ServiceBackupServiceRevisionMetadataManagementActivityMetadataExportsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityRestores.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityRestores.new(v, parent_identifier) }
+          return ServiceBackupServiceRevisionMetadataManagementActivityMetadataExports.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| ServiceBackupServiceRevisionMetadataManagementActivityMetadataExports.new(v, parent_identifier) }
         end
       end
     end

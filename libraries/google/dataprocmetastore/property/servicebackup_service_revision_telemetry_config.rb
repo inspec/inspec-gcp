@@ -16,17 +16,17 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigAuxiliaryVersions
-        attr_reader :additional_properties
+      class ServiceBackupServiceRevisionTelemetryConfig
+        attr_reader :log_format
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @additional_properties = args['additionalProperties']
+          @log_format = args['logFormat']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigAuxiliaryVersions"
+          "#{@parent_identifier} ServiceBackupServiceRevisionTelemetryConfig"
         end
       end
     end

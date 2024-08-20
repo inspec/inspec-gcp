@@ -16,37 +16,26 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityMetadataExports
-        attr_reader :destination_gcs_uri
+      class ServiceBackupServiceRevisionScheduledBackupLatestBackup
+        attr_reader :backup_id
 
         attr_reader :start_time
 
-        attr_reader :end_time
-
         attr_reader :state
 
-        attr_reader :database_dump_type
+        attr_reader :duration
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @destination_gcs_uri = args['destinationGcsUri']
+          @backup_id = args['backupId']
           @start_time = args['startTime']
-          @end_time = args['endTime']
           @state = args['state']
-          @database_dump_type = args['databaseDumpType']
+          @duration = args['duration']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityMetadataExports"
-        end
-      end
-
-      class ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityMetadataExportsArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityMetadataExports.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityMetadataExports.new(v, parent_identifier) }
+          "#{@parent_identifier} ServiceBackupServiceRevisionScheduledBackupLatestBackup"
         end
       end
     end

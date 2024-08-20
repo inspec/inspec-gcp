@@ -16,20 +16,17 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionScalingConfigAutoscalingConfigLimitConfig
-        attr_reader :max_scaling_factor
-
-        attr_reader :min_scaling_factor
+      class ServiceBackupServiceRevisionEncryptionConfig
+        attr_reader :kms_key
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @max_scaling_factor = args['maxScalingFactor']
-          @min_scaling_factor = args['minScalingFactor']
+          @kms_key = args['kmsKey']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionScalingConfigAutoscalingConfigLimitConfig"
+          "#{@parent_identifier} ServiceBackupServiceRevisionEncryptionConfig"
         end
       end
     end

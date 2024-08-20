@@ -16,7 +16,7 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionNetworkConfigConsumers
+      class ServiceBackupServiceRevisionNetworkConfigConsumers
         attr_reader :subnetwork
 
         attr_reader :endpoint_uri
@@ -32,15 +32,15 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionNetworkConfigConsumers"
+          "#{@parent_identifier} ServiceBackupServiceRevisionNetworkConfigConsumers"
         end
       end
 
-      class ProjectLocationServiceBackupServiceRevisionNetworkConfigConsumersArray
+      class ServiceBackupServiceRevisionNetworkConfigConsumersArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return ProjectLocationServiceBackupServiceRevisionNetworkConfigConsumers.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| ProjectLocationServiceBackupServiceRevisionNetworkConfigConsumers.new(v, parent_identifier) }
+          return ServiceBackupServiceRevisionNetworkConfigConsumers.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| ServiceBackupServiceRevisionNetworkConfigConsumers.new(v, parent_identifier) }
         end
       end
     end

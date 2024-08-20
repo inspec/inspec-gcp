@@ -16,17 +16,17 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionEncryptionConfig
-        attr_reader :kms_key
+      class ServiceBackupServiceRevisionHiveMetastoreConfigConfigOverrides
+        attr_reader :additional_properties
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @kms_key = args['kmsKey']
+          @additional_properties = args['additionalProperties']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionEncryptionConfig"
+          "#{@parent_identifier} ServiceBackupServiceRevisionHiveMetastoreConfigConfigOverrides"
         end
       end
     end

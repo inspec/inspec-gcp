@@ -13,27 +13,24 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_hive_metastore_config_kerberos_config_keytab'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_network_config_consumers'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfig
-        attr_reader :keytab
+      class ServiceBackupServiceRevisionNetworkConfig
+        attr_reader :consumers
 
-        attr_reader :principal
-
-        attr_reader :krb5_config_gcs_uri
+        attr_reader :custom_routes_enabled
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @keytab = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfigKeytab.new(args['keytab'], to_s)
-          @principal = args['principal']
-          @krb5_config_gcs_uri = args['krb5ConfigGcsUri']
+          @consumers = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionNetworkConfigConsumersArray.parse(args['consumers'], to_s)
+          @custom_routes_enabled = args['customRoutesEnabled']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfig"
+          "#{@parent_identifier} ServiceBackupServiceRevisionNetworkConfig"
         end
       end
     end

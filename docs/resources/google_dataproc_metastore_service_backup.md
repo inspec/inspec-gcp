@@ -1,6 +1,6 @@
 +++
 
-title = "google_dataproc_metastore_project_location_service_backup Resource"
+title = "google_dataproc_metastore_service_backup Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_dataproc_metastore_project_location_service_backup"
-identifier = "inspec/resources/gcp/google_dataproc_metastore_project_location_service_backup Resource"
+title = "google_dataproc_metastore_service_backup"
+identifier = "inspec/resources/gcp/google_dataproc_metastore_service_backup Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_metastore_project_location_service_backup` InSpec audit resource to test the properties of a test a Google ProjectLocationServiceBackup.
+Use the `google_dataproc_metastore_service_backup` InSpec audit resource to test the properties of a test a Google ServiceBackup.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_dataproc_metastore_project_location_service_backup` is used to test a Google ProjectLocationServiceBackup resource
+A `google_dataproc_metastore_service_backup` is used to test a Google ServiceBackup resource
 
 ## Examples
 ```
-describe google_dataproc_metastore_project_location_service_backup(name: ' value_name') do
+describe google_dataproc_metastore_service_backup(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('create_time') { should cmp 'value_createtime' }
@@ -33,16 +33,16 @@ describe google_dataproc_metastore_project_location_service_backup(name: ' value
 
 end
 
-describe google_dataproc_metastore_project_location_service_backup(name: "does_not_exit") do
+describe google_dataproc_metastore_service_backup(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_metastore_project_location_service_backup` resource:
+Properties that can be accessed from the `google_dataproc_metastore_service_backup` resource:
 
 ## Properties
-Properties that can be accessed from the `google_dataproc_metastore_project_location_service_backup` resource:
+Properties that can be accessed from the `google_dataproc_metastore_service_backup` resource:
 
 
   * `name`: Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}

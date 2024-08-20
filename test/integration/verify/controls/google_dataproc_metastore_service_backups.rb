@@ -12,22 +12,22 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_dataproc_metastore_project_location_service_backups resource.'
+title 'Test GCP google_dataproc_metastore_service_backups resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-project_location_service_backup = input('project_location_service_backup', value: {
+service_backup = input('service_backup', value: {
   "name": "value_name",
   "parent": "value_parent",
   "create_time": "value_createtime",
   "end_time": "value_endtime",
   "state": "value_state",
   "description": "value_description"
-}, description: 'project_location_service_backup description')
-control 'google_dataproc_metastore_project_location_service_backups-1.0' do
+}, description: 'service_backup description')
+control 'google_dataproc_metastore_service_backups-1.0' do
   impact 1.0
-  title 'google_dataproc_metastore_project_location_service_backups resource test'
+  title 'google_dataproc_metastore_service_backups resource test'
 
-      describe google_dataproc_metastore_project_location_service_backups(parent: project_location_service_backup['parent']) do
+      describe google_dataproc_metastore_service_backups(parent: service_backup['parent']) do
       it { should exist }
     end
 end

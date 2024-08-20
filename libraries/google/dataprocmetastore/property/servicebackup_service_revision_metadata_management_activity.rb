@@ -13,12 +13,12 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_metadata_management_activity_metadata_exports'
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_metadata_management_activity_restores'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_metadata_management_activity_metadata_exports'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_metadata_management_activity_restores'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionMetadataManagementActivity
+      class ServiceBackupServiceRevisionMetadataManagementActivity
         attr_reader :metadata_exports
 
         attr_reader :restores
@@ -26,12 +26,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @metadata_exports = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityMetadataExportsArray.parse(args['metadataExports'], to_s)
-          @restores = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionMetadataManagementActivityRestoresArray.parse(args['restores'], to_s)
+          @metadata_exports = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionMetadataManagementActivityMetadataExportsArray.parse(args['metadataExports'], to_s)
+          @restores = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionMetadataManagementActivityRestoresArray.parse(args['restores'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionMetadataManagementActivity"
+          "#{@parent_identifier} ServiceBackupServiceRevisionMetadataManagementActivity"
         end
       end
     end

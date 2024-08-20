@@ -13,13 +13,13 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_metadata_integration_data_catalog_config'
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_metadata_integration_dataplex_config'
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_metadata_integration_dataplex_config_lake_resources'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_metadata_integration_data_catalog_config'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_metadata_integration_dataplex_config'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_metadata_integration_dataplex_config_lake_resources'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionMetadataIntegration
+      class ServiceBackupServiceRevisionMetadataIntegration
         attr_reader :data_catalog_config
 
         attr_reader :dataplex_config
@@ -27,12 +27,12 @@ module GoogleInSpec
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @data_catalog_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionMetadataIntegrationDataCatalogConfig.new(args['dataCatalogConfig'], to_s)
-          @dataplex_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionMetadataIntegrationDataplexConfig.new(args['dataplexConfig'], to_s)
+          @data_catalog_config = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionMetadataIntegrationDataCatalogConfig.new(args['dataCatalogConfig'], to_s)
+          @dataplex_config = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionMetadataIntegrationDataplexConfig.new(args['dataplexConfig'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionMetadataIntegration"
+          "#{@parent_identifier} ServiceBackupServiceRevisionMetadataIntegration"
         end
       end
     end

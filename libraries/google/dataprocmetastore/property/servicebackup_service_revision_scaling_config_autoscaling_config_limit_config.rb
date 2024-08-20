@@ -16,20 +16,20 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionMaintenanceWindow
-        attr_reader :hour_of_day
+      class ServiceBackupServiceRevisionScalingConfigAutoscalingConfigLimitConfig
+        attr_reader :max_scaling_factor
 
-        attr_reader :day_of_week
+        attr_reader :min_scaling_factor
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @hour_of_day = args['hourOfDay']
-          @day_of_week = args['dayOfWeek']
+          @max_scaling_factor = args['maxScalingFactor']
+          @min_scaling_factor = args['minScalingFactor']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionMaintenanceWindow"
+          "#{@parent_identifier} ServiceBackupServiceRevisionScalingConfigAutoscalingConfigLimitConfig"
         end
       end
     end

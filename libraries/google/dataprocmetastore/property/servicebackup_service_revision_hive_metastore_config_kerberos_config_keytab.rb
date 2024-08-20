@@ -16,7 +16,7 @@
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfigKeytab
+      class ServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfigKeytab
         attr_reader :cloud_secret
 
         def initialize(args = nil, parent_identifier = nil)
@@ -26,7 +26,7 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfigKeytab"
+          "#{@parent_identifier} ServiceBackupServiceRevisionHiveMetastoreConfigKerberosConfigKeytab"
         end
       end
     end

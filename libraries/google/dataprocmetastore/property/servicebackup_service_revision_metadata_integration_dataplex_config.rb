@@ -13,28 +13,21 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_scaling_config_autoscaling_config'
-require 'google/dataprocmetastore/property/projectlocationservicebackup_service_revision_scaling_config_autoscaling_config_limit_config'
+require 'google/dataprocmetastore/property/servicebackup_service_revision_metadata_integration_dataplex_config_lake_resources'
 module GoogleInSpec
   module DataprocMetastore
     module Property
-      class ProjectLocationServiceBackupServiceRevisionScalingConfig
-        attr_reader :instance_size
-
-        attr_reader :scaling_factor
-
-        attr_reader :autoscaling_config
+      class ServiceBackupServiceRevisionMetadataIntegrationDataplexConfig
+        attr_reader :lake_resources
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @instance_size = args['instanceSize']
-          @scaling_factor = args['scalingFactor']
-          @autoscaling_config = GoogleInSpec::DataprocMetastore::Property::ProjectLocationServiceBackupServiceRevisionScalingConfigAutoscalingConfig.new(args['autoscalingConfig'], to_s)
+          @lake_resources = GoogleInSpec::DataprocMetastore::Property::ServiceBackupServiceRevisionMetadataIntegrationDataplexConfigLakeResources.new(args['lakeResources'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} ProjectLocationServiceBackupServiceRevisionScalingConfig"
+          "#{@parent_identifier} ServiceBackupServiceRevisionMetadataIntegrationDataplexConfig"
         end
       end
     end
