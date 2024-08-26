@@ -50,7 +50,7 @@ class ApigeeOrganizationEndpointAttachment < GcpResourceBase
   end
 
   def to_s
-    "OrganizationEndpointAttachment #{@params[:]}"
+    "OrganizationEndpointAttachment #{@params[:name]}"
   end
 
   private
