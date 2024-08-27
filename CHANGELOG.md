@@ -1,11 +1,26 @@
 # Change Log
 
-<!-- latest_release 1.11.125 -->
+<!-- latest_release 1.11.128 -->
+## [v1.11.128](https://github.com/inspec/inspec-gcp/tree/v1.11.128) (2024-08-20)
+
+#### Merged Pull Requests
+- CHEF-12257-MAGIC-MODULE-metastore_v1-services-backup - Resource Implementation [#644](https://github.com/inspec/inspec-gcp/pull/644) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
+## [v1.11.127](https://github.com/inspec/inspec-gcp/tree/v1.11.127) (2024-08-19)
+
+#### Merged Pull Requests
+- CHEF-12248-MAGIC-MODULE-Dataproc_v1_session - Resource Implementation [#642](https://github.com/inspec/inspec-gcp/pull/642) ([sa-progress](https://github.com/sa-progress))
+
+## [v1.11.126](https://github.com/inspec/inspec-gcp/tree/v1.11.126) (2024-08-12)
+
+#### Merged Pull Requests
+- CHEF-12482-v1.4-MAGIC-MODULE-run_v2-Service - Resource Implementation [#648](https://github.com/inspec/inspec-gcp/pull/648) ([sa-progress](https://github.com/sa-progress))
+
 ## [v1.11.125](https://github.com/inspec/inspec-gcp/tree/v1.11.125) (2024-08-05)
 
 #### Merged Pull Requests
 - CHEF-12474-v3-MAGIC-MODULE-bigtableadmin_v2-Projects__instances__appProfile - Resource Implementation [#643](https://github.com/inspec/inspec-gcp/pull/643) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.124](https://github.com/inspec/inspec-gcp/tree/v1.11.124) (2024-07-23)
 
