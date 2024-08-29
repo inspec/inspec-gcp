@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class ApigeeOrganizationEndpointAttachments < GcpResourceBase
-  name 'google_apigee_organization_endpoint_attachments'
-  desc 'OrganizationEndpointAttachment plural resource'
+class ApigeeEndpointAttachments < GcpResourceBase
+  name 'google_apigee_endpoint_attachments'
+  desc 'EndpointAttachment plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -35,7 +35,7 @@ class ApigeeOrganizationEndpointAttachments < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizationEndpointAttachments')
+    @table = fetch_wrapped_resource('endpointAttachments')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -84,6 +84,6 @@ class ApigeeOrganizationEndpointAttachments < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/endpointAttachments'
+    '{{parent}}/endpointAttachments'
   end
 end

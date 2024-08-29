@@ -12,11 +12,11 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_apigee_organization_endpoint_attachments resource.'
+title 'Test GCP google_apigee_endpoint_attachment resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  organization_endpoint_attachment = input('organization_endpoint_attachment', value: {
+  endpoint_attachment = input('endpoint_attachment', value: {
   "name": "value_name",
   "parent": "value_parent",
   "host": "value_host",
@@ -24,12 +24,23 @@ gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'T
   "service_attachment": "value_serviceattachment",
   "location": "value_location",
   "state": "value_state"
-}, description: 'organization_endpoint_attachment description')
-control 'google_apigee_organization_endpoint_attachments-1.0' do
+}, description: 'endpoint_attachment description')
+control 'google_apigee_endpoint_attachment-1.0' do
   impact 1.0
-  title 'google_apigee_organization_endpoint_attachments resource test'
+  title 'google_apigee_endpoint_attachment resource test'
 
-      describe google_apigee_organization_endpoint_attachments() do
-      it { should exist }
-    end
+  describe google_apigee_endpoint_attachment(name: endpoint_attachment['name']) do
+  	it { should exist }
+  	its('host') { should cmp endpoint_attachment['host'] }
+  	its('connection_state') { should cmp endpoint_attachment['connection_state'] }
+  	its('service_attachment') { should cmp endpoint_attachment['service_attachment'] }
+  	its('location') { should cmp endpoint_attachment['location'] }
+  	its('name') { should cmp endpoint_attachment['name'] }
+  	its('state') { should cmp endpoint_attachment['state'] }
+
+  end
+
+  describe google_apigee_endpoint_attachment(name: "does_not_exit") do
+  	it { should_not exist }
+  end
 end

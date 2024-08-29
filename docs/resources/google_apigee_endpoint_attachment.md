@@ -1,6 +1,6 @@
 +++
 
-title = "google_apigee_organization_endpoint_attachment Resource"
+title = "google_apigee_endpoint_attachment Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_apigee_organization_endpoint_attachment"
-identifier = "inspec/resources/gcp/google_apigee_organization_endpoint_attachment Resource"
+title = "google_apigee_endpoint_attachment"
+identifier = "inspec/resources/gcp/google_apigee_endpoint_attachment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_apigee_organization_endpoint_attachment` InSpec audit resource to test the properties of a test a Google OrganizationEndpointAttachment.
+Use the `google_apigee_endpoint_attachment` InSpec audit resource to test the properties of a test a Google EndpointAttachment.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_apigee_organization_endpoint_attachment` is used to test a Google OrganizationEndpointAttachment resource
+A `google_apigee_endpoint_attachment` is used to test a Google EndpointAttachment resource
 
 ## Examples
 ```
-describe google_apigee_organization_endpoint_attachment(name: ' value_name') do
+describe google_apigee_endpoint_attachment(name: ' value_name') do
 	it { should exist }
 	its('host') { should cmp 'value_host' }
 	its('connection_state') { should cmp 'value_connectionstate' }
@@ -34,16 +34,16 @@ describe google_apigee_organization_endpoint_attachment(name: ' value_name') do
 
 end
 
-describe google_apigee_organization_endpoint_attachment(name: "does_not_exit") do
+describe google_apigee_endpoint_attachment(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_apigee_organization_endpoint_attachment` resource:
+Properties that can be accessed from the `google_apigee_endpoint_attachment` resource:
 
 ## Properties
-Properties that can be accessed from the `google_apigee_organization_endpoint_attachment` resource:
+Properties that can be accessed from the `google_apigee_endpoint_attachment` resource:
 
 
   * `host`: Output only. Host that can be used in either the HTTP target endpoint directly or as the host in target server.

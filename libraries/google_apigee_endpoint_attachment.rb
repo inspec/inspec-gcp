@@ -16,9 +16,9 @@
 require 'gcp_backend'
 
 # A provider to manage Apigee resources.
-class ApigeeOrganizationEndpointAttachment < GcpResourceBase
-  name 'google_apigee_organization_endpoint_attachment'
-  desc 'OrganizationEndpointAttachment'
+class ApigeeEndpointAttachment < GcpResourceBase
+  name 'google_apigee_endpoint_attachment'
+  desc 'EndpointAttachment'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -50,7 +50,7 @@ class ApigeeOrganizationEndpointAttachment < GcpResourceBase
   end
 
   def to_s
-    "OrganizationEndpointAttachment #{@params[:name]}"
+    "EndpointAttachment #{@params[:name]}"
   end
 
   private
@@ -60,6 +60,6 @@ class ApigeeOrganizationEndpointAttachment < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
