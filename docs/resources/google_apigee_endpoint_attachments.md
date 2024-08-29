@@ -23,8 +23,14 @@ A `google_apigee_endpoint_attachments` is used to test a Google EndpointAttachme
 
 ## Examples
 ```
-    describe google_apigee_endpoint_attachments() do
+  describe google_apigee_endpoint_attachments() do
     it { should exist }
+    its('hosts') { should include 'value_host' }
+    its('connection_states') { should include 'value_connectionstate' }
+    its('service_attachments') { should include 'value_serviceattachment' }
+    its('locations') { should include 'value_location' }
+    its('names') { should include 'value_name' }
+    its('states') { should include 'value_state' }
   end
 ```
 

@@ -17,13 +17,13 @@ title 'Test GCP google_apigee_endpoint_attachment resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   endpoint_attachment = input('endpoint_attachment', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "host": "value_host",
-  "connection_state": "value_connectionstate",
-  "service_attachment": "value_serviceattachment",
-  "location": "value_location",
-  "state": "value_state"
+  "name": "organizations/ppradhan/endpointAttachments/inspec-test-attachment",
+  "parent": "organizations/ppradhan",
+  "host": "7.0.0.2",
+  "connection_state": "ACCEPTED",
+  "service_attachment": "projects/ppradhan/regions/us-central1/serviceAttachments/my-psc-ilb",
+  "location": "us-central1",
+  "state": "ACTIVE"
 }, description: 'endpoint_attachment description')
 control 'google_apigee_endpoint_attachment-1.0' do
   impact 1.0
