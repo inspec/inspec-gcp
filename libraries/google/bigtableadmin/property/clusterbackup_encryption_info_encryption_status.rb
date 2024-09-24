@@ -13,27 +13,26 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
-require 'google/bigtableadmin/property/projectinstanceclusterbackup_encryption_info_encryption_status'
 module GoogleInSpec
   module Bigtableadmin
     module Property
-      class ProjectInstanceClusterBackupEncryptionInfo
-        attr_reader :encryption_type
+      class ClusterBackupEncryptionInfoEncryptionStatus
+        attr_reader :code
 
-        attr_reader :encryption_status
+        attr_reader :message
 
-        attr_reader :kms_key_version
+        attr_reader :details
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @encryption_type = args['encryptionType']
-          @encryption_status = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterBackupEncryptionInfoEncryptionStatus.new(args['encryptionStatus'], to_s)
-          @kms_key_version = args['kmsKeyVersion']
+          @code = args['code']
+          @message = args['message']
+          @details = args['details']
         end
 
         def to_s
-          "#{@parent_identifier} ProjectInstanceClusterBackupEncryptionInfo"
+          "#{@parent_identifier} ClusterBackupEncryptionInfoEncryptionStatus"
         end
       end
     end

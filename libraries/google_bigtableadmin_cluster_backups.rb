@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class BigtableadminProjectInstanceClusterBackups < GcpResourceBase
-  name 'google_bigtableadmin_project_instance_cluster_backups'
-  desc 'ProjectInstanceClusterBackup plural resource'
+class BigtableadminClusterBackups < GcpResourceBase
+  name 'google_bigtableadmin_cluster_backups'
+  desc 'ClusterBackup plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -38,7 +38,7 @@ class BigtableadminProjectInstanceClusterBackups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectInstanceClusterBackups')
+    @table = fetch_wrapped_resource('backups')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -79,17 +79,17 @@ class BigtableadminProjectInstanceClusterBackups < GcpResourceBase
       'endTime' => ->(obj) { [:end_time, obj['endTime']] },
       'sizeBytes' => ->(obj) { [:size_bytes, obj['sizeBytes']] },
       'state' => ->(obj) { [:state, obj['state']] },
-      'encryptionInfo' => ->(obj) { [:encryption_info, GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterBackupEncryptionInfo.new(obj['encryptionInfo'], to_s)] },
+      'encryptionInfo' => ->(obj) { [:encryption_info, GoogleInSpec::Bigtableadmin::Property::ClusterBackupEncryptionInfo.new(obj['encryptionInfo'], to_s)] },
     }
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigtableadmin.googleapis.com//v2/'
+    'https://bigtableadmin.googleapis.com/v2/'
   end
 
   def resource_base_url
-    '{{+parent}}/backups'
+    '{{parent}}/backups'
   end
 end

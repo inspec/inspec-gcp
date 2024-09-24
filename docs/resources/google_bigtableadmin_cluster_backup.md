@@ -1,6 +1,6 @@
 +++
 
-title = "google_bigtableadmin_project_instance_cluster_backup Resource"
+title = "google_bigtableadmin_cluster_backup Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
@@ -8,22 +8,22 @@ gh_repo = "inspec-gcp"
 
 [menu.inspec]
 
-title = "google_bigtableadmin_project_instance_cluster_backup"
-identifier = "inspec/resources/gcp/google_bigtableadmin_project_instance_cluster_backup Resource"
+title = "google_bigtableadmin_cluster_backup"
+identifier = "inspec/resources/gcp/google_bigtableadmin_cluster_backup Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_project_instance_cluster_backup` InSpec audit resource to test the properties of a test a Google ProjectInstanceClusterBackup.
+Use the `google_bigtableadmin_cluster_backup` InSpec audit resource to test the properties of a test a Google ClusterBackup.
 
 ## Installation
 {{% inspec_gcp_install %}}
 
 ## Syntax
-A `google_bigtableadmin_project_instance_cluster_backup` is used to test a Google ProjectInstanceClusterBackup resource
+A `google_bigtableadmin_cluster_backup` is used to test a Google ClusterBackup resource
 
 ## Examples
 ```
-describe google_bigtableadmin_project_instance_cluster_backup(name: ' value_name') do
+describe google_bigtableadmin_cluster_backup(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('source_table') { should cmp 'value_sourcetable' }
@@ -33,19 +33,18 @@ describe google_bigtableadmin_project_instance_cluster_backup(name: ' value_name
 	its('end_time') { should cmp 'value_endtime' }
 	its('size_bytes') { should cmp 'value_sizebytes' }
 	its('state') { should cmp 'value_state' }
-
 end
 
-describe google_bigtableadmin_project_instance_cluster_backup(name: "does_not_exit") do
+describe google_bigtableadmin_cluster_backup(name: "does_not_exit") do
 	it { should_not exist }
 end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_bigtableadmin_project_instance_cluster_backup` resource:
+Properties that can be accessed from the `google_bigtableadmin_cluster_backup` resource:
 
 ## Properties
-Properties that can be accessed from the `google_bigtableadmin_project_instance_cluster_backup` resource:
+Properties that can be accessed from the `google_bigtableadmin_cluster_backup` resource:
 
 
   * `name`: A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.

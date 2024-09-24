@@ -14,13 +14,13 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-require 'google/bigtableadmin/property/projectinstanceclusterbackup_encryption_info'
-require 'google/bigtableadmin/property/projectinstanceclusterbackup_encryption_info_encryption_status'
+require 'google/bigtableadmin/property/clusterbackup_encryption_info'
+require 'google/bigtableadmin/property/clusterbackup_encryption_info_encryption_status'
 
 # A provider to manage bigtableadmin resources.
-class BigtableadminProjectInstanceClusterBackup < GcpResourceBase
-  name 'google_bigtableadmin_project_instance_cluster_backup'
-  desc 'ProjectInstanceClusterBackup'
+class BigtableadminClusterBackup < GcpResourceBase
+  name 'google_bigtableadmin_cluster_backup'
+  desc 'ClusterBackup'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -50,7 +50,7 @@ class BigtableadminProjectInstanceClusterBackup < GcpResourceBase
     @end_time = @fetched['endTime']
     @size_bytes = @fetched['sizeBytes']
     @state = @fetched['state']
-    @encryption_info = GoogleInSpec::Bigtableadmin::Property::ProjectInstanceClusterBackupEncryptionInfo.new(@fetched['encryptionInfo'], to_s)
+    @encryption_info = GoogleInSpec::Bigtableadmin::Property::ClusterBackupEncryptionInfo.new(@fetched['encryptionInfo'], to_s)
   end
 
   def exists?
@@ -58,16 +58,16 @@ class BigtableadminProjectInstanceClusterBackup < GcpResourceBase
   end
 
   def to_s
-    "ProjectInstanceClusterBackup #{@params[:]}"
+    "ClusterBackup #{@params[:name]}"
   end
 
   private
 
   def product_url(_ = nil)
-    'https://bigtableadmin.googleapis.com//v2/'
+    'https://bigtableadmin.googleapis.com/v2/'
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
