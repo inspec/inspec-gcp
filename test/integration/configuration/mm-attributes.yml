@@ -731,3 +731,12 @@ dataproc_metastore_service:
 dataproc_metastore_federation:
   federation_id: "inspec-federation"
   location: "us-central1"
+
+apigee_instance_attachment:
+  name : "inspec-test-instance-attachment"
+  location: "us-central"
+  instance : "inspec-test-instance"
+  environment: "inspec-test-environment"
+  description: "InSpec Apigee Instances"
+  parent : "organizations/ppradhan"
+  api_proxy_type : "PROGRAMMABLE"

@@ -1716,6 +1716,21 @@ resource "google_apigee_envgroup_attachment" "engroup_attachment" {
   envgroup_id  = var.apigee_organization_envgroup_attachment.envgroup_id
   environment  = var.apigee_organization_envgroup_attachment.environment
 }
+resource "google_apigee_instance" "apigee_instance" {
+  name     = var.apigee_instance_attachment.instance
+  location = var.apigee_instance_attachment.location
+  org_id   = var.gcp_project_name
+}
+resource "google_apigee_environment" "apigee_env" {
+  org_id   = var.gcp_project_name
+  name         = var.apigee_instance_attachment.environment
+  description  = var.apigee_instance_attachment.description
+  display_name = var.apigee_instance_attachment.environment
+}
+resource "google_apigee_instance_attachment" "iapigee_instance_attachment" {
+  instance_id  = google_apigee_instance.apigee_instance.id
+  environment  = google_apigee_environment.apigee_env.name
+}
 resource "google_compute_region_network_endpoint_group" "region_network_endpoint_group" {
   name                  = var.region_network_endpoint_group.name
   network_endpoint_type = var.region_network_endpoint_group.network_endpoint_type
