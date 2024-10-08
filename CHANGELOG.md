@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.130 -->
+<!-- latest_release 1.11.131 -->
+## [v1.11.131](https://github.com/inspec/inspec-gcp/tree/v1.11.131) (2024-10-08)
+
+#### Merged Pull Requests
+- CHEF-12251-v2-MAGIC-MODULE-apigee_v1-Organizations__instances__attachment - Resource Implementation [#653](https://github.com/inspec/inspec-gcp/pull/653) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.130](https://github.com/inspec/inspec-gcp/tree/v1.11.130) (2024-09-24)
 
 #### Merged Pull Requests
 - CHEF-12476-MAGIC-MODULE-bigtableadmin_v2-Projects__instances__clusters__backup - Resource Implementation [#652](https://github.com/inspec/inspec-gcp/pull/652) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.129](https://github.com/inspec/inspec-gcp/tree/v1.11.129) (2024-08-29)
 
