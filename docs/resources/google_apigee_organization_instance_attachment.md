@@ -23,15 +23,14 @@ A `google_apigee_organization_instance_attachment` is used to test a Google Orga
 
 ## Examples
 ```
-describe google_apigee_organization_instance_attachment(name: ' value_name') do
+describe google_apigee_organization_instance_attachment(parent:'value_parent', name:'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('environment') { should cmp 'value_environment' }
 	its('created_at') { should cmp 'value_createdat' }
-
 end
 
-describe google_apigee_organization_instance_attachment(name: "does_not_exit") do
+describe google_apigee_organization_instance_attachment(parent:'value_parent',name: "does-not-exit") do
 	it { should_not exist }
 end
 ```

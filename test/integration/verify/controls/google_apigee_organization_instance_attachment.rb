@@ -17,10 +17,10 @@ title 'Test GCP google_apigee_organization_instance_attachment resource.'
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
   organization_instance_attachment = input('organization_instance_attachment', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "environment": "value_environment",
-  "created_at": "value_createdat"
+  "name": "c4452279-f4dd-473c-b50d-de21bec8147b",
+  "parent": "organizations/ppradhan/instances/us-central1",
+  "environment": "inspec-test-env",
+  "created_at": "1728297911815"
 }, description: 'organization_instance_attachment description')
 control 'google_apigee_organization_instance_attachment-1.0' do
   impact 1.0

@@ -32,7 +32,7 @@ class ApigeeOrganizationInstanceAttachments < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('organizationInstanceAttachments')
+    @table = fetch_wrapped_resource('attachments')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -78,6 +78,6 @@ class ApigeeOrganizationInstanceAttachments < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/attachments'
+    '{{parent}}/attachments'
   end
 end

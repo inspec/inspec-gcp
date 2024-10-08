@@ -44,7 +44,7 @@ class ApigeeOrganizationInstanceAttachment < GcpResourceBase
   end
 
   def to_s
-    "OrganizationInstanceAttachment #{@params[:]}"
+    "OrganizationInstanceAttachment #{@params[:name]}"
   end
 
   private
@@ -54,6 +54,6 @@ class ApigeeOrganizationInstanceAttachment < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{parent}}/attachments/{{name}}'
   end
 end

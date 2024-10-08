@@ -23,8 +23,11 @@ A `google_apigee_organization_instance_attachments` is used to test a Google Org
 
 ## Examples
 ```
-    describe google_apigee_organization_instance_attachments(parent: ' value_parent') do
+  describe google_apigee_organization_instance_attachments(parent: 'value_parent') do
     it { should exist }
+    its('names') { should include 'value_name' }
+	  its('environments') { should include 'value_environment' }
+	  its('created_ats') { should include 'value_createdat' }
   end
 ```
 
