@@ -23,7 +23,7 @@ A `google_data_fusion_instances` is used to test a Google Instance resource
 
 ## Examples
 ```
-    describe google_data_fusion_instances(parent: ' ') do
+  describe google_data_fusion_instances(parent: 'projects/*/locations/*') do
     it { should exist }
   end
 ```

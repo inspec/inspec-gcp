@@ -142,6 +142,6 @@ class DataFusionInstances < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/instances'
+    '{{parent}}/instances'
   end
 end

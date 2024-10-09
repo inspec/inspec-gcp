@@ -23,28 +23,27 @@ A `google_data_fusion_instance` is used to test a Google Instance resource
 
 ## Examples
 ```
-describe google_data_fusion_instance(name: ' inspec-instance') do
+describe google_data_fusion_instance(name: 'projects/*/locations/*/instances/inspec-instance') do
 	it { should exist }
 	its('name') { should cmp 'inspec-instance' }
-	its('description') { should cmp '' }
-	its('type') { should cmp '' }
-	its('create_time') { should cmp '' }
-	its('update_time') { should cmp '' }
-	its('state') { should cmp '' }
-	its('state_message') { should cmp '' }
-	its('service_endpoint') { should cmp '' }
-	its('zone') { should cmp '' }
-	its('version') { should cmp '' }
-	its('service_account') { should cmp '' }
-	its('display_name') { should cmp '' }
-	its('api_endpoint') { should cmp '' }
-	its('gcs_bucket') { should cmp '' }
-	its('p4service_account') { should cmp '' }
-	its('tenant_project_id') { should cmp '' }
-	its('dataproc_service_account') { should cmp '' }
-	its('workforce_identity_service_endpoint') { should cmp '' }
-	its('patch_revision') { should cmp '' }
-
+	its('description') { should cmp 'value_description' }
+	its('type') { should cmp 'value_type' }
+	its('create_time') { should cmp 'value_create_time' }
+	its('update_time') { should cmp 'value_update_time' }
+	its('state') { should cmp 'value_state' }
+	its('state_message') { should cmp 'value_state_message' }
+	its('service_endpoint') { should cmp 'value_service_endpoint' }
+	its('zone') { should cmp 'value_zone' }
+	its('version') { should cmp 'value_version' }
+	its('service_account') { should cmp 'value_service_account' }
+	its('display_name') { should cmp 'value_display_name' }
+	its('api_endpoint') { should cmp 'value_api_endpoint' }
+	its('gcs_bucket') { should cmp 'value_gcs_bucket' }
+	its('p4service_account') { should cmp 'value_p4service_account' }
+	its('tenant_project_id') { should cmp 'value_tenant_project_id' }
+	its('dataproc_service_account') { should cmp 'value_dataproc_service_account' }
+	its('workforce_identity_service_endpoint') { should cmp 'value_workforce_identity_service_endpoint' }
+	its('patch_revision') { should cmp 'value_patch_revision' }
 end
 
 describe google_data_fusion_instance(name: "does_not_exit") do
@@ -98,11 +97,11 @@ Properties that can be accessed from the `google_data_fusion_instance` resource:
 
   * `labels`: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `options`: Map of additional options used to configure the behavior of Data Fusion instance.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `create_time`: Output only. The time the instance was created.
 

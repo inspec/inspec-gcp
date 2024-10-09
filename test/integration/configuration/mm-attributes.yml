@@ -740,3 +740,8 @@ apigee_instance_attachment:
   description: "InSpec Apigee Instances"
   parent : "organizations/ppradhan"
   api_proxy_type : "PROGRAMMABLE"
+
+data_fusion_instance:
+  name: "inspec-instance"
+  location: "us-central1"
+  type: "DEVELOPER"

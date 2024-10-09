@@ -121,7 +121,7 @@ class DataFusionInstance < GcpResourceBase
   end
 
   def to_s
-    "Instance #{@params[:]}"
+    "Instance #{@params[:name]}"
   end
 
   private
@@ -131,6 +131,6 @@ class DataFusionInstance < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
