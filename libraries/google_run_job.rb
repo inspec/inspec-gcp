@@ -104,7 +104,7 @@ class RunJob < GcpResourceBase
   end
 
   def to_s
-    "Job #{@params[:]}"
+    "Job #{@params[:name]}"
   end
 
   private
@@ -114,6 +114,6 @@ class RunJob < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end

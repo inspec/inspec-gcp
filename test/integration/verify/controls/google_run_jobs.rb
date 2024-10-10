@@ -16,21 +16,21 @@ title 'Test GCP google_run_jobs resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  job = input('job', value: {
-  "name": "value_name",
-  "parent": "value_parent",
-  "uid": "value_uid",
-  "generation": "value_generation",
-  "create_time": "value_createtime",
+job = input('job', value: {
+  "name": "projects/ppradhan/locations/us-central1/jobs/inspec-tutorial1-20230915-182543",
+  "parent": "projects/ppradhan/locations/us-central1",
+  "uid": "605bd3e1-4bf0-4a9d-85ea-23eae08f51dc",
+  "generation": "1",
+  "create_time": "2024-10-10T13:34:58.675033Z",
+  "client": "cloud-console",
   "update_time": "value_updatetime",
   "delete_time": "value_deletetime",
   "expire_time": "value_expiretime",
   "creator": "value_creator",
   "last_modifier": "value_lastmodifier",
-  "client": "value_client",
   "client_version": "value_clientversion",
-  "launch_stage": "value_launchstage",
-  "observed_generation": "value_observedgeneration",
+  "launch_stage": "GA",
+  "observed_generation": "1",
   "start_execution_token": "value_startexecutiontoken",
   "run_execution_token": "value_runexecutiontoken",
   "etag": "value_etag"
@@ -39,7 +39,7 @@ control 'google_run_jobs-1.0' do
   impact 1.0
   title 'google_run_jobs resource test'
 
-      describe google_run_jobs(parent: job['parent']) do
+    describe google_run_jobs(parent: job['parent']) do
       it { should exist }
     end
 end

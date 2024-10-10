@@ -124,6 +124,6 @@ class RunJobs < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/jobs'
+    '{{parent}}/jobs'
   end
 end

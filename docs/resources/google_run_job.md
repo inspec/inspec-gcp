@@ -23,7 +23,7 @@ A `google_run_job` is used to test a Google Job resource
 
 ## Examples
 ```
-describe google_run_job(name: ' value_name') do
+describe google_run_job(name: 'projects/{project}/locations/{location}/jobs/{value_name}') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('uid') { should cmp 'value_uid' }
@@ -41,10 +41,9 @@ describe google_run_job(name: ' value_name') do
 	its('start_execution_token') { should cmp 'value_startexecutiontoken' }
 	its('run_execution_token') { should cmp 'value_runexecutiontoken' }
 	its('etag') { should cmp 'value_etag' }
-
 end
 
-describe google_run_job(name: "does_not_exit") do
+describe google_run_job(name: "projects/{project}/locations/{location}/jobs/{does_not_exit}") do
 	it { should_not exist }
 end
 ```
@@ -64,11 +63,11 @@ Properties that can be accessed from the `google_run_job` resource:
 
   * `labels`: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `annotations`: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes annotations' namespacing, limits, and rules.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `create_time`: Output only. The creation time.
 
@@ -109,11 +108,11 @@ Properties that can be accessed from the `google_run_job` resource:
 
     * `labels`: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `annotations`: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `parallelism`: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 
@@ -149,7 +148,7 @@ Properties that can be accessed from the `google_run_job` resource:
 
           * `limits`: Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 
-            * `additional_properties`: 
+            * `additional_properties`:
 
           * `cpu_idle`: Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 

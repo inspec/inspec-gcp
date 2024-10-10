@@ -23,8 +23,10 @@ A `google_run_jobs` is used to test a Google Job resource
 
 ## Examples
 ```
-    describe google_run_jobs(parent: ' value_parent') do
+  describe google_run_jobs(parent: 'projects/{project}/locations/{location}') do
     it { should exist }
+    its('names') { should include 'value_name' }
+    its('creators') { should include 'value_creator' }
   end
 ```
 
