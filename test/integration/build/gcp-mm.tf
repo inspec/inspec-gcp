@@ -266,7 +266,9 @@ variable "dataproc_metastore_federation" {
 variable "data_fusion_instance" {
   type = any
 }
-
+variable "cloud_run_jobs" {
+  type = any
+}
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -2227,4 +2229,19 @@ resource "google_data_fusion_instance" "data_fusion_instance" {
   name   = var.data_fusion_instance.name
   region = var.data_fusion_instance.location
   type   = var.data_fusion_instance.type
+}
+
+resource "google_cloud_run_v2_job" "default" {
+  name     = var.cloud_run_jobs.name
+  location = var.cloud_run_jobs.location
+  deletion_protection = var.cloud_run_jobs.deletion_protection
+  project = var.gcp_project_id
+
+  template {
+    template {
+      containers {
+        image = var.cloud_run_jobs.image
+      }
+    }
+  }
 }

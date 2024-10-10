@@ -745,3 +745,9 @@ data_fusion_instance:
   name: "inspec-instance"
   location: "us-central1"
   type: "DEVELOPER"
+
+cloud_run_jobs:
+  name: "inspec-tutorial1-20230915-182543"
+  location: "us-central1"
+  deletion_protection: "false"
+  image: "us-central1-docker.pkg.dev/ppradhan/nas/balasubs_tutorial1_20230915_182543:latest"
