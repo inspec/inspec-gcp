@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.131 -->
+<!-- latest_release 1.11.132 -->
+## [v1.11.132](https://github.com/inspec/inspec-gcp/tree/v1.11.132) (2024-10-10)
+
+#### Merged Pull Requests
+- CHEF-12253-v4-MAGIC-MODULE-datafusion_v1-Instance - Resource Implementation [#654](https://github.com/inspec/inspec-gcp/pull/654) ([sa-progress](https://github.com/sa-progress))
+<!-- latest_release -->
+
 ## [v1.11.131](https://github.com/inspec/inspec-gcp/tree/v1.11.131) (2024-10-08)
 
 #### Merged Pull Requests
 - CHEF-12251-v2-MAGIC-MODULE-apigee_v1-Organizations__instances__attachment - Resource Implementation [#653](https://github.com/inspec/inspec-gcp/pull/653) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.130](https://github.com/inspec/inspec-gcp/tree/v1.11.130) (2024-09-24)
 
