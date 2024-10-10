@@ -263,6 +263,9 @@ variable "dataproc_metastore_service" {
 variable "dataproc_metastore_federation" {
   type = any
 }
+variable "data_fusion_instance" {
+  type = any
+}
 
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
@@ -2217,4 +2220,11 @@ resource "google_dataproc_metastore_federation" "inspec-federation" {
     name           = google_dataproc_metastore_service.inspec-test.id
     metastore_type = var.dataproc_metastore_service.metastore_type
   }
+}
+
+resource "google_data_fusion_instance" "data_fusion_instance" {
+  project = var.gcp_project_id
+  name   = var.data_fusion_instance.name
+  region = var.data_fusion_instance.location
+  type   = var.data_fusion_instance.type
 }
