@@ -23,8 +23,16 @@ A `google_dataproc_batches` is used to test a Google Batch resource
 
 ## Examples
 ```
-    describe google_dataproc_batches(parent: ' value_parent') do
+  describe google_dataproc_batches(parent: 'projects/*/locations/*') do
     it { should exist }
+    its('names') { should include 'value_name' }
+    its('uuids') { should include 'value_uuid' }
+    its('create_times') { should include 'value_createtime' }
+    its('states') { should include 'value_state' }
+    its('state_messages') { should include 'value_statemessage' }
+    its('state_times') { should include 'value_statetime' }
+    its('creators') { should include 'value_creator' }
+    its('operations') { should include 'value_operation' }
   end
 ```
 

@@ -106,6 +106,6 @@ class DataprocBatchs < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+parent}}/batches'
+    '{{parent}}/batches'
   end
 end

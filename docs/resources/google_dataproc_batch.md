@@ -23,7 +23,7 @@ A `google_dataproc_batch` is used to test a Google Batch resource
 
 ## Examples
 ```
-describe google_dataproc_batch(name: ' value_name') do
+describe google_dataproc_batch(name: 'projects/*/locations/*/batches/value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
 	its('uuid') { should cmp 'value_uuid' }
@@ -33,7 +33,6 @@ describe google_dataproc_batch(name: ' value_name') do
 	its('state_time') { should cmp 'value_statetime' }
 	its('creator') { should cmp 'value_creator' }
 	its('operation') { should cmp 'value_operation' }
-
 end
 
 describe google_dataproc_batch(name: "does_not_exit") do
@@ -98,7 +97,7 @@ Properties that can be accessed from the `google_dataproc_batch` resource:
 
     * `query_variables`: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `jar_file_uris`: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
 
@@ -106,7 +105,7 @@ Properties that can be accessed from the `google_dataproc_batch` resource:
 
     * `endpoints`: Output only. Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `output_uri`: Output only. A URI pointing to the location of the stdout and stderr of the workload.
 
@@ -156,7 +155,7 @@ Properties that can be accessed from the `google_dataproc_batch` resource:
 
   * `labels`: Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
 
-    * `additional_properties`: 
+    * `additional_properties`:
 
   * `runtime_config`: Runtime configuration for a workload.
 
@@ -166,7 +165,7 @@ Properties that can be accessed from the `google_dataproc_batch` resource:
 
     * `properties`: Optional. A mapping of property names to values, which are used to configure workload execution.
 
-      * `additional_properties`: 
+      * `additional_properties`:
 
     * `repository_config`: Configuration for dependency repositories
 

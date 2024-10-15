@@ -91,7 +91,7 @@ class DataprocBatch < GcpResourceBase
   end
 
   def to_s
-    "Batch #{@params[:]}"
+    "Batch #{@params[:name]}"
   end
 
   private
@@ -101,6 +101,6 @@ class DataprocBatch < GcpResourceBase
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
