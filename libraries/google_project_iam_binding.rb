@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'gcp_backend'
 
@@ -12,23 +12,24 @@ module Inspec::Resources
         it { should exist }
       end
     "
+    attr_reader :params
 
-    def initialize(opts = {})
+    def initialize(params = {})
       # Call the parent class constructor
-      super(opts)
-      @project = opts[:project]
-      @role = opts[:role]
+      super(params.merge({ use_http_transport: true }))
+      @project = params[:project]
+      @params = params
+      @role = params[:role]
       @iam_binding_exists = false
       @members_list=[]
-      catch_gcp_errors do
-        # NOTE: this is the same call as for the plural iam_bindings resource because there isn't an easy way to pull out a singular binding
-        @iam_bindings = @gcp.gcp_project_client.get_project_iam_policy(@project)
-        raise Inspec::Exceptions::ResourceFailed, "google_project_iam_binding is missing expected IAM policy 'bindings' property" if !@iam_bindings || !@iam_bindings.bindings
-        @iam_bindings.bindings.each do |binding|
-          next if binding.role != @role
-          @iam_binding_exists=true
-          @members_list=binding.members
-        end
+      # NOTE: this is the same call as for the plural iam_bindings resource because there isn't an easy way to pull out a singular binding
+      @fetched = @connection.fetch(product_url, resource_base_url, params, 'Post')
+      @bindings = GoogleInSpec::Iam::Property::IamPolicyBindingsArray.parse(@fetched['bindings'], to_s)
+      raise Inspec::Exceptions::ResourceFailed, "google_project_iam_binding is missing expected IAM policy 'bindings' property" if !@bindings
+      @bindings.each do |binding|
+        next if binding.role != @role.to_s
+        @iam_binding_exists=true
+        @members_list=binding.members
       end
     end
 
@@ -43,6 +44,16 @@ module Inspec::Resources
 
     def to_s
       "Project IAM Binding #{@role}"
+    end
+
+    private
+
+    def product_url
+      'https://cloudresourcemanager.googleapis.com/v1/'
+    end
+
+    def resource_base_url
+      'projects/{{project}}:getIamPolicy'
     end
   end
 end
