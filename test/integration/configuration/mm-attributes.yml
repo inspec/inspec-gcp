@@ -751,3 +751,10 @@ cloud_run_jobs:
   location: "us-central1"
   deletion_protection: "false"
   image: "us-central1-docker.pkg.dev/ppradhan/nas/balasubs_tutorial1_20230915_182543:latest"
+
+dataproc_serverless_batches:
+  name: "inspec-test-batch-0052"
+  location: "us-central1"
+  main_class: "org.apache.spark.examples.SparkPi"
+  args: "10"
+  path: "file:///usr/lib/spark/examples/jars/spark-examples.jar"
