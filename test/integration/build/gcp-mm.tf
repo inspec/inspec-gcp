@@ -272,6 +272,9 @@ variable "cloud_run_jobs" {
 variable "dataproc_serverless_batches" {
   type = any
 }
+variable "monitoring_group" {
+  type = any
+}
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -2271,4 +2274,9 @@ resource "google_dataproc_batch" "inspec_batch_spark" {
       args          = [var.dataproc_serverless_batches.args]
       jar_file_uris = [var.dataproc_serverless_batches.path]
     }
+}
+resource "google_monitoring_group" "inspec-test-group" {
+  project = var.gcp_project_id
+  display_name = var.monitoring_group.name
+  filter = var.monitoring_group.filter
 }
