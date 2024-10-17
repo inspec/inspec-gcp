@@ -269,6 +269,9 @@ variable "data_fusion_instance" {
 variable "cloud_run_jobs" {
   type = any
 }
+variable "monitoring_group" {
+  type = any
+}
 resource "google_compute_ssl_policy" "custom-ssl-policy" {
   name            = var.ssl_policy["name"]
   min_tls_version = var.ssl_policy["min_tls_version"]
@@ -2244,4 +2247,9 @@ resource "google_cloud_run_v2_job" "default" {
       }
     }
   }
+}
+resource "google_monitoring_group" "inspec-test-group" {
+  project = var.gcp_project_id
+  display_name = var.monitoring_group.name
+  filter = var.monitoring_group.filter
 }

@@ -751,3 +751,7 @@ cloud_run_jobs:
   location: "us-central1"
   deletion_protection: "false"
   image: "us-central1-docker.pkg.dev/ppradhan/nas/balasubs_tutorial1_20230915_182543:latest"
+
+monitoring_group:
+  name: "inspec-test-group"
+  filter: "resource.metadata.name = has_substring(\"inspec\")"
