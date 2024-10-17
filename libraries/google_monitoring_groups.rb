@@ -14,9 +14,9 @@
 #
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
-class MonitoringProjectGroups < GcpResourceBase
-  name 'google_monitoring_project_groups'
-  desc 'ProjectGroup plural resource'
+class MonitoringGroups < GcpResourceBase
+  name 'google_monitoring_groups'
+  desc 'Group plural resource'
   supports platform: 'gcp'
 
   attr_reader :table
@@ -34,7 +34,7 @@ class MonitoringProjectGroups < GcpResourceBase
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('projectGroups')
+    @table = fetch_wrapped_resource('group')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -78,10 +78,10 @@ class MonitoringProjectGroups < GcpResourceBase
   private
 
   def product_url(_ = nil)
-    'https://monitoring.googleapis.com/'
+    'https://monitoring.googleapis.com/v3/'
   end
 
   def resource_base_url
-    '{{+name}}/groups'
+    '{{name}}/groups'
   end
 end

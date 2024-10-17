@@ -12,21 +12,30 @@
 #
 # ----------------------------------------------------------------------------
 
-title 'Test GCP google_monitoring_project_groups resource.'
+title 'Test GCP google_monitoring_group resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  project_group = input('project_group', value: {
+  group = input('group', value: {
   "name": "value_name",
   "display_name": "value_displayname",
   "parent_name": "value_parentname",
   "filter": "value_filter"
-}, description: 'project_group description')
-control 'google_monitoring_project_groups-1.0' do
+}, description: 'group description')
+control 'google_monitoring_group-1.0' do
   impact 1.0
-  title 'google_monitoring_project_groups resource test'
+  title 'google_monitoring_group resource test'
 
-      describe google_monitoring_project_groups(name: project_group['name']) do
-      it { should exist }
-    end
+  describe google_monitoring_group(name: group['name']) do
+  	it { should exist }
+  	its('name') { should cmp group['name'] }
+  	its('display_name') { should cmp group['display_name'] }
+  	its('parent_name') { should cmp group['parent_name'] }
+  	its('filter') { should cmp group['filter'] }
+
+  end
+
+  describe google_monitoring_group(name: "does_not_exit") do
+  	it { should_not exist }
+  end
 end

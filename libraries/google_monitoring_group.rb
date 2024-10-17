@@ -16,9 +16,9 @@
 require 'gcp_backend'
 
 # A provider to manage Cloud (Stackdriver) Monitoring resources.
-class MonitoringProjectGroup < GcpResourceBase
-  name 'google_monitoring_project_group'
-  desc 'ProjectGroup'
+class MonitoringGroup < GcpResourceBase
+  name 'google_monitoring_group'
+  desc 'Group'
   supports platform: 'gcp'
 
   attr_reader :params
@@ -48,16 +48,16 @@ class MonitoringProjectGroup < GcpResourceBase
   end
 
   def to_s
-    "ProjectGroup #{@params[:]}"
+    "Group #{@params[:name]}"
   end
 
   private
 
   def product_url(_ = nil)
-    'https://monitoring.googleapis.com/'
+    'https://monitoring.googleapis.com/v3/'
   end
 
   def resource_base_url
-    '{{+name}}'
+    '{{name}}'
   end
 end
