@@ -23,7 +23,7 @@ A `google_monitoring_groups` is used to test a Google Group resource
 
 ## Examples
 ```
-  describe google_monitoring_groups(name: 'value_name') do
+  describe google_monitoring_groups(name: 'projects/*') do
     it { should exist }
     its('names') { should include 'value_name' }
     its('display_names') { should include 'value_displayname' }

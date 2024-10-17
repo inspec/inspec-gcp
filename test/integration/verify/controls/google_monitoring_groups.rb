@@ -16,17 +16,20 @@ title 'Test GCP google_monitoring_groups resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
 
-  group = input('group', value: {
-  "name": "value_name",
-  "display_name": "value_displayname",
-  "parent_name": "value_parentname",
-  "filter": "value_filter"
+group = input('group', value: {
+  "name": "projects/ppradhan/groups/1973775459523949291",
+  "display_name": "inspec-test-group",
+  "parent_name": "projects/ppradhan",
+  "filter": "resource.metadata.name = has_substring(\"inspec\")"
 }, description: 'group description')
 control 'google_monitoring_groups-1.0' do
   impact 1.0
   title 'google_monitoring_groups resource test'
 
-      describe google_monitoring_groups(name: group['name']) do
+    describe google_monitoring_groups(name: group['name']) do
       it { should exist }
+      its('names') { should include group['name'] }
+      its('display_names') { should include group['display_name'] }
+      its('filters') { should include group['filter'] }
     end
 end
