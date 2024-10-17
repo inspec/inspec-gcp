@@ -752,6 +752,13 @@ cloud_run_jobs:
   deletion_protection: "false"
   image: "us-central1-docker.pkg.dev/ppradhan/nas/balasubs_tutorial1_20230915_182543:latest"
 
+dataproc_serverless_batches:
+  name: "inspec-test-batch-0052"
+  location: "us-central1"
+  main_class: "org.apache.spark.examples.SparkPi"
+  args: "10"
+  path: "file:///usr/lib/spark/examples/jars/spark-examples.jar"
+
 monitoring_group:
   name: "inspec-test-group"
   filter: "resource.metadata.name = has_substring(\"inspec\")"

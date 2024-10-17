@@ -269,6 +269,9 @@ variable "data_fusion_instance" {
 variable "cloud_run_jobs" {
   type = any
 }
+variable "dataproc_serverless_batches" {
+  type = any
+}
 variable "monitoring_group" {
   type = any
 }
@@ -2247,6 +2250,30 @@ resource "google_cloud_run_v2_job" "default" {
       }
     }
   }
+}
+resource "google_dataproc_batch" "inspec_batch_spark" {
+
+    batch_id      = var.dataproc_serverless_batches.name
+    location      = var.dataproc_serverless_batches.location
+    labels        = {"app": "inspec"}
+    project = var.gcp_project_id
+    runtime_config {
+      properties    = { "spark.dynamicAllocation.enabled": "false", "spark.executor.instances": "2" }
+    }
+
+    environment_config {
+      execution_config {
+        subnetwork_uri = "default"
+        ttl            = "3600s"
+        network_tags   = ["tag1"]
+      }
+    }
+
+    spark_batch {
+      main_class    = var.dataproc_serverless_batches.main_class
+      args          = [var.dataproc_serverless_batches.args]
+      jar_file_uris = [var.dataproc_serverless_batches.path]
+    }
 }
 resource "google_monitoring_group" "inspec-test-group" {
   project = var.gcp_project_id
