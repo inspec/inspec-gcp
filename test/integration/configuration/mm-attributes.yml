@@ -758,3 +758,7 @@ dataproc_serverless_batches:
   main_class: "org.apache.spark.examples.SparkPi"
   args: "10"
   path: "file:///usr/lib/spark/examples/jars/spark-examples.jar"
+
+monitoring_group:
+  name: "inspec-test-group"
+  filter: "resource.metadata.name = has_substring(\"inspec\")"
