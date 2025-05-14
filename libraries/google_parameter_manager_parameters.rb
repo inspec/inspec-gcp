@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'gcp_backend'
 require 'google/parametermanager/property/policy_member'
 
