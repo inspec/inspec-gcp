@@ -52,6 +52,12 @@ end
       its('initial_node_count'){should eq 3}
     end
 
+### Test GCP container node pool boot disk kms key is as expected
+
+    describe google_container_node_pool(project: 'chef-inspec-gcp', locations: 'europe-west2-a', cluster_name: 'inspec-gcp-kube-cluster', nodepool_name: 'inspec-gcp-kube-node-pool') do
+      its('config.boot_disk_kms_key'){should eq "projects/1234567890/locations/europe-west2-a/keyRings/inspec-gcp-kube-cluster-keyring/cryptoKeys/inspec-gcp-kube-cluster-key"}
+    end
+
 ## Properties
 Properties that can be accessed from the `google_container_node_pool` resource:
 
@@ -110,6 +116,8 @@ Properties that can be accessed from the `google_container_node_pool` resource:
       Possible values:
         * GCE_METADATA
         * GKE_METADATA
+
+    * `boot_disk_kms_key`: The Cloud KMS key to use for the boot disk attached to each node in the node pool.
 
   * `initial_node_count`: The initial node count for the pool. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota.
 
