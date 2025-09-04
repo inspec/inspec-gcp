@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_disk_types resource
-platform: gcp
----
++++
+title = "google_compute_region_disk_types resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_disk_types"
+identifier = "inspec/resources/gcp/google_compute_region_disk_types Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_disk_types` is used to test a Google RegionDiskType resource

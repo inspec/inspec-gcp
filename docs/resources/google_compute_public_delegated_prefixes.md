@@ -1,7 +1,14 @@
----
-title: About the google_compute_public_delegated_prefixes resource
-platform: gcp
----
++++
+title = "google_compute_public_delegated_prefixes resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_public_delegated_prefixes"
+identifier = "inspec/resources/gcp/google_compute_public_delegated_prefixes Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_public_delegated_prefixes` is used to test a Google PublicDelegatedPrefix resource

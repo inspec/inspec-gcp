@@ -1,7 +1,14 @@
----
-title: About the google_apigee_organization resource
-platform: gcp
----
++++
+title = "google_apigee_organization resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_apigee_organization"
+identifier = "inspec/resources/gcp/google_apigee_organization Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_apigee_organization` is used to test a Google Organization resource

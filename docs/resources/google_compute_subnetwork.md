@@ -1,7 +1,14 @@
----
-title: About the google_compute_subnetwork resource
-platform: gcp
----
++++
+title = "google_compute_subnetwork resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_subnetwork"
+identifier = "inspec/resources/gcp/google_compute_subnetwork Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_subnetwork` is used to test a Google Subnetwork resource

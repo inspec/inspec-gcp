@@ -1,7 +1,14 @@
----
-title: About the google_storage_bucket_objects resource
-platform: gcp
----
++++
+title = "google_storage_bucket_objects resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_storage_bucket_objects"
+identifier = "inspec/resources/gcp/google_storage_bucket_objects Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_storage_bucket_objects` is used to test a Google BucketObject resource

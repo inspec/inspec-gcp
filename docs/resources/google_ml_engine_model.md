@@ -1,7 +1,14 @@
----
-title: About the google_ml_engine_model resource
-platform: gcp
----
++++
+title = "google_ml_engine_model resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_ml_engine_model"
+identifier = "inspec/resources/gcp/google_ml_engine_model Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_ml_engine_model` is used to test a Google Model resource

@@ -1,7 +1,14 @@
----
-title: About the google_container_regional_cluster resource
-platform: gcp
----
++++
+title = "google_container_regional_cluster resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_container_regional_cluster"
+identifier = "inspec/resources/gcp/google_container_regional_cluster Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_container_regional_cluster` is used to test a Google RegionalCluster resource

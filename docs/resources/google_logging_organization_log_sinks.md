@@ -1,7 +1,14 @@
----
-title: About the google_logging_organization_log_sinks resource
-platform: gcp
----
++++
+title = "google_logging_organization_log_sinks resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_logging_organization_log_sinks"
+identifier = "inspec/resources/gcp/google_logging_organization_log_sinks Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_logging_organization_log_sinks` is used to test a Google OrganizationLogSink resource

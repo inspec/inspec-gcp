@@ -1,7 +1,14 @@
----
-title: About the google_dlp_stored_info_type resource
-platform: gcp
----
++++
+title = "google_dlp_stored_info_type resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dlp_stored_info_type"
+identifier = "inspec/resources/gcp/google_dlp_stored_info_type Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dlp_stored_info_type` is used to test a Google StoredInfoType resource

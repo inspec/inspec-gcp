@@ -1,7 +1,14 @@
----
-title: About the google_dns_resource_record_set resource
-platform: gcp
----
++++
+title = "google_dns_resource_record_set resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dns_resource_record_set"
+identifier = "inspec/resources/gcp/google_dns_resource_record_set Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dns_resource_record_set` is used to test a Google ResourceRecordSet resource

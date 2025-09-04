@@ -1,7 +1,14 @@
----
-title: About the google_orgpolicy_organization_policies resource
-platform: gcp
----
++++
+title = "google_orgpolicy_organization_policies resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_orgpolicy_organization_policies"
+identifier = "inspec/resources/gcp/google_orgpolicy_organization_policies Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_orgpolicy_organization_policies` is used to test a Google OrganizationPolicy resource

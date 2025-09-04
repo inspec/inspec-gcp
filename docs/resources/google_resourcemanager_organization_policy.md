@@ -1,7 +1,14 @@
----
-title: About the google_resourcemanager_organization_policy resource
-platform: gcp
----
++++
+title = "google_resourcemanager_organization_policy resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_resourcemanager_organization_policy"
+identifier = "inspec/resources/gcp/google_resourcemanager_organization_policy Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_resourcemanager_organization_policy` is used to test organization policy constraints. More information can be found here [Organization Policy Constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)

@@ -1,7 +1,14 @@
----
-title: About the google_storage_bucket_acl resource
-platform: gcp
----
++++
+title = "google_storage_bucket_acl resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_storage_bucket_acl"
+identifier = "inspec/resources/gcp/google_storage_bucket_acl Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_storage_bucket_acl` is used to test a Google BucketACL resource

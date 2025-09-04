@@ -1,7 +1,14 @@
----
-title: About the google_bigquery_datasets resource
-platform: gcp
----
++++
+title = "google_bigquery_datasets resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_bigquery_datasets"
+identifier = "inspec/resources/gcp/google_bigquery_datasets Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_bigquery_datasets` is used to test a Google Dataset resource

@@ -1,7 +1,14 @@
----
-title: About the google_spanner_instance_iam_binding resource
-platform: gcp
----
++++
+title = "google_spanner_instance_iam_binding resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_spanner_instance_iam_binding"
+identifier = "inspec/resources/gcp/google_spanner_instance_iam_binding Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_spanner_instance_iam_binding` is used to test a Google Instance Iam Bindings

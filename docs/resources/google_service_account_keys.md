@@ -1,7 +1,14 @@
----
-title: About the google_service_account_keys resource
-platform: gcp
----
++++
+title = "google_service_account_keys resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_service_account_keys"
+identifier = "inspec/resources/gcp/google_service_account_keys Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_service_account_keys` is used to test a Google ServiceAccountKey resource

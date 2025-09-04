@@ -1,7 +1,14 @@
----
-title: About the google_project_metrics resource
-platform: gcp
----
++++
+title = "google_project_metrics resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_project_metrics"
+identifier = "inspec/resources/gcp/google_project_metrics Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_project_metrics` is used to test a Google Metric resource

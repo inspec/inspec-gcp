@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_batch_prediction_jobs resource
-platform: gcp
----
++++
+title = "google_vertex_ai_batch_prediction_jobs resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_batch_prediction_jobs"
+identifier = "inspec/resources/gcp/google_vertex_ai_batch_prediction_jobs Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_batch_prediction_jobs` is used to test a Google BatchPredictionJob resource

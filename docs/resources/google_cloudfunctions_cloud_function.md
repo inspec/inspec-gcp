@@ -1,7 +1,14 @@
----
-title: About the google_cloudfunctions_cloud_function resource
-platform: gcp
----
++++
+title = "google_cloudfunctions_cloud_function resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_cloudfunctions_cloud_function"
+identifier = "inspec/resources/gcp/google_cloudfunctions_cloud_function Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_cloudfunctions_cloud_function` is used to test a Google CloudFunction resource

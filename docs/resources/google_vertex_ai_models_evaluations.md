@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_models_evaluations resource
-platform: gcp
----
++++
+title = "google_vertex_ai_models_evaluations resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_models_evaluations"
+identifier = "inspec/resources/gcp/google_vertex_ai_models_evaluations Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_models_evaluations` is used to test a Google ModelsEvaluation resource

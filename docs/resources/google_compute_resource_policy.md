@@ -1,7 +1,14 @@
----
-title: About the google_compute_resource_policy resource
-platform: gcp
----
++++
+title = "google_compute_resource_policy resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_resource_policy"
+identifier = "inspec/resources/gcp/google_compute_resource_policy Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_resource_policy` is used to test a Google ResourcePolicy resource

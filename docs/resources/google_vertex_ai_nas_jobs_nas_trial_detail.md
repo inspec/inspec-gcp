@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_nas_jobs_nas_trial_detail resource
-platform: gcp
----
++++
+title = "google_vertex_ai_nas_jobs_nas_trial_detail resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_nas_jobs_nas_trial_detail"
+identifier = "inspec/resources/gcp/google_vertex_ai_nas_jobs_nas_trial_detail Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_nas_jobs_nas_trial_detail` is used to test a Google NasJobsNasTrialDetail resource

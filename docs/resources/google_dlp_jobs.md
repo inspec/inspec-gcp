@@ -1,7 +1,14 @@
----
-title: About the google_dlp_jobs resource
-platform: gcp
----
++++
+title = "google_dlp_jobs resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dlp_jobs"
+identifier = "inspec/resources/gcp/google_dlp_jobs Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dlp_jobs` is used to test a Google Job resource

@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_metadata_stores_metadata_schema resource
-platform: gcp
----
++++
+title = "google_vertex_ai_metadata_stores_metadata_schema resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_metadata_stores_metadata_schema"
+identifier = "inspec/resources/gcp/google_vertex_ai_metadata_stores_metadata_schema Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_metadata_stores_metadata_schema` is used to test a Google MetadataStoresMetadataSchema resource

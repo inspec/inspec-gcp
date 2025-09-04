@@ -1,7 +1,14 @@
----
-title: About the google_dataproc_workflow_template resource
-platform: gcp
----
++++
+title = "google_dataproc_workflow_template resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dataproc_workflow_template"
+identifier = "inspec/resources/gcp/google_dataproc_workflow_template Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dataproc_workflow_template` is used to test a Google WorkflowTemplate resource

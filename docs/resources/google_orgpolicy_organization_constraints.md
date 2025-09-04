@@ -1,7 +1,14 @@
----
-title: About the google_orgpolicy_organization_constraints resource
-platform: gcp
----
++++
+title = "google_orgpolicy_organization_constraints resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_orgpolicy_organization_constraints"
+identifier = "inspec/resources/gcp/google_orgpolicy_organization_constraints Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_orgpolicy_organization_constraints` is used to test a Google OrganizationConstraint resource

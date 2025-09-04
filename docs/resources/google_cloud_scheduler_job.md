@@ -1,7 +1,14 @@
----
-title: About the google_cloud_scheduler_job resource
-platform: gcp
----
++++
+title = "google_cloud_scheduler_job resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_cloud_scheduler_job"
+identifier = "inspec/resources/gcp/google_cloud_scheduler_job Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_cloud_scheduler_job` is used to test a Google Job resource

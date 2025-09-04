@@ -1,7 +1,14 @@
----
-title: About the google_sql_database_instances resource
-platform: gcp
----
++++
+title = "google_sql_database_instances resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_database_instances"
+identifier = "inspec/resources/gcp/google_sql_database_instances Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_database_instances` is used to test a Google DatabaseInstance resource

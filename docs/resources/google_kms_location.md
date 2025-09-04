@@ -1,7 +1,14 @@
----
-title: About the google_kms_location resource
-platform: gcp
----
++++
+title = "google_kms_location resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_kms_location"
+identifier = "inspec/resources/gcp/google_kms_location Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_kms_location` is used to test a Google Location resource

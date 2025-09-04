@@ -1,7 +1,14 @@
----
-title: About the google_sql_flags resource
-platform: gcp
----
++++
+title = "google_sql_flags resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_flags"
+identifier = "inspec/resources/gcp/google_sql_flags Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_flags` is used to test a Google Flag resource

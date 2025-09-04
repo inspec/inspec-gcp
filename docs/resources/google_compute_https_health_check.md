@@ -1,7 +1,14 @@
----
-title: About the google_compute_https_health_check resource
-platform: gcp
----
++++
+title = "google_compute_https_health_check resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_https_health_check"
+identifier = "inspec/resources/gcp/google_compute_https_health_check Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_https_health_check` is used to test a Google HttpsHealthCheck resource

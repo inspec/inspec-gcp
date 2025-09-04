@@ -1,7 +1,14 @@
----
-title: About the google_organization resource
-platform: gcp
----
++++
+title = "google_organization resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_organization"
+identifier = "inspec/resources/gcp/google_organization Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_organization` is used to test a Google Organization resource

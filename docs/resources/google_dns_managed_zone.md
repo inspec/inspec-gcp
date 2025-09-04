@@ -1,7 +1,14 @@
----
-title: About the google_dns_managed_zone resource
-platform: gcp
----
++++
+title = "google_dns_managed_zone resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dns_managed_zone"
+identifier = "inspec/resources/gcp/google_dns_managed_zone Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dns_managed_zone` is used to test a Google ManagedZone resource

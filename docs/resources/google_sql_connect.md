@@ -1,7 +1,14 @@
----
-title: About the google_sql_connect resource
-platform: gcp
----
++++
+title = "google_sql_connect resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_connect"
+identifier = "inspec/resources/gcp/google_sql_connect Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_connect` is used to test a Google Connect resource

@@ -1,7 +1,14 @@
----
-title: About the google_runtime_config_config resource
-platform: gcp
----
++++
+title = "google_runtime_config_config resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_runtime_config_config"
+identifier = "inspec/resources/gcp/google_runtime_config_config Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_runtime_config_config` is used to test a Google Config resource

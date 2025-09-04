@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_instance_groups resource
-platform: gcp
----
++++
+title = "google_compute_region_instance_groups resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_instance_groups"
+identifier = "inspec/resources/gcp/google_compute_region_instance_groups Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_instance_groups` is used to test a Google RegionInstanceGroup resource

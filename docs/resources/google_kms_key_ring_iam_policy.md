@@ -1,7 +1,14 @@
----
-title: About the google_kms_key_ring_iam_policy resource
-platform: gcp
----
++++
+title = "google_kms_key_ring_iam_policy resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_kms_key_ring_iam_policy"
+identifier = "inspec/resources/gcp/google_kms_key_ring_iam_policy Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_kms_key_ring_iam_policy` is used to test a Google KeyRing Iam Policy resource

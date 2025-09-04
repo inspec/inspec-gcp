@@ -1,7 +1,14 @@
----
-title: About the google_cloudbuild_triggers resource
-platform: gcp
----
++++
+title = "google_cloudbuild_triggers resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_cloudbuild_triggers"
+identifier = "inspec/resources/gcp/google_cloudbuild_triggers Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_cloudbuild_triggers` is used to test a Google Trigger resource

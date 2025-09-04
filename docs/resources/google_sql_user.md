@@ -1,7 +1,14 @@
----
-title: About the google_sql_user resource
-platform: gcp
----
++++
+title = "google_sql_user resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_user"
+identifier = "inspec/resources/gcp/google_sql_user Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_user` is used to test a Google User resource

@@ -1,7 +1,14 @@
----
-title: About the google_sql_databases resource
-platform: gcp
----
++++
+title = "google_sql_databases resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_databases"
+identifier = "inspec/resources/gcp/google_sql_databases Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_databases` is used to test a Google Database resource

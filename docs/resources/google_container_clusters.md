@@ -1,7 +1,14 @@
----
-title: About the google_container_clusters resource
-platform: gcp
----
++++
+title = "google_container_clusters resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_container_clusters"
+identifier = "inspec/resources/gcp/google_container_clusters Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_container_clusters` is used to test a Google Cluster resource

@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_metadata_stores_execution resource
-platform: gcp
----
++++
+title = "google_vertex_ai_metadata_stores_execution resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_metadata_stores_execution"
+identifier = "inspec/resources/gcp/google_vertex_ai_metadata_stores_execution Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_metadata_stores_execution` is used to test a Google MetadataStoresExecution resource

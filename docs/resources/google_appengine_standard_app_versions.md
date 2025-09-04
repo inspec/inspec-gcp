@@ -1,7 +1,14 @@
----
-title: About the google_appengine_standard_app_versions resource
-platform: gcp
----
++++
+title = "google_appengine_standard_app_versions resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_appengine_standard_app_versions"
+identifier = "inspec/resources/gcp/google_appengine_standard_app_versions Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_appengine_standard_app_versions` is used to test a Google StandardAppVersion resource

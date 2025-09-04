@@ -1,7 +1,14 @@
----
-title: About the google_compute_licenses resource
-platform: gcp
----
++++
+title = "google_compute_licenses resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_licenses"
+identifier = "inspec/resources/gcp/google_compute_licenses Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_licenses` is used to test a Google License resource

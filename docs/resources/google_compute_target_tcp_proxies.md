@@ -1,7 +1,14 @@
----
-title: About the google_compute_target_tcp_proxies resource
-platform: gcp
----
++++
+title = "google_compute_target_tcp_proxies resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_target_tcp_proxies"
+identifier = "inspec/resources/gcp/google_compute_target_tcp_proxies Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_target_tcp_proxies` is used to test a Google TargetTcpProxy resource

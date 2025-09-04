@@ -1,7 +1,14 @@
----
-title: About the google_billing_project_billing_info resource
-platform: gcp
----
++++
+title = "google_billing_project_billing_info resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_billing_project_billing_info"
+identifier = "inspec/resources/gcp/google_billing_project_billing_info Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_billing_project_billing_info` is used to test a Google ProjectBillingInfo resource

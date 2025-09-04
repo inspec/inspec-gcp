@@ -1,7 +1,14 @@
----
-title: About the google_dataflow_project_location_jobs resource
-platform: gcp
----
++++
+title = "google_dataflow_project_location_jobs resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dataflow_project_location_jobs"
+identifier = "inspec/resources/gcp/google_dataflow_project_location_jobs Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dataflow_project_location_jobs` is used to test a Google ProjectLocationJob resource

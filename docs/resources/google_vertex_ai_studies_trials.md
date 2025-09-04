@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_studies_trials resource
-platform: gcp
----
++++
+title = "google_vertex_ai_studies_trials resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_studies_trials"
+identifier = "inspec/resources/gcp/google_vertex_ai_studies_trials Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_studies_trials` is used to test a Google StudiesTrial resource

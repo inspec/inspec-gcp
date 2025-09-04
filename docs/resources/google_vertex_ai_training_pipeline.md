@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_training_pipeline resource
-platform: gcp
----
++++
+title = "google_vertex_ai_training_pipeline resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_training_pipeline"
+identifier = "inspec/resources/gcp/google_vertex_ai_training_pipeline Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_training_pipeline` is used to test a Google TrainingPipeline resource

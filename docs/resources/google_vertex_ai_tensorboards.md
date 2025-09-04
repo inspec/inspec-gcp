@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_tensorboards resource
-platform: gcp
----
++++
+title = "google_vertex_ai_tensorboards resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_tensorboards"
+identifier = "inspec/resources/gcp/google_vertex_ai_tensorboards Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_tensorboards` is used to test a Google Tensorboard resource

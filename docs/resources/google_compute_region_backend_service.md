@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_backend_service resource
-platform: gcp
----
++++
+title = "google_compute_region_backend_service resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_backend_service"
+identifier = "inspec/resources/gcp/google_compute_region_backend_service Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_backend_service` is used to test a Google RegionBackendService resource

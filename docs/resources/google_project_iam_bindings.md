@@ -1,7 +1,14 @@
----
-title: About the google_project_iam_bindings Resource
-platform: gcp
----
++++
+title = "google_project_iam_bindings resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_project_iam_bindings"
+identifier = "inspec/resources/gcp/google_project_iam_bindings Resource"
+parent = "inspec/resources/gcp"
++++
 
 # google\_project\_iam\_bindings
 

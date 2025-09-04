@@ -1,7 +1,14 @@
----
-title: About the google_resourcemanager_folders resource
-platform: gcp
----
++++
+title = "google_resourcemanager_folders resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_resourcemanager_folders"
+identifier = "inspec/resources/gcp/google_resourcemanager_folders Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_resourcemanager_folders` is used to test a Google Folder resource

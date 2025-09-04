@@ -1,7 +1,14 @@
----
-title: About the google_logging_folder_exclusion resource
-platform: gcp
----
++++
+title = "google_logging_folder_exclusion resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_logging_folder_exclusion"
+identifier = "inspec/resources/gcp/google_logging_folder_exclusion Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_logging_folder_exclusion` is used to test a Google FolderExclusion resource

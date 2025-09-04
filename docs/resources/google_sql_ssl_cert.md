@@ -1,7 +1,14 @@
----
-title: About the google_sql_ssl_cert resource
-platform: gcp
----
++++
+title = "google_sql_ssl_cert resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_ssl_cert"
+identifier = "inspec/resources/gcp/google_sql_ssl_cert Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_ssl_cert` is used to test a Google SslCert resource

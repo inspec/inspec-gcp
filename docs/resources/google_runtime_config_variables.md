@@ -1,7 +1,14 @@
----
-title: About the google_runtime_config_variables resource
-platform: gcp
----
++++
+title = "google_runtime_config_variables resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_runtime_config_variables"
+identifier = "inspec/resources/gcp/google_runtime_config_variables Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_runtime_config_variables` is used to test a Google Variable resource

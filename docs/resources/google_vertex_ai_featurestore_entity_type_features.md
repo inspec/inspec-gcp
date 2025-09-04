@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_featurestore_entity_type_features resource
-platform: gcp
----
++++
+title = "google_vertex_ai_featurestore_entity_type_features resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_featurestore_entity_type_features"
+identifier = "inspec/resources/gcp/google_vertex_ai_featurestore_entity_type_features Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_featurestore_entity_type_features` is used to test a Google FeaturestoreEntityTypeFeature resource

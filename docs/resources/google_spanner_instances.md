@@ -1,7 +1,14 @@
----
-title: About the google_spanner_instances resource
-platform: gcp
----
++++
+title = "google_spanner_instances resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_spanner_instances"
+identifier = "inspec/resources/gcp/google_spanner_instances Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_spanner_instances` is used to test a Google Instance resource

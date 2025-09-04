@@ -1,7 +1,14 @@
----
-title: About the google_project_alert_policy_condition Resource
-platform: gcp
----
++++
+title = "google_project_alert_policy_condition resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_project_alert_policy_condition"
+identifier = "inspec/resources/gcp/google_project_alert_policy_condition Resource"
+parent = "inspec/resources/gcp"
++++
 
 # google\_project\_alert\_policy\_condition
 

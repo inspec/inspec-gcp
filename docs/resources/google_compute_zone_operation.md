@@ -1,7 +1,14 @@
----
-title: About the google_compute_zone_operation resource
-platform: gcp
----
++++
+title = "google_compute_zone_operation resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_zone_operation"
+identifier = "inspec/resources/gcp/google_compute_zone_operation Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_zone_operation` is used to test a Google ZoneOperation resource

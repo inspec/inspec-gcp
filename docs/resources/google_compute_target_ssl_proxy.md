@@ -1,7 +1,14 @@
----
-title: About the google_compute_target_ssl_proxy resource
-platform: gcp
----
++++
+title = "google_compute_target_ssl_proxy resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_target_ssl_proxy"
+identifier = "inspec/resources/gcp/google_compute_target_ssl_proxy Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_target_ssl_proxy` is used to test a Google TargetSslProxy resource

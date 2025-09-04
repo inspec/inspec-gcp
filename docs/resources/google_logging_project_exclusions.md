@@ -1,7 +1,14 @@
----
-title: About the google_logging_project_exclusions resource
-platform: gcp
----
++++
+title = "google_logging_project_exclusions resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_logging_project_exclusions"
+identifier = "inspec/resources/gcp/google_logging_project_exclusions Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_logging_project_exclusions` is used to test a Google ProjectExclusion resource

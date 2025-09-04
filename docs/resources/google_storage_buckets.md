@@ -1,7 +1,14 @@
----
-title: About the google_storage_buckets resource
-platform: gcp
----
++++
+title = "google_storage_buckets resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_storage_buckets"
+identifier = "inspec/resources/gcp/google_storage_buckets Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_storage_buckets` is used to test a Google Bucket resource

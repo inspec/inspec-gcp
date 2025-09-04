@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_metadata_stores_artifact resource
-platform: gcp
----
++++
+title = "google_vertex_ai_metadata_stores_artifact resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_metadata_stores_artifact"
+identifier = "inspec/resources/gcp/google_vertex_ai_metadata_stores_artifact Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_metadata_stores_artifact` is used to test a Google MetadataStoresArtifact resource

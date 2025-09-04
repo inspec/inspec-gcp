@@ -1,7 +1,14 @@
----
-title: About the google_compute_routes resource
-platform: gcp
----
++++
+title = "google_compute_routes resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_routes"
+identifier = "inspec/resources/gcp/google_compute_routes Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_routes` is used to test a Google Route resource

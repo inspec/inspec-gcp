@@ -1,7 +1,14 @@
----
-title: About the google_secret_manager_secrets resource
-platform: gcp
----
++++
+title = "google_secret_manager_secrets resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_secret_manager_secrets"
+identifier = "inspec/resources/gcp/google_secret_manager_secrets Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_secret_manager_secrets` is used to test a Google Secret resource

@@ -1,7 +1,14 @@
----
-title: About the google_apigee_organization_envgroups resource
-platform: gcp
----
++++
+title = "google_apigee_organization_envgroups resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_apigee_organization_envgroups"
+identifier = "inspec/resources/gcp/google_apigee_organization_envgroups Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 

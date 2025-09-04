@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_tensorboard_experiment_run_time_series_resources resource
-platform: gcp
----
++++
+title = "google_vertex_ai_tensorboard_experiment_run_time_series_resources resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_tensorboard_experiment_run_time_series_resources"
+identifier = "inspec/resources/gcp/google_vertex_ai_tensorboard_experiment_run_time_series_resources Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_tensorboard_experiment_run_time_series_resources` is used to test a Google TensorboardExperimentRunTimeSeriesResource resource

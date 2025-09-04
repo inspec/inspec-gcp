@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_autoscalers resource
-platform: gcp
----
++++
+title = "google_compute_region_autoscalers resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_autoscalers"
+identifier = "inspec/resources/gcp/google_compute_region_autoscalers Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_autoscalers` is used to test a Google RegionAutoscaler resource

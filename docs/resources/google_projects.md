@@ -1,7 +1,14 @@
----
-title: About the google_projects resource
-platform: gcp
----
++++
+title = "google_projects resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_projects"
+identifier = "inspec/resources/gcp/google_projects Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_projects` is used to test a Google Project resource

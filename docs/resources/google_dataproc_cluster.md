@@ -1,7 +1,14 @@
----
-title: About the google_dataproc_cluster resource
-platform: gcp
----
++++
+title = "google_dataproc_cluster resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dataproc_cluster"
+identifier = "inspec/resources/gcp/google_dataproc_cluster Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dataproc_cluster` is used to test a Google Cluster resource

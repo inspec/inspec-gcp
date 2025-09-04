@@ -1,7 +1,14 @@
----
-title: About the google_compute_target_instances resource
-platform: gcp
----
++++
+title = "google_compute_target_instances resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_target_instances"
+identifier = "inspec/resources/gcp/google_compute_target_instances Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_target_instances` is used to test a Google TargetInstance resource

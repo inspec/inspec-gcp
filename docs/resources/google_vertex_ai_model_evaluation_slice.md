@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_model_evaluation_slice resource
-platform: gcp
----
++++
+title = "google_vertex_ai_model_evaluation_slice resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_model_evaluation_slice"
+identifier = "inspec/resources/gcp/google_vertex_ai_model_evaluation_slice Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_model_evaluation_slice` is used to test a Google ModelEvaluationSlice resource

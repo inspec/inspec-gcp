@@ -1,7 +1,14 @@
----
-title: About the google_kms_crypto_key_iam_bindings Resource
-platform: gcp
----
++++
+title = "google_kms_crypto_key_iam_bindings resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_kms_crypto_key_iam_bindings"
+identifier = "inspec/resources/gcp/google_kms_crypto_key_iam_bindings Resource"
+parent = "inspec/resources/gcp"
++++
 
 # google\_kms\_crypto\_key\_iam\_bindings
 

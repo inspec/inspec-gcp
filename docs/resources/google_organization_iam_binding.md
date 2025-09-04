@@ -1,7 +1,14 @@
----
-title: About the google_organization_iam_binding resource
-platform: gcp
----
++++
+title = "google_organization_iam_binding resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_organization_iam_binding"
+identifier = "inspec/resources/gcp/google_organization_iam_binding Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_organization_iam_binding` is used to test a Google Organization Iam Bindings

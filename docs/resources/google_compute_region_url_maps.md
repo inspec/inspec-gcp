@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_url_maps resource
-platform: gcp
----
++++
+title = "google_compute_region_url_maps resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_url_maps"
+identifier = "inspec/resources/gcp/google_compute_region_url_maps Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_url_maps` is used to test a Google RegionUrlMap resource

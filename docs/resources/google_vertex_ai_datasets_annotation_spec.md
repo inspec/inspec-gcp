@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_datasets_annotation_spec resource
-platform: gcp
----
++++
+title = "google_vertex_ai_datasets_annotation_spec resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_datasets_annotation_spec"
+identifier = "inspec/resources/gcp/google_vertex_ai_datasets_annotation_spec Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_datasets_annotation_spec` is used to test a Google DatasetsAnnotationSpec resource

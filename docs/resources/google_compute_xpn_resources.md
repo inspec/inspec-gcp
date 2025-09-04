@@ -1,7 +1,14 @@
----
-title: About the google_compute_xpn_resources resource
-platform: gcp
----
++++
+title = "google_compute_xpn_resources resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_xpn_resources"
+identifier = "inspec/resources/gcp/google_compute_xpn_resources Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_xpn_resources` is used to test a Google Project resource

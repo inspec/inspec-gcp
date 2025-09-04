@@ -1,7 +1,14 @@
----
-title: About the google_compute_router_nats resource
-platform: gcp
----
++++
+title = "google_compute_router_nats resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_router_nats"
+identifier = "inspec/resources/gcp/google_compute_router_nats Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_router_nats` is used to test a Google RouterNat resource

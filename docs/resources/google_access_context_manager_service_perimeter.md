@@ -1,7 +1,14 @@
----
-title: About the google_access_context_manager_service_perimeter resource
-platform: gcp
----
++++
+title = "google_access_context_manager_service_perimeter resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_access_context_manager_service_perimeter"
+identifier = "inspec/resources/gcp/google_access_context_manager_service_perimeter Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_access_context_manager_service_perimeter` is used to test a Google ServicePerimeter resource

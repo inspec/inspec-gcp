@@ -1,7 +1,14 @@
----
-title: About the google_compute_packet_mirroring resource
-platform: gcp
----
++++
+title = "google_compute_packet_mirroring resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_packet_mirroring"
+identifier = "inspec/resources/gcp/google_compute_packet_mirroring Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_packet_mirroring` is used to test a Google PacketMirroring resource

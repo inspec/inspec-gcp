@@ -1,7 +1,14 @@
----
-title: About the google_compute_global_operations resource
-platform: gcp
----
++++
+title = "google_compute_global_operations resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_global_operations"
+identifier = "inspec/resources/gcp/google_compute_global_operations Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_global_operations` is used to test a Google GlobalOperation resource

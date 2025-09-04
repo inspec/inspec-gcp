@@ -1,7 +1,14 @@
----
-title: About the google_kms_ekm_connection resource
-platform: gcp
----
++++
+title = "google_kms_ekm_connection resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_kms_ekm_connection"
+identifier = "inspec/resources/gcp/google_kms_ekm_connection Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_kms_ekm_connection` is used to test a Google EkmConnection resource

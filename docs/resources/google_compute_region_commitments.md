@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_commitments resource
-platform: gcp
----
++++
+title = "google_compute_region_commitments resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_commitments"
+identifier = "inspec/resources/gcp/google_compute_region_commitments Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_commitments` is used to test a Google RegionCommitment resource

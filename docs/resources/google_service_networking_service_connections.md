@@ -1,7 +1,14 @@
----
-title: About the google_service_networking_service_connections resource
-platform: gcp
----
++++
+title = "google_service_networking_service_connections resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_service_networking_service_connections"
+identifier = "inspec/resources/gcp/google_service_networking_service_connections Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_service_networking_service_connections` is used to test a Google service_connection resource

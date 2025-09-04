@@ -1,7 +1,14 @@
----
-title: About the google_dlp_job_triggers resource
-platform: gcp
----
++++
+title = "google_dlp_job_triggers resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dlp_job_triggers"
+identifier = "inspec/resources/gcp/google_dlp_job_triggers Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dlp_job_triggers` is used to test a Google JobTrigger resource

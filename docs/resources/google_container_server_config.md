@@ -1,7 +1,14 @@
----
-title: About the google_container_server_config resource
-platform: gcp
----
++++
+title = "google_container_server_config resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_container_server_config"
+identifier = "inspec/resources/gcp/google_container_server_config Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_container_server_config` is used to test a Google ServerConfig resource

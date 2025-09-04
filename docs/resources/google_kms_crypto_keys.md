@@ -1,7 +1,14 @@
----
-title: About the google_kms_crypto_keys resource
-platform: gcp
----
++++
+title = "google_kms_crypto_keys resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_kms_crypto_keys"
+identifier = "inspec/resources/gcp/google_kms_crypto_keys Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_kms_crypto_keys` is used to test a Google CryptoKey resource

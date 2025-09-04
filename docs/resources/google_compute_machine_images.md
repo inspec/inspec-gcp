@@ -1,7 +1,14 @@
----
-title: About the google_compute_machine_images resource
-platform: gcp
----
++++
+title = "google_compute_machine_images resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_machine_images"
+identifier = "inspec/resources/gcp/google_compute_machine_images Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_machine_images` is used to test a Google MachineImage resource

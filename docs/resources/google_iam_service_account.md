@@ -1,7 +1,14 @@
----
-title: About the google_iam_service_account resource
-platform: gcp
----
++++
+title = "google_iam_service_account resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_iam_service_account"
+identifier = "inspec/resources/gcp/google_iam_service_account Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_iam_service_account` is used to test a Google ServiceAccount resource

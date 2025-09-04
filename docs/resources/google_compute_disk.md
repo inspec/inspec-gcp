@@ -1,7 +1,14 @@
----
-title: About the google_compute_disk resource
-platform: gcp
----
++++
+title = "google_compute_disk resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_disk"
+identifier = "inspec/resources/gcp/google_compute_disk Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_disk` is used to test a Google Disk resource

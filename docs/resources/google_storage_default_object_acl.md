@@ -1,7 +1,14 @@
----
-title: About the google_storage_default_object_acl resource
-platform: gcp
----
++++
+title = "google_storage_default_object_acl resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_storage_default_object_acl"
+identifier = "inspec/resources/gcp/google_storage_default_object_acl Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_storage_default_object_acl` is used to test a Google DefaultObjectACL resource

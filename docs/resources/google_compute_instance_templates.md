@@ -1,7 +1,14 @@
----
-title: About the google_compute_instance_templates resource
-platform: gcp
----
++++
+title = "google_compute_instance_templates resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_instance_templates"
+identifier = "inspec/resources/gcp/google_compute_instance_templates Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_instance_templates` is used to test a Google InstanceTemplate resource

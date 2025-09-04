@@ -1,7 +1,14 @@
----
-title: About the google_composer_project_location_environment resource
-platform: gcp
----
++++
+title = "google_composer_project_location_environment resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_composer_project_location_environment"
+identifier = "inspec/resources/gcp/google_composer_project_location_environment Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_composer_project_location_environment` is used to test a Google ProjectLocationEnvironment resource

@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_index_endpoints resource
-platform: gcp
----
++++
+title = "google_vertex_ai_index_endpoints resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_index_endpoints"
+identifier = "inspec/resources/gcp/google_vertex_ai_index_endpoints Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_index_endpoints` is used to test a Google IndexEndpoint resource

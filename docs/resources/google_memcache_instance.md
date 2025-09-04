@@ -1,7 +1,14 @@
----
-title: About the google_memcache_instance resource
-platform: gcp
----
++++
+title = "google_memcache_instance resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_memcache_instance"
+identifier = "inspec/resources/gcp/google_memcache_instance Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_memcache_instance` is used to test a Google Instance resource

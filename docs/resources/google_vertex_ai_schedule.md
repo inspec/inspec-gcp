@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_schedule resource
-platform: gcp
----
++++
+title = "google_vertex_ai_schedule resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_schedule"
+identifier = "inspec/resources/gcp/google_vertex_ai_schedule Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_schedule` is used to test a Google Schedule resource

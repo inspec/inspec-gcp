@@ -1,7 +1,14 @@
----
-title: About the google_project_logging_audit_config Resource
-platform: gcp
----
++++
+title = "google_project_logging_audit_config resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_project_logging_audit_config"
+identifier = "inspec/resources/gcp/google_project_logging_audit_config Resource"
+parent = "inspec/resources/gcp"
++++
 
 # google\_project\_logging\_audit\_config
 

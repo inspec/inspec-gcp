@@ -1,7 +1,14 @@
----
-title: About the google_compute_region_health_checks resource
-platform: gcp
----
++++
+title = "google_compute_region_health_checks resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_region_health_checks"
+identifier = "inspec/resources/gcp/google_compute_region_health_checks Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_region_health_checks` is used to test a Google RegionHealthCheck resource

@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_model_deployment_monitoring_jobs resource
-platform: gcp
----
++++
+title = "google_vertex_ai_model_deployment_monitoring_jobs resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_model_deployment_monitoring_jobs"
+identifier = "inspec/resources/gcp/google_vertex_ai_model_deployment_monitoring_jobs Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_model_deployment_monitoring_jobs` is used to test a Google ModelDeploymentMonitoringJob resource

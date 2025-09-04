@@ -1,7 +1,14 @@
----
-title: About the google_iam_organization_custom_roles resource
-platform: gcp
----
++++
+title = "google_iam_organization_custom_roles resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_iam_organization_custom_roles"
+identifier = "inspec/resources/gcp/google_iam_organization_custom_roles Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_iam_organization_custom_roles` is used to test a Google OrganizationCustomRole resource

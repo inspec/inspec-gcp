@@ -1,7 +1,14 @@
----
-title: About the google_organization_policy Resource
-platform: gcp
----
++++
+title = "google_organization_policy resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_organization_policy"
+identifier = "inspec/resources/gcp/google_organization_policy Resource"
+parent = "inspec/resources/gcp"
++++
 
 # google\_organization\_policy
 

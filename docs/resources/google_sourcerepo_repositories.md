@@ -1,7 +1,14 @@
----
-title: About the google_sourcerepo_repositories resource
-platform: gcp
----
++++
+title = "google_sourcerepo_repositories resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sourcerepo_repositories"
+identifier = "inspec/resources/gcp/google_sourcerepo_repositories Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sourcerepo_repositories` is used to test a Google Repository resource

@@ -1,7 +1,14 @@
----
-title: About the google_compute_regional_disk resource
-platform: gcp
----
++++
+title = "google_compute_regional_disk resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_regional_disk"
+identifier = "inspec/resources/gcp/google_compute_regional_disk Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_regional_disk` is used to test a Google Regional Disk resource

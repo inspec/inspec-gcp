@@ -1,7 +1,14 @@
----
-title: About the google_compute_global_network_endpoint_group resource
-platform: gcp
----
++++
+title = "google_compute_global_network_endpoint_group resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_global_network_endpoint_group"
+identifier = "inspec/resources/gcp/google_compute_global_network_endpoint_group Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_global_network_endpoint_group` is used to test a Google GlobalNetworkEndpointGroup resource

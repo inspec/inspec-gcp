@@ -1,7 +1,14 @@
----
-title: About the google_compute_node_type resource
-platform: gcp
----
++++
+title = "google_compute_node_type resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_node_type"
+identifier = "inspec/resources/gcp/google_compute_node_type Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_node_type` is used to test a Google NodeType resource

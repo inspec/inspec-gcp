@@ -1,7 +1,14 @@
----
-title: About the google_access_context_manager_access_level resource
-platform: gcp
----
++++
+title = "google_access_context_manager_access_level resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_access_context_manager_access_level"
+identifier = "inspec/resources/gcp/google_access_context_manager_access_level Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_access_context_manager_access_level` is used to test a Google AccessLevel resource

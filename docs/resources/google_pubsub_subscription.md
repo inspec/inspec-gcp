@@ -1,7 +1,14 @@
----
-title: About the google_pubsub_subscription resource
-platform: gcp
----
++++
+title = "google_pubsub_subscription resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_pubsub_subscription"
+identifier = "inspec/resources/gcp/google_pubsub_subscription Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_pubsub_subscription` is used to test a Google Subscription resource

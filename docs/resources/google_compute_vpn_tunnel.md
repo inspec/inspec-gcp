@@ -1,7 +1,14 @@
----
-title: About the google_compute_vpn_tunnel resource
-platform: gcp
----
++++
+title = "google_compute_vpn_tunnel resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_vpn_tunnel"
+identifier = "inspec/resources/gcp/google_compute_vpn_tunnel Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_vpn_tunnel` is used to test a Google VpnTunnel resource

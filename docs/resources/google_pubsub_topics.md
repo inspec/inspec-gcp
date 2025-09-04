@@ -1,7 +1,14 @@
----
-title: About the google_pubsub_topics resource
-platform: gcp
----
++++
+title = "google_pubsub_topics resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_pubsub_topics"
+identifier = "inspec/resources/gcp/google_pubsub_topics Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_pubsub_topics` is used to test a Google Topic resource

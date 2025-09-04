@@ -1,7 +1,14 @@
----
-title: About the google_compute_router resource
-platform: gcp
----
++++
+title = "google_compute_router resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_router"
+identifier = "inspec/resources/gcp/google_compute_router Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_router` is used to test a Google Router resource

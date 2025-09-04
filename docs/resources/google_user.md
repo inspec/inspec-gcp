@@ -1,7 +1,14 @@
----
-title: About the google_user Resource
-platform: gcp
----
++++
+title = "google_user resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_user"
+identifier = "inspec/resources/gcp/google_user Resource"
+parent = "inspec/resources/gcp"
++++
 
 # google\_user
 

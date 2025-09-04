@@ -1,7 +1,14 @@
----
-title: About the google_container_regional_node_pools resource
-platform: gcp
----
++++
+title = "google_container_regional_node_pools resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_container_regional_node_pools"
+identifier = "inspec/resources/gcp/google_container_regional_node_pools Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_container_regional_node_pools` is used to test a Google RegionalNodePool resource

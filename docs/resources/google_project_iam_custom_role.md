@@ -1,7 +1,14 @@
----
-title: About the google_project_iam_custom_role resource
-platform: gcp
----
++++
+title = "google_project_iam_custom_role resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_project_iam_custom_role"
+identifier = "inspec/resources/gcp/google_project_iam_custom_role Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_project_iam_custom_role` is used to test a Google CustomRole resource

@@ -1,7 +1,14 @@
----
-title: About the google_bigquery_tables resource
-platform: gcp
----
++++
+title = "google_bigquery_tables resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_bigquery_tables"
+identifier = "inspec/resources/gcp/google_bigquery_tables Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_bigquery_tables` is used to test a Google Table resource

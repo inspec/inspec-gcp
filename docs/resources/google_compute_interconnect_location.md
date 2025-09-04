@@ -1,7 +1,14 @@
----
-title: About the google_compute_interconnect_location resource
-platform: gcp
----
++++
+title = "google_compute_interconnect_location resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_interconnect_location"
+identifier = "inspec/resources/gcp/google_compute_interconnect_location Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_interconnect_location` is used to test a Google InterconnectLocation resource

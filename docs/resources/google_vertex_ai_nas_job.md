@@ -1,7 +1,14 @@
----
-title: About the google_vertex_ai_nas_job resource
-platform: gcp
----
++++
+title = "google_vertex_ai_nas_job resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_vertex_ai_nas_job"
+identifier = "inspec/resources/gcp/google_vertex_ai_nas_job Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_vertex_ai_nas_job` is used to test a Google NasJob resource

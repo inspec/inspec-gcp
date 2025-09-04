@@ -1,7 +1,14 @@
----
-title: About the google_orgpolicy_project_policies resource
-platform: gcp
----
++++
+title = "google_orgpolicy_project_policies resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_orgpolicy_project_policies"
+identifier = "inspec/resources/gcp/google_orgpolicy_project_policies Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_orgpolicy_project_policies` is used to test a Google ProjectPolicy resource

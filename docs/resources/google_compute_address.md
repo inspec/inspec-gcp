@@ -1,7 +1,14 @@
----
-title: About the google_compute_address resource
-platform: gcp
----
++++
+title = "google_compute_address resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_compute_address"
+identifier = "inspec/resources/gcp/google_compute_address Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_compute_address` is used to test a Google Address resource

@@ -1,7 +1,14 @@
----
-title: About the google_kms_key_ring_import_jobs resource
-platform: gcp
----
++++
+title = "google_kms_key_ring_import_jobs resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_kms_key_ring_import_jobs"
+identifier = "inspec/resources/gcp/google_kms_key_ring_import_jobs Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_kms_key_ring_import_jobs` is used to test a Google KeyRingImportJob resource

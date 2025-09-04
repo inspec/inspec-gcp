@@ -1,7 +1,14 @@
----
-title: About the google_redis_instance resource
-platform: gcp
----
++++
+title = "google_redis_instance resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_redis_instance"
+identifier = "inspec/resources/gcp/google_redis_instance Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_redis_instance` is used to test a Google Instance resource

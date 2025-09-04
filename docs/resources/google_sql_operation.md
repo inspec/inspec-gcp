@@ -1,7 +1,14 @@
----
-title: About the google_sql_operation resource
-platform: gcp
----
++++
+title = "google_sql_operation resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_sql_operation"
+identifier = "inspec/resources/gcp/google_sql_operation Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_sql_operation` is used to test a Google Operation resource

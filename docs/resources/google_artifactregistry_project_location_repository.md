@@ -1,7 +1,14 @@
----
-title: About the google_artifactregistry_project_location_repository resource
-platform: gcp
----
++++
+title = "google_artifactregistry_project_location_repository resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_artifactregistry_project_location_repository"
+identifier = "inspec/resources/gcp/google_artifactregistry_project_location_repository Resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_artifactregistry_project_location_repository` is used to test a Google ProjectLocationRepository resource
