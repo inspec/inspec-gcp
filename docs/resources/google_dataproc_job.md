@@ -1,7 +1,14 @@
----
-title = "google_dataproc_job Resource"
++++
+title = "google_dataproc_job resource"
 platform = "gcp"
----
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dataproc_job"
+identifier = "inspec/resources/gcp/google_dataproc_job resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dataproc_job` is used to test a Google Job resource
