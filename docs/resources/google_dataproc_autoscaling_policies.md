@@ -1,7 +1,14 @@
----
-title: "google_dataproc_autoscaling_policies Resource"
-platform: "gcp"
----
++++
+title = "google_dataproc_autoscaling_policies resource"
+platform = "gcp"
+draft = false
+gh_repo = "inspec-gcp"
+
+[menu.inspec]
+title = "google_dataproc_autoscaling_policies"
+identifier = "inspec/resources/gcp/google_dataproc_autoscaling_policies resource"
+parent = "inspec/resources/gcp"
++++
 
 ## Syntax
 A `google_dataproc_autoscaling_policies` is used to test a Google ProjectRegionAutoscalingPolicy resource
