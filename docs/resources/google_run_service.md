@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_run_service` InSpec audit resource to test the properties of a test a Google Service.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_run_service` is used to test a Google Service resource
 

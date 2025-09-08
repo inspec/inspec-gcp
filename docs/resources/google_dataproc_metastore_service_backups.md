@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_dataproc_metastore_service_backups` InSpec audit resource to test the properties of a test a Google ServiceBackup.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_dataproc_metastore_service_backups` is used to test a Google ServiceBackup resource
 

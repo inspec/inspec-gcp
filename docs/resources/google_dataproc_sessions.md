@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_dataproc_sessions` InSpec audit resource to test the properties of a test a Google Session.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_dataproc_sessions` is used to test a Google Session resource
 

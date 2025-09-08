@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_apigee_endpoint_attachments` InSpec audit resource to test the properties of a test a Google EndpointAttachment.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_apigee_endpoint_attachments` is used to test a Google EndpointAttachment resource
 

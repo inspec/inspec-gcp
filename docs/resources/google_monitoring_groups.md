@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_monitoring_groups` InSpec audit resource to test the properties of a test a Google Group.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_monitoring_groups` is used to test a Google Group resource
 

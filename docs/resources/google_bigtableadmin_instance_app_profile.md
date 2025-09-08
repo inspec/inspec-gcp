@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_bigtableadmin_instance_app_profile` InSpec audit resource to test the properties of a test a Google InstanceAppProfile.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_bigtableadmin_instance_app_profile` is used to test a Google InstanceAppProfile resource
 

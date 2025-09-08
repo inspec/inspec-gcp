@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_bigtableadmin_cluster_backup` InSpec audit resource to test the properties of a test a Google ClusterBackup.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_bigtableadmin_cluster_backup` is used to test a Google ClusterBackup resource
 

@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_dataproc_metastore_federations` InSpec audit resource to test the properties of a test a Google Federation.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_dataproc_metastore_federations` is used to test a Google Federation resource
 

@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_compute_region_security_policy` InSpec audit resource to test the properties of a test a Google RegionSecurityPolicy.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_compute_region_security_policy` is used to test a Google RegionSecurityPolicy resource
 

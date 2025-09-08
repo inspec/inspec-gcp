@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_data_fusion_instance` InSpec audit resource to test the properties of a test a Google Instance.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_data_fusion_instance` is used to test a Google Instance resource
 

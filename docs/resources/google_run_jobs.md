@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_run_jobs` InSpec audit resource to test the properties of a test a Google Job.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_run_jobs` is used to test a Google Job resource
 

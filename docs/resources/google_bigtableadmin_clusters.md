@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_bigtableadmin_clusters` InSpec audit resource to test the properties of a test a Google Cluster.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_bigtableadmin_clusters` is used to test a Google Cluster resource
 

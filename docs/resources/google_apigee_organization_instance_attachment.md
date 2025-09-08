@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_apigee_organization_instance_attachment` InSpec audit resource to test the properties of a test a Google OrganizationInstanceAttachment.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_apigee_organization_instance_attachment` is used to test a Google OrganizationInstanceAttachment resource
 

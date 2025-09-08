@@ -15,9 +15,6 @@ parent = "inspec/resources/gcp"
 
 Use the `google_dataproc_batch` InSpec audit resource to test the properties of a test a Google Batch.
 
-## Installation
-{{% inspec_gcp_install %}}
-
 ## Syntax
 A `google_dataproc_batch` is used to test a Google Batch resource
 
