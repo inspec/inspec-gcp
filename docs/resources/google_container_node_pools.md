@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_node_pools"
 identifier = "inspec/resources/gcp/google_container_node_pools Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_container_node_pools` is used to test a Google NodePool resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster') do
   its('initial_node_counts') { should include '1'}
 end
@@ -46,9 +48,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_container_node_pools` resource:
 
-See [google_container_node_pool.md](google_container_node_pool.md) for more detailed information
+See [google_container_node_pool](google_container_node_pool) for more detailed information.
+
   * `node_pool_names`: an array of `google_container_node_pool` name
   * `configs`: an array of `google_container_node_pool` config
   * `initial_node_counts`: an array of `google_container_node_pool` initial_node_count
@@ -63,10 +67,11 @@ See [google_container_node_pool.md](google_container_node_pool.md) for more deta
   * `clusters`: an array of `google_container_node_pool` cluster
   * `locations`: an array of `google_container_node_pool` location
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

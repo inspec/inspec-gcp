@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_user"
 identifier = "inspec/resources/gcp/google_sql_user Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_user` is used to test a Google User resource
+Use the `google_sql_user` InSpec audit resource to to test a Google Cloud User resource.
 
 ## Examples
-```
 
+```ruby
 describe google_sql_user(project: 'chef-gcp-inspec', database: 'my-database', name: 'user-name', host: "example.com") do
   it { should exist }
   its('name') { should cmp 'user-name' }
@@ -28,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_user` resource:
 
 
@@ -40,6 +40,6 @@ Properties that can be accessed from the `google_sql_user` resource:
   * `password`: The password for the user.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

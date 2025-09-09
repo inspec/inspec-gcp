@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_regional_disks"
 identifier = "inspec/resources/gcp/google_compute_regional_disks Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_regional_disks` is used to test a Google Regional Disk resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 most_recent_image = google_compute_image(project: 'debian-cloud', name: 'debian-10-buster-v20191014')
 describe google_compute_regional_disks(project: 'chef-gcp-inspec', region: 'region') do
   it { should exist }
@@ -28,9 +30,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_regional_disks` resource:
 
-See [google_compute_regional_disk.md](google_compute_regional_disk.md) for more detailed information
+See [google_compute_regional_disk](google_compute_regional_disk) for more detailed information.
+
   * `ids`: an array of `google_compute_regional_disk` id
   * `creation_timestamps`: an array of `google_compute_regional_disk` creation_timestamp
   * `names`: an array of `google_compute_regional_disk` name
@@ -56,10 +60,11 @@ See [google_compute_regional_disk.md](google_compute_regional_disk.md) for more 
   * `replica_zones`: an array of `google_compute_regional_disk` replica_zone
   * `statuses`: an array of `google_compute_statusal_disk` status
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_projects"
 identifier = "inspec/resources/gcp/google_projects Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_projects` is used to test a Google Project resource
+Use the `google_projects` InSpec audit resource to to test a Google Cloud Project resource.
 
 ## Examples
-```
+
+```ruby
 describe google_projects() do
   its('count') { should be >= 1 }
   its('project_ids') { should include 'chef-gcp-inspec' }
@@ -64,9 +64,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_projects` resource:
 
-See [google_project.md](google_project.md) for more detailed information
+See [google_project](google_project) for more detailed information.
+
   * `project_numbers`: an array of `google_project` number
   * `lifecycle_states`: an array of `google_project` lifecycle_state
   * `project_names`: an array of `google_project` name
@@ -75,10 +77,11 @@ See [google_project.md](google_project.md) for more detailed information
   * `parents`: an array of `google_project` parent
   * `project_ids`: an array of `google_project` project_id
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_machine_images"
 identifier = "inspec/resources/gcp/google_compute_machine_images Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_machine_images` is used to test a Google MachineImage resource
+Use the `google_compute_machine_images` InSpec audit resource to to test a Google Cloud MachineImage resource.
 
 ## Examples
-```
+
+```ruby
   describe google_compute_machine_images(project: 'chef-gcp-inspec') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_machine_images` resource:
 
-See [google_compute_machine_image.md](google_compute_machine_image.md) for more detailed information
+See [google_compute_machine_image](google_compute_machine_image) for more detailed information.
+
   * `kinds`: an array of `google_compute_machine_image` kind
   * `ids`: an array of `google_compute_machine_image` id
   * `creation_timestamps`: an array of `google_compute_machine_image` creation_timestamp
@@ -42,10 +44,11 @@ See [google_compute_machine_image.md](google_compute_machine_image.md) for more 
   * `total_storage_bytes`: an array of `google_compute_machine_image` total_storage_bytes
   * `satisfies_pzs`: an array of `google_compute_machine_image` satisfies_pzs
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

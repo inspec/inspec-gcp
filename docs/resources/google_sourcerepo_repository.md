@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sourcerepo_repository"
 identifier = "inspec/resources/gcp/google_sourcerepo_repository Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sourcerepo_repository` is used to test a Google Repository resource
+Use the `google_sourcerepo_repository` InSpec audit resource to to test a Google Cloud Repository resource.
 
 ## Examples
-```
+
+```ruby
 describe google_sourcerepo_repository(project: 'chef-gcp-inspec', name: 'inspec-gcp-repository') do
   it { should exist }
 end
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sourcerepo_repository` resource:
 
 
@@ -37,6 +38,6 @@ Properties that can be accessed from the `google_sourcerepo_repository` resource
   * `pubsub_configs`: How this repository publishes a change in the repository through Cloud Pub/Sub.  Keyed by the topic names.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Source Repositories API](https://console.cloud.google.com/apis/library/sourcerepo.googleapis.com/) is enabled for the current project.

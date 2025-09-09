@@ -4,30 +4,34 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_filestore_instances"
 identifier = "inspec/resources/gcp/google_filestore_instances Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_filestore_instances` is used to test a Google Instance resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_filestore_instances(project: 'chef-gcp-inspec', zone: 'us-central1-b') do
   its('tiers') { should include 'PREMIUM' }
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_filestore_instances` resource:
 
-See [google_filestore_instance.md](google_filestore_instance.md) for more detailed information
+See [google_filestore_instance](google_filestore_instance) for more detailed information.
+
   * `names`: an array of `google_filestore_instance` name
   * `descriptions`: an array of `google_filestore_instance` description
   * `create_times`: an array of `google_filestore_instance` create_time
@@ -38,8 +42,9 @@ See [google_filestore_instance.md](google_filestore_instance.md) for more detail
   * `etags`: an array of `google_filestore_instance` etag
   * `zones`: an array of `google_filestore_instance` zone
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

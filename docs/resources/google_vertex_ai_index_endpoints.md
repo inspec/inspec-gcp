@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_index_endpoints"
 identifier = "inspec/resources/gcp/google_vertex_ai_index_endpoints Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_index_endpoints` is used to test a Google IndexEndpoint resource
+Use the `google_vertex_ai_index_endpoints` InSpec audit resource to to test a Google Cloud IndexEndpoint resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_index_endpoints(parent: "projects/#{gcp_project_id}/locations/#{index_endpoint['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_index_endpoints` resource:
 
-See [google_vertex_ai_index_endpoint.md](google_vertex_ai_index_endpoint.md) for more detailed information
+See [google_vertex_ai_index_endpoint](google_vertex_ai_index_endpoint) for more detailed information.
+
   * `deployed_indexes`: an array of `google_vertex_ai_index_endpoint` deployed_indexes
   * `private_service_connect_configs`: an array of `google_vertex_ai_index_endpoint` private_service_connect_config
   * `display_names`: an array of `google_vertex_ai_index_endpoint` display_name
@@ -38,8 +40,9 @@ See [google_vertex_ai_index_endpoint.md](google_vertex_ai_index_endpoint.md) for
   * `etags`: an array of `google_vertex_ai_index_endpoint` etag
   * `descriptions`: an array of `google_vertex_ai_index_endpoint` description
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

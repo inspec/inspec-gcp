@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_service_attachments"
 identifier = "inspec/resources/gcp/google_compute_service_attachments Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_service_attachments` is used to test a Google ServiceAttachment resource
+Use the `google_compute_service_attachments` InSpec audit resource to to test a Google Cloud ServiceAttachment resource.
 
 ## Examples
-```
+
+```ruby
     describe google_compute_service_attachments(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_service_attachments` resource:
 
-See [google_compute_service_attachment.md](google_compute_service_attachment.md) for more detailed information
+See [google_compute_service_attachment](google_compute_service_attachment) for more detailed information.
+
   * `kinds`: an array of `google_compute_service_attachment` kind
   * `ids`: an array of `google_compute_service_attachment` id
   * `creation_timestamps`: an array of `google_compute_service_attachment` creation_timestamp
@@ -44,10 +46,11 @@ See [google_compute_service_attachment.md](google_compute_service_attachment.md)
   * `domain_names`: an array of `google_compute_service_attachment` domain_names
   * `reconcile_connections`: an array of `google_compute_service_attachment` reconcile_connections
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

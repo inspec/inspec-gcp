@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_nas_jobs_nas_trial_detail"
 identifier = "inspec/resources/gcp/google_vertex_ai_nas_jobs_nas_trial_detail Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_nas_jobs_nas_trial_detail` is used to test a Google NasJobsNasTrialDetail resource
+Use the `google_vertex_ai_nas_jobs_nas_trial_detail` InSpec audit resource to to test a Google Cloud NasJobsNasTrialDetail resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_nas_jobs_nas_trial_detail(name: "projects/#{gcp_project_id}/locations/#{nas_jobs_nas_trial_detail['region']}/nasJobs/#{nas_jobs_nas_trial_detail['nasJob']}/nasTrialDetails/#{nas_jobs_nas_trial_detail['name']}", region: ' value_region') do
 	it { should exist }
 	its('parameters') { should cmp 'value_parameters' }
@@ -28,6 +28,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_nas_jobs_nas_trial_detail` resource:
 
 
@@ -94,4 +95,4 @@ Properties that can be accessed from the `google_vertex_ai_nas_jobs_nas_trial_de
     * `end_time`: Output only. Time when the NasTrial's status changed to `SUCCEEDED` or `INFEASIBLE`.
 
 
-## GCP Permissions
+## GCP permissions

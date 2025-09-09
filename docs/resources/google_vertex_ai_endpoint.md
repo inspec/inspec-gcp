@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_endpoint"
 identifier = "inspec/resources/gcp/google_vertex_ai_endpoint Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_endpoint` is used to test a Google Endpoint resource
+Use the `google_vertex_ai_endpoint` InSpec audit resource to to test a Google Cloud Endpoint resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_endpoint(name: "projects/#{gcp_project_id}/locations/#{endpoint['region']}/endpoints/#{endpoint['name']}", region: ' value_region') do
 it { should exist }
 	its('update_time') { should cmp 'value_updatetime' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_endpoint` resource:
 
 
@@ -246,4 +247,4 @@ Properties that can be accessed from the `google_vertex_ai_endpoint` resource:
   * `name`: Output only. The resource name of the Endpoint.
 
 
-## GCP Permissions
+## GCP permissions

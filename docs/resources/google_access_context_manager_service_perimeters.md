@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_access_context_manager_service_perimeters"
 identifier = "inspec/resources/gcp/google_access_context_manager_service_perimeters Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_access_context_manager_service_perimeters` is used to test a Google ServicePerimeter resource
+Use the `google_access_context_manager_service_perimeters` InSpec audit resource to to test a Google Cloud ServicePerimeter resource.
 
 ## Examples
-```
 
+```ruby
 describe.one do
   google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
     describe google_access_context_manager_service_perimeters(policy_name: policy_name) do
@@ -27,9 +26,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_access_context_manager_service_perimeters` resource:
 
-See [google_access_context_manager_service_perimeter.md](google_access_context_manager_service_perimeter.md) for more detailed information
+See [google_access_context_manager_service_perimeter](google_access_context_manager_service_perimeter) for more detailed information.
+
   * `titles`: an array of `google_access_context_manager_service_perimeter` title
   * `descriptions`: an array of `google_access_context_manager_service_perimeter` description
   * `create_times`: an array of `google_access_context_manager_service_perimeter` create_time
@@ -41,8 +42,9 @@ See [google_access_context_manager_service_perimeter.md](google_access_context_m
   * `parents`: an array of `google_access_context_manager_service_perimeter` parent
   * `names`: an array of `google_access_context_manager_service_perimeter` name
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

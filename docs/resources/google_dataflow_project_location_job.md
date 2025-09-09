@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dataflow_project_location_job"
 identifier = "inspec/resources/gcp/google_dataflow_project_location_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dataflow_project_location_job` is used to test a Google ProjectLocationJob resource
+Use the `google_dataflow_project_location_job` InSpec audit resource to to test a Google Cloud ProjectLocationJob resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataflow_project_location_job(job: 'value_job_id', location: 'value_location', project: 'value_project') do
 	it { should exist }
 	its('id') { should cmp 'value_id' }
@@ -41,6 +41,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dataflow_project_location_job` resource:
 
 
@@ -585,6 +586,6 @@ Properties that can be accessed from the `google_dataflow_project_location_job` 
   * `satisfies_pzi`: Output only. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://dataflow.googleapis.com/](https://console.cloud.google.com/apis/library/dataflow.googleapis.com/) is enabled for the current project.

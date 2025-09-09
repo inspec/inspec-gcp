@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_metadata_stores_context"
 identifier = "inspec/resources/gcp/google_vertex_ai_metadata_stores_context Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_metadata_stores_context` is used to test a Google MetadataStoresContext resource
+Use the `google_vertex_ai_metadata_stores_context` InSpec audit resource to to test a Google Cloud MetadataStoresContext resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_metadata_stores_context(name: "projects/#{gcp_project_id}/locations/#{metadata_stores_context['region']}/metadataStores/#{metadata_stores_context['metadataStore']}/contexts/#{metadata_stores_context['name']}", region: ' value_region') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_metadata_stores_context` resource:
 
 
@@ -64,4 +65,4 @@ Properties that can be accessed from the `google_vertex_ai_metadata_stores_conte
   * `parent_contexts`: Output only. A list of resource names of Contexts that are parents of this Context. A Context may have at most 10 parent_contexts.
 
 
-## GCP Permissions
+## GCP permissions

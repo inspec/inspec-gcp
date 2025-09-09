@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_packet_mirroring"
 identifier = "inspec/resources/gcp/google_compute_packet_mirroring Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_packet_mirroring` is used to test a Google PacketMirroring resource
+Use the `google_compute_packet_mirroring` InSpec audit resource to to test a Google Cloud PacketMirroring resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_packet_mirroring(name: 'value_name', project: 'chef-gcp-inspec', region: 'value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -35,6 +35,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_packet_mirroring` resource:
 
 
@@ -102,6 +103,6 @@ Properties that can be accessed from the `google_compute_packet_mirroring` resou
     * TRUE
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

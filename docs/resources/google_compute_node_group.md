@@ -4,22 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_node_group"
 identifier = "inspec/resources/gcp/google_compute_node_group Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_node_group` is used to test a Google NodeGroup resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_node_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-node-group') do
   it { should exist }
   its('description') { should cmp 'A description of the node group' }
@@ -32,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_node_group` resource:
 
 
@@ -62,6 +64,6 @@ Properties that can be accessed from the `google_compute_node_group` resource:
   * `zone`: Zone where this node group is located
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

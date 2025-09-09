@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_appengine_standard_app_version"
 identifier = "inspec/resources/gcp/google_appengine_standard_app_version Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_appengine_standard_app_version` is used to test a Google StandardAppVersion resource
+Use the `google_appengine_standard_app_version` InSpec audit resource to to test a Google Cloud StandardAppVersion resource.
 
 ## Examples
-```
 
+```ruby
 describe google_appengine_standard_app_version(project: 'chef-gcp-inspec', location: 'europe-west2', version_id: 'v2', service: 'default') do
   it { should exist }
   its('version_id') { should eq 'v2' }
@@ -24,6 +23,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_appengine_standard_app_version` resource:
 
 
@@ -76,6 +76,6 @@ Properties that can be accessed from the `google_appengine_standard_app_version`
     * `instances`: Number of instances to assign to the service at the start.  **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2 Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [App Engine Admin API](https://console.cloud.google.com/apis/library/appengine.googleapis.com/) is enabled for the current project.

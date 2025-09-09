@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_ekm_connection"
 identifier = "inspec/resources/gcp/google_kms_ekm_connection Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_kms_ekm_connection` is used to test a Google EkmConnection resource
+Use the `google_kms_ekm_connection` InSpec audit resource to to test a Google Cloud EkmConnection resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_ekm_connection(project: 'chef-gcp-inspec', location: 'europe-west2', name: '') do
   it { should exist }
   its('name') { should cmp '' }
@@ -26,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_ekm_connection` resource:
 
 
@@ -64,6 +65,6 @@ Properties that can be accessed from the `google_kms_ekm_connection` resource:
   * `location`: Resource name for the location.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

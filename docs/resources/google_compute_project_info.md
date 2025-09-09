@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_project_info"
 identifier = "inspec/resources/gcp/google_compute_project_info Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_project_info` is used to test a Google ProjectInfo resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_project_info(project: 'chef-gcp-inspec') do
 	it { should exist }
 	its('default_service_account') { should match "developer.gserviceaccount.com" }
@@ -38,6 +40,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_project_info` resource:
 
 
@@ -72,6 +75,6 @@ Properties that can be accessed from the `google_compute_project_info` resource:
   * `creation_timestamp`: Creation timestamp in RFC3339 text format.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

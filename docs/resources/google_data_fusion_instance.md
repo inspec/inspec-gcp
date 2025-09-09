@@ -1,25 +1,21 @@
 +++
-
 title = "google_data_fusion_instance Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_data_fusion_instance"
 identifier = "inspec/resources/gcp/google_data_fusion_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_data_fusion_instance` InSpec audit resource to test the properties of a test a Google Instance.
-
-## Syntax
-A `google_data_fusion_instance` is used to test a Google Instance resource
+Use the `google_data_fusion_instance` InSpec audit resource to test the properties of a Google Cloud Instance resource.
 
 ## Examples
-```
+
+```ruby
 describe google_data_fusion_instance(name: 'projects/*/locations/*/instances/inspec-instance') do
 	it { should exist }
 	its('name') { should cmp 'inspec-instance' }
@@ -49,9 +45,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_data_fusion_instance` resource:
+
+Parameters that can be accessed from the `google_data_fusion_instance` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_data_fusion_instance` resource:
 
 
@@ -216,6 +214,6 @@ Properties that can be accessed from the `google_data_fusion_instance` resource:
       * `end_time`: Required. The end time of the time window provided in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The end time should take place after the start time. Example: "2024-01-02T12:04:06-06:00"
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Data Fusion API](https://console.cloud.google.com/apis/library/datafusion.googleapis.com) is enabled for the current project.

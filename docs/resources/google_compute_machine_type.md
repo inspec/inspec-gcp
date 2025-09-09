@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_machine_type"
 identifier = "inspec/resources/gcp/google_compute_machine_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_machine_type` is used to test a Google MachineType resource
+Use the `google_compute_machine_type` InSpec audit resource to to test a Google Cloud MachineType resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_machine_type(name: 'value_name', project: 'chef-gcp-inspec', zone: ' value_zone') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_machine_type` resource:
 
 
@@ -91,6 +92,6 @@ Properties that can be accessed from the `google_compute_machine_type` resource:
     * `guest_accelerator_count`: Number of accelerator cards exposed to the guest.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

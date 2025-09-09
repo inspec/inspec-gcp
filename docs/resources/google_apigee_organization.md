@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_apigee_organization"
 identifier = "inspec/resources/gcp/google_apigee_organization Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_apigee_organization` is used to test a Google Organization resource
+Use the `google_apigee_organization` InSpec audit resource to to test a Google Cloud Organization resource.
 
 ## Examples
-```
+
+```ruby
 describe google_apigee_organization(name: ' value_name') do
 	it { should exist }
 	its('api_consumer_data_encryption_key_name') { should cmp 'value_apiconsumerdataencryptionkeyname' }
@@ -48,6 +48,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_apigee_organization` resource:
 
 
@@ -182,6 +183,6 @@ Properties that can be accessed from the `google_apigee_organization` resource:
     * PAYG
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Apigee API](https://console.cloud.google.com/apis/library/apigee.googleapis.com/) is enabled for the current project.

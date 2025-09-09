@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_licenses"
 identifier = "inspec/resources/gcp/google_compute_licenses Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_licenses` is used to test a Google License resource
+Use the `google_compute_licenses` InSpec audit resource to to test a Google Cloud License resource.
 
 ## Examples
-```
+
+```ruby
   describe google_compute_licenses(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_licenses` resource:
 
-See [google_compute_license.md](google_compute_license.md) for more detailed information
+See [google_compute_license](google_compute_license) for more detailed information.
+
   * `kinds`: an array of `google_compute_license` kind
   * `names`: an array of `google_compute_license` name
   * `charges_use_fees`: an array of `google_compute_license` charges_use_fee
@@ -35,10 +37,11 @@ See [google_compute_license.md](google_compute_license.md) for more detailed inf
   * `self_links`: an array of `google_compute_license` self_link
   * `resource_requirements`: an array of `google_compute_license` resource_requirements
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

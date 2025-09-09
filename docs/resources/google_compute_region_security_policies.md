@@ -1,34 +1,32 @@
 +++
-
 title = "google_compute_region_security_policies Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_compute_region_security_policies"
 identifier = "inspec/resources/gcp/google_compute_region_security_policies Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_compute_region_security_policies` InSpec audit resource to test the properties of a test a Google RegionSecurityPolicy.
-
-## Syntax
-A `google_compute_region_security_policies` is used to test a Google RegionSecurityPolicy resource
+Use the `google_compute_region_security_policies` InSpec audit resource to test the properties of a Google Cloud RegionSecurityPolicy resource.
 
 ## Examples
-```
+
+```ruby
     describe google_compute_region_security_policies(project: 'chef-gcp-inspec', region: ' ') do
     it { should exist }
   end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_compute_region_security_policies` resource:
 
-See [google_compute_region_security_policy.md](google_compute_region_security_policy.md) for more detailed information
+Parameters that can be accessed from the `google_compute_region_security_policies` resource:
+
+See [google_compute_region_security_policy](google_compute_region_security_policy) for more detailed information.
+
 * `user_defined_fields`: an array of `google_compute_region_security_policy` user_defined_fields
 * `kinds`: an array of `google_compute_region_security_policy` kind
 * `ids`: an array of `google_compute_region_security_policy` id
@@ -52,10 +50,13 @@ See [google_compute_region_security_policy.md](google_compute_region_security_po
 * `display_names`: an array of `google_compute_region_security_policy` display_name
 * `parents`: an array of `google_compute_region_security_policy` parent
 * `regions`: an array of `google_compute_region_security_policy` region
+
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_security_policies` resource:
 
-See [google_compute_region_security_policy.md](google_compute_region_security_policy.md) for more detailed information
+See [google_compute_region_security_policy](google_compute_region_security_policy) for more detailed information.
+
 * `user_defined_fields`: an array of `google_compute_region_security_policy` user_defined_fields
 * `kinds`: an array of `google_compute_region_security_policy` kind
 * `ids`: an array of `google_compute_region_security_policy` id
@@ -80,10 +81,11 @@ See [google_compute_region_security_policy.md](google_compute_region_security_po
 * `parents`: an array of `google_compute_region_security_policy` parent
 * `regions`: an array of `google_compute_region_security_policy` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

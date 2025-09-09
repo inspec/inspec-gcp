@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_orgpolicy_folder_constraints"
 identifier = "inspec/resources/gcp/google_orgpolicy_folder_constraints Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_orgpolicy_folder_constraints` is used to test a Google FolderConstraint resource
+Use the `google_orgpolicy_folder_constraints` InSpec audit resource to to test a Google Cloud FolderConstraint resource.
 
 ## Examples
-```
+
+```ruby
   describe google_orgpolicy_folder_constraints(parent: ' value_parent') do
     it { should exist }
     its('names') { should include 'value_name'}
@@ -26,6 +26,7 @@ A `google_orgpolicy_folder_constraints` is used to test a Google FolderConstrain
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_orgpolicy_folder_constraints` resource:
 
   * `display_names`: The human readable name. Mutable.
@@ -48,10 +49,11 @@ Properties that can be accessed from the `google_orgpolicy_folder_constraints` r
 
     * `supports_in`: Indicates whether values grouped into categories can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"in:Python"` would match any value in the 'Python' group.
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://orgpolicy.googleapis.com/](https://console.cloud.google.com/apis/library/orgpolicy.googleapis.com/) is enabled for the current project.

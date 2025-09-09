@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_models_evaluation"
 identifier = "inspec/resources/gcp/google_vertex_ai_models_evaluation Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_models_evaluation` is used to test a Google ModelsEvaluation resource
+Use the `google_vertex_ai_models_evaluation` InSpec audit resource to to test a Google Cloud ModelsEvaluation resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_models_evaluation(name: "projects/#{gcp_project_id}/locations/#{models_evaluation['region']}/models/#{models_evaluation['model']}/evaluations/#{models_evaluation['name']}", region: ' value_region') do
 	it { should exist }
 	its('data_item_schema_uri') { should cmp 'value_dataitemschemauri' }
@@ -32,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_models_evaluation` resource:
 
 
@@ -177,4 +178,4 @@ Properties that can be accessed from the `google_vertex_ai_models_evaluation` re
   * `display_name`: The display name of the ModelEvaluation.
 
 
-## GCP Permissions
+## GCP permissions

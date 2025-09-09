@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_spanner_instance"
 identifier = "inspec/resources/gcp/google_spanner_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_spanner_instance` is used to test a Google Instance resource
+Use the `google_spanner_instance` InSpec audit resource to to test a Google Cloud Instance resource.
 
 ## Examples
-```
 
+```ruby
 describe google_spanner_instance(project: 'chef-gcp-inspec', name: 'spinstance', config: 'regional-us-east1') do
   it { should exist }
   its('config') { should match 'regional-us-east1' }
@@ -27,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_spanner_instance` resource:
 
 
@@ -41,6 +41,6 @@ Properties that can be accessed from the `google_spanner_instance` resource:
   * `labels`: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Spanner API](https://console.cloud.google.com/apis/library/spanner.googleapis.com/) is enabled for the current project.

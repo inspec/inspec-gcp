@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_connect"
 identifier = "inspec/resources/gcp/google_sql_connect Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_connect` is used to test a Google Connect resource
+Use the `google_sql_connect` InSpec audit resource to to test a Google Cloud Connect resource.
 
 ## Examples
-```
 
+```ruby
 describe google_sql_connect(project: 'chef-gcp-inspec', instance: 'test-pg') do
   it { should exist }
   its('region') { should include 'us-central1' }
@@ -26,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_connect` resource:
 
 
@@ -72,6 +72,6 @@ Properties that can be accessed from the `google_sql_connect` resource:
     * `expiration_time`: The time when the certificate expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

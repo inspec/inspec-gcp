@@ -1,25 +1,21 @@
 +++
-
 title = "google_run_services Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_run_services"
 identifier = "inspec/resources/gcp/google_run_services Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_run_services` InSpec audit resource to test the properties of a test a Google Service.
-
-## Syntax
-A `google_run_services` is used to test a Google Service resource
+Use the `google_run_services` InSpec audit resource to test the properties of a Google Cloud Service resource.
 
 ## Examples
-```
+
+```ruby
   describe google_run_services(parent: 'value_parent') do
     it { should exist }
     its('names') { should include value_name }
@@ -33,9 +29,11 @@ A `google_run_services` is used to test a Google Service resource
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_run_services` resource:
 
-See [google_run_service.md](google_run_service.md) for more detailed information
+Parameters that can be accessed from the `google_run_services` resource:
+
+See [google_run_service](google_run_service) for more detailed information.
+
 * `names`: an array of `google_run_service` name
 * `descriptions`: an array of `google_run_service` description
 * `uids`: an array of `google_run_service` uid
@@ -68,10 +66,13 @@ See [google_run_service.md](google_run_service.md) for more detailed information
 * `satisfies_pzs`: an array of `google_run_service` satisfies_pzs
 * `reconcilings`: an array of `google_run_service` reconciling
 * `etags`: an array of `google_run_service` etag
+
 ## Properties
+
 Properties that can be accessed from the `google_run_services` resource:
 
-See [google_run_service.md](google_run_service.md) for more detailed information
+See [google_run_service](google_run_service) for more detailed information.
+
 * `names`: an array of `google_run_service` name
 * `descriptions`: an array of `google_run_service` description
 * `uids`: an array of `google_run_service` uid
@@ -105,10 +106,11 @@ See [google_run_service.md](google_run_service.md) for more detailed information
 * `reconcilings`: an array of `google_run_service` reconciling
 * `etags`: an array of `google_run_service` etag
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://run.googleapis.com/](https://console.cloud.google.com/apis/library/run.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_composer_project_location_environment"
 identifier = "inspec/resources/gcp/google_composer_project_location_environment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_composer_project_location_environment` is used to test a Google ProjectLocationEnvironment resource
+Use the `google_composer_project_location_environment` InSpec audit resource to to test a Google Cloud ProjectLocationEnvironment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_composer_project_location_environment(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_composer_project_location_environment` resource:
 
 
@@ -267,6 +268,6 @@ Properties that can be accessed from the `google_composer_project_location_envir
     * `bucket`: Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://composer.googleapis.com/](https://console.cloud.google.com/apis/library/composer.googleapis.com/) is enabled for the current project.

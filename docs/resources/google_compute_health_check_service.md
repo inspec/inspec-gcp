@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_health_check_service"
 identifier = "inspec/resources/gcp/google_compute_health_check_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_health_check_service` is used to test a Google HealthCheckService resource
+Use the `google_compute_health_check_service` InSpec audit resource to to test a Google Cloud HealthCheckService resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_health_check_service(project: 'chef-gcp-inspec', region: 'us-central1', name: 'instance-group-2') do
 it { should exist }
 its('name') { should eq 'instance-group-2' }
@@ -27,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_health_check_service` resource:
 
 
@@ -54,6 +55,6 @@ Properties that can be accessed from the `google_compute_health_check_service` r
   * `next_page_token`: This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

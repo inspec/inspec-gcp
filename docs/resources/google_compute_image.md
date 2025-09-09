@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_image"
 identifier = "inspec/resources/gcp/google_compute_image Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_image` is used to test a Google Image resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_image(project: 'chef-gcp-inspec', name: 'inspec-image') do
   it { should exist }
   its('disk_size_gb') { should cmp 3 }
@@ -42,6 +44,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_image` resource:
 
 
@@ -140,6 +143,6 @@ Properties that can be accessed from the `google_compute_image` resource:
     * FAILED
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

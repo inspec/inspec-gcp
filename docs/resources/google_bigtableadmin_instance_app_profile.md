@@ -1,25 +1,21 @@
 +++
-
 title = "google_bigtableadmin_instance_app_profile Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_bigtableadmin_instance_app_profile"
 identifier = "inspec/resources/gcp/google_bigtableadmin_instance_app_profile Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_instance_app_profile` InSpec audit resource to test the properties of a test a Google InstanceAppProfile.
-
-## Syntax
-A `google_bigtableadmin_instance_app_profile` is used to test a Google InstanceAppProfile resource
+Use the `google_bigtableadmin_instance_app_profile` InSpec audit resource to test the properties of a Google Cloud InstanceAppProfile resource.
 
 ## Examples
-```
+
+```ruby
 describe google_bigtableadmin_instance_app_profile(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -35,9 +31,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_bigtableadmin_instance_app_profile` resource:
+
+Parameters that can be accessed from the `google_bigtableadmin_instance_app_profile` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_bigtableadmin_instance_app_profile` resource:
 
 
@@ -81,6 +79,6 @@ Properties that can be accessed from the `google_bigtableadmin_instance_app_prof
       * HOST_PAYS
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://bigtableadmin.googleapis.com/](https://console.cloud.google.com/apis/library/bigtableadmin.googleapis.com/) is enabled for the current project.

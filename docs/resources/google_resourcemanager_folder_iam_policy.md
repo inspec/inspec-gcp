@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_resourcemanager_folder_iam_policy"
 identifier = "inspec/resources/gcp/google_resourcemanager_folder_iam_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
-A `google_resourcemanager_folder_iam_policy` is used to test a Google Folder Iam Policy resource
+
+A `google_resourcemanager_folder_iam_policy` is used to test a Google Folder Iam Policy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_resourcemanager_folder_iam_policy(name: "name") do
   it { should exist }
 end
@@ -28,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_resourcemanager_folder_iam_policy` resource:
 
   * `iam_binding_roles`: The list of roles that exist on the policy.
@@ -50,6 +53,6 @@ Properties that can be accessed from the `google_resourcemanager_folder_iam_poli
 
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

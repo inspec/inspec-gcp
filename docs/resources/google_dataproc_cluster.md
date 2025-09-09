@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dataproc_cluster"
 identifier = "inspec/resources/gcp/google_dataproc_cluster Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_dataproc_cluster` is used to test a Google Cluster resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataproc_cluster(project: 'chef-gcp-inspec', region: 'europe-west2', cluster_name: 'inspec-dataproc-cluster') do
   it { should exist }
   its('labels') { should include('label' => 'value') }
@@ -35,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_cluster` resource:
 
 
@@ -212,6 +215,6 @@ Properties that can be accessed from the `google_dataproc_cluster` resource:
   * `metrics`: Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Dataproc API](https://console.cloud.google.com/apis/library/dataproc.googleapis.com) is enabled for the current project.

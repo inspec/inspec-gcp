@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_ssl_certs"
 identifier = "inspec/resources/gcp/google_sql_ssl_certs Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_ssl_certs` is used to test a Google SslCerts resource
+Use the `google_sql_ssl_certs` InSpec audit resource to to test a Google Cloud SslCerts resource.
 
 ## Examples
-```
+
+```ruby
 describe google_sql_ssl_certs(project: 'chef-gcp-inspec', instance: 'test-pg') do
   it { should exist }
   its('instances') { should include 'test-pg' }
@@ -28,9 +28,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_ssl_certs` resource:
 
-See [google_sql_ssl_cert.md](google_sql_ssl_cert.md) for more detailed information
+See [google_sql_ssl_cert](google_sql_ssl_cert) for more detailed information.
+
   * `certs`: an array of `google_sql_ssl_cert` cert
   * `cert_serial_numbers`: an array of `google_sql_ssl_cert` cert_serial_number
   * `common_names`: an array of `google_sql_ssl_cert` common_name
@@ -39,10 +41,11 @@ See [google_sql_ssl_cert.md](google_sql_ssl_cert.md) for more detailed informati
   * `instances`: an array of `google_sql_ssl_cert` instance
   * `sha1_fingerprints`: an array of `google_sql_ssl_cert` sha1_fingerprint
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

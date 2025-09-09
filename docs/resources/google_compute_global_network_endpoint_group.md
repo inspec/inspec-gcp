@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_global_network_endpoint_group"
 identifier = "inspec/resources/gcp/google_compute_global_network_endpoint_group Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_global_network_endpoint_group` is used to test a Google GlobalNetworkEndpointGroup resource
+Use the `google_compute_global_network_endpoint_group` InSpec audit resource to to test a Google Cloud GlobalNetworkEndpointGroup resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_global_network_endpoint_group(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-endpoint-group') do
   it { should exist }
   its('default_port') { should cmp '90' }
@@ -39,6 +38,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_global_network_endpoint_group` resource:
 
 
@@ -120,6 +120,6 @@ Properties that can be accessed from the `google_compute_global_network_endpoint
       * STATUS_UNSPECIFIED
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

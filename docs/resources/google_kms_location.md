@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_location"
 identifier = "inspec/resources/gcp/google_kms_location Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_kms_location` is used to test a Google Location resource
+Use the `google_kms_location` InSpec audit resource to to test a Google Cloud Location resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_location(project: 'chef-gcp-inspec', location: 'europe-west2') do
   it { should exist }
 end
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_location` resource:
 
 
@@ -37,6 +38,6 @@ Properties that can be accessed from the `google_kms_location` resource:
   * `location`: Resource name for the location.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

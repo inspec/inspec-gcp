@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_bigquery_table"
 identifier = "inspec/resources/gcp/google_bigquery_table Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_bigquery_table` is used to test a Google Table resource
+Use the `google_bigquery_table` InSpec audit resource to to test a Google Cloud Table resource.
 
 ## Examples
-```
+
+```ruby
 describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: 'inspec_gcp_bigquery_table') do
   it { should exist }
 
@@ -29,6 +29,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_bigquery_table` resource:
 
 
@@ -257,6 +258,6 @@ Properties that can be accessed from the `google_bigquery_table` resource:
   * `dataset`: Name of the dataset
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery-json.googleapis.com/) is enabled for the current project.

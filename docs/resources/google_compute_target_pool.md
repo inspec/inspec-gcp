@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_target_pool"
 identifier = "inspec/resources/gcp/google_compute_target_pool Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_target_pool` is used to test a Google TargetPool resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_target_pool(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-target-pool') do
   it { should exist }
   its('session_affinity') { should eq 'CLIENT_IP' }
@@ -31,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_target_pool` resource:
 
 
@@ -59,6 +62,6 @@ Properties that can be accessed from the `google_compute_target_pool` resource:
   * `region`: The region where the target pool resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

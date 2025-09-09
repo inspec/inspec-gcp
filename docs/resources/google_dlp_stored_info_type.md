@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dlp_stored_info_type"
 identifier = "inspec/resources/gcp/google_dlp_stored_info_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dlp_stored_info_type` is used to test a Google StoredInfoType resource
+Use the `google_dlp_stored_info_type` InSpec audit resource to to test a Google Cloud StoredInfoType resource.
 
 ## Examples
-```
 
+```ruby
 describe google_dlp_stored_info_type(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}",name: '') do
 it { should exist }
 its('name') { should cmp 'i-inspec-gcp-dlp' }
@@ -30,6 +29,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dlp_stored_info_type` resource:
 
 
@@ -82,4 +82,4 @@ Properties that can be accessed from the `google_dlp_stored_info_type` resource:
   * `parent`: The parent of the info type in any of the following formats:  * `projects/{{project}}` * `projects/{{project}}/locations/{{location}}` * `organizations/{{organization_id}}` * `organizations/{{organization_id}}/locations/{{location}}`
 
 
-## GCP Permissions
+## GCP permissions

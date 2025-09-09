@@ -4,7 +4,7 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_organization_policy"
 identifier = "inspec/resources/gcp/google_organization_policy Resource"
 parent = "inspec/resources/gcp"
@@ -70,6 +70,6 @@ The following examples show how to use this InSpec audit resource.
 <br>
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the project.

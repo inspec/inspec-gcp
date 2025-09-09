@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_regional_disk"
 identifier = "inspec/resources/gcp/google_compute_regional_disk Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
-A `google_compute_regional_disk` is used to test a Google Regional Disk resource
+
+A `google_compute_regional_disk` is used to test a Google Regional Disk resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_regional_disk(project: 'chef-gcp-inspec', name: 'my_disk', region: 'region') do
   it { should exist }
   its('type') { should match 'pd-standard' }
@@ -34,6 +36,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_regional_disk` resource:
 
   * `label_fingerprint`: The fingerprint used for optimistic locking of this resource.  Used internally during updates.
@@ -57,6 +60,6 @@ Properties that can be accessed from the `google_compute_regional_disk` resource
   * `replica_zones`: A reference to the zones where the disk resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

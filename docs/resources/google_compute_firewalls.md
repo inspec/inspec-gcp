@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_firewalls"
 identifier = "inspec/resources/gcp/google_compute_firewalls Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_firewalls` is used to test a Google Firewall resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_firewalls(project: 'chef-gcp-inspec') do
   its('count') { should be >= 1 }
   its('firewall_names') { should include 'inspec-gcp-firewall' }
@@ -51,9 +53,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_firewalls` resource:
 
-See [google_compute_firewall.md](google_compute_firewall.md) for more detailed information
+See [google_compute_firewall](google_compute_firewall) for more detailed information.
+
   * `alloweds`: an array of `google_compute_firewall` allowed
   * `creation_timestamps`: an array of `google_compute_firewall` creation_timestamp
   * `denieds`: an array of `google_compute_firewall` denied
@@ -72,10 +76,11 @@ See [google_compute_firewall.md](google_compute_firewall.md) for more detailed i
   * `target_service_accounts`: an array of `google_compute_firewall` target_service_accounts
   * `target_tags`: an array of `google_compute_firewall` target_tags
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

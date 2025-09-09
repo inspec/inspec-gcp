@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_subnetwork"
 identifier = "inspec/resources/gcp/google_compute_subnetwork Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_subnetwork` is used to test a Google Subnetwork resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_subnetwork(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-subnet') do
   it { should exist }
   its('ip_cidr_range') { should eq '10.2.0.0/16' }
@@ -76,6 +78,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_subnetwork` resource:
 
 
@@ -141,6 +144,6 @@ Properties that can be accessed from the `google_compute_subnetwork` resource:
     * `filter_expr`: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field. The default value is 'true', which evaluates to include everything.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

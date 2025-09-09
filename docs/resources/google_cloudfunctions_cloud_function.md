@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_cloudfunctions_cloud_function"
 identifier = "inspec/resources/gcp/google_cloudfunctions_cloud_function Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_cloudfunctions_cloud_function` is used to test a Google CloudFunction resource
+Use the `google_cloudfunctions_cloud_function` InSpec audit resource to to test a Google Cloud CloudFunction resource.
 
 ## Examples
-```
+
+```ruby
 describe google_cloudfunctions_cloud_function(project: 'chef-gcp-inspec', location: 'europe-west1', name: 'inspec-gcp-function') do
   it { should exist }
   its('description') { should eq 'A description of the function' }
@@ -30,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_cloudfunctions_cloud_function` resource:
 
 
@@ -89,6 +90,6 @@ Properties that can be accessed from the `google_cloudfunctions_cloud_function` 
   * `location`: The location of this cloud function.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Functions API](https://console.cloud.google.com/apis/library/cloudfunctions.googleapis.com/) is enabled for the current project.

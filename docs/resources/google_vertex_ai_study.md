@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_study"
 identifier = "inspec/resources/gcp/google_vertex_ai_study Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_study` is used to test a Google Study resource
+Use the `google_vertex_ai_study` InSpec audit resource to to test a Google Cloud Study resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_study(name: "projects/#{gcp_project_id}/locations/#{study['region']}/studies/#{study['name']}", region: ' value_region') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -31,6 +31,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_study` resource:
 
 
@@ -52,4 +53,4 @@ Properties that can be accessed from the `google_vertex_ai_study` resource:
   * `inactive_reason`: Output only. A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
 
 
-## GCP Permissions
+## GCP permissions

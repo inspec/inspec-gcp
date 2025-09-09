@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_schedules"
 identifier = "inspec/resources/gcp/google_vertex_ai_schedules Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_schedules` is used to test a Google Schedule resource
+Use the `google_vertex_ai_schedules` InSpec audit resource to to test a Google Cloud Schedule resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_schedules(parent: "projects/#{gcp_project_id}/locations/#{schedule['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_schedules` resource:
 
-See [google_vertex_ai_schedule.md](google_vertex_ai_schedule.md) for more detailed information
+See [google_vertex_ai_schedule](google_vertex_ai_schedule) for more detailed information.
+
   * `started_run_counts`: an array of `google_vertex_ai_schedule` started_run_count
   * `allow_queueings`: an array of `google_vertex_ai_schedule` allow_queueing
   * `names`: an array of `google_vertex_ai_schedule` name
@@ -43,8 +45,9 @@ See [google_vertex_ai_schedule.md](google_vertex_ai_schedule.md) for more detail
   * `catch_ups`: an array of `google_vertex_ai_schedule` catch_up
   * `end_times`: an array of `google_vertex_ai_schedule` end_time
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

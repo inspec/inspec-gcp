@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_tensorboard_experiment_run"
 identifier = "inspec/resources/gcp/google_vertex_ai_tensorboard_experiment_run Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_tensorboard_experiment_run` is used to test a Google TensorboardExperimentRun resource
+Use the `google_vertex_ai_tensorboard_experiment_run` InSpec audit resource to to test a Google Cloud TensorboardExperimentRun resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_tensorboard_experiment_run(name: "projects/#{gcp_project_id}/locations/#{tensorboard_experiment_run['region']}/tensorboards/#{tensorboard_experiment_run['tensorboard']}/experiments/#{tensorboard_experiment_run['experiment']}/runs/#{tensorboard_experiment_run['run']}", region: ' value_region') do
 	it { should exist }
 
@@ -26,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_tensorboard_experiment_run` resource:
 
 
@@ -46,4 +47,4 @@ Properties that can be accessed from the `google_vertex_ai_tensorboard_experimen
   * `name`: Output only. Name of the TensorboardRun. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}`
 
 
-## GCP Permissions
+## GCP permissions

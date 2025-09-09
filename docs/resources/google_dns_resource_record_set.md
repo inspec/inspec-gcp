@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dns_resource_record_set"
 identifier = "inspec/resources/gcp/google_dns_resource_record_set Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_dns_resource_record_set` is used to test a Google ResourceRecordSet resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dns_resource_record_set(project: 'chef-gcp-inspec', name: 'backend.my.domain.com.', type: 'A', managed_zone: 'inspec-gcp-managed-zone') do
   it { should exist }
   its('type') { should eq 'A' }
@@ -29,6 +31,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dns_resource_record_set` resource:
 
 
@@ -57,6 +60,6 @@ Properties that can be accessed from the `google_dns_resource_record_set` resour
   * `managed_zone`: Identifies the managed zone addressed by this request.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com/) is enabled for the current project.

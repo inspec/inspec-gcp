@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_bigquery_datasets"
 identifier = "inspec/resources/gcp/google_bigquery_datasets Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_bigquery_datasets` is used to test a Google Dataset resource
+Use the `google_bigquery_datasets` InSpec audit resource to to test a Google Cloud Dataset resource.
 
 ## Examples
-```
+
+```ruby
 describe google_bigquery_datasets(project: 'chef-gcp-inspec') do
   its('count') { should be >= 1 }
   its('friendly_names') { should include 'A BigQuery dataset test' }
@@ -32,9 +32,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_bigquery_datasets` resource:
 
-See [google_bigquery_dataset.md](google_bigquery_dataset.md) for more detailed information
+See [google_bigquery_dataset](google_bigquery_dataset) for more detailed information.
+
   * `dataset_references`: an array of `google_bigquery_dataset` dataset_reference
   * `default_partition_expiration_ms`: an array of `google_bigquery_dataset` default_partition_expiration_ms
   * `etags`: an array of `google_bigquery_dataset` etag
@@ -44,10 +46,11 @@ See [google_bigquery_dataset.md](google_bigquery_dataset.md) for more detailed i
   * `locations`: an array of `google_bigquery_dataset` location
   * `default_encryption_configurations`: an array of `google_bigquery_dataset` default_encryption_configuration
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery-json.googleapis.com/) is enabled for the current project.

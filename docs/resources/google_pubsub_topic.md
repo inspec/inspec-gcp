@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_pubsub_topic"
 identifier = "inspec/resources/gcp/google_pubsub_topic Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_pubsub_topic` is used to test a Google Topic resource
+Use the `google_pubsub_topic` InSpec audit resource to to test a Google Cloud Topic resource.
 
 ## Examples
-```
+
+```ruby
 describe google_pubsub_topic(project: 'chef-gcp-inspec', name: 'inspec-gcp-topic') do
   it { should exist }
 end
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_pubsub_topic` resource:
 
 
@@ -39,6 +40,6 @@ Properties that can be accessed from the `google_pubsub_topic` resource:
     * `allowed_persistence_regions`: A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.

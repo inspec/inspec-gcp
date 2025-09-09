@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_database_instances"
 identifier = "inspec/resources/gcp/google_sql_database_instances Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_database_instances` is used to test a Google DatabaseInstance resource
+Use the `google_sql_database_instances` InSpec audit resource to to test a Google Cloud DatabaseInstance resource.
 
 ## Examples
-```
 
+```ruby
 describe google_sql_database_instances(project: 'chef-gcp-inspec') do
   its('instance_states') { should include 'RUNNABLE' }
   its('instance_names') { should include 'my-database' }
@@ -58,9 +57,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_database_instances` resource:
 
-See [google_sql_database_instance.md](google_sql_database_instance.md) for more detailed information
+See [google_sql_database_instance](google_sql_database_instance) for more detailed information.
+
   * `backend_types`: an array of `google_sql_database_instance` backend_type
   * `kinds`: an array of `google_sql_database_instance` kind
   * `connection_names`: an array of `google_sql_database_instance` connection_name
@@ -81,10 +82,11 @@ See [google_sql_database_instance.md](google_sql_database_instance.md) for more 
   * `disk_encryption_statuses`: an array of `google_sql_database_instance` disk_encryption_status
   * `server_ca_certs`: an array of `google_sql_database_instance` server_ca_cert
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_vpn_gateway"
 identifier = "inspec/resources/gcp/google_compute_vpn_gateway Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_vpn_gateway` is used to test a Google VpnGateway resource
+Use the `google_compute_vpn_gateway` InSpec audit resource to to test a Google Cloud VpnGateway resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_vpn_gateway(project: 'chef-gcp-inspec', region: ' value_region', vpnGateway: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -36,6 +36,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_vpn_gateway` resource:
 
 
@@ -75,6 +76,6 @@ Properties that can be accessed from the `google_compute_vpn_gateway` resource:
     * IPV4_ONLY
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

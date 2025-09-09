@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_disk_type"
 identifier = "inspec/resources/gcp/google_compute_disk_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_disk_type` is used to test a Google DiskType resource
+Use the `google_compute_disk_type` InSpec audit resource to to test a Google Cloud DiskType resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_disk_type(project: 'chef-gcp-inspec', zone: 'us-east1-b', name: 'disk_type_name') do
   it { should exist }
   it { should be_up }
@@ -22,6 +22,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_disk_type` resource:
 
 
@@ -56,6 +57,6 @@ Properties that can be accessed from the `google_compute_disk_type` resource:
   * `zone`: A reference to the zone where the disk type resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

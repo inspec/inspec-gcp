@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_service_account"
 identifier = "inspec/resources/gcp/google_service_account Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_service_account` is used to test a Google ServiceAccount resource
+Use the `google_service_account` InSpec audit resource to to test a Google Cloud ServiceAccount resource.
 
 ## Examples
-```
+
+```ruby
 describe google_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
   it { should exist }
   its('display_name') { should cmp '' }
@@ -44,6 +44,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_service_account` resource:
 
 
@@ -60,6 +61,6 @@ Properties that can be accessed from the `google_service_account` resource:
   * `oauth2_client_id`: OAuth2 client id for the service account.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/library/iam.googleapis.com/) is enabled for the current project.

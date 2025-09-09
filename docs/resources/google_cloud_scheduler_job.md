@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_cloud_scheduler_job"
 identifier = "inspec/resources/gcp/google_cloud_scheduler_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_cloud_scheduler_job` is used to test a Google Job resource
+Use the `google_cloud_scheduler_job` InSpec audit resource to to test a Google Cloud Job resource.
 
 ## Examples
-```
+
+```ruby
 describe google_cloud_scheduler_job(project: 'chef-gcp-inspec', region: us-central1, name: 'job-name') do
   it { should exist }
 
@@ -27,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_cloud_scheduler_job` resource:
 
 
@@ -108,6 +109,6 @@ Properties that can be accessed from the `google_cloud_scheduler_job` resource:
   * `region`: Region where the scheduler job resides
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Scheduler](https://console.cloud.google.com/apis/library/cloudscheduler.googleapis.com/) is enabled for the current project.

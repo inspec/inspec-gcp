@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_bigquery_dataset"
 identifier = "inspec/resources/gcp/google_bigquery_dataset Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_bigquery_dataset` is used to test a Google Dataset resource
+Use the `google_bigquery_dataset` InSpec audit resource to to test a Google Cloud Dataset resource.
 
 ## Examples
-```
+
+```ruby
 describe google_bigquery_dataset(project: 'chef-gcp-inspec', name: 'inspec_gcp_dataset') do
   it { should exist }
 
@@ -40,6 +40,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_bigquery_dataset` resource:
 
 
@@ -96,6 +97,6 @@ Properties that can be accessed from the `google_bigquery_dataset` resource:
     * `kms_key_name`: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery-json.googleapis.com/) is enabled for the current project.

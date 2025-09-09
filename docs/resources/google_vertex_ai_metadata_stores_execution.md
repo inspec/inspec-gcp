@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_metadata_stores_execution"
 identifier = "inspec/resources/gcp/google_vertex_ai_metadata_stores_execution Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_metadata_stores_execution` is used to test a Google MetadataStoresExecution resource
+Use the `google_vertex_ai_metadata_stores_execution` InSpec audit resource to to test a Google Cloud MetadataStoresExecution resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_metadata_stores_execution(name: "projects/#{gcp_project_id}/locations/#{metadata_stores_execution['region']}/metadataStores/#{metadata_stores_execution['metadataStore']}/executions/#{metadata_stores_execution['name']}", region: ' value_region') do
 	it { should exist }
 	its('create_time') { should cmp 'value_createtime' }
@@ -35,6 +35,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_metadata_stores_execution` resource:
 
 
@@ -73,4 +74,4 @@ Properties that can be accessed from the `google_vertex_ai_metadata_stores_execu
   * `update_time`: Output only. Timestamp when this Execution was last updated.
 
 
-## GCP Permissions
+## GCP permissions

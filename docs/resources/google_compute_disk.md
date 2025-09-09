@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_disk"
 identifier = "inspec/resources/gcp/google_compute_disk Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_disk` is used to test a Google Disk resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 
 most_recent_image = google_compute_image(project: 'debian-cloud', name: 'debian-10-buster-v20191014')
 
@@ -43,6 +45,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_disk` resource:
 
 
@@ -122,6 +125,6 @@ Properties that can be accessed from the `google_compute_disk` resource:
   * `source_snapshot_id`: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

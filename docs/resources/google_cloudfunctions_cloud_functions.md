@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_cloudfunctions_cloud_functions"
 identifier = "inspec/resources/gcp/google_cloudfunctions_cloud_functions Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_cloudfunctions_cloud_functions` is used to test a Google CloudFunction resource
+Use the `google_cloudfunctions_cloud_functions` InSpec audit resource to to test a Google Cloud CloudFunction resource.
 
 ## Examples
-```
+
+```ruby
 describe google_cloudfunctions_cloud_functions(project: 'chef-gcp-inspec', location: 'europe-west1') do
   its('descriptions') { should include 'A description of the function' }
   its('entry_points') { should include 'hello' }
@@ -22,9 +22,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_cloudfunctions_cloud_functions` resource:
 
-See [google_cloudfunctions_cloud_function.md](google_cloudfunctions_cloud_function.md) for more detailed information
+See [google_cloudfunctions_cloud_function](google_cloudfunctions_cloud_function) for more detailed information.
+
   * `names`: an array of `google_cloudfunctions_cloud_function` name
   * `descriptions`: an array of `google_cloudfunctions_cloud_function` description
   * `statuses`: an array of `google_cloudfunctions_cloud_function` status
@@ -44,10 +46,11 @@ See [google_cloudfunctions_cloud_function.md](google_cloudfunctions_cloud_functi
   * `event_triggers`: an array of `google_cloudfunctions_cloud_function` event_trigger
   * `locations`: an array of `google_cloudfunctions_cloud_function` location
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Functions API](https://console.cloud.google.com/apis/library/cloudfunctions.googleapis.com/) is enabled for the current project.

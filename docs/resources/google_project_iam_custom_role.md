@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_iam_custom_role"
 identifier = "inspec/resources/gcp/google_project_iam_custom_role Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_project_iam_custom_role` is used to test a Google CustomRole resource
+Use the `google_project_iam_custom_role` InSpec audit resource to to test a Google Cloud CustomRole resource.
 
 ## Examples
-```
+
+```ruby
 describe google_project_iam_custom_role(project: 'chef-gcp-inspec', name: 'admin-role') do
   it { should exist }
   its('stage') { should eq 'GA' }
@@ -39,6 +39,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project_iam_custom_role` resource:
 
 
@@ -62,6 +63,6 @@ Properties that can be accessed from the `google_project_iam_custom_role` resour
   * `deleted`: The current deleted state of the role
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/library/iam.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_reservation"
 identifier = "inspec/resources/gcp/google_compute_reservation Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_reservation` is used to test a Google Reservation resource
+Use the `google_compute_reservation` InSpec audit resource to to test a Google Cloud Reservation resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_reservation(project: 'chef-gcp-inspec', name: ' value_name', zone: ' value_zone') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -37,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_reservation` resource:
 
 
@@ -181,6 +182,6 @@ Properties that can be accessed from the `google_compute_reservation` resource:
     * `nanos`: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 `seconds` field and a positive `nanos` field. Must be from 0 to 999,999,999 inclusive.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

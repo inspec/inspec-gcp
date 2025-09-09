@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dataflow_project_location_jobs"
 identifier = "inspec/resources/gcp/google_dataflow_project_location_jobs Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dataflow_project_location_jobs` is used to test a Google ProjectLocationJob resource
+Use the `google_dataflow_project_location_jobs` InSpec audit resource to to test a Google Cloud ProjectLocationJob resource.
 
 ## Examples
-```
+
+```ruby
     describe google_dataflow_project_location_jobs(location: 'value_location', project: 'value_project') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dataflow_project_location_jobs` resource:
 
-See [google_dataflow_project_location_job.md](google_dataflow_project_location_job.md) for more detailed information
+See [google_dataflow_project_location_job](google_dataflow_project_location_job) for more detailed information.
+
   * `ids`: an array of `google_dataflow_project_location_job` id
   * `project_ids`: an array of `google_dataflow_project_location_job` project_id
   * `names`: an array of `google_dataflow_project_location_job` name
@@ -52,10 +54,11 @@ See [google_dataflow_project_location_job.md](google_dataflow_project_location_j
   * `runtime_updatable_params`: an array of `google_dataflow_project_location_job` runtime_updatable_params
   * `satisfies_pzis`: an array of `google_dataflow_project_location_job` satisfies_pzi
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://dataflow.googleapis.com/](https://console.cloud.google.com/apis/library/dataflow.googleapis.com/) is enabled for the current project.

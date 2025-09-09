@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dataproc_job"
 identifier = "inspec/resources/gcp/google_dataproc_job resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dataproc_job` is used to test a Google Job resource
+Use the `google_dataproc_job` InSpec audit resource to to test a Google Cloud Job resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataproc_job(job_id: 'value_job_id', project_id: 'value_project_id', region: ' value_region') do
 	it { should exist }
 	its('driver_output_resource_uri') { should cmp 'value_driveroutputresourceuri' }
@@ -28,6 +28,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_job` resource:
 
 
@@ -376,6 +377,6 @@ Properties that can be accessed from the `google_dataproc_job` resource:
     * `vcores`: Required. The number of vCPUs the driver is requesting.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Dataproc API](https://console.cloud.google.com/apis/library/dataproc.googleapis.com) is enabled for the current project.

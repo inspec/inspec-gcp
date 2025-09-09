@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_pubsub_subscription"
 identifier = "inspec/resources/gcp/google_pubsub_subscription Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_pubsub_subscription` is used to test a Google Subscription resource
+Use the `google_pubsub_subscription` InSpec audit resource to to test a Google Cloud Subscription resource.
 
 ## Examples
-```
+
+```ruby
 describe google_pubsub_subscription(project: 'chef-gcp-inspec', name: 'inspec-gcp-subscription') do
   it { should exist }
 end
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_pubsub_subscription` resource:
 
 
@@ -73,6 +74,6 @@ Properties that can be accessed from the `google_pubsub_subscription` resource:
   * `enable_message_ordering`: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.

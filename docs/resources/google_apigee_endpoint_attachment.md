@@ -1,25 +1,21 @@
 +++
-
 title = "google_apigee_endpoint_attachment Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_apigee_endpoint_attachment"
 identifier = "inspec/resources/gcp/google_apigee_endpoint_attachment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_apigee_endpoint_attachment` InSpec audit resource to test the properties of a test a Google EndpointAttachment.
-
-## Syntax
-A `google_apigee_endpoint_attachment` is used to test a Google EndpointAttachment resource
+Use the `google_apigee_endpoint_attachment` InSpec audit resource to test the properties of a Google Cloud EndpointAttachment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_apigee_endpoint_attachment(name: ' value_name') do
 	it { should exist }
 	its('host') { should cmp 'value_host' }
@@ -37,9 +33,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_apigee_endpoint_attachment` resource:
+
+Parameters that can be accessed from the `google_apigee_endpoint_attachment` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_apigee_endpoint_attachment` resource:
 
 
@@ -71,6 +69,6 @@ Properties that can be accessed from the `google_apigee_endpoint_attachment` res
     * UPDATING
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Apigee API](https://console.cloud.google.com/apis/library/apigee.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_composer_project_location_environments"
 identifier = "inspec/resources/gcp/google_composer_project_location_environments Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_composer_project_location_environments` is used to test a Google ProjectLocationEnvironment resource
+Use the `google_composer_project_location_environments` InSpec audit resource to to test a Google Cloud ProjectLocationEnvironment resource.
 
 ## Examples
-```
+
+```ruby
     describe google_composer_project_location_environments(parent: ' value_parent') do
     it { should exist }
     its('name') { should include('value_name') }
@@ -27,9 +27,11 @@ A `google_composer_project_location_environments` is used to test a Google Proje
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_composer_project_location_environments` resource:
 
-See [google_composer_project_location_environment.md](google_composer_project_location_environment.md) for more detailed information
+See [google_composer_project_location_environment](google_composer_project_location_environment) for more detailed information.
+
   * `names`: an array of `google_composer_project_location_environment` name
   * `configs`: an array of `google_composer_project_location_environment` config
   * `uuids`: an array of `google_composer_project_location_environment` uuid
@@ -40,10 +42,11 @@ See [google_composer_project_location_environment.md](google_composer_project_lo
   * `satisfies_pzs`: an array of `google_composer_project_location_environment` satisfies_pzs
   * `storage_configs`: an array of `google_composer_project_location_environment` storage_config
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://composer.googleapis.com/](https://console.cloud.google.com/apis/library/composer.googleapis.com/) is enabled for the current project.

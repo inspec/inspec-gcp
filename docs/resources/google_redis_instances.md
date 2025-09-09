@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_redis_instances"
 identifier = "inspec/resources/gcp/google_redis_instances Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_redis_instances` is used to test a Google Instance resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_redis_instances(project: 'chef-gcp-inspec', region: 'us-central1') do
   its('tiers') { should include 'STANDARD_HA' }
   its('memory_size_gbs') { should include '1' }
@@ -30,9 +32,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_redis_instances` resource:
 
-See [google_redis_instance.md](google_redis_instance.md) for more detailed information
+See [google_redis_instance](google_redis_instance) for more detailed information.
+
   * `alternative_location_ids`: an array of `google_redis_instance` alternative_location_id
   * `auth_enableds`: an array of `google_redis_instance` auth_enabled
   * `authorized_networks`: an array of `google_redis_instance` authorized_network
@@ -55,8 +59,9 @@ See [google_redis_instance.md](google_redis_instance.md) for more detailed infor
   * `server_ca_certs`: (Beta only) an array of `google_redis_instance` server_ca_certs
   * `regions`: an array of `google_redis_instance` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

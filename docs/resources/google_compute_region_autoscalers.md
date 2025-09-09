@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_autoscalers"
 identifier = "inspec/resources/gcp/google_compute_region_autoscalers Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_autoscalers` is used to test a Google RegionAutoscaler resource
+Use the `google_compute_region_autoscalers` InSpec audit resource to to test a Google Cloud RegionAutoscaler resource.
 
 ## Examples
-```
+
+```ruby
   describe google_compute_region_autoscalers(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_autoscalers` resource:
 
-See [google_compute_region_autoscaler.md](google_compute_region_autoscaler.md) for more detailed information
+See [google_compute_region_autoscaler](google_compute_region_autoscaler) for more detailed information.
+
   * `kinds`: an array of `google_compute_region_autoscaler` kind
   * `ids`: an array of `google_compute_region_autoscaler` id
   * `creation_timestamps`: an array of `google_compute_region_autoscaler` creation_timestamp
@@ -40,10 +42,11 @@ See [google_compute_region_autoscaler.md](google_compute_region_autoscaler.md) f
   * `recommended_sizes`: an array of `google_compute_region_autoscaler` recommended_size
   * `scaling_schedule_statuses`: an array of `google_compute_region_autoscaler` scaling_schedule_status
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

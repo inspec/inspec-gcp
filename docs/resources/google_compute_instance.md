@@ -4,22 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_instance"
 identifier = "inspec/resources/gcp/google_compute_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_instance` is used to test a Google Instance resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_instance(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-instance') do
   it { should exist }
   its('machine_type') { should match 'n1-standard-1' }
@@ -108,6 +109,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_instance` resource:
 
 
@@ -272,6 +274,6 @@ Properties that can be accessed from the `google_compute_instance` resource:
   * `zone`: A reference to the zone where the machine resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

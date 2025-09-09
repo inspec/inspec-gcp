@@ -4,22 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_snapshot"
 identifier = "inspec/resources/gcp/google_compute_snapshot Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_snapshot` is used to test a Google Snapshot resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_snapshot(project: 'chef-gcp-inspec', name: 'inspec-gcp-disk-snapshot') do
   it { should exist }
   its('source_disk') { should match 'inspec-snapshot-disk' }
@@ -31,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_snapshot` resource:
 
 
@@ -77,6 +79,6 @@ Properties that can be accessed from the `google_compute_snapshot` resource:
     * `kms_key_service_account`: The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

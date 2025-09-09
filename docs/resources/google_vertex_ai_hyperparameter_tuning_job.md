@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_hyperparameter_tuning_job"
 identifier = "inspec/resources/gcp/google_vertex_ai_hyperparameter_tuning_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_hyperparameter_tuning_job` is used to test a Google HyperparameterTuningJob resource
+Use the `google_vertex_ai_hyperparameter_tuning_job` InSpec audit resource to to test a Google Cloud HyperparameterTuningJob resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_hyperparameter_tuning_job(name: "projects/#{gcp_project_id}/locations/#{hyperparameter_tuning_job['region']}/hyperparameterTuningJobs/#{hyperparameter_tuning_job['name']}", region: ' value_region') do
 	it { should exist }
 	its('state') { should cmp 'value_state' }
@@ -33,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_hyperparameter_tuning_job` resource:
 
 
@@ -84,4 +85,4 @@ Properties that can be accessed from the `google_vertex_ai_hyperparameter_tuning
   * `name`: Output only. Resource name of the HyperparameterTuningJob.
 
 
-## GCP Permissions
+## GCP permissions

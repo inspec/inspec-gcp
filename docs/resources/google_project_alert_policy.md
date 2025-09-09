@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_alert_policy"
 identifier = "inspec/resources/gcp/google_project_alert_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_project_alert_policy` is used to test a Google AlertPolicy resource
+Use the `google_project_alert_policy` InSpec audit resource to to test a Google Cloud AlertPolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe.one do
   google_project_alert_policies(project: 'chef-gcp-inspec').policy_names do |policy_name|
     describe google_project_alert_policy(project: 'chef-gcp-inspec', name: policy_name) do
@@ -40,6 +40,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project_alert_policy` resource:
 
 
@@ -262,6 +263,6 @@ Properties that can be accessed from the `google_project_alert_policy` resource:
     * `mime_type`: The format of the content field. Presently, only the value "text/markdown" is supported.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Monitoring API](https://console.cloud.google.com/apis/library/monitoring.googleapis.com/) is enabled for the current project.

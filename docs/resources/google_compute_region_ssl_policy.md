@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_ssl_policy"
 identifier = "inspec/resources/gcp/google_compute_region_ssl_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_ssl_policy` is used to test a Google RegionSslPolicy resource
+Use the `google_compute_region_ssl_policy` InSpec audit resource to to test a Google Cloud RegionSslPolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_ssl_policy(project: 'chef-gcp-inspec', region: ' value_region', sslPolicy: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -37,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_ssl_policy` resource:
 
 
@@ -221,6 +222,6 @@ Properties that can be accessed from the `google_compute_region_ssl_policy` reso
   * `region`: [Output Only] URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

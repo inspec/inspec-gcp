@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_bigquery_tables"
 identifier = "inspec/resources/gcp/google_bigquery_tables Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_bigquery_tables` is used to test a Google Table resource
+Use the `google_bigquery_tables` InSpec audit resource to to test a Google Cloud Table resource.
 
 ## Examples
-```
+
+```ruby
 describe.one do
   google_bigquery_tables(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset').table_references.each do |table_reference|
     describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: table_reference.table_id) do
@@ -26,9 +26,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_bigquery_tables` resource:
 
-See [google_bigquery_table.md](google_bigquery_table.md) for more detailed information
+See [google_bigquery_table](google_bigquery_table) for more detailed information.
+
   * `table_references`: an array of `google_bigquery_table` table_reference
   * `clusterings`: an array of `google_bigquery_table` clustering
   * `creation_times`: an array of `google_bigquery_table` creation_time
@@ -51,10 +53,11 @@ See [google_bigquery_table.md](google_bigquery_table.md) for more detailed infor
   * `external_data_configurations`: an array of `google_bigquery_table` external_data_configuration
   * `datasets`: an array of `google_bigquery_table` dataset
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery-json.googleapis.com/) is enabled for the current project.

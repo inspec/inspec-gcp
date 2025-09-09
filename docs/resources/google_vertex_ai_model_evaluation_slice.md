@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_model_evaluation_slice"
 identifier = "inspec/resources/gcp/google_vertex_ai_model_evaluation_slice Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_model_evaluation_slice` is used to test a Google ModelEvaluationSlice resource
+Use the `google_vertex_ai_model_evaluation_slice` InSpec audit resource to to test a Google Cloud ModelEvaluationSlice resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_model_evaluation_slice(name: "projects/#{gcp_project_id}/locations/#{models_evaluations_slice['region']}/models/#{models_evaluations_slice['model']}/evaluations/#{models_evaluations_slice['evaluation']}/slices/#{models_evaluations_slice['slice']}", region: ' value_region') do
 	it { should exist }
 	its('create_time') { should cmp 'value_createtime' }
@@ -29,6 +29,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_model_evaluation_slice` resource:
 
 
@@ -71,4 +72,4 @@ Properties that can be accessed from the `google_vertex_ai_model_evaluation_slic
   * `metrics_schema_uri`: Output only. Points to a YAML file stored on Google Cloud Storage describing the metrics of this ModelEvaluationSlice. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject).
 
 
-## GCP Permissions
+## GCP permissions

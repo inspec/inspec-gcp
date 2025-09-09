@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_secret_manager_secrets"
 identifier = "inspec/resources/gcp/google_secret_manager_secrets Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_secret_manager_secrets` is used to test a Google Secret resource
+Use the `google_secret_manager_secrets` InSpec audit resource to to test a Google Cloud Secret resource.
 
 ## Examples
-```
+
+```ruby
     describe google_secret_manager_secrets(parent: ' value_parent') do
     it { should exist }
   end
@@ -22,9 +22,11 @@ A `google_secret_manager_secrets` is used to test a Google Secret resource
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_secret_manager_secrets` resource:
 
-See [google_secret_manager_secret.md](google_secret_manager_secret.md) for more detailed information
+See [google_secret_manager_secret](google_secret_manager_secret) for more detailed information.
+
   * `names`: an array of `google_secret_manager_secret` name
   * `create_times`: an array of `google_secret_manager_secret` create_time
   * `labels`: an array of `google_secret_manager_secret` labels
@@ -35,10 +37,11 @@ See [google_secret_manager_secret.md](google_secret_manager_secret.md) for more 
   * `rotations`: an array of `google_secret_manager_secret` rotation
   * `secret_ids`: an array of `google_secret_manager_secret` secret_id
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Secret Manager API](https://console.cloud.google.com/apis/library/secretmanager.googleapis.com/) is enabled for the current project.

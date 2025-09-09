@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_cluster"
 identifier = "inspec/resources/gcp/google_container_cluster Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_container_cluster` is used to test a Google Cluster resource
+Use the `google_container_cluster` InSpec audit resource to to test a Google Cloud Cluster resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_cluster(project: 'chef-gcp-inspec', location: 'europe-west2-a', name: 'gcp-inspec-kube-cluster') do
   it { should exist }
   its('locations.sort'){ should cmp [ 'europe-west2-a', 'europe-west2-b', 'europe-west2-c' ].sort }
@@ -69,6 +69,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_container_cluster` resource:
 
 
@@ -338,6 +339,6 @@ Properties that can be accessed from the `google_container_cluster` resource:
   * `location`: The location where the cluster is deployed
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

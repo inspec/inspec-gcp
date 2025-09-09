@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_access_context_manager_access_level"
 identifier = "inspec/resources/gcp/google_access_context_manager_access_level Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_access_context_manager_access_level` is used to test a Google AccessLevel resource
+Use the `google_access_context_manager_access_level` InSpec audit resource to to test a Google Cloud AccessLevel resource.
 
 ## Examples
-```
+
+```ruby
 
 policy_name = google_access_context_manager_access_policies(org_id: '190694428152').names.first
 
@@ -32,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_access_context_manager_access_level` resource:
 
 
@@ -99,4 +100,4 @@ Properties that can be accessed from the `google_access_context_manager_access_l
   * `name`: Name of the access level
 
 
-## GCP Permissions
+## GCP permissions

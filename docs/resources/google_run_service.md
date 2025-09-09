@@ -1,25 +1,21 @@
 +++
-
 title = "google_run_service Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_run_service"
 identifier = "inspec/resources/gcp/google_run_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_run_service` InSpec audit resource to test the properties of a test a Google Service.
-
-## Syntax
-A `google_run_service` is used to test a Google Service resource
+Use the `google_run_service` InSpec audit resource to test the properties of a Google Cloud Service resource.
 
 ## Examples
-```
+
+```ruby
 describe google_run_service(name: 'value_name') do
   it { should exist }
   its('name') { should cmp value_name }
@@ -37,9 +33,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_run_service` resource:
+
+Parameters that can be accessed from the `google_run_service` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_run_service` resource:
 
 
@@ -504,6 +502,6 @@ Properties that can be accessed from the `google_run_service` resource:
   * `etag`: Output only. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://run.googleapis.com/](https://console.cloud.google.com/apis/library/run.googleapis.com/) is enabled for the current project.

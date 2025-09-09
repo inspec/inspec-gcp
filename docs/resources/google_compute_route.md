@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_route"
 identifier = "inspec/resources/gcp/google_compute_route Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_route` is used to test a Google Route resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_route(project: 'chef-gcp-inspec', name: 'inspec-gcp-route') do
   it { should exist }
   its('dest_range') { should eq '15.0.0.0/24' }
@@ -33,6 +35,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_route` resource:
 
 
@@ -61,6 +64,6 @@ Properties that can be accessed from the `google_compute_route` resource:
   * `next_hop_ilb`: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

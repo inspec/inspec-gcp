@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dlp_dt"
 identifier = "inspec/resources/gcp/google_dlp_dt Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dlp_dt` is used to test a Google DT resource
+Use the `google_dlp_dt` InSpec audit resource to to test a Google Cloud DT resource.
 
 ## Examples
-```
+
+```ruby
 
 
 describe google_dlp_dts(parent: "projects/#{'chef-gcp-inspec'}/locations/#{''}") do
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dlp_dt` resource:
 
 
@@ -177,4 +178,4 @@ Properties that can be accessed from the `google_dlp_dt` resource:
   * `parent`: The parent of the template in any of the following formats:  * `projects/{{project}}` * `projects/{{project}}/locations/{{location}}` * `organizations/{{organization_id}}` * `organizations/{{organization_id}}/locations/{{location}}`
 
 
-## GCP Permissions
+## GCP permissions

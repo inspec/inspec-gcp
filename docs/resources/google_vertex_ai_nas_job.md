@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_nas_job"
 identifier = "inspec/resources/gcp/google_vertex_ai_nas_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_nas_job` is used to test a Google NasJob resource
+Use the `google_vertex_ai_nas_job` InSpec audit resource to to test a Google Cloud NasJob resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_nas_job(name: "projects/#{gcp_project_id}/locations/#{nas_job['region']}/nasJobs/#{nas_job['name']}", region: ' value_region') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -33,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_nas_job` resource:
 
 
@@ -380,4 +381,4 @@ Properties that can be accessed from the `google_vertex_ai_nas_job` resource:
   * `update_time`: Output only. Time when the NasJob was most recently updated.
 
 
-## GCP Permissions
+## GCP permissions

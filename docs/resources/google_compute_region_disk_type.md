@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_disk_type"
 identifier = "inspec/resources/gcp/google_compute_region_disk_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_disk_type` is used to test a Google RegionDiskType resource
+Use the `google_compute_region_disk_type` InSpec audit resource to to test a Google Cloud RegionDiskType resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_disk_type(disk_type: 'value_name', project: 'chef-gcp-inspec', region: 'value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -36,6 +36,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_disk_type` resource:
 
 
@@ -77,6 +78,6 @@ Properties that can be accessed from the `google_compute_region_disk_type` resou
   * `region`: [Output Only] URL of the region where the disk type resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

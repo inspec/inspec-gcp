@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_alert_policies"
 identifier = "inspec/resources/gcp/google_project_alert_policies Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_project_alert_policies` is used to test a Google AlertPolicy resource
+Use the `google_project_alert_policies` InSpec audit resource to to test a Google Cloud AlertPolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_project_alert_policies(project: 'chef-gcp-inspec') do
   it { should exist }
   its('policy_display_names') { should include 'Display'}
@@ -47,9 +47,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project_alert_policies` resource:
 
-See [google_project_alert_policy.md](google_project_alert_policy.md) for more detailed information
+See [google_project_alert_policy](google_project_alert_policy) for more detailed information.
+
   * `policy_names`: an array of `google_project_alert_policy` name
   * `policy_display_names`: an array of `google_project_alert_policy` display_name
   * `combiners`: an array of `google_project_alert_policy` combiner
@@ -60,10 +62,11 @@ See [google_project_alert_policy.md](google_project_alert_policy.md) for more de
   * `user_labels`: an array of `google_project_alert_policy` user_labels
   * `documentations`: an array of `google_project_alert_policy` documentation
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Monitoring API](https://console.cloud.google.com/apis/library/monitoring.googleapis.com/) is enabled for the current project.

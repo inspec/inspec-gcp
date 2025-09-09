@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_studies_trial"
 identifier = "inspec/resources/gcp/google_vertex_ai_studies_trial Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_studies_trial` is used to test a Google StudiesTrial resource
+Use the `google_vertex_ai_studies_trial` InSpec audit resource to to test a Google Cloud StudiesTrial resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_studies_trial(name: "projects/#{gcp_project_id}/locations/#{studies_trial['region']}/studies/#{studies_trial['study']}/trials/#{studies_trial['name']}", region: ' value_region') do
 	it { should exist }
 	its('start_time') { should cmp 'value_starttime' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_studies_trial` resource:
 
 
@@ -95,4 +96,4 @@ Properties that can be accessed from the `google_vertex_ai_studies_trial` resour
   * `id`: Output only. The identifier of the Trial assigned by the service.
 
 
-## GCP Permissions
+## GCP permissions

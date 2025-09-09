@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_health_check"
 identifier = "inspec/resources/gcp/google_compute_region_health_check Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_health_check` is used to test a Google RegionHealthCheck resource
+Use the `google_compute_region_health_check` InSpec audit resource to to test a Google Cloud RegionHealthCheck resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_region_health_check(project: 'chef-gcp-inspec', region: '', name: '') do
   it { should exist }
   its('type') { should eq "TCP" }
@@ -60,6 +59,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_health_check` resource:
 
 
@@ -219,6 +219,6 @@ Properties that can be accessed from the `google_compute_region_health_check` re
   * `region`: The region where the regional health check resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

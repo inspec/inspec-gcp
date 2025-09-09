@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_filestore_instance"
 identifier = "inspec/resources/gcp/google_filestore_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_filestore_instance` is used to test a Google Instance resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_filestore_instance(project: 'chef-gcp-inspec', zone: 'us-central1-b', name: 'inspecgcp') do
   it { should exist }
   its('tier') { should cmp 'PREMIUM' }
@@ -36,6 +38,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_filestore_instance` resource:
 
 
@@ -95,4 +98,4 @@ Properties that can be accessed from the `google_filestore_instance` resource:
   * `zone`: The name of the Filestore zone of the instance.
 
 
-## GCP Permissions
+## GCP permissions

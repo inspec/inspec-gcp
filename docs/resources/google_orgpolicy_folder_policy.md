@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_orgpolicy_folder_policy"
 identifier = "inspec/resources/gcp/google_orgpolicy_folder_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_orgpolicy_folder_policy` is used to test a Google FolderPolicy resource
+Use the `google_orgpolicy_folder_policy` InSpec audit resource to to test a Google Cloud FolderPolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_orgpolicy_folder_policy(parent: 'value_parent', name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -27,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_orgpolicy_folder_policy` resource:
 
 
@@ -139,6 +140,6 @@ Properties that can be accessed from the `google_orgpolicy_folder_policy` resour
       * `inherit_from_parent`: Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://orgpolicy.googleapis.com/](https://console.cloud.google.com/apis/library/orgpolicy.googleapis.com/) is enabled for the current project.

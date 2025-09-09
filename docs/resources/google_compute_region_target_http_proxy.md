@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_target_http_proxy"
 identifier = "inspec/resources/gcp/google_compute_region_target_http_proxy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_target_http_proxy` is used to test a Google RegionTargetHttpProxy resource
+Use the `google_compute_region_target_http_proxy` InSpec audit resource to to test a Google Cloud RegionTargetHttpProxy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_target_http_proxy(project: 'chef-gcp-inspec', region: ' value_region', targetHttpProxy: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -36,6 +36,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_target_http_proxy` resource:
 
 
@@ -66,6 +67,6 @@ Properties that can be accessed from the `google_compute_region_target_http_prox
   * `http_keep_alive_timeout_sec`: Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

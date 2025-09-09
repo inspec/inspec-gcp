@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_access_context_manager_access_levels"
 identifier = "inspec/resources/gcp/google_access_context_manager_access_levels Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_access_context_manager_access_levels` is used to test a Google AccessLevel resource
+Use the `google_access_context_manager_access_levels` InSpec audit resource to to test a Google Cloud AccessLevel resource.
 
 ## Examples
-```
+
+```ruby
 
 policy_name = google_access_context_manager_access_policies(org_id: '190694428152').names.first
 
@@ -25,9 +25,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_access_context_manager_access_levels` resource:
 
-See [google_access_context_manager_access_level.md](google_access_context_manager_access_level.md) for more detailed information
+See [google_access_context_manager_access_level](google_access_context_manager_access_level) for more detailed information.
+
   * `titles`: an array of `google_access_context_manager_access_level` title
   * `descriptions`: an array of `google_access_context_manager_access_level` description
   * `basics`: an array of `google_access_context_manager_access_level` basic
@@ -35,8 +37,9 @@ See [google_access_context_manager_access_level.md](google_access_context_manage
   * `parents`: an array of `google_access_context_manager_access_level` parent
   * `names`: an array of `google_access_context_manager_access_level` name
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_router_nat"
 identifier = "inspec/resources/gcp/google_compute_router_nat Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_router_nat` is used to test a Google RouterNat resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_router_nat(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router', name: 'inspec-router-nat') do
   it { should exist }
   its('nat_ip_allocate_option') { should cmp 'AUTO_ONLY' }
@@ -34,6 +36,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_router_nat` resource:
 
 
@@ -89,6 +92,6 @@ Properties that can be accessed from the `google_compute_router_nat` resource:
   * `region`: Region where the router and NAT reside.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

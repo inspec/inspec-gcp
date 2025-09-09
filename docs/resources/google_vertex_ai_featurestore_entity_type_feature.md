@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_featurestore_entity_type_feature"
 identifier = "inspec/resources/gcp/google_vertex_ai_featurestore_entity_type_feature Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_featurestore_entity_type_feature` is used to test a Google FeaturestoreEntityTypeFeature resource
+Use the `google_vertex_ai_featurestore_entity_type_feature` InSpec audit resource to to test a Google Cloud FeaturestoreEntityTypeFeature resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_featurestore_entity_type_feature(name: "projects/#{gcp_project_id}/locations/#{featurestore_entity_type_feature['region']}/featurestores/#{featurestore_entity_type_feature['featurestore']}/entityTypes/#{featurestore_entity_type_feature['entityType']}/features/#{featurestore_entity_type_feature['feature']}", region: ' value_region') do
 	it { should exist }
 	its('description') { should cmp 'value_description' }
@@ -32,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_featurestore_entity_type_feature` resource:
 
 
@@ -67,4 +68,4 @@ Properties that can be accessed from the `google_vertex_ai_featurestore_entity_t
     * BYTES
 
 
-## GCP Permissions
+## GCP permissions

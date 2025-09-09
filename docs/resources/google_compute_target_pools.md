@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_target_pools"
 identifier = "inspec/resources/gcp/google_compute_target_pools Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_target_pools` is used to test a Google TargetPool resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_target_pools(project: 'chef-gcp-inspec', region: 'europe-west2') do
   its('names') { should include 'inspec-gcp-target-pool' }
   its('session_affinities') { should include 'CLIENT_IP' }
@@ -26,9 +28,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_target_pools` resource:
 
-See [google_compute_target_pool.md](google_compute_target_pool.md) for more detailed information
+See [google_compute_target_pool](google_compute_target_pool) for more detailed information.
+
   * `backup_pools`: an array of `google_compute_target_pool` backup_pool
   * `creation_timestamps`: an array of `google_compute_target_pool` creation_timestamp
   * `descriptions`: an array of `google_compute_target_pool` description
@@ -40,10 +44,11 @@ See [google_compute_target_pool.md](google_compute_target_pool.md) for more deta
   * `session_affinities`: an array of `google_compute_target_pool` session_affinity
   * `regions`: an array of `google_compute_target_pool` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

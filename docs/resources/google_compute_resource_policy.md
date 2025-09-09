@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_resource_policy"
 identifier = "inspec/resources/gcp/google_compute_resource_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_resource_policy` is used to test a Google ResourcePolicy resource
+Use the `google_compute_resource_policy` InSpec audit resource to to test a Google Cloud ResourcePolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_resource_policy(project: 'chef-gcp-inspec', region: 'value_region', name: 'value_name') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_resource_policy` resource:
 
 
@@ -204,6 +205,6 @@ Properties that can be accessed from the `google_compute_resource_policy` resour
       * `last_run_start_time`: [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

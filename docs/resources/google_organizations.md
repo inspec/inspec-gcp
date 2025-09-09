@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_organizations"
 identifier = "inspec/resources/gcp/google_organizations Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_organizations` is used to test a Google Organization resource
+Use the `google_organizations` InSpec audit resource to to test a Google Cloud Organization resource.
 
 ## Examples
-```
 
+```ruby
 describe google_organizations do
   its('names') { should include "organizations/123456" }
 end
@@ -54,19 +53,22 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_organizations` resource:
 
-See [google_organization.md](google_organization.md) for more detailed information
+See [google_organization](google_organization) for more detailed information.
+
   * `names`: an array of `google_organization` name
   * `display_names`: an array of `google_organization` display_name
   * `lifecycle_states`: an array of `google_organization` lifecycle_state
   * `creation_times`: an array of `google_organization` creation_time
   * `owners`: an array of `google_organization` owner
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_operations"
 identifier = "inspec/resources/gcp/google_compute_region_operations Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_operations` is used to test a Google RegionOperation resource
+Use the `google_compute_region_operations` InSpec audit resource to to test a Google Cloud RegionOperation resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_operations(project: 'chef-gcp-inspec', region: '') do
 	it { should exist }
 	its('names') { should include 'operation-1641188435323-5d4a6f5b26934-9281422c-dce238f5' }
@@ -23,9 +23,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_operations` resource:
 
-See [google_compute_region_operation.md](google_compute_region_operation.md) for more detailed information
+See [google_compute_region_operation](google_compute_region_operation) for more detailed information.
+
   * `creation_timestamps`: an array of `google_compute_region_operation` creation_timestamp
   * `descriptions`: an array of `google_compute_region_operation` description
   * `ids`: an array of `google_compute_region_operation` id
@@ -39,10 +41,11 @@ See [google_compute_region_operation.md](google_compute_region_operation.md) for
   * `progresses`: an array of `google_compute_region_operation` progress
   * `zones`: an array of `google_compute_region_operation` zone
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

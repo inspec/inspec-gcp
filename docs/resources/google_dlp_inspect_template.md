@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dlp_inspect_template"
 identifier = "inspec/resources/gcp/google_dlp_inspect_template Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dlp_inspect_template` is used to test a Google InspectTemplate resource
+Use the `google_dlp_inspect_template` InSpec audit resource to to test a Google Cloud InspectTemplate resource.
 
 ## Examples
-```
 
+```ruby
 describe google_dlp_inspect_template(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}", name: 'i-inspec-gcp-dlp') do
 it { should exist }
 its('name') { should cmp 'i-inspec-gcp-dlp' }
@@ -31,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dlp_inspect_template` resource:
 
 
@@ -179,4 +179,4 @@ Properties that can be accessed from the `google_dlp_inspect_template` resource:
   * `parent`: The parent of the inspect template in any of the following formats:  * `projects/{{project}}` * `projects/{{project}}/locations/{{location}}` * `organizations/{{organization_id}}` * `organizations/{{organization_id}}/locations/{{location}}`
 
 
-## GCP Permissions
+## GCP permissions

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_storage_bucket_object"
 identifier = "inspec/resources/gcp/google_storage_bucket_object Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_storage_bucket_object` is used to test a Google BucketObject resource
+Use the `google_storage_bucket_object` InSpec audit resource to to test a Google Cloud BucketObject resource.
 
 ## Examples
-```
+
+```ruby
 describe google_storage_bucket_object(bucket: 'bucket-with-object', object: 'image1') do
   it { should exist }
   its('size.to_i') { should be > 0 }
@@ -61,6 +61,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_storage_bucket_object` resource:
 
 
@@ -99,6 +100,6 @@ Properties that can be accessed from the `google_storage_bucket_object` resource
   * `time_updated`: The modification time of the object metadata.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

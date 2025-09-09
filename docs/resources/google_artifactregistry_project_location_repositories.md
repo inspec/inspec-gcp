@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_artifactregistry_project_location_repositories"
 identifier = "inspec/resources/gcp/google_artifactregistry_project_location_repositories Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_artifactregistry_project_location_repositories` is used to test a Google ProjectLocationRepository resource
+Use the `google_artifactregistry_project_location_repositories` InSpec audit resource to to test a Google Cloud ProjectLocationRepository resource.
 
 ## Examples
-```
+
+```ruby
     describe google_artifactregistry_project_location_repositories(parent: ' value_parent') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_artifactregistry_project_location_repositories` resource:
 
-See [google_artifactregistry_project_location_repository.md](google_artifactregistry_project_location_repository.md) for more detailed information
+See [google_artifactregistry_project_location_repository](google_artifactregistry_project_location_repository) for more detailed information.
+
   * `maven_configs`: an array of `google_artifactregistry_project_location_repository` maven_config
   * `docker_configs`: an array of `google_artifactregistry_project_location_repository` docker_config
   * `virtual_repository_configs`: an array of `google_artifactregistry_project_location_repository` virtual_repository_config
@@ -41,10 +43,11 @@ See [google_artifactregistry_project_location_repository.md](google_artifactregi
   * `satisfies_pzs`: an array of `google_artifactregistry_project_location_repository` satisfies_pzs
   * `cleanup_policy_dry_runs`: an array of `google_artifactregistry_project_location_repository` cleanup_policy_dry_run
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Artifact Registry API](https://console.cloud.google.com/apis/library/artifactregistry.googleapis.com/) is enabled for the current project.

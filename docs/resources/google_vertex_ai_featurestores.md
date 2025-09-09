@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_featurestores"
 identifier = "inspec/resources/gcp/google_vertex_ai_featurestores Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_featurestores` is used to test a Google Featurestore resource
+Use the `google_vertex_ai_featurestores` InSpec audit resource to to test a Google Cloud Featurestore resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_featurestores(parent: "projects/#{gcp_project_id}/locations/#{featurestore['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_featurestores` resource:
 
-See [google_vertex_ai_featurestore.md](google_vertex_ai_featurestore.md) for more detailed information
+See [google_vertex_ai_featurestore](google_vertex_ai_featurestore) for more detailed information.
+
   * `states`: an array of `google_vertex_ai_featurestore` state
   * `create_times`: an array of `google_vertex_ai_featurestore` create_time
   * `etags`: an array of `google_vertex_ai_featurestore` etag
@@ -34,8 +36,9 @@ See [google_vertex_ai_featurestore.md](google_vertex_ai_featurestore.md) for mor
   * `names`: an array of `google_vertex_ai_featurestore` name
   * `online_serving_configs`: an array of `google_vertex_ai_featurestore` online_serving_config
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

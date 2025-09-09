@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dataproc_autoscaling_policy"
 identifier = "inspec/resources/gcp/google_dataproc_autoscaling_policy resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dataproc_autoscaling_policy` is used to test a Google ProjectRegionAutoscalingPolicy resource
+Use the `google_dataproc_autoscaling_policy` InSpec audit resource to to test a Google Cloud ProjectRegionAutoscalingPolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataproc_autoscaling_policy(name: 'value_name') do
 	it { should exist }
 	its('id') { should cmp 'value_id' }
@@ -27,9 +27,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_autoscaling_policy` resource:
+
+Parameters that can be accessed from the `google_dataproc_autoscaling_policy` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_autoscaling_policy` resource:
 
 
@@ -88,6 +90,6 @@ Properties that can be accessed from the `google_dataproc_autoscaling_policy` re
     * `additional_properties`:
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Dataproc API](https://console.cloud.google.com/apis/library/dataproc.googleapis.com) is enabled for the current project.

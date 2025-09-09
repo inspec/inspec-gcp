@@ -1,25 +1,21 @@
 +++
-
 title = "google_bigtableadmin_cluster Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_bigtableadmin_cluster"
 identifier = "inspec/resources/gcp/google_bigtableadmin_cluster Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_cluster` InSpec audit resource to test the properties of a test a Google Cluster.
-
-## Syntax
-A `google_bigtableadmin_cluster` is used to test a Google Cluster resource
+Use the `google_bigtableadmin_cluster` InSpec audit resource to test the properties of a Google Cloud Cluster resource.
 
 ## Examples
-```
+
+```ruby
 describe google_bigtableadmin_cluster(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -34,9 +30,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_bigtableadmin_cluster` resource:
+
+Parameters that can be accessed from the `google_bigtableadmin_cluster` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_bigtableadmin_cluster` resource:
 
 
@@ -81,6 +79,6 @@ Properties that can be accessed from the `google_bigtableadmin_cluster` resource
     * `kms_key_name`: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://bigtableadmin.googleapis.com/](https://console.cloud.google.com/apis/library/bigtableadmin.googleapis.com/) is enabled for the current project.

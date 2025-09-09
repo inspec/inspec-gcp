@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_training_pipelines"
 identifier = "inspec/resources/gcp/google_vertex_ai_training_pipelines Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_training_pipelines` is used to test a Google TrainingPipeline resource
+Use the `google_vertex_ai_training_pipelines` InSpec audit resource to to test a Google Cloud TrainingPipeline resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_training_pipelines(parent: "projects/#{gcp_project_id}/locations/#{training_pipeline['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_training_pipelines` resource:
 
-See [google_vertex_ai_training_pipeline.md](google_vertex_ai_training_pipeline.md) for more detailed information
+See [google_vertex_ai_training_pipeline](google_vertex_ai_training_pipeline) for more detailed information.
+
   * `end_times`: an array of `google_vertex_ai_training_pipeline` end_time
   * `errors`: an array of `google_vertex_ai_training_pipeline` error
   * `display_names`: an array of `google_vertex_ai_training_pipeline` display_name
@@ -42,8 +44,9 @@ See [google_vertex_ai_training_pipeline.md](google_vertex_ai_training_pipeline.m
   * `encryption_specs`: an array of `google_vertex_ai_training_pipeline` encryption_spec
   * `model_to_uploads`: an array of `google_vertex_ai_training_pipeline` model_to_upload
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

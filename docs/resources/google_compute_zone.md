@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_zone"
 identifier = "inspec/resources/gcp/google_compute_zone Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_zone` is used to test a Google Zone resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_zone(project: 'chef-gcp-inspec', name: "us-central1-a") do
   it { should exist }
   it { should be_up }
@@ -46,6 +48,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_zone` resource:
 
 
@@ -83,6 +86,6 @@ Properties that can be accessed from the `google_compute_zone` resource:
   * `available_cpu_platforms`: The available CPU platforms in this zone
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

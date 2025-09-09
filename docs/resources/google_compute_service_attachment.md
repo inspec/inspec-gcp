@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_service_attachment"
 identifier = "inspec/resources/gcp/google_compute_service_attachment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_service_attachment` is used to test a Google ServiceAttachment resource
+Use the `google_compute_service_attachment` InSpec audit resource to to test a Google Cloud ServiceAttachment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_service_attachment(project: 'chef-gcp-inspec', region: ' value_region', service_attachment: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -37,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_service_attachment` resource:
 
 
@@ -108,6 +109,6 @@ Properties that can be accessed from the `google_compute_service_attachment` res
   * `reconcile_connections`: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

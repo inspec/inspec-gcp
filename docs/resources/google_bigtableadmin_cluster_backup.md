@@ -1,25 +1,21 @@
 +++
-
 title = "google_bigtableadmin_cluster_backup Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_bigtableadmin_cluster_backup"
 identifier = "inspec/resources/gcp/google_bigtableadmin_cluster_backup Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_bigtableadmin_cluster_backup` InSpec audit resource to test the properties of a test a Google ClusterBackup.
-
-## Syntax
-A `google_bigtableadmin_cluster_backup` is used to test a Google ClusterBackup resource
+Use the `google_bigtableadmin_cluster_backup` InSpec audit resource to test the properties of a Google Cloud ClusterBackup resource.
 
 ## Examples
-```
+
+```ruby
 describe google_bigtableadmin_cluster_backup(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -38,9 +34,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_bigtableadmin_cluster_backup` resource:
+
+Parameters that can be accessed from the `google_bigtableadmin_cluster_backup` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_bigtableadmin_cluster_backup` resource:
 
 
@@ -83,6 +81,6 @@ Properties that can be accessed from the `google_bigtableadmin_cluster_backup` r
     * `kms_key_version`: Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://bigtableadmin.googleapis.com/](https://console.cloud.google.com/apis/library/bigtableadmin.googleapis.com/) is enabled for the current project.

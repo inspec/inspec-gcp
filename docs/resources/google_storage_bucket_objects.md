@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_storage_bucket_objects"
 identifier = "inspec/resources/gcp/google_storage_bucket_objects Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_storage_bucket_objects` is used to test a Google BucketObject resource
+Use the `google_storage_bucket_objects` InSpec audit resource to to test a Google Cloud BucketObject resource.
 
 ## Examples
-```
+
+```ruby
 describe google_storage_bucket_objects(bucket: 'bucket-with-object') do
 	its('object_names') { should include 'image1' }
 	its('count') { should be <= 10 }
@@ -47,9 +47,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_storage_bucket_objects` resource:
 
-See [google_storage_bucket_object.md](google_storage_bucket_object.md) for more detailed information
+See [google_storage_bucket_object](google_storage_bucket_object) for more detailed information.
+
   * `object_buckets`: an array of `google_storage_bucket_object` bucket
   * `objects`: an array of `google_storage_bucket_object` object
   * `content_types`: an array of `google_storage_bucket_object` content_type
@@ -68,10 +70,11 @@ See [google_storage_bucket_object.md](google_storage_bucket_object.md) for more 
   * `time_storage_class_updateds`: an array of `google_storage_bucket_object` time_storage_class_updated
   * `time_updateds`: an array of `google_storage_bucket_object` time_updated
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

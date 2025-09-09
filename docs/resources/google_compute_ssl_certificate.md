@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_ssl_certificate"
 identifier = "inspec/resources/gcp/google_compute_ssl_certificate Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_ssl_certificate` is used to test a Google SslCertificate resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_ssl_certificate(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-certificate') do
   it { should exist }
   its('description') { should eq 'A fake ssl certificate (DO NOT USE)' }
@@ -48,6 +50,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_ssl_certificate` resource:
 
 
@@ -64,6 +67,6 @@ Properties that can be accessed from the `google_compute_ssl_certificate` resour
   * `private_key`: The write-only private key in PEM format.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

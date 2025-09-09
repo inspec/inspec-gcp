@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_database"
 identifier = "inspec/resources/gcp/google_sql_database Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_database` is used to test a Google Database resource
+Use the `google_sql_database` InSpec audit resource to to test a Google Cloud Database resource.
 
 ## Examples
-```
+
+```ruby
 describe google_sql_database(project: 'chef-gcp-inspec', instance: 'my-database', gcp_db_name: 'my-db') do
   it { should exist }
   its('name') { should eq 'my-db' }
@@ -23,6 +23,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_database` resource:
 
 
@@ -35,6 +36,6 @@ Properties that can be accessed from the `google_sql_database` resource:
   * `instance`: The name of the Cloud SQL instance. This does not include the project ID.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

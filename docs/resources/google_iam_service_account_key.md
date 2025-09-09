@@ -4,23 +4,24 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_iam_service_account_key"
 identifier = "inspec/resources/gcp/google_iam_service_account_key Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_iam_service_account_key` is used to test a Google ServiceAccountKey resource
+Use the `google_iam_service_account_key` InSpec audit resource to to test a Google Cloud ServiceAccountKey resource.
 
 ## Examples
-```
+
+```ruby
 google_iam_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com").key_names.each do |sa_key_name|
 	describe 
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_iam_service_account_key` resource:
 
 
@@ -45,6 +46,6 @@ Properties that can be accessed from the `google_iam_service_account_key` resour
   * `path`: The full name of the file that will hold the service account private key. The management of this file will depend on the value of sync_file parameter.  File path must be absolute.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/library/iam.googleapis.com/) is enabled for the current project.

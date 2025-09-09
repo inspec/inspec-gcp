@@ -1,25 +1,21 @@
 +++
-
 title = "google_monitoring_group Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_monitoring_group"
 identifier = "inspec/resources/gcp/google_monitoring_group Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_monitoring_group` InSpec audit resource to test the properties of a test a Google Group.
-
-## Syntax
-A `google_monitoring_group` is used to test a Google Group resource
+Use the `google_monitoring_group` InSpec audit resource to test the properties of a Google Cloud Group resource.
 
 ## Examples
-```
+
+```ruby
 describe google_monitoring_group(name: 'projects/*/groups/value_group_id') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -33,9 +29,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_monitoring_group` resource:
+
+Parameters that can be accessed from the `google_monitoring_group` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_monitoring_group` resource:
 
 
@@ -50,6 +48,6 @@ Properties that can be accessed from the `google_monitoring_group` resource:
   * `is_cluster`: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Monitoring API](https://console.cloud.google.com/apis/library/monitoring.googleapis.com/) is enabled for the current project.

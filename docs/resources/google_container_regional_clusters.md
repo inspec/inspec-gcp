@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_regional_clusters"
 identifier = "inspec/resources/gcp/google_container_regional_clusters Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_container_regional_clusters` is used to test a Google RegionalCluster resource
+Use the `google_container_regional_clusters` InSpec audit resource to to test a Google Cloud RegionalCluster resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_regional_clusters(project: 'chef-gcp-inspec', location: 'europe-west2') do
   its('count') { should be >= 1 }
   its('names') { should include 'inspec-gcp-regional-cluster' }
@@ -23,9 +23,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_container_regional_clusters` resource:
 
-See [google_container_regional_cluster.md](google_container_regional_cluster.md) for more detailed information
+See [google_container_regional_cluster](google_container_regional_cluster) for more detailed information.
+
   * `names`: an array of `google_container_regional_cluster` name
   * `descriptions`: an array of `google_container_regional_cluster` description
   * `initial_node_counts`: an array of `google_container_regional_cluster` initial_node_count
@@ -62,10 +64,11 @@ See [google_container_regional_cluster.md](google_container_regional_cluster.md)
   * `master_authorized_networks_configs`: an array of `google_container_regional_cluster` master_authorized_networks_config
   * `locations`: an array of `google_container_regional_cluster` location
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

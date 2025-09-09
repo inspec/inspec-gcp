@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_tensorboards_experiment"
 identifier = "inspec/resources/gcp/google_vertex_ai_tensorboards_experiment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_tensorboards_experiment` is used to test a Google TensorboardsExperiment resource
+Use the `google_vertex_ai_tensorboards_experiment` InSpec audit resource to to test a Google Cloud TensorboardsExperiment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_tensorboards_experiment(name: "projects/#{gcp_project_id}/locations/#{tensorboards_experiment['region']}/tensorboards/#{tensorboards_experiment['tensorboard']}/experiments/#{tensorboards_experiment['name']}", region: ' value_region') do
 	it { should exist }
 	its('description') { should cmp 'value_description' }
@@ -33,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_tensorboards_experiment` resource:
 
 
@@ -55,4 +56,4 @@ Properties that can be accessed from the `google_vertex_ai_tensorboards_experime
   * `etag`: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 
 
-## GCP Permissions
+## GCP permissions

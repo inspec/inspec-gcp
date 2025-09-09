@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_interconnect_attachments"
 identifier = "inspec/resources/gcp/google_compute_interconnect_attachments Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_interconnect_attachments` is used to test a Google InterconnectAttachment resource
+Use the `google_compute_interconnect_attachments` InSpec audit resource to to test a Google Cloud InterconnectAttachment resource.
 
 ## Examples
-```
+
+```ruby
     describe google_compute_interconnect_attachments(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_interconnect_attachments` resource:
 
-See [google_compute_interconnect_attachment.md](google_compute_interconnect_attachment.md) for more detailed information
+See [google_compute_interconnect_attachment](google_compute_interconnect_attachment) for more detailed information.
+
   * `kinds`: an array of `google_compute_interconnect_attachment` kind
   * `descriptions`: an array of `google_compute_interconnect_attachment` description
   * `self_links`: an array of `google_compute_interconnect_attachment` self_link
@@ -67,10 +69,11 @@ See [google_compute_interconnect_attachment.md](google_compute_interconnect_atta
   * `configuration_constraints`: an array of `google_compute_interconnect_attachment` configuration_constraints
   * `multicast_enableds`: an array of `google_compute_interconnect_attachment` multicast_enabled
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

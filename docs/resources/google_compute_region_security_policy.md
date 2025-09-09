@@ -1,25 +1,21 @@
 +++
-
 title = "google_compute_region_security_policy Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_compute_region_security_policy"
 identifier = "inspec/resources/gcp/google_compute_region_security_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_compute_region_security_policy` InSpec audit resource to test the properties of a test a Google RegionSecurityPolicy.
-
-## Syntax
-A `google_compute_region_security_policy` is used to test a Google RegionSecurityPolicy resource
+Use the `google_compute_region_security_policy` InSpec audit resource to test the properties of a Google Cloud RegionSecurityPolicy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_security_policy(project: 'chef-gcp-inspec', region: ' ', securityPolicy: ' ') do
 	it { should exist }
 	its('kind') { should cmp '' }
@@ -44,9 +40,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_compute_region_security_policy` resource:
+
+Parameters that can be accessed from the `google_compute_region_security_policy` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_security_policy` resource:
 
 
@@ -444,6 +442,6 @@ Properties that can be accessed from the `google_compute_region_security_policy`
   * `region`: [Output Only] URL of the region where the regional security policy resides. This field is not applicable to global security policies.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

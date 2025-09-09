@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_featurestore"
 identifier = "inspec/resources/gcp/google_vertex_ai_featurestore Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_featurestore` is used to test a Google Featurestore resource
+Use the `google_vertex_ai_featurestore` InSpec audit resource to to test a Google Cloud Featurestore resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_featurestore(name: "projects/#{gcp_project_id}/locations/#{featurestore['region']}/featurestores/#{featurestore['name']}", region: ' value_region') do
 	it { should exist }
 	its('state') { should cmp 'value_state' }
@@ -31,6 +31,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_featurestore` resource:
 
 
@@ -71,4 +72,4 @@ Properties that can be accessed from the `google_vertex_ai_featurestore` resourc
       * `cpu_utilization_target`: Optional. The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set or set to 0, default to 50.
 
 
-## GCP Permissions
+## GCP permissions

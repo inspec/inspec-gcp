@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_datasets_annotation_spec"
 identifier = "inspec/resources/gcp/google_vertex_ai_datasets_annotation_spec Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_datasets_annotation_spec` is used to test a Google DatasetsAnnotationSpec resource
+Use the `google_vertex_ai_datasets_annotation_spec` InSpec audit resource to to test a Google Cloud DatasetsAnnotationSpec resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_datasets_annotation_spec(name: "projects/#{gcp_project_id}/locations/#{datasets_annotation_spec['region']}/datasets/#{datasets_annotation_spec['dataset']}/annotationSpecs/#{datasets_annotation_spec['name']}", region: ' value_region') do
 	it { should exist }
 	its('display_name') { should cmp 'value_displayname' }
@@ -31,6 +31,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_datasets_annotation_spec` resource:
 
 
@@ -45,4 +46,4 @@ Properties that can be accessed from the `google_vertex_ai_datasets_annotation_s
   * `update_time`: Output only. Timestamp when AnnotationSpec was last updated.
 
 
-## GCP Permissions
+## GCP permissions

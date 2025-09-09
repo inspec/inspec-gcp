@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_tensorboards"
 identifier = "inspec/resources/gcp/google_vertex_ai_tensorboards Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_tensorboards` is used to test a Google Tensorboard resource
+Use the `google_vertex_ai_tensorboards` InSpec audit resource to to test a Google Cloud Tensorboard resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_tensorboards(parent: "projects/#{gcp_project_id}/locations/#{tensorboard['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_tensorboards` resource:
 
-See [google_vertex_ai_tensorboard.md](google_vertex_ai_tensorboard.md) for more detailed information
+See [google_vertex_ai_tensorboard](google_vertex_ai_tensorboard) for more detailed information.
+
   * `names`: an array of `google_vertex_ai_tensorboard` name
   * `is_defaults`: an array of `google_vertex_ai_tensorboard` is_default
   * `update_times`: an array of `google_vertex_ai_tensorboard` update_time
@@ -36,8 +38,9 @@ See [google_vertex_ai_tensorboard.md](google_vertex_ai_tensorboard.md) for more 
   * `display_names`: an array of `google_vertex_ai_tensorboard` display_name
   * `descriptions`: an array of `google_vertex_ai_tensorboard` description
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

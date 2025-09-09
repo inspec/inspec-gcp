@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_ssl_policies"
 identifier = "inspec/resources/gcp/google_compute_ssl_policies Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_ssl_policies` is used to test a Google SslPolicy resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_ssl_policies(project: 'chef-gcp-inspec') do
   it { should exist }
   its('names') { should include 'inspec-gcp-ssl-policy' }
@@ -34,9 +36,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_ssl_policies` resource:
 
-See [google_compute_ssl_policy.md](google_compute_ssl_policy.md) for more detailed information
+See [google_compute_ssl_policy](google_compute_ssl_policy) for more detailed information.
+
   * `creation_timestamps`: an array of `google_compute_ssl_policy` creation_timestamp
   * `descriptions`: an array of `google_compute_ssl_policy` description
   * `ids`: an array of `google_compute_ssl_policy` id
@@ -48,10 +52,11 @@ See [google_compute_ssl_policy.md](google_compute_ssl_policy.md) for more detail
   * `fingerprints`: an array of `google_compute_ssl_policy` fingerprint
   * `warnings`: an array of `google_compute_ssl_policy` warnings
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

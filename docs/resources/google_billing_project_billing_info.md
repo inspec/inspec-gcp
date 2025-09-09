@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_billing_project_billing_info"
 identifier = "inspec/resources/gcp/google_billing_project_billing_info Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_billing_project_billing_info` is used to test a Google ProjectBillingInfo resource
+Use the `google_billing_project_billing_info` InSpec audit resource to to test a Google Cloud ProjectBillingInfo resource.
 
 ## Examples
-```
+
+```ruby
 describe google_billing_project_billing_info(project_id: 'chef-gcp-inspec') do
   it { should exist }
 
@@ -24,6 +24,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_billing_project_billing_info` resource:
 
 
@@ -34,4 +35,4 @@ Properties that can be accessed from the `google_billing_project_billing_info` r
   * `billing_enabled`: True if the project is associated with an open billing account, to which usage on the project is charged. False if the project is associated with a closed billing account, or no billing account at all, and therefore cannot use paid services.
 
 
-## GCP Permissions
+## GCP permissions

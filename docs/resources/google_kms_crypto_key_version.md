@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_crypto_key_version"
 identifier = "inspec/resources/gcp/google_kms_crypto_key_version Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_kms_crypto_key_version` is used to test a Google CryptoKeyVersion resource
+Use the `google_kms_crypto_key_version` InSpec audit resource to to test a Google Cloud CryptoKeyVersion resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_crypto_key_version(project: 'chef-gcp-inspec', location: 'europe-west2', key_ring: 'kms-key-ring', crypto_key: '', name: 'kms-key') do
   it { should exist }
   its('crypto_key_name') { should cmp 'kms-key' }
@@ -30,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_crypto_key_version` resource:
 
 
@@ -115,6 +116,6 @@ Properties that can be accessed from the `google_kms_crypto_key_version` resourc
   * `crypto_key`: The KeyRing that this key belongs to. Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_service"
 identifier = "inspec/resources/gcp/google_project_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_project_service` is used to test a Google Service resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_project_service(project: 'chef-gcp-inspec', name: 'maps-android-backend.googleapis.com') do
   it { should exist }
   its('state') { should cmp "ENABLED" }
@@ -26,6 +28,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_project_service` resource:
 
 
@@ -54,6 +57,6 @@ Properties that can be accessed from the `google_project_service` resource:
       * `version`: The version of the API
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com/) is enabled for the current project.

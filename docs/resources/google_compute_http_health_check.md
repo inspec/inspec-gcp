@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_http_health_check"
 identifier = "inspec/resources/gcp/google_compute_http_health_check Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_http_health_check` is used to test a Google HttpHealthCheck resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_http_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-http-health-check') do
   it { should exist }
   its('timeout_sec') { should eq '20' }
@@ -32,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_http_health_check` resource:
 
 
@@ -58,6 +61,6 @@ Properties that can be accessed from the `google_compute_http_health_check` reso
   * `unhealthy_threshold`: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

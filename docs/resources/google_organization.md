@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_organization"
 identifier = "inspec/resources/gcp/google_organization Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_organization` is used to test a Google Organization resource
+Use the `google_organization` InSpec audit resource to to test a Google Cloud Organization resource.
 
 ## Examples
-```
 
+```ruby
 describe google_organization(name: "organizations/123456") do
   its('name') { should eq "organizations/123456" }
   its('lifecycle_state') { should cmp 'ACTIVE' }
@@ -35,6 +34,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_organization` resource:
 
 
@@ -55,6 +55,6 @@ Properties that can be accessed from the `google_organization` resource:
     * `directory_customer_id`: The G Suite customer id used in the Directory API
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

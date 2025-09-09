@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_model_deployment_monitoring_job"
 identifier = "inspec/resources/gcp/google_vertex_ai_model_deployment_monitoring_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_model_deployment_monitoring_job` is used to test a Google ModelDeploymentMonitoringJob resource
+Use the `google_vertex_ai_model_deployment_monitoring_job` InSpec audit resource to to test a Google Cloud ModelDeploymentMonitoringJob resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_model_deployment_monitoring_job(name: "projects/#{gcp_project_id}/locations/#{model_deployment_monitoring_job['region']}/modelDeploymentMonitoringJobs/#{model_deployment_monitoring_job['name']}", region: ' value_region') do
 	it { should exist }
 	its('state') { should cmp 'value_state' }
@@ -37,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_model_deployment_monitoring_job` resource:
 
 
@@ -229,4 +230,4 @@ Properties that can be accessed from the `google_vertex_ai_model_deployment_moni
   * `name`: Output only. Resource name of a ModelDeploymentMonitoringJob.
 
 
-## GCP Permissions
+## GCP permissions

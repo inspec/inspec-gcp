@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_runtime_config_variable"
 identifier = "inspec/resources/gcp/google_runtime_config_variable Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_runtime_config_variable` is used to test a Google Variable resource
+Use the `google_runtime_config_variable` InSpec audit resource to to test a Google Cloud Variable resource.
 
 ## Examples
-```
+
+```ruby
 describe google_runtime_config_variable(project: 'chef-gcp-inspec', config: 'inspec-gcp-runtime-config', name: 'prod-variables/hostname') do
   it { should exist }
   its('text') { should cmp 'example.com' }
@@ -26,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_runtime_config_variable` resource:
 
 
@@ -38,6 +39,6 @@ Properties that can be accessed from the `google_runtime_config_variable` resour
   * `config`: The name of the runtime config that this variable belongs to.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

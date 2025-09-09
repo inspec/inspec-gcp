@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_crypto_key_iam_policy"
 identifier = "inspec/resources/gcp/google_kms_crypto_key_iam_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
-A `google_kms_crypto_key_iam_policy` is used to test a Google CryptoKey Iam Policy resource
+
+A `google_kms_crypto_key_iam_policy` is used to test a Google CryptoKey Iam Policy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_crypto_key_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name", crypto_key_name: "crypto_key_name") do
   it { should exist }
 end
@@ -28,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_crypto_key_iam_policy` resource:
 
   * `iam_binding_roles`: The list of roles that exist on the policy.
@@ -50,6 +53,6 @@ Properties that can be accessed from the `google_kms_crypto_key_iam_policy` reso
 
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_target_http_proxy"
 identifier = "inspec/resources/gcp/google_compute_target_http_proxy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_target_http_proxy` is used to test a Google TargetHttpProxy resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_target_http_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-http-proxy') do
   it { should exist }
   its('description') { should eq 'A HTTP proxy' }
@@ -31,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_target_http_proxy` resource:
 
 
@@ -45,6 +48,6 @@ Properties that can be accessed from the `google_compute_target_http_proxy` reso
   * `url_map`: A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

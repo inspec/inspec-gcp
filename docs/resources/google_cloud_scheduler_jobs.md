@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_cloud_scheduler_jobs"
 identifier = "inspec/resources/gcp/google_cloud_scheduler_jobs Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_cloud_scheduler_jobs` is used to test a Google Job resource
+Use the `google_cloud_scheduler_jobs` InSpec audit resource to to test a Google Cloud Job resource.
 
 ## Examples
-```
+
+```ruby
 google_cloud_scheduler_jobs(project: 'chef-gcp-inspec', region: ).names.each do |name|
   describe google_cloud_scheduler_job(project: 'chef-gcp-inspec', region: us-central1, name: name) do
 	  it { should exist }
@@ -29,9 +29,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_cloud_scheduler_jobs` resource:
 
-See [google_cloud_scheduler_job.md](google_cloud_scheduler_job.md) for more detailed information
+See [google_cloud_scheduler_job](google_cloud_scheduler_job) for more detailed information.
+
   * `names`: an array of `google_cloud_scheduler_job` name
   * `descriptions`: an array of `google_cloud_scheduler_job` description
   * `schedules`: an array of `google_cloud_scheduler_job` schedule
@@ -44,10 +46,11 @@ See [google_cloud_scheduler_job.md](google_cloud_scheduler_job.md) for more deta
   * `http_targets`: an array of `google_cloud_scheduler_job` http_target
   * `regions`: an array of `google_cloud_scheduler_job` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Scheduler](https://console.cloud.google.com/apis/library/cloudscheduler.googleapis.com/) is enabled for the current project.

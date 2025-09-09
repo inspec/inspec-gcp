@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_network"
 identifier = "inspec/resources/gcp/google_compute_network Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_network` is used to test a Google Network resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_network(project: 'chef-gcp-inspec', name: 'inspec-network') do
   it { should exist }
   its('routing_config.routing_mode') { should cmp 'REGIONAL' }
@@ -69,6 +71,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_network` resource:
 
 
@@ -112,6 +115,6 @@ Properties that can be accessed from the `google_compute_network` resource:
   * `mtu`: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

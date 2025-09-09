@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_regional_cluster"
 identifier = "inspec/resources/gcp/google_container_regional_cluster Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_container_regional_cluster` is used to test a Google RegionalCluster resource
+Use the `google_container_regional_cluster` InSpec audit resource to to test a Google Cloud RegionalCluster resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_regional_cluster(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-regional-cluster') do
   it { should exist }
   its('initial_node_count') { should eq '1'}
@@ -27,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_container_regional_cluster` resource:
 
 
@@ -217,6 +218,6 @@ Properties that can be accessed from the `google_container_regional_cluster` res
   * `location`: The location where the cluster is deployed
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

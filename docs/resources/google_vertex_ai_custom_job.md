@@ -4,23 +4,24 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_custom_job"
 identifier = "inspec/resources/gcp/google_vertex_ai_custom_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_custom_job` is used to test a Google CustomJob resource
+Use the `google_vertex_ai_custom_job` InSpec audit resource to to test a Google Cloud CustomJob resource.
 
 ## Examples
-```
+
+```ruby
       describe google_vertex_ai_custom_job(name: ' value_name', region: ' value_region') do
      it { should exist }
    end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_custom_job` resource:
 
 
@@ -171,4 +172,4 @@ Properties that can be accessed from the `google_vertex_ai_custom_job` resource:
   * `name`: Output only. Resource name of a CustomJob.
 
 
-## GCP Permissions
+## GCP permissions

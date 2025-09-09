@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_regional_node_pools"
 identifier = "inspec/resources/gcp/google_container_regional_node_pools Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_container_regional_node_pools` is used to test a Google RegionalNodePool resource
+Use the `google_container_regional_node_pools` InSpec audit resource to to test a Google Cloud RegionalNodePool resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_regional_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2', cluster: 'inspec-gcp-regional-cluster') do
   its('initial_node_counts') { should include '1'}
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_container_regional_node_pools` resource:
 
-See [google_container_regional_node_pool.md](google_container_regional_node_pool.md) for more detailed information
+See [google_container_regional_node_pool](google_container_regional_node_pool) for more detailed information.
+
   * `names`: an array of `google_container_regional_node_pool` name
   * `configs`: an array of `google_container_regional_node_pool` config
   * `initial_node_counts`: an array of `google_container_regional_node_pool` initial_node_count
@@ -38,10 +40,11 @@ See [google_container_regional_node_pool.md](google_container_regional_node_pool
   * `clusters`: an array of `google_container_regional_node_pool` cluster
   * `locations`: an array of `google_container_regional_node_pool` location
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

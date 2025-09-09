@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_node_type"
 identifier = "inspec/resources/gcp/google_compute_node_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_node_type` is used to test a Google NodeType resource
+Use the `google_compute_node_type` InSpec audit resource to to test a Google Cloud NodeType resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_v1_node_type(nodeType: ' ', project: 'chef-gcp-inspec', zone: ' value_zone') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_node_type` resource:
 
 
@@ -77,6 +78,6 @@ Properties that can be accessed from the `google_compute_node_type` resource:
   * `self_link`: [Output Only] Server-defined URL for the resource.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

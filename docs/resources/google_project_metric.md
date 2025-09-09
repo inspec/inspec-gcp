@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_metric"
 identifier = "inspec/resources/gcp/google_project_metric Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_project_metric` is used to test a Google Metric resource
+Use the `google_project_metric` InSpec audit resource to to test a Google Cloud Metric resource.
 
 ## Examples
-```
+
+```ruby
 describe google_project_metric(project: 'chef-gcp-inspec', name: 'some/metric') do
   it { should exist }
   its('filter') { should cmp 'resource.type=gae_app AND severity>=ERROR' }
@@ -40,6 +40,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project_metric` resource:
 
 
@@ -111,6 +112,6 @@ Properties that can be accessed from the `google_project_metric` resource:
       * `bounds`: The values must be monotonically increasing.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/library/logging.googleapis.com/) is enabled for the current project.

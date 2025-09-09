@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_interconnects"
 identifier = "inspec/resources/gcp/google_compute_interconnects Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_interconnects` is used to test a Google Interconnect resource
+Use the `google_compute_interconnects` InSpec audit resource to to test a Google Cloud Interconnect resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_interconnects(project: 'chef-gcp-inspec') do
   it { should exist }
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_interconnects` resource:
 
-See [google_compute_interconnect.md](google_compute_interconnect.md) for more detailed information
+See [google_compute_interconnect](google_compute_interconnect) for more detailed information.
+
   * `admin_enableds`: an array of `google_compute_interconnect` admin_enabled
   * `creation_timestamps`: an array of `google_compute_interconnect` creation_timestamp
   * `descriptions`: an array of `google_compute_interconnect` description
@@ -46,10 +48,11 @@ See [google_compute_interconnect.md](google_compute_interconnect.md) for more de
   * `circuit_infos`: an array of `google_compute_interconnect` circuit_infos
   * `satisfies_pzs`: an array of `google_compute_interconnect` satisfies_pzs
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

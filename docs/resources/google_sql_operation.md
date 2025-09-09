@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_operation"
 identifier = "inspec/resources/gcp/google_sql_operation Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_operation` is used to test a Google Operation resource
+Use the `google_sql_operation` InSpec audit resource to to test a Google Cloud Operation resource.
 
 ## Examples
-```
+
+```ruby
 describe google_sql_operation(project: 'chef-gcp-inspec', operation: 'e5c522f1-8391-4830-a8ff-ff1cc4a7b2a5') do
   it { should exist }
   its('name') { should eq 'e5c522f1-8391-4830-a8ff-ff1cc4a7b2a5' }
@@ -28,6 +28,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_operation` resource:
 
 
@@ -79,6 +80,6 @@ Properties that can be accessed from the `google_sql_operation` resource:
   * `instance`: The name of the Cloud SQL instance. This does not include the project ID.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

@@ -4,30 +4,34 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_router_nats"
 identifier = "inspec/resources/gcp/google_compute_router_nats Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_router_nats` is used to test a Google RouterNat resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_router_nats(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router') do
   its('names') { should include 'inspec-router-nat' }
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_router_nats` resource:
 
-See [google_compute_router_nat.md](google_compute_router_nat.md) for more detailed information
+See [google_compute_router_nat](google_compute_router_nat) for more detailed information.
+
   * `names`: an array of `google_compute_router_nat` name
   * `nat_ip_allocate_options`: an array of `google_compute_router_nat` nat_ip_allocate_option
   * `nat_ips`: an array of `google_compute_router_nat` nat_ips
@@ -44,10 +48,11 @@ See [google_compute_router_nat.md](google_compute_router_nat.md) for more detail
   * `routers`: an array of `google_compute_router_nat` router
   * `regions`: an array of `google_compute_router_nat` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

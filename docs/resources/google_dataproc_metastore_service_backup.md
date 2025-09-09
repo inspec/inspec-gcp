@@ -1,25 +1,21 @@
 +++
-
 title = "google_dataproc_metastore_service_backup Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_dataproc_metastore_service_backup"
 identifier = "inspec/resources/gcp/google_dataproc_metastore_service_backup Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_metastore_service_backup` InSpec audit resource to test the properties of a test a Google ServiceBackup.
-
-## Syntax
-A `google_dataproc_metastore_service_backup` is used to test a Google ServiceBackup resource
+Use the `google_dataproc_metastore_service_backup` InSpec audit resource to test the properties of a Google Cloud ServiceBackup resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataproc_metastore_service_backup(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -35,9 +31,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_metastore_service_backup` resource:
+
+Parameters that can be accessed from the `google_dataproc_metastore_service_backup` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_metastore_service_backup` resource:
 
 
@@ -298,6 +296,6 @@ Properties that can be accessed from the `google_dataproc_metastore_service_back
   * `restoring_services`: Output only. Services that are restoring from the backup.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Dataproc Metastore API](https://console.cloud.google.com/apis/library/metastore.googleapis.com) is enabled for the current project.

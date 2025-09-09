@@ -4,7 +4,7 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_alert_policy_condition"
 identifier = "inspec/resources/gcp/google_project_alert_policy_condition Resource"
 parent = "inspec/resources/gcp"
@@ -52,6 +52,6 @@ The following examples show how to use this InSpec audit resource.
 <br>
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/api/logging.googleapis.com/) is enabled for the project.

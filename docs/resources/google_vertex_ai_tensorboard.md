@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_tensorboard"
 identifier = "inspec/resources/gcp/google_vertex_ai_tensorboard Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_tensorboard` is used to test a Google Tensorboard resource
+Use the `google_vertex_ai_tensorboard` InSpec audit resource to to test a Google Cloud Tensorboard resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_tensorboard(name: "projects/#{gcp_project_id}/locations/#{tensorboard['region']}/tensorboards/#{tensorboard['name']}", region: ' value_region') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -33,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_tensorboard` resource:
 
 
@@ -63,4 +64,4 @@ Properties that can be accessed from the `google_vertex_ai_tensorboard` resource
   * `description`: Description of this Tensorboard.
 
 
-## GCP Permissions
+## GCP permissions

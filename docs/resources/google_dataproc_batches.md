@@ -1,25 +1,21 @@
 +++
-
 title = "google_dataproc_batches Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_dataproc_batches"
 identifier = "inspec/resources/gcp/google_dataproc_batches Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_batches` InSpec audit resource to test the properties of a test a Google Batch.
-
-## Syntax
-A `google_dataproc_batches` is used to test a Google Batch resource
+Use the `google_dataproc_batches` InSpec audit resource to test the properties of a Google Cloud Batch resource.
 
 ## Examples
-```
+
+```ruby
   describe google_dataproc_batches(parent: 'projects/*/locations/*') do
     it { should exist }
     its('names') { should include 'value_name' }
@@ -34,9 +30,11 @@ A `google_dataproc_batches` is used to test a Google Batch resource
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_batches` resource:
 
-See [google_dataproc_batch.md](google_dataproc_batch.md) for more detailed information
+Parameters that can be accessed from the `google_dataproc_batches` resource:
+
+See [google_dataproc_batch](google_dataproc_batch) for more detailed information.
+
 * `names`: an array of `google_dataproc_batch` name
 * `uuids`: an array of `google_dataproc_batch` uuid
 * `create_times`: an array of `google_dataproc_batch` create_time
@@ -54,10 +52,13 @@ See [google_dataproc_batch.md](google_dataproc_batch.md) for more detailed infor
 * `environment_configs`: an array of `google_dataproc_batch` environment_config
 * `operations`: an array of `google_dataproc_batch` operation
 * `state_histories`: an array of `google_dataproc_batch` state_history
+
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_batches` resource:
 
-See [google_dataproc_batch.md](google_dataproc_batch.md) for more detailed information
+See [google_dataproc_batch](google_dataproc_batch) for more detailed information.
+
 * `names`: an array of `google_dataproc_batch` name
 * `uuids`: an array of `google_dataproc_batch` uuid
 * `create_times`: an array of `google_dataproc_batch` create_time
@@ -76,10 +77,11 @@ See [google_dataproc_batch.md](google_dataproc_batch.md) for more detailed infor
 * `operations`: an array of `google_dataproc_batch` operation
 * `state_histories`: an array of `google_dataproc_batch` state_history
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Dataproc API](https://console.cloud.google.com/apis/library/dataproc.googleapis.com) is enabled for the current project.

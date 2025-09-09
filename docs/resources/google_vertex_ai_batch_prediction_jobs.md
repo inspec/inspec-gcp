@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_batch_prediction_jobs"
 identifier = "inspec/resources/gcp/google_vertex_ai_batch_prediction_jobs Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_batch_prediction_jobs` is used to test a Google BatchPredictionJob resource
+Use the `google_vertex_ai_batch_prediction_jobs` InSpec audit resource to to test a Google Cloud BatchPredictionJob resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_batch_prediction_jobs(parent: ' value_parent', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_batch_prediction_jobs` resource:
 
-See [google_vertex_ai_batch_prediction_job.md](google_vertex_ai_batch_prediction_job.md) for more detailed information
+See [google_vertex_ai_batch_prediction_job](google_vertex_ai_batch_prediction_job) for more detailed information.
+
   * `create_times`: an array of `google_vertex_ai_batch_prediction_job` create_time
   * `model_parameters`: an array of `google_vertex_ai_batch_prediction_job` model_parameters
   * `instance_configs`: an array of `google_vertex_ai_batch_prediction_job` instance_config
@@ -52,8 +54,9 @@ See [google_vertex_ai_batch_prediction_job.md](google_vertex_ai_batch_prediction
   * `display_names`: an array of `google_vertex_ai_batch_prediction_job` display_name
   * `service_accounts`: an array of `google_vertex_ai_batch_prediction_job` service_account
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

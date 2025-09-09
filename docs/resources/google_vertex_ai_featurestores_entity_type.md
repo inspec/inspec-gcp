@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_featurestores_entity_type"
 identifier = "inspec/resources/gcp/google_vertex_ai_featurestores_entity_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_featurestores_entity_type` is used to test a Google FeaturestoresEntityType resource
+Use the `google_vertex_ai_featurestores_entity_type` InSpec audit resource to to test a Google Cloud FeaturestoresEntityType resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_featurestores_entity_type(name: "projects/#{gcp_project_id}/locations/#{featurestores_entity_type['region']}/featurestores/#{featurestores_entity_type['featurestore']}/entityTypes/#{featurestores_entity_type['name']}", region: ' value_region') do
 	it { should exist }
 	its('description') { should cmp 'value_description' }
@@ -31,6 +31,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_featurestores_entity_type` resource:
 
 
@@ -85,4 +86,4 @@ Properties that can be accessed from the `google_vertex_ai_featurestores_entity_
   * `offline_storage_ttl_days`: Optional. Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than `offline_storage_ttl_days` since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 
 
-## GCP Permissions
+## GCP permissions

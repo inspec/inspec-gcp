@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_commitment"
 identifier = "inspec/resources/gcp/google_compute_region_commitment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_commitment` is used to test a Google RegionCommitment resource
+Use the `google_compute_region_commitment` InSpec audit resource to to test a Google Cloud RegionCommitment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_commitment(name: ' value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -42,6 +42,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_commitment` resource:
 
 
@@ -315,6 +316,6 @@ Properties that can be accessed from the `google_compute_region_commitment` reso
   * `existing_reservations`: Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

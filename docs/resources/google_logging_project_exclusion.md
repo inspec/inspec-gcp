@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_logging_project_exclusion"
 identifier = "inspec/resources/gcp/google_logging_project_exclusion Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_logging_project_exclusion` is used to test a Google ProjectExclusion resource
+Use the `google_logging_project_exclusion` InSpec audit resource to to test a Google Cloud ProjectExclusion resource.
 
 ## Examples
-```
 
+```ruby
 describe google_logging_project_exclusion(project: 'chef-gcp-inspec', name: 'inspec-project-exclusion') do
 	it { should exist }
   its('description'){ should cmp 'My project exclusion description' }
@@ -46,6 +45,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_logging_project_exclusion` resource:
 
 
@@ -60,6 +60,6 @@ Properties that can be accessed from the `google_logging_project_exclusion` reso
   * `disabled`: If set to true then this exclusion is disabled and it does not exclude any log entries.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/library/logging.googleapis.com/) is enabled for the current project.

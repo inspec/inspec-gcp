@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_storage_buckets"
 identifier = "inspec/resources/gcp/google_storage_buckets Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_storage_buckets` is used to test a Google Bucket resource
+Use the `google_storage_buckets` InSpec audit resource to to test a Google Cloud Bucket resource.
 
 ## Examples
-```
+
+```ruby
 describe google_storage_buckets(project: 'chef-gcp-inspec') do
   its('bucket_names') { should include bucket-name }
 end
@@ -43,9 +43,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_storage_buckets` resource:
 
-See [google_storage_bucket.md](google_storage_bucket.md) for more detailed information
+See [google_storage_bucket](google_storage_bucket) for more detailed information.
+
   * `acls`: an array of `google_storage_bucket` acl
   * `cors`: an array of `google_storage_bucket` cors
   * `default_event_based_holds`: an array of `google_storage_bucket` default_event_based_hold
@@ -69,10 +71,11 @@ See [google_storage_bucket.md](google_storage_bucket.md) for more detailed infor
   * `projects`: an array of `google_storage_bucket` project
   * `predefined_default_object_acls`: an array of `google_storage_bucket` predefined_default_object_acl
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

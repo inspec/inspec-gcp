@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_pubsub_subscription_iam_policy"
 identifier = "inspec/resources/gcp/google_pubsub_subscription_iam_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
-A `google_pubsub_subscription_iam_policy` is used to test a Google Subscription Iam Policy resource
+
+A `google_pubsub_subscription_iam_policy` is used to test a Google Subscription Iam Policy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_pubsub_subscription_iam_policy(project: "project", name: "name") do
   it { should exist }
 end
@@ -28,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_pubsub_subscription_iam_policy` resource:
 
   * `iam_binding_roles`: The list of roles that exist on the policy.
@@ -50,6 +53,6 @@ Properties that can be accessed from the `google_pubsub_subscription_iam_policy`
 
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_url_map"
 identifier = "inspec/resources/gcp/google_compute_region_url_map Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_url_map` is used to test a Google RegionUrlMap resource
+Use the `google_compute_region_url_map` InSpec audit resource to to test a Google Cloud RegionUrlMap resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_url_map(project: 'chef-gcp-inspec', region: ' value_region', name: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -35,6 +35,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_url_map` resource:
 
 
@@ -787,6 +788,6 @@ Properties that can be accessed from the `google_compute_region_url_map` resourc
   * `region`: [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_image_family_view"
 identifier = "inspec/resources/gcp/google_compute_image_family_view Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_image_family_view` is used to test a Google ImageFamilyView resource
+Use the `google_compute_image_family_view` InSpec audit resource to to test a Google Cloud ImageFamilyView resource.
 
 ## Examples
-```
+
+```ruby
 
 
 describe google_compute_image_family_view(project: 'chef-gcp-inspec', zone: 'us-central1-c', name: 'test') do
@@ -27,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_image_family_view` resource:
 
 
@@ -142,6 +143,6 @@ Properties that can be accessed from the `google_compute_image_family_view` reso
         * `file_type`: The file type of source file.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

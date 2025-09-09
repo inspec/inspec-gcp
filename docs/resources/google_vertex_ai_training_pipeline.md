@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_training_pipeline"
 identifier = "inspec/resources/gcp/google_vertex_ai_training_pipeline Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_training_pipeline` is used to test a Google TrainingPipeline resource
+Use the `google_vertex_ai_training_pipeline` InSpec audit resource to to test a Google Cloud TrainingPipeline resource.
 
 ## Examples
-```
+
+```ruby
       describe google_vertex_ai_training_pipeline(name: "projects/#{gcp_project_id}/locations/#{training_pipeline['region']}/trainingPipelines/#{training_pipeline['name']}", region: ' value_region') do
      it { should exist }
    end
@@ -24,6 +24,7 @@ A `google_vertex_ai_training_pipeline` is used to test a Google TrainingPipeline
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_training_pipeline` resource:
 
 
@@ -348,4 +349,4 @@ Properties that can be accessed from the `google_vertex_ai_training_pipeline` re
       * `additional_properties`: 
 
 
-## GCP Permissions
+## GCP permissions

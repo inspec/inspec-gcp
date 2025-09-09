@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_key_ring_import_job"
 identifier = "inspec/resources/gcp/google_kms_key_ring_import_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_kms_key_ring_import_job` is used to test a Google KeyRingImportJob resource
+Use the `google_kms_key_ring_import_job` InSpec audit resource to to test a Google Cloud KeyRingImportJob resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_key_ring_import_job(project: 'chef-gcp-inspec', location: 'europe-west2', name: '') do
   it { should exist }
 end
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_key_ring_import_job` resource:
 
 
@@ -66,6 +67,6 @@ Properties that can be accessed from the `google_kms_key_ring_import_job` resour
   * `import_job_id`: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

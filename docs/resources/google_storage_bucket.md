@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_storage_bucket"
 identifier = "inspec/resources/gcp/google_storage_bucket Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_storage_bucket` is used to test a Google Bucket resource
+Use the `google_storage_bucket` InSpec audit resource to to test a Google Cloud Bucket resource.
 
 ## Examples
-```
+
+```ruby
 describe google_storage_bucket(name: bucket-name) do
   it { should exist }
   its('location') { should cmp 'europe-west2'.upcase }
@@ -48,6 +48,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_storage_bucket` resource:
 
 
@@ -223,6 +224,6 @@ Properties that can be accessed from the `google_storage_bucket` resource:
     * publicRead
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

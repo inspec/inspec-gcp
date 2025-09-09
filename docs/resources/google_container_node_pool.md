@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_node_pool"
 identifier = "inspec/resources/gcp/google_container_node_pool Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_container_node_pool` is used to test a Google NodePool resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster', nodepool_name: 'inspec-gcp-regional-node-pool') do
   it { should exist }
   its('initial_node_count') { should eq '1'}
@@ -60,6 +62,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_container_node_pool` resource:
 
 
@@ -167,6 +170,6 @@ Properties that can be accessed from the `google_container_node_pool` resource:
   * `location`: The location where the node pool is deployed
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

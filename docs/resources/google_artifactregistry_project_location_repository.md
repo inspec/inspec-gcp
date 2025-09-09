@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_artifactregistry_project_location_repository"
 identifier = "inspec/resources/gcp/google_artifactregistry_project_location_repository Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_artifactregistry_project_location_repository` is used to test a Google ProjectLocationRepository resource
+Use the `google_artifactregistry_project_location_repository` InSpec audit resource to to test a Google Cloud ProjectLocationRepository resource.
 
 ## Examples
-```
+
+```ruby
 describe google_artifactregistry_project_location_repository(name: ' value_name') do
 	it { should exist }
 
@@ -26,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_artifactregistry_project_location_repository` resource:
 
 
@@ -167,6 +168,6 @@ Properties that can be accessed from the `google_artifactregistry_project_locati
   * `cleanup_policy_dry_run`: Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Artifact Registry API](https://console.cloud.google.com/apis/library/artifactregistry.googleapis.com/) is enabled for the current project.

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_cloudbuild_trigger"
 identifier = "inspec/resources/gcp/google_cloudbuild_trigger Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_cloudbuild_trigger` is used to test a Google Trigger resource
+Use the `google_cloudbuild_trigger` InSpec audit resource to to test a Google Cloud Trigger resource.
 
 ## Examples
-```
+
+```ruby
 describe google_cloudbuild_triggers(project: 'chef-gcp-inspec') do
   its('count') { should eq 1 }
 end
@@ -30,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_cloudbuild_trigger` resource:
 
 
@@ -238,6 +239,6 @@ Properties that can be accessed from the `google_cloudbuild_trigger` resource:
         * `path`: Path at which to mount the volume.  Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com/) is enabled for the current project.

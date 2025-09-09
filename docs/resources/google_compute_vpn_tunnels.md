@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_vpn_tunnels"
 identifier = "inspec/resources/gcp/google_compute_vpn_tunnels Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_vpn_tunnels` is used to test a Google VpnTunnel resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_vpn_tunnels(project: 'chef-gcp-inspec', region: 'europe-west2') do
 	its('vpn_tunnel_names') { should include 'inspec-vpn-tunnel' }
   its('peer_ips') { should include '15.0.0.120' }
@@ -44,9 +46,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_vpn_tunnels` resource:
 
-See [google_compute_vpn_tunnel.md](google_compute_vpn_tunnel.md) for more detailed information
+See [google_compute_vpn_tunnel](google_compute_vpn_tunnel) for more detailed information.
+
   * `ids`: an array of `google_compute_vpn_tunnel` id
   * `creation_timestamps`: an array of `google_compute_vpn_tunnel` creation_timestamp
   * `vpn_tunnel_names`: an array of `google_compute_vpn_tunnel` name
@@ -68,10 +72,11 @@ See [google_compute_vpn_tunnel.md](google_compute_vpn_tunnel.md) for more detail
   * `label_fingerprints`: (Beta only) an array of `google_compute_vpn_tunnel` label_fingerprint
   * `regions`: an array of `google_compute_vpn_tunnel` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

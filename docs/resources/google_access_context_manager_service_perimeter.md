@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_access_context_manager_service_perimeter"
 identifier = "inspec/resources/gcp/google_access_context_manager_service_perimeter Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_access_context_manager_service_perimeter` is used to test a Google ServicePerimeter resource
+Use the `google_access_context_manager_service_perimeter` InSpec audit resource to to test a Google Cloud ServicePerimeter resource.
 
 ## Examples
-```
 
+```ruby
 describe.one do
   google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
     describe google_access_context_manager_service_perimeter(policy_name: policy_name, name: 'restrict_all') do
@@ -28,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_access_context_manager_service_perimeter` resource:
 
 
@@ -79,4 +79,4 @@ Properties that can be accessed from the `google_access_context_manager_service_
   * `name`: Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
 
 
-## GCP Permissions
+## GCP permissions

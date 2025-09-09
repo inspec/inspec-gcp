@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_ml_engine_model"
 identifier = "inspec/resources/gcp/google_ml_engine_model Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_ml_engine_model` is used to test a Google Model resource
+Use the `google_ml_engine_model` InSpec audit resource to to test a Google Cloud Model resource.
 
 ## Examples
-```
+
+```ruby
 describe google_ml_engine_model(project: 'chef-gcp-inspec', name: 'ml_model') do
   it { should exist }
   its('description') { should cmp 'My awesome ML model' }
@@ -29,6 +29,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_ml_engine_model` resource:
 
 
@@ -49,6 +50,6 @@ Properties that can be accessed from the `google_ml_engine_model` resource:
   * `labels`: One or more labels that you can add, to organize your models.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud ML](https://console.cloud.google.com/apis/library/ml.googleapis.com) is enabled for the current project.

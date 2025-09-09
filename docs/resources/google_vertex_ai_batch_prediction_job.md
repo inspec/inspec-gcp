@@ -4,23 +4,24 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_batch_prediction_job"
 identifier = "inspec/resources/gcp/google_vertex_ai_batch_prediction_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_batch_prediction_job` is used to test a Google BatchPredictionJob resource
+Use the `google_vertex_ai_batch_prediction_job` InSpec audit resource to to test a Google Cloud BatchPredictionJob resource.
 
 ## Examples
-```
+
+```ruby
       describe google_vertex_ai_batch_prediction_job(name: ' value_name', region: ' value_region') do
      it { should exist }
    end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_batch_prediction_job` resource:
 
 
@@ -310,4 +311,4 @@ Properties that can be accessed from the `google_vertex_ai_batch_prediction_job`
   * `service_account`: The service account that the DeployedModel's container runs as. If not specified, a system generated one will be used, which has minimal permissions and the custom container, if used, may not have enough permission to access other Google Cloud resources. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
 
 
-## GCP Permissions
+## GCP permissions

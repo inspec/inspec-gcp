@@ -1,25 +1,21 @@
 +++
-
 title = "google_dataproc_session Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_dataproc_session"
 identifier = "inspec/resources/gcp/google_dataproc_session Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_session` InSpec audit resource to test the properties of a test a Google Session.
-
-## Syntax
-A `google_dataproc_session` is used to test a Google Session resource
+Use the `google_dataproc_session` InSpec audit resource to test the properties of a Google Cloud Session resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataproc_session(name: ' value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -40,9 +36,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_session` resource:
+
+Parameters that can be accessed from the `google_dataproc_session` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_session` resource:
 
 
@@ -181,6 +179,6 @@ Properties that can be accessed from the `google_dataproc_session` resource:
   * `session_template`: Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Dataproc API](https://console.cloud.google.com/apis/library/dataproc.googleapis.com) is enabled for the current project.

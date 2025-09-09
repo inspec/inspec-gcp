@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_backend_services"
 identifier = "inspec/resources/gcp/google_compute_backend_services Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_backend_services` is used to test a Google BackendService resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_backend_services(project: 'chef-gcp-inspec') do
   its('count') { should be >= 1 }
   its('names') { should include 'inspec-gcp-backend-service' }
@@ -29,9 +31,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_backend_services` resource:
 
-See [google_compute_backend_service.md](google_compute_backend_service.md) for more detailed information
+See [google_compute_backend_service](google_compute_backend_service) for more detailed information.
+
   * `affinity_cookie_ttl_secs`: an array of `google_compute_backend_service` affinity_cookie_ttl_sec
   * `backends`: an array of `google_compute_backend_service` backends
   * `circuit_breakers`: an array of `google_compute_backend_service` circuit_breakers
@@ -58,10 +62,11 @@ See [google_compute_backend_service.md](google_compute_backend_service.md) for m
   * `timeout_secs`: an array of `google_compute_backend_service` timeout_sec
   * `log_configs`: an array of `google_compute_backend_service` log_config
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

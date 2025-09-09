@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_memcache_instances"
 identifier = "inspec/resources/gcp/google_memcache_instances Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_memcache_instances` is used to test a Google Instance resource
+Use the `google_memcache_instances` InSpec audit resource to to test a Google Cloud Instance resource.
 
 ## Examples
-```
+
+```ruby
 describe google_memcache_instances(project: 'chef-gcp-inspec', region: 'europe-west2') do
 	its('count') { should be >= 1 }
   its('node_counts') { should include 1 }
@@ -22,9 +22,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_memcache_instances` resource:
 
-See [google_memcache_instance.md](google_memcache_instance.md) for more detailed information
+See [google_memcache_instance](google_memcache_instance) for more detailed information.
+
   * `names`: (Beta only) an array of `google_memcache_instance` name
   * `display_names`: (Beta only) an array of `google_memcache_instance` display_name
   * `memcache_nodes`: (Beta only) an array of `google_memcache_instance` memcache_nodes
@@ -40,8 +42,9 @@ See [google_memcache_instance.md](google_memcache_instance.md) for more detailed
   * `parameters`: (Beta only) an array of `google_memcache_instance` parameters
   * `regions`: (Beta only) an array of `google_memcache_instance` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

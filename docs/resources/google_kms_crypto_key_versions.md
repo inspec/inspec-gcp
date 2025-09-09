@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_crypto_key_versions"
 identifier = "inspec/resources/gcp/google_kms_crypto_key_versions Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_kms_crypto_key_versions` is used to test a Google CryptoKeyVersion resource
+Use the `google_kms_crypto_key_versions` InSpec audit resource to to test a Google Cloud CryptoKeyVersion resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_crypto_key_versions(project: 'chef-gcp-inspec', location: 'europe-west2', key_ring: 'kms-key-ring', crypto_key: '') do
   its('count') { should be >= 1 }
   its('crypto_key_names') { should include 'kms-key' }
@@ -22,9 +22,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_crypto_key_versions` resource:
 
-See [google_kms_crypto_key_version.md](google_kms_crypto_key_version.md) for more detailed information
+See [google_kms_crypto_key_version](google_kms_crypto_key_version) for more detailed information.
+
   * `names`: an array of `google_kms_crypto_key_version` name
   * `create_times`: an array of `google_kms_crypto_key_version` create_time
   * `generate_times`: an array of `google_kms_crypto_key_version` generate_time
@@ -42,10 +44,11 @@ See [google_kms_crypto_key_version.md](google_kms_crypto_key_version.md) for mor
   * `key_rings`: an array of `google_kms_crypto_key_version` key_ring
   * `crypto_keys`: an array of `google_kms_crypto_key_version` crypto_key
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

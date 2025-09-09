@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_logging_organization_log_sink"
 identifier = "inspec/resources/gcp/google_logging_organization_log_sink Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_logging_organization_log_sink` is used to test a Google OrganizationLogSink resource
+Use the `google_logging_organization_log_sink` InSpec audit resource to to test a Google Cloud OrganizationLogSink resource.
 
 ## Examples
-```
+
+```ruby
 describe google_logging_organization_log_sink(organization: '190694428152', name: 'inspec-gcp-org-sink') do
   it { should exist }
   its('filter') { should cmp 'resource.type = gce_instance' }
@@ -26,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_logging_organization_log_sink` resource:
 
 
@@ -42,6 +43,6 @@ Properties that can be accessed from the `google_logging_organization_log_sink` 
   * `include_children`: If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/library/logging.googleapis.com/) is enabled for the current project.

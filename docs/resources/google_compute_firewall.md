@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_firewall"
 identifier = "inspec/resources/gcp/google_compute_firewall Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_firewall` is used to test a Google Firewall resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_firewall(project: 'chef-gcp-inspec', name: 'inspec-gcp-firewall') do
   its('direction') { should cmp 'INGRESS' }
   its('log_config_enabled?') { should be true }
@@ -80,6 +82,7 @@ end
 
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_firewall` resource:
 
 
@@ -136,6 +139,6 @@ Properties that can be accessed from the `google_compute_firewall` resource:
   * `target_tags`: A list of instance tags indicating sets of instances located in the network that may make network connections as specified in allowed[]. If no targetTags are specified, the firewall rule applies to all instances on the specified network.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

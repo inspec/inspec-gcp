@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dns_managed_zones"
 identifier = "inspec/resources/gcp/google_dns_managed_zones Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_dns_managed_zones` is used to test a Google ManagedZone resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dns_managed_zones(project: 'chef-gcp-inspec') do
   it { should exist }
   its('zone_names') { should include 'example-zone' }
@@ -47,9 +49,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_dns_managed_zones` resource:
 
-See [google_dns_managed_zone.md](google_dns_managed_zone.md) for more detailed information
+See [google_dns_managed_zone](google_dns_managed_zone) for more detailed information.
+
   * `descriptions`: an array of `google_dns_managed_zone` description
   * `zone_dns_names`: an array of `google_dns_managed_zone` dns_name
   * `dnssec_configs`: an array of `google_dns_managed_zone` dnssec_config
@@ -66,10 +70,11 @@ See [google_dns_managed_zone.md](google_dns_managed_zone.md) for more detailed i
   * `reverse_lookups`: (Beta only) an array of `google_dns_managed_zone` reverse_lookup
   * `service_directory_configs`: (Beta only) an array of `google_dns_managed_zone` service_directory_config
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com/) is enabled for the current project.

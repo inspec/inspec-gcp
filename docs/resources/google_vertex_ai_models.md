@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_models"
 identifier = "inspec/resources/gcp/google_vertex_ai_models Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_models` is used to test a Google Model resource
+Use the `google_vertex_ai_models` InSpec audit resource to to test a Google Cloud Model resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_models(parent: "projects/#{gcp_project_id}/locations/#{model['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_models` resource:
 
-See [google_vertex_ai_model.md](google_vertex_ai_model.md) for more detailed information
+See [google_vertex_ai_model](google_vertex_ai_model) for more detailed information.
+
   * `model_source_infos`: an array of `google_vertex_ai_model` model_source_info
   * `names`: an array of `google_vertex_ai_model` name
   * `metadata`: an array of `google_vertex_ai_model` metadata
@@ -54,8 +56,9 @@ See [google_vertex_ai_model.md](google_vertex_ai_model.md) for more detailed inf
   * `version_descriptions`: an array of `google_vertex_ai_model` version_description
   * `labels`: an array of `google_vertex_ai_model` labels
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_global_forwarding_rule"
 identifier = "inspec/resources/gcp/google_compute_global_forwarding_rule Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_global_forwarding_rule` is used to test a Google GlobalForwardingRule resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_global_forwarding_rule(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-forwarding-rule') do
   it { should exist }
   its('port_range') { should eq '80-80' }
@@ -31,6 +33,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_global_forwarding_rule` resource:
 
 
@@ -87,6 +90,6 @@ Properties that can be accessed from the `google_compute_global_forwarding_rule`
   * `target`: The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.  ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

@@ -4,23 +4,24 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_public_delegated_prefix"
 identifier = "inspec/resources/gcp/google_compute_public_delegated_prefix Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_public_delegated_prefix` is used to test a Google PublicDelegatedPrefix resource
+Use the `google_compute_public_delegated_prefix` InSpec audit resource to to test a Google Cloud PublicDelegatedPrefix resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_public_delegated_prefix(project: 'chef-gcp-inspec', region: 'us-east1-b', name: 'test') do
   it { should exist }
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_public_delegated_prefix` resource:
 
 
@@ -48,6 +49,6 @@ Properties that can be accessed from the `google_compute_public_delegated_prefix
     * DELETING
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

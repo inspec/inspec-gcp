@@ -1,25 +1,21 @@
 +++
-
 title = "google_dataproc_metastore_service Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_dataproc_metastore_service"
 identifier = "inspec/resources/gcp/google_dataproc_metastore_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_metastore_service` InSpec audit resource to test the properties of a test a Google Service.
-
-## Syntax
-A `google_dataproc_metastore_service` is used to test a Google Service resource
+Use the `google_dataproc_metastore_service` InSpec audit resource to test the properties of a Google Cloud Service resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dataproc_metastore_service(name: 'value_name') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -42,9 +38,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_metastore_service` resource:
+
+Parameters that can be accessed from the `google_dataproc_metastore_service` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_metastore_service` resource:
 
 
@@ -284,6 +282,6 @@ Properties that can be accessed from the `google_dataproc_metastore_service` res
   * `deletion_protection`: Optional. Indicates if the dataproc metastore should be protected against accidental deletions.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Dataproc Metastore API](https://console.cloud.google.com/apis/library/metastore.googleapis.com) is enabled for the current project.

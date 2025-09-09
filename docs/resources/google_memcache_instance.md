@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_memcache_instance"
 identifier = "inspec/resources/gcp/google_memcache_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_memcache_instance` is used to test a Google Instance resource
+Use the `google_memcache_instance` InSpec audit resource to to test a Google Cloud Instance resource.
 
 ## Examples
-```
+
+```ruby
 describe google_memcache_instance(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'mem-instance') do
   it { should exist }
   its('node_count') { should cmp 1 }
@@ -26,6 +26,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_memcache_instance` resource:
 
 
@@ -78,4 +79,4 @@ Properties that can be accessed from the `google_memcache_instance` resource:
   * `region`: (Beta only) The region of the Memcache instance. If it is not provided, the provider region is used.
 
 
-## GCP Permissions
+## GCP permissions

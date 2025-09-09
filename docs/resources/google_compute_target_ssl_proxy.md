@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_target_ssl_proxy"
 identifier = "inspec/resources/gcp/google_compute_target_ssl_proxy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_target_ssl_proxy` is used to test a Google TargetSslProxy resource
+Use the `google_compute_target_ssl_proxy` InSpec audit resource to to test a Google Cloud TargetSslProxy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_target_ssl_proxy(project: 'chef-gcp-inspec', name: ' ') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -35,6 +35,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_target_ssl_proxy` resource:
 
 
@@ -64,6 +65,6 @@ Properties that can be accessed from the `google_compute_target_ssl_proxy` resou
   * `ssl_policy`: URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

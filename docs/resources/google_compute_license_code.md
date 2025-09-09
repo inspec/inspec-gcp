@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_license_code"
 identifier = "inspec/resources/gcp/google_compute_license_code Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_license_code` is used to test a Google LicenseCode resource
+Use the `google_compute_license_code` InSpec audit resource to to test a Google Cloud LicenseCode resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_license_code(project: 'chef-gcp-inspec', name: 'akl-zone1-1353') do
   it { should exist }
 end
@@ -25,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_license_code` resource:
 
 
@@ -47,6 +48,6 @@ Properties that can be accessed from the `google_compute_license_code` resource:
     * `description`: Description of this License Code.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

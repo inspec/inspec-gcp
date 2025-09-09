@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_subnetwork_iam_policy"
 identifier = "inspec/resources/gcp/google_compute_subnetwork_iam_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
-A `google_compute_subnetwork_iam_policy` is used to test a Google Subnetwork Iam Policy resource
+
+A `google_compute_subnetwork_iam_policy` is used to test a Google Subnetwork Iam Policy resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_subnetwork_iam_policy(project: "project", region: "region", name: "name") do
   it { should exist }
 end
@@ -28,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_subnetwork_iam_policy` resource:
 
   * `iam_binding_roles`: The list of roles that exist on the policy.
@@ -50,6 +53,6 @@ Properties that can be accessed from the `google_compute_subnetwork_iam_policy` 
 
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

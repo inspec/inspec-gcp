@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_pipeline_job"
 identifier = "inspec/resources/gcp/google_vertex_ai_pipeline_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_pipeline_job` is used to test a Google PipelineJob resource
+Use the `google_vertex_ai_pipeline_job` InSpec audit resource to to test a Google Cloud PipelineJob resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_pipeline_job(name: "projects/#{gcp_project_id}/locations/#{pipeline_job['region']}/pipelineJobs/#{pipeline_job['name']}", region: ' value_region') do
 	it { should exist }
 	its('end_time') { should cmp 'value_endtime' }
@@ -37,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_pipeline_job` resource:
 
 
@@ -301,4 +302,4 @@ Properties that can be accessed from the `google_vertex_ai_pipeline_job` resourc
       * `additional_properties`: The type of an input artifact.
 
 
-## GCP Permissions
+## GCP permissions

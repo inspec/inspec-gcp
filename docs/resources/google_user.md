@@ -4,7 +4,7 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_user"
 identifier = "inspec/resources/gcp/google_user Resource"
 parent = "inspec/resources/gcp"
@@ -63,6 +63,6 @@ The following examples show how to use this InSpec audit resource.
 <br>
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the G Suite Admin SDK [Directory API](https://developers.google.com/admin-sdk/directory/) is enabled and you have sufficient privileges to list users.

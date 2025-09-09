@@ -1,25 +1,21 @@
 +++
-
 title = "google_run_jobs Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_run_jobs"
 identifier = "inspec/resources/gcp/google_run_jobs Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_run_jobs` InSpec audit resource to test the properties of a test a Google Job.
-
-## Syntax
-A `google_run_jobs` is used to test a Google Job resource
+Use the `google_run_jobs` InSpec audit resource to test the properties of a Google Cloud Job resource.
 
 ## Examples
-```
+
+```ruby
   describe google_run_jobs(parent: 'projects/{project}/locations/{location}') do
     it { should exist }
     its('names') { should include 'value_name' }
@@ -28,9 +24,11 @@ A `google_run_jobs` is used to test a Google Job resource
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_run_jobs` resource:
 
-See [google_run_job.md](google_run_job.md) for more detailed information
+Parameters that can be accessed from the `google_run_jobs` resource:
+
+See [google_run_job](google_run_job) for more detailed information.
+
 * `names`: an array of `google_run_job` name
 * `uids`: an array of `google_run_job` uid
 * `generations`: an array of `google_run_job` generation
@@ -57,10 +55,13 @@ See [google_run_job.md](google_run_job.md) for more detailed information
 * `start_execution_tokens`: an array of `google_run_job` start_execution_token
 * `run_execution_tokens`: an array of `google_run_job` run_execution_token
 * `etags`: an array of `google_run_job` etag
+
 ## Properties
+
 Properties that can be accessed from the `google_run_jobs` resource:
 
-See [google_run_job.md](google_run_job.md) for more detailed information
+See [google_run_job](google_run_job) for more detailed information.
+
 * `names`: an array of `google_run_job` name
 * `uids`: an array of `google_run_job` uid
 * `generations`: an array of `google_run_job` generation
@@ -88,10 +89,11 @@ See [google_run_job.md](google_run_job.md) for more detailed information
 * `run_execution_tokens`: an array of `google_run_job` run_execution_token
 * `etags`: an array of `google_run_job` etag
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://run.googleapis.com/](https://console.cloud.google.com/apis/library/run.googleapis.com/) is enabled for the current project.

@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dns_managed_zone"
 identifier = "inspec/resources/gcp/google_dns_managed_zone Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_dns_managed_zone` is used to test a Google ManagedZone resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_dns_managed_zone(project: 'chef-gcp-inspec', zone: 'example-zone') do
   it { should exist }
   its('dns_name') { should cmp 'dns-zone-name.com.' }
@@ -52,6 +54,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_dns_managed_zone` resource:
 
 
@@ -142,6 +145,6 @@ Properties that can be accessed from the `google_dns_managed_zone` resource:
       * `namespace_url`: The fully qualified URL of the service directory namespace that should be associated with the zone. Ignored for `public` visibility zones.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com/) is enabled for the current project.

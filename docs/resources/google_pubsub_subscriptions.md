@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_pubsub_subscriptions"
 identifier = "inspec/resources/gcp/google_pubsub_subscriptions Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_pubsub_subscriptions` is used to test a Google Subscription resource
+Use the `google_pubsub_subscriptions` InSpec audit resource to to test a Google Cloud Subscription resource.
 
 ## Examples
-```
+
+```ruby
 describe google_pubsub_subscriptions(project: 'chef-gcp-inspec') do
   its('count') { should be >= 1 }
 end
@@ -27,9 +27,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_pubsub_subscriptions` resource:
 
-See [google_pubsub_subscription.md](google_pubsub_subscription.md) for more detailed information
+See [google_pubsub_subscription](google_pubsub_subscription) for more detailed information.
+
   * `names`: an array of `google_pubsub_subscription` name
   * `topics`: an array of `google_pubsub_subscription` topic
   * `labels`: an array of `google_pubsub_subscription` labels
@@ -43,10 +45,11 @@ See [google_pubsub_subscription.md](google_pubsub_subscription.md) for more deta
   * `retry_policies`: an array of `google_pubsub_subscription` retry_policy
   * `enable_message_orderings`: an array of `google_pubsub_subscription` enable_message_ordering
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.

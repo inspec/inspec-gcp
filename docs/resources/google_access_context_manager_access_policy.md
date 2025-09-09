@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_access_context_manager_access_policy"
 identifier = "inspec/resources/gcp/google_access_context_manager_access_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_access_context_manager_access_policy` is used to test a Google AccessPolicy resource
+Use the `google_access_context_manager_access_policy` InSpec audit resource to to test a Google Cloud AccessPolicy resource.
 
 ## Examples
-```
 
+```ruby
 describe.one do
   google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
     describe google_access_context_manager_access_policy(name: policy_name) do
@@ -28,6 +27,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_access_context_manager_access_policy` resource:
 
 
@@ -42,4 +42,4 @@ Properties that can be accessed from the `google_access_context_manager_access_p
   * `title`: Human readable title. Does not affect behavior.
 
 
-## GCP Permissions
+## GCP permissions

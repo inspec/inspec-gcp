@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_metadata_store"
 identifier = "inspec/resources/gcp/google_vertex_ai_metadata_store Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_metadata_store` is used to test a Google MetadataStore resource
+Use the `google_vertex_ai_metadata_store` InSpec audit resource to to test a Google Cloud MetadataStore resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_metadata_store(name: "projects/#{gcp_project_id}/locations/#{metadata_store['region']}/metadataStores/#{metadata_store['name']}", region: ' value_region') do
 	it { should exist }
 	its('description') { should cmp 'value_description' }
@@ -30,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_metadata_store` resource:
 
 
@@ -50,4 +51,4 @@ Properties that can be accessed from the `google_vertex_ai_metadata_store` resou
   * `name`: Output only. The resource name of the MetadataStore instance.
 
 
-## GCP Permissions
+## GCP permissions

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dataproc_jobs"
 identifier = "inspec/resources/gcp/google_dataproc_jobs resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dataproc_jobs` is used to test a Google Job resource
+Use the `google_dataproc_jobs` InSpec audit resource to to test a Google Cloud Job resource.
 
 ## Examples
-```
+
+```ruby
   describe google_dataproc_jobs(project_id: 'value_project_id', region: 'value_region') do
     it { should exist }
     its('driver_output_resource_uris') { should include 'value_driveroutputresourceuri' }
@@ -24,9 +24,11 @@ A `google_dataproc_jobs` is used to test a Google Job resource
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_jobs` resource:
 
-See [google_dataproc_job.md](google_dataproc_job.md) for more detailed information
+See [google_dataproc_job](google_dataproc_job) for more detailed information.
+
 * `references`: an array of `google_dataproc_job` reference
 * `placements`: an array of `google_dataproc_job` placement
 * `hadoop_jobs`: an array of `google_dataproc_job` hadoop_job
@@ -50,10 +52,11 @@ See [google_dataproc_job.md](google_dataproc_job.md) for more detailed informati
 * `dones`: an array of `google_dataproc_job` done
 * `driver_scheduling_configs`: an array of `google_dataproc_job` driver_scheduling_config
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Dataproc API](https://console.cloud.google.com/apis/library/dataproc.googleapis.com) is enabled for the current project.

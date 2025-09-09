@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_storage_object_acl"
 identifier = "inspec/resources/gcp/google_storage_object_acl Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_storage_object_acl` is used to test a Google ObjectACL resource
+Use the `google_storage_object_acl` InSpec audit resource to to test a Google Cloud ObjectACL resource.
 
 ## Examples
-```
+
+```ruby
 describe google_storage_object_acl(bucket: 'bucket-with-object', object: 'image1', entity: user-email) do
   it { should exist }
   its('role') { should cmp "OWNER" }
@@ -41,6 +41,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_storage_object_acl` resource:
 
 
@@ -74,6 +75,6 @@ Properties that can be accessed from the `google_storage_object_acl` resource:
     * READER
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Google Cloud Storage](https://console.cloud.google.com/apis/library/storage-component.googleapis.com/) is enabled for the current project.

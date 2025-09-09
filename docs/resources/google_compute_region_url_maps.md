@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_url_maps"
 identifier = "inspec/resources/gcp/google_compute_region_url_maps Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_url_maps` is used to test a Google RegionUrlMap resource
+Use the `google_compute_region_url_maps` InSpec audit resource to to test a Google Cloud RegionUrlMap resource.
 
 ## Examples
-```
+
+```ruby
     describe google_compute_region_url_maps(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_url_maps` resource:
 
-See [google_compute_region_url_map.md](google_compute_region_url_map.md) for more detailed information
+See [google_compute_region_url_map](google_compute_region_url_map) for more detailed information.
+
   * `kinds`: an array of `google_compute_region_url_map` kind
   * `ids`: an array of `google_compute_region_url_map` id
   * `creation_timestamps`: an array of `google_compute_region_url_map` creation_timestamp
@@ -41,10 +43,11 @@ See [google_compute_region_url_map.md](google_compute_region_url_map.md) for mor
   * `fingerprints`: an array of `google_compute_region_url_map` fingerprint
   * `regions`: an array of `google_compute_region_url_map` region
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

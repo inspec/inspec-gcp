@@ -4,15 +4,13 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_apigee_organization_envgroup_attachment"
 identifier = "inspec/resources/gcp/google_apigee_organization_envgroup_attachment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-
-A `google_apigee_organization_envgroup_attachment` is used to test a Google OrganizationEnvgroupAttachment resource
+Use the `google_apigee_organization_envgroup_attachment` InSpec audit resource to to test a Google Cloud OrganizationEnvgroupAttachment resource.
 
 ## Examples
 
@@ -45,6 +43,6 @@ Properties that can be accessed from the `google_apigee_organization_envgroup_at
   * `name`: ID of the environment group attachment.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Apigee API](https://console.cloud.google.com/apis/library/apigee.googleapis.com/) is enabled for the current project.

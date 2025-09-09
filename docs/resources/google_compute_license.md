@@ -5,17 +5,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_license"
 identifier = "inspec/resources/gcp/google_compute_license Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_license` is used to test a Google License resource
+Use the `google_compute_license` InSpec audit resource to to test a Google Cloud License resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_license(name: 'value_license_id', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -32,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_license` resource:
 
 
@@ -60,6 +61,6 @@ Properties that can be accessed from the `google_compute_license` resource:
     * `min_memory_mb`: Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

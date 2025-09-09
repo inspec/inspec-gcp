@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_network_attachment"
 identifier = "inspec/resources/gcp/google_compute_network_attachment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_network_attachment` is used to test a Google NetworkAttachment resource
+Use the `google_compute_network_attachment` InSpec audit resource to to test a Google Cloud NetworkAttachment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_network_attachment(name: 'value_name', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -37,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_network_attachment` resource:
 
 
@@ -96,6 +97,6 @@ Properties that can be accessed from the `google_compute_network_attachment` res
   * `network`: [Output Only] The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

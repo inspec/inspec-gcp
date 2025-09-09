@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_schedule"
 identifier = "inspec/resources/gcp/google_vertex_ai_schedule Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_schedule` is used to test a Google Schedule resource
+Use the `google_vertex_ai_schedule` InSpec audit resource to to test a Google Cloud Schedule resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_schedule(name: "projects/#{gcp_project_id}/locations/#{schedule['region']}/schedules/#{schedule['name']}", region: ' value_region') do
 	it { should exist }
 	its('started_run_count') { should cmp 'value_startedruncount' }
@@ -40,6 +40,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_schedule` resource:
 
 
@@ -355,4 +356,4 @@ Properties that can be accessed from the `google_vertex_ai_schedule` resource:
   * `end_time`: Optional. Timestamp after which no new runs can be scheduled. If specified, The schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
 
 
-## GCP Permissions
+## GCP permissions

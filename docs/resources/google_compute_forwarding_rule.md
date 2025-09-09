@@ -4,22 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_forwarding_rule"
 identifier = "inspec/resources/gcp/google_compute_forwarding_rule Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_forwarding_rule` is used to test a Google ForwardingRule resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_forwarding_rule(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'udp-forwarding-rule') do
   it { should exist }
   its('region') { should match 'europe-west2' }
@@ -71,6 +72,7 @@ end
     end  
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_forwarding_rule` resource:
 
 
@@ -133,6 +135,6 @@ Properties that can be accessed from the `google_compute_forwarding_rule` resour
   * `region`: A reference to the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

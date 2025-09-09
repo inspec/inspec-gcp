@@ -1,25 +1,21 @@
 +++
-
 title = "google_dataproc_metastore_services Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_dataproc_metastore_services"
 identifier = "inspec/resources/gcp/google_dataproc_metastore_services Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_dataproc_metastore_services` InSpec audit resource to test the properties of a test a Google Service.
-
-## Syntax
-A `google_dataproc_metastore_services` is used to test a Google Service resource
+Use the `google_dataproc_metastore_services` InSpec audit resource to test the properties of a Google Cloud Service resource.
 
 ## Examples
-```
+
+```ruby
   describe google_dataproc_metastore_services(parent: ' value_parent') do
     it { should exist }
     its('names') { should include 'value_name' }
@@ -38,9 +34,11 @@ A `google_dataproc_metastore_services` is used to test a Google Service resource
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_dataproc_metastore_services` resource:
 
-See [google_dataproc_metastore_service.md](google_dataproc_metastore_service.md) for more detailed information
+Parameters that can be accessed from the `google_dataproc_metastore_services` resource:
+
+See [google_dataproc_metastore_service](google_dataproc_metastore_service) for more detailed information.
+
 * `hive_metastore_configs`: an array of `google_dataproc_metastore_service` hive_metastore_config
 * `names`: an array of `google_dataproc_metastore_service` name
 * `create_times`: an array of `google_dataproc_metastore_service` create_time
@@ -65,10 +63,13 @@ See [google_dataproc_metastore_service.md](google_dataproc_metastore_service.md)
 * `scaling_configs`: an array of `google_dataproc_metastore_service` scaling_config
 * `scheduled_backups`: an array of `google_dataproc_metastore_service` scheduled_backup
 * `deletion_protections`: an array of `google_dataproc_metastore_service` deletion_protection
+
 ## Properties
+
 Properties that can be accessed from the `google_dataproc_metastore_services` resource:
 
-See [google_dataproc_metastore_service.md](google_dataproc_metastore_service.md) for more detailed information
+See [google_dataproc_metastore_service](google_dataproc_metastore_service) for more detailed information.
+
 * `hive_metastore_configs`: an array of `google_dataproc_metastore_service` hive_metastore_config
 * `names`: an array of `google_dataproc_metastore_service` name
 * `create_times`: an array of `google_dataproc_metastore_service` create_time
@@ -94,10 +95,11 @@ See [google_dataproc_metastore_service.md](google_dataproc_metastore_service.md)
 * `scheduled_backups`: an array of `google_dataproc_metastore_service` scheduled_backup
 * `deletion_protections`: an array of `google_dataproc_metastore_service` deletion_protection
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Dataproc Metastore API](https://console.cloud.google.com/apis/library/metastore.googleapis.com) is enabled for the current project.

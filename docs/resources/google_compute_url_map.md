@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_url_map"
 identifier = "inspec/resources/gcp/google_compute_url_map Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_url_map` is used to test a Google UrlMap resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_url_map(project: 'chef-gcp-inspec', name: 'inspec-gcp-url-map') do
   it { should exist }
   its('description') { should eq 'URL map description' }
@@ -38,6 +40,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_url_map` resource:
 
 
@@ -324,6 +327,6 @@ Properties that can be accessed from the `google_compute_url_map` resource:
         * `percentage`: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

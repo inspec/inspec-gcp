@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_ssl_policy"
 identifier = "inspec/resources/gcp/google_compute_ssl_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_ssl_policy` is used to test a Google SslPolicy resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_ssl_policy(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-policy') do
   it { should exist }
   its('min_tls_version') { should eq 'TLS_1_2' }
@@ -33,6 +35,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_ssl_policy` resource:
 
 
@@ -70,6 +73,6 @@ Properties that can be accessed from the `google_compute_ssl_policy` resource:
     * `message`: A human-readable description of the warning code.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_target_https_proxies"
 identifier = "inspec/resources/gcp/google_compute_region_target_https_proxies Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_target_https_proxies` is used to test a Google RegionTargetHttpsProxy resource
+Use the `google_compute_region_target_https_proxies` InSpec audit resource to to test a Google Cloud RegionTargetHttpsProxy resource.
 
 ## Examples
-```
+
+```ruby
     describe google_compute_region_target_https_proxies(project: 'chef-gcp-inspec', region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_target_https_proxies` resource:
 
-See [google_compute_region_target_https_proxy.md](google_compute_region_target_https_proxy.md) for more detailed information
+See [google_compute_region_target_https_proxy](google_compute_region_target_https_proxy) for more detailed information.
+
   * `kinds`: an array of `google_compute_region_target_https_proxy` kind
   * `ids`: an array of `google_compute_region_target_https_proxy` id
   * `creation_timestamps`: an array of `google_compute_region_target_https_proxy` creation_timestamp
@@ -47,10 +49,11 @@ See [google_compute_region_target_https_proxy.md](google_compute_region_target_h
   * `http_keep_alive_timeout_secs`: an array of `google_compute_region_target_https_proxy` http_keep_alive_timeout_sec
   * `tls_early_data`: an array of `google_compute_region_target_https_proxy` tls_early_data
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

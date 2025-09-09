@@ -1,25 +1,21 @@
 +++
-
 title = "google_run_job Resource"
 platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
 
-[menu.inspec]
-
+[menu.gcp]
 title = "google_run_job"
 identifier = "inspec/resources/gcp/google_run_job Resource"
 parent = "inspec/resources/gcp"
 +++
 
-Use the `google_run_job` InSpec audit resource to test the properties of a test a Google Job.
-
-## Syntax
-A `google_run_job` is used to test a Google Job resource
+Use the `google_run_job` InSpec audit resource to test the properties of a Google Cloud Job resource.
 
 ## Examples
-```
+
+```ruby
 describe google_run_job(name: 'projects/{project}/locations/{location}/jobs/{value_name}') do
 	it { should exist }
 	its('name') { should cmp 'value_name' }
@@ -46,9 +42,11 @@ end
 ```
 
 ## Parameters
-Properties that can be accessed from the `google_run_job` resource:
+
+Parameters that can be accessed from the `google_run_job` resource:
 
 ## Properties
+
 Properties that can be accessed from the `google_run_job` resource:
 
 
@@ -474,6 +472,6 @@ Properties that can be accessed from the `google_run_job` resource:
   * `etag`: Output only. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [https://run.googleapis.com/](https://console.cloud.google.com/apis/library/run.googleapis.com/) is enabled for the current project.

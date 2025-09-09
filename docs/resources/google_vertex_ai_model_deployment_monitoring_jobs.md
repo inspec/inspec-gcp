@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_model_deployment_monitoring_jobs"
 identifier = "inspec/resources/gcp/google_vertex_ai_model_deployment_monitoring_jobs Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_model_deployment_monitoring_jobs` is used to test a Google ModelDeploymentMonitoringJob resource
+Use the `google_vertex_ai_model_deployment_monitoring_jobs` InSpec audit resource to to test a Google Cloud ModelDeploymentMonitoringJob resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_model_deployment_monitoring_jobs(parent: "projects/#{gcp_project_id}/locations/#{model_deployment_monitoring_job['region']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_model_deployment_monitoring_jobs` resource:
 
-See [google_vertex_ai_model_deployment_monitoring_job.md](google_vertex_ai_model_deployment_monitoring_job.md) for more detailed information
+See [google_vertex_ai_model_deployment_monitoring_job](google_vertex_ai_model_deployment_monitoring_job) for more detailed information.
+
   * `model_deployment_monitoring_objective_configs`: an array of `google_vertex_ai_model_deployment_monitoring_job` model_deployment_monitoring_objective_configs
   * `labels`: an array of `google_vertex_ai_model_deployment_monitoring_job` labels
   * `states`: an array of `google_vertex_ai_model_deployment_monitoring_job` state
@@ -48,8 +50,9 @@ See [google_vertex_ai_model_deployment_monitoring_job.md](google_vertex_ai_model
   * `encryption_specs`: an array of `google_vertex_ai_model_deployment_monitoring_job` encryption_spec
   * `names`: an array of `google_vertex_ai_model_deployment_monitoring_job` name
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_ssl_cert"
 identifier = "inspec/resources/gcp/google_sql_ssl_cert Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_ssl_cert` is used to test a Google SslCert resource
+Use the `google_sql_ssl_cert` InSpec audit resource to to test a Google Cloud SslCert resource.
 
 ## Examples
-```
+
+```ruby
 describe google_sql_ssl_cert(project: 'chef-gcp-inspec', instance: 'test-pg', sha1_fingerprint:  '80c5c611c0a591db967c7dda3467e23127288fed') do
   it { should exist }
   its('instance') { should eq 'test-pg' }
@@ -29,6 +29,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_ssl_cert` resource:
 
 
@@ -47,6 +48,6 @@ Properties that can be accessed from the `google_sql_ssl_cert` resource:
   * `sha1_fingerprint`: The SHA-1 of the certificate.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

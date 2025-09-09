@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_datasets_saved_queries"
 identifier = "inspec/resources/gcp/google_vertex_ai_datasets_saved_queries Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_datasets_saved_queries` is used to test a Google DatasetsSavedQuery resource
+Use the `google_vertex_ai_datasets_saved_queries` InSpec audit resource to to test a Google Cloud DatasetsSavedQuery resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_datasets_saved_queries(parent: "projects/#{gcp_project_id}/locations/#{datasets_saved_query['region']}/datasets/#{datasets_saved_query['dataset']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_datasets_saved_queries` resource:
 
-See [google_vertex_ai_datasets_saved_query.md](google_vertex_ai_datasets_saved_query.md) for more detailed information
+See [google_vertex_ai_datasets_saved_query](google_vertex_ai_datasets_saved_query) for more detailed information.
+
   * `annotation_spec_counts`: an array of `google_vertex_ai_datasets_saved_query` annotation_spec_count
   * `update_times`: an array of `google_vertex_ai_datasets_saved_query` update_time
   * `support_automl_trainings`: an array of `google_vertex_ai_datasets_saved_query` support_automl_training
@@ -35,8 +37,9 @@ See [google_vertex_ai_datasets_saved_query.md](google_vertex_ai_datasets_saved_q
   * `display_names`: an array of `google_vertex_ai_datasets_saved_query` display_name
   * `annotation_filters`: an array of `google_vertex_ai_datasets_saved_query` annotation_filter
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

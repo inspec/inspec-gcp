@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_backend_service"
 identifier = "inspec/resources/gcp/google_compute_region_backend_service Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_region_backend_service` is used to test a Google RegionBackendService resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_backend_service(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-region-backend-service') do
   it { should exist }
   its('description') { should eq 'A regional description' }
@@ -32,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_backend_service` resource:
 
 
@@ -249,6 +252,6 @@ Properties that can be accessed from the `google_compute_region_backend_service`
   * `region`: A reference to the region where the regional backend service resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

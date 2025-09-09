@@ -4,24 +4,24 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_server_config"
 identifier = "inspec/resources/gcp/google_container_server_config Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_container_server_config` is used to test a Google ServerConfig resource
+Use the `google_container_server_config` InSpec audit resource to to test a Google Cloud ServerConfig resource.
 
 ## Examples
-```
 
+```ruby
 describe google_container_server_config(project: 'chef-gcp-inspec', location: 'europe-west2-a') do
   its('valid_master_versions') { should include '1.21.5-gke.1802'}
 end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_container_server_config` resource:
 
 
@@ -51,6 +51,6 @@ Properties that can be accessed from the `google_container_server_config` resour
   * `location`: The name of the Google Compute Engine location to return ServerConfig for.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

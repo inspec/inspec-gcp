@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_sql_flags"
 identifier = "inspec/resources/gcp/google_sql_flags Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_sql_flags` is used to test a Google Flag resource
+Use the `google_sql_flags` InSpec audit resource to to test a Google Cloud Flag resource.
 
 ## Examples
-```
 
+```ruby
 describe google_sql_flags do
 its('names') { should include , 'audit_log' }
 its('types') { should include , 'STRING' }
@@ -26,9 +25,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_sql_flags` resource:
 
-See [google_sql_flag.md](google_sql_flag.md) for more detailed information
+See [google_sql_flag](google_sql_flag) for more detailed information.
+
   * `allowed_string_values`: an array of `google_sql_flag` allowed_string_values
   * `applies_tos`: an array of `google_sql_flag` applies_to
   * `max_values`: an array of `google_sql_flag` max_value
@@ -37,10 +38,11 @@ See [google_sql_flag.md](google_sql_flag.md) for more detailed information
   * `requires_restarts`: an array of `google_sql_flag` requires_restart
   * `types`: an array of `google_sql_flag` type
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com/) is enabled for the current project.

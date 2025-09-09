@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_iam_binding"
 identifier = "inspec/resources/gcp/google_project_iam_binding Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_project_iam_binding` is used to test a Google Project Iam Bindings
 
 ## Examples
-```
+
+```ruby
 describe google_project_iam_binding(project: "project", role: "roles/editor") do
   it { should exist }
   its('members') { should include 'user:testuser@example.com' }
@@ -35,6 +37,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_project_iam_binding` resource:
 
   * `role`: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
@@ -50,6 +53,6 @@ Properties that can be accessed from the `google_project_iam_binding` resource:
   	* `description`: An optional description of the expression. This is a longer text which describes the expression.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

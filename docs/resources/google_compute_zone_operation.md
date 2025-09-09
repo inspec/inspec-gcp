@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_zone_operation"
 identifier = "inspec/resources/gcp/google_compute_zone_operation Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_zone_operation` is used to test a Google ZoneOperation resource
+Use the `google_compute_zone_operation` InSpec audit resource to to test a Google Cloud ZoneOperation resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_zone_operation(project: 'chef-gcp-inspec', zone: 'us-central1-a', name: 'operation-1641188179305-5d4a6e66fe2bd-8fd1812d-d97f3b69') do
 it { should exist }
 its('name') { should eq 'operation-1641188179305-5d4a6e66fe2bd-8fd1812d-d97f3b69' }
@@ -28,6 +28,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_zone_operation` resource:
 
 
@@ -62,6 +63,6 @@ Properties that can be accessed from the `google_compute_zone_operation` resourc
   * `region`: The URL of the region where the operation resides. Only applicable when performing regional operations.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

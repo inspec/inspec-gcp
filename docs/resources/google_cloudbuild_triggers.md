@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_cloudbuild_triggers"
 identifier = "inspec/resources/gcp/google_cloudbuild_triggers Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_cloudbuild_triggers` is used to test a Google Trigger resource
+Use the `google_cloudbuild_triggers` InSpec audit resource to to test a Google Cloud Trigger resource.
 
 ## Examples
-```
+
+```ruby
 describe google_cloudbuild_triggers(project: 'chef-gcp-inspec') do
   its('count') { should eq 1 }
 end
@@ -30,9 +30,11 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_cloudbuild_triggers` resource:
 
-See [google_cloudbuild_trigger.md](google_cloudbuild_trigger.md) for more detailed information
+See [google_cloudbuild_trigger](google_cloudbuild_trigger) for more detailed information.
+
   * `ids`: an array of `google_cloudbuild_trigger` id
   * `names`: an array of `google_cloudbuild_trigger` name
   * `descriptions`: an array of `google_cloudbuild_trigger` description
@@ -47,10 +49,11 @@ See [google_cloudbuild_trigger.md](google_cloudbuild_trigger.md) for more detail
   * `githubs`: an array of `google_cloudbuild_trigger` github
   * `builds`: an array of `google_cloudbuild_trigger` build
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com/) is enabled for the current project.

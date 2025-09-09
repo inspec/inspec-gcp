@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_interconnect_attachment"
 identifier = "inspec/resources/gcp/google_compute_interconnect_attachment Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_interconnect_attachment` is used to test a Google InterconnectAttachment resource
+Use the `google_compute_interconnect_attachment` InSpec audit resource to to test a Google Cloud InterconnectAttachment resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_interconnect_attachment(name: ' ', project: 'chef-gcp-inspec', region: ' value_region') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -54,6 +54,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_interconnect_attachment` resource:
 
 
@@ -202,6 +203,6 @@ Properties that can be accessed from the `google_compute_interconnect_attachment
   * `multicast_enabled`: Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

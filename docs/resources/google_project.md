@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project"
 identifier = "inspec/resources/gcp/google_project Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_project` is used to test a Google Project resource
+Use the `google_project` InSpec audit resource to to test a Google Cloud Project resource.
 
 ## Examples
-```
+
+```ruby
 describe google_project(project: 'chef-gcp-inspec') do
   it { should exist }
   its('project_id') { should cmp 'chef-gcp-inspec' }
@@ -41,6 +41,7 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project` resource:
 
 
@@ -68,6 +69,6 @@ Properties that can be accessed from the `google_project` resource:
   * `project_id`: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

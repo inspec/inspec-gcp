@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_kms_key_ring"
 identifier = "inspec/resources/gcp/google_kms_key_ring Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_kms_key_ring` is used to test a Google KeyRing resource
+Use the `google_kms_key_ring` InSpec audit resource to to test a Google Cloud KeyRing resource.
 
 ## Examples
-```
+
+```ruby
 describe google_kms_key_ring(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'kms-key-ring') do
   it { should exist }
   its('create_time') { should be > Time.now - 365*60*60*24*10 }
@@ -42,6 +42,7 @@ For any existing key ring, below should definitely be true!
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_kms_key_ring` resource:
 
 
@@ -52,6 +53,6 @@ Properties that can be accessed from the `google_kms_key_ring` resource:
   * `location`: The location for the KeyRing. A full list of valid locations can be found by running `gcloud kms locations list`.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Key Management Service (KMS) API](https://console.cloud.google.com/apis/library/cloudkms.googleapis.com/) is enabled for the current project.

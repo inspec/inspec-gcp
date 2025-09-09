@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_container_clusters"
 identifier = "inspec/resources/gcp/google_container_clusters Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_container_clusters` is used to test a Google Cluster resource
+Use the `google_container_clusters` InSpec audit resource to to test a Google Cloud Cluster resource.
 
 ## Examples
-```
+
+```ruby
 describe google_container_clusters(project: 'chef-gcp-inspec', location: 'europe-west2-a') do
   its('cluster_names') { should include 'gcp-inspec-kube-cluster' }
 end
@@ -48,9 +48,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_container_clusters` resource:
 
-See [google_container_cluster.md](google_container_cluster.md) for more detailed information
+See [google_container_cluster](google_container_cluster) for more detailed information.
+
   * `cluster_names`: an array of `google_container_cluster` name
   * `descriptions`: an array of `google_container_cluster` description
   * `initial_node_counts`: an array of `google_container_cluster` initial_node_count
@@ -94,10 +96,11 @@ See [google_container_cluster.md](google_container_cluster.md) for more detailed
   * `enable_kubernetes_alphas`: an array of `google_container_cluster` enable_kubernetes_alpha
   * `locations`: an array of `google_container_cluster` location
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Kubernetes Engine API](https://console.cloud.google.com/apis/library/container.googleapis.com/) is enabled for the current project.

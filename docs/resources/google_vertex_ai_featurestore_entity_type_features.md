@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_featurestore_entity_type_features"
 identifier = "inspec/resources/gcp/google_vertex_ai_featurestore_entity_type_features Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_featurestore_entity_type_features` is used to test a Google FeaturestoreEntityTypeFeature resource
+Use the `google_vertex_ai_featurestore_entity_type_features` InSpec audit resource to to test a Google Cloud FeaturestoreEntityTypeFeature resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_featurestore_entity_type_features(parent: "projects/#{gcp_project_id}/locations/#{featurestore_entity_type_feature['region']}/featurestores/#{featurestore_entity_type_feature['featurestore']}/entityTypes/#{featurestore_entity_type_feature['entityType']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_featurestore_entity_type_features` resource:
 
-See [google_vertex_ai_featurestore_entity_type_feature.md](google_vertex_ai_featurestore_entity_type_feature.md) for more detailed information
+See [google_vertex_ai_featurestore_entity_type_feature](google_vertex_ai_featurestore_entity_type_feature) for more detailed information.
+
   * `descriptions`: an array of `google_vertex_ai_featurestore_entity_type_feature` description
   * `create_times`: an array of `google_vertex_ai_featurestore_entity_type_feature` create_time
   * `monitoring_stats_anomalies`: an array of `google_vertex_ai_featurestore_entity_type_feature` monitoring_stats_anomalies
@@ -34,8 +36,9 @@ See [google_vertex_ai_featurestore_entity_type_feature.md](google_vertex_ai_feat
   * `disable_monitorings`: an array of `google_vertex_ai_featurestore_entity_type_feature` disable_monitoring
   * `value_types`: an array of `google_vertex_ai_featurestore_entity_type_feature` value_type
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_pubsub_topics"
 identifier = "inspec/resources/gcp/google_pubsub_topics Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_pubsub_topics` is used to test a Google Topic resource
+Use the `google_pubsub_topics` InSpec audit resource to to test a Google Cloud Topic resource.
 
 ## Examples
-```
+
+```ruby
 describe google_pubsub_topics(project: 'chef-gcp-inspec') do
   it { should exist }
   its('names') { should include 'inspec-gcp-topic' }
@@ -31,18 +31,21 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_pubsub_topics` resource:
 
-See [google_pubsub_topic.md](google_pubsub_topic.md) for more detailed information
+See [google_pubsub_topic](google_pubsub_topic) for more detailed information.
+
   * `names`: an array of `google_pubsub_topic` name
   * `kms_key_names`: an array of `google_pubsub_topic` kms_key_name
   * `labels`: an array of `google_pubsub_topic` labels
   * `message_storage_policies`: an array of `google_pubsub_topic` message_storage_policy
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Pub/Sub API](https://console.cloud.google.com/apis/library/pubsub.googleapis.com/) is enabled for the current project.

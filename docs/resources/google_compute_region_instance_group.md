@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_region_instance_group"
 identifier = "inspec/resources/gcp/google_compute_region_instance_group Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_region_instance_group` is used to test a Google RegionInstanceGroup resource
+Use the `google_compute_region_instance_group` InSpec audit resource to to test a Google Cloud RegionInstanceGroup resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_region_instance_group(project: 'chef-gcp-inspec', region: 'us-central1', name: 'instance-group-2') do
 it { should exist }
 its('name') { should eq 'instance-group-2' }
@@ -29,6 +29,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_region_instance_group` resource:
 
 
@@ -57,6 +58,6 @@ Properties that can be accessed from the `google_compute_region_instance_group` 
     * `port`: The port number, which can be a value between 1 and 65535.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

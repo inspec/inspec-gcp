@@ -4,17 +4,19 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_resourcemanager_organization_policy"
 identifier = "inspec/resources/gcp/google_resourcemanager_organization_policy Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_resourcemanager_organization_policy` is used to test organization policy constraints. More information can be found here [Organization Policy Constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
 
 ## Examples
-```
+
+```ruby
 describe google_resourcemanager_organization_policy(organization_name: "organizations/123456789", constraint: "constraints/compute.disableSerialPortAccess") do
   it { should exist }
   its('constraint') { should eq 'constraints/compute.disableSerialPortAccess' }
@@ -23,6 +25,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_resourcemanager_organization_policy` resource:
 
   * `version`: The version of the policy.
@@ -43,6 +46,6 @@ Properties that can be accessed from the `google_resourcemanager_organization_po
 
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the current project.

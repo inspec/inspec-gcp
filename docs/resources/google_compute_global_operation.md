@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_global_operation"
 identifier = "inspec/resources/gcp/google_compute_global_operation Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_global_operation` is used to test a Google GlobalOperation resource
+Use the `google_compute_global_operation` InSpec audit resource to to test a Google Cloud GlobalOperation resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_global_operation(project: 'chef-gcp-inspec', name: 'operation-1634799391539-5ced765030229-be5d5765-6623920f') do
   it { should exist }
   it { should be_up }
@@ -23,6 +23,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_global_operation` resource:
 
 
@@ -59,6 +60,6 @@ Properties that can be accessed from the `google_compute_global_operation` resou
   * `status_message`: An optional textual description of the current status of the operation.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

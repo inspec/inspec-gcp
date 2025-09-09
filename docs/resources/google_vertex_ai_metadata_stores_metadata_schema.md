@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_metadata_stores_metadata_schema"
 identifier = "inspec/resources/gcp/google_vertex_ai_metadata_stores_metadata_schema Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_metadata_stores_metadata_schema` is used to test a Google MetadataStoresMetadataSchema resource
+Use the `google_vertex_ai_metadata_stores_metadata_schema` InSpec audit resource to to test a Google Cloud MetadataStoresMetadataSchema resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_metadata_stores_metadata_schema(name: "projects/#{gcp_project_id}/locations/#{metadata_stores_metadata_schema['region']}/metadataStores/#{metadata_stores_metadata_schema['metadataStore']}/metadataSchemas/#{metadata_stores_metadata_schema['name']}", region: ' value_region') do
 	it { should exist }
 	its('schema_type') { should cmp 'value_schematype' }
@@ -32,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_metadata_stores_metadata_schema` resource:
 
 
@@ -53,4 +54,4 @@ Properties that can be accessed from the `google_vertex_ai_metadata_stores_metad
   * `schema`: Required. The raw YAML string representation of the MetadataSchema. The combination of [MetadataSchema.version] and the schema name given by `title` in [MetadataSchema.schema] must be unique within a MetadataStore. The schema is defined as an OpenAPI 3.0.2 [MetadataSchema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#schemaObject)
 
 
-## GCP Permissions
+## GCP permissions

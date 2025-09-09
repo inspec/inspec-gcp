@@ -4,22 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_node_template"
 identifier = "inspec/resources/gcp/google_compute_node_template Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_node_template` is used to test a Google NodeTemplate resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_node_template(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-node-template') do
   it { should exist }
   its('node_affinity_labels') { should include('key' => 'value') }
@@ -31,6 +32,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_node_template` resource:
 
 
@@ -67,6 +69,6 @@ Properties that can be accessed from the `google_compute_node_template` resource
   * `region`: Region where nodes using the node template will be created
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

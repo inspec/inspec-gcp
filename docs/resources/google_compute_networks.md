@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_networks"
 identifier = "inspec/resources/gcp/google_compute_networks Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_networks` is used to test a Google Network resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_networks(project: 'chef-gcp-inspec') do
 	its('network_names') { should include 'inspec-network' }
 end
@@ -44,9 +46,11 @@ end
 
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_networks` resource:
 
-See [google_compute_network.md](google_compute_network.md) for more detailed information
+See [google_compute_network](google_compute_network) for more detailed information.
+
   * `descriptions`: an array of `google_compute_network` description
   * `gateway_ipv4s`: an array of `google_compute_network` gateway_ipv4
   * `network_ids`: an array of `google_compute_network` id
@@ -58,10 +62,11 @@ See [google_compute_network.md](google_compute_network.md) for more detailed inf
   * `peerings`: an array of `google_compute_network` peerings
   * `mtus`: an array of `google_compute_network` mtu
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

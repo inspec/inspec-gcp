@@ -4,23 +4,24 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_dataset"
 identifier = "inspec/resources/gcp/google_vertex_ai_dataset Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_dataset` is used to test a Google Dataset resource
+Use the `google_vertex_ai_dataset` InSpec audit resource to to test a Google Cloud Dataset resource.
 
 ## Examples
-```
+
+```ruby
       describe google_vertex_ai_dataset(name: ' ', region: ' ') do
      it { should exist }
    end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_dataset` resource:
 
 
@@ -75,4 +76,4 @@ Properties that can be accessed from the `google_vertex_ai_dataset` resource:
   * `display_name`: Required. The user-defined name of the Dataset. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 
 
-## GCP Permissions
+## GCP permissions

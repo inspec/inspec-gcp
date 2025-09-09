@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_index"
 identifier = "inspec/resources/gcp/google_vertex_ai_index Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_index` is used to test a Google Index resource
+Use the `google_vertex_ai_index` InSpec audit resource to to test a Google Cloud Index resource.
 
 ## Examples
-```
+
+```ruby
 describe google_vertex_ai_index(name: "projects/#{gcp_project_id}/locations/#{index['region']}/indexes/#{index['name']}", region: ' value_region') do
 	it { should exist }
 	its('description') { should cmp 'value_description' }
@@ -34,6 +34,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_index` resource:
 
 
@@ -68,4 +69,4 @@ Properties that can be accessed from the `google_vertex_ai_index` resource:
     * `additional_properties`: 
 
 
-## GCP Permissions
+## GCP permissions

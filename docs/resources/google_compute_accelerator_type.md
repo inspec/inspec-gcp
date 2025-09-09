@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_accelerator_type"
 identifier = "inspec/resources/gcp/google_compute_accelerator_type Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_accelerator_type` is used to test a Google AcceleratorType resource
+Use the `google_compute_accelerator_type` InSpec audit resource to to test a Google Cloud AcceleratorType resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_accelerator_type(project: 'chef-gcp-inspec', zone: 'us-east1-b', name: 'accelerator_id') do
   it { should exist }
   it { should be_up }
@@ -22,6 +22,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_accelerator_type` resource:
 
 
@@ -52,6 +53,6 @@ Properties that can be accessed from the `google_compute_accelerator_type` resou
   * `zone`: The name of the zone where the accelerator type resides.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

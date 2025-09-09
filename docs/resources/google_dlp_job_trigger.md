@@ -4,18 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_dlp_job_trigger"
 identifier = "inspec/resources/gcp/google_dlp_job_trigger Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_dlp_job_trigger` is used to test a Google JobTrigger resource
+Use the `google_dlp_job_trigger` InSpec audit resource to to test a Google Cloud JobTrigger resource.
 
 ## Examples
-```
 
+```ruby
 describe google_dlp_job_trigger(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}",name: 'name1') do
 it { should exist }
 its('name') { should cmp 'name1' }
@@ -31,6 +30,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_dlp_job_trigger` resource:
 
 
@@ -146,4 +146,4 @@ Properties that can be accessed from the `google_dlp_job_trigger` resource:
   * `parent`: The parent of the trigger, either in the format `projects/{{project}}` or  `projects/{{project}}/locations/{{location}}`
 
 
-## GCP Permissions
+## GCP permissions

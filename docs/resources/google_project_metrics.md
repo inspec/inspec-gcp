@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_metrics"
 identifier = "inspec/resources/gcp/google_project_metrics Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_project_metrics` is used to test a Google Metric resource
+Use the `google_project_metrics` InSpec audit resource to to test a Google Cloud Metric resource.
 
 ## Examples
-```
+
+```ruby
 describe google_project_metrics(project: 'chef-gcp-inspec') do
   it { should exist }
   its('metric_filters') { should include 'resource.type=gae_app AND severity>=ERROR' }
@@ -51,9 +51,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_project_metrics` resource:
 
-See [google_project_metric.md](google_project_metric.md) for more detailed information
+See [google_project_metric](google_project_metric) for more detailed information.
+
   * `metric_names`: an array of `google_project_metric` name
   * `descriptions`: an array of `google_project_metric` description
   * `metric_filters`: an array of `google_project_metric` filter
@@ -62,10 +64,11 @@ See [google_project_metric.md](google_project_metric.md) for more detailed infor
   * `value_extractors`: an array of `google_project_metric` value_extractor
   * `bucket_options`: an array of `google_project_metric` bucket_options
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/library/logging.googleapis.com/) is enabled for the current project.

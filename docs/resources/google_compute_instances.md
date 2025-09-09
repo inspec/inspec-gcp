@@ -4,22 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_instances"
 identifier = "inspec/resources/gcp/google_compute_instances Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_instances` is used to test a Google Instance resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
 
+```ruby
 describe google_compute_instances(project: 'chef-gcp-inspec', zone: 'zone') do
   its('instance_names') { should include 'inspec-instance' }
 end
@@ -44,9 +45,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_instances` resource:
 
-See [google_compute_instance.md](google_compute_instance.md) for more detailed information
+See [google_compute_instance](google_compute_instance) for more detailed information.
+
   * `can_ip_forwards`: an array of `google_compute_instance` can_ip_forward
   * `cpu_platforms`: an array of `google_compute_instance` cpu_platform
   * `creation_timestamps`: an array of `google_compute_instance` creation_timestamp
@@ -70,10 +73,11 @@ See [google_compute_instance.md](google_compute_instance.md) for more detailed i
   * `tags`: an array of `google_compute_instance` tags
   * `zones`: an array of `google_compute_instance` zone
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

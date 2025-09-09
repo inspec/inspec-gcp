@@ -4,7 +4,7 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_project_iam_bindings"
 identifier = "inspec/resources/gcp/google_project_iam_bindings Resource"
 parent = "inspec/resources/gcp"
@@ -61,7 +61,7 @@ The following examples show how to use this InSpec audit resource.
 
 <br>
 
-## Filter Criteria
+## Filter criteria
 
 This resource supports the following filter criteria:  `iam_binding_role`.  This may be used with `where`, as a block or as a method.
 
@@ -72,6 +72,6 @@ This resource supports the following filter criteria:  `iam_binding_role`.  This
 <br>
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com/) is enabled for the project.

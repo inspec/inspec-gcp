@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_redis_instance"
 identifier = "inspec/resources/gcp/google_redis_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_redis_instance` is used to test a Google Instance resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_redis_instance(project: 'chef-gcp-inspec', region: 'us-central1', name: 'my-redis-cache') do
   it { should exist }
   its('tier') { should cmp 'STANDARD_HA' }
@@ -36,6 +38,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_redis_instance` resource:
 
 
@@ -101,4 +104,4 @@ Properties that can be accessed from the `google_redis_instance` resource:
   * `region`: The name of the Redis region of the instance.
 
 
-## GCP Permissions
+## GCP permissions

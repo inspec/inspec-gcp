@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_logging_project_sinks"
 identifier = "inspec/resources/gcp/google_logging_project_sinks Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_logging_project_sinks` is used to test a Google ProjectSink resource
+Use the `google_logging_project_sinks` InSpec audit resource to to test a Google Cloud ProjectSink resource.
 
 ## Examples
-```
+
+```ruby
 describe google_logging_project_sinks(project: 'chef-gcp-inspec') do
   its('names') { should include 'inspec-gcp-org-sink' }
 end
@@ -47,9 +47,11 @@ end
     end
 
 ## Properties
+
 Properties that can be accessed from the `google_logging_project_sinks` resource:
 
-See [google_logging_project_sink.md](google_logging_project_sink.md) for more detailed information
+See [google_logging_project_sink](google_logging_project_sink) for more detailed information.
+
   * `projects`: an array of `google_logging_project_sink` project
   * `names`: an array of `google_logging_project_sink` name
   * `filters`: an array of `google_logging_project_sink` filter
@@ -57,10 +59,11 @@ See [google_logging_project_sink.md](google_logging_project_sink.md) for more de
   * `writer_identities`: an array of `google_logging_project_sink` writer_identity
   * `include_children`: an array of `google_logging_project_sink` include_children
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Stackdriver Logging API](https://console.cloud.google.com/apis/library/logging.googleapis.com/) is enabled for the current project.

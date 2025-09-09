@@ -4,26 +4,28 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_vertex_ai_featurestores_entity_types"
 identifier = "inspec/resources/gcp/google_vertex_ai_featurestores_entity_types Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_vertex_ai_featurestores_entity_types` is used to test a Google FeaturestoresEntityType resource
+Use the `google_vertex_ai_featurestores_entity_types` InSpec audit resource to to test a Google Cloud FeaturestoresEntityType resource.
 
 ## Examples
-```
+
+```ruby
     describe google_vertex_ai_featurestores_entity_types(parent: "projects/#{gcp_project_id}/locations/#{featurestores_entity_type['region']}/featurestores/#{featurestores_entity_type['featurestore']}", region: ' value_region') do
     it { should exist }
   end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_vertex_ai_featurestores_entity_types` resource:
 
-See [google_vertex_ai_featurestores_entity_type.md](google_vertex_ai_featurestores_entity_type.md) for more detailed information
+See [google_vertex_ai_featurestores_entity_type](google_vertex_ai_featurestores_entity_type) for more detailed information.
+
   * `labels`: an array of `google_vertex_ai_featurestores_entity_type` labels
   * `descriptions`: an array of `google_vertex_ai_featurestores_entity_type` description
   * `names`: an array of `google_vertex_ai_featurestores_entity_type` name
@@ -33,8 +35,9 @@ See [google_vertex_ai_featurestores_entity_type.md](google_vertex_ai_featurestor
   * `update_times`: an array of `google_vertex_ai_featurestores_entity_type` update_time
   * `offline_storage_ttl_days`: an array of `google_vertex_ai_featurestores_entity_type` offline_storage_ttl_days
 
-## Filter Criteria
+## Filter criteria
+
 This resource supports all of the above properties as filter criteria, which can be used
 with `where` as a block or a method.
 
-## GCP Permissions
+## GCP permissions

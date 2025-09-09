@@ -4,21 +4,23 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_address"
 identifier = "inspec/resources/gcp/google_compute_address Resource"
 parent = "inspec/resources/gcp"
 +++
 
 ## Syntax
+
 A `google_compute_address` is used to test a Google Address resource
 
 
 ## Beta Resource
-This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource
+This resource has beta fields available. To retrieve these fields, include `beta: true` in the constructor for the resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_address(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-global-address') do
   it { should exist }
   its('address') { should eq '10.2.0.3' }
@@ -57,6 +59,7 @@ end
 
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_address` resource:
 
 
@@ -103,6 +106,6 @@ Properties that can be accessed from the `google_compute_address` resource:
   * `region`: URL of the region where the regional address resides. This field is not applicable to global addresses.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.

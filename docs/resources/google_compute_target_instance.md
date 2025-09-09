@@ -4,17 +4,17 @@ platform = "gcp"
 draft = false
 gh_repo = "inspec-gcp"
 
-[menu.inspec]
+[menu.gcp]
 title = "google_compute_target_instance"
 identifier = "inspec/resources/gcp/google_compute_target_instance Resource"
 parent = "inspec/resources/gcp"
 +++
 
-## Syntax
-A `google_compute_target_instance` is used to test a Google TargetInstance resource
+Use the `google_compute_target_instance` InSpec audit resource to to test a Google Cloud TargetInstance resource.
 
 ## Examples
-```
+
+```ruby
 describe google_compute_target_instance(project: 'chef-gcp-inspec', name: ' ', zone: ' value_zone') do
 	it { should exist }
 	its('kind') { should cmp 'value_kind' }
@@ -38,6 +38,7 @@ end
 ```
 
 ## Properties
+
 Properties that can be accessed from the `google_compute_target_instance` resource:
 
 
@@ -68,6 +69,6 @@ Properties that can be accessed from the `google_compute_target_instance` resour
   * `security_policy`: [Output Only] The resource URL for the security policy associated with this target instance.
 
 
-## GCP Permissions
+## GCP permissions
 
 Ensure the [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com/) is enabled for the current project.
