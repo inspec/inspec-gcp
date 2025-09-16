@@ -1,8 +1,8 @@
 +++
 title = "google_logging_project_sinks resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_logging_project_sinks"

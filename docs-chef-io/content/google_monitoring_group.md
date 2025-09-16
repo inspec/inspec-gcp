@@ -1,8 +1,8 @@
 +++
 title = "google_monitoring_group resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

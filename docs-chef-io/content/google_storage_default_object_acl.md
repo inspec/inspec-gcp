@@ -1,8 +1,8 @@
 +++
 title = "google_storage_default_object_acl resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_storage_default_object_acl"

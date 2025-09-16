@@ -1,8 +1,8 @@
 +++
 title = "google_apigee_endpoint_attachment resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

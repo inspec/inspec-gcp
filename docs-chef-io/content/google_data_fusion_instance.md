@@ -1,8 +1,8 @@
 +++
 title = "google_data_fusion_instance resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

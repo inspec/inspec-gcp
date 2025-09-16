@@ -1,14 +1,18 @@
 +++
-title = "Chef InSpec Google Cloud Platform resource pack"
+title = "About the Chef InSpec Google Cloud Platform resource pack"
 draft = false
-gh_repo = "inspec-gcp"
-linkTitle = "GCP resources"
-summary = "Chef InSpec resources for auditing Google Cloud Platform"
+linkTitle = "GCP resource pack"
+summary = "Chef InSpec resources for auditing Google Cloud Platform."
+
+[cascade]
+  [cascade.params]
+    platform = "gcp"
 
 [menu.gcp]
-title = "About"
-identifier = "inspec/resources/gcp/about"
-parent = "inspec/resources/gcp"
+  title = "About GCP resources"
+  identifier = "inspec/resources/gcp/about"
+  parent = "inspec/resources/gcp"
+  weight = 10
 +++
 
 Chef InSpec has resources for auditing Google Cloud Platform (GCP).

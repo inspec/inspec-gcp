@@ -1,8 +1,8 @@
 +++
 title = "google_bigquery_datasets resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_bigquery_datasets"

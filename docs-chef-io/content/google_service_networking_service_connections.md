@@ -1,8 +1,8 @@
 +++
 title = "google_service_networking_service_connections resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_service_networking_service_connections"

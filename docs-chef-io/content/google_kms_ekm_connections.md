@@ -1,8 +1,8 @@
 +++
 title = "google_kms_ekm_connections resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_kms_ekm_connections"

@@ -1,8 +1,8 @@
 +++
 title = "google_orgpolicy_folder_constraints resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_orgpolicy_folder_constraints"

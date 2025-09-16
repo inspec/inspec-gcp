@@ -1,8 +1,8 @@
 +++
 title = "google_dataproc_sessions resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

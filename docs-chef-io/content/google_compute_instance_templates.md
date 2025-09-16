@@ -1,8 +1,8 @@
 +++
 title = "google_compute_instance_templates resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_compute_instance_templates"

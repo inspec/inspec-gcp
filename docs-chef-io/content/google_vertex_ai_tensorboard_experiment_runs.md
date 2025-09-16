@@ -1,8 +1,8 @@
 +++
 title = "google_vertex_ai_tensorboard_experiment_runs resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_vertex_ai_tensorboard_experiment_runs"

@@ -1,8 +1,8 @@
 +++
 title = "google_ml_engine_models resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_ml_engine_models"

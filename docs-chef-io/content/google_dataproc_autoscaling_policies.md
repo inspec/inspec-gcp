@@ -1,8 +1,8 @@
 +++
 title = "google_dataproc_autoscaling_policies resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_dataproc_autoscaling_policies"

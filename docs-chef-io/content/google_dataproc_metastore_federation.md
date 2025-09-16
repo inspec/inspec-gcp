@@ -1,8 +1,8 @@
 +++
 title = "google_dataproc_metastore_federation resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

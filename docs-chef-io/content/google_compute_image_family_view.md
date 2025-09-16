@@ -1,8 +1,8 @@
 +++
 title = "google_compute_image_family_view resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_compute_image_family_view"
@@ -15,7 +15,6 @@ Use the `google_compute_image_family_view` InSpec audit resource to to test a Go
 ## Examples
 
 ```ruby
-
 
 describe google_compute_image_family_view(project: 'chef-gcp-inspec', zone: 'us-central1-c', name: 'test') do
   it { should exist }

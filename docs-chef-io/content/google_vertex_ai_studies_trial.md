@@ -1,8 +1,8 @@
 +++
 title = "google_vertex_ai_studies_trial resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_vertex_ai_studies_trial"

@@ -1,8 +1,8 @@
 +++
 title = "google_runtime_config_configs resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_runtime_config_configs"

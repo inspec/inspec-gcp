@@ -1,8 +1,8 @@
 +++
 title = "google_apigee_organization_envgroup_attachment resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_apigee_organization_envgroup_attachment"

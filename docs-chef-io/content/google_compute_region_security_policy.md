@@ -1,8 +1,8 @@
 +++
 title = "google_compute_region_security_policy resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

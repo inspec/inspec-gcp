@@ -1,8 +1,8 @@
 +++
 title = "google_kms_key_ring_iam_bindings resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_kms_key_ring_iam_bindings"

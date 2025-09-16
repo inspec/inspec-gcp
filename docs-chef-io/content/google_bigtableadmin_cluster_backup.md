@@ -1,8 +1,8 @@
 +++
 title = "google_bigtableadmin_cluster_backup resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

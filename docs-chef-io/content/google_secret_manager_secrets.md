@@ -1,8 +1,8 @@
 +++
 title = "google_secret_manager_secrets resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_secret_manager_secrets"

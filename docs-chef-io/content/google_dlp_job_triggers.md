@@ -1,8 +1,8 @@
 +++
 title = "google_dlp_job_triggers resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_dlp_job_triggers"
@@ -15,7 +15,6 @@ Use the `google_dlp_job_triggers` InSpec audit resource to to test a Google Clou
 ## Examples
 
 ```ruby
-
 
 describe google_dlp_job_triggers(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}") do
 it { should exist }

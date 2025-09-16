@@ -1,8 +1,8 @@
 +++
 title = "google_memcache_instances resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_memcache_instances"

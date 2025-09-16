@@ -1,8 +1,8 @@
 +++
 title = "google_vertex_ai_metadata_stores_contexts resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_vertex_ai_metadata_stores_contexts"

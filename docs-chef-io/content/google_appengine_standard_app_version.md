@@ -1,8 +1,8 @@
 +++
 title = "google_appengine_standard_app_version resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_appengine_standard_app_version"

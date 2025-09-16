@@ -1,8 +1,8 @@
 +++
 title = "google_dataflow_project_location_job resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_dataflow_project_location_job"

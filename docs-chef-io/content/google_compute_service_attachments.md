@@ -1,8 +1,8 @@
 +++
 title = "google_compute_service_attachments resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_compute_service_attachments"

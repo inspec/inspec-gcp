@@ -1,8 +1,8 @@
 +++
 title = "google_storage_bucket_iam_binding resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_storage_bucket_iam_binding"

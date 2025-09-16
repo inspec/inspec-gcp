@@ -1,8 +1,8 @@
 +++
 title = "google_resourcemanager_folder resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_resourcemanager_folder"

@@ -1,8 +1,8 @@
 +++
 title = "google_artifactregistry_project_location_repository resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_artifactregistry_project_location_repository"

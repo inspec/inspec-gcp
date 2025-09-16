@@ -1,8 +1,8 @@
 +++
 title = "google_redis_instance resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_redis_instance"

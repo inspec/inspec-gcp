@@ -1,8 +1,8 @@
 +++
 title = "google_storage_bucket_object resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_storage_bucket_object"

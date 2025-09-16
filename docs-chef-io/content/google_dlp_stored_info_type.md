@@ -1,8 +1,8 @@
 +++
 title = "google_dlp_stored_info_type resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_dlp_stored_info_type"

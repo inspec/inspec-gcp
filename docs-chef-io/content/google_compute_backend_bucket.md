@@ -1,8 +1,8 @@
 +++
 title = "google_compute_backend_bucket resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_compute_backend_bucket"

@@ -1,8 +1,8 @@
 +++
 title = "google_compute_disk resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_compute_disk"
@@ -21,7 +21,6 @@ This resource has beta fields available. To retrieve these fields, include `beta
 ## Examples
 
 ```ruby
-
 most_recent_image = google_compute_image(project: 'debian-cloud', name: 'debian-10-buster-v20191014')
 
 describe google_compute_disk(project: 'chef-gcp-inspec', name: 'inspec-snapshot-disk', zone: 'zone') do

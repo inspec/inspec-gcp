@@ -1,8 +1,8 @@
 +++
 title = "google_sql_ssl_cert resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_sql_ssl_cert"

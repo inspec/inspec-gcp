@@ -1,8 +1,8 @@
 +++
 title = "google_bigtableadmin_instance_app_profiles resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

@@ -1,8 +1,8 @@
 +++
 title = "google_compute_interconnects resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_compute_interconnects"

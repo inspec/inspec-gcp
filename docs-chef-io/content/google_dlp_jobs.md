@@ -1,8 +1,8 @@
 +++
 title = "google_dlp_jobs resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_dlp_jobs"
@@ -15,7 +15,6 @@ Use the `google_dlp_jobs` InSpec audit resource to to test a Google Cloud Job re
 ## Examples
 
 ```ruby
-
 
 describe google_dlp_jobs(parent: "projects/#{'chef-gcp-inspec'}/locations/#{'us-east-2'}") do
   it { should exist }

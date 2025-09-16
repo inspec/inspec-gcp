@@ -1,8 +1,8 @@
 +++
 title = "google_cloudfunctions_cloud_function resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_cloudfunctions_cloud_function"

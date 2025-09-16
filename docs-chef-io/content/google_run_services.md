@@ -1,8 +1,8 @@
 +++
 title = "google_run_services resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 
 [menu.gcp]

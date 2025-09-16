@@ -1,8 +1,8 @@
 +++
 title = "google_service_account_keys resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_service_account_keys"

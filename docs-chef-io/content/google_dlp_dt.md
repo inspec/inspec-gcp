@@ -1,8 +1,8 @@
 +++
 title = "google_dlp_dt resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_dlp_dt"
@@ -15,7 +15,6 @@ Use the `google_dlp_dt` InSpec audit resource to to test a Google Cloud DT resou
 ## Examples
 
 ```ruby
-
 
 describe google_dlp_dts(parent: "projects/#{'chef-gcp-inspec'}/locations/#{''}") do
   it { should exist }

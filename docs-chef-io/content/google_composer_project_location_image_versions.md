@@ -1,8 +1,8 @@
 +++
 title = "google_composer_project_location_image_versions resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_composer_project_location_image_versions"

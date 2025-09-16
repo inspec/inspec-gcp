@@ -1,8 +1,8 @@
 +++
 title = "google_access_context_manager_service_perimeters resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_access_context_manager_service_perimeters"

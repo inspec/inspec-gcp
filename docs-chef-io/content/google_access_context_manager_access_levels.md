@@ -1,8 +1,8 @@
 +++
 title = "google_access_context_manager_access_levels resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_access_context_manager_access_levels"
@@ -15,7 +15,6 @@ Use the `google_access_context_manager_access_levels` InSpec audit resource to t
 ## Examples
 
 ```ruby
-
 policy_name = google_access_context_manager_access_policies(org_id: '190694428152').names.first
 
 describe google_access_context_manager_access_levels(parent: policy_name) do

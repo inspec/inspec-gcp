@@ -1,8 +1,8 @@
 +++
 title = "google_cloudbuild_triggers resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_cloudbuild_triggers"

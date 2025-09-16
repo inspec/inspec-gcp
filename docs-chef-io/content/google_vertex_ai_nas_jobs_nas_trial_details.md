@@ -1,8 +1,8 @@
 +++
 title = "google_vertex_ai_nas_jobs_nas_trial_details resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_vertex_ai_nas_jobs_nas_trial_details"

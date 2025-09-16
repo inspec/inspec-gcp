@@ -1,8 +1,8 @@
 +++
 title = "google_container_regional_clusters resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_container_regional_clusters"

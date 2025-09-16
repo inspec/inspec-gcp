@@ -1,8 +1,8 @@
 +++
 title = "google_logging_folder_exclusion resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_logging_folder_exclusion"

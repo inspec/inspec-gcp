@@ -1,8 +1,8 @@
 +++
 title = "google_spanner_database resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_spanner_database"

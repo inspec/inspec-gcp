@@ -1,8 +1,8 @@
 +++
 title = "google_cloud_scheduler_job resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_cloud_scheduler_job"

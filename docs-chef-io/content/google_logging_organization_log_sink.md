@@ -1,8 +1,8 @@
 +++
 title = "google_logging_organization_log_sink resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_logging_organization_log_sink"

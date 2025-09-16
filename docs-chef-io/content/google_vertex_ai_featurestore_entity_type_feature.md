@@ -1,8 +1,8 @@
 +++
 title = "google_vertex_ai_featurestore_entity_type_feature resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_vertex_ai_featurestore_entity_type_feature"

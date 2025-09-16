@@ -1,8 +1,8 @@
 +++
 title = "google_vertex_ai_model_deployment_monitoring_job resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_vertex_ai_model_deployment_monitoring_job"

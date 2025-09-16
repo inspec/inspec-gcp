@@ -1,8 +1,8 @@
 +++
 title = "google_kms_key_ring_import_jobs resource"
-platform = "gcp"
+
 draft = false
-gh_repo = "inspec-gcp"
+
 
 [menu.gcp]
 title = "google_kms_key_ring_import_jobs"
