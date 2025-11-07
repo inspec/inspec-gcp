@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'gcp_backend'
-require 'google/apis/admin_directory_v1'
+require 'google-apis-admin_directory_v1'
 
 module Inspec::Resources
   class GoogleUser < GcpResourceBase
