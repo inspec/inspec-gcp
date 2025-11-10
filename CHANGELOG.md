@@ -1,11 +1,16 @@
 # Change Log
 
-<!-- latest_release 1.11.135 -->
+<!-- latest_release 1.11.136 -->
+## [v1.11.136](https://github.com/inspec/inspec-gcp/tree/v1.11.136) (2025-10-06)
+
+#### Merged Pull Requests
+- Reorganize InSpec resource docs [#661](https://github.com/inspec/inspec-gcp/pull/661) ([IanMadd](https://github.com/IanMadd))
+<!-- latest_release -->
+
 ## [v1.11.135](https://github.com/inspec/inspec-gcp/tree/v1.11.135) (2024-10-18)
 
 #### Merged Pull Requests
 - CHEF-12238-V2-MAGIC-MODULE-monitoring_v3-Projects__group - Resource Implementation [#656](https://github.com/inspec/inspec-gcp/pull/656) ([sa-progress](https://github.com/sa-progress))
-<!-- latest_release -->
 
 ## [v1.11.134](https://github.com/inspec/inspec-gcp/tree/v1.11.134) (2024-10-16)
 
