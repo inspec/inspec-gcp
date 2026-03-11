@@ -16,7 +16,7 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAccessConfigs
+      class InstanceTemplatePropertiesNetworkInterfacesIpv6AccessConfigs
         attr_reader :kind
 
         attr_reader :type
@@ -59,15 +59,15 @@ module GoogleInSpec
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAccessConfigs"
+          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesIpv6AccessConfigs"
         end
       end
 
-      class InstanceTemplatePropertiesNetworkInterfacesAccessConfigsArray
+      class InstanceTemplatePropertiesNetworkInterfacesIpv6AccessConfigsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAccessConfigs.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAccessConfigs.new(v, parent_identifier) }
+          return InstanceTemplatePropertiesNetworkInterfacesIpv6AccessConfigs.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesIpv6AccessConfigs.new(v, parent_identifier) }
         end
       end
     end

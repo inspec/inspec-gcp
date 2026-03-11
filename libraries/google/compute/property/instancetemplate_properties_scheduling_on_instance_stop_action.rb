@@ -16,28 +16,17 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
-
-        attr_reader :subnetwork_range_name
+      class InstanceTemplatePropertiesSchedulingOnInstanceStopAction
+        attr_reader :discard_local_ssd
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @discard_local_ssd = args['discardLocalSsd']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
-        end
-      end
-
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          "#{@parent_identifier} InstanceTemplatePropertiesSchedulingOnInstanceStopAction"
         end
       end
     end

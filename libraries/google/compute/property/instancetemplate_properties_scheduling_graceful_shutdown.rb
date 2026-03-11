@@ -13,31 +13,24 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown_max_duration'
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
+      class InstanceTemplatePropertiesSchedulingGracefulShutdown
+        attr_reader :enabled
 
-        attr_reader :subnetwork_range_name
+        attr_reader :max_duration
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @enabled = args['enabled']
+          @max_duration = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesSchedulingGracefulShutdownMaxDuration.new(args['maxDuration'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
-        end
-      end
-
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          "#{@parent_identifier} InstanceTemplatePropertiesSchedulingGracefulShutdown"
         end
       end
     end

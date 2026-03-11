@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -15,12 +15,33 @@
 # ----------------------------------------------------------------------------
 require 'gcp_backend'
 require 'google/compute/property/instancetemplate_properties'
+require 'google/compute/property/instancetemplate_properties_advanced_machine_features'
+require 'google/compute/property/instancetemplate_properties_confidential_instance_config'
 require 'google/compute/property/instancetemplate_properties_disks'
+require 'google/compute/property/instancetemplate_properties_display_device'
 require 'google/compute/property/instancetemplate_properties_guest_accelerators'
+require 'google/compute/property/instancetemplate_properties_labels'
+require 'google/compute/property/instancetemplate_properties_metadata'
+require 'google/compute/property/instancetemplate_properties_metadata_items'
 require 'google/compute/property/instancetemplate_properties_network_interfaces'
+require 'google/compute/property/instancetemplate_properties_network_performance_config'
+require 'google/compute/property/instancetemplate_properties_partner_metadata'
+require 'google/compute/property/instancetemplate_properties_reservation_affinity'
+require 'google/compute/property/instancetemplate_properties_resource_manager_tags'
 require 'google/compute/property/instancetemplate_properties_scheduling'
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown'
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown_max_duration'
+require 'google/compute/property/instancetemplate_properties_scheduling_local_ssd_recovery_timeout'
+require 'google/compute/property/instancetemplate_properties_scheduling_max_run_duration'
+require 'google/compute/property/instancetemplate_properties_scheduling_node_affinities'
+require 'google/compute/property/instancetemplate_properties_scheduling_on_instance_stop_action'
 require 'google/compute/property/instancetemplate_properties_service_accounts'
+require 'google/compute/property/instancetemplate_properties_service_integration_specs'
+require 'google/compute/property/instancetemplate_properties_shielded_instance_config'
+require 'google/compute/property/instancetemplate_properties_shielded_vm_config'
 require 'google/compute/property/instancetemplate_properties_tags'
+require 'google/compute/property/instancetemplate_source_instance_params'
+require 'google/compute/property/instancetemplate_source_instance_params_disk_configs'
 
 # A provider to manage Compute Engine resources.
 class ComputeInstanceTemplate < GcpResourceBase
@@ -29,11 +50,17 @@ class ComputeInstanceTemplate < GcpResourceBase
   supports platform: 'gcp'
 
   attr_reader :params
-  attr_reader :creation_timestamp
-  attr_reader :description
+  attr_reader :kind
   attr_reader :id
+  attr_reader :creation_timestamp
   attr_reader :name
+  attr_reader :description
   attr_reader :properties
+  attr_reader :self_link
+  attr_reader :self_link_with_id
+  attr_reader :source_instance
+  attr_reader :source_instance_params
+  attr_reader :region
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -43,16 +70,17 @@ class ComputeInstanceTemplate < GcpResourceBase
   end
 
   def parse
-    @creation_timestamp = parse_time_string(@fetched['creationTimestamp'])
-    @description = @fetched['description']
+    @kind = @fetched['kind']
     @id = @fetched['id']
+    @creation_timestamp = @fetched['creationTimestamp']
     @name = @fetched['name']
+    @description = @fetched['description']
     @properties = GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(@fetched['properties'], to_s)
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
+    @self_link = @fetched['selfLink']
+    @self_link_with_id = @fetched['selfLinkWithId']
+    @source_instance = @fetched['sourceInstance']
+    @source_instance_params = GoogleInSpec::Compute::Property::InstanceTemplateSourceInstanceParams.new(@fetched['sourceInstanceParams'], to_s)
+    @region = @fetched['region']
   end
 
   def exists?
@@ -60,20 +88,16 @@ class ComputeInstanceTemplate < GcpResourceBase
   end
 
   def to_s
-    "InstanceTemplate #{@params[:name]}"
+    "InstanceTemplate #{@params[:instanceTemplate]}"
   end
 
   private
 
-  def product_url(beta = false)
-    if beta
-      'https://compute.googleapis.com/compute/beta/'
-    else
-      'https://compute.googleapis.com/compute/v1/'
-    end
+  def product_url(_ = nil)
+    'https://compute.googleapis.com/compute/v1/'
   end
 
   def resource_base_url
-    'projects/{{project}}/global/instanceTemplates/{{name}}'
+    'projects/{{project}}/global/instanceTemplates/{{instance_template}}'
   end
 end

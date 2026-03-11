@@ -13,31 +13,27 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/instancetemplate_properties_metadata_items'
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
+      class InstanceTemplatePropertiesMetadata
+        attr_reader :kind
 
-        attr_reader :subnetwork_range_name
+        attr_reader :fingerprint
+
+        attr_reader :items
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @kind = args['kind']
+          @fingerprint = args['fingerprint']
+          @items = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesMetadataItemsArray.parse(args['items'], to_s)
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
-        end
-      end
-
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          "#{@parent_identifier} InstanceTemplatePropertiesMetadata"
         end
       end
     end

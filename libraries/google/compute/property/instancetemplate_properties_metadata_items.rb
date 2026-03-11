@@ -16,28 +16,28 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
+      class InstanceTemplatePropertiesMetadataItems
+        attr_reader :key
 
-        attr_reader :subnetwork_range_name
+        attr_reader :value
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @key = args['key']
+          @value = args['value']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
+          "#{@parent_identifier} InstanceTemplatePropertiesMetadataItems"
         end
       end
 
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
+      class InstanceTemplatePropertiesMetadataItemsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          return InstanceTemplatePropertiesMetadataItems.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplatePropertiesMetadataItems.new(v, parent_identifier) }
         end
       end
     end

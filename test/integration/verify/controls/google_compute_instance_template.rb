@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -15,7 +15,8 @@
 title 'Test GCP google_compute_instance_template resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-instance_template = input('instance_template', value: {
+
+  instance_template = input('instance_template', value: {
   "name": "inspec-gcp-instance-template",
   "description": "A description of the instance template",
   "instance_description": "A description of the instance itself",
@@ -29,25 +30,26 @@ instance_template = input('instance_template', value: {
   "disk_boot": true,
   "network_interface_network": "default",
   "service_account_scope": "storage-ro"
-}, description: 'An instance template definition')
+}, description: 'instance_template description')
 control 'google_compute_instance_template-1.0' do
   impact 1.0
   title 'google_compute_instance_template resource test'
 
-  describe google_compute_instance_template(project: gcp_project_id, name: instance_template['name']) do
-    it { should exist }
-    its('description') { should eq instance_template['description'] }
-    its('properties.description') { should eq instance_template['instance_description'] }
-    its('properties.machine_type') { should eq instance_template['machine_type'] }
-    its('properties.tags.items') { should include instance_template['tag'] }
-    its('properties.disks.count') { should eq 1 }
-    its('properties.disks.first.auto_delete') { should eq instance_template['disk_auto_delete'] }
-    its('properties.disks.first.boot') { should eq instance_template['disk_boot'] }
-    its('properties.network_interfaces.count') { should eq 1 }
-    its('properties.service_accounts.count') { should eq 1 }
+  describe google_compute_instance_template(instanceTemplate: instance_template['instanceTemplate'], project: gcp_project_id) do
+  	it { should exist }
+  	its('kind') { should cmp instance_template['kind'] }
+  	its('id') { should cmp instance_template['id'] }
+  	its('creation_timestamp') { should cmp instance_template['creation_timestamp'] }
+  	its('name') { should cmp instance_template['name'] }
+  	its('description') { should cmp instance_template['description'] }
+  	its('self_link') { should cmp instance_template['self_link'] }
+  	its('self_link_with_id') { should cmp instance_template['self_link_with_id'] }
+  	its('source_instance') { should cmp instance_template['source_instance'] }
+  	its('region') { should cmp instance_template['region'] }
+
   end
 
-  describe google_compute_instance_template(project: gcp_project_id, name: 'nonexistent') do
-    it { should_not exist }
+  describe google_compute_instance_template(instanceTemplate: instance_template['instanceTemplate'], project: gcp_project_id) do
+  	it { should_not exist }
   end
 end

@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -17,15 +17,15 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesTags
-        attr_reader :fingerprint
-
         attr_reader :items
+
+        attr_reader :fingerprint
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @fingerprint = args['fingerprint']
           @items = args['items']
+          @fingerprint = args['fingerprint']
         end
 
         def to_s

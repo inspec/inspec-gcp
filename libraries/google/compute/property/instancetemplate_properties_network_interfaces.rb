@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -15,31 +15,75 @@
 # ----------------------------------------------------------------------------
 require 'google/compute/property/instancetemplate_properties_network_interfaces_access_configs'
 require 'google/compute/property/instancetemplate_properties_network_interfaces_alias_ip_ranges'
+require 'google/compute/property/instancetemplate_properties_network_interfaces_ipv6_access_configs'
+require 'google/compute/property/instancetemplate_properties_network_interfaces_subinterfaces'
 module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesNetworkInterfaces
-        attr_reader :access_configs
-
-        attr_reader :alias_ip_ranges
-
-        attr_reader :name
+        attr_reader :kind
 
         attr_reader :network
 
+        attr_reader :subnetwork
+
         attr_reader :network_ip
 
-        attr_reader :subnetwork
+        attr_reader :ipv6_address
+
+        attr_reader :internal_ipv6_prefix_length
+
+        attr_reader :name
+
+        attr_reader :access_configs
+
+        attr_reader :ipv6_access_configs
+
+        attr_reader :alias_ip_ranges
+
+        attr_reader :fingerprint
+
+        attr_reader :stack_type
+
+        attr_reader :ipv6_access_type
+
+        attr_reader :queue_count
+
+        attr_reader :nic_type
+
+        attr_reader :subinterfaces
+
+        attr_reader :network_attachment
+
+        attr_reader :parent_nic_name
+
+        attr_reader :vlan
+
+        attr_reader :igmp_query
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @access_configs = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAccessConfigsArray.parse(args['accessConfigs'], to_s)
-          @alias_ip_ranges = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray.parse(args['aliasIpRanges'], to_s)
-          @name = args['name']
+          @kind = args['kind']
           @network = args['network']
-          @network_ip = args['networkIP']
           @subnetwork = args['subnetwork']
+          @network_ip = args['networkIP']
+          @ipv6_address = args['ipv6Address']
+          @internal_ipv6_prefix_length = args['internalIpv6PrefixLength']
+          @name = args['name']
+          @access_configs = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAccessConfigsArray.parse(args['accessConfigs'], to_s)
+          @ipv6_access_configs = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesIpv6AccessConfigsArray.parse(args['ipv6AccessConfigs'], to_s)
+          @alias_ip_ranges = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray.parse(args['aliasIpRanges'], to_s)
+          @fingerprint = args['fingerprint']
+          @stack_type = args['stackType']
+          @ipv6_access_type = args['ipv6AccessType']
+          @queue_count = args['queueCount']
+          @nic_type = args['nicType']
+          @subinterfaces = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesSubinterfacesArray.parse(args['subinterfaces'], to_s)
+          @network_attachment = args['networkAttachment']
+          @parent_nic_name = args['parentNicName']
+          @vlan = args['vlan']
+          @igmp_query = args['igmpQuery']
         end
 
         def to_s

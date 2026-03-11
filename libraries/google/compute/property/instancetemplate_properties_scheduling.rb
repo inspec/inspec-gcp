@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -13,22 +13,79 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown'
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown_max_duration'
+require 'google/compute/property/instancetemplate_properties_scheduling_local_ssd_recovery_timeout'
+require 'google/compute/property/instancetemplate_properties_scheduling_max_run_duration'
+require 'google/compute/property/instancetemplate_properties_scheduling_node_affinities'
+require 'google/compute/property/instancetemplate_properties_scheduling_on_instance_stop_action'
 module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesScheduling
-        attr_reader :automatic_restart
-
         attr_reader :on_host_maintenance
 
+        attr_reader :automatic_restart
+
         attr_reader :preemptible
+
+        attr_reader :node_affinities
+
+        attr_reader :min_node_cpus
+
+        attr_reader :latency_tolerant
+
+        attr_reader :location_hint
+
+        attr_reader :maintenance_freeze_duration_hours
+
+        attr_reader :maintenance_interval
+
+        attr_reader :availability_domain
+
+        attr_reader :provisioning_model
+
+        attr_reader :instance_termination_action
+
+        attr_reader :max_run_duration
+
+        attr_reader :termination_time
+
+        attr_reader :on_instance_stop_action
+
+        attr_reader :current_cpus
+
+        attr_reader :current_memory_mb
+
+        attr_reader :host_error_timeout_seconds
+
+        attr_reader :graceful_shutdown
+
+        attr_reader :local_ssd_recovery_timeout
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @automatic_restart = args['automaticRestart']
           @on_host_maintenance = args['onHostMaintenance']
+          @automatic_restart = args['automaticRestart']
           @preemptible = args['preemptible']
+          @node_affinities = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesSchedulingNodeAffinitiesArray.parse(args['nodeAffinities'], to_s)
+          @min_node_cpus = args['minNodeCpus']
+          @latency_tolerant = args['latencyTolerant']
+          @location_hint = args['locationHint']
+          @maintenance_freeze_duration_hours = args['maintenanceFreezeDurationHours']
+          @maintenance_interval = args['maintenanceInterval']
+          @availability_domain = args['availabilityDomain']
+          @provisioning_model = args['provisioningModel']
+          @instance_termination_action = args['instanceTerminationAction']
+          @max_run_duration = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesSchedulingMaxRunDuration.new(args['maxRunDuration'], to_s)
+          @termination_time = args['terminationTime']
+          @on_instance_stop_action = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesSchedulingOnInstanceStopAction.new(args['onInstanceStopAction'], to_s)
+          @current_cpus = args['currentCpus']
+          @current_memory_mb = args['currentMemoryMb']
+          @host_error_timeout_seconds = args['hostErrorTimeoutSeconds']
+          @graceful_shutdown = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesSchedulingGracefulShutdown.new(args['gracefulShutdown'], to_s)
+          @local_ssd_recovery_timeout = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesSchedulingLocalSsdRecoveryTimeout.new(args['localSsdRecoveryTimeout'], to_s)
         end
 
         def to_s

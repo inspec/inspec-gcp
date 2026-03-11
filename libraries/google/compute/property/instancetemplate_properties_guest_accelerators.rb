@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -17,15 +17,15 @@ module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesGuestAccelerators
-        attr_reader :accelerator_count
-
         attr_reader :accelerator_type
+
+        attr_reader :accelerator_count
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @accelerator_count = args['acceleratorCount']
           @accelerator_type = args['acceleratorType']
+          @accelerator_count = args['acceleratorCount']
         end
 
         def to_s

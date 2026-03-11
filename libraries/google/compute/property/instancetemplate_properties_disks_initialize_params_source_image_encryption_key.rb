@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -19,13 +19,22 @@ module GoogleInSpec
       class InstanceTemplatePropertiesDisksInitializeParamsSourceImageEncryptionKey
         attr_reader :raw_key
 
+        attr_reader :rsa_encrypted_key
+
+        attr_reader :kms_key_name
+
         attr_reader :sha256
+
+        attr_reader :kms_key_service_account
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @raw_key = args['rawKey']
+          @rsa_encrypted_key = args['rsaEncryptedKey']
+          @kms_key_name = args['kmsKeyName']
           @sha256 = args['sha256']
+          @kms_key_service_account = args['kmsKeyServiceAccount']
         end
 
         def to_s

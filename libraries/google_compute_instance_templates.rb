@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -23,18 +23,24 @@ class ComputeInstanceTemplates < GcpResourceBase
 
   filter_table_config = FilterTable.create
 
-  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
-  filter_table_config.add(:descriptions, field: :description)
+  filter_table_config.add(:kinds, field: :kind)
   filter_table_config.add(:ids, field: :id)
+  filter_table_config.add(:creation_timestamps, field: :creation_timestamp)
   filter_table_config.add(:names, field: :name)
+  filter_table_config.add(:descriptions, field: :description)
   filter_table_config.add(:properties, field: :properties)
+  filter_table_config.add(:self_links, field: :self_link)
+  filter_table_config.add(:self_link_with_ids, field: :self_link_with_id)
+  filter_table_config.add(:source_instances, field: :source_instance)
+  filter_table_config.add(:source_instance_params, field: :source_instance_params)
+  filter_table_config.add(:regions, field: :region)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('instanceTemplates')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -67,27 +73,24 @@ class ComputeInstanceTemplates < GcpResourceBase
 
   def transformers
     {
-      'creationTimestamp' => ->(obj) { [:creation_timestamp, parse_time_string(obj['creationTimestamp'])] },
-      'description' => ->(obj) { [:description, obj['description']] },
+      'kind' => ->(obj) { [:kind, obj['kind']] },
       'id' => ->(obj) { [:id, obj['id']] },
+      'creationTimestamp' => ->(obj) { [:creation_timestamp, obj['creationTimestamp']] },
       'name' => ->(obj) { [:name, obj['name']] },
+      'description' => ->(obj) { [:description, obj['description']] },
       'properties' => ->(obj) { [:properties, GoogleInSpec::Compute::Property::InstanceTemplateProperties.new(obj['properties'], to_s)] },
+      'selfLink' => ->(obj) { [:self_link, obj['selfLink']] },
+      'selfLinkWithId' => ->(obj) { [:self_link_with_id, obj['selfLinkWithId']] },
+      'sourceInstance' => ->(obj) { [:source_instance, obj['sourceInstance']] },
+      'sourceInstanceParams' => ->(obj) { [:source_instance_params, GoogleInSpec::Compute::Property::InstanceTemplateSourceInstanceParams.new(obj['sourceInstanceParams'], to_s)] },
+      'region' => ->(obj) { [:region, obj['region']] },
     }
-  end
-
-  # Handles parsing RFC3339 time string
-  def parse_time_string(time_string)
-    time_string ? Time.parse(time_string) : nil
   end
 
   private
 
-  def product_url(beta = false)
-    if beta
-      'https://compute.googleapis.com/compute/beta/'
-    else
-      'https://compute.googleapis.com/compute/v1/'
-    end
+  def product_url(_ = nil)
+    'https://compute.googleapis.com/compute/v1/'
   end
 
   def resource_base_url
