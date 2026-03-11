@@ -21,6 +21,8 @@ module GoogleInSpec
 
         attr_reader :ip_address
 
+        attr_reader :ipv6_address
+
         attr_reader :interconnect_attachment
 
         def initialize(args = nil, parent_identifier = nil)
@@ -28,6 +30,7 @@ module GoogleInSpec
           @parent_identifier = parent_identifier
           @id = args['id']
           @ip_address = args['ipAddress']
+          @ipv6_address = args['ipv6Address']
           @interconnect_attachment = args['interconnectAttachment']
         end
 

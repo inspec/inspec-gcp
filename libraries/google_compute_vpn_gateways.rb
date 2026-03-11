@@ -35,13 +35,14 @@ class ComputeVpnGateways < GcpResourceBase
   filter_table_config.add(:label_fingerprints, field: :label_fingerprint)
   filter_table_config.add(:vpn_interfaces, field: :vpn_interfaces)
   filter_table_config.add(:stack_types, field: :stack_type)
+  filter_table_config.add(:gateway_ip_versions, field: :gateway_ip_version)
 
   filter_table_config.connect(self, :table)
 
   def initialize(params = {})
     super(params.merge({ use_http_transport: true }))
     @params = params
-    @table = fetch_wrapped_resource('items')
+    @table = fetch_wrapped_resource('vpnGateways')
   end
 
   def fetch_wrapped_resource(wrap_path)
@@ -86,6 +87,7 @@ class ComputeVpnGateways < GcpResourceBase
       'labelFingerprint' => ->(obj) { [:label_fingerprint, obj['labelFingerprint']] },
       'vpnInterfaces' => ->(obj) { [:vpn_interfaces, GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(obj['vpnInterfaces'], to_s)] },
       'stackType' => ->(obj) { [:stack_type, obj['stackType']] },
+      'gatewayIpVersion' => ->(obj) { [:gateway_ip_version, obj['gatewayIpVersion']] },
     }
   end
 

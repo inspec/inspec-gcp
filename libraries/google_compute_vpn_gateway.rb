@@ -36,6 +36,7 @@ class ComputeVpnGateway < GcpResourceBase
   attr_reader :label_fingerprint
   attr_reader :vpn_interfaces
   attr_reader :stack_type
+  attr_reader :gateway_ip_version
 
   def initialize(params)
     super(params.merge({ use_http_transport: true }))
@@ -57,6 +58,7 @@ class ComputeVpnGateway < GcpResourceBase
     @label_fingerprint = @fetched['labelFingerprint']
     @vpn_interfaces = GoogleInSpec::Compute::Property::VpnGatewayVpnInterfacesArray.parse(@fetched['vpnInterfaces'], to_s)
     @stack_type = @fetched['stackType']
+    @gateway_ip_version = @fetched['gatewayIpVersion']
   end
 
   def exists?
