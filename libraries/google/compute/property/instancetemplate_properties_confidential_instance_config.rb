@@ -16,28 +16,20 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
+      class InstanceTemplatePropertiesConfidentialInstanceConfig
+        attr_reader :enable_confidential_compute
 
-        attr_reader :subnetwork_range_name
+        attr_reader :confidential_instance_type
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @enable_confidential_compute = args['enableConfidentialCompute']
+          @confidential_instance_type = args['confidentialInstanceType']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
-        end
-      end
-
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          "#{@parent_identifier} InstanceTemplatePropertiesConfidentialInstanceConfig"
         end
       end
     end

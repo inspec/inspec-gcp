@@ -16,28 +16,34 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
+      class InstanceTemplateSourceInstanceParamsDiskConfigs
+        attr_reader :device_name
 
-        attr_reader :subnetwork_range_name
+        attr_reader :instantiate_from
+
+        attr_reader :auto_delete
+
+        attr_reader :custom_image
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @device_name = args['deviceName']
+          @instantiate_from = args['instantiateFrom']
+          @auto_delete = args['autoDelete']
+          @custom_image = args['customImage']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
+          "#{@parent_identifier} InstanceTemplateSourceInstanceParamsDiskConfigs"
         end
       end
 
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
+      class InstanceTemplateSourceInstanceParamsDiskConfigsArray
         def self.parse(value, parent_identifier)
           return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          return InstanceTemplateSourceInstanceParamsDiskConfigs.new(value, parent_identifier) unless value.is_a?(::Array)
+          value.map { |v| InstanceTemplateSourceInstanceParamsDiskConfigs.new(v, parent_identifier) }
         end
       end
     end

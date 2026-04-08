@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -13,29 +13,90 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/instancetemplate_properties_disks_initialize_params_guest_os_features'
+require 'google/compute/property/instancetemplate_properties_disks_initialize_params_labels'
+require 'google/compute/property/instancetemplate_properties_disks_initialize_params_resource_manager_tags'
 require 'google/compute/property/instancetemplate_properties_disks_initialize_params_source_image_encryption_key'
+require 'google/compute/property/instancetemplate_properties_disks_initialize_params_source_snapshot_encryption_key'
 module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplatePropertiesDisksInitializeParams
         attr_reader :disk_name
 
+        attr_reader :source_image
+
         attr_reader :disk_size_gb
 
         attr_reader :disk_type
 
-        attr_reader :source_image
-
         attr_reader :source_image_encryption_key
+
+        attr_reader :labels
+
+        attr_reader :source_snapshot
+
+        attr_reader :source_instant_snapshot
+
+        attr_reader :source_snapshot_encryption_key
+
+        attr_reader :description
+
+        attr_reader :replica_zones
+
+        attr_reader :guest_os_features
+
+        attr_reader :resource_policies
+
+        attr_reader :on_update_action
+
+        attr_reader :provisioned_iops
+
+        attr_reader :multi_writer
+
+        attr_reader :interface
+
+        attr_reader :licenses
+
+        attr_reader :license_codes
+
+        attr_reader :architecture
+
+        attr_reader :resource_manager_tags
+
+        attr_reader :provisioned_throughput
+
+        attr_reader :enable_confidential_compute
+
+        attr_reader :storage_pool
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
           @disk_name = args['diskName']
+          @source_image = args['sourceImage']
           @disk_size_gb = args['diskSizeGb']
           @disk_type = args['diskType']
-          @source_image = args['sourceImage']
           @source_image_encryption_key = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParamsSourceImageEncryptionKey.new(args['sourceImageEncryptionKey'], to_s)
+          @labels = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParamsLabels.new(args['labels'], to_s)
+          @source_snapshot = args['sourceSnapshot']
+          @source_instant_snapshot = args['sourceInstantSnapshot']
+          @source_snapshot_encryption_key = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParamsSourceSnapshotEncryptionKey.new(args['sourceSnapshotEncryptionKey'], to_s)
+          @description = args['description']
+          @replica_zones = args['replicaZones']
+          @guest_os_features = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParamsGuestOsFeaturesArray.parse(args['guestOsFeatures'], to_s)
+          @resource_policies = args['resourcePolicies']
+          @on_update_action = args['onUpdateAction']
+          @provisioned_iops = args['provisionedIops']
+          @multi_writer = args['multiWriter']
+          @interface = args['interface']
+          @licenses = args['licenses']
+          @license_codes = args['licenseCodes']
+          @architecture = args['architecture']
+          @resource_manager_tags = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksInitializeParamsResourceManagerTags.new(args['resourceManagerTags'], to_s)
+          @provisioned_throughput = args['provisionedThroughput']
+          @enable_confidential_compute = args['enableConfidentialCompute']
+          @storage_pool = args['storagePool']
         end
 
         def to_s

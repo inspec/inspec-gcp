@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -13,55 +13,119 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'google/compute/property/instancetemplate_properties_advanced_machine_features'
+require 'google/compute/property/instancetemplate_properties_confidential_instance_config'
 require 'google/compute/property/instancetemplate_properties_disks'
+require 'google/compute/property/instancetemplate_properties_display_device'
 require 'google/compute/property/instancetemplate_properties_guest_accelerators'
+require 'google/compute/property/instancetemplate_properties_labels'
+require 'google/compute/property/instancetemplate_properties_metadata'
+require 'google/compute/property/instancetemplate_properties_metadata_items'
 require 'google/compute/property/instancetemplate_properties_network_interfaces'
+require 'google/compute/property/instancetemplate_properties_network_performance_config'
+require 'google/compute/property/instancetemplate_properties_partner_metadata'
+require 'google/compute/property/instancetemplate_properties_reservation_affinity'
+require 'google/compute/property/instancetemplate_properties_resource_manager_tags'
 require 'google/compute/property/instancetemplate_properties_scheduling'
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown'
+require 'google/compute/property/instancetemplate_properties_scheduling_graceful_shutdown_max_duration'
+require 'google/compute/property/instancetemplate_properties_scheduling_local_ssd_recovery_timeout'
+require 'google/compute/property/instancetemplate_properties_scheduling_max_run_duration'
+require 'google/compute/property/instancetemplate_properties_scheduling_node_affinities'
+require 'google/compute/property/instancetemplate_properties_scheduling_on_instance_stop_action'
 require 'google/compute/property/instancetemplate_properties_service_accounts'
+require 'google/compute/property/instancetemplate_properties_service_integration_specs'
+require 'google/compute/property/instancetemplate_properties_shielded_instance_config'
+require 'google/compute/property/instancetemplate_properties_shielded_vm_config'
 require 'google/compute/property/instancetemplate_properties_tags'
 module GoogleInSpec
   module Compute
     module Property
       class InstanceTemplateProperties
-        attr_reader :can_ip_forward
-
         attr_reader :description
 
-        attr_reader :disks
+        attr_reader :tags
 
-        attr_reader :labels
+        attr_reader :secure_tags
+
+        attr_reader :resource_manager_tags
 
         attr_reader :machine_type
 
-        attr_reader :min_cpu_platform
-
-        attr_reader :metadata
-
-        attr_reader :guest_accelerators
+        attr_reader :can_ip_forward
 
         attr_reader :network_interfaces
 
-        attr_reader :scheduling
+        attr_reader :disks
+
+        attr_reader :metadata
 
         attr_reader :service_accounts
 
-        attr_reader :tags
+        attr_reader :scheduling
+
+        attr_reader :labels
+
+        attr_reader :guest_accelerators
+
+        attr_reader :min_cpu_platform
+
+        attr_reader :shielded_vm_config
+
+        attr_reader :reservation_affinity
+
+        attr_reader :shielded_instance_config
+
+        attr_reader :display_device
+
+        attr_reader :resource_policies
+
+        attr_reader :confidential_instance_config
+
+        attr_reader :post_key_revocation_action_type
+
+        attr_reader :private_ipv6_google_access
+
+        attr_reader :advanced_machine_features
+
+        attr_reader :network_performance_config
+
+        attr_reader :key_revocation_action_type
+
+        attr_reader :partner_metadata
+
+        attr_reader :service_integration_specs
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @can_ip_forward = args['canIpForward']
           @description = args['description']
-          @disks = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksArray.parse(args['disks'], to_s)
-          @labels = args['labels']
-          @machine_type = args['machineType']
-          @min_cpu_platform = args['minCpuPlatform']
-          @metadata = args['metadata']
-          @guest_accelerators = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesGuestAcceleratorsArray.parse(args['guestAccelerators'], to_s)
-          @network_interfaces = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesArray.parse(args['networkInterfaces'], to_s)
-          @scheduling = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesScheduling.new(args['scheduling'], to_s)
-          @service_accounts = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesServiceAccountsArray.parse(args['serviceAccounts'], to_s)
           @tags = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesTags.new(args['tags'], to_s)
+          @secure_tags = args['secureTags']
+          @resource_manager_tags = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesResourceManagerTags.new(args['resourceManagerTags'], to_s)
+          @machine_type = args['machineType']
+          @can_ip_forward = args['canIpForward']
+          @network_interfaces = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkInterfacesArray.parse(args['networkInterfaces'], to_s)
+          @disks = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisksArray.parse(args['disks'], to_s)
+          @metadata = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesMetadata.new(args['metadata'], to_s)
+          @service_accounts = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesServiceAccountsArray.parse(args['serviceAccounts'], to_s)
+          @scheduling = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesScheduling.new(args['scheduling'], to_s)
+          @labels = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesLabels.new(args['labels'], to_s)
+          @guest_accelerators = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesGuestAcceleratorsArray.parse(args['guestAccelerators'], to_s)
+          @min_cpu_platform = args['minCpuPlatform']
+          @shielded_vm_config = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesShieldedVmConfig.new(args['shieldedVmConfig'], to_s)
+          @reservation_affinity = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesReservationAffinity.new(args['reservationAffinity'], to_s)
+          @shielded_instance_config = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesShieldedInstanceConfig.new(args['shieldedInstanceConfig'], to_s)
+          @display_device = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesDisplayDevice.new(args['displayDevice'], to_s)
+          @resource_policies = args['resourcePolicies']
+          @confidential_instance_config = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesConfidentialInstanceConfig.new(args['confidentialInstanceConfig'], to_s)
+          @post_key_revocation_action_type = args['postKeyRevocationActionType']
+          @private_ipv6_google_access = args['privateIpv6GoogleAccess']
+          @advanced_machine_features = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesAdvancedMachineFeatures.new(args['advancedMachineFeatures'], to_s)
+          @network_performance_config = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesNetworkPerformanceConfig.new(args['networkPerformanceConfig'], to_s)
+          @key_revocation_action_type = args['keyRevocationActionType']
+          @partner_metadata = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesPartnerMetadata.new(args['partnerMetadata'], to_s)
+          @service_integration_specs = GoogleInSpec::Compute::Property::InstanceTemplatePropertiesServiceIntegrationSpecs.new(args['serviceIntegrationSpecs'], to_s)
         end
 
         def to_s

@@ -16,28 +16,29 @@
 module GoogleInSpec
   module Compute
     module Property
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges
-        attr_reader :ip_cidr_range
+      class InstanceTemplatePropertiesDisksInitializeParamsSourceSnapshotEncryptionKey
+        attr_reader :raw_key
 
-        attr_reader :subnetwork_range_name
+        attr_reader :rsa_encrypted_key
+
+        attr_reader :kms_key_name
+
+        attr_reader :sha256
+
+        attr_reader :kms_key_service_account
 
         def initialize(args = nil, parent_identifier = nil)
           return if args.nil?
           @parent_identifier = parent_identifier
-          @ip_cidr_range = args['ipCidrRange']
-          @subnetwork_range_name = args['subnetworkRangeName']
+          @raw_key = args['rawKey']
+          @rsa_encrypted_key = args['rsaEncryptedKey']
+          @kms_key_name = args['kmsKeyName']
+          @sha256 = args['sha256']
+          @kms_key_service_account = args['kmsKeyServiceAccount']
         end
 
         def to_s
-          "#{@parent_identifier} InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges"
-        end
-      end
-
-      class InstanceTemplatePropertiesNetworkInterfacesAliasIpRangesArray
-        def self.parse(value, parent_identifier)
-          return if value.nil?
-          return InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(value, parent_identifier) unless value.is_a?(::Array)
-          value.map { |v| InstanceTemplatePropertiesNetworkInterfacesAliasIpRanges.new(v, parent_identifier) }
+          "#{@parent_identifier} InstanceTemplatePropertiesDisksInitializeParamsSourceSnapshotEncryptionKey"
         end
       end
     end

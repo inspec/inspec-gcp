@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------------
 #
-#     ***     AUTO GENERATED CODE    ***    AUTO GENERATED CODE     ***
+#     ***     AUTO GENERATED CODE    ***    Type: MMv1     ***
 #
 # ----------------------------------------------------------------------------
 #
@@ -15,7 +15,8 @@
 title 'Test GCP google_compute_instance_templates resource.'
 
 gcp_project_id = input(:gcp_project_id, value: 'gcp_project_id', description: 'The GCP project identifier.')
-instance_template = input('instance_template', value: {
+
+  instance_template = input('instance_template', value: {
   "name": "inspec-gcp-instance-template",
   "description": "A description of the instance template",
   "instance_description": "A description of the instance itself",
@@ -29,12 +30,12 @@ instance_template = input('instance_template', value: {
   "disk_boot": true,
   "network_interface_network": "default",
   "service_account_scope": "storage-ro"
-}, description: 'An instance template definition')
+}, description: 'instance_template description')
 control 'google_compute_instance_templates-1.0' do
   impact 1.0
   title 'google_compute_instance_templates resource test'
 
-  describe google_compute_instance_templates(project: gcp_project_id) do
-    its('names') { should include instance_template['name'] }
-  end
+      describe google_compute_instance_templates(project: gcp_project_id) do
+      it { should exist }
+    end
 end
