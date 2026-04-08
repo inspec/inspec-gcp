@@ -170,7 +170,8 @@ jobs:
       license_scout: false      # Run license scout for license compliance (uses .license_scout.yml)
 
       # perform Blackduck software composition analysis (SCA) for 3rd party CVEs, licensing, and operational risk
-      perform-blackduck-sca-scan: true # combined with generate sbom & generate github-sbom, also needs version above
+      perform-blackduck-sca-scan: true
+          run-bundle-install: true # combined with generate sbom & generate github-sbom, also needs version above
       blackduck-project-group-name: 'Chef-Agents' # typically one of (Chef), Chef-Agents, Chef-Automate, Chef-Chef360, Chef-Habitat, Chef-Infrastructure-Server, Chef-Shared-Services, Chef-Non-Product'
       blackduck-project-name: ${{ github.event.repository.name }} # BlackDuck project name, typically the repository name
       blackduck-force-low-accuracy-mode: false # if true, forces BlackDuck Detect to run in low accuracy mode which can reduce scan time for large projects at the cost of potentially missing some vulnerabilities; see https://synopsys.atlassian.net/wiki/spaces/INTDOCS/pages/1138617921/Black+Duck+Detect+Accuracy+Levels for details
