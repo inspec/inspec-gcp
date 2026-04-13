@@ -2,7 +2,7 @@ name: inspec-gcp
 title: Google Cloud Platform Resource Pack
 maintainer: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 summary: This resource pack provides compliance resources_old_ignore for Google Cloud Platform
-copyright: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
+copyright: Copyright (c) 2018-2024 Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.
 copyright_email: spaterson@chef.io,russell.seymour@turtlesystems.co.uk
 version: 1.11.136
 license: Apache-2.0

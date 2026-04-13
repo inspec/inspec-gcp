@@ -626,3 +626,6 @@ The InSpec GCP resources are community supported. For bugs and features, please 
 ## Kudos
 
 This implementation is inspired by [inspec-azure](https://github.com/chef/inspec-azure) and [inspec-gcp](https://github.com/martezr/inspec-gcp)
+
+# Copyright
+See [COPYRIGHT.md](./COPYRIGHT.md).
